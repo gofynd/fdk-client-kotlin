@@ -1,14 +1,8 @@
 package com.sdk.platform
 
-import com.sdk.common.HttpClient
 import com.sdk.platform.datamanager.*
 
 class PlatformClient(val config:PlatformConfig, val unauthorizedAction: ((url: String, responseCode: Int) -> Unit)? = null) {
-
-    init {
-        HttpClient.reset()
-    }
-
     
     val common by lazy { CommonDataManagerClass(config, unauthorizedAction)}
     
@@ -26,8 +20,6 @@ class PlatformClient(val config:PlatformConfig, val unauthorizedAction: ((url: S
     
     val payment by lazy { PaymentDataManagerClass(config, unauthorizedAction)}
     
-    val order by lazy { OrderDataManagerClass(config, unauthorizedAction)}
-    
     val catalog by lazy { CatalogDataManagerClass(config, unauthorizedAction)}
     
     val companyProfile by lazy { CompanyProfileDataManagerClass(config, unauthorizedAction)}
@@ -44,8 +36,6 @@ class PlatformClient(val config:PlatformConfig, val unauthorizedAction: ((url: S
     
     val rewards by lazy { RewardsDataManagerClass(config, unauthorizedAction)}
     
-    val analytics by lazy { AnalyticsDataManagerClass(config, unauthorizedAction)}
-    
     val discount by lazy { DiscountDataManagerClass(config, unauthorizedAction)}
     
     val partner by lazy { PartnerDataManagerClass(config, unauthorizedAction)}
@@ -53,6 +43,8 @@ class PlatformClient(val config:PlatformConfig, val unauthorizedAction: ((url: S
     val webhook by lazy { WebhookDataManagerClass(config, unauthorizedAction)}
     
     val auditTrail by lazy { AuditTrailDataManagerClass(config, unauthorizedAction)}
+    
+    val serviceability by lazy { ServiceabilityDataManagerClass(config, unauthorizedAction)}
     
     fun application(applicationId:String): ApplicationClient {
         return ApplicationClient(applicationId = applicationId,config = config)
@@ -76,8 +68,6 @@ class PlatformClient(val config:PlatformConfig, val unauthorizedAction: ((url: S
     
     val payment by lazy { this@PlatformClient.payment.ApplicationClient(applicationId,config)}
     
-    val order by lazy { this@PlatformClient.order.ApplicationClient(applicationId,config)}
-    
     val catalog by lazy { this@PlatformClient.catalog.ApplicationClient(applicationId,config)}
     
     val companyProfile by lazy { this@PlatformClient.companyProfile.ApplicationClient(applicationId,config)}
@@ -94,8 +84,6 @@ class PlatformClient(val config:PlatformConfig, val unauthorizedAction: ((url: S
     
     val rewards by lazy { this@PlatformClient.rewards.ApplicationClient(applicationId,config)}
     
-    val analytics by lazy { this@PlatformClient.analytics.ApplicationClient(applicationId,config)}
-    
     val discount by lazy { this@PlatformClient.discount.ApplicationClient(applicationId,config)}
     
     val partner by lazy { this@PlatformClient.partner.ApplicationClient(applicationId,config)}
@@ -103,6 +91,8 @@ class PlatformClient(val config:PlatformConfig, val unauthorizedAction: ((url: S
     val webhook by lazy { this@PlatformClient.webhook.ApplicationClient(applicationId,config)}
     
     val auditTrail by lazy { this@PlatformClient.auditTrail.ApplicationClient(applicationId,config)}
+    
+    val serviceability by lazy { this@PlatformClient.serviceability.ApplicationClient(applicationId,config)}
     
     }
 

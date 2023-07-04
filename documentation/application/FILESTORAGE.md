@@ -22,7 +22,7 @@ Initiates an upload and returns a storage link that is valid for 30 minutes. You
 
 
 ```kotlin
-applicationClient.filestorage.startUpload(namespace: namespace, body: body).safeAwait{ response, error->
+filestorage.startUpload(namespace: namespace, body: body).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -38,7 +38,7 @@ applicationClient.filestorage.startUpload(namespace: namespace, body: body).safe
 
 | Argument  |  Type  | Required | Description |
 | --------- | -----  | -------- | ----------- | 
-| namespace | String | yes | Name of the bucket created for storing objects. |  
+| namespace | String | yes | Segregation of different types of files(products, orders, logistics etc), Required for validating the data of the file being uploaded, decides where exactly the file will be stored inside the storage bucket. |  
 | body | [StartRequest](#StartRequest) | yes | Request body |
 
 
@@ -100,7 +100,7 @@ Completes the upload process. After successfully uploading a file, call this API
 
 
 ```kotlin
-applicationClient.filestorage.completeUpload(namespace: namespace, body: body).safeAwait{ response, error->
+filestorage.completeUpload(namespace: namespace, body: body).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -116,7 +116,7 @@ applicationClient.filestorage.completeUpload(namespace: namespace, body: body).s
 
 | Argument  |  Type  | Required | Description |
 | --------- | -----  | -------- | ----------- | 
-| namespace | String | yes | Name of the bucket created for storing objects. |  
+| namespace | String | yes | Segregation of different types of files(products, orders, logistics etc), Required for validating the data of the file being uploaded, decides where exactly the file will be stored inside the storage bucket. |  
 | body | [StartResponse](#StartResponse) | yes | Request body |
 
 
@@ -178,7 +178,7 @@ Explain here
 
 
 ```kotlin
-applicationClient.filestorage.signUrls(body: body).safeAwait{ response, error->
+filestorage.signUrls(body: body).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -251,8 +251,8 @@ Success
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
  | url | String |  no  |  |
- | absoluteUrl | String? |  yes  |  |
- | relativeUrl | String? |  yes  |  |
+ | absoluteUrl | String |  no  |  |
+ | relativeUrl | String |  no  |  |
 
 ---
 

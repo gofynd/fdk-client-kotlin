@@ -4,8 +4,8 @@ import com.sdk.application.*
 
 
 import android.os.Parcelable
-import kotlinx.parcelize.Parcelize
-import kotlinx.parcelize.RawValue
+import kotlinx.android.parcel.Parcelize
+import kotlinx.android.parcel.RawValue
 import android.util.Base64
 import com.google.gson.annotations.SerializedName
 
@@ -1831,9 +1831,14 @@ data class ListingPriceFeature(
     
     
     @SerializedName("value")
-    var value: String?=null
+    var value: String?=null,
+    
+    @SerializedName("sort")
+    var sort: String?=null
     
 ): Parcelable {
+    
+    
     
     
     

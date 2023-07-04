@@ -23,7 +23,7 @@ interface OrderApiList {
     
     @GET 
     fun getPosOrderById(@Url url1: String?    )
-    : Deferred<Response<OrderList>>
+    : Deferred<Response<OrderById>>
     
     
     @GET 

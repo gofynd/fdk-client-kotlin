@@ -4,10 +4,59 @@ import com.sdk.platform.*
 
 
 import android.os.Parcelable
-import kotlinx.parcelize.Parcelize
-import kotlinx.parcelize.RawValue
+import kotlinx.android.parcel.Parcelize
+import kotlinx.android.parcel.RawValue
 import android.util.Base64
 import com.google.gson.annotations.SerializedName
+
+             
+/*
+    Model: ClickStatsResponse
+*/
+@Parcelize
+data class ClickStatsResponse(
+    
+    
+    
+    @SerializedName("click_stats")
+    var clickStats: ArrayList<ClickStatsItem>?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: ClickStatsItem
+*/
+@Parcelize
+data class ClickStatsItem(
+    
+    
+    
+    @SerializedName("display")
+    var display: String?=null,
+    
+    @SerializedName("total")
+    var total: Int?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+}
+
+
 
              
 /*

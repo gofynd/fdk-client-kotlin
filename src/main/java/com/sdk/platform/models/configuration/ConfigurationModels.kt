@@ -4,8 +4,8 @@ import com.sdk.platform.*
 
 
 import android.os.Parcelable
-import kotlinx.parcelize.Parcelize
-import kotlinx.parcelize.RawValue
+import kotlinx.android.parcel.Parcelize
+import kotlinx.android.parcel.RawValue
 import android.util.Base64
 import com.google.gson.annotations.SerializedName
 
@@ -590,9 +590,14 @@ data class AppPaymentConfig(
     var codAmountLimit: Double?=null,
     
     @SerializedName("cod_charges")
-    var codCharges: Double?=null
+    var codCharges: Double?=null,
+    
+    @SerializedName("anonymous_cod")
+    var anonymousCod: Boolean?=null
     
 ): Parcelable {
+    
+    
     
     
     
@@ -1205,6 +1210,50 @@ data class BrandsByCompanyResponse(
 
              
 /*
+    Model: ValidationFailedResponse
+*/
+@Parcelize
+data class ValidationFailedResponse(
+    
+    
+    
+    @SerializedName("message")
+    var message: String?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: NotFound
+*/
+@Parcelize
+data class NotFound(
+    
+    
+    
+    @SerializedName("message")
+    var message: String?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
     Model: CommunicationConfig
 */
 @Parcelize
@@ -1736,9 +1785,39 @@ data class DomainAdd(
     
     
     @SerializedName("name")
-    var name: String?=null
+    var name: String?=null,
+    
+    @SerializedName("_id")
+    var id: String?=null,
+    
+    @SerializedName("verified")
+    var verified: Boolean?=null,
+    
+    @SerializedName("is_primary")
+    var isPrimary: Boolean?=null,
+    
+    @SerializedName("is_shortlink")
+    var isShortlink: Boolean?=null,
+    
+    @SerializedName("message")
+    var message: String?=null,
+    
+    @SerializedName("txt_records")
+    var txtRecords: ArrayList<String>?=null
     
 ): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     
     
     
@@ -1761,6 +1840,53 @@ data class DomainAddRequest(
     var domain: DomainAdd?=null
     
 ): Parcelable {
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: Domain
+*/
+@Parcelize
+data class Domain(
+    
+    
+    
+    @SerializedName("name")
+    var name: String?=null,
+    
+    @SerializedName("_id")
+    var id: String?=null,
+    
+    @SerializedName("verified")
+    var verified: Boolean?=null,
+    
+    @SerializedName("is_primary")
+    var isPrimary: Boolean?=null,
+    
+    @SerializedName("is_shortlink")
+    var isShortlink: Boolean?=null,
+    
+    @SerializedName("is_predefined")
+    var isPredefined: Boolean?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     
     
     
@@ -1801,10 +1927,30 @@ data class UpdateDomain(
     
     
     
+    @SerializedName("name")
+    var name: String?=null,
+    
     @SerializedName("_id")
-    var id: String?=null
+    var id: String?=null,
+    
+    @SerializedName("verified")
+    var verified: Boolean?=null,
+    
+    @SerializedName("is_primary")
+    var isPrimary: Boolean?=null,
+    
+    @SerializedName("is_shortlink")
+    var isShortlink: Boolean?=null
     
 ): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+    
     
     
     
@@ -1999,6 +2145,33 @@ data class DomainSuggestionsResponse(
     var domains: ArrayList<DomainSuggestion>?=null
     
 ): Parcelable {
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: SuccessMessageResponse
+*/
+@Parcelize
+data class SuccessMessageResponse(
+    
+    
+    
+    @SerializedName("success")
+    var success: Boolean?=null,
+    
+    @SerializedName("message")
+    var message: String?=null
+    
+): Parcelable {
+    
+    
     
     
     
@@ -3577,16 +3750,20 @@ data class Credentials(
     var android: Android?=null,
     
     @SerializedName("project_id")
-    var projectId: String?=null,
+    private var project_id_b64: String?=null,
+    
     
     @SerializedName("gcm_sender_id")
-    var gcmSenderId: String?=null,
+    private var gcm_sender_id_b64: String?=null,
+    
     
     @SerializedName("application_id")
-    var applicationId: String?=null,
+    private var application_id_b64: String?=null,
+    
     
     @SerializedName("api_key")
-    var apiKey: String?=null
+    private var api_key_b64: String?=null
+    
     
 ): Parcelable {
     
@@ -3596,11 +3773,59 @@ data class Credentials(
     
     
     
+    var projectId : String
+    get(){
+        try{
+            return String(Base64.decode(project_id_b64,Base64.NO_WRAP))
+        }catch(e: Exception){
+            return project_id_b64 ?: ""
+        }
+    }
+    set(value){
+        project_id_b64 = Base64.encodeToString(value?.toByteArray(),Base64.NO_WRAP)
+    }
     
     
     
+    var gcmSenderId : String
+    get(){
+        try{
+            return String(Base64.decode(gcm_sender_id_b64,Base64.NO_WRAP))
+        }catch(e: Exception){
+            return gcm_sender_id_b64 ?: ""
+        }
+    }
+    set(value){
+        gcm_sender_id_b64 = Base64.encodeToString(value?.toByteArray(),Base64.NO_WRAP)
+    }
     
     
+    
+    var applicationId : String
+    get(){
+        try{
+            return String(Base64.decode(application_id_b64,Base64.NO_WRAP))
+        }catch(e: Exception){
+            return application_id_b64 ?: ""
+        }
+    }
+    set(value){
+        application_id_b64 = Base64.encodeToString(value?.toByteArray(),Base64.NO_WRAP)
+    }
+    
+    
+    
+    var apiKey : String
+    get(){
+        try{
+            return String(Base64.decode(api_key_b64,Base64.NO_WRAP))
+        }catch(e: Exception){
+            return api_key_b64 ?: ""
+        }
+    }
+    set(value){
+        api_key_b64 = Base64.encodeToString(value?.toByteArray(),Base64.NO_WRAP)
+    }
     
     
     
@@ -3618,16 +3843,42 @@ data class Ios(
     
     
     @SerializedName("application_id")
-    var applicationId: String?=null,
+    private var application_id_b64: String?=null,
+    
     
     @SerializedName("api_key")
-    var apiKey: String?=null
+    private var api_key_b64: String?=null
+    
     
 ): Parcelable {
     
     
     
+    var applicationId : String
+    get(){
+        try{
+            return String(Base64.decode(application_id_b64,Base64.NO_WRAP))
+        }catch(e: Exception){
+            return application_id_b64 ?: ""
+        }
+    }
+    set(value){
+        application_id_b64 = Base64.encodeToString(value?.toByteArray(),Base64.NO_WRAP)
+    }
     
+    
+    
+    var apiKey : String
+    get(){
+        try{
+            return String(Base64.decode(api_key_b64,Base64.NO_WRAP))
+        }catch(e: Exception){
+            return api_key_b64 ?: ""
+        }
+    }
+    set(value){
+        api_key_b64 = Base64.encodeToString(value?.toByteArray(),Base64.NO_WRAP)
+    }
     
     
     
@@ -3645,16 +3896,42 @@ data class Android(
     
     
     @SerializedName("application_id")
-    var applicationId: String?=null,
+    private var application_id_b64: String?=null,
+    
     
     @SerializedName("api_key")
-    var apiKey: String?=null
+    private var api_key_b64: String?=null
+    
     
 ): Parcelable {
     
     
     
+    var applicationId : String
+    get(){
+        try{
+            return String(Base64.decode(application_id_b64,Base64.NO_WRAP))
+        }catch(e: Exception){
+            return application_id_b64 ?: ""
+        }
+    }
+    set(value){
+        application_id_b64 = Base64.encodeToString(value?.toByteArray(),Base64.NO_WRAP)
+    }
     
+    
+    
+    var apiKey : String
+    get(){
+        try{
+            return String(Base64.decode(api_key_b64,Base64.NO_WRAP))
+        }catch(e: Exception){
+            return api_key_b64 ?: ""
+        }
+    }
+    set(value){
+        api_key_b64 = Base64.encodeToString(value?.toByteArray(),Base64.NO_WRAP)
+    }
     
     
     
@@ -3748,11 +4025,24 @@ data class SegmentCredentials(
     
     
     @SerializedName("write_key")
-    var writeKey: String?=null
+    private var write_key_b64: String?=null
+    
     
 ): Parcelable {
     
     
+    
+    var writeKey : String
+    get(){
+        try{
+            return String(Base64.decode(write_key_b64,Base64.NO_WRAP))
+        }catch(e: Exception){
+            return write_key_b64 ?: ""
+        }
+    }
+    set(value){
+        write_key_b64 = Base64.encodeToString(value?.toByteArray(),Base64.NO_WRAP)
+    }
     
     
     
@@ -3797,11 +4087,24 @@ data class GtmCredentials(
     
     
     @SerializedName("api_key")
-    var apiKey: String?=null
+    private var api_key_b64: String?=null
+    
     
 ): Parcelable {
     
     
+    
+    var apiKey : String
+    get(){
+        try{
+            return String(Base64.decode(api_key_b64,Base64.NO_WRAP))
+        }catch(e: Exception){
+            return api_key_b64 ?: ""
+        }
+    }
+    set(value){
+        api_key_b64 = Base64.encodeToString(value?.toByteArray(),Base64.NO_WRAP)
+    }
     
     
     
@@ -3846,21 +4149,60 @@ data class FreshchatCredentials(
     
     
     @SerializedName("app_id")
-    var appId: String?=null,
+    private var app_id_b64: String?=null,
+    
     
     @SerializedName("app_key")
-    var appKey: String?=null,
+    private var app_key_b64: String?=null,
+    
     
     @SerializedName("web_token")
-    var webToken: String?=null
+    private var web_token_b64: String?=null
+    
     
 ): Parcelable {
     
     
     
+    var appId : String
+    get(){
+        try{
+            return String(Base64.decode(app_id_b64,Base64.NO_WRAP))
+        }catch(e: Exception){
+            return app_id_b64 ?: ""
+        }
+    }
+    set(value){
+        app_id_b64 = Base64.encodeToString(value?.toByteArray(),Base64.NO_WRAP)
+    }
     
     
     
+    var appKey : String
+    get(){
+        try{
+            return String(Base64.decode(app_key_b64,Base64.NO_WRAP))
+        }catch(e: Exception){
+            return app_key_b64 ?: ""
+        }
+    }
+    set(value){
+        app_key_b64 = Base64.encodeToString(value?.toByteArray(),Base64.NO_WRAP)
+    }
+    
+    
+    
+    var webToken : String
+    get(){
+        try{
+            return String(Base64.decode(web_token_b64,Base64.NO_WRAP))
+        }catch(e: Exception){
+            return web_token_b64 ?: ""
+        }
+    }
+    set(value){
+        web_token_b64 = Base64.encodeToString(value?.toByteArray(),Base64.NO_WRAP)
+    }
     
     
     
@@ -3905,11 +4247,24 @@ data class SafetynetCredentials(
     
     
     @SerializedName("api_key")
-    var apiKey: String?=null
+    private var api_key_b64: String?=null
+    
     
 ): Parcelable {
     
     
+    
+    var apiKey : String
+    get(){
+        try{
+            return String(Base64.decode(api_key_b64,Base64.NO_WRAP))
+        }catch(e: Exception){
+            return api_key_b64 ?: ""
+        }
+    }
+    set(value){
+        api_key_b64 = Base64.encodeToString(value?.toByteArray(),Base64.NO_WRAP)
+    }
     
     
     
@@ -3949,11 +4304,24 @@ data class FyndRewardsCredentials(
     
     
     @SerializedName("public_key")
-    var publicKey: String?=null
+    private var public_key_b64: String?=null
+    
     
 ): Parcelable {
     
     
+    
+    var publicKey : String
+    get(){
+        try{
+            return String(Base64.decode(public_key_b64,Base64.NO_WRAP))
+        }catch(e: Exception){
+            return public_key_b64 ?: ""
+        }
+    }
+    set(value){
+        public_key_b64 = Base64.encodeToString(value?.toByteArray(),Base64.NO_WRAP)
+    }
     
     
     
@@ -3993,11 +4361,24 @@ data class GoogleMapCredentials(
     
     
     @SerializedName("api_key")
-    var apiKey: String?=null
+    private var api_key_b64: String?=null
+    
     
 ): Parcelable {
     
     
+    
+    var apiKey : String
+    get(){
+        try{
+            return String(Base64.decode(api_key_b64,Base64.NO_WRAP))
+        }catch(e: Exception){
+            return api_key_b64 ?: ""
+        }
+    }
+    set(value){
+        api_key_b64 = Base64.encodeToString(value?.toByteArray(),Base64.NO_WRAP)
+    }
     
     
     
@@ -4444,9 +4825,14 @@ data class ListingPriceFeature(
     
     
     @SerializedName("value")
-    var value: String?=null
+    var value: String?=null,
+    
+    @SerializedName("sort")
+    var sort: String?=null
     
 ): Parcelable {
+    
+    
     
     
     
@@ -4775,53 +5161,6 @@ data class Currency(
 
              
 /*
-    Model: Domain
-*/
-@Parcelize
-data class Domain(
-    
-    
-    
-    @SerializedName("verified")
-    var verified: Boolean?=null,
-    
-    @SerializedName("is_primary")
-    var isPrimary: Boolean?=null,
-    
-    @SerializedName("is_shortlink")
-    var isShortlink: Boolean?=null,
-    
-    @SerializedName("_id")
-    var id: String?=null,
-    
-    @SerializedName("name")
-    var name: String?=null,
-    
-    @SerializedName("is_predefined")
-    var isPredefined: Boolean?=null
-    
-): Parcelable {
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-}
-
-
-
-             
-/*
     Model: ApplicationWebsite
 */
 @Parcelize
@@ -5116,28 +5455,6 @@ data class Application(
 
              
 /*
-    Model: NotFound
-*/
-@Parcelize
-data class NotFound(
-    
-    
-    
-    @SerializedName("message")
-    var message: String?=null
-    
-): Parcelable {
-    
-    
-    
-    
-    
-}
-
-
-
-             
-/*
     Model: UnhandledError
 */
 @Parcelize
@@ -5164,28 +5481,6 @@ data class UnhandledError(
 */
 @Parcelize
 data class InvalidPayloadRequest(
-    
-    
-    
-    @SerializedName("message")
-    var message: String?=null
-    
-): Parcelable {
-    
-    
-    
-    
-    
-}
-
-
-
-             
-/*
-    Model: SuccessMessageResponse
-*/
-@Parcelize
-data class SuccessMessageResponse(
     
     
     

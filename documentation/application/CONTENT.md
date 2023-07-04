@@ -38,7 +38,7 @@ Get live announcements
 
 
 ```kotlin
-applicationClient.content.getAnnouncements().safeAwait{ response, error->
+content.getAnnouncements().safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -128,7 +128,7 @@ Get a blog
 
 
 ```kotlin
-applicationClient.content.getBlog(slug: slug, rootId: rootId).safeAwait{ response, error->
+content.getBlog(slug: slug, rootId: rootId).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -234,7 +234,7 @@ Get a list of blogs
 
 
 ```kotlin
-applicationClient.content.getBlogs(pageNo: pageNo, pageSize: pageSize).safeAwait{ response, error->
+content.getBlogs(pageNo: pageNo, pageSize: pageSize).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -344,7 +344,7 @@ Get the data loaders associated with an application
 
 
 ```kotlin
-applicationClient.content.getDataLoaders().safeAwait{ response, error->
+content.getDataLoaders().safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -420,7 +420,7 @@ Get a list of FAQs
 
 
 ```kotlin
-applicationClient.content.getFaqs().safeAwait{ response, error->
+content.getFaqs().safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -493,7 +493,7 @@ Get a list of FAQ categories
 
 
 ```kotlin
-applicationClient.content.getFaqCategories().safeAwait{ response, error->
+content.getFaqCategories().safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -561,7 +561,7 @@ Get an FAQ
 
 
 ```kotlin
-applicationClient.content.getFaqBySlug(slug: slug).safeAwait{ response, error->
+content.getFaqBySlug(slug: slug).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -627,7 +627,7 @@ Get the FAQ category
 
 
 ```kotlin
-applicationClient.content.getFaqCategoryBySlug(slug: slug).safeAwait{ response, error->
+content.getFaqCategoryBySlug(slug: slug).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -704,7 +704,7 @@ Get FAQs using the slug of FAQ category
 
 
 ```kotlin
-applicationClient.content.getFaqsByCategorySlug(slug: slug).safeAwait{ response, error->
+content.getFaqsByCategorySlug(slug: slug).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -774,7 +774,7 @@ Get the landing page
 
 
 ```kotlin
-applicationClient.content.getLandingPage().safeAwait{ response, error->
+content.getLandingPage().safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -860,7 +860,7 @@ Get legal information
 
 
 ```kotlin
-applicationClient.content.getLegalInformation().safeAwait{ response, error->
+content.getLegalInformation().safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -955,7 +955,7 @@ Get the navigation
 
 
 ```kotlin
-applicationClient.content.getNavigations(pageNo: pageNo, pageSize: pageSize).safeAwait{ response, error->
+content.getNavigations(pageNo: pageNo, pageSize: pageSize).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -1211,7 +1211,7 @@ Get the SEO of an application
 
 
 ```kotlin
-applicationClient.content.getSEOConfiguration().safeAwait{ response, error->
+content.getSEOConfiguration().safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -1252,7 +1252,9 @@ Success. Returns a JSON object SEO details such as robots.txt, meta-tags, and si
   "value": {
     "seo": {
       "details": {
-        "title": "Zyosa Zyosa"
+        "title": "Zyosa Zyosa",
+        "description": "",
+        "image_url": ""
       },
       "robots_txt": "User-agent: * \nAllow: / \nsancisciasn xwsaixjowqnxwsiwjs",
       "sitemap_enabled": false,
@@ -1300,7 +1302,7 @@ Get the slideshows
 
 
 ```kotlin
-applicationClient.content.getSlideshows(pageNo: pageNo, pageSize: pageSize).safeAwait{ response, error->
+content.getSlideshows(pageNo: pageNo, pageSize: pageSize).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -1420,7 +1422,7 @@ Get a slideshow
 
 
 ```kotlin
-applicationClient.content.getSlideshow(slug: slug).safeAwait{ response, error->
+content.getSlideshow(slug: slug).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -1527,7 +1529,7 @@ Get the support information
 
 
 ```kotlin
-applicationClient.content.getSupportInformation().safeAwait{ response, error->
+content.getSupportInformation().safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -1613,7 +1615,7 @@ Get the tags associated with an application
 
 
 ```kotlin
-applicationClient.content.getTags().safeAwait{ response, error->
+content.getTags().safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -1684,7 +1686,7 @@ Get a page
 
 
 ```kotlin
-applicationClient.content.getPage(slug: slug, rootId: rootId).safeAwait{ response, error->
+content.getPage(slug: slug, rootId: rootId).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -1793,7 +1795,7 @@ Get all pages
 
 
 ```kotlin
-applicationClient.content.getPages(pageNo: pageNo, pageSize: pageSize).safeAwait{ response, error->
+content.getPages(pageNo: pageNo, pageSize: pageSize).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -2014,6 +2016,7 @@ Success. Returns a list of pages along with their details. Check the example sho
  | ---------- | ---- | -------- | ----------- |
  | title | String? |  yes  |  |
  | description | String? |  yes  |  |
+ | imageUrl | String? |  yes  |  |
 
 ---
 

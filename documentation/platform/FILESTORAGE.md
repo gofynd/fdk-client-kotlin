@@ -14,7 +14,7 @@ File Storage
 * [copyFiles](#copyfiles)
 * [appCopyFiles](#appcopyfiles)
 * [browse](#browse)
-* [browse](#browse)
+* [appbrowse](#appbrowse)
 * [proxy](#proxy)
 
 
@@ -29,7 +29,7 @@ This operation initiates upload and returns storage link which is valid for 30 M
 
 
 ```kotlin
-platformClient.filestorage.startUpload(namespace: namespace, body: body).safeAwait{ response, error->
+client.filestorage.startUpload(namespace: namespace, body: body).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -45,7 +45,7 @@ platformClient.filestorage.startUpload(namespace: namespace, body: body).safeAwa
 
 | Argument  |  Type  | Required | Description |
 | --------- | -----  | -------- | ----------- | 
-| namespace | String | yes | bucket name |  
+| namespace | String | yes | Segregation of different types of files(products, orders, logistics etc), Required for validating the data of the file being uploaded, decides where exactly the file will be stored inside the storage bucket. |  
 | body | [StartRequest](#StartRequest) | yes | Request body |
 
 
@@ -107,7 +107,7 @@ This will complete the upload process. After successfully uploading file, you ca
 
 
 ```kotlin
-platformClient.filestorage.completeUpload(namespace: namespace, body: body).safeAwait{ response, error->
+client.filestorage.completeUpload(namespace: namespace, body: body).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -123,7 +123,7 @@ platformClient.filestorage.completeUpload(namespace: namespace, body: body).safe
 
 | Argument  |  Type  | Required | Description |
 | --------- | -----  | -------- | ----------- | 
-| namespace | String | yes | bucket name |  
+| namespace | String | yes | Segregation of different types of files(products, orders, logistics etc), Required for validating the data of the file being uploaded, decides where exactly the file will be stored inside the storage bucket. |  
 | body | [StartResponse](#StartResponse) | yes | Request body |
 
 
@@ -185,7 +185,7 @@ This operation initiates upload and returns storage link which is valid for 30 M
 
 
 ```kotlin
-platformClient.application("<APPLICATION_ID>").filestorage.appStartUpload(namespace: namespace, body: body).safeAwait{ response, error->
+client.application("<APPLICATION_ID>").filestorage.appStartUpload(namespace: namespace, body: body).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -201,7 +201,7 @@ platformClient.application("<APPLICATION_ID>").filestorage.appStartUpload(namesp
 
 | Argument  |  Type  | Required | Description |
 | --------- | -----  | -------- | ----------- | 
-| namespace | String | yes | bucket name |  
+| namespace | String | yes | Segregation of different types of files(products, orders, logistics etc), Required for validating the data of the file being uploaded, decides where exactly the file will be stored inside the storage bucket. |  
 | body | [StartRequest](#StartRequest) | yes | Request body |
 
 
@@ -263,7 +263,7 @@ This will complete the upload process. After successfully uploading file, you ca
 
 
 ```kotlin
-platformClient.application("<APPLICATION_ID>").filestorage.appCompleteUpload(namespace: namespace, body: body).safeAwait{ response, error->
+client.application("<APPLICATION_ID>").filestorage.appCompleteUpload(namespace: namespace, body: body).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -279,7 +279,7 @@ platformClient.application("<APPLICATION_ID>").filestorage.appCompleteUpload(nam
 
 | Argument  |  Type  | Required | Description |
 | --------- | -----  | -------- | ----------- | 
-| namespace | String | yes | bucket name |  
+| namespace | String | yes | Segregation of different types of files(products, orders, logistics etc), Required for validating the data of the file being uploaded, decides where exactly the file will be stored inside the storage bucket. |  
 | body | [StartResponse](#StartResponse) | yes | Request body |
 
 
@@ -341,7 +341,7 @@ Gives signed urls to access private files
 
 
 ```kotlin
-platformClient.filestorage.getSignUrls(body: body).safeAwait{ response, error->
+client.filestorage.getSignUrls(body: body).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -400,7 +400,7 @@ Copy Files
 
 
 ```kotlin
-platformClient.filestorage.copyFiles(sync: sync, body: body).safeAwait{ response, error->
+client.filestorage.copyFiles(sync: sync, body: body).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -487,7 +487,7 @@ Copy Files
 
 
 ```kotlin
-platformClient.application("<APPLICATION_ID>").filestorage.appCopyFiles(sync: sync, body: body).safeAwait{ response, error->
+client.application("<APPLICATION_ID>").filestorage.appCopyFiles(sync: sync, body: body).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -574,7 +574,7 @@ Browse Files
 
 
 ```kotlin
-platformClient.filestorage.browse(namespace: namespace, pageNo: pageNo).safeAwait{ response, error->
+client.filestorage.browse(namespace: namespace, pageNo: pageNo).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -628,14 +628,14 @@ Success
 ---
 
 
-### browse
+### appbrowse
 Browse Files
 
 
 
 
 ```kotlin
-platformClient.application("<APPLICATION_ID>").filestorage.browse(namespace: namespace, pageNo: pageNo).safeAwait{ response, error->
+client.application("<APPLICATION_ID>").filestorage.appbrowse(namespace: namespace, pageNo: pageNo).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -696,7 +696,7 @@ Proxy
 
 
 ```kotlin
-platformClient.filestorage.proxy(url: url).safeAwait{ response, error->
+client.filestorage.proxy(url: url).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -770,8 +770,8 @@ Success
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
  | url | String |  no  |  |
- | absoluteUrl | String? |  yes  |  |
- | relativeUrl | String? |  yes  |  |
+ | absoluteUrl | String |  no  |  |
+ | relativeUrl | String |  no  |  |
 
 ---
 

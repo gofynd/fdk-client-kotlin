@@ -26,7 +26,7 @@ Get Ticket with the specific id
 
 
 ```kotlin
-applicationClient.lead.getTicket(id: id).safeAwait{ response, error->
+lead.getTicket(id: id).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -285,7 +285,7 @@ Create history for specific Ticket
 
 
 ```kotlin
-applicationClient.lead.createHistory(id: id, body: body).safeAwait{ response, error->
+lead.createHistory(id: id, body: body).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -387,7 +387,7 @@ Create Ticket
 
 
 ```kotlin
-applicationClient.lead.createTicket(body: body).safeAwait{ response, error->
+lead.createTicket(body: body).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -645,7 +645,7 @@ Get specific Custom Form using it's slug
 
 
 ```kotlin
-applicationClient.lead.getCustomForm(slug: slug).safeAwait{ response, error->
+lead.getCustomForm(slug: slug).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -757,7 +757,7 @@ Submit Response for a specific Custom Form using it's slug
 
 
 ```kotlin
-applicationClient.lead.submitCustomForm(slug: slug, body: body).safeAwait{ response, error->
+lead.submitCustomForm(slug: slug, body: body).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -1018,7 +1018,7 @@ Get participants of a specific Video Room using it's unique name
 
 
 ```kotlin
-applicationClient.lead.getParticipantsInsideVideoRoom(uniqueName: uniqueName).safeAwait{ response, error->
+lead.getParticipantsInsideVideoRoom(uniqueName: uniqueName).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -1088,7 +1088,7 @@ Get Token to join a specific Video Room using it's unqiue name
 
 
 ```kotlin
-applicationClient.lead.getTokenForVideoRoom(uniqueName: uniqueName).safeAwait{ response, error->
+lead.getTokenForVideoRoom(uniqueName: uniqueName).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -1677,6 +1677,7 @@ Success
  | supportCommunication | [CommunicationDetails](#CommunicationDetails)? |  yes  | Support communication array list details |
  | showSupportDris | Boolean? |  yes  | Denotes if support DRIS info should be shown |
  | integration | HashMap<String,Any>? |  yes  | Contains integrations basic information |
+ | type | String? |  yes  | The enity/platform for which the config is stored |
 
 ---
 
