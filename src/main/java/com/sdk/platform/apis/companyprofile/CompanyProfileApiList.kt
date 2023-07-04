@@ -61,4 +61,8 @@ interface CompanyProfileApiList {
     fun createLocationBulk(@Path("company_id") companyId: String,@Body body: BulkLocationSerializer)
     : Deferred<Response<ProfileSuccessResponse>>
     
+    @GET ("/service/platform/company-profile/v1.0/company/{company_id}/location/tags")
+    fun getLocationTags(@Path("company_id") companyId: String)
+    : Deferred<Response<StoreTagsResponse>>
+    
 }

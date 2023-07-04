@@ -173,10 +173,6 @@ interface PaymentApiList {
     fun cancelPaymentLink(@Path("company_id") companyId: String, @Path("application_id") applicationId: String,@Body body: CancelOrResendPaymentLinkRequest)
     : Deferred<Response<CancelPaymentLinkResponse>>
     
-    @POST ("/service/platform/payment/v1.0/company/{company_id}/application/{application_id}/payment/update/")
-    fun extensionPaymentUpdate(@Path("company_id") companyId: String, @Path("application_id") applicationId: String,@Body body: ExtensionPaymentUpdateRequestSerializer)
-    : Deferred<Response<ExtensionPaymentUpdateResponseSerializer>>
-    
     @GET ("/service/platform/payment/v1.0/company/{company_id}/application/{application_id}/payment/codes")
     fun getPaymentCodeOption(@Path("company_id") companyId: String, @Path("application_id") applicationId: String)
     : Deferred<Response<GetPaymentCodeResponse>>

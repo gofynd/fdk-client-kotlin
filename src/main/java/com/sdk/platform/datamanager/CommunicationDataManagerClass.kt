@@ -410,10 +410,10 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     }
     
     
-    suspend fun getEventSubscriptions(pageNo: Int?=null, pageSize: Int?=null, populate: String?=null)
+    suspend fun getEventSubscriptions(pageNo: Int?=null, pageSize: Int?=null, populate: ArrayList<String>?=null, query: String?=null)
     : Deferred<Response<EventSubscriptions>>? {
         return if (config.oauthClient.isAccessTokenValid()) {
-                communicationApiList?.getEventSubscriptions(companyId = config.companyId , applicationId = applicationId , pageNo = pageNo, pageSize = pageSize, populate = populate )
+                communicationApiList?.getEventSubscriptions(companyId = config.companyId , applicationId = applicationId , pageNo = pageNo, pageSize = pageSize, populate = populate, query = query )
         } else {
             null
         }

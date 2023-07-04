@@ -11,21 +11,21 @@ import com.google.gson.annotations.SerializedName
 
              
 /*
-    Model: GenerateReportMeta
+    Model: GenerateReportFilters
 */
 @Parcelize
-data class GenerateReportMeta(
+data class GenerateReportFilters(
     
     
-    
-    @SerializedName("channel")
-    var channel: String?=null,
     
     @SerializedName("brand")
-    var brand: String?=null,
+    var brand: ArrayList<String>?=null,
+    
+    @SerializedName("channel")
+    var channel: ArrayList<String>?=null,
     
     @SerializedName("company")
-    var company: String?=null
+    var company: ArrayList<String>?=null
     
 ): Parcelable {
     
@@ -43,21 +43,21 @@ data class GenerateReportMeta(
 
              
 /*
-    Model: GenerateReportFilters
+    Model: GenerateReportMeta
 */
 @Parcelize
-data class GenerateReportFilters(
+data class GenerateReportMeta(
     
     
-    
-    @SerializedName("channel")
-    var channel: ArrayList<String>?=null,
     
     @SerializedName("brand")
-    var brand: ArrayList<String>?=null,
+    var brand: String?=null,
+    
+    @SerializedName("channel")
+    var channel: String?=null,
     
     @SerializedName("company")
-    var company: ArrayList<String>?=null
+    var company: String?=null
     
 ): Parcelable {
     
@@ -82,17 +82,17 @@ data class GenerateReportPlatform(
     
     
     
-    @SerializedName("meta")
-    var meta: GenerateReportMeta?=null,
-    
     @SerializedName("filters")
     var filters: GenerateReportFilters?=null,
     
-    @SerializedName("start_date")
-    var startDate: String?=null,
-    
     @SerializedName("end_date")
     var endDate: String?=null,
+    
+    @SerializedName("meta")
+    var meta: GenerateReportMeta?=null,
+    
+    @SerializedName("start_date")
+    var startDate: String?=null,
     
     @SerializedName("report_id")
     var reportId: String?=null
@@ -201,11 +201,8 @@ data class GenerateReportJson(
     @SerializedName("items")
     var items: ArrayList<ArrayList<String>>?=null,
     
-    @SerializedName("item_count")
-    var itemCount: Int?=null,
-    
-    @SerializedName("start_date")
-    var startDate: String?=null,
+    @SerializedName("page")
+    var page: Page?=null,
     
     @SerializedName("end_date")
     var endDate: String?=null,
@@ -213,8 +210,11 @@ data class GenerateReportJson(
     @SerializedName("headers")
     var headers: ArrayList<String>?=null,
     
-    @SerializedName("page")
-    var page: Page?=null
+    @SerializedName("start_date")
+    var startDate: String?=null,
+    
+    @SerializedName("item_count")
+    var itemCount: Int?=null
     
 ): Parcelable {
     
@@ -309,23 +309,23 @@ data class DownloadReportItems(
     
     
     
-    @SerializedName("meta")
-    var meta: GenerateReportMeta?=null,
+    @SerializedName("type_of_request")
+    var typeOfRequest: String?=null,
     
     @SerializedName("filters")
     var filters: GenerateReportFilters?=null,
     
-    @SerializedName("start_date")
-    var startDate: String?=null,
-    
     @SerializedName("end_date")
     var endDate: String?=null,
     
-    @SerializedName("report_id")
-    var reportId: String?=null,
+    @SerializedName("meta")
+    var meta: GenerateReportMeta?=null,
     
-    @SerializedName("type_of_request")
-    var typeOfRequest: String?=null
+    @SerializedName("start_date")
+    var startDate: String?=null,
+    
+    @SerializedName("report_id")
+    var reportId: String?=null
     
 ): Parcelable {
     
@@ -356,14 +356,14 @@ data class DownloadReportList(
     
     
     
-    @SerializedName("page")
-    var page: Page?=null,
+    @SerializedName("item_count")
+    var itemCount: Int?=null,
     
     @SerializedName("items")
     var items: ArrayList<DownloadReportItems>?=null,
     
-    @SerializedName("item_count")
-    var itemCount: Int?=null
+    @SerializedName("page")
+    var page: Page?=null
     
 ): Parcelable {
     
@@ -410,14 +410,14 @@ data class GetEngineData(
     
     
     
-    @SerializedName("table_name")
-    var tableName: String?=null,
-    
     @SerializedName("filters")
     var filters: GetEngineFilters?=null,
     
     @SerializedName("project")
-    var project: ArrayList<String>?=null
+    var project: ArrayList<String>?=null,
+    
+    @SerializedName("table_name")
+    var tableName: String?=null
     
 ): Parcelable {
     
@@ -464,17 +464,17 @@ data class GetEngineResponse(
     
     
     
-    @SerializedName("page")
-    var page: Page?=null,
+    @SerializedName("item_count")
+    var itemCount: Int?=null,
     
     @SerializedName("items")
     var items: @RawValue ArrayList<HashMap<String,Any>>?=null,
     
-    @SerializedName("item_count")
-    var itemCount: Int?=null,
-    
     @SerializedName("success")
-    var success: Boolean?=null
+    var success: Boolean?=null,
+    
+    @SerializedName("page")
+    var page: Page?=null
     
 ): Parcelable {
     
@@ -572,11 +572,11 @@ data class GetReasonResponse(
     
     
     
-    @SerializedName("data")
-    var data: GetDocs?=null,
-    
     @SerializedName("success")
-    var success: Boolean?=null
+    var success: Boolean?=null,
+    
+    @SerializedName("data")
+    var data: GetDocs?=null
     
 ): Parcelable {
     
@@ -599,11 +599,11 @@ data class GetReportListData(
     
     
     
-    @SerializedName("listing_enabled")
-    var listingEnabled: Boolean?=null,
-    
     @SerializedName("role_name")
-    var roleName: String?=null
+    var roleName: String?=null,
+    
+    @SerializedName("listing_enabled")
+    var listingEnabled: Boolean?=null
     
 ): Parcelable {
     
@@ -768,11 +768,11 @@ data class DownloadCreditDebitNoteResponse(
     
     
     
-    @SerializedName("data")
-    var data: ArrayList<DownloadCreditDebitNoteResponseData>?=null,
-    
     @SerializedName("success")
-    var success: Boolean?=null
+    var success: Boolean?=null,
+    
+    @SerializedName("data")
+    var data: ArrayList<DownloadCreditDebitNoteResponseData>?=null
     
 ): Parcelable {
     
@@ -795,35 +795,35 @@ data class PaymentProcessPayload(
     
     
     
-    @SerializedName("total_amount")
-    var totalAmount: String?=null,
+    @SerializedName("transaction_type")
+    var transactionType: String?=null,
     
-    @SerializedName("meta")
-    var meta: @RawValue HashMap<String,Any>?=null,
+    @SerializedName("invoice_number")
+    var invoiceNumber: String?=null,
     
     @SerializedName("mode_of_payment")
     var modeOfPayment: String?=null,
     
-    @SerializedName("transaction_type")
-    var transactionType: String?=null,
+    @SerializedName("amount")
+    var amount: String?=null,
     
-    @SerializedName("platform")
-    var platform: String?=null,
-    
-    @SerializedName("currency")
-    var currency: String?=null,
+    @SerializedName("meta")
+    var meta: @RawValue HashMap<String,Any>?=null,
     
     @SerializedName("source_reference")
     var sourceReference: String?=null,
     
+    @SerializedName("currency")
+    var currency: String?=null,
+    
+    @SerializedName("total_amount")
+    var totalAmount: String?=null,
+    
+    @SerializedName("platform")
+    var platform: String?=null,
+    
     @SerializedName("seller_id")
-    var sellerId: String?=null,
-    
-    @SerializedName("amount")
-    var amount: String?=null,
-    
-    @SerializedName("invoice_number")
-    var invoiceNumber: String?=null
+    var sellerId: String?=null
     
 ): Parcelable {
     
@@ -884,20 +884,20 @@ data class PaymentProcessResponse(
     
     
     
-    @SerializedName("transaction_id")
-    var transactionId: String?=null,
-    
     @SerializedName("meta")
     var meta: @RawValue HashMap<String,Any>?=null,
     
-    @SerializedName("code")
-    var code: Int?=null,
+    @SerializedName("transaction_id")
+    var transactionId: String?=null,
     
     @SerializedName("redirect_url")
     var redirectUrl: String?=null,
     
     @SerializedName("message")
-    var message: String?=null
+    var message: String?=null,
+    
+    @SerializedName("code")
+    var code: Int?=null
     
 ): Parcelable {
     
@@ -926,8 +926,11 @@ data class CreditlineDataPlatformPayload(
     
     
     
-    @SerializedName("start_end")
-    var startEnd: String?=null,
+    @SerializedName("page")
+    var page: Int?=null,
+    
+    @SerializedName("end_end")
+    var endEnd: String?=null,
     
     @SerializedName("pagesize")
     var pagesize: Int?=null,
@@ -935,11 +938,8 @@ data class CreditlineDataPlatformPayload(
     @SerializedName("seller_id")
     var sellerId: String?=null,
     
-    @SerializedName("end_end")
-    var endEnd: String?=null,
-    
-    @SerializedName("page")
-    var page: Int?=null
+    @SerializedName("start_end")
+    var startEnd: String?=null
     
 ): Parcelable {
     
@@ -993,23 +993,23 @@ data class CreditlineDataPlatformResponse(
     @SerializedName("items")
     var items: @RawValue ArrayList<HashMap<String,Any>>?=null,
     
+    @SerializedName("page")
+    var page: @RawValue HashMap<String,Any>?=null,
+    
     @SerializedName("item_count")
     var itemCount: Int?=null,
     
-    @SerializedName("code")
-    var code: Int?=null,
-    
-    @SerializedName("page")
-    var page: @RawValue HashMap<String,Any>?=null,
+    @SerializedName("message")
+    var message: String?=null,
     
     @SerializedName("headers")
     var headers: ArrayList<String>?=null,
     
-    @SerializedName("show_mr")
-    var showMr: Boolean?=null,
+    @SerializedName("code")
+    var code: Int?=null,
     
-    @SerializedName("message")
-    var message: String?=null
+    @SerializedName("show_mr")
+    var showMr: Boolean?=null
     
 ): Parcelable {
     
@@ -1086,11 +1086,11 @@ data class IsCreditlinePlatformResponse(
     
     
     
-    @SerializedName("code")
-    var code: Int?=null,
-    
     @SerializedName("is_creditline_opted")
-    var isCreditlineOpted: Boolean?=null
+    var isCreditlineOpted: Boolean?=null,
+    
+    @SerializedName("code")
+    var code: Int?=null
     
 ): Parcelable {
     
@@ -1157,11 +1157,11 @@ data class InvoiceTypeResponseItems(
     
     
     
-    @SerializedName("text")
-    var text: String?=null,
-    
     @SerializedName("value")
-    var value: String?=null
+    var value: String?=null,
+    
+    @SerializedName("text")
+    var text: String?=null
     
 ): Parcelable {
     
@@ -1216,14 +1216,14 @@ data class InoviceListingPayloadDataFilters(
     
     
     
-    @SerializedName("invoice_type")
-    var invoiceType: ArrayList<String>?=null,
+    @SerializedName("company_id")
+    var companyId: ArrayList<String>?=null,
     
     @SerializedName("payment_status")
     var paymentStatus: ArrayList<String>?=null,
     
-    @SerializedName("company_id")
-    var companyId: ArrayList<String>?=null
+    @SerializedName("invoice_type")
+    var invoiceType: ArrayList<String>?=null
     
 ): Parcelable {
     
@@ -1248,23 +1248,23 @@ data class InvoiceListingPayloadData(
     
     
     
+    @SerializedName("page")
+    var page: Int?=null,
+    
     @SerializedName("page_size")
     var pageSize: Int?=null,
     
     @SerializedName("filters")
     var filters: InoviceListingPayloadDataFilters?=null,
     
-    @SerializedName("start_date")
-    var startDate: String?=null,
-    
     @SerializedName("end_date")
     var endDate: String?=null,
     
-    @SerializedName("search")
-    var search: String?=null,
+    @SerializedName("start_date")
+    var startDate: String?=null,
     
-    @SerializedName("page")
-    var page: Int?=null
+    @SerializedName("search")
+    var search: String?=null
     
 ): Parcelable {
     
@@ -1317,14 +1317,14 @@ data class UnpaidInvoiceDataItems(
     
     
     
-    @SerializedName("currency")
-    var currency: String?=null,
+    @SerializedName("total_unpaid_amount")
+    var totalUnpaidAmount: Double?=null,
     
     @SerializedName("total_unpaid_invoice_count")
     var totalUnpaidInvoiceCount: Int?=null,
     
-    @SerializedName("total_unpaid_amount")
-    var totalUnpaidAmount: Double?=null
+    @SerializedName("currency")
+    var currency: String?=null
     
 ): Parcelable {
     
@@ -1349,8 +1349,26 @@ data class InvoiceListingResponseItems(
     
     
     
+    @SerializedName("status")
+    var status: String?=null,
+    
+    @SerializedName("due_date")
+    var dueDate: String?=null,
+    
+    @SerializedName("invoice_number")
+    var invoiceNumber: String?=null,
+    
     @SerializedName("invoice_type")
     var invoiceType: String?=null,
+    
+    @SerializedName("is_downloadable")
+    var isDownloadable: Boolean?=null,
+    
+    @SerializedName("amount")
+    var amount: String?=null,
+    
+    @SerializedName("invoice_date")
+    var invoiceDate: String?=null,
     
     @SerializedName("period")
     var period: String?=null,
@@ -1359,25 +1377,7 @@ data class InvoiceListingResponseItems(
     var invoiceId: String?=null,
     
     @SerializedName("company")
-    var company: String?=null,
-    
-    @SerializedName("status")
-    var status: String?=null,
-    
-    @SerializedName("due_date")
-    var dueDate: String?=null,
-    
-    @SerializedName("invoice_date")
-    var invoiceDate: String?=null,
-    
-    @SerializedName("amount")
-    var amount: String?=null,
-    
-    @SerializedName("is_downloadable")
-    var isDownloadable: Boolean?=null,
-    
-    @SerializedName("invoice_number")
-    var invoiceNumber: String?=null
+    var company: String?=null
     
 ): Parcelable {
     
@@ -1416,8 +1416,8 @@ data class InvoiceListingResponse(
     
     
     
-    @SerializedName("page")
-    var page: Page?=null,
+    @SerializedName("item_count")
+    var itemCount: Int?=null,
     
     @SerializedName("unpaid_invoice_data")
     var unpaidInvoiceData: UnpaidInvoiceDataItems?=null,
@@ -1425,8 +1425,8 @@ data class InvoiceListingResponse(
     @SerializedName("items")
     var items: ArrayList<InvoiceListingResponseItems>?=null,
     
-    @SerializedName("item_count")
-    var itemCount: Int?=null
+    @SerializedName("page")
+    var page: Page?=null
     
 ): Parcelable {
     
@@ -1500,11 +1500,11 @@ data class InvoicePdfResponse(
     @SerializedName("error")
     var error: ArrayList<String>?=null,
     
-    @SerializedName("data")
-    var data: ArrayList<String>?=null,
-    
     @SerializedName("success")
-    var success: Boolean?=null
+    var success: Boolean?=null,
+    
+    @SerializedName("data")
+    var data: ArrayList<String>?=null
     
 ): Parcelable {
     
@@ -1529,14 +1529,14 @@ data class AsCnRefundData(
     
     
     
-    @SerializedName("seller_id")
-    var sellerId: Int?=null,
-    
     @SerializedName("toggle_edit_required")
     var toggleEditRequired: Boolean?=null,
     
     @SerializedName("affiliate_id")
-    var affiliateId: String?=null
+    var affiliateId: String?=null,
+    
+    @SerializedName("seller_id")
+    var sellerId: Int?=null
     
 ): Parcelable {
     
@@ -1605,11 +1605,11 @@ data class AsCnRefundResponse(
     
     
     
-    @SerializedName("data")
-    var data: AsCnRefundResponseData?=null,
-    
     @SerializedName("success")
-    var success: Boolean?=null
+    var success: Boolean?=null,
+    
+    @SerializedName("data")
+    var data: AsCnRefundResponseData?=null
     
 ): Parcelable {
     
@@ -1654,35 +1654,35 @@ data class CreateSellerCreditNoteConfig(
     
     
     
-    @SerializedName("sales_channel_name")
-    var salesChannelName: String?=null,
-    
-    @SerializedName("slug_values")
-    var slugValues: ArrayList<String>?=null,
-    
-    @SerializedName("notification_events")
-    var notificationEvents: CreditNoteConfigNotificationEvents?=null,
-    
     @SerializedName("ordering_channel")
     var orderingChannel: ArrayList<String>?=null,
     
     @SerializedName("is_cn_as_refund_method")
     var isCnAsRefundMethod: Boolean?=null,
     
-    @SerializedName("affiliate_id")
-    var affiliateId: String?=null,
+    @SerializedName("validity")
+    var validity: Int?=null,
     
     @SerializedName("source_channel")
     var sourceChannel: ArrayList<String>?=null,
+    
+    @SerializedName("affiliate_id")
+    var affiliateId: String?=null,
+    
+    @SerializedName("notification_events")
+    var notificationEvents: CreditNoteConfigNotificationEvents?=null,
+    
+    @SerializedName("sales_channel_name")
+    var salesChannelName: String?=null,
+    
+    @SerializedName("slug_values")
+    var slugValues: ArrayList<String>?=null,
     
     @SerializedName("currency_type")
     var currencyType: String?=null,
     
     @SerializedName("seller_id")
-    var sellerId: Int?=null,
-    
-    @SerializedName("validity")
-    var validity: Int?=null
+    var sellerId: Int?=null
     
 ): Parcelable {
     
@@ -1770,14 +1770,14 @@ data class DeleteConfig(
     
     
     
-    @SerializedName("seller_id")
-    var sellerId: Int?=null,
-    
     @SerializedName("affiliate_id")
     var affiliateId: String?=null,
     
     @SerializedName("slug_values")
-    var slugValues: ArrayList<String>?=null
+    var slugValues: ArrayList<String>?=null,
+    
+    @SerializedName("seller_id")
+    var sellerId: Int?=null
     
 ): Parcelable {
     
@@ -1873,11 +1873,11 @@ data class ChannelDisplayNameResponse(
     
     
     
-    @SerializedName("data")
-    var data: ChannelDisplayName?=null,
-    
     @SerializedName("success")
-    var success: Boolean?=null
+    var success: Boolean?=null,
+    
+    @SerializedName("data")
+    var data: ChannelDisplayName?=null
     
 ): Parcelable {
     
@@ -1971,11 +1971,11 @@ data class GetPdfUrlViewResponse(
     
     
     
-    @SerializedName("data")
-    var data: GetPdfUrlViewResponseData?=null,
-    
     @SerializedName("success")
-    var success: Boolean?=null
+    var success: Boolean?=null,
+    
+    @SerializedName("data")
+    var data: GetPdfUrlViewResponseData?=null
     
 ): Parcelable {
     
@@ -2020,23 +2020,20 @@ data class CnDetails(
     
     
     
-    @SerializedName("expiry_date")
-    var expiryDate: String?=null,
-    
     @SerializedName("shipment_id")
     var shipmentId: String?=null,
     
-    @SerializedName("staff_id")
-    var staffId: String?=null,
-    
-    @SerializedName("channel_of_issuance")
-    var channelOfIssuance: String?=null,
+    @SerializedName("invoice_number")
+    var invoiceNumber: String?=null,
     
     @SerializedName("ordering_channel")
     var orderingChannel: String?=null,
     
-    @SerializedName("store_id")
-    var storeId: String?=null,
+    @SerializedName("expiry_date")
+    var expiryDate: String?=null,
+    
+    @SerializedName("staff_id")
+    var staffId: String?=null,
     
     @SerializedName("order_id")
     var orderId: String?=null,
@@ -2044,8 +2041,11 @@ data class CnDetails(
     @SerializedName("date_issued")
     var dateIssued: String?=null,
     
-    @SerializedName("invoice_number")
-    var invoiceNumber: String?=null
+    @SerializedName("store_id")
+    var storeId: String?=null,
+    
+    @SerializedName("channel_of_issuance")
+    var channelOfIssuance: String?=null
     
 ): Parcelable {
     
@@ -2085,26 +2085,26 @@ data class RedemptionDetails(
     @SerializedName("shipment_id")
     var shipmentId: String?=null,
     
-    @SerializedName("staff_id")
-    var staffId: String?=null,
-    
-    @SerializedName("store_id")
-    var storeId: String?=null,
+    @SerializedName("invoice_number")
+    var invoiceNumber: String?=null,
     
     @SerializedName("ordering_channel")
     var orderingChannel: String?=null,
     
-    @SerializedName("created_at")
-    var createdAt: String?=null,
+    @SerializedName("staff_id")
+    var staffId: String?=null,
     
     @SerializedName("amount_debited")
     var amountDebited: Int?=null,
     
+    @SerializedName("created_at")
+    var createdAt: String?=null,
+    
     @SerializedName("order_id")
     var orderId: String?=null,
     
-    @SerializedName("invoice_number")
-    var invoiceNumber: String?=null
+    @SerializedName("store_id")
+    var storeId: String?=null
     
 ): Parcelable {
     
@@ -2139,29 +2139,29 @@ data class CreditNoteDetails(
     
     
     
-    @SerializedName("cn_amount")
-    var cnAmount: Int?=null,
-    
-    @SerializedName("remaining_cn_amount")
-    var remainingCnAmount: Int?=null,
-    
-    @SerializedName("cn_status")
-    var cnStatus: String?=null,
-    
-    @SerializedName("customer_mobile_number")
-    var customerMobileNumber: String?=null,
-    
     @SerializedName("cn_details")
     var cnDetails: ArrayList<CnDetails>?=null,
-    
-    @SerializedName("available_cn_balance")
-    var availableCnBalance: Int?=null,
     
     @SerializedName("redemption_details")
     var redemptionDetails: ArrayList<RedemptionDetails>?=null,
     
+    @SerializedName("customer_mobile_number")
+    var customerMobileNumber: String?=null,
+    
     @SerializedName("cn_reference_number")
-    var cnReferenceNumber: String?=null
+    var cnReferenceNumber: String?=null,
+    
+    @SerializedName("cn_amount")
+    var cnAmount: Int?=null,
+    
+    @SerializedName("cn_status")
+    var cnStatus: String?=null,
+    
+    @SerializedName("available_cn_balance")
+    var availableCnBalance: Int?=null,
+    
+    @SerializedName("remaining_cn_amount")
+    var remainingCnAmount: Int?=null
     
 ): Parcelable {
     
@@ -2196,11 +2196,11 @@ data class CreditNoteDetailsResponse(
     
     
     
-    @SerializedName("data")
-    var data: CreditNoteDetails?=null,
-    
     @SerializedName("success")
-    var success: Boolean?=null
+    var success: Boolean?=null,
+    
+    @SerializedName("data")
+    var data: CreditNoteDetails?=null
     
 ): Parcelable {
     
@@ -2223,14 +2223,14 @@ data class GetCustomerCreditBalance(
     
     
     
-    @SerializedName("seller_id")
-    var sellerId: Int?=null,
-    
     @SerializedName("customer_mobile_number")
     var customerMobileNumber: String?=null,
     
     @SerializedName("affiliate_id")
-    var affiliateId: String?=null
+    var affiliateId: String?=null,
+    
+    @SerializedName("seller_id")
+    var sellerId: Int?=null
     
 ): Parcelable {
     
@@ -2277,11 +2277,11 @@ data class GetCustomerCreditBalanceResponseData(
     
     
     
-    @SerializedName("total_credited_balance")
-    var totalCreditedBalance: Int?=null,
-    
     @SerializedName("customer_mobile_number")
-    var customerMobileNumber: String?=null
+    var customerMobileNumber: String?=null,
+    
+    @SerializedName("total_credited_balance")
+    var totalCreditedBalance: Int?=null
     
 ): Parcelable {
     
@@ -2304,11 +2304,11 @@ data class GetCustomerCreditBalanceResponse(
     
     
     
-    @SerializedName("data")
-    var data: GetCustomerCreditBalanceResponseData?=null,
-    
     @SerializedName("success")
-    var success: Boolean?=null
+    var success: Boolean?=null,
+    
+    @SerializedName("data")
+    var data: GetCustomerCreditBalanceResponseData?=null
     
 ): Parcelable {
     
@@ -2353,11 +2353,11 @@ data class GetCnConfigResponseMeta(
     
     
     
-    @SerializedName("source_channel")
-    var sourceChannel: ArrayList<String>?=null,
-    
     @SerializedName("reason")
-    var reason: String?=null
+    var reason: String?=null,
+    
+    @SerializedName("source_channel")
+    var sourceChannel: ArrayList<String>?=null
     
 ): Parcelable {
     
@@ -2380,29 +2380,29 @@ data class GetCnConfigResponseData(
     
     
     
-    @SerializedName("redemption_ordering_channel")
-    var redemptionOrderingChannel: ArrayList<String>?=null,
+    @SerializedName("is_cn_as_refund_method")
+    var isCnAsRefundMethod: Boolean?=null,
     
-    @SerializedName("meta")
-    var meta: GetCnConfigResponseMeta?=null,
+    @SerializedName("validity")
+    var validity: Int?=null,
     
     @SerializedName("notification_events")
     var notificationEvents: CreditNoteConfigNotificationEvents?=null,
     
-    @SerializedName("is_cn_as_refund_method")
-    var isCnAsRefundMethod: Boolean?=null,
-    
     @SerializedName("affiliate_id")
     var affiliateId: String?=null,
+    
+    @SerializedName("meta")
+    var meta: GetCnConfigResponseMeta?=null,
     
     @SerializedName("currency_type")
     var currencyType: String?=null,
     
-    @SerializedName("seller_id")
-    var sellerId: Int?=null,
+    @SerializedName("redemption_ordering_channel")
+    var redemptionOrderingChannel: ArrayList<String>?=null,
     
-    @SerializedName("validity")
-    var validity: Int?=null
+    @SerializedName("seller_id")
+    var sellerId: Int?=null
     
 ): Parcelable {
     
@@ -2437,11 +2437,11 @@ data class GetCnConfigResponse(
     
     
     
-    @SerializedName("data")
-    var data: GetCnConfigResponseData?=null,
-    
     @SerializedName("success")
-    var success: Boolean?=null
+    var success: Boolean?=null,
+    
+    @SerializedName("data")
+    var data: GetCnConfigResponseData?=null
     
 ): Parcelable {
     
@@ -2464,23 +2464,23 @@ data class CnGenerateReportFilters(
     
     
     
-    @SerializedName("staff_id")
-    var staffId: ArrayList<String>?=null,
-    
-    @SerializedName("store_id")
-    var storeId: ArrayList<Int>?=null,
-    
     @SerializedName("ordering_channel")
     var orderingChannel: ArrayList<String>?=null,
     
-    @SerializedName("channel_of_issuance")
-    var channelOfIssuance: ArrayList<String>?=null,
+    @SerializedName("staff_id")
+    var staffId: ArrayList<String>?=null,
+    
+    @SerializedName("utilisation")
+    var utilisation: ArrayList<String>?=null,
     
     @SerializedName("types_of_transaction")
     var typesOfTransaction: ArrayList<String>?=null,
     
-    @SerializedName("utilisation")
-    var utilisation: ArrayList<String>?=null
+    @SerializedName("store_id")
+    var storeId: ArrayList<Int>?=null,
+    
+    @SerializedName("channel_of_issuance")
+    var channelOfIssuance: ArrayList<String>?=null
     
 ): Parcelable {
     
@@ -2511,35 +2511,35 @@ data class CnGenerateReport(
     
     
     
-    @SerializedName("meta")
-    var meta: GenerateReportFilters?=null,
-    
-    @SerializedName("filters")
-    var filters: CnGenerateReportFilters?=null,
-    
-    @SerializedName("start_date")
-    var startDate: String?=null,
-    
-    @SerializedName("affiliate_id")
-    var affiliateId: String?=null,
-    
-    @SerializedName("end_date")
-    var endDate: String?=null,
-    
-    @SerializedName("search")
-    var search: String?=null,
+    @SerializedName("page")
+    var page: Int?=null,
     
     @SerializedName("pagesize")
     var pagesize: Int?=null,
     
-    @SerializedName("report_id")
-    var reportId: String?=null,
+    @SerializedName("affiliate_id")
+    var affiliateId: String?=null,
+    
+    @SerializedName("filters")
+    var filters: CnGenerateReportFilters?=null,
+    
+    @SerializedName("end_date")
+    var endDate: String?=null,
     
     @SerializedName("search_type")
     var searchType: String?=null,
     
-    @SerializedName("page")
-    var page: Int?=null
+    @SerializedName("meta")
+    var meta: GenerateReportFilters?=null,
+    
+    @SerializedName("start_date")
+    var startDate: String?=null,
+    
+    @SerializedName("report_id")
+    var reportId: String?=null,
+    
+    @SerializedName("search")
+    var search: String?=null
     
 ): Parcelable {
     
@@ -2600,17 +2600,17 @@ data class CnGenerateReportItems(
     
     
     
-    @SerializedName("total_amount")
-    var totalAmount: Int?=null,
-    
-    @SerializedName("expiry_date")
-    var expiryDate: String?=null,
-    
     @SerializedName("shipment_id")
     var shipmentId: String?=null,
     
     @SerializedName("status")
     var status: String?=null,
+    
+    @SerializedName("invoice_number")
+    var invoiceNumber: String?=null,
+    
+    @SerializedName("expiry_date")
+    var expiryDate: String?=null,
     
     @SerializedName("credit_note_number")
     var creditNoteNumber: String?=null,
@@ -2621,8 +2621,8 @@ data class CnGenerateReportItems(
     @SerializedName("date_issued")
     var dateIssued: String?=null,
     
-    @SerializedName("invoice_number")
-    var invoiceNumber: String?=null
+    @SerializedName("total_amount")
+    var totalAmount: Int?=null
     
 ): Parcelable {
     
@@ -2660,17 +2660,8 @@ data class GenerateReportCustomerCnResponse(
     @SerializedName("items")
     var items: ArrayList<CnGenerateReportItems>?=null,
     
-    @SerializedName("row_header_display_order")
-    var rowHeaderDisplayOrder: @RawValue HashMap<String,Any>?=null,
-    
-    @SerializedName("item_count")
-    var itemCount: Int?=null,
-    
-    @SerializedName("start_date")
-    var startDate: String?=null,
-    
-    @SerializedName("primary_headers")
-    var primaryHeaders: ArrayList<String>?=null,
+    @SerializedName("page")
+    var page: Page?=null,
     
     @SerializedName("allowed_filters")
     var allowedFilters: ArrayList<String>?=null,
@@ -2678,11 +2669,20 @@ data class GenerateReportCustomerCnResponse(
     @SerializedName("end_date")
     var endDate: String?=null,
     
+    @SerializedName("row_header_display_order")
+    var rowHeaderDisplayOrder: @RawValue HashMap<String,Any>?=null,
+    
+    @SerializedName("primary_headers")
+    var primaryHeaders: ArrayList<String>?=null,
+    
     @SerializedName("headers")
     var headers: ArrayList<String>?=null,
     
-    @SerializedName("page")
-    var page: Page?=null
+    @SerializedName("start_date")
+    var startDate: String?=null,
+    
+    @SerializedName("item_count")
+    var itemCount: Int?=null
     
 ): Parcelable {
     
@@ -2719,11 +2719,14 @@ data class CnDownloadReport(
     
     
     
-    @SerializedName("start_date")
-    var startDate: String?=null,
-    
     @SerializedName("status")
     var status: ArrayList<String>?=null,
+    
+    @SerializedName("page")
+    var page: Int?=null,
+    
+    @SerializedName("pagesize")
+    var pagesize: Int?=null,
     
     @SerializedName("affiliate_id")
     var affiliateId: String?=null,
@@ -2731,17 +2734,14 @@ data class CnDownloadReport(
     @SerializedName("end_date")
     var endDate: String?=null,
     
-    @SerializedName("search")
-    var search: String?=null,
-    
-    @SerializedName("pagesize")
-    var pagesize: Int?=null,
-    
     @SerializedName("search_type")
     var searchType: String?=null,
     
-    @SerializedName("page")
-    var page: Int?=null
+    @SerializedName("start_date")
+    var startDate: String?=null,
+    
+    @SerializedName("search")
+    var search: String?=null
     
 ): Parcelable {
     
@@ -2798,17 +2798,35 @@ data class DownloadReportResponseData(
     
     
     
-    @SerializedName("display_name")
-    var displayName: String?=null,
+    @SerializedName("report_config_id")
+    var reportConfigId: String?=null,
+    
+    @SerializedName("status")
+    var status: String?=null,
+    
+    @SerializedName("download_link")
+    var downloadLink: String?=null,
+    
+    @SerializedName("requested_by")
+    var requestedBy: String?=null,
     
     @SerializedName("filters")
     var filters: @RawValue HashMap<String,Any>?=null,
     
-    @SerializedName("meta")
-    var meta: @RawValue HashMap<String,Any>?=null,
+    @SerializedName("end_date")
+    var endDate: String?=null,
+    
+    @SerializedName("display_name")
+    var displayName: String?=null,
     
     @SerializedName("request_dict")
     var requestDict: @RawValue HashMap<String,Any>?=null,
+    
+    @SerializedName("created_at")
+    var createdAt: String?=null,
+    
+    @SerializedName("meta")
+    var meta: @RawValue HashMap<String,Any>?=null,
     
     @SerializedName("start_date")
     var startDate: String?=null,
@@ -2816,29 +2834,11 @@ data class DownloadReportResponseData(
     @SerializedName("report_name")
     var reportName: String?=null,
     
-    @SerializedName("status")
-    var status: String?=null,
-    
-    @SerializedName("created_at")
-    var createdAt: String?=null,
-    
-    @SerializedName("requested_by")
-    var requestedBy: String?=null,
-    
-    @SerializedName("end_date")
-    var endDate: String?=null,
+    @SerializedName("msg")
+    var msg: String?=null,
     
     @SerializedName("full_name")
-    var fullName: String?=null,
-    
-    @SerializedName("report_config_id")
-    var reportConfigId: String?=null,
-    
-    @SerializedName("download_link")
-    var downloadLink: String?=null,
-    
-    @SerializedName("msg")
-    var msg: String?=null
+    var fullName: String?=null
     
 ): Parcelable {
     
@@ -2907,17 +2907,17 @@ data class GetReportingFilters(
     
     
     
-    @SerializedName("text")
-    var text: String?=null,
-    
-    @SerializedName("options")
-    var options: @RawValue ArrayList<HashMap<String,Any>>?=null,
-    
     @SerializedName("type")
     var type: String?=null,
     
     @SerializedName("value")
-    var value: String?=null
+    var value: String?=null,
+    
+    @SerializedName("options")
+    var options: @RawValue ArrayList<HashMap<String,Any>>?=null,
+    
+    @SerializedName("text")
+    var text: String?=null
     
 ): Parcelable {
     
@@ -2944,20 +2944,20 @@ data class GetReportingNestedFilters(
     
     
     
-    @SerializedName("type")
-    var type: String?=null,
-    
-    @SerializedName("text")
-    var text: String?=null,
-    
-    @SerializedName("options")
-    var options: @RawValue ArrayList<HashMap<String,Any>>?=null,
-    
     @SerializedName("placeholder_text")
     var placeholderText: String?=null,
     
     @SerializedName("required")
     var required: Boolean?=null,
+    
+    @SerializedName("options")
+    var options: @RawValue ArrayList<HashMap<String,Any>>?=null,
+    
+    @SerializedName("text")
+    var text: String?=null,
+    
+    @SerializedName("type")
+    var type: String?=null,
     
     @SerializedName("value")
     var value: String?=null
@@ -2991,11 +2991,11 @@ data class GetReportingFiltersResponse(
     
     
     
-    @SerializedName("status")
-    var status: GetReportingFilters?=null,
-    
     @SerializedName("search")
     var search: GetReportingFilters?=null,
+    
+    @SerializedName("status")
+    var status: GetReportingFilters?=null,
     
     @SerializedName("filters")
     var filters: ArrayList<GetReportingNestedFilters>?=null

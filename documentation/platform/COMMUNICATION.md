@@ -2842,7 +2842,7 @@ Get event subscriptions
 
 
 ```kotlin
-platformClient.application("<APPLICATION_ID>").communication.getEventSubscriptions(pageNo: pageNo, pageSize: pageSize, populate: populate).safeAwait{ response, error->
+platformClient.application("<APPLICATION_ID>").communication.getEventSubscriptions(pageNo: pageNo, pageSize: pageSize, populate: populate, query: query).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -2860,7 +2860,8 @@ platformClient.application("<APPLICATION_ID>").communication.getEventSubscriptio
 | --------- | -----  | -------- | ----------- | 
 | pageNo | Int? | no | Current page no |   
 | pageSize | Int? | no | Current request items count |   
-| populate | String? | no | populate fields |  
+| populate | ArrayList<String>? | no | populate fields |   
+| query | String? | no | Current request items count |  
 
 
 
