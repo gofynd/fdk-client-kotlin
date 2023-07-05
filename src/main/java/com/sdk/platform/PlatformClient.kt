@@ -36,8 +36,6 @@ class PlatformClient(val config:PlatformConfig, val unauthorizedAction: ((url: S
     
     val share by lazy { ShareDataManagerClass(config, unauthorizedAction)}
     
-    val inventory by lazy { InventoryDataManagerClass(config, unauthorizedAction)}
-    
     val configuration by lazy { ConfigurationDataManagerClass(config, unauthorizedAction)}
     
     val cart by lazy { CartDataManagerClass(config, unauthorizedAction)}
@@ -51,10 +49,6 @@ class PlatformClient(val config:PlatformConfig, val unauthorizedAction: ((url: S
     val webhook by lazy { WebhookDataManagerClass(config, unauthorizedAction)}
     
     val auditTrail by lazy { AuditTrailDataManagerClass(config, unauthorizedAction)}
-    
-    val serviceability by lazy { ServiceabilityDataManagerClass(config, unauthorizedAction)}
-    
-    val finance by lazy { FinanceDataManagerClass(config, unauthorizedAction)}
     
     fun application(applicationId:String): ApplicationClient {
         return ApplicationClient(applicationId = applicationId,config = config)
@@ -88,8 +82,6 @@ class PlatformClient(val config:PlatformConfig, val unauthorizedAction: ((url: S
     
     val share by lazy { this@PlatformClient.share.ApplicationClient(applicationId,config)}
     
-    val inventory by lazy { this@PlatformClient.inventory.ApplicationClient(applicationId,config)}
-    
     val configuration by lazy { this@PlatformClient.configuration.ApplicationClient(applicationId,config)}
     
     val cart by lazy { this@PlatformClient.cart.ApplicationClient(applicationId,config)}
@@ -103,10 +95,6 @@ class PlatformClient(val config:PlatformConfig, val unauthorizedAction: ((url: S
     val webhook by lazy { this@PlatformClient.webhook.ApplicationClient(applicationId,config)}
     
     val auditTrail by lazy { this@PlatformClient.auditTrail.ApplicationClient(applicationId,config)}
-    
-    val serviceability by lazy { this@PlatformClient.serviceability.ApplicationClient(applicationId,config)}
-    
-    val finance by lazy { this@PlatformClient.finance.ApplicationClient(applicationId,config)}
     
     }
 
