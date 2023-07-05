@@ -865,10 +865,10 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     }
     
     
-    suspend fun selectPaymentMode(id: String?=null, buyNow: Boolean?=null,body: UpdateCartPaymentRequest)
+    suspend fun selectPaymentMode(id: String?=null, buyNow: Boolean?=null, orderType: String?=null,body: UpdateCartPaymentRequest)
     : Deferred<Response<CartDetailResponse>>? {
         return if (config.oauthClient.isAccessTokenValid()) {
-                cartApiList?.selectPaymentMode(companyId = config.companyId , applicationId = applicationId , id = id, buyNow = buyNow, body = body)
+                cartApiList?.selectPaymentMode(companyId = config.companyId , applicationId = applicationId , id = id, buyNow = buyNow, orderType = orderType, body = body)
         } else {
             null
         }
@@ -895,10 +895,10 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     }
     
     
-    suspend fun selectPaymentModeV2(id: String?=null, buyNow: Boolean?=null,body: UpdateCartPaymentRequestV2)
+    suspend fun selectPaymentModeV2(id: String?=null, buyNow: Boolean?=null, orderType: String?=null,body: UpdateCartPaymentRequestV2)
     : Deferred<Response<CartDetailResponse>>? {
         return if (config.oauthClient.isAccessTokenValid()) {
-                cartApiList?.selectPaymentModeV2(companyId = config.companyId , applicationId = applicationId , id = id, buyNow = buyNow, body = body)
+                cartApiList?.selectPaymentModeV2(companyId = config.companyId , applicationId = applicationId , id = id, buyNow = buyNow, orderType = orderType, body = body)
         } else {
             null
         }

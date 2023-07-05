@@ -3561,7 +3561,7 @@ data class SlideshowRequest(
     var configuration: ConfigurationSchema?=null,
     
     @SerializedName("media")
-    var media: ArrayList<SlideshowMedia>?=null,
+    var media: SlideshowMedia?=null,
     
     @SerializedName("active")
     var active: Boolean?=null

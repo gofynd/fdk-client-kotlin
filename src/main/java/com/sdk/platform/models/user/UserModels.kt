@@ -346,14 +346,9 @@ data class SendEmailOtpRequestSchema(
     var token: String?=null,
     
     @SerializedName("register_token")
-    var registerToken: String?=null,
-    
-    @SerializedName("captcha_code")
-    var captchaCode: String?=null
+    var registerToken: String?=null
     
 ): Parcelable {
-    
-    
     
     
     
