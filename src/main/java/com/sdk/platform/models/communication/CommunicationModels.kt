@@ -2134,50 +2134,6 @@ data class EventSubscriptions(
 
              
 /*
-    Model: TriggerJobResponse
-*/
-@Parcelize
-data class TriggerJobResponse(
-    
-    
-    
-    @SerializedName("status")
-    var status: Int?=null
-    
-): Parcelable {
-    
-    
-    
-    
-    
-}
-
-
-
-             
-/*
-    Model: TriggerJobRequest
-*/
-@Parcelize
-data class TriggerJobRequest(
-    
-    
-    
-    @SerializedName("job_id")
-    var jobId: String?=null
-    
-): Parcelable {
-    
-    
-    
-    
-    
-}
-
-
-
-             
-/*
     Model: Job
 */
 @Parcelize
@@ -2346,6 +2302,50 @@ data class JobLogs(
 
              
 /*
+    Model: TriggerJobResponse
+*/
+@Parcelize
+data class TriggerJobResponse(
+    
+    
+    
+    @SerializedName("status")
+    var status: Int?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: TriggerJobRequest
+*/
+@Parcelize
+data class TriggerJobRequest(
+    
+    
+    
+    @SerializedName("job_id")
+    var jobId: String?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
     Model: LogEmail
 */
 @Parcelize
@@ -2465,6 +2465,12 @@ data class Log(
     @SerializedName("step")
     var step: String?=null,
     
+    @SerializedName("source")
+    var source: String?=null,
+    
+    @SerializedName("channel_type")
+    var channelType: String?=null,
+    
     @SerializedName("status")
     var status: String?=null,
     
@@ -2478,6 +2484,10 @@ data class Log(
     var createdAt: String?=null
     
 ): Parcelable {
+    
+    
+    
+    
     
     
     
@@ -2617,6 +2627,33 @@ data class SendOtpEmailCommsTemplate(
 
              
 /*
+    Model: SendOtpEmailCommsProvider
+*/
+@Parcelize
+data class SendOtpEmailCommsProvider(
+    
+    
+    
+    @SerializedName("slug")
+    var slug: String?=null,
+    
+    @SerializedName("_id")
+    var id: String?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
     Model: SendOtpCommsReqData
 */
 @Parcelize
@@ -2705,9 +2742,14 @@ data class SendOtpCommsReqEmail(
     var expiry: Int?=null,
     
     @SerializedName("template")
-    var template: SendOtpEmailCommsTemplate?=null
+    var template: SendOtpEmailCommsTemplate?=null,
+    
+    @SerializedName("provider")
+    var provider: SendOtpEmailCommsProvider?=null
     
 ): Parcelable {
+    
+    
     
     
     

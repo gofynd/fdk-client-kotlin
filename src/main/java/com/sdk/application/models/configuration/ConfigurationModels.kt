@@ -1831,9 +1831,14 @@ data class ListingPriceFeature(
     
     
     @SerializedName("value")
-    var value: String?=null
+    var value: String?=null,
+    
+    @SerializedName("sort")
+    var sort: String?=null
     
 ): Parcelable {
+    
+    
     
     
     

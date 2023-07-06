@@ -53,6 +53,8 @@ class PaymentDataManagerClass(val config: ApplicationConfig, val unauthorizedAct
             
                     _relativeUrls["validateVPA"] = "/service/application/payment/v1.0/validate-vpa".substring(1)
             
+                    _relativeUrls["cardDetails"] = "/service/application/payment/v1.0/cards/info/{card_info}".substring(1)
+            
                     _relativeUrls["getActiveRefundTransferModes"] = "/service/application/payment/v1.0/refund/transfer-mode".substring(1)
             
                     _relativeUrls["enableOrDisableRefundTransferMode"] = "/service/application/payment/v1.0/refund/transfer-mode".substring(1)
@@ -98,6 +100,10 @@ class PaymentDataManagerClass(val config: ApplicationConfig, val unauthorizedAct
                     _relativeUrls["checkCredit"] = "/service/application/payment/v1.0/check-credits/".substring(1)
             
                     _relativeUrls["customerOnboard"] = "/service/application/payment/v1.0/credit-onboard/".substring(1)
+            
+                    _relativeUrls["outstandingOrderDetails"] = "/service/application/payment/v1.0/payment/outstanding-orders/".substring(1)
+            
+                    _relativeUrls["paidOrderDetails"] = "/service/application/payment/v1.0/payment/paid-orders/".substring(1)
             
     }
 
@@ -243,6 +249,15 @@ class PaymentDataManagerClass(val config: ApplicationConfig, val unauthorizedAct
         var fullUrl : String? = _relativeUrls["validateVPA"] 
         
         return paymentApiList?.validateVPA(fullUrl  ,body = body)}
+
+    
+    
+    fun cardDetails(cardInfo: String, aggregator: String?=null): Deferred<Response<CardDetailsResponse>>? {
+        var fullUrl : String? = _relativeUrls["cardDetails"] 
+        
+        fullUrl = fullUrl?.replace("{" + "card_info" +"}",cardInfo.toString())
+        
+        return paymentApiList?.cardDetails(fullUrl     ,  aggregator = aggregator)}
 
     
     
@@ -404,6 +419,20 @@ class PaymentDataManagerClass(val config: ApplicationConfig, val unauthorizedAct
         var fullUrl : String? = _relativeUrls["customerOnboard"] 
         
         return paymentApiList?.customerOnboard(fullUrl  ,body = body)}
+
+    
+    
+    fun outstandingOrderDetails(aggregator: String?=null): Deferred<Response<OutstandingOrderDetailsResponse>>? {
+        var fullUrl : String? = _relativeUrls["outstandingOrderDetails"] 
+        
+        return paymentApiList?.outstandingOrderDetails(fullUrl    ,  aggregator = aggregator)}
+
+    
+    
+    fun paidOrderDetails(aggregator: String?=null): Deferred<Response<PaidOrderDetailsResponse>>? {
+        var fullUrl : String? = _relativeUrls["paidOrderDetails"] 
+        
+        return paymentApiList?.paidOrderDetails(fullUrl    ,  aggregator = aggregator)}
 
     
     
