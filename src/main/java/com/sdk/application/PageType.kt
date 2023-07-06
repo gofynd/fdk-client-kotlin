@@ -143,7 +143,10 @@ import android.net.Uri
         shippingPolicy("shipping-policy"), 
         
         @SerializedName("return-policy")
-        returnPolicy("return-policy");
+        returnPolicy("return-policy"), 
+        
+        @SerializedName("order-status")
+        orderStatus("order-status");
         
 
         companion object {
