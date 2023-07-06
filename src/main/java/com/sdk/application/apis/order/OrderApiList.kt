@@ -32,7 +32,7 @@ interface OrderApiList {
     
     
     @GET 
-    fun getInvoiceByShipmentId(@Url url1: String?     ,  @Query("document_type") documentType: String?)
+    fun getInvoiceByShipmentId(@Url url1: String?    )
     : Deferred<Response<ResponseGetInvoiceShipment>>
     
     
@@ -69,10 +69,5 @@ interface OrderApiList {
     @PUT 
     fun updateShipmentStatus(@Url url1: String?    ,@Body body: UpdateShipmentStatusRequest)
     : Deferred<Response<ShipmentApplicationStatusResponse>>
-    
-    
-    @GET 
-    fun getProducts(@Url url1: String?    ,       @Query("status") status: Int?, @Query("page_no") pageNo: Int?, @Query("page_size") pageSize: Int?, @Query("from_date") fromDate: String?, @Query("to_date") toDate: String?, @Query("search_value") searchValue: String?)
-    : Deferred<Response<ProductListResponse>>
     
 }

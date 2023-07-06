@@ -83,24 +83,24 @@ class ServiceabilityDataManagerClass(val config: PlatformConfig, val unauthorize
     }
     
     
-    suspend fun getZoneDataView(zoneId: String)
-    : Deferred<Response<GetSingleZoneDataViewResponse>>? {
-        
-        return if (config.oauthClient.isAccessTokenValid()) {
-            serviceabilityApiList?.getZoneDataView(
-        companyId = config.companyId, zoneId = zoneId )
-        } else {
-            null
-        } 
-    }
-    
-    
     suspend fun updateZoneControllerView(zoneId: String,body: ZoneUpdateRequest)
     : Deferred<Response<ZoneSuccessResponse>>? {
         
         return if (config.oauthClient.isAccessTokenValid()) {
             serviceabilityApiList?.updateZoneControllerView(
         zoneId = zoneId, companyId = config.companyId, body = body)
+        } else {
+            null
+        } 
+    }
+    
+    
+    suspend fun getZoneDataView(zoneId: String)
+    : Deferred<Response<GetSingleZoneDataViewResponse>>? {
+        
+        return if (config.oauthClient.isAccessTokenValid()) {
+            serviceabilityApiList?.getZoneDataView(
+        companyId = config.companyId, zoneId = zoneId )
         } else {
             null
         } 
@@ -199,24 +199,24 @@ class ServiceabilityDataManagerClass(val config: PlatformConfig, val unauthorize
     }
     
     
-    suspend fun getDpRules(ruleUid: String)
-    : Deferred<Response<DpRuleSuccessResponse>>? {
-        
-        return if (config.oauthClient.isAccessTokenValid()) {
-            serviceabilityApiList?.getDpRules(
-        companyId = config.companyId, ruleUid = ruleUid )
-        } else {
-            null
-        } 
-    }
-    
-    
     suspend fun updateDpRule(ruleUid: String,body: DpRulesUpdateRequest)
     : Deferred<Response<DpRuleUpdateSuccessResponse>>? {
         
         return if (config.oauthClient.isAccessTokenValid()) {
             serviceabilityApiList?.updateDpRule(
         companyId = config.companyId, ruleUid = ruleUid, body = body)
+        } else {
+            null
+        } 
+    }
+    
+    
+    suspend fun getDpRules(ruleUid: String)
+    : Deferred<Response<DpRuleSuccessResponse>>? {
+        
+        return if (config.oauthClient.isAccessTokenValid()) {
+            serviceabilityApiList?.getDpRules(
+        companyId = config.companyId, ruleUid = ruleUid )
         } else {
             null
         } 
@@ -247,24 +247,24 @@ class ServiceabilityDataManagerClass(val config: PlatformConfig, val unauthorize
     }
     
     
-    suspend fun getDpCompanyRules()
-    : Deferred<Response<DPCompanyRuleResponse>>? {
-        
-        return if (config.oauthClient.isAccessTokenValid()) {
-            serviceabilityApiList?.getDpCompanyRules(
-        companyId = config.companyId )
-        } else {
-            null
-        } 
-    }
-    
-    
     suspend fun upsertDpCompanyRules(body: DPCompanyRuleRequest)
     : Deferred<Response<DPCompanyRuleResponse>>? {
         
         return if (config.oauthClient.isAccessTokenValid()) {
             serviceabilityApiList?.upsertDpCompanyRules(
         companyId = config.companyId, body = body)
+        } else {
+            null
+        } 
+    }
+    
+    
+    suspend fun getDpCompanyRules()
+    : Deferred<Response<DPCompanyRuleResponse>>? {
+        
+        return if (config.oauthClient.isAccessTokenValid()) {
+            serviceabilityApiList?.getDpCompanyRules(
+        companyId = config.companyId )
         } else {
             null
         } 
@@ -387,16 +387,6 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     
     
     
-    suspend fun getDpApplicationRules()
-    : Deferred<Response<DPApplicationRuleResponse>>? {
-        return if (config.oauthClient.isAccessTokenValid()) {
-                serviceabilityApiList?.getDpApplicationRules(companyId = config.companyId , applicationId = applicationId  )
-        } else {
-            null
-        }
-    }
-    
-    
     suspend fun upsertDpApplicationRules(body: DPApplicationRuleRequest)
     : Deferred<Response<DPApplicationRuleResponse>>? {
         return if (config.oauthClient.isAccessTokenValid()) {
@@ -407,10 +397,10 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     }
     
     
-    suspend fun patchApplicationServiceabilitySelfShipment(body: SelfShipResponse)
-    : Deferred<Response<ApplicationSelfShipConfigResponse>>? {
+    suspend fun getDpApplicationRules()
+    : Deferred<Response<DPApplicationRuleResponse>>? {
         return if (config.oauthClient.isAccessTokenValid()) {
-                serviceabilityApiList?.patchApplicationServiceabilitySelfShipment(companyId = config.companyId , applicationId = applicationId , body = body)
+                serviceabilityApiList?.getDpApplicationRules(companyId = config.companyId , applicationId = applicationId  )
         } else {
             null
         }
@@ -421,6 +411,16 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     : Deferred<Response<ApplicationSelfShipConfigResponse>>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 serviceabilityApiList?.getApplicationServiceabilitySelfShipment(companyId = config.companyId , applicationId = applicationId  )
+        } else {
+            null
+        }
+    }
+    
+    
+    suspend fun patchApplicationServiceabilitySelfShipment(body: SelfShipResponse)
+    : Deferred<Response<ApplicationSelfShipConfigResponse>>? {
+        return if (config.oauthClient.isAccessTokenValid()) {
+                serviceabilityApiList?.patchApplicationServiceabilitySelfShipment(companyId = config.companyId , applicationId = applicationId , body = body)
         } else {
             null
         }
