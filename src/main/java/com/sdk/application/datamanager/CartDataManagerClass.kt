@@ -29,6 +29,8 @@ class CartDataManagerClass(val config: ApplicationConfig, val unauthorizedAction
             
                     _relativeUrls["updateCart"] = "/service/application/cart/v1.0/detail".substring(1)
             
+                    _relativeUrls["deleteCart"] = "/service/application/cart/v1.0/cart_archive".substring(1)
+            
                     _relativeUrls["getItemCount"] = "/service/application/cart/v1.0/basic".substring(1)
             
                     _relativeUrls["getCoupons"] = "/service/application/cart/v1.0/coupon".substring(1)
@@ -72,6 +74,8 @@ class CartDataManagerClass(val config: ApplicationConfig, val unauthorizedAction
                     _relativeUrls["getPromotionOffers"] = "/service/application/cart/v1.0/available-promotions".substring(1)
             
                     _relativeUrls["getLadderOffers"] = "/service/application/cart/v1.0/available-ladder-prices".substring(1)
+            
+                    _relativeUrls["checkoutCartV2"] = "/service/application/cart/v2.0/checkout".substring(1)
             
     }
 
@@ -122,10 +126,10 @@ class CartDataManagerClass(val config: ApplicationConfig, val unauthorizedAction
 
     
     
-    fun addItems(i: Boolean?=null, b: Boolean?=null, areaCode: String?=null, buyNow: Boolean?=null, body: AddCartRequest): Deferred<Response<AddCartDetailResponse>>? {
+    fun addItems(i: Boolean?=null, b: Boolean?=null, areaCode: String?=null, buyNow: Boolean?=null, id: String?=null, body: AddCartRequest): Deferred<Response<AddCartDetailResponse>>? {
         var fullUrl : String? = _relativeUrls["addItems"] 
         
-        return cartApiList?.addItems(fullUrl    ,  i = i,    b = b,    areaCode = areaCode,    buyNow = buyNow, body = body)}
+        return cartApiList?.addItems(fullUrl    ,  i = i,    b = b,    areaCode = areaCode,    buyNow = buyNow,    id = id, body = body)}
 
     
     
@@ -133,6 +137,13 @@ class CartDataManagerClass(val config: ApplicationConfig, val unauthorizedAction
         var fullUrl : String? = _relativeUrls["updateCart"] 
         
         return cartApiList?.updateCart(fullUrl    ,  id = id,    i = i,    b = b,    areaCode = areaCode,    buyNow = buyNow, body = body)}
+
+    
+    
+    fun deleteCart(id: String?=null): Deferred<Response<DeleteCartDetailResponse>>? {
+        var fullUrl : String? = _relativeUrls["deleteCart"] 
+        
+        return cartApiList?.deleteCart(fullUrl    ,  id = id)}
 
     
     
@@ -288,10 +299,10 @@ class CartDataManagerClass(val config: ApplicationConfig, val unauthorizedAction
 
     
     
-    fun getPromotionOffers(slug: String?=null, pageSize: Int?=null, promotionGroup: String?=null): Deferred<Response<PromotionOffersResponse>>? {
+    fun getPromotionOffers(slug: String?=null, pageSize: Int?=null, promotionGroup: String?=null, storeId: Int?=null): Deferred<Response<PromotionOffersResponse>>? {
         var fullUrl : String? = _relativeUrls["getPromotionOffers"] 
         
-        return cartApiList?.getPromotionOffers(fullUrl    ,  slug = slug,    pageSize = pageSize,    promotionGroup = promotionGroup)}
+        return cartApiList?.getPromotionOffers(fullUrl    ,  slug = slug,    pageSize = pageSize,    promotionGroup = promotionGroup,    storeId = storeId)}
 
     
     
@@ -299,6 +310,13 @@ class CartDataManagerClass(val config: ApplicationConfig, val unauthorizedAction
         var fullUrl : String? = _relativeUrls["getLadderOffers"] 
         
         return cartApiList?.getLadderOffers(fullUrl    ,  slug = slug,    storeId = storeId,    promotionId = promotionId,    pageSize = pageSize)}
+
+    
+    
+    fun checkoutCartV2(buyNow: Boolean?=null, body: CartCheckoutDetailV2Request): Deferred<Response<CartCheckoutResponse>>? {
+        var fullUrl : String? = _relativeUrls["checkoutCartV2"] 
+        
+        return cartApiList?.checkoutCartV2(fullUrl    ,  buyNow = buyNow, body = body)}
 
     
     

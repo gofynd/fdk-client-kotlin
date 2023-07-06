@@ -101,6 +101,10 @@ class PaymentDataManagerClass(val config: ApplicationConfig, val unauthorizedAct
             
                     _relativeUrls["customerOnboard"] = "/service/application/payment/v1.0/credit-onboard/".substring(1)
             
+                    _relativeUrls["outstandingOrderDetails"] = "/service/application/payment/v1.0/payment/outstanding-orders/".substring(1)
+            
+                    _relativeUrls["paidOrderDetails"] = "/service/application/payment/v1.0/payment/paid-orders/".substring(1)
+            
     }
 
     public fun update(updatedUrlMap : HashMap<String,String>){
@@ -415,6 +419,20 @@ class PaymentDataManagerClass(val config: ApplicationConfig, val unauthorizedAct
         var fullUrl : String? = _relativeUrls["customerOnboard"] 
         
         return paymentApiList?.customerOnboard(fullUrl  ,body = body)}
+
+    
+    
+    fun outstandingOrderDetails(aggregator: String?=null): Deferred<Response<OutstandingOrderDetailsResponse>>? {
+        var fullUrl : String? = _relativeUrls["outstandingOrderDetails"] 
+        
+        return paymentApiList?.outstandingOrderDetails(fullUrl    ,  aggregator = aggregator)}
+
+    
+    
+    fun paidOrderDetails(aggregator: String?=null): Deferred<Response<PaidOrderDetailsResponse>>? {
+        var fullUrl : String? = _relativeUrls["paidOrderDetails"] 
+        
+        return paymentApiList?.paidOrderDetails(fullUrl    ,  aggregator = aggregator)}
 
     
     

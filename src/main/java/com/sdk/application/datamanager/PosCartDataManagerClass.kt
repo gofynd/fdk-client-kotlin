@@ -124,10 +124,10 @@ class PosCartDataManagerClass(val config: ApplicationConfig, val unauthorizedAct
 
     
     
-    fun addItems(i: Boolean?=null, b: Boolean?=null, areaCode: String?=null, buyNow: Boolean?=null, body: AddCartRequest): Deferred<Response<AddCartDetailResponse>>? {
+    fun addItems(i: Boolean?=null, b: Boolean?=null, areaCode: String?=null, buyNow: Boolean?=null, id: String?=null, body: AddCartRequest): Deferred<Response<AddCartDetailResponse>>? {
         var fullUrl : String? = _relativeUrls["addItems"] 
         
-        return posCartApiList?.addItems(fullUrl    ,  i = i,    b = b,    areaCode = areaCode,    buyNow = buyNow, body = body)}
+        return posCartApiList?.addItems(fullUrl    ,  i = i,    b = b,    areaCode = areaCode,    buyNow = buyNow,    id = id, body = body)}
 
     
     
@@ -249,10 +249,10 @@ class PosCartDataManagerClass(val config: ApplicationConfig, val unauthorizedAct
 
     
     
-    fun updateShipments(i: Boolean?=null, p: Boolean?=null, id: String?=null, addressId: String?=null, orderType: String?=null, body: UpdateCartShipmentRequest): Deferred<Response<CartShipmentsResponse>>? {
+    fun updateShipments(i: Boolean?=null, p: Boolean?=null, id: String?=null, addressId: String?=null, areaCode: String?=null, orderType: String?=null, body: UpdateCartShipmentRequest): Deferred<Response<CartShipmentsResponse>>? {
         var fullUrl : String? = _relativeUrls["updateShipments"] 
         
-        return posCartApiList?.updateShipments(fullUrl    ,  i = i,    p = p,    id = id,    addressId = addressId,    orderType = orderType, body = body)}
+        return posCartApiList?.updateShipments(fullUrl    ,  i = i,    p = p,    id = id,    addressId = addressId,    areaCode = areaCode,    orderType = orderType, body = body)}
 
     
     

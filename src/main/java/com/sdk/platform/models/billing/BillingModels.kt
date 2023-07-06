@@ -373,9 +373,14 @@ data class DetailedPlanComponents(
     var enabled: Boolean?=null,
     
     @SerializedName("display_text")
-    var displayText: String?=null
+    var displayText: String?=null,
+    
+    @SerializedName("config")
+    var config: @RawValue HashMap<String,Any>?=null
     
 ): Parcelable {
+    
+    
     
     
     
@@ -2463,9 +2468,14 @@ data class Subscription(
     var modifiedAt: String?=null,
     
     @SerializedName("latest_invoice")
-    var latestInvoice: String?=null
+    var latestInvoice: String?=null,
+    
+    @SerializedName("channel_type")
+    var channelType: String?=null
     
 ): Parcelable {
+    
+    
     
     
     
@@ -2514,16 +2524,31 @@ data class SubscriptionStatus(
     
     
     
-    @SerializedName("mandate_amount")
-    var mandateAmount: Double?=null,
-    
     @SerializedName("is_enabled")
     var isEnabled: Boolean?=null,
     
     @SerializedName("subscription")
-    var subscription: Subscription?=null
+    var subscription: Subscription?=null,
+    
+    @SerializedName("latest_invoice")
+    var latestInvoice: InvoicesData?=null,
+    
+    @SerializedName("next_plan")
+    var nextPlan: Plan?=null,
+    
+    @SerializedName("current_subscriptions")
+    var currentSubscriptions: ArrayList<Subscription>?=null,
+    
+    @SerializedName("mandate_amount")
+    var mandateAmount: String?=null
     
 ): Parcelable {
+    
+    
+    
+    
+    
+    
     
     
     

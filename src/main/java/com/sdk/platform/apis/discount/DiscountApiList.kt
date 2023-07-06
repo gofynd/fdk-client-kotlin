@@ -30,7 +30,7 @@ interface DiscountApiList {
     : Deferred<Response<HashMap<String,Any>>>
     
     @POST ("/service/platform/discount/v1.0/company/{company_id}/file/validation/")
-    fun validateDiscountFile(@Path("company_id") companyId: String, @Query("discount") discount: String?,@Body body: DiscountJob)
+    fun validateDiscountFile(@Path("company_id") companyId: String, @Query("discount") discount: String?,@Body body: FileJobRequest)
     : Deferred<Response<FileJobResponse>>
     
     @POST ("/service/platform/discount/v1.0/company/{company_id}/file/{type}/download/")
