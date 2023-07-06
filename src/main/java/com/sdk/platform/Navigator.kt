@@ -325,12 +325,6 @@ enum class Navigator(
         pageType = PageType.returnPolicy,
         navName = "Return policy",
         link = "/return-policy"
-    ),
-   
-    ORDER_STATUS(
-        pageType = PageType.orderStatus,
-        navName = "Order status",
-        link = "/cart/order-status"
     )
    
 }
