@@ -70,6 +70,18 @@ class OrderDataManagerClass(val config: PlatformConfig, val unauthorizedAction: 
     }
     
     
+    suspend fun getAssetByShipmentIds(shipmentIds: String, invoice: Boolean?=null, expiresIn: String?=null)
+    : Deferred<Response<ResponseGetAssetShipment>>? {
+        
+        return if (config.oauthClient.isAccessTokenValid()) {
+            orderApiList?.getAssetByShipmentIds(
+        companyId = config.companyId, shipmentIds = shipmentIds, invoice = invoice, expiresIn = expiresIn )
+        } else {
+            null
+        } 
+    }
+    
+    
     suspend fun getOrderById(orderId: String)
     : Deferred<Response<OrderDetailsResponse>>? {
         
@@ -94,6 +106,7 @@ class OrderDataManagerClass(val config: PlatformConfig, val unauthorizedAction: 
     }
     
     
+    
     suspend fun getOrders(lane: String?=null, searchType: String?=null, bagStatus: String?=null, timeToDispatch: String?=null, paymentMethods: String?=null, tags: String?=null, searchValue: String?=null, fromDate: String?=null, toDate: String?=null, dpIds: String?=null, stores: String?=null, salesChannels: String?=null, pageNo: Int?=null, pageSize: Int?=null, isPrioritySort: Boolean?=null, customMeta: String?=null, myOrders: Boolean?=null)
     : Deferred<Response<OrderListingResponse>>? {
         
@@ -106,6 +119,19 @@ class OrderDataManagerClass(val config: PlatformConfig, val unauthorizedAction: 
     }
     
     
+    suspend fun getMetricCount(fromDate: String?=null, toDate: String?=null)
+    : Deferred<Response<MetricCountResponse>>? {
+        
+        return if (config.oauthClient.isAccessTokenValid()) {
+            orderApiList?.getMetricCount(
+        companyId = config.companyId, fromDate = fromDate, toDate = toDate )
+        } else {
+            null
+        } 
+    }
+    
+    
+    
     
     suspend fun getfilters(view: String, groupEntity: String?=null)
     : Deferred<Response<FiltersResponse>>? {
@@ -113,6 +139,42 @@ class OrderDataManagerClass(val config: PlatformConfig, val unauthorizedAction: 
         return if (config.oauthClient.isAccessTokenValid()) {
             orderApiList?.getfilters(
         companyId = config.companyId, view = view, groupEntity = groupEntity )
+        } else {
+            null
+        } 
+    }
+    
+    
+    suspend fun createShipmentReport(fromDate: String?=null, toDate: String?=null)
+    : Deferred<Response<Success>>? {
+        
+        return if (config.oauthClient.isAccessTokenValid()) {
+            orderApiList?.createShipmentReport(
+        companyId = config.companyId, fromDate = fromDate, toDate = toDate )
+        } else {
+            null
+        } 
+    }
+    
+    
+    suspend fun getReportsShipmentListing(pageNo: Int?=null, pageSize: Int?=null)
+    : Deferred<Response<OmsReports>>? {
+        
+        return if (config.oauthClient.isAccessTokenValid()) {
+            orderApiList?.getReportsShipmentListing(
+        companyId = config.companyId, pageNo = pageNo, pageSize = pageSize )
+        } else {
+            null
+        } 
+    }
+    
+    
+    suspend fun upsertJioCode(body: JioCodeUpsertPayload)
+    : Deferred<Response<JioCodeUpsertResponse>>? {
+        
+        return if (config.oauthClient.isAccessTokenValid()) {
+            orderApiList?.upsertJioCode(
+        companyId = config.companyId, body = body)
         } else {
             null
         } 
@@ -336,24 +398,24 @@ class OrderDataManagerClass(val config: PlatformConfig, val unauthorizedAction: 
     }
     
     
-    suspend fun getShipmentHistory(shipmentId: String?=null, bagId: Int?=null)
-    : Deferred<Response<ShipmentHistoryResponse>>? {
-        
-        return if (config.oauthClient.isAccessTokenValid()) {
-            orderApiList?.getShipmentHistory(
-        companyId = config.companyId, shipmentId = shipmentId, bagId = bagId )
-        } else {
-            null
-        } 
-    }
-    
-    
     suspend fun postShipmentHistory(body: PostShipmentHistory)
     : Deferred<Response<ShipmentHistoryResponse>>? {
         
         return if (config.oauthClient.isAccessTokenValid()) {
             orderApiList?.postShipmentHistory(
         companyId = config.companyId, body = body)
+        } else {
+            null
+        } 
+    }
+    
+    
+    suspend fun getShipmentHistory(shipmentId: String?=null, bagId: Int?=null)
+    : Deferred<Response<ShipmentHistoryResponse>>? {
+        
+        return if (config.oauthClient.isAccessTokenValid()) {
+            orderApiList?.getShipmentHistory(
+        companyId = config.companyId, shipmentId = shipmentId, bagId = bagId )
         } else {
             null
         } 
@@ -549,6 +611,28 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     
     
     
+    suspend fun getApplicationShipments(lane: String?=null, searchType: String?=null, searchId: String?=null, fromDate: String?=null, toDate: String?=null, dpIds: String?=null, orderingCompanyId: String?=null, stores: String?=null, salesChannels: String?=null, requestByExt: String?=null, pageNo: Int?=null, pageSize: Int?=null, customerId: String?=null, isPrioritySort: Boolean?=null)
+    : Deferred<Response<ShipmentInternalPlatformViewResponse>>? {
+        return if (config.oauthClient.isAccessTokenValid()) {
+                orderApiList?.getApplicationShipments(companyId = config.companyId , applicationId = applicationId , lane = lane, searchType = searchType, searchId = searchId, fromDate = fromDate, toDate = toDate, dpIds = dpIds, orderingCompanyId = orderingCompanyId, stores = stores, salesChannels = salesChannels, requestByExt = requestByExt, pageNo = pageNo, pageSize = pageSize, customerId = customerId, isPrioritySort = isPrioritySort )
+        } else {
+            null
+        }
+    }
+    
+    
+    
+    
+    suspend fun getAppOrderShipmentDetails(orderId: String)
+    : Deferred<Response<OrderDetailsResponse>>? {
+        return if (config.oauthClient.isAccessTokenValid()) {
+                orderApiList?.getAppOrderShipmentDetails(companyId = config.companyId , applicationId = applicationId , orderId = orderId )
+        } else {
+            null
+        }
+    }
+    
+    
     suspend fun trackShipmentPlatform(shipmentId: String)
     : Deferred<Response<PlatformShipmentTrack>>? {
         return if (config.oauthClient.isAccessTokenValid()) {
@@ -557,6 +641,9 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
             null
         }
     }
+    
+    
+    
     
     
     
