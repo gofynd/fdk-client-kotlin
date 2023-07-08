@@ -21,7 +21,7 @@ Add proxy path for external url
 
 
 ```kotlin
-platformClient.application("<APPLICATION_ID>").partner.addProxyPath(extensionId: extensionId, body: body).safeAwait{ response, error->
+client.application("<APPLICATION_ID>").partner.addProxyPath(extensionId: extensionId, body: body).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -90,7 +90,7 @@ Remove proxy path for external url
 
 
 ```kotlin
-platformClient.application("<APPLICATION_ID>").partner.removeProxyPath(extensionId: extensionId, attachedPath: attachedPath).safeAwait{ response, error->
+client.application("<APPLICATION_ID>").partner.removeProxyPath(extensionId: extensionId, attachedPath: attachedPath).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->

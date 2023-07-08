@@ -31,7 +31,7 @@ Check coupon validity
 
 
 ```kotlin
-platformClient.billing.checkCouponValidity(plan: plan, couponCode: couponCode).safeAwait{ response, error->
+client.billing.checkCouponValidity(plan: plan, couponCode: couponCode).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -92,7 +92,7 @@ Create subscription charge
 
 
 ```kotlin
-platformClient.billing.createSubscriptionCharge(extensionId: extensionId, body: body).safeAwait{ response, error->
+client.billing.createSubscriptionCharge(extensionId: extensionId, body: body).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -152,7 +152,7 @@ Get subscription charge details
 
 
 ```kotlin
-platformClient.billing.getSubscriptionCharge(extensionId: extensionId, subscriptionId: subscriptionId).safeAwait{ response, error->
+client.billing.getSubscriptionCharge(extensionId: extensionId, subscriptionId: subscriptionId).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -213,7 +213,7 @@ Cancel subscription charge
 
 
 ```kotlin
-platformClient.billing.cancelSubscriptionCharge(extensionId: extensionId, subscriptionId: subscriptionId).safeAwait{ response, error->
+client.billing.cancelSubscriptionCharge(extensionId: extensionId, subscriptionId: subscriptionId).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -274,7 +274,7 @@ Get invoices
 
 
 ```kotlin
-platformClient.billing.getInvoices().safeAwait{ response, error->
+client.billing.getInvoices().safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -569,7 +569,7 @@ Get invoice by id
 
 
 ```kotlin
-platformClient.billing.getInvoiceById(invoiceId: invoiceId).safeAwait{ response, error->
+client.billing.getInvoiceById(invoiceId: invoiceId).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -862,7 +862,7 @@ Get subscription customer detail
 
 
 ```kotlin
-platformClient.billing.getCustomerDetail().safeAwait{ response, error->
+client.billing.getCustomerDetail().safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -949,7 +949,7 @@ Upsert subscription customer detail
 
 
 ```kotlin
-platformClient.billing.upsertCustomerDetail(body: body).safeAwait{ response, error->
+client.billing.upsertCustomerDetail(body: body).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -1040,7 +1040,7 @@ Get current subscription detail
 
 
 ```kotlin
-platformClient.billing.getSubscription().safeAwait{ response, error->
+client.billing.getSubscription().safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -1166,7 +1166,7 @@ Get subscription subscription limits
 
 
 ```kotlin
-platformClient.billing.getFeatureLimitConfig().safeAwait{ response, error->
+client.billing.getFeatureLimitConfig().safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -1257,7 +1257,7 @@ Activate subscription
 
 
 ```kotlin
-platformClient.billing.activateSubscriptionPlan(body: body).safeAwait{ response, error->
+client.billing.activateSubscriptionPlan(body: body).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -1372,7 +1372,7 @@ Cancel subscription
 
 
 ```kotlin
-platformClient.billing.cancelSubscriptionPlan(body: body).safeAwait{ response, error->
+client.billing.cancelSubscriptionPlan(body: body).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->

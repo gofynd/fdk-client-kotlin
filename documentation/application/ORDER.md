@@ -29,7 +29,7 @@ Get all orders
 
 
 ```kotlin
-applicationClient.order.getOrders(pageNo: pageNo, pageSize: pageSize, fromDate: fromDate, toDate: toDate, status: status).safeAwait{ response, error->
+order.getOrders(pageNo: pageNo, pageSize: pageSize, fromDate: fromDate, toDate: toDate, status: status).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -93,7 +93,7 @@ Get details of an order
 
 
 ```kotlin
-applicationClient.order.getOrderById(orderId: orderId).safeAwait{ response, error->
+order.getOrderById(orderId: orderId).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -153,7 +153,7 @@ Get details of a shipment
 
 
 ```kotlin
-applicationClient.order.getShipmentById(shipmentId: shipmentId).safeAwait{ response, error->
+order.getShipmentById(shipmentId: shipmentId).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -213,7 +213,7 @@ Get reasons behind full or partial cancellation of a shipment
 
 
 ```kotlin
-applicationClient.order.getShipmentReasons(shipmentId: shipmentId).safeAwait{ response, error->
+order.getShipmentReasons(shipmentId: shipmentId).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -273,7 +273,7 @@ Update the shipment status
 
 
 ```kotlin
-applicationClient.order.updateShipmentStatus(shipmentId: shipmentId, body: body).safeAwait{ response, error->
+order.updateShipmentStatus(shipmentId: shipmentId, body: body).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -333,7 +333,7 @@ Track shipment
 
 
 ```kotlin
-applicationClient.order.trackShipment(shipmentId: shipmentId).safeAwait{ response, error->
+order.trackShipment(shipmentId: shipmentId).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -393,7 +393,7 @@ Get POS Order
 
 
 ```kotlin
-applicationClient.order.getPosOrderById(orderId: orderId).safeAwait{ response, error->
+order.getPosOrderById(orderId: orderId).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -453,7 +453,7 @@ Get Customer Details by Shipment Id
 
 
 ```kotlin
-applicationClient.order.getCustomerDetailsByShipmentId(orderId: orderId, shipmentId: shipmentId).safeAwait{ response, error->
+order.getCustomerDetailsByShipmentId(orderId: orderId, shipmentId: shipmentId).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -514,7 +514,7 @@ Send and Resend Otp code to Order-Shipment customer
 
 
 ```kotlin
-applicationClient.order.sendOtpToShipmentCustomer(orderId: orderId, shipmentId: shipmentId).safeAwait{ response, error->
+order.sendOtpToShipmentCustomer(orderId: orderId, shipmentId: shipmentId).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -575,7 +575,7 @@ Verify Otp code
 
 
 ```kotlin
-applicationClient.order.verifyOtpShipmentCustomer(orderId: orderId, shipmentId: shipmentId, body: body).safeAwait{ response, error->
+order.verifyOtpShipmentCustomer(orderId: orderId, shipmentId: shipmentId, body: body).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->

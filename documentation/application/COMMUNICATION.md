@@ -22,7 +22,7 @@ Get communication consent
 
 
 ```kotlin
-applicationClient.communication.getCommunicationConsent().safeAwait{ response, error->
+communication.getCommunicationConsent().safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -104,7 +104,7 @@ Upsert communication consent
 
 
 ```kotlin
-applicationClient.communication.upsertCommunicationConsent(body: body).safeAwait{ response, error->
+communication.upsertCommunicationConsent(body: body).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -188,7 +188,7 @@ Upsert push token of a user
 
 
 ```kotlin
-applicationClient.communication.upsertAppPushtoken(body: body).safeAwait{ response, error->
+communication.upsertAppPushtoken(body: body).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->

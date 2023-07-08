@@ -31,7 +31,7 @@ Get a list of customers
 
 
 ```kotlin
-platformClient.application("<APPLICATION_ID>").user.getCustomers(q: q, pageSize: pageSize, pageNo: pageNo).safeAwait{ response, error->
+client.application("<APPLICATION_ID>").user.getCustomers(q: q, pageSize: pageSize, pageNo: pageNo).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -148,7 +148,7 @@ Search an existing user.
 
 
 ```kotlin
-platformClient.application("<APPLICATION_ID>").user.searchUsers(q: q).safeAwait{ response, error->
+client.application("<APPLICATION_ID>").user.searchUsers(q: q).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -250,7 +250,7 @@ Create user
 
 
 ```kotlin
-platformClient.application("<APPLICATION_ID>").user.createUser(body: body).safeAwait{ response, error->
+client.application("<APPLICATION_ID>").user.createUser(body: body).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -351,7 +351,7 @@ Block/Unblock user
 
 
 ```kotlin
-platformClient.application("<APPLICATION_ID>").user.blockOrUnblockUsers(body: body).safeAwait{ response, error->
+client.application("<APPLICATION_ID>").user.blockOrUnblockUsers(body: body).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -412,7 +412,7 @@ archive user
 
 
 ```kotlin
-platformClient.application("<APPLICATION_ID>").user.archiveUser(body: body).safeAwait{ response, error->
+client.application("<APPLICATION_ID>").user.archiveUser(body: body).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -473,7 +473,7 @@ undelete user who deleted from application and have not elapsed the platform con
 
 
 ```kotlin
-platformClient.application("<APPLICATION_ID>").user.unDeleteUser(body: body).safeAwait{ response, error->
+client.application("<APPLICATION_ID>").user.unDeleteUser(body: body).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -534,7 +534,7 @@ Update user
 
 
 ```kotlin
-platformClient.application("<APPLICATION_ID>").user.updateUser(userId: userId, body: body).safeAwait{ response, error->
+client.application("<APPLICATION_ID>").user.updateUser(userId: userId, body: body).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -636,7 +636,7 @@ Create user session
 
 
 ```kotlin
-platformClient.application("<APPLICATION_ID>").user.createUserSession(body: body).safeAwait{ response, error->
+client.application("<APPLICATION_ID>").user.createUserSession(body: body).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -703,7 +703,7 @@ Get a list of all session for a user
 
 
 ```kotlin
-platformClient.application("<APPLICATION_ID>").user.getActiveSessions(id: id).safeAwait{ response, error->
+client.application("<APPLICATION_ID>").user.getActiveSessions(id: id).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -776,7 +776,7 @@ Delete a list of all session for a user
 
 
 ```kotlin
-platformClient.application("<APPLICATION_ID>").user.deleteActiveSessions(id: id).safeAwait{ response, error->
+client.application("<APPLICATION_ID>").user.deleteActiveSessions(id: id).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -849,7 +849,7 @@ Get platform configurations
 
 
 ```kotlin
-platformClient.application("<APPLICATION_ID>").user.getPlatformConfig().safeAwait{ response, error->
+client.application("<APPLICATION_ID>").user.getPlatformConfig().safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -985,7 +985,7 @@ Update platform configurations
 
 
 ```kotlin
-platformClient.application("<APPLICATION_ID>").user.updatePlatformConfig(body: body).safeAwait{ response, error->
+client.application("<APPLICATION_ID>").user.updatePlatformConfig(body: body).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->

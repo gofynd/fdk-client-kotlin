@@ -21,7 +21,7 @@ Search Application
 
 
 ```kotlin
-publicClient.configuration.searchApplication(authorization: authorization, query: query).safeAwait{ response, error->
+configuration.searchApplication(authorization: authorization, query: query).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -143,7 +143,7 @@ Get countries, states, cities
 
 
 ```kotlin
-publicClient.configuration.getLocations(locationType: locationType, id: id).safeAwait{ response, error->
+configuration.getLocations(locationType: locationType, id: id).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->

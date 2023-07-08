@@ -54,7 +54,7 @@ Login or Register using Facebook
 
 
 ```kotlin
-applicationClient.user.loginWithFacebook(platform: platform, body: body).safeAwait{ response, error->
+user.loginWithFacebook(platform: platform, body: body).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -142,7 +142,7 @@ Login or Register using Google
 
 
 ```kotlin
-applicationClient.user.loginWithGoogle(platform: platform, body: body).safeAwait{ response, error->
+user.loginWithGoogle(platform: platform, body: body).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -230,7 +230,7 @@ Login or Register using Google on Android
 
 
 ```kotlin
-applicationClient.user.loginWithGoogleAndroid(platform: platform, body: body).safeAwait{ response, error->
+user.loginWithGoogleAndroid(platform: platform, body: body).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -318,7 +318,7 @@ Login or Register using Google on iOS
 
 
 ```kotlin
-applicationClient.user.loginWithGoogleIOS(platform: platform, body: body).safeAwait{ response, error->
+user.loginWithGoogleIOS(platform: platform, body: body).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -406,7 +406,7 @@ Login or Register using Apple on iOS
 
 
 ```kotlin
-applicationClient.user.loginWithAppleIOS(platform: platform, body: body).safeAwait{ response, error->
+user.loginWithAppleIOS(platform: platform, body: body).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -494,7 +494,7 @@ Login or Register with OTP
 
 
 ```kotlin
-applicationClient.user.loginWithOTP(platform: platform, body: body).safeAwait{ response, error->
+user.loginWithOTP(platform: platform, body: body).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -570,7 +570,7 @@ Login or Register with password
 
 
 ```kotlin
-applicationClient.user.loginWithEmailAndPassword(body: body).safeAwait{ response, error->
+user.loginWithEmailAndPassword(body: body).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -684,7 +684,7 @@ Reset Password
 
 
 ```kotlin
-applicationClient.user.sendResetPasswordEmail(platform: platform, body: body).safeAwait{ response, error->
+user.sendResetPasswordEmail(platform: platform, body: body).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -746,7 +746,7 @@ Reset Password
 
 
 ```kotlin
-applicationClient.user.sendResetPasswordMobile(platform: platform, body: body).safeAwait{ response, error->
+user.sendResetPasswordMobile(platform: platform, body: body).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -808,7 +808,7 @@ Forgot Password
 
 
 ```kotlin
-applicationClient.user.forgotPassword(body: body).safeAwait{ response, error->
+user.forgotPassword(body: body).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -922,7 +922,7 @@ Reset Password using token
 
 
 ```kotlin
-applicationClient.user.sendResetToken(body: body).safeAwait{ response, error->
+user.sendResetToken(body: body).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -983,7 +983,7 @@ Login or Register with token
 
 
 ```kotlin
-applicationClient.user.loginWithToken(body: body).safeAwait{ response, error->
+user.loginWithToken(body: body).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -1097,7 +1097,7 @@ Registration using a form
 
 
 ```kotlin
-applicationClient.user.registerWithForm(platform: platform, body: body).safeAwait{ response, error->
+user.registerWithForm(platform: platform, body: body).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -1168,7 +1168,7 @@ Verify email
 
 
 ```kotlin
-applicationClient.user.verifyEmail(body: body).safeAwait{ response, error->
+user.verifyEmail(body: body).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -1229,7 +1229,7 @@ Verify mobile
 
 
 ```kotlin
-applicationClient.user.verifyMobile(body: body).safeAwait{ response, error->
+user.verifyMobile(body: body).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -1290,7 +1290,7 @@ Check password
 
 
 ```kotlin
-applicationClient.user.hasPassword().safeAwait{ response, error->
+user.hasPassword().safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -1345,7 +1345,7 @@ Update user password
 
 
 ```kotlin
-applicationClient.user.updatePassword(body: body).safeAwait{ response, error->
+user.updatePassword(body: body).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -1406,7 +1406,7 @@ verify otp and delete user
 
 
 ```kotlin
-applicationClient.user.deleteUser(body: body).safeAwait{ response, error->
+user.deleteUser(body: body).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -1467,7 +1467,7 @@ Logs out currently logged in user
 
 
 ```kotlin
-applicationClient.user.logout().safeAwait{ response, error->
+user.logout().safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -1522,7 +1522,7 @@ Send OTP on mobile
 
 
 ```kotlin
-applicationClient.user.sendOTPOnMobile(platform: platform, body: body).safeAwait{ response, error->
+user.sendOTPOnMobile(platform: platform, body: body).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -1590,7 +1590,7 @@ Verify OTP on mobile
 
 
 ```kotlin
-applicationClient.user.verifyMobileOTP(platform: platform, body: body).safeAwait{ response, error->
+user.verifyMobileOTP(platform: platform, body: body).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -1706,7 +1706,7 @@ Send OTP on email
 
 
 ```kotlin
-applicationClient.user.sendOTPOnEmail(platform: platform, body: body).safeAwait{ response, error->
+user.sendOTPOnEmail(platform: platform, body: body).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -1768,7 +1768,7 @@ Verify OTP on email
 
 
 ```kotlin
-applicationClient.user.verifyEmailOTP(platform: platform, body: body).safeAwait{ response, error->
+user.verifyEmailOTP(platform: platform, body: body).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -1884,7 +1884,7 @@ Get logged in user
 
 
 ```kotlin
-applicationClient.user.getLoggedInUser().safeAwait{ response, error->
+user.getLoggedInUser().safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -1994,7 +1994,7 @@ Get list of sessions
 
 
 ```kotlin
-applicationClient.user.getListOfActiveSessions().safeAwait{ response, error->
+user.getListOfActiveSessions().safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -2054,7 +2054,7 @@ Get platform configurations
 
 
 ```kotlin
-applicationClient.user.getPlatformConfig(name: name).safeAwait{ response, error->
+user.getPlatformConfig(name: name).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -2195,7 +2195,7 @@ Edit Profile Details
 
 
 ```kotlin
-applicationClient.user.updateProfile(platform: platform, body: body).safeAwait{ response, error->
+user.updateProfile(platform: platform, body: body).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -2310,7 +2310,7 @@ Add mobile number to profile
 
 
 ```kotlin
-applicationClient.user.addMobileNumber(platform: platform, body: body).safeAwait{ response, error->
+user.addMobileNumber(platform: platform, body: body).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -2426,7 +2426,7 @@ Delete mobile number from profile
 
 
 ```kotlin
-applicationClient.user.deleteMobileNumber(platform: platform, active: active, primary: primary, verified: verified, countryCode: countryCode, phone: phone).safeAwait{ response, error->
+user.deleteMobileNumber(platform: platform, active: active, primary: primary, verified: verified, countryCode: countryCode, phone: phone).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -2546,7 +2546,7 @@ Set mobile as primary
 
 
 ```kotlin
-applicationClient.user.setMobileNumberAsPrimary(body: body).safeAwait{ response, error->
+user.setMobileNumberAsPrimary(body: body).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -2660,7 +2660,7 @@ Send verification link to mobile
 
 
 ```kotlin
-applicationClient.user.sendVerificationLinkToMobile(platform: platform, body: body).safeAwait{ response, error->
+user.sendVerificationLinkToMobile(platform: platform, body: body).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -2776,7 +2776,7 @@ Add email to profile
 
 
 ```kotlin
-applicationClient.user.addEmail(platform: platform, body: body).safeAwait{ response, error->
+user.addEmail(platform: platform, body: body).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -2892,7 +2892,7 @@ Delete email from profile
 
 
 ```kotlin
-applicationClient.user.deleteEmail(platform: platform, active: active, primary: primary, verified: verified, email: email).safeAwait{ response, error->
+user.deleteEmail(platform: platform, active: active, primary: primary, verified: verified, email: email).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -3011,7 +3011,7 @@ Set email as primary
 
 
 ```kotlin
-applicationClient.user.setEmailAsPrimary(body: body).safeAwait{ response, error->
+user.setEmailAsPrimary(body: body).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -3125,7 +3125,7 @@ Send verification link to email
 
 
 ```kotlin
-applicationClient.user.sendVerificationLinkToEmail(platform: platform, body: body).safeAwait{ response, error->
+user.sendVerificationLinkToEmail(platform: platform, body: body).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->

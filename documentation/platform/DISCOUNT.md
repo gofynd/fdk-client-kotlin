@@ -29,7 +29,7 @@ Fetch discount list.
 
 
 ```kotlin
-platformClient.discount.getDiscounts(view: view, q: q, pageNo: pageNo, pageSize: pageSize, archived: archived, month: month, year: year, type: type, appIds: appIds).safeAwait{ response, error->
+client.discount.getDiscounts(view: view, q: q, pageNo: pageNo, pageSize: pageSize, archived: archived, month: month, year: year, type: type, appIds: appIds).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -97,7 +97,7 @@ Create Discount.
 
 
 ```kotlin
-platformClient.discount.createDiscount(body: body).safeAwait{ response, error->
+client.discount.createDiscount(body: body).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -156,7 +156,7 @@ Fetch discount.
 
 
 ```kotlin
-platformClient.discount.getDiscount(id: id).safeAwait{ response, error->
+client.discount.getDiscount(id: id).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -216,7 +216,7 @@ Create Discount.
 
 
 ```kotlin
-platformClient.discount.updateDiscount(id: id, body: body).safeAwait{ response, error->
+client.discount.updateDiscount(id: id, body: body).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -276,7 +276,7 @@ Validate File.
 
 
 ```kotlin
-platformClient.discount.validateDiscountFile(discount: discount, body: body).safeAwait{ response, error->
+client.discount.validateDiscountFile(discount: discount, body: body).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -336,7 +336,7 @@ Validate File.
 
 
 ```kotlin
-platformClient.discount.downloadDiscountFile(type: type, body: body).safeAwait{ response, error->
+client.discount.downloadDiscountFile(type: type, body: body).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -396,7 +396,7 @@ Validate File Job.
 
 
 ```kotlin
-platformClient.discount.getValidationJob(id: id).safeAwait{ response, error->
+client.discount.getValidationJob(id: id).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -456,7 +456,7 @@ Cancel Validation Job.
 
 
 ```kotlin
-platformClient.discount.cancelValidationJob(id: id).safeAwait{ response, error->
+client.discount.cancelValidationJob(id: id).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -516,7 +516,7 @@ Download File Job.
 
 
 ```kotlin
-platformClient.discount.getDownloadJob(id: id).safeAwait{ response, error->
+client.discount.getDownloadJob(id: id).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -576,7 +576,7 @@ Cancel Download Job.
 
 
 ```kotlin
-platformClient.discount.cancelDownloadJob(id: id).safeAwait{ response, error->
+client.discount.cancelDownloadJob(id: id).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->

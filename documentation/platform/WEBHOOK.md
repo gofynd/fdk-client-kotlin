@@ -25,7 +25,7 @@ Get Subscribers By Company ID
 
 
 ```kotlin
-platformClient.webhook.getSubscribersByCompany(pageNo: pageNo, pageSize: pageSize, extensionId: extensionId).safeAwait{ response, error->
+client.webhook.getSubscribersByCompany(pageNo: pageNo, pageSize: pageSize, extensionId: extensionId).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -87,7 +87,7 @@ Register Subscriber
 
 
 ```kotlin
-platformClient.webhook.registerSubscriberToEvent(body: body).safeAwait{ response, error->
+client.webhook.registerSubscriberToEvent(body: body).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -146,7 +146,7 @@ Update Subscriber
 
 
 ```kotlin
-platformClient.webhook.updateSubscriberConfig(body: body).safeAwait{ response, error->
+client.webhook.updateSubscriberConfig(body: body).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -205,7 +205,7 @@ Get Subscribers By Extension ID
 
 
 ```kotlin
-platformClient.webhook.getSubscribersByExtensionId(pageNo: pageNo, pageSize: pageSize, extensionId: extensionId).safeAwait{ response, error->
+client.webhook.getSubscribersByExtensionId(pageNo: pageNo, pageSize: pageSize, extensionId: extensionId).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -267,7 +267,7 @@ Get Subscriber By Subscriber ID
 
 
 ```kotlin
-platformClient.webhook.getSubscriberById(subscriberId: subscriberId).safeAwait{ response, error->
+client.webhook.getSubscriberById(subscriberId: subscriberId).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -327,7 +327,7 @@ Success
 
 
 ```kotlin
-platformClient.webhook.fetchAllEventConfigurations().safeAwait{ response, error->
+client.webhook.fetchAllEventConfigurations().safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
