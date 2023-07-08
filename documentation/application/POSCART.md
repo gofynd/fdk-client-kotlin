@@ -46,7 +46,7 @@ Fetch all items added to the cart
 
 
 ```kotlin
-applicationClient.poscart.getCart(id: id, i: i, b: b, assignCardId: assignCardId, buyNow: buyNow).safeAwait{ response, error->
+poscart.getCart(id: id, i: i, b: b, assignCardId: assignCardId, buyNow: buyNow).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -277,7 +277,7 @@ Fetch last-modified timestamp
 
 
 ```kotlin
-applicationClient.poscart.getCartLastModified(id: id).safeAwait{ response, error->
+poscart.getCartLastModified(id: id).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -318,7 +318,7 @@ Add items to cart
 
 
 ```kotlin
-applicationClient.poscart.addItems(i: i, b: b, buyNow: buyNow, body: body).safeAwait{ response, error->
+poscart.addItems(i: i, b: b, buyNow: buyNow, body: body).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -1025,7 +1025,7 @@ Update items in the cart
 
 
 ```kotlin
-applicationClient.poscart.updateCart(id: id, i: i, b: b, buyNow: buyNow, body: body).safeAwait{ response, error->
+poscart.updateCart(id: id, i: i, b: b, buyNow: buyNow, body: body).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -1462,7 +1462,7 @@ Count items in the cart
 
 
 ```kotlin
-applicationClient.poscart.getItemCount(id: id, buyNow: buyNow).safeAwait{ response, error->
+poscart.getItemCount(id: id, buyNow: buyNow).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -1525,7 +1525,7 @@ Fetch Coupon
 
 
 ```kotlin
-applicationClient.poscart.getCoupons(id: id, buyNow: buyNow).safeAwait{ response, error->
+poscart.getCoupons(id: id, buyNow: buyNow).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -1622,7 +1622,7 @@ Apply Coupon
 
 
 ```kotlin
-applicationClient.poscart.applyCoupon(i: i, b: b, p: p, id: id, buyNow: buyNow, body: body).safeAwait{ response, error->
+poscart.applyCoupon(i: i, b: b, p: p, id: id, buyNow: buyNow, body: body).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -2223,7 +2223,7 @@ Remove Coupon Applied
 
 
 ```kotlin
-applicationClient.poscart.removeCoupon(id: id, buyNow: buyNow).safeAwait{ response, error->
+poscart.removeCoupon(id: id, buyNow: buyNow).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -2442,7 +2442,7 @@ Get discount offers based on quantity
 
 
 ```kotlin
-applicationClient.poscart.getBulkDiscountOffers(itemId: itemId, articleId: articleId, uid: uid, slug: slug).safeAwait{ response, error->
+poscart.getBulkDiscountOffers(itemId: itemId, articleId: articleId, uid: uid, slug: slug).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -2576,7 +2576,7 @@ Apply reward points at cart
 
 
 ```kotlin
-applicationClient.poscart.applyRewardPoints(id: id, i: i, b: b, buyNow: buyNow, body: body).safeAwait{ response, error->
+poscart.applyRewardPoints(id: id, i: i, b: b, buyNow: buyNow, body: body).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -2806,7 +2806,7 @@ Fetch address
 
 
 ```kotlin
-applicationClient.poscart.getAddresses(cartId: cartId, buyNow: buyNow, mobileNo: mobileNo, checkoutMode: checkoutMode, tags: tags, isDefault: isDefault).safeAwait{ response, error->
+poscart.getAddresses(cartId: cartId, buyNow: buyNow, mobileNo: mobileNo, checkoutMode: checkoutMode, tags: tags, isDefault: isDefault).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -2901,7 +2901,7 @@ Add address to an account
 
 
 ```kotlin
-applicationClient.poscart.addAddress(body: body).safeAwait{ response, error->
+poscart.addAddress(body: body).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -2964,7 +2964,7 @@ Fetch a single address by its ID
 
 
 ```kotlin
-applicationClient.poscart.getAddressById(id: id, cartId: cartId, buyNow: buyNow, mobileNo: mobileNo, checkoutMode: checkoutMode, tags: tags, isDefault: isDefault).safeAwait{ response, error->
+poscart.getAddressById(id: id, cartId: cartId, buyNow: buyNow, mobileNo: mobileNo, checkoutMode: checkoutMode, tags: tags, isDefault: isDefault).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -3057,7 +3057,7 @@ Update address added to an account
 
 
 ```kotlin
-applicationClient.poscart.updateAddress(id: id, body: body).safeAwait{ response, error->
+poscart.updateAddress(id: id, body: body).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -3122,7 +3122,7 @@ Remove address associated with an account
 
 
 ```kotlin
-applicationClient.poscart.removeAddress(id: id).safeAwait{ response, error->
+poscart.removeAddress(id: id).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -3185,7 +3185,7 @@ Select an address from available addresses
 
 
 ```kotlin
-applicationClient.poscart.selectAddress(cartId: cartId, buyNow: buyNow, i: i, b: b, body: body).safeAwait{ response, error->
+poscart.selectAddress(cartId: cartId, buyNow: buyNow, i: i, b: b, body: body).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -3504,7 +3504,7 @@ Update cart payment
 
 
 ```kotlin
-applicationClient.poscart.selectPaymentMode(id: id, buyNow: buyNow, body: body).safeAwait{ response, error->
+poscart.selectPaymentMode(id: id, buyNow: buyNow, body: body).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -3833,7 +3833,7 @@ Verify the coupon eligibility against the payment mode
 
 
 ```kotlin
-applicationClient.poscart.validateCouponForPayment(id: id, buyNow: buyNow, addressId: addressId, paymentMode: paymentMode, paymentIdentifier: paymentIdentifier, aggregatorName: aggregatorName, merchantCode: merchantCode).safeAwait{ response, error->
+poscart.validateCouponForPayment(id: id, buyNow: buyNow, addressId: addressId, paymentMode: paymentMode, paymentIdentifier: paymentIdentifier, aggregatorName: aggregatorName, merchantCode: merchantCode).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -3909,7 +3909,7 @@ Get delivery date and options before checkout
 
 
 ```kotlin
-applicationClient.poscart.getShipments(pickAtStoreUid: pickAtStoreUid, orderingStoreId: orderingStoreId, p: p, id: id, addressId: addressId, areaCode: areaCode, orderType: orderType).safeAwait{ response, error->
+poscart.getShipments(pickAtStoreUid: pickAtStoreUid, orderingStoreId: orderingStoreId, p: p, id: id, addressId: addressId, areaCode: areaCode, orderType: orderType).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -4615,7 +4615,7 @@ Update shipment delivery type and quantity before checkout
 
 
 ```kotlin
-applicationClient.poscart.updateShipments(i: i, p: p, id: id, addressId: addressId, orderType: orderType, body: body).safeAwait{ response, error->
+poscart.updateShipments(i: i, p: p, id: id, addressId: addressId, orderType: orderType, body: body).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -5320,7 +5320,7 @@ Checkout all items in the cart
 
 
 ```kotlin
-applicationClient.poscart.checkoutCart(id: id, body: body).safeAwait{ response, error->
+poscart.checkoutCart(id: id, body: body).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -5760,7 +5760,7 @@ Update the cart meta
 
 
 ```kotlin
-applicationClient.poscart.updateCartMeta(id: id, buyNow: buyNow, body: body).safeAwait{ response, error->
+poscart.updateCartMeta(id: id, buyNow: buyNow, body: body).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -5823,7 +5823,7 @@ Get available delivery modes for cart
 
 
 ```kotlin
-applicationClient.poscart.getAvailableDeliveryModes(areaCode: areaCode, id: id).safeAwait{ response, error->
+poscart.getAvailableDeliveryModes(areaCode: areaCode, id: id).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -5892,7 +5892,7 @@ Get list of stores for give uids
 
 
 ```kotlin
-applicationClient.poscart.getStoreAddressByUid(storeUid: storeUid).safeAwait{ response, error->
+poscart.getStoreAddressByUid(storeUid: storeUid).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -5976,7 +5976,7 @@ Generate token for sharing the cart
 
 
 ```kotlin
-applicationClient.poscart.getCartShareLink(body: body).safeAwait{ response, error->
+poscart.getCartShareLink(body: body).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -6046,7 +6046,7 @@ Get details of a shared cart
 
 
 ```kotlin
-applicationClient.poscart.getCartSharedItems(token: token).safeAwait{ response, error->
+poscart.getCartSharedItems(token: token).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -6382,7 +6382,7 @@ Merge or replace existing cart
 
 
 ```kotlin
-applicationClient.poscart.updateCartWithSharedItems(token: token, action: action).safeAwait{ response, error->
+poscart.updateCartWithSharedItems(token: token, action: action).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->

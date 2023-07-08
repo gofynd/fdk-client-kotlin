@@ -168,6 +168,24 @@ enum class Navigator(
         )
     ),
    
+    PRODUCT_REVIEWS(
+        pageType = PageType.productReviews,
+        navName = "Product Reviews",
+        link = "/product/:slug/reviews",
+        params = arrayListOf(
+            NavParam(key = "slug", required = true)
+        )
+    ),
+   
+    ADD_PRODUCT_REVIEW(
+        pageType = PageType.addProductReview,
+        navName = "Add Product review",
+        link = "/product/:slug/add-review",
+        params = arrayListOf(
+            NavParam(key = "slug", required = true)
+        )
+    ),
+   
     PRODUCT_REQUEST(
         pageType = PageType.productRequest,
         navName = "Product Request",

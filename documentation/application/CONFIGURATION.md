@@ -35,7 +35,7 @@ Get current application details
 
 
 ```kotlin
-applicationClient.configuration.getApplication().safeAwait{ response, error->
+configuration.getApplication().safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -153,7 +153,7 @@ Get application, owner and seller information
 
 
 ```kotlin
-applicationClient.configuration.getOwnerInfo().safeAwait{ response, error->
+configuration.getOwnerInfo().safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -309,7 +309,7 @@ Get basic application details
 
 
 ```kotlin
-applicationClient.configuration.getBasicDetails().safeAwait{ response, error->
+configuration.getBasicDetails().safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -404,7 +404,7 @@ Get integration tokens
 
 
 ```kotlin
-applicationClient.configuration.getIntegrationTokens().safeAwait{ response, error->
+configuration.getIntegrationTokens().safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -528,7 +528,7 @@ Get deployment stores
 
 
 ```kotlin
-applicationClient.configuration.getOrderingStores(pageNo: pageNo, pageSize: pageSize, q: q).safeAwait{ response, error->
+configuration.getOrderingStores(pageNo: pageNo, pageSize: pageSize, q: q).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -590,7 +590,7 @@ Get ordering store details
 
 
 ```kotlin
-applicationClient.configuration.getStoreDetailById(storeId: storeId).safeAwait{ response, error->
+configuration.getStoreDetailById(storeId: storeId).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -658,7 +658,7 @@ Get features of application
 
 
 ```kotlin
-applicationClient.configuration.getFeatures().safeAwait{ response, error->
+configuration.getFeatures().safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -808,7 +808,7 @@ Get application information
 
 
 ```kotlin
-applicationClient.configuration.getContactInfo().safeAwait{ response, error->
+configuration.getContactInfo().safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -978,7 +978,7 @@ Get all currencies list
 
 
 ```kotlin
-applicationClient.configuration.getCurrencies().safeAwait{ response, error->
+configuration.getCurrencies().safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -1046,7 +1046,7 @@ Get currency by its ID
 
 
 ```kotlin
-applicationClient.configuration.getCurrencyById(id: id).safeAwait{ response, error->
+configuration.getCurrencyById(id: id).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -1115,7 +1115,7 @@ Get currencies enabled in the application
 
 
 ```kotlin
-applicationClient.configuration.getAppCurrencies().safeAwait{ response, error->
+configuration.getAppCurrencies().safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -1188,7 +1188,7 @@ Get list of languages
 
 
 ```kotlin
-applicationClient.configuration.getLanguages().safeAwait{ response, error->
+configuration.getLanguages().safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -1258,7 +1258,7 @@ Get an Ordering Store signed cookie on selection of ordering store.
 
 
 ```kotlin
-applicationClient.configuration.getOrderingStoreCookie(body: body).safeAwait{ response, error->
+configuration.getOrderingStoreCookie(body: body).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -1317,7 +1317,7 @@ Unset the Ordering Store signed cookie.
 
 
 ```kotlin
-applicationClient.configuration.removeOrderingStoreCookie().safeAwait{ response, error->
+configuration.removeOrderingStoreCookie().safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -1372,7 +1372,7 @@ Get a list of staff.
 
 
 ```kotlin
-applicationClient.configuration.getAppStaffList(pageNo: pageNo, pageSize: pageSize, orderIncent: orderIncent, orderingStore: orderingStore, user: user).safeAwait{ response, error->
+configuration.getAppStaffList(pageNo: pageNo, pageSize: pageSize, orderIncent: orderIncent, orderingStore: orderingStore, user: user).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -1436,7 +1436,7 @@ Get a list of staff.
 
 
 ```kotlin
-applicationClient.configuration.getAppStaffs(orderIncent: orderIncent, orderingStore: orderingStore, user: user).safeAwait{ response, error->
+configuration.getAppStaffs(orderIncent: orderIncent, orderingStore: orderingStore, user: user).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->

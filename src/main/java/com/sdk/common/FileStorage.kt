@@ -4,7 +4,7 @@ import com.sdk.application.models.filestorage.CompleteResponse
 import com.sdk.application.datamanager.*
 import com.sdk.application.models.filestorage.StartRequest
 import kotlinx.coroutines.Deferred
-import kotlinx.parcelize.RawValue
+import kotlinx.android.parcel.RawValue
 import okhttp3.MediaType.Companion.toMediaType
 import okhttp3.RequestBody
 import okhttp3.ResponseBody

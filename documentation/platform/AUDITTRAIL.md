@@ -23,7 +23,7 @@ Get paginated audit logs
 
 
 ```kotlin
-platformClient.audittrail.getAuditLogs(qs: qs).safeAwait{ response, error->
+client.audittrail.getAuditLogs(qs: qs).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -129,7 +129,7 @@ Create logs for auditing later on
 
 
 ```kotlin
-platformClient.audittrail.createAuditLog(body: body).safeAwait{ response, error->
+client.audittrail.createAuditLog(body: body).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -199,7 +199,7 @@ Get audit log
 
 
 ```kotlin
-platformClient.audittrail.getAuditLog(id: id).safeAwait{ response, error->
+client.audittrail.getAuditLog(id: id).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -305,7 +305,7 @@ Get entity types
 
 
 ```kotlin
-platformClient.audittrail.getEntityTypes().safeAwait{ response, error->
+client.audittrail.getEntityTypes().safeAwait{ response, error->
     response?.let{
       // Use response
     } ->

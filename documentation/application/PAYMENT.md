@@ -58,7 +58,7 @@ Get payment gateway keys
 
 
 ```kotlin
-applicationClient.payment.getAggregatorsConfig(xApiToken: xApiToken, refresh: refresh).safeAwait{ response, error->
+payment.getAggregatorsConfig(xApiToken: xApiToken, refresh: refresh).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -155,7 +155,7 @@ Attach a saved card to customer.
 
 
 ```kotlin
-applicationClient.payment.attachCardToCustomer(body: body).safeAwait{ response, error->
+payment.attachCardToCustomer(body: body).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -243,7 +243,7 @@ Fetch active payment gateway for card payments
 
 
 ```kotlin
-applicationClient.payment.getActiveCardAggregator(refresh: refresh).safeAwait{ response, error->
+payment.getActiveCardAggregator(refresh: refresh).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -311,7 +311,7 @@ Fetch the list of cards saved by the user
 
 
 ```kotlin
-applicationClient.payment.getActiveUserCards(forceRefresh: forceRefresh).safeAwait{ response, error->
+payment.getActiveUserCards(forceRefresh: forceRefresh).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -395,7 +395,7 @@ Delete a card
 
 
 ```kotlin
-applicationClient.payment.deleteUserCard(body: body).safeAwait{ response, error->
+payment.deleteUserCard(body: body).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -456,7 +456,7 @@ Validate customer for payment
 
 
 ```kotlin
-applicationClient.payment.verifyCustomerForPayment(body: body).safeAwait{ response, error->
+payment.verifyCustomerForPayment(body: body).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -558,7 +558,7 @@ Verify and charge payment
 
 
 ```kotlin
-applicationClient.payment.verifyAndChargePayment(body: body).safeAwait{ response, error->
+payment.verifyAndChargePayment(body: body).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -625,7 +625,7 @@ Initialize a payment (server-to-server) for UPI and BharatQR
 
 
 ```kotlin
-applicationClient.payment.initialisePayment(body: body).safeAwait{ response, error->
+payment.initialisePayment(body: body).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -696,7 +696,7 @@ Performs continuous polling to check status of payment on the server
 
 
 ```kotlin
-applicationClient.payment.checkAndUpdatePaymentStatus(body: body).safeAwait{ response, error->
+payment.checkAndUpdatePaymentStatus(body: body).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -759,7 +759,7 @@ Get applicable payment options
 
 
 ```kotlin
-applicationClient.payment.getPaymentModeRoutes(amount: amount, cartId: cartId, pincode: pincode, checkoutMode: checkoutMode, refresh: refresh, cardReference: cardReference, userDetails: userDetails).safeAwait{ response, error->
+payment.getPaymentModeRoutes(amount: amount, cartId: cartId, pincode: pincode, checkoutMode: checkoutMode, refresh: refresh, cardReference: cardReference, userDetails: userDetails).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -1337,7 +1337,7 @@ Get applicable payment options for Point-of-Sale (POS)
 
 
 ```kotlin
-applicationClient.payment.getPosPaymentModeRoutes(amount: amount, cartId: cartId, pincode: pincode, checkoutMode: checkoutMode, refresh: refresh, cardReference: cardReference, orderType: orderType, userDetails: userDetails).safeAwait{ response, error->
+payment.getPosPaymentModeRoutes(amount: amount, cartId: cartId, pincode: pincode, checkoutMode: checkoutMode, refresh: refresh, cardReference: cardReference, orderType: orderType, userDetails: userDetails).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -1584,7 +1584,7 @@ Get CreditLine Offer
 
 
 ```kotlin
-applicationClient.payment.getRupifiBannerDetails().safeAwait{ response, error->
+payment.getRupifiBannerDetails().safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -1645,7 +1645,7 @@ Get Epaylater Enabled
 
 
 ```kotlin
-applicationClient.payment.getEpaylaterBannerDetails().safeAwait{ response, error->
+payment.getEpaylaterBannerDetails().safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -1732,7 +1732,7 @@ API to resend and cancel a payment link which was already generated.
 
 
 ```kotlin
-applicationClient.payment.resendOrCancelPayment(body: body).safeAwait{ response, error->
+payment.resendOrCancelPayment(body: body).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -1821,7 +1821,7 @@ Convert base64 string to HTML form
 
 
 ```kotlin
-applicationClient.payment.renderHTML(body: body).safeAwait{ response, error->
+payment.renderHTML(body: body).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -1882,7 +1882,7 @@ API to Validate UPI ID
 
 
 ```kotlin
-applicationClient.payment.validateVPA(body: body).safeAwait{ response, error->
+payment.validateVPA(body: body).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -1949,7 +1949,7 @@ Lists the mode of refund
 
 
 ```kotlin
-applicationClient.payment.getActiveRefundTransferModes().safeAwait{ response, error->
+payment.getActiveRefundTransferModes().safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -2019,7 +2019,7 @@ Enable/Disable a mode for transferring a refund
 
 
 ```kotlin
-applicationClient.payment.enableOrDisableRefundTransferMode(body: body).safeAwait{ response, error->
+payment.enableOrDisableRefundTransferMode(body: body).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -2080,7 +2080,7 @@ Lists the beneficiary of a refund
 
 
 ```kotlin
-applicationClient.payment.getUserBeneficiariesDetail(orderId: orderId).safeAwait{ response, error->
+payment.getUserBeneficiariesDetail(orderId: orderId).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -2165,7 +2165,7 @@ Verify IFSC Code
 
 
 ```kotlin
-applicationClient.payment.verifyIfscCode(ifscCode: ifscCode).safeAwait{ response, error->
+payment.verifyIfscCode(ifscCode: ifscCode).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -2245,7 +2245,7 @@ Lists the beneficiary of a refund
 
 
 ```kotlin
-applicationClient.payment.getOrderBeneficiariesDetail(orderId: orderId).safeAwait{ response, error->
+payment.getOrderBeneficiariesDetail(orderId: orderId).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -2329,7 +2329,7 @@ Verify the beneficiary details using OTP
 
 
 ```kotlin
-applicationClient.payment.verifyOtpAndAddBeneficiaryForBank(body: body).safeAwait{ response, error->
+payment.verifyOtpAndAddBeneficiaryForBank(body: body).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -2391,7 +2391,7 @@ Save bank details for cancelled/returned order
 
 
 ```kotlin
-applicationClient.payment.addBeneficiaryDetails(body: body).safeAwait{ response, error->
+payment.addBeneficiaryDetails(body: body).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -2455,7 +2455,7 @@ Save bank details for cancelled/returned order
 
 
 ```kotlin
-applicationClient.payment.addRefundBankAccountUsingOTP(body: body).safeAwait{ response, error->
+payment.addRefundBankAccountUsingOTP(body: body).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -2519,7 +2519,7 @@ Send OTP on adding a wallet beneficiary
 
 
 ```kotlin
-applicationClient.payment.verifyOtpAndAddBeneficiaryForWallet(body: body).safeAwait{ response, error->
+payment.verifyOtpAndAddBeneficiaryForWallet(body: body).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -2582,7 +2582,7 @@ Set a default beneficiary for a refund
 
 
 ```kotlin
-applicationClient.payment.updateDefaultBeneficiary(body: body).safeAwait{ response, error->
+payment.updateDefaultBeneficiary(body: body).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -2644,7 +2644,7 @@ Get payment link
 
 
 ```kotlin
-applicationClient.payment.getPaymentLink(paymentLinkId: paymentLinkId).safeAwait{ response, error->
+payment.getPaymentLink(paymentLinkId: paymentLinkId).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -2714,7 +2714,7 @@ Create payment link
 
 
 ```kotlin
-applicationClient.payment.createPaymentLink(body: body).safeAwait{ response, error->
+payment.createPaymentLink(body: body).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -2780,7 +2780,7 @@ Resend payment link
 
 
 ```kotlin
-applicationClient.payment.resendPaymentLink(body: body).safeAwait{ response, error->
+payment.resendPaymentLink(body: body).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -2844,7 +2844,7 @@ Cancel payment link
 
 
 ```kotlin
-applicationClient.payment.cancelPaymentLink(body: body).safeAwait{ response, error->
+payment.cancelPaymentLink(body: body).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -2907,7 +2907,7 @@ Get applicable payment options for payment link
 
 
 ```kotlin
-applicationClient.payment.getPaymentModeRoutesPaymentLink(paymentLinkId: paymentLinkId).safeAwait{ response, error->
+payment.getPaymentModeRoutesPaymentLink(paymentLinkId: paymentLinkId).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -3374,7 +3374,7 @@ Used for polling if payment successful or not
 
 
 ```kotlin
-applicationClient.payment.pollingPaymentLink(paymentLinkId: paymentLinkId).safeAwait{ response, error->
+payment.pollingPaymentLink(paymentLinkId: paymentLinkId).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -3442,7 +3442,7 @@ Create Order user
 
 
 ```kotlin
-applicationClient.payment.createOrderHandlerPaymentLink(body: body).safeAwait{ response, error->
+payment.createOrderHandlerPaymentLink(body: body).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -3519,7 +3519,7 @@ Initialize a payment (server-to-server) for UPI and BharatQR
 
 
 ```kotlin
-applicationClient.payment.initialisePaymentPaymentLink(body: body).safeAwait{ response, error->
+payment.initialisePaymentPaymentLink(body: body).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -3590,7 +3590,7 @@ Performs continuous polling to check status of payment on the server
 
 
 ```kotlin
-applicationClient.payment.checkAndUpdatePaymentStatusPaymentLink(body: body).safeAwait{ response, error->
+payment.checkAndUpdatePaymentStatusPaymentLink(body: body).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -3653,7 +3653,7 @@ API to fetch the customer credit summary
 
 
 ```kotlin
-applicationClient.payment.customerCreditSummary(aggregator: aggregator).safeAwait{ response, error->
+payment.customerCreditSummary(aggregator: aggregator).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -3742,7 +3742,7 @@ API to get the redirect url to redirect the user to aggregator's page
 
 
 ```kotlin
-applicationClient.payment.redirectToAggregator(source: source, aggregator: aggregator).safeAwait{ response, error->
+payment.redirectToAggregator(source: source, aggregator: aggregator).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -3809,7 +3809,7 @@ API to fetch the customer credit summary
 
 
 ```kotlin
-applicationClient.payment.checkCredit(aggregator: aggregator).safeAwait{ response, error->
+payment.checkCredit(aggregator: aggregator).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -3876,7 +3876,7 @@ API to fetch the customer credit summary
 
 
 ```kotlin
-applicationClient.payment.customerOnboard(body: body).safeAwait{ response, error->
+payment.customerOnboard(body: body).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->

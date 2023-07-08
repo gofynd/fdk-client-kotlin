@@ -47,7 +47,7 @@ Fetch all items added to the cart
 
 
 ```kotlin
-applicationClient.cart.getCart(id: id, i: i, b: b, assignCardId: assignCardId, buyNow: buyNow).safeAwait{ response, error->
+cart.getCart(id: id, i: i, b: b, assignCardId: assignCardId, buyNow: buyNow).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -278,7 +278,7 @@ Fetch last-modified timestamp
 
 
 ```kotlin
-applicationClient.cart.getCartLastModified(id: id).safeAwait{ response, error->
+cart.getCartLastModified(id: id).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -319,7 +319,7 @@ Add items to cart
 
 
 ```kotlin
-applicationClient.cart.addItems(i: i, b: b, buyNow: buyNow, body: body).safeAwait{ response, error->
+cart.addItems(i: i, b: b, buyNow: buyNow, body: body).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -1026,7 +1026,7 @@ Update items in the cart
 
 
 ```kotlin
-applicationClient.cart.updateCart(id: id, i: i, b: b, buyNow: buyNow, body: body).safeAwait{ response, error->
+cart.updateCart(id: id, i: i, b: b, buyNow: buyNow, body: body).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -1463,7 +1463,7 @@ Delete cart once user made successful checkout
 
 
 ```kotlin
-applicationClient.cart.deleteCart(id: id).safeAwait{ response, error->
+cart.deleteCart(id: id).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -1526,7 +1526,7 @@ Count items in the cart
 
 
 ```kotlin
-applicationClient.cart.getItemCount(id: id, buyNow: buyNow).safeAwait{ response, error->
+cart.getItemCount(id: id, buyNow: buyNow).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -1589,7 +1589,7 @@ Fetch Coupon
 
 
 ```kotlin
-applicationClient.cart.getCoupons(id: id, buyNow: buyNow).safeAwait{ response, error->
+cart.getCoupons(id: id, buyNow: buyNow).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -1686,7 +1686,7 @@ Apply Coupon
 
 
 ```kotlin
-applicationClient.cart.applyCoupon(i: i, b: b, p: p, id: id, buyNow: buyNow, body: body).safeAwait{ response, error->
+cart.applyCoupon(i: i, b: b, p: p, id: id, buyNow: buyNow, body: body).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -2287,7 +2287,7 @@ Remove Coupon Applied
 
 
 ```kotlin
-applicationClient.cart.removeCoupon(id: id, buyNow: buyNow).safeAwait{ response, error->
+cart.removeCoupon(id: id, buyNow: buyNow).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -2506,7 +2506,7 @@ Get discount offers based on quantity
 
 
 ```kotlin
-applicationClient.cart.getBulkDiscountOffers(itemId: itemId, articleId: articleId, uid: uid, slug: slug).safeAwait{ response, error->
+cart.getBulkDiscountOffers(itemId: itemId, articleId: articleId, uid: uid, slug: slug).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -2640,7 +2640,7 @@ Apply reward points at cart
 
 
 ```kotlin
-applicationClient.cart.applyRewardPoints(id: id, i: i, b: b, buyNow: buyNow, body: body).safeAwait{ response, error->
+cart.applyRewardPoints(id: id, i: i, b: b, buyNow: buyNow, body: body).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -2870,7 +2870,7 @@ Fetch address
 
 
 ```kotlin
-applicationClient.cart.getAddresses(cartId: cartId, buyNow: buyNow, mobileNo: mobileNo, checkoutMode: checkoutMode, tags: tags, isDefault: isDefault).safeAwait{ response, error->
+cart.getAddresses(cartId: cartId, buyNow: buyNow, mobileNo: mobileNo, checkoutMode: checkoutMode, tags: tags, isDefault: isDefault).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -2965,7 +2965,7 @@ Add address to an account
 
 
 ```kotlin
-applicationClient.cart.addAddress(body: body).safeAwait{ response, error->
+cart.addAddress(body: body).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -3028,7 +3028,7 @@ Fetch a single address by its ID
 
 
 ```kotlin
-applicationClient.cart.getAddressById(id: id, cartId: cartId, buyNow: buyNow, mobileNo: mobileNo, checkoutMode: checkoutMode, tags: tags, isDefault: isDefault).safeAwait{ response, error->
+cart.getAddressById(id: id, cartId: cartId, buyNow: buyNow, mobileNo: mobileNo, checkoutMode: checkoutMode, tags: tags, isDefault: isDefault).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -3121,7 +3121,7 @@ Update address added to an account
 
 
 ```kotlin
-applicationClient.cart.updateAddress(id: id, body: body).safeAwait{ response, error->
+cart.updateAddress(id: id, body: body).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -3186,7 +3186,7 @@ Remove address associated with an account
 
 
 ```kotlin
-applicationClient.cart.removeAddress(id: id).safeAwait{ response, error->
+cart.removeAddress(id: id).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -3249,7 +3249,7 @@ Select an address from available addresses
 
 
 ```kotlin
-applicationClient.cart.selectAddress(cartId: cartId, buyNow: buyNow, i: i, b: b, body: body).safeAwait{ response, error->
+cart.selectAddress(cartId: cartId, buyNow: buyNow, i: i, b: b, body: body).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -3568,7 +3568,7 @@ Update cart payment
 
 
 ```kotlin
-applicationClient.cart.selectPaymentMode(id: id, buyNow: buyNow, body: body).safeAwait{ response, error->
+cart.selectPaymentMode(id: id, buyNow: buyNow, body: body).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -3897,7 +3897,7 @@ Verify the coupon eligibility against the payment mode
 
 
 ```kotlin
-applicationClient.cart.validateCouponForPayment(id: id, buyNow: buyNow, addressId: addressId, paymentMode: paymentMode, paymentIdentifier: paymentIdentifier, aggregatorName: aggregatorName, merchantCode: merchantCode).safeAwait{ response, error->
+cart.validateCouponForPayment(id: id, buyNow: buyNow, addressId: addressId, paymentMode: paymentMode, paymentIdentifier: paymentIdentifier, aggregatorName: aggregatorName, merchantCode: merchantCode).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -3973,7 +3973,7 @@ Get delivery date and options before checkout
 
 
 ```kotlin
-applicationClient.cart.getShipments(p: p, id: id, buyNow: buyNow, addressId: addressId, areaCode: areaCode).safeAwait{ response, error->
+cart.getShipments(p: p, id: id, buyNow: buyNow, addressId: addressId, areaCode: areaCode).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -4679,7 +4679,7 @@ Checkout all items in the cart
 
 
 ```kotlin
-applicationClient.cart.checkoutCart(buyNow: buyNow, body: body).safeAwait{ response, error->
+cart.checkoutCart(buyNow: buyNow, body: body).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -5119,7 +5119,7 @@ Update the cart meta
 
 
 ```kotlin
-applicationClient.cart.updateCartMeta(id: id, buyNow: buyNow, body: body).safeAwait{ response, error->
+cart.updateCartMeta(id: id, buyNow: buyNow, body: body).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -5182,7 +5182,7 @@ Generate token for sharing the cart
 
 
 ```kotlin
-applicationClient.cart.getCartShareLink(body: body).safeAwait{ response, error->
+cart.getCartShareLink(body: body).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -5252,7 +5252,7 @@ Get details of a shared cart
 
 
 ```kotlin
-applicationClient.cart.getCartSharedItems(token: token).safeAwait{ response, error->
+cart.getCartSharedItems(token: token).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -5588,7 +5588,7 @@ Merge or replace existing cart
 
 
 ```kotlin
-applicationClient.cart.updateCartWithSharedItems(token: token, action: action).safeAwait{ response, error->
+cart.updateCartWithSharedItems(token: token, action: action).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -5932,7 +5932,7 @@ Fetch available promotions
 
 
 ```kotlin
-applicationClient.cart.getPromotionOffers(slug: slug, pageSize: pageSize, promotionGroup: promotionGroup).safeAwait{ response, error->
+cart.getPromotionOffers(slug: slug, pageSize: pageSize, promotionGroup: promotionGroup).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -6025,7 +6025,7 @@ Fetch ladder price promotion
 
 
 ```kotlin
-applicationClient.cart.getLadderOffers(slug: slug, storeId: storeId, promotionId: promotionId, pageSize: pageSize).safeAwait{ response, error->
+cart.getLadderOffers(slug: slug, storeId: storeId, promotionId: promotionId, pageSize: pageSize).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -6175,7 +6175,7 @@ Checkout all items in the cart
 
 
 ```kotlin
-applicationClient.cart.checkoutCartV2(buyNow: buyNow, body: body).safeAwait{ response, error->
+cart.checkoutCartV2(buyNow: buyNow, body: body).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
