@@ -29,7 +29,7 @@ List of giveaways of the current application.
 
 
 ```kotlin
-client.application("<APPLICATION_ID>").rewards.getGiveaways(pageId: pageId, pageSize: pageSize).safeAwait{ response, error->
+platformClient.application("<APPLICATION_ID>").rewards.getGiveaways(pageId: pageId, pageSize: pageSize).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -90,7 +90,7 @@ Adds a new giveaway.
 
 
 ```kotlin
-client.application("<APPLICATION_ID>").rewards.createGiveaway(body: body).safeAwait{ response, error->
+platformClient.application("<APPLICATION_ID>").rewards.createGiveaway(body: body).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -149,7 +149,7 @@ Get giveaway by ID.
 
 
 ```kotlin
-client.application("<APPLICATION_ID>").rewards.getGiveawayByID(id: id).safeAwait{ response, error->
+platformClient.application("<APPLICATION_ID>").rewards.getGiveawayByID(id: id).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -209,7 +209,7 @@ Updates the giveaway by it's ID.
 
 
 ```kotlin
-client.application("<APPLICATION_ID>").rewards.updateGiveaway(id: id, body: body).safeAwait{ response, error->
+platformClient.application("<APPLICATION_ID>").rewards.updateGiveaway(id: id, body: body).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -269,7 +269,7 @@ List of offer of the current application.
 
 
 ```kotlin
-client.application("<APPLICATION_ID>").rewards.getOffers().safeAwait{ response, error->
+platformClient.application("<APPLICATION_ID>").rewards.getOffers().safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -324,7 +324,7 @@ Get offer by name.
 
 
 ```kotlin
-client.application("<APPLICATION_ID>").rewards.getOfferByName(cookie: cookie, name: name).safeAwait{ response, error->
+platformClient.application("<APPLICATION_ID>").rewards.getOfferByName(cookie: cookie, name: name).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -385,7 +385,7 @@ Updates the offer by name.
 
 
 ```kotlin
-client.application("<APPLICATION_ID>").rewards.updateOfferByName(name: name, body: body).safeAwait{ response, error->
+platformClient.application("<APPLICATION_ID>").rewards.updateOfferByName(name: name, body: body).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -445,7 +445,7 @@ User's reward details.
 
 
 ```kotlin
-client.application("<APPLICATION_ID>").rewards.getUserAvailablePoints(userId: userId).safeAwait{ response, error->
+platformClient.application("<APPLICATION_ID>").rewards.getUserAvailablePoints(userId: userId).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -505,7 +505,7 @@ Update User status
 
 
 ```kotlin
-client.application("<APPLICATION_ID>").rewards.updateUserStatus(userId: userId, body: body).safeAwait{ response, error->
+platformClient.application("<APPLICATION_ID>").rewards.updateUserStatus(userId: userId, body: body).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -565,7 +565,7 @@ Get list of points transactions.
 
 
 ```kotlin
-client.application("<APPLICATION_ID>").rewards.getUserPointsHistory(userId: userId, pageId: pageId, pageLimit: pageLimit, pageSize: pageSize).safeAwait{ response, error->
+platformClient.application("<APPLICATION_ID>").rewards.getUserPointsHistory(userId: userId, pageId: pageId, pageLimit: pageLimit, pageSize: pageSize).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->

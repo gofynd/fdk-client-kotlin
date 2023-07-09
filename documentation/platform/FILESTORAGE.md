@@ -29,7 +29,7 @@ This operation initiates upload and returns storage link which is valid for 30 M
 
 
 ```kotlin
-client.filestorage.startUpload(namespace: namespace, body: body).safeAwait{ response, error->
+platformClient.filestorage.startUpload(namespace: namespace, body: body).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -107,7 +107,7 @@ This will complete the upload process. After successfully uploading file, you ca
 
 
 ```kotlin
-client.filestorage.completeUpload(namespace: namespace, body: body).safeAwait{ response, error->
+platformClient.filestorage.completeUpload(namespace: namespace, body: body).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -185,7 +185,7 @@ This operation initiates upload and returns storage link which is valid for 30 M
 
 
 ```kotlin
-client.application("<APPLICATION_ID>").filestorage.appStartUpload(namespace: namespace, body: body).safeAwait{ response, error->
+platformClient.application("<APPLICATION_ID>").filestorage.appStartUpload(namespace: namespace, body: body).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -263,7 +263,7 @@ This will complete the upload process. After successfully uploading file, you ca
 
 
 ```kotlin
-client.application("<APPLICATION_ID>").filestorage.appCompleteUpload(namespace: namespace, body: body).safeAwait{ response, error->
+platformClient.application("<APPLICATION_ID>").filestorage.appCompleteUpload(namespace: namespace, body: body).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -341,7 +341,7 @@ Gives signed urls to access private files
 
 
 ```kotlin
-client.filestorage.getSignUrls(body: body).safeAwait{ response, error->
+platformClient.filestorage.getSignUrls(body: body).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -400,7 +400,7 @@ Copy Files
 
 
 ```kotlin
-client.filestorage.copyFiles(sync: sync, body: body).safeAwait{ response, error->
+platformClient.filestorage.copyFiles(sync: sync, body: body).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -487,7 +487,7 @@ Copy Files
 
 
 ```kotlin
-client.application("<APPLICATION_ID>").filestorage.appCopyFiles(sync: sync, body: body).safeAwait{ response, error->
+platformClient.application("<APPLICATION_ID>").filestorage.appCopyFiles(sync: sync, body: body).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -574,7 +574,7 @@ Browse Files
 
 
 ```kotlin
-client.filestorage.browse(namespace: namespace, pageNo: pageNo).safeAwait{ response, error->
+platformClient.filestorage.browse(namespace: namespace, pageNo: pageNo).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -635,7 +635,7 @@ Browse Files
 
 
 ```kotlin
-client.application("<APPLICATION_ID>").filestorage.browse(namespace: namespace, pageNo: pageNo).safeAwait{ response, error->
+platformClient.application("<APPLICATION_ID>").filestorage.browse(namespace: namespace, pageNo: pageNo).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -696,7 +696,7 @@ Proxy
 
 
 ```kotlin
-client.filestorage.proxy(url: url).safeAwait{ response, error->
+platformClient.filestorage.proxy(url: url).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->

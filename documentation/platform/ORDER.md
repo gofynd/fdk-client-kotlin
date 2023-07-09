@@ -39,7 +39,7 @@ Update status of Shipment
 
 
 ```kotlin
-client.order.shipmentStatusUpdate(body: body).safeAwait{ response, error->
+platformClient.order.shipmentStatusUpdate(body: body).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -98,7 +98,7 @@ Get Activity Status
 
 
 ```kotlin
-client.order.activityStatus(bagId: bagId).safeAwait{ response, error->
+platformClient.order.activityStatus(bagId: bagId).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -158,7 +158,7 @@ Update Store Process-Shipment
 
 
 ```kotlin
-client.order.storeProcessShipmentUpdate(body: body).safeAwait{ response, error->
+platformClient.order.storeProcessShipmentUpdate(body: body).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -217,7 +217,7 @@ Check Refund is available or not
 
 
 ```kotlin
-client.order.checkRefund(shipmentId: shipmentId).safeAwait{ response, error->
+platformClient.order.checkRefund(shipmentId: shipmentId).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -277,7 +277,7 @@ Decides if Shipment bags can break
 
 
 ```kotlin
-client.order.shipmentBagsCanBreak(body: body).safeAwait{ response, error->
+platformClient.order.shipmentBagsCanBreak(body: body).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -336,7 +336,7 @@ Get Orders for company based on Company Id
 
 
 ```kotlin
-client.order.getOrdersByCompanyId(pageNo: pageNo, pageSize: pageSize, fromDate: fromDate, toDate: toDate, isPrioritySort: isPrioritySort, lockStatus: lockStatus, q: q, stage: stage, salesChannels: salesChannels, orderId: orderId, stores: stores, deploymentStores: deploymentStores, status: status, dp: dp, shortenUrls: shortenUrls, filterType: filterType).safeAwait{ response, error->
+platformClient.order.getOrdersByCompanyId(pageNo: pageNo, pageSize: pageSize, fromDate: fromDate, toDate: toDate, isPrioritySort: isPrioritySort, lockStatus: lockStatus, q: q, stage: stage, salesChannels: salesChannels, orderId: orderId, stores: stores, deploymentStores: deploymentStores, status: status, dp: dp, shortenUrls: shortenUrls, filterType: filterType).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -411,7 +411,7 @@ Get Order Lanes Count for company based on Company Id
 
 
 ```kotlin
-client.order.getOrderLanesCountByCompanyId(pageNo: pageNo, pageSize: pageSize, fromDate: fromDate, toDate: toDate, q: q, stage: stage, salesChannels: salesChannels, orderId: orderId, stores: stores, status: status, shortenUrls: shortenUrls, filterType: filterType).safeAwait{ response, error->
+platformClient.order.getOrderLanesCountByCompanyId(pageNo: pageNo, pageSize: pageSize, fromDate: fromDate, toDate: toDate, q: q, stage: stage, salesChannels: salesChannels, orderId: orderId, stores: stores, status: status, shortenUrls: shortenUrls, filterType: filterType).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -482,7 +482,7 @@ Get Order Details for company based on Company Id and Order Id
 
 
 ```kotlin
-client.order.getOrderDetails(orderId: orderId, next: next, previous: previous).safeAwait{ response, error->
+platformClient.order.getOrderDetails(orderId: orderId, next: next, previous: previous).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -544,7 +544,7 @@ Get Order Details for company based on Company Id and Order Id
 
 
 ```kotlin
-client.application("<APPLICATION_ID>").order.getOrderDetails(orderId: orderId, next: next, previous: previous).safeAwait{ response, error->
+platformClient.application("<APPLICATION_ID>").order.getOrderDetails(orderId: orderId, next: next, previous: previous).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -606,7 +606,7 @@ Get Orders for company based on Company Id
 
 
 ```kotlin
-client.order.getPicklistOrdersByCompanyId(pageNo: pageNo, pageSize: pageSize, fromDate: fromDate, toDate: toDate, q: q, stage: stage, salesChannels: salesChannels, orderId: orderId, stores: stores, status: status, shortenUrls: shortenUrls, filterType: filterType).safeAwait{ response, error->
+platformClient.order.getPicklistOrdersByCompanyId(pageNo: pageNo, pageSize: pageSize, fromDate: fromDate, toDate: toDate, q: q, stage: stage, salesChannels: salesChannels, orderId: orderId, stores: stores, status: status, shortenUrls: shortenUrls, filterType: filterType).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -677,7 +677,7 @@ Track Shipment by shipment id, for application based on application Id
 
 
 ```kotlin
-client.application("<APPLICATION_ID>").order.trackShipmentPlatform(shipmentId: shipmentId).safeAwait{ response, error->
+platformClient.application("<APPLICATION_ID>").order.trackShipmentPlatform(shipmentId: shipmentId).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -737,7 +737,7 @@ Track Order by order id, for application based on application Id
 
 
 ```kotlin
-client.application("<APPLICATION_ID>").order.trackOrder(orderId: orderId).safeAwait{ response, error->
+platformClient.application("<APPLICATION_ID>").order.trackOrder(orderId: orderId).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -797,7 +797,7 @@ Get all failed orders application wise
 
 
 ```kotlin
-client.application("<APPLICATION_ID>").order.failedOrders().safeAwait{ response, error->
+platformClient.application("<APPLICATION_ID>").order.failedOrders().safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -852,7 +852,7 @@ Reprocess order by order id
 
 
 ```kotlin
-client.application("<APPLICATION_ID>").order.reprocessOrder(orderId: orderId).safeAwait{ response, error->
+platformClient.application("<APPLICATION_ID>").order.reprocessOrder(orderId: orderId).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -912,7 +912,7 @@ Use this API to update the shipment using its shipment ID.
 
 
 ```kotlin
-client.application("<APPLICATION_ID>").order.updateShipment(shipmentId: shipmentId, body: body).safeAwait{ response, error->
+platformClient.application("<APPLICATION_ID>").order.updateShipment(shipmentId: shipmentId, body: body).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -972,7 +972,7 @@ Use this API to retrieve the issues that led to the cancellation of bags within 
 
 
 ```kotlin
-client.application("<APPLICATION_ID>").order.getPlatformShipmentReasons(action: action).safeAwait{ response, error->
+platformClient.application("<APPLICATION_ID>").order.getPlatformShipmentReasons(action: action).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -1032,7 +1032,7 @@ Use this API to track a shipment using its shipment ID.
 
 
 ```kotlin
-client.application("<APPLICATION_ID>").order.getShipmentTrackDetails(orderId: orderId, shipmentId: shipmentId).safeAwait{ response, error->
+platformClient.application("<APPLICATION_ID>").order.getShipmentTrackDetails(orderId: orderId, shipmentId: shipmentId).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -1093,7 +1093,7 @@ Use this API to get address of a shipment using its shipment ID and Address Cate
 
 
 ```kotlin
-client.order.getShipmentAddress(shipmentId: shipmentId, addressCategory: addressCategory).safeAwait{ response, error->
+platformClient.order.getShipmentAddress(shipmentId: shipmentId, addressCategory: addressCategory).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -1154,7 +1154,7 @@ Use this API to update address of a shipment using its shipment ID and Address C
 
 
 ```kotlin
-client.order.updateShipmentAddress(shipmentId: shipmentId, addressCategory: addressCategory, body: body).safeAwait{ response, error->
+platformClient.order.updateShipmentAddress(shipmentId: shipmentId, addressCategory: addressCategory, body: body).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -1215,7 +1215,7 @@ Get Orders for company based on Company Id
 
 
 ```kotlin
-client.application("<APPLICATION_ID>").order.getOrdersByApplicationId(pageNo: pageNo, pageSize: pageSize, fromDate: fromDate, toDate: toDate, q: q, stage: stage, salesChannels: salesChannels, orderId: orderId, stores: stores, status: status, dp: dp, shortenUrls: shortenUrls, filterType: filterType).safeAwait{ response, error->
+platformClient.application("<APPLICATION_ID>").order.getOrdersByApplicationId(pageNo: pageNo, pageSize: pageSize, fromDate: fromDate, toDate: toDate, q: q, stage: stage, salesChannels: salesChannels, orderId: orderId, stores: stores, status: status, dp: dp, shortenUrls: shortenUrls, filterType: filterType).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->

@@ -33,7 +33,7 @@ Get company profile
 
 
 ```kotlin
-client.companyprofile.cbsOnboardGet().safeAwait{ response, error->
+platformClient.companyprofile.cbsOnboardGet().safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -149,7 +149,7 @@ Edit company profile
 
 
 ```kotlin
-client.companyprofile.updateCompany(body: body).safeAwait{ response, error->
+platformClient.companyprofile.updateCompany(body: body).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -211,7 +211,7 @@ Get company metrics
 
 
 ```kotlin
-client.companyprofile.getCompanyMetrics().safeAwait{ response, error->
+platformClient.companyprofile.getCompanyMetrics().safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -289,7 +289,7 @@ Get a single brand.
 
 
 ```kotlin
-client.companyprofile.getBrand(brandId: brandId).safeAwait{ response, error->
+platformClient.companyprofile.getBrand(brandId: brandId).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -377,7 +377,7 @@ Edit a brand.
 
 
 ```kotlin
-client.companyprofile.editBrand(brandId: brandId, body: body).safeAwait{ response, error->
+platformClient.companyprofile.editBrand(brandId: brandId, body: body).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -440,7 +440,7 @@ Create a Brand.
 
 
 ```kotlin
-client.companyprofile.createBrand(body: body).safeAwait{ response, error->
+platformClient.companyprofile.createBrand(body: body).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -502,7 +502,7 @@ Get brands associated to a company
 
 
 ```kotlin
-client.companyprofile.getBrands(pageNo: pageNo, pageSize: pageSize, q: q).safeAwait{ response, error->
+platformClient.companyprofile.getBrands(pageNo: pageNo, pageSize: pageSize, q: q).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -651,7 +651,7 @@ Create a company brand mapping.
 
 
 ```kotlin
-client.companyprofile.createCompanyBrandMapping(body: body).safeAwait{ response, error->
+platformClient.companyprofile.createCompanyBrandMapping(body: body).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -712,7 +712,7 @@ Get list of locations
 
 
 ```kotlin
-client.companyprofile.getLocations(storeType: storeType, q: q, stage: stage, pageNo: pageNo, pageSize: pageSize, locationIds: locationIds).safeAwait{ response, error->
+platformClient.companyprofile.getLocations(storeType: storeType, q: q, stage: stage, pageNo: pageNo, pageSize: pageSize, locationIds: locationIds).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -960,7 +960,7 @@ Create a location associated to a company.
 
 
 ```kotlin
-client.companyprofile.createLocation(body: body).safeAwait{ response, error->
+platformClient.companyprofile.createLocation(body: body).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -1022,7 +1022,7 @@ Get details of a specific location.
 
 
 ```kotlin
-client.companyprofile.getLocationDetail(locationId: locationId).safeAwait{ response, error->
+platformClient.companyprofile.getLocationDetail(locationId: locationId).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -1263,7 +1263,7 @@ Edit a location asscoiated to a company.
 
 
 ```kotlin
-client.companyprofile.updateLocation(locationId: locationId, body: body).safeAwait{ response, error->
+platformClient.companyprofile.updateLocation(locationId: locationId, body: body).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -1326,7 +1326,7 @@ Create a location asscoiated to a company in bulk.
 
 
 ```kotlin
-client.companyprofile.createLocationBulk(body: body).safeAwait{ response, error->
+platformClient.companyprofile.createLocationBulk(body: body).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -1388,7 +1388,7 @@ Location Reassignment
 
 
 ```kotlin
-client.companyprofile.getOptimalLocations(body: body).safeAwait{ response, error->
+platformClient.companyprofile.getOptimalLocations(body: body).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->

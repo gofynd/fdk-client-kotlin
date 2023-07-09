@@ -168,24 +168,6 @@ enum class Navigator(
         )
     ),
    
-    PRODUCT_REVIEWS(
-        pageType = PageType.productReviews,
-        navName = "Product Reviews",
-        link = "/product/:slug/reviews",
-        params = arrayListOf(
-            NavParam(key = "slug", required = true)
-        )
-    ),
-   
-    ADD_PRODUCT_REVIEW(
-        pageType = PageType.addProductReview,
-        navName = "Add Product review",
-        link = "/product/:slug/add-review",
-        params = arrayListOf(
-            NavParam(key = "slug", required = true)
-        )
-    ),
-   
     PRODUCT_REQUEST(
         pageType = PageType.productRequest,
         navName = "Product Request",
@@ -343,6 +325,12 @@ enum class Navigator(
         pageType = PageType.returnPolicy,
         navName = "Return policy",
         link = "/return-policy"
+    ),
+   
+    ORDER_STATUS(
+        pageType = PageType.orderStatus,
+        navName = "Order status",
+        link = "/cart/order-status"
     )
    
 }

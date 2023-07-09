@@ -22,7 +22,7 @@ Get TAT of a product
 
 
 ```kotlin
-logistic.getTatProduct(body: body).safeAwait{ response, error->
+applicationClient.logistic.getTatProduct(body: body).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -81,7 +81,7 @@ Get Pincode Zones
 
 
 ```kotlin
-logistic.getPincodeZones(body: body).safeAwait{ response, error->
+applicationClient.logistic.getPincodeZones(body: body).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -140,7 +140,7 @@ Get city from PIN Code
 
 
 ```kotlin
-logistic.getPincodeCity(pincode: pincode).safeAwait{ response, error->
+applicationClient.logistic.getPincodeCity(pincode: pincode).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
