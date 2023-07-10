@@ -11,18 +11,28 @@ import com.sdk.application.models.logistic.*
 interface LogisticApiList {
     
     
-    @POST 
-    fun getTatProduct(@Url url1: String?   ,@Body body: GetTatProductReqBody)
-    : Deferred<Response<GetTatProductResponse>>
+    @GET 
+    fun getPincodeCity(@Url url1: String?    )
+    : Deferred<Response<PincodeApiResponse>>
     
     
     @POST 
-    fun getPincodeZones(@Url url1: String?   ,@Body body: GetPincodeZonesReqBody)
-    : Deferred<Response<GetPincodeZonesResponse>>
+    fun getTatProduct(@Url url1: String?   ,@Body body: TATViewRequest)
+    : Deferred<Response<TATViewResponse>>
     
     
     @GET 
-    fun getPincodeCity(@Url url1: String?    )
-    : Deferred<Response<GetPincodeCityResponse>>
+    fun getAllCountries(@Url url1: String?   )
+    : Deferred<Response<CountryListResponse>>
+    
+    
+    @POST 
+    fun getPincodeZones(@Url url1: String?   ,@Body body: GetZoneFromPincodeViewRequest)
+    : Deferred<Response<GetZoneFromPincodeViewResponse>>
+    
+    
+    @POST 
+    fun getOptimalLocations(@Url url1: String?   ,@Body body: ReAssignStoreRequest)
+    : Deferred<Response<ReAssignStoreResponse>>
     
 }

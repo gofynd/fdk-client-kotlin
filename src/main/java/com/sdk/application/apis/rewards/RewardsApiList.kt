@@ -11,24 +11,14 @@ import com.sdk.application.models.rewards.*
 interface RewardsApiList {
     
     
-    @POST 
-    fun getPointsOnProduct(@Url url1: String?   ,@Body body: CatalogueOrderRequest)
-    : Deferred<Response<CatalogueOrderResponse>>
-    
-    
     @GET 
     fun getOfferByName(@Url url1: String?    )
     : Deferred<Response<Offer>>
     
     
     @POST 
-    fun getOrderDiscount(@Url url1: String?   ,@Body body: OrderDiscountRequest)
-    : Deferred<Response<OrderDiscountResponse>>
-    
-    
-    @GET 
-    fun getUserPoints(@Url url1: String?   )
-    : Deferred<Response<PointsResponse>>
+    fun catalogueOrder(@Url url1: String?   ,@Body body: CatalogueOrderRequest)
+    : Deferred<Response<CatalogueOrderResponse>>
     
     
     @GET 
@@ -37,8 +27,18 @@ interface RewardsApiList {
     
     
     @GET 
+    fun getUserPoints(@Url url1: String?   )
+    : Deferred<Response<PointsResponse>>
+    
+    
+    @GET 
     fun getUserReferralDetails(@Url url1: String?   )
     : Deferred<Response<ReferralDetailsResponse>>
+    
+    
+    @POST 
+    fun getOrderDiscount(@Url url1: String?   ,@Body body: OrderDiscountRequest)
+    : Deferred<Response<OrderDiscountResponse>>
     
     
     @POST 

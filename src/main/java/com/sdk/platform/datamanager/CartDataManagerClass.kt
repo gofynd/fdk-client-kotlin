@@ -65,6 +65,42 @@ class CartDataManagerClass(val config: PlatformConfig, val unauthorizedAction: (
     
     
     
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
 
 inner class ApplicationClient(val applicationId:String,val config: PlatformConfig){
 
@@ -209,10 +245,10 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     }
     
     
-    suspend fun getPromotions(pageNo: Int?=null, pageSize: Int?=null, q: String?=null, status: String?=null, promoGroup: String?=null, promotionType: String?=null, fpPanel: String?=null, promotionId: String?=null)
+    suspend fun getPromotions(pageNo: Int?=null, pageSize: Int?=null, q: String?=null, isActive: Boolean?=null, promoGroup: String?=null, promotionType: String?=null, fpPanel: String?=null, promotionId: String?=null)
     : Deferred<Response<PromotionsResponse>>? {
         return if (config.oauthClient.isAccessTokenValid()) {
-                cartApiList?.getPromotions(companyId = config.companyId , applicationId = applicationId , pageNo = pageNo, pageSize = pageSize, q = q, status = status, promoGroup = promoGroup, promotionType = promotionType, fpPanel = fpPanel, promotionId = promotionId )
+                cartApiList?.getPromotions(companyId = config.companyId , applicationId = applicationId , pageNo = pageNo, pageSize = pageSize, q = q, isActive = isActive, promoGroup = promoGroup, promotionType = promotionType, fpPanel = fpPanel, promotionId = promotionId )
         } else {
             null
         }
@@ -274,7 +310,7 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     * Summary: Paginator for getPromotions
     **/
     fun getPromotionsPaginator(
-    pageSize: Int?=null, q: String?=null, status: String?=null, promoGroup: String?=null, promotionType: String?=null, fpPanel: String?=null, promotionId: String?=null
+    pageSize: Int?=null, q: String?=null, isActive: Boolean?=null, promoGroup: String?=null, promotionType: String?=null, fpPanel: String?=null, promotionId: String?=null
     
     ) : Paginator<PromotionsResponse>{
         val paginator = Paginator<PromotionsResponse>()
@@ -287,7 +323,7 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
                     val pageId = paginator.nextId
                     val pageNo = paginator.pageNo
                     val pageType = "number"
-                    cartApiList?.getPromotions(companyId = config.companyId , applicationId = applicationId , pageNo = pageNo, pageSize = pageSize, q = q, status = status, promoGroup = promoGroup, promotionType = promotionType, fpPanel = fpPanel, promotionId = promotionId)?.safeAwait{ response, error ->
+                    cartApiList?.getPromotions(companyId = config.companyId , applicationId = applicationId , pageNo = pageNo, pageSize = pageSize, q = q, isActive = isActive, promoGroup = promoGroup, promotionType = promotionType, fpPanel = fpPanel, promotionId = promotionId)?.safeAwait{ response, error ->
                         response?.let {
                             val page = response.peekContent()?.page
                             paginator.setPaginator(hasNext=page?.hasNext?:false,pageNo=if (page?.hasNext == true) ((pageNo ?: 0) + 1) else pageNo)
@@ -348,10 +384,70 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     }
     
     
-    suspend fun getPromosCouponConfig()
+    suspend fun getPromosCouponConfig(entityType: String?=null, isHidden: Boolean?=null)
     : Deferred<Response<ActivePromosResponse>>? {
         return if (config.oauthClient.isAccessTokenValid()) {
-                cartApiList?.getPromosCouponConfig(companyId = config.companyId , applicationId = applicationId  )
+                cartApiList?.getPromosCouponConfig(companyId = config.companyId , applicationId = applicationId , entityType = entityType, isHidden = isHidden )
+        } else {
+            null
+        }
+    }
+    
+    
+    suspend fun updateCartMetaConfig(cartMetaId: String,body: CartMetaConfigUpdate)
+    : Deferred<Response<CartMetaConfigUpdate>>? {
+        return if (config.oauthClient.isAccessTokenValid()) {
+                cartApiList?.updateCartMetaConfig(companyId = config.companyId , applicationId = applicationId , cartMetaId = cartMetaId, body = body)
+        } else {
+            null
+        }
+    }
+    
+    
+    suspend fun fetchCartMetaConfig()
+    : Deferred<Response<CartMetaConfigAdd>>? {
+        return if (config.oauthClient.isAccessTokenValid()) {
+                cartApiList?.fetchCartMetaConfig(companyId = config.companyId , applicationId = applicationId  )
+        } else {
+            null
+        }
+    }
+    
+    
+    suspend fun createCartMetaConfig(body: CartMetaConfigAdd)
+    : Deferred<Response<CartMetaConfigAdd>>? {
+        return if (config.oauthClient.isAccessTokenValid()) {
+                cartApiList?.createCartMetaConfig(companyId = config.companyId , applicationId = applicationId , body = body)
+        } else {
+            null
+        }
+    }
+    
+    
+    suspend fun updateCartDynamicInjection(id: String,body: CartDynamicInjectionUpdate)
+    : Deferred<Response<CartDynamicInjectionResponse>>? {
+        return if (config.oauthClient.isAccessTokenValid()) {
+                cartApiList?.updateCartDynamicInjection(companyId = config.companyId , applicationId = applicationId , id = id, body = body)
+        } else {
+            null
+        }
+    }
+    
+    
+    suspend fun removeCartDynamicInjection(id: String)
+    : Deferred<Response<SuccessMessage>>? {
+        return if (config.oauthClient.isAccessTokenValid()) {
+                cartApiList?.removeCartDynamicInjection(companyId = config.companyId , applicationId = applicationId , id = id )
+        } else {
+            null
+        }
+    }
+    
+    
+    suspend fun createCartDynamicInjection(body: CartDynamicInjectionAdd)
+    : Deferred<Response<CartDynamicInjectionResponse>>? {
+        return if (config.oauthClient.isAccessTokenValid()) {
+                cartApiList?.createCartDynamicInjection(companyId = config.companyId , applicationId = applicationId , body = body)
         } else {
             null
         }
@@ -512,30 +608,330 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     }
     
     
-    suspend fun updateCartDynamicInjection(id: String,body: CartDynamicInjectionUpdate)
-    : Deferred<Response<CartDynamicInjectionResponse>>? {
+    suspend fun getCouponOptionValues()
+    : Deferred<Response<HashMap<String,Any>>>? {
         return if (config.oauthClient.isAccessTokenValid()) {
-                cartApiList?.updateCartDynamicInjection(companyId = config.companyId , applicationId = applicationId , id = id, body = body)
+                cartApiList?.getCouponOptionValues(companyId = config.companyId , applicationId = applicationId  )
         } else {
             null
         }
     }
     
     
-    suspend fun removeCartDynamicInjection(id: String)
-    : Deferred<Response<SuccessMessage>>? {
+    suspend fun getCouponCodeExists(code: String?=null)
+    : Deferred<Response<HashMap<String,Any>>>? {
         return if (config.oauthClient.isAccessTokenValid()) {
-                cartApiList?.removeCartDynamicInjection(companyId = config.companyId , applicationId = applicationId , id = id )
+                cartApiList?.getCouponCodeExists(companyId = config.companyId , applicationId = applicationId , code = code )
         } else {
             null
         }
     }
     
     
-    suspend fun createCartDynamicInjection(body: CartDynamicInjectionAdd)
-    : Deferred<Response<CartDynamicInjectionResponse>>? {
+    suspend fun getPromotionCodeExists(code: String?=null)
+    : Deferred<Response<HashMap<String,Any>>>? {
         return if (config.oauthClient.isAccessTokenValid()) {
-                cartApiList?.createCartDynamicInjection(companyId = config.companyId , applicationId = applicationId , body = body)
+                cartApiList?.getPromotionCodeExists(companyId = config.companyId , applicationId = applicationId , code = code )
+        } else {
+            null
+        }
+    }
+    
+    
+    suspend fun overrideCart(body: OverrideCheckoutReq)
+    : Deferred<Response<OverrideCheckoutResponse>>? {
+        return if (config.oauthClient.isAccessTokenValid()) {
+                cartApiList?.overrideCart(companyId = config.companyId , applicationId = applicationId , body = body)
+        } else {
+            null
+        }
+    }
+    
+    
+    suspend fun getCartShareLink(body: GetShareCartLinkRequest)
+    : Deferred<Response<GetShareCartLinkResponse>>? {
+        return if (config.oauthClient.isAccessTokenValid()) {
+                cartApiList?.getCartShareLink(companyId = config.companyId , applicationId = applicationId , body = body)
+        } else {
+            null
+        }
+    }
+    
+    
+    suspend fun getCartSharedItems(token: String)
+    : Deferred<Response<SharedCartResponse>>? {
+        return if (config.oauthClient.isAccessTokenValid()) {
+                cartApiList?.getCartSharedItems(companyId = config.companyId , applicationId = applicationId , token = token )
+        } else {
+            null
+        }
+    }
+    
+    
+    suspend fun updateCartWithSharedItems(token: String, action: String, cartId: String?=null)
+    : Deferred<Response<SharedCartResponse>>? {
+        return if (config.oauthClient.isAccessTokenValid()) {
+                cartApiList?.updateCartWithSharedItems(companyId = config.companyId , applicationId = applicationId , token = token, action = action, cartId = cartId )
+        } else {
+            null
+        }
+    }
+    
+    
+    suspend fun getCartList(fromDate: String?=null, toDate: String?=null, filterOn: String?=null)
+    : Deferred<Response<MultiCartResponse>>? {
+        return if (config.oauthClient.isAccessTokenValid()) {
+                cartApiList?.getCartList(companyId = config.companyId , applicationId = applicationId , fromDate = fromDate, toDate = toDate, filterOn = filterOn )
+        } else {
+            null
+        }
+    }
+    
+    
+    suspend fun updateCartUser(id: String?=null,body: UpdateUserCartMapping)
+    : Deferred<Response<UserCartMappingResponse>>? {
+        return if (config.oauthClient.isAccessTokenValid()) {
+                cartApiList?.updateCartUser(companyId = config.companyId , applicationId = applicationId , id = id, body = body)
+        } else {
+            null
+        }
+    }
+    
+    
+    suspend fun getCart(id: String?=null, userId: String?=null, i: Boolean?=null, b: Boolean?=null, assignCardId: Int?=null, buyNow: Boolean?=null)
+    : Deferred<Response<CartDetailResponse>>? {
+        return if (config.oauthClient.isAccessTokenValid()) {
+                cartApiList?.getCart(companyId = config.companyId , applicationId = applicationId , id = id, userId = userId, i = i, b = b, assignCardId = assignCardId, buyNow = buyNow )
+        } else {
+            null
+        }
+    }
+    
+    
+    suspend fun platformAddItems(i: Boolean?=null, b: Boolean?=null, buyNow: Boolean?=null, id: String?=null,body: PlatformAddCartRequest)
+    : Deferred<Response<AddCartDetailResponse>>? {
+        return if (config.oauthClient.isAccessTokenValid()) {
+                cartApiList?.platformAddItems(companyId = config.companyId , applicationId = applicationId , i = i, b = b, buyNow = buyNow, id = id, body = body)
+        } else {
+            null
+        }
+    }
+    
+    
+    suspend fun platformUpdateCart(id: String?=null, i: Boolean?=null, b: Boolean?=null, buyNow: Boolean?=null,body: PlatformUpdateCartRequest)
+    : Deferred<Response<UpdateCartDetailResponse>>? {
+        return if (config.oauthClient.isAccessTokenValid()) {
+                cartApiList?.platformUpdateCart(companyId = config.companyId , applicationId = applicationId , id = id, i = i, b = b, buyNow = buyNow, body = body)
+        } else {
+            null
+        }
+    }
+    
+    
+    suspend fun deleteCart(id: String?=null,body: DeleteCartRequest)
+    : Deferred<Response<DeleteCartDetailResponse>>? {
+        return if (config.oauthClient.isAccessTokenValid()) {
+                cartApiList?.deleteCart(companyId = config.companyId , applicationId = applicationId , id = id, body = body)
+        } else {
+            null
+        }
+    }
+    
+    
+    suspend fun getItemCount(id: String?=null, buyNow: Boolean?=null)
+    : Deferred<Response<CartItemCountResponse>>? {
+        return if (config.oauthClient.isAccessTokenValid()) {
+                cartApiList?.getItemCount(companyId = config.companyId , applicationId = applicationId , id = id, buyNow = buyNow )
+        } else {
+            null
+        }
+    }
+    
+    
+    suspend fun getAppCoupons(id: String?=null, buyNow: Boolean?=null)
+    : Deferred<Response<GetCouponResponse>>? {
+        return if (config.oauthClient.isAccessTokenValid()) {
+                cartApiList?.getAppCoupons(companyId = config.companyId , applicationId = applicationId , id = id, buyNow = buyNow )
+        } else {
+            null
+        }
+    }
+    
+    
+    suspend fun applyCoupon(i: Boolean?=null, b: Boolean?=null, p: Boolean?=null, id: String?=null, buyNow: Boolean?=null,body: ApplyCouponRequest)
+    : Deferred<Response<CartDetailResponse>>? {
+        return if (config.oauthClient.isAccessTokenValid()) {
+                cartApiList?.applyCoupon(companyId = config.companyId , applicationId = applicationId , i = i, b = b, p = p, id = id, buyNow = buyNow, body = body)
+        } else {
+            null
+        }
+    }
+    
+    
+    suspend fun removeCoupon(uid: String?=null, buyNow: Boolean?=null)
+    : Deferred<Response<CartDetailResponse>>? {
+        return if (config.oauthClient.isAccessTokenValid()) {
+                cartApiList?.removeCoupon(companyId = config.companyId , applicationId = applicationId , uid = uid, buyNow = buyNow )
+        } else {
+            null
+        }
+    }
+    
+    
+    suspend fun getAddresses(cartId: String?=null, buyNow: Boolean?=null, mobileNo: String?=null, checkoutMode: String?=null, tags: String?=null, isDefault: Boolean?=null, userId: String?=null)
+    : Deferred<Response<PlatformGetAddressesResponse>>? {
+        return if (config.oauthClient.isAccessTokenValid()) {
+                cartApiList?.getAddresses(companyId = config.companyId , applicationId = applicationId , cartId = cartId, buyNow = buyNow, mobileNo = mobileNo, checkoutMode = checkoutMode, tags = tags, isDefault = isDefault, userId = userId )
+        } else {
+            null
+        }
+    }
+    
+    
+    suspend fun addAddress(body: PlatformAddress)
+    : Deferred<Response<SaveAddressResponse>>? {
+        return if (config.oauthClient.isAccessTokenValid()) {
+                cartApiList?.addAddress(companyId = config.companyId , applicationId = applicationId , body = body)
+        } else {
+            null
+        }
+    }
+    
+    
+    suspend fun getAddressById(id: String, cartId: String?=null, buyNow: Boolean?=null, mobileNo: String?=null, checkoutMode: String?=null, tags: String?=null, isDefault: Boolean?=null, userId: String?=null)
+    : Deferred<Response<PlatformAddress>>? {
+        return if (config.oauthClient.isAccessTokenValid()) {
+                cartApiList?.getAddressById(companyId = config.companyId , applicationId = applicationId , id = id, cartId = cartId, buyNow = buyNow, mobileNo = mobileNo, checkoutMode = checkoutMode, tags = tags, isDefault = isDefault, userId = userId )
+        } else {
+            null
+        }
+    }
+    
+    
+    suspend fun updateAddress(id: String,body: PlatformAddress)
+    : Deferred<Response<UpdateAddressResponse>>? {
+        return if (config.oauthClient.isAccessTokenValid()) {
+                cartApiList?.updateAddress(companyId = config.companyId , applicationId = applicationId , id = id, body = body)
+        } else {
+            null
+        }
+    }
+    
+    
+    suspend fun removeAddress(id: String, userId: String?=null)
+    : Deferred<Response<DeleteAddressResponse>>? {
+        return if (config.oauthClient.isAccessTokenValid()) {
+                cartApiList?.removeAddress(companyId = config.companyId , applicationId = applicationId , id = id, userId = userId )
+        } else {
+            null
+        }
+    }
+    
+    
+    suspend fun selectAddress(cartId: String?=null, buyNow: Boolean?=null, i: Boolean?=null, b: Boolean?=null,body: PlatformSelectCartAddressRequest)
+    : Deferred<Response<CartDetailResponse>>? {
+        return if (config.oauthClient.isAccessTokenValid()) {
+                cartApiList?.selectAddress(companyId = config.companyId , applicationId = applicationId , cartId = cartId, buyNow = buyNow, i = i, b = b, body = body)
+        } else {
+            null
+        }
+    }
+    
+    
+    suspend fun getShipments(pickAtStoreUid: Int?=null, orderingStoreId: Int?=null, i: Boolean?=null, p: Boolean?=null, id: String?=null, addressId: String?=null, areaCode: String?=null, orderType: String?=null)
+    : Deferred<Response<PlatformCartShipmentsResponse>>? {
+        return if (config.oauthClient.isAccessTokenValid()) {
+                cartApiList?.getShipments(companyId = config.companyId , applicationId = applicationId , pickAtStoreUid = pickAtStoreUid, orderingStoreId = orderingStoreId, i = i, p = p, id = id, addressId = addressId, areaCode = areaCode, orderType = orderType )
+        } else {
+            null
+        }
+    }
+    
+    
+    suspend fun updateShipments(i: Boolean?=null, p: Boolean?=null, id: String?=null, addressId: String?=null, areaCode: String?=null, orderType: String?=null,body: UpdateCartShipmentRequest)
+    : Deferred<Response<PlatformCartShipmentsResponse>>? {
+        return if (config.oauthClient.isAccessTokenValid()) {
+                cartApiList?.updateShipments(companyId = config.companyId , applicationId = applicationId , i = i, p = p, id = id, addressId = addressId, areaCode = areaCode, orderType = orderType, body = body)
+        } else {
+            null
+        }
+    }
+    
+    
+    suspend fun updateCartMeta(id: String?=null, buyNow: Boolean?=null,body: PlatformCartMetaRequest)
+    : Deferred<Response<CartMetaResponse>>? {
+        return if (config.oauthClient.isAccessTokenValid()) {
+                cartApiList?.updateCartMeta(companyId = config.companyId , applicationId = applicationId , id = id, buyNow = buyNow, body = body)
+        } else {
+            null
+        }
+    }
+    
+    
+    suspend fun platformCheckoutCart(id: String?=null,body: PlatformCartCheckoutDetailRequest)
+    : Deferred<Response<CartCheckoutResponse>>? {
+        return if (config.oauthClient.isAccessTokenValid()) {
+                cartApiList?.platformCheckoutCart(companyId = config.companyId , applicationId = applicationId , id = id, body = body)
+        } else {
+            null
+        }
+    }
+    
+    
+    suspend fun getAvailableDeliveryModes(areaCode: String, id: String?=null)
+    : Deferred<Response<CartDeliveryModesResponse>>? {
+        return if (config.oauthClient.isAccessTokenValid()) {
+                cartApiList?.getAvailableDeliveryModes(companyId = config.companyId , applicationId = applicationId , areaCode = areaCode, id = id )
+        } else {
+            null
+        }
+    }
+    
+    
+    suspend fun getStoreAddressByUid(storeUid: Int)
+    : Deferred<Response<StoreDetailsResponse>>? {
+        return if (config.oauthClient.isAccessTokenValid()) {
+                cartApiList?.getStoreAddressByUid(companyId = config.companyId , applicationId = applicationId , storeUid = storeUid )
+        } else {
+            null
+        }
+    }
+    
+    
+    suspend fun selectPaymentMode(id: String?=null, buyNow: Boolean?=null, orderType: String?=null,body: UpdateCartPaymentRequest)
+    : Deferred<Response<CartDetailResponse>>? {
+        return if (config.oauthClient.isAccessTokenValid()) {
+                cartApiList?.selectPaymentMode(companyId = config.companyId , applicationId = applicationId , id = id, buyNow = buyNow, orderType = orderType, body = body)
+        } else {
+            null
+        }
+    }
+    
+    
+    suspend fun validateCouponForPayment(id: String?=null, buyNow: Boolean?=null, addressId: String?=null, paymentMode: String?=null, paymentIdentifier: String?=null, aggregatorName: String?=null, merchantCode: String?=null)
+    : Deferred<Response<PaymentCouponValidate>>? {
+        return if (config.oauthClient.isAccessTokenValid()) {
+                cartApiList?.validateCouponForPayment(companyId = config.companyId , applicationId = applicationId , id = id, buyNow = buyNow, addressId = addressId, paymentMode = paymentMode, paymentIdentifier = paymentIdentifier, aggregatorName = aggregatorName, merchantCode = merchantCode )
+        } else {
+            null
+        }
+    }
+    
+    
+    suspend fun platformCheckoutCartV2(id: String?=null,body: PlatformCartCheckoutDetailV2Request)
+    : Deferred<Response<CartCheckoutResponse>>? {
+        return if (config.oauthClient.isAccessTokenValid()) {
+                cartApiList?.platformCheckoutCartV2(companyId = config.companyId , applicationId = applicationId , id = id, body = body)
+        } else {
+            null
+        }
+    }
+    
+    
+    suspend fun selectPaymentModeV2(id: String?=null, buyNow: Boolean?=null, orderType: String?=null,body: UpdateCartPaymentRequestV2)
+    : Deferred<Response<CartDetailResponse>>? {
+        return if (config.oauthClient.isAccessTokenValid()) {
+                cartApiList?.selectPaymentModeV2(companyId = config.companyId , applicationId = applicationId , id = id, buyNow = buyNow, orderType = orderType, body = body)
         } else {
             null
         }

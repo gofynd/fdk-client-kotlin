@@ -25,4 +25,8 @@ interface ShareApiList {
     fun updateShortLinkById(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Path("id") id: String,@Body body: ShortLinkReq)
     : Deferred<Response<ShortLinkRes>>
     
+    @GET ("/service/platform/share/v1.0/company/{company_id}/application/{application_id}/links/short-link/click-stats")
+    fun getShortLinkClickStats(@Query("surl_id") surlId: String, @Path("company_id") companyId: String, @Path("application_id") applicationId: String)
+    : Deferred<Response<ClickStatsResponse>>
+    
 }

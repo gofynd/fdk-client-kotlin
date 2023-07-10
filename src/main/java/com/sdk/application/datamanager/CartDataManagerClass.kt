@@ -29,6 +29,8 @@ class CartDataManagerClass(val config: ApplicationConfig, val unauthorizedAction
             
                     _relativeUrls["updateCart"] = "/service/application/cart/v1.0/detail".substring(1)
             
+                    _relativeUrls["deleteCart"] = "/service/application/cart/v1.0/cart_archive".substring(1)
+            
                     _relativeUrls["getItemCount"] = "/service/application/cart/v1.0/basic".substring(1)
             
                     _relativeUrls["getCoupons"] = "/service/application/cart/v1.0/coupon".substring(1)
@@ -124,10 +126,10 @@ class CartDataManagerClass(val config: ApplicationConfig, val unauthorizedAction
 
     
     
-    fun addItems(i: Boolean?=null, b: Boolean?=null, areaCode: String?=null, id: String?=null, buyNow: Boolean?=null, body: AddCartRequest): Deferred<Response<AddCartDetailResponse>>? {
+    fun addItems(i: Boolean?=null, b: Boolean?=null, areaCode: String?=null, buyNow: Boolean?=null, id: String?=null, body: AddCartRequest): Deferred<Response<AddCartDetailResponse>>? {
         var fullUrl : String? = _relativeUrls["addItems"] 
         
-        return cartApiList?.addItems(fullUrl    ,  i = i,    b = b,    areaCode = areaCode,    id = id,    buyNow = buyNow, body = body)}
+        return cartApiList?.addItems(fullUrl    ,  i = i,    b = b,    areaCode = areaCode,    buyNow = buyNow,    id = id, body = body)}
 
     
     
@@ -135,6 +137,13 @@ class CartDataManagerClass(val config: ApplicationConfig, val unauthorizedAction
         var fullUrl : String? = _relativeUrls["updateCart"] 
         
         return cartApiList?.updateCart(fullUrl    ,  id = id,    i = i,    b = b,    areaCode = areaCode,    buyNow = buyNow, body = body)}
+
+    
+    
+    fun deleteCart(id: String?=null): Deferred<Response<DeleteCartDetailResponse>>? {
+        var fullUrl : String? = _relativeUrls["deleteCart"] 
+        
+        return cartApiList?.deleteCart(fullUrl    ,  id = id)}
 
     
     
@@ -235,10 +244,10 @@ class CartDataManagerClass(val config: ApplicationConfig, val unauthorizedAction
 
     
     
-    fun validateCouponForPayment(id: String?=null, buyNow: Boolean?=null, addressId: String?=null, paymentMode: String?=null, paymentIdentifier: String?=null, aggregatorName: String?=null, merchantCode: String?=null): Deferred<Response<PaymentCouponValidate>>? {
+    fun validateCouponForPayment(id: String?=null, buyNow: Boolean?=null, addressId: String?=null, paymentMode: String?=null, paymentIdentifier: String?=null, aggregatorName: String?=null, merchantCode: String?=null, iin: String?=null, network: String?=null, type: String?=null, cardId: String?=null): Deferred<Response<PaymentCouponValidate>>? {
         var fullUrl : String? = _relativeUrls["validateCouponForPayment"] 
         
-        return cartApiList?.validateCouponForPayment(fullUrl    ,  id = id,    buyNow = buyNow,    addressId = addressId,    paymentMode = paymentMode,    paymentIdentifier = paymentIdentifier,    aggregatorName = aggregatorName,    merchantCode = merchantCode)}
+        return cartApiList?.validateCouponForPayment(fullUrl    ,  id = id,    buyNow = buyNow,    addressId = addressId,    paymentMode = paymentMode,    paymentIdentifier = paymentIdentifier,    aggregatorName = aggregatorName,    merchantCode = merchantCode,    iin = iin,    network = network,    type = type,    cardId = cardId)}
 
     
     

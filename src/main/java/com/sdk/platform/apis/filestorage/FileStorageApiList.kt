@@ -42,7 +42,7 @@ interface FileStorageApiList {
     : Deferred<Response<BrowseResponse>>
     
     @GET ("/service/platform/assets/v1.0/company/{company_id}/application/{application_id}/namespaces/{namespace}/browse/")
-    fun browse(@Path("namespace") namespace: String, @Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Query("page_no") pageNo: Int?)
+    fun appbrowse(@Path("namespace") namespace: String, @Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Query("page_no") pageNo: Int?)
     : Deferred<Response<BrowseResponse>>
     
     @GET ("/service/platform/assets/v1.0/company/{company_id}/proxy/")

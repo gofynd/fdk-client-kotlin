@@ -11,90 +11,6 @@ import com.google.gson.annotations.SerializedName
 
              
 /*
-    Model: AppUser
-*/
-@Parcelize
-data class AppUser(
-    
-    
-    
-    @SerializedName("_id")
-    var id: String?=null,
-    
-    @SerializedName("active")
-    var active: Boolean?=null,
-    
-    @SerializedName("application_id")
-    var applicationId: String?=null,
-    
-    @SerializedName("block_reason")
-    var blockReason: String?=null,
-    
-    @SerializedName("updated_at")
-    var updatedAt: String?=null,
-    
-    @SerializedName("updated_by")
-    var updatedBy: String?=null,
-    
-    @SerializedName("user_id")
-    var userId: String?=null
-    
-): Parcelable {
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-}
-
-
-
-             
-/*
-    Model: Asset
-*/
-@Parcelize
-data class Asset(
-    
-    
-    
-    @SerializedName("aspect_ratio")
-    var aspectRatio: String?=null,
-    
-    @SerializedName("id")
-    var id: String?=null,
-    
-    @SerializedName("secure_url")
-    var secureUrl: String?=null
-    
-): Parcelable {
-    
-    
-    
-    
-    
-    
-    
-    
-    
-}
-
-
-
-             
-/*
     Model: E
 */
 @Parcelize
@@ -103,7 +19,7 @@ data class E(
     
     
     @SerializedName("code")
-    var code: @RawValue HashMap<String,Any>?=null,
+    var code: Int?=null,
     
     @SerializedName("exception")
     var exception: String?=null,
@@ -112,16 +28,7 @@ data class E(
     var info: String?=null,
     
     @SerializedName("message")
-    var message: String?=null,
-    
-    @SerializedName("request_id")
-    var requestId: String?=null,
-    
-    @SerializedName("stack_trace")
-    var stackTrace: String?=null,
-    
-    @SerializedName("status")
-    var status: Int?=null
+    var message: String?=null
     
 ): Parcelable {
     
@@ -134,6 +41,27 @@ data class E(
     
     
     
+    
+}
+
+
+
+             
+/*
+    Model: GiveawayResponse
+*/
+@Parcelize
+data class GiveawayResponse(
+    
+    
+    
+    @SerializedName("items")
+    var items: ArrayList<Giveaway>?=null,
+    
+    @SerializedName("page")
+    var page: Page?=null
+    
+): Parcelable {
     
     
     
@@ -224,18 +152,55 @@ data class Giveaway(
 
              
 /*
-    Model: GiveawayResponse
+    Model: Schedule
 */
 @Parcelize
-data class GiveawayResponse(
+data class Schedule(
     
     
     
-    @SerializedName("items")
-    var items: ArrayList<Giveaway>?=null,
+    @SerializedName("duration")
+    var duration: Int?=null,
     
-    @SerializedName("page")
-    var page: Page?=null
+    @SerializedName("end")
+    var end: String?=null,
+    
+    @SerializedName("start")
+    var start: String?=null,
+    
+    @SerializedName("cron")
+    var cron: String?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: RewardsAudience
+*/
+@Parcelize
+data class RewardsAudience(
+    
+    
+    
+    @SerializedName("header_user_id")
+    var headerUserId: String?=null,
+    
+    @SerializedName("id")
+    var id: String?=null
     
 ): Parcelable {
     
@@ -251,73 +216,23 @@ data class GiveawayResponse(
 
              
 /*
-    Model: HistoryPretty
+    Model: Asset
 */
 @Parcelize
-data class HistoryPretty(
+data class Asset(
     
     
     
-    @SerializedName("_id")
+    @SerializedName("aspect_ratio")
+    var aspectRatio: String?=null,
+    
+    @SerializedName("id")
     var id: String?=null,
     
-    @SerializedName("application_id")
-    var applicationId: String?=null,
-    
-    @SerializedName("claimed")
-    var claimed: Boolean?=null,
-    
-    @SerializedName("created_at")
-    var createdAt: String?=null,
-    
-    @SerializedName("expires_on")
-    var expiresOn: String?=null,
-    
-    @SerializedName("points")
-    var points: Double?=null,
-    
-    @SerializedName("remaining_points")
-    var remainingPoints: Double?=null,
-    
-    @SerializedName("text_1")
-    var text1: String?=null,
-    
-    @SerializedName("text_2")
-    var text2: String?=null,
-    
-    @SerializedName("text_3")
-    var text3: String?=null,
-    
-    @SerializedName("txn_name")
-    var txnName: String?=null,
-    
-    @SerializedName("updated_at")
-    var updatedAt: String?=null,
-    
-    @SerializedName("user_id")
-    var userId: String?=null
+    @SerializedName("secure_url")
+    var secureUrl: String?=null
     
 ): Parcelable {
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
     
     
     
@@ -333,23 +248,65 @@ data class HistoryPretty(
 
              
 /*
-    Model: HistoryRes
+    Model: RewardsRule
 */
 @Parcelize
-data class HistoryRes(
+data class RewardsRule(
     
     
     
-    @SerializedName("items")
-    var items: ArrayList<HistoryPretty>?=null,
-    
-    @SerializedName("page")
-    var page: Page?=null,
-    
-    @SerializedName("points")
-    var points: Double?=null
+    @SerializedName("amount")
+    var amount: Double?=null
     
 ): Parcelable {
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: Page
+*/
+@Parcelize
+data class Page(
+    
+    
+    
+    @SerializedName("item_total")
+    var itemTotal: Int?=null,
+    
+    @SerializedName("next_id")
+    var nextId: String?=null,
+    
+    @SerializedName("has_previous")
+    var hasPrevious: Boolean?=null,
+    
+    @SerializedName("has_next")
+    var hasNext: Boolean?=null,
+    
+    @SerializedName("current")
+    var current: Int?=null,
+    
+    @SerializedName("type")
+    var type: String?=null,
+    
+    @SerializedName("size")
+    var size: Int?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+    
     
     
     
@@ -452,33 +409,39 @@ data class Offer(
 
              
 /*
-    Model: Page
+    Model: ShareMessages
 */
 @Parcelize
-data class Page(
+data class ShareMessages(
     
     
     
-    @SerializedName("item_total")
-    var itemTotal: Int?=null,
+    @SerializedName("email")
+    var email: Int?=null,
     
-    @SerializedName("next_id")
-    var nextId: String?=null,
+    @SerializedName("facebook")
+    var facebook: String?=null,
     
-    @SerializedName("has_previous")
-    var hasPrevious: Boolean?=null,
+    @SerializedName("fallback")
+    var fallback: String?=null,
     
-    @SerializedName("has_next")
-    var hasNext: Boolean?=null,
+    @SerializedName("message")
+    var message: String?=null,
     
-    @SerializedName("current")
-    var current: Int?=null,
+    @SerializedName("messenger")
+    var messenger: String?=null,
     
-    @SerializedName("type")
-    var type: String?=null,
+    @SerializedName("sms")
+    var sms: String?=null,
     
-    @SerializedName("size")
-    var size: Int?=null
+    @SerializedName("text")
+    var text: String?=null,
+    
+    @SerializedName("twitter")
+    var twitter: String?=null,
+    
+    @SerializedName("whatsapp")
+    var whatsapp: String?=null
     
 ): Parcelable {
     
@@ -491,6 +454,37 @@ data class Page(
     
     
     
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: UserRes
+*/
+@Parcelize
+data class UserRes(
+    
+    
+    
+    @SerializedName("points")
+    var points: Points?=null,
+    
+    @SerializedName("user")
+    var user: RewardUser?=null
+    
+): Parcelable {
     
     
     
@@ -513,28 +507,6 @@ data class Points(
     
     @SerializedName("available")
     var available: Double?=null
-    
-): Parcelable {
-    
-    
-    
-    
-    
-}
-
-
-
-             
-/*
-    Model: Referral
-*/
-@Parcelize
-data class Referral(
-    
-    
-    
-    @SerializedName("code")
-    var code: String?=null
     
 ): Parcelable {
     
@@ -605,42 +577,15 @@ data class RewardUser(
 
              
 /*
-    Model: RewardsAudience
+    Model: Referral
 */
 @Parcelize
-data class RewardsAudience(
+data class Referral(
     
     
     
-    @SerializedName("header_user_id")
-    var headerUserId: String?=null,
-    
-    @SerializedName("id")
-    var id: String?=null
-    
-): Parcelable {
-    
-    
-    
-    
-    
-    
-    
-}
-
-
-
-             
-/*
-    Model: RewardsRule
-*/
-@Parcelize
-data class RewardsRule(
-    
-    
-    
-    @SerializedName("amount")
-    var amount: Double?=null
+    @SerializedName("code")
+    var code: String?=null
     
 ): Parcelable {
     
@@ -654,82 +599,35 @@ data class RewardsRule(
 
              
 /*
-    Model: Schedule
+    Model: AppUser
 */
 @Parcelize
-data class Schedule(
+data class AppUser(
     
     
     
-    @SerializedName("cron")
-    var cron: String?=null,
+    @SerializedName("_id")
+    var id: String?=null,
     
-    @SerializedName("duration")
-    var duration: Int?=null,
+    @SerializedName("active")
+    var active: Boolean?=null,
     
-    @SerializedName("end")
-    var end: String?=null,
+    @SerializedName("application_id")
+    var applicationId: String?=null,
     
-    @SerializedName("start")
-    var start: String?=null
+    @SerializedName("block_reason")
+    var blockReason: String?=null,
     
-): Parcelable {
+    @SerializedName("updated_at")
+    var updatedAt: String?=null,
     
+    @SerializedName("updated_by")
+    var updatedBy: String?=null,
     
-    
-    
-    
-    
-    
-    
-    
-    
-    
-}
-
-
-
-             
-/*
-    Model: ShareMessages
-*/
-@Parcelize
-data class ShareMessages(
-    
-    
-    
-    @SerializedName("email")
-    var email: String?=null,
-    
-    @SerializedName("facebook")
-    var facebook: String?=null,
-    
-    @SerializedName("fallback")
-    var fallback: String?=null,
-    
-    @SerializedName("message")
-    var message: String?=null,
-    
-    @SerializedName("messenger")
-    var messenger: String?=null,
-    
-    @SerializedName("sms")
-    var sms: String?=null,
-    
-    @SerializedName("text")
-    var text: String?=null,
-    
-    @SerializedName("twitter")
-    var twitter: String?=null,
-    
-    @SerializedName("whatsapp")
-    var whatsapp: String?=null
+    @SerializedName("user_id")
+    var userId: String?=null
     
 ): Parcelable {
-    
-    
-    
-    
     
     
     
@@ -753,18 +651,223 @@ data class ShareMessages(
 
              
 /*
-    Model: UserRes
+    Model: GiveawayAudience
 */
 @Parcelize
-data class UserRes(
+data class GiveawayAudience(
     
     
+    
+    @SerializedName("audience_id")
+    var audienceId: String?=null,
+    
+    @SerializedName("current_count")
+    var currentCount: Double?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: HistoryRes
+*/
+@Parcelize
+data class HistoryRes(
+    
+    
+    
+    @SerializedName("items")
+    var items: ArrayList<PointsHistory>?=null,
+    
+    @SerializedName("page")
+    var page: Page?=null,
     
     @SerializedName("points")
-    var points: Points?=null,
+    var points: Double?=null
     
-    @SerializedName("user")
-    var user: RewardUser?=null
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: PointsHistory
+*/
+@Parcelize
+data class PointsHistory(
+    
+    
+    
+    @SerializedName("_id")
+    var id: String?=null,
+    
+    @SerializedName("application_id")
+    var applicationId: String?=null,
+    
+    @SerializedName("claimed")
+    var claimed: Boolean?=null,
+    
+    @SerializedName("created_at")
+    var createdAt: String?=null,
+    
+    @SerializedName("expires_on")
+    var expiresOn: String?=null,
+    
+    @SerializedName("meta")
+    var meta: @RawValue HashMap<String,Any>?=null,
+    
+    @SerializedName("points")
+    var points: Double?=null,
+    
+    @SerializedName("remaining_points")
+    var remainingPoints: Double?=null,
+    
+    @SerializedName("text_1")
+    var text1: String?=null,
+    
+    @SerializedName("text_2")
+    var text2: String?=null,
+    
+    @SerializedName("text_3")
+    var text3: String?=null,
+    
+    @SerializedName("txn_name")
+    var txnName: String?=null,
+    
+    @SerializedName("updated_at")
+    var updatedAt: String?=null,
+    
+    @SerializedName("user_id")
+    var userId: String?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: ConfigurationRes
+*/
+@Parcelize
+data class ConfigurationRes(
+    
+    
+    
+    @SerializedName("valid_android_packages")
+    var validAndroidPackages: ArrayList<String>?=null,
+    
+    @SerializedName("terms_conditions_link")
+    var termsConditionsLink: String?=null,
+    
+    @SerializedName("application_id")
+    var applicationId: String?=null,
+    
+    @SerializedName("success")
+    var success: Boolean?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: SetConfigurationRes
+*/
+@Parcelize
+data class SetConfigurationRes(
+    
+    
+    
+    @SerializedName("success")
+    var success: Boolean?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: ConfigurationRequest
+*/
+@Parcelize
+data class ConfigurationRequest(
+    
+    
+    
+    @SerializedName("valid_android_packages")
+    var validAndroidPackages: ArrayList<String>?=null,
+    
+    @SerializedName("terms_conditions_link")
+    var termsConditionsLink: String?=null
     
 ): Parcelable {
     

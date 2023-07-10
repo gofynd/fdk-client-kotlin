@@ -61,9 +61,9 @@ class CatalogDataManagerClass(val config: ApplicationConfig, val unauthorizedAct
             
                     _relativeUrls["getFollowedListing"] = "/service/application/catalog/v1.0/follow/{collection_type}/".substring(1)
             
-                    _relativeUrls["unfollowById"] = "/service/application/catalog/v1.0/follow/{collection_type}/{collection_id}/".substring(1)
-            
                     _relativeUrls["followById"] = "/service/application/catalog/v1.0/follow/{collection_type}/{collection_id}/".substring(1)
+            
+                    _relativeUrls["unfollowById"] = "/service/application/catalog/v1.0/follow/{collection_type}/{collection_id}/".substring(1)
             
                     _relativeUrls["getFollowerCountById"] = "/service/application/catalog/v1.0/follow/{collection_type}/{collection_id}/count/".substring(1)
             
@@ -469,15 +469,20 @@ class CatalogDataManagerClass(val config: ApplicationConfig, val unauthorizedAct
 
     
     
-    fun getCollections(pageNo: Int?=null, pageSize: Int?=null, tag: ArrayList<String>?=null): Deferred<Response<GetCollectionListingResponse>>? {
+    fun getCollections(pageNo: Int?=null, pageSize: Int?=null, tag: ArrayList<String>?=null, q: String?=null): Deferred<Response<GetCollectionListingResponse>>? {
         var fullUrl : String? = _relativeUrls["getCollections"] 
         
-        return catalogApiList?.getCollections(fullUrl    ,  pageNo = pageNo,    pageSize = pageSize,    tag = tag)}
+        return catalogApiList?.getCollections(fullUrl    ,  pageNo = pageNo,    pageSize = pageSize,    tag = tag,    q = q)}
 
     
     
     
         
+            
+            
+        
+            
+                
             
             
         
@@ -495,7 +500,7 @@ class CatalogDataManagerClass(val config: ApplicationConfig, val unauthorizedAct
     *
     * Summary: Paginator for getCollections
     **/
-    fun getCollectionsPaginator(pageSize: Int?=null, tag: ArrayList<String>?=null) : Paginator<GetCollectionListingResponse>{
+    fun getCollectionsPaginator(pageSize: Int?=null, tag: ArrayList<String>?=null, q: String?=null) : Paginator<GetCollectionListingResponse>{
 
     val paginator = Paginator<GetCollectionListingResponse>()
 
@@ -508,7 +513,7 @@ class CatalogDataManagerClass(val config: ApplicationConfig, val unauthorizedAct
                 val pageType = "number"
                 var fullUrl : String? = _relativeUrls["getCollections"] 
                 
-                catalogApiList?.getCollections(fullUrl , pageNo = pageNo, pageSize = pageSize, tag = tag)?.safeAwait{ response, error ->
+                catalogApiList?.getCollections(fullUrl , pageNo = pageNo, pageSize = pageSize, tag = tag, q = q)?.safeAwait{ response, error ->
                     response?.let {
                         val page = response.peekContent()?.page
                         paginator.setPaginator(hasNext=page?.hasNext?:false,pageNo=if (page?.hasNext == true) ((pageNo ?: 0) + 1) else pageNo)
@@ -526,16 +531,21 @@ class CatalogDataManagerClass(val config: ApplicationConfig, val unauthorizedAct
     return paginator
     }
     
-    fun getCollectionItemsBySlug(slug: String, f: String?=null, filters: Boolean?=null, sortOn: String?=null, pageId: String?=null, pageSize: Int?=null, pageNo: Int?=null, pageType: String?=null): Deferred<Response<ProductListingResponse>>? {
+    fun getCollectionItemsBySlug(slug: String, f: String?=null, q: String?=null, filters: Boolean?=null, sortOn: String?=null, pageId: String?=null, pageSize: Int?=null, pageNo: Int?=null, pageType: String?=null): Deferred<Response<ProductListingResponse>>? {
         var fullUrl : String? = _relativeUrls["getCollectionItemsBySlug"] 
         
         fullUrl = fullUrl?.replace("{" + "slug" +"}",slug.toString())
         
-        return catalogApiList?.getCollectionItemsBySlug(fullUrl     ,  f = f,    filters = filters,    sortOn = sortOn,    pageId = pageId,    pageSize = pageSize,    pageNo = pageNo,    pageType = pageType)}
+        return catalogApiList?.getCollectionItemsBySlug(fullUrl     ,  f = f,    q = q,    filters = filters,    sortOn = sortOn,    pageId = pageId,    pageSize = pageSize,    pageNo = pageNo,    pageType = pageType)}
 
     
     
     
+        
+            
+                
+            
+            
         
             
                 
@@ -577,7 +587,7 @@ class CatalogDataManagerClass(val config: ApplicationConfig, val unauthorizedAct
     *
     * Summary: Paginator for getCollectionItemsBySlug
     **/
-    fun getCollectionItemsBySlugPaginator(slug: String, f: String?=null, filters: Boolean?=null, sortOn: String?=null, pageSize: Int?=null) : Paginator<ProductListingResponse>{
+    fun getCollectionItemsBySlugPaginator(slug: String, f: String?=null, q: String?=null, filters: Boolean?=null, sortOn: String?=null, pageSize: Int?=null) : Paginator<ProductListingResponse>{
 
     val paginator = Paginator<ProductListingResponse>()
 
@@ -592,7 +602,7 @@ class CatalogDataManagerClass(val config: ApplicationConfig, val unauthorizedAct
                 
                 fullUrl = fullUrl?.replace("{" + "slug" +"}",slug.toString())
                 
-                catalogApiList?.getCollectionItemsBySlug(fullUrl , f = f, filters = filters, sortOn = sortOn, pageId = pageId, pageSize = pageSize, pageNo = pageNo, pageType = pageType)?.safeAwait{ response, error ->
+                catalogApiList?.getCollectionItemsBySlug(fullUrl , f = f, q = q, filters = filters, sortOn = sortOn, pageId = pageId, pageSize = pageSize, pageNo = pageNo, pageType = pageType)?.safeAwait{ response, error ->
                     response?.let {
                         val page = response.peekContent()?.page
                         paginator.setPaginator(hasNext=page?.hasNext?:false,nextId=page?.nextId)
@@ -682,17 +692,6 @@ class CatalogDataManagerClass(val config: ApplicationConfig, val unauthorizedAct
     return paginator
     }
     
-    fun unfollowById(collectionType: String, collectionId: String): Deferred<Response<FollowPostResponse>>? {
-        var fullUrl : String? = _relativeUrls["unfollowById"] 
-        
-        fullUrl = fullUrl?.replace("{" + "collection_type" +"}",collectionType.toString())
-        
-        fullUrl = fullUrl?.replace("{" + "collection_id" +"}",collectionId.toString())
-        
-        return catalogApiList?.unfollowById(fullUrl    )}
-
-    
-    
     fun followById(collectionType: String, collectionId: String): Deferred<Response<FollowPostResponse>>? {
         var fullUrl : String? = _relativeUrls["followById"] 
         
@@ -701,6 +700,17 @@ class CatalogDataManagerClass(val config: ApplicationConfig, val unauthorizedAct
         fullUrl = fullUrl?.replace("{" + "collection_id" +"}",collectionId.toString())
         
         return catalogApiList?.followById(fullUrl    )}
+
+    
+    
+    fun unfollowById(collectionType: String, collectionId: String): Deferred<Response<FollowPostResponse>>? {
+        var fullUrl : String? = _relativeUrls["unfollowById"] 
+        
+        fullUrl = fullUrl?.replace("{" + "collection_type" +"}",collectionType.toString())
+        
+        fullUrl = fullUrl?.replace("{" + "collection_id" +"}",collectionId.toString())
+        
+        return catalogApiList?.unfollowById(fullUrl    )}
 
     
     
