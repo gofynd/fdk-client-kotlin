@@ -81,7 +81,7 @@ class CommunicationDataManagerClass(val config: PlatformConfig, val unauthorized
     
     
     suspend fun getSystemNotifications(pageNo: Int?=null, pageSize: Int?=null)
-    : Deferred<Response<SystemNotifications>>? {
+    : Response<SystemNotifications>? {
         
         return if (config.oauthClient.isAccessTokenValid()) {
             communicationApiList?.getSystemNotifications(
@@ -121,7 +121,7 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     
     
     suspend fun getAppProviders()
-    : Deferred<Response<AppProvider>>? {
+    : Response<AppProvider>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 communicationApiList?.getAppProviders(companyId = config.companyId , applicationId = applicationId  )
         } else {
@@ -131,7 +131,7 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     
     
     suspend fun updateAppProviders(body: AppProviderReq)
-    : Deferred<Response<AppProvider>>? {
+    : Response<AppProvider>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 communicationApiList?.updateAppProviders(companyId = config.companyId , applicationId = applicationId , body = body)
         } else {
@@ -141,7 +141,7 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     
     
     suspend fun getGlobalProviders()
-    : Deferred<Response<GlobalProviders>>? {
+    : Response<GlobalProviders>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 communicationApiList?.getGlobalProviders(companyId = config.companyId , applicationId = applicationId  )
         } else {
@@ -151,7 +151,7 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     
     
     suspend fun getCampaigns(pageNo: Int?=null, pageSize: Int?=null, sort: HashMap<String,Any>?=null)
-    : Deferred<Response<Campaigns>>? {
+    : Response<Campaigns>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 communicationApiList?.getCampaigns(companyId = config.companyId , applicationId = applicationId , pageNo = pageNo, pageSize = pageSize, sort = sort )
         } else {
@@ -161,7 +161,7 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     
     
     suspend fun createCampaign(body: CampaignReq)
-    : Deferred<Response<Campaign>>? {
+    : Response<Campaign>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 communicationApiList?.createCampaign(companyId = config.companyId , applicationId = applicationId , body = body)
         } else {
@@ -171,7 +171,7 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     
     
     suspend fun getCampaignById(id: String)
-    : Deferred<Response<Campaign>>? {
+    : Response<Campaign>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 communicationApiList?.getCampaignById(companyId = config.companyId , applicationId = applicationId , id = id )
         } else {
@@ -181,7 +181,7 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     
     
     suspend fun updateCampaignById(id: String,body: CampaignReq)
-    : Deferred<Response<Campaign>>? {
+    : Response<Campaign>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 communicationApiList?.updateCampaignById(companyId = config.companyId , applicationId = applicationId , id = id, body = body)
         } else {
@@ -191,7 +191,7 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     
     
     suspend fun getStatsOfCampaignById(id: String)
-    : Deferred<Response<GetStats>>? {
+    : Response<GetStats>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 communicationApiList?.getStatsOfCampaignById(companyId = config.companyId , applicationId = applicationId , id = id )
         } else {
@@ -201,7 +201,7 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     
     
     suspend fun getAudiences(pageNo: Int?=null, pageSize: Int?=null, sort: HashMap<String,Any>?=null)
-    : Deferred<Response<Audiences>>? {
+    : Response<Audiences>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 communicationApiList?.getAudiences(companyId = config.companyId , applicationId = applicationId , pageNo = pageNo, pageSize = pageSize, sort = sort )
         } else {
@@ -211,7 +211,7 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     
     
     suspend fun createAudience(body: AudienceReq)
-    : Deferred<Response<Audience>>? {
+    : Response<Audience>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 communicationApiList?.createAudience(companyId = config.companyId , applicationId = applicationId , body = body)
         } else {
@@ -221,7 +221,7 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     
     
     suspend fun getBigqueryHeaders(body: BigqueryHeadersReq)
-    : Deferred<Response<BigqueryHeadersRes>>? {
+    : Response<BigqueryHeadersRes>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 communicationApiList?.getBigqueryHeaders(companyId = config.companyId , applicationId = applicationId , body = body)
         } else {
@@ -231,7 +231,7 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     
     
     suspend fun getAudienceById(id: String)
-    : Deferred<Response<Audience>>? {
+    : Response<Audience>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 communicationApiList?.getAudienceById(companyId = config.companyId , applicationId = applicationId , id = id )
         } else {
@@ -241,7 +241,7 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     
     
     suspend fun updateAudienceById(id: String,body: AudienceReq)
-    : Deferred<Response<Audience>>? {
+    : Response<Audience>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 communicationApiList?.updateAudienceById(companyId = config.companyId , applicationId = applicationId , id = id, body = body)
         } else {
@@ -251,7 +251,7 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     
     
     suspend fun getNSampleRecordsFromCsv(body: GetNRecordsCsvReq)
-    : Deferred<Response<GetNRecordsCsvRes>>? {
+    : Response<GetNRecordsCsvRes>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 communicationApiList?.getNSampleRecordsFromCsv(companyId = config.companyId , applicationId = applicationId , body = body)
         } else {
@@ -261,7 +261,7 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     
     
     suspend fun getEmailProviders(pageNo: Int?=null, pageSize: Int?=null, sort: HashMap<String,Any>?=null)
-    : Deferred<Response<EmailProviders>>? {
+    : Response<EmailProviders>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 communicationApiList?.getEmailProviders(companyId = config.companyId , applicationId = applicationId , pageNo = pageNo, pageSize = pageSize, sort = sort )
         } else {
@@ -271,7 +271,7 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     
     
     suspend fun createEmailProvider(body: EmailProviderReq)
-    : Deferred<Response<EmailProvider>>? {
+    : Response<EmailProvider>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 communicationApiList?.createEmailProvider(companyId = config.companyId , applicationId = applicationId , body = body)
         } else {
@@ -281,7 +281,7 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     
     
     suspend fun getDefaultEmailProviders()
-    : Deferred<Response<ArrayList<DefaultEmailProviders>>>? {
+    : Response<ArrayList<DefaultEmailProviders>>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 communicationApiList?.getDefaultEmailProviders(companyId = config.companyId , applicationId = applicationId  )
         } else {
@@ -291,7 +291,7 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     
     
     suspend fun getEmailProviderById(id: String)
-    : Deferred<Response<EmailProvider>>? {
+    : Response<EmailProvider>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 communicationApiList?.getEmailProviderById(companyId = config.companyId , applicationId = applicationId , id = id )
         } else {
@@ -301,7 +301,7 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     
     
     suspend fun updateEmailProviderById(id: String,body: EmailProviderReq)
-    : Deferred<Response<EmailProvider>>? {
+    : Response<EmailProvider>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 communicationApiList?.updateEmailProviderById(companyId = config.companyId , applicationId = applicationId , id = id, body = body)
         } else {
@@ -311,7 +311,7 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     
     
     suspend fun deleteEmailProviderById(id: String)
-    : Deferred<Response<GenericSuccess>>? {
+    : Response<GenericSuccess>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 communicationApiList?.deleteEmailProviderById(companyId = config.companyId , applicationId = applicationId , id = id )
         } else {
@@ -321,7 +321,7 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     
     
     suspend fun getEmailTemplates(pageNo: Int?=null, pageSize: Int?=null, sort: HashMap<String,Any>?=null)
-    : Deferred<Response<EmailTemplates>>? {
+    : Response<EmailTemplates>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 communicationApiList?.getEmailTemplates(companyId = config.companyId , applicationId = applicationId , pageNo = pageNo, pageSize = pageSize, sort = sort )
         } else {
@@ -331,7 +331,7 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     
     
     suspend fun createEmailTemplate(body: EmailTemplateReq)
-    : Deferred<Response<EmailTemplate>>? {
+    : Response<EmailTemplate>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 communicationApiList?.createEmailTemplate(companyId = config.companyId , applicationId = applicationId , body = body)
         } else {
@@ -341,7 +341,7 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     
     
     suspend fun getSystemEmailTemplates()
-    : Deferred<Response<SystemEmailTemplates>>? {
+    : Response<SystemEmailTemplates>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 communicationApiList?.getSystemEmailTemplates(companyId = config.companyId , applicationId = applicationId  )
         } else {
@@ -351,7 +351,7 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     
     
     suspend fun getEmailTemplateById(id: String)
-    : Deferred<Response<EmailTemplate>>? {
+    : Response<EmailTemplate>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 communicationApiList?.getEmailTemplateById(companyId = config.companyId , applicationId = applicationId , id = id )
         } else {
@@ -361,7 +361,7 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     
     
     suspend fun updateEmailTemplateById(id: String,body: EmailTemplateReq)
-    : Deferred<Response<EmailTemplate>>? {
+    : Response<EmailTemplate>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 communicationApiList?.updateEmailTemplateById(companyId = config.companyId , applicationId = applicationId , id = id, body = body)
         } else {
@@ -371,7 +371,7 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     
     
     suspend fun deleteEmailTemplateById(id: String)
-    : Deferred<Response<GenericDelete>>? {
+    : Response<GenericDelete>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 communicationApiList?.deleteEmailTemplateById(companyId = config.companyId , applicationId = applicationId , id = id )
         } else {
@@ -381,7 +381,7 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     
     
     suspend fun getSubscribedEmailTemplates(pageNo: Int?=null, pageSize: Int?=null)
-    : Deferred<Response<EmailTemplates>>? {
+    : Response<EmailTemplates>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 communicationApiList?.getSubscribedEmailTemplates(companyId = config.companyId , applicationId = applicationId , pageNo = pageNo, pageSize = pageSize )
         } else {
@@ -391,7 +391,7 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     
     
     suspend fun sendCommunicationSynchronously(body: EngineRequest)
-    : Deferred<Response<EngineResponse>>? {
+    : Response<EngineResponse>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 communicationApiList?.sendCommunicationSynchronously(companyId = config.companyId , applicationId = applicationId , body = body)
         } else {
@@ -401,7 +401,7 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     
     
     suspend fun sendCommunicationAsynchronously(body: EngineRequest)
-    : Deferred<Response<EngineResponse>>? {
+    : Response<EngineResponse>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 communicationApiList?.sendCommunicationAsynchronously(companyId = config.companyId , applicationId = applicationId , body = body)
         } else {
@@ -411,7 +411,7 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     
     
     suspend fun getEventSubscriptions(pageNo: Int?=null, pageSize: Int?=null, populate: ArrayList<String>?=null, query: String?=null)
-    : Deferred<Response<EventSubscriptions>>? {
+    : Response<EventSubscriptions>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 communicationApiList?.getEventSubscriptions(companyId = config.companyId , applicationId = applicationId , pageNo = pageNo, pageSize = pageSize, populate = populate, query = query )
         } else {
@@ -421,7 +421,7 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     
     
     suspend fun getJobs(pageNo: Int?=null, pageSize: Int?=null, sort: HashMap<String,Any>?=null)
-    : Deferred<Response<Jobs>>? {
+    : Response<Jobs>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 communicationApiList?.getJobs(companyId = config.companyId , applicationId = applicationId , pageNo = pageNo, pageSize = pageSize, sort = sort )
         } else {
@@ -431,7 +431,7 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     
     
     suspend fun triggerCampaignJob(body: TriggerJobRequest)
-    : Deferred<Response<TriggerJobResponse>>? {
+    : Response<TriggerJobResponse>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 communicationApiList?.triggerCampaignJob(companyId = config.companyId , applicationId = applicationId , body = body)
         } else {
@@ -441,7 +441,7 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     
     
     suspend fun getJobLogs(pageNo: Int?=null, pageSize: Int?=null, sort: HashMap<String,Any>?=null)
-    : Deferred<Response<JobLogs>>? {
+    : Response<JobLogs>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 communicationApiList?.getJobLogs(companyId = config.companyId , applicationId = applicationId , pageNo = pageNo, pageSize = pageSize, sort = sort )
         } else {
@@ -451,7 +451,7 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     
     
     suspend fun getCommunicationLogs(pageId: String?=null, pageSize: Int?=null, sort: HashMap<String,Any>?=null, query: HashMap<String,Any>?=null)
-    : Deferred<Response<Logs>>? {
+    : Response<Logs>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 communicationApiList?.getCommunicationLogs(companyId = config.companyId , applicationId = applicationId , pageId = pageId, pageSize = pageSize, sort = sort, query = query )
         } else {
@@ -462,7 +462,7 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     
     
     suspend fun sendOtp(body: SendOtpCommsReq)
-    : Deferred<Response<SendOtpCommsRes>>? {
+    : Response<SendOtpCommsRes>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 communicationApiList?.sendOtp(companyId = config.companyId , applicationId = applicationId , body = body)
         } else {
@@ -472,7 +472,7 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     
     
     suspend fun verfiyOtp(body: VerifyOtpCommsReq)
-    : Deferred<Response<VerifyOtpCommsSuccessRes>>? {
+    : Response<VerifyOtpCommsSuccessRes>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 communicationApiList?.verfiyOtp(companyId = config.companyId , applicationId = applicationId , body = body)
         } else {
@@ -482,7 +482,7 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     
     
     suspend fun getSmsProviders(pageNo: Int?=null, pageSize: Int?=null, sort: HashMap<String,Any>?=null)
-    : Deferred<Response<SmsProviders>>? {
+    : Response<SmsProviders>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 communicationApiList?.getSmsProviders(companyId = config.companyId , applicationId = applicationId , pageNo = pageNo, pageSize = pageSize, sort = sort )
         } else {
@@ -492,7 +492,7 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     
     
     suspend fun createSmsProvider(body: SmsProviderReq)
-    : Deferred<Response<SmsProvider>>? {
+    : Response<SmsProvider>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 communicationApiList?.createSmsProvider(companyId = config.companyId , applicationId = applicationId , body = body)
         } else {
@@ -502,7 +502,7 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     
     
     suspend fun getDefaultSmsProviders()
-    : Deferred<Response<ArrayList<DefaultSmsProviders>>>? {
+    : Response<ArrayList<DefaultSmsProviders>>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 communicationApiList?.getDefaultSmsProviders(companyId = config.companyId , applicationId = applicationId  )
         } else {
@@ -512,7 +512,7 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     
     
     suspend fun getSmsProviderById(id: String)
-    : Deferred<Response<SmsProvider>>? {
+    : Response<SmsProvider>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 communicationApiList?.getSmsProviderById(companyId = config.companyId , applicationId = applicationId , id = id )
         } else {
@@ -522,7 +522,7 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     
     
     suspend fun updateSmsProviderById(id: String,body: SmsProviderReq)
-    : Deferred<Response<SmsProvider>>? {
+    : Response<SmsProvider>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 communicationApiList?.updateSmsProviderById(companyId = config.companyId , applicationId = applicationId , id = id, body = body)
         } else {
@@ -532,7 +532,7 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     
     
     suspend fun deleteSmsProviderById(id: String)
-    : Deferred<Response<GenericSuccess>>? {
+    : Response<GenericSuccess>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 communicationApiList?.deleteSmsProviderById(companyId = config.companyId , applicationId = applicationId , id = id )
         } else {
@@ -542,7 +542,7 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     
     
     suspend fun getSmsTemplates(pageNo: Int?=null, pageSize: Int?=null, sort: HashMap<String,Any>?=null)
-    : Deferred<Response<SmsTemplates>>? {
+    : Response<SmsTemplates>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 communicationApiList?.getSmsTemplates(companyId = config.companyId , applicationId = applicationId , pageNo = pageNo, pageSize = pageSize, sort = sort )
         } else {
@@ -552,7 +552,7 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     
     
     suspend fun createSmsTemplate(body: SmsTemplateReq)
-    : Deferred<Response<SmsTemplate>>? {
+    : Response<SmsTemplate>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 communicationApiList?.createSmsTemplate(companyId = config.companyId , applicationId = applicationId , body = body)
         } else {
@@ -562,7 +562,7 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     
     
     suspend fun getSystemSmsTemplates()
-    : Deferred<Response<ArrayList<SystemSmsTemplates>>>? {
+    : Response<ArrayList<SystemSmsTemplates>>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 communicationApiList?.getSystemSmsTemplates(companyId = config.companyId , applicationId = applicationId  )
         } else {
@@ -572,7 +572,7 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     
     
     suspend fun getSmsTemplateById(id: String)
-    : Deferred<Response<SmsTemplate>>? {
+    : Response<SmsTemplate>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 communicationApiList?.getSmsTemplateById(companyId = config.companyId , applicationId = applicationId , id = id )
         } else {
@@ -582,7 +582,7 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     
     
     suspend fun updateSmsTemplateById(id: String,body: SmsTemplateReq)
-    : Deferred<Response<SmsTemplate>>? {
+    : Response<SmsTemplate>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 communicationApiList?.updateSmsTemplateById(companyId = config.companyId , applicationId = applicationId , id = id, body = body)
         } else {
@@ -592,7 +592,7 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     
     
     suspend fun deleteSmsTemplateById(id: String)
-    : Deferred<Response<GenericDelete>>? {
+    : Response<GenericDelete>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 communicationApiList?.deleteSmsTemplateById(companyId = config.companyId , applicationId = applicationId , id = id )
         } else {
@@ -602,7 +602,7 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     
     
     suspend fun getSubscribedSmsTemplates(pageNo: Int?=null, pageSize: Int?=null)
-    : Deferred<Response<SmsTemplates>>? {
+    : Response<SmsTemplates>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 communicationApiList?.getSubscribedSmsTemplates(companyId = config.companyId , applicationId = applicationId , pageNo = pageNo, pageSize = pageSize )
         } else {
@@ -612,7 +612,7 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     
     
     suspend fun getVoiceProviders(pageNo: Int?=null, pageSize: Int?=null, sort: HashMap<String,Any>?=null)
-    : Deferred<Response<VoiceProviders>>? {
+    : Response<VoiceProviders>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 communicationApiList?.getVoiceProviders(companyId = config.companyId , applicationId = applicationId , pageNo = pageNo, pageSize = pageSize, sort = sort )
         } else {
@@ -622,7 +622,7 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     
     
     suspend fun createVoiceProvider(body: VoiceProviderReq)
-    : Deferred<Response<VoiceProvider>>? {
+    : Response<VoiceProvider>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 communicationApiList?.createVoiceProvider(companyId = config.companyId , applicationId = applicationId , body = body)
         } else {
@@ -632,7 +632,7 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     
     
     suspend fun getVoiceProviderById(id: String)
-    : Deferred<Response<VoiceProvider>>? {
+    : Response<VoiceProvider>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 communicationApiList?.getVoiceProviderById(companyId = config.companyId , applicationId = applicationId , id = id )
         } else {
@@ -642,7 +642,7 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     
     
     suspend fun getVoiceTemplates(pageNo: Int?=null, pageSize: Int?=null, sort: HashMap<String,Any>?=null)
-    : Deferred<Response<VoiceTemplates>>? {
+    : Response<VoiceTemplates>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 communicationApiList?.getVoiceTemplates(companyId = config.companyId , applicationId = applicationId , pageNo = pageNo, pageSize = pageSize, sort = sort )
         } else {
@@ -652,7 +652,7 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     
     
     suspend fun createVoiceTemplate(body: VoiceTemplateReq)
-    : Deferred<Response<VoiceTemplateRes>>? {
+    : Response<VoiceTemplateRes>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 communicationApiList?.createVoiceTemplate(companyId = config.companyId , applicationId = applicationId , body = body)
         } else {
@@ -662,7 +662,7 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     
     
     suspend fun getVoiceTemplateById(id: String)
-    : Deferred<Response<VoiceTemplate>>? {
+    : Response<VoiceTemplate>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 communicationApiList?.getVoiceTemplateById(companyId = config.companyId , applicationId = applicationId , id = id )
         } else {
@@ -672,7 +672,7 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     
     
     suspend fun updateVoiceTemplateById(id: String,body: VoiceTemplateReq)
-    : Deferred<Response<VoiceTemplateRes>>? {
+    : Response<VoiceTemplateRes>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 communicationApiList?.updateVoiceTemplateById(companyId = config.companyId , applicationId = applicationId , id = id, body = body)
         } else {
@@ -682,7 +682,7 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     
     
     suspend fun deleteVoiceTemplateById(id: String)
-    : Deferred<Response<VoiceTemplateDeleteSuccessRes>>? {
+    : Response<VoiceTemplateDeleteSuccessRes>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 communicationApiList?.deleteVoiceTemplateById(companyId = config.companyId , applicationId = applicationId , id = id )
         } else {
@@ -692,7 +692,7 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     
     
     suspend fun getSystemVoiceTemplates(pageNo: Int?=null, pageSize: Int?=null, sort: HashMap<String,Any>?=null)
-    : Deferred<Response<SystemVoiceTemplates>>? {
+    : Response<SystemVoiceTemplates>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 communicationApiList?.getSystemVoiceTemplates(companyId = config.companyId , applicationId = applicationId , pageNo = pageNo, pageSize = pageSize, sort = sort )
         } else {

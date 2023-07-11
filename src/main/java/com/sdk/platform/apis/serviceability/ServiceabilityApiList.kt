@@ -10,127 +10,135 @@ import com.sdk.platform.models.serviceability.*
 interface ServiceabilityApiList {
     
     @GET ("/service/platform/logistics/v1.0/company/{company_id}/application/{application_id}/serviceability")
-    fun getApplicationServiceability(@Path("company_id") companyId: String, @Path("application_id") applicationId: String)
-    : Deferred<Response<ApplicationServiceabilityConfigResponse>>
+    suspend fun getApplicationServiceability(@Path("company_id") companyId: String, @Path("application_id") applicationId: String)
+    : Response<ApplicationServiceabilityConfigResponse>
     
     @POST ("/service/platform/logistics/v1.0/company/{company_id}/regions")
-    fun getEntityRegionView(@Path("company_id") companyId: String,@Body body: EntityRegionView_Request)
-    : Deferred<Response<EntityRegionView_Response>>
+    suspend fun getEntityRegionView(@Path("company_id") companyId: String,@Body body: EntityRegionView_Request)
+    : Response<EntityRegionView_Response>
     
     @GET ("/service/platform/logistics/v1.0/company/{company_id}/zones")
-    fun getListView(@Path("company_id") companyId: String, @Query("page_number") pageNumber: Int?, @Query("page_size") pageSize: Int?, @Query("name") name: String?, @Query("is_active") isActive: Boolean?, @Query("channel_ids") channelIds: String?, @Query("q") q: String?)
-    : Deferred<Response<ListViewResponse>>
+    suspend fun getListView(@Path("company_id") companyId: String, @Query("page_number") pageNumber: Int?, @Query("page_size") pageSize: Int?, @Query("name") name: String?, @Query("is_active") isActive: Boolean?, @Query("channel_ids") channelIds: String?, @Query("q") q: String?)
+    : Response<ListViewResponse>
     
     @GET ("/service/platform/logistics/v1.0/company/{company_id}/all-stores")
-    fun getCompanyStoreView(@Path("company_id") companyId: String, @Query("page_number") pageNumber: Int?, @Query("page_size") pageSize: Int?)
-    : Deferred<Response<CompanyStoreView_Response>>
-    
-    @PUT ("/service/platform/logistics/v1.0/company/{company_id}/zone/{zone_id}")
-    fun updateZoneControllerView(@Path("zone_id") zoneId: String, @Path("company_id") companyId: String,@Body body: ZoneUpdateRequest)
-    : Deferred<Response<ZoneSuccessResponse>>
+    suspend fun getCompanyStoreView(@Path("company_id") companyId: String, @Query("page_number") pageNumber: Int?, @Query("page_size") pageSize: Int?)
+    : Response<CompanyStoreView_Response>
     
     @GET ("/service/platform/logistics/v1.0/company/{company_id}/zone/{zone_id}")
-    fun getZoneDataView(@Path("company_id") companyId: String, @Path("zone_id") zoneId: String)
-    : Deferred<Response<GetSingleZoneDataViewResponse>>
+    suspend fun getZoneDataView(@Path("company_id") companyId: String, @Path("zone_id") zoneId: String)
+    : Response<GetSingleZoneDataViewResponse>
+    
+    @PUT ("/service/platform/logistics/v1.0/company/{company_id}/zone/{zone_id}")
+    suspend fun updateZoneControllerView(@Path("zone_id") zoneId: String, @Path("company_id") companyId: String,@Body body: ZoneUpdateRequest)
+    : Response<ZoneSuccessResponse>
     
     @POST ("/service/platform/logistics/v1.0/company/{company_id}/zone")
-    fun createZone(@Path("company_id") companyId: String,@Body body: ZoneRequest)
-    : Deferred<Response<ZoneResponse>>
+    suspend fun createZone(@Path("company_id") companyId: String,@Body body: ZoneRequest)
+    : Response<ZoneResponse>
     
     @POST ("/service/platform/logistics/v1.0/company/{company_id}/application/{application_id}/zones")
-    fun getZoneFromPincodeView(@Path("company_id") companyId: String, @Path("application_id") applicationId: String,@Body body: GetZoneFromPincodeViewRequest)
-    : Deferred<Response<GetZoneFromPincodeViewResponse>>
+    suspend fun getZoneFromPincodeView(@Path("company_id") companyId: String, @Path("application_id") applicationId: String,@Body body: GetZoneFromPincodeViewRequest)
+    : Response<GetZoneFromPincodeViewResponse>
     
     @GET ("/service/platform/logistics/v1.0/company/{company_id}/application/{application_id}/zones")
-    fun getZonesFromApplicationIdView(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Query("page_no") pageNo: Int?, @Query("page_size") pageSize: Int?, @Query("zone_id") zoneId: ArrayList<String>?, @Query("q") q: String?)
-    : Deferred<Response<GetZoneFromApplicationIdViewResponse>>
+    suspend fun getZonesFromApplicationIdView(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Query("page_no") pageNo: Int?, @Query("page_size") pageSize: Int?, @Query("zone_id") zoneId: ArrayList<String>?, @Query("q") q: String?)
+    : Response<GetZoneFromApplicationIdViewResponse>
     
     @GET ("/service/platform/logistics/v1.0/company/{company_id}/zones-list")
-    fun getZoneListView(@Path("company_id") companyId: String, @Query("page_number") pageNumber: Int?, @Query("page_no") pageNo: Int?, @Query("page_size") pageSize: Int?, @Query("name") name: String?, @Query("is_active") isActive: Boolean?, @Query("channel_ids") channelIds: String?, @Query("q") q: String?, @Query("zone_id") zoneId: ArrayList<String>?)
-    : Deferred<Response<ListViewResponse>>
+    suspend fun getZoneListView(@Path("company_id") companyId: String, @Query("page_number") pageNumber: Int?, @Query("page_no") pageNo: Int?, @Query("page_size") pageSize: Int?, @Query("name") name: String?, @Query("is_active") isActive: Boolean?, @Query("channel_ids") channelIds: String?, @Query("q") q: String?, @Query("zone_id") zoneId: ArrayList<String>?)
+    : Response<ListViewResponse>
     
     @GET ("/service/platform/logistics/v1.0/company/{company_id}/stores/{store_uid}")
-    fun getStore(@Path("company_id") companyId: String, @Path("store_uid") storeUid: String)
-    : Deferred<Response<GetStoresViewResponse>>
+    suspend fun getStore(@Path("company_id") companyId: String, @Path("store_uid") storeUid: String)
+    : Response<GetStoresViewResponse>
     
     @GET ("/service/platform/logistics/v1.0/company/{company_id}/logistics/stores")
-    fun getAllStores(@Path("company_id") companyId: String)
-    : Deferred<Response<GetStoresViewResponse>>
+    suspend fun getAllStores(@Path("company_id") companyId: String)
+    : Response<GetStoresViewResponse>
     
     @POST ("/service/platform/logistics/v1.0/company/{company_id}/reassign")
-    fun getOptimalLocations(@Path("company_id") companyId: String,@Body body: ReAssignStoreRequest)
-    : Deferred<Response<ReAssignStoreResponse>>
+    suspend fun getOptimalLocations(@Path("company_id") companyId: String,@Body body: ReAssignStoreRequest)
+    : Response<ReAssignStoreResponse>
     
     @POST ("/service/platform/logistics/v1.0/company/{company_id}/application/{application_id}")
-    fun addAppDp(@Path("company_id") companyId: String, @Path("application_id") applicationId: String,@Body body: ApplicationCompanyDpViewRequest)
-    : Deferred<Response<ApplicationCompanyDpViewResponse>>
-    
-    @DELETE ("/service/platform/logistics/v1.0/company/{company_id}/application/{application_id}/courier-partner/{courier_partner_id}")
-    fun deleteAppDp(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Path("courier_partner_id") courierPartnerId: String)
-    : Deferred<Response<ApplicationCompanyDpViewResponse>>
+    suspend fun addAppDp(@Path("company_id") companyId: String, @Path("application_id") applicationId: String,@Body body: ApplicationCompanyDpViewRequest)
+    : Response<ApplicationCompanyDpViewResponse>
     
     @POST ("/service/platform/logistics/v1.0/company/{company_id}/application/{application_id}/pincode-mop-update")
-    fun updatePincodeMopView(@Path("company_id") companyId: String, @Path("application_id") applicationId: String,@Body body: PincodeMopData)
-    : Deferred<Response<PincodeMOPresponse>>
+    suspend fun updatePincodeMopView(@Path("company_id") companyId: String, @Path("application_id") applicationId: String,@Body body: PincodeMopData)
+    : Response<PincodeMOPresponse>
     
     @POST ("/service/platform/logistics/v1.0/company/{company_id}/application/{application_id}/pincode-mop-bulk-update")
-    fun updatePincodeBulkView(@Path("company_id") companyId: String, @Path("application_id") applicationId: String,@Body body: PincodeMopBulkData)
-    : Deferred<Response<PincodeBulkViewResponse>>
+    suspend fun updatePincodeBulkView(@Path("company_id") companyId: String, @Path("application_id") applicationId: String,@Body body: PincodeMopBulkData)
+    : Response<PincodeBulkViewResponse>
     
     @POST ("/service/platform/logistics/v1.0/company/{company_id}/application/{application_id}/pincode-mop-data")
-    fun updatePincodeCoDListing(@Path("company_id") companyId: String, @Path("application_id") applicationId: String,@Body body: PincodeCodStatusListingRequest)
-    : Deferred<Response<PincodeCodStatusListingResponse>>
+    suspend fun updatePincodeCoDListing(@Path("company_id") companyId: String, @Path("application_id") applicationId: String,@Body body: PincodeCodStatusListingRequest)
+    : Response<PincodeCodStatusListingResponse>
     
     @POST ("/service/platform/logistics/v1.0/company/{company_id}/application/{application_id}/history")
-    fun updatePincodeAuditHistory(@Path("company_id") companyId: String, @Path("application_id") applicationId: String,@Body body: PincodeMopUpdateAuditHistoryRequest)
-    : Deferred<Response<PincodeMopUpdateAuditHistoryResponseData>>
+    suspend fun updatePincodeAuditHistory(@Path("company_id") companyId: String, @Path("application_id") applicationId: String,@Body body: PincodeMopUpdateAuditHistoryRequest)
+    : Response<PincodeMopUpdateAuditHistoryResponseData>
+    
+    @POST ("/service/platform/logistics/v1.0/company/{company_id}/tat/bulk")
+    suspend fun postRegionJobBulk(@Path("company_id") companyId: String,@Body body: BulkRegionJobSerializer)
+    : Response<PostBulkRegionJobResponse>
+    
+    @GET ("/service/platform/logistics/v1.0/company/{company_id}/tat/bulk")
+    suspend fun getRegionJobBulk(@Path("company_id") companyId: String, @Query("current_page_number") currentPageNumber: Int?, @Query("page_size") pageSize: Int?)
+    : Response<GetBulkRegionJobResponse>
+    
+    @GET ("/service/platform/logistics/v1.0/company/{company_id}/tat/bulk/{batch_id}")
+    suspend fun getRegionJobBulkBatchId(@Path("batch_id") batchId: String, @Path("company_id") companyId: String)
+    : Response<GetBulkRegionJobResponse>
     
     @POST ("/service/platform/logistics/v1.0/company/{company_id}/courier/account")
-    fun upsertDpAccount(@Path("company_id") companyId: String,@Body body: CompanyDpAccountRequest)
-    : Deferred<Response<CompanyDpAccountResponse>>
+    suspend fun upsertDpAccount(@Path("company_id") companyId: String,@Body body: CompanyDpAccountRequest)
+    : Response<CompanyDpAccountResponse>
     
     @GET ("/service/platform/logistics/v1.0/company/{company_id}/courier/account")
-    fun getDpAccount(@Path("company_id") companyId: String, @Query("page_number") pageNumber: Int?, @Query("page_size") pageSize: Int?, @Query("stage") stage: String?, @Query("payment_mode") paymentMode: String?, @Query("transport_type") transportType: String?)
-    : Deferred<Response<CompanyDpAccountListResponse>>
-    
-    @PUT ("/service/platform/logistics/v1.0/company/{company_id}/courier/rules/{rule_uid}")
-    fun updateDpRule(@Path("company_id") companyId: String, @Path("rule_uid") ruleUid: String,@Body body: DpRulesUpdateRequest)
-    : Deferred<Response<DpRuleUpdateSuccessResponse>>
+    suspend fun getDpAccountList(@Path("company_id") companyId: String, @Query("page_number") pageNumber: Int?, @Query("page_size") pageSize: Int?, @Query("stage") stage: String?, @Query("payment_mode") paymentMode: String?, @Query("transport_type") transportType: String?)
+    : Response<CompanyDpAccountListResponse>
     
     @GET ("/service/platform/logistics/v1.0/company/{company_id}/courier/rules/{rule_uid}")
-    fun getDpRules(@Path("company_id") companyId: String, @Path("rule_uid") ruleUid: String)
-    : Deferred<Response<DpRuleSuccessResponse>>
+    suspend fun getDpRule(@Path("company_id") companyId: String, @Path("rule_uid") ruleUid: String)
+    : Response<DpRuleSuccessResponse>
+    
+    @PUT ("/service/platform/logistics/v1.0/company/{company_id}/courier/rules/{rule_uid}")
+    suspend fun updateDpRule(@Path("company_id") companyId: String, @Path("rule_uid") ruleUid: String,@Body body: DpRulesUpdateRequest)
+    : Response<DpRuleUpdateSuccessResponse>
     
     @POST ("/service/platform/logistics/v1.0/company/{company_id}/courier/rules")
-    fun upsertDpRules(@Path("company_id") companyId: String,@Body body: DpRuleRequest)
-    : Deferred<Response<DpRuleSuccessResponse>>
+    suspend fun createDpRule(@Path("company_id") companyId: String,@Body body: DpRuleRequest)
+    : Response<DpRuleSuccessResponse>
     
     @GET ("/service/platform/logistics/v1.0/company/{company_id}/courier/rules")
-    fun getDpRuleInsert(@Path("company_id") companyId: String, @Query("page_number") pageNumber: Int?, @Query("page_size") pageSize: Int?)
-    : Deferred<Response<DpMultipleRuleSuccessResponse>>
-    
-    @PUT ("/service/platform/logistics/v1.0/company/{company_id}/courier/priority")
-    fun upsertDpCompanyRules(@Path("company_id") companyId: String,@Body body: DPCompanyRuleRequest)
-    : Deferred<Response<DPCompanyRuleResponse>>
+    suspend fun getDpRuleList(@Path("company_id") companyId: String, @Query("page_number") pageNumber: Int?, @Query("page_size") pageSize: Int?)
+    : Response<DpMultipleRuleSuccessResponse>
     
     @GET ("/service/platform/logistics/v1.0/company/{company_id}/courier/priority")
-    fun getDpCompanyRules(@Path("company_id") companyId: String)
-    : Deferred<Response<DPCompanyRuleResponse>>
+    suspend fun getDpCompanyRulePriority(@Path("company_id") companyId: String)
+    : Response<DPCompanyRuleResponse>
     
-    @PUT ("/service/platform/logistics/v1.0/company/{company_id}/application/{application_id}/courier/priority")
-    fun upsertDpApplicationRules(@Path("company_id") companyId: String, @Path("application_id") applicationId: String,@Body body: DPApplicationRuleRequest)
-    : Deferred<Response<DPApplicationRuleResponse>>
+    @PUT ("/service/platform/logistics/v1.0/company/{company_id}/courier/priority")
+    suspend fun upsertDpCompanyRulePriority(@Path("company_id") companyId: String,@Body body: DPCompanyRuleRequest)
+    : Response<DPCompanyRuleResponse>
     
     @GET ("/service/platform/logistics/v1.0/company/{company_id}/application/{application_id}/courier/priority")
-    fun getDpApplicationRules(@Path("company_id") companyId: String, @Path("application_id") applicationId: String)
-    : Deferred<Response<DPApplicationRuleResponse>>
+    suspend fun getDpApplicationRulePriority(@Path("company_id") companyId: String, @Path("application_id") applicationId: String)
+    : Response<DPApplicationRuleResponse>
+    
+    @PUT ("/service/platform/logistics/v1.0/company/{company_id}/application/{application_id}/courier/priority")
+    suspend fun upsertDpApplicationRulePriority(@Path("company_id") companyId: String, @Path("application_id") applicationId: String,@Body body: DPApplicationRuleRequest)
+    : Response<DPApplicationRuleResponse>
     
     @GET ("/service/platform/logistics/v1.0/company/{company_id}/application/{application_id}/selfship")
-    fun getApplicationServiceabilitySelfShipment(@Path("company_id") companyId: String, @Path("application_id") applicationId: String)
-    : Deferred<Response<ApplicationSelfShipConfigResponse>>
+    suspend fun getApplicationServiceabilitySelfShipment(@Path("company_id") companyId: String, @Path("application_id") applicationId: String)
+    : Response<ApplicationSelfShipConfigResponse>
     
     @PATCH ("/service/platform/logistics/v1.0/company/{company_id}/application/{application_id}/selfship")
-    fun patchApplicationServiceabilitySelfShipment(@Path("company_id") companyId: String, @Path("application_id") applicationId: String,@Body body: SelfShipResponse)
-    : Deferred<Response<ApplicationSelfShipConfigResponse>>
+    suspend fun patchApplicationServiceabilitySelfShipment(@Path("company_id") companyId: String, @Path("application_id") applicationId: String,@Body body: SelfShipResponse)
+    : Response<ApplicationSelfShipConfigResponse>
     
 }

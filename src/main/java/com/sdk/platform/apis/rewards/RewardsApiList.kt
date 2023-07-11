@@ -10,51 +10,51 @@ import com.sdk.platform.models.rewards.*
 interface RewardsApiList {
     
     @GET ("/service/platform/rewards/v1.0/company/{company_id}/application/{application_id}/giveaways")
-    fun showGiveaways(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Query("page_id") pageId: String, @Query("page_size") pageSize: Int)
-    : Deferred<Response<GiveawayResponse>>
+    suspend fun showGiveaways(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Query("page_id") pageId: String, @Query("page_size") pageSize: Int)
+    : Response<GiveawayResponse>
     
     @POST ("/service/platform/rewards/v1.0/company/{company_id}/application/{application_id}/giveaways")
-    fun saveGiveAway(@Path("company_id") companyId: String, @Path("application_id") applicationId: String,@Body body: Giveaway)
-    : Deferred<Response<Giveaway>>
+    suspend fun saveGiveAway(@Path("company_id") companyId: String, @Path("application_id") applicationId: String,@Body body: Giveaway)
+    : Response<Giveaway>
     
     @GET ("/service/platform/rewards/v1.0/company/{company_id}/application/{application_id}/giveaways/{id}")
-    fun getGiveawayById(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Path("id") id: String)
-    : Deferred<Response<Giveaway>>
+    suspend fun getGiveawayById(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Path("id") id: String)
+    : Response<Giveaway>
     
     @PUT ("/service/platform/rewards/v1.0/company/{company_id}/application/{application_id}/giveaways/{id}")
-    fun updateGiveAway(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Path("id") id: String,@Body body: Giveaway)
-    : Deferred<Response<Giveaway>>
+    suspend fun updateGiveAway(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Path("id") id: String,@Body body: Giveaway)
+    : Response<Giveaway>
     
     @GET ("/service/platform/rewards/v1.0/company/{company_id}/application/{application_id}/offers/")
-    fun showOffers(@Path("company_id") companyId: String, @Path("application_id") applicationId: String)
-    : Deferred<Response<ArrayList<Offer>>>
+    suspend fun showOffers(@Path("company_id") companyId: String, @Path("application_id") applicationId: String)
+    : Response<ArrayList<Offer>>
     
     @GET ("/service/platform/rewards/v1.0/company/{company_id}/application/{application_id}/offers/{name}/")
-    fun getOfferByName(@Path("name") name: String, @Path("company_id") companyId: String, @Path("application_id") applicationId: String)
-    : Deferred<Response<Offer>>
+    suspend fun getOfferByName(@Path("name") name: String, @Path("company_id") companyId: String, @Path("application_id") applicationId: String)
+    : Response<Offer>
     
     @PUT ("/service/platform/rewards/v1.0/company/{company_id}/application/{application_id}/offers/{name}/")
-    fun updateOfferByName(@Path("name") name: String, @Path("company_id") companyId: String, @Path("application_id") applicationId: String,@Body body: Offer)
-    : Deferred<Response<Offer>>
+    suspend fun updateOfferByName(@Path("name") name: String, @Path("company_id") companyId: String, @Path("application_id") applicationId: String,@Body body: Offer)
+    : Response<Offer>
     
     @PATCH ("/service/platform/rewards/v1.0/company/{company_id}/application/{application_id}/users/{user_id}/")
-    fun updateUserStatus(@Path("user_id") userId: String, @Path("company_id") companyId: String, @Path("application_id") applicationId: String,@Body body: AppUser)
-    : Deferred<Response<AppUser>>
+    suspend fun updateUserStatus(@Path("user_id") userId: String, @Path("company_id") companyId: String, @Path("application_id") applicationId: String,@Body body: AppUser)
+    : Response<AppUser>
     
     @GET ("/service/platform/rewards/v1.0/company/{company_id}/application/{application_id}/users/{user_id}/")
-    fun getUserDetails(@Path("user_id") userId: String, @Path("company_id") companyId: String, @Path("application_id") applicationId: String)
-    : Deferred<Response<UserRes>>
+    suspend fun getUserDetails(@Path("user_id") userId: String, @Path("company_id") companyId: String, @Path("application_id") applicationId: String)
+    : Response<UserRes>
     
     @GET ("/service/platform/rewards/v1.0/company/{company_id}/application/{application_id}/users/{user_id}/points/history/")
-    fun getUserPointsHistory(@Path("user_id") userId: String, @Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Query("page_id") pageId: String?, @Query("page_size") pageSize: Int?)
-    : Deferred<Response<HistoryRes>>
+    suspend fun getUserPointsHistory(@Path("user_id") userId: String, @Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Query("page_id") pageId: String?, @Query("page_size") pageSize: Int?)
+    : Response<HistoryRes>
     
     @GET ("/service/platform/rewards/v1.0/company/{company_id}/application/{application_id}/configuration/")
-    fun getRewardsConfiguration(@Path("company_id") companyId: String, @Path("application_id") applicationId: String)
-    : Deferred<Response<ConfigurationRes>>
+    suspend fun getRewardsConfiguration(@Path("company_id") companyId: String, @Path("application_id") applicationId: String)
+    : Response<ConfigurationRes>
     
     @POST ("/service/platform/rewards/v1.0/company/{company_id}/application/{application_id}/configuration/")
-    fun setRewardsConfiguration(@Path("company_id") companyId: String, @Path("application_id") applicationId: String,@Body body: ConfigurationRequest)
-    : Deferred<Response<SetConfigurationRes>>
+    suspend fun setRewardsConfiguration(@Path("company_id") companyId: String, @Path("application_id") applicationId: String,@Body body: ConfigurationRequest)
+    : Response<SetConfigurationRes>
     
 }

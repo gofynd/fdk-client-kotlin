@@ -12,82 +12,82 @@ interface ConfigurationApiList {
     
     
     @GET 
-    fun getApplication(@Url url1: String?   )
-    : Deferred<Response<Application>>
+    suspend fun getApplication(@Url url1: String?   )
+    : Response<Application>
     
     
     @GET 
-    fun getOwnerInfo(@Url url1: String?   )
-    : Deferred<Response<ApplicationAboutResponse>>
+    suspend fun getOwnerInfo(@Url url1: String?   )
+    : Response<ApplicationAboutResponse>
     
     
     @GET 
-    fun getBasicDetails(@Url url1: String?   )
-    : Deferred<Response<ApplicationDetail>>
+    suspend fun getBasicDetails(@Url url1: String?   )
+    : Response<ApplicationDetail>
     
     
     @GET 
-    fun getIntegrationTokens(@Url url1: String?   )
-    : Deferred<Response<AppTokenResponse>>
+    suspend fun getIntegrationTokens(@Url url1: String?   )
+    : Response<AppTokenResponse>
     
     
     @GET 
-    fun getOrderingStores(@Url url1: String?    ,    @Query("page_no") pageNo: Int?, @Query("page_size") pageSize: Int?, @Query("q") q: String?)
-    : Deferred<Response<OrderingStores>>
+    suspend fun getOrderingStores(@Url url1: String?    ,    @Query("page_no") pageNo: Int?, @Query("page_size") pageSize: Int?, @Query("q") q: String?)
+    : Response<OrderingStores>
     
     
     @GET 
-    fun getStoreDetailById(@Url url1: String?    )
-    : Deferred<Response<OrderingStore>>
+    suspend fun getStoreDetailById(@Url url1: String?    )
+    : Response<OrderingStore>
     
     
     @GET 
-    fun getFeatures(@Url url1: String?   )
-    : Deferred<Response<AppFeatureResponse>>
+    suspend fun getFeatures(@Url url1: String?   )
+    : Response<AppFeatureResponse>
     
     
     @GET 
-    fun getContactInfo(@Url url1: String?   )
-    : Deferred<Response<ApplicationInformation>>
+    suspend fun getContactInfo(@Url url1: String?   )
+    : Response<ApplicationInformation>
     
     
     @GET 
-    fun getCurrencies(@Url url1: String?   )
-    : Deferred<Response<CurrenciesResponse>>
+    suspend fun getCurrencies(@Url url1: String?   )
+    : Response<CurrenciesResponse>
     
     
     @GET 
-    fun getCurrencyById(@Url url1: String?    )
-    : Deferred<Response<Currency>>
+    suspend fun getCurrencyById(@Url url1: String?    )
+    : Response<Currency>
     
     
     @GET 
-    fun getAppCurrencies(@Url url1: String?   )
-    : Deferred<Response<AppCurrencyResponse>>
+    suspend fun getAppCurrencies(@Url url1: String?   )
+    : Response<AppCurrencyResponse>
     
     
     @GET 
-    fun getLanguages(@Url url1: String?   )
-    : Deferred<Response<LanguageResponse>>
+    suspend fun getLanguages(@Url url1: String?   )
+    : Response<LanguageResponse>
     
     
     @POST 
-    fun getOrderingStoreCookie(@Url url1: String?   ,@Body body: OrderingStoreSelectRequest)
-    : Deferred<Response<SuccessMessageResponse>>
+    suspend fun getOrderingStoreCookie(@Url url1: String?   ,@Body body: OrderingStoreSelectRequest)
+    : Response<SuccessMessageResponse>
     
     
     @DELETE 
-    fun removeOrderingStoreCookie(@Url url1: String?   )
-    : Deferred<Response<SuccessMessageResponse>>
+    suspend fun removeOrderingStoreCookie(@Url url1: String?   )
+    : Response<SuccessMessageResponse>
     
     
     @GET 
-    fun getAppStaffList(@Url url1: String?    ,       @Query("page_no") pageNo: Int?, @Query("page_size") pageSize: Int?, @Query("order_incent") orderIncent: Boolean?, @Query("ordering_store") orderingStore: Int?, @Query("user") user: String?, @Query("user_name") userName: String?)
-    : Deferred<Response<AppStaffListResponse>>
+    suspend fun getAppStaffList(@Url url1: String?    ,       @Query("page_no") pageNo: Int?, @Query("page_size") pageSize: Int?, @Query("order_incent") orderIncent: Boolean?, @Query("ordering_store") orderingStore: Int?, @Query("user") user: String?, @Query("user_name") userName: String?)
+    : Response<AppStaffListResponse>
     
     
     @GET 
-    fun getAppStaffs(@Url url1: String?    ,    @Query("order_incent") orderIncent: Boolean?, @Query("ordering_store") orderingStore: Int?, @Query("user") user: String?)
-    : Deferred<Response<AppStaffResponse>>
+    suspend fun getAppStaffs(@Url url1: String?    ,    @Query("order_incent") orderIncent: Boolean?, @Query("ordering_store") orderingStore: Int?, @Query("user") user: String?)
+    : Response<AppStaffResponse>
     
 }

@@ -47,7 +47,7 @@ class BillingDataManagerClass(val config: PlatformConfig, val unauthorizedAction
     
     
     suspend fun checkCouponValidity(plan: String, couponCode: String)
-    : Deferred<Response<CheckValidityResponse>>? {
+    : Response<CheckValidityResponse>? {
         
         return if (config.oauthClient.isAccessTokenValid()) {
             billingApiList?.checkCouponValidity(
@@ -59,7 +59,7 @@ class BillingDataManagerClass(val config: PlatformConfig, val unauthorizedAction
     
     
     suspend fun createSubscriptionCharge(extensionId: String,body: CreateSubscriptionCharge)
-    : Deferred<Response<CreateSubscriptionResponse>>? {
+    : Response<CreateSubscriptionResponse>? {
         
         return if (config.oauthClient.isAccessTokenValid()) {
             billingApiList?.createSubscriptionCharge(
@@ -71,7 +71,7 @@ class BillingDataManagerClass(val config: PlatformConfig, val unauthorizedAction
     
     
     suspend fun getSubscriptionCharge(extensionId: String, subscriptionId: String)
-    : Deferred<Response<EntitySubscription>>? {
+    : Response<EntitySubscription>? {
         
         return if (config.oauthClient.isAccessTokenValid()) {
             billingApiList?.getSubscriptionCharge(
@@ -83,7 +83,7 @@ class BillingDataManagerClass(val config: PlatformConfig, val unauthorizedAction
     
     
     suspend fun cancelSubscriptionCharge(extensionId: String, subscriptionId: String)
-    : Deferred<Response<EntitySubscription>>? {
+    : Response<EntitySubscription>? {
         
         return if (config.oauthClient.isAccessTokenValid()) {
             billingApiList?.cancelSubscriptionCharge(
@@ -95,7 +95,7 @@ class BillingDataManagerClass(val config: PlatformConfig, val unauthorizedAction
     
     
     suspend fun createOneTimeCharge(extensionId: String,body: CreateOneTimeCharge)
-    : Deferred<Response<CreateOneTimeChargeResponse>>? {
+    : Response<CreateOneTimeChargeResponse>? {
         
         return if (config.oauthClient.isAccessTokenValid()) {
             billingApiList?.createOneTimeCharge(
@@ -107,7 +107,7 @@ class BillingDataManagerClass(val config: PlatformConfig, val unauthorizedAction
     
     
     suspend fun getChargeDetails(extensionId: String, chargeId: String)
-    : Deferred<Response<OneTimeChargeEntity>>? {
+    : Response<OneTimeChargeEntity>? {
         
         return if (config.oauthClient.isAccessTokenValid()) {
             billingApiList?.getChargeDetails(
@@ -119,7 +119,7 @@ class BillingDataManagerClass(val config: PlatformConfig, val unauthorizedAction
     
     
     suspend fun getInvoices()
-    : Deferred<Response<Invoices>>? {
+    : Response<Invoices>? {
         
         return if (config.oauthClient.isAccessTokenValid()) {
             billingApiList?.getInvoices(
@@ -131,7 +131,7 @@ class BillingDataManagerClass(val config: PlatformConfig, val unauthorizedAction
     
     
     suspend fun getInvoiceById(invoiceId: String)
-    : Deferred<Response<Invoice>>? {
+    : Response<Invoice>? {
         
         return if (config.oauthClient.isAccessTokenValid()) {
             billingApiList?.getInvoiceById(
@@ -143,7 +143,7 @@ class BillingDataManagerClass(val config: PlatformConfig, val unauthorizedAction
     
     
     suspend fun getCustomerDetail()
-    : Deferred<Response<SubscriptionCustomer>>? {
+    : Response<SubscriptionCustomer>? {
         
         return if (config.oauthClient.isAccessTokenValid()) {
             billingApiList?.getCustomerDetail(
@@ -155,7 +155,7 @@ class BillingDataManagerClass(val config: PlatformConfig, val unauthorizedAction
     
     
     suspend fun upsertCustomerDetail(body: SubscriptionCustomerCreate)
-    : Deferred<Response<SubscriptionCustomer>>? {
+    : Response<SubscriptionCustomer>? {
         
         return if (config.oauthClient.isAccessTokenValid()) {
             billingApiList?.upsertCustomerDetail(
@@ -167,7 +167,7 @@ class BillingDataManagerClass(val config: PlatformConfig, val unauthorizedAction
     
     
     suspend fun getSubscription()
-    : Deferred<Response<SubscriptionStatus>>? {
+    : Response<SubscriptionStatus>? {
         
         return if (config.oauthClient.isAccessTokenValid()) {
             billingApiList?.getSubscription(
@@ -179,7 +179,7 @@ class BillingDataManagerClass(val config: PlatformConfig, val unauthorizedAction
     
     
     suspend fun getFeatureLimitConfig()
-    : Deferred<Response<SubscriptionLimit>>? {
+    : Response<SubscriptionLimit>? {
         
         return if (config.oauthClient.isAccessTokenValid()) {
             billingApiList?.getFeatureLimitConfig(
@@ -191,7 +191,7 @@ class BillingDataManagerClass(val config: PlatformConfig, val unauthorizedAction
     
     
     suspend fun activateSubscriptionPlan(body: SubscriptionActivateReq)
-    : Deferred<Response<SubscriptionActivateRes>>? {
+    : Response<SubscriptionActivateRes>? {
         
         return if (config.oauthClient.isAccessTokenValid()) {
             billingApiList?.activateSubscriptionPlan(
@@ -203,7 +203,7 @@ class BillingDataManagerClass(val config: PlatformConfig, val unauthorizedAction
     
     
     suspend fun cancelSubscriptionPlan(body: CancelSubscriptionReq)
-    : Deferred<Response<CancelSubscriptionRes>>? {
+    : Response<CancelSubscriptionRes>? {
         
         return if (config.oauthClient.isAccessTokenValid()) {
             billingApiList?.cancelSubscriptionPlan(

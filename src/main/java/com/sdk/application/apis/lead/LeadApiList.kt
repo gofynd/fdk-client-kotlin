@@ -12,37 +12,37 @@ interface LeadApiList {
     
     
     @GET 
-    fun getTicket(@Url url1: String?    )
-    : Deferred<Response<Ticket>>
+    suspend fun getTicket(@Url url1: String?    )
+    : Response<Ticket>
     
     
     @POST 
-    fun createHistory(@Url url1: String?    ,@Body body: TicketHistoryPayload)
-    : Deferred<Response<TicketHistory>>
+    suspend fun createHistory(@Url url1: String?    ,@Body body: TicketHistoryPayload)
+    : Response<TicketHistory>
     
     
     @POST 
-    fun createTicket(@Url url1: String?   ,@Body body: AddTicketPayload)
-    : Deferred<Response<Ticket>>
+    suspend fun createTicket(@Url url1: String?   ,@Body body: AddTicketPayload)
+    : Response<Ticket>
     
     
     @GET 
-    fun getCustomForm(@Url url1: String?    )
-    : Deferred<Response<CustomForm>>
+    suspend fun getCustomForm(@Url url1: String?    )
+    : Response<CustomForm>
     
     
     @POST 
-    fun submitCustomForm(@Url url1: String?    ,@Body body: CustomFormSubmissionPayload)
-    : Deferred<Response<SubmitCustomFormResponse>>
+    suspend fun submitCustomForm(@Url url1: String?    ,@Body body: CustomFormSubmissionPayload)
+    : Response<SubmitCustomFormResponse>
     
     
     @GET 
-    fun getParticipantsInsideVideoRoom(@Url url1: String?    )
-    : Deferred<Response<GetParticipantsInsideVideoRoomResponse>>
+    suspend fun getParticipantsInsideVideoRoom(@Url url1: String?    )
+    : Response<GetParticipantsInsideVideoRoomResponse>
     
     
     @GET 
-    fun getTokenForVideoRoom(@Url url1: String?    )
-    : Deferred<Response<GetTokenForVideoRoomResponse>>
+    suspend fun getTokenForVideoRoom(@Url url1: String?    )
+    : Response<GetTokenForVideoRoomResponse>
     
 }

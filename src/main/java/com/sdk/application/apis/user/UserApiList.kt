@@ -12,177 +12,177 @@ interface UserApiList {
     
     
     @POST 
-    fun loginWithFacebook(@Url url1: String?    ,  @Query("platform") platform: String?, @Body body: OAuthRequestSchema)
-    : Deferred<Response<AuthSuccess>>
+    suspend fun loginWithFacebook(@Url url1: String?    ,  @Query("platform") platform: String?, @Body body: OAuthRequestSchema)
+    : Response<AuthSuccess>
     
     
     @POST 
-    fun loginWithGoogle(@Url url1: String?    ,  @Query("platform") platform: String?, @Body body: OAuthRequestSchema)
-    : Deferred<Response<AuthSuccess>>
+    suspend fun loginWithGoogle(@Url url1: String?    ,  @Query("platform") platform: String?, @Body body: OAuthRequestSchema)
+    : Response<AuthSuccess>
     
     
     @POST 
-    fun loginWithGoogleAndroid(@Url url1: String?    ,  @Query("platform") platform: String?, @Body body: OAuthRequestSchema)
-    : Deferred<Response<AuthSuccess>>
+    suspend fun loginWithGoogleAndroid(@Url url1: String?    ,  @Query("platform") platform: String?, @Body body: OAuthRequestSchema)
+    : Response<AuthSuccess>
     
     
     @POST 
-    fun loginWithGoogleIOS(@Url url1: String?    ,  @Query("platform") platform: String?, @Body body: OAuthRequestSchema)
-    : Deferred<Response<AuthSuccess>>
+    suspend fun loginWithGoogleIOS(@Url url1: String?    ,  @Query("platform") platform: String?, @Body body: OAuthRequestSchema)
+    : Response<AuthSuccess>
     
     
     @POST 
-    fun loginWithAppleIOS(@Url url1: String?    ,  @Query("platform") platform: String?, @Body body: OAuthRequestAppleSchema)
-    : Deferred<Response<AuthSuccess>>
+    suspend fun loginWithAppleIOS(@Url url1: String?    ,  @Query("platform") platform: String?, @Body body: OAuthRequestAppleSchema)
+    : Response<AuthSuccess>
     
     
     @POST 
-    fun loginWithOTP(@Url url1: String?    ,  @Query("platform") platform: String?, @Body body: SendOtpRequestSchema)
-    : Deferred<Response<SendOtpResponse>>
+    suspend fun loginWithOTP(@Url url1: String?    ,  @Query("platform") platform: String?, @Body body: SendOtpRequestSchema)
+    : Response<SendOtpResponse>
     
     
     @POST 
-    fun loginWithEmailAndPassword(@Url url1: String?   ,@Body body: PasswordLoginRequestSchema)
-    : Deferred<Response<LoginSuccess>>
+    suspend fun loginWithEmailAndPassword(@Url url1: String?   ,@Body body: PasswordLoginRequestSchema)
+    : Response<LoginSuccess>
     
     
     @POST 
-    fun sendResetPasswordEmail(@Url url1: String?    ,  @Query("platform") platform: String?, @Body body: SendResetPasswordEmailRequestSchema)
-    : Deferred<Response<ResetPasswordSuccess>>
+    suspend fun sendResetPasswordEmail(@Url url1: String?    ,  @Query("platform") platform: String?, @Body body: SendResetPasswordEmailRequestSchema)
+    : Response<ResetPasswordSuccess>
     
     
     @POST 
-    fun sendResetPasswordMobile(@Url url1: String?    ,  @Query("platform") platform: String?, @Body body: SendResetPasswordMobileRequestSchema)
-    : Deferred<Response<ResetPasswordSuccess>>
+    suspend fun sendResetPasswordMobile(@Url url1: String?    ,  @Query("platform") platform: String?, @Body body: SendResetPasswordMobileRequestSchema)
+    : Response<ResetPasswordSuccess>
     
     
     @POST 
-    fun forgotPassword(@Url url1: String?   ,@Body body: ForgotPasswordRequestSchema)
-    : Deferred<Response<LoginSuccess>>
+    suspend fun forgotPassword(@Url url1: String?   ,@Body body: ForgotPasswordRequestSchema)
+    : Response<LoginSuccess>
     
     
     @POST 
-    fun sendResetToken(@Url url1: String?   ,@Body body: CodeRequestBodySchema)
-    : Deferred<Response<ResetPasswordSuccess>>
+    suspend fun sendResetToken(@Url url1: String?   ,@Body body: CodeRequestBodySchema)
+    : Response<ResetPasswordSuccess>
     
     
     @POST 
-    fun loginWithToken(@Url url1: String?   ,@Body body: TokenRequestBodySchema)
-    : Deferred<Response<LoginSuccess>>
+    suspend fun loginWithToken(@Url url1: String?   ,@Body body: TokenRequestBodySchema)
+    : Response<LoginSuccess>
     
     
     @POST 
-    fun registerWithForm(@Url url1: String?    ,  @Query("platform") platform: String?, @Body body: FormRegisterRequestSchema)
-    : Deferred<Response<RegisterFormSuccess>>
+    suspend fun registerWithForm(@Url url1: String?    ,  @Query("platform") platform: String?, @Body body: FormRegisterRequestSchema)
+    : Response<RegisterFormSuccess>
     
     
     @POST 
-    fun verifyEmail(@Url url1: String?   ,@Body body: CodeRequestBodySchema)
-    : Deferred<Response<VerifyEmailSuccess>>
+    suspend fun verifyEmail(@Url url1: String?   ,@Body body: CodeRequestBodySchema)
+    : Response<VerifyEmailSuccess>
     
     
     @POST 
-    fun verifyMobile(@Url url1: String?   ,@Body body: CodeRequestBodySchema)
-    : Deferred<Response<VerifyEmailSuccess>>
+    suspend fun verifyMobile(@Url url1: String?   ,@Body body: CodeRequestBodySchema)
+    : Response<VerifyEmailSuccess>
     
     
     @GET 
-    fun hasPassword(@Url url1: String?   )
-    : Deferred<Response<HasPasswordSuccess>>
+    suspend fun hasPassword(@Url url1: String?   )
+    : Response<HasPasswordSuccess>
     
     
     @POST 
-    fun updatePassword(@Url url1: String?   ,@Body body: UpdatePasswordRequestSchema)
-    : Deferred<Response<VerifyEmailSuccess>>
+    suspend fun updatePassword(@Url url1: String?   ,@Body body: UpdatePasswordRequestSchema)
+    : Response<VerifyEmailSuccess>
     
     
     @POST 
-    fun deleteUser(@Url url1: String?   ,@Body body: DeleteApplicationUserRequestSchema)
-    : Deferred<Response<DeleteUserSuccess>>
+    suspend fun deleteUser(@Url url1: String?   ,@Body body: DeleteApplicationUserRequestSchema)
+    : Response<DeleteUserSuccess>
     
     
     @GET 
-    fun logout(@Url url1: String?   )
-    : Deferred<Response<LogoutSuccess>>
+    suspend fun logout(@Url url1: String?   )
+    : Response<LogoutSuccess>
     
     
     @POST 
-    fun sendOTPOnMobile(@Url url1: String?    ,  @Query("platform") platform: String?, @Body body: SendMobileOtpRequestSchema)
-    : Deferred<Response<OtpSuccess>>
+    suspend fun sendOTPOnMobile(@Url url1: String?    ,  @Query("platform") platform: String?, @Body body: SendMobileOtpRequestSchema)
+    : Response<OtpSuccess>
     
     
     @POST 
-    fun verifyMobileOTP(@Url url1: String?    ,  @Query("platform") platform: String?, @Body body: VerifyOtpRequestSchema)
-    : Deferred<Response<VerifyOtpSuccess>>
+    suspend fun verifyMobileOTP(@Url url1: String?    ,  @Query("platform") platform: String?, @Body body: VerifyOtpRequestSchema)
+    : Response<VerifyOtpSuccess>
     
     
     @POST 
-    fun sendOTPOnEmail(@Url url1: String?    ,  @Query("platform") platform: String?, @Body body: SendEmailOtpRequestSchema)
-    : Deferred<Response<EmailOtpSuccess>>
+    suspend fun sendOTPOnEmail(@Url url1: String?    ,  @Query("platform") platform: String?, @Body body: SendEmailOtpRequestSchema)
+    : Response<EmailOtpSuccess>
     
     
     @POST 
-    fun verifyEmailOTP(@Url url1: String?    ,  @Query("platform") platform: String?, @Body body: VerifyEmailOtpRequestSchema)
-    : Deferred<Response<VerifyOtpSuccess>>
+    suspend fun verifyEmailOTP(@Url url1: String?    ,  @Query("platform") platform: String?, @Body body: VerifyEmailOtpRequestSchema)
+    : Response<VerifyOtpSuccess>
     
     
     @GET 
-    fun getLoggedInUser(@Url url1: String?   )
-    : Deferred<Response<UserObjectSchema>>
+    suspend fun getLoggedInUser(@Url url1: String?   )
+    : Response<UserObjectSchema>
     
     
     @GET 
-    fun getListOfActiveSessions(@Url url1: String?   )
-    : Deferred<Response<SessionListSuccess>>
+    suspend fun getListOfActiveSessions(@Url url1: String?   )
+    : Response<SessionListSuccess>
     
     
     @GET 
-    fun getPlatformConfig(@Url url1: String?    ,  @Query("name") name: String?)
-    : Deferred<Response<PlatformSchema>>
+    suspend fun getPlatformConfig(@Url url1: String?    ,  @Query("name") name: String?)
+    : Response<PlatformSchema>
     
     
     @POST 
-    fun updateProfile(@Url url1: String?    ,  @Query("platform") platform: String?, @Body body: EditProfileRequestSchema)
-    : Deferred<Response<ProfileEditSuccess>>
+    suspend fun updateProfile(@Url url1: String?    ,  @Query("platform") platform: String?, @Body body: EditProfileRequestSchema)
+    : Response<ProfileEditSuccess>
     
     
     @PUT 
-    fun addMobileNumber(@Url url1: String?    ,  @Query("platform") platform: String?, @Body body: EditMobileRequestSchema)
-    : Deferred<Response<VerifyMobileOTPSuccess>>
+    suspend fun addMobileNumber(@Url url1: String?    ,  @Query("platform") platform: String?, @Body body: EditMobileRequestSchema)
+    : Response<VerifyMobileOTPSuccess>
     
     
     @DELETE 
-    fun deleteMobileNumber(@Url url1: String?    ,       @Query("platform") platform: String?, @Query("active") active: Boolean, @Query("primary") primary: Boolean, @Query("verified") verified: Boolean, @Query("country_code") countryCode: String, @Query("phone") phone: String)
-    : Deferred<Response<LoginSuccess>>
+    suspend fun deleteMobileNumber(@Url url1: String?    ,       @Query("platform") platform: String?, @Query("active") active: Boolean, @Query("primary") primary: Boolean, @Query("verified") verified: Boolean, @Query("country_code") countryCode: String, @Query("phone") phone: String)
+    : Response<LoginSuccess>
     
     
     @POST 
-    fun setMobileNumberAsPrimary(@Url url1: String?   ,@Body body: SendVerificationLinkMobileRequestSchema)
-    : Deferred<Response<LoginSuccess>>
+    suspend fun setMobileNumberAsPrimary(@Url url1: String?   ,@Body body: SendVerificationLinkMobileRequestSchema)
+    : Response<LoginSuccess>
     
     
     @POST 
-    fun sendVerificationLinkToMobile(@Url url1: String?    ,  @Query("platform") platform: String?, @Body body: SendVerificationLinkMobileRequestSchema)
-    : Deferred<Response<SendMobileVerifyLinkSuccess>>
+    suspend fun sendVerificationLinkToMobile(@Url url1: String?    ,  @Query("platform") platform: String?, @Body body: SendVerificationLinkMobileRequestSchema)
+    : Response<SendMobileVerifyLinkSuccess>
     
     
     @PUT 
-    fun addEmail(@Url url1: String?    ,  @Query("platform") platform: String?, @Body body: EditEmailRequestSchema)
-    : Deferred<Response<VerifyEmailOTPSuccess>>
+    suspend fun addEmail(@Url url1: String?    ,  @Query("platform") platform: String?, @Body body: EditEmailRequestSchema)
+    : Response<VerifyEmailOTPSuccess>
     
     
     @DELETE 
-    fun deleteEmail(@Url url1: String?    ,      @Query("platform") platform: String?, @Query("active") active: Boolean, @Query("primary") primary: Boolean, @Query("verified") verified: Boolean, @Query("email") email: String)
-    : Deferred<Response<LoginSuccess>>
+    suspend fun deleteEmail(@Url url1: String?    ,      @Query("platform") platform: String?, @Query("active") active: Boolean, @Query("primary") primary: Boolean, @Query("verified") verified: Boolean, @Query("email") email: String)
+    : Response<LoginSuccess>
     
     
     @POST 
-    fun setEmailAsPrimary(@Url url1: String?   ,@Body body: EditEmailRequestSchema)
-    : Deferred<Response<LoginSuccess>>
+    suspend fun setEmailAsPrimary(@Url url1: String?   ,@Body body: EditEmailRequestSchema)
+    : Response<LoginSuccess>
     
     
     @POST 
-    fun sendVerificationLinkToEmail(@Url url1: String?    ,  @Query("platform") platform: String?, @Body body: EditEmailRequestSchema)
-    : Deferred<Response<SendEmailVerifyLinkSuccess>>
+    suspend fun sendVerificationLinkToEmail(@Url url1: String?    ,  @Query("platform") platform: String?, @Body body: EditEmailRequestSchema)
+    : Response<SendEmailVerifyLinkSuccess>
     
 }

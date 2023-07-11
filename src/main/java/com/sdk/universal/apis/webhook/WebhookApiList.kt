@@ -12,12 +12,12 @@ interface WebhookApiList {
     
     
     @GET 
-    fun fetchAllWebhookEvents(@Url url1: String?   )
-    : Deferred<Response<EventConfigResponse>>
+    suspend fun fetchAllWebhookEvents(@Url url1: String?   )
+    : Response<EventConfigResponse>
     
     
     @POST 
-    fun queryWebhookEventDetails(@Url url1: String?   ,@Body body: ArrayList<EventConfigBase>)
-    : Deferred<Response<EventConfigResponse>>
+    suspend fun queryWebhookEventDetails(@Url url1: String?   ,@Body body: ArrayList<EventConfigBase>)
+    : Response<EventConfigResponse>
     
 }

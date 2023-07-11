@@ -72,7 +72,7 @@ class ThemeDataManagerClass(val config: PlatformConfig, val unauthorizedAction: 
     
     
     suspend fun getCompanyLevelThemes()
-    : Deferred<Response<ArrayList<ThemeSchema>>>? {
+    : Response<ArrayList<ThemeSchema>>? {
         
         return if (config.oauthClient.isAccessTokenValid()) {
             themeApiList?.getCompanyLevelThemes(
@@ -84,7 +84,7 @@ class ThemeDataManagerClass(val config: PlatformConfig, val unauthorizedAction: 
     
     
     suspend fun addMarketplaceThemeToCompany(body: ThemeReq)
-    : Deferred<Response<ThemeSchema>>? {
+    : Response<ThemeSchema>? {
         
         return if (config.oauthClient.isAccessTokenValid()) {
             themeApiList?.addMarketplaceThemeToCompany(
@@ -96,7 +96,7 @@ class ThemeDataManagerClass(val config: PlatformConfig, val unauthorizedAction: 
     
     
     suspend fun deleteCompanyTheme(themeId: String)
-    : Deferred<Response<ThemeSchema>>? {
+    : Response<ThemeSchema>? {
         
         return if (config.oauthClient.isAccessTokenValid()) {
             themeApiList?.deleteCompanyTheme(
@@ -127,7 +127,7 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     
     
     suspend fun getAllPages(themeId: String)
-    : Deferred<Response<AllAvailablePageSchema>>? {
+    : Response<AllAvailablePageSchema>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 themeApiList?.getAllPages(companyId = config.companyId , applicationId = applicationId , themeId = themeId )
         } else {
@@ -137,7 +137,7 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     
     
     suspend fun createPage(themeId: String,body: AvailablePageSchema)
-    : Deferred<Response<AvailablePageSchema>>? {
+    : Response<AvailablePageSchema>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 themeApiList?.createPage(companyId = config.companyId , applicationId = applicationId , themeId = themeId, body = body)
         } else {
@@ -147,7 +147,7 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     
     
     suspend fun updateMultiplePages(themeId: String,body: AllAvailablePageSchema)
-    : Deferred<Response<AllAvailablePageSchema>>? {
+    : Response<AllAvailablePageSchema>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 themeApiList?.updateMultiplePages(companyId = config.companyId , applicationId = applicationId , themeId = themeId, body = body)
         } else {
@@ -157,7 +157,7 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     
     
     suspend fun getPage(themeId: String, pageValue: String)
-    : Deferred<Response<AvailablePageSchema>>? {
+    : Response<AvailablePageSchema>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 themeApiList?.getPage(companyId = config.companyId , applicationId = applicationId , themeId = themeId, pageValue = pageValue )
         } else {
@@ -167,7 +167,7 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     
     
     suspend fun updatePage(themeId: String, pageValue: String,body: AvailablePageSchema)
-    : Deferred<Response<AvailablePageSchema>>? {
+    : Response<AvailablePageSchema>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 themeApiList?.updatePage(companyId = config.companyId , applicationId = applicationId , themeId = themeId, pageValue = pageValue, body = body)
         } else {
@@ -177,7 +177,7 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     
     
     suspend fun deletePage(themeId: String, pageValue: String)
-    : Deferred<Response<AvailablePageSchema>>? {
+    : Response<AvailablePageSchema>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 themeApiList?.deletePage(companyId = config.companyId , applicationId = applicationId , themeId = themeId, pageValue = pageValue )
         } else {
@@ -187,7 +187,7 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     
     
     suspend fun getDefaultPageDetails(pageValue: String)
-    : Deferred<Response<AvailablePageSchema>>? {
+    : Response<AvailablePageSchema>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 themeApiList?.getDefaultPageDetails(companyId = config.companyId , applicationId = applicationId , pageValue = pageValue )
         } else {
@@ -197,7 +197,7 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     
     
     suspend fun getThemeLibrary(pageSize: Int?=null, pageNo: Int?=null)
-    : Deferred<Response<ThemesListingResponseSchema>>? {
+    : Response<ThemesListingResponseSchema>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 themeApiList?.getThemeLibrary(companyId = config.companyId , applicationId = applicationId , pageSize = pageSize, pageNo = pageNo )
         } else {
@@ -207,7 +207,7 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     
     
     suspend fun addToThemeLibrary(body: AddThemeRequestSchema)
-    : Deferred<Response<ThemesSchema>>? {
+    : Response<ThemesSchema>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 themeApiList?.addToThemeLibrary(companyId = config.companyId , applicationId = applicationId , body = body)
         } else {
@@ -217,7 +217,7 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     
     
     suspend fun applyTheme(body: AddThemeRequestSchema)
-    : Deferred<Response<ThemesSchema>>? {
+    : Response<ThemesSchema>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 themeApiList?.applyTheme(companyId = config.companyId , applicationId = applicationId , body = body)
         } else {
@@ -227,7 +227,7 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     
     
     suspend fun isUpgradable(themeId: String)
-    : Deferred<Response<UpgradableThemeSchema>>? {
+    : Response<UpgradableThemeSchema>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 themeApiList?.isUpgradable(companyId = config.companyId , applicationId = applicationId , themeId = themeId )
         } else {
@@ -237,7 +237,7 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     
     
     suspend fun upgradeTheme(themeId: String)
-    : Deferred<Response<ThemesSchema>>? {
+    : Response<ThemesSchema>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 themeApiList?.upgradeTheme(companyId = config.companyId , applicationId = applicationId , themeId = themeId )
         } else {
@@ -247,7 +247,7 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     
     
     suspend fun getPublicThemes(pageSize: Int?=null, pageNo: Int?=null)
-    : Deferred<Response<ThemesListingResponseSchema>>? {
+    : Response<ThemesListingResponseSchema>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 themeApiList?.getPublicThemes(companyId = config.companyId , applicationId = applicationId , pageSize = pageSize, pageNo = pageNo )
         } else {
@@ -257,7 +257,7 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     
     
     suspend fun createTheme(body: ThemesSchema)
-    : Deferred<Response<ThemesSchema>>? {
+    : Response<ThemesSchema>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 themeApiList?.createTheme(companyId = config.companyId , applicationId = applicationId , body = body)
         } else {
@@ -267,7 +267,7 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     
     
     suspend fun getAppliedTheme()
-    : Deferred<Response<ThemesSchema>>? {
+    : Response<ThemesSchema>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 themeApiList?.getAppliedTheme(companyId = config.companyId , applicationId = applicationId  )
         } else {
@@ -277,7 +277,7 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     
     
     suspend fun getFonts()
-    : Deferred<Response<FontsSchema>>? {
+    : Response<FontsSchema>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 themeApiList?.getFonts(companyId = config.companyId , applicationId = applicationId  )
         } else {
@@ -287,7 +287,7 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     
     
     suspend fun getThemeById(themeId: String)
-    : Deferred<Response<ThemesSchema>>? {
+    : Response<ThemesSchema>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 themeApiList?.getThemeById(companyId = config.companyId , applicationId = applicationId , themeId = themeId )
         } else {
@@ -297,7 +297,7 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     
     
     suspend fun updateTheme(themeId: String,body: ThemesSchema)
-    : Deferred<Response<ThemesSchema>>? {
+    : Response<ThemesSchema>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 themeApiList?.updateTheme(companyId = config.companyId , applicationId = applicationId , themeId = themeId, body = body)
         } else {
@@ -307,7 +307,7 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     
     
     suspend fun deleteTheme(themeId: String)
-    : Deferred<Response<ThemesSchema>>? {
+    : Response<ThemesSchema>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 themeApiList?.deleteTheme(companyId = config.companyId , applicationId = applicationId , themeId = themeId )
         } else {
@@ -317,7 +317,7 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     
     
     suspend fun getThemeForPreview(themeId: String)
-    : Deferred<Response<ThemesSchema>>? {
+    : Response<ThemesSchema>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 themeApiList?.getThemeForPreview(companyId = config.companyId , applicationId = applicationId , themeId = themeId )
         } else {
@@ -327,7 +327,7 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     
     
     suspend fun publishTheme(themeId: String)
-    : Deferred<Response<ThemesSchema>>? {
+    : Response<ThemesSchema>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 themeApiList?.publishTheme(companyId = config.companyId , applicationId = applicationId , themeId = themeId )
         } else {
@@ -337,7 +337,7 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     
     
     suspend fun unpublishTheme(themeId: String)
-    : Deferred<Response<ThemesSchema>>? {
+    : Response<ThemesSchema>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 themeApiList?.unpublishTheme(companyId = config.companyId , applicationId = applicationId , themeId = themeId )
         } else {
@@ -347,7 +347,7 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     
     
     suspend fun archiveTheme(themeId: String)
-    : Deferred<Response<ThemesSchema>>? {
+    : Response<ThemesSchema>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 themeApiList?.archiveTheme(companyId = config.companyId , applicationId = applicationId , themeId = themeId )
         } else {
@@ -357,7 +357,7 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     
     
     suspend fun unarchiveTheme(themeId: String)
-    : Deferred<Response<ThemesSchema>>? {
+    : Response<ThemesSchema>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 themeApiList?.unarchiveTheme(companyId = config.companyId , applicationId = applicationId , themeId = themeId )
         } else {
@@ -367,7 +367,7 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     
     
     suspend fun getThemeLastModified(themeId: String)
-    : Deferred<Response<Void>>? {
+    : Response<Void>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 themeApiList?.getThemeLastModified(companyId = config.companyId , applicationId = applicationId , themeId = themeId )
         } else {
@@ -380,7 +380,7 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     
     
     suspend fun getApplicationThemesV2()
-    : Deferred<Response<ArrayList<AllThemesApplicationResponseV2>>>? {
+    : Response<ArrayList<AllThemesApplicationResponseV2>>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 themeApiList?.getApplicationThemesV2(companyId = config.companyId , applicationId = applicationId  )
         } else {
@@ -390,7 +390,7 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     
     
     suspend fun getFontsV2()
-    : Deferred<Response<FontsSchema>>? {
+    : Response<FontsSchema>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 themeApiList?.getFontsV2(companyId = config.companyId , applicationId = applicationId  )
         } else {
@@ -400,7 +400,7 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     
     
     suspend fun getApplicationThemesCountV2()
-    : Deferred<Response<HashMap<String,Any>>>? {
+    : Response<HashMap<String,Any>>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 themeApiList?.getApplicationThemesCountV2(companyId = config.companyId , applicationId = applicationId  )
         } else {
@@ -410,7 +410,7 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     
     
     suspend fun getApplicationThemeByIdV2(themeId: String)
-    : Deferred<Response<AllThemesApplicationResponseV2>>? {
+    : Response<AllThemesApplicationResponseV2>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 themeApiList?.getApplicationThemeByIdV2(companyId = config.companyId , applicationId = applicationId , themeId = themeId )
         } else {
@@ -420,7 +420,7 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     
     
     suspend fun updateThemeV2(themeId: String,body: UpdateThemeRequestBodyV2)
-    : Deferred<Response<AllThemesApplicationResponseV2>>? {
+    : Response<AllThemesApplicationResponseV2>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 themeApiList?.updateThemeV2(companyId = config.companyId , applicationId = applicationId , themeId = themeId, body = body)
         } else {
@@ -430,7 +430,7 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     
     
     suspend fun deleteThemeV2(themeId: String)
-    : Deferred<Response<AllThemesApplicationResponseV2>>? {
+    : Response<AllThemesApplicationResponseV2>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 themeApiList?.deleteThemeV2(companyId = config.companyId , applicationId = applicationId , themeId = themeId )
         } else {
@@ -440,7 +440,7 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     
     
     suspend fun addThemeToApplicationV2(body: ApplyThemeRequestV2)
-    : Deferred<Response<ApplyThemeResponseV2>>? {
+    : Response<ApplyThemeResponseV2>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 themeApiList?.addThemeToApplicationV2(companyId = config.companyId , applicationId = applicationId , body = body)
         } else {
@@ -450,7 +450,7 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     
     
     suspend fun getAppliedThemeV2()
-    : Deferred<Response<ApplyThemeResponseV2>>? {
+    : Response<ApplyThemeResponseV2>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 themeApiList?.getAppliedThemeV2(companyId = config.companyId , applicationId = applicationId  )
         } else {
@@ -460,7 +460,7 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     
     
     suspend fun updateThemeNameV2(themeId: String,body: UpdateThemeNameRequestBodyV2)
-    : Deferred<Response<AllThemesApplicationResponseV2>>? {
+    : Response<AllThemesApplicationResponseV2>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 themeApiList?.updateThemeNameV2(companyId = config.companyId , applicationId = applicationId , themeId = themeId, body = body)
         } else {
@@ -470,7 +470,7 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     
     
     suspend fun applyThemeV2(themeId: String)
-    : Deferred<Response<AllThemesApplicationResponseV2>>? {
+    : Response<AllThemesApplicationResponseV2>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 themeApiList?.applyThemeV2(companyId = config.companyId , applicationId = applicationId , themeId = themeId )
         } else {
@@ -480,7 +480,7 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     
     
     suspend fun duplicateThemeV2(themeId: String)
-    : Deferred<Response<AllThemesApplicationResponseV2>>? {
+    : Response<AllThemesApplicationResponseV2>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 themeApiList?.duplicateThemeV2(companyId = config.companyId , applicationId = applicationId , themeId = themeId )
         } else {
@@ -490,7 +490,7 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     
     
     suspend fun getThemePreviewByIdV2(themeId: String)
-    : Deferred<Response<AllThemesApplicationResponseV2>>? {
+    : Response<AllThemesApplicationResponseV2>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 themeApiList?.getThemePreviewByIdV2(companyId = config.companyId , applicationId = applicationId , themeId = themeId )
         } else {
@@ -500,7 +500,7 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     
     
     suspend fun getThemeLastModifiedV2(themeId: String)
-    : Deferred<Response<Void>>? {
+    : Response<Void>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 themeApiList?.getThemeLastModifiedV2(companyId = config.companyId , applicationId = applicationId , themeId = themeId )
         } else {
@@ -510,7 +510,7 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     
     
     suspend fun checkThemeUpgradableV2(themeId: String)
-    : Deferred<Response<ThemeUpgradableResponseV2>>? {
+    : Response<ThemeUpgradableResponseV2>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 themeApiList?.checkThemeUpgradableV2(companyId = config.companyId , applicationId = applicationId , themeId = themeId )
         } else {
@@ -520,7 +520,7 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     
     
     suspend fun upgradeApplicationV2(themeId: String)
-    : Deferred<Response<AllThemesApplicationResponseV2>>? {
+    : Response<AllThemesApplicationResponseV2>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 themeApiList?.upgradeApplicationV2(companyId = config.companyId , applicationId = applicationId , themeId = themeId )
         } else {

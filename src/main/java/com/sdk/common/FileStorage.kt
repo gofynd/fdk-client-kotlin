@@ -91,6 +91,6 @@ interface AwsApiList {
         @Header("Content-Type") header: String,
         @Url url: String,
         @Body image: RequestBody
-    ): Deferred<Response<ResponseBody>>
+    ): Response<ResponseBody>
 
 }

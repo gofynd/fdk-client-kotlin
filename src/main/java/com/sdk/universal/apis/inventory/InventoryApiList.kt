@@ -12,32 +12,32 @@ interface InventoryApiList {
     
     
     @GET 
-    fun getJobCodesMetrics(@Url url1: String?    ,   @Query("daily_job") dailyJob: Boolean?, @Query("job_code") jobCode: String?)
-    : Deferred<Response<ResponseEnvelopeObject>>
+    suspend fun getJobCodesMetrics(@Url url1: String?    ,   @Query("daily_job") dailyJob: Boolean?, @Query("job_code") jobCode: String?)
+    : Response<ResponseEnvelopeObject>
     
     
     @POST 
-    fun saveJobCodesMetrics(@Url url1: String?   ,@Body body: EmailJobMetrics)
-    : Deferred<Response<ResponseEnvelopeEmailJobMetrics>>
+    suspend fun saveJobCodesMetrics(@Url url1: String?   ,@Body body: EmailJobMetrics)
+    : Response<ResponseEnvelopeEmailJobMetrics>
     
     
     @GET 
-    fun getConfigByApiKey(@Url url1: String?    ,  @Query("apikey") apikey: String)
-    : Deferred<Response<ResponseEnvelopeSlingshotConfigurationDetail>>
+    suspend fun getConfigByApiKey(@Url url1: String?    ,  @Query("apikey") apikey: String)
+    : Response<ResponseEnvelopeSlingshotConfigurationDetail>
     
     
     @GET 
-    fun getApiKey(@Url url1: String?    ,   @Query("user_name") userName: String, @Query("password") password: String)
-    : Deferred<Response<ResponseEnvelopeApikeyModel>>
+    suspend fun getApiKey(@Url url1: String?    ,   @Query("user_name") userName: String, @Query("password") password: String)
+    : Response<ResponseEnvelopeApikeyModel>
     
     
     @GET 
-    fun getJobByCode(@Url url1: String?    )
-    : Deferred<Response<ResponseEnvelopeJobConfigDTO>>
+    suspend fun getJobByCode(@Url url1: String?    )
+    : Response<ResponseEnvelopeJobConfigDTO>
     
     
     @GET 
-    fun getJobConfigByIntegrationType(@Url url1: String?    ,   @Query("integration_type") integrationType: String, @Query("disable") disable: Boolean?)
-    : Deferred<Response<ResponseEnvelopeListJobConfigDTO>>
+    suspend fun getJobConfigByIntegrationType(@Url url1: String?    ,   @Query("integration_type") integrationType: String, @Query("disable") disable: Boolean?)
+    : Response<ResponseEnvelopeListJobConfigDTO>
     
 }

@@ -67,35 +67,35 @@ class InventoryDataManagerClass(val config: PublicConfig, val unauthorizedAction
         return retrofitHttpClient?.initializeRestClient(InventoryApiList::class.java) as? InventoryApiList
     }
     
-    fun getJobCodesMetrics(dailyJob: Boolean?=null, jobCode: String?=null): Deferred<Response<ResponseEnvelopeObject>>? {
+   suspend fun getJobCodesMetrics(dailyJob: Boolean?=null, jobCode: String?=null): Response<ResponseEnvelopeObject>? {
         var fullUrl : String? = _relativeUrls["getJobCodesMetrics"] 
         
         return inventoryApiList?.getJobCodesMetrics(fullUrl    ,  dailyJob = dailyJob,    jobCode = jobCode)}
 
     
     
-    fun saveJobCodesMetrics(body: EmailJobMetrics): Deferred<Response<ResponseEnvelopeEmailJobMetrics>>? {
+   suspend fun saveJobCodesMetrics(body: EmailJobMetrics): Response<ResponseEnvelopeEmailJobMetrics>? {
         var fullUrl : String? = _relativeUrls["saveJobCodesMetrics"] 
         
         return inventoryApiList?.saveJobCodesMetrics(fullUrl  ,body = body)}
 
     
     
-    fun getConfigByApiKey(apikey: String): Deferred<Response<ResponseEnvelopeSlingshotConfigurationDetail>>? {
+   suspend fun getConfigByApiKey(apikey: String): Response<ResponseEnvelopeSlingshotConfigurationDetail>? {
         var fullUrl : String? = _relativeUrls["getConfigByApiKey"] 
         
         return inventoryApiList?.getConfigByApiKey(fullUrl    ,  apikey = apikey)}
 
     
     
-    fun getApiKey(userName: String, password: String): Deferred<Response<ResponseEnvelopeApikeyModel>>? {
+   suspend fun getApiKey(userName: String, password: String): Response<ResponseEnvelopeApikeyModel>? {
         var fullUrl : String? = _relativeUrls["getApiKey"] 
         
         return inventoryApiList?.getApiKey(fullUrl    ,  userName = userName,    password = password)}
 
     
     
-    fun getJobByCode(code: String): Deferred<Response<ResponseEnvelopeJobConfigDTO>>? {
+   suspend fun getJobByCode(code: String): Response<ResponseEnvelopeJobConfigDTO>? {
         var fullUrl : String? = _relativeUrls["getJobByCode"] 
         
         fullUrl = fullUrl?.replace("{" + "code" +"}",code.toString())
@@ -104,7 +104,7 @@ class InventoryDataManagerClass(val config: PublicConfig, val unauthorizedAction
 
     
     
-    fun getJobConfigByIntegrationType(integrationType: String, disable: Boolean?=null): Deferred<Response<ResponseEnvelopeListJobConfigDTO>>? {
+   suspend fun getJobConfigByIntegrationType(integrationType: String, disable: Boolean?=null): Response<ResponseEnvelopeListJobConfigDTO>? {
         var fullUrl : String? = _relativeUrls["getJobConfigByIntegrationType"] 
         
         return inventoryApiList?.getJobConfigByIntegrationType(fullUrl    ,  integrationType = integrationType,    disable = disable)}

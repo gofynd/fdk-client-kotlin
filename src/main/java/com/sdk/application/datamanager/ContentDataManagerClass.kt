@@ -94,14 +94,14 @@ class ContentDataManagerClass(val config: ApplicationConfig, val unauthorizedAct
         return retrofitHttpClient?.initializeRestClient(ContentApiList::class.java) as? ContentApiList
     }
     
-    fun getAnnouncements(): Deferred<Response<AnnouncementsResponseSchema>>? {
+   suspend fun getAnnouncements(): Response<AnnouncementsResponseSchema>? {
         var fullUrl : String? = _relativeUrls["getAnnouncements"] 
         
         return contentApiList?.getAnnouncements(fullUrl  )}
 
     
     
-    fun getBlog(slug: String, rootId: String?=null): Deferred<Response<BlogSchema>>? {
+   suspend fun getBlog(slug: String, rootId: String?=null): Response<BlogSchema>? {
         var fullUrl : String? = _relativeUrls["getBlog"] 
         
         fullUrl = fullUrl?.replace("{" + "slug" +"}",slug.toString())
@@ -110,7 +110,7 @@ class ContentDataManagerClass(val config: ApplicationConfig, val unauthorizedAct
 
     
     
-    fun getBlogs(pageNo: Int?=null, pageSize: Int?=null): Deferred<Response<BlogGetResponse>>? {
+   suspend fun getBlogs(pageNo: Int?=null, pageSize: Int?=null): Response<BlogGetResponse>? {
         var fullUrl : String? = _relativeUrls["getBlogs"] 
         
         return contentApiList?.getBlogs(fullUrl    ,  pageNo = pageNo,    pageSize = pageSize)}
@@ -162,28 +162,28 @@ class ContentDataManagerClass(val config: ApplicationConfig, val unauthorizedAct
     return paginator
     }
     
-    fun getDataLoaders(): Deferred<Response<DataLoadersSchema>>? {
+   suspend fun getDataLoaders(): Response<DataLoadersSchema>? {
         var fullUrl : String? = _relativeUrls["getDataLoaders"] 
         
         return contentApiList?.getDataLoaders(fullUrl  )}
 
     
     
-    fun getFaqs(): Deferred<Response<FaqResponseSchema>>? {
+   suspend fun getFaqs(): Response<FaqResponseSchema>? {
         var fullUrl : String? = _relativeUrls["getFaqs"] 
         
         return contentApiList?.getFaqs(fullUrl  )}
 
     
     
-    fun getFaqCategories(): Deferred<Response<GetFaqCategoriesSchema>>? {
+   suspend fun getFaqCategories(): Response<GetFaqCategoriesSchema>? {
         var fullUrl : String? = _relativeUrls["getFaqCategories"] 
         
         return contentApiList?.getFaqCategories(fullUrl  )}
 
     
     
-    fun getFaqBySlug(slug: String): Deferred<Response<FaqSchema>>? {
+   suspend fun getFaqBySlug(slug: String): Response<FaqSchema>? {
         var fullUrl : String? = _relativeUrls["getFaqBySlug"] 
         
         fullUrl = fullUrl?.replace("{" + "slug" +"}",slug.toString())
@@ -192,7 +192,7 @@ class ContentDataManagerClass(val config: ApplicationConfig, val unauthorizedAct
 
     
     
-    fun getFaqCategoryBySlug(slug: String): Deferred<Response<GetFaqCategoryBySlugSchema>>? {
+   suspend fun getFaqCategoryBySlug(slug: String): Response<GetFaqCategoryBySlugSchema>? {
         var fullUrl : String? = _relativeUrls["getFaqCategoryBySlug"] 
         
         fullUrl = fullUrl?.replace("{" + "slug" +"}",slug.toString())
@@ -201,7 +201,7 @@ class ContentDataManagerClass(val config: ApplicationConfig, val unauthorizedAct
 
     
     
-    fun getFaqsByCategorySlug(slug: String): Deferred<Response<GetFaqSchema>>? {
+   suspend fun getFaqsByCategorySlug(slug: String): Response<GetFaqSchema>? {
         var fullUrl : String? = _relativeUrls["getFaqsByCategorySlug"] 
         
         fullUrl = fullUrl?.replace("{" + "slug" +"}",slug.toString())
@@ -210,21 +210,21 @@ class ContentDataManagerClass(val config: ApplicationConfig, val unauthorizedAct
 
     
     
-    fun getLandingPage(): Deferred<Response<LandingPageSchema>>? {
+   suspend fun getLandingPage(): Response<LandingPageSchema>? {
         var fullUrl : String? = _relativeUrls["getLandingPage"] 
         
         return contentApiList?.getLandingPage(fullUrl  )}
 
     
     
-    fun getLegalInformation(): Deferred<Response<ApplicationLegal>>? {
+   suspend fun getLegalInformation(): Response<ApplicationLegal>? {
         var fullUrl : String? = _relativeUrls["getLegalInformation"] 
         
         return contentApiList?.getLegalInformation(fullUrl  )}
 
     
     
-    fun getNavigations(pageNo: Int?=null, pageSize: Int?=null): Deferred<Response<NavigationGetResponse>>? {
+   suspend fun getNavigations(pageNo: Int?=null, pageSize: Int?=null): Response<NavigationGetResponse>? {
         var fullUrl : String? = _relativeUrls["getNavigations"] 
         
         return contentApiList?.getNavigations(fullUrl    ,  pageNo = pageNo,    pageSize = pageSize)}
@@ -276,14 +276,14 @@ class ContentDataManagerClass(val config: ApplicationConfig, val unauthorizedAct
     return paginator
     }
     
-    fun getSEOConfiguration(): Deferred<Response<SeoComponent>>? {
+   suspend fun getSEOConfiguration(): Response<SeoComponent>? {
         var fullUrl : String? = _relativeUrls["getSEOConfiguration"] 
         
         return contentApiList?.getSEOConfiguration(fullUrl  )}
 
     
     
-    fun getSlideshows(pageNo: Int?=null, pageSize: Int?=null): Deferred<Response<SlideshowGetResponse>>? {
+   suspend fun getSlideshows(pageNo: Int?=null, pageSize: Int?=null): Response<SlideshowGetResponse>? {
         var fullUrl : String? = _relativeUrls["getSlideshows"] 
         
         return contentApiList?.getSlideshows(fullUrl    ,  pageNo = pageNo,    pageSize = pageSize)}
@@ -335,7 +335,7 @@ class ContentDataManagerClass(val config: ApplicationConfig, val unauthorizedAct
     return paginator
     }
     
-    fun getSlideshow(slug: String): Deferred<Response<SlideshowSchema>>? {
+   suspend fun getSlideshow(slug: String): Response<SlideshowSchema>? {
         var fullUrl : String? = _relativeUrls["getSlideshow"] 
         
         fullUrl = fullUrl?.replace("{" + "slug" +"}",slug.toString())
@@ -344,21 +344,21 @@ class ContentDataManagerClass(val config: ApplicationConfig, val unauthorizedAct
 
     
     
-    fun getSupportInformation(): Deferred<Response<Support>>? {
+   suspend fun getSupportInformation(): Response<Support>? {
         var fullUrl : String? = _relativeUrls["getSupportInformation"] 
         
         return contentApiList?.getSupportInformation(fullUrl  )}
 
     
     
-    fun getTags(): Deferred<Response<TagsSchema>>? {
+   suspend fun getTags(): Response<TagsSchema>? {
         var fullUrl : String? = _relativeUrls["getTags"] 
         
         return contentApiList?.getTags(fullUrl  )}
 
     
     
-    fun getPage(slug: String, rootId: String?=null): Deferred<Response<PageSchema>>? {
+   suspend fun getPage(slug: String, rootId: String?=null): Response<PageSchema>? {
         var fullUrl : String? = _relativeUrls["getPage"] 
         
         fullUrl = fullUrl?.replace("{" + "slug" +"}",slug.toString())
@@ -367,7 +367,7 @@ class ContentDataManagerClass(val config: ApplicationConfig, val unauthorizedAct
 
     
     
-    fun getPages(pageNo: Int?=null, pageSize: Int?=null): Deferred<Response<PageGetResponse>>? {
+   suspend fun getPages(pageNo: Int?=null, pageSize: Int?=null): Response<PageGetResponse>? {
         var fullUrl : String? = _relativeUrls["getPages"] 
         
         return contentApiList?.getPages(fullUrl    ,  pageNo = pageNo,    pageSize = pageSize)}

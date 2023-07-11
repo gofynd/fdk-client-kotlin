@@ -47,7 +47,7 @@ class LeadDataManagerClass(val config: PlatformConfig, val unauthorizedAction: (
     
     
     suspend fun getTickets(items: Boolean?=null, filters: Boolean?=null, q: String?=null, status: String?=null, priority: PriorityEnum?=null, category: String?=null, pageNo: Int?=null, pageSize: Int?=null)
-    : Deferred<Response<TicketList>>? {
+    : Response<TicketList>? {
         
         return if (config.oauthClient.isAccessTokenValid()) {
             leadApiList?.getTickets(
@@ -59,7 +59,7 @@ class LeadDataManagerClass(val config: PlatformConfig, val unauthorizedAction: (
     
     
     suspend fun createTicket(body: AddTicketPayload)
-    : Deferred<Response<Ticket>>? {
+    : Response<Ticket>? {
         
         return if (config.oauthClient.isAccessTokenValid()) {
             leadApiList?.createTicket(
@@ -72,7 +72,7 @@ class LeadDataManagerClass(val config: PlatformConfig, val unauthorizedAction: (
     
     
     suspend fun getTicket(id: String)
-    : Deferred<Response<Ticket>>? {
+    : Response<Ticket>? {
         
         return if (config.oauthClient.isAccessTokenValid()) {
             leadApiList?.getTicket(
@@ -84,7 +84,7 @@ class LeadDataManagerClass(val config: PlatformConfig, val unauthorizedAction: (
     
     
     suspend fun editTicket(id: String,body: EditTicketPayload)
-    : Deferred<Response<Ticket>>? {
+    : Response<Ticket>? {
         
         return if (config.oauthClient.isAccessTokenValid()) {
             leadApiList?.editTicket(
@@ -98,7 +98,7 @@ class LeadDataManagerClass(val config: PlatformConfig, val unauthorizedAction: (
     
     
     suspend fun createHistory(id: String,body: TicketHistoryPayload)
-    : Deferred<Response<TicketHistory>>? {
+    : Response<TicketHistory>? {
         
         return if (config.oauthClient.isAccessTokenValid()) {
             leadApiList?.createHistory(
@@ -110,7 +110,7 @@ class LeadDataManagerClass(val config: PlatformConfig, val unauthorizedAction: (
     
     
     suspend fun getTicketHistory(id: String)
-    : Deferred<Response<TicketHistoryList>>? {
+    : Response<TicketHistoryList>? {
         
         return if (config.oauthClient.isAccessTokenValid()) {
             leadApiList?.getTicketHistory(
@@ -122,7 +122,7 @@ class LeadDataManagerClass(val config: PlatformConfig, val unauthorizedAction: (
     
     
     suspend fun getFeedbacks(id: String)
-    : Deferred<Response<TicketFeedbackList>>? {
+    : Response<TicketFeedbackList>? {
         
         return if (config.oauthClient.isAccessTokenValid()) {
             leadApiList?.getFeedbacks(
@@ -134,7 +134,7 @@ class LeadDataManagerClass(val config: PlatformConfig, val unauthorizedAction: (
     
     
     suspend fun submitFeedback(id: String,body: TicketFeedbackPayload)
-    : Deferred<Response<TicketFeedback>>? {
+    : Response<TicketFeedback>? {
         
         return if (config.oauthClient.isAccessTokenValid()) {
             leadApiList?.submitFeedback(
@@ -152,7 +152,7 @@ class LeadDataManagerClass(val config: PlatformConfig, val unauthorizedAction: (
     
     
     suspend fun getTokenForVideoRoom(uniqueName: String)
-    : Deferred<Response<GetTokenForVideoRoomResponse>>? {
+    : Response<GetTokenForVideoRoomResponse>? {
         
         return if (config.oauthClient.isAccessTokenValid()) {
             leadApiList?.getTokenForVideoRoom(
@@ -165,7 +165,7 @@ class LeadDataManagerClass(val config: PlatformConfig, val unauthorizedAction: (
     
     
     suspend fun getVideoParticipants(uniqueName: String)
-    : Deferred<Response<GetParticipantsInsideVideoRoomResponse>>? {
+    : Response<GetParticipantsInsideVideoRoomResponse>? {
         
         return if (config.oauthClient.isAccessTokenValid()) {
             leadApiList?.getVideoParticipants(
@@ -180,7 +180,7 @@ class LeadDataManagerClass(val config: PlatformConfig, val unauthorizedAction: (
     
     
     suspend fun getGeneralConfig()
-    : Deferred<Response<CloseVideoRoomResponse>>? {
+    : Response<CloseVideoRoomResponse>? {
         
         return if (config.oauthClient.isAccessTokenValid()) {
             leadApiList?.getGeneralConfig(
@@ -198,7 +198,7 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     
     
     suspend fun getTickets(items: Boolean?=null, filters: Boolean?=null, q: String?=null, status: String?=null, priority: PriorityEnum?=null, category: String?=null)
-    : Deferred<Response<TicketList>>? {
+    : Response<TicketList>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 leadApiList?.getTickets(companyId = config.companyId , applicationId = applicationId , items = items, filters = filters, q = q, status = status, priority = priority, category = category )
         } else {
@@ -210,7 +210,7 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     
     
     suspend fun getTicket(id: String)
-    : Deferred<Response<Ticket>>? {
+    : Response<Ticket>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 leadApiList?.getTicket(companyId = config.companyId , applicationId = applicationId , id = id )
         } else {
@@ -220,7 +220,7 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     
     
     suspend fun editTicket(id: String,body: EditTicketPayload)
-    : Deferred<Response<Ticket>>? {
+    : Response<Ticket>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 leadApiList?.editTicket(companyId = config.companyId , applicationId = applicationId , id = id, body = body)
         } else {
@@ -234,7 +234,7 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     
     
     suspend fun createHistory(id: String,body: TicketHistoryPayload)
-    : Deferred<Response<TicketHistory>>? {
+    : Response<TicketHistory>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 leadApiList?.createHistory(companyId = config.companyId , applicationId = applicationId , id = id, body = body)
         } else {
@@ -244,7 +244,7 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     
     
     suspend fun getTicketHistory(id: String)
-    : Deferred<Response<TicketHistoryList>>? {
+    : Response<TicketHistoryList>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 leadApiList?.getTicketHistory(companyId = config.companyId , applicationId = applicationId , id = id )
         } else {
@@ -254,7 +254,7 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     
     
     suspend fun getCustomForm(slug: String)
-    : Deferred<Response<CustomForm>>? {
+    : Response<CustomForm>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 leadApiList?.getCustomForm(companyId = config.companyId , applicationId = applicationId , slug = slug )
         } else {
@@ -264,7 +264,7 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     
     
     suspend fun editCustomForm(slug: String,body: EditCustomFormPayload)
-    : Deferred<Response<CustomForm>>? {
+    : Response<CustomForm>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 leadApiList?.editCustomForm(companyId = config.companyId , applicationId = applicationId , slug = slug, body = body)
         } else {
@@ -274,7 +274,7 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     
     
     suspend fun getCustomForms()
-    : Deferred<Response<CustomFormList>>? {
+    : Response<CustomFormList>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 leadApiList?.getCustomForms(companyId = config.companyId , applicationId = applicationId  )
         } else {
@@ -284,7 +284,7 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     
     
     suspend fun createCustomForm(body: CreateCustomFormPayload)
-    : Deferred<Response<CustomForm>>? {
+    : Response<CustomForm>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 leadApiList?.createCustomForm(companyId = config.companyId , applicationId = applicationId , body = body)
         } else {
@@ -295,7 +295,7 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     
     
     suspend fun getTokenForVideoRoom(uniqueName: String)
-    : Deferred<Response<GetTokenForVideoRoomResponse>>? {
+    : Response<GetTokenForVideoRoomResponse>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 leadApiList?.getTokenForVideoRoom(companyId = config.companyId , applicationId = applicationId , uniqueName = uniqueName )
         } else {
@@ -306,7 +306,7 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     
     
     suspend fun getVideoParticipants(uniqueName: String)
-    : Deferred<Response<GetParticipantsInsideVideoRoomResponse>>? {
+    : Response<GetParticipantsInsideVideoRoomResponse>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 leadApiList?.getVideoParticipants(companyId = config.companyId , applicationId = applicationId , uniqueName = uniqueName )
         } else {
@@ -316,7 +316,7 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     
     
     suspend fun openVideoRoom(body: CreateVideoRoomPayload)
-    : Deferred<Response<CreateVideoRoomResponse>>? {
+    : Response<CreateVideoRoomResponse>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 leadApiList?.openVideoRoom(companyId = config.companyId , applicationId = applicationId , body = body)
         } else {
@@ -326,7 +326,7 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     
     
     suspend fun closeVideoRoom(uniqueName: String)
-    : Deferred<Response<CloseVideoRoomResponse>>? {
+    : Response<CloseVideoRoomResponse>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 leadApiList?.closeVideoRoom(companyId = config.companyId , applicationId = applicationId , uniqueName = uniqueName )
         } else {

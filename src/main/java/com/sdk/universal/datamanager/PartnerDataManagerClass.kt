@@ -59,7 +59,7 @@ class PartnerDataManagerClass(val config: PublicConfig, val unauthorizedAction: 
         return retrofitHttpClient?.initializeRestClient(PartnerApiList::class.java) as? PartnerApiList
     }
     
-    fun getPanelExtensionDetails(slug: String): Deferred<Response<ExtensionUsingSlug>>? {
+   suspend fun getPanelExtensionDetails(slug: String): Response<ExtensionUsingSlug>? {
         var fullUrl : String? = _relativeUrls["getPanelExtensionDetails"] 
         
         fullUrl = fullUrl?.replace("{" + "slug" +"}",slug.toString())
@@ -68,7 +68,7 @@ class PartnerDataManagerClass(val config: PublicConfig, val unauthorizedAction: 
 
     
     
-    fun getOrganizationList(): Deferred<Response<OrganizationList>>? {
+   suspend fun getOrganizationList(): Response<OrganizationList>? {
         var fullUrl : String? = _relativeUrls["getOrganizationList"] 
         
         return partnerApiList?.getOrganizationList(fullUrl  )}

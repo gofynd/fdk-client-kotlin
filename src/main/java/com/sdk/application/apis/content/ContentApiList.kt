@@ -12,97 +12,97 @@ interface ContentApiList {
     
     
     @GET 
-    fun getAnnouncements(@Url url1: String?   )
-    : Deferred<Response<AnnouncementsResponseSchema>>
+    suspend fun getAnnouncements(@Url url1: String?   )
+    : Response<AnnouncementsResponseSchema>
     
     
     @GET 
-    fun getBlog(@Url url1: String?     ,  @Query("root_id") rootId: String?)
-    : Deferred<Response<BlogSchema>>
+    suspend fun getBlog(@Url url1: String?     ,  @Query("root_id") rootId: String?)
+    : Response<BlogSchema>
     
     
     @GET 
-    fun getBlogs(@Url url1: String?    ,   @Query("page_no") pageNo: Int?, @Query("page_size") pageSize: Int?)
-    : Deferred<Response<BlogGetResponse>>
+    suspend fun getBlogs(@Url url1: String?    ,   @Query("page_no") pageNo: Int?, @Query("page_size") pageSize: Int?)
+    : Response<BlogGetResponse>
     
     
     @GET 
-    fun getDataLoaders(@Url url1: String?   )
-    : Deferred<Response<DataLoadersSchema>>
+    suspend fun getDataLoaders(@Url url1: String?   )
+    : Response<DataLoadersSchema>
     
     
     @GET 
-    fun getFaqs(@Url url1: String?   )
-    : Deferred<Response<FaqResponseSchema>>
+    suspend fun getFaqs(@Url url1: String?   )
+    : Response<FaqResponseSchema>
     
     
     @GET 
-    fun getFaqCategories(@Url url1: String?   )
-    : Deferred<Response<GetFaqCategoriesSchema>>
+    suspend fun getFaqCategories(@Url url1: String?   )
+    : Response<GetFaqCategoriesSchema>
     
     
     @GET 
-    fun getFaqBySlug(@Url url1: String?    )
-    : Deferred<Response<FaqSchema>>
+    suspend fun getFaqBySlug(@Url url1: String?    )
+    : Response<FaqSchema>
     
     
     @GET 
-    fun getFaqCategoryBySlug(@Url url1: String?    )
-    : Deferred<Response<GetFaqCategoryBySlugSchema>>
+    suspend fun getFaqCategoryBySlug(@Url url1: String?    )
+    : Response<GetFaqCategoryBySlugSchema>
     
     
     @GET 
-    fun getFaqsByCategorySlug(@Url url1: String?    )
-    : Deferred<Response<GetFaqSchema>>
+    suspend fun getFaqsByCategorySlug(@Url url1: String?    )
+    : Response<GetFaqSchema>
     
     
     @GET 
-    fun getLandingPage(@Url url1: String?   )
-    : Deferred<Response<LandingPageSchema>>
+    suspend fun getLandingPage(@Url url1: String?   )
+    : Response<LandingPageSchema>
     
     
     @GET 
-    fun getLegalInformation(@Url url1: String?   )
-    : Deferred<Response<ApplicationLegal>>
+    suspend fun getLegalInformation(@Url url1: String?   )
+    : Response<ApplicationLegal>
     
     
     @GET 
-    fun getNavigations(@Url url1: String?    ,   @Query("page_no") pageNo: Int?, @Query("page_size") pageSize: Int?)
-    : Deferred<Response<NavigationGetResponse>>
+    suspend fun getNavigations(@Url url1: String?    ,   @Query("page_no") pageNo: Int?, @Query("page_size") pageSize: Int?)
+    : Response<NavigationGetResponse>
     
     
     @GET 
-    fun getSEOConfiguration(@Url url1: String?   )
-    : Deferred<Response<SeoComponent>>
+    suspend fun getSEOConfiguration(@Url url1: String?   )
+    : Response<SeoComponent>
     
     
     @GET 
-    fun getSlideshows(@Url url1: String?    ,   @Query("page_no") pageNo: Int?, @Query("page_size") pageSize: Int?)
-    : Deferred<Response<SlideshowGetResponse>>
+    suspend fun getSlideshows(@Url url1: String?    ,   @Query("page_no") pageNo: Int?, @Query("page_size") pageSize: Int?)
+    : Response<SlideshowGetResponse>
     
     
     @GET 
-    fun getSlideshow(@Url url1: String?    )
-    : Deferred<Response<SlideshowSchema>>
+    suspend fun getSlideshow(@Url url1: String?    )
+    : Response<SlideshowSchema>
     
     
     @GET 
-    fun getSupportInformation(@Url url1: String?   )
-    : Deferred<Response<Support>>
+    suspend fun getSupportInformation(@Url url1: String?   )
+    : Response<Support>
     
     
     @GET 
-    fun getTags(@Url url1: String?   )
-    : Deferred<Response<TagsSchema>>
+    suspend fun getTags(@Url url1: String?   )
+    : Response<TagsSchema>
     
     
     @GET 
-    fun getPage(@Url url1: String?     ,  @Query("root_id") rootId: String?)
-    : Deferred<Response<PageSchema>>
+    suspend fun getPage(@Url url1: String?     ,  @Query("root_id") rootId: String?)
+    : Response<PageSchema>
     
     
     @GET 
-    fun getPages(@Url url1: String?    ,   @Query("page_no") pageNo: Int?, @Query("page_size") pageSize: Int?)
-    : Deferred<Response<PageGetResponse>>
+    suspend fun getPages(@Url url1: String?    ,   @Query("page_no") pageNo: Int?, @Query("page_size") pageSize: Int?)
+    : Response<PageGetResponse>
     
 }

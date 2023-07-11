@@ -10,43 +10,43 @@ import com.sdk.platform.models.filestorage.*
 interface FileStorageApiList {
     
     @POST ("/service/platform/assets/v1.0/company/{company_id}/namespaces/{namespace}/upload/start/")
-    fun startUpload(@Path("namespace") namespace: String, @Path("company_id") companyId: String,@Body body: StartRequest)
-    : Deferred<Response<StartResponse>>
+    suspend fun startUpload(@Path("namespace") namespace: String, @Path("company_id") companyId: String,@Body body: StartRequest)
+    : Response<StartResponse>
     
     @POST ("/service/platform/assets/v1.0/company/{company_id}/namespaces/{namespace}/upload/complete/")
-    fun completeUpload(@Path("namespace") namespace: String, @Path("company_id") companyId: String,@Body body: StartResponse)
-    : Deferred<Response<CompleteResponse>>
+    suspend fun completeUpload(@Path("namespace") namespace: String, @Path("company_id") companyId: String,@Body body: StartResponse)
+    : Response<CompleteResponse>
     
     @POST ("/service/platform/assets/v1.0/company/{company_id}/application/{application_id}/namespaces/{namespace}/upload/start/")
-    fun appStartUpload(@Path("namespace") namespace: String, @Path("company_id") companyId: String, @Path("application_id") applicationId: String,@Body body: StartRequest)
-    : Deferred<Response<StartResponse>>
+    suspend fun appStartUpload(@Path("namespace") namespace: String, @Path("company_id") companyId: String, @Path("application_id") applicationId: String,@Body body: StartRequest)
+    : Response<StartResponse>
     
     @POST ("/service/platform/assets/v1.0/company/{company_id}/application/{application_id}/namespaces/{namespace}/upload/complete/")
-    fun appCompleteUpload(@Path("namespace") namespace: String, @Path("company_id") companyId: String, @Path("application_id") applicationId: String,@Body body: StartResponse)
-    : Deferred<Response<CompleteResponse>>
+    suspend fun appCompleteUpload(@Path("namespace") namespace: String, @Path("company_id") companyId: String, @Path("application_id") applicationId: String,@Body body: StartResponse)
+    : Response<CompleteResponse>
     
     @POST ("/service/platform/assets/v1.0/company/{company_id}/sign-urls/")
-    fun getSignUrls(@Path("company_id") companyId: String,@Body body: SignUrlRequest)
-    : Deferred<Response<SignUrlResponse>>
+    suspend fun getSignUrls(@Path("company_id") companyId: String,@Body body: SignUrlRequest)
+    : Response<SignUrlResponse>
     
     @POST ("/service/platform/assets/v1.0/company/{company_id}/uploads/copy/")
-    fun copyFiles(@Query("sync") sync: Boolean?, @Path("company_id") companyId: String,@Body body: BulkRequest)
-    : Deferred<Response<BulkUploadResponse>>
+    suspend fun copyFiles(@Query("sync") sync: Boolean?, @Path("company_id") companyId: String,@Body body: BulkRequest)
+    : Response<BulkUploadResponse>
     
     @POST ("/service/platform/assets/v1.0/company/{company_id}/application/{application_id}/uploads/copy/")
-    fun appCopyFiles(@Query("sync") sync: Boolean?, @Path("company_id") companyId: String, @Path("application_id") applicationId: String,@Body body: BulkRequest)
-    : Deferred<Response<BulkUploadResponse>>
+    suspend fun appCopyFiles(@Query("sync") sync: Boolean?, @Path("company_id") companyId: String, @Path("application_id") applicationId: String,@Body body: BulkRequest)
+    : Response<BulkUploadResponse>
     
     @GET ("/service/platform/assets/v1.0/company/{company_id}/namespaces/{namespace}/browse/")
-    fun browse(@Path("namespace") namespace: String, @Path("company_id") companyId: String, @Query("page_no") pageNo: Int?)
-    : Deferred<Response<BrowseResponse>>
+    suspend fun browse(@Path("namespace") namespace: String, @Path("company_id") companyId: String, @Query("page_no") pageNo: Int?)
+    : Response<BrowseResponse>
     
     @GET ("/service/platform/assets/v1.0/company/{company_id}/application/{application_id}/namespaces/{namespace}/browse/")
-    fun appbrowse(@Path("namespace") namespace: String, @Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Query("page_no") pageNo: Int?)
-    : Deferred<Response<BrowseResponse>>
+    suspend fun appbrowse(@Path("namespace") namespace: String, @Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Query("page_no") pageNo: Int?)
+    : Response<BrowseResponse>
     
     @GET ("/service/platform/assets/v1.0/company/{company_id}/proxy/")
-    fun proxy(@Path("company_id") companyId: String, @Query("url") url: String)
-    : Deferred<Response<ResponseBody>>
+    suspend fun proxy(@Path("company_id") companyId: String, @Query("url") url: String)
+    : Response<ResponseBody>
     
 }

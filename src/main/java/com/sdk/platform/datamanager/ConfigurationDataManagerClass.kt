@@ -75,7 +75,7 @@ class ConfigurationDataManagerClass(val config: PlatformConfig, val unauthorized
     
     
     suspend fun createApplication(body: CreateApplicationRequest)
-    : Deferred<Response<CreateAppResponse>>? {
+    : Response<CreateAppResponse>? {
         
         return if (config.oauthClient.isAccessTokenValid()) {
             configurationApiList?.createApplication(
@@ -87,7 +87,7 @@ class ConfigurationDataManagerClass(val config: PlatformConfig, val unauthorized
     
     
     suspend fun getApplications(pageNo: Int?=null, pageSize: Int?=null, q: String?=null)
-    : Deferred<Response<ApplicationsResponse>>? {
+    : Response<ApplicationsResponse>? {
         
         return if (config.oauthClient.isAccessTokenValid()) {
             configurationApiList?.getApplications(
@@ -100,7 +100,7 @@ class ConfigurationDataManagerClass(val config: PlatformConfig, val unauthorized
     
     
     suspend fun getCurrencies()
-    : Deferred<Response<CurrenciesResponse>>? {
+    : Response<CurrenciesResponse>? {
         
         return if (config.oauthClient.isAccessTokenValid()) {
             configurationApiList?.getCurrencies(
@@ -112,7 +112,7 @@ class ConfigurationDataManagerClass(val config: PlatformConfig, val unauthorized
     
     
     suspend fun getDomainAvailibility(body: DomainSuggestionsRequest)
-    : Deferred<Response<DomainSuggestionsResponse>>? {
+    : Response<DomainSuggestionsResponse>? {
         
         return if (config.oauthClient.isAccessTokenValid()) {
             configurationApiList?.getDomainAvailibility(
@@ -124,7 +124,7 @@ class ConfigurationDataManagerClass(val config: PlatformConfig, val unauthorized
     
     
     suspend fun getIntegrationById(id: String)
-    : Deferred<Response<Integration>>? {
+    : Response<Integration>? {
         
         return if (config.oauthClient.isAccessTokenValid()) {
             configurationApiList?.getIntegrationById(
@@ -136,7 +136,7 @@ class ConfigurationDataManagerClass(val config: PlatformConfig, val unauthorized
     
     
     suspend fun getAvailableOptIns(pageNo: Int?=null, pageSize: Int?=null)
-    : Deferred<Response<GetIntegrationsOptInsResponse>>? {
+    : Response<GetIntegrationsOptInsResponse>? {
         
         return if (config.oauthClient.isAccessTokenValid()) {
             configurationApiList?.getAvailableOptIns(
@@ -148,7 +148,7 @@ class ConfigurationDataManagerClass(val config: PlatformConfig, val unauthorized
     
     
     suspend fun getSelectedOptIns(level: String, uid: String, pageNo: Int?=null, pageSize: Int?=null)
-    : Deferred<Response<GetIntegrationsOptInsResponse>>? {
+    : Response<GetIntegrationsOptInsResponse>? {
         
         return if (config.oauthClient.isAccessTokenValid()) {
             configurationApiList?.getSelectedOptIns(
@@ -160,7 +160,7 @@ class ConfigurationDataManagerClass(val config: PlatformConfig, val unauthorized
     
     
     suspend fun getIntegrationLevelConfig(id: String, level: String, opted: Boolean?=null, checkPermission: Boolean?=null)
-    : Deferred<Response<IntegrationConfigResponse>>? {
+    : Response<IntegrationConfigResponse>? {
         
         return if (config.oauthClient.isAccessTokenValid()) {
             configurationApiList?.getIntegrationLevelConfig(
@@ -172,7 +172,7 @@ class ConfigurationDataManagerClass(val config: PlatformConfig, val unauthorized
     
     
     suspend fun updateLevelIntegration(id: String, level: String,body: UpdateIntegrationLevelRequest)
-    : Deferred<Response<IntegrationLevel>>? {
+    : Response<IntegrationLevel>? {
         
         return if (config.oauthClient.isAccessTokenValid()) {
             configurationApiList?.updateLevelIntegration(
@@ -184,7 +184,7 @@ class ConfigurationDataManagerClass(val config: PlatformConfig, val unauthorized
     
     
     suspend fun getIntegrationByLevelId(id: String, level: String, uid: String)
-    : Deferred<Response<IntegrationLevel>>? {
+    : Response<IntegrationLevel>? {
         
         return if (config.oauthClient.isAccessTokenValid()) {
             configurationApiList?.getIntegrationByLevelId(
@@ -196,7 +196,7 @@ class ConfigurationDataManagerClass(val config: PlatformConfig, val unauthorized
     
     
     suspend fun updateLevelUidIntegration(id: String, level: String, uid: String,body: IntegrationLevel)
-    : Deferred<Response<IntegrationLevel>>? {
+    : Response<IntegrationLevel>? {
         
         return if (config.oauthClient.isAccessTokenValid()) {
             configurationApiList?.updateLevelUidIntegration(
@@ -208,7 +208,7 @@ class ConfigurationDataManagerClass(val config: PlatformConfig, val unauthorized
     
     
     suspend fun getLevelActiveIntegrations(id: String, level: String, uid: String, permission: String?=null)
-    : Deferred<Response<OptedStoreIntegration>>? {
+    : Response<OptedStoreIntegration>? {
         
         return if (config.oauthClient.isAccessTokenValid()) {
             configurationApiList?.getLevelActiveIntegrations(
@@ -220,7 +220,7 @@ class ConfigurationDataManagerClass(val config: PlatformConfig, val unauthorized
     
     
     suspend fun getBrandsByCompany(q: String?=null)
-    : Deferred<Response<BrandsByCompanyResponse>>? {
+    : Response<BrandsByCompanyResponse>? {
         
         return if (config.oauthClient.isAccessTokenValid()) {
             configurationApiList?.getBrandsByCompany(
@@ -232,7 +232,7 @@ class ConfigurationDataManagerClass(val config: PlatformConfig, val unauthorized
     
     
     suspend fun getCompanyByBrands(pageNo: Int?=null, pageSize: Int?=null,body: CompanyByBrandsRequest)
-    : Deferred<Response<CompanyByBrandsResponse>>? {
+    : Response<CompanyByBrandsResponse>? {
         
         return if (config.oauthClient.isAccessTokenValid()) {
             configurationApiList?.getCompanyByBrands(
@@ -244,7 +244,7 @@ class ConfigurationDataManagerClass(val config: PlatformConfig, val unauthorized
     
     
     suspend fun getStoreByBrands(pageNo: Int?=null, pageSize: Int?=null,body: StoreByBrandsRequest)
-    : Deferred<Response<StoreByBrandsResponse>>? {
+    : Response<StoreByBrandsResponse>? {
         
         return if (config.oauthClient.isAccessTokenValid()) {
             configurationApiList?.getStoreByBrands(
@@ -256,7 +256,7 @@ class ConfigurationDataManagerClass(val config: PlatformConfig, val unauthorized
     
     
     suspend fun getOtherSellerApplications(pageNo: Int?=null, pageSize: Int?=null)
-    : Deferred<Response<OtherSellerApplications>>? {
+    : Response<OtherSellerApplications>? {
         
         return if (config.oauthClient.isAccessTokenValid()) {
             configurationApiList?.getOtherSellerApplications(
@@ -268,7 +268,7 @@ class ConfigurationDataManagerClass(val config: PlatformConfig, val unauthorized
     
     
     suspend fun getOtherSellerApplicationById(id: String)
-    : Deferred<Response<OptedApplicationResponse>>? {
+    : Response<OptedApplicationResponse>? {
         
         return if (config.oauthClient.isAccessTokenValid()) {
             configurationApiList?.getOtherSellerApplicationById(
@@ -280,7 +280,7 @@ class ConfigurationDataManagerClass(val config: PlatformConfig, val unauthorized
     
     
     suspend fun optOutFromApplication(id: String,body: OptOutInventory)
-    : Deferred<Response<SuccessMessageResponse>>? {
+    : Response<SuccessMessageResponse>? {
         
         return if (config.oauthClient.isAccessTokenValid()) {
             configurationApiList?.optOutFromApplication(
@@ -296,7 +296,7 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     
     
     suspend fun getBuildConfig(platformType: String)
-    : Deferred<Response<MobileAppConfiguration>>? {
+    : Response<MobileAppConfiguration>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 configurationApiList?.getBuildConfig(companyId = config.companyId , applicationId = applicationId , platformType = platformType )
         } else {
@@ -306,7 +306,7 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     
     
     suspend fun updateBuildConfig(platformType: String,body: MobileAppConfigRequest)
-    : Deferred<Response<MobileAppConfiguration>>? {
+    : Response<MobileAppConfiguration>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 configurationApiList?.updateBuildConfig(companyId = config.companyId , applicationId = applicationId , platformType = platformType, body = body)
         } else {
@@ -316,7 +316,7 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     
     
     suspend fun getPreviousVersions(platformType: String)
-    : Deferred<Response<BuildVersionHistory>>? {
+    : Response<BuildVersionHistory>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 configurationApiList?.getPreviousVersions(companyId = config.companyId , applicationId = applicationId , platformType = platformType )
         } else {
@@ -326,7 +326,7 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     
     
     suspend fun getAppFeatures()
-    : Deferred<Response<AppFeatureResponse>>? {
+    : Response<AppFeatureResponse>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 configurationApiList?.getAppFeatures(companyId = config.companyId , applicationId = applicationId  )
         } else {
@@ -336,7 +336,7 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     
     
     suspend fun updateAppFeatures(body: AppFeatureRequest)
-    : Deferred<Response<AppFeature>>? {
+    : Response<AppFeature>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 configurationApiList?.updateAppFeatures(companyId = config.companyId , applicationId = applicationId , body = body)
         } else {
@@ -346,7 +346,7 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     
     
     suspend fun modifyAppFeatures(body: AppFeatureRequest)
-    : Deferred<Response<AppFeature>>? {
+    : Response<AppFeature>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 configurationApiList?.modifyAppFeatures(companyId = config.companyId , applicationId = applicationId , body = body)
         } else {
@@ -356,7 +356,7 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     
     
     suspend fun getAppBasicDetails()
-    : Deferred<Response<ApplicationDetail>>? {
+    : Response<ApplicationDetail>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 configurationApiList?.getAppBasicDetails(companyId = config.companyId , applicationId = applicationId  )
         } else {
@@ -366,7 +366,7 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     
     
     suspend fun updateAppBasicDetails(body: ApplicationDetail)
-    : Deferred<Response<ApplicationDetail>>? {
+    : Response<ApplicationDetail>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 configurationApiList?.updateAppBasicDetails(companyId = config.companyId , applicationId = applicationId , body = body)
         } else {
@@ -376,7 +376,7 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     
     
     suspend fun getAppContactInfo()
-    : Deferred<Response<ApplicationInformation>>? {
+    : Response<ApplicationInformation>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 configurationApiList?.getAppContactInfo(companyId = config.companyId , applicationId = applicationId  )
         } else {
@@ -386,7 +386,7 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     
     
     suspend fun updateAppContactInfo(body: ApplicationInformation)
-    : Deferred<Response<ApplicationInformation>>? {
+    : Response<ApplicationInformation>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 configurationApiList?.updateAppContactInfo(companyId = config.companyId , applicationId = applicationId , body = body)
         } else {
@@ -396,7 +396,7 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     
     
     suspend fun getAppApiTokens()
-    : Deferred<Response<TokenResponse>>? {
+    : Response<TokenResponse>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 configurationApiList?.getAppApiTokens(companyId = config.companyId , applicationId = applicationId  )
         } else {
@@ -406,7 +406,7 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     
     
     suspend fun updateAppApiTokens(body: TokenResponse)
-    : Deferred<Response<TokenResponse>>? {
+    : Response<TokenResponse>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 configurationApiList?.updateAppApiTokens(companyId = config.companyId , applicationId = applicationId , body = body)
         } else {
@@ -416,7 +416,7 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     
     
     suspend fun getAppCompanies(uid: Int?=null, pageNo: Int?=null, pageSize: Int?=null)
-    : Deferred<Response<CompaniesResponse>>? {
+    : Response<CompaniesResponse>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 configurationApiList?.getAppCompanies(companyId = config.companyId , applicationId = applicationId , uid = uid, pageNo = pageNo, pageSize = pageSize )
         } else {
@@ -490,7 +490,7 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     }
     
     suspend fun getAppStores(pageNo: Int?=null, pageSize: Int?=null)
-    : Deferred<Response<StoresResponse>>? {
+    : Response<StoresResponse>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 configurationApiList?.getAppStores(companyId = config.companyId , applicationId = applicationId , pageNo = pageNo, pageSize = pageSize )
         } else {
@@ -559,7 +559,7 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     }
     
     suspend fun getInventoryConfig()
-    : Deferred<Response<ApplicationInventory>>? {
+    : Response<ApplicationInventory>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 configurationApiList?.getInventoryConfig(companyId = config.companyId , applicationId = applicationId  )
         } else {
@@ -569,7 +569,7 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     
     
     suspend fun updateInventoryConfig(body: ApplicationInventory)
-    : Deferred<Response<ApplicationInventory>>? {
+    : Response<ApplicationInventory>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 configurationApiList?.updateInventoryConfig(companyId = config.companyId , applicationId = applicationId , body = body)
         } else {
@@ -579,7 +579,7 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     
     
     suspend fun partiallyUpdateInventoryConfig(body: AppInventoryPartialUpdate)
-    : Deferred<Response<ApplicationInventory>>? {
+    : Response<ApplicationInventory>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 configurationApiList?.partiallyUpdateInventoryConfig(companyId = config.companyId , applicationId = applicationId , body = body)
         } else {
@@ -589,7 +589,7 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     
     
     suspend fun getAppCurrencyConfig()
-    : Deferred<Response<AppSupportedCurrency>>? {
+    : Response<AppSupportedCurrency>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 configurationApiList?.getAppCurrencyConfig(companyId = config.companyId , applicationId = applicationId  )
         } else {
@@ -599,7 +599,7 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     
     
     suspend fun updateAppCurrencyConfig(body: AppSupportedCurrency)
-    : Deferred<Response<AppSupportedCurrency>>? {
+    : Response<AppSupportedCurrency>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 configurationApiList?.updateAppCurrencyConfig(companyId = config.companyId , applicationId = applicationId , body = body)
         } else {
@@ -609,7 +609,7 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     
     
     suspend fun getAppSupportedCurrency()
-    : Deferred<Response<AppCurrencyResponse>>? {
+    : Response<AppCurrencyResponse>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 configurationApiList?.getAppSupportedCurrency(companyId = config.companyId , applicationId = applicationId  )
         } else {
@@ -619,7 +619,7 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     
     
     suspend fun getOrderingStoresByFilter(pageNo: Int?=null, pageSize: Int?=null,body: FilterOrderingStoreRequest)
-    : Deferred<Response<OrderingStores>>? {
+    : Response<OrderingStores>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 configurationApiList?.getOrderingStoresByFilter(companyId = config.companyId , applicationId = applicationId , pageNo = pageNo, pageSize = pageSize, body = body)
         } else {
@@ -688,7 +688,7 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     }
     
     suspend fun updateOrderingStoreConfig(body: OrderingStoreConfig)
-    : Deferred<Response<DeploymentMeta>>? {
+    : Response<DeploymentMeta>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 configurationApiList?.updateOrderingStoreConfig(companyId = config.companyId , applicationId = applicationId , body = body)
         } else {
@@ -698,7 +698,7 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     
     
     suspend fun getStaffOrderingStores(pageNo: Int?=null, pageSize: Int?=null, q: String?=null)
-    : Deferred<Response<OrderingStoresResponse>>? {
+    : Response<OrderingStoresResponse>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 configurationApiList?.getStaffOrderingStores(companyId = config.companyId , applicationId = applicationId , pageNo = pageNo, pageSize = pageSize, q = q )
         } else {
@@ -772,7 +772,7 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     }
     
     suspend fun getDomains()
-    : Deferred<Response<DomainsResponse>>? {
+    : Response<DomainsResponse>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 configurationApiList?.getDomains(companyId = config.companyId , applicationId = applicationId  )
         } else {
@@ -782,7 +782,7 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     
     
     suspend fun addDomain(body: DomainAddRequest)
-    : Deferred<Response<Domain>>? {
+    : Response<Domain>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 configurationApiList?.addDomain(companyId = config.companyId , applicationId = applicationId , body = body)
         } else {
@@ -792,7 +792,7 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     
     
     suspend fun removeDomainById(id: String)
-    : Deferred<Response<SuccessMessageResponse>>? {
+    : Response<SuccessMessageResponse>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 configurationApiList?.removeDomainById(companyId = config.companyId , applicationId = applicationId , id = id )
         } else {
@@ -802,7 +802,7 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     
     
     suspend fun changeDomainType(body: UpdateDomainTypeRequest)
-    : Deferred<Response<DomainsResponse>>? {
+    : Response<DomainsResponse>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 configurationApiList?.changeDomainType(companyId = config.companyId , applicationId = applicationId , body = body)
         } else {
@@ -812,7 +812,7 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     
     
     suspend fun getDomainStatus(body: DomainStatusRequest)
-    : Deferred<Response<DomainStatusResponse>>? {
+    : Response<DomainStatusResponse>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 configurationApiList?.getDomainStatus(companyId = config.companyId , applicationId = applicationId , body = body)
         } else {
@@ -824,7 +824,7 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     
     
     suspend fun getApplicationById()
-    : Deferred<Response<Application>>? {
+    : Response<Application>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 configurationApiList?.getApplicationById(companyId = config.companyId , applicationId = applicationId  )
         } else {

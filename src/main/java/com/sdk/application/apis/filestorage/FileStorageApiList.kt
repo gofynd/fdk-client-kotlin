@@ -12,17 +12,17 @@ interface FileStorageApiList {
     
     
     @POST 
-    fun startUpload(@Url url1: String?    ,@Body body: StartRequest)
-    : Deferred<Response<StartResponse>>
+    suspend fun startUpload(@Url url1: String?    ,@Body body: StartRequest)
+    : Response<StartResponse>
     
     
     @POST 
-    fun completeUpload(@Url url1: String?    ,@Body body: StartResponse)
-    : Deferred<Response<CompleteResponse>>
+    suspend fun completeUpload(@Url url1: String?    ,@Body body: StartResponse)
+    : Response<CompleteResponse>
     
     
     @POST 
-    fun signUrls(@Url url1: String?   ,@Body body: SignUrlRequest)
-    : Deferred<Response<SignUrlResponse>>
+    suspend fun signUrls(@Url url1: String?   ,@Body body: SignUrlRequest)
+    : Response<SignUrlResponse>
     
 }

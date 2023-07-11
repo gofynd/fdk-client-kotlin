@@ -60,14 +60,14 @@ class CommonDataManagerClass(val config: ApplicationConfig, val unauthorizedActi
         return retrofitHttpClient?.initializeRestClient(CommonApiList::class.java) as? CommonApiList
     }
     
-    fun searchApplication(authorization: String?=null, query: String?=null): Deferred<Response<ApplicationResponse>>? {
+   suspend fun searchApplication(authorization: String?=null, query: String?=null): Response<ApplicationResponse>? {
         var fullUrl : String? = _relativeUrls["searchApplication"] 
         
         return commonApiList?.searchApplication(fullUrl    ,  authorization = authorization,    query = query)}
 
     
     
-    fun getLocations(locationType: String?=null, id: String?=null): Deferred<Response<Locations>>? {
+   suspend fun getLocations(locationType: String?=null, id: String?=null): Response<Locations>? {
         var fullUrl : String? = _relativeUrls["getLocations"] 
         
         return commonApiList?.getLocations(fullUrl    ,  locationType = locationType,    id = id)}

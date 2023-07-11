@@ -47,7 +47,7 @@ class CommonDataManagerClass(val config: PlatformConfig, val unauthorizedAction:
     
     
     suspend fun searchApplication(authorization: String?=null, query: String?=null)
-    : Deferred<Response<ApplicationResponse>>? {
+    : Response<ApplicationResponse>? {
         
         return if (config.oauthClient.isAccessTokenValid()) {
             commonApiList?.searchApplication(
@@ -59,7 +59,7 @@ class CommonDataManagerClass(val config: PlatformConfig, val unauthorizedAction:
     
     
     suspend fun getLocations(locationType: String?=null, id: String?=null)
-    : Deferred<Response<Locations>>? {
+    : Response<Locations>? {
         
         return if (config.oauthClient.isAccessTokenValid()) {
             commonApiList?.getLocations(

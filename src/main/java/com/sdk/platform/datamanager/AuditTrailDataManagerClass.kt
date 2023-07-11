@@ -47,7 +47,7 @@ class AuditTrailDataManagerClass(val config: PlatformConfig, val unauthorizedAct
     
     
     suspend fun getAuditLogs(qs: String)
-    : Deferred<Response<LogSchemaResponse>>? {
+    : Response<LogSchemaResponse>? {
         
         return if (config.oauthClient.isAccessTokenValid()) {
             auditTrailApiList?.getAuditLogs(
@@ -59,7 +59,7 @@ class AuditTrailDataManagerClass(val config: PlatformConfig, val unauthorizedAct
     
     
     suspend fun createAuditLog(body: RequestBodyAuditLog)
-    : Deferred<Response<CreateLogResponse>>? {
+    : Response<CreateLogResponse>? {
         
         return if (config.oauthClient.isAccessTokenValid()) {
             auditTrailApiList?.createAuditLog(
@@ -71,7 +71,7 @@ class AuditTrailDataManagerClass(val config: PlatformConfig, val unauthorizedAct
     
     
     suspend fun getAuditLog(id: String)
-    : Deferred<Response<LogSchemaResponse>>? {
+    : Response<LogSchemaResponse>? {
         
         return if (config.oauthClient.isAccessTokenValid()) {
             auditTrailApiList?.getAuditLog(
@@ -83,7 +83,7 @@ class AuditTrailDataManagerClass(val config: PlatformConfig, val unauthorizedAct
     
     
     suspend fun getEntityTypes()
-    : Deferred<Response<EntityTypesResponse>>? {
+    : Response<EntityTypesResponse>? {
         
         return if (config.oauthClient.isAccessTokenValid()) {
             auditTrailApiList?.getEntityTypes(

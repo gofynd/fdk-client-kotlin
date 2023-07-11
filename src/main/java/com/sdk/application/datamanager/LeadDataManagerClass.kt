@@ -70,7 +70,7 @@ class LeadDataManagerClass(val config: ApplicationConfig, val unauthorizedAction
         return retrofitHttpClient?.initializeRestClient(LeadApiList::class.java) as? LeadApiList
     }
     
-    fun getTicket(id: String): Deferred<Response<Ticket>>? {
+   suspend fun getTicket(id: String): Response<Ticket>? {
         var fullUrl : String? = _relativeUrls["getTicket"] 
         
         fullUrl = fullUrl?.replace("{" + "id" +"}",id.toString())
@@ -79,7 +79,7 @@ class LeadDataManagerClass(val config: ApplicationConfig, val unauthorizedAction
 
     
     
-    fun createHistory(id: String, body: TicketHistoryPayload): Deferred<Response<TicketHistory>>? {
+   suspend fun createHistory(id: String, body: TicketHistoryPayload): Response<TicketHistory>? {
         var fullUrl : String? = _relativeUrls["createHistory"] 
         
         fullUrl = fullUrl?.replace("{" + "id" +"}",id.toString())
@@ -88,14 +88,14 @@ class LeadDataManagerClass(val config: ApplicationConfig, val unauthorizedAction
 
     
     
-    fun createTicket(body: AddTicketPayload): Deferred<Response<Ticket>>? {
+   suspend fun createTicket(body: AddTicketPayload): Response<Ticket>? {
         var fullUrl : String? = _relativeUrls["createTicket"] 
         
         return leadApiList?.createTicket(fullUrl  ,body = body)}
 
     
     
-    fun getCustomForm(slug: String): Deferred<Response<CustomForm>>? {
+   suspend fun getCustomForm(slug: String): Response<CustomForm>? {
         var fullUrl : String? = _relativeUrls["getCustomForm"] 
         
         fullUrl = fullUrl?.replace("{" + "slug" +"}",slug.toString())
@@ -104,7 +104,7 @@ class LeadDataManagerClass(val config: ApplicationConfig, val unauthorizedAction
 
     
     
-    fun submitCustomForm(slug: String, body: CustomFormSubmissionPayload): Deferred<Response<SubmitCustomFormResponse>>? {
+   suspend fun submitCustomForm(slug: String, body: CustomFormSubmissionPayload): Response<SubmitCustomFormResponse>? {
         var fullUrl : String? = _relativeUrls["submitCustomForm"] 
         
         fullUrl = fullUrl?.replace("{" + "slug" +"}",slug.toString())
@@ -113,7 +113,7 @@ class LeadDataManagerClass(val config: ApplicationConfig, val unauthorizedAction
 
     
     
-    fun getParticipantsInsideVideoRoom(uniqueName: String): Deferred<Response<GetParticipantsInsideVideoRoomResponse>>? {
+   suspend fun getParticipantsInsideVideoRoom(uniqueName: String): Response<GetParticipantsInsideVideoRoomResponse>? {
         var fullUrl : String? = _relativeUrls["getParticipantsInsideVideoRoom"] 
         
         fullUrl = fullUrl?.replace("{" + "unique_name" +"}",uniqueName.toString())
@@ -122,7 +122,7 @@ class LeadDataManagerClass(val config: ApplicationConfig, val unauthorizedAction
 
     
     
-    fun getTokenForVideoRoom(uniqueName: String): Deferred<Response<GetTokenForVideoRoomResponse>>? {
+   suspend fun getTokenForVideoRoom(uniqueName: String): Response<GetTokenForVideoRoomResponse>? {
         var fullUrl : String? = _relativeUrls["getTokenForVideoRoom"] 
         
         fullUrl = fullUrl?.replace("{" + "unique_name" +"}",uniqueName.toString())

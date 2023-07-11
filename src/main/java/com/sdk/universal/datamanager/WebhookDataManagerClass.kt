@@ -59,14 +59,14 @@ class WebhookDataManagerClass(val config: PublicConfig, val unauthorizedAction: 
         return retrofitHttpClient?.initializeRestClient(WebhookApiList::class.java) as? WebhookApiList
     }
     
-    fun fetchAllWebhookEvents(): Deferred<Response<EventConfigResponse>>? {
+   suspend fun fetchAllWebhookEvents(): Response<EventConfigResponse>? {
         var fullUrl : String? = _relativeUrls["fetchAllWebhookEvents"] 
         
         return webhookApiList?.fetchAllWebhookEvents(fullUrl  )}
 
     
     
-    fun queryWebhookEventDetails(body: ArrayList<EventConfigBase>): Deferred<Response<EventConfigResponse>>? {
+   suspend fun queryWebhookEventDetails(body: ArrayList<EventConfigBase>): Response<EventConfigResponse>? {
         var fullUrl : String? = _relativeUrls["queryWebhookEventDetails"] 
         
         return webhookApiList?.queryWebhookEventDetails(fullUrl  ,body = body)}

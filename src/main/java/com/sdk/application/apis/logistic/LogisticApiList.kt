@@ -12,47 +12,47 @@ interface LogisticApiList {
     
     
     @GET 
-    fun getPincodeCity(@Url url1: String?    )
-    : Deferred<Response<PincodeApiResponse>>
+    suspend fun getPincodeCity(@Url url1: String?    )
+    : Response<PincodeApiResponse>
     
     
     @POST 
-    fun getTatProduct(@Url url1: String?   ,@Body body: TATViewRequest)
-    : Deferred<Response<TATViewResponse>>
+    suspend fun getTatProduct(@Url url1: String?   ,@Body body: TATViewRequest)
+    : Response<TATViewResponse>
     
     
     @GET 
-    fun getAllCountries(@Url url1: String?   )
-    : Deferred<Response<CountryListResponse>>
+    suspend fun getAllCountries(@Url url1: String?   )
+    : Response<CountryListResponse>
     
     
     @POST 
-    fun getPincodeZones(@Url url1: String?   ,@Body body: GetZoneFromPincodeViewRequest)
-    : Deferred<Response<GetZoneFromPincodeViewResponse>>
+    suspend fun getPincodeZones(@Url url1: String?   ,@Body body: GetZoneFromPincodeViewRequest)
+    : Response<GetZoneFromPincodeViewResponse>
     
     
     @POST 
-    fun getOptimalLocations(@Url url1: String?   ,@Body body: ReAssignStoreRequest)
-    : Deferred<Response<ReAssignStoreResponse>>
+    suspend fun getOptimalLocations(@Url url1: String?   ,@Body body: ReAssignStoreRequest)
+    : Response<ReAssignStoreResponse>
     
     
     @GET 
-    fun getCountries(@Url url1: String?   )
-    : Deferred<Response<GetCountries>>
+    suspend fun getCountries(@Url url1: String?   )
+    : Response<GetCountries>
     
     
     @GET 
-    fun getCountry(@Url url1: String?    )
-    : Deferred<Response<GetCountry>>
+    suspend fun getCountry(@Url url1: String?    )
+    : Response<GetCountry>
     
     
     @GET 
-    fun getLocalities(@Url url1: String?    )
-    : Deferred<Response<GetLocalities>>
+    suspend fun getLocalities(@Url url1: String?    )
+    : Response<GetLocalities>
     
     
     @GET 
-    fun getLocality(@Url url1: String?     )
-    : Deferred<Response<GetLocality>>
+    suspend fun getLocality(@Url url1: String?     )
+    : Response<GetLocality>
     
 }

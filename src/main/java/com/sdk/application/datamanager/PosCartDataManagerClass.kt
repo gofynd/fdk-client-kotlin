@@ -110,91 +110,91 @@ class PosCartDataManagerClass(val config: ApplicationConfig, val unauthorizedAct
         return retrofitHttpClient?.initializeRestClient(PosCartApiList::class.java) as? PosCartApiList
     }
     
-    fun getCart(id: String?=null, i: Boolean?=null, b: Boolean?=null, p: Boolean?=null, assignCardId: Int?=null, areaCode: String?=null, buyNow: Boolean?=null): Deferred<Response<CartDetailResponse>>? {
+   suspend fun getCart(id: String?=null, i: Boolean?=null, b: Boolean?=null, p: Boolean?=null, assignCardId: Int?=null, areaCode: String?=null, buyNow: Boolean?=null): Response<CartDetailResponse>? {
         var fullUrl : String? = _relativeUrls["getCart"] 
         
         return posCartApiList?.getCart(fullUrl    ,  id = id,    i = i,    b = b,    p = p,    assignCardId = assignCardId,    areaCode = areaCode,    buyNow = buyNow)}
 
     
     
-    fun getCartLastModified(id: String?=null): Deferred<Response<Void>>? {
+   suspend fun getCartLastModified(id: String?=null): Response<Void>? {
         var fullUrl : String? = _relativeUrls["getCartLastModified"] 
         
         return posCartApiList?.getCartLastModified(fullUrl    ,  id = id)}
 
     
     
-    fun addItems(i: Boolean?=null, b: Boolean?=null, p: Boolean?=null, areaCode: String?=null, buyNow: Boolean?=null, id: String?=null, body: AddCartRequest): Deferred<Response<AddCartDetailResponse>>? {
+   suspend fun addItems(i: Boolean?=null, b: Boolean?=null, p: Boolean?=null, areaCode: String?=null, buyNow: Boolean?=null, id: String?=null, body: AddCartRequest): Response<AddCartDetailResponse>? {
         var fullUrl : String? = _relativeUrls["addItems"] 
         
         return posCartApiList?.addItems(fullUrl    ,  i = i,    b = b,    p = p,    areaCode = areaCode,    buyNow = buyNow,    id = id, body = body)}
 
     
     
-    fun updateCart(id: String?=null, i: Boolean?=null, b: Boolean?=null, p: Boolean?=null, areaCode: String?=null, buyNow: Boolean?=null, body: UpdateCartRequest): Deferred<Response<UpdateCartDetailResponse>>? {
+   suspend fun updateCart(id: String?=null, i: Boolean?=null, b: Boolean?=null, p: Boolean?=null, areaCode: String?=null, buyNow: Boolean?=null, body: UpdateCartRequest): Response<UpdateCartDetailResponse>? {
         var fullUrl : String? = _relativeUrls["updateCart"] 
         
         return posCartApiList?.updateCart(fullUrl    ,  id = id,    i = i,    b = b,    p = p,    areaCode = areaCode,    buyNow = buyNow, body = body)}
 
     
     
-    fun getItemCount(id: String?=null, buyNow: Boolean?=null): Deferred<Response<CartItemCountResponse>>? {
+   suspend fun getItemCount(id: String?=null, buyNow: Boolean?=null): Response<CartItemCountResponse>? {
         var fullUrl : String? = _relativeUrls["getItemCount"] 
         
         return posCartApiList?.getItemCount(fullUrl    ,  id = id,    buyNow = buyNow)}
 
     
     
-    fun getCoupons(id: String?=null, buyNow: Boolean?=null): Deferred<Response<GetCouponResponse>>? {
+   suspend fun getCoupons(id: String?=null, buyNow: Boolean?=null): Response<GetCouponResponse>? {
         var fullUrl : String? = _relativeUrls["getCoupons"] 
         
         return posCartApiList?.getCoupons(fullUrl    ,  id = id,    buyNow = buyNow)}
 
     
     
-    fun applyCoupon(i: Boolean?=null, b: Boolean?=null, p: Boolean?=null, id: String?=null, buyNow: Boolean?=null, body: ApplyCouponRequest): Deferred<Response<CartDetailResponse>>? {
+   suspend fun applyCoupon(i: Boolean?=null, b: Boolean?=null, p: Boolean?=null, id: String?=null, buyNow: Boolean?=null, body: ApplyCouponRequest): Response<CartDetailResponse>? {
         var fullUrl : String? = _relativeUrls["applyCoupon"] 
         
         return posCartApiList?.applyCoupon(fullUrl    ,  i = i,    b = b,    p = p,    id = id,    buyNow = buyNow, body = body)}
 
     
     
-    fun removeCoupon(id: String?=null, buyNow: Boolean?=null): Deferred<Response<CartDetailResponse>>? {
+   suspend fun removeCoupon(id: String?=null, buyNow: Boolean?=null): Response<CartDetailResponse>? {
         var fullUrl : String? = _relativeUrls["removeCoupon"] 
         
         return posCartApiList?.removeCoupon(fullUrl    ,  id = id,    buyNow = buyNow)}
 
     
     
-    fun getBulkDiscountOffers(itemId: Int?=null, articleId: String?=null, uid: Int?=null, slug: String?=null): Deferred<Response<BulkPriceResponse>>? {
+   suspend fun getBulkDiscountOffers(itemId: Int?=null, articleId: String?=null, uid: Int?=null, slug: String?=null): Response<BulkPriceResponse>? {
         var fullUrl : String? = _relativeUrls["getBulkDiscountOffers"] 
         
         return posCartApiList?.getBulkDiscountOffers(fullUrl    ,  itemId = itemId,    articleId = articleId,    uid = uid,    slug = slug)}
 
     
     
-    fun applyRewardPoints(id: String?=null, i: Boolean?=null, b: Boolean?=null, buyNow: Boolean?=null, body: RewardPointRequest): Deferred<Response<CartDetailResponse>>? {
+   suspend fun applyRewardPoints(id: String?=null, i: Boolean?=null, b: Boolean?=null, buyNow: Boolean?=null, body: RewardPointRequest): Response<CartDetailResponse>? {
         var fullUrl : String? = _relativeUrls["applyRewardPoints"] 
         
         return posCartApiList?.applyRewardPoints(fullUrl    ,  id = id,    i = i,    b = b,    buyNow = buyNow, body = body)}
 
     
     
-    fun getAddresses(cartId: String?=null, buyNow: Boolean?=null, mobileNo: String?=null, checkoutMode: String?=null, tags: String?=null, isDefault: Boolean?=null): Deferred<Response<GetAddressesResponse>>? {
+   suspend fun getAddresses(cartId: String?=null, buyNow: Boolean?=null, mobileNo: String?=null, checkoutMode: String?=null, tags: String?=null, isDefault: Boolean?=null): Response<GetAddressesResponse>? {
         var fullUrl : String? = _relativeUrls["getAddresses"] 
         
         return posCartApiList?.getAddresses(fullUrl    ,  cartId = cartId,    buyNow = buyNow,    mobileNo = mobileNo,    checkoutMode = checkoutMode,    tags = tags,    isDefault = isDefault)}
 
     
     
-    fun addAddress(body: Address): Deferred<Response<SaveAddressResponse>>? {
+   suspend fun addAddress(body: Address): Response<SaveAddressResponse>? {
         var fullUrl : String? = _relativeUrls["addAddress"] 
         
         return posCartApiList?.addAddress(fullUrl  ,body = body)}
 
     
     
-    fun getAddressById(id: String, cartId: String?=null, buyNow: Boolean?=null, mobileNo: String?=null, checkoutMode: String?=null, tags: String?=null, isDefault: Boolean?=null): Deferred<Response<Address>>? {
+   suspend fun getAddressById(id: String, cartId: String?=null, buyNow: Boolean?=null, mobileNo: String?=null, checkoutMode: String?=null, tags: String?=null, isDefault: Boolean?=null): Response<Address>? {
         var fullUrl : String? = _relativeUrls["getAddressById"] 
         
         fullUrl = fullUrl?.replace("{" + "id" +"}",id.toString())
@@ -203,7 +203,7 @@ class PosCartDataManagerClass(val config: ApplicationConfig, val unauthorizedAct
 
     
     
-    fun updateAddress(id: String, body: Address): Deferred<Response<UpdateAddressResponse>>? {
+   suspend fun updateAddress(id: String, body: Address): Response<UpdateAddressResponse>? {
         var fullUrl : String? = _relativeUrls["updateAddress"] 
         
         fullUrl = fullUrl?.replace("{" + "id" +"}",id.toString())
@@ -212,7 +212,7 @@ class PosCartDataManagerClass(val config: ApplicationConfig, val unauthorizedAct
 
     
     
-    fun removeAddress(id: String): Deferred<Response<DeleteAddressResponse>>? {
+   suspend fun removeAddress(id: String): Response<DeleteAddressResponse>? {
         var fullUrl : String? = _relativeUrls["removeAddress"] 
         
         fullUrl = fullUrl?.replace("{" + "id" +"}",id.toString())
@@ -221,77 +221,77 @@ class PosCartDataManagerClass(val config: ApplicationConfig, val unauthorizedAct
 
     
     
-    fun selectAddress(cartId: String?=null, buyNow: Boolean?=null, i: Boolean?=null, b: Boolean?=null, body: SelectCartAddressRequest): Deferred<Response<CartDetailResponse>>? {
+   suspend fun selectAddress(cartId: String?=null, buyNow: Boolean?=null, i: Boolean?=null, b: Boolean?=null, body: SelectCartAddressRequest): Response<CartDetailResponse>? {
         var fullUrl : String? = _relativeUrls["selectAddress"] 
         
         return posCartApiList?.selectAddress(fullUrl    ,  cartId = cartId,    buyNow = buyNow,    i = i,    b = b, body = body)}
 
     
     
-    fun selectPaymentMode(id: String?=null, buyNow: Boolean?=null, body: UpdateCartPaymentRequest): Deferred<Response<CartDetailResponse>>? {
+   suspend fun selectPaymentMode(id: String?=null, buyNow: Boolean?=null, body: UpdateCartPaymentRequest): Response<CartDetailResponse>? {
         var fullUrl : String? = _relativeUrls["selectPaymentMode"] 
         
         return posCartApiList?.selectPaymentMode(fullUrl    ,  id = id,    buyNow = buyNow, body = body)}
 
     
     
-    fun validateCouponForPayment(id: String?=null, buyNow: Boolean?=null, addressId: String?=null, paymentMode: String?=null, paymentIdentifier: String?=null, aggregatorName: String?=null, merchantCode: String?=null, iin: String?=null, network: String?=null, type: String?=null, cardId: String?=null): Deferred<Response<PaymentCouponValidate>>? {
+   suspend fun validateCouponForPayment(id: String?=null, buyNow: Boolean?=null, addressId: String?=null, paymentMode: String?=null, paymentIdentifier: String?=null, aggregatorName: String?=null, merchantCode: String?=null, iin: String?=null, network: String?=null, type: String?=null, cardId: String?=null): Response<PaymentCouponValidate>? {
         var fullUrl : String? = _relativeUrls["validateCouponForPayment"] 
         
         return posCartApiList?.validateCouponForPayment(fullUrl    ,  id = id,    buyNow = buyNow,    addressId = addressId,    paymentMode = paymentMode,    paymentIdentifier = paymentIdentifier,    aggregatorName = aggregatorName,    merchantCode = merchantCode,    iin = iin,    network = network,    type = type,    cardId = cardId)}
 
     
     
-    fun getShipments(pickAtStoreUid: Int?=null, orderingStoreId: Int?=null, p: Boolean?=null, id: String?=null, addressId: String?=null, areaCode: String?=null, orderType: String?=null): Deferred<Response<CartShipmentsResponse>>? {
+   suspend fun getShipments(pickAtStoreUid: Int?=null, orderingStoreId: Int?=null, p: Boolean?=null, id: String?=null, addressId: String?=null, areaCode: String?=null, orderType: String?=null): Response<CartShipmentsResponse>? {
         var fullUrl : String? = _relativeUrls["getShipments"] 
         
         return posCartApiList?.getShipments(fullUrl    ,  pickAtStoreUid = pickAtStoreUid,    orderingStoreId = orderingStoreId,    p = p,    id = id,    addressId = addressId,    areaCode = areaCode,    orderType = orderType)}
 
     
     
-    fun updateShipments(i: Boolean?=null, p: Boolean?=null, id: String?=null, addressId: String?=null, areaCode: String?=null, orderType: String?=null, body: UpdateCartShipmentRequest): Deferred<Response<CartShipmentsResponse>>? {
+   suspend fun updateShipments(i: Boolean?=null, p: Boolean?=null, id: String?=null, addressId: String?=null, areaCode: String?=null, orderType: String?=null, body: UpdateCartShipmentRequest): Response<CartShipmentsResponse>? {
         var fullUrl : String? = _relativeUrls["updateShipments"] 
         
         return posCartApiList?.updateShipments(fullUrl    ,  i = i,    p = p,    id = id,    addressId = addressId,    areaCode = areaCode,    orderType = orderType, body = body)}
 
     
     
-    fun checkoutCart(id: String?=null, body: CartPosCheckoutDetailRequest): Deferred<Response<CartCheckoutResponse>>? {
+   suspend fun checkoutCart(id: String?=null, body: CartPosCheckoutDetailRequest): Response<CartCheckoutResponse>? {
         var fullUrl : String? = _relativeUrls["checkoutCart"] 
         
         return posCartApiList?.checkoutCart(fullUrl    ,  id = id, body = body)}
 
     
     
-    fun updateCartMeta(id: String?=null, buyNow: Boolean?=null, body: CartMetaRequest): Deferred<Response<CartMetaResponse>>? {
+   suspend fun updateCartMeta(id: String?=null, buyNow: Boolean?=null, body: CartMetaRequest): Response<CartMetaResponse>? {
         var fullUrl : String? = _relativeUrls["updateCartMeta"] 
         
         return posCartApiList?.updateCartMeta(fullUrl    ,  id = id,    buyNow = buyNow, body = body)}
 
     
     
-    fun getAvailableDeliveryModes(areaCode: String, id: String?=null): Deferred<Response<CartDeliveryModesResponse>>? {
+   suspend fun getAvailableDeliveryModes(areaCode: String, id: String?=null): Response<CartDeliveryModesResponse>? {
         var fullUrl : String? = _relativeUrls["getAvailableDeliveryModes"] 
         
         return posCartApiList?.getAvailableDeliveryModes(fullUrl    ,  areaCode = areaCode,    id = id)}
 
     
     
-    fun getStoreAddressByUid(storeUid: Int): Deferred<Response<StoreDetailsResponse>>? {
+   suspend fun getStoreAddressByUid(storeUid: Int): Response<StoreDetailsResponse>? {
         var fullUrl : String? = _relativeUrls["getStoreAddressByUid"] 
         
         return posCartApiList?.getStoreAddressByUid(fullUrl    ,  storeUid = storeUid)}
 
     
     
-    fun getCartShareLink(body: GetShareCartLinkRequest): Deferred<Response<GetShareCartLinkResponse>>? {
+   suspend fun getCartShareLink(body: GetShareCartLinkRequest): Response<GetShareCartLinkResponse>? {
         var fullUrl : String? = _relativeUrls["getCartShareLink"] 
         
         return posCartApiList?.getCartShareLink(fullUrl  ,body = body)}
 
     
     
-    fun getCartSharedItems(token: String): Deferred<Response<SharedCartResponse>>? {
+   suspend fun getCartSharedItems(token: String): Response<SharedCartResponse>? {
         var fullUrl : String? = _relativeUrls["getCartSharedItems"] 
         
         fullUrl = fullUrl?.replace("{" + "token" +"}",token.toString())
@@ -300,7 +300,7 @@ class PosCartDataManagerClass(val config: ApplicationConfig, val unauthorizedAct
 
     
     
-    fun updateCartWithSharedItems(token: String, action: String): Deferred<Response<SharedCartResponse>>? {
+   suspend fun updateCartWithSharedItems(token: String, action: String): Response<SharedCartResponse>? {
         var fullUrl : String? = _relativeUrls["updateCartWithSharedItems"] 
         
         fullUrl = fullUrl?.replace("{" + "token" +"}",token.toString())

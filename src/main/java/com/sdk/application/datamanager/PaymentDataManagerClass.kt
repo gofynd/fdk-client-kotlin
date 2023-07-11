@@ -140,119 +140,119 @@ class PaymentDataManagerClass(val config: ApplicationConfig, val unauthorizedAct
         return retrofitHttpClient?.initializeRestClient(PaymentApiList::class.java) as? PaymentApiList
     }
     
-    fun getAggregatorsConfig(xApiToken: String?=null, refresh: Boolean?=null): Deferred<Response<AggregatorsConfigDetailResponse>>? {
+   suspend fun getAggregatorsConfig(xApiToken: String?=null, refresh: Boolean?=null): Response<AggregatorsConfigDetailResponse>? {
         var fullUrl : String? = _relativeUrls["getAggregatorsConfig"] 
         
         return paymentApiList?.getAggregatorsConfig(fullUrl    ,  xApiToken = xApiToken,    refresh = refresh)}
 
     
     
-    fun attachCardToCustomer(body: AttachCardRequest): Deferred<Response<AttachCardsResponse>>? {
+   suspend fun attachCardToCustomer(body: AttachCardRequest): Response<AttachCardsResponse>? {
         var fullUrl : String? = _relativeUrls["attachCardToCustomer"] 
         
         return paymentApiList?.attachCardToCustomer(fullUrl  ,body = body)}
 
     
     
-    fun getActiveCardAggregator(refresh: Boolean?=null): Deferred<Response<ActiveCardPaymentGatewayResponse>>? {
+   suspend fun getActiveCardAggregator(refresh: Boolean?=null): Response<ActiveCardPaymentGatewayResponse>? {
         var fullUrl : String? = _relativeUrls["getActiveCardAggregator"] 
         
         return paymentApiList?.getActiveCardAggregator(fullUrl    ,  refresh = refresh)}
 
     
     
-    fun getActiveUserCards(forceRefresh: Boolean?=null): Deferred<Response<ListCardsResponse>>? {
+   suspend fun getActiveUserCards(forceRefresh: Boolean?=null): Response<ListCardsResponse>? {
         var fullUrl : String? = _relativeUrls["getActiveUserCards"] 
         
         return paymentApiList?.getActiveUserCards(fullUrl    ,  forceRefresh = forceRefresh)}
 
     
     
-    fun deleteUserCard(body: DeletehCardRequest): Deferred<Response<DeleteCardsResponse>>? {
+   suspend fun deleteUserCard(body: DeletehCardRequest): Response<DeleteCardsResponse>? {
         var fullUrl : String? = _relativeUrls["deleteUserCard"] 
         
         return paymentApiList?.deleteUserCard(fullUrl  ,body = body)}
 
     
     
-    fun verifyCustomerForPayment(body: ValidateCustomerRequest): Deferred<Response<ValidateCustomerResponse>>? {
+   suspend fun verifyCustomerForPayment(body: ValidateCustomerRequest): Response<ValidateCustomerResponse>? {
         var fullUrl : String? = _relativeUrls["verifyCustomerForPayment"] 
         
         return paymentApiList?.verifyCustomerForPayment(fullUrl  ,body = body)}
 
     
     
-    fun verifyAndChargePayment(body: ChargeCustomerRequest): Deferred<Response<ChargeCustomerResponse>>? {
+   suspend fun verifyAndChargePayment(body: ChargeCustomerRequest): Response<ChargeCustomerResponse>? {
         var fullUrl : String? = _relativeUrls["verifyAndChargePayment"] 
         
         return paymentApiList?.verifyAndChargePayment(fullUrl  ,body = body)}
 
     
     
-    fun initialisePayment(body: PaymentInitializationRequest): Deferred<Response<PaymentInitializationResponse>>? {
+   suspend fun initialisePayment(body: PaymentInitializationRequest): Response<PaymentInitializationResponse>? {
         var fullUrl : String? = _relativeUrls["initialisePayment"] 
         
         return paymentApiList?.initialisePayment(fullUrl  ,body = body)}
 
     
     
-    fun checkAndUpdatePaymentStatus(body: PaymentStatusUpdateRequest): Deferred<Response<PaymentStatusUpdateResponse>>? {
+   suspend fun checkAndUpdatePaymentStatus(body: PaymentStatusUpdateRequest): Response<PaymentStatusUpdateResponse>? {
         var fullUrl : String? = _relativeUrls["checkAndUpdatePaymentStatus"] 
         
         return paymentApiList?.checkAndUpdatePaymentStatus(fullUrl  ,body = body)}
 
     
     
-    fun getPaymentModeRoutes(amount: Int, cartId: String, pincode: String, checkoutMode: String, refresh: Boolean?=null, cardReference: String?=null, userDetails: String?=null): Deferred<Response<PaymentModeRouteResponse>>? {
+   suspend fun getPaymentModeRoutes(amount: Int, cartId: String, pincode: String, checkoutMode: String, refresh: Boolean?=null, cardReference: String?=null, userDetails: String?=null): Response<PaymentModeRouteResponse>? {
         var fullUrl : String? = _relativeUrls["getPaymentModeRoutes"] 
         
         return paymentApiList?.getPaymentModeRoutes(fullUrl    ,  amount = amount,    cartId = cartId,    pincode = pincode,    checkoutMode = checkoutMode,    refresh = refresh,    cardReference = cardReference,    userDetails = userDetails)}
 
     
     
-    fun getPosPaymentModeRoutes(amount: Int, cartId: String, pincode: String, checkoutMode: String, refresh: Boolean?=null, cardReference: String?=null, orderType: String, userDetails: String?=null): Deferred<Response<PaymentModeRouteResponse>>? {
+   suspend fun getPosPaymentModeRoutes(amount: Int, cartId: String, pincode: String, checkoutMode: String, refresh: Boolean?=null, cardReference: String?=null, orderType: String, userDetails: String?=null): Response<PaymentModeRouteResponse>? {
         var fullUrl : String? = _relativeUrls["getPosPaymentModeRoutes"] 
         
         return paymentApiList?.getPosPaymentModeRoutes(fullUrl    ,  amount = amount,    cartId = cartId,    pincode = pincode,    checkoutMode = checkoutMode,    refresh = refresh,    cardReference = cardReference,    orderType = orderType,    userDetails = userDetails)}
 
     
     
-    fun getRupifiBannerDetails(): Deferred<Response<RupifiBannerResponse>>? {
+   suspend fun getRupifiBannerDetails(): Response<RupifiBannerResponse>? {
         var fullUrl : String? = _relativeUrls["getRupifiBannerDetails"] 
         
         return paymentApiList?.getRupifiBannerDetails(fullUrl  )}
 
     
     
-    fun getEpaylaterBannerDetails(): Deferred<Response<EpaylaterBannerResponse>>? {
+   suspend fun getEpaylaterBannerDetails(): Response<EpaylaterBannerResponse>? {
         var fullUrl : String? = _relativeUrls["getEpaylaterBannerDetails"] 
         
         return paymentApiList?.getEpaylaterBannerDetails(fullUrl  )}
 
     
     
-    fun resendOrCancelPayment(body: ResendOrCancelPaymentRequest): Deferred<Response<ResendOrCancelPaymentResponse>>? {
+   suspend fun resendOrCancelPayment(body: ResendOrCancelPaymentRequest): Response<ResendOrCancelPaymentResponse>? {
         var fullUrl : String? = _relativeUrls["resendOrCancelPayment"] 
         
         return paymentApiList?.resendOrCancelPayment(fullUrl  ,body = body)}
 
     
     
-    fun renderHTML(body: renderHTMLRequest): Deferred<Response<renderHTMLResponse>>? {
+   suspend fun renderHTML(body: renderHTMLRequest): Response<renderHTMLResponse>? {
         var fullUrl : String? = _relativeUrls["renderHTML"] 
         
         return paymentApiList?.renderHTML(fullUrl  ,body = body)}
 
     
     
-    fun validateVPA(body: ValidateVPARequest): Deferred<Response<ValidateVPAResponse>>? {
+   suspend fun validateVPA(body: ValidateVPARequest): Response<ValidateVPAResponse>? {
         var fullUrl : String? = _relativeUrls["validateVPA"] 
         
         return paymentApiList?.validateVPA(fullUrl  ,body = body)}
 
     
     
-    fun cardDetails(cardInfo: String, aggregator: String?=null): Deferred<Response<CardDetailsResponse>>? {
+   suspend fun cardDetails(cardInfo: String, aggregator: String?=null): Response<CardDetailsResponse>? {
         var fullUrl : String? = _relativeUrls["cardDetails"] 
         
         fullUrl = fullUrl?.replace("{" + "card_info" +"}",cardInfo.toString())
@@ -261,175 +261,175 @@ class PaymentDataManagerClass(val config: ApplicationConfig, val unauthorizedAct
 
     
     
-    fun getActiveRefundTransferModes(): Deferred<Response<TransferModeResponse>>? {
+   suspend fun getActiveRefundTransferModes(): Response<TransferModeResponse>? {
         var fullUrl : String? = _relativeUrls["getActiveRefundTransferModes"] 
         
         return paymentApiList?.getActiveRefundTransferModes(fullUrl  )}
 
     
     
-    fun enableOrDisableRefundTransferMode(body: UpdateRefundTransferModeRequest): Deferred<Response<UpdateRefundTransferModeResponse>>? {
+   suspend fun enableOrDisableRefundTransferMode(body: UpdateRefundTransferModeRequest): Response<UpdateRefundTransferModeResponse>? {
         var fullUrl : String? = _relativeUrls["enableOrDisableRefundTransferMode"] 
         
         return paymentApiList?.enableOrDisableRefundTransferMode(fullUrl  ,body = body)}
 
     
     
-    fun getUserBeneficiariesDetail(orderId: String): Deferred<Response<OrderBeneficiaryResponse>>? {
+   suspend fun getUserBeneficiariesDetail(orderId: String): Response<OrderBeneficiaryResponse>? {
         var fullUrl : String? = _relativeUrls["getUserBeneficiariesDetail"] 
         
         return paymentApiList?.getUserBeneficiariesDetail(fullUrl    ,  orderId = orderId)}
 
     
     
-    fun verifyIfscCode(ifscCode: String?=null): Deferred<Response<IfscCodeResponse>>? {
+   suspend fun verifyIfscCode(ifscCode: String?=null): Response<IfscCodeResponse>? {
         var fullUrl : String? = _relativeUrls["verifyIfscCode"] 
         
         return paymentApiList?.verifyIfscCode(fullUrl    ,  ifscCode = ifscCode)}
 
     
     
-    fun getOrderBeneficiariesDetail(orderId: String): Deferred<Response<OrderBeneficiaryResponse>>? {
+   suspend fun getOrderBeneficiariesDetail(orderId: String): Response<OrderBeneficiaryResponse>? {
         var fullUrl : String? = _relativeUrls["getOrderBeneficiariesDetail"] 
         
         return paymentApiList?.getOrderBeneficiariesDetail(fullUrl    ,  orderId = orderId)}
 
     
     
-    fun verifyOtpAndAddBeneficiaryForBank(body: AddBeneficiaryViaOtpVerificationRequest): Deferred<Response<AddBeneficiaryViaOtpVerificationResponse>>? {
+   suspend fun verifyOtpAndAddBeneficiaryForBank(body: AddBeneficiaryViaOtpVerificationRequest): Response<AddBeneficiaryViaOtpVerificationResponse>? {
         var fullUrl : String? = _relativeUrls["verifyOtpAndAddBeneficiaryForBank"] 
         
         return paymentApiList?.verifyOtpAndAddBeneficiaryForBank(fullUrl  ,body = body)}
 
     
     
-    fun addBeneficiaryDetails(body: AddBeneficiaryDetailsRequest): Deferred<Response<RefundAccountResponse>>? {
+   suspend fun addBeneficiaryDetails(body: AddBeneficiaryDetailsRequest): Response<RefundAccountResponse>? {
         var fullUrl : String? = _relativeUrls["addBeneficiaryDetails"] 
         
         return paymentApiList?.addBeneficiaryDetails(fullUrl  ,body = body)}
 
     
     
-    fun addRefundBankAccountUsingOTP(body: AddBeneficiaryDetailsOTPRequest): Deferred<Response<RefundAccountResponse>>? {
+   suspend fun addRefundBankAccountUsingOTP(body: AddBeneficiaryDetailsOTPRequest): Response<RefundAccountResponse>? {
         var fullUrl : String? = _relativeUrls["addRefundBankAccountUsingOTP"] 
         
         return paymentApiList?.addRefundBankAccountUsingOTP(fullUrl  ,body = body)}
 
     
     
-    fun verifyOtpAndAddBeneficiaryForWallet(body: WalletOtpRequest): Deferred<Response<WalletOtpResponse>>? {
+   suspend fun verifyOtpAndAddBeneficiaryForWallet(body: WalletOtpRequest): Response<WalletOtpResponse>? {
         var fullUrl : String? = _relativeUrls["verifyOtpAndAddBeneficiaryForWallet"] 
         
         return paymentApiList?.verifyOtpAndAddBeneficiaryForWallet(fullUrl  ,body = body)}
 
     
     
-    fun updateDefaultBeneficiary(body: SetDefaultBeneficiaryRequest): Deferred<Response<SetDefaultBeneficiaryResponse>>? {
+   suspend fun updateDefaultBeneficiary(body: SetDefaultBeneficiaryRequest): Response<SetDefaultBeneficiaryResponse>? {
         var fullUrl : String? = _relativeUrls["updateDefaultBeneficiary"] 
         
         return paymentApiList?.updateDefaultBeneficiary(fullUrl  ,body = body)}
 
     
     
-    fun getPaymentLink(paymentLinkId: String?=null): Deferred<Response<GetPaymentLinkResponse>>? {
+   suspend fun getPaymentLink(paymentLinkId: String?=null): Response<GetPaymentLinkResponse>? {
         var fullUrl : String? = _relativeUrls["getPaymentLink"] 
         
         return paymentApiList?.getPaymentLink(fullUrl    ,  paymentLinkId = paymentLinkId)}
 
     
     
-    fun createPaymentLink(body: CreatePaymentLinkRequest): Deferred<Response<CreatePaymentLinkResponse>>? {
+   suspend fun createPaymentLink(body: CreatePaymentLinkRequest): Response<CreatePaymentLinkResponse>? {
         var fullUrl : String? = _relativeUrls["createPaymentLink"] 
         
         return paymentApiList?.createPaymentLink(fullUrl  ,body = body)}
 
     
     
-    fun resendPaymentLink(body: CancelOrResendPaymentLinkRequest): Deferred<Response<ResendPaymentLinkResponse>>? {
+   suspend fun resendPaymentLink(body: CancelOrResendPaymentLinkRequest): Response<ResendPaymentLinkResponse>? {
         var fullUrl : String? = _relativeUrls["resendPaymentLink"] 
         
         return paymentApiList?.resendPaymentLink(fullUrl  ,body = body)}
 
     
     
-    fun cancelPaymentLink(body: CancelOrResendPaymentLinkRequest): Deferred<Response<CancelPaymentLinkResponse>>? {
+   suspend fun cancelPaymentLink(body: CancelOrResendPaymentLinkRequest): Response<CancelPaymentLinkResponse>? {
         var fullUrl : String? = _relativeUrls["cancelPaymentLink"] 
         
         return paymentApiList?.cancelPaymentLink(fullUrl  ,body = body)}
 
     
     
-    fun getPaymentModeRoutesPaymentLink(paymentLinkId: String): Deferred<Response<PaymentModeRouteResponse>>? {
+   suspend fun getPaymentModeRoutesPaymentLink(paymentLinkId: String): Response<PaymentModeRouteResponse>? {
         var fullUrl : String? = _relativeUrls["getPaymentModeRoutesPaymentLink"] 
         
         return paymentApiList?.getPaymentModeRoutesPaymentLink(fullUrl    ,  paymentLinkId = paymentLinkId)}
 
     
     
-    fun pollingPaymentLink(paymentLinkId: String?=null): Deferred<Response<PollingPaymentLinkResponse>>? {
+   suspend fun pollingPaymentLink(paymentLinkId: String?=null): Response<PollingPaymentLinkResponse>? {
         var fullUrl : String? = _relativeUrls["pollingPaymentLink"] 
         
         return paymentApiList?.pollingPaymentLink(fullUrl    ,  paymentLinkId = paymentLinkId)}
 
     
     
-    fun createOrderHandlerPaymentLink(body: CreateOrderUserRequest): Deferred<Response<CreateOrderUserResponse>>? {
+   suspend fun createOrderHandlerPaymentLink(body: CreateOrderUserRequest): Response<CreateOrderUserResponse>? {
         var fullUrl : String? = _relativeUrls["createOrderHandlerPaymentLink"] 
         
         return paymentApiList?.createOrderHandlerPaymentLink(fullUrl  ,body = body)}
 
     
     
-    fun initialisePaymentPaymentLink(body: PaymentInitializationRequest): Deferred<Response<PaymentInitializationResponse>>? {
+   suspend fun initialisePaymentPaymentLink(body: PaymentInitializationRequest): Response<PaymentInitializationResponse>? {
         var fullUrl : String? = _relativeUrls["initialisePaymentPaymentLink"] 
         
         return paymentApiList?.initialisePaymentPaymentLink(fullUrl  ,body = body)}
 
     
     
-    fun checkAndUpdatePaymentStatusPaymentLink(body: PaymentStatusUpdateRequest): Deferred<Response<PaymentStatusUpdateResponse>>? {
+   suspend fun checkAndUpdatePaymentStatusPaymentLink(body: PaymentStatusUpdateRequest): Response<PaymentStatusUpdateResponse>? {
         var fullUrl : String? = _relativeUrls["checkAndUpdatePaymentStatusPaymentLink"] 
         
         return paymentApiList?.checkAndUpdatePaymentStatusPaymentLink(fullUrl  ,body = body)}
 
     
     
-    fun customerCreditSummary(aggregator: String?=null): Deferred<Response<CustomerCreditSummaryResponse>>? {
+   suspend fun customerCreditSummary(aggregator: String?=null): Response<CustomerCreditSummaryResponse>? {
         var fullUrl : String? = _relativeUrls["customerCreditSummary"] 
         
         return paymentApiList?.customerCreditSummary(fullUrl    ,  aggregator = aggregator)}
 
     
     
-    fun redirectToAggregator(source: String?=null, aggregator: String?=null): Deferred<Response<RedirectToAggregatorResponse>>? {
+   suspend fun redirectToAggregator(source: String?=null, aggregator: String?=null): Response<RedirectToAggregatorResponse>? {
         var fullUrl : String? = _relativeUrls["redirectToAggregator"] 
         
         return paymentApiList?.redirectToAggregator(fullUrl    ,  source = source,    aggregator = aggregator)}
 
     
     
-    fun checkCredit(aggregator: String?=null): Deferred<Response<CheckCreditResponse>>? {
+   suspend fun checkCredit(aggregator: String?=null): Response<CheckCreditResponse>? {
         var fullUrl : String? = _relativeUrls["checkCredit"] 
         
         return paymentApiList?.checkCredit(fullUrl    ,  aggregator = aggregator)}
 
     
     
-    fun customerOnboard(body: CustomerOnboardingRequest): Deferred<Response<CustomerOnboardingResponse>>? {
+   suspend fun customerOnboard(body: CustomerOnboardingRequest): Response<CustomerOnboardingResponse>? {
         var fullUrl : String? = _relativeUrls["customerOnboard"] 
         
         return paymentApiList?.customerOnboard(fullUrl  ,body = body)}
 
     
     
-    fun outstandingOrderDetails(aggregator: String?=null): Deferred<Response<OutstandingOrderDetailsResponse>>? {
+   suspend fun outstandingOrderDetails(aggregator: String?=null): Response<OutstandingOrderDetailsResponse>? {
         var fullUrl : String? = _relativeUrls["outstandingOrderDetails"] 
         
         return paymentApiList?.outstandingOrderDetails(fullUrl    ,  aggregator = aggregator)}
 
     
     
-    fun paidOrderDetails(aggregator: String?=null): Deferred<Response<PaidOrderDetailsResponse>>? {
+   suspend fun paidOrderDetails(aggregator: String?=null): Response<PaidOrderDetailsResponse>? {
         var fullUrl : String? = _relativeUrls["paidOrderDetails"] 
         
         return paymentApiList?.paidOrderDetails(fullUrl    ,  aggregator = aggregator)}

@@ -10,19 +10,19 @@ import com.sdk.platform.models.audittrail.*
 interface AuditTrailApiList {
     
     @GET ("/service/platform/audit-trail/v1.0/company/{company_id}/logs/")
-    fun getAuditLogs(@Path("company_id") companyId: String, @Query("qs") qs: String)
-    : Deferred<Response<LogSchemaResponse>>
+    suspend fun getAuditLogs(@Path("company_id") companyId: String, @Query("qs") qs: String)
+    : Response<LogSchemaResponse>
     
     @POST ("/service/platform/audit-trail/v1.0/company/{company_id}/logs/")
-    fun createAuditLog(@Path("company_id") companyId: String,@Body body: RequestBodyAuditLog)
-    : Deferred<Response<CreateLogResponse>>
+    suspend fun createAuditLog(@Path("company_id") companyId: String,@Body body: RequestBodyAuditLog)
+    : Response<CreateLogResponse>
     
     @GET ("/service/platform/audit-trail/v1.0/company/{company_id}/logs/{id}")
-    fun getAuditLog(@Path("company_id") companyId: String, @Path("id") id: String)
-    : Deferred<Response<LogSchemaResponse>>
+    suspend fun getAuditLog(@Path("company_id") companyId: String, @Path("id") id: String)
+    : Response<LogSchemaResponse>
     
     @GET ("/service/platform/audit-trail/v1.0/company/{company_id}/entity-types")
-    fun getEntityTypes(@Path("company_id") companyId: String)
-    : Deferred<Response<EntityTypesResponse>>
+    suspend fun getEntityTypes(@Path("company_id") companyId: String)
+    : Response<EntityTypesResponse>
     
 }

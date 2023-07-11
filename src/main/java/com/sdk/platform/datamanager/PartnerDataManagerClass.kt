@@ -53,7 +53,7 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     
     
     suspend fun addProxyPath(extensionId: String,body: AddProxyReq)
-    : Deferred<Response<AddProxyResponse>>? {
+    : Response<AddProxyResponse>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 partnerApiList?.addProxyPath(companyId = config.companyId , applicationId = applicationId , extensionId = extensionId, body = body)
         } else {
@@ -63,7 +63,7 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     
     
     suspend fun removeProxyPath(extensionId: String, attachedPath: String)
-    : Deferred<Response<RemoveProxyResponse>>? {
+    : Response<RemoveProxyResponse>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 partnerApiList?.removeProxyPath(companyId = config.companyId , applicationId = applicationId , extensionId = extensionId, attachedPath = attachedPath )
         } else {

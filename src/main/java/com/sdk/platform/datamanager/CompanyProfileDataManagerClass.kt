@@ -47,7 +47,7 @@ class CompanyProfileDataManagerClass(val config: PlatformConfig, val unauthorize
     
     
     suspend fun cbsOnboardGet()
-    : Deferred<Response<GetCompanyProfileSerializerResponse>>? {
+    : Response<GetCompanyProfileSerializerResponse>? {
         
         return if (config.oauthClient.isAccessTokenValid()) {
             companyProfileApiList?.cbsOnboardGet(
@@ -59,7 +59,7 @@ class CompanyProfileDataManagerClass(val config: PlatformConfig, val unauthorize
     
     
     suspend fun updateCompany(body: UpdateCompany)
-    : Deferred<Response<ProfileSuccessResponse>>? {
+    : Response<ProfileSuccessResponse>? {
         
         return if (config.oauthClient.isAccessTokenValid()) {
             companyProfileApiList?.updateCompany(
@@ -71,7 +71,7 @@ class CompanyProfileDataManagerClass(val config: PlatformConfig, val unauthorize
     
     
     suspend fun getCompanyMetrics()
-    : Deferred<Response<MetricsSerializer>>? {
+    : Response<MetricsSerializer>? {
         
         return if (config.oauthClient.isAccessTokenValid()) {
             companyProfileApiList?.getCompanyMetrics(
@@ -83,7 +83,7 @@ class CompanyProfileDataManagerClass(val config: PlatformConfig, val unauthorize
     
     
     suspend fun getBrand(brandId: String)
-    : Deferred<Response<GetBrandResponseSerializer>>? {
+    : Response<GetBrandResponseSerializer>? {
         
         return if (config.oauthClient.isAccessTokenValid()) {
             companyProfileApiList?.getBrand(
@@ -95,7 +95,7 @@ class CompanyProfileDataManagerClass(val config: PlatformConfig, val unauthorize
     
     
     suspend fun editBrand(brandId: String,body: CreateUpdateBrandRequestSerializer)
-    : Deferred<Response<ProfileSuccessResponse>>? {
+    : Response<ProfileSuccessResponse>? {
         
         return if (config.oauthClient.isAccessTokenValid()) {
             companyProfileApiList?.editBrand(
@@ -107,7 +107,7 @@ class CompanyProfileDataManagerClass(val config: PlatformConfig, val unauthorize
     
     
     suspend fun createBrand(body: CreateUpdateBrandRequestSerializer)
-    : Deferred<Response<ProfileSuccessResponse>>? {
+    : Response<ProfileSuccessResponse>? {
         
         return if (config.oauthClient.isAccessTokenValid()) {
             companyProfileApiList?.createBrand(
@@ -119,7 +119,7 @@ class CompanyProfileDataManagerClass(val config: PlatformConfig, val unauthorize
     
     
     suspend fun getBrands(pageNo: Int?=null, pageSize: Int?=null, q: String?=null)
-    : Deferred<Response<CompanyBrandListSerializer>>? {
+    : Response<CompanyBrandListSerializer>? {
         
         return if (config.oauthClient.isAccessTokenValid()) {
             companyProfileApiList?.getBrands(
@@ -131,7 +131,7 @@ class CompanyProfileDataManagerClass(val config: PlatformConfig, val unauthorize
     
     
     suspend fun createCompanyBrandMapping(body: CompanyBrandPostRequestSerializer)
-    : Deferred<Response<ProfileSuccessResponse>>? {
+    : Response<ProfileSuccessResponse>? {
         
         return if (config.oauthClient.isAccessTokenValid()) {
             companyProfileApiList?.createCompanyBrandMapping(
@@ -143,7 +143,7 @@ class CompanyProfileDataManagerClass(val config: PlatformConfig, val unauthorize
     
     
     suspend fun getLocations(storeType: String?=null, q: String?=null, stage: String?=null, pageNo: Int?=null, pageSize: Int?=null, locationIds: ArrayList<Int>?=null)
-    : Deferred<Response<LocationListSerializer>>? {
+    : Response<LocationListSerializer>? {
         
         return if (config.oauthClient.isAccessTokenValid()) {
             companyProfileApiList?.getLocations(
@@ -155,7 +155,7 @@ class CompanyProfileDataManagerClass(val config: PlatformConfig, val unauthorize
     
     
     suspend fun createLocation(body: LocationSerializer)
-    : Deferred<Response<ProfileSuccessResponse>>? {
+    : Response<ProfileSuccessResponse>? {
         
         return if (config.oauthClient.isAccessTokenValid()) {
             companyProfileApiList?.createLocation(
@@ -167,7 +167,7 @@ class CompanyProfileDataManagerClass(val config: PlatformConfig, val unauthorize
     
     
     suspend fun getLocationDetail(locationId: String)
-    : Deferred<Response<GetLocationSerializer>>? {
+    : Response<GetLocationSerializer>? {
         
         return if (config.oauthClient.isAccessTokenValid()) {
             companyProfileApiList?.getLocationDetail(
@@ -179,7 +179,7 @@ class CompanyProfileDataManagerClass(val config: PlatformConfig, val unauthorize
     
     
     suspend fun updateLocation(locationId: String,body: LocationSerializer)
-    : Deferred<Response<ProfileSuccessResponse>>? {
+    : Response<ProfileSuccessResponse>? {
         
         return if (config.oauthClient.isAccessTokenValid()) {
             companyProfileApiList?.updateLocation(
@@ -191,7 +191,7 @@ class CompanyProfileDataManagerClass(val config: PlatformConfig, val unauthorize
     
     
     suspend fun createLocationBulk(body: BulkLocationSerializer)
-    : Deferred<Response<ProfileSuccessResponse>>? {
+    : Response<ProfileSuccessResponse>? {
         
         return if (config.oauthClient.isAccessTokenValid()) {
             companyProfileApiList?.createLocationBulk(
@@ -203,7 +203,7 @@ class CompanyProfileDataManagerClass(val config: PlatformConfig, val unauthorize
     
     
     suspend fun getLocationTags()
-    : Deferred<Response<StoreTagsResponse>>? {
+    : Response<StoreTagsResponse>? {
         
         return if (config.oauthClient.isAccessTokenValid()) {
             companyProfileApiList?.getLocationTags(

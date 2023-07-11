@@ -12,12 +12,12 @@ interface PartnerApiList {
     
     
     @GET 
-    fun getPanelExtensionDetails(@Url url1: String?    )
-    : Deferred<Response<ExtensionUsingSlug>>
+    suspend fun getPanelExtensionDetails(@Url url1: String?    )
+    : Response<ExtensionUsingSlug>
     
     
     @GET 
-    fun getOrganizationList(@Url url1: String?   )
-    : Deferred<Response<OrganizationList>>
+    suspend fun getOrganizationList(@Url url1: String?   )
+    : Response<OrganizationList>
     
 }
