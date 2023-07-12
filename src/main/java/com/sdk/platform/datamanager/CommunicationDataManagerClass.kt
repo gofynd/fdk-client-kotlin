@@ -80,6 +80,8 @@ class CommunicationDataManagerClass(val config: PlatformConfig, val unauthorized
     
     
     
+    
+    
     suspend fun getSystemNotifications(pageNo: Int?=null, pageSize: Int?=null)
     : Response<SystemNotifications>? {
         
@@ -414,6 +416,26 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     : Response<EventSubscriptions>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 communicationApiList?.getEventSubscriptions(companyId = config.companyId , applicationId = applicationId , pageNo = pageNo, pageSize = pageSize, populate = populate, query = query )
+        } else {
+            null
+        }
+    }
+    
+    
+    suspend fun getGlobalVariables()
+    : Response<GlobalVariablesGetResponse>? {
+        return if (config.oauthClient.isAccessTokenValid()) {
+                communicationApiList?.getGlobalVariables(companyId = config.companyId , applicationId = applicationId  )
+        } else {
+            null
+        }
+    }
+    
+    
+    suspend fun postGlobalVariables(body: GlobalVariablesReq)
+    : Response<GlobalVariablesPostResponse>? {
+        return if (config.oauthClient.isAccessTokenValid()) {
+                communicationApiList?.postGlobalVariables(companyId = config.companyId , applicationId = applicationId , body = body)
         } else {
             null
         }

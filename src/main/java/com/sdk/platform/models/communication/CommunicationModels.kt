@@ -2370,6 +2370,134 @@ data class EventSubscriptions(
 
              
 /*
+    Model: GlobalVariablesGetResponse
+*/
+@Parcelize
+data class GlobalVariablesGetResponse(
+    
+    
+    
+    @SerializedName("read_only")
+    var readOnly: @RawValue HashMap<String,Any>?=null,
+    
+    @SerializedName("editable")
+    var editable: @RawValue HashMap<String,Any>?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: GlobalVariablesPostResponse
+*/
+@Parcelize
+data class GlobalVariablesPostResponse(
+    
+    
+    
+    @SerializedName("_id")
+    var id: String?=null,
+    
+    @SerializedName("category")
+    var category: String?=null,
+    
+    @SerializedName("application")
+    var application: @RawValue HashMap<String,Any>?=null,
+    
+    @SerializedName("global_variables")
+    var globalVariables: @RawValue HashMap<String,Any>?=null,
+    
+    @SerializedName("created_at")
+    var createdAt: @RawValue HashMap<String,Any>?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: GlobalVariablesPostResponseAdmin
+*/
+@Parcelize
+data class GlobalVariablesPostResponseAdmin(
+    
+    
+    
+    @SerializedName("_id")
+    var id: String?=null,
+    
+    @SerializedName("category")
+    var category: String?=null,
+    
+    @SerializedName("global_variables")
+    var globalVariables: @RawValue HashMap<String,Any>?=null,
+    
+    @SerializedName("created_at")
+    var createdAt: @RawValue HashMap<String,Any>?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: GlobalVariablesReq
+*/
+@Parcelize
+data class GlobalVariablesReq(
+    
+    
+    
+    @SerializedName("global_variables")
+    var globalVariables: @RawValue HashMap<String,Any>?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
     Model: Job
 */
 @Parcelize

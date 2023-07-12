@@ -129,6 +129,14 @@ interface CommunicationApiList {
     suspend fun getEventSubscriptions(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Query("page_no") pageNo: Int?, @Query("page_size") pageSize: Int?, @Query("populate") populate: ArrayList<String>?, @Query("query") query: String?)
     : Response<EventSubscriptions>
     
+    @GET ("/service/platform/communication/v1.0/company/{company_id}/application/{application_id}/global-variables")
+    suspend fun getGlobalVariables(@Path("company_id") companyId: String, @Path("application_id") applicationId: String)
+    : Response<GlobalVariablesGetResponse>
+    
+    @POST ("/service/platform/communication/v1.0/company/{company_id}/application/{application_id}/global-variables")
+    suspend fun postGlobalVariables(@Path("company_id") companyId: String, @Path("application_id") applicationId: String,@Body body: GlobalVariablesReq)
+    : Response<GlobalVariablesPostResponse>
+    
     @GET ("/service/platform/communication/v1.0/company/{company_id}/application/{application_id}/jobs/jobs")
     suspend fun getJobs(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Query("page_no") pageNo: Int?, @Query("page_size") pageSize: Int?, @Query("sort") sort: HashMap<String,Any>?)
     : Response<Jobs>

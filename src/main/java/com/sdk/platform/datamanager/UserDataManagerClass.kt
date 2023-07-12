@@ -77,10 +77,10 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     }
     
     
-    suspend fun searchUsers(q: String?=null)
+    suspend fun searchUsers(q: String?=null, query: ArrayList<Any>?=null)
     : Response<UserSearchResponseSchema>? {
         return if (config.oauthClient.isAccessTokenValid()) {
-                userApiList?.searchUsers(companyId = config.companyId , applicationId = applicationId , q = q )
+                userApiList?.searchUsers(companyId = config.companyId , applicationId = applicationId , q = q, query = query )
         } else {
             null
         }

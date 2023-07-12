@@ -153,7 +153,7 @@ Search an existing user.
 
 
 ```kotlin
-platformClient.application("<APPLICATION_ID>").user.searchUsers(q: q).safeAwait{ response, error->
+platformClient.application("<APPLICATION_ID>").user.searchUsers(q: q, query: query).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -169,7 +169,8 @@ platformClient.application("<APPLICATION_ID>").user.searchUsers(q: q).safeAwait{
 
 | Argument  |  Type  | Required | Description |
 | --------- | -----  | -------- | ----------- | 
-| q | String? | no | The search query. Mobile number, email ID or user ID of a customer. |  
+| q | String? | no | The search query. Mobile number, email ID or user ID of a customer. |   
+| query | ArrayList<Any>? | no | The search queries. Mobile numbers or email IDs of customers. |  
 
 
 
