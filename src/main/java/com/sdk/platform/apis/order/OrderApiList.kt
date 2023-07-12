@@ -141,12 +141,12 @@ interface OrderApiList {
     suspend fun getRoleBasedActions(@Path("company_id") companyId: String)
     : Response<GetActionsResponse>
     
-    @POST ("/service/platform/order-manage/v1.0/company/{company_id}/shipment/history")
-    suspend fun postShipmentHistory(@Path("company_id") companyId: String,@Body body: PostShipmentHistory)
-    : Response<ShipmentHistoryResponse>
-    
     @GET ("/service/platform/order-manage/v1.0/company/{company_id}/shipment/history")
     suspend fun getShipmentHistory(@Path("company_id") companyId: String, @Query("shipment_id") shipmentId: String?, @Query("bag_id") bagId: Int?)
+    : Response<ShipmentHistoryResponse>
+    
+    @POST ("/service/platform/order-manage/v1.0/company/{company_id}/shipment/history")
+    suspend fun postShipmentHistory(@Path("company_id") companyId: String,@Body body: PostShipmentHistory)
     : Response<ShipmentHistoryResponse>
     
     @POST ("/service/platform/order-manage/v1.0/company/{company_id}/ninja/send-sms")

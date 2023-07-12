@@ -31,14 +31,6 @@ class LogisticDataManagerClass(val config: ApplicationConfig, val unauthorizedAc
             
                     _relativeUrls["getOptimalLocations"] = "/service/application/logistics/v1.0/reassign_stores".substring(1)
             
-                    _relativeUrls["getCountries"] = "/service/application/logistics/v1.0/country".substring(1)
-            
-                    _relativeUrls["getCountry"] = "/service/application/logistics/v1.0/country/{uid}".substring(1)
-            
-                    _relativeUrls["getLocalities"] = "/service/application/logistics/v1.0/locality/{region}".substring(1)
-            
-                    _relativeUrls["getLocality"] = "/service/application/logistics/v1.0/locality/{region}/{value}".substring(1)
-            
     }
 
     public fun update(updatedUrlMap : HashMap<String,String>){
@@ -108,42 +100,6 @@ class LogisticDataManagerClass(val config: ApplicationConfig, val unauthorizedAc
         var fullUrl : String? = _relativeUrls["getOptimalLocations"] 
         
         return logisticApiList?.getOptimalLocations(fullUrl  ,body = body)}
-
-    
-    
-   suspend fun getCountries(): Response<GetCountries>? {
-        var fullUrl : String? = _relativeUrls["getCountries"] 
-        
-        return logisticApiList?.getCountries(fullUrl  )}
-
-    
-    
-   suspend fun getCountry(uid: String): Response<GetCountry>? {
-        var fullUrl : String? = _relativeUrls["getCountry"] 
-        
-        fullUrl = fullUrl?.replace("{" + "uid" +"}",uid.toString())
-        
-        return logisticApiList?.getCountry(fullUrl   )}
-
-    
-    
-   suspend fun getLocalities(region: String): Response<GetLocalities>? {
-        var fullUrl : String? = _relativeUrls["getLocalities"] 
-        
-        fullUrl = fullUrl?.replace("{" + "region" +"}",region.toString())
-        
-        return logisticApiList?.getLocalities(fullUrl   )}
-
-    
-    
-   suspend fun getLocality(region: String, value: String): Response<GetLocality>? {
-        var fullUrl : String? = _relativeUrls["getLocality"] 
-        
-        fullUrl = fullUrl?.replace("{" + "region" +"}",region.toString())
-        
-        fullUrl = fullUrl?.replace("{" + "value" +"}",value.toString())
-        
-        return logisticApiList?.getLocality(fullUrl    )}
 
     
     

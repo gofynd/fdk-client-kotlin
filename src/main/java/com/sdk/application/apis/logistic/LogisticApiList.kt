@@ -35,24 +35,4 @@ interface LogisticApiList {
     suspend fun getOptimalLocations(@Url url1: String?   ,@Body body: ReAssignStoreRequest)
     : Response<ReAssignStoreResponse>
     
-    
-    @GET 
-    suspend fun getCountries(@Url url1: String?   )
-    : Response<GetCountries>
-    
-    
-    @GET 
-    suspend fun getCountry(@Url url1: String?    )
-    : Response<GetCountry>
-    
-    
-    @GET 
-    suspend fun getLocalities(@Url url1: String?    )
-    : Response<GetLocalities>
-    
-    
-    @GET 
-    suspend fun getLocality(@Url url1: String?     )
-    : Response<GetLocality>
-    
 }
