@@ -39,18 +39,19 @@ class OrderDataManagerClass(val config: PlatformConfig, val unauthorizedAction: 
             baseUrl = config.domain,
             interceptorList = interceptorMap,
             namespace = "PlatformOrder",
-            persistentCookieStore = config.persistentCookieStore
+            persistentCookieStore = config.persistentCookieStore,
+            certPublicKey = config.certPublicKey,
         )
         return retrofitHttpClient?.initializeRestClient(OrderApiList::class.java) as? OrderApiList
     }
     
     
-    suspend fun getShipments(lane: String?=null, bagStatus: String?=null, statusOverrideLane: Boolean?=null, timeToDispatch: String?=null, searchType: String?=null, searchValue: String?=null, fromDate: String?=null, toDate: String?=null, dpIds: String?=null, stores: String?=null, salesChannels: String?=null, pageNo: Int?=null, pageSize: Int?=null, fetchActiveShipment: Boolean?=null, excludeLockedShipments: Boolean?=null, paymentMethods: String?=null, channelShipmentId: String?=null, channelOrderId: String?=null, customMeta: String?=null, orderingChannel: String?=null, companyAffiliateTag: String?=null, myOrders: Boolean?=null)
-    : Deferred<Response<ShipmentInternalPlatformViewResponse>>? {
+    suspend fun getShipments(lane: String?=null, bagStatus: String?=null, statusOverrideLane: Boolean?=null, timeToDispatch: String?=null, searchType: String?=null, searchValue: String?=null, fromDate: String?=null, toDate: String?=null, dpIds: String?=null, stores: String?=null, salesChannels: String?=null, pageNo: Int?=null, pageSize: Int?=null, fetchActiveShipment: Boolean?=null, excludeLockedShipments: Boolean?=null, paymentMethods: String?=null, channelShipmentId: String?=null, channelOrderId: String?=null, customMeta: String?=null, orderingChannel: String?=null, companyAffiliateTag: String?=null, myOrders: Boolean?=null, platformUserId: String?=null)
+    : Response<ShipmentInternalPlatformViewResponse>? {
         
         return if (config.oauthClient.isAccessTokenValid()) {
             orderApiList?.getShipments(
-        companyId = config.companyId, lane = lane, bagStatus = bagStatus, statusOverrideLane = statusOverrideLane, timeToDispatch = timeToDispatch, searchType = searchType, searchValue = searchValue, fromDate = fromDate, toDate = toDate, dpIds = dpIds, stores = stores, salesChannels = salesChannels, pageNo = pageNo, pageSize = pageSize, fetchActiveShipment = fetchActiveShipment, excludeLockedShipments = excludeLockedShipments, paymentMethods = paymentMethods, channelShipmentId = channelShipmentId, channelOrderId = channelOrderId, customMeta = customMeta, orderingChannel = orderingChannel, companyAffiliateTag = companyAffiliateTag, myOrders = myOrders )
+        companyId = config.companyId, lane = lane, bagStatus = bagStatus, statusOverrideLane = statusOverrideLane, timeToDispatch = timeToDispatch, searchType = searchType, searchValue = searchValue, fromDate = fromDate, toDate = toDate, dpIds = dpIds, stores = stores, salesChannels = salesChannels, pageNo = pageNo, pageSize = pageSize, fetchActiveShipment = fetchActiveShipment, excludeLockedShipments = excludeLockedShipments, paymentMethods = paymentMethods, channelShipmentId = channelShipmentId, channelOrderId = channelOrderId, customMeta = customMeta, orderingChannel = orderingChannel, companyAffiliateTag = companyAffiliateTag, myOrders = myOrders, platformUserId = platformUserId )
         } else {
             null
         } 
@@ -58,7 +59,7 @@ class OrderDataManagerClass(val config: PlatformConfig, val unauthorizedAction: 
     
     
     suspend fun getShipmentById(channelShipmentId: String?=null, shipmentId: String?=null)
-    : Deferred<Response<ShipmentInfoResponse>>? {
+    : Response<ShipmentInfoResponse>? {
         
         return if (config.oauthClient.isAccessTokenValid()) {
             orderApiList?.getShipmentById(
@@ -70,7 +71,7 @@ class OrderDataManagerClass(val config: PlatformConfig, val unauthorizedAction: 
     
     
     suspend fun getOrderById(orderId: String)
-    : Deferred<Response<OrderDetailsResponse>>? {
+    : Response<OrderDetailsResponse>? {
         
         return if (config.oauthClient.isAccessTokenValid()) {
             orderApiList?.getOrderById(
@@ -82,7 +83,7 @@ class OrderDataManagerClass(val config: PlatformConfig, val unauthorizedAction: 
     
     
     suspend fun getLaneConfig(superLane: String?=null, groupEntity: String?=null, fromDate: String?=null, toDate: String?=null, dpIds: String?=null, stores: String?=null, salesChannels: String?=null, paymentMode: String?=null, bagStatus: String?=null, searchType: String?=null, searchValue: String?=null, tags: String?=null, timeToDispatch: String?=null, paymentMethods: String?=null, myOrders: Boolean?=null)
-    : Deferred<Response<LaneConfigResponse>>? {
+    : Response<LaneConfigResponse>? {
         
         return if (config.oauthClient.isAccessTokenValid()) {
             orderApiList?.getLaneConfig(
@@ -94,7 +95,7 @@ class OrderDataManagerClass(val config: PlatformConfig, val unauthorizedAction: 
     
     
     suspend fun getOrders(lane: String?=null, searchType: String?=null, bagStatus: String?=null, timeToDispatch: String?=null, paymentMethods: String?=null, tags: String?=null, searchValue: String?=null, fromDate: String?=null, toDate: String?=null, dpIds: String?=null, stores: String?=null, salesChannels: String?=null, pageNo: Int?=null, pageSize: Int?=null, isPrioritySort: Boolean?=null, customMeta: String?=null, myOrders: Boolean?=null)
-    : Deferred<Response<OrderListingResponse>>? {
+    : Response<OrderListingResponse>? {
         
         return if (config.oauthClient.isAccessTokenValid()) {
             orderApiList?.getOrders(
@@ -107,7 +108,7 @@ class OrderDataManagerClass(val config: PlatformConfig, val unauthorizedAction: 
     
     
     suspend fun getfilters(view: String, groupEntity: String?=null)
-    : Deferred<Response<FiltersResponse>>? {
+    : Response<FiltersResponse>? {
         
         return if (config.oauthClient.isAccessTokenValid()) {
             orderApiList?.getfilters(
@@ -119,7 +120,7 @@ class OrderDataManagerClass(val config: PlatformConfig, val unauthorizedAction: 
     
     
     suspend fun getBulkShipmentExcelFile(salesChannels: String?=null, dpIds: String?=null, fromDate: String?=null, toDate: String?=null, stores: String?=null, tags: String?=null, bagStatus: String?=null, paymentMethods: String?=null, fileType: String?=null, timeToDispatch: Int?=null, pageNo: Int?=null, pageSize: Int?=null)
-    : Deferred<Response<FileResponse>>? {
+    : Response<FileResponse>? {
         
         return if (config.oauthClient.isAccessTokenValid()) {
             orderApiList?.getBulkShipmentExcelFile(
@@ -131,7 +132,7 @@ class OrderDataManagerClass(val config: PlatformConfig, val unauthorizedAction: 
     
     
     suspend fun getBulkActionTemplate()
-    : Deferred<Response<BulkActionTemplateResponse>>? {
+    : Response<BulkActionTemplateResponse>? {
         
         return if (config.oauthClient.isAccessTokenValid()) {
             orderApiList?.getBulkActionTemplate(
@@ -143,7 +144,7 @@ class OrderDataManagerClass(val config: PlatformConfig, val unauthorizedAction: 
     
     
     suspend fun downloadBulkActionTemplate(templateSlug: String?=null)
-    : Deferred<Response<FileResponse>>? {
+    : Response<FileResponse>? {
         
         return if (config.oauthClient.isAccessTokenValid()) {
             orderApiList?.downloadBulkActionTemplate(
@@ -155,7 +156,7 @@ class OrderDataManagerClass(val config: PlatformConfig, val unauthorizedAction: 
     
     
     suspend fun getShipmentReasons(shipmentId: String, bagId: String, state: String)
-    : Deferred<Response<PlatformShipmentReasonsResponse>>? {
+    : Response<PlatformShipmentReasonsResponse>? {
         
         return if (config.oauthClient.isAccessTokenValid()) {
             orderApiList?.getShipmentReasons(
@@ -168,7 +169,7 @@ class OrderDataManagerClass(val config: PlatformConfig, val unauthorizedAction: 
     
     
     suspend fun getBagById(bagId: String?=null, channelBagId: String?=null, channelId: String?=null)
-    : Deferred<Response<BagDetailsPlatformResponse>>? {
+    : Response<BagDetailsPlatformResponse>? {
         
         return if (config.oauthClient.isAccessTokenValid()) {
             orderApiList?.getBagById(
@@ -180,7 +181,7 @@ class OrderDataManagerClass(val config: PlatformConfig, val unauthorizedAction: 
     
     
     suspend fun getBags(bagIds: String?=null, shipmentIds: String?=null, orderIds: String?=null, channelBagIds: String?=null, channelShipmentIds: String?=null, channelOrderIds: String?=null, channelId: String?=null, pageNo: Int?=null, pageSize: Int?=null)
-    : Deferred<Response<GetBagsPlatformResponse>>? {
+    : Response<GetBagsPlatformResponse>? {
         
         return if (config.oauthClient.isAccessTokenValid()) {
             orderApiList?.getBags(
@@ -192,7 +193,7 @@ class OrderDataManagerClass(val config: PlatformConfig, val unauthorizedAction: 
     
     
     suspend fun generatePOSReceiptByOrderId(orderId: String, shipmentId: String?=null, documentType: String?=null)
-    : Deferred<Response<GeneratePosOrderReceiptResponse>>? {
+    : Response<GeneratePosOrderReceiptResponse>? {
         
         return if (config.oauthClient.isAccessTokenValid()) {
             orderApiList?.generatePOSReceiptByOrderId(
@@ -204,7 +205,7 @@ class OrderDataManagerClass(val config: PlatformConfig, val unauthorizedAction: 
     
     
     suspend fun invalidateShipmentCache(body: InvalidateShipmentCachePayload)
-    : Deferred<Response<InvalidateShipmentCacheResponse>>? {
+    : Response<InvalidateShipmentCacheResponse>? {
         
         return if (config.oauthClient.isAccessTokenValid()) {
             orderApiList?.invalidateShipmentCache(
@@ -216,7 +217,7 @@ class OrderDataManagerClass(val config: PlatformConfig, val unauthorizedAction: 
     
     
     suspend fun reassignLocation(body: StoreReassign)
-    : Deferred<Response<StoreReassignResponse>>? {
+    : Response<StoreReassignResponse>? {
         
         return if (config.oauthClient.isAccessTokenValid()) {
             orderApiList?.reassignLocation(
@@ -228,7 +229,7 @@ class OrderDataManagerClass(val config: PlatformConfig, val unauthorizedAction: 
     
     
     suspend fun updateShipmentLock(body: UpdateShipmentLockPayload)
-    : Deferred<Response<UpdateShipmentLockResponse>>? {
+    : Response<UpdateShipmentLockResponse>? {
         
         return if (config.oauthClient.isAccessTokenValid()) {
             orderApiList?.updateShipmentLock(
@@ -240,7 +241,7 @@ class OrderDataManagerClass(val config: PlatformConfig, val unauthorizedAction: 
     
     
     suspend fun getAnnouncements(date: String?=null)
-    : Deferred<Response<AnnouncementsResponse>>? {
+    : Response<AnnouncementsResponse>? {
         
         return if (config.oauthClient.isAccessTokenValid()) {
             orderApiList?.getAnnouncements(
@@ -252,7 +253,7 @@ class OrderDataManagerClass(val config: PlatformConfig, val unauthorizedAction: 
     
     
     suspend fun updateAddress(shipmentId: String, name: String?=null, address: String?=null, addressType: String?=null, pincode: String?=null, phone: String?=null, email: String?=null, landmark: String?=null, addressCategory: String, city: String?=null, state: String?=null, country: String?=null)
-    : Deferred<Response<BaseResponse>>? {
+    : Response<BaseResponse>? {
         
         return if (config.oauthClient.isAccessTokenValid()) {
             orderApiList?.updateAddress(
@@ -264,7 +265,7 @@ class OrderDataManagerClass(val config: PlatformConfig, val unauthorizedAction: 
     
     
     suspend fun click2Call(caller: String, receiver: String, bagId: String, callerId: String?=null, method: String?=null)
-    : Deferred<Response<Click2CallResponse>>? {
+    : Response<Click2CallResponse>? {
         
         return if (config.oauthClient.isAccessTokenValid()) {
             orderApiList?.click2Call(
@@ -276,7 +277,7 @@ class OrderDataManagerClass(val config: PlatformConfig, val unauthorizedAction: 
     
     
     suspend fun updateShipmentStatus(body: UpdateShipmentStatusRequest)
-    : Deferred<Response<UpdateShipmentStatusResponseBody>>? {
+    : Response<UpdateShipmentStatusResponseBody>? {
         
         return if (config.oauthClient.isAccessTokenValid()) {
             orderApiList?.updateShipmentStatus(
@@ -288,7 +289,7 @@ class OrderDataManagerClass(val config: PlatformConfig, val unauthorizedAction: 
     
     
     suspend fun processManifest(body: CreateOrderPayload)
-    : Deferred<Response<CreateOrderResponse>>? {
+    : Response<CreateOrderResponse>? {
         
         return if (config.oauthClient.isAccessTokenValid()) {
             orderApiList?.processManifest(
@@ -300,7 +301,7 @@ class OrderDataManagerClass(val config: PlatformConfig, val unauthorizedAction: 
     
     
     suspend fun dispatchManifest(body: DispatchManifest)
-    : Deferred<Response<SuccessResponse>>? {
+    : Response<SuccessResponse>? {
         
         return if (config.oauthClient.isAccessTokenValid()) {
             orderApiList?.dispatchManifest(
@@ -312,7 +313,7 @@ class OrderDataManagerClass(val config: PlatformConfig, val unauthorizedAction: 
     
     
     suspend fun getRoleBasedActions()
-    : Deferred<Response<GetActionsResponse>>? {
+    : Response<GetActionsResponse>? {
         
         return if (config.oauthClient.isAccessTokenValid()) {
             orderApiList?.getRoleBasedActions(
@@ -324,7 +325,7 @@ class OrderDataManagerClass(val config: PlatformConfig, val unauthorizedAction: 
     
     
     suspend fun getShipmentHistory(shipmentId: String?=null, bagId: Int?=null)
-    : Deferred<Response<ShipmentHistoryResponse>>? {
+    : Response<ShipmentHistoryResponse>? {
         
         return if (config.oauthClient.isAccessTokenValid()) {
             orderApiList?.getShipmentHistory(
@@ -336,7 +337,7 @@ class OrderDataManagerClass(val config: PlatformConfig, val unauthorizedAction: 
     
     
     suspend fun postShipmentHistory(body: PostShipmentHistory)
-    : Deferred<Response<ShipmentHistoryResponse>>? {
+    : Response<ShipmentHistoryResponse>? {
         
         return if (config.oauthClient.isAccessTokenValid()) {
             orderApiList?.postShipmentHistory(
@@ -348,7 +349,7 @@ class OrderDataManagerClass(val config: PlatformConfig, val unauthorizedAction: 
     
     
     suspend fun sendSmsNinja(body: SendSmsPayload)
-    : Deferred<Response<OrderStatusResult>>? {
+    : Response<OrderStatusResult>? {
         
         return if (config.oauthClient.isAccessTokenValid()) {
             orderApiList?.sendSmsNinja(
@@ -360,7 +361,7 @@ class OrderDataManagerClass(val config: PlatformConfig, val unauthorizedAction: 
     
     
     suspend fun updatePackagingDimensions(body: UpdatePackagingDimensionsPayload)
-    : Deferred<Response<UpdatePackagingDimensionsResponse>>? {
+    : Response<UpdatePackagingDimensionsResponse>? {
         
         return if (config.oauthClient.isAccessTokenValid()) {
             orderApiList?.updatePackagingDimensions(
@@ -372,7 +373,7 @@ class OrderDataManagerClass(val config: PlatformConfig, val unauthorizedAction: 
     
     
     suspend fun createOrder(body: CreateOrderAPI)
-    : Deferred<Response<CreateOrderResponse>>? {
+    : Response<CreateOrderResponse>? {
         
         return if (config.oauthClient.isAccessTokenValid()) {
             orderApiList?.createOrder(
@@ -384,7 +385,7 @@ class OrderDataManagerClass(val config: PlatformConfig, val unauthorizedAction: 
     
     
     suspend fun getChannelConfig()
-    : Deferred<Response<CreateChannelConfigData>>? {
+    : Response<CreateChannelConfigData>? {
         
         return if (config.oauthClient.isAccessTokenValid()) {
             orderApiList?.getChannelConfig(
@@ -396,7 +397,7 @@ class OrderDataManagerClass(val config: PlatformConfig, val unauthorizedAction: 
     
     
     suspend fun createChannelConfig(body: CreateChannelConfigData)
-    : Deferred<Response<CreateChannelConfigResponse>>? {
+    : Response<CreateChannelConfigResponse>? {
         
         return if (config.oauthClient.isAccessTokenValid()) {
             orderApiList?.createChannelConfig(
@@ -408,7 +409,7 @@ class OrderDataManagerClass(val config: PlatformConfig, val unauthorizedAction: 
     
     
     suspend fun uploadConsent(body: UploadConsent)
-    : Deferred<Response<SuccessResponse>>? {
+    : Response<SuccessResponse>? {
         
         return if (config.oauthClient.isAccessTokenValid()) {
             orderApiList?.uploadConsent(
@@ -420,7 +421,7 @@ class OrderDataManagerClass(val config: PlatformConfig, val unauthorizedAction: 
     
     
     suspend fun orderUpdate(body: PlatformOrderUpdate)
-    : Deferred<Response<ResponseDetail>>? {
+    : Response<ResponseDetail>? {
         
         return if (config.oauthClient.isAccessTokenValid()) {
             orderApiList?.orderUpdate(
@@ -432,7 +433,7 @@ class OrderDataManagerClass(val config: PlatformConfig, val unauthorizedAction: 
     
     
     suspend fun checkOrderStatus(body: OrderStatus)
-    : Deferred<Response<OrderStatusResult>>? {
+    : Response<OrderStatusResult>? {
         
         return if (config.oauthClient.isAccessTokenValid()) {
             orderApiList?.checkOrderStatus(
@@ -444,7 +445,7 @@ class OrderDataManagerClass(val config: PlatformConfig, val unauthorizedAction: 
     
     
     suspend fun getStateTransitionMap()
-    : Deferred<Response<BagStateTransitionMap>>? {
+    : Response<BagStateTransitionMap>? {
         
         return if (config.oauthClient.isAccessTokenValid()) {
             orderApiList?.getStateTransitionMap(
@@ -456,7 +457,7 @@ class OrderDataManagerClass(val config: PlatformConfig, val unauthorizedAction: 
     
     
     suspend fun fetchCreditBalanceDetail(body: FetchCreditBalanceRequestPayload)
-    : Deferred<Response<FetchCreditBalanceResponsePayload>>? {
+    : Response<FetchCreditBalanceResponsePayload>? {
         
         return if (config.oauthClient.isAccessTokenValid()) {
             orderApiList?.fetchCreditBalanceDetail(
@@ -468,7 +469,7 @@ class OrderDataManagerClass(val config: PlatformConfig, val unauthorizedAction: 
     
     
     suspend fun fetchRefundModeConfig(body: RefundModeConfigRequestPayload)
-    : Deferred<Response<RefundModeConfigResponsePayload>>? {
+    : Response<RefundModeConfigResponsePayload>? {
         
         return if (config.oauthClient.isAccessTokenValid()) {
             orderApiList?.fetchRefundModeConfig(
@@ -480,7 +481,7 @@ class OrderDataManagerClass(val config: PlatformConfig, val unauthorizedAction: 
     
     
     suspend fun attachOrderUser(body: AttachOrderUser)
-    : Deferred<Response<AttachOrderUserResponse>>? {
+    : Response<AttachOrderUserResponse>? {
         
         return if (config.oauthClient.isAccessTokenValid()) {
             orderApiList?.attachOrderUser(
@@ -492,7 +493,7 @@ class OrderDataManagerClass(val config: PlatformConfig, val unauthorizedAction: 
     
     
     suspend fun sendUserMobileOTP(body: SendUserMobileOTP)
-    : Deferred<Response<SendUserMobileOtpResponse>>? {
+    : Response<SendUserMobileOtpResponse>? {
         
         return if (config.oauthClient.isAccessTokenValid()) {
             orderApiList?.sendUserMobileOTP(
@@ -504,7 +505,7 @@ class OrderDataManagerClass(val config: PlatformConfig, val unauthorizedAction: 
     
     
     suspend fun verifyMobileOTP(body: VerifyMobileOTP)
-    : Deferred<Response<VerifyOtpResponse>>? {
+    : Response<VerifyOtpResponse>? {
         
         return if (config.oauthClient.isAccessTokenValid()) {
             orderApiList?.verifyMobileOTP(
@@ -525,7 +526,7 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     
     
     suspend fun trackShipmentPlatform(shipmentId: String)
-    : Deferred<Response<PlatformShipmentTrack>>? {
+    : Response<PlatformShipmentTrack>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 orderApiList?.trackShipmentPlatform(companyId = config.companyId , applicationId = applicationId , shipmentId = shipmentId )
         } else {
@@ -540,7 +541,7 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     
     
     suspend fun getPlatformShipmentReasons(action: String)
-    : Deferred<Response<ShipmentReasonsResponse>>? {
+    : Response<ShipmentReasonsResponse>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 orderApiList?.getPlatformShipmentReasons(companyId = config.companyId , applicationId = applicationId , action = action )
         } else {

@@ -10,71 +10,71 @@ import com.sdk.platform.models.user.*
 interface UserApiList {
     
     @GET ("/service/platform/user/v1.0/company/{company_id}/application/{application_id}/customers/list")
-    fun getCustomers(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Query("q") q: HashMap<String,Any>?, @Query("page_size") pageSize: Int?, @Query("page_no") pageNo: Int?)
-    : Deferred<Response<CustomerListResponseSchema>>
+    suspend fun getCustomers(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Query("q") q: HashMap<String,Any>?, @Query("page_size") pageSize: Int?, @Query("page_no") pageNo: Int?)
+    : Response<CustomerListResponseSchema>
     
     @GET ("/service/platform/user/v1.0/company/{company_id}/application/{application_id}/customers/search")
-    fun searchUsers(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Query("q") q: String?)
-    : Deferred<Response<UserSearchResponseSchema>>
+    suspend fun searchUsers(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Query("q") q: String?)
+    : Response<UserSearchResponseSchema>
     
     @POST ("/service/platform/user/v1.0/company/{company_id}/application/{application_id}/customers")
-    fun createUser(@Path("company_id") companyId: String, @Path("application_id") applicationId: String,@Body body: CreateUserRequestSchema)
-    : Deferred<Response<CreateUserResponseSchema>>
+    suspend fun createUser(@Path("company_id") companyId: String, @Path("application_id") applicationId: String,@Body body: CreateUserRequestSchema)
+    : Response<CreateUserResponseSchema>
     
     @PUT ("/service/platform/user/v1.0/company/{company_id}/application/{application_id}/customers/activation")
-    fun blockOrUnblockUsers(@Path("company_id") companyId: String, @Path("application_id") applicationId: String,@Body body: BlockUserRequestSchema)
-    : Deferred<Response<BlockUserSuccess>>
+    suspend fun blockOrUnblockUsers(@Path("company_id") companyId: String, @Path("application_id") applicationId: String,@Body body: BlockUserRequestSchema)
+    : Response<BlockUserSuccess>
     
     @PUT ("/service/platform/user/v1.0/company/{company_id}/application/{application_id}/customers/archive")
-    fun archiveUser(@Path("company_id") companyId: String, @Path("application_id") applicationId: String,@Body body: ArchiveUserRequestSchema)
-    : Deferred<Response<ArchiveUserSuccess>>
+    suspend fun archiveUser(@Path("company_id") companyId: String, @Path("application_id") applicationId: String,@Body body: ArchiveUserRequestSchema)
+    : Response<ArchiveUserSuccess>
     
     @PUT ("/service/platform/user/v1.0/company/{company_id}/application/{application_id}/customers/undelete")
-    fun unDeleteUser(@Path("company_id") companyId: String, @Path("application_id") applicationId: String,@Body body: UnDeleteUserRequestSchema)
-    : Deferred<Response<UnDeleteUserSuccess>>
+    suspend fun unDeleteUser(@Path("company_id") companyId: String, @Path("application_id") applicationId: String,@Body body: UnDeleteUserRequestSchema)
+    : Response<UnDeleteUserSuccess>
     
     @PUT ("/service/platform/user/v1.0/company/{company_id}/application/{application_id}/customers/{user_id}")
-    fun updateUser(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Path("user_id") userId: String,@Body body: UpdateUserRequestSchema)
-    : Deferred<Response<CreateUserResponseSchema>>
+    suspend fun updateUser(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Path("user_id") userId: String,@Body body: UpdateUserRequestSchema)
+    : Response<CreateUserResponseSchema>
     
     @POST ("/service/platform/user/v1.0/company/{company_id}/application/{application_id}/customers/session")
-    fun createUserSession(@Path("company_id") companyId: String, @Path("application_id") applicationId: String,@Body body: CreateUserSessionRequestSchema)
-    : Deferred<Response<CreateUserSessionResponseSchema>>
+    suspend fun createUserSession(@Path("company_id") companyId: String, @Path("application_id") applicationId: String,@Body body: CreateUserSessionRequestSchema)
+    : Response<CreateUserSessionResponseSchema>
     
     @DELETE ("/service/platform/user/v1.0/company/{company_id}/application/{application_id}/customers/session")
-    fun deleteSession(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Query("id") id: String, @Query("session_id") sessionId: String, @Query("reason") reason: String)
-    : Deferred<Response<SessionDeleteResponseSchema>>
+    suspend fun deleteSession(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Query("id") id: String, @Query("session_id") sessionId: String, @Query("reason") reason: String)
+    : Response<SessionDeleteResponseSchema>
     
     @GET ("/service/platform/user/v1.0/company/{company_id}/application/{application_id}/customers/sessions")
-    fun getActiveSessions(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Query("id") id: String)
-    : Deferred<Response<SessionListResponseSchema>>
+    suspend fun getActiveSessions(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Query("id") id: String)
+    : Response<SessionListResponseSchema>
     
     @DELETE ("/service/platform/user/v1.0/company/{company_id}/application/{application_id}/customers/sessions")
-    fun deleteActiveSessions(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Query("id") id: String, @Query("reason") reason: String)
-    : Deferred<Response<SessionDeleteResponseSchema>>
+    suspend fun deleteActiveSessions(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Query("id") id: String, @Query("reason") reason: String)
+    : Response<SessionDeleteResponseSchema>
     
     @GET ("/service/platform/user/v1.0/company/{company_id}/application/{application_id}/platform/config")
-    fun getPlatformConfig(@Path("company_id") companyId: String, @Path("application_id") applicationId: String)
-    : Deferred<Response<PlatformSchema>>
+    suspend fun getPlatformConfig(@Path("company_id") companyId: String, @Path("application_id") applicationId: String)
+    : Response<PlatformSchema>
     
     @POST ("/service/platform/user/v1.0/company/{company_id}/application/{application_id}/platform/config")
-    fun updatePlatformConfig(@Path("company_id") companyId: String, @Path("application_id") applicationId: String,@Body body: PlatformSchema)
-    : Deferred<Response<PlatformSchema>>
+    suspend fun updatePlatformConfig(@Path("company_id") companyId: String, @Path("application_id") applicationId: String,@Body body: PlatformSchema)
+    : Response<PlatformSchema>
     
     @POST ("/service/platform/user/v1.0/company/{company_id}/application/{application_id}/user_group")
-    fun createUserGroup(@Path("company_id") companyId: String, @Path("application_id") applicationId: String,@Body body: CreateUserGroupSchema)
-    : Deferred<Response<UserGroupResponseSchema>>
+    suspend fun createUserGroup(@Path("company_id") companyId: String, @Path("application_id") applicationId: String,@Body body: CreateUserGroupSchema)
+    : Response<UserGroupResponseSchema>
     
     @GET ("/service/platform/user/v1.0/company/{company_id}/application/{application_id}/user_group")
-    fun getUserGroups(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Query("page_no") pageNo: String?, @Query("page_size") pageSize: String?, @Query("name") name: String?, @Query("status") status: String?, @Query("group_uid") groupUid: Int?)
-    : Deferred<Response<UserGroupListResponseSchema>>
+    suspend fun getUserGroups(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Query("page_no") pageNo: String?, @Query("page_size") pageSize: String?, @Query("name") name: String?, @Query("status") status: String?, @Query("group_uid") groupUid: Int?)
+    : Response<UserGroupListResponseSchema>
     
     @PUT ("/service/platform/user/v1.0/company/{company_id}/application/{application_id}/user_group/{group_id}")
-    fun updateUserGroup(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Path("group_id") groupId: String,@Body body: UpdateUserGroupSchema)
-    : Deferred<Response<UserGroupResponseSchema>>
+    suspend fun updateUserGroup(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Path("group_id") groupId: String,@Body body: UpdateUserGroupSchema)
+    : Response<UserGroupResponseSchema>
     
     @GET ("/service/platform/user/v1.0/company/{company_id}/application/{application_id}/user_group/{group_id}")
-    fun getUserGroupById(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Path("group_id") groupId: String)
-    : Deferred<Response<UserGroupResponseSchema>>
+    suspend fun getUserGroupById(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Path("group_id") groupId: String)
+    : Response<UserGroupResponseSchema>
     
 }

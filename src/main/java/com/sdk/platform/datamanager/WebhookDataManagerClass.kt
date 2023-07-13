@@ -39,14 +39,15 @@ class WebhookDataManagerClass(val config: PlatformConfig, val unauthorizedAction
             baseUrl = config.domain,
             interceptorList = interceptorMap,
             namespace = "PlatformWebhook",
-            persistentCookieStore = config.persistentCookieStore
+            persistentCookieStore = config.persistentCookieStore,
+            certPublicKey = config.certPublicKey,
         )
         return retrofitHttpClient?.initializeRestClient(WebhookApiList::class.java) as? WebhookApiList
     }
     
     
     suspend fun getSubscribersByCompany(pageNo: Int?=null, pageSize: Int?=null, extensionId: String?=null)
-    : Deferred<Response<SubscriberResponse>>? {
+    : Response<SubscriberResponse>? {
         
         return if (config.oauthClient.isAccessTokenValid()) {
             webhookApiList?.getSubscribersByCompany(
@@ -58,7 +59,7 @@ class WebhookDataManagerClass(val config: PlatformConfig, val unauthorizedAction
     
     
     suspend fun registerSubscriberToEvent(body: SubscriberConfig)
-    : Deferred<Response<SubscriberConfig>>? {
+    : Response<SubscriberConfig>? {
         
         return if (config.oauthClient.isAccessTokenValid()) {
             webhookApiList?.registerSubscriberToEvent(
@@ -70,7 +71,7 @@ class WebhookDataManagerClass(val config: PlatformConfig, val unauthorizedAction
     
     
     suspend fun updateSubscriberConfig(body: SubscriberConfig)
-    : Deferred<Response<SubscriberConfig>>? {
+    : Response<SubscriberConfig>? {
         
         return if (config.oauthClient.isAccessTokenValid()) {
             webhookApiList?.updateSubscriberConfig(
@@ -82,7 +83,7 @@ class WebhookDataManagerClass(val config: PlatformConfig, val unauthorizedAction
     
     
     suspend fun getSubscribersByExtensionId(pageNo: Int?=null, pageSize: Int?=null, extensionId: String)
-    : Deferred<Response<SubscriberConfigList>>? {
+    : Response<SubscriberConfigList>? {
         
         return if (config.oauthClient.isAccessTokenValid()) {
             webhookApiList?.getSubscribersByExtensionId(
@@ -94,7 +95,7 @@ class WebhookDataManagerClass(val config: PlatformConfig, val unauthorizedAction
     
     
     suspend fun getSubscriberById(subscriberId: String)
-    : Deferred<Response<SubscriberResponse>>? {
+    : Response<SubscriberResponse>? {
         
         return if (config.oauthClient.isAccessTokenValid()) {
             webhookApiList?.getSubscriberById(
@@ -106,7 +107,7 @@ class WebhookDataManagerClass(val config: PlatformConfig, val unauthorizedAction
     
     
     suspend fun fetchAllEventConfigurations()
-    : Deferred<Response<EventConfigResponse>>? {
+    : Response<EventConfigResponse>? {
         
         return if (config.oauthClient.isAccessTokenValid()) {
             webhookApiList?.fetchAllEventConfigurations(

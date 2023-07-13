@@ -12,37 +12,37 @@ interface RewardsApiList {
     
     
     @GET 
-    fun getOfferByName(@Url url1: String?    )
-    : Deferred<Response<Offer>>
+    suspend fun getOfferByName(@Url url1: String?    )
+    : Response<Offer>
     
     
     @POST 
-    fun catalogueOrder(@Url url1: String?   ,@Body body: CatalogueOrderRequest)
-    : Deferred<Response<CatalogueOrderResponse>>
+    suspend fun catalogueOrder(@Url url1: String?   ,@Body body: CatalogueOrderRequest)
+    : Response<CatalogueOrderResponse>
     
     
     @GET 
-    fun getUserPointsHistory(@Url url1: String?    ,   @Query("page_id") pageId: String?, @Query("page_size") pageSize: Int?)
-    : Deferred<Response<PointsHistoryResponse>>
+    suspend fun getUserPointsHistory(@Url url1: String?    ,   @Query("page_id") pageId: String?, @Query("page_size") pageSize: Int?)
+    : Response<PointsHistoryResponse>
     
     
     @GET 
-    fun getUserPoints(@Url url1: String?   )
-    : Deferred<Response<PointsResponse>>
+    suspend fun getUserPoints(@Url url1: String?   )
+    : Response<PointsResponse>
     
     
     @GET 
-    fun getUserReferralDetails(@Url url1: String?   )
-    : Deferred<Response<ReferralDetailsResponse>>
+    suspend fun getUserReferralDetails(@Url url1: String?   )
+    : Response<ReferralDetailsResponse>
     
     
     @POST 
-    fun getOrderDiscount(@Url url1: String?   ,@Body body: OrderDiscountRequest)
-    : Deferred<Response<OrderDiscountResponse>>
+    suspend fun getOrderDiscount(@Url url1: String?   ,@Body body: OrderDiscountRequest)
+    : Response<OrderDiscountResponse>
     
     
     @POST 
-    fun redeemReferralCode(@Url url1: String?   ,@Body body: RedeemReferralCodeRequest)
-    : Deferred<Response<RedeemReferralCodeResponse>>
+    suspend fun redeemReferralCode(@Url url1: String?   ,@Body body: RedeemReferralCodeRequest)
+    : Response<RedeemReferralCodeResponse>
     
 }

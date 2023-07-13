@@ -39,14 +39,15 @@ class FileStorageDataManagerClass(val config: PlatformConfig, val unauthorizedAc
             baseUrl = config.domain,
             interceptorList = interceptorMap,
             namespace = "PlatformFileStorage",
-            persistentCookieStore = config.persistentCookieStore
+            persistentCookieStore = config.persistentCookieStore,
+            certPublicKey = config.certPublicKey,
         )
         return retrofitHttpClient?.initializeRestClient(FileStorageApiList::class.java) as? FileStorageApiList
     }
     
     
     suspend fun startUpload(namespace: String,body: StartRequest)
-    : Deferred<Response<StartResponse>>? {
+    : Response<StartResponse>? {
         
         return if (config.oauthClient.isAccessTokenValid()) {
             fileStorageApiList?.startUpload(
@@ -58,7 +59,7 @@ class FileStorageDataManagerClass(val config: PlatformConfig, val unauthorizedAc
     
     
     suspend fun completeUpload(namespace: String,body: StartResponse)
-    : Deferred<Response<CompleteResponse>>? {
+    : Response<CompleteResponse>? {
         
         return if (config.oauthClient.isAccessTokenValid()) {
             fileStorageApiList?.completeUpload(
@@ -72,7 +73,7 @@ class FileStorageDataManagerClass(val config: PlatformConfig, val unauthorizedAc
     
     
     suspend fun getSignUrls(body: SignUrlRequest)
-    : Deferred<Response<SignUrlResponse>>? {
+    : Response<SignUrlResponse>? {
         
         return if (config.oauthClient.isAccessTokenValid()) {
             fileStorageApiList?.getSignUrls(
@@ -84,7 +85,7 @@ class FileStorageDataManagerClass(val config: PlatformConfig, val unauthorizedAc
     
     
     suspend fun copyFiles(sync: Boolean?=null,body: BulkRequest)
-    : Deferred<Response<BulkUploadResponse>>? {
+    : Response<BulkUploadResponse>? {
         
         return if (config.oauthClient.isAccessTokenValid()) {
             fileStorageApiList?.copyFiles(
@@ -97,7 +98,7 @@ class FileStorageDataManagerClass(val config: PlatformConfig, val unauthorizedAc
     
     
     suspend fun browse(namespace: String, pageNo: Int?=null)
-    : Deferred<Response<BrowseResponse>>? {
+    : Response<BrowseResponse>? {
         
         return if (config.oauthClient.isAccessTokenValid()) {
             fileStorageApiList?.browse(
@@ -110,7 +111,7 @@ class FileStorageDataManagerClass(val config: PlatformConfig, val unauthorizedAc
     
     
     suspend fun proxy(url: String)
-    : Deferred<Response<ResponseBody>>? {
+    : Response<ResponseBody>? {
         
         return if (config.oauthClient.isAccessTokenValid()) {
             fileStorageApiList?.proxy(
@@ -128,7 +129,7 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     
     
     suspend fun appStartUpload(namespace: String,body: StartRequest)
-    : Deferred<Response<StartResponse>>? {
+    : Response<StartResponse>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 fileStorageApiList?.appStartUpload(namespace = namespace, companyId = config.companyId , applicationId = applicationId , body = body)
         } else {
@@ -138,7 +139,7 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     
     
     suspend fun appCompleteUpload(namespace: String,body: StartResponse)
-    : Deferred<Response<CompleteResponse>>? {
+    : Response<CompleteResponse>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 fileStorageApiList?.appCompleteUpload(namespace = namespace, companyId = config.companyId , applicationId = applicationId , body = body)
         } else {
@@ -150,7 +151,7 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     
     
     suspend fun appCopyFiles(sync: Boolean?=null,body: BulkRequest)
-    : Deferred<Response<BulkUploadResponse>>? {
+    : Response<BulkUploadResponse>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 fileStorageApiList?.appCopyFiles(sync = sync, companyId = config.companyId , applicationId = applicationId , body = body)
         } else {
@@ -161,7 +162,7 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     
     
     suspend fun appbrowse(namespace: String, pageNo: Int?=null)
-    : Deferred<Response<BrowseResponse>>? {
+    : Response<BrowseResponse>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 fileStorageApiList?.appbrowse(namespace = namespace, companyId = config.companyId , applicationId = applicationId , pageNo = pageNo )
         } else {

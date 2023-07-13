@@ -12,22 +12,22 @@ interface ThemeApiList {
     
     
     @GET 
-    fun getAllPages(@Url url1: String?    )
-    : Deferred<Response<AllAvailablePageSchema>>
+    suspend fun getAllPages(@Url url1: String?    )
+    : Response<AllAvailablePageSchema>
     
     
     @GET 
-    fun getPage(@Url url1: String?     )
-    : Deferred<Response<AvailablePageSchema>>
+    suspend fun getPage(@Url url1: String?     )
+    : Response<AvailablePageSchema>
     
     
     @GET 
-    fun getAppliedTheme(@Url url1: String?   )
-    : Deferred<Response<ThemesSchema>>
+    suspend fun getAppliedTheme(@Url url1: String?   )
+    : Response<ThemesSchema>
     
     
     @GET 
-    fun getThemeForPreview(@Url url1: String?    )
-    : Deferred<Response<ThemesSchema>>
+    suspend fun getThemeForPreview(@Url url1: String?    )
+    : Response<ThemesSchema>
     
 }

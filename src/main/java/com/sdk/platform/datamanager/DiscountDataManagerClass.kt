@@ -39,14 +39,15 @@ class DiscountDataManagerClass(val config: PlatformConfig, val unauthorizedActio
             baseUrl = config.domain,
             interceptorList = interceptorMap,
             namespace = "PlatformDiscount",
-            persistentCookieStore = config.persistentCookieStore
+            persistentCookieStore = config.persistentCookieStore,
+            certPublicKey = config.certPublicKey,
         )
         return retrofitHttpClient?.initializeRestClient(DiscountApiList::class.java) as? DiscountApiList
     }
     
     
     suspend fun getDiscounts(view: String?=null, q: String?=null, pageNo: Int?=null, pageSize: Int?=null, archived: Boolean?=null, month: Int?=null, year: Int?=null, type: String?=null, appIds: ArrayList<String>?=null)
-    : Deferred<Response<ListOrCalender>>? {
+    : Response<ListOrCalender>? {
         
         return if (config.oauthClient.isAccessTokenValid()) {
             discountApiList?.getDiscounts(
@@ -58,7 +59,7 @@ class DiscountDataManagerClass(val config: PlatformConfig, val unauthorizedActio
     
     
     suspend fun createDiscount(body: CreateUpdateDiscount)
-    : Deferred<Response<DiscountJob>>? {
+    : Response<DiscountJob>? {
         
         return if (config.oauthClient.isAccessTokenValid()) {
             discountApiList?.createDiscount(
@@ -70,7 +71,7 @@ class DiscountDataManagerClass(val config: PlatformConfig, val unauthorizedActio
     
     
     suspend fun getDiscount(id: String)
-    : Deferred<Response<DiscountJob>>? {
+    : Response<DiscountJob>? {
         
         return if (config.oauthClient.isAccessTokenValid()) {
             discountApiList?.getDiscount(
@@ -82,7 +83,7 @@ class DiscountDataManagerClass(val config: PlatformConfig, val unauthorizedActio
     
     
     suspend fun updateDiscount(id: String,body: CreateUpdateDiscount)
-    : Deferred<Response<DiscountJob>>? {
+    : Response<DiscountJob>? {
         
         return if (config.oauthClient.isAccessTokenValid()) {
             discountApiList?.updateDiscount(
@@ -94,7 +95,7 @@ class DiscountDataManagerClass(val config: PlatformConfig, val unauthorizedActio
     
     
     suspend fun upsertDiscountItems(id: String,body: BulkDiscount)
-    : Deferred<Response<HashMap<String,Any>>>? {
+    : Response<HashMap<String,Any>>? {
         
         return if (config.oauthClient.isAccessTokenValid()) {
             discountApiList?.upsertDiscountItems(
@@ -106,7 +107,7 @@ class DiscountDataManagerClass(val config: PlatformConfig, val unauthorizedActio
     
     
     suspend fun validateDiscountFile(discount: String?=null,body: FileJobRequest)
-    : Deferred<Response<FileJobResponse>>? {
+    : Response<FileJobResponse>? {
         
         return if (config.oauthClient.isAccessTokenValid()) {
             discountApiList?.validateDiscountFile(
@@ -118,7 +119,7 @@ class DiscountDataManagerClass(val config: PlatformConfig, val unauthorizedActio
     
     
     suspend fun downloadDiscountFile(type: String,body: DownloadFileJob)
-    : Deferred<Response<FileJobResponse>>? {
+    : Response<FileJobResponse>? {
         
         return if (config.oauthClient.isAccessTokenValid()) {
             discountApiList?.downloadDiscountFile(
@@ -130,7 +131,7 @@ class DiscountDataManagerClass(val config: PlatformConfig, val unauthorizedActio
     
     
     suspend fun getValidationJob(id: String)
-    : Deferred<Response<FileJobResponse>>? {
+    : Response<FileJobResponse>? {
         
         return if (config.oauthClient.isAccessTokenValid()) {
             discountApiList?.getValidationJob(
@@ -142,7 +143,7 @@ class DiscountDataManagerClass(val config: PlatformConfig, val unauthorizedActio
     
     
     suspend fun cancelValidationJob(id: String)
-    : Deferred<Response<CancelJobResponse>>? {
+    : Response<CancelJobResponse>? {
         
         return if (config.oauthClient.isAccessTokenValid()) {
             discountApiList?.cancelValidationJob(
@@ -154,7 +155,7 @@ class DiscountDataManagerClass(val config: PlatformConfig, val unauthorizedActio
     
     
     suspend fun getDownloadJob(id: String)
-    : Deferred<Response<FileJobResponse>>? {
+    : Response<FileJobResponse>? {
         
         return if (config.oauthClient.isAccessTokenValid()) {
             discountApiList?.getDownloadJob(
@@ -166,7 +167,7 @@ class DiscountDataManagerClass(val config: PlatformConfig, val unauthorizedActio
     
     
     suspend fun cancelDownloadJob(id: String)
-    : Deferred<Response<CancelJobResponse>>? {
+    : Response<CancelJobResponse>? {
         
         return if (config.oauthClient.isAccessTokenValid()) {
             discountApiList?.cancelDownloadJob(

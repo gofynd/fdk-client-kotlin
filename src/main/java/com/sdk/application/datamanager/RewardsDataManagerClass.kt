@@ -70,7 +70,7 @@ class RewardsDataManagerClass(val config: ApplicationConfig, val unauthorizedAct
         return retrofitHttpClient?.initializeRestClient(RewardsApiList::class.java) as? RewardsApiList
     }
     
-    fun getOfferByName(name: String): Deferred<Response<Offer>>? {
+   suspend fun getOfferByName(name: String): Response<Offer>? {
         var fullUrl : String? = _relativeUrls["getOfferByName"] 
         
         fullUrl = fullUrl?.replace("{" + "name" +"}",name.toString())
@@ -79,14 +79,14 @@ class RewardsDataManagerClass(val config: ApplicationConfig, val unauthorizedAct
 
     
     
-    fun catalogueOrder(body: CatalogueOrderRequest): Deferred<Response<CatalogueOrderResponse>>? {
+   suspend fun catalogueOrder(body: CatalogueOrderRequest): Response<CatalogueOrderResponse>? {
         var fullUrl : String? = _relativeUrls["catalogueOrder"] 
         
         return rewardsApiList?.catalogueOrder(fullUrl  ,body = body)}
 
     
     
-    fun getUserPointsHistory(pageId: String?=null, pageSize: Int?=null): Deferred<Response<PointsHistoryResponse>>? {
+   suspend fun getUserPointsHistory(pageId: String?=null, pageSize: Int?=null): Response<PointsHistoryResponse>? {
         var fullUrl : String? = _relativeUrls["getUserPointsHistory"] 
         
         return rewardsApiList?.getUserPointsHistory(fullUrl    ,  pageId = pageId,    pageSize = pageSize)}
@@ -140,28 +140,28 @@ class RewardsDataManagerClass(val config: ApplicationConfig, val unauthorizedAct
     return paginator
     }
     
-    fun getUserPoints(): Deferred<Response<PointsResponse>>? {
+   suspend fun getUserPoints(): Response<PointsResponse>? {
         var fullUrl : String? = _relativeUrls["getUserPoints"] 
         
         return rewardsApiList?.getUserPoints(fullUrl  )}
 
     
     
-    fun getUserReferralDetails(): Deferred<Response<ReferralDetailsResponse>>? {
+   suspend fun getUserReferralDetails(): Response<ReferralDetailsResponse>? {
         var fullUrl : String? = _relativeUrls["getUserReferralDetails"] 
         
         return rewardsApiList?.getUserReferralDetails(fullUrl  )}
 
     
     
-    fun getOrderDiscount(body: OrderDiscountRequest): Deferred<Response<OrderDiscountResponse>>? {
+   suspend fun getOrderDiscount(body: OrderDiscountRequest): Response<OrderDiscountResponse>? {
         var fullUrl : String? = _relativeUrls["getOrderDiscount"] 
         
         return rewardsApiList?.getOrderDiscount(fullUrl  ,body = body)}
 
     
     
-    fun redeemReferralCode(body: RedeemReferralCodeRequest): Deferred<Response<RedeemReferralCodeResponse>>? {
+   suspend fun redeemReferralCode(body: RedeemReferralCodeRequest): Response<RedeemReferralCodeResponse>? {
         var fullUrl : String? = _relativeUrls["redeemReferralCode"] 
         
         return rewardsApiList?.redeemReferralCode(fullUrl  ,body = body)}

@@ -12,17 +12,17 @@ interface CommunicationApiList {
     
     
     @GET 
-    fun getCommunicationConsent(@Url url1: String?   )
-    : Deferred<Response<CommunicationConsent>>
+    suspend fun getCommunicationConsent(@Url url1: String?   )
+    : Response<CommunicationConsent>
     
     
     @POST 
-    fun upsertCommunicationConsent(@Url url1: String?   ,@Body body: CommunicationConsentReq)
-    : Deferred<Response<CommunicationConsentRes>>
+    suspend fun upsertCommunicationConsent(@Url url1: String?   ,@Body body: CommunicationConsentReq)
+    : Response<CommunicationConsentRes>
     
     
     @POST 
-    fun upsertAppPushtoken(@Url url1: String?   ,@Body body: PushtokenReq)
-    : Deferred<Response<PushtokenRes>>
+    suspend fun upsertAppPushtoken(@Url url1: String?   ,@Body body: PushtokenReq)
+    : Response<PushtokenRes>
     
 }

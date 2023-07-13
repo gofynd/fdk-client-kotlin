@@ -12,37 +12,37 @@ interface ShareApiList {
     
     
     @POST 
-    fun getApplicationQRCode(@Url url1: String?   )
-    : Deferred<Response<QRCodeResp>>
+    suspend fun getApplicationQRCode(@Url url1: String?   )
+    : Response<QRCodeResp>
     
     
     @POST 
-    fun getProductQRCodeBySlug(@Url url1: String?    )
-    : Deferred<Response<QRCodeResp>>
+    suspend fun getProductQRCodeBySlug(@Url url1: String?    )
+    : Response<QRCodeResp>
     
     
     @POST 
-    fun getCollectionQRCodeBySlug(@Url url1: String?    )
-    : Deferred<Response<QRCodeResp>>
+    suspend fun getCollectionQRCodeBySlug(@Url url1: String?    )
+    : Response<QRCodeResp>
     
     
     @POST 
-    fun getUrlQRCode(@Url url1: String?    ,  @Query("url") url: String)
-    : Deferred<Response<QRCodeResp>>
+    suspend fun getUrlQRCode(@Url url1: String?    ,  @Query("url") url: String)
+    : Response<QRCodeResp>
     
     
     @POST 
-    fun createShortLink(@Url url1: String?   ,@Body body: ShortLinkReq)
-    : Deferred<Response<ShortLinkRes>>
+    suspend fun createShortLink(@Url url1: String?   ,@Body body: ShortLinkReq)
+    : Response<ShortLinkRes>
     
     
     @GET 
-    fun getShortLinkByHash(@Url url1: String?    )
-    : Deferred<Response<ShortLinkRes>>
+    suspend fun getShortLinkByHash(@Url url1: String?    )
+    : Response<ShortLinkRes>
     
     
     @GET 
-    fun getOriginalShortLinkByHash(@Url url1: String?    )
-    : Deferred<Response<ShortLinkRes>>
+    suspend fun getOriginalShortLinkByHash(@Url url1: String?    )
+    : Response<ShortLinkRes>
     
 }

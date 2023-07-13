@@ -126,245 +126,245 @@ class UserDataManagerClass(val config: ApplicationConfig, val unauthorizedAction
         return retrofitHttpClient?.initializeRestClient(UserApiList::class.java) as? UserApiList
     }
     
-    fun loginWithFacebook(platform: String?=null, body: OAuthRequestSchema): Deferred<Response<AuthSuccess>>? {
+   suspend fun loginWithFacebook(platform: String?=null, body: OAuthRequestSchema): Response<AuthSuccess>? {
         var fullUrl : String? = _relativeUrls["loginWithFacebook"] 
         
         return userApiList?.loginWithFacebook(fullUrl    ,  platform = platform, body = body)}
 
     
     
-    fun loginWithGoogle(platform: String?=null, body: OAuthRequestSchema): Deferred<Response<AuthSuccess>>? {
+   suspend fun loginWithGoogle(platform: String?=null, body: OAuthRequestSchema): Response<AuthSuccess>? {
         var fullUrl : String? = _relativeUrls["loginWithGoogle"] 
         
         return userApiList?.loginWithGoogle(fullUrl    ,  platform = platform, body = body)}
 
     
     
-    fun loginWithGoogleAndroid(platform: String?=null, body: OAuthRequestSchema): Deferred<Response<AuthSuccess>>? {
+   suspend fun loginWithGoogleAndroid(platform: String?=null, body: OAuthRequestSchema): Response<AuthSuccess>? {
         var fullUrl : String? = _relativeUrls["loginWithGoogleAndroid"] 
         
         return userApiList?.loginWithGoogleAndroid(fullUrl    ,  platform = platform, body = body)}
 
     
     
-    fun loginWithGoogleIOS(platform: String?=null, body: OAuthRequestSchema): Deferred<Response<AuthSuccess>>? {
+   suspend fun loginWithGoogleIOS(platform: String?=null, body: OAuthRequestSchema): Response<AuthSuccess>? {
         var fullUrl : String? = _relativeUrls["loginWithGoogleIOS"] 
         
         return userApiList?.loginWithGoogleIOS(fullUrl    ,  platform = platform, body = body)}
 
     
     
-    fun loginWithAppleIOS(platform: String?=null, body: OAuthRequestAppleSchema): Deferred<Response<AuthSuccess>>? {
+   suspend fun loginWithAppleIOS(platform: String?=null, body: OAuthRequestAppleSchema): Response<AuthSuccess>? {
         var fullUrl : String? = _relativeUrls["loginWithAppleIOS"] 
         
         return userApiList?.loginWithAppleIOS(fullUrl    ,  platform = platform, body = body)}
 
     
     
-    fun loginWithOTP(platform: String?=null, body: SendOtpRequestSchema): Deferred<Response<SendOtpResponse>>? {
+   suspend fun loginWithOTP(platform: String?=null, body: SendOtpRequestSchema): Response<SendOtpResponse>? {
         var fullUrl : String? = _relativeUrls["loginWithOTP"] 
         
         return userApiList?.loginWithOTP(fullUrl    ,  platform = platform, body = body)}
 
     
     
-    fun loginWithEmailAndPassword(body: PasswordLoginRequestSchema): Deferred<Response<LoginSuccess>>? {
+   suspend fun loginWithEmailAndPassword(body: PasswordLoginRequestSchema): Response<LoginSuccess>? {
         var fullUrl : String? = _relativeUrls["loginWithEmailAndPassword"] 
         
         return userApiList?.loginWithEmailAndPassword(fullUrl  ,body = body)}
 
     
     
-    fun sendResetPasswordEmail(platform: String?=null, body: SendResetPasswordEmailRequestSchema): Deferred<Response<ResetPasswordSuccess>>? {
+   suspend fun sendResetPasswordEmail(platform: String?=null, body: SendResetPasswordEmailRequestSchema): Response<ResetPasswordSuccess>? {
         var fullUrl : String? = _relativeUrls["sendResetPasswordEmail"] 
         
         return userApiList?.sendResetPasswordEmail(fullUrl    ,  platform = platform, body = body)}
 
     
     
-    fun sendResetPasswordMobile(platform: String?=null, body: SendResetPasswordMobileRequestSchema): Deferred<Response<ResetPasswordSuccess>>? {
+   suspend fun sendResetPasswordMobile(platform: String?=null, body: SendResetPasswordMobileRequestSchema): Response<ResetPasswordSuccess>? {
         var fullUrl : String? = _relativeUrls["sendResetPasswordMobile"] 
         
         return userApiList?.sendResetPasswordMobile(fullUrl    ,  platform = platform, body = body)}
 
     
     
-    fun forgotPassword(body: ForgotPasswordRequestSchema): Deferred<Response<LoginSuccess>>? {
+   suspend fun forgotPassword(body: ForgotPasswordRequestSchema): Response<LoginSuccess>? {
         var fullUrl : String? = _relativeUrls["forgotPassword"] 
         
         return userApiList?.forgotPassword(fullUrl  ,body = body)}
 
     
     
-    fun sendResetToken(body: CodeRequestBodySchema): Deferred<Response<ResetPasswordSuccess>>? {
+   suspend fun sendResetToken(body: CodeRequestBodySchema): Response<ResetPasswordSuccess>? {
         var fullUrl : String? = _relativeUrls["sendResetToken"] 
         
         return userApiList?.sendResetToken(fullUrl  ,body = body)}
 
     
     
-    fun loginWithToken(body: TokenRequestBodySchema): Deferred<Response<LoginSuccess>>? {
+   suspend fun loginWithToken(body: TokenRequestBodySchema): Response<LoginSuccess>? {
         var fullUrl : String? = _relativeUrls["loginWithToken"] 
         
         return userApiList?.loginWithToken(fullUrl  ,body = body)}
 
     
     
-    fun registerWithForm(platform: String?=null, body: FormRegisterRequestSchema): Deferred<Response<RegisterFormSuccess>>? {
+   suspend fun registerWithForm(platform: String?=null, body: FormRegisterRequestSchema): Response<RegisterFormSuccess>? {
         var fullUrl : String? = _relativeUrls["registerWithForm"] 
         
         return userApiList?.registerWithForm(fullUrl    ,  platform = platform, body = body)}
 
     
     
-    fun verifyEmail(body: CodeRequestBodySchema): Deferred<Response<VerifyEmailSuccess>>? {
+   suspend fun verifyEmail(body: CodeRequestBodySchema): Response<VerifyEmailSuccess>? {
         var fullUrl : String? = _relativeUrls["verifyEmail"] 
         
         return userApiList?.verifyEmail(fullUrl  ,body = body)}
 
     
     
-    fun verifyMobile(body: CodeRequestBodySchema): Deferred<Response<VerifyEmailSuccess>>? {
+   suspend fun verifyMobile(body: CodeRequestBodySchema): Response<VerifyEmailSuccess>? {
         var fullUrl : String? = _relativeUrls["verifyMobile"] 
         
         return userApiList?.verifyMobile(fullUrl  ,body = body)}
 
     
     
-    fun hasPassword(): Deferred<Response<HasPasswordSuccess>>? {
+   suspend fun hasPassword(): Response<HasPasswordSuccess>? {
         var fullUrl : String? = _relativeUrls["hasPassword"] 
         
         return userApiList?.hasPassword(fullUrl  )}
 
     
     
-    fun updatePassword(body: UpdatePasswordRequestSchema): Deferred<Response<VerifyEmailSuccess>>? {
+   suspend fun updatePassword(body: UpdatePasswordRequestSchema): Response<VerifyEmailSuccess>? {
         var fullUrl : String? = _relativeUrls["updatePassword"] 
         
         return userApiList?.updatePassword(fullUrl  ,body = body)}
 
     
     
-    fun deleteUser(body: DeleteApplicationUserRequestSchema): Deferred<Response<DeleteUserSuccess>>? {
+   suspend fun deleteUser(body: DeleteApplicationUserRequestSchema): Response<DeleteUserSuccess>? {
         var fullUrl : String? = _relativeUrls["deleteUser"] 
         
         return userApiList?.deleteUser(fullUrl  ,body = body)}
 
     
     
-    fun logout(): Deferred<Response<LogoutSuccess>>? {
+   suspend fun logout(): Response<LogoutSuccess>? {
         var fullUrl : String? = _relativeUrls["logout"] 
         
         return userApiList?.logout(fullUrl  )}
 
     
     
-    fun sendOTPOnMobile(platform: String?=null, body: SendMobileOtpRequestSchema): Deferred<Response<OtpSuccess>>? {
+   suspend fun sendOTPOnMobile(platform: String?=null, body: SendMobileOtpRequestSchema): Response<OtpSuccess>? {
         var fullUrl : String? = _relativeUrls["sendOTPOnMobile"] 
         
         return userApiList?.sendOTPOnMobile(fullUrl    ,  platform = platform, body = body)}
 
     
     
-    fun verifyMobileOTP(platform: String?=null, body: VerifyOtpRequestSchema): Deferred<Response<VerifyOtpSuccess>>? {
+   suspend fun verifyMobileOTP(platform: String?=null, body: VerifyOtpRequestSchema): Response<VerifyOtpSuccess>? {
         var fullUrl : String? = _relativeUrls["verifyMobileOTP"] 
         
         return userApiList?.verifyMobileOTP(fullUrl    ,  platform = platform, body = body)}
 
     
     
-    fun sendOTPOnEmail(platform: String?=null, body: SendEmailOtpRequestSchema): Deferred<Response<EmailOtpSuccess>>? {
+   suspend fun sendOTPOnEmail(platform: String?=null, body: SendEmailOtpRequestSchema): Response<EmailOtpSuccess>? {
         var fullUrl : String? = _relativeUrls["sendOTPOnEmail"] 
         
         return userApiList?.sendOTPOnEmail(fullUrl    ,  platform = platform, body = body)}
 
     
     
-    fun verifyEmailOTP(platform: String?=null, body: VerifyEmailOtpRequestSchema): Deferred<Response<VerifyOtpSuccess>>? {
+   suspend fun verifyEmailOTP(platform: String?=null, body: VerifyEmailOtpRequestSchema): Response<VerifyOtpSuccess>? {
         var fullUrl : String? = _relativeUrls["verifyEmailOTP"] 
         
         return userApiList?.verifyEmailOTP(fullUrl    ,  platform = platform, body = body)}
 
     
     
-    fun getLoggedInUser(): Deferred<Response<UserObjectSchema>>? {
+   suspend fun getLoggedInUser(): Response<UserObjectSchema>? {
         var fullUrl : String? = _relativeUrls["getLoggedInUser"] 
         
         return userApiList?.getLoggedInUser(fullUrl  )}
 
     
     
-    fun getListOfActiveSessions(): Deferred<Response<SessionListSuccess>>? {
+   suspend fun getListOfActiveSessions(): Response<SessionListSuccess>? {
         var fullUrl : String? = _relativeUrls["getListOfActiveSessions"] 
         
         return userApiList?.getListOfActiveSessions(fullUrl  )}
 
     
     
-    fun getPlatformConfig(name: String?=null): Deferred<Response<PlatformSchema>>? {
+   suspend fun getPlatformConfig(name: String?=null): Response<PlatformSchema>? {
         var fullUrl : String? = _relativeUrls["getPlatformConfig"] 
         
         return userApiList?.getPlatformConfig(fullUrl    ,  name = name)}
 
     
     
-    fun updateProfile(platform: String?=null, body: EditProfileRequestSchema): Deferred<Response<ProfileEditSuccess>>? {
+   suspend fun updateProfile(platform: String?=null, body: EditProfileRequestSchema): Response<ProfileEditSuccess>? {
         var fullUrl : String? = _relativeUrls["updateProfile"] 
         
         return userApiList?.updateProfile(fullUrl    ,  platform = platform, body = body)}
 
     
     
-    fun addMobileNumber(platform: String?=null, body: EditMobileRequestSchema): Deferred<Response<VerifyMobileOTPSuccess>>? {
+   suspend fun addMobileNumber(platform: String?=null, body: EditMobileRequestSchema): Response<VerifyMobileOTPSuccess>? {
         var fullUrl : String? = _relativeUrls["addMobileNumber"] 
         
         return userApiList?.addMobileNumber(fullUrl    ,  platform = platform, body = body)}
 
     
     
-    fun deleteMobileNumber(platform: String?=null, active: Boolean, primary: Boolean, verified: Boolean, countryCode: String, phone: String): Deferred<Response<LoginSuccess>>? {
+   suspend fun deleteMobileNumber(platform: String?=null, active: Boolean, primary: Boolean, verified: Boolean, countryCode: String, phone: String): Response<LoginSuccess>? {
         var fullUrl : String? = _relativeUrls["deleteMobileNumber"] 
         
         return userApiList?.deleteMobileNumber(fullUrl    ,  platform = platform,    active = active,    primary = primary,    verified = verified,    countryCode = countryCode,    phone = phone)}
 
     
     
-    fun setMobileNumberAsPrimary(body: SendVerificationLinkMobileRequestSchema): Deferred<Response<LoginSuccess>>? {
+   suspend fun setMobileNumberAsPrimary(body: SendVerificationLinkMobileRequestSchema): Response<LoginSuccess>? {
         var fullUrl : String? = _relativeUrls["setMobileNumberAsPrimary"] 
         
         return userApiList?.setMobileNumberAsPrimary(fullUrl  ,body = body)}
 
     
     
-    fun sendVerificationLinkToMobile(platform: String?=null, body: SendVerificationLinkMobileRequestSchema): Deferred<Response<SendMobileVerifyLinkSuccess>>? {
+   suspend fun sendVerificationLinkToMobile(platform: String?=null, body: SendVerificationLinkMobileRequestSchema): Response<SendMobileVerifyLinkSuccess>? {
         var fullUrl : String? = _relativeUrls["sendVerificationLinkToMobile"] 
         
         return userApiList?.sendVerificationLinkToMobile(fullUrl    ,  platform = platform, body = body)}
 
     
     
-    fun addEmail(platform: String?=null, body: EditEmailRequestSchema): Deferred<Response<VerifyEmailOTPSuccess>>? {
+   suspend fun addEmail(platform: String?=null, body: EditEmailRequestSchema): Response<VerifyEmailOTPSuccess>? {
         var fullUrl : String? = _relativeUrls["addEmail"] 
         
         return userApiList?.addEmail(fullUrl    ,  platform = platform, body = body)}
 
     
     
-    fun deleteEmail(platform: String?=null, active: Boolean, primary: Boolean, verified: Boolean, email: String): Deferred<Response<LoginSuccess>>? {
+   suspend fun deleteEmail(platform: String?=null, active: Boolean, primary: Boolean, verified: Boolean, email: String): Response<LoginSuccess>? {
         var fullUrl : String? = _relativeUrls["deleteEmail"] 
         
         return userApiList?.deleteEmail(fullUrl    ,  platform = platform,    active = active,    primary = primary,    verified = verified,    email = email)}
 
     
     
-    fun setEmailAsPrimary(body: EditEmailRequestSchema): Deferred<Response<LoginSuccess>>? {
+   suspend fun setEmailAsPrimary(body: EditEmailRequestSchema): Response<LoginSuccess>? {
         var fullUrl : String? = _relativeUrls["setEmailAsPrimary"] 
         
         return userApiList?.setEmailAsPrimary(fullUrl  ,body = body)}
 
     
     
-    fun sendVerificationLinkToEmail(platform: String?=null, body: EditEmailRequestSchema): Deferred<Response<SendEmailVerifyLinkSuccess>>? {
+   suspend fun sendVerificationLinkToEmail(platform: String?=null, body: EditEmailRequestSchema): Response<SendEmailVerifyLinkSuccess>? {
         var fullUrl : String? = _relativeUrls["sendVerificationLinkToEmail"] 
         
         return userApiList?.sendVerificationLinkToEmail(fullUrl    ,  platform = platform, body = body)}

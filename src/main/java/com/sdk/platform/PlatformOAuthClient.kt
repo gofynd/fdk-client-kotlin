@@ -126,7 +126,8 @@ class PlatformOAuthClient(val config: PlatformConfig) : BaseRepository() {
                 baseUrl = config.domain,
                 headers = headersMap,
                 interceptorList = interceptorMap,
-                namespace = "ExtensionOauthToken"
+                namespace = "ExtensionOauthToken",
+                certPublicKey = config.certPublicKey,
             )
             retrofitHttpClient?.initializeRestClient(TokenApiList::class.java) as? TokenApiList
         }

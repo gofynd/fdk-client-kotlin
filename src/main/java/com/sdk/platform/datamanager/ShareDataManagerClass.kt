@@ -39,7 +39,8 @@ class ShareDataManagerClass(val config: PlatformConfig, val unauthorizedAction: 
             baseUrl = config.domain,
             interceptorList = interceptorMap,
             namespace = "PlatformShare",
-            persistentCookieStore = config.persistentCookieStore
+            persistentCookieStore = config.persistentCookieStore,
+            certPublicKey = config.certPublicKey,
         )
         return retrofitHttpClient?.initializeRestClient(ShareApiList::class.java) as? ShareApiList
     }
@@ -55,7 +56,7 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     
     
     suspend fun createShortLink(body: ShortLinkReq)
-    : Deferred<Response<ShortLinkRes>>? {
+    : Response<ShortLinkRes>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 shareApiList?.createShortLink(companyId = config.companyId , applicationId = applicationId , body = body)
         } else {
@@ -65,7 +66,7 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     
     
     suspend fun getShortLinks(pageNo: Int?=null, pageSize: Int?=null, createdBy: String?=null, active: String?=null, q: String?=null)
-    : Deferred<Response<ShortLinkList>>? {
+    : Response<ShortLinkList>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 shareApiList?.getShortLinks(companyId = config.companyId , applicationId = applicationId , pageNo = pageNo, pageSize = pageSize, createdBy = createdBy, active = active, q = q )
         } else {
@@ -149,7 +150,7 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     }
     
     suspend fun getShortLinkByHash(hash: String)
-    : Deferred<Response<ShortLinkRes>>? {
+    : Response<ShortLinkRes>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 shareApiList?.getShortLinkByHash(companyId = config.companyId , applicationId = applicationId , hash = hash )
         } else {
@@ -159,7 +160,7 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     
     
     suspend fun updateShortLinkById(id: String,body: ShortLinkReq)
-    : Deferred<Response<ShortLinkRes>>? {
+    : Response<ShortLinkRes>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 shareApiList?.updateShortLinkById(companyId = config.companyId , applicationId = applicationId , id = id, body = body)
         } else {
@@ -169,7 +170,7 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     
     
     suspend fun getShortLinkClickStats(surlId: String)
-    : Deferred<Response<ClickStatsResponse>>? {
+    : Response<ClickStatsResponse>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 shareApiList?.getShortLinkClickStats(surlId = surlId, companyId = config.companyId , applicationId = applicationId  )
         } else {

@@ -70,14 +70,14 @@ class ShareDataManagerClass(val config: ApplicationConfig, val unauthorizedActio
         return retrofitHttpClient?.initializeRestClient(ShareApiList::class.java) as? ShareApiList
     }
     
-    fun getApplicationQRCode(): Deferred<Response<QRCodeResp>>? {
+   suspend fun getApplicationQRCode(): Response<QRCodeResp>? {
         var fullUrl : String? = _relativeUrls["getApplicationQRCode"] 
         
         return shareApiList?.getApplicationQRCode(fullUrl  )}
 
     
     
-    fun getProductQRCodeBySlug(slug: String): Deferred<Response<QRCodeResp>>? {
+   suspend fun getProductQRCodeBySlug(slug: String): Response<QRCodeResp>? {
         var fullUrl : String? = _relativeUrls["getProductQRCodeBySlug"] 
         
         fullUrl = fullUrl?.replace("{" + "slug" +"}",slug.toString())
@@ -86,7 +86,7 @@ class ShareDataManagerClass(val config: ApplicationConfig, val unauthorizedActio
 
     
     
-    fun getCollectionQRCodeBySlug(slug: String): Deferred<Response<QRCodeResp>>? {
+   suspend fun getCollectionQRCodeBySlug(slug: String): Response<QRCodeResp>? {
         var fullUrl : String? = _relativeUrls["getCollectionQRCodeBySlug"] 
         
         fullUrl = fullUrl?.replace("{" + "slug" +"}",slug.toString())
@@ -95,21 +95,21 @@ class ShareDataManagerClass(val config: ApplicationConfig, val unauthorizedActio
 
     
     
-    fun getUrlQRCode(url: String): Deferred<Response<QRCodeResp>>? {
+   suspend fun getUrlQRCode(url: String): Response<QRCodeResp>? {
         var fullUrl : String? = _relativeUrls["getUrlQRCode"] 
         
         return shareApiList?.getUrlQRCode(fullUrl    ,  url = url)}
 
     
     
-    fun createShortLink(body: ShortLinkReq): Deferred<Response<ShortLinkRes>>? {
+   suspend fun createShortLink(body: ShortLinkReq): Response<ShortLinkRes>? {
         var fullUrl : String? = _relativeUrls["createShortLink"] 
         
         return shareApiList?.createShortLink(fullUrl  ,body = body)}
 
     
     
-    fun getShortLinkByHash(hash: String): Deferred<Response<ShortLinkRes>>? {
+   suspend fun getShortLinkByHash(hash: String): Response<ShortLinkRes>? {
         var fullUrl : String? = _relativeUrls["getShortLinkByHash"] 
         
         fullUrl = fullUrl?.replace("{" + "hash" +"}",hash.toString())
@@ -118,7 +118,7 @@ class ShareDataManagerClass(val config: ApplicationConfig, val unauthorizedActio
 
     
     
-    fun getOriginalShortLinkByHash(hash: String): Deferred<Response<ShortLinkRes>>? {
+   suspend fun getOriginalShortLinkByHash(hash: String): Response<ShortLinkRes>? {
         var fullUrl : String? = _relativeUrls["getOriginalShortLinkByHash"] 
         
         fullUrl = fullUrl?.replace("{" + "hash" +"}",hash.toString())

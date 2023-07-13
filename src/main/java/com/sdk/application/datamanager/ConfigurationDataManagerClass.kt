@@ -88,35 +88,35 @@ class ConfigurationDataManagerClass(val config: ApplicationConfig, val unauthori
         return retrofitHttpClient?.initializeRestClient(ConfigurationApiList::class.java) as? ConfigurationApiList
     }
     
-    fun getApplication(): Deferred<Response<Application>>? {
+   suspend fun getApplication(): Response<Application>? {
         var fullUrl : String? = _relativeUrls["getApplication"] 
         
         return configurationApiList?.getApplication(fullUrl  )}
 
     
     
-    fun getOwnerInfo(): Deferred<Response<ApplicationAboutResponse>>? {
+   suspend fun getOwnerInfo(): Response<ApplicationAboutResponse>? {
         var fullUrl : String? = _relativeUrls["getOwnerInfo"] 
         
         return configurationApiList?.getOwnerInfo(fullUrl  )}
 
     
     
-    fun getBasicDetails(): Deferred<Response<ApplicationDetail>>? {
+   suspend fun getBasicDetails(): Response<ApplicationDetail>? {
         var fullUrl : String? = _relativeUrls["getBasicDetails"] 
         
         return configurationApiList?.getBasicDetails(fullUrl  )}
 
     
     
-    fun getIntegrationTokens(): Deferred<Response<AppTokenResponse>>? {
+   suspend fun getIntegrationTokens(): Response<AppTokenResponse>? {
         var fullUrl : String? = _relativeUrls["getIntegrationTokens"] 
         
         return configurationApiList?.getIntegrationTokens(fullUrl  )}
 
     
     
-    fun getOrderingStores(pageNo: Int?=null, pageSize: Int?=null, q: String?=null): Deferred<Response<OrderingStores>>? {
+   suspend fun getOrderingStores(pageNo: Int?=null, pageSize: Int?=null, q: String?=null): Response<OrderingStores>? {
         var fullUrl : String? = _relativeUrls["getOrderingStores"] 
         
         return configurationApiList?.getOrderingStores(fullUrl    ,  pageNo = pageNo,    pageSize = pageSize,    q = q)}
@@ -173,7 +173,7 @@ class ConfigurationDataManagerClass(val config: ApplicationConfig, val unauthori
     return paginator
     }
     
-    fun getStoreDetailById(storeId: Int): Deferred<Response<OrderingStore>>? {
+   suspend fun getStoreDetailById(storeId: Int): Response<OrderingStore>? {
         var fullUrl : String? = _relativeUrls["getStoreDetailById"] 
         
         fullUrl = fullUrl?.replace("{" + "store_id" +"}",storeId.toString())
@@ -182,28 +182,28 @@ class ConfigurationDataManagerClass(val config: ApplicationConfig, val unauthori
 
     
     
-    fun getFeatures(): Deferred<Response<AppFeatureResponse>>? {
+   suspend fun getFeatures(): Response<AppFeatureResponse>? {
         var fullUrl : String? = _relativeUrls["getFeatures"] 
         
         return configurationApiList?.getFeatures(fullUrl  )}
 
     
     
-    fun getContactInfo(): Deferred<Response<ApplicationInformation>>? {
+   suspend fun getContactInfo(): Response<ApplicationInformation>? {
         var fullUrl : String? = _relativeUrls["getContactInfo"] 
         
         return configurationApiList?.getContactInfo(fullUrl  )}
 
     
     
-    fun getCurrencies(): Deferred<Response<CurrenciesResponse>>? {
+   suspend fun getCurrencies(): Response<CurrenciesResponse>? {
         var fullUrl : String? = _relativeUrls["getCurrencies"] 
         
         return configurationApiList?.getCurrencies(fullUrl  )}
 
     
     
-    fun getCurrencyById(id: String): Deferred<Response<Currency>>? {
+   suspend fun getCurrencyById(id: String): Response<Currency>? {
         var fullUrl : String? = _relativeUrls["getCurrencyById"] 
         
         fullUrl = fullUrl?.replace("{" + "id" +"}",id.toString())
@@ -212,35 +212,35 @@ class ConfigurationDataManagerClass(val config: ApplicationConfig, val unauthori
 
     
     
-    fun getAppCurrencies(): Deferred<Response<AppCurrencyResponse>>? {
+   suspend fun getAppCurrencies(): Response<AppCurrencyResponse>? {
         var fullUrl : String? = _relativeUrls["getAppCurrencies"] 
         
         return configurationApiList?.getAppCurrencies(fullUrl  )}
 
     
     
-    fun getLanguages(): Deferred<Response<LanguageResponse>>? {
+   suspend fun getLanguages(): Response<LanguageResponse>? {
         var fullUrl : String? = _relativeUrls["getLanguages"] 
         
         return configurationApiList?.getLanguages(fullUrl  )}
 
     
     
-    fun getOrderingStoreCookie(body: OrderingStoreSelectRequest): Deferred<Response<SuccessMessageResponse>>? {
+   suspend fun getOrderingStoreCookie(body: OrderingStoreSelectRequest): Response<SuccessMessageResponse>? {
         var fullUrl : String? = _relativeUrls["getOrderingStoreCookie"] 
         
         return configurationApiList?.getOrderingStoreCookie(fullUrl  ,body = body)}
 
     
     
-    fun removeOrderingStoreCookie(): Deferred<Response<SuccessMessageResponse>>? {
+   suspend fun removeOrderingStoreCookie(): Response<SuccessMessageResponse>? {
         var fullUrl : String? = _relativeUrls["removeOrderingStoreCookie"] 
         
         return configurationApiList?.removeOrderingStoreCookie(fullUrl  )}
 
     
     
-    fun getAppStaffList(pageNo: Int?=null, pageSize: Int?=null, orderIncent: Boolean?=null, orderingStore: Int?=null, user: String?=null, userName: String?=null): Deferred<Response<AppStaffListResponse>>? {
+   suspend fun getAppStaffList(pageNo: Int?=null, pageSize: Int?=null, orderIncent: Boolean?=null, orderingStore: Int?=null, user: String?=null, userName: String?=null): Response<AppStaffListResponse>? {
         var fullUrl : String? = _relativeUrls["getAppStaffList"] 
         
         return configurationApiList?.getAppStaffList(fullUrl    ,  pageNo = pageNo,    pageSize = pageSize,    orderIncent = orderIncent,    orderingStore = orderingStore,    user = user,    userName = userName)}
@@ -312,7 +312,7 @@ class ConfigurationDataManagerClass(val config: ApplicationConfig, val unauthori
     return paginator
     }
     
-    fun getAppStaffs(orderIncent: Boolean?=null, orderingStore: Int?=null, user: String?=null): Deferred<Response<AppStaffResponse>>? {
+   suspend fun getAppStaffs(orderIncent: Boolean?=null, orderingStore: Int?=null, user: String?=null): Response<AppStaffResponse>? {
         var fullUrl : String? = _relativeUrls["getAppStaffs"] 
         
         return configurationApiList?.getAppStaffs(fullUrl    ,  orderIncent = orderIncent,    orderingStore = orderingStore,    user = user)}

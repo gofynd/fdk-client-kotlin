@@ -39,14 +39,15 @@ class FinanceDataManagerClass(val config: PlatformConfig, val unauthorizedAction
             baseUrl = config.domain,
             interceptorList = interceptorMap,
             namespace = "PlatformFinance",
-            persistentCookieStore = config.persistentCookieStore
+            persistentCookieStore = config.persistentCookieStore,
+            certPublicKey = config.certPublicKey,
         )
         return retrofitHttpClient?.initializeRestClient(FinanceApiList::class.java) as? FinanceApiList
     }
     
     
     suspend fun generateReport(body: GenerateReportRequest)
-    : Deferred<Response<GenerateReportJson>>? {
+    : Response<GenerateReportJson>? {
         
         return if (config.oauthClient.isAccessTokenValid()) {
             financeApiList?.generateReport(
@@ -58,7 +59,7 @@ class FinanceDataManagerClass(val config: PlatformConfig, val unauthorizedAction
     
     
     suspend fun downloadReport(body: DownloadReport)
-    : Deferred<Response<DownloadReportList>>? {
+    : Response<DownloadReportList>? {
         
         return if (config.oauthClient.isAccessTokenValid()) {
             financeApiList?.downloadReport(
@@ -70,7 +71,7 @@ class FinanceDataManagerClass(val config: PlatformConfig, val unauthorizedAction
     
     
     suspend fun getData(body: GetEngineRequest)
-    : Deferred<Response<GetEngineResponse>>? {
+    : Response<GetEngineResponse>? {
         
         return if (config.oauthClient.isAccessTokenValid()) {
             financeApiList?.getData(
@@ -82,7 +83,7 @@ class FinanceDataManagerClass(val config: PlatformConfig, val unauthorizedAction
     
     
     suspend fun getReason(body: GetReasonRequest)
-    : Deferred<Response<GetReasonResponse>>? {
+    : Response<GetReasonResponse>? {
         
         return if (config.oauthClient.isAccessTokenValid()) {
             financeApiList?.getReason(
@@ -94,7 +95,7 @@ class FinanceDataManagerClass(val config: PlatformConfig, val unauthorizedAction
     
     
     suspend fun getReportList(body: GetReportListRequest)
-    : Deferred<Response<GetEngineResponse>>? {
+    : Response<GetEngineResponse>? {
         
         return if (config.oauthClient.isAccessTokenValid()) {
             financeApiList?.getReportList(
@@ -106,7 +107,7 @@ class FinanceDataManagerClass(val config: PlatformConfig, val unauthorizedAction
     
     
     suspend fun getAffiliate(body: GetAffiliate)
-    : Deferred<Response<GetAffiliateResponse>>? {
+    : Response<GetAffiliateResponse>? {
         
         return if (config.oauthClient.isAccessTokenValid()) {
             financeApiList?.getAffiliate(
@@ -118,7 +119,7 @@ class FinanceDataManagerClass(val config: PlatformConfig, val unauthorizedAction
     
     
     suspend fun downloadCreditDebitNote(body: DownloadCreditDebitNoteRequest)
-    : Deferred<Response<DownloadCreditDebitNoteResponse>>? {
+    : Response<DownloadCreditDebitNoteResponse>? {
         
         return if (config.oauthClient.isAccessTokenValid()) {
             financeApiList?.downloadCreditDebitNote(
@@ -130,7 +131,7 @@ class FinanceDataManagerClass(val config: PlatformConfig, val unauthorizedAction
     
     
     suspend fun paymentProcess(body: PaymentProcessRequest)
-    : Deferred<Response<PaymentProcessResponse>>? {
+    : Response<PaymentProcessResponse>? {
         
         return if (config.oauthClient.isAccessTokenValid()) {
             financeApiList?.paymentProcess(
@@ -142,7 +143,7 @@ class FinanceDataManagerClass(val config: PlatformConfig, val unauthorizedAction
     
     
     suspend fun creditlineDataplatform(body: CreditlineDataPlatformRequest)
-    : Deferred<Response<CreditlineDataPlatformResponse>>? {
+    : Response<CreditlineDataPlatformResponse>? {
         
         return if (config.oauthClient.isAccessTokenValid()) {
             financeApiList?.creditlineDataplatform(
@@ -154,7 +155,7 @@ class FinanceDataManagerClass(val config: PlatformConfig, val unauthorizedAction
     
     
     suspend fun isCreditlinePlatform(body: IsCreditlinePlatformRequest)
-    : Deferred<Response<IsCreditlinePlatformResponse>>? {
+    : Response<IsCreditlinePlatformResponse>? {
         
         return if (config.oauthClient.isAccessTokenValid()) {
             financeApiList?.isCreditlinePlatform(
@@ -166,7 +167,7 @@ class FinanceDataManagerClass(val config: PlatformConfig, val unauthorizedAction
     
     
     suspend fun invoiceType(body: InvoiceTypeRequest)
-    : Deferred<Response<InvoiceTypeResponse>>? {
+    : Response<InvoiceTypeResponse>? {
         
         return if (config.oauthClient.isAccessTokenValid()) {
             financeApiList?.invoiceType(
@@ -178,7 +179,7 @@ class FinanceDataManagerClass(val config: PlatformConfig, val unauthorizedAction
     
     
     suspend fun invoiceListing(body: InvoiceListingRequest)
-    : Deferred<Response<InvoiceListingResponse>>? {
+    : Response<InvoiceListingResponse>? {
         
         return if (config.oauthClient.isAccessTokenValid()) {
             financeApiList?.invoiceListing(
@@ -190,7 +191,7 @@ class FinanceDataManagerClass(val config: PlatformConfig, val unauthorizedAction
     
     
     suspend fun invoicePDF(body: InvoicePdfRequest)
-    : Deferred<Response<InvoicePdfResponse>>? {
+    : Response<InvoicePdfResponse>? {
         
         return if (config.oauthClient.isAccessTokenValid()) {
             financeApiList?.invoicePDF(

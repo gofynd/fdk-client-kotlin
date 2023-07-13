@@ -10,55 +10,55 @@ import com.sdk.platform.models.finance.*
 interface FinanceApiList {
     
     @POST ("/service/platform/finance/v1.0/company/{company_id}/generate-report")
-    fun generateReport(@Path("company_id") companyId: String,@Body body: GenerateReportRequest)
-    : Deferred<Response<GenerateReportJson>>
+    suspend fun generateReport(@Path("company_id") companyId: String,@Body body: GenerateReportRequest)
+    : Response<GenerateReportJson>
     
     @POST ("/service/platform/finance/v1.0/company/{company_id}/download-report")
-    fun downloadReport(@Path("company_id") companyId: String,@Body body: DownloadReport)
-    : Deferred<Response<DownloadReportList>>
+    suspend fun downloadReport(@Path("company_id") companyId: String,@Body body: DownloadReport)
+    : Response<DownloadReportList>
     
     @POST ("/service/platform/finance/v1.0/company/{company_id}/get-data")
-    fun getData(@Path("company_id") companyId: String,@Body body: GetEngineRequest)
-    : Deferred<Response<GetEngineResponse>>
+    suspend fun getData(@Path("company_id") companyId: String,@Body body: GetEngineRequest)
+    : Response<GetEngineResponse>
     
     @POST ("/service/platform/finance/v1.0/company/{company_id}/get-reason")
-    fun getReason(@Path("company_id") companyId: String,@Body body: GetReasonRequest)
-    : Deferred<Response<GetReasonResponse>>
+    suspend fun getReason(@Path("company_id") companyId: String,@Body body: GetReasonRequest)
+    : Response<GetReasonResponse>
     
     @POST ("/service/platform/finance/v1.0/company/{company_id}/get-report-list")
-    fun getReportList(@Path("company_id") companyId: String,@Body body: GetReportListRequest)
-    : Deferred<Response<GetEngineResponse>>
+    suspend fun getReportList(@Path("company_id") companyId: String,@Body body: GetReportListRequest)
+    : Response<GetEngineResponse>
     
     @POST ("/service/platform/finance/v1.0/company/{company_id}/get-affiliate-list")
-    fun getAffiliate(@Path("company_id") companyId: String,@Body body: GetAffiliate)
-    : Deferred<Response<GetAffiliateResponse>>
+    suspend fun getAffiliate(@Path("company_id") companyId: String,@Body body: GetAffiliate)
+    : Response<GetAffiliateResponse>
     
     @POST ("/service/platform/finance/v1.0/company/{company_id}/download-credit-debit-note")
-    fun downloadCreditDebitNote(@Path("company_id") companyId: String,@Body body: DownloadCreditDebitNoteRequest)
-    : Deferred<Response<DownloadCreditDebitNoteResponse>>
+    suspend fun downloadCreditDebitNote(@Path("company_id") companyId: String,@Body body: DownloadCreditDebitNoteRequest)
+    : Response<DownloadCreditDebitNoteResponse>
     
     @POST ("/service/platform/finance/v1.0/company/{company_id}/payment-process")
-    fun paymentProcess(@Path("company_id") companyId: String,@Body body: PaymentProcessRequest)
-    : Deferred<Response<PaymentProcessResponse>>
+    suspend fun paymentProcess(@Path("company_id") companyId: String,@Body body: PaymentProcessRequest)
+    : Response<PaymentProcessResponse>
     
     @POST ("/service/platform/finance/v1.0/company/{company_id}/credit-line-data")
-    fun creditlineDataplatform(@Path("company_id") companyId: String,@Body body: CreditlineDataPlatformRequest)
-    : Deferred<Response<CreditlineDataPlatformResponse>>
+    suspend fun creditlineDataplatform(@Path("company_id") companyId: String,@Body body: CreditlineDataPlatformRequest)
+    : Response<CreditlineDataPlatformResponse>
     
     @POST ("/service/platform/finance/v1.0/company/{company_id}/creditline-opted")
-    fun isCreditlinePlatform(@Path("company_id") companyId: String,@Body body: IsCreditlinePlatformRequest)
-    : Deferred<Response<IsCreditlinePlatformResponse>>
+    suspend fun isCreditlinePlatform(@Path("company_id") companyId: String,@Body body: IsCreditlinePlatformRequest)
+    : Response<IsCreditlinePlatformResponse>
     
     @POST ("/service/platform/finance/v1.0/company/{company_id}/invoice-type")
-    fun invoiceType(@Path("company_id") companyId: String,@Body body: InvoiceTypeRequest)
-    : Deferred<Response<InvoiceTypeResponse>>
+    suspend fun invoiceType(@Path("company_id") companyId: String,@Body body: InvoiceTypeRequest)
+    : Response<InvoiceTypeResponse>
     
     @POST ("/service/platform/finance/v1.0/company/{company_id}/invoice/listing")
-    fun invoiceListing(@Path("company_id") companyId: String,@Body body: InvoiceListingRequest)
-    : Deferred<Response<InvoiceListingResponse>>
+    suspend fun invoiceListing(@Path("company_id") companyId: String,@Body body: InvoiceListingRequest)
+    : Response<InvoiceListingResponse>
     
     @POST ("/service/platform/finance/v1.0/company/{company_id}/invoice/pdf-view")
-    fun invoicePDF(@Path("company_id") companyId: String,@Body body: InvoicePdfRequest)
-    : Deferred<Response<InvoicePdfResponse>>
+    suspend fun invoicePDF(@Path("company_id") companyId: String,@Body body: InvoicePdfRequest)
+    : Response<InvoicePdfResponse>
     
 }

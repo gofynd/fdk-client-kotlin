@@ -64,7 +64,7 @@ class ThemeDataManagerClass(val config: ApplicationConfig, val unauthorizedActio
         return retrofitHttpClient?.initializeRestClient(ThemeApiList::class.java) as? ThemeApiList
     }
     
-    fun getAllPages(themeId: String): Deferred<Response<AllAvailablePageSchema>>? {
+   suspend fun getAllPages(themeId: String): Response<AllAvailablePageSchema>? {
         var fullUrl : String? = _relativeUrls["getAllPages"] 
         
         fullUrl = fullUrl?.replace("{" + "theme_id" +"}",themeId.toString())
@@ -73,7 +73,7 @@ class ThemeDataManagerClass(val config: ApplicationConfig, val unauthorizedActio
 
     
     
-    fun getPage(themeId: String, pageValue: String): Deferred<Response<AvailablePageSchema>>? {
+   suspend fun getPage(themeId: String, pageValue: String): Response<AvailablePageSchema>? {
         var fullUrl : String? = _relativeUrls["getPage"] 
         
         fullUrl = fullUrl?.replace("{" + "theme_id" +"}",themeId.toString())
@@ -84,14 +84,14 @@ class ThemeDataManagerClass(val config: ApplicationConfig, val unauthorizedActio
 
     
     
-    fun getAppliedTheme(): Deferred<Response<ThemesSchema>>? {
+   suspend fun getAppliedTheme(): Response<ThemesSchema>? {
         var fullUrl : String? = _relativeUrls["getAppliedTheme"] 
         
         return themeApiList?.getAppliedTheme(fullUrl  )}
 
     
     
-    fun getThemeForPreview(themeId: String): Deferred<Response<ThemesSchema>>? {
+   suspend fun getThemeForPreview(themeId: String): Response<ThemesSchema>? {
         var fullUrl : String? = _relativeUrls["getThemeForPreview"] 
         
         fullUrl = fullUrl?.replace("{" + "theme_id" +"}",themeId.toString())

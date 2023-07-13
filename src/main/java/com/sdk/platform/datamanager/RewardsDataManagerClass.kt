@@ -39,7 +39,8 @@ class RewardsDataManagerClass(val config: PlatformConfig, val unauthorizedAction
             baseUrl = config.domain,
             interceptorList = interceptorMap,
             namespace = "PlatformRewards",
-            persistentCookieStore = config.persistentCookieStore
+            persistentCookieStore = config.persistentCookieStore,
+            certPublicKey = config.certPublicKey,
         )
         return retrofitHttpClient?.initializeRestClient(RewardsApiList::class.java) as? RewardsApiList
     }
@@ -62,7 +63,7 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     
     
     suspend fun showGiveaways(pageId: String, pageSize: Int)
-    : Deferred<Response<GiveawayResponse>>? {
+    : Response<GiveawayResponse>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 rewardsApiList?.showGiveaways(companyId = config.companyId , applicationId = applicationId , pageId = pageId, pageSize = pageSize )
         } else {
@@ -72,7 +73,7 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     
     
     suspend fun saveGiveAway(body: Giveaway)
-    : Deferred<Response<Giveaway>>? {
+    : Response<Giveaway>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 rewardsApiList?.saveGiveAway(companyId = config.companyId , applicationId = applicationId , body = body)
         } else {
@@ -82,7 +83,7 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     
     
     suspend fun getGiveawayById(id: String)
-    : Deferred<Response<Giveaway>>? {
+    : Response<Giveaway>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 rewardsApiList?.getGiveawayById(companyId = config.companyId , applicationId = applicationId , id = id )
         } else {
@@ -92,7 +93,7 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     
     
     suspend fun updateGiveAway(id: String,body: Giveaway)
-    : Deferred<Response<Giveaway>>? {
+    : Response<Giveaway>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 rewardsApiList?.updateGiveAway(companyId = config.companyId , applicationId = applicationId , id = id, body = body)
         } else {
@@ -102,7 +103,7 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     
     
     suspend fun showOffers()
-    : Deferred<Response<ArrayList<Offer>>>? {
+    : Response<ArrayList<Offer>>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 rewardsApiList?.showOffers(companyId = config.companyId , applicationId = applicationId  )
         } else {
@@ -112,7 +113,7 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     
     
     suspend fun getOfferByName(name: String)
-    : Deferred<Response<Offer>>? {
+    : Response<Offer>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 rewardsApiList?.getOfferByName(name = name, companyId = config.companyId , applicationId = applicationId  )
         } else {
@@ -122,7 +123,7 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     
     
     suspend fun updateOfferByName(name: String,body: Offer)
-    : Deferred<Response<Offer>>? {
+    : Response<Offer>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 rewardsApiList?.updateOfferByName(name = name, companyId = config.companyId , applicationId = applicationId , body = body)
         } else {
@@ -132,7 +133,7 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     
     
     suspend fun updateUserStatus(userId: String,body: AppUser)
-    : Deferred<Response<AppUser>>? {
+    : Response<AppUser>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 rewardsApiList?.updateUserStatus(userId = userId, companyId = config.companyId , applicationId = applicationId , body = body)
         } else {
@@ -142,7 +143,7 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     
     
     suspend fun getUserDetails(userId: String)
-    : Deferred<Response<UserRes>>? {
+    : Response<UserRes>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 rewardsApiList?.getUserDetails(userId = userId, companyId = config.companyId , applicationId = applicationId  )
         } else {
@@ -152,7 +153,7 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     
     
     suspend fun getUserPointsHistory(userId: String, pageId: String?=null, pageSize: Int?=null)
-    : Deferred<Response<HistoryRes>>? {
+    : Response<HistoryRes>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 rewardsApiList?.getUserPointsHistory(userId = userId, companyId = config.companyId , applicationId = applicationId , pageId = pageId, pageSize = pageSize )
         } else {
@@ -228,7 +229,7 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     }
     
     suspend fun getRewardsConfiguration()
-    : Deferred<Response<ConfigurationRes>>? {
+    : Response<ConfigurationRes>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 rewardsApiList?.getRewardsConfiguration(companyId = config.companyId , applicationId = applicationId  )
         } else {
@@ -238,7 +239,7 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     
     
     suspend fun setRewardsConfiguration(body: ConfigurationRequest)
-    : Deferred<Response<SetConfigurationRes>>? {
+    : Response<SetConfigurationRes>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 rewardsApiList?.setRewardsConfiguration(companyId = config.companyId , applicationId = applicationId , body = body)
         } else {

@@ -80,14 +80,14 @@ class OrderDataManagerClass(val config: ApplicationConfig, val unauthorizedActio
         return retrofitHttpClient?.initializeRestClient(OrderApiList::class.java) as? OrderApiList
     }
     
-    fun getOrders(status: Int?=null, pageNo: Int?=null, pageSize: Int?=null, fromDate: String?=null, toDate: String?=null, customMeta: String?=null): Deferred<Response<OrderList>>? {
+   suspend fun getOrders(status: Int?=null, pageNo: Int?=null, pageSize: Int?=null, fromDate: String?=null, toDate: String?=null, customMeta: String?=null): Response<OrderList>? {
         var fullUrl : String? = _relativeUrls["getOrders"] 
         
         return orderApiList?.getOrders(fullUrl    ,  status = status,    pageNo = pageNo,    pageSize = pageSize,    fromDate = fromDate,    toDate = toDate,    customMeta = customMeta)}
 
     
     
-    fun getOrderById(orderId: String): Deferred<Response<OrderById>>? {
+   suspend fun getOrderById(orderId: String): Response<OrderById>? {
         var fullUrl : String? = _relativeUrls["getOrderById"] 
         
         fullUrl = fullUrl?.replace("{" + "order_id" +"}",orderId.toString())
@@ -96,7 +96,7 @@ class OrderDataManagerClass(val config: ApplicationConfig, val unauthorizedActio
 
     
     
-    fun getPosOrderById(orderId: String): Deferred<Response<OrderById>>? {
+   suspend fun getPosOrderById(orderId: String): Response<OrderById>? {
         var fullUrl : String? = _relativeUrls["getPosOrderById"] 
         
         fullUrl = fullUrl?.replace("{" + "order_id" +"}",orderId.toString())
@@ -105,7 +105,7 @@ class OrderDataManagerClass(val config: ApplicationConfig, val unauthorizedActio
 
     
     
-    fun getShipmentById(shipmentId: String): Deferred<Response<ShipmentById>>? {
+   suspend fun getShipmentById(shipmentId: String): Response<ShipmentById>? {
         var fullUrl : String? = _relativeUrls["getShipmentById"] 
         
         fullUrl = fullUrl?.replace("{" + "shipment_id" +"}",shipmentId.toString())
@@ -114,7 +114,7 @@ class OrderDataManagerClass(val config: ApplicationConfig, val unauthorizedActio
 
     
     
-    fun getInvoiceByShipmentId(shipmentId: String): Deferred<Response<ResponseGetInvoiceShipment>>? {
+   suspend fun getInvoiceByShipmentId(shipmentId: String): Response<ResponseGetInvoiceShipment>? {
         var fullUrl : String? = _relativeUrls["getInvoiceByShipmentId"] 
         
         fullUrl = fullUrl?.replace("{" + "shipment_id" +"}",shipmentId.toString())
@@ -123,7 +123,7 @@ class OrderDataManagerClass(val config: ApplicationConfig, val unauthorizedActio
 
     
     
-    fun trackShipment(shipmentId: String): Deferred<Response<ShipmentTrack>>? {
+   suspend fun trackShipment(shipmentId: String): Response<ShipmentTrack>? {
         var fullUrl : String? = _relativeUrls["trackShipment"] 
         
         fullUrl = fullUrl?.replace("{" + "shipment_id" +"}",shipmentId.toString())
@@ -132,7 +132,7 @@ class OrderDataManagerClass(val config: ApplicationConfig, val unauthorizedActio
 
     
     
-    fun getCustomerDetailsByShipmentId(orderId: String, shipmentId: String): Deferred<Response<CustomerDetailsResponse>>? {
+   suspend fun getCustomerDetailsByShipmentId(orderId: String, shipmentId: String): Response<CustomerDetailsResponse>? {
         var fullUrl : String? = _relativeUrls["getCustomerDetailsByShipmentId"] 
         
         fullUrl = fullUrl?.replace("{" + "order_id" +"}",orderId.toString())
@@ -143,7 +143,7 @@ class OrderDataManagerClass(val config: ApplicationConfig, val unauthorizedActio
 
     
     
-    fun sendOtpToShipmentCustomer(orderId: String, shipmentId: String): Deferred<Response<SendOtpToCustomerResponse>>? {
+   suspend fun sendOtpToShipmentCustomer(orderId: String, shipmentId: String): Response<SendOtpToCustomerResponse>? {
         var fullUrl : String? = _relativeUrls["sendOtpToShipmentCustomer"] 
         
         fullUrl = fullUrl?.replace("{" + "order_id" +"}",orderId.toString())
@@ -154,7 +154,7 @@ class OrderDataManagerClass(val config: ApplicationConfig, val unauthorizedActio
 
     
     
-    fun verifyOtpShipmentCustomer(orderId: String, shipmentId: String, body: VerifyOtp): Deferred<Response<VerifyOtpResponse>>? {
+   suspend fun verifyOtpShipmentCustomer(orderId: String, shipmentId: String, body: VerifyOtp): Response<VerifyOtpResponse>? {
         var fullUrl : String? = _relativeUrls["verifyOtpShipmentCustomer"] 
         
         fullUrl = fullUrl?.replace("{" + "order_id" +"}",orderId.toString())
@@ -165,7 +165,7 @@ class OrderDataManagerClass(val config: ApplicationConfig, val unauthorizedActio
 
     
     
-    fun getShipmentBagReasons(shipmentId: String, bagId: String): Deferred<Response<ShipmentBagReasons>>? {
+   suspend fun getShipmentBagReasons(shipmentId: String, bagId: String): Response<ShipmentBagReasons>? {
         var fullUrl : String? = _relativeUrls["getShipmentBagReasons"] 
         
         fullUrl = fullUrl?.replace("{" + "shipment_id" +"}",shipmentId.toString())
@@ -176,7 +176,7 @@ class OrderDataManagerClass(val config: ApplicationConfig, val unauthorizedActio
 
     
     
-    fun getShipmentReasons(shipmentId: String): Deferred<Response<ShipmentReasons>>? {
+   suspend fun getShipmentReasons(shipmentId: String): Response<ShipmentReasons>? {
         var fullUrl : String? = _relativeUrls["getShipmentReasons"] 
         
         fullUrl = fullUrl?.replace("{" + "shipment_id" +"}",shipmentId.toString())
@@ -185,7 +185,7 @@ class OrderDataManagerClass(val config: ApplicationConfig, val unauthorizedActio
 
     
     
-    fun updateShipmentStatus(shipmentId: String, body: UpdateShipmentStatusRequest): Deferred<Response<ShipmentApplicationStatusResponse>>? {
+   suspend fun updateShipmentStatus(shipmentId: String, body: UpdateShipmentStatusRequest): Response<ShipmentApplicationStatusResponse>? {
         var fullUrl : String? = _relativeUrls["updateShipmentStatus"] 
         
         fullUrl = fullUrl?.replace("{" + "shipment_id" +"}",shipmentId.toString())

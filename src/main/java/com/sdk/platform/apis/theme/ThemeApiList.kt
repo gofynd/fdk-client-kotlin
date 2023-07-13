@@ -10,99 +10,99 @@ import com.sdk.platform.models.theme.*
 interface ThemeApiList {
     
     @GET ("/service/platform/theme/v1.0/company/{company_id}/application/{application_id}/{theme_id}/page")
-    fun getAllPages(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Path("theme_id") themeId: String)
-    : Deferred<Response<AllAvailablePageSchema>>
+    suspend fun getAllPages(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Path("theme_id") themeId: String)
+    : Response<AllAvailablePageSchema>
     
     @POST ("/service/platform/theme/v1.0/company/{company_id}/application/{application_id}/{theme_id}/page")
-    fun createPage(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Path("theme_id") themeId: String,@Body body: AvailablePageSchema)
-    : Deferred<Response<AvailablePageSchema>>
+    suspend fun createPage(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Path("theme_id") themeId: String,@Body body: AvailablePageSchema)
+    : Response<AvailablePageSchema>
     
     @PUT ("/service/platform/theme/v1.0/company/{company_id}/application/{application_id}/{theme_id}/page")
-    fun updateMultiplePages(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Path("theme_id") themeId: String,@Body body: AllAvailablePageSchema)
-    : Deferred<Response<AllAvailablePageSchema>>
+    suspend fun updateMultiplePages(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Path("theme_id") themeId: String,@Body body: AllAvailablePageSchema)
+    : Response<AllAvailablePageSchema>
     
     @GET ("/service/platform/theme/v1.0/company/{company_id}/application/{application_id}/{theme_id}/{page_value}")
-    fun getPage(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Path("theme_id") themeId: String, @Path("page_value") pageValue: String)
-    : Deferred<Response<AvailablePageSchema>>
+    suspend fun getPage(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Path("theme_id") themeId: String, @Path("page_value") pageValue: String)
+    : Response<AvailablePageSchema>
     
     @PUT ("/service/platform/theme/v1.0/company/{company_id}/application/{application_id}/{theme_id}/{page_value}")
-    fun updatePage(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Path("theme_id") themeId: String, @Path("page_value") pageValue: String,@Body body: AvailablePageSchema)
-    : Deferred<Response<AvailablePageSchema>>
+    suspend fun updatePage(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Path("theme_id") themeId: String, @Path("page_value") pageValue: String,@Body body: AvailablePageSchema)
+    : Response<AvailablePageSchema>
     
     @DELETE ("/service/platform/theme/v1.0/company/{company_id}/application/{application_id}/{theme_id}/{page_value}")
-    fun deletePage(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Path("theme_id") themeId: String, @Path("page_value") pageValue: String)
-    : Deferred<Response<AvailablePageSchema>>
+    suspend fun deletePage(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Path("theme_id") themeId: String, @Path("page_value") pageValue: String)
+    : Response<AvailablePageSchema>
     
     @GET ("/service/platform/theme/v1.0/company/{company_id}/application/{application_id}/library")
-    fun getThemeLibrary(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Query("page_size") pageSize: Int?, @Query("page_no") pageNo: Int?)
-    : Deferred<Response<ThemesListingResponseSchema>>
+    suspend fun getThemeLibrary(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Query("page_size") pageSize: Int?, @Query("page_no") pageNo: Int?)
+    : Response<ThemesListingResponseSchema>
     
     @POST ("/service/platform/theme/v1.0/company/{company_id}/application/{application_id}/library")
-    fun addToThemeLibrary(@Path("company_id") companyId: String, @Path("application_id") applicationId: String,@Body body: AddThemeRequestSchema)
-    : Deferred<Response<ThemesSchema>>
+    suspend fun addToThemeLibrary(@Path("company_id") companyId: String, @Path("application_id") applicationId: String,@Body body: AddThemeRequestSchema)
+    : Response<ThemesSchema>
     
     @POST ("/service/platform/theme/v1.0/company/{company_id}/application/{application_id}/apply")
-    fun applyTheme(@Path("company_id") companyId: String, @Path("application_id") applicationId: String,@Body body: AddThemeRequestSchema)
-    : Deferred<Response<ThemesSchema>>
+    suspend fun applyTheme(@Path("company_id") companyId: String, @Path("application_id") applicationId: String,@Body body: AddThemeRequestSchema)
+    : Response<ThemesSchema>
     
     @GET ("/service/platform/theme/v1.0/company/{company_id}/application/{application_id}/{theme_id}/upgradable")
-    fun isUpgradable(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Path("theme_id") themeId: String)
-    : Deferred<Response<UpgradableThemeSchema>>
+    suspend fun isUpgradable(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Path("theme_id") themeId: String)
+    : Response<UpgradableThemeSchema>
     
     @PUT ("/service/platform/theme/v1.0/company/{company_id}/application/{application_id}/{theme_id}/upgrade")
-    fun upgradeTheme(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Path("theme_id") themeId: String)
-    : Deferred<Response<ThemesSchema>>
+    suspend fun upgradeTheme(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Path("theme_id") themeId: String)
+    : Response<ThemesSchema>
     
     @GET ("/service/platform/theme/v1.0/company/{company_id}/application/{application_id}/list/public")
-    fun getPublicThemes(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Query("page_size") pageSize: Int?, @Query("page_no") pageNo: Int?)
-    : Deferred<Response<ThemesListingResponseSchema>>
+    suspend fun getPublicThemes(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Query("page_size") pageSize: Int?, @Query("page_no") pageNo: Int?)
+    : Response<ThemesListingResponseSchema>
     
     @POST ("/service/platform/theme/v1.0/company/{company_id}/application/{application_id}/")
-    fun createTheme(@Path("company_id") companyId: String, @Path("application_id") applicationId: String,@Body body: ThemesSchema)
-    : Deferred<Response<ThemesSchema>>
+    suspend fun createTheme(@Path("company_id") companyId: String, @Path("application_id") applicationId: String,@Body body: ThemesSchema)
+    : Response<ThemesSchema>
     
     @GET ("/service/platform/theme/v1.0/company/{company_id}/application/{application_id}/")
-    fun getAppliedTheme(@Path("company_id") companyId: String, @Path("application_id") applicationId: String)
-    : Deferred<Response<ThemesSchema>>
+    suspend fun getAppliedTheme(@Path("company_id") companyId: String, @Path("application_id") applicationId: String)
+    : Response<ThemesSchema>
     
     @GET ("/service/platform/theme/v1.0/company/{company_id}/application/{application_id}/fonts")
-    fun getFonts(@Path("company_id") companyId: String, @Path("application_id") applicationId: String)
-    : Deferred<Response<FontsSchema>>
+    suspend fun getFonts(@Path("company_id") companyId: String, @Path("application_id") applicationId: String)
+    : Response<FontsSchema>
     
     @GET ("/service/platform/theme/v1.0/company/{company_id}/application/{application_id}/{theme_id}")
-    fun getThemeById(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Path("theme_id") themeId: String)
-    : Deferred<Response<ThemesSchema>>
+    suspend fun getThemeById(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Path("theme_id") themeId: String)
+    : Response<ThemesSchema>
     
     @PUT ("/service/platform/theme/v1.0/company/{company_id}/application/{application_id}/{theme_id}")
-    fun updateTheme(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Path("theme_id") themeId: String,@Body body: ThemesSchema)
-    : Deferred<Response<ThemesSchema>>
+    suspend fun updateTheme(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Path("theme_id") themeId: String,@Body body: ThemesSchema)
+    : Response<ThemesSchema>
     
     @DELETE ("/service/platform/theme/v1.0/company/{company_id}/application/{application_id}/{theme_id}")
-    fun deleteTheme(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Path("theme_id") themeId: String)
-    : Deferred<Response<ThemesSchema>>
+    suspend fun deleteTheme(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Path("theme_id") themeId: String)
+    : Response<ThemesSchema>
     
     @GET ("/service/platform/theme/v1.0/company/{company_id}/application/{application_id}/{theme_id}/preview")
-    fun getThemeForPreview(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Path("theme_id") themeId: String)
-    : Deferred<Response<ThemesSchema>>
+    suspend fun getThemeForPreview(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Path("theme_id") themeId: String)
+    : Response<ThemesSchema>
     
     @PUT ("/service/platform/theme/v1.0/company/{company_id}/application/{application_id}/{theme_id}/publish")
-    fun publishTheme(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Path("theme_id") themeId: String)
-    : Deferred<Response<ThemesSchema>>
+    suspend fun publishTheme(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Path("theme_id") themeId: String)
+    : Response<ThemesSchema>
     
     @PUT ("/service/platform/theme/v1.0/company/{company_id}/application/{application_id}/{theme_id}/unpublish")
-    fun unpublishTheme(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Path("theme_id") themeId: String)
-    : Deferred<Response<ThemesSchema>>
+    suspend fun unpublishTheme(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Path("theme_id") themeId: String)
+    : Response<ThemesSchema>
     
     @PUT ("/service/platform/theme/v1.0/company/{company_id}/application/{application_id}/{theme_id}/archive")
-    fun archiveTheme(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Path("theme_id") themeId: String)
-    : Deferred<Response<ThemesSchema>>
+    suspend fun archiveTheme(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Path("theme_id") themeId: String)
+    : Response<ThemesSchema>
     
     @PUT ("/service/platform/theme/v1.0/company/{company_id}/application/{application_id}/{theme_id}/unarchive")
-    fun unarchiveTheme(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Path("theme_id") themeId: String)
-    : Deferred<Response<ThemesSchema>>
+    suspend fun unarchiveTheme(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Path("theme_id") themeId: String)
+    : Response<ThemesSchema>
     
     @HEAD ("/service/platform/theme/v1.0/company/{company_id}/application/{application_id}/{theme_id}/polling")
-    fun getThemeLastModified(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Path("theme_id") themeId: String)
-    : Deferred<Response<Void>>
+    suspend fun getThemeLastModified(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Path("theme_id") themeId: String)
+    : Response<Void>
     
 }

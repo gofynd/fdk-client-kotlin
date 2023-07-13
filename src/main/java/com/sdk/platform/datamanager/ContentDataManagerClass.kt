@@ -39,7 +39,8 @@ class ContentDataManagerClass(val config: PlatformConfig, val unauthorizedAction
             baseUrl = config.domain,
             interceptorList = interceptorMap,
             namespace = "PlatformContent",
-            persistentCookieStore = config.persistentCookieStore
+            persistentCookieStore = config.persistentCookieStore,
+            certPublicKey = config.certPublicKey,
         )
         return retrofitHttpClient?.initializeRestClient(ContentApiList::class.java) as? ContentApiList
     }
@@ -120,7 +121,7 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     
     
     suspend fun getAnnouncementsList(pageNo: Int?=null, pageSize: Int?=null)
-    : Deferred<Response<GetAnnouncementListSchema>>? {
+    : Response<GetAnnouncementListSchema>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 contentApiList?.getAnnouncementsList(companyId = config.companyId , applicationId = applicationId , pageNo = pageNo, pageSize = pageSize )
         } else {
@@ -189,7 +190,7 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     }
     
     suspend fun createAnnouncement(body: AdminAnnouncementSchema)
-    : Deferred<Response<CreateAnnouncementSchema>>? {
+    : Response<CreateAnnouncementSchema>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 contentApiList?.createAnnouncement(companyId = config.companyId , applicationId = applicationId , body = body)
         } else {
@@ -199,7 +200,7 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     
     
     suspend fun getAnnouncementById(announcementId: String)
-    : Deferred<Response<AdminAnnouncementSchema>>? {
+    : Response<AdminAnnouncementSchema>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 contentApiList?.getAnnouncementById(companyId = config.companyId , applicationId = applicationId , announcementId = announcementId )
         } else {
@@ -209,7 +210,7 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     
     
     suspend fun updateAnnouncement(announcementId: String,body: AdminAnnouncementSchema)
-    : Deferred<Response<CreateAnnouncementSchema>>? {
+    : Response<CreateAnnouncementSchema>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 contentApiList?.updateAnnouncement(companyId = config.companyId , applicationId = applicationId , announcementId = announcementId, body = body)
         } else {
@@ -219,7 +220,7 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     
     
     suspend fun updateAnnouncementSchedule(announcementId: String,body: ScheduleSchema)
-    : Deferred<Response<CreateAnnouncementSchema>>? {
+    : Response<CreateAnnouncementSchema>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 contentApiList?.updateAnnouncementSchedule(companyId = config.companyId , applicationId = applicationId , announcementId = announcementId, body = body)
         } else {
@@ -229,7 +230,7 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     
     
     suspend fun deleteAnnouncement(announcementId: String)
-    : Deferred<Response<CreateAnnouncementSchema>>? {
+    : Response<CreateAnnouncementSchema>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 contentApiList?.deleteAnnouncement(companyId = config.companyId , applicationId = applicationId , announcementId = announcementId )
         } else {
@@ -239,7 +240,7 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     
     
     suspend fun createBlog(body: BlogRequest)
-    : Deferred<Response<BlogSchema>>? {
+    : Response<BlogSchema>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 contentApiList?.createBlog(companyId = config.companyId , applicationId = applicationId , body = body)
         } else {
@@ -249,7 +250,7 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     
     
     suspend fun getBlogs(pageNo: Int?=null, pageSize: Int?=null)
-    : Deferred<Response<BlogGetResponse>>? {
+    : Response<BlogGetResponse>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 contentApiList?.getBlogs(companyId = config.companyId , applicationId = applicationId , pageNo = pageNo, pageSize = pageSize )
         } else {
@@ -318,7 +319,7 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     }
     
     suspend fun updateBlog(id: String,body: BlogRequest)
-    : Deferred<Response<BlogSchema>>? {
+    : Response<BlogSchema>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 contentApiList?.updateBlog(companyId = config.companyId , applicationId = applicationId , id = id, body = body)
         } else {
@@ -328,7 +329,7 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     
     
     suspend fun deleteBlog(id: String)
-    : Deferred<Response<BlogSchema>>? {
+    : Response<BlogSchema>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 contentApiList?.deleteBlog(companyId = config.companyId , applicationId = applicationId , id = id )
         } else {
@@ -338,7 +339,7 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     
     
     suspend fun getComponentById(slug: String)
-    : Deferred<Response<BlogSchema>>? {
+    : Response<BlogSchema>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 contentApiList?.getComponentById(companyId = config.companyId , applicationId = applicationId , slug = slug )
         } else {
@@ -348,7 +349,7 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     
     
     suspend fun addDataLoader(body: DataLoaderSchema)
-    : Deferred<Response<DataLoaderResponseSchema>>? {
+    : Response<DataLoaderResponseSchema>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 contentApiList?.addDataLoader(companyId = config.companyId , applicationId = applicationId , body = body)
         } else {
@@ -358,7 +359,7 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     
     
     suspend fun getDataLoaders()
-    : Deferred<Response<DataLoadersSchema>>? {
+    : Response<DataLoadersSchema>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 contentApiList?.getDataLoaders(companyId = config.companyId , applicationId = applicationId  )
         } else {
@@ -368,7 +369,7 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     
     
     suspend fun deleteDataLoader(dataLoaderId: String)
-    : Deferred<Response<DataLoaderResponseSchema>>? {
+    : Response<DataLoaderResponseSchema>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 contentApiList?.deleteDataLoader(companyId = config.companyId , applicationId = applicationId , dataLoaderId = dataLoaderId )
         } else {
@@ -378,7 +379,7 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     
     
     suspend fun editDataLoader(dataLoaderId: String,body: DataLoaderSchema)
-    : Deferred<Response<DataLoaderResponseSchema>>? {
+    : Response<DataLoaderResponseSchema>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 contentApiList?.editDataLoader(companyId = config.companyId , applicationId = applicationId , dataLoaderId = dataLoaderId, body = body)
         } else {
@@ -388,7 +389,7 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     
     
     suspend fun selectDataLoader(dataLoaderId: String)
-    : Deferred<Response<DataLoaderResponseSchema>>? {
+    : Response<DataLoaderResponseSchema>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 contentApiList?.selectDataLoader(companyId = config.companyId , applicationId = applicationId , dataLoaderId = dataLoaderId )
         } else {
@@ -398,7 +399,7 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     
     
     suspend fun resetDataLoader(service: String, operationId: String)
-    : Deferred<Response<DataLoaderResetResponseSchema>>? {
+    : Response<DataLoaderResetResponseSchema>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 contentApiList?.resetDataLoader(companyId = config.companyId , applicationId = applicationId , service = service, operationId = operationId )
         } else {
@@ -408,7 +409,7 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     
     
     suspend fun getFaqCategories()
-    : Deferred<Response<GetFaqCategoriesSchema>>? {
+    : Response<GetFaqCategoriesSchema>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 contentApiList?.getFaqCategories(companyId = config.companyId , applicationId = applicationId  )
         } else {
@@ -418,7 +419,7 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     
     
     suspend fun getFaqCategoryBySlugOrId(idOrSlug: String)
-    : Deferred<Response<GetFaqCategoryBySlugSchema>>? {
+    : Response<GetFaqCategoryBySlugSchema>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 contentApiList?.getFaqCategoryBySlugOrId(companyId = config.companyId , applicationId = applicationId , idOrSlug = idOrSlug )
         } else {
@@ -428,7 +429,7 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     
     
     suspend fun createFaqCategory(body: CreateFaqCategoryRequestSchema)
-    : Deferred<Response<CreateFaqCategorySchema>>? {
+    : Response<CreateFaqCategorySchema>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 contentApiList?.createFaqCategory(companyId = config.companyId , applicationId = applicationId , body = body)
         } else {
@@ -438,7 +439,7 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     
     
     suspend fun updateFaqCategory(id: String,body: UpdateFaqCategoryRequestSchema)
-    : Deferred<Response<CreateFaqCategorySchema>>? {
+    : Response<CreateFaqCategorySchema>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 contentApiList?.updateFaqCategory(companyId = config.companyId , applicationId = applicationId , id = id, body = body)
         } else {
@@ -448,7 +449,7 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     
     
     suspend fun deleteFaqCategory(id: String)
-    : Deferred<Response<FaqSchema>>? {
+    : Response<FaqSchema>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 contentApiList?.deleteFaqCategory(companyId = config.companyId , applicationId = applicationId , id = id )
         } else {
@@ -458,7 +459,7 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     
     
     suspend fun getFaqsByCategoryIdOrSlug(idOrSlug: String)
-    : Deferred<Response<GetFaqSchema>>? {
+    : Response<GetFaqSchema>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 contentApiList?.getFaqsByCategoryIdOrSlug(companyId = config.companyId , applicationId = applicationId , idOrSlug = idOrSlug )
         } else {
@@ -468,7 +469,7 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     
     
     suspend fun addFaq(categoryId: String,body: CreateFaqSchema)
-    : Deferred<Response<CreateFaqResponseSchema>>? {
+    : Response<CreateFaqResponseSchema>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 contentApiList?.addFaq(companyId = config.companyId , applicationId = applicationId , categoryId = categoryId, body = body)
         } else {
@@ -478,7 +479,7 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     
     
     suspend fun updateFaq(categoryId: String, faqId: String,body: CreateFaqSchema)
-    : Deferred<Response<CreateFaqResponseSchema>>? {
+    : Response<CreateFaqResponseSchema>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 contentApiList?.updateFaq(companyId = config.companyId , applicationId = applicationId , categoryId = categoryId, faqId = faqId, body = body)
         } else {
@@ -488,7 +489,7 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     
     
     suspend fun deleteFaq(categoryId: String, faqId: String)
-    : Deferred<Response<CreateFaqResponseSchema>>? {
+    : Response<CreateFaqResponseSchema>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 contentApiList?.deleteFaq(companyId = config.companyId , applicationId = applicationId , categoryId = categoryId, faqId = faqId )
         } else {
@@ -498,7 +499,7 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     
     
     suspend fun getFaqByIdOrSlug(idOrSlug: String)
-    : Deferred<Response<CreateFaqResponseSchema>>? {
+    : Response<CreateFaqResponseSchema>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 contentApiList?.getFaqByIdOrSlug(companyId = config.companyId , applicationId = applicationId , idOrSlug = idOrSlug )
         } else {
@@ -508,7 +509,7 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     
     
     suspend fun generateSEOTitle(type: String,body: GenerateSEOContent)
-    : Deferred<Response<GeneratedSEOContent>>? {
+    : Response<GeneratedSEOContent>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 contentApiList?.generateSEOTitle(companyId = config.companyId , applicationId = applicationId , type = type, body = body)
         } else {
@@ -518,7 +519,7 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     
     
     suspend fun getLandingPages(pageNo: Int?=null, pageSize: Int?=null)
-    : Deferred<Response<LandingPageGetResponse>>? {
+    : Response<LandingPageGetResponse>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 contentApiList?.getLandingPages(companyId = config.companyId , applicationId = applicationId , pageNo = pageNo, pageSize = pageSize )
         } else {
@@ -587,7 +588,7 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     }
     
     suspend fun createLandingPage(body: LandingPageSchema)
-    : Deferred<Response<LandingPageSchema>>? {
+    : Response<LandingPageSchema>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 contentApiList?.createLandingPage(companyId = config.companyId , applicationId = applicationId , body = body)
         } else {
@@ -597,7 +598,7 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     
     
     suspend fun updateLandingPage(id: String,body: LandingPageSchema)
-    : Deferred<Response<LandingPageSchema>>? {
+    : Response<LandingPageSchema>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 contentApiList?.updateLandingPage(companyId = config.companyId , applicationId = applicationId , id = id, body = body)
         } else {
@@ -607,7 +608,7 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     
     
     suspend fun deleteLandingPage(id: String)
-    : Deferred<Response<LandingPageSchema>>? {
+    : Response<LandingPageSchema>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 contentApiList?.deleteLandingPage(companyId = config.companyId , applicationId = applicationId , id = id )
         } else {
@@ -617,7 +618,7 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     
     
     suspend fun getLegalInformation()
-    : Deferred<Response<ApplicationLegal>>? {
+    : Response<ApplicationLegal>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 contentApiList?.getLegalInformation(companyId = config.companyId , applicationId = applicationId  )
         } else {
@@ -627,7 +628,7 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     
     
     suspend fun updateLegalInformation(body: ApplicationLegal)
-    : Deferred<Response<ApplicationLegal>>? {
+    : Response<ApplicationLegal>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 contentApiList?.updateLegalInformation(companyId = config.companyId , applicationId = applicationId , body = body)
         } else {
@@ -637,7 +638,7 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     
     
     suspend fun getNavigations(devicePlatform: String, pageNo: Int?=null, pageSize: Int?=null)
-    : Deferred<Response<NavigationGetResponse>>? {
+    : Response<NavigationGetResponse>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 contentApiList?.getNavigations(companyId = config.companyId , applicationId = applicationId , devicePlatform = devicePlatform, pageNo = pageNo, pageSize = pageSize )
         } else {
@@ -711,7 +712,7 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     }
     
     suspend fun createNavigation(body: NavigationRequest)
-    : Deferred<Response<NavigationSchema>>? {
+    : Response<NavigationSchema>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 contentApiList?.createNavigation(companyId = config.companyId , applicationId = applicationId , body = body)
         } else {
@@ -721,7 +722,7 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     
     
     suspend fun getDefaultNavigations()
-    : Deferred<Response<DefaultNavigationResponse>>? {
+    : Response<DefaultNavigationResponse>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 contentApiList?.getDefaultNavigations(companyId = config.companyId , applicationId = applicationId  )
         } else {
@@ -731,7 +732,7 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     
     
     suspend fun getNavigationBySlug(slug: String, devicePlatform: String)
-    : Deferred<Response<NavigationSchema>>? {
+    : Response<NavigationSchema>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 contentApiList?.getNavigationBySlug(companyId = config.companyId , applicationId = applicationId , slug = slug, devicePlatform = devicePlatform )
         } else {
@@ -741,7 +742,7 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     
     
     suspend fun updateNavigation(id: String,body: NavigationRequest)
-    : Deferred<Response<NavigationSchema>>? {
+    : Response<NavigationSchema>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 contentApiList?.updateNavigation(companyId = config.companyId , applicationId = applicationId , id = id, body = body)
         } else {
@@ -751,7 +752,7 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     
     
     suspend fun deleteNavigation(id: String)
-    : Deferred<Response<NavigationSchema>>? {
+    : Response<NavigationSchema>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 contentApiList?.deleteNavigation(companyId = config.companyId , applicationId = applicationId , id = id )
         } else {
@@ -761,7 +762,7 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     
     
     suspend fun getPageMeta()
-    : Deferred<Response<PageMetaSchema>>? {
+    : Response<PageMetaSchema>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 contentApiList?.getPageMeta(companyId = config.companyId , applicationId = applicationId  )
         } else {
@@ -771,7 +772,7 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     
     
     suspend fun getPageSpec()
-    : Deferred<Response<PageSpec>>? {
+    : Response<PageSpec>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 contentApiList?.getPageSpec(companyId = config.companyId , applicationId = applicationId  )
         } else {
@@ -781,7 +782,7 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     
     
     suspend fun createPagePreview(body: PageRequest)
-    : Deferred<Response<PageSchema>>? {
+    : Response<PageSchema>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 contentApiList?.createPagePreview(companyId = config.companyId , applicationId = applicationId , body = body)
         } else {
@@ -791,7 +792,7 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     
     
     suspend fun updatePagePreview(slug: String,body: PagePublishRequest)
-    : Deferred<Response<PageSchema>>? {
+    : Response<PageSchema>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 contentApiList?.updatePagePreview(companyId = config.companyId , applicationId = applicationId , slug = slug, body = body)
         } else {
@@ -801,7 +802,7 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     
     
     suspend fun deletePage(id: String)
-    : Deferred<Response<PageSchema>>? {
+    : Response<PageSchema>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 contentApiList?.deletePage(companyId = config.companyId , applicationId = applicationId , id = id )
         } else {
@@ -811,7 +812,7 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     
     
     suspend fun addPathRedirectionRules(body: PathMappingSchema)
-    : Deferred<Response<PathMappingSchema>>? {
+    : Response<PathMappingSchema>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 contentApiList?.addPathRedirectionRules(companyId = config.companyId , applicationId = applicationId , body = body)
         } else {
@@ -821,7 +822,7 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     
     
     suspend fun getPathRedirectionRules(pageSize: Int?=null, pageNo: Int?=null)
-    : Deferred<Response<PathMappingSchema>>? {
+    : Response<PathMappingSchema>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 contentApiList?.getPathRedirectionRules(companyId = config.companyId , applicationId = applicationId , pageSize = pageSize, pageNo = pageNo )
         } else {
@@ -831,7 +832,7 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     
     
     suspend fun getPathRedirectionRule(pathId: String)
-    : Deferred<Response<PathMappingSchema>>? {
+    : Response<PathMappingSchema>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 contentApiList?.getPathRedirectionRule(companyId = config.companyId , applicationId = applicationId , pathId = pathId )
         } else {
@@ -841,7 +842,7 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     
     
     suspend fun updatePathRedirectionRules(pathId: String,body: PathMappingSchema)
-    : Deferred<Response<PathMappingSchema>>? {
+    : Response<PathMappingSchema>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 contentApiList?.updatePathRedirectionRules(companyId = config.companyId , applicationId = applicationId , pathId = pathId, body = body)
         } else {
@@ -851,7 +852,7 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     
     
     suspend fun deletePathRedirectionRules(pathId: String)
-    : Deferred<Response<HashMap<String,Any>>>? {
+    : Response<HashMap<String,Any>>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 contentApiList?.deletePathRedirectionRules(companyId = config.companyId , applicationId = applicationId , pathId = pathId )
         } else {
@@ -861,7 +862,7 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     
     
     suspend fun getSEOConfiguration()
-    : Deferred<Response<SeoComponent>>? {
+    : Response<SeoComponent>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 contentApiList?.getSEOConfiguration(companyId = config.companyId , applicationId = applicationId  )
         } else {
@@ -871,7 +872,7 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     
     
     suspend fun updateSEOConfiguration(body: SeoComponent)
-    : Deferred<Response<SeoSchema>>? {
+    : Response<SeoSchema>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 contentApiList?.updateSEOConfiguration(companyId = config.companyId , applicationId = applicationId , body = body)
         } else {
@@ -881,7 +882,7 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     
     
     suspend fun getSlideshows(devicePlatform: String, pageNo: Int?=null, pageSize: Int?=null)
-    : Deferred<Response<SlideshowGetResponse>>? {
+    : Response<SlideshowGetResponse>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 contentApiList?.getSlideshows(companyId = config.companyId , applicationId = applicationId , devicePlatform = devicePlatform, pageNo = pageNo, pageSize = pageSize )
         } else {
@@ -955,7 +956,7 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     }
     
     suspend fun createSlideshow(body: SlideshowRequest)
-    : Deferred<Response<SlideshowSchema>>? {
+    : Response<SlideshowSchema>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 contentApiList?.createSlideshow(companyId = config.companyId , applicationId = applicationId , body = body)
         } else {
@@ -965,7 +966,7 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     
     
     suspend fun getSlideshowBySlug(slug: String, devicePlatform: String)
-    : Deferred<Response<SlideshowSchema>>? {
+    : Response<SlideshowSchema>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 contentApiList?.getSlideshowBySlug(companyId = config.companyId , applicationId = applicationId , slug = slug, devicePlatform = devicePlatform )
         } else {
@@ -975,7 +976,7 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     
     
     suspend fun updateSlideshow(id: String,body: SlideshowRequest)
-    : Deferred<Response<SlideshowSchema>>? {
+    : Response<SlideshowSchema>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 contentApiList?.updateSlideshow(companyId = config.companyId , applicationId = applicationId , id = id, body = body)
         } else {
@@ -985,7 +986,7 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     
     
     suspend fun deleteSlideshow(id: String)
-    : Deferred<Response<SlideshowSchema>>? {
+    : Response<SlideshowSchema>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 contentApiList?.deleteSlideshow(companyId = config.companyId , applicationId = applicationId , id = id )
         } else {
@@ -995,7 +996,7 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     
     
     suspend fun getSupportInformation()
-    : Deferred<Response<Support>>? {
+    : Response<Support>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 contentApiList?.getSupportInformation(companyId = config.companyId , applicationId = applicationId  )
         } else {
@@ -1005,7 +1006,7 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     
     
     suspend fun updateSupportInformation(body: Support)
-    : Deferred<Response<Support>>? {
+    : Response<Support>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 contentApiList?.updateSupportInformation(companyId = config.companyId , applicationId = applicationId , body = body)
         } else {
@@ -1015,7 +1016,7 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     
     
     suspend fun updateInjectableTag(body: CreateTagRequestSchema)
-    : Deferred<Response<TagsSchema>>? {
+    : Response<TagsSchema>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 contentApiList?.updateInjectableTag(companyId = config.companyId , applicationId = applicationId , body = body)
         } else {
@@ -1025,7 +1026,7 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     
     
     suspend fun deleteAllInjectableTags()
-    : Deferred<Response<TagsSchema>>? {
+    : Response<TagsSchema>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 contentApiList?.deleteAllInjectableTags(companyId = config.companyId , applicationId = applicationId  )
         } else {
@@ -1035,7 +1036,7 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     
     
     suspend fun getInjectableTags()
-    : Deferred<Response<TagsSchema>>? {
+    : Response<TagsSchema>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 contentApiList?.getInjectableTags(companyId = config.companyId , applicationId = applicationId  )
         } else {
@@ -1045,7 +1046,7 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     
     
     suspend fun addInjectableTag(body: CreateTagRequestSchema)
-    : Deferred<Response<TagsSchema>>? {
+    : Response<TagsSchema>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 contentApiList?.addInjectableTag(companyId = config.companyId , applicationId = applicationId , body = body)
         } else {
@@ -1055,7 +1056,7 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     
     
     suspend fun removeInjectableTag(body: RemoveHandpickedSchema)
-    : Deferred<Response<TagDeleteSuccessResponse>>? {
+    : Response<TagDeleteSuccessResponse>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 contentApiList?.removeInjectableTag(companyId = config.companyId , applicationId = applicationId , body = body)
         } else {
@@ -1065,7 +1066,7 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     
     
     suspend fun editInjectableTag(tagId: String,body: UpdateHandpickedSchema)
-    : Deferred<Response<TagsSchema>>? {
+    : Response<TagsSchema>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 contentApiList?.editInjectableTag(companyId = config.companyId , applicationId = applicationId , tagId = tagId, body = body)
         } else {
@@ -1075,7 +1076,7 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     
     
     suspend fun getBlogBySlug(slug: String)
-    : Deferred<Response<BlogSchema>>? {
+    : Response<BlogSchema>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 contentApiList?.getBlogBySlug(companyId = config.companyId , applicationId = applicationId , slug = slug )
         } else {
@@ -1085,7 +1086,7 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     
     
     suspend fun createPage(body: PageRequest)
-    : Deferred<Response<PageSchema>>? {
+    : Response<PageSchema>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 contentApiList?.createPage(companyId = config.companyId , applicationId = applicationId , body = body)
         } else {
@@ -1095,7 +1096,7 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     
     
     suspend fun getPages(pageNo: Int?=null, pageSize: Int?=null)
-    : Deferred<Response<PageGetResponse>>? {
+    : Response<PageGetResponse>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 contentApiList?.getPages(companyId = config.companyId , applicationId = applicationId , pageNo = pageNo, pageSize = pageSize )
         } else {
@@ -1164,7 +1165,7 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     }
     
     suspend fun updatePage(id: String,body: PageSchema)
-    : Deferred<Response<PageSchema>>? {
+    : Response<PageSchema>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 contentApiList?.updatePage(companyId = config.companyId , applicationId = applicationId , id = id, body = body)
         } else {
@@ -1174,7 +1175,7 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     
     
     suspend fun getPageBySlug(slug: String)
-    : Deferred<Response<PageSchema>>? {
+    : Response<PageSchema>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 contentApiList?.getPageBySlug(companyId = config.companyId , applicationId = applicationId , slug = slug )
         } else {

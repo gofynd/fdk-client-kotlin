@@ -66,7 +66,7 @@ class LogisticDataManagerClass(val config: ApplicationConfig, val unauthorizedAc
         return retrofitHttpClient?.initializeRestClient(LogisticApiList::class.java) as? LogisticApiList
     }
     
-    fun getPincodeCity(pincode: String): Deferred<Response<PincodeApiResponse>>? {
+   suspend fun getPincodeCity(pincode: String): Response<PincodeApiResponse>? {
         var fullUrl : String? = _relativeUrls["getPincodeCity"] 
         
         fullUrl = fullUrl?.replace("{" + "pincode" +"}",pincode.toString())
@@ -75,28 +75,28 @@ class LogisticDataManagerClass(val config: ApplicationConfig, val unauthorizedAc
 
     
     
-    fun getTatProduct(body: TATViewRequest): Deferred<Response<TATViewResponse>>? {
+   suspend fun getTatProduct(body: TATViewRequest): Response<TATViewResponse>? {
         var fullUrl : String? = _relativeUrls["getTatProduct"] 
         
         return logisticApiList?.getTatProduct(fullUrl  ,body = body)}
 
     
     
-    fun getAllCountries(): Deferred<Response<CountryListResponse>>? {
+   suspend fun getAllCountries(): Response<CountryListResponse>? {
         var fullUrl : String? = _relativeUrls["getAllCountries"] 
         
         return logisticApiList?.getAllCountries(fullUrl  )}
 
     
     
-    fun getPincodeZones(body: GetZoneFromPincodeViewRequest): Deferred<Response<GetZoneFromPincodeViewResponse>>? {
+   suspend fun getPincodeZones(body: GetZoneFromPincodeViewRequest): Response<GetZoneFromPincodeViewResponse>? {
         var fullUrl : String? = _relativeUrls["getPincodeZones"] 
         
         return logisticApiList?.getPincodeZones(fullUrl  ,body = body)}
 
     
     
-    fun getOptimalLocations(body: ReAssignStoreRequest): Deferred<Response<ReAssignStoreResponse>>? {
+   suspend fun getOptimalLocations(body: ReAssignStoreRequest): Response<ReAssignStoreResponse>? {
         var fullUrl : String? = _relativeUrls["getOptimalLocations"] 
         
         return logisticApiList?.getOptimalLocations(fullUrl  ,body = body)}

@@ -39,14 +39,15 @@ class PartnerDataManagerClass(val config: PlatformConfig, val unauthorizedAction
             baseUrl = config.domain,
             interceptorList = interceptorMap,
             namespace = "PlatformPartner",
-            persistentCookieStore = config.persistentCookieStore
+            persistentCookieStore = config.persistentCookieStore,
+            certPublicKey = config.certPublicKey,
         )
         return retrofitHttpClient?.initializeRestClient(PartnerApiList::class.java) as? PartnerApiList
     }
     
     
     suspend fun subscribeExtension(entity: String, extensionId: String, entityId: String,body: SubscriptionRequest)
-    : Deferred<Response<SubscriptionRes>>? {
+    : Response<SubscriptionRes>? {
         
         return if (config.oauthClient.isAccessTokenValid()) {
             partnerApiList?.subscribeExtension(
@@ -58,7 +59,7 @@ class PartnerDataManagerClass(val config: PlatformConfig, val unauthorizedAction
     
     
     suspend fun getExtensionsForCompany(pageSize: Double?=null, tag: String?=null, currentPage: String?=null, pageNo: Double?=null, filterBy: String?=null, query: String?=null)
-    : Deferred<Response<ExtensionList>>? {
+    : Response<ExtensionList>? {
         
         return if (config.oauthClient.isAccessTokenValid()) {
             partnerApiList?.getExtensionsForCompany(
@@ -70,7 +71,7 @@ class PartnerDataManagerClass(val config: PlatformConfig, val unauthorizedAction
     
     
     suspend fun getPublicExtension(extensionId: String)
-    : Deferred<Response<PublicExtension>>? {
+    : Response<PublicExtension>? {
         
         return if (config.oauthClient.isAccessTokenValid()) {
             partnerApiList?.getPublicExtension(
@@ -82,7 +83,7 @@ class PartnerDataManagerClass(val config: PlatformConfig, val unauthorizedAction
     
     
     suspend fun getExtensionById(extensionId: String)
-    : Deferred<Response<ExtensionCommon>>? {
+    : Response<ExtensionCommon>? {
         
         return if (config.oauthClient.isAccessTokenValid()) {
             partnerApiList?.getExtensionById(
@@ -94,7 +95,7 @@ class PartnerDataManagerClass(val config: PlatformConfig, val unauthorizedAction
     
     
     suspend fun deleteExtensionById(extensionId: String, message: String, uninstallReasonType: String)
-    : Deferred<Response<UninstallExtension>>? {
+    : Response<UninstallExtension>? {
         
         return if (config.oauthClient.isAccessTokenValid()) {
             partnerApiList?.deleteExtensionById(
@@ -106,7 +107,7 @@ class PartnerDataManagerClass(val config: PlatformConfig, val unauthorizedAction
     
     
     suspend fun getPrivateExtensions(pageSize: Double?=null, pageNo: Double?=null, query: String?=null)
-    : Deferred<Response<ExtensionResponse>>? {
+    : Response<ExtensionResponse>? {
         
         return if (config.oauthClient.isAccessTokenValid()) {
             partnerApiList?.getPrivateExtensions(
@@ -118,7 +119,7 @@ class PartnerDataManagerClass(val config: PlatformConfig, val unauthorizedAction
     
     
     suspend fun getExtensionsSuggestions(pageSize: Double?=null)
-    : Deferred<Response<ExtensionSuggestionList>>? {
+    : Response<ExtensionSuggestionList>? {
         
         return if (config.oauthClient.isAccessTokenValid()) {
             partnerApiList?.getExtensionsSuggestions(
@@ -130,7 +131,7 @@ class PartnerDataManagerClass(val config: PlatformConfig, val unauthorizedAction
     
     
     suspend fun getPartnerInvites(requestStatus: String?=null, pageSize: String?=null, pageNo: String?=null)
-    : Deferred<Response<PartnerRequestList>>? {
+    : Response<PartnerRequestList>? {
         
         return if (config.oauthClient.isAccessTokenValid()) {
             partnerApiList?.getPartnerInvites(
@@ -142,7 +143,7 @@ class PartnerDataManagerClass(val config: PlatformConfig, val unauthorizedAction
     
     
     suspend fun getPartnerRequestDetails(inviteId: String)
-    : Deferred<Response<PartnerInviteDetails>>? {
+    : Response<PartnerInviteDetails>? {
         
         return if (config.oauthClient.isAccessTokenValid()) {
             partnerApiList?.getPartnerRequestDetails(
@@ -154,7 +155,7 @@ class PartnerDataManagerClass(val config: PlatformConfig, val unauthorizedAction
     
     
     suspend fun modifyPartnerRequest(inviteId: String,body: ModifyPartnerReq)
-    : Deferred<Response<PartnerInviteDetails>>? {
+    : Response<PartnerInviteDetails>? {
         
         return if (config.oauthClient.isAccessTokenValid()) {
             partnerApiList?.modifyPartnerRequest(
@@ -166,7 +167,7 @@ class PartnerDataManagerClass(val config: PlatformConfig, val unauthorizedAction
     
     
     suspend fun setupProducts(requestId: String?=null)
-    : Deferred<Response<SetupProductRes>>? {
+    : Response<SetupProductRes>? {
         
         return if (config.oauthClient.isAccessTokenValid()) {
             partnerApiList?.setupProducts(
@@ -197,7 +198,7 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     
     
     suspend fun getProxyPath(extensionId: String?=null)
-    : Deferred<Response<getProxyPathRes>>? {
+    : Response<getProxyPathRes>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 partnerApiList?.getProxyPath(companyId = config.companyId , applicationId = applicationId , extensionId = extensionId )
         } else {
@@ -207,7 +208,7 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     
     
     suspend fun addProxyPath(extensionId: String,body: AddProxyReq)
-    : Deferred<Response<AddProxyResponse>>? {
+    : Response<AddProxyResponse>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 partnerApiList?.addProxyPath(companyId = config.companyId , applicationId = applicationId , extensionId = extensionId, body = body)
         } else {
@@ -217,7 +218,7 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     
     
     suspend fun getProxyPathAttachedPath(extensionId: String?=null, attachedPath: String?=null)
-    : Deferred<Response<AddProxyResponse>>? {
+    : Response<AddProxyResponse>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 partnerApiList?.getProxyPathAttachedPath(companyId = config.companyId , applicationId = applicationId , extensionId = extensionId, attachedPath = attachedPath )
         } else {
@@ -227,7 +228,7 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     
     
     suspend fun removeProxyPath(extensionId: String, attachedPath: String)
-    : Deferred<Response<RemoveProxyResponse>>? {
+    : Response<RemoveProxyResponse>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 partnerApiList?.removeProxyPath(companyId = config.companyId , applicationId = applicationId , extensionId = extensionId, attachedPath = attachedPath )
         } else {

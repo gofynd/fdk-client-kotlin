@@ -61,9 +61,9 @@ class CatalogDataManagerClass(val config: ApplicationConfig, val unauthorizedAct
             
                     _relativeUrls["getFollowedListing"] = "/service/application/catalog/v1.0/follow/{collection_type}/".substring(1)
             
-                    _relativeUrls["unfollowById"] = "/service/application/catalog/v1.0/follow/{collection_type}/{collection_id}/".substring(1)
-            
                     _relativeUrls["followById"] = "/service/application/catalog/v1.0/follow/{collection_type}/{collection_id}/".substring(1)
+            
+                    _relativeUrls["unfollowById"] = "/service/application/catalog/v1.0/follow/{collection_type}/{collection_id}/".substring(1)
             
                     _relativeUrls["getFollowerCountById"] = "/service/application/catalog/v1.0/follow/{collection_type}/{collection_id}/count/".substring(1)
             
@@ -116,7 +116,7 @@ class CatalogDataManagerClass(val config: ApplicationConfig, val unauthorizedAct
         return retrofitHttpClient?.initializeRestClient(CatalogApiList::class.java) as? CatalogApiList
     }
     
-    fun getProductDetailBySlug(slug: String): Deferred<Response<ProductDetail>>? {
+   suspend fun getProductDetailBySlug(slug: String): Response<ProductDetail>? {
         var fullUrl : String? = _relativeUrls["getProductDetailBySlug"] 
         
         fullUrl = fullUrl?.replace("{" + "slug" +"}",slug.toString())
@@ -125,7 +125,7 @@ class CatalogDataManagerClass(val config: ApplicationConfig, val unauthorizedAct
 
     
     
-    fun getProductSizesBySlug(slug: String, storeId: Int?=null): Deferred<Response<ProductSizes>>? {
+   suspend fun getProductSizesBySlug(slug: String, storeId: Int?=null): Response<ProductSizes>? {
         var fullUrl : String? = _relativeUrls["getProductSizesBySlug"] 
         
         fullUrl = fullUrl?.replace("{" + "slug" +"}",slug.toString())
@@ -134,14 +134,14 @@ class CatalogDataManagerClass(val config: ApplicationConfig, val unauthorizedAct
 
     
     
-    fun getProductComparisonBySlugs(slug: ArrayList<String>): Deferred<Response<ProductsComparisonResponse>>? {
+   suspend fun getProductComparisonBySlugs(slug: ArrayList<String>): Response<ProductsComparisonResponse>? {
         var fullUrl : String? = _relativeUrls["getProductComparisonBySlugs"] 
         
         return catalogApiList?.getProductComparisonBySlugs(fullUrl    ,  slug = slug)}
 
     
     
-    fun getSimilarComparisonProductBySlug(slug: String): Deferred<Response<ProductCompareResponse>>? {
+   suspend fun getSimilarComparisonProductBySlug(slug: String): Response<ProductCompareResponse>? {
         var fullUrl : String? = _relativeUrls["getSimilarComparisonProductBySlug"] 
         
         fullUrl = fullUrl?.replace("{" + "slug" +"}",slug.toString())
@@ -150,7 +150,7 @@ class CatalogDataManagerClass(val config: ApplicationConfig, val unauthorizedAct
 
     
     
-    fun getComparedFrequentlyProductBySlug(slug: String): Deferred<Response<ProductFrequentlyComparedSimilarResponse>>? {
+   suspend fun getComparedFrequentlyProductBySlug(slug: String): Response<ProductFrequentlyComparedSimilarResponse>? {
         var fullUrl : String? = _relativeUrls["getComparedFrequentlyProductBySlug"] 
         
         fullUrl = fullUrl?.replace("{" + "slug" +"}",slug.toString())
@@ -159,7 +159,7 @@ class CatalogDataManagerClass(val config: ApplicationConfig, val unauthorizedAct
 
     
     
-    fun getProductVariantsBySlug(slug: String): Deferred<Response<ProductVariantsResponse>>? {
+   suspend fun getProductVariantsBySlug(slug: String): Response<ProductVariantsResponse>? {
         var fullUrl : String? = _relativeUrls["getProductVariantsBySlug"] 
         
         fullUrl = fullUrl?.replace("{" + "slug" +"}",slug.toString())
@@ -168,14 +168,14 @@ class CatalogDataManagerClass(val config: ApplicationConfig, val unauthorizedAct
 
     
     
-    fun getProductStockByIds(itemId: String?=null, alu: String?=null, skuCode: String?=null, ean: String?=null, upc: String?=null): Deferred<Response<ProductStockStatusResponse>>? {
+   suspend fun getProductStockByIds(itemId: String?=null, alu: String?=null, skuCode: String?=null, ean: String?=null, upc: String?=null): Response<ProductStockStatusResponse>? {
         var fullUrl : String? = _relativeUrls["getProductStockByIds"] 
         
         return catalogApiList?.getProductStockByIds(fullUrl    ,  itemId = itemId,    alu = alu,    skuCode = skuCode,    ean = ean,    upc = upc)}
 
     
     
-    fun getProductStockForTimeByIds(timestamp: String, pageSize: Int?=null, pageId: String?=null): Deferred<Response<ProductStockPolling>>? {
+   suspend fun getProductStockForTimeByIds(timestamp: String, pageSize: Int?=null, pageId: String?=null): Response<ProductStockPolling>? {
         var fullUrl : String? = _relativeUrls["getProductStockForTimeByIds"] 
         
         return catalogApiList?.getProductStockForTimeByIds(fullUrl    ,  timestamp = timestamp,    pageSize = pageSize,    pageId = pageId)}
@@ -234,7 +234,7 @@ class CatalogDataManagerClass(val config: ApplicationConfig, val unauthorizedAct
     return paginator
     }
     
-    fun getProducts(q: String?=null, f: String?=null, filters: Boolean?=null, sortOn: String?=null, pageId: String?=null, pageSize: Int?=null, pageNo: Int?=null, pageType: String?=null): Deferred<Response<ProductListingResponse>>? {
+   suspend fun getProducts(q: String?=null, f: String?=null, filters: Boolean?=null, sortOn: String?=null, pageId: String?=null, pageSize: Int?=null, pageNo: Int?=null, pageType: String?=null): Response<ProductListingResponse>? {
         var fullUrl : String? = _relativeUrls["getProducts"] 
         
         return catalogApiList?.getProducts(fullUrl    ,  q = q,    f = f,    filters = filters,    sortOn = sortOn,    pageId = pageId,    pageSize = pageSize,    pageNo = pageNo,    pageType = pageType)}
@@ -314,7 +314,7 @@ class CatalogDataManagerClass(val config: ApplicationConfig, val unauthorizedAct
     return paginator
     }
     
-    fun getBrands(department: String?=null, pageNo: Int?=null, pageSize: Int?=null): Deferred<Response<BrandListingResponse>>? {
+   suspend fun getBrands(department: String?=null, pageNo: Int?=null, pageSize: Int?=null): Response<BrandListingResponse>? {
         var fullUrl : String? = _relativeUrls["getBrands"] 
         
         return catalogApiList?.getBrands(fullUrl    ,  department = department,    pageNo = pageNo,    pageSize = pageSize)}
@@ -371,7 +371,7 @@ class CatalogDataManagerClass(val config: ApplicationConfig, val unauthorizedAct
     return paginator
     }
     
-    fun getBrandDetailBySlug(slug: String): Deferred<Response<BrandDetailResponse>>? {
+   suspend fun getBrandDetailBySlug(slug: String): Response<BrandDetailResponse>? {
         var fullUrl : String? = _relativeUrls["getBrandDetailBySlug"] 
         
         fullUrl = fullUrl?.replace("{" + "slug" +"}",slug.toString())
@@ -380,14 +380,14 @@ class CatalogDataManagerClass(val config: ApplicationConfig, val unauthorizedAct
 
     
     
-    fun getCategories(department: String?=null): Deferred<Response<CategoryListingResponse>>? {
+   suspend fun getCategories(department: String?=null): Response<CategoryListingResponse>? {
         var fullUrl : String? = _relativeUrls["getCategories"] 
         
         return catalogApiList?.getCategories(fullUrl    ,  department = department)}
 
     
     
-    fun getCategoryDetailBySlug(slug: String): Deferred<Response<CategoryMetaResponse>>? {
+   suspend fun getCategoryDetailBySlug(slug: String): Response<CategoryMetaResponse>? {
         var fullUrl : String? = _relativeUrls["getCategoryDetailBySlug"] 
         
         fullUrl = fullUrl?.replace("{" + "slug" +"}",slug.toString())
@@ -396,7 +396,7 @@ class CatalogDataManagerClass(val config: ApplicationConfig, val unauthorizedAct
 
     
     
-    fun getHomeProducts(sortOn: String?=null, pageId: String?=null, pageSize: Int?=null): Deferred<Response<HomeListingResponse>>? {
+   suspend fun getHomeProducts(sortOn: String?=null, pageId: String?=null, pageSize: Int?=null): Response<HomeListingResponse>? {
         var fullUrl : String? = _relativeUrls["getHomeProducts"] 
         
         return catalogApiList?.getHomeProducts(fullUrl    ,  sortOn = sortOn,    pageId = pageId,    pageSize = pageSize)}
@@ -455,21 +455,21 @@ class CatalogDataManagerClass(val config: ApplicationConfig, val unauthorizedAct
     return paginator
     }
     
-    fun getDepartments(): Deferred<Response<DepartmentResponse>>? {
+   suspend fun getDepartments(): Response<DepartmentResponse>? {
         var fullUrl : String? = _relativeUrls["getDepartments"] 
         
         return catalogApiList?.getDepartments(fullUrl  )}
 
     
     
-    fun getSearchResults(q: String): Deferred<Response<AutoCompleteResponse>>? {
+   suspend fun getSearchResults(q: String): Response<AutoCompleteResponse>? {
         var fullUrl : String? = _relativeUrls["getSearchResults"] 
         
         return catalogApiList?.getSearchResults(fullUrl    ,  q = q)}
 
     
     
-    fun getCollections(pageNo: Int?=null, pageSize: Int?=null, tag: ArrayList<String>?=null, q: String?=null): Deferred<Response<GetCollectionListingResponse>>? {
+   suspend fun getCollections(pageNo: Int?=null, pageSize: Int?=null, tag: ArrayList<String>?=null, q: String?=null): Response<GetCollectionListingResponse>? {
         var fullUrl : String? = _relativeUrls["getCollections"] 
         
         return catalogApiList?.getCollections(fullUrl    ,  pageNo = pageNo,    pageSize = pageSize,    tag = tag,    q = q)}
@@ -531,7 +531,7 @@ class CatalogDataManagerClass(val config: ApplicationConfig, val unauthorizedAct
     return paginator
     }
     
-    fun getCollectionItemsBySlug(slug: String, f: String?=null, q: String?=null, filters: Boolean?=null, sortOn: String?=null, pageId: String?=null, pageSize: Int?=null, pageNo: Int?=null, pageType: String?=null): Deferred<Response<ProductListingResponse>>? {
+   suspend fun getCollectionItemsBySlug(slug: String, f: String?=null, q: String?=null, filters: Boolean?=null, sortOn: String?=null, pageId: String?=null, pageSize: Int?=null, pageNo: Int?=null, pageType: String?=null): Response<ProductListingResponse>? {
         var fullUrl : String? = _relativeUrls["getCollectionItemsBySlug"] 
         
         fullUrl = fullUrl?.replace("{" + "slug" +"}",slug.toString())
@@ -620,7 +620,7 @@ class CatalogDataManagerClass(val config: ApplicationConfig, val unauthorizedAct
     return paginator
     }
     
-    fun getCollectionDetailBySlug(slug: String): Deferred<Response<CollectionDetailResponse>>? {
+   suspend fun getCollectionDetailBySlug(slug: String): Response<CollectionDetailResponse>? {
         var fullUrl : String? = _relativeUrls["getCollectionDetailBySlug"] 
         
         fullUrl = fullUrl?.replace("{" + "slug" +"}",slug.toString())
@@ -629,7 +629,7 @@ class CatalogDataManagerClass(val config: ApplicationConfig, val unauthorizedAct
 
     
     
-    fun getFollowedListing(collectionType: String, pageId: String?=null, pageSize: Int?=null): Deferred<Response<GetFollowListingResponse>>? {
+   suspend fun getFollowedListing(collectionType: String, pageId: String?=null, pageSize: Int?=null): Response<GetFollowListingResponse>? {
         var fullUrl : String? = _relativeUrls["getFollowedListing"] 
         
         fullUrl = fullUrl?.replace("{" + "collection_type" +"}",collectionType.toString())
@@ -692,18 +692,7 @@ class CatalogDataManagerClass(val config: ApplicationConfig, val unauthorizedAct
     return paginator
     }
     
-    fun unfollowById(collectionType: String, collectionId: String): Deferred<Response<FollowPostResponse>>? {
-        var fullUrl : String? = _relativeUrls["unfollowById"] 
-        
-        fullUrl = fullUrl?.replace("{" + "collection_type" +"}",collectionType.toString())
-        
-        fullUrl = fullUrl?.replace("{" + "collection_id" +"}",collectionId.toString())
-        
-        return catalogApiList?.unfollowById(fullUrl    )}
-
-    
-    
-    fun followById(collectionType: String, collectionId: String): Deferred<Response<FollowPostResponse>>? {
+   suspend fun followById(collectionType: String, collectionId: String): Response<FollowPostResponse>? {
         var fullUrl : String? = _relativeUrls["followById"] 
         
         fullUrl = fullUrl?.replace("{" + "collection_type" +"}",collectionType.toString())
@@ -714,7 +703,18 @@ class CatalogDataManagerClass(val config: ApplicationConfig, val unauthorizedAct
 
     
     
-    fun getFollowerCountById(collectionType: String, collectionId: String): Deferred<Response<FollowerCountResponse>>? {
+   suspend fun unfollowById(collectionType: String, collectionId: String): Response<FollowPostResponse>? {
+        var fullUrl : String? = _relativeUrls["unfollowById"] 
+        
+        fullUrl = fullUrl?.replace("{" + "collection_type" +"}",collectionType.toString())
+        
+        fullUrl = fullUrl?.replace("{" + "collection_id" +"}",collectionId.toString())
+        
+        return catalogApiList?.unfollowById(fullUrl    )}
+
+    
+    
+   suspend fun getFollowerCountById(collectionType: String, collectionId: String): Response<FollowerCountResponse>? {
         var fullUrl : String? = _relativeUrls["getFollowerCountById"] 
         
         fullUrl = fullUrl?.replace("{" + "collection_type" +"}",collectionType.toString())
@@ -725,14 +725,14 @@ class CatalogDataManagerClass(val config: ApplicationConfig, val unauthorizedAct
 
     
     
-    fun getFollowIds(collectionType: String?=null): Deferred<Response<FollowIdsResponse>>? {
+   suspend fun getFollowIds(collectionType: String?=null): Response<FollowIdsResponse>? {
         var fullUrl : String? = _relativeUrls["getFollowIds"] 
         
         return catalogApiList?.getFollowIds(fullUrl    ,  collectionType = collectionType)}
 
     
     
-    fun getStores(pageNo: Int?=null, pageSize: Int?=null, q: String?=null, city: String?=null, range: Int?=null, latitude: Double?=null, longitude: Double?=null): Deferred<Response<StoreListingResponse>>? {
+   suspend fun getStores(pageNo: Int?=null, pageSize: Int?=null, q: String?=null, city: String?=null, range: Int?=null, latitude: Double?=null, longitude: Double?=null): Response<StoreListingResponse>? {
         var fullUrl : String? = _relativeUrls["getStores"] 
         
         return catalogApiList?.getStores(fullUrl    ,  pageNo = pageNo,    pageSize = pageSize,    q = q,    city = city,    range = range,    latitude = latitude,    longitude = longitude)}
@@ -809,7 +809,7 @@ class CatalogDataManagerClass(val config: ApplicationConfig, val unauthorizedAct
     return paginator
     }
     
-    fun getInStockLocations(pageNo: Int?=null, pageSize: Int?=null, q: String?=null, city: String?=null, range: Int?=null, latitude: Double?=null, longitude: Double?=null): Deferred<Response<ApplicationStoreListing>>? {
+   suspend fun getInStockLocations(pageNo: Int?=null, pageSize: Int?=null, q: String?=null, city: String?=null, range: Int?=null, latitude: Double?=null, longitude: Double?=null): Response<ApplicationStoreListing>? {
         var fullUrl : String? = _relativeUrls["getInStockLocations"] 
         
         return catalogApiList?.getInStockLocations(fullUrl    ,  pageNo = pageNo,    pageSize = pageSize,    q = q,    city = city,    range = range,    latitude = latitude,    longitude = longitude)}
@@ -886,7 +886,7 @@ class CatalogDataManagerClass(val config: ApplicationConfig, val unauthorizedAct
     return paginator
     }
     
-    fun getLocationDetailsById(locationId: Int): Deferred<Response<StoreDetails>>? {
+   suspend fun getLocationDetailsById(locationId: Int): Response<StoreDetails>? {
         var fullUrl : String? = _relativeUrls["getLocationDetailsById"] 
         
         fullUrl = fullUrl?.replace("{" + "location_id" +"}",locationId.toString())
@@ -895,14 +895,14 @@ class CatalogDataManagerClass(val config: ApplicationConfig, val unauthorizedAct
 
     
     
-    fun getProductBundlesBySlug(slug: String?=null, id: String?=null): Deferred<Response<ProductBundle>>? {
+   suspend fun getProductBundlesBySlug(slug: String?=null, id: String?=null): Response<ProductBundle>? {
         var fullUrl : String? = _relativeUrls["getProductBundlesBySlug"] 
         
         return catalogApiList?.getProductBundlesBySlug(fullUrl    ,  slug = slug,    id = id)}
 
     
     
-    fun getProductPriceBySlug(slug: String, size: String, storeId: Int?=null, pincode: String?=null, moq: Int?=null): Deferred<Response<ProductSizePriceResponseV3>>? {
+   suspend fun getProductPriceBySlug(slug: String, size: String, storeId: Int?=null, pincode: String?=null, moq: Int?=null): Response<ProductSizePriceResponseV3>? {
         var fullUrl : String? = _relativeUrls["getProductPriceBySlug"] 
         
         fullUrl = fullUrl?.replace("{" + "slug" +"}",slug.toString())
@@ -913,7 +913,7 @@ class CatalogDataManagerClass(val config: ApplicationConfig, val unauthorizedAct
 
     
     
-    fun getProductSellersBySlug(slug: String, size: String, pincode: String?=null, strategy: String?=null, pageNo: Int?=null, pageSize: Int?=null): Deferred<Response<ProductSizeSellersResponseV3>>? {
+   suspend fun getProductSellersBySlug(slug: String, size: String, pincode: String?=null, strategy: String?=null, pageNo: Int?=null, pageSize: Int?=null): Response<ProductSizeSellersResponseV3>? {
         var fullUrl : String? = _relativeUrls["getProductSellersBySlug"] 
         
         fullUrl = fullUrl?.replace("{" + "slug" +"}",slug.toString())

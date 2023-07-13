@@ -62,21 +62,21 @@ class CommunicationDataManagerClass(val config: ApplicationConfig, val unauthori
         return retrofitHttpClient?.initializeRestClient(CommunicationApiList::class.java) as? CommunicationApiList
     }
     
-    fun getCommunicationConsent(): Deferred<Response<CommunicationConsent>>? {
+   suspend fun getCommunicationConsent(): Response<CommunicationConsent>? {
         var fullUrl : String? = _relativeUrls["getCommunicationConsent"] 
         
         return communicationApiList?.getCommunicationConsent(fullUrl  )}
 
     
     
-    fun upsertCommunicationConsent(body: CommunicationConsentReq): Deferred<Response<CommunicationConsentRes>>? {
+   suspend fun upsertCommunicationConsent(body: CommunicationConsentReq): Response<CommunicationConsentRes>? {
         var fullUrl : String? = _relativeUrls["upsertCommunicationConsent"] 
         
         return communicationApiList?.upsertCommunicationConsent(fullUrl  ,body = body)}
 
     
     
-    fun upsertAppPushtoken(body: PushtokenReq): Deferred<Response<PushtokenRes>>? {
+   suspend fun upsertAppPushtoken(body: PushtokenReq): Response<PushtokenRes>? {
         var fullUrl : String? = _relativeUrls["upsertAppPushtoken"] 
         
         return communicationApiList?.upsertAppPushtoken(fullUrl  ,body = body)}
