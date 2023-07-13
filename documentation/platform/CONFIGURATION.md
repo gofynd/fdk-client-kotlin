@@ -66,7 +66,7 @@ Get configuration of latest mobile build
 
 
 ```kotlin
-client.application("<APPLICATION_ID>").configuration.getBuildConfig(platformType: platformType).safeAwait{ response, error->
+platformClient.application("<APPLICATION_ID>").configuration.getBuildConfig(platformType: platformType).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -144,7 +144,7 @@ Update the configuration for next mobile build
 
 
 ```kotlin
-client.application("<APPLICATION_ID>").configuration.updateBuildConfig(platformType: platformType, body: body).safeAwait{ response, error->
+platformClient.application("<APPLICATION_ID>").configuration.updateBuildConfig(platformType: platformType, body: body).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -222,7 +222,7 @@ Get details of previous mobile builds
 
 
 ```kotlin
-client.application("<APPLICATION_ID>").configuration.getPreviousVersions(platformType: platformType).safeAwait{ response, error->
+platformClient.application("<APPLICATION_ID>").configuration.getPreviousVersions(platformType: platformType).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -297,7 +297,7 @@ Get the sales channel configuration and features
 
 
 ```kotlin
-client.application("<APPLICATION_ID>").configuration.getAppFeatures().safeAwait{ response, error->
+platformClient.application("<APPLICATION_ID>").configuration.getAppFeatures().safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -448,7 +448,7 @@ Update the sales channel configuration and features
 
 
 ```kotlin
-client.application("<APPLICATION_ID>").configuration.updateAppFeatures(body: body).safeAwait{ response, error->
+platformClient.application("<APPLICATION_ID>").configuration.updateAppFeatures(body: body).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -591,7 +591,7 @@ Update features of application
 
 
 ```kotlin
-client.application("<APPLICATION_ID>").configuration.modifyAppFeatures(body: body).safeAwait{ response, error->
+platformClient.application("<APPLICATION_ID>").configuration.modifyAppFeatures(body: body).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -737,7 +737,7 @@ Get sales channel details
 
 
 ```kotlin
-client.application("<APPLICATION_ID>").configuration.getAppBasicDetails().safeAwait{ response, error->
+platformClient.application("<APPLICATION_ID>").configuration.getAppBasicDetails().safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -832,7 +832,7 @@ Update sales channel details
 
 
 ```kotlin
-client.application("<APPLICATION_ID>").configuration.updateAppBasicDetails(body: body).safeAwait{ response, error->
+platformClient.application("<APPLICATION_ID>").configuration.updateAppBasicDetails(body: body).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -929,7 +929,7 @@ Get current information of the sales channel
 
 
 ```kotlin
-client.application("<APPLICATION_ID>").configuration.getAppContactInfo().safeAwait{ response, error->
+platformClient.application("<APPLICATION_ID>").configuration.getAppContactInfo().safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -1099,7 +1099,7 @@ Save or update current information of the sales channel
 
 
 ```kotlin
-client.application("<APPLICATION_ID>").configuration.updateAppContactInfo(body: body).safeAwait{ response, error->
+platformClient.application("<APPLICATION_ID>").configuration.updateAppContactInfo(body: body).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -1266,7 +1266,7 @@ Get social tokens for the sales channel
 
 
 ```kotlin
-client.application("<APPLICATION_ID>").configuration.getAppApiTokens().safeAwait{ response, error->
+platformClient.application("<APPLICATION_ID>").configuration.getAppApiTokens().safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -1399,7 +1399,7 @@ Add or update social tokens for the sales channel
 
 
 ```kotlin
-client.application("<APPLICATION_ID>").configuration.updateAppApiTokens(body: body).safeAwait{ response, error->
+platformClient.application("<APPLICATION_ID>").configuration.updateAppApiTokens(body: body).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -1536,7 +1536,7 @@ Get companies enabled in the sales channel inventory
 
 
 ```kotlin
-client.application("<APPLICATION_ID>").configuration.getAppCompanies(uid: uid, pageNo: pageNo, pageSize: pageSize).safeAwait{ response, error->
+platformClient.application("<APPLICATION_ID>").configuration.getAppCompanies(uid: uid, pageNo: pageNo, pageSize: pageSize).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -1623,7 +1623,7 @@ Get stores enabled in the sales channel inventory
 
 
 ```kotlin
-client.application("<APPLICATION_ID>").configuration.getAppStores(pageNo: pageNo, pageSize: pageSize).safeAwait{ response, error->
+platformClient.application("<APPLICATION_ID>").configuration.getAppStores(pageNo: pageNo, pageSize: pageSize).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -1722,7 +1722,7 @@ Get sales channel configuration
 
 
 ```kotlin
-client.application("<APPLICATION_ID>").configuration.getInventoryConfig().safeAwait{ response, error->
+platformClient.application("<APPLICATION_ID>").configuration.getInventoryConfig().safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -1973,7 +1973,7 @@ Update sales channel configuration
 
 
 ```kotlin
-client.application("<APPLICATION_ID>").configuration.updateInventoryConfig(body: body).safeAwait{ response, error->
+platformClient.application("<APPLICATION_ID>").configuration.updateInventoryConfig(body: body).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -2228,7 +2228,7 @@ Partially update sales channel configuration
 
 
 ```kotlin
-client.application("<APPLICATION_ID>").configuration.partiallyUpdateInventoryConfig(body: body).safeAwait{ response, error->
+platformClient.application("<APPLICATION_ID>").configuration.partiallyUpdateInventoryConfig(body: body).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -2483,7 +2483,7 @@ Get currencies supported in the application
 
 
 ```kotlin
-client.application("<APPLICATION_ID>").configuration.getAppCurrencyConfig().safeAwait{ response, error->
+platformClient.application("<APPLICATION_ID>").configuration.getAppCurrencyConfig().safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -2554,7 +2554,7 @@ Update initial sales channel supported currency
 
 
 ```kotlin
-client.application("<APPLICATION_ID>").configuration.updateAppCurrencyConfig(body: body).safeAwait{ response, error->
+platformClient.application("<APPLICATION_ID>").configuration.updateAppCurrencyConfig(body: body).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -2629,7 +2629,7 @@ Get currencies enabled in the application
 
 
 ```kotlin
-client.application("<APPLICATION_ID>").configuration.getAppSupportedCurrency().safeAwait{ response, error->
+platformClient.application("<APPLICATION_ID>").configuration.getAppSupportedCurrency().safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -2702,7 +2702,7 @@ Get ordering store by filter
 
 
 ```kotlin
-client.application("<APPLICATION_ID>").configuration.getOrderingStoresByFilter(pageNo: pageNo, pageSize: pageSize, body: body).safeAwait{ response, error->
+platformClient.application("<APPLICATION_ID>").configuration.getOrderingStoresByFilter(pageNo: pageNo, pageSize: pageSize, body: body).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -2847,7 +2847,7 @@ Add/Update ordering store config
 
 
 ```kotlin
-client.application("<APPLICATION_ID>").configuration.updateOrderingStoreConfig(body: body).safeAwait{ response, error->
+platformClient.application("<APPLICATION_ID>").configuration.updateOrderingStoreConfig(body: body).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -2929,7 +2929,7 @@ Get deployment stores
 
 
 ```kotlin
-client.application("<APPLICATION_ID>").configuration.getStaffOrderingStores(pageNo: pageNo, pageSize: pageSize, q: q).safeAwait{ response, error->
+platformClient.application("<APPLICATION_ID>").configuration.getStaffOrderingStores(pageNo: pageNo, pageSize: pageSize, q: q).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -2991,7 +2991,7 @@ Fetch all the domains added to an  application (sales channel website), includin
 
 
 ```kotlin
-client.application("<APPLICATION_ID>").configuration.getDomains().safeAwait{ response, error->
+platformClient.application("<APPLICATION_ID>").configuration.getDomains().safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -3073,7 +3073,7 @@ Add new domain to current sales channel
 
 
 ```kotlin
-client.application("<APPLICATION_ID>").configuration.addDomain(body: body).safeAwait{ response, error->
+platformClient.application("<APPLICATION_ID>").configuration.addDomain(body: body).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -3140,7 +3140,7 @@ Remove attached domain from current sales channel
 
 
 ```kotlin
-client.application("<APPLICATION_ID>").configuration.removeDomainById(id: id).safeAwait{ response, error->
+platformClient.application("<APPLICATION_ID>").configuration.removeDomainById(id: id).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -3202,7 +3202,7 @@ Change the type of domain in the current sales channel
 
 
 ```kotlin
-client.application("<APPLICATION_ID>").configuration.changeDomainType(body: body).safeAwait{ response, error->
+platformClient.application("<APPLICATION_ID>").configuration.changeDomainType(body: body).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -3285,7 +3285,7 @@ Get the status of connected domain
 
 
 ```kotlin
-client.application("<APPLICATION_ID>").configuration.getDomainStatus(body: body).safeAwait{ response, error->
+platformClient.application("<APPLICATION_ID>").configuration.getDomainStatus(body: body).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -3360,7 +3360,7 @@ Create a new sales channel
 
 
 ```kotlin
-client.configuration.createApplication(body: body).safeAwait{ response, error->
+platformClient.configuration.createApplication(body: body).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -3419,7 +3419,7 @@ Get list of registered sales channels under company
 
 
 ```kotlin
-client.configuration.getApplications(pageNo: pageNo, pageSize: pageSize, q: q).safeAwait{ response, error->
+platformClient.configuration.getApplications(pageNo: pageNo, pageSize: pageSize, q: q).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -3437,7 +3437,7 @@ client.configuration.getApplications(pageNo: pageNo, pageSize: pageSize, q: q).s
 | --------- | -----  | -------- | ----------- | 
 | pageNo | Int? | no |  |   
 | pageSize | Int? | no |  |   
-| q | String? | no | Url encoded object used as mongodb query |  
+| q | String? | no | Search param by name or domain |  
 
 
 
@@ -3481,7 +3481,7 @@ Get sales channel data by ID
 
 
 ```kotlin
-client.application("<APPLICATION_ID>").configuration.getApplicationById().safeAwait{ response, error->
+platformClient.application("<APPLICATION_ID>").configuration.getApplicationById().safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -3536,7 +3536,7 @@ Get all currencies
 
 
 ```kotlin
-client.configuration.getCurrencies().safeAwait{ response, error->
+platformClient.configuration.getCurrencies().safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -3604,7 +3604,7 @@ Check domain availability before linking to application
 
 
 ```kotlin
-client.configuration.getDomainAvailibility(body: body).safeAwait{ response, error->
+platformClient.configuration.getDomainAvailibility(body: body).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -3707,7 +3707,7 @@ Get integration data by its ID
 
 
 ```kotlin
-client.configuration.getIntegrationById(id: id).safeAwait{ response, error->
+platformClient.configuration.getIntegrationById(id: id).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -3854,7 +3854,7 @@ Get all available integration opt-ins
 
 
 ```kotlin
-client.configuration.getAvailableOptIns(pageNo: pageNo, pageSize: pageSize).safeAwait{ response, error->
+platformClient.configuration.getAvailableOptIns(pageNo: pageNo, pageSize: pageSize).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -4022,7 +4022,7 @@ Get company/store level integration opt-ins
 
 
 ```kotlin
-client.configuration.getSelectedOptIns(level: level, uid: uid, pageNo: pageNo, pageSize: pageSize).safeAwait{ response, error->
+platformClient.configuration.getSelectedOptIns(level: level, uid: uid, pageNo: pageNo, pageSize: pageSize).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -4192,7 +4192,7 @@ Get integration level config
 
 
 ```kotlin
-client.configuration.getIntegrationLevelConfig(id: id, level: level, opted: opted, checkPermission: checkPermission).safeAwait{ response, error->
+platformClient.configuration.getIntegrationLevelConfig(id: id, level: level, opted: opted, checkPermission: checkPermission).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -4276,7 +4276,7 @@ Update a store level integration you opted
 
 
 ```kotlin
-client.configuration.updateLevelIntegration(id: id, level: level, body: body).safeAwait{ response, error->
+platformClient.configuration.updateLevelIntegration(id: id, level: level, body: body).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -4354,7 +4354,7 @@ Get integration config at a particular level (store/company)
 
 
 ```kotlin
-client.configuration.getIntegrationByLevelId(id: id, level: level, uid: uid).safeAwait{ response, error->
+platformClient.configuration.getIntegrationByLevelId(id: id, level: level, uid: uid).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -4433,7 +4433,7 @@ Update integration level by store UID
 
 
 ```kotlin
-client.configuration.updateLevelUidIntegration(id: id, level: level, uid: uid, body: body).safeAwait{ response, error->
+platformClient.configuration.updateLevelUidIntegration(id: id, level: level, uid: uid, body: body).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -4512,7 +4512,7 @@ Check active integration at store
 
 
 ```kotlin
-client.configuration.getLevelActiveIntegrations(id: id, level: level, uid: uid).safeAwait{ response, error->
+platformClient.configuration.getLevelActiveIntegrations(id: id, level: level, uid: uid).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -4591,7 +4591,7 @@ Get brands by company.
 
 
 ```kotlin
-client.configuration.getBrandsByCompany(q: q).safeAwait{ response, error->
+platformClient.configuration.getBrandsByCompany(q: q).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -4668,7 +4668,7 @@ Get company by brand uids
 
 
 ```kotlin
-client.configuration.getCompanyByBrands(pageNo: pageNo, pageSize: pageSize, body: body).safeAwait{ response, error->
+platformClient.configuration.getCompanyByBrands(pageNo: pageNo, pageSize: pageSize, body: body).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -4751,7 +4751,7 @@ Get stores by brand uids for the current company
 
 
 ```kotlin
-client.configuration.getStoreByBrands(pageNo: pageNo, pageSize: pageSize, body: body).safeAwait{ response, error->
+platformClient.configuration.getStoreByBrands(pageNo: pageNo, pageSize: pageSize, body: body).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -4873,7 +4873,7 @@ Get other seller sales channels
 
 
 ```kotlin
-client.configuration.getOtherSellerApplications(pageNo: pageNo, pageSize: pageSize).safeAwait{ response, error->
+platformClient.configuration.getOtherSellerApplications(pageNo: pageNo, pageSize: pageSize).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -4977,7 +4977,7 @@ Get other seller's sales channel by ID
 
 
 ```kotlin
-client.configuration.getOtherSellerApplicationById(id: id).safeAwait{ response, error->
+platformClient.configuration.getOtherSellerApplicationById(id: id).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -5084,7 +5084,7 @@ Opt-out company or store from other seller application
 
 
 ```kotlin
-client.configuration.optOutFromApplication(id: id, body: body).safeAwait{ response, error->
+platformClient.configuration.optOutFromApplication(id: id, body: body).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -5323,6 +5323,7 @@ Success
  | minCartValue | Double? |  yes  | Minimum cart value below which customer cannot place an order |
  | bulkCoupons | Boolean? |  yes  | Allow creation of bulk coupons |
  | revenueEngineCoupon | Boolean? |  yes  | Allow coupon apply and credits together. Default value is false. |
+ | panCard | [PanCardConfig](#PanCardConfig)? |  yes  |  |
 
 ---
 
@@ -5635,6 +5636,19 @@ Success
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
  | enabled | Boolean? |  yes  | Check current communication channel is enabled |
+
+---
+
+
+ 
+ 
+ #### [PanCardConfig](#PanCardConfig)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | enabled | Boolean? |  yes  | If pan card accepting is enabled on cart |
+ | codThresholdAmount | Double? |  yes  | On which COD order amount pan card number is expected from customer for order |
+ | onlineThresholdAmount | Double? |  yes  | On which online payment order amount pan card number is expected from customer for order |
 
 ---
 

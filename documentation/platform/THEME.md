@@ -43,7 +43,7 @@ Get all pages of a theme
 
 
 ```kotlin
-client.application("<APPLICATION_ID>").theme.getAllPages(themeId: themeId).safeAwait{ response, error->
+platformClient.application("<APPLICATION_ID>").theme.getAllPages(themeId: themeId).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -399,7 +399,7 @@ Create a page
 
 
 ```kotlin
-client.application("<APPLICATION_ID>").theme.createPage(themeId: themeId, body: body).safeAwait{ response, error->
+platformClient.application("<APPLICATION_ID>").theme.createPage(themeId: themeId, body: body).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -827,7 +827,7 @@ Update multiple pages of a theme
 
 
 ```kotlin
-client.application("<APPLICATION_ID>").theme.updateMultiplePages(themeId: themeId, body: body).safeAwait{ response, error->
+platformClient.application("<APPLICATION_ID>").theme.updateMultiplePages(themeId: themeId, body: body).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -1183,7 +1183,7 @@ Get page of a theme
 
 
 ```kotlin
-client.application("<APPLICATION_ID>").theme.getPage(themeId: themeId, pageValue: pageValue).safeAwait{ response, error->
+platformClient.application("<APPLICATION_ID>").theme.getPage(themeId: themeId, pageValue: pageValue).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -1612,7 +1612,7 @@ Updates a page
 
 
 ```kotlin
-client.application("<APPLICATION_ID>").theme.updatePage(themeId: themeId, pageValue: pageValue, body: body).safeAwait{ response, error->
+platformClient.application("<APPLICATION_ID>").theme.updatePage(themeId: themeId, pageValue: pageValue, body: body).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -2041,7 +2041,7 @@ Deletes a page
 
 
 ```kotlin
-client.application("<APPLICATION_ID>").theme.deletePage(themeId: themeId, pageValue: pageValue).safeAwait{ response, error->
+platformClient.application("<APPLICATION_ID>").theme.deletePage(themeId: themeId, pageValue: pageValue).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -2470,7 +2470,7 @@ Get a list of themes from the theme library
 
 
 ```kotlin
-client.application("<APPLICATION_ID>").theme.getThemeLibrary(pageSize: pageSize, pageNo: pageNo).safeAwait{ response, error->
+platformClient.application("<APPLICATION_ID>").theme.getThemeLibrary(pageSize: pageSize, pageNo: pageNo).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -4438,7 +4438,7 @@ Add a theme to the theme library
 
 
 ```kotlin
-client.application("<APPLICATION_ID>").theme.addToThemeLibrary(body: body).safeAwait{ response, error->
+platformClient.application("<APPLICATION_ID>").theme.addToThemeLibrary(body: body).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -6637,7 +6637,7 @@ Apply a theme
 
 
 ```kotlin
-client.application("<APPLICATION_ID>").theme.applyTheme(body: body).safeAwait{ response, error->
+platformClient.application("<APPLICATION_ID>").theme.applyTheme(body: body).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -8836,7 +8836,7 @@ Checks if theme is upgradable
 
 
 ```kotlin
-client.application("<APPLICATION_ID>").theme.isUpgradable(themeId: themeId).safeAwait{ response, error->
+platformClient.application("<APPLICATION_ID>").theme.isUpgradable(themeId: themeId).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -8908,7 +8908,7 @@ Upgrade a theme
 
 
 ```kotlin
-client.application("<APPLICATION_ID>").theme.upgradeTheme(themeId: themeId).safeAwait{ response, error->
+platformClient.application("<APPLICATION_ID>").theme.upgradeTheme(themeId: themeId).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -11108,7 +11108,7 @@ Get all public themes
 
 
 ```kotlin
-client.application("<APPLICATION_ID>").theme.getPublicThemes(pageSize: pageSize, pageNo: pageNo).safeAwait{ response, error->
+platformClient.application("<APPLICATION_ID>").theme.getPublicThemes(pageSize: pageSize, pageNo: pageNo).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -13076,7 +13076,7 @@ Create a new theme
 
 
 ```kotlin
-client.application("<APPLICATION_ID>").theme.createTheme(body: body).safeAwait{ response, error->
+platformClient.application("<APPLICATION_ID>").theme.createTheme(body: body).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -15275,7 +15275,7 @@ Get the applied theme
 
 
 ```kotlin
-client.application("<APPLICATION_ID>").theme.getAppliedTheme().safeAwait{ response, error->
+platformClient.application("<APPLICATION_ID>").theme.getAppliedTheme().safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -17470,7 +17470,7 @@ Get all the supported fonts in a theme
 
 
 ```kotlin
-client.application("<APPLICATION_ID>").theme.getFonts().safeAwait{ response, error->
+platformClient.application("<APPLICATION_ID>").theme.getFonts().safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -17555,7 +17555,7 @@ Gets theme by id
 
 
 ```kotlin
-client.application("<APPLICATION_ID>").theme.getThemeById(themeId: themeId).safeAwait{ response, error->
+platformClient.application("<APPLICATION_ID>").theme.getThemeById(themeId: themeId).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -19755,7 +19755,7 @@ Update a theme
 
 
 ```kotlin
-client.application("<APPLICATION_ID>").theme.updateTheme(themeId: themeId, body: body).safeAwait{ response, error->
+platformClient.application("<APPLICATION_ID>").theme.updateTheme(themeId: themeId, body: body).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -21955,7 +21955,7 @@ Delete a theme
 
 
 ```kotlin
-client.application("<APPLICATION_ID>").theme.deleteTheme(themeId: themeId).safeAwait{ response, error->
+platformClient.application("<APPLICATION_ID>").theme.deleteTheme(themeId: themeId).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -24155,7 +24155,7 @@ Get a theme preview
 
 
 ```kotlin
-client.application("<APPLICATION_ID>").theme.getThemeForPreview(themeId: themeId).safeAwait{ response, error->
+platformClient.application("<APPLICATION_ID>").theme.getThemeForPreview(themeId: themeId).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -26355,7 +26355,7 @@ Publish a theme
 
 
 ```kotlin
-client.application("<APPLICATION_ID>").theme.publishTheme(themeId: themeId).safeAwait{ response, error->
+platformClient.application("<APPLICATION_ID>").theme.publishTheme(themeId: themeId).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -28555,7 +28555,7 @@ Unpublish a theme
 
 
 ```kotlin
-client.application("<APPLICATION_ID>").theme.unpublishTheme(themeId: themeId).safeAwait{ response, error->
+platformClient.application("<APPLICATION_ID>").theme.unpublishTheme(themeId: themeId).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -30755,7 +30755,7 @@ Archive a theme
 
 
 ```kotlin
-client.application("<APPLICATION_ID>").theme.archiveTheme(themeId: themeId).safeAwait{ response, error->
+platformClient.application("<APPLICATION_ID>").theme.archiveTheme(themeId: themeId).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -32955,7 +32955,7 @@ Unarchive a theme
 
 
 ```kotlin
-client.application("<APPLICATION_ID>").theme.unarchiveTheme(themeId: themeId).safeAwait{ response, error->
+platformClient.application("<APPLICATION_ID>").theme.unarchiveTheme(themeId: themeId).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -35155,7 +35155,7 @@ Fetch last modified timestamp
 
 
 ```kotlin
-client.application("<APPLICATION_ID>").theme.getThemeLastModified(themeId: themeId).safeAwait{ response, error->
+platformClient.application("<APPLICATION_ID>").theme.getThemeLastModified(themeId: themeId).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->

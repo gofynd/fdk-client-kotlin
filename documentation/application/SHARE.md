@@ -26,7 +26,7 @@ Create QR Code of an app
 
 
 ```kotlin
-share.getApplicationQRCode().safeAwait{ response, error->
+applicationClient.share.getApplicationQRCode().safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -84,7 +84,7 @@ Create QR Code of a product
 
 
 ```kotlin
-share.getProductQRCodeBySlug(slug: slug).safeAwait{ response, error->
+applicationClient.share.getProductQRCodeBySlug(slug: slug).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -147,7 +147,7 @@ Create QR Code of a collection
 
 
 ```kotlin
-share.getCollectionQRCodeBySlug(slug: slug).safeAwait{ response, error->
+applicationClient.share.getCollectionQRCodeBySlug(slug: slug).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -210,7 +210,7 @@ Create QR Code of a URL
 
 
 ```kotlin
-share.getUrlQRCode(url: url).safeAwait{ response, error->
+applicationClient.share.getUrlQRCode(url: url).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -273,7 +273,7 @@ Create a short link
 
 
 ```kotlin
-share.createShortLink(body: body).safeAwait{ response, error->
+applicationClient.share.createShortLink(body: body).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -370,7 +370,7 @@ Get short link by hash
 
 
 ```kotlin
-share.getShortLinkByHash(hash: hash).safeAwait{ response, error->
+applicationClient.share.getShortLinkByHash(hash: hash).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -468,7 +468,7 @@ Get original link by hash
 
 
 ```kotlin
-share.getOriginalShortLinkByHash(hash: hash).safeAwait{ response, error->
+applicationClient.share.getOriginalShortLinkByHash(hash: hash).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
