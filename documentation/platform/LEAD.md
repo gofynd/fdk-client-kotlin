@@ -43,7 +43,7 @@ Gets the list of company level tickets and/or ticket filters depending on query 
 
 
 ```kotlin
-client.lead.getTickets(items: items, filters: filters, q: q, status: status, priority: priority, category: category, pageNo: pageNo, pageSize: pageSize).safeAwait{ response, error->
+platformClient.lead.getTickets(items: items, filters: filters, q: q, status: status, priority: priority, category: category, pageNo: pageNo, pageSize: pageSize).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -484,7 +484,7 @@ Creates a company level ticket
 
 
 ```kotlin
-client.lead.createTicket(body: body).safeAwait{ response, error->
+platformClient.lead.createTicket(body: body).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -741,7 +741,7 @@ Gets the list of Application level Tickets and/or ticket filters depending on qu
 
 
 ```kotlin
-client.application("<APPLICATION_ID>").lead.getTickets(items: items, filters: filters, q: q, status: status, priority: priority, category: category).safeAwait{ response, error->
+platformClient.application("<APPLICATION_ID>").lead.getTickets(items: items, filters: filters, q: q, status: status, priority: priority, category: category).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -1180,7 +1180,7 @@ Retreives ticket details of a company level ticket with ticket ID
 
 
 ```kotlin
-client.lead.getTicket(id: id).safeAwait{ response, error->
+platformClient.lead.getTicket(id: id).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -1438,7 +1438,7 @@ Edits ticket details of a company level ticket
 
 
 ```kotlin
-client.lead.editTicket(id: id, body: body).safeAwait{ response, error->
+platformClient.lead.editTicket(id: id, body: body).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -1696,7 +1696,7 @@ Retreives ticket details of a application level ticket
 
 
 ```kotlin
-client.application("<APPLICATION_ID>").lead.getTicket(id: id).safeAwait{ response, error->
+platformClient.application("<APPLICATION_ID>").lead.getTicket(id: id).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -1955,7 +1955,7 @@ Edits ticket details of a application level ticket
 
 
 ```kotlin
-client.application("<APPLICATION_ID>").lead.editTicket(id: id, body: body).safeAwait{ response, error->
+platformClient.application("<APPLICATION_ID>").lead.editTicket(id: id, body: body).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -2214,7 +2214,7 @@ Create history for specific company level ticket
 
 
 ```kotlin
-client.lead.createHistory(id: id, body: body).safeAwait{ response, error->
+platformClient.lead.createHistory(id: id, body: body).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -2316,7 +2316,7 @@ Gets history list for specific company level ticket
 
 
 ```kotlin
-client.lead.getTicketHistory(id: id).safeAwait{ response, error->
+platformClient.lead.getTicketHistory(id: id).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -2522,7 +2522,7 @@ Gets a list of feedback submitted against that ticket
 
 
 ```kotlin
-client.lead.getFeedbacks(id: id).safeAwait{ response, error->
+platformClient.lead.getFeedbacks(id: id).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -2611,7 +2611,7 @@ Submit a response for feeback form against that ticket
 
 
 ```kotlin
-client.lead.submitFeedback(id: id, body: body).safeAwait{ response, error->
+platformClient.lead.submitFeedback(id: id, body: body).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -2696,7 +2696,7 @@ Create history for specific application level ticket
 
 
 ```kotlin
-client.application("<APPLICATION_ID>").lead.createHistory(id: id, body: body).safeAwait{ response, error->
+platformClient.application("<APPLICATION_ID>").lead.createHistory(id: id, body: body).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -2798,7 +2798,7 @@ Gets history list for specific application level ticket
 
 
 ```kotlin
-client.application("<APPLICATION_ID>").lead.getTicketHistory(id: id).safeAwait{ response, error->
+platformClient.application("<APPLICATION_ID>").lead.getTicketHistory(id: id).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -3004,7 +3004,7 @@ Get specific custom form using it's slug
 
 
 ```kotlin
-client.application("<APPLICATION_ID>").lead.getCustomForm(slug: slug).safeAwait{ response, error->
+platformClient.application("<APPLICATION_ID>").lead.getCustomForm(slug: slug).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -3116,7 +3116,7 @@ Edit the given custom form
 
 
 ```kotlin
-client.application("<APPLICATION_ID>").lead.editCustomForm(slug: slug, body: body).safeAwait{ response, error->
+platformClient.application("<APPLICATION_ID>").lead.editCustomForm(slug: slug, body: body).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -3238,7 +3238,7 @@ Get list of custom form
 
 
 ```kotlin
-client.application("<APPLICATION_ID>").lead.getCustomForms().safeAwait{ response, error->
+platformClient.application("<APPLICATION_ID>").lead.getCustomForms().safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -3434,7 +3434,7 @@ Creates a new custom form
 
 
 ```kotlin
-client.application("<APPLICATION_ID>").lead.createCustomForm(body: body).safeAwait{ response, error->
+platformClient.application("<APPLICATION_ID>").lead.createCustomForm(body: body).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -3555,7 +3555,7 @@ Get Token to join a specific Video Room using it's unqiue name
 
 
 ```kotlin
-client.lead.getTokenForVideoRoom(uniqueName: uniqueName).safeAwait{ response, error->
+platformClient.lead.getTokenForVideoRoom(uniqueName: uniqueName).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -3625,7 +3625,7 @@ Get Token to join a specific Video Room using it's unqiue name
 
 
 ```kotlin
-client.application("<APPLICATION_ID>").lead.getTokenForVideoRoom(uniqueName: uniqueName).safeAwait{ response, error->
+platformClient.application("<APPLICATION_ID>").lead.getTokenForVideoRoom(uniqueName: uniqueName).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -3695,7 +3695,7 @@ Get participants of a specific Video Room using it's unique name
 
 
 ```kotlin
-client.lead.getVideoParticipants(uniqueName: uniqueName).safeAwait{ response, error->
+platformClient.lead.getVideoParticipants(uniqueName: uniqueName).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -3765,7 +3765,7 @@ Get participants of a specific Video Room using it's unique name
 
 
 ```kotlin
-client.application("<APPLICATION_ID>").lead.getVideoParticipants(uniqueName: uniqueName).safeAwait{ response, error->
+platformClient.application("<APPLICATION_ID>").lead.getVideoParticipants(uniqueName: uniqueName).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -3835,7 +3835,7 @@ Open a video room.
 
 
 ```kotlin
-client.application("<APPLICATION_ID>").lead.openVideoRoom(body: body).safeAwait{ response, error->
+platformClient.application("<APPLICATION_ID>").lead.openVideoRoom(body: body).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -3904,7 +3904,7 @@ Close the video room and force all participants to leave.
 
 
 ```kotlin
-client.application("<APPLICATION_ID>").lead.closeVideoRoom(uniqueName: uniqueName).safeAwait{ response, error->
+platformClient.application("<APPLICATION_ID>").lead.closeVideoRoom(uniqueName: uniqueName).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -3974,7 +3974,7 @@ Get general support configuration.
 
 
 ```kotlin
-client.lead.getGeneralConfig().safeAwait{ response, error->
+platformClient.lead.getGeneralConfig().safeAwait{ response, error->
     response?.let{
       // Use response
     } ->

@@ -92,6 +92,11 @@ interface PaymentApiList {
     
     
     @GET 
+    fun cardDetails(@Url url1: String?     ,  @Query("aggregator") aggregator: String?)
+    : Deferred<Response<CardDetailsResponse>>
+    
+    
+    @GET 
     fun getActiveRefundTransferModes(@Url url1: String?   )
     : Deferred<Response<TransferModeResponse>>
     
@@ -204,5 +209,15 @@ interface PaymentApiList {
     @POST 
     fun customerOnboard(@Url url1: String?   ,@Body body: CustomerOnboardingRequest)
     : Deferred<Response<CustomerOnboardingResponse>>
+    
+    
+    @GET 
+    fun outstandingOrderDetails(@Url url1: String?    ,  @Query("aggregator") aggregator: String?)
+    : Deferred<Response<OutstandingOrderDetailsResponse>>
+    
+    
+    @GET 
+    fun paidOrderDetails(@Url url1: String?    ,  @Query("aggregator") aggregator: String?)
+    : Deferred<Response<PaidOrderDetailsResponse>>
     
 }

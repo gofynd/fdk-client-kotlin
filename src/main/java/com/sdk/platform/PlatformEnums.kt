@@ -7,6 +7,46 @@ import com.google.gson.annotations.SerializedName
 
 
 
+
+
+
+
+
+
+
+
+
+    /*
+        Enum: GenerationEntityType
+        Used By: Content
+    */
+    enum class GenerationEntityType(val value:String){
+        
+        @SerializedName("title")
+        title("title"), 
+        
+        @SerializedName("description")
+        description("description");
+        
+
+        companion object {
+            fun valueOfGenerationEntityType(value : String): GenerationEntityType? {
+                return GenerationEntityType.values().find {
+                    it.value == value
+                }
+            }
+        }
+    }
+
+
+
+
+
+
+
+
+
+
     /*
         Enum: PriorityEnum
         Used By: Lead
@@ -163,43 +203,6 @@ import com.google.gson.annotations.SerializedName
 
 
 
-    /*
-        Enum: GenerationEntityType
-        Used By: Content
-    */
-    enum class GenerationEntityType(val value:String){
-        
-        @SerializedName("title")
-        title("title"), 
-        
-        @SerializedName("description")
-        description("description");
-        
-
-        companion object {
-            fun valueOfGenerationEntityType(value : String): GenerationEntityType? {
-                return GenerationEntityType.values().find {
-                    it.value == value
-                }
-            }
-        }
-    }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -229,6 +232,4 @@ import com.google.gson.annotations.SerializedName
             }
         }
     }
-
-
 

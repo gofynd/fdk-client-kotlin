@@ -25,7 +25,7 @@ Find all the JobCodes from Metrics Collection based on the field Values
 
 
 ```kotlin
-inventory.getJobCodesMetrics(dailyJob: dailyJob, jobCode: jobCode).safeAwait{ response, error->
+publicClient.inventory.getJobCodesMetrics(dailyJob: dailyJob, jobCode: jobCode).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -86,7 +86,7 @@ Save JobCode Metrics
 
 
 ```kotlin
-inventory.saveJobCodesMetrics(body: body).safeAwait{ response, error->
+publicClient.inventory.saveJobCodesMetrics(body: body).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -145,7 +145,7 @@ Get Slingshot Configuration Of  A Company using API key
 
 
 ```kotlin
-inventory.getConfigByApiKey(apikey: apikey).safeAwait{ response, error->
+publicClient.inventory.getConfigByApiKey(apikey: apikey).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -205,7 +205,7 @@ Get apikey  for  Company  to call other Slingshot Configuration APIs
 
 
 ```kotlin
-inventory.getApiKey(userName: userName, password: password).safeAwait{ response, error->
+publicClient.inventory.getApiKey(userName: userName, password: password).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -266,7 +266,7 @@ Get Job Config By Code
 
 
 ```kotlin
-inventory.getJobByCode(code: code).safeAwait{ response, error->
+publicClient.inventory.getJobByCode(code: code).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -326,7 +326,7 @@ Get Job Configs By Integration Type
 
 
 ```kotlin
-inventory.getJobConfigByIntegrationType(integrationType: integrationType, disable: disable).safeAwait{ response, error->
+publicClient.inventory.getJobConfigByIntegrationType(integrationType: integrationType, disable: disable).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->

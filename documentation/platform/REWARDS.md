@@ -31,7 +31,7 @@ List of giveaways of the current application.
 
 
 ```kotlin
-client.application("<APPLICATION_ID>").rewards.showGiveaways(pageId: pageId, pageSize: pageSize).safeAwait{ response, error->
+platformClient.application("<APPLICATION_ID>").rewards.showGiveaways(pageId: pageId, pageSize: pageSize).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -160,7 +160,7 @@ List of giveaways of the current application.
 
 
 ```kotlin
-client.application("<APPLICATION_ID>").rewards.saveGiveAway(body: body).safeAwait{ response, error->
+platformClient.application("<APPLICATION_ID>").rewards.saveGiveAway(body: body).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -248,7 +248,7 @@ Get giveaway by ID.
 
 
 ```kotlin
-client.application("<APPLICATION_ID>").rewards.getGiveawayById(id: id).safeAwait{ response, error->
+platformClient.application("<APPLICATION_ID>").rewards.getGiveawayById(id: id).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -337,7 +337,7 @@ Updates the giveaway by it's ID.
 
 
 ```kotlin
-client.application("<APPLICATION_ID>").rewards.updateGiveAway(id: id, body: body).safeAwait{ response, error->
+platformClient.application("<APPLICATION_ID>").rewards.updateGiveAway(id: id, body: body).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -426,7 +426,7 @@ List of offers of the current application.
 
 
 ```kotlin
-client.application("<APPLICATION_ID>").rewards.showOffers().safeAwait{ response, error->
+platformClient.application("<APPLICATION_ID>").rewards.showOffers().safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -699,7 +699,7 @@ Fetch a offer by its name
 
 
 ```kotlin
-client.application("<APPLICATION_ID>").rewards.getOfferByName(name: name).safeAwait{ response, error->
+platformClient.application("<APPLICATION_ID>").rewards.getOfferByName(name: name).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -808,7 +808,7 @@ Update offer by name
 
 
 ```kotlin
-client.application("<APPLICATION_ID>").rewards.updateOfferByName(name: name, body: body).safeAwait{ response, error->
+platformClient.application("<APPLICATION_ID>").rewards.updateOfferByName(name: name, body: body).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -917,7 +917,7 @@ Update user status
 
 
 ```kotlin
-client.application("<APPLICATION_ID>").rewards.updateUserStatus(userId: userId, body: body).safeAwait{ response, error->
+platformClient.application("<APPLICATION_ID>").rewards.updateUserStatus(userId: userId, body: body).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -1001,7 +1001,7 @@ Get user reward details
 
 
 ```kotlin
-client.application("<APPLICATION_ID>").rewards.getUserDetails(userId: userId).safeAwait{ response, error->
+platformClient.application("<APPLICATION_ID>").rewards.getUserDetails(userId: userId).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -1085,7 +1085,7 @@ Get all transactions of reward points
 
 
 ```kotlin
-client.application("<APPLICATION_ID>").rewards.getUserPointsHistory(userId: userId, pageId: pageId, pageSize: pageSize).safeAwait{ response, error->
+platformClient.application("<APPLICATION_ID>").rewards.getUserPointsHistory(userId: userId, pageId: pageId, pageSize: pageSize).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -1203,7 +1203,7 @@ Get all valid android paths
 
 
 ```kotlin
-client.application("<APPLICATION_ID>").rewards.getRewardsConfiguration().safeAwait{ response, error->
+platformClient.application("<APPLICATION_ID>").rewards.getRewardsConfiguration().safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -1273,7 +1273,7 @@ Updates the collection with given android paths.
 
 
 ```kotlin
-client.application("<APPLICATION_ID>").rewards.setRewardsConfiguration(body: body).safeAwait{ response, error->
+platformClient.application("<APPLICATION_ID>").rewards.setRewardsConfiguration(body: body).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
