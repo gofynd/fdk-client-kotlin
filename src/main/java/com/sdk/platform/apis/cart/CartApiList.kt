@@ -65,6 +65,18 @@ interface CartApiList {
     suspend fun createCartMetaConfig(@Path("company_id") companyId: String, @Path("application_id") applicationId: String,@Body body: CartMetaConfigAdd)
     : Response<CartMetaConfigAdd>
     
+    @PUT ("/service/platform/cart/v1.0/company/{company_id}/application/{application_id}/additional-charge-discount/{id}")
+    suspend fun updateCartDynamicInjection(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Path("id") id: String,@Body body: CartDynamicInjectionUpdate)
+    : Response<CartDynamicInjectionResponse>
+    
+    @DELETE ("/service/platform/cart/v1.0/company/{company_id}/application/{application_id}/additional-charge-discount/{id}")
+    suspend fun removeCartDynamicInjection(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Path("id") id: String)
+    : Response<SuccessMessage>
+    
+    @POST ("/service/platform/cart/v1.0/company/{company_id}/application/{application_id}/additional-charge-discount")
+    suspend fun createCartDynamicInjection(@Path("company_id") companyId: String, @Path("application_id") applicationId: String,@Body body: CartDynamicInjectionAdd)
+    : Response<CartDynamicInjectionResponse>
+    
     @POST ("/service/platform/cart/v1.0/company/{company_id}/application/{application_id}/cart/validate")
     suspend fun fetchAndvalidateCartItems(@Path("company_id") companyId: String, @Path("application_id") applicationId: String,@Body body: OpenapiCartDetailsRequest)
     : Response<OpenapiCartDetailsResponse>

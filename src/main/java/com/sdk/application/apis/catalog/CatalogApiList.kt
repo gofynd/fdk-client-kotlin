@@ -111,13 +111,13 @@ interface CatalogApiList {
     : Response<GetFollowListingResponse>
     
     
-    @POST 
-    suspend fun followById(@Url url1: String?     )
+    @DELETE 
+    suspend fun unfollowById(@Url url1: String?     )
     : Response<FollowPostResponse>
     
     
-    @DELETE 
-    suspend fun unfollowById(@Url url1: String?     )
+    @POST 
+    suspend fun followById(@Url url1: String?     )
     : Response<FollowPostResponse>
     
     

@@ -175,24 +175,24 @@ class ServiceabilityDataManagerClass(val config: PlatformConfig, val unauthorize
     
     
     
-    suspend fun upsertDpAccount(body: CompanyDpAccountRequest)
-    : Response<CompanyDpAccountResponse>? {
-        
-        return if (config.oauthClient.isAccessTokenValid()) {
-            serviceabilityApiList?.upsertDpAccount(
-        companyId = config.companyId, body = body)
-        } else {
-            null
-        } 
-    }
-    
-    
     suspend fun getDpAccount(pageNumber: Int?=null, pageSize: Int?=null, stage: String?=null, paymentMode: String?=null, transportType: String?=null)
     : Response<CompanyDpAccountListResponse>? {
         
         return if (config.oauthClient.isAccessTokenValid()) {
             serviceabilityApiList?.getDpAccount(
         companyId = config.companyId, pageNumber = pageNumber, pageSize = pageSize, stage = stage, paymentMode = paymentMode, transportType = transportType )
+        } else {
+            null
+        } 
+    }
+    
+    
+    suspend fun upsertDpAccount(body: CompanyDpAccountRequest)
+    : Response<CompanyDpAccountResponse>? {
+        
+        return if (config.oauthClient.isAccessTokenValid()) {
+            serviceabilityApiList?.upsertDpAccount(
+        companyId = config.companyId, body = body)
         } else {
             null
         } 
@@ -223,24 +223,24 @@ class ServiceabilityDataManagerClass(val config: PlatformConfig, val unauthorize
     }
     
     
-    suspend fun upsertDpRules(body: DpRuleRequest)
-    : Response<DpRuleSuccessResponse>? {
-        
-        return if (config.oauthClient.isAccessTokenValid()) {
-            serviceabilityApiList?.upsertDpRules(
-        companyId = config.companyId, body = body)
-        } else {
-            null
-        } 
-    }
-    
-    
     suspend fun getDpRuleInsert(pageNumber: Int?=null, pageSize: Int?=null)
     : Response<DpMultipleRuleSuccessResponse>? {
         
         return if (config.oauthClient.isAccessTokenValid()) {
             serviceabilityApiList?.getDpRuleInsert(
         companyId = config.companyId, pageNumber = pageNumber, pageSize = pageSize )
+        } else {
+            null
+        } 
+    }
+    
+    
+    suspend fun upsertDpRules(body: DpRuleRequest)
+    : Response<DpRuleSuccessResponse>? {
+        
+        return if (config.oauthClient.isAccessTokenValid()) {
+            serviceabilityApiList?.upsertDpRules(
+        companyId = config.companyId, body = body)
         } else {
             null
         } 
@@ -295,20 +295,20 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     
     
     
-    suspend fun getZoneFromPincodeView(body: GetZoneFromPincodeViewRequest)
-    : Response<GetZoneFromPincodeViewResponse>? {
+    suspend fun getZonesFromApplicationIdView(pageNo: Int?=null, pageSize: Int?=null, zoneId: ArrayList<String>?=null, q: String?=null)
+    : Response<GetZoneFromApplicationIdViewResponse>? {
         return if (config.oauthClient.isAccessTokenValid()) {
-                serviceabilityApiList?.getZoneFromPincodeView(companyId = config.companyId , applicationId = applicationId , body = body)
+                serviceabilityApiList?.getZonesFromApplicationIdView(companyId = config.companyId , applicationId = applicationId , pageNo = pageNo, pageSize = pageSize, zoneId = zoneId, q = q )
         } else {
             null
         }
     }
     
     
-    suspend fun getZonesFromApplicationIdView(pageNo: Int?=null, pageSize: Int?=null, zoneId: ArrayList<String>?=null, q: String?=null)
-    : Response<GetZoneFromApplicationIdViewResponse>? {
+    suspend fun getZoneFromPincodeView(body: GetZoneFromPincodeViewRequest)
+    : Response<GetZoneFromPincodeViewResponse>? {
         return if (config.oauthClient.isAccessTokenValid()) {
-                serviceabilityApiList?.getZonesFromApplicationIdView(companyId = config.companyId , applicationId = applicationId , pageNo = pageNo, pageSize = pageSize, zoneId = zoneId, q = q )
+                serviceabilityApiList?.getZoneFromPincodeView(companyId = config.companyId , applicationId = applicationId , body = body)
         } else {
             null
         }

@@ -37,13 +37,13 @@ interface ServiceabilityApiList {
     suspend fun createZone(@Path("company_id") companyId: String,@Body body: ZoneRequest)
     : Response<ZoneResponse>
     
-    @POST ("/service/platform/logistics/v1.0/company/{company_id}/application/{application_id}/zones")
-    suspend fun getZoneFromPincodeView(@Path("company_id") companyId: String, @Path("application_id") applicationId: String,@Body body: GetZoneFromPincodeViewRequest)
-    : Response<GetZoneFromPincodeViewResponse>
-    
     @GET ("/service/platform/logistics/v1.0/company/{company_id}/application/{application_id}/zones")
     suspend fun getZonesFromApplicationIdView(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Query("page_no") pageNo: Int?, @Query("page_size") pageSize: Int?, @Query("zone_id") zoneId: ArrayList<String>?, @Query("q") q: String?)
     : Response<GetZoneFromApplicationIdViewResponse>
+    
+    @POST ("/service/platform/logistics/v1.0/company/{company_id}/application/{application_id}/zones")
+    suspend fun getZoneFromPincodeView(@Path("company_id") companyId: String, @Path("application_id") applicationId: String,@Body body: GetZoneFromPincodeViewRequest)
+    : Response<GetZoneFromPincodeViewResponse>
     
     @GET ("/service/platform/logistics/v1.0/company/{company_id}/zones-list")
     suspend fun getZoneListView(@Path("company_id") companyId: String, @Query("page_number") pageNumber: Int?, @Query("page_no") pageNo: Int?, @Query("page_size") pageSize: Int?, @Query("name") name: String?, @Query("is_active") isActive: Boolean?, @Query("channel_ids") channelIds: String?, @Query("q") q: String?, @Query("zone_id") zoneId: ArrayList<String>?)
@@ -85,13 +85,13 @@ interface ServiceabilityApiList {
     suspend fun updatePincodeAuditHistory(@Path("company_id") companyId: String, @Path("application_id") applicationId: String,@Body body: PincodeMopUpdateAuditHistoryRequest)
     : Response<PincodeMopUpdateAuditHistoryResponseData>
     
-    @POST ("/service/platform/logistics/v1.0/company/{company_id}/courier/account")
-    suspend fun upsertDpAccount(@Path("company_id") companyId: String,@Body body: CompanyDpAccountRequest)
-    : Response<CompanyDpAccountResponse>
-    
     @GET ("/service/platform/logistics/v1.0/company/{company_id}/courier/account")
     suspend fun getDpAccount(@Path("company_id") companyId: String, @Query("page_number") pageNumber: Int?, @Query("page_size") pageSize: Int?, @Query("stage") stage: String?, @Query("payment_mode") paymentMode: String?, @Query("transport_type") transportType: String?)
     : Response<CompanyDpAccountListResponse>
+    
+    @POST ("/service/platform/logistics/v1.0/company/{company_id}/courier/account")
+    suspend fun upsertDpAccount(@Path("company_id") companyId: String,@Body body: CompanyDpAccountRequest)
+    : Response<CompanyDpAccountResponse>
     
     @PUT ("/service/platform/logistics/v1.0/company/{company_id}/courier/rules/{rule_uid}")
     suspend fun updateDpRule(@Path("company_id") companyId: String, @Path("rule_uid") ruleUid: String,@Body body: DpRulesUpdateRequest)
@@ -101,13 +101,13 @@ interface ServiceabilityApiList {
     suspend fun getDpRules(@Path("company_id") companyId: String, @Path("rule_uid") ruleUid: String)
     : Response<DpRuleSuccessResponse>
     
-    @POST ("/service/platform/logistics/v1.0/company/{company_id}/courier/rules")
-    suspend fun upsertDpRules(@Path("company_id") companyId: String,@Body body: DpRuleRequest)
-    : Response<DpRuleSuccessResponse>
-    
     @GET ("/service/platform/logistics/v1.0/company/{company_id}/courier/rules")
     suspend fun getDpRuleInsert(@Path("company_id") companyId: String, @Query("page_number") pageNumber: Int?, @Query("page_size") pageSize: Int?)
     : Response<DpMultipleRuleSuccessResponse>
+    
+    @POST ("/service/platform/logistics/v1.0/company/{company_id}/courier/rules")
+    suspend fun upsertDpRules(@Path("company_id") companyId: String,@Body body: DpRuleRequest)
+    : Response<DpRuleSuccessResponse>
     
     @PUT ("/service/platform/logistics/v1.0/company/{company_id}/courier/priority")
     suspend fun upsertDpCompanyRules(@Path("company_id") companyId: String,@Body body: DPCompanyRuleRequest)

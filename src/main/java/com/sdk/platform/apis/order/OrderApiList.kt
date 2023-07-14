@@ -109,12 +109,12 @@ interface OrderApiList {
     suspend fun getRoleBasedActions(@Path("company_id") companyId: String)
     : Response<GetActionsResponse>
     
-    @GET ("/service/platform/order-manage/v1.0/company/{company_id}/shipment/history")
-    suspend fun getShipmentHistory(@Path("company_id") companyId: String, @Query("shipment_id") shipmentId: String?, @Query("bag_id") bagId: Int?)
-    : Response<ShipmentHistoryResponse>
-    
     @POST ("/service/platform/order-manage/v1.0/company/{company_id}/shipment/history")
     suspend fun postShipmentHistory(@Path("company_id") companyId: String,@Body body: PostShipmentHistory)
+    : Response<ShipmentHistoryResponse>
+    
+    @GET ("/service/platform/order-manage/v1.0/company/{company_id}/shipment/history")
+    suspend fun getShipmentHistory(@Path("company_id") companyId: String, @Query("shipment_id") shipmentId: String?, @Query("bag_id") bagId: Int?)
     : Response<ShipmentHistoryResponse>
     
     @POST ("/service/platform/order-manage/v1.0/company/{company_id}/ninja/send-sms")
@@ -129,13 +129,13 @@ interface OrderApiList {
     suspend fun createOrder(@Path("company_id") companyId: String,@Body body: CreateOrderAPI)
     : Response<CreateOrderResponse>
     
-    @GET ("/service/platform/order-manage/v1.0/company/{company_id}/order-config")
-    suspend fun getChannelConfig(@Path("company_id") companyId: String)
-    : Response<CreateChannelConfigData>
-    
     @POST ("/service/platform/order-manage/v1.0/company/{company_id}/order-config")
     suspend fun createChannelConfig(@Path("company_id") companyId: String,@Body body: CreateChannelConfigData)
     : Response<CreateChannelConfigResponse>
+    
+    @GET ("/service/platform/order-manage/v1.0/company/{company_id}/order-config")
+    suspend fun getChannelConfig(@Path("company_id") companyId: String)
+    : Response<CreateChannelConfigData>
     
     @POST ("/service/platform/order-manage/v1.0/company/{company_id}/manifest/uploadConsent")
     suspend fun uploadConsent(@Path("company_id") companyId: String,@Body body: UploadConsent)
