@@ -4,8 +4,8 @@ import com.sdk.platform.*
 
 
 import android.os.Parcelable
-import kotlinx.android.parcel.Parcelize
-import kotlinx.android.parcel.RawValue
+import kotlinx.parcelize.Parcelize
+import kotlinx.parcelize.RawValue
 import android.util.Base64
 import com.google.gson.annotations.SerializedName
 
@@ -483,9 +483,14 @@ data class AppCartConfig(
     var bulkCoupons: Boolean?=null,
     
     @SerializedName("revenue_engine_coupon")
-    var revenueEngineCoupon: Boolean?=null
+    var revenueEngineCoupon: Boolean?=null,
+    
+    @SerializedName("pan_card")
+    var panCard: PanCardConfig?=null
     
 ): Parcelable {
+    
+    
     
     
     
@@ -1297,6 +1302,38 @@ data class CommsConfig(
     var enabled: Boolean?=null
     
 ): Parcelable {
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: PanCardConfig
+*/
+@Parcelize
+data class PanCardConfig(
+    
+    
+    
+    @SerializedName("enabled")
+    var enabled: Boolean?=null,
+    
+    @SerializedName("cod_threshold_amount")
+    var codThresholdAmount: Double?=null,
+    
+    @SerializedName("online_threshold_amount")
+    var onlineThresholdAmount: Double?=null
+    
+): Parcelable {
+    
+    
+    
+    
     
     
     

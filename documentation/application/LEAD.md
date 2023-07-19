@@ -26,7 +26,7 @@ Get Ticket with the specific id
 
 
 ```kotlin
-lead.getTicket(id: id).safeAwait{ response, error->
+applicationClient.lead.getTicket(id: id).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -285,7 +285,7 @@ Create history for specific Ticket
 
 
 ```kotlin
-lead.createHistory(id: id, body: body).safeAwait{ response, error->
+applicationClient.lead.createHistory(id: id, body: body).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -387,7 +387,7 @@ Create Ticket
 
 
 ```kotlin
-lead.createTicket(body: body).safeAwait{ response, error->
+applicationClient.lead.createTicket(body: body).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -645,7 +645,7 @@ Get specific Custom Form using it's slug
 
 
 ```kotlin
-lead.getCustomForm(slug: slug).safeAwait{ response, error->
+applicationClient.lead.getCustomForm(slug: slug).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -757,7 +757,7 @@ Submit Response for a specific Custom Form using it's slug
 
 
 ```kotlin
-lead.submitCustomForm(slug: slug, body: body).safeAwait{ response, error->
+applicationClient.lead.submitCustomForm(slug: slug, body: body).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -1018,7 +1018,7 @@ Get participants of a specific Video Room using it's unique name
 
 
 ```kotlin
-lead.getParticipantsInsideVideoRoom(uniqueName: uniqueName).safeAwait{ response, error->
+applicationClient.lead.getParticipantsInsideVideoRoom(uniqueName: uniqueName).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -1088,7 +1088,7 @@ Get Token to join a specific Video Room using it's unqiue name
 
 
 ```kotlin
-lead.getTokenForVideoRoom(uniqueName: uniqueName).safeAwait{ response, error->
+applicationClient.lead.getTokenForVideoRoom(uniqueName: uniqueName).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->

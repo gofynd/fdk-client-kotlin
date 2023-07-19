@@ -26,7 +26,7 @@ Get offer by name
 
 
 ```kotlin
-rewards.getOfferByName(name: name).safeAwait{ response, error->
+applicationClient.rewards.getOfferByName(name: name).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -135,7 +135,7 @@ Get all transactions of reward points
 
 
 ```kotlin
-rewards.catalogueOrder(body: body).safeAwait{ response, error->
+applicationClient.rewards.catalogueOrder(body: body).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -210,7 +210,7 @@ Get all transactions of reward points
 
 
 ```kotlin
-rewards.getUserPointsHistory(pageId: pageId, pageSize: pageSize).safeAwait{ response, error->
+applicationClient.rewards.getUserPointsHistory(pageId: pageId, pageSize: pageSize).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -327,7 +327,7 @@ Get total available points of a user
 
 
 ```kotlin
-rewards.getUserPoints().safeAwait{ response, error->
+applicationClient.rewards.getUserPoints().safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -392,7 +392,7 @@ Get referral details of a user
 
 
 ```kotlin
-rewards.getUserReferralDetails().safeAwait{ response, error->
+applicationClient.rewards.getUserReferralDetails().safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -514,7 +514,7 @@ Calculates the discount on order-amount
 
 
 ```kotlin
-rewards.getOrderDiscount(body: body).safeAwait{ response, error->
+applicationClient.rewards.getOrderDiscount(body: body).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -605,7 +605,7 @@ Redeems a referral code and credits reward points to referee and the referrer as
 
 
 ```kotlin
-rewards.redeemReferralCode(body: body).safeAwait{ response, error->
+applicationClient.rewards.redeemReferralCode(body: body).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
