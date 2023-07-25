@@ -5430,9 +5430,14 @@ data class Application(
     var mobileLogo: SecureUrl?=null,
     
     @SerializedName("domain")
-    var domain: Domain?=null
+    var domain: Domain?=null,
+    
+    @SerializedName("slug")
+    var slug: String?=null
     
 ): Parcelable {
+    
+    
     
     
     

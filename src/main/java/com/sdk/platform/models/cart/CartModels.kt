@@ -1988,7 +1988,7 @@ data class PromotionsResponse(
     
     
     @SerializedName("items")
-    var items: PromotionListItem?=null,
+    var items: ArrayList<PromotionListItem>?=null,
     
     @SerializedName("page")
     var page: Page?=null

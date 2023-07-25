@@ -433,6 +433,10 @@ Success
  | id | String? |  yes  |  |
  | defaultCurrency | [LocationDefaultCurrency](#LocationDefaultCurrency)? |  yes  |  |
  | defaultLanguage | [LocationDefaultLanguage](#LocationDefaultLanguage)? |  yes  |  |
+ | stateCode | String? |  yes  |  |
+ | countryCode | String? |  yes  |  |
+ | latitude | String? |  yes  |  |
+ | longitude | String? |  yes  |  |
 
 ---
 
