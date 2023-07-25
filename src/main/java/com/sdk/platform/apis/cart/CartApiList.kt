@@ -65,6 +65,18 @@ interface CartApiList {
     fun createCartMetaConfig(@Path("company_id") companyId: String, @Path("application_id") applicationId: String,@Body body: CartMetaConfigAdd)
     : Deferred<Response<CartMetaConfigAdd>>
     
+    @PUT ("/service/platform/cart/v1.0/company/{company_id}/application/{application_id}/price-adjustment/{id}")
+    fun updatePriceAdjustment(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Path("id") id: String,@Body body: PriceAdjustmentUpdate)
+    : Deferred<Response<PriceAdjustmentResponse>>
+    
+    @DELETE ("/service/platform/cart/v1.0/company/{company_id}/application/{application_id}/price-adjustment/{id}")
+    fun removePriceAdjustment(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Path("id") id: String)
+    : Deferred<Response<SuccessMessage>>
+    
+    @POST ("/service/platform/cart/v1.0/company/{company_id}/application/{application_id}/price-adjustment")
+    fun addPriceAdjustment(@Path("company_id") companyId: String, @Path("application_id") applicationId: String,@Body body: PriceAdjustmentAdd)
+    : Deferred<Response<PriceAdjustmentResponse>>
+    
     @POST ("/service/platform/cart/v1.0/company/{company_id}/application/{application_id}/cart/validate")
     fun fetchAndvalidateCartItems(@Path("company_id") companyId: String, @Path("application_id") applicationId: String,@Body body: OpenapiCartDetailsRequest)
     : Deferred<Response<OpenapiCartDetailsResponse>>
