@@ -98,6 +98,9 @@ class CartDataManagerClass(val config: PlatformConfig, val unauthorizedAction: (
     
     
     
+    
+    
+    
 
 inner class ApplicationClient(val applicationId:String,val config: PlatformConfig){
 
@@ -415,6 +418,36 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     : Deferred<Response<CartMetaConfigAdd>>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 cartApiList?.createCartMetaConfig(companyId = config.companyId , applicationId = applicationId , body = body)
+        } else {
+            null
+        }
+    }
+    
+    
+    suspend fun updatePriceAdjustment(id: String,body: PriceAdjustmentUpdate)
+    : Deferred<Response<PriceAdjustmentResponse>>? {
+        return if (config.oauthClient.isAccessTokenValid()) {
+                cartApiList?.updatePriceAdjustment(companyId = config.companyId , applicationId = applicationId , id = id, body = body)
+        } else {
+            null
+        }
+    }
+    
+    
+    suspend fun removePriceAdjustment(id: String)
+    : Deferred<Response<SuccessMessage>>? {
+        return if (config.oauthClient.isAccessTokenValid()) {
+                cartApiList?.removePriceAdjustment(companyId = config.companyId , applicationId = applicationId , id = id )
+        } else {
+            null
+        }
+    }
+    
+    
+    suspend fun addPriceAdjustment(body: PriceAdjustmentAdd)
+    : Deferred<Response<PriceAdjustmentResponse>>? {
+        return if (config.oauthClient.isAccessTokenValid()) {
+                cartApiList?.addPriceAdjustment(companyId = config.companyId , applicationId = applicationId , body = body)
         } else {
             null
         }

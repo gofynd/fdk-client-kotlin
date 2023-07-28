@@ -2523,6 +2523,343 @@ data class CartMetaConfigAdd(
 
              
 /*
+    Model: Article
+*/
+@Parcelize
+data class Article(
+    
+    
+    
+    @SerializedName("meta")
+    var meta: @RawValue HashMap<String,Any>?=null,
+    
+    @SerializedName("article_id")
+    var articleId: String?=null,
+    
+    @SerializedName("type")
+    var type: String?=null,
+    
+    @SerializedName("value")
+    var value: Double?=null,
+    
+    @SerializedName("code")
+    var code: String?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: Collection
+*/
+@Parcelize
+data class Collection(
+    
+    
+    
+    @SerializedName("refund_by")
+    var refundBy: String?=null,
+    
+    @SerializedName("collected_by")
+    var collectedBy: String?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: PriceAdjustmentUpdate
+*/
+@Parcelize
+data class PriceAdjustmentUpdate(
+    
+    
+    
+    @SerializedName("apply_expiry")
+    var applyExpiry: String?=null,
+    
+    @SerializedName("cart_id")
+    var cartId: String?=null,
+    
+    @SerializedName("cart_value")
+    var cartValue: Double?=null,
+    
+    @SerializedName("meta")
+    var meta: @RawValue HashMap<String,Any>?=null,
+    
+    @SerializedName("type")
+    var type: String?=null,
+    
+    @SerializedName("value")
+    var value: Double?=null,
+    
+    @SerializedName("article_level_distribution")
+    var articleLevelDistribution: Boolean?=null,
+    
+    @SerializedName("article_ids")
+    var articleIds: ArrayList<Article>?=null,
+    
+    @SerializedName("modified_by")
+    var modifiedBy: String?=null,
+    
+    @SerializedName("is_authenticated")
+    var isAuthenticated: Boolean?=null,
+    
+    @SerializedName("allowed_refund")
+    var allowedRefund: Boolean?=null,
+    
+    @SerializedName("message")
+    var message: String?=null,
+    
+    @SerializedName("collection")
+    var collection: Collection?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: PriceAdjustment
+*/
+@Parcelize
+data class PriceAdjustment(
+    
+    
+    
+    @SerializedName("apply_expiry")
+    var applyExpiry: String?=null,
+    
+    @SerializedName("cart_id")
+    var cartId: String?=null,
+    
+    @SerializedName("cart_value")
+    var cartValue: Double?=null,
+    
+    @SerializedName("meta")
+    var meta: @RawValue HashMap<String,Any>?=null,
+    
+    @SerializedName("type")
+    var type: String?=null,
+    
+    @SerializedName("value")
+    var value: Double?=null,
+    
+    @SerializedName("article_level_distribution")
+    var articleLevelDistribution: Boolean?=null,
+    
+    @SerializedName("article_ids")
+    var articleIds: ArrayList<Article>?=null,
+    
+    @SerializedName("id")
+    var id: String?=null,
+    
+    @SerializedName("is_authenticated")
+    var isAuthenticated: Boolean?=null,
+    
+    @SerializedName("allowed_refund")
+    var allowedRefund: Boolean?=null,
+    
+    @SerializedName("message")
+    var message: String?=null,
+    
+    @SerializedName("collection")
+    var collection: Collection?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: PriceAdjustmentResponse
+*/
+@Parcelize
+data class PriceAdjustmentResponse(
+    
+    
+    
+    @SerializedName("data")
+    var data: PriceAdjustment?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: PriceAdjustmentAdd
+*/
+@Parcelize
+data class PriceAdjustmentAdd(
+    
+    
+    
+    @SerializedName("apply_expiry")
+    var applyExpiry: String?=null,
+    
+    @SerializedName("cart_id")
+    var cartId: String?=null,
+    
+    @SerializedName("cart_value")
+    var cartValue: Double?=null,
+    
+    @SerializedName("meta")
+    var meta: @RawValue HashMap<String,Any>?=null,
+    
+    @SerializedName("type")
+    var type: String?=null,
+    
+    @SerializedName("created_by")
+    var createdBy: String?=null,
+    
+    @SerializedName("value")
+    var value: Double?=null,
+    
+    @SerializedName("article_level_distribution")
+    var articleLevelDistribution: Boolean?=null,
+    
+    @SerializedName("article_ids")
+    var articleIds: ArrayList<Article>?=null,
+    
+    @SerializedName("is_authenticated")
+    var isAuthenticated: Boolean?=null,
+    
+    @SerializedName("allowed_refund")
+    var allowedRefund: Boolean?=null,
+    
+    @SerializedName("message")
+    var message: String?=null,
+    
+    @SerializedName("collection")
+    var collection: Collection?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
     Model: CartItem
 */
 @Parcelize
