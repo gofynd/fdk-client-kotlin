@@ -251,10 +251,10 @@ class CartDataManagerClass(val config: ApplicationConfig, val unauthorizedAction
 
     
     
-    fun getShipments(p: Boolean?=null, id: String?=null, buyNow: Boolean?=null, addressId: String?=null, areaCode: String?=null): Deferred<Response<CartShipmentsResponse>>? {
+    fun getShipments(p: Boolean?=null, id: String?=null, buyNow: Boolean?=null, addressId: String?=null, areaCode: String?=null, orderType: String?=null): Deferred<Response<CartShipmentsResponse>>? {
         var fullUrl : String? = _relativeUrls["getShipments"] 
         
-        return cartApiList?.getShipments(fullUrl    ,  p = p,    id = id,    buyNow = buyNow,    addressId = addressId,    areaCode = areaCode)}
+        return cartApiList?.getShipments(fullUrl    ,  p = p,    id = id,    buyNow = buyNow,    addressId = addressId,    areaCode = areaCode,    orderType = orderType)}
 
     
     

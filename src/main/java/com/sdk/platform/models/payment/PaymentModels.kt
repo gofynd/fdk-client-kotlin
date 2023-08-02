@@ -629,33 +629,27 @@ data class PaymentOptionsResponse(
 
              
 /*
-    Model: PayoutsResponse
+    Model: PayoutCustomer
 */
 @Parcelize
-data class PayoutsResponse(
+data class PayoutCustomer(
     
     
     
-    @SerializedName("more_attributes")
-    var moreAttributes: @RawValue HashMap<String,Any>?=null,
+    @SerializedName("unique_external_id")
+    var uniqueExternalId: String?=null,
     
-    @SerializedName("customers")
-    var customers: @RawValue HashMap<String,Any>?=null,
+    @SerializedName("mobile")
+    var mobile: String?=null,
     
-    @SerializedName("unique_transfer_no")
-    var uniqueTransferNo: @RawValue HashMap<String,Any>?=null,
+    @SerializedName("name")
+    var name: String?=null,
     
-    @SerializedName("is_default")
-    var isDefault: Boolean?=null,
+    @SerializedName("email")
+    var email: String?=null,
     
-    @SerializedName("is_active")
-    var isActive: Boolean?=null,
-    
-    @SerializedName("transfer_type")
-    var transferType: String?=null,
-    
-    @SerializedName("payouts_aggregators")
-    var payoutsAggregators: @RawValue ArrayList<HashMap<String,Any>>?=null
+    @SerializedName("id")
+    var id: Int?=null
     
 ): Parcelable {
     
@@ -668,6 +662,175 @@ data class PayoutsResponse(
     
     
     
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: PayoutMoreAttributes
+*/
+@Parcelize
+data class PayoutMoreAttributes(
+    
+    
+    
+    @SerializedName("branch_name")
+    var branchName: String?=null,
+    
+    @SerializedName("city")
+    var city: String?=null,
+    
+    @SerializedName("account_no")
+    var accountNo: String?=null,
+    
+    @SerializedName("country")
+    var country: String?=null,
+    
+    @SerializedName("state")
+    var state: String?=null,
+    
+    @SerializedName("account_holder")
+    var accountHolder: String?=null,
+    
+    @SerializedName("ifsc_code")
+    var ifscCode: String?=null,
+    
+    @SerializedName("account_type")
+    var accountType: String?=null,
+    
+    @SerializedName("bank_name")
+    var bankName: String?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: PayoutAggregator
+*/
+@Parcelize
+data class PayoutAggregator(
+    
+    
+    
+    @SerializedName("aggregator_id")
+    var aggregatorId: Int?=null,
+    
+    @SerializedName("aggregator_fund_id")
+    var aggregatorFundId: Int?=null,
+    
+    @SerializedName("payout_details_id")
+    var payoutDetailsId: Int?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: Payout
+*/
+@Parcelize
+data class Payout(
+    
+    
+    
+    @SerializedName("customers")
+    var customers: PayoutCustomer?=null,
+    
+    @SerializedName("more_attributes")
+    var moreAttributes: PayoutMoreAttributes?=null,
+    
+    @SerializedName("is_default")
+    var isDefault: Boolean?=null,
+    
+    @SerializedName("payouts_aggregators")
+    var payoutsAggregators: ArrayList<PayoutAggregator>?=null,
+    
+    @SerializedName("unique_transfer_no")
+    var uniqueTransferNo: String?=null,
+    
+    @SerializedName("is_active")
+    var isActive: Boolean?=null,
+    
+    @SerializedName("transfer_type")
+    var transferType: String?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: PayoutsResponse
+*/
+@Parcelize
+data class PayoutsResponse(
+    
+    
+    
+    @SerializedName("success")
+    var success: Boolean?=null,
+    
+    @SerializedName("items")
+    var items: ArrayList<Payout>?=null
+    
+): Parcelable {
     
     
     

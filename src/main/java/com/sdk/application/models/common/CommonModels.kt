@@ -630,9 +630,29 @@ data class LocationCountry(
     var defaultCurrency: LocationDefaultCurrency?=null,
     
     @SerializedName("default_language")
-    var defaultLanguage: LocationDefaultLanguage?=null
+    var defaultLanguage: LocationDefaultLanguage?=null,
+    
+    @SerializedName("state_code")
+    var stateCode: String?=null,
+    
+    @SerializedName("country_code")
+    var countryCode: String?=null,
+    
+    @SerializedName("latitude")
+    var latitude: String?=null,
+    
+    @SerializedName("longitude")
+    var longitude: String?=null
     
 ): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+    
     
     
     
