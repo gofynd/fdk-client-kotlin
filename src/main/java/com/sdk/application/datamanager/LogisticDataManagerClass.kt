@@ -31,6 +31,14 @@ class LogisticDataManagerClass(val config: ApplicationConfig, val unauthorizedAc
             
                     _relativeUrls["getOptimalLocations"] = "/service/application/logistics/v1.0/reassign_stores".substring(1)
             
+                    _relativeUrls["getCountries"] = "/service/application/logistics/v1.0/countries".substring(1)
+            
+                    _relativeUrls["getCountry"] = "/service/application/logistics/v1.0/countries/{country_iso_code}".substring(1)
+            
+                    _relativeUrls["getLocalities"] = "/service/application/logistics/v1.0/localities/{locality_type}".substring(1)
+            
+                    _relativeUrls["getLocality"] = "/service/application/logistics/v1.0/localities/{locality_type}/{locality_value}".substring(1)
+            
     }
 
     public fun update(updatedUrlMap : HashMap<String,String>){
@@ -100,6 +108,42 @@ class LogisticDataManagerClass(val config: ApplicationConfig, val unauthorizedAc
         var fullUrl : String? = _relativeUrls["getOptimalLocations"] 
         
         return logisticApiList?.getOptimalLocations(fullUrl  ,body = body)}
+
+    
+    
+    fun getCountries(onboarding: Boolean?=null): Deferred<Response<GetCountries>>? {
+        var fullUrl : String? = _relativeUrls["getCountries"] 
+        
+        return logisticApiList?.getCountries(fullUrl    ,  onboarding = onboarding)}
+
+    
+    
+    fun getCountry(countryIsoCode: String): Deferred<Response<GetCountry>>? {
+        var fullUrl : String? = _relativeUrls["getCountry"] 
+        
+        fullUrl = fullUrl?.replace("{" + "country_iso_code" +"}",countryIsoCode.toString())
+        
+        return logisticApiList?.getCountry(fullUrl   )}
+
+    
+    
+    fun getLocalities(localityType: String, country: String?=null, state: String?=null, city: String?=null): Deferred<Response<GetLocalities>>? {
+        var fullUrl : String? = _relativeUrls["getLocalities"] 
+        
+        fullUrl = fullUrl?.replace("{" + "locality_type" +"}",localityType.toString())
+        
+        return logisticApiList?.getLocalities(fullUrl     ,  country = country,    state = state,    city = city)}
+
+    
+    
+    fun getLocality(localityType: String, localityValue: String, country: String?=null, state: String?=null, city: String?=null): Deferred<Response<GetLocality>>? {
+        var fullUrl : String? = _relativeUrls["getLocality"] 
+        
+        fullUrl = fullUrl?.replace("{" + "locality_type" +"}",localityType.toString())
+        
+        fullUrl = fullUrl?.replace("{" + "locality_value" +"}",localityValue.toString())
+        
+        return logisticApiList?.getLocality(fullUrl      ,  country = country,    state = state,    city = city)}
 
     
     

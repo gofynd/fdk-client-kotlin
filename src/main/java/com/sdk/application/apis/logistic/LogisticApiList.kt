@@ -35,4 +35,24 @@ interface LogisticApiList {
     fun getOptimalLocations(@Url url1: String?   ,@Body body: ReAssignStoreRequest)
     : Deferred<Response<ReAssignStoreResponse>>
     
+    
+    @GET 
+    fun getCountries(@Url url1: String?    ,  @Query("onboarding") onboarding: Boolean?)
+    : Deferred<Response<GetCountries>>
+    
+    
+    @GET 
+    fun getCountry(@Url url1: String?    )
+    : Deferred<Response<GetCountry>>
+    
+    
+    @GET 
+    fun getLocalities(@Url url1: String?     ,    @Query("country") country: String?, @Query("state") state: String?, @Query("city") city: String?)
+    : Deferred<Response<GetLocalities>>
+    
+    
+    @GET 
+    fun getLocality(@Url url1: String?      ,    @Query("country") country: String?, @Query("state") state: String?, @Query("city") city: String?)
+    : Deferred<Response<GetLocality>>
+    
 }
