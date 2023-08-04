@@ -68,33 +68,6 @@ data class EventConfig(
 
              
 /*
-    Model: EventConfigList
-*/
-@Parcelize
-data class EventConfigList(
-    
-    
-    
-    @SerializedName("items")
-    var items: ArrayList<EventConfig>?=null,
-    
-    @SerializedName("page")
-    var page: Page?=null
-    
-): Parcelable {
-    
-    
-    
-    
-    
-    
-    
-}
-
-
-
-             
-/*
     Model: EventConfigResponse
 */
 @Parcelize
@@ -171,115 +144,6 @@ data class Page(
     
     @SerializedName("size")
     var size: Int?=null
-    
-): Parcelable {
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-}
-
-
-
-             
-/*
-    Model: EventProcessedStatus
-*/
-@Parcelize
-data class EventProcessedStatus(
-    
-    
-    
-    @SerializedName("id")
-    var id: Int?=null,
-    
-    @SerializedName("subscriber_id")
-    var subscriberId: String?=null,
-    
-    @SerializedName("attempt")
-    var attempt: Int?=null,
-    
-    @SerializedName("response_code")
-    var responseCode: String?=null,
-    
-    @SerializedName("response_message")
-    var responseMessage: String?=null,
-    
-    @SerializedName("created_on")
-    var createdOn: String?=null,
-    
-    @SerializedName("processed_on")
-    var processedOn: String?=null,
-    
-    @SerializedName("status")
-    var status: Boolean?=null
-    
-): Parcelable {
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-}
-
-
-
-             
-/*
-    Model: EventPayload
-*/
-@Parcelize
-data class EventPayload(
-    
-    
-    
-    @SerializedName("id")
-    var id: Int?=null,
-    
-    @SerializedName("event_trace_id")
-    var eventTraceId: String?=null,
-    
-    @SerializedName("message_id")
-    var messageId: String?=null,
-    
-    @SerializedName("event_name")
-    var eventName: String?=null,
-    
-    @SerializedName("event_type")
-    var eventType: String?=null,
-    
-    @SerializedName("version")
-    var version: String?=null,
-    
-    @SerializedName("status")
-    var status: Boolean?=null
     
 ): Parcelable {
     
@@ -439,43 +303,6 @@ data class SubscriberResponse(
 
              
 /*
-    Model: SubscriberEvent
-*/
-@Parcelize
-data class SubscriberEvent(
-    
-    
-    
-    @SerializedName("id")
-    var id: Int?=null,
-    
-    @SerializedName("subscriber_id")
-    var subscriberId: Int?=null,
-    
-    @SerializedName("event_id")
-    var eventId: Int?=null,
-    
-    @SerializedName("created_date")
-    var createdDate: String?=null
-    
-): Parcelable {
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-}
-
-
-
-             
-/*
     Model: AuthMeta
 */
 @Parcelize
@@ -521,43 +348,6 @@ data class Association(
     
     @SerializedName("criteria")
     var criteria: String?=null
-    
-): Parcelable {
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-}
-
-
-
-             
-/*
-    Model: EventConfigBase
-*/
-@Parcelize
-data class EventConfigBase(
-    
-    
-    
-    @SerializedName("event_name")
-    var eventName: String?=null,
-    
-    @SerializedName("event_type")
-    var eventType: String?=null,
-    
-    @SerializedName("event_category")
-    var eventCategory: String?=null,
-    
-    @SerializedName("version")
-    var version: String?=null
     
 ): Parcelable {
     

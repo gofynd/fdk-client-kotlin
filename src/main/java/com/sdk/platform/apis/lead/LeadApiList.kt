@@ -18,7 +18,7 @@ interface LeadApiList {
     : Deferred<Response<Ticket>>
     
     @GET ("/service/platform/lead/v1.0/company/{company_id}/application/{application_id}/ticket")
-    fun getTickets(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Query("items") items: Boolean?, @Query("filters") filters: Boolean?, @Query("q") q: String?, @Query("status") status: String?, @Query("priority") priority: PriorityEnum?, @Query("category") category: String?)
+    fun getNewTickets(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Query("items") items: Boolean?, @Query("filters") filters: Boolean?, @Query("q") q: String?, @Query("status") status: String?, @Query("priority") priority: PriorityEnum?, @Query("category") category: String?)
     : Deferred<Response<TicketList>>
     
     @GET ("/service/platform/lead/v1.0/company/{company_id}/ticket/{id}")
@@ -30,11 +30,11 @@ interface LeadApiList {
     : Deferred<Response<Ticket>>
     
     @GET ("/service/platform/lead/v1.0/company/{company_id}/application/{application_id}/ticket/{id}")
-    fun getTicket(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Path("id") id: String)
+    fun getNewTicket(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Path("id") id: String)
     : Deferred<Response<Ticket>>
     
     @PUT ("/service/platform/lead/v1.0/company/{company_id}/application/{application_id}/ticket/{id}")
-    fun editTicket(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Path("id") id: String,@Body body: EditTicketPayload)
+    fun editNewTicket(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Path("id") id: String,@Body body: EditTicketPayload)
     : Deferred<Response<Ticket>>
     
     @POST ("/service/platform/lead/v1.0/company/{company_id}/ticket/{id}/history")
@@ -54,11 +54,11 @@ interface LeadApiList {
     : Deferred<Response<TicketFeedback>>
     
     @POST ("/service/platform/lead/v1.0/company/{company_id}/application/{application_id}/ticket/{id}/history")
-    fun createHistory(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Path("id") id: String,@Body body: TicketHistoryPayload)
+    fun createNewHistory(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Path("id") id: String,@Body body: TicketHistoryPayload)
     : Deferred<Response<TicketHistory>>
     
     @GET ("/service/platform/lead/v1.0/company/{company_id}/application/{application_id}/ticket/{id}/history")
-    fun getTicketHistory(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Path("id") id: String)
+    fun getNewTicketHistory(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Path("id") id: String)
     : Deferred<Response<TicketHistoryList>>
     
     @GET ("/service/platform/lead/v1.0/company/{company_id}/application/{application_id}/form/{slug}")
@@ -82,7 +82,7 @@ interface LeadApiList {
     : Deferred<Response<GetTokenForVideoRoomResponse>>
     
     @GET ("/service/platform/lead/v1.0/company/{company_id}/application/{application_id}/video/room/{unique_name}/token")
-    fun getTokenForVideoRoom(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Path("unique_name") uniqueName: String)
+    fun getNewTokenForVideoRoom(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Path("unique_name") uniqueName: String)
     : Deferred<Response<GetTokenForVideoRoomResponse>>
     
     @GET ("/service/platform/lead/v1.0/company/{company_id}/video/room/{unique_name}/participants")
@@ -90,7 +90,7 @@ interface LeadApiList {
     : Deferred<Response<GetParticipantsInsideVideoRoomResponse>>
     
     @GET ("/service/platform/lead/v1.0/company/{company_id}/application/{application_id}/video/room/{unique_name}/participants")
-    fun getVideoParticipants(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Path("unique_name") uniqueName: String)
+    fun getNewVideoParticipants(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Path("unique_name") uniqueName: String)
     : Deferred<Response<GetParticipantsInsideVideoRoomResponse>>
     
     @POST ("/service/platform/lead/v1.0/company/{company_id}/application/{application_id}/video/room")

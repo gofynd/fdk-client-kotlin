@@ -1074,7 +1074,7 @@ data class IntentApp(
     var packageName: String?=null,
     
     @SerializedName("logos")
-    var logos: PaymentModeLogo?=null,
+    var logos: @RawValue HashMap<String,Any>?=null,
     
     @SerializedName("display_name")
     var displayName: String?=null
@@ -1174,7 +1174,7 @@ data class PaymentModeList(
     var codLimitPerOrder: Double?=null,
     
     @SerializedName("logo_url")
-    var logoUrl: PaymentModeLogo?=null,
+    var logoUrl: @RawValue HashMap<String,Any>?=null,
     
     @SerializedName("nickname")
     var nickname: String?=null,
@@ -1386,46 +1386,46 @@ data class PaymentFlow(
     
     
     @SerializedName("bqr_razorpay")
-    var bqrRazorpay: AggregatorRoute?=null,
+    var bqrRazorpay: @RawValue HashMap<String,Any>?=null,
     
     @SerializedName("fynd")
-    var fynd: AggregatorRoute?=null,
+    var fynd: @RawValue HashMap<String,Any>?=null,
     
     @SerializedName("epaylater")
-    var epaylater: AggregatorRoute?=null,
+    var epaylater: @RawValue HashMap<String,Any>?=null,
     
     @SerializedName("razorpay")
-    var razorpay: AggregatorRoute?=null,
+    var razorpay: @RawValue HashMap<String,Any>?=null,
     
     @SerializedName("juspay")
-    var juspay: AggregatorRoute?=null,
+    var juspay: @RawValue HashMap<String,Any>?=null,
     
     @SerializedName("ajiodhan")
-    var ajiodhan: AggregatorRoute?=null,
+    var ajiodhan: @RawValue HashMap<String,Any>?=null,
     
     @SerializedName("simpl")
-    var simpl: AggregatorRoute?=null,
+    var simpl: @RawValue HashMap<String,Any>?=null,
     
     @SerializedName("rupifi")
-    var rupifi: AggregatorRoute?=null,
+    var rupifi: @RawValue HashMap<String,Any>?=null,
     
     @SerializedName("mswipe")
-    var mswipe: AggregatorRoute?=null,
+    var mswipe: @RawValue HashMap<String,Any>?=null,
     
     @SerializedName("stripe")
-    var stripe: AggregatorRoute?=null,
+    var stripe: @RawValue HashMap<String,Any>?=null,
     
     @SerializedName("ccavenue")
-    var ccavenue: AggregatorRoute?=null,
+    var ccavenue: @RawValue HashMap<String,Any>?=null,
     
     @SerializedName("payubiz")
-    var payubiz: AggregatorRoute?=null,
+    var payubiz: @RawValue HashMap<String,Any>?=null,
     
     @SerializedName("jiopay")
-    var jiopay: AggregatorRoute?=null,
+    var jiopay: @RawValue HashMap<String,Any>?=null,
     
     @SerializedName("upi_razorpay")
-    var upiRazorpay: AggregatorRoute?=null
+    var upiRazorpay: @RawValue HashMap<String,Any>?=null
     
 ): Parcelable {
     
@@ -2916,7 +2916,7 @@ data class ErrorResponse(
     var statusCode: Int?=null,
     
     @SerializedName("error")
-    var error: ErrorDescription?=null,
+    var error: @RawValue HashMap<String,Any>?=null,
     
     @SerializedName("message")
     var message: String?=null,

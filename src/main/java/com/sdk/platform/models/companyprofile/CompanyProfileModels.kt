@@ -1979,9 +1979,34 @@ data class LocationSerializer(
     var displayName: String?=null,
     
     @SerializedName("notification_emails")
-    var notificationEmails: ArrayList<String>?=null
+    var notificationEmails: ArrayList<String>?=null,
+    
+    @SerializedName("tags")
+    var tags: ArrayList<String>?=null,
+    
+    @SerializedName("default_order_acceptance_timing")
+    var defaultOrderAcceptanceTiming: Boolean?=null,
+    
+    @SerializedName("order_acceptance_timing")
+    var orderAcceptanceTiming: ArrayList<LocationDayWiseSerializer>?=null,
+    
+    @SerializedName("avg_order_processing_time")
+    var avgOrderProcessingTime: AverageOrderProcessingTime?=null,
+    
+    @SerializedName("bulk_shipment")
+    var bulkShipment: Boolean?=null
     
 ): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     
     
     
@@ -2042,6 +2067,60 @@ data class BulkLocationSerializer(
     var data: ArrayList<LocationSerializer>?=null
     
 ): Parcelable {
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: AverageOrderProcessingTime
+*/
+@Parcelize
+data class AverageOrderProcessingTime(
+    
+    
+    
+    @SerializedName("duration")
+    var duration: Int?=null,
+    
+    @SerializedName("duration_type")
+    var durationType: String?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: StoreTagsResponseSchema
+*/
+@Parcelize
+data class StoreTagsResponseSchema(
+    
+    
+    
+    @SerializedName("tags")
+    var tags: ArrayList<String>?=null,
+    
+    @SerializedName("success")
+    var success: Boolean?=null
+    
+): Parcelable {
+    
+    
     
     
     

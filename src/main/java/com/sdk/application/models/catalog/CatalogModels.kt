@@ -471,6 +471,38 @@ data class ProductListingPrice(
 
              
 /*
+    Model: ProductSizesPrice
+*/
+@Parcelize
+data class ProductSizesPrice(
+    
+    
+    
+    @SerializedName("effective")
+    var effective: Price?=null,
+    
+    @SerializedName("marked")
+    var marked: Price?=null,
+    
+    @SerializedName("selling")
+    var selling: Price?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
     Model: ProductDetail
 */
 @Parcelize
@@ -764,6 +796,43 @@ data class Weight(
 
              
 /*
+    Model: DiscountMeta
+*/
+@Parcelize
+data class DiscountMeta(
+    
+    
+    
+    @SerializedName("timer")
+    var timer: Boolean?=null,
+    
+    @SerializedName("start_timer_in_minutes")
+    var startTimerInMinutes: Double?=null,
+    
+    @SerializedName("start")
+    var start: String?=null,
+    
+    @SerializedName("end")
+    var end: String?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
     Model: ProductSize
 */
 @Parcelize
@@ -1022,7 +1091,7 @@ data class ProductSizes(
     var sizes: ArrayList<ProductSize>?=null,
     
     @SerializedName("price")
-    var price: ProductListingPrice?=null,
+    var price: ProductSizesPrice?=null,
     
     @SerializedName("size_chart")
     var sizeChart: SizeChart?=null,
@@ -1037,9 +1106,14 @@ data class ProductSizes(
     var discount: String?=null,
     
     @SerializedName("stores")
-    var stores: ProductSizeStores?=null
+    var stores: ProductSizeStores?=null,
+    
+    @SerializedName("discount_meta")
+    var discountMeta: DiscountMeta?=null
     
 ): Parcelable {
+    
+    
     
     
     
@@ -4163,7 +4237,7 @@ data class ProductGroupingModel(
     
     
     @SerializedName("logo")
-    var logo: @RawValue Any?=null,
+    var logo: String?=null,
     
     @SerializedName("is_active")
     var isActive: Boolean?=null,
@@ -4552,13 +4626,23 @@ data class ProductStockPriceV3(
     @SerializedName("effective")
     var effective: Double?=null,
     
-    @SerializedName("currency")
-    var currency: String?=null,
+    @SerializedName("currency_code")
+    var currencyCode: String?=null,
+    
+    @SerializedName("currency_symbol")
+    var currencySymbol: String?=null,
     
     @SerializedName("marked")
-    var marked: Double?=null
+    var marked: Double?=null,
+    
+    @SerializedName("selling")
+    var selling: Double?=null
     
 ): Parcelable {
+    
+    
+    
+    
     
     
     
@@ -4670,6 +4754,33 @@ data class SellerV3(
 
              
 /*
+    Model: PromiseSchema
+*/
+@Parcelize
+data class PromiseSchema(
+    
+    
+    
+    @SerializedName("min")
+    var min: String?=null,
+    
+    @SerializedName("max")
+    var max: String?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
     Model: ProductSizePriceResponseV3
 */
 @Parcelize
@@ -4716,6 +4827,9 @@ data class ProductSizePriceResponseV3(
     @SerializedName("price_per_piece")
     var pricePerPiece: ProductStockPriceV3?=null,
     
+    @SerializedName("discount_meta")
+    var discountMeta: DiscountMeta?=null,
+    
     @SerializedName("discount")
     var discount: String?=null,
     
@@ -4738,9 +4852,16 @@ data class ProductSizePriceResponseV3(
     var marketplaceAttributes: ArrayList<MarketPlaceSttributesSchemaV3>?=null,
     
     @SerializedName("seller")
-    var seller: SellerV3?=null
+    var seller: SellerV3?=null,
+    
+    @SerializedName("delivery_promise")
+    var deliveryPromise: PromiseSchema?=null
     
 ): Parcelable {
+    
+    
+    
+    
     
     
     

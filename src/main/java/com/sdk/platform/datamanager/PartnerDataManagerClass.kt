@@ -105,7 +105,7 @@ class PartnerDataManagerClass(val config: PlatformConfig, val unauthorizedAction
     }
     
     
-    suspend fun getPrivateExtensions(pageSize: Double?=null, pageNo: Double?=null, query: String?=null)
+    suspend fun getPrivateExtensions(pageSize: Double?=null, pageNo: Double?=null, query: HashMap<String,Any>?=null)
     : Deferred<Response<ExtensionResponse>>? {
         
         return if (config.oauthClient.isAccessTokenValid()) {
@@ -196,7 +196,7 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     
     
     
-    suspend fun getProxyPath(extensionId: String?=null)
+    suspend fun getProxyPath(extensionId: String)
     : Deferred<Response<getProxyPathRes>>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 partnerApiList?.getProxyPath(companyId = config.companyId , applicationId = applicationId , extensionId = extensionId )
@@ -216,7 +216,7 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     }
     
     
-    suspend fun getProxyPathAttachedPath(extensionId: String?=null, attachedPath: String?=null)
+    suspend fun getProxyPathAttachedPath(extensionId: String, attachedPath: String)
     : Deferred<Response<AddProxyResponse>>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 partnerApiList?.getProxyPathAttachedPath(companyId = config.companyId , applicationId = applicationId , extensionId = extensionId, attachedPath = attachedPath )

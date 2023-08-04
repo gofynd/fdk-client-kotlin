@@ -445,7 +445,6 @@ Success
           "phone": "91 1234567890",
           "address_lines": [
             "TV TOWER, Foot Over Bridge Khar",
-            null,
             "Mumbai, 400079, Maharashtra, India"
           ]
         },
@@ -490,7 +489,7 @@ Success
         "modified_at": "2020-12-16T07:00:22.980Z",
         "hash_identifier": "575999aca03e36f0fa54db5235bc7f25",
         "payment_method": {
-          "pg_payment_method_id": null
+          "pg_payment_method_id": ""
         },
         "invoice_items": [
           {
@@ -744,7 +743,6 @@ Success
       "client": {
         "address_lines": [
           "TV TOWER, Foot Over Bridge Khar",
-          null,
           "Mumbai, 400079, Maharashtra, India"
         ],
         "name": "RELIANCE RETAIL LTD",
@@ -789,7 +787,7 @@ Success
       "modified_at": "2020-12-16T07:00:22.980Z",
       "hash_identifier": "575999aca03e36f0fa54db5235bc7f25",
       "payment_method": {
-        "pg_payment_method_id": null
+        "pg_payment_method_id": ""
       }
     },
     "invoice_items": [
@@ -1510,7 +1508,7 @@ Success
       "hash_identifier": "987abf78c61bfef585242bbbeaab1b59",
       "pdf_url": "https://cdn.pixelbin.io/v2/falling-surf-7c8bb8/fyndnp/wrkr/addsale/company/13781/self/subscription/documents/invoices/original/U6ffgNlo_-PS-P-A00515-FY24-paid.pdf"
     },
-    "mandate_amount": 630000,
+    "mandate_amount": "630000",
     "current_subscriptions": [
       {
         "current_period": {
@@ -2036,45 +2034,6 @@ Success
 
  
  
- #### [Page](#Page)
-
- | Properties | Type | Nullable | Description |
- | ---------- | ---- | -------- | ----------- |
- | itemTotal | Int? |  yes  |  |
- | nextId | String? |  yes  |  |
- | hasPrevious | Boolean? |  yes  |  |
- | hasNext | Boolean? |  yes  |  |
- | current | Int? |  yes  |  |
- | type | String |  no  |  |
- | size | Int? |  yes  |  |
-
----
-
-
- 
- 
- #### [UnauthenticatedUser](#UnauthenticatedUser)
-
- | Properties | Type | Nullable | Description |
- | ---------- | ---- | -------- | ----------- |
- | message | String? |  yes  | Failure message. |
-
----
-
-
- 
- 
- #### [UnauthenticatedApplication](#UnauthenticatedApplication)
-
- | Properties | Type | Nullable | Description |
- | ---------- | ---- | -------- | ----------- |
- | message | String? |  yes  | Failure message. |
-
----
-
-
- 
- 
  #### [BadRequest](#BadRequest)
 
  | Properties | Type | Nullable | Description |
@@ -2156,55 +2115,6 @@ Success
  | productSuiteId | String? |  yes  |  |
  | createdAt | String? |  yes  |  |
  | modifiedAt | String? |  yes  |  |
-
----
-
-
- 
- 
- #### [DetailedPlanComponents](#DetailedPlanComponents)
-
- | Properties | Type | Nullable | Description |
- | ---------- | ---- | -------- | ----------- |
- | name | String? |  yes  |  |
- | slug | String? |  yes  |  |
- | description | String? |  yes  |  |
- | group | String? |  yes  |  |
- | icon | String? |  yes  |  |
- | links | HashMap<String,Any>? |  yes  |  |
- | enabled | Boolean? |  yes  |  |
- | displayText | String? |  yes  |  |
- | config | HashMap<String,Any>? |  yes  |  |
-
----
-
-
- 
- 
- #### [DetailedPlan](#DetailedPlan)
-
- | Properties | Type | Nullable | Description |
- | ---------- | ---- | -------- | ----------- |
- | recurring | [PlanRecurring](#PlanRecurring)? |  yes  |  |
- | isTrialPlan | Boolean? |  yes  |  |
- | planGroup | String? |  yes  |  |
- | tagLines | ArrayList<String>? |  yes  |  |
- | currency | String? |  yes  |  |
- | isActive | Boolean? |  yes  |  |
- | isVisible | Boolean? |  yes  |  |
- | trialPeriod | Double? |  yes  |  |
- | addons | ArrayList<String>? |  yes  |  |
- | tags | ArrayList<String>? |  yes  |  |
- | type | String? |  yes  |  |
- | country | String? |  yes  |  |
- | id | String? |  yes  |  |
- | name | String? |  yes  |  |
- | description | String? |  yes  |  |
- | amount | Double? |  yes  |  |
- | productSuiteId | String? |  yes  |  |
- | createdAt | String? |  yes  |  |
- | modifiedAt | String? |  yes  |  |
- | components | ArrayList<[DetailedPlanComponents](#DetailedPlanComponents)>? |  yes  |  |
 
 ---
 
@@ -2448,79 +2358,6 @@ Success
  | id | String? |  yes  |  |
  | value | String? |  yes  |  |
  | timestamp | String? |  yes  |  |
-
----
-
-
- 
- 
- #### [InvoiceDetailsPaymentMethodsDataChecks](#InvoiceDetailsPaymentMethodsDataChecks)
-
- | Properties | Type | Nullable | Description |
- | ---------- | ---- | -------- | ----------- |
- | cvcCheck | String? |  yes  |  |
- | addressLine1Check | String? |  yes  |  |
- | addressPostalCodeCheck | String? |  yes  |  |
-
----
-
-
- 
- 
- #### [InvoiceDetailsPaymentMethodsDataNetworks](#InvoiceDetailsPaymentMethodsDataNetworks)
-
- | Properties | Type | Nullable | Description |
- | ---------- | ---- | -------- | ----------- |
- | available | ArrayList<String>? |  yes  |  |
- | preferred | String? |  yes  |  |
-
----
-
-
- 
- 
- #### [InvoiceDetailsPaymentMethodsDataThreeDSecureUsage](#InvoiceDetailsPaymentMethodsDataThreeDSecureUsage)
-
- | Properties | Type | Nullable | Description |
- | ---------- | ---- | -------- | ----------- |
- | supported | Boolean? |  yes  |  |
-
----
-
-
- 
- 
- #### [InvoiceDetailsPaymentMethodsData](#InvoiceDetailsPaymentMethodsData)
-
- | Properties | Type | Nullable | Description |
- | ---------- | ---- | -------- | ----------- |
- | brand | String? |  yes  |  |
- | last4 | String? |  yes  |  |
- | checks | [InvoiceDetailsPaymentMethodsDataChecks](#InvoiceDetailsPaymentMethodsDataChecks)? |  yes  |  |
- | wallet | String? |  yes  |  |
- | country | String? |  yes  |  |
- | funding | String? |  yes  |  |
- | expYear | Int? |  yes  |  |
- | networks | [InvoiceDetailsPaymentMethodsDataNetworks](#InvoiceDetailsPaymentMethodsDataNetworks)? |  yes  |  |
- | expMonth | Int? |  yes  |  |
- | fingerprint | String? |  yes  |  |
- | generatedFrom | String? |  yes  |  |
- | threeDSecureUsage | [InvoiceDetailsPaymentMethodsDataThreeDSecureUsage](#InvoiceDetailsPaymentMethodsDataThreeDSecureUsage)? |  yes  |  |
-
----
-
-
- 
- 
- #### [InvoiceDetailsPaymentMethods](#InvoiceDetailsPaymentMethods)
-
- | Properties | Type | Nullable | Description |
- | ---------- | ---- | -------- | ----------- |
- | id | Int? |  yes  |  |
- | type | String? |  yes  |  |
- | pgPaymentMethodId | String? |  yes  |  |
- | data | [InvoiceDetailsPaymentMethodsData](#InvoiceDetailsPaymentMethodsData)? |  yes  |  |
- | isDefault | Boolean? |  yes  |  |
 
 ---
 

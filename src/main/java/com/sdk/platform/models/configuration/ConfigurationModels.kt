@@ -1757,63 +1757,6 @@ data class DefaultCurrency(
 
              
 /*
-    Model: CurrencyConfig
-*/
-@Parcelize
-data class CurrencyConfig(
-    
-    
-    
-    @SerializedName("_id")
-    var id: String?=null,
-    
-    @SerializedName("is_active")
-    var isActive: Boolean?=null,
-    
-    @SerializedName("name")
-    var name: String?=null,
-    
-    @SerializedName("code")
-    var code: String?=null,
-    
-    @SerializedName("created_at")
-    var createdAt: String?=null,
-    
-    @SerializedName("updated_at")
-    var updatedAt: String?=null,
-    
-    @SerializedName("decimal_digits")
-    var decimalDigits: Int?=null,
-    
-    @SerializedName("symbol")
-    var symbol: String?=null
-    
-): Parcelable {
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-}
-
-
-
-             
-/*
     Model: DomainAdd
 */
 @Parcelize
@@ -5430,7 +5373,10 @@ data class Application(
     var mobileLogo: SecureUrl?=null,
     
     @SerializedName("domain")
-    var domain: Domain?=null
+    var domain: Domain?=null,
+    
+    @SerializedName("slug")
+    var slug: String?=null
     
 ): Parcelable {
     
@@ -5483,26 +5429,6 @@ data class Application(
     
     
     
-    
-    
-    
-}
-
-
-
-             
-/*
-    Model: UnhandledError
-*/
-@Parcelize
-data class UnhandledError(
-    
-    
-    
-    @SerializedName("message")
-    var message: String?=null
-    
-): Parcelable {
     
     
     
@@ -5725,137 +5651,6 @@ data class InventoryArticleAssignment(
 
              
 /*
-    Model: CompanyAboutAddress
-*/
-@Parcelize
-data class CompanyAboutAddress(
-    
-    
-    
-    @SerializedName("pincode")
-    var pincode: Int?=null,
-    
-    @SerializedName("address1")
-    var address1: String?=null,
-    
-    @SerializedName("address2")
-    var address2: String?=null,
-    
-    @SerializedName("city")
-    var city: String?=null,
-    
-    @SerializedName("state")
-    var state: String?=null,
-    
-    @SerializedName("country")
-    var country: String?=null,
-    
-    @SerializedName("address_type")
-    var addressType: String?=null
-    
-): Parcelable {
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-}
-
-
-
-             
-/*
-    Model: UserEmail
-*/
-@Parcelize
-data class UserEmail(
-    
-    
-    
-    @SerializedName("active")
-    var active: Boolean?=null,
-    
-    @SerializedName("primary")
-    var primary: Boolean?=null,
-    
-    @SerializedName("verified")
-    var verified: Boolean?=null,
-    
-    @SerializedName("email")
-    var email: String?=null
-    
-): Parcelable {
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-}
-
-
-
-             
-/*
-    Model: UserPhoneNumber
-*/
-@Parcelize
-data class UserPhoneNumber(
-    
-    
-    
-    @SerializedName("active")
-    var active: Boolean?=null,
-    
-    @SerializedName("primary")
-    var primary: Boolean?=null,
-    
-    @SerializedName("verified")
-    var verified: Boolean?=null,
-    
-    @SerializedName("country_code")
-    var countryCode: Int?=null,
-    
-    @SerializedName("phone")
-    var phone: String?=null
-    
-): Parcelable {
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-}
-
-
-
-             
-/*
     Model: Page
 */
 @Parcelize
@@ -5925,7 +5720,7 @@ data class ApplicationInformation(
     var socialLinks: SocialLinks?=null,
     
     @SerializedName("links")
-    var links: Links?=null,
+    var links: ArrayList<Links>?=null,
     
     @SerializedName("copyright_text")
     var copyrightText: String?=null,
@@ -5994,7 +5789,7 @@ data class InformationAddress(
     var addressLine: ArrayList<String>?=null,
     
     @SerializedName("phone")
-    var phone: InformationPhone?=null,
+    var phone: ArrayList<InformationPhone>?=null,
     
     @SerializedName("city")
     var city: String?=null,

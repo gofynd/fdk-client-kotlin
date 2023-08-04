@@ -3204,8 +3204,8 @@ data class LineItem(
     @SerializedName("meta")
     var meta: @RawValue HashMap<String,Any>?=null,
     
-    @SerializedName("custom_messasge")
-    var customMessasge: String?=null,
+    @SerializedName("custom_message")
+    var customMessage: String?=null,
     
     @SerializedName("quantity")
     var quantity: Int?=null,
@@ -3612,9 +3612,14 @@ data class TaxInfo(
     var b2BGstinNumber: String?=null,
     
     @SerializedName("gstin")
-    var gstin: String?=null
+    var gstin: String?=null,
+    
+    @SerializedName("pan_no")
+    var panNo: String?=null
     
 ): Parcelable {
+    
+    
     
     
     
@@ -4207,6 +4212,33 @@ data class BagStateTransitionMap(
 
              
 /*
+    Model: RoleBaseStateTransitionMapping
+*/
+@Parcelize
+data class RoleBaseStateTransitionMapping(
+    
+    
+    
+    @SerializedName("success")
+    var success: Boolean?=null,
+    
+    @SerializedName("next_statuses")
+    var nextStatuses: ArrayList<String>?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
     Model: FetchCreditBalanceRequestPayload
 */
 @Parcelize
@@ -4770,6 +4802,127 @@ data class VerifyOtpResponse(
     
     
     
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: BulkReportsDownloadRequest
+*/
+@Parcelize
+data class BulkReportsDownloadRequest(
+    
+    
+    
+    @SerializedName("store_ids")
+    var storeIds: ArrayList<String>?=null,
+    
+    @SerializedName("lane_type")
+    var laneType: String?=null,
+    
+    @SerializedName("custom_headers")
+    var customHeaders: String?=null,
+    
+    @SerializedName("report_type")
+    var reportType: String?=null,
+    
+    @SerializedName("from_date")
+    var fromDate: String?=null,
+    
+    @SerializedName("to_date")
+    var toDate: String?=null,
+    
+    @SerializedName("entities")
+    var entities: ArrayList<String>?=null,
+    
+    @SerializedName("filter_type")
+    var filterType: String?=null,
+    
+    @SerializedName("is_cross_company_enabled")
+    var isCrossCompanyEnabled: Boolean?=null,
+    
+    @SerializedName("custom_filters_for_lane")
+    var customFiltersForLane: @RawValue HashMap<String,Any>?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: BulkReportsDownloadResponse
+*/
+@Parcelize
+data class BulkReportsDownloadResponse(
+    
+    
+    
+    @SerializedName("success")
+    var success: Boolean?=null,
+    
+    @SerializedName("batch_id")
+    var batchId: String?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: BulkReportsDownloadFailedResponse
+*/
+@Parcelize
+data class BulkReportsDownloadFailedResponse(
+    
+    
+    
+    @SerializedName("status")
+    var status: Boolean?=null,
+    
+    @SerializedName("error")
+    var error: String?=null
+    
+): Parcelable {
     
     
     

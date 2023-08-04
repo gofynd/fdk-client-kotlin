@@ -246,11 +246,11 @@ interface CatalogApiList {
     : Deferred<Response<TemplatesResponse>>
     
     @GET ("/service/platform/catalog/v1.0/company/{company_id}/products/templates/{slug}/validation/schema/")
-    fun validateProductTemplate(@Path("company_id") companyId: String, @Path("slug") slug: String)
+    fun validateProductTemplate(@Path("company_id") companyId: String, @Path("slug") slug: String, @Query("item_type") itemType: String?, @Query("bulk") bulk: Boolean?)
     : Deferred<Response<TemplatesValidationResponse>>
     
     @GET ("/service/platform/catalog/v1.0/company/{company_id}/products/templates/{slug}/download/")
-    fun downloadProductTemplateViews(@Path("company_id") companyId: String, @Path("slug") slug: String)
+    fun downloadProductTemplateViews(@Path("company_id") companyId: String, @Path("slug") slug: String, @Query("item_type") itemType: String?, @Query("type") type: String?)
     : Deferred<Response<ResponseBody>>
     
     @GET ("/service/platform/catalog/v1.0/company/{company_id}/inventory/templates/download/")

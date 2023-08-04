@@ -177,4 +177,32 @@ interface PaymentApiList {
     fun getPaymentCodeOption(@Path("company_id") companyId: String, @Path("application_id") applicationId: String)
     : Deferred<Response<GetPaymentCodeResponse>>
     
+    @PUT ("/service/platform/payment/v1.0/company/{company_id}/application/{application_id}/payment/session/{gid}")
+    fun updatePaymentSession(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Path("gid") gid: String,@Body body: PaymentSessionRequestSerializer)
+    : Deferred<Response<PaymentSessionResponseSerializer>>
+    
+    @PUT ("/service/platform/payment/v1.0/company/{company_id}/application/{application_id}/payment/{gid}/refund/session/{request_id}")
+    fun updateRefundSession(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Path("gid") gid: String, @Path("request_id") requestId: String,@Body body: RefundSessionRequestSerializer)
+    : Deferred<Response<RefundSessionResponseSerializer>>
+    
+    @GET ("/service/platform/payment/v1.0/company/{company_id}/application/{application_id}/payment/options/configuration")
+    fun getMerchantPaymentOption(@Path("company_id") companyId: String, @Path("application_id") applicationId: String)
+    : Deferred<Response<MerchnatPaymentModeResponse>>
+    
+    @PATCH ("/service/platform/payment/v1.0/company/{company_id}/application/{application_id}/payment/options/configuration")
+    fun patchMerchantPaymentOption(@Path("company_id") companyId: String, @Path("application_id") applicationId: String,@Body body: MerchnatPaymentModeResponse)
+    : Deferred<Response<MerchnatPaymentModeResponse>>
+    
+    @GET ("/service/platform/payment/v1.0/company/{company_id}/application/{application_id}/payment/options/aggregators/{aggregator_id}")
+    fun getMerchantAggregatorPaymentModeDetails(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Path("aggregator_id") aggregatorId: String, @Query("business_unit") businessUnit: String, @Query("device") device: String)
+    : Deferred<Response<MerchnatPaymentModeResponse>>
+    
+    @PATCH ("/service/platform/payment/v1.0/company/{company_id}/application/{application_id}/payment/options/aggregators/{aggregator_id}")
+    fun patchMerchantAggregatorPaymentModeDetails(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Path("aggregator_id") aggregatorId: String,@Body body: MerchnatPaymentModeResponse)
+    : Deferred<Response<MerchnatPaymentModeResponse>>
+    
+    @GET ("/service/platform/payment/v1.0/company/{company_id}/application/{application_id}/payment/options/configuration/aggregator")
+    fun getPGConfigAggregators(@Path("company_id") companyId: String, @Path("application_id") applicationId: String)
+    : Deferred<Response<MerchnatPaymentModeResponse>>
+    
 }
