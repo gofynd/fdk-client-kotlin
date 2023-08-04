@@ -200,9 +200,22 @@ class CompanyProfileDataManagerClass(val config: PlatformConfig, val unauthorize
         } 
     }
     
+    
+    suspend fun getLocationTags()
+    : Deferred<Response<StoreTagsResponseSchema>>? {
+        
+        return if (config.oauthClient.isAccessTokenValid()) {
+            companyProfileApiList?.getLocationTags(
+        companyId = config.companyId )
+        } else {
+            null
+        } 
+    }
+    
 
 inner class ApplicationClient(val applicationId:String,val config: PlatformConfig){
 
+    
     
     
     

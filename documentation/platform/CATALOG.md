@@ -8830,7 +8830,7 @@ Validate Product Template Schema
 
 
 ```kotlin
-platformClient.catalog.validateProductTemplate(slug: slug).safeAwait{ response, error->
+platformClient.catalog.validateProductTemplate(slug: slug, itemType: itemType, bulk: bulk).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -8846,7 +8846,9 @@ platformClient.catalog.validateProductTemplate(slug: slug).safeAwait{ response, 
 
 | Argument  |  Type  | Required | Description |
 | --------- | -----  | -------- | ----------- | 
-| slug | String | yes | A `slug` is a unique identifier for a particular template. |  
+| slug | String | yes | A `slug` is a unique identifier for a particular template. |   
+| itemType | String? | no | An `item_type` defines the type of item. The default value is standard. |   
+| bulk | Boolean? | no | This specification determines the schema type to be retrieved. When set to true, it will return the schema for bulk data; when set to false, it will provide the schema for a single product. The default value is false. |  
 
 
 
@@ -8890,7 +8892,7 @@ Download Product Template View
 
 
 ```kotlin
-platformClient.catalog.downloadProductTemplateViews(slug: slug).safeAwait{ response, error->
+platformClient.catalog.downloadProductTemplateViews(slug: slug, itemType: itemType, type: type).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -8906,7 +8908,9 @@ platformClient.catalog.downloadProductTemplateViews(slug: slug).safeAwait{ respo
 
 | Argument  |  Type  | Required | Description |
 | --------- | -----  | -------- | ----------- | 
-| slug | String | yes | A `slug` is a unique identifier for a particular template. |  
+| slug | String | yes | A `slug` is a unique identifier for a particular template. |   
+| itemType | String? | no | An `item_type` defines the type of item. The default value is standard. |   
+| type | String? | no | Format type of the sample file. The default value is excel. |  
 
 
 

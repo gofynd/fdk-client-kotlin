@@ -196,6 +196,13 @@ class PaymentDataManagerClass(val config: PlatformConfig, val unauthorizedAction
     
     
     
+    
+    
+    
+    
+    
+    
+    
 
 inner class ApplicationClient(val applicationId:String,val config: PlatformConfig){
 
@@ -525,6 +532,76 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     : Deferred<Response<GetPaymentCodeResponse>>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 paymentApiList?.getPaymentCodeOption(companyId = config.companyId , applicationId = applicationId  )
+        } else {
+            null
+        }
+    }
+    
+    
+    suspend fun updatePaymentSession(gid: String,body: PaymentSessionRequestSerializer)
+    : Deferred<Response<PaymentSessionResponseSerializer>>? {
+        return if (config.oauthClient.isAccessTokenValid()) {
+                paymentApiList?.updatePaymentSession(companyId = config.companyId , applicationId = applicationId , gid = gid, body = body)
+        } else {
+            null
+        }
+    }
+    
+    
+    suspend fun updateRefundSession(gid: String, requestId: String,body: RefundSessionRequestSerializer)
+    : Deferred<Response<RefundSessionResponseSerializer>>? {
+        return if (config.oauthClient.isAccessTokenValid()) {
+                paymentApiList?.updateRefundSession(companyId = config.companyId , applicationId = applicationId , gid = gid, requestId = requestId, body = body)
+        } else {
+            null
+        }
+    }
+    
+    
+    suspend fun getMerchantPaymentOption()
+    : Deferred<Response<MerchnatPaymentModeResponse>>? {
+        return if (config.oauthClient.isAccessTokenValid()) {
+                paymentApiList?.getMerchantPaymentOption(companyId = config.companyId , applicationId = applicationId  )
+        } else {
+            null
+        }
+    }
+    
+    
+    suspend fun patchMerchantPaymentOption(body: MerchnatPaymentModeResponse)
+    : Deferred<Response<MerchnatPaymentModeResponse>>? {
+        return if (config.oauthClient.isAccessTokenValid()) {
+                paymentApiList?.patchMerchantPaymentOption(companyId = config.companyId , applicationId = applicationId , body = body)
+        } else {
+            null
+        }
+    }
+    
+    
+    suspend fun getMerchantAggregatorPaymentModeDetails(aggregatorId: String, businessUnit: String, device: String)
+    : Deferred<Response<MerchnatPaymentModeResponse>>? {
+        return if (config.oauthClient.isAccessTokenValid()) {
+                paymentApiList?.getMerchantAggregatorPaymentModeDetails(companyId = config.companyId , applicationId = applicationId , aggregatorId = aggregatorId, businessUnit = businessUnit, device = device )
+        } else {
+            null
+        }
+    }
+    
+    
+    suspend fun patchMerchantAggregatorPaymentModeDetails(aggregatorId: String,body: MerchnatPaymentModeResponse)
+    : Deferred<Response<MerchnatPaymentModeResponse>>? {
+        return if (config.oauthClient.isAccessTokenValid()) {
+                paymentApiList?.patchMerchantAggregatorPaymentModeDetails(companyId = config.companyId , applicationId = applicationId , aggregatorId = aggregatorId, body = body)
+        } else {
+            null
+        }
+    }
+    
+    
+    suspend fun getPGConfigAggregators()
+    : Deferred<Response<MerchnatPaymentModeResponse>>? {
+        return if (config.oauthClient.isAccessTokenValid()) {
+                paymentApiList?.getPGConfigAggregators(companyId = config.companyId , applicationId = applicationId  )
         } else {
             null
         }

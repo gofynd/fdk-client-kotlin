@@ -119,9 +119,14 @@ data class ErrorResponse(
     var message: String?=null,
     
     @SerializedName("error_trace")
-    var errorTrace: String?=null
+    var errorTrace: String?=null,
+    
+    @SerializedName("error")
+    var error: String?=null
     
 ): Parcelable {
+    
+    
     
     
     
@@ -1336,9 +1341,14 @@ data class ArticleDetails(
     var attributes: @RawValue HashMap<String,Any>?=null,
     
     @SerializedName("quantity")
-    var quantity: Int?=null
+    var quantity: Int?=null,
+    
+    @SerializedName("status")
+    var status: @RawValue HashMap<String,Any>?=null
     
 ): Parcelable {
+    
+    
     
     
     
@@ -1420,9 +1430,24 @@ data class ShipmentDetails(
     var meta: @RawValue HashMap<String,Any>?=null,
     
     @SerializedName("affiliate_shipment_id")
-    var affiliateShipmentId: String?=null
+    var affiliateShipmentId: String?=null,
+    
+    @SerializedName("lock_status")
+    var lockStatus: Boolean?=null,
+    
+    @SerializedName("lock_message")
+    var lockMessage: String?=null,
+    
+    @SerializedName("action_to_status")
+    var actionToStatus: @RawValue HashMap<String,Any>?=null
     
 ): Parcelable {
+    
+    
+    
+    
+    
+    
     
     
     
@@ -3204,8 +3229,8 @@ data class LineItem(
     @SerializedName("meta")
     var meta: @RawValue HashMap<String,Any>?=null,
     
-    @SerializedName("custom_messasge")
-    var customMessasge: String?=null,
+    @SerializedName("custom_message")
+    var customMessage: String?=null,
     
     @SerializedName("quantity")
     var quantity: Int?=null,
@@ -3612,9 +3637,14 @@ data class TaxInfo(
     var b2BGstinNumber: String?=null,
     
     @SerializedName("gstin")
-    var gstin: String?=null
+    var gstin: String?=null,
+    
+    @SerializedName("pan_no")
+    var panNo: String?=null
     
 ): Parcelable {
+    
+    
     
     
     
@@ -4207,6 +4237,33 @@ data class BagStateTransitionMap(
 
              
 /*
+    Model: RoleBaseStateTransitionMapping
+*/
+@Parcelize
+data class RoleBaseStateTransitionMapping(
+    
+    
+    
+    @SerializedName("success")
+    var success: Boolean?=null,
+    
+    @SerializedName("next_statuses")
+    var nextStatuses: ArrayList<String>?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
     Model: FetchCreditBalanceRequestPayload
 */
 @Parcelize
@@ -4770,6 +4827,127 @@ data class VerifyOtpResponse(
     
     
     
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: BulkReportsDownloadRequest
+*/
+@Parcelize
+data class BulkReportsDownloadRequest(
+    
+    
+    
+    @SerializedName("store_ids")
+    var storeIds: ArrayList<String>?=null,
+    
+    @SerializedName("lane_type")
+    var laneType: String?=null,
+    
+    @SerializedName("custom_headers")
+    var customHeaders: String?=null,
+    
+    @SerializedName("report_type")
+    var reportType: String?=null,
+    
+    @SerializedName("from_date")
+    var fromDate: String?=null,
+    
+    @SerializedName("to_date")
+    var toDate: String?=null,
+    
+    @SerializedName("entities")
+    var entities: ArrayList<String>?=null,
+    
+    @SerializedName("filter_type")
+    var filterType: String?=null,
+    
+    @SerializedName("is_cross_company_enabled")
+    var isCrossCompanyEnabled: Boolean?=null,
+    
+    @SerializedName("custom_filters_for_lane")
+    var customFiltersForLane: @RawValue HashMap<String,Any>?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: BulkReportsDownloadResponse
+*/
+@Parcelize
+data class BulkReportsDownloadResponse(
+    
+    
+    
+    @SerializedName("success")
+    var success: Boolean?=null,
+    
+    @SerializedName("batch_id")
+    var batchId: String?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: BulkReportsDownloadFailedResponse
+*/
+@Parcelize
+data class BulkReportsDownloadFailedResponse(
+    
+    
+    
+    @SerializedName("status")
+    var status: Boolean?=null,
+    
+    @SerializedName("error")
+    var error: String?=null
+    
+): Parcelable {
     
     
     
@@ -7217,38 +7395,6 @@ data class UserDetailsData(
 
              
 /*
-    Model: ShipmentDetails1
-*/
-@Parcelize
-data class ShipmentDetails1(
-    
-    
-    
-    @SerializedName("lock_status")
-    var lockStatus: Boolean?=null,
-    
-    @SerializedName("lock_message")
-    var lockMessage: String?=null,
-    
-    @SerializedName("action_to_status")
-    var actionToStatus: @RawValue HashMap<String,Any>?=null
-    
-): Parcelable {
-    
-    
-    
-    
-    
-    
-    
-    
-    
-}
-
-
-
-             
-/*
     Model: PhoneDetails
 */
 @Parcelize
@@ -8983,7 +9129,7 @@ data class PlatformShipment(
     var fulfilmentPriority: Int?=null,
     
     @SerializedName("shipment_details")
-    var shipmentDetails: ShipmentDetails1?=null,
+    var shipmentDetails: ShipmentDetails?=null,
     
     @SerializedName("custom_meta")
     var customMeta: @RawValue ArrayList<HashMap<String,Any>>?=null,
@@ -10463,28 +10609,6 @@ data class BagGSTDetails(
 
              
 /*
-    Model: ArticleDetails1
-*/
-@Parcelize
-data class ArticleDetails1(
-    
-    
-    
-    @SerializedName("status")
-    var status: @RawValue HashMap<String,Any>?=null
-    
-): Parcelable {
-    
-    
-    
-    
-    
-}
-
-
-
-             
-/*
     Model: StoreAddress
 */
 @Parcelize
@@ -11401,7 +11525,7 @@ data class BagDetailsPlatformResponse(
     var originalBagList: ArrayList<Int>?=null,
     
     @SerializedName("article_details")
-    var articleDetails: ArticleDetails1?=null,
+    var articleDetails: ArticleDetails?=null,
     
     @SerializedName("current_operational_status")
     var currentOperationalStatus: BagStatusHistory?=null,
@@ -11565,33 +11689,6 @@ data class BagDetailsPlatformResponse(
     
     
     
-    
-    
-    
-    
-    
-    
-    
-}
-
-
-
-             
-/*
-    Model: ErrorResponse1
-*/
-@Parcelize
-data class ErrorResponse1(
-    
-    
-    
-    @SerializedName("message")
-    var message: String?=null,
-    
-    @SerializedName("error")
-    var error: String?=null
-    
-): Parcelable {
     
     
     

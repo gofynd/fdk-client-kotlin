@@ -38,6 +38,38 @@ data class ValidityObject(
 
              
 /*
+    Model: DiscountMeta
+*/
+@Parcelize
+data class DiscountMeta(
+    
+    
+    
+    @SerializedName("timer")
+    var timer: Boolean?=null,
+    
+    @SerializedName("hours")
+    var hours: Double?=null,
+    
+    @SerializedName("minutes")
+    var minutes: Double?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
     Model: CreateUpdateDiscount
 */
 @Parcelize
@@ -82,9 +114,14 @@ data class CreateUpdateDiscount(
     var storeIds: ArrayList<Int>?=null,
     
     @SerializedName("validity")
-    var validity: ValidityObject?=null
+    var validity: ValidityObject?=null,
+    
+    @SerializedName("discount_meta")
+    var discountMeta: DiscountMeta?=null
     
 ): Parcelable {
+    
+    
     
     
     
@@ -163,6 +200,9 @@ data class DiscountJob(
     @SerializedName("store_ids")
     var storeIds: ArrayList<Int>?=null,
     
+    @SerializedName("discount_meta")
+    var discountMeta: DiscountMeta?=null,
+    
     @SerializedName("validity")
     var validity: ValidityObject?=null,
     
@@ -182,6 +222,8 @@ data class DiscountJob(
     var meta: @RawValue HashMap<String,Any>?=null
     
 ): Parcelable {
+    
+    
     
     
     
@@ -274,9 +316,14 @@ data class DiscountItems(
     var discountType: String?=null,
     
     @SerializedName("value")
-    var value: Double?=null
+    var value: Double?=null,
+    
+    @SerializedName("discount_meta")
+    var discountMeta: DiscountMeta?=null
     
 ): Parcelable {
+    
+    
     
     
     
@@ -349,9 +396,14 @@ data class FileJobResponse(
     var type: String?=null,
     
     @SerializedName("file_type")
-    var fileType: String?=null
+    var fileType: String?=null,
+    
+    @SerializedName("_id")
+    var id: String?=null
     
 ): Parcelable {
+    
+    
     
     
     

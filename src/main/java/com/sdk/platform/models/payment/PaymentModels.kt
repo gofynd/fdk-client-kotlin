@@ -3766,3 +3766,571 @@ data class GetPaymentCodeResponse(
 
 
 
+             
+/*
+    Model: MerchnatPaymentModeResponse
+*/
+@Parcelize
+data class MerchnatPaymentModeResponse(
+    
+    
+    
+    @SerializedName("message")
+    var message: String?=null,
+    
+    @SerializedName("items")
+    var items: @RawValue ArrayList<HashMap<String,Any>>?=null,
+    
+    @SerializedName("success")
+    var success: Boolean?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: AddressDetail
+*/
+@Parcelize
+data class AddressDetail(
+    
+    
+    
+    @SerializedName("country_iso_code")
+    var countryIsoCode: String?=null,
+    
+    @SerializedName("google_map_point")
+    var googleMapPoint: @RawValue HashMap<String,Any>?=null,
+    
+    @SerializedName("country")
+    var country: String?=null,
+    
+    @SerializedName("email")
+    var email: String?=null,
+    
+    @SerializedName("area_code")
+    var areaCode: String?=null,
+    
+    @SerializedName("city")
+    var city: String?=null,
+    
+    @SerializedName("phone")
+    var phone: String?=null,
+    
+    @SerializedName("expire_at")
+    var expireAt: String?=null,
+    
+    @SerializedName("address")
+    var address: String?=null,
+    
+    @SerializedName("g_address_id")
+    var gAddressId: String?=null,
+    
+    @SerializedName("tags")
+    var tags: @RawValue ArrayList<HashMap<String,Any>>?=null,
+    
+    @SerializedName("name")
+    var name: String?=null,
+    
+    @SerializedName("state")
+    var state: String?=null,
+    
+    @SerializedName("landmark")
+    var landmark: String?=null,
+    
+    @SerializedName("area")
+    var area: String?=null,
+    
+    @SerializedName("area_code_slug")
+    var areaCodeSlug: String?=null,
+    
+    @SerializedName("address_type")
+    var addressType: String?=null,
+    
+    @SerializedName("country_phone_code")
+    var countryPhoneCode: String?=null,
+    
+    @SerializedName("geo_location")
+    var geoLocation: @RawValue HashMap<String,Any>?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: PaymentSessionDetail
+*/
+@Parcelize
+data class PaymentSessionDetail(
+    
+    
+    
+    @SerializedName("aggregator_order_id")
+    var aggregatorOrderId: String?=null,
+    
+    @SerializedName("shipping_address")
+    var shippingAddress: AddressDetail?=null,
+    
+    @SerializedName("amount_captured")
+    var amountCaptured: Int?=null,
+    
+    @SerializedName("amount_refunded")
+    var amountRefunded: Int?=null,
+    
+    @SerializedName("aggregator_customer_id")
+    var aggregatorCustomerId: String?=null,
+    
+    @SerializedName("cancel_url")
+    var cancelUrl: String?=null,
+    
+    @SerializedName("payment_id")
+    var paymentId: String?=null,
+    
+    @SerializedName("payment_methods")
+    var paymentMethods: @RawValue ArrayList<HashMap<String,Any>>?=null,
+    
+    @SerializedName("created")
+    var created: String?=null,
+    
+    @SerializedName("g_user_id")
+    var gUserId: String?=null,
+    
+    @SerializedName("currency")
+    var currency: String?=null,
+    
+    @SerializedName("locale")
+    var locale: String?=null,
+    
+    @SerializedName("gid")
+    var gid: String?=null,
+    
+    @SerializedName("amount")
+    var amount: Int?=null,
+    
+    @SerializedName("billing_address")
+    var billingAddress: AddressDetail?=null,
+    
+    @SerializedName("success_url")
+    var successUrl: String?=null,
+    
+    @SerializedName("kind")
+    var kind: String?=null,
+    
+    @SerializedName("mode")
+    var mode: String?=null,
+    
+    @SerializedName("status")
+    var status: String?=null,
+    
+    @SerializedName("merchant_locale")
+    var merchantLocale: String?=null,
+    
+    @SerializedName("captured")
+    var captured: Boolean?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: OrderDetail
+*/
+@Parcelize
+data class OrderDetail(
+    
+    
+    
+    @SerializedName("gid")
+    var gid: String?=null,
+    
+    @SerializedName("aggregator")
+    var aggregator: String?=null,
+    
+    @SerializedName("amount")
+    var amount: Int?=null,
+    
+    @SerializedName("aggregator_order_details")
+    var aggregatorOrderDetails: @RawValue HashMap<String,Any>?=null,
+    
+    @SerializedName("status")
+    var status: String?=null,
+    
+    @SerializedName("currency")
+    var currency: String?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: PaymentSessionRequestSerializer
+*/
+@Parcelize
+data class PaymentSessionRequestSerializer(
+    
+    
+    
+    @SerializedName("gid")
+    var gid: String?=null,
+    
+    @SerializedName("payment_details")
+    var paymentDetails: ArrayList<PaymentSessionDetail>?=null,
+    
+    @SerializedName("total_amount")
+    var totalAmount: Int?=null,
+    
+    @SerializedName("status")
+    var status: String?=null,
+    
+    @SerializedName("order_details")
+    var orderDetails: OrderDetail?=null,
+    
+    @SerializedName("currency")
+    var currency: String?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: PaymentSessionResponseSerializer
+*/
+@Parcelize
+data class PaymentSessionResponseSerializer(
+    
+    
+    
+    @SerializedName("gid")
+    var gid: String?=null,
+    
+    @SerializedName("platform_transaction_details")
+    var platformTransactionDetails: @RawValue ArrayList<HashMap<String,Any>>?=null,
+    
+    @SerializedName("total_amount")
+    var totalAmount: Int?=null,
+    
+    @SerializedName("status")
+    var status: String?=null,
+    
+    @SerializedName("currency")
+    var currency: String?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: RefundSessionDetail
+*/
+@Parcelize
+data class RefundSessionDetail(
+    
+    
+    
+    @SerializedName("refund_utr")
+    var refundUtr: String?=null,
+    
+    @SerializedName("receipt_number")
+    var receiptNumber: String?=null,
+    
+    @SerializedName("balance_transaction")
+    var balanceTransaction: String?=null,
+    
+    @SerializedName("payment_id")
+    var paymentId: String?=null,
+    
+    @SerializedName("created")
+    var created: String?=null,
+    
+    @SerializedName("request_id")
+    var requestId: String?=null,
+    
+    @SerializedName("transfer_reversal")
+    var transferReversal: String?=null,
+    
+    @SerializedName("amount")
+    var amount: Int?=null,
+    
+    @SerializedName("status")
+    var status: String?=null,
+    
+    @SerializedName("source_transfer_reversal")
+    var sourceTransferReversal: String?=null,
+    
+    @SerializedName("currency")
+    var currency: String?=null,
+    
+    @SerializedName("reason")
+    var reason: String?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: RefundSessionRequestSerializer
+*/
+@Parcelize
+data class RefundSessionRequestSerializer(
+    
+    
+    
+    @SerializedName("gid")
+    var gid: String?=null,
+    
+    @SerializedName("payment_details")
+    var paymentDetails: PaymentSessionDetail?=null,
+    
+    @SerializedName("total_amount")
+    var totalAmount: Int?=null,
+    
+    @SerializedName("refund_details")
+    var refundDetails: ArrayList<RefundSessionDetail>?=null,
+    
+    @SerializedName("status")
+    var status: String?=null,
+    
+    @SerializedName("currency")
+    var currency: String?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: RefundSessionResponseSerializer
+*/
+@Parcelize
+data class RefundSessionResponseSerializer(
+    
+    
+    
+    @SerializedName("total_refund_amount")
+    var totalRefundAmount: Int?=null,
+    
+    @SerializedName("gid")
+    var gid: String?=null,
+    
+    @SerializedName("platform_refund_details")
+    var platformRefundDetails: @RawValue ArrayList<HashMap<String,Any>>?=null,
+    
+    @SerializedName("status")
+    var status: String?=null,
+    
+    @SerializedName("currency")
+    var currency: String?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
