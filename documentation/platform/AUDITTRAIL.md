@@ -85,7 +85,7 @@ Success
           }
         },
         "_id": "634eef735e84e7e1b09aa07c",
-        "application": null,
+        "application": "",
         "date": "2022-10-18T18:24:51.329Z",
         "created_at": "2022-10-18T18:24:51.400Z",
         "modified_at": "2022-10-18T18:24:51.400Z"
@@ -534,17 +534,6 @@ Success
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
  | message | String? |  yes  | Failure message. |
-
----
-
-
- 
- 
- #### [ResourceNotFound](#ResourceNotFound)
-
- | Properties | Type | Nullable | Description |
- | ---------- | ---- | -------- | ----------- |
- | message | String? |  yes  | Resource not found with {id} |
 
 ---
 

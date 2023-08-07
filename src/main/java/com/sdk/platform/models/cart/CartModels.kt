@@ -1642,7 +1642,7 @@ data class Restrictions1(
     var payments: ArrayList<PromotionPaymentModes>?=null,
     
     @SerializedName("user_registered")
-    var userRegistered: UserRegistered?=null,
+    var userRegistered: String?=null,
     
     @SerializedName("platforms")
     var platforms: ArrayList<String>?=null,
@@ -1924,9 +1924,14 @@ data class PromotionListItem(
     var customJson: @RawValue HashMap<String,Any>?=null,
     
     @SerializedName("date_meta")
-    var dateMeta: PromotionDateMeta?=null
+    var dateMeta: PromotionDateMeta?=null,
+    
+    @SerializedName("_id")
+    var id: String?=null
     
 ): Parcelable {
+    
+    
     
     
     

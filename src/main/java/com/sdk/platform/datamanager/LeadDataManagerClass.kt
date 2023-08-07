@@ -196,10 +196,10 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     
     
     
-    suspend fun getTickets(items: Boolean?=null, filters: Boolean?=null, q: String?=null, status: String?=null, priority: PriorityEnum?=null, category: String?=null)
+    suspend fun getNewTickets(items: Boolean?=null, filters: Boolean?=null, q: String?=null, status: String?=null, priority: PriorityEnum?=null, category: String?=null)
     : Deferred<Response<TicketList>>? {
         return if (config.oauthClient.isAccessTokenValid()) {
-                leadApiList?.getTickets(companyId = config.companyId , applicationId = applicationId , items = items, filters = filters, q = q, status = status, priority = priority, category = category )
+                leadApiList?.getNewTickets(companyId = config.companyId , applicationId = applicationId , items = items, filters = filters, q = q, status = status, priority = priority, category = category )
         } else {
             null
         }
@@ -208,20 +208,20 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     
     
     
-    suspend fun getTicket(id: String)
+    suspend fun getNewTicket(id: String)
     : Deferred<Response<Ticket>>? {
         return if (config.oauthClient.isAccessTokenValid()) {
-                leadApiList?.getTicket(companyId = config.companyId , applicationId = applicationId , id = id )
+                leadApiList?.getNewTicket(companyId = config.companyId , applicationId = applicationId , id = id )
         } else {
             null
         }
     }
     
     
-    suspend fun editTicket(id: String,body: EditTicketPayload)
+    suspend fun editNewTicket(id: String,body: EditTicketPayload)
     : Deferred<Response<Ticket>>? {
         return if (config.oauthClient.isAccessTokenValid()) {
-                leadApiList?.editTicket(companyId = config.companyId , applicationId = applicationId , id = id, body = body)
+                leadApiList?.editNewTicket(companyId = config.companyId , applicationId = applicationId , id = id, body = body)
         } else {
             null
         }
@@ -232,20 +232,20 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     
     
     
-    suspend fun createHistory(id: String,body: TicketHistoryPayload)
+    suspend fun createNewHistory(id: String,body: TicketHistoryPayload)
     : Deferred<Response<TicketHistory>>? {
         return if (config.oauthClient.isAccessTokenValid()) {
-                leadApiList?.createHistory(companyId = config.companyId , applicationId = applicationId , id = id, body = body)
+                leadApiList?.createNewHistory(companyId = config.companyId , applicationId = applicationId , id = id, body = body)
         } else {
             null
         }
     }
     
     
-    suspend fun getTicketHistory(id: String)
+    suspend fun getNewTicketHistory(id: String)
     : Deferred<Response<TicketHistoryList>>? {
         return if (config.oauthClient.isAccessTokenValid()) {
-                leadApiList?.getTicketHistory(companyId = config.companyId , applicationId = applicationId , id = id )
+                leadApiList?.getNewTicketHistory(companyId = config.companyId , applicationId = applicationId , id = id )
         } else {
             null
         }
@@ -293,10 +293,10 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     
     
     
-    suspend fun getTokenForVideoRoom(uniqueName: String)
+    suspend fun getNewTokenForVideoRoom(uniqueName: String)
     : Deferred<Response<GetTokenForVideoRoomResponse>>? {
         return if (config.oauthClient.isAccessTokenValid()) {
-                leadApiList?.getTokenForVideoRoom(companyId = config.companyId , applicationId = applicationId , uniqueName = uniqueName )
+                leadApiList?.getNewTokenForVideoRoom(companyId = config.companyId , applicationId = applicationId , uniqueName = uniqueName )
         } else {
             null
         }
@@ -304,10 +304,10 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     
     
     
-    suspend fun getVideoParticipants(uniqueName: String)
+    suspend fun getNewVideoParticipants(uniqueName: String)
     : Deferred<Response<GetParticipantsInsideVideoRoomResponse>>? {
         return if (config.oauthClient.isAccessTokenValid()) {
-                leadApiList?.getVideoParticipants(companyId = config.companyId , applicationId = applicationId , uniqueName = uniqueName )
+                leadApiList?.getNewVideoParticipants(companyId = config.companyId , applicationId = applicationId , uniqueName = uniqueName )
         } else {
             null
         }

@@ -496,28 +496,6 @@ data class BlitzkriegApiErrorSchema(
 
              
 /*
-    Model: BlitzkriegNotFoundSchema
-*/
-@Parcelize
-data class BlitzkriegNotFoundSchema(
-    
-    
-    
-    @SerializedName("message")
-    var message: String?=null
-    
-): Parcelable {
-    
-    
-    
-    
-    
-}
-
-
-
-             
-/*
     Model: BlitzkriegInternalServerErrorSchema
 */
 @Parcelize
@@ -992,28 +970,6 @@ data class Css(
 
              
 /*
-    Model: Sections
-*/
-@Parcelize
-data class Sections(
-    
-    
-    
-    @SerializedName("attributes")
-    var attributes: String?=null
-    
-): Parcelable {
-    
-    
-    
-    
-    
-}
-
-
-
-             
-/*
     Model: Config
 */
 @Parcelize
@@ -1163,28 +1119,6 @@ data class Colors(
     
     
     
-    
-    
-    
-    
-    
-}
-
-
-
-             
-/*
-    Model: Custom
-*/
-@Parcelize
-data class Custom(
-    
-    
-    
-    @SerializedName("props")
-    var props: @RawValue HashMap<String,Any>?=null
-    
-): Parcelable {
     
     
     

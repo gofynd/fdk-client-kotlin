@@ -185,7 +185,7 @@ interface ConfigurationApiList {
     fun getStoreByBrands(@Path("company_id") companyId: String, @Query("page_no") pageNo: Int?, @Query("page_size") pageSize: Int?,@Body body: StoreByBrandsRequest)
     : Deferred<Response<StoreByBrandsResponse>>
     
-    @GET ("/service/platform/configuration/v1.0/company/{company_id}/other-seller-applications/")
+    @GET ("/service/platform/configuration/v1.0/company/{company_id}/other-seller-applications")
     fun getOtherSellerApplications(@Path("company_id") companyId: String, @Query("page_no") pageNo: Int?, @Query("page_size") pageSize: Int?)
     : Deferred<Response<OtherSellerApplications>>
     

@@ -196,7 +196,7 @@ Success. Returns a Product object. Check the example shown below or refer `Produ
   "tags": [
     "Digital"
   ],
-  "teaser_tag": {},
+  "teaser_tag": "",
   "no_of_boxes": 1,
   "custom_order": {},
   "color": "808080",
@@ -2157,8 +2157,8 @@ Success. Returns a paginated list of products..Check the example shown below or 
           "min": 9,
           "max": 6789,
           "is_selected": false,
-          "selected_min": 9.51,
-          "selected_max": 6788.44,
+          "selected_min": 9,
+          "selected_max": 6788,
           "display_format": "{} to {}",
           "currency_code": "INR",
           "currency_symbol": "₹",
@@ -2320,7 +2320,7 @@ Success. Returns a paginated list of products..Check the example shown below or 
               },
               "uid": 7503196,
               "slug": "shoes-1255-7_dtnnaaqay",
-              "value": null,
+              "value": "",
               "medias": [
                 {
                   "url": "https://hdn-1.addsale.com/x0/products/pictures/item/free/original/aM_8QuyQH-HP6YCHrbk7-484A0178.jpg",
@@ -2351,7 +2351,7 @@ Success. Returns a paginated list of products..Check the example shown below or 
               },
               "uid": 7502115,
               "slug": "shoes-413-yeskjstfl6va",
-              "value": null,
+              "value": "",
               "medias": [
                 {
                   "url": "https://hdn-1.addsale.com/x0/products/pictures/item/free/original/uCrIUYgNs-Neemans-FieryRed-ReLive-Knits-Jogger-FrontRightLogo-Comfortable-Shoes_1024x.jpg",
@@ -2506,7 +2506,7 @@ Success. Returns a paginated list of products..Check the example shown below or 
               },
               "uid": 7503196,
               "slug": "shoes-1255-7_dtnnaaqay",
-              "value": null,
+              "value": "",
               "medias": [
                 {
                   "url": "https://hdn-1.addsale.com/x0/products/pictures/item/free/original/aM_8QuyQH-HP6YCHrbk7-484A0178.jpg",
@@ -2537,7 +2537,7 @@ Success. Returns a paginated list of products..Check the example shown below or 
               },
               "uid": 7502115,
               "slug": "shoes-413-yeskjstfl6va",
-              "value": null,
+              "value": "",
               "medias": [
                 {
                   "url": "https://hdn-1.addsale.com/x0/products/pictures/item/free/original/uCrIUYgNs-Neemans-FieryRed-ReLive-Knits-Jogger-FrontRightLogo-Comfortable-Shoes_1024x.jpg",
@@ -3683,6 +3683,10 @@ Success. Returns a list of categories. Check the example shown below or refer `C
       "items": [
         {
           "name": "Janet Parker",
+          "banners": {
+            "landscape": {},
+            "portrait": {}
+          },
           "image": {
             "aspect_ratio": "13:20",
             "aspect_ratio_f": 0.65,
@@ -4294,7 +4298,7 @@ Success. Returns a paginated list of products. Check the example shown below or 
               },
               "uid": 7503196,
               "slug": "shoes-1255-7_dtnnaaqay",
-              "value": null,
+              "value": "",
               "medias": [
                 {
                   "url": "https://hdn-1.addsale.com/x0/products/pictures/item/free/original/aM_8QuyQH-HP6YCHrbk7-484A0178.jpg",
@@ -4325,7 +4329,7 @@ Success. Returns a paginated list of products. Check the example shown below or 
               },
               "uid": 7502115,
               "slug": "shoes-413-yeskjstfl6va",
-              "value": null,
+              "value": "",
               "medias": [
                 {
                   "url": "https://hdn-1.addsale.com/x0/products/pictures/item/free/original/uCrIUYgNs-Neemans-FieryRed-ReLive-Knits-Jogger-FrontRightLogo-Comfortable-Shoes_1024x.jpg",
@@ -4480,7 +4484,7 @@ Success. Returns a paginated list of products. Check the example shown below or 
               },
               "uid": 7503196,
               "slug": "shoes-1255-7_dtnnaaqay",
-              "value": null,
+              "value": "",
               "medias": [
                 {
                   "url": "https://hdn-1.addsale.com/x0/products/pictures/item/free/original/aM_8QuyQH-HP6YCHrbk7-484A0178.jpg",
@@ -4511,7 +4515,7 @@ Success. Returns a paginated list of products. Check the example shown below or 
               },
               "uid": 7502115,
               "slug": "shoes-413-yeskjstfl6va",
-              "value": null,
+              "value": "",
               "medias": [
                 {
                   "url": "https://hdn-1.addsale.com/x0/products/pictures/item/free/original/uCrIUYgNs-Neemans-FieryRed-ReLive-Knits-Jogger-FrontRightLogo-Comfortable-Shoes_1024x.jpg",
@@ -5701,11 +5705,16 @@ Success. Returns a list of collections. Check the example shown below or refer `
     {
       "uid": "601a4f39448327cfa83e7db2",
       "type": "query",
-      "query": {
-        "category": [
-          "Anna-Navarro"
-        ]
-      },
+      "query": [
+        {
+          "op": "in",
+          "value": [],
+          "attribute": "",
+          "category": [
+            "Anna-Navarro"
+          ]
+        }
+      ],
       "name": "collection with Anna-Navarro",
       "banners": {
         "portrait": {
@@ -5746,7 +5755,16 @@ Success. Returns a list of collections. Check the example shown below or refer `
     {
       "uid": "601a4f39448327cfa83e7db0",
       "type": "items",
-      "query": {},
+      "query": [
+        {
+          "op": "in",
+          "value": [],
+          "attribute": "",
+          "category": [
+            "Anna-Navarro"
+          ]
+        }
+      ],
       "name": "collection with items",
       "banners": {
         "portrait": {
@@ -6020,7 +6038,7 @@ Success. Returns a list items in a given collection. Check the example shown bel
         "display": "Monica Hampton",
         "name": "material",
         "kind": "multivalued",
-        "logo": ""
+        "logo": "https://hdn-1.fynd.com/global/menu-icons/image%20Nature.svg"
       },
       "values": [
         {
@@ -6036,7 +6054,7 @@ Success. Returns a list items in a given collection. Check the example shown bel
         "display": "John Mendoza",
         "name": "weight",
         "kind": "multivalued",
-        "logo": ""
+        "logo": "https://hdn-1.fynd.com/global/menu-icons/image%20Nature.svg"
       },
       "values": [
         {
@@ -6052,7 +6070,7 @@ Success. Returns a list items in a given collection. Check the example shown bel
         "display": "Kimberly Mcdaniel",
         "name": "gender",
         "kind": "multivalued",
-        "logo": ""
+        "logo": "https://hdn-1.fynd.com/global/menu-icons/image%20Nature.svg"
       },
       "values": [
         {
@@ -6068,7 +6086,7 @@ Success. Returns a list items in a given collection. Check the example shown bel
         "display": "Kimberly Davidson",
         "name": "color",
         "kind": "multivalued",
-        "logo": ""
+        "logo": "https://hdn-1.fynd.com/global/menu-icons/image%20Nature.svg"
       },
       "values": [
         {
@@ -6271,7 +6289,13 @@ Success. Returns a Collection object. Check the example shown below or refer `Co
 {
   "uid": "601a4f39448327cfa83e7db0",
   "type": "items",
-  "query": {},
+  "query": [
+    {
+      "op": "in",
+      "value": [],
+      "attribute": ""
+    }
+  ],
   "name": "collection with items",
   "banners": {
     "portrait": {
@@ -7035,6 +7059,9 @@ Success. Returns a list of selling locations. Check the example shown below or r
 
 ```json
 {
+  "items": [
+    {}
+  ],
   "page": {
     "type": "number",
     "current": 1,
@@ -7504,6 +7531,8 @@ Success. Returns a group of products bundle.
       "slug": "test-bundle",
       "logo": null,
       "meta": {},
+      "created_on": "2020-05-21T03:58:41.237000Z",
+      "modified_on": "2020-05-21T03:58:41.237000Z",
       "products": [
         {
           "product_uid": 7502119,
@@ -8103,9 +8132,9 @@ Success. Returns a ProductSizeSellerV3 object. Check the example shown below or 
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | effective | [Price](#Price)? |  yes  | The effective price object for the product. |
- | marked | [Price](#Price)? |  yes  | The marked price object for the product. |
- | selling | [Price](#Price)? |  yes  | The selling price object for the product. |
+ | effective | [Price](#Price)? |  yes  |  |
+ | marked | [Price](#Price)? |  yes  |  |
+ | selling | [Price](#Price)? |  yes  |  |
 
 ---
 
@@ -9409,7 +9438,7 @@ Success. Returns a ProductSizeSellerV3 object. Check the example shown below or 
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | logo | Any? |  yes  | The URL for the logo of the product grouping. |
+ | logo | String? |  yes  | The URL for the logo of the product grouping. |
  | isActive | Boolean? |  yes  | Whether the product grouping is active. |
  | meta | HashMap<String,Any>? |  yes  | A dictionary containing metadata information. |
  | verifiedBy | [UserDetail](#UserDetail)? |  yes  | User details of the verifier of the document, if applicable |

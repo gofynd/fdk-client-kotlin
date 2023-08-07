@@ -3004,115 +3004,6 @@ data class VerifyOtpCommsErrorRes(
 
              
 /*
-    Model: PushtokenReq
-*/
-@Parcelize
-data class PushtokenReq(
-    
-    
-    
-    @SerializedName("action")
-    var action: String?=null,
-    
-    @SerializedName("bundle_identifier")
-    var bundleIdentifier: String?=null,
-    
-    @SerializedName("push_token")
-    var pushToken: String?=null,
-    
-    @SerializedName("unique_device_id")
-    var uniqueDeviceId: String?=null
-    
-): Parcelable {
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-}
-
-
-
-             
-/*
-    Model: PushtokenRes
-*/
-@Parcelize
-data class PushtokenRes(
-    
-    
-    
-    @SerializedName("_id")
-    var id: String?=null,
-    
-    @SerializedName("bundle_identifier")
-    var bundleIdentifier: String?=null,
-    
-    @SerializedName("push_token")
-    var pushToken: String?=null,
-    
-    @SerializedName("unique_device_id")
-    var uniqueDeviceId: String?=null,
-    
-    @SerializedName("type")
-    var type: String?=null,
-    
-    @SerializedName("platform")
-    var platform: String?=null,
-    
-    @SerializedName("application_id")
-    var applicationId: String?=null,
-    
-    @SerializedName("user_id")
-    var userId: String?=null,
-    
-    @SerializedName("created_at")
-    var createdAt: String?=null,
-    
-    @SerializedName("updated_at")
-    var updatedAt: String?=null,
-    
-    @SerializedName("expired_at")
-    var expiredAt: String?=null
-    
-): Parcelable {
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-}
-
-
-
-             
-/*
     Model: SmsProviderReq
 */
 @Parcelize
@@ -3796,38 +3687,6 @@ data class SystemNotificationUser(
 
              
 /*
-    Model: SystemNotificationSettings
-*/
-@Parcelize
-data class SystemNotificationSettings(
-    
-    
-    
-    @SerializedName("sound")
-    var sound: Boolean?=null,
-    
-    @SerializedName("priority")
-    var priority: String?=null,
-    
-    @SerializedName("time_to_live")
-    var timeToLive: String?=null
-    
-): Parcelable {
-    
-    
-    
-    
-    
-    
-    
-    
-    
-}
-
-
-
-             
-/*
     Model: SystemNotification
 */
 @Parcelize
@@ -3856,48 +3715,6 @@ data class SystemNotification(
 ): Parcelable {
     
     
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-}
-
-
-
-             
-/*
-    Model: SystemNotificationsPage
-*/
-@Parcelize
-data class SystemNotificationsPage(
-    
-    
-    
-    @SerializedName("type")
-    var type: String?=null,
-    
-    @SerializedName("current")
-    var current: Int?=null,
-    
-    @SerializedName("size")
-    var size: Int?=null,
-    
-    @SerializedName("item_total")
-    var itemTotal: Int?=null,
-    
-    @SerializedName("has_next")
-    var hasNext: Boolean?=null
-    
-): Parcelable {
     
     
     

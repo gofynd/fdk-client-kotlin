@@ -398,18 +398,6 @@ Success
 
  
  
- #### [EventConfigList](#EventConfigList)
-
- | Properties | Type | Nullable | Description |
- | ---------- | ---- | -------- | ----------- |
- | items | ArrayList<[EventConfig](#EventConfig)>? |  yes  |  |
- | page | [Page](#Page)? |  yes  |  |
-
----
-
-
- 
- 
  #### [EventConfigResponse](#EventConfigResponse)
 
  | Properties | Type | Nullable | Description |
@@ -444,41 +432,6 @@ Success
  | current | Int? |  yes  |  |
  | type | String |  no  |  |
  | size | Int? |  yes  |  |
-
----
-
-
- 
- 
- #### [EventProcessedStatus](#EventProcessedStatus)
-
- | Properties | Type | Nullable | Description |
- | ---------- | ---- | -------- | ----------- |
- | id | Int? |  yes  |  |
- | subscriberId | String? |  yes  |  |
- | attempt | Int? |  yes  |  |
- | responseCode | String? |  yes  |  |
- | responseMessage | String? |  yes  |  |
- | createdOn | String? |  yes  |  |
- | processedOn | String? |  yes  |  |
- | status | Boolean? |  yes  |  |
-
----
-
-
- 
- 
- #### [EventPayload](#EventPayload)
-
- | Properties | Type | Nullable | Description |
- | ---------- | ---- | -------- | ----------- |
- | id | Int? |  yes  |  |
- | eventTraceId | String? |  yes  |  |
- | messageId | String? |  yes  |  |
- | eventName | String? |  yes  |  |
- | eventType | String? |  yes  |  |
- | version | String? |  yes  |  |
- | status | Boolean? |  yes  |  |
 
 ---
 
@@ -525,20 +478,6 @@ Success
 
  
  
- #### [SubscriberEvent](#SubscriberEvent)
-
- | Properties | Type | Nullable | Description |
- | ---------- | ---- | -------- | ----------- |
- | id | Int? |  yes  |  |
- | subscriberId | Int? |  yes  |  |
- | eventId | Int? |  yes  |  |
- | createdDate | String? |  yes  |  |
-
----
-
-
- 
- 
  #### [AuthMeta](#AuthMeta)
 
  | Properties | Type | Nullable | Description |
@@ -559,20 +498,6 @@ Success
  | applicationId | ArrayList<String>? |  yes  |  |
  | extensionId | String? |  yes  |  |
  | criteria | String? |  yes  |  |
-
----
-
-
- 
- 
- #### [EventConfigBase](#EventConfigBase)
-
- | Properties | Type | Nullable | Description |
- | ---------- | ---- | -------- | ----------- |
- | eventName | String? |  yes  |  |
- | eventType | String? |  yes  |  |
- | eventCategory | String? |  yes  |  |
- | version | String? |  yes  |  |
 
 ---
 

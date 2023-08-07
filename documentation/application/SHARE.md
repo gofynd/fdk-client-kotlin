@@ -317,6 +317,8 @@ Success. Check the example shown below or refer `ShortLinkRes` for more details.
     "hash": "3qKlnsq-x"
   },
   "redirects": {
+    "expiry": "",
+    "url": "",
     "ios": {
       "type": "web",
       "link": "https://0icof6vvsf.hostx0.de/products/?brand=ruosh"
@@ -343,7 +345,7 @@ Success. Check the example shown below or refer `ShortLinkRes` for more details.
   "meta": {
     "type": "brand"
   },
-  "expire_at": null,
+  "expire_at": "",
   "application": "5eda528b97457fe43a733ace",
   "user_id": "5e4d01e2c39837ab66144f6d",
   "created_at": "2021-02-03T07:43:01.342Z",
@@ -415,6 +417,8 @@ Success. Check the example shown below or refer `ShortLinkRes` for more details.
     "hash": "3qKlnsq-x"
   },
   "redirects": {
+    "expiry": "null",
+    "url": "null",
     "ios": {
       "type": "web",
       "link": "https://0icof6vvsf.hostx0.de/products/?brand=ruosh"
@@ -441,7 +445,7 @@ Success. Check the example shown below or refer `ShortLinkRes` for more details.
   "meta": {
     "type": "brand"
   },
-  "expire_at": null,
+  "expire_at": "null",
   "application": "5eda528b97457fe43a733ace",
   "user_id": "5e4d01e2c39837ab66144f6d",
   "created_at": "2021-02-03T07:43:01.342Z",
@@ -513,6 +517,8 @@ Success. Check the example shown below or refer `ShortLinkRes` for more details.
     "hash": "3qKlnsq-x"
   },
   "redirects": {
+    "expiry": "",
+    "url": "",
     "ios": {
       "type": "web",
       "link": "https://0icof6vvsf.hostx0.de/products/?brand=ruosh"
@@ -539,7 +545,7 @@ Success. Check the example shown below or refer `ShortLinkRes` for more details.
   "meta": {
     "type": "brand"
   },
-  "expire_at": null,
+  "expire_at": "null",
   "application": "5eda528b97457fe43a733ace",
   "user_id": "5e4d01e2c39837ab66144f6d",
   "created_at": "2021-02-03T07:43:01.342Z",
@@ -709,35 +715,6 @@ Success. Check the example shown below or refer `ShortLinkRes` for more details.
  | attribution | [Attribution](#Attribution)? |  yes  |  |
  | socialMediaTags | [SocialMediaTags](#SocialMediaTags)? |  yes  |  |
  | count | Int? |  yes  |  |
-
----
-
-
- 
- 
- #### [Page](#Page)
-
- | Properties | Type | Nullable | Description |
- | ---------- | ---- | -------- | ----------- |
- | itemTotal | Int? |  yes  |  |
- | nextId | String? |  yes  |  |
- | hasPrevious | Boolean? |  yes  |  |
- | hasNext | Boolean? |  yes  |  |
- | current | Int? |  yes  |  |
- | type | String |  no  |  |
- | size | Int? |  yes  |  |
-
----
-
-
- 
- 
- #### [ShortLinkList](#ShortLinkList)
-
- | Properties | Type | Nullable | Description |
- | ---------- | ---- | -------- | ----------- |
- | items | ArrayList<[ShortLinkRes](#ShortLinkRes)>? |  yes  |  |
- | page | [Page](#Page)? |  yes  |  |
 
 ---
 

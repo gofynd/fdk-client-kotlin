@@ -4237,7 +4237,7 @@ data class ProductGroupingModel(
     
     
     @SerializedName("logo")
-    var logo: @RawValue Any?=null,
+    var logo: String?=null,
     
     @SerializedName("is_active")
     var isActive: Boolean?=null,

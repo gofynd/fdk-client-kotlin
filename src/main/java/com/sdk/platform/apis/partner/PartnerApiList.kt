@@ -30,7 +30,7 @@ interface PartnerApiList {
     : Deferred<Response<UninstallExtension>>
     
     @GET ("/service/platform/partners/v1.0/company/{company_id}/private-extensions")
-    fun getPrivateExtensions(@Path("company_id") companyId: String, @Query("page_size") pageSize: Double?, @Query("page_no") pageNo: Double?, @Query("query") query: String?)
+    fun getPrivateExtensions(@Path("company_id") companyId: String, @Query("page_size") pageSize: Double?, @Query("page_no") pageNo: Double?, @Query("query") query: HashMap<String,Any>?)
     : Deferred<Response<ExtensionResponse>>
     
     @GET ("/service/platform/partners/v1.0/company/{company_id}/extension/suggestions")
@@ -54,7 +54,7 @@ interface PartnerApiList {
     : Deferred<Response<SetupProductRes>>
     
     @GET ("/service/platform/partners/v1.0/company/{company_id}/application/{application_id}/proxy/{extension_id}")
-    fun getProxyPath(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Path("extension_id") extensionId: String?)
+    fun getProxyPath(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Path("extension_id") extensionId: String)
     : Deferred<Response<getProxyPathRes>>
     
     @POST ("/service/platform/partners/v1.0/company/{company_id}/application/{application_id}/proxy/{extension_id}")
@@ -62,7 +62,7 @@ interface PartnerApiList {
     : Deferred<Response<AddProxyResponse>>
     
     @GET ("/service/platform/partners/v1.0/company/{company_id}/application/{application_id}/proxy/{extension_id}/{attached_path}")
-    fun getProxyPathAttachedPath(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Path("extension_id") extensionId: String?, @Path("attached_path") attachedPath: String?)
+    fun getProxyPathAttachedPath(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Path("extension_id") extensionId: String, @Path("attached_path") attachedPath: String)
     : Deferred<Response<AddProxyResponse>>
     
     @DELETE ("/service/platform/partners/v1.0/company/{company_id}/application/{application_id}/proxy/{extension_id}/{attached_path}")

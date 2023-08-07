@@ -38,38 +38,6 @@ data class ValidityObject(
 
              
 /*
-    Model: DiscountMeta
-*/
-@Parcelize
-data class DiscountMeta(
-    
-    
-    
-    @SerializedName("timer")
-    var timer: Boolean?=null,
-    
-    @SerializedName("hours")
-    var hours: Double?=null,
-    
-    @SerializedName("minutes")
-    var minutes: Double?=null
-    
-): Parcelable {
-    
-    
-    
-    
-    
-    
-    
-    
-    
-}
-
-
-
-             
-/*
     Model: CreateUpdateDiscount
 */
 @Parcelize
@@ -142,6 +110,38 @@ data class CreateUpdateDiscount(
     
     
     
+    
+    
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: DiscountMeta
+*/
+@Parcelize
+data class DiscountMeta(
+    
+    
+    
+    @SerializedName("timer")
+    var timer: Boolean?=null,
+    
+    @SerializedName("hours")
+    var hours: Double?=null,
+    
+    @SerializedName("minutes")
+    var minutes: Double?=null
+    
+): Parcelable {
     
     
     

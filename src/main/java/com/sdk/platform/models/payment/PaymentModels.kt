@@ -316,7 +316,7 @@ data class IntentApp(
     var code: String?=null,
     
     @SerializedName("logos")
-    var logos: PaymentModeLogo?=null
+    var logos: @RawValue HashMap<String,Any>?=null
     
 ): Parcelable {
     
@@ -413,7 +413,7 @@ data class PaymentModeList(
     var expired: Boolean?=null,
     
     @SerializedName("logo_url")
-    var logoUrl: PaymentModeLogo?=null,
+    var logoUrl: @RawValue HashMap<String,Any>?=null,
     
     @SerializedName("card_token")
     var cardToken: String?=null,
@@ -3330,7 +3330,7 @@ data class ErrorResponse(
     var statusCode: Int?=null,
     
     @SerializedName("error")
-    var error: ErrorDescription?=null,
+    var error: @RawValue HashMap<String,Any>?=null,
     
     @SerializedName("message")
     var message: String?=null,
