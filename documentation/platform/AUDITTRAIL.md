@@ -23,7 +23,7 @@ Get paginated audit logs
 
 
 ```kotlin
-platformClient.audittrail.getAuditLogs(qs: qs).safeAwait{ response, error->
+platformClient.audittrail.getAuditLogs(qs: qs, limit: limit, sort: sort).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -39,7 +39,9 @@ platformClient.audittrail.getAuditLogs(qs: qs).safeAwait{ response, error->
 
 | Argument  |  Type  | Required | Description |
 | --------- | -----  | -------- | ----------- | 
-| qs | String | yes | Logs Query |  
+| qs | String | yes | Logs Query |   
+| limit | Int? | no | Current request items count |   
+| sort | HashMap<String,Any>? | no | To sort based on _id |  
 
 
 

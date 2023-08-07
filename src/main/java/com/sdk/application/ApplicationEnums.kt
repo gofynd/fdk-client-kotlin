@@ -58,7 +58,10 @@ import com.google.gson.annotations.SerializedName
         log("log"), 
         
         @SerializedName("comment")
-        comment("comment");
+        comment("comment"), 
+        
+        @SerializedName("thread")
+        thread("thread");
         
 
         companion object {

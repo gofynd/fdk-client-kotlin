@@ -10,7 +10,7 @@ import com.sdk.platform.models.audittrail.*
 interface AuditTrailApiList {
     
     @GET ("/service/platform/audit-trail/v1.0/company/{company_id}/logs/")
-    fun getAuditLogs(@Path("company_id") companyId: String, @Query("qs") qs: String)
+    fun getAuditLogs(@Path("company_id") companyId: String, @Query("qs") qs: String, @Query("limit") limit: Int?, @Query("sort") sort: HashMap<String,Any>?)
     : Deferred<Response<LogSchemaResponse>>
     
     @POST ("/service/platform/audit-trail/v1.0/company/{company_id}/logs/")

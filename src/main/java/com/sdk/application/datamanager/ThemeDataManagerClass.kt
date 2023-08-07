@@ -25,9 +25,9 @@ class ThemeDataManagerClass(val config: ApplicationConfig, val unauthorizedActio
             
                     _relativeUrls["getPage"] = "/service/application/theme/v1.0/{theme_id}/{page_value}".substring(1)
             
-                    _relativeUrls["getAppliedTheme"] = "/service/application/theme/v1.0/applied-theme".substring(1)
+                    _relativeUrls["getAppliedTheme"] = "/service/application/theme/v2.0/applied-theme".substring(1)
             
-                    _relativeUrls["getThemeForPreview"] = "/service/application/theme/v1.0/{theme_id}/preview".substring(1)
+                    _relativeUrls["getThemeForPreview"] = "/service/application/theme/v2.0/{theme_id}/preview".substring(1)
             
     }
 

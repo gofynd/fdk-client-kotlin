@@ -7532,14 +7532,14 @@ data class Trader(
     
     
     
+    @SerializedName("address")
+    var address: ArrayList<String>?=null,
+    
     @SerializedName("name")
-    var name: @RawValue Any?=null,
+    var name: String?=null,
     
     @SerializedName("type")
-    var type: String?=null,
-    
-    @SerializedName("address")
-    var address: ArrayList<String>?=null
+    var type: String?=null
     
 ): Parcelable {
     
@@ -7564,11 +7564,11 @@ data class NetQuantity(
     
     
     
-    @SerializedName("unit")
-    var unit: @RawValue Any?=null,
-    
     @SerializedName("value")
-    var value: Double?=null
+    var value: Double?=null,
+    
+    @SerializedName("unit")
+    var unit: String?=null
     
 ): Parcelable {
     
