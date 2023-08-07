@@ -996,9 +996,14 @@ data class AddTicketPayload(
     var content: TicketContent?=null,
     
     @SerializedName("_custom_json")
-    var customJson: @RawValue HashMap<String,Any>?=null
+    var customJson: @RawValue HashMap<String,Any>?=null,
+    
+    @SerializedName("subscribers")
+    var subscribers: ArrayList<String>?=null
     
 ): Parcelable {
+    
+    
     
     
     
