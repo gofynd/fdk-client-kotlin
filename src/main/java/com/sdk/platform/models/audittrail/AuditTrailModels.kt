@@ -368,28 +368,6 @@ data class BadRequest(
 
              
 /*
-    Model: ResourceNotFound
-*/
-@Parcelize
-data class ResourceNotFound(
-    
-    
-    
-    @SerializedName("message")
-    var message: String?=null
-    
-): Parcelable {
-    
-    
-    
-    
-    
-}
-
-
-
-             
-/*
     Model: InternalServerError
 */
 @Parcelize

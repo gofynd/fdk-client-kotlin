@@ -1129,10 +1129,10 @@ data class Page(
 
              
 /*
-    Model: Logistics
+    Model: LogisticsDPSchema
 */
 @Parcelize
-data class Logistics(
+data class LogisticsDPSchema(
     
     
     
@@ -1168,7 +1168,7 @@ data class Locality(
     var meta: @RawValue HashMap<String,Any>?=null,
     
     @SerializedName("logistics")
-    var logistics: Logistics?=null,
+    var logistics: LogisticsDPSchema?=null,
     
     @SerializedName("uid")
     var uid: String?=null,

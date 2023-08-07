@@ -173,32 +173,6 @@ import com.google.gson.annotations.SerializedName
 
 
 
-    /*
-        Enum: TicketIntegrationDetails
-        Used By: Lead
-    */
-    enum class TicketIntegrationDetails(val value:String){
-        
-        @SerializedName("default")
-        defaultCase("default"), 
-        
-        @SerializedName("freshdesk")
-        freshdesk("freshdesk"), 
-        
-        @SerializedName("kapture")
-        kapture("kapture");
-        
-
-        companion object {
-            fun valueOfTicketIntegrationDetails(value : String): TicketIntegrationDetails? {
-                return TicketIntegrationDetails.values().find {
-                    it.value == value
-                }
-            }
-        }
-    }
-
-
 
 
 

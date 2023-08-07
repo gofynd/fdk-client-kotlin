@@ -414,28 +414,6 @@ data class BulkUploadResponse(
 
              
 /*
-    Model: ReqConfiguration
-*/
-@Parcelize
-data class ReqConfiguration(
-    
-    
-    
-    @SerializedName("concurrency")
-    var concurrency: Int?=null
-    
-): Parcelable {
-    
-    
-    
-    
-    
-}
-
-
-
-             
-/*
     Model: Destination
 */
 @Parcelize
@@ -479,14 +457,9 @@ data class BulkRequest(
     var urls: ArrayList<String>?=null,
     
     @SerializedName("destination")
-    var destination: Destination?=null,
-    
-    @SerializedName("configuration")
-    var configuration: ReqConfiguration?=null
+    var destination: Destination?=null
     
 ): Parcelable {
-    
-    
     
     
     
@@ -722,6 +695,161 @@ data class BrowseResponse(
     
     @SerializedName("page")
     var page: Page?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: Status
+*/
+@Parcelize
+data class Status(
+    
+    
+    
+    @SerializedName("total")
+    var total: Double?=null,
+    
+    @SerializedName("failed")
+    var failed: Double?=null,
+    
+    @SerializedName("succeeded")
+    var succeeded: Double?=null,
+    
+    @SerializedName("result")
+    var result: String?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: FileSrc
+*/
+@Parcelize
+data class FileSrc(
+    
+    
+    
+    @SerializedName("method")
+    var method: String?=null,
+    
+    @SerializedName("url")
+    var url: String?=null,
+    
+    @SerializedName("namespace")
+    var namespace: String?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: File
+*/
+@Parcelize
+data class File(
+    
+    
+    
+    @SerializedName("src")
+    var src: FileSrc?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: BulkUploadFailFileResponseItems
+*/
+@Parcelize
+data class BulkUploadFailFileResponseItems(
+    
+    
+    
+    @SerializedName("success")
+    var success: Boolean?=null,
+    
+    @SerializedName("error")
+    var error: String?=null,
+    
+    @SerializedName("file")
+    var file: File?=null,
+    
+    @SerializedName("stage")
+    var stage: String?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: BulkUploadFailResponse
+*/
+@Parcelize
+data class BulkUploadFailResponse(
+    
+    
+    
+    @SerializedName("status")
+    var status: Status?=null,
+    
+    @SerializedName("files")
+    var files: ArrayList<BulkUploadFailFileResponseItems>?=null
     
 ): Parcelable {
     

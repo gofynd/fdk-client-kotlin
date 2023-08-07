@@ -4279,7 +4279,7 @@ data class UpdateCollection(
     var visibleFacetsKeys: ArrayList<String>?=null,
     
     @SerializedName("modified_by")
-    var modifiedBy: UserInfo?=null,
+    var modifiedBy: String?=null,
     
     @SerializedName("name")
     var name: String?=null,
@@ -7532,14 +7532,14 @@ data class Trader(
     
     
     
+    @SerializedName("address")
+    var address: ArrayList<String>?=null,
+    
     @SerializedName("name")
-    var name: @RawValue Any?=null,
+    var name: String?=null,
     
     @SerializedName("type")
-    var type: String?=null,
-    
-    @SerializedName("address")
-    var address: ArrayList<String>?=null
+    var type: String?=null
     
 ): Parcelable {
     
@@ -7564,11 +7564,11 @@ data class NetQuantity(
     
     
     
-    @SerializedName("unit")
-    var unit: @RawValue Any?=null,
-    
     @SerializedName("value")
-    var value: Double?=null
+    var value: Double?=null,
+    
+    @SerializedName("unit")
+    var unit: String?=null
     
 ): Parcelable {
     
@@ -7652,7 +7652,7 @@ data class ProductCreateUpdateSchemaV2(
     var action: String?=null,
     
     @SerializedName("change_request_id")
-    var changeRequestId: @RawValue Any?=null,
+    var changeRequestId: String?=null,
     
     @SerializedName("return_config")
     var returnConfig: ReturnConfig?=null,
@@ -8519,9 +8519,6 @@ data class AttributeMasterSerializer(
     @SerializedName("enabled_for_end_consumer")
     var enabledForEndConsumer: Boolean?=null,
     
-    @SerializedName("example")
-    var example: String?=null,
-    
     @SerializedName("schema")
     var schema: AttributeMaster?=null,
     
@@ -8529,8 +8526,6 @@ data class AttributeMasterSerializer(
     var createdBy: @RawValue HashMap<String,Any>?=null
     
 ): Parcelable {
-    
-    
     
     
     
@@ -9254,7 +9249,7 @@ data class BulkResponse(
     var isActive: Boolean?=null,
     
     @SerializedName("modified_by")
-    var modifiedBy: UserInfo1?=null,
+    var modifiedBy: String?=null,
     
     @SerializedName("created_on")
     var createdOn: String?=null,
@@ -10543,7 +10538,7 @@ data class InventorySellerResponse(
     var trackInventory: Boolean?=null,
     
     @SerializedName("modified_by")
-    var modifiedBy: UserSerializer?=null,
+    var modifiedBy: String?=null,
     
     @SerializedName("brand")
     var brand: BrandMeta?=null,
@@ -10606,7 +10601,7 @@ data class InventorySellerResponse(
     var meta: @RawValue HashMap<String,Any>?=null,
     
     @SerializedName("created_by")
-    var createdBy: UserSerializer?=null,
+    var createdBy: String?=null,
     
     @SerializedName("fynd_item_code")
     var fyndItemCode: String?=null,

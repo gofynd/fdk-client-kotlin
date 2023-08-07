@@ -1074,7 +1074,7 @@ data class IntentApp(
     var packageName: String?=null,
     
     @SerializedName("logos")
-    var logos: PaymentModeLogo?=null,
+    var logos: @RawValue HashMap<String,Any>?=null,
     
     @SerializedName("display_name")
     var displayName: String?=null
@@ -1174,7 +1174,7 @@ data class PaymentModeList(
     var codLimitPerOrder: Double?=null,
     
     @SerializedName("logo_url")
-    var logoUrl: PaymentModeLogo?=null,
+    var logoUrl: @RawValue HashMap<String,Any>?=null,
     
     @SerializedName("nickname")
     var nickname: String?=null,
@@ -1386,46 +1386,46 @@ data class PaymentFlow(
     
     
     @SerializedName("bqr_razorpay")
-    var bqrRazorpay: AggregatorRoute?=null,
+    var bqrRazorpay: @RawValue HashMap<String,Any>?=null,
     
     @SerializedName("fynd")
-    var fynd: AggregatorRoute?=null,
+    var fynd: @RawValue HashMap<String,Any>?=null,
     
     @SerializedName("epaylater")
-    var epaylater: AggregatorRoute?=null,
+    var epaylater: @RawValue HashMap<String,Any>?=null,
     
     @SerializedName("razorpay")
-    var razorpay: AggregatorRoute?=null,
+    var razorpay: @RawValue HashMap<String,Any>?=null,
     
     @SerializedName("juspay")
-    var juspay: AggregatorRoute?=null,
+    var juspay: @RawValue HashMap<String,Any>?=null,
     
     @SerializedName("ajiodhan")
-    var ajiodhan: AggregatorRoute?=null,
+    var ajiodhan: @RawValue HashMap<String,Any>?=null,
     
     @SerializedName("simpl")
-    var simpl: AggregatorRoute?=null,
+    var simpl: @RawValue HashMap<String,Any>?=null,
     
     @SerializedName("rupifi")
-    var rupifi: AggregatorRoute?=null,
+    var rupifi: @RawValue HashMap<String,Any>?=null,
     
     @SerializedName("mswipe")
-    var mswipe: AggregatorRoute?=null,
+    var mswipe: @RawValue HashMap<String,Any>?=null,
     
     @SerializedName("stripe")
-    var stripe: AggregatorRoute?=null,
+    var stripe: @RawValue HashMap<String,Any>?=null,
     
     @SerializedName("ccavenue")
-    var ccavenue: AggregatorRoute?=null,
+    var ccavenue: @RawValue HashMap<String,Any>?=null,
     
     @SerializedName("payubiz")
-    var payubiz: AggregatorRoute?=null,
+    var payubiz: @RawValue HashMap<String,Any>?=null,
     
     @SerializedName("jiopay")
-    var jiopay: AggregatorRoute?=null,
+    var jiopay: @RawValue HashMap<String,Any>?=null,
     
     @SerializedName("upi_razorpay")
-    var upiRazorpay: AggregatorRoute?=null
+    var upiRazorpay: @RawValue HashMap<String,Any>?=null
     
 ): Parcelable {
     
@@ -2916,7 +2916,7 @@ data class ErrorResponse(
     var statusCode: Int?=null,
     
     @SerializedName("error")
-    var error: ErrorDescription?=null,
+    var error: @RawValue HashMap<String,Any>?=null,
     
     @SerializedName("message")
     var message: String?=null,
@@ -3505,8 +3505,14 @@ data class CreditSummary(
     
     
     
+    @SerializedName("total_due_amount")
+    var totalDueAmount: BalanceDetails?=null,
+    
     @SerializedName("status")
     var status: String?=null,
+    
+    @SerializedName("limit")
+    var limit: BalanceDetails?=null,
     
     @SerializedName("credit_line_id")
     var creditLineId: String?=null,
@@ -3514,19 +3520,43 @@ data class CreditSummary(
     @SerializedName("amount_available")
     var amountAvailable: BalanceDetails?=null,
     
+    @SerializedName("due_amount")
+    var dueAmount: BalanceDetails?=null,
+    
     @SerializedName("balance")
     var balance: BalanceDetails?=null,
     
     @SerializedName("status_message")
     var statusMessage: String?=null,
     
+    @SerializedName("repayment_url")
+    var repaymentUrl: String?=null,
+    
+    @SerializedName("is_eligible_for_txn")
+    var isEligibleForTxn: Boolean?=null,
+    
     @SerializedName("merchant_customer_ref_id")
     var merchantCustomerRefId: String?=null,
     
     @SerializedName("buyer_status")
-    var buyerStatus: String?=null
+    var buyerStatus: String?=null,
+    
+    @SerializedName("activation_url")
+    var activationUrl: String?=null
     
 ): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     
     
     
@@ -4054,16 +4084,36 @@ data class OnboardSummary(
     
     
     
-    @SerializedName("status")
-    var status: Boolean?=null,
-    
     @SerializedName("redirect_url")
     var redirectUrl: String?=null,
     
     @SerializedName("session")
-    var session: @RawValue HashMap<String,Any>?=null
+    var session: @RawValue HashMap<String,Any>?=null,
+    
+    @SerializedName("status")
+    var status: Boolean?=null,
+    
+    @SerializedName("status_remark")
+    var statusRemark: String?=null,
+    
+    @SerializedName("is_eligible_for_txn")
+    var isEligibleForTxn: Boolean?=null,
+    
+    @SerializedName("merchant_customer_ref_id")
+    var merchantCustomerRefId: String?=null,
+    
+    @SerializedName("activation_url")
+    var activationUrl: String?=null
     
 ): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+    
     
     
     

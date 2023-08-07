@@ -46,6 +46,8 @@ class PlatformClient(val config:PlatformConfig, val unauthorizedAction: ((url: S
     
     val rewards by lazy { RewardsDataManagerClass(config, unauthorizedAction)}
     
+    val serviceability by lazy { ServiceabilityDataManagerClass(config, unauthorizedAction)}
+    
     val share by lazy { ShareDataManagerClass(config, unauthorizedAction)}
     
     val theme by lazy { ThemeDataManagerClass(config, unauthorizedAction)}
@@ -95,6 +97,8 @@ class PlatformClient(val config:PlatformConfig, val unauthorizedAction: ((url: S
     val payment by lazy { this@PlatformClient.payment.ApplicationClient(applicationId,config)}
     
     val rewards by lazy { this@PlatformClient.rewards.ApplicationClient(applicationId,config)}
+    
+    val serviceability by lazy { this@PlatformClient.serviceability.ApplicationClient(applicationId,config)}
     
     val share by lazy { this@PlatformClient.share.ApplicationClient(applicationId,config)}
     

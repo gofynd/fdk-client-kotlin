@@ -346,24 +346,24 @@ class CatalogDataManagerClass(val config: PlatformConfig, val unauthorizedAction
     }
     
     
-    suspend fun validateProductTemplate(slug: String)
+    suspend fun validateProductTemplate(slug: String, itemType: String?=null, bulk: Boolean?=null)
     : Deferred<Response<TemplatesValidationResponse>>? {
         
         return if (config.oauthClient.isAccessTokenValid()) {
             catalogApiList?.validateProductTemplate(
-        companyId = config.companyId, slug = slug )
+        companyId = config.companyId, slug = slug, itemType = itemType, bulk = bulk )
         } else {
             null
         } 
     }
     
     
-    suspend fun downloadProductTemplateViews(slug: String)
+    suspend fun downloadProductTemplateViews(slug: String, itemType: String?=null, type: String?=null)
     : Deferred<Response<ResponseBody>>? {
         
         return if (config.oauthClient.isAccessTokenValid()) {
             catalogApiList?.downloadProductTemplateViews(
-        companyId = config.companyId, slug = slug )
+        companyId = config.companyId, slug = slug, itemType = itemType, type = type )
         } else {
             null
         } 

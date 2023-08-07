@@ -207,12 +207,10 @@ Success. Check the example shown below or refer `ApplicationAboutResponse` for m
     "is_active": true,
     "_id": "5cd3db5e9d692cfe5302a7ba",
     "name": "Shivam Clothing Store",
-    "meta": [
-      {
-        "name": "tes",
-        "value": "test"
-      }
-    ],
+    "meta": {
+      "name": "tes",
+      "value": "test"
+    },
     "token": "xOfcP-aYE",
     "secret": "",
     "created_at": "2019-05-09T07:48:46.218Z",
@@ -710,8 +708,8 @@ Success. Check the example shown below or refer `AppFeatureResponse` for more de
     "landing_page": {
       "launch_page": {
         "page_type": "home",
-        "params": null,
-        "query": null
+        "params": {},
+        "query": {}
       },
       "continue_as_guest": true,
       "login_btn_text": "Click here to sign-in",
@@ -1091,8 +1089,8 @@ Success. Check the example shown below or refer `Currency` for more details.
   "code": "XAU",
   "created_at": "2020-05-22T05:03:13.429Z",
   "modified_at": "2020-06-05T09:12:04.248Z",
-  "decimal_digits": null,
-  "symbol": null
+  "decimal_digits": 1,
+  "symbol": ""
 }
 ```
 </details>
@@ -1570,60 +1568,6 @@ Success. Check the example shown below or refer `AppStaffResponse` for more deta
 
  
  
- #### [AppVersionRequest](#AppVersionRequest)
-
- | Properties | Type | Nullable | Description |
- | ---------- | ---- | -------- | ----------- |
- | application | [ApplicationVersionRequest](#ApplicationVersionRequest) |  no  |  |
- | device | [Device](#Device) |  no  |  |
- | locale | String? |  yes  |  |
- | timezone | String? |  yes  |  |
-
----
-
-
- 
- 
- #### [ApplicationVersionRequest](#ApplicationVersionRequest)
-
- | Properties | Type | Nullable | Description |
- | ---------- | ---- | -------- | ----------- |
- | id | String? |  yes  |  |
- | name | String |  no  |  |
- | namespace | String? |  yes  |  |
- | token | String? |  yes  |  |
- | version | String |  no  |  |
-
----
-
-
- 
- 
- #### [Device](#Device)
-
- | Properties | Type | Nullable | Description |
- | ---------- | ---- | -------- | ----------- |
- | build | Int? |  yes  |  |
- | model | String? |  yes  |  |
- | os | [OS](#OS) |  no  |  |
-
----
-
-
- 
- 
- #### [OS](#OS)
-
- | Properties | Type | Nullable | Description |
- | ---------- | ---- | -------- | ----------- |
- | name | String |  no  |  |
- | version | String? |  yes  |  |
-
----
-
-
- 
- 
  #### [SupportedLanguage](#SupportedLanguage)
 
  | Properties | Type | Nullable | Description |
@@ -1664,18 +1608,6 @@ Success. Check the example shown below or refer `AppStaffResponse` for more deta
  | ---------- | ---- | -------- | ----------- |
  | page | [Page](#Page)? |  yes  |  |
  | items | ArrayList<[AppStaff](#AppStaff)>? |  yes  |  |
-
----
-
-
- 
- 
- #### [UpdateDialog](#UpdateDialog)
-
- | Properties | Type | Nullable | Description |
- | ---------- | ---- | -------- | ----------- |
- | type | String? |  yes  |  |
- | interval | Int? |  yes  |  |
 
 ---
 
@@ -2244,17 +2176,6 @@ Success. Check the example shown below or refer `AppStaffResponse` for more deta
 
  
  
- #### [AppFeatureRequest](#AppFeatureRequest)
-
- | Properties | Type | Nullable | Description |
- | ---------- | ---- | -------- | ----------- |
- | feature | [AppFeature](#AppFeature)? |  yes  |  |
-
----
-
-
- 
- 
  #### [AppFeatureResponse](#AppFeatureResponse)
 
  | Properties | Type | Nullable | Description |
@@ -2427,106 +2348,11 @@ Success. Check the example shown below or refer `AppStaffResponse` for more deta
 
  
  
- #### [InvalidPayloadRequest](#InvalidPayloadRequest)
-
- | Properties | Type | Nullable | Description |
- | ---------- | ---- | -------- | ----------- |
- | message | String? |  yes  | Error message when request body payload is improper |
-
----
-
-
- 
- 
  #### [SuccessMessageResponse](#SuccessMessageResponse)
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
  | message | String? |  yes  | Success message shown to the user (in a string format) |
-
----
-
-
- 
- 
- #### [InventoryBrandRule](#InventoryBrandRule)
-
- | Properties | Type | Nullable | Description |
- | ---------- | ---- | -------- | ----------- |
- | criteria | String? |  yes  | Whether all brands are enabled, or explicitly few brands in the inventory |
- | brands | ArrayList<Int>? |  yes  |  |
-
----
-
-
- 
- 
- #### [StoreCriteriaRule](#StoreCriteriaRule)
-
- | Properties | Type | Nullable | Description |
- | ---------- | ---- | -------- | ----------- |
- | companies | ArrayList<Int>? |  yes  | List of company UID |
- | brands | ArrayList<Int>? |  yes  | List of brand UID |
-
----
-
-
- 
- 
- #### [InventoryStoreRule](#InventoryStoreRule)
-
- | Properties | Type | Nullable | Description |
- | ---------- | ---- | -------- | ----------- |
- | criteria | String? |  yes  | Whether all stores are enabled, or explicitly few stores in the inventory, or use brands and company filter. |
- | rules | ArrayList<[StoreCriteriaRule](#StoreCriteriaRule)>? |  yes  | List of rules with company and brands uids. Used when critera is `filter`. |
- | stores | ArrayList<Int>? |  yes  | List of store uids. Used when critera is `explicit`. |
-
----
-
-
- 
- 
- #### [InventoryPaymentConfig](#InventoryPaymentConfig)
-
- | Properties | Type | Nullable | Description |
- | ---------- | ---- | -------- | ----------- |
- | modeOfPayment | String? |  yes  | Mode of payment for the inventory of sales channel. It is required and default value is null. |
- | source | String? |  yes  | Source of the payment mode for the inventory payment of sales channel. Default value is FYND. |
-
----
-
-
- 
- 
- #### [StorePriorityRule](#StorePriorityRule)
-
- | Properties | Type | Nullable | Description |
- | ---------- | ---- | -------- | ----------- |
- | enabled | Boolean? |  yes  | Shows store priority is enabled or not enabled for the article assignment. |
- | storetypeOrder | ArrayList<String>? |  yes  |  |
-
----
-
-
- 
- 
- #### [ArticleAssignmentRule](#ArticleAssignmentRule)
-
- | Properties | Type | Nullable | Description |
- | ---------- | ---- | -------- | ----------- |
- | storePriority | [StorePriorityRule](#StorePriorityRule)? |  yes  |  |
-
----
-
-
- 
- 
- #### [InventoryArticleAssignment](#InventoryArticleAssignment)
-
- | Properties | Type | Nullable | Description |
- | ---------- | ---- | -------- | ----------- |
- | postOrderReassignment | Boolean? |  yes  | Allow post order reassigment of article |
- | rules | [ArticleAssignmentRule](#ArticleAssignmentRule)? |  yes  |  |
 
 ---
 
@@ -2936,18 +2762,6 @@ Success. Check the example shown below or refer `AppStaffResponse` for more deta
  | id | String? |  yes  | The unique identifier (24-digit Mongo Object ID) of the ordering store |
  | app | String? |  yes  | Alphanumeric ID allotted to an application (sales channel website) created within a business account |
  | v | Int? |  yes  | Version key for tracking ordering stores. Default value is zero. |
-
----
-
-
- 
- 
- #### [OrderingStoresResponse](#OrderingStoresResponse)
-
- | Properties | Type | Nullable | Description |
- | ---------- | ---- | -------- | ----------- |
- | page | [Page](#Page)? |  yes  |  |
- | items | ArrayList<[OrderingStore](#OrderingStore)>? |  yes  |  |
 
 ---
 

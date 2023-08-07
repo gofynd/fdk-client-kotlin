@@ -651,33 +651,6 @@ data class AppUser(
 
              
 /*
-    Model: GiveawayAudience
-*/
-@Parcelize
-data class GiveawayAudience(
-    
-    
-    
-    @SerializedName("audience_id")
-    var audienceId: String?=null,
-    
-    @SerializedName("current_count")
-    var currentCount: Double?=null
-    
-): Parcelable {
-    
-    
-    
-    
-    
-    
-    
-}
-
-
-
-             
-/*
     Model: HistoryRes
 */
 @Parcelize

@@ -164,7 +164,7 @@ applicationClient.common.getLocations(locationType: locationType, id: id).safeAw
 
 
 
-
+Get countries, states, cities
 
 *Returned Response:*
 
@@ -207,24 +207,6 @@ Success
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
  | application | [Application](#Application)? |  yes  |  |
-
----
-
-
- 
- 
- #### [Currency](#Currency)
-
- | Properties | Type | Nullable | Description |
- | ---------- | ---- | -------- | ----------- |
- | id | String? |  yes  | The unique identifier (24-digit Mongo Object ID) of the current sales channel supported currency |
- | isActive | Boolean? |  yes  | Shows currency is enabled or not in current sales channel |
- | name | String? |  yes  | Name of the currency, e.g. Indian Rupee |
- | code | String? |  yes  | 3-character currency code, e.g. INR, USD, EUR. |
- | createdAt | String? |  yes  | ISO 8601 timestamp of sales channel support currency creation |
- | updatedAt | String? |  yes  | ISO 8601 timestamp of sales channel support currency updation |
- | decimalDigits | Int? |  yes  | Acceptable decimal limits for a given currency, e.g. 1.05$ means upto 2 decimal digits can be accepted as a valid value of a currency. |
- | symbol | String? |  yes  | Unique symbol for identifying the currency, e.g. ₹ |
 
 ---
 
@@ -374,23 +356,6 @@ Success
 
  
  
- #### [Page](#Page)
-
- | Properties | Type | Nullable | Description |
- | ---------- | ---- | -------- | ----------- |
- | type | String |  no  | Page type |
- | size | Int? |  yes  | The number of items to retrieve in each page. Default value is 10. |
- | current | Int? |  yes  | Current page number |
- | hasNext | Boolean? |  yes  | Next page is present or not |
- | itemTotal | Int? |  yes  | Total number of items to retrieve |
- | nextId | String? |  yes  | Next page ID |
- | hasPrevious | Boolean? |  yes  | Previous page is present or not |
-
----
-
-
- 
- 
  #### [LocationDefaultLanguage](#LocationDefaultLanguage)
 
  | Properties | Type | Nullable | Description |
@@ -447,7 +412,7 @@ Success
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | items | ArrayList<HashMap<String,Any>>? |  yes  |  |
+ | items | ArrayList<[LocationCountry](#LocationCountry)>? |  yes  |  |
 
 ---
 

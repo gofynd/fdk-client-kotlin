@@ -96,12 +96,12 @@ class FileStorageDataManagerClass(val config: PlatformConfig, val unauthorizedAc
     
     
     
-    suspend fun browse(namespace: String, pageNo: Int?=null)
+    suspend fun browse(namespace: String, page: Int?=null, limit: Int?=null)
     : Deferred<Response<BrowseResponse>>? {
         
         return if (config.oauthClient.isAccessTokenValid()) {
             fileStorageApiList?.browse(
-        namespace = namespace, companyId = config.companyId, pageNo = pageNo )
+        namespace = namespace, companyId = config.companyId, page = page, limit = limit )
         } else {
             null
         } 
@@ -160,74 +160,15 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     
     
     
-    suspend fun appbrowse(namespace: String, pageNo: Int?=null)
+    suspend fun appbrowse(namespace: String, page: Int?=null, limit: Int?=null)
     : Deferred<Response<BrowseResponse>>? {
         return if (config.oauthClient.isAccessTokenValid()) {
-                fileStorageApiList?.appbrowse(namespace = namespace, companyId = config.companyId , applicationId = applicationId , pageNo = pageNo )
+                fileStorageApiList?.appbrowse(namespace = namespace, companyId = config.companyId , applicationId = applicationId , page = page, limit = limit )
         } else {
             null
         }
     }
     
-    
-    
-        
-            
-                
-            
-            
-        
-            
-                
-            
-            
-        
-            
-                
-            
-            
-        
-            
-            
-        
-    /**
-    *
-    * Summary: Paginator for appbrowse
-    **/
-    fun appbrowsePaginator(
-    namespace: String
-    
-    ) : Paginator<BrowseResponse>{
-        val paginator = Paginator<BrowseResponse>()
-        paginator.setCallBack(object : PaginatorCallback<BrowseResponse> {
-            
-            override suspend fun onNext(
-                onResponse: (Event<BrowseResponse>?,FdkError?) -> Unit){
-
-                if (config.oauthClient.isAccessTokenValid()) {
-                    val pageId = paginator.nextId
-                    val pageNo = paginator.pageNo
-                    val pageType = "number"
-                    fileStorageApiList?.appbrowse(namespace = namespace, companyId = config.companyId , applicationId = applicationId , pageNo = pageNo)?.safeAwait{ response, error ->
-                        response?.let {
-                            val page = response.peekContent()?.page
-                            paginator.setPaginator(hasNext=page?.hasNext?:false,pageNo=if (page?.hasNext == true) ((pageNo ?: 0) + 1) else pageNo)
-                            onResponse.invoke(response,null)
-                        }
-                        
-                        error?.let {
-                            onResponse.invoke(null,error)
-                        }
-                    }
-
-                } else {
-                    null
-                }
-            }
-        
-    })
-    return paginator
-    }
     
 }
 }

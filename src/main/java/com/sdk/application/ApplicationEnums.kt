@@ -58,7 +58,10 @@ import com.google.gson.annotations.SerializedName
         log("log"), 
         
         @SerializedName("comment")
-        comment("comment");
+        comment("comment"), 
+        
+        @SerializedName("thread")
+        thread("thread");
         
 
         companion object {
@@ -133,33 +136,6 @@ import com.google.gson.annotations.SerializedName
         companion object {
             fun valueOfTicketSourceEnum(value : String): TicketSourceEnum? {
                 return TicketSourceEnum.values().find {
-                    it.value == value
-                }
-            }
-        }
-    }
-
-
-
-    /*
-        Enum: TicketIntegrationDetails
-        Used By: Lead
-    */
-    enum class TicketIntegrationDetails(val value:String){
-        
-        @SerializedName("default")
-        defaultCase("default"), 
-        
-        @SerializedName("freshdesk")
-        freshdesk("freshdesk"), 
-        
-        @SerializedName("kapture")
-        kapture("kapture");
-        
-
-        companion object {
-            fun valueOfTicketIntegrationDetails(value : String): TicketIntegrationDetails? {
-                return TicketIntegrationDetails.values().find {
                     it.value == value
                 }
             }

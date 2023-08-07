@@ -3204,8 +3204,8 @@ data class LineItem(
     @SerializedName("meta")
     var meta: @RawValue HashMap<String,Any>?=null,
     
-    @SerializedName("custom_messasge")
-    var customMessasge: String?=null,
+    @SerializedName("custom_message")
+    var customMessage: String?=null,
     
     @SerializedName("quantity")
     var quantity: Int?=null,
@@ -3612,9 +3612,14 @@ data class TaxInfo(
     var b2BGstinNumber: String?=null,
     
     @SerializedName("gstin")
-    var gstin: String?=null
+    var gstin: String?=null,
+    
+    @SerializedName("pan_no")
+    var panNo: String?=null
     
 ): Parcelable {
+    
+    
     
     
     
@@ -4207,6 +4212,33 @@ data class BagStateTransitionMap(
 
              
 /*
+    Model: RoleBaseStateTransitionMapping
+*/
+@Parcelize
+data class RoleBaseStateTransitionMapping(
+    
+    
+    
+    @SerializedName("success")
+    var success: Boolean?=null,
+    
+    @SerializedName("next_statuses")
+    var nextStatuses: ArrayList<String>?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
     Model: FetchCreditBalanceRequestPayload
 */
 @Parcelize
@@ -4783,6 +4815,127 @@ data class VerifyOtpResponse(
 
              
 /*
+    Model: BulkReportsDownloadRequest
+*/
+@Parcelize
+data class BulkReportsDownloadRequest(
+    
+    
+    
+    @SerializedName("store_ids")
+    var storeIds: ArrayList<String>?=null,
+    
+    @SerializedName("lane_type")
+    var laneType: String?=null,
+    
+    @SerializedName("custom_headers")
+    var customHeaders: String?=null,
+    
+    @SerializedName("report_type")
+    var reportType: String?=null,
+    
+    @SerializedName("from_date")
+    var fromDate: String?=null,
+    
+    @SerializedName("to_date")
+    var toDate: String?=null,
+    
+    @SerializedName("entities")
+    var entities: ArrayList<String>?=null,
+    
+    @SerializedName("filter_type")
+    var filterType: String?=null,
+    
+    @SerializedName("is_cross_company_enabled")
+    var isCrossCompanyEnabled: Boolean?=null,
+    
+    @SerializedName("custom_filters_for_lane")
+    var customFiltersForLane: @RawValue HashMap<String,Any>?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: BulkReportsDownloadResponse
+*/
+@Parcelize
+data class BulkReportsDownloadResponse(
+    
+    
+    
+    @SerializedName("success")
+    var success: Boolean?=null,
+    
+    @SerializedName("batch_id")
+    var batchId: String?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: BulkReportsDownloadFailedResponse
+*/
+@Parcelize
+data class BulkReportsDownloadFailedResponse(
+    
+    
+    
+    @SerializedName("status")
+    var status: Boolean?=null,
+    
+    @SerializedName("error")
+    var error: String?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
     Model: ShipmentStatus
 */
 @Parcelize
@@ -5198,19 +5351,19 @@ data class FinancialBreakup(
     
     
     @SerializedName("refund_credit")
-    var refundCredit: Int?=null,
+    var refundCredit: Double?=null,
     
     @SerializedName("amount_paid_roundoff")
     var amountPaidRoundoff: Int?=null,
     
     @SerializedName("price_effective")
-    var priceEffective: Int?=null,
+    var priceEffective: Double?=null,
     
     @SerializedName("promotion_effective_discount")
     var promotionEffectiveDiscount: Double?=null,
     
     @SerializedName("transfer_price")
-    var transferPrice: Int?=null,
+    var transferPrice: Double?=null,
     
     @SerializedName("coupon_effective_discount")
     var couponEffectiveDiscount: Double?=null,
@@ -5219,7 +5372,7 @@ data class FinancialBreakup(
     var gstFee: Double?=null,
     
     @SerializedName("tax_collected_at_source")
-    var taxCollectedAtSource: Int?=null,
+    var taxCollectedAtSource: Double?=null,
     
     @SerializedName("brand_calculated_amount")
     var brandCalculatedAmount: Double?=null,
@@ -5234,7 +5387,7 @@ data class FinancialBreakup(
     var hsnCode: String?=null,
     
     @SerializedName("cashback")
-    var cashback: Int?=null,
+    var cashback: Double?=null,
     
     @SerializedName("item_name")
     var itemName: String?=null,
@@ -5243,13 +5396,13 @@ data class FinancialBreakup(
     var valueOfGood: Double?=null,
     
     @SerializedName("cashback_applied")
-    var cashbackApplied: Int?=null,
+    var cashbackApplied: Double?=null,
     
     @SerializedName("cod_charges")
-    var codCharges: Int?=null,
+    var codCharges: Double?=null,
     
     @SerializedName("price_marked")
-    var priceMarked: Int?=null,
+    var priceMarked: Double?=null,
     
     @SerializedName("size")
     var size: String?=null,
@@ -5261,13 +5414,13 @@ data class FinancialBreakup(
     var couponValue: Double?=null,
     
     @SerializedName("discount")
-    var discount: Int?=null,
+    var discount: Double?=null,
     
     @SerializedName("fynd_credits")
-    var fyndCredits: Int?=null,
+    var fyndCredits: Double?=null,
     
     @SerializedName("gst_tax_percentage")
-    var gstTaxPercentage: Int?=null,
+    var gstTaxPercentage: Double?=null,
     
     @SerializedName("identifiers")
     var identifiers: Identifier?=null,

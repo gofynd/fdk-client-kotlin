@@ -3101,7 +3101,7 @@ data class CartPosCheckoutDetailRequest(
     var staff: StaffCheckout?=null,
     
     @SerializedName("customer_details")
-    var customerDetails: CustomerDetails?=null,
+    var customerDetails: @RawValue HashMap<String,Any>?=null,
     
     @SerializedName("address_id")
     var addressId: String?=null,

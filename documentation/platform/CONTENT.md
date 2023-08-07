@@ -158,10 +158,10 @@ Success. Refer `GetAnnouncementListSchema` for more details.
         },
         "_schedule": {
           "published": true,
-          "cron": null,
+          "cron": "",
           "start": "2021-02-10T20:40:00.000Z",
           "end": "2021-02-18T22:00:00.000Z",
-          "duration": null,
+          "duration": 0,
           "next_schedule": [
             {
               "start": "2021-02-10T20:40:00.000Z",
@@ -396,10 +396,10 @@ Success. Refer `AdminAnnouncementSchema` for more details.
           "end": "2021-02-18T22:00:00.000Z"
         }
       ],
-      "cron": null,
+      "cron": "",
       "start": "2021-02-10T20:40:00.000Z",
       "end": "2021-02-18T22:00:00.000Z",
-      "duration": null
+      "duration": 0
     },
     "app": "000000000000000000000001",
     "author": {
@@ -2558,7 +2558,7 @@ Success. Refer `LandingPageGetResponse` for more details.
         },
         "application": "5cd3db5e9d692cfe5302a7bb",
         "archived": false,
-        "_custom_json": null,
+        "_custom_json": {},
         "__v": 0
       }
     ],
@@ -2639,7 +2639,7 @@ Success.
   "value": {
     "_id": "5eaa451a21a4dd75f0fd96c5",
     "application": "5d3ebd89f540e7506b8b3548",
-    "_custom_json": null,
+    "_custom_json": {},
     "slug": "pnc-landing",
     "action": {
       "page": {
@@ -2730,7 +2730,7 @@ Success.
   "value": {
     "_id": "5eaa451a21a4dd75f0fd96c5",
     "application": "5d3ebd89f540e7506b8b3548",
-    "_custom_json": null,
+    "_custom_json": {},
     "slug": "pnc-landing",
     "action": {
       "page": {
@@ -2821,7 +2821,7 @@ Success.
   "value": {
     "_id": "5eaa451a21a4dd75f0fd96c5",
     "application": "5d3ebd89f540e7506b8b3548",
-    "_custom_json": null,
+    "_custom_json": {},
     "slug": "pnc-landing",
     "action": {
       "page": {
@@ -7199,7 +7199,7 @@ Success.
 
 ```json
 {
-  "success": "true"
+  "success": true
 }
 ```
 </details>
@@ -7984,7 +7984,7 @@ Success. Returns a JSON object of components. Refer `PageSchema` for more detail
  | robotsTxt | String? |  yes  |  |
  | sitemapEnabled | Boolean? |  yes  |  |
  | cannonicalEnabled | Boolean? |  yes  |  |
- | customMetaTags | ArrayList<HashMap<String,Any>>? |  yes  |  |
+ | customMetaTags | ArrayList<[CustomMetaTag](#CustomMetaTag)>? |  yes  |  |
  | details | [Detail](#Detail)? |  yes  |  |
  | createdAt | String? |  yes  |  |
  | updatedAt | String? |  yes  |  |
@@ -8087,7 +8087,7 @@ Success. Returns a JSON object of components. Refer `PageSchema` for more detail
  | start | String? |  yes  |  |
  | end | String? |  yes  |  |
  | duration | Double? |  yes  |  |
- | nextSchedule | ArrayList<HashMap<String,Any>>? |  yes  |  |
+ | nextSchedule | ArrayList<[NextSchedule](#NextSchedule)>? |  yes  |  |
 
 ---
 
@@ -8095,30 +8095,6 @@ Success. Returns a JSON object of components. Refer `PageSchema` for more detail
  
  
  #### [NextSchedule](#NextSchedule)
-
- | Properties | Type | Nullable | Description |
- | ---------- | ---- | -------- | ----------- |
- | start | String? |  yes  |  |
- | end | String? |  yes  |  |
-
----
-
-
- 
- 
- #### [AnnouncementSchema](#AnnouncementSchema)
-
- | Properties | Type | Nullable | Description |
- | ---------- | ---- | -------- | ----------- |
- | announcement | String? |  yes  |  |
- | schedule | [ScheduleStartSchema](#ScheduleStartSchema)? |  yes  |  |
-
----
-
-
- 
- 
- #### [ScheduleStartSchema](#ScheduleStartSchema)
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
@@ -8311,27 +8287,7 @@ Success. Returns a JSON object of components. Refer `PageSchema` for more detail
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | reset | String? |  yes  |  |
-
----
-
-
- 
- 
- #### [Navigation](#Navigation)
-
- | Properties | Type | Nullable | Description |
- | ---------- | ---- | -------- | ----------- |
- | name | String? |  yes  |  |
- | slug | String? |  yes  |  |
- | orientation | String? |  yes  |  |
- | createdBy | [CreatedBySchema](#CreatedBySchema)? |  yes  |  |
- | dateMeta | [DateMeta](#DateMeta)? |  yes  |  |
- | id | String? |  yes  |  |
- | position | String? |  yes  |  |
- | application | String? |  yes  |  |
- | platform | String? |  yes  |  |
- | navigation | [NavigationReference](#NavigationReference)? |  yes  |  |
+ | reset | Boolean? |  yes  |  |
 
 ---
 
@@ -8409,18 +8365,6 @@ Success. Returns a JSON object of components. Refer `PageSchema` for more detail
 
  
  
- #### [LandingPage](#LandingPage)
-
- | Properties | Type | Nullable | Description |
- | ---------- | ---- | -------- | ----------- |
- | data | [LandingPageSchema](#LandingPageSchema)? |  yes  |  |
- | success | Boolean? |  yes  |  |
-
----
-
-
- 
- 
  #### [ConfigurationSchema](#ConfigurationSchema)
 
  | Properties | Type | Nullable | Description |
@@ -8445,42 +8389,6 @@ Success. Returns a JSON object of components. Refer `PageSchema` for more detail
  | duration | Int? |  yes  |  |
  | autoDecideDuration | Boolean? |  yes  |  |
  | action | [Action](#Action)? |  yes  |  |
-
----
-
-
- 
- 
- #### [Slideshow](#Slideshow)
-
- | Properties | Type | Nullable | Description |
- | ---------- | ---- | -------- | ----------- |
- | data | [SlideshowSchema](#SlideshowSchema)? |  yes  |  |
- | success | Boolean? |  yes  |  |
-
----
-
-
- 
- 
- #### [AnnouncementsResponseSchema](#AnnouncementsResponseSchema)
-
- | Properties | Type | Nullable | Description |
- | ---------- | ---- | -------- | ----------- |
- | announcements | HashMap<String,ArrayList<[AnnouncementSchema](#AnnouncementSchema)>>? |  yes  |  |
- | refreshRate | Int? |  yes  | number of seconds after which api should hit again to fetch new announcements |
- | refreshPages | ArrayList<String>? |  yes  | list of page slugs on which announcement should be fetched as soon as they are loaded |
-
----
-
-
- 
- 
- #### [FaqResponseSchema](#FaqResponseSchema)
-
- | Properties | Type | Nullable | Description |
- | ---------- | ---- | -------- | ----------- |
- | faqs | ArrayList<[FaqSchema](#FaqSchema)>? |  yes  |  |
 
 ---
 
@@ -8938,64 +8846,6 @@ Success. Returns a JSON object of components. Refer `PageSchema` for more detail
 
  
  
- #### [CustomPageSchema](#CustomPageSchema)
-
- | Properties | Type | Nullable | Description |
- | ---------- | ---- | -------- | ----------- |
- | id | String? |  yes  |  |
- | platform | String? |  yes  |  |
- | title | String? |  yes  |  |
- | slug | String? |  yes  |  |
- | type | String? |  yes  |  |
- | orientation | String? |  yes  |  |
- | application | String? |  yes  |  |
- | description | String? |  yes  |  |
- | published | Boolean? |  yes  |  |
- | tags | ArrayList<String>? |  yes  |  |
- | content | ArrayList<HashMap<String,Any>>? |  yes  |  |
- | createdBy | [CreatedBySchema](#CreatedBySchema)? |  yes  |  |
- | dateMeta | [DateMeta](#DateMeta)? |  yes  |  |
- | schedule | [ScheduleSchema](#ScheduleSchema)? |  yes  |  |
-
----
-
-
- 
- 
- #### [ContentSchema](#ContentSchema)
-
- | Properties | Type | Nullable | Description |
- | ---------- | ---- | -------- | ----------- |
- | type | String? |  yes  |  |
- | value | HashMap<String,Any>? |  yes  |  |
-
----
-
-
- 
- 
- #### [CustomPage](#CustomPage)
-
- | Properties | Type | Nullable | Description |
- | ---------- | ---- | -------- | ----------- |
- | data | [CustomPageSchema](#CustomPageSchema)? |  yes  |  |
-
----
-
-
- 
- 
- #### [FeatureImage](#FeatureImage)
-
- | Properties | Type | Nullable | Description |
- | ---------- | ---- | -------- | ----------- |
- | secureUrl | String? |  yes  |  |
-
----
-
-
- 
- 
  #### [PageGetResponse](#PageGetResponse)
 
  | Properties | Type | Nullable | Description |
@@ -9012,7 +8862,7 @@ Success. Returns a JSON object of components. Refer `PageSchema` for more detail
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | specifications | ArrayList<HashMap<String,Any>>? |  yes  |  |
+ | specifications | ArrayList<[PageSpecItem](#PageSpecItem)>? |  yes  |  |
 
 ---
 
@@ -9082,30 +8932,6 @@ Success. Returns a JSON object of components. Refer `PageSchema` for more detail
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
  | id | String? |  yes  |  |
-
----
-
-
- 
- 
- #### [PageContent](#PageContent)
-
- | Properties | Type | Nullable | Description |
- | ---------- | ---- | -------- | ----------- |
- | type | String? |  yes  |  |
- | value | HashMap<String,Any>? |  yes  |  |
-
----
-
-
- 
- 
- #### [PageMeta](#PageMeta)
-
- | Properties | Type | Nullable | Description |
- | ---------- | ---- | -------- | ----------- |
- | key | String? |  yes  |  |
- | value | HashMap<String,Any>? |  yes  |  |
 
 ---
 
