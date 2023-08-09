@@ -4,7 +4,6 @@ import android.os.Build
 import android.util.Log
 import com.google.gson.GsonBuilder
 import com.moczul.ok2curl.CurlInterceptor
-import com.jakewharton.retrofit2.adapter.kotlin.coroutines.CoroutineCallAdapterFactory
 import com.sdk.common.HttpClient.getHttpLoggingInterceptor
 import okhttp3.*
 import okhttp3.logging.HttpLoggingInterceptor
@@ -131,7 +130,7 @@ class RetrofitHttpClient constructor(
             }
 
             if(logging.level != HttpLoggingInterceptor.Level.NONE) {
-                builder.addInterceptor(CurlInterceptor { message -> Log.v("Ok2Curl", message ?: "") })
+                builder.addNetworkInterceptor(CurlInterceptor { message -> Log.v("Ok2Curl", message ?: "") })
             }
 
             if (null != headerList) {
@@ -169,7 +168,6 @@ class RetrofitHttpClient constructor(
             .client(okHttpClient)
             .addConverterFactory(NullOnEmptyConverterFactory())
             .addConverterFactory(GsonConverterFactory.create(gson))
-            .addCallAdapterFactory(CoroutineCallAdapterFactory())
             .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
         val restBuilder = retrofit.build()
         apiService = restBuilder.create(apiServiceClass)

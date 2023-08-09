@@ -2321,8 +2321,8 @@ Response Data
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | summary | ArrayList<[ListViewSummary](#ListViewSummary)> |  no  |  |
- | page | ArrayList<[ZoneDataItem](#ZoneDataItem)> |  no  |  |
+ | summary | [ListViewSummary](#ListViewSummary) |  no  |  |
+ | page | [ZoneDataItem](#ZoneDataItem) |  no  |  |
  | items | ArrayList<[ListViewItems](#ListViewItems)> |  no  |  |
 
 ---
