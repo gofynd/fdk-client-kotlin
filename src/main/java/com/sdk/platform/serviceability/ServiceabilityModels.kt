@@ -225,9 +225,14 @@ data class EntityRegionView_Items(
     var uid: String?=null,
     
     @SerializedName("name")
-    var name: String?=null
+    var name: String?=null,
+    
+    @SerializedName("display_name")
+    var displayName: String?=null
     
 ): Parcelable {
+    
+    
     
     
     
