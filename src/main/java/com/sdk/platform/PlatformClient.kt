@@ -1,7 +1,32 @@
 package com.sdk.platform
 
+import com.sdk.platform.*
 import com.sdk.common.HttpClient
-import com.sdk.platform.datamanager.*
+ 
+import com.sdk.platform.audittrail.* 
+import com.sdk.platform.billing.* 
+import com.sdk.platform.cart.* 
+import com.sdk.platform.catalog.* 
+import com.sdk.platform.common.* 
+import com.sdk.platform.communication.* 
+import com.sdk.platform.companyprofile.* 
+import com.sdk.platform.configuration.* 
+import com.sdk.platform.content.* 
+import com.sdk.platform.discount.* 
+import com.sdk.platform.filestorage.* 
+import com.sdk.platform.finance.* 
+import com.sdk.platform.inventory.* 
+import com.sdk.platform.lead.* 
+import com.sdk.platform.order.* 
+import com.sdk.platform.partner.* 
+import com.sdk.platform.payment.* 
+import com.sdk.platform.rewards.* 
+import com.sdk.platform.serviceability.* 
+import com.sdk.platform.share.* 
+import com.sdk.platform.theme.* 
+import com.sdk.platform.user.* 
+import com.sdk.platform.webhook.*
+
 
 class PlatformClient(val config:PlatformConfig, val unauthorizedAction: ((url: String, responseCode: Int) -> Unit)? = null) {
 

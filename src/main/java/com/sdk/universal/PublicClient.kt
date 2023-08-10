@@ -1,6 +1,11 @@
 package com.sdk.universal
 
-import com.sdk.universal.datamanager.*
+import com.sdk.universal.*
+
+import com.sdk.universal.configuration.*
+import com.sdk.universal.inventory.*
+import com.sdk.universal.partner.*
+import com.sdk.universal.webhook.*
 
 class PublicClient(val config:PublicConfig, val unauthorizedAction: ((url: String, responseCode: Int) -> Unit)? = null) {
     

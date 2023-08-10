@@ -6,11 +6,11 @@ import retrofit2.Response
 
 abstract class BaseRepository {
 
-    suspend inline fun <T : Any> Deferred<Response<T>>.safeAwait(
+    suspend inline fun <T : Any> Response<T>.safeAwait(
         onSuccess: (Event<T>) -> Unit, onFailure: (FdkError) -> Unit
     ) {
         try {
-            val call = this.await()
+            val call = this
             if ((call.code() == 200 || call.code() == 201) && (call.body() != null || call.raw().request.method == "HEAD")) {
                 onSuccess.invoke(Event(call.body(), call.headers()))
             } else {
@@ -34,11 +34,11 @@ abstract class BaseRepository {
         }
     }
 
-    suspend inline fun <T : Any> Deferred<Response<T>>.safeAwait(
+    suspend inline fun <T : Any> Response<T>.safeAwait(
         onResponse: (Event<T>?, FdkError?) -> Unit = { _, _ -> }
     ) {
         try {
-            val call = this.await()
+            val call = this
             if ((call.code() == 200 || call.code() == 201) && (call.body() != null || call.raw().request.method == "HEAD")) {
                 onResponse.invoke(Event(call.body(), call.headers()), null)
             } else {
@@ -62,10 +62,10 @@ abstract class BaseRepository {
         }
     }
 
-    suspend inline fun <T : Any> Deferred<Response<T>>.safeAwait(): Pair<Event<T>?, FdkError?> {
+    suspend inline fun <T : Any> Response<T>.safeAwait(): Pair<Event<T>?, FdkError?> {
 
         try {
-            val call = this.await()
+            val call = this
             return if ((call.code() == 200 || call.code() == 201) && (call.body() != null || call.raw().request.method == "HEAD")) {
                 Pair(Event(call.body(), call.headers()), null)
             } else {

@@ -1,6 +1,23 @@
 package com.sdk.application
 
-import com.sdk.application.datamanager.*
+import com.sdk.application.*
+ 
+import com.sdk.application.cart.* 
+import com.sdk.application.catalog.* 
+import com.sdk.application.common.* 
+import com.sdk.application.communication.* 
+import com.sdk.application.configuration.* 
+import com.sdk.application.content.* 
+import com.sdk.application.filestorage.* 
+import com.sdk.application.lead.* 
+import com.sdk.application.logistic.* 
+import com.sdk.application.order.* 
+import com.sdk.application.payment.* 
+import com.sdk.application.poscart.* 
+import com.sdk.application.rewards.* 
+import com.sdk.application.share.* 
+import com.sdk.application.theme.* 
+import com.sdk.application.user.*
 
 class ApplicationClient(val config:ApplicationConfig, val unauthorizedAction: ((url: String, responseCode: Int) -> Unit)? = null) {
     
