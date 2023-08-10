@@ -11,7 +11,6 @@ class AccessTokenInterceptor(
         val original = chain.request()
         
         val builder = original.newBuilder()
-            .header("User-Agent", platformConfig?.userAgent ?: "")
             .header("Authorization", "Bearer ${platformConfig?.oauthClient?.token?.token}")
             .header("x-fp-sdk-version", "1.1.2")
 	platformConfig?.extraHeaders?.let {

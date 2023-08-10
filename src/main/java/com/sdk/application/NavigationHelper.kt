@@ -4,7 +4,7 @@ import android.net.Uri
 import android.util.Log
 import com.sdk.common.Utils
 import org.json.JSONException
-import com.sdk.application.content.ActionPage
+import com.sdk.application.models.content.ActionPage
 
 object NavigationHelper {
 

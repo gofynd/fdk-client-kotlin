@@ -1728,14 +1728,16 @@ Success
     "store": {
       "criteria": "filter",
       "stores": [],
-      "rules": {
-        "companies": [
-          1,
-          3,
-          4
-        ],
-        "brands": []
-      }
+      "rules": [
+        {
+          "companies": [
+            1,
+            3,
+            4
+          ],
+          "brands": []
+        }
+      ]
     },
     "category": {
       "criteria": "all",
@@ -1981,14 +1983,16 @@ Success
     "store": {
       "criteria": "filter",
       "stores": [],
-      "rules": {
-        "companies": [
-          1,
-          3,
-          4
-        ],
-        "brands": []
-      }
+      "rules": [
+        {
+          "companies": [
+            1,
+            3,
+            4
+          ],
+          "brands": []
+        }
+      ]
     },
     "category": {
       "criteria": "all",
@@ -2234,14 +2238,16 @@ Success
     "store": {
       "criteria": "filter",
       "stores": [],
-      "rules": {
-        "companies": [
-          1,
-          3,
-          4
-        ],
-        "brands": []
-      }
+      "rules": [
+        {
+          "companies": [
+            1,
+            3,
+            4
+          ],
+          "brands": []
+        }
+      ]
     },
     "category": {
       "criteria": "all",
@@ -5166,7 +5172,7 @@ Success
  | ---------- | ---- | -------- | ----------- |
  | criteria | String? |  yes  | All stores or specific (explicit) stores to be shown on the website |
  | stores | ArrayList<Any>? |  yes  | List of stores |
- | rules | [AppStoreRules](#AppStoreRules)? |  yes  |  |
+ | rules | ArrayList<[AppStoreRules](#AppStoreRules)>? |  yes  | Rules to show which brands or companies products should be listed on sales channel. |
 
 ---
 

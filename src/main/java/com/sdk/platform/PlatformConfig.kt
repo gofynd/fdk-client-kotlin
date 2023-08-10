@@ -13,8 +13,7 @@ class PlatformConfig(
     val persistentCookieStore: CookieStore?=null,
     var debuggable: Boolean = false,
     var extraHeaders: HashMap<String,String>,
-    var interceptors: List<Interceptor>? = null,
-    val certPublicKey: String? = null,
+    var interceptors: List<Interceptor>? = null
 ) : BaseRepository() {
 
 

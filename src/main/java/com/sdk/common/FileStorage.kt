@@ -1,8 +1,8 @@
 package com.sdk.common
 
-import com.sdk.application.filestorage.CompleteResponse
-import com.sdk.application.filestorage.FileStorageDataManagerClass
-import com.sdk.application.filestorage.StartRequest
+import com.sdk.application.models.filestorage.CompleteResponse
+import com.sdk.application.datamanager.*
+import com.sdk.application.models.filestorage.StartRequest
 import kotlinx.coroutines.Deferred
 import kotlinx.parcelize.RawValue
 import okhttp3.MediaType.Companion.toMediaType
@@ -87,10 +87,10 @@ suspend fun FileStorageDataManagerClass.uploadMedia(
 interface AwsApiList {
 
     @PUT
-    suspend fun updateAWSMedia(
+    fun updateAWSMedia(
         @Header("Content-Type") header: String,
         @Url url: String,
         @Body image: RequestBody
-    ): Response<ResponseBody>
+    ): Deferred<Response<ResponseBody>>
 
 }
