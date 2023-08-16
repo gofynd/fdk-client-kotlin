@@ -7417,6 +7417,38 @@ data class StaffCheckout(
 
              
 /*
+    Model: CustomerDetails
+*/
+@Parcelize
+data class CustomerDetails(
+    
+    
+    
+    @SerializedName("name")
+    var name: String?=null,
+    
+    @SerializedName("email")
+    var email: String?=null,
+    
+    @SerializedName("mobile")
+    var mobile: String?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
     Model: Files
 */
 @Parcelize
@@ -7493,6 +7525,9 @@ data class PlatformCartCheckoutDetailRequest(
     @SerializedName("checkout_mode")
     var checkoutMode: String?=null,
     
+    @SerializedName("customer_details")
+    var customerDetails: @RawValue HashMap<String,Any>?=null,
+    
     @SerializedName("meta")
     var meta: @RawValue HashMap<String,Any>?=null,
     
@@ -7524,6 +7559,8 @@ data class PlatformCartCheckoutDetailRequest(
     var orderingStore: Int?=null
     
 ): Parcelable {
+    
+    
     
     
     
@@ -8203,6 +8240,9 @@ data class PlatformCartCheckoutDetailV2Request(
     @SerializedName("checkout_mode")
     var checkoutMode: String?=null,
     
+    @SerializedName("customer_details")
+    var customerDetails: @RawValue HashMap<String,Any>?=null,
+    
     @SerializedName("meta")
     var meta: @RawValue HashMap<String,Any>?=null,
     
@@ -8237,6 +8277,8 @@ data class PlatformCartCheckoutDetailV2Request(
     var orderingStore: Int?=null
     
 ): Parcelable {
+    
+    
     
     
     

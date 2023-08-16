@@ -122,14 +122,9 @@ data class ErrorResponse(
     var message: String?=null,
     
     @SerializedName("error_trace")
-    var errorTrace: String?=null,
-    
-    @SerializedName("error")
-    var error: String?=null
+    var errorTrace: String?=null
     
 ): Parcelable {
-    
-    
     
     
     
@@ -1344,14 +1339,9 @@ data class ArticleDetails(
     var attributes: @RawValue HashMap<String,Any>?=null,
     
     @SerializedName("quantity")
-    var quantity: Int?=null,
-    
-    @SerializedName("status")
-    var status: @RawValue HashMap<String,Any>?=null
+    var quantity: Int?=null
     
 ): Parcelable {
-    
-    
     
     
     
@@ -1433,24 +1423,9 @@ data class ShipmentDetails(
     var meta: @RawValue HashMap<String,Any>?=null,
     
     @SerializedName("affiliate_shipment_id")
-    var affiliateShipmentId: String?=null,
-    
-    @SerializedName("lock_status")
-    var lockStatus: Boolean?=null,
-    
-    @SerializedName("lock_message")
-    var lockMessage: String?=null,
-    
-    @SerializedName("action_to_status")
-    var actionToStatus: @RawValue HashMap<String,Any>?=null
+    var affiliateShipmentId: String?=null
     
 ): Parcelable {
-    
-    
-    
-    
-    
-    
     
     
     
@@ -7398,6 +7373,38 @@ data class UserDetailsData(
 
              
 /*
+    Model: ShipmentDetails1
+*/
+@Parcelize
+data class ShipmentDetails1(
+    
+    
+    
+    @SerializedName("lock_status")
+    var lockStatus: Boolean?=null,
+    
+    @SerializedName("lock_message")
+    var lockMessage: String?=null,
+    
+    @SerializedName("action_to_status")
+    var actionToStatus: @RawValue HashMap<String,Any>?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
     Model: PhoneDetails
 */
 @Parcelize
@@ -9132,7 +9139,7 @@ data class PlatformShipment(
     var fulfilmentPriority: Int?=null,
     
     @SerializedName("shipment_details")
-    var shipmentDetails: ShipmentDetails?=null,
+    var shipmentDetails: ShipmentDetails1?=null,
     
     @SerializedName("custom_meta")
     var customMeta: @RawValue ArrayList<HashMap<String,Any>>?=null,
@@ -10612,6 +10619,28 @@ data class BagGSTDetails(
 
              
 /*
+    Model: ArticleDetails1
+*/
+@Parcelize
+data class ArticleDetails1(
+    
+    
+    
+    @SerializedName("status")
+    var status: @RawValue HashMap<String,Any>?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
     Model: StoreAddress
 */
 @Parcelize
@@ -11528,7 +11557,7 @@ data class BagDetailsPlatformResponse(
     var originalBagList: ArrayList<Int>?=null,
     
     @SerializedName("article_details")
-    var articleDetails: ArticleDetails?=null,
+    var articleDetails: ArticleDetails1?=null,
     
     @SerializedName("current_operational_status")
     var currentOperationalStatus: BagStatusHistory?=null,
@@ -11692,6 +11721,33 @@ data class BagDetailsPlatformResponse(
     
     
     
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: ErrorResponse1
+*/
+@Parcelize
+data class ErrorResponse1(
+    
+    
+    
+    @SerializedName("message")
+    var message: String?=null,
+    
+    @SerializedName("error")
+    var error: String?=null
+    
+): Parcelable {
     
     
     
