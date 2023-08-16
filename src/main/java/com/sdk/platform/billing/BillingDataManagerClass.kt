@@ -211,9 +211,35 @@ class BillingDataManagerClass(val config: PlatformConfig, val unauthorizedAction
         } 
     }
     
+    
+    suspend fun getEnterprisePlans()
+    : Response<ArrayList<Plan>>? {
+        
+        return if (config.oauthClient.isAccessTokenValid()) {
+            billingApiList?.getEnterprisePlans(
+        companyId = config.companyId )
+        } else {
+            null
+        } 
+    }
+    
+    
+    suspend fun planStatusUpdate(body: PlanStatusUpdateReq)
+    : Response<Plan>? {
+        
+        return if (config.oauthClient.isAccessTokenValid()) {
+            billingApiList?.planStatusUpdate(
+        companyId = config.companyId, body = body)
+        } else {
+            null
+        } 
+    }
+    
 
 inner class ApplicationClient(val applicationId:String,val config: PlatformConfig){
 
+    
+    
     
     
     

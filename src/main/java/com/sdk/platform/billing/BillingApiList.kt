@@ -64,4 +64,12 @@ interface BillingApiList {
     suspend fun cancelSubscriptionPlan(@Path("company_id") companyId: String,@Body body: CancelSubscriptionReq)
     : Response<CancelSubscriptionRes>
     
+    @GET ("/service/platform/billing/v1.0/company/{company_id}/plans")
+    suspend fun getEnterprisePlans(@Path("company_id") companyId: String)
+    : Response<ArrayList<Plan>>
+    
+    @PATCH ("/service/platform/billing/v1.0/company/{company_id}/plan/status")
+    suspend fun planStatusUpdate(@Path("company_id") companyId: String,@Body body: PlanStatusUpdateReq)
+    : Response<Plan>
+    
 }

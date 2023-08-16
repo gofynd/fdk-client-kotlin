@@ -2459,5 +2459,37 @@ data class CancelSubscriptionRes(
 
 
 
+             
+/*
+    Model: PlanStatusUpdateReq
+*/
+@Parcelize
+data class PlanStatusUpdateReq(
+    
+    
+    
+    @SerializedName("plan_id")
+    var planId: String?=null,
+    
+    @SerializedName("reason")
+    var reason: String?=null,
+    
+    @SerializedName("seller_status")
+    var sellerStatus: String?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
 
 
