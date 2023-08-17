@@ -6,30 +6,46 @@
 
 ## Communication Methods
 Manages email, sms, push notifications sent to users
+* [getAppProviders](#getappproviders)
+* [updateAppProviders](#updateappproviders)
+* [getGlobalProviders](#getglobalproviders)
 * [getCampaigns](#getcampaigns)
 * [createCampaign](#createcampaign)
 * [getCampaignById](#getcampaignbyid)
 * [updateCampaignById](#updatecampaignbyid)
 * [getStatsOfCampaignById](#getstatsofcampaignbyid)
+* [getBigQueryRowCountById](#getbigqueryrowcountbyid)
+* [createBigQueryRowCount](#createbigqueryrowcount)
+* [getBigQueryHeadersById](#getbigqueryheadersbyid)
+* [createBigQueryNCount](#createbigqueryncount)
+* [createBigQueryHeaders](#createbigqueryheaders)
+* [getSystemAudiences](#getsystemaudiences)
 * [getAudiences](#getaudiences)
 * [createAudience](#createaudience)
-* [getBigqueryHeaders](#getbigqueryheaders)
 * [getAudienceById](#getaudiencebyid)
 * [updateAudienceById](#updateaudiencebyid)
+* [deleteAudienceById](#deleteaudiencebyid)
+* [getNSampleRecordsFromCsvByGet](#getnsamplerecordsfromcsvbyget)
 * [getNSampleRecordsFromCsv](#getnsamplerecordsfromcsv)
+* [getDummyDatasources](#getdummydatasources)
+* [getDummyDatasourcesMeta](#getdummydatasourcesmeta)
 * [getEmailProviders](#getemailproviders)
 * [createEmailProvider](#createemailprovider)
 * [getEmailProviderById](#getemailproviderbyid)
 * [updateEmailProviderById](#updateemailproviderbyid)
+* [deleteEmailProviderById](#deleteemailproviderbyid)
 * [getEmailTemplates](#getemailtemplates)
 * [createEmailTemplate](#createemailtemplate)
 * [getSystemEmailTemplates](#getsystememailtemplates)
 * [getEmailTemplateById](#getemailtemplatebyid)
 * [updateEmailTemplateById](#updateemailtemplatebyid)
 * [deleteEmailTemplateById](#deleteemailtemplatebyid)
+* [getSubscribedEmailTemplates](#getsubscribedemailtemplates)
 * [sendCommunicationSynchronously](#sendcommunicationsynchronously)
 * [sendCommunicationAsynchronously](#sendcommunicationasynchronously)
 * [getEventSubscriptions](#geteventsubscriptions)
+* [getGlobalVariables](#getglobalvariables)
+* [postGlobalVariables](#postglobalvariables)
 * [getJobs](#getjobs)
 * [triggerCampaignJob](#triggercampaignjob)
 * [getJobLogs](#getjoblogs)
@@ -39,18 +55,309 @@ Manages email, sms, push notifications sent to users
 * [verfiyOtp](#verfiyotp)
 * [getSmsProviders](#getsmsproviders)
 * [createSmsProvider](#createsmsprovider)
+* [getDefaultSmsProviders](#getdefaultsmsproviders)
 * [getSmsProviderById](#getsmsproviderbyid)
 * [updateSmsProviderById](#updatesmsproviderbyid)
+* [deleteSmsProviderById](#deletesmsproviderbyid)
 * [getSmsTemplates](#getsmstemplates)
 * [createSmsTemplate](#createsmstemplate)
+* [getSystemSmsTemplates](#getsystemsmstemplates)
 * [getSmsTemplateById](#getsmstemplatebyid)
 * [updateSmsTemplateById](#updatesmstemplatebyid)
 * [deleteSmsTemplateById](#deletesmstemplatebyid)
-* [getSystemSystemTemplates](#getsystemsystemtemplates)
+* [getSubscribedSmsTemplates](#getsubscribedsmstemplates)
 
 
 
 ## Methods with example and description
+
+
+### getAppProviders
+Get app providers
+
+
+
+
+```kotlin
+platformClient.application("<APPLICATION_ID>").communication.getAppProviders().safeAwait{ response, error->
+    response?.let{
+      // Use response
+    } ->
+    error?.let{
+      
+    } 
+}
+```
+
+
+
+
+
+
+Using this API will return a list of application providers.
+
+*Returned Response:*
+
+
+
+
+[AppProvider](#AppProvider)
+
+Success
+
+
+
+
+<details>
+<summary><i>&nbsp; Examples:</i></summary>
+
+
+<details>
+<summary><i>&nbsp; default</i></summary>
+
+```json
+{
+  "value": {
+    "email": {
+      "transaction": {
+        "provider": "5f0408cec0c2a2175a1c16f6"
+      },
+      "promotional": {
+        "provider": "6385ed1ebf50a6c9a61d58d5"
+      },
+      "otp": {
+        "provider": "5f0408cec0c2a2175a1c16f6"
+      }
+    },
+    "sms": {
+      "transaction": {
+        "provider": "63db8c68975237fff4f2133e"
+      },
+      "promotional": {
+        "provider": "63db8c68975237fff4f2133e"
+      },
+      "otp": {
+        "provider": "63db8c68975237fff4f21346"
+      }
+    },
+    "voice": {
+      "transaction": {
+        "provider": "643cf4098bb1fc2c1d67f089"
+      },
+      "otp": {
+        "provider": "643cf4098bb1fc2c1d67f089"
+      }
+    },
+    "_id": "63e20ce7648381edb6de45ff",
+    "application": "637b6355dc65337da9b5c951",
+    "created_at": "2023-02-07T08:33:43.169Z",
+    "updated_at": "2023-05-30T07:16:39.161Z",
+    "__v": 0
+  }
+}
+```
+</details>
+
+</details>
+
+
+
+
+
+
+
+
+
+---
+
+
+### updateAppProviders
+update app providers
+
+
+
+
+```kotlin
+platformClient.application("<APPLICATION_ID>").communication.updateAppProviders(body: body).safeAwait{ response, error->
+    response?.let{
+      // Use response
+    } ->
+    error?.let{
+      
+    } 
+}
+```
+
+
+
+
+
+| Argument  |  Type  | Required | Description |
+| --------- | -----  | -------- | ----------- |
+| body | [AppProviderReq](#AppProviderReq) | yes | Request body |
+
+
+Using this API will update the application providers.
+
+*Returned Response:*
+
+
+
+
+[AppProvider](#AppProvider)
+
+Success
+
+
+
+
+<details>
+<summary><i>&nbsp; Examples:</i></summary>
+
+
+<details>
+<summary><i>&nbsp; default</i></summary>
+
+```json
+{
+  "value": {
+    "email": {
+      "transaction": {
+        "provider": "5f0408cec0c2a2175a1c16f6"
+      },
+      "promotional": {
+        "provider": "6385ed1ebf50a6c9a61d58d5"
+      },
+      "otp": {
+        "provider": "5f0408cec0c2a2175a1c16f6"
+      }
+    },
+    "sms": {
+      "transaction": {
+        "provider": "63db8c68975237fff4f2133e"
+      },
+      "promotional": {
+        "provider": "63db8c68975237fff4f2133e"
+      },
+      "otp": {
+        "provider": "63db8c68975237fff4f21346"
+      }
+    },
+    "voice": {
+      "transaction": {
+        "provider": "643cf4098bb1fc2c1d67f089"
+      },
+      "otp": {
+        "provider": "643cf4098bb1fc2c1d67f089"
+      }
+    },
+    "_id": "63e20ce7648381edb6de45ff",
+    "application": "637b6355dc65337da9b5c951",
+    "created_at": "2023-02-07T08:33:43.169Z",
+    "updated_at": "2023-05-30T07:16:39.161Z",
+    "__v": 0
+  }
+}
+```
+</details>
+
+</details>
+
+
+
+
+
+
+
+
+
+---
+
+
+### getGlobalProviders
+Get global providers
+
+
+
+
+```kotlin
+platformClient.application("<APPLICATION_ID>").communication.getGlobalProviders().safeAwait{ response, error->
+    response?.let{
+      // Use response
+    } ->
+    error?.let{
+      
+    } 
+}
+```
+
+
+
+
+
+
+Using this API, will retrieve a list of global providers.
+
+*Returned Response:*
+
+
+
+
+[GlobalProviders](#GlobalProviders)
+
+Success
+
+
+
+
+<details>
+<summary><i>&nbsp; Examples:</i></summary>
+
+
+<details>
+<summary><i>&nbsp; default</i></summary>
+
+```json
+{
+  "value": {
+    "email": [
+      {
+        "_id": "5f0408cec0c2a2175a1c16f6",
+        "name": "Fynd-falconide"
+      }
+    ],
+    "sms": [
+      {
+        "_id": "63db8c68975237fff4f2133e",
+        "name": "Fynd Transactional - timesinternet"
+      },
+      {
+        "_id": "63db8c68975237fff4f21346",
+        "name": "Fynd OTP - timesinternet"
+      }
+    ],
+    "voice": [
+      {
+        "_id": "643cf4098bb1fc2c1d67f089",
+        "name": "Fynd-exotel"
+      }
+    ]
+  }
+}
+```
+</details>
+
+</details>
+
+
+
+
+
+
+
+
+
+---
 
 
 ### getCampaigns
@@ -522,23 +829,415 @@ Success
 ```json
 {
   "value": {
-    "_id": "6009a1ea1f6a61d88e80a867",
-    "imported": {
-      "count": 2
-    },
-    "processed": {
-      "email": {
-        "success": 2,
-        "failed": 0,
-        "suppressed": 0
-      },
-      "sms": {
-        "success": 0,
-        "failed": 0,
-        "suppressed": 0
+    "items": [
+      {
+        "_id": "6009a1ea1f6a61d88e80a867",
+        "imported": {
+          "count": 2
+        },
+        "processed": {
+          "email": {
+            "success": 2,
+            "failed": 0,
+            "suppressed": 0
+          },
+          "sms": {
+            "success": 0,
+            "failed": 0,
+            "suppressed": 0
+          }
+        }
       }
-    }
+    ]
   }
+}
+```
+</details>
+
+</details>
+
+
+
+
+
+
+
+
+
+---
+
+
+### getBigQueryRowCountById
+Get big query row count by id
+
+
+
+
+```kotlin
+platformClient.application("<APPLICATION_ID>").communication.getBigQueryRowCountById(id: id).safeAwait{ response, error->
+    response?.let{
+      // Use response
+    } ->
+    error?.let{
+      
+    } 
+}
+```
+
+
+
+
+
+| Argument  |  Type  | Required | Description |
+| --------- | -----  | -------- | ----------- | 
+| id | String | yes | Audience id |  
+
+
+
+Get big query row count by id
+
+*Returned Response:*
+
+
+
+
+[HashMap<String,Any>](#HashMap<String,Any>)
+
+Success
+
+
+
+
+<details>
+<summary><i>&nbsp; Examples:</i></summary>
+
+
+<details>
+<summary><i>&nbsp; default</i></summary>
+
+```json
+{
+  "value": {}
+}
+```
+</details>
+
+</details>
+
+
+
+
+
+
+
+
+
+---
+
+
+### createBigQueryRowCount
+Create big query row count
+
+
+
+
+```kotlin
+platformClient.application("<APPLICATION_ID>").communication.createBigQueryRowCount().safeAwait{ response, error->
+    response?.let{
+      // Use response
+    } ->
+    error?.let{
+      
+    } 
+}
+```
+
+
+
+
+
+
+Create big query row count
+
+*Returned Response:*
+
+
+
+
+[HashMap<String,Any>](#HashMap<String,Any>)
+
+Success
+
+
+
+
+<details>
+<summary><i>&nbsp; Examples:</i></summary>
+
+
+<details>
+<summary><i>&nbsp; default</i></summary>
+
+```json
+{
+  "value": {}
+}
+```
+</details>
+
+</details>
+
+
+
+
+
+
+
+
+
+---
+
+
+### getBigQueryHeadersById
+Get big query headers by id
+
+
+
+
+```kotlin
+platformClient.application("<APPLICATION_ID>").communication.getBigQueryHeadersById(id: id).safeAwait{ response, error->
+    response?.let{
+      // Use response
+    } ->
+    error?.let{
+      
+    } 
+}
+```
+
+
+
+
+
+| Argument  |  Type  | Required | Description |
+| --------- | -----  | -------- | ----------- | 
+| id | String | yes | Audience id |  
+
+
+
+Get big query headers by id
+
+*Returned Response:*
+
+
+
+
+[HashMap<String,Any>](#HashMap<String,Any>)
+
+Success
+
+
+
+
+<details>
+<summary><i>&nbsp; Examples:</i></summary>
+
+
+<details>
+<summary><i>&nbsp; default</i></summary>
+
+```json
+{
+  "value": {}
+}
+```
+</details>
+
+</details>
+
+
+
+
+
+
+
+
+
+---
+
+
+### createBigQueryNCount
+Create big query n count
+
+
+
+
+```kotlin
+platformClient.application("<APPLICATION_ID>").communication.createBigQueryNCount().safeAwait{ response, error->
+    response?.let{
+      // Use response
+    } ->
+    error?.let{
+      
+    } 
+}
+```
+
+
+
+
+
+
+Create big query n count
+
+*Returned Response:*
+
+
+
+
+[HashMap<String,Any>](#HashMap<String,Any>)
+
+Success
+
+
+
+
+<details>
+<summary><i>&nbsp; Examples:</i></summary>
+
+
+<details>
+<summary><i>&nbsp; default</i></summary>
+
+```json
+{
+  "value": {}
+}
+```
+</details>
+
+</details>
+
+
+
+
+
+
+
+
+
+---
+
+
+### createBigQueryHeaders
+Create big query headers
+
+
+
+
+```kotlin
+platformClient.application("<APPLICATION_ID>").communication.createBigQueryHeaders().safeAwait{ response, error->
+    response?.let{
+      // Use response
+    } ->
+    error?.let{
+      
+    } 
+}
+```
+
+
+
+
+
+
+Create big query headers
+
+*Returned Response:*
+
+
+
+
+[HashMap<String,Any>](#HashMap<String,Any>)
+
+Success
+
+
+
+
+<details>
+<summary><i>&nbsp; Examples:</i></summary>
+
+
+<details>
+<summary><i>&nbsp; default</i></summary>
+
+```json
+{
+  "value": {}
+}
+```
+</details>
+
+</details>
+
+
+
+
+
+
+
+
+
+---
+
+
+### getSystemAudiences
+Get system audiences
+
+
+
+
+```kotlin
+platformClient.application("<APPLICATION_ID>").communication.getSystemAudiences().safeAwait{ response, error->
+    response?.let{
+      // Use response
+    } ->
+    error?.let{
+      
+    } 
+}
+```
+
+
+
+
+
+
+Get system audiences
+
+*Returned Response:*
+
+
+
+
+[HashMap<String,Any>](#HashMap<String,Any>)
+
+Success
+
+
+
+
+<details>
+<summary><i>&nbsp; Examples:</i></summary>
+
+
+<details>
+<summary><i>&nbsp; default</i></summary>
+
+```json
+{
+  "value": {}
 }
 ```
 </details>
@@ -585,7 +1284,7 @@ platformClient.application("<APPLICATION_ID>").communication.getAudiences(pageNo
 
 
 
-Get audiences
+Audience is used to import CSV files containing emails, phone numbers, and other variables in order to populate email/SMS templates for bulk delivery via a Campaign. Use this API to get audiences.
 
 *Returned Response:*
 
@@ -611,27 +1310,25 @@ Success
   "value": {
     "items": [
       {
-        "description": "test description",
+        "_id": "64ad30a15efbc5f85fb549d8",
+        "application": "64802b8bd4dc759bcc1fef86",
+        "name": "dummy ds",
+        "description": "desc",
+        "records_count": 1,
+        "type": "raw_csv",
         "tags": [
-          "csv"
+          "tag1",
+          "tag2"
         ],
         "headers": [
-          "phone_number",
-          "email",
-          "firstname",
-          "lastname",
-          "orderid"
+          "phone",
+          "mail"
         ],
+        "file_url": "https://cdn.pixelbin.io/v2/falling-surf-7c8bb8/fyndnp/wrkr/x5/application/64802b8bd4dc759bcc1fef86/datasources/ODKRR6aBQ-jsonviewer.csv",
         "is_active": true,
-        "_id": "5fb6675c09fd901023917a5f",
-        "name": "Test csv",
-        "file_url": "https://hdn-1.addsale.com/x0/application/000000000000000000000004/datasources/2_r_D1jt6-test-1-entries.csv",
-        "type": "raw_csv",
-        "records_count": 3,
-        "application": "000000000000000000000004",
-        "created_at": "2020-11-19T12:38:52.580Z",
-        "updated_at": "2020-11-19T12:38:52.580Z",
-        "slug": "Test-csv",
+        "created_at": "2023-07-11T10:36:17.340Z",
+        "updated_at": "2023-07-11T10:36:17.340Z",
+        "slug": "dummy-1-5JrNGM8LA",
         "__v": 0
       }
     ],
@@ -686,7 +1383,7 @@ platformClient.application("<APPLICATION_ID>").communication.createAudience(body
 | body | [AudienceReq](#AudienceReq) | yes | Request body |
 
 
-Create audience
+Audience is used to import CSV files containing emails, phone numbers, and other variables in order to populate email/SMS templates for bulk delivery via a Campaign. Use this API to create audience.
 
 *Returned Response:*
 
@@ -695,7 +1392,7 @@ Create audience
 
 [Audience](#Audience)
 
-Success
+Refer `Audience` schema for more details.
 
 
 
@@ -710,122 +1407,26 @@ Success
 ```json
 {
   "value": {
-    "description": "test description",
-    "tags": [
-      "csv"
-    ],
-    "headers": [
-      "phone_number",
-      "email",
-      "firstname",
-      "lastname",
-      "orderid"
-    ],
-    "is_active": true,
-    "_id": "5fb6675c09fd901023917a5f",
-    "name": "Test csv",
-    "file_url": "https://hdn-1.addsale.com/x0/application/000000000000000000000004/datasources/2_r_D1jt6-test-1-entries.csv",
+    "_id": "64ad30a15efbc5f85fb549d8",
+    "application": "64802b8bd4dc759bcc1fef86",
+    "name": "dummy ds",
+    "description": "desc",
+    "records_count": 1,
     "type": "raw_csv",
-    "records_count": 3,
-    "application": "000000000000000000000004",
-    "created_at": "2020-11-19T12:38:52.580Z",
-    "updated_at": "2020-11-19T12:38:52.580Z",
-    "slug": "Test-csv",
-    "__v": 0
-  }
-}
-```
-</details>
-
-</details>
-
-
-
-
-
-
-
-
-
----
-
-
-### getBigqueryHeaders
-Get bigquery headers
-
-
-
-
-```kotlin
-platformClient.application("<APPLICATION_ID>").communication.getBigqueryHeaders(body: body).safeAwait{ response, error->
-    response?.let{
-      // Use response
-    } ->
-    error?.let{
-      
-    } 
-}
-```
-
-
-
-
-
-| Argument  |  Type  | Required | Description |
-| --------- | -----  | -------- | ----------- |
-| body | [BigqueryHeadersReq](#BigqueryHeadersReq) | yes | Request body |
-
-
-Get bigquery headers
-
-*Returned Response:*
-
-
-
-
-[BigqueryHeadersRes](#BigqueryHeadersRes)
-
-Success
-
-
-
-
-<details>
-<summary><i>&nbsp; Examples:</i></summary>
-
-
-<details>
-<summary><i>&nbsp; default</i></summary>
-
-```json
-{
-  "value": {
+    "tags": [
+      "tag1",
+      "tag2"
+    ],
     "headers": [
-      {
-        "name": "firstname",
-        "type": "STRING"
-      },
-      {
-        "name": "lastname",
-        "type": "STRING"
-      },
-      {
-        "name": "email",
-        "type": "STRING"
-      },
-      {
-        "name": "phone",
-        "type": "STRING"
-      },
-      {
-        "name": "countryCode",
-        "type": "STRING"
-      },
-      {
-        "name": "application",
-        "type": "STRING"
-      }
-    ]
+      "phone",
+      "mail"
+    ],
+    "file_url": "https://cdn.pixelbin.io/v2/falling-surf-7c8bb8/fyndnp/wrkr/x5/application/64802b8bd4dc759bcc1fef86/datasources/ODKRR6aBQ-jsonviewer.csv",
+    "is_active": true,
+    "created_at": "2023-07-11T10:36:17.340Z",
+    "updated_at": "2023-07-11T10:36:17.340Z",
+    "slug": "dummy-1-5JrNGM8LA",
+    "__v": 0
   }
 }
 ```
@@ -871,7 +1472,7 @@ platformClient.application("<APPLICATION_ID>").communication.getAudienceById(id:
 
 
 
-Get audience by id
+Audience is used to import CSV files containing emails, phone numbers, and other variables in order to populate email/SMS templates for bulk delivery via a Campaign. Use this API to get audiences by Id.
 
 *Returned Response:*
 
@@ -880,7 +1481,7 @@ Get audience by id
 
 [Audience](#Audience)
 
-Success
+Refer `Audience` schema for more details.
 
 
 
@@ -895,27 +1496,25 @@ Success
 ```json
 {
   "value": {
-    "description": "test description",
+    "_id": "64ad30a15efbc5f85fb549d8",
+    "application": "64802b8bd4dc759bcc1fef86",
+    "name": "dummy ds",
+    "description": "desc",
+    "records_count": 1,
+    "type": "raw_csv",
     "tags": [
-      "csv"
+      "tag1",
+      "tag2"
     ],
     "headers": [
-      "phone_number",
-      "email",
-      "firstname",
-      "lastname",
-      "orderid"
+      "phone",
+      "mail"
     ],
+    "file_url": "https://cdn.pixelbin.io/v2/falling-surf-7c8bb8/fyndnp/wrkr/x5/application/64802b8bd4dc759bcc1fef86/datasources/ODKRR6aBQ-jsonviewer.csv",
     "is_active": true,
-    "_id": "5fb6675c09fd901023917a5f",
-    "name": "Test csv",
-    "file_url": "https://hdn-1.addsale.com/x0/application/000000000000000000000004/datasources/2_r_D1jt6-test-1-entries.csv",
-    "type": "raw_csv",
-    "records_count": 3,
-    "application": "000000000000000000000004",
-    "created_at": "2020-11-19T12:38:52.580Z",
-    "updated_at": "2020-11-19T12:38:52.580Z",
-    "slug": "Test-csv",
+    "created_at": "2023-07-11T10:36:17.340Z",
+    "updated_at": "2023-07-11T10:36:17.340Z",
+    "slug": "dummy-1-5JrNGM8LA",
     "__v": 0
   }
 }
@@ -962,7 +1561,7 @@ platformClient.application("<APPLICATION_ID>").communication.updateAudienceById(
 | body | [AudienceReq](#AudienceReq) | yes | Request body |
 
 
-Update audience by id
+Audience is used to import CSV files containing emails, phone numbers, and other variables in order to populate email/SMS templates for bulk delivery via a Campaign. Use this API to update audience by id.
 
 *Returned Response:*
 
@@ -971,7 +1570,7 @@ Update audience by id
 
 [Audience](#Audience)
 
-Success
+Refer `Audience` schema for more details.
 
 
 
@@ -986,28 +1585,172 @@ Success
 ```json
 {
   "value": {
-    "description": "test description",
+    "_id": "64ad30a15efbc5f85fb549d8",
+    "application": "64802b8bd4dc759bcc1fef86",
+    "name": "dummy ds",
+    "description": "desc",
+    "records_count": 1,
+    "type": "raw_csv",
     "tags": [
-      "csv"
+      "tag1",
+      "tag2"
     ],
     "headers": [
-      "phone_number",
-      "email",
-      "firstname",
-      "lastname",
-      "orderid"
+      "phone",
+      "mail"
     ],
+    "file_url": "https://cdn.pixelbin.io/v2/falling-surf-7c8bb8/fyndnp/wrkr/x5/application/64802b8bd4dc759bcc1fef86/datasources/ODKRR6aBQ-jsonviewer.csv",
     "is_active": true,
-    "_id": "5fb6675c09fd901023917a5f",
-    "name": "Test csv",
-    "file_url": "https://hdn-1.addsale.com/x0/application/000000000000000000000004/datasources/2_r_D1jt6-test-1-entries.csv",
-    "type": "raw_csv",
-    "records_count": 3,
-    "application": "000000000000000000000004",
-    "created_at": "2020-11-19T12:38:52.580Z",
-    "updated_at": "2020-11-19T12:38:52.580Z",
-    "slug": "Test-csv",
+    "created_at": "2023-07-11T10:36:17.340Z",
+    "updated_at": "2023-07-11T10:36:17.340Z",
+    "slug": "dummy-1-5JrNGM8LA",
     "__v": 0
+  }
+}
+```
+</details>
+
+</details>
+
+
+
+
+
+
+
+
+
+---
+
+
+### deleteAudienceById
+Delete audience by id
+
+
+
+
+```kotlin
+platformClient.application("<APPLICATION_ID>").communication.deleteAudienceById(id: id).safeAwait{ response, error->
+    response?.let{
+      // Use response
+    } ->
+    error?.let{
+      
+    } 
+}
+```
+
+
+
+
+
+| Argument  |  Type  | Required | Description |
+| --------- | -----  | -------- | ----------- | 
+| id | String | yes | Audience id |  
+
+
+
+Audience is used to import CSV files containing emails, phone numbers, and other variables in order to populate email/SMS templates for bulk delivery via a Campaign. Use this API to delete audience by id.
+
+*Returned Response:*
+
+
+
+
+[GenericDelete](#GenericDelete)
+
+Refer `GenericDelete` schema for more details.
+
+
+
+
+<details>
+<summary><i>&nbsp; Examples:</i></summary>
+
+
+<details>
+<summary><i>&nbsp; default</i></summary>
+
+```json
+{
+  "value": {
+    "message": "Deletion Successfull",
+    "acknowledged": true,
+    "affected": 1,
+    "operation": "TEMP-ST-DEL:ID"
+  }
+}
+```
+</details>
+
+</details>
+
+
+
+
+
+
+
+
+
+---
+
+
+### getNSampleRecordsFromCsvByGet
+Get n sample records from csv
+
+
+
+
+```kotlin
+platformClient.application("<APPLICATION_ID>").communication.getNSampleRecordsFromCsvByGet().safeAwait{ response, error->
+    response?.let{
+      // Use response
+    } ->
+    error?.let{
+      
+    } 
+}
+```
+
+
+
+
+
+
+Audience is used to import CSV files containing emails, phone numbers, and other variables in order to populate email/SMS templates for bulk delivery via a Campaign. Use this API to get n sample records from csv.
+
+*Returned Response:*
+
+
+
+
+[GetNRecordsCsvRes](#GetNRecordsCsvRes)
+
+Refer `GetNRecordsCsvRes` schema for more details.
+
+
+
+
+<details>
+<summary><i>&nbsp; Examples:</i></summary>
+
+
+<details>
+<summary><i>&nbsp; default</i></summary>
+
+```json
+{
+  "value": {
+    "items": [
+      {
+        "phone_number": "1234567890",
+        "email": "abcxyz@gofynd.com",
+        "firstname": "Abc",
+        "lastname": "Xyz",
+        "orderid": "1"
+      }
+    ]
   }
 }
 ```
@@ -1052,7 +1795,7 @@ platformClient.application("<APPLICATION_ID>").communication.getNSampleRecordsFr
 | body | [GetNRecordsCsvReq](#GetNRecordsCsvReq) | yes | Request body |
 
 
-Get n sample records from csv
+Audience is used to import CSV files containing emails, phone numbers, and other variables in order to populate email/SMS templates for bulk delivery via a Campaign. Use this API to get n sample records from csv
 
 *Returned Response:*
 
@@ -1061,7 +1804,7 @@ Get n sample records from csv
 
 [GetNRecordsCsvRes](#GetNRecordsCsvRes)
 
-Success
+Refer `GetNRecordsCsvRes` schema for more details.
 
 
 
@@ -1076,11 +1819,160 @@ Success
 ```json
 {
   "value": {
-    "phone_number": "1234567890",
-    "email": "abcxyz@gofynd.com",
-    "firstname": "Abc",
-    "lastname": "Xyz",
-    "orderid": "1"
+    "items": [
+      {
+        "phone_number": "1234567890",
+        "email": "abcxyz@gofynd.com",
+        "firstname": "Abc",
+        "lastname": "Xyz",
+        "orderid": "1"
+      }
+    ]
+  }
+}
+```
+</details>
+
+</details>
+
+
+
+
+
+
+
+
+
+---
+
+
+### getDummyDatasources
+Get dummy data sources
+
+
+
+
+```kotlin
+platformClient.application("<APPLICATION_ID>").communication.getDummyDatasources().safeAwait{ response, error->
+    response?.let{
+      // Use response
+    } ->
+    error?.let{
+      
+    } 
+}
+```
+
+
+
+
+
+
+Audience is used to import CSV files containing emails, phone numbers, and other variables in order to populate email/SMS templates for bulk delivery via a Campaign. Use this API to get dummy data sources.
+
+*Returned Response:*
+
+
+
+
+[ArrayList<DummyDatasources>](#ArrayList<DummyDatasources>)
+
+Refer `DummyDatasources` schema for more details.
+
+
+
+
+<details>
+<summary><i>&nbsp; Examples:</i></summary>
+
+
+<details>
+<summary><i>&nbsp; default</i></summary>
+
+```json
+{
+  "value": [
+    {
+      "id": 1,
+      "name": "Data source 1"
+    },
+    {
+      "id": 2,
+      "name": "Data source 2"
+    }
+  ]
+}
+```
+</details>
+
+</details>
+
+
+
+
+
+
+
+
+
+---
+
+
+### getDummyDatasourcesMeta
+Get dummy data sources meta
+
+
+
+
+```kotlin
+platformClient.application("<APPLICATION_ID>").communication.getDummyDatasourcesMeta(id: id).safeAwait{ response, error->
+    response?.let{
+      // Use response
+    } ->
+    error?.let{
+      
+    } 
+}
+```
+
+
+
+
+
+| Argument  |  Type  | Required | Description |
+| --------- | -----  | -------- | ----------- | 
+| id | Int | yes | Dummy datasources meta ID |  
+
+
+
+Audience is used to import CSV files containing emails, phone numbers, and other variables in order to populate email/SMS templates for bulk delivery via a Campaign. Use this API to get dummy data sources meta.
+
+*Returned Response:*
+
+
+
+
+[DummyDatasourcesMeta](#DummyDatasourcesMeta)
+
+Refer `DummyDatasourcesMeta` schema for more details.
+
+
+
+
+<details>
+<summary><i>&nbsp; Examples:</i></summary>
+
+
+<details>
+<summary><i>&nbsp; default</i></summary>
+
+```json
+{
+  "value": {
+    "id": 2,
+    "data": {
+      "b": 2
+    }
   }
 }
 ```
@@ -1459,6 +2351,79 @@ Success
 ---
 
 
+### deleteEmailProviderById
+Delete email provider by id
+
+
+
+
+```kotlin
+platformClient.application("<APPLICATION_ID>").communication.deleteEmailProviderById(id: id).safeAwait{ response, error->
+    response?.let{
+      // Use response
+    } ->
+    error?.let{
+      
+    } 
+}
+```
+
+
+
+
+
+| Argument  |  Type  | Required | Description |
+| --------- | -----  | -------- | ----------- | 
+| id | String | yes | Email provider id |  
+
+
+
+Delete email provider by id
+
+*Returned Response:*
+
+
+
+
+[GenericDelete](#GenericDelete)
+
+Refer `GenericDelete` schema for more details.
+
+
+
+
+<details>
+<summary><i>&nbsp; Examples:</i></summary>
+
+
+<details>
+<summary><i>&nbsp; default</i></summary>
+
+```json
+{
+  "value": {
+    "message": "Deletion Successfull",
+    "acknowledged": true,
+    "affected": 1,
+    "operation": "TEMP-ST-DEL:ID"
+  }
+}
+```
+</details>
+
+</details>
+
+
+
+
+
+
+
+
+
+---
+
+
 ### getEmailTemplates
 Get email templates
 
@@ -1488,7 +2453,7 @@ platformClient.application("<APPLICATION_ID>").communication.getEmailTemplates(p
 
 
 
-Get email templates
+Email templates are predefined formats linked to various events for delivering messages to users. Use this API to get all email templates.
 
 *Returned Response:*
 
@@ -1497,7 +2462,7 @@ Get email templates
 
 [EmailTemplates](#EmailTemplates)
 
-Success
+Refer `EmailTemplates` schema for more details.
 
 
 
@@ -1514,36 +2479,53 @@ Success
   "value": {
     "items": [
       {
+        "application": "637b6355dc65337da9b5c951",
         "is_system": false,
-        "is_internal": true,
-        "description": "Application creation",
+        "is_internal": false,
+        "name": "title",
+        "description": "desc",
+        "editor_type": "bee",
+        "editor_meta": "",
         "static_to": [],
-        "static_cc": [],
-        "static_bcc": [],
-        "tags": [],
-        "priority": "high",
-        "published": true,
-        "_id": "5ef42a49c8b67d279c27a980",
-        "slug": "application-creation",
-        "name": "Application creation",
-        "from_name": "Fynd",
+        "static_cc": [
+          "abc@abc.com"
+        ],
+        "static_bcc": [
+          "abc@abc.com"
+        ],
+        "reply_to": "abc@abc.com",
+        "tags": [
+          "tag"
+        ],
         "subject": {
           "template_type": "nunjucks",
-          "template": "This is a test email subject"
+          "template": "subject"
         },
         "html": {
           "template_type": "nunjucks",
-          "template": "This is a test email body"
+          "template": ""
         },
-        "text": {
-          "template_type": "nunjucks",
-          "template": "This is a test email body"
+        "url_shorten": {
+          "enabled": false
         },
+        "priority": "low",
+        "template_variables": {
+          "hello": "world"
+        },
+        "published": true,
+        "category": "website",
+        "_id": "649fca8fe89b403f490f9c55",
         "headers": [],
         "attachments": [],
-        "created_at": "2020-06-25T04:38:34.003Z",
-        "updated_at": "2020-08-10T12:27:43.583Z",
-        "__v": 0
+        "created_at": "2023-07-01T06:41:19.360Z",
+        "updated_at": "2023-07-01T06:41:19.360Z",
+        "slug": "title-W9qbdl8AJ",
+        "__v": 0,
+        "from_name": "Fynd",
+        "text": {
+          "template_type": "nunjucks",
+          "template": "subject"
+        }
       }
     ],
     "page": {
@@ -1597,16 +2579,16 @@ platformClient.application("<APPLICATION_ID>").communication.createEmailTemplate
 | body | [EmailTemplateReq](#EmailTemplateReq) | yes | Request body |
 
 
-Create email template
+Email templates are predefined formats linked to various events for delivering messages to users. Use this API to create an email template.
 
 *Returned Response:*
 
 
 
 
-[EmailTemplateRes](#EmailTemplateRes)
+[EmailTemplate](#EmailTemplate)
 
-Success
+Refer `EmailTemplate` schema for more details.
 
 
 
@@ -1621,50 +2603,53 @@ Success
 ```json
 {
   "value": {
+    "application": "637b6355dc65337da9b5c951",
     "is_system": false,
     "is_internal": false,
-    "description": "test template",
-    "static_to": [
-      "abc@gofynd.com"
-    ],
+    "name": "title",
+    "description": "desc",
+    "editor_type": "bee",
+    "editor_meta": "",
+    "static_to": [],
     "static_cc": [
-      "abc@gofynd.com"
+      "abc@abc.com"
     ],
     "static_bcc": [
-      "abc@gofynd.com"
+      "abc@abc.com"
     ],
-    "tags": [],
-    "priority": "low",
-    "published": false,
-    "_id": "5ef42a49c8b67d279c27a980",
-    "name": "test",
-    "keys": {
-      "bcc": "abc@gofynd.com"
-    },
-    "reply_to": "abc@gofynd.com",
-    "headers": [
-      {
-        "key": "x-test-header",
-        "value": "test123"
-      }
+    "reply_to": "abc@abc.com",
+    "tags": [
+      "tag"
     ],
     "subject": {
-      "template_type": "static",
-      "template": "This is test email"
+      "template_type": "nunjucks",
+      "template": "subject"
     },
     "html": {
-      "template_type": "static",
-      "template": "This is test email"
+      "template_type": "nunjucks",
+      "template": ""
     },
-    "text": {
-      "template_type": "static",
-      "template": "This is test email"
+    "url_shorten": {
+      "enabled": false
     },
+    "priority": "low",
+    "template_variables": {
+      "hello": "world"
+    },
+    "published": true,
+    "category": "website",
+    "_id": "649fca8fe89b403f490f9c55",
+    "headers": [],
     "attachments": [],
-    "created_at": "2021-02-08T03:33:42.103Z",
-    "updated_at": "2021-02-08T03:33:42.103Z",
-    "slug": "test-fZfGq0lSQ",
-    "__v": 0
+    "created_at": "2023-07-01T06:41:19.360Z",
+    "updated_at": "2023-07-01T06:41:19.360Z",
+    "slug": "title-W9qbdl8AJ",
+    "__v": 0,
+    "from_name": "Fynd",
+    "text": {
+      "template_type": "nunjucks",
+      "template": "subject"
+    }
   }
 }
 ```
@@ -1690,7 +2675,7 @@ Get system email templates
 
 
 ```kotlin
-platformClient.application("<APPLICATION_ID>").communication.getSystemEmailTemplates(pageNo: pageNo, pageSize: pageSize, sort: sort).safeAwait{ response, error->
+platformClient.application("<APPLICATION_ID>").communication.getSystemEmailTemplates().safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -1704,15 +2689,8 @@ platformClient.application("<APPLICATION_ID>").communication.getSystemEmailTempl
 
 
 
-| Argument  |  Type  | Required | Description |
-| --------- | -----  | -------- | ----------- | 
-| pageNo | Int? | no | Current page no |   
-| pageSize | Int? | no | Current request items count |   
-| sort | HashMap<String,Any>? | no | To sort based on created_at |  
 
-
-
-Get system email templates
+Email templates are predefined formats linked to various events for delivering messages to users. Use this API to get all system email templates.
 
 *Returned Response:*
 
@@ -1721,7 +2699,7 @@ Get system email templates
 
 [SystemEmailTemplates](#SystemEmailTemplates)
 
-Success
+Refer `SystemEmailTemplates` schema for more details.
 
 
 
@@ -1736,47 +2714,40 @@ Success
 ```json
 {
   "value": {
-    "items": [
-      {
-        "is_system": true,
-        "is_internal": true,
-        "description": "Application creation",
-        "static_to": [],
-        "static_cc": [],
-        "static_bcc": [],
-        "tags": [],
-        "priority": "high",
-        "published": true,
-        "_id": "5ef42a49c8b67d279c27a980",
-        "slug": "application-creation",
-        "name": "Application creation",
-        "from_name": "Fynd",
-        "subject": {
-          "template_type": "nunjucks",
-          "template": "This is a test email subject"
-        },
-        "html": {
-          "template_type": "nunjucks",
-          "template": "This is a test email body"
-        },
-        "text": {
-          "template_type": "nunjucks",
-          "template": "This is a test email body"
-        },
-        "headers": [],
-        "attachments": [],
-        "created_at": "2020-06-25T04:38:34.003Z",
-        "updated_at": "2020-08-10T12:27:43.583Z",
-        "__v": 0
-      }
-    ],
-    "page": {
-      "type": "number",
-      "current": 1,
-      "size": 1,
-      "item_total": 66,
-      "has_next": true
-    }
+    "url_shorten": {
+      "enabled": true
+    },
+    "_id": "646b73e7e10612283cfd977f",
+    "is_system": true,
+    "is_internal": false,
+    "name": "Online order confirmed",
+    "slug": "bag_confirmed-email",
+    "description": "Use this email template for notifying the customers, that their order is Confirmed.",
+    "static_to": [],
+    "static_cc": [],
+    "static_bcc": [],
+    "tags": [],
+    "subject": {
+      "template_type": "nunjucks",
+      "template": "{{ email_subject }}"
+    },
+    "html": {
+      "template_type": "nunjucks",
+      "template": ""
+    },
+    "text": {
+      "template_type": "nunjucks",
+      "template": ""
+    },
+    "priority": "high",
+    "template_variables": {},
+    "published": true,
+    "category": "website",
+    "headers": [],
+    "attachments": [],
+    "created_at": "2023-05-22T13:53:43.468Z",
+    "updated_at": "2023-05-22T13:53:43.468Z",
+    "__v": 0
   }
 }
 ```
@@ -1822,7 +2793,7 @@ platformClient.application("<APPLICATION_ID>").communication.getEmailTemplateByI
 
 
 
-Get email template by id
+Email templates are predefined formats linked to various events for delivering messages to users. Use this API to get an email template by id.
 
 *Returned Response:*
 
@@ -1831,7 +2802,7 @@ Get email template by id
 
 [EmailTemplate](#EmailTemplate)
 
-Success
+Refer `EmailTemplate` schema for more details.
 
 
 
@@ -1846,36 +2817,53 @@ Success
 ```json
 {
   "value": {
+    "application": "637b6355dc65337da9b5c951",
     "is_system": false,
-    "is_internal": true,
-    "description": "Application creation",
+    "is_internal": false,
+    "name": "title",
+    "description": "desc",
+    "editor_type": "bee",
+    "editor_meta": "",
     "static_to": [],
-    "static_cc": [],
-    "static_bcc": [],
-    "tags": [],
-    "priority": "high",
-    "published": true,
-    "_id": "5ef42a49c8b67d279c27a980",
-    "slug": "application-creation",
-    "name": "Application creation",
-    "from_name": "Fynd",
+    "static_cc": [
+      "abc@abc.com"
+    ],
+    "static_bcc": [
+      "abc@abc.com"
+    ],
+    "reply_to": "abc@abc.com",
+    "tags": [
+      "tag"
+    ],
     "subject": {
       "template_type": "nunjucks",
-      "template": "This is a test email subject"
+      "template": "subject"
     },
     "html": {
       "template_type": "nunjucks",
-      "template": "This is a test email body"
+      "template": ""
     },
-    "text": {
-      "template_type": "nunjucks",
-      "template": "This is a test email body"
+    "url_shorten": {
+      "enabled": false
     },
+    "priority": "low",
+    "template_variables": {
+      "hello": "world"
+    },
+    "published": true,
+    "category": "website",
+    "_id": "649fca8fe89b403f490f9c55",
     "headers": [],
     "attachments": [],
-    "created_at": "2020-06-25T04:38:34.003Z",
-    "updated_at": "2020-08-10T12:27:43.583Z",
-    "__v": 0
+    "created_at": "2023-07-01T06:41:19.360Z",
+    "updated_at": "2023-07-01T06:41:19.360Z",
+    "slug": "title-W9qbdl8AJ",
+    "__v": 0,
+    "from_name": "Fynd",
+    "text": {
+      "template_type": "nunjucks",
+      "template": "subject"
+    }
   }
 }
 ```
@@ -1921,16 +2909,16 @@ platformClient.application("<APPLICATION_ID>").communication.updateEmailTemplate
 | body | [EmailTemplateReq](#EmailTemplateReq) | yes | Request body |
 
 
-Update email template by id
+Email templates are predefined formats linked to various events for delivering messages to users. Use this API to update an email template by id.
 
 *Returned Response:*
 
 
 
 
-[EmailTemplateRes](#EmailTemplateRes)
+[EmailTemplate](#EmailTemplate)
 
-Success
+Refer `EmailTemplate` schema for more details.
 
 
 
@@ -1945,50 +2933,53 @@ Success
 ```json
 {
   "value": {
+    "application": "637b6355dc65337da9b5c951",
     "is_system": false,
     "is_internal": false,
-    "description": "test template",
-    "static_to": [
-      "abc@gofynd.com"
-    ],
+    "name": "title",
+    "description": "desc",
+    "editor_type": "bee",
+    "editor_meta": "",
+    "static_to": [],
     "static_cc": [
-      "abc@gofynd.com"
+      "abc@abc.com"
     ],
     "static_bcc": [
-      "abc@gofynd.com"
+      "abc@abc.com"
     ],
-    "tags": [],
-    "priority": "low",
-    "published": false,
-    "_id": "5ef42a49c8b67d279c27a980",
-    "name": "test",
-    "keys": {
-      "bcc": "abc@gofynd.com"
-    },
-    "reply_to": "abc@gofynd.com",
-    "headers": [
-      {
-        "key": "x-test-header",
-        "value": "test123"
-      }
+    "reply_to": "abc@abc.com",
+    "tags": [
+      "tag"
     ],
     "subject": {
-      "template_type": "static",
-      "template": "This is test email"
+      "template_type": "nunjucks",
+      "template": "subject"
     },
     "html": {
-      "template_type": "static",
-      "template": "This is test email"
+      "template_type": "nunjucks",
+      "template": ""
     },
-    "text": {
-      "template_type": "static",
-      "template": "This is test email"
+    "url_shorten": {
+      "enabled": false
     },
+    "priority": "low",
+    "template_variables": {
+      "hello": "world"
+    },
+    "published": true,
+    "category": "website",
+    "_id": "649fca8fe89b403f490f9c55",
+    "headers": [],
     "attachments": [],
-    "created_at": "2021-02-08T03:33:42.103Z",
-    "updated_at": "2021-02-08T03:33:42.103Z",
-    "slug": "test-fZfGq0lSQ",
-    "__v": 0
+    "created_at": "2023-07-01T06:41:19.360Z",
+    "updated_at": "2023-07-01T06:41:19.360Z",
+    "slug": "title-W9qbdl8AJ",
+    "__v": 0,
+    "from_name": "Fynd",
+    "text": {
+      "template_type": "nunjucks",
+      "template": "subject"
+    }
   }
 }
 ```
@@ -2034,16 +3025,16 @@ platformClient.application("<APPLICATION_ID>").communication.deleteEmailTemplate
 
 
 
-Delete email template by id
+Email templates are predefined formats linked to various events for delivering messages to users. Use this API to delete an email template by id.
 
 *Returned Response:*
 
 
 
 
-[EmailTemplateDeleteSuccessRes](#EmailTemplateDeleteSuccessRes)
+[GenericDelete](#GenericDelete)
 
-Success
+Refer `GenericDelete` schema for more details.
 
 
 
@@ -2058,8 +3049,138 @@ Success
 ```json
 {
   "value": {
-    "success": true,
-    "message": "Deleted successfully"
+    "message": "Deletion Successfull",
+    "acknowledged": true,
+    "affected": 1,
+    "operation": "TEMP-ST-DEL:ID"
+  }
+}
+```
+</details>
+
+</details>
+
+
+
+
+
+
+
+
+
+---
+
+
+### getSubscribedEmailTemplates
+Get subscribed email templates
+
+
+
+
+```kotlin
+platformClient.application("<APPLICATION_ID>").communication.getSubscribedEmailTemplates(pageNo: pageNo, pageSize: pageSize).safeAwait{ response, error->
+    response?.let{
+      // Use response
+    } ->
+    error?.let{
+      
+    } 
+}
+```
+
+
+
+
+
+| Argument  |  Type  | Required | Description |
+| --------- | -----  | -------- | ----------- | 
+| pageNo | Int? | no | Current page no |   
+| pageSize | Int? | no | Current request items count |  
+
+
+
+Email templates are predefined formats linked to various events for delivering messages to users. Use this API to get all subscribed email templates.
+
+*Returned Response:*
+
+
+
+
+[EmailTemplates](#EmailTemplates)
+
+Refer `EmailTemplates` schema for more details.
+
+
+
+
+<details>
+<summary><i>&nbsp; Examples:</i></summary>
+
+
+<details>
+<summary><i>&nbsp; default</i></summary>
+
+```json
+{
+  "value": {
+    "items": [
+      {
+        "application": "637b6355dc65337da9b5c951",
+        "is_system": false,
+        "is_internal": false,
+        "name": "title",
+        "description": "desc",
+        "editor_type": "bee",
+        "editor_meta": "",
+        "static_to": [],
+        "static_cc": [
+          "abc@abc.com"
+        ],
+        "static_bcc": [
+          "abc@abc.com"
+        ],
+        "reply_to": "abc@abc.com",
+        "tags": [
+          "tag"
+        ],
+        "subject": {
+          "template_type": "nunjucks",
+          "template": "subject"
+        },
+        "html": {
+          "template_type": "nunjucks",
+          "template": ""
+        },
+        "url_shorten": {
+          "enabled": false
+        },
+        "priority": "low",
+        "template_variables": {
+          "hello": "world"
+        },
+        "published": true,
+        "category": "website",
+        "_id": "649fca8fe89b403f490f9c55",
+        "headers": [],
+        "attachments": [],
+        "created_at": "2023-07-01T06:41:19.360Z",
+        "updated_at": "2023-07-01T06:41:19.360Z",
+        "slug": "title-W9qbdl8AJ",
+        "__v": 0,
+        "from_name": "Fynd",
+        "text": {
+          "template_type": "nunjucks",
+          "template": "subject"
+        }
+      }
+    ],
+    "page": {
+      "type": "number",
+      "current": 1,
+      "size": 1,
+      "item_total": 66,
+      "has_next": true
+    }
   }
 }
 ```
@@ -2274,7 +3395,7 @@ Success
         "template": {
           "sms": {
             "subscribed": true,
-            "template": ""
+            "template": "null"
           },
           "email": {
             "subscribed": true,
@@ -2294,7 +3415,7 @@ Success
         "template": {
           "sms": {
             "subscribed": true,
-            "template": ""
+            "template": "null"
           },
           "email": {
             "subscribed": true,
@@ -2314,7 +3435,7 @@ Success
         "template": {
           "sms": {
             "subscribed": true,
-            "template": ""
+            "template": "null"
           },
           "email": {
             "subscribed": true,
@@ -2334,7 +3455,7 @@ Success
         "template": {
           "sms": {
             "subscribed": true,
-            "template": ""
+            "template": "null"
           },
           "email": {
             "subscribed": true,
@@ -2638,7 +3759,7 @@ Success
           },
           "email": {
             "subscribed": true,
-            "template": ""
+            "template": "null"
           }
         },
         "is_default": true,
@@ -2658,7 +3779,7 @@ Success
           },
           "email": {
             "subscribed": true,
-            "template": ""
+            "template": "null"
           }
         },
         "is_default": true,
@@ -2678,7 +3799,7 @@ Success
           },
           "email": {
             "subscribed": true,
-            "template": ""
+            "template": "null"
           }
         },
         "is_default": true,
@@ -2694,7 +3815,7 @@ Success
         "template": {
           "sms": {
             "subscribed": true,
-            "template": ""
+            "template": "null"
           },
           "email": {
             "subscribed": true,
@@ -2718,7 +3839,7 @@ Success
           },
           "email": {
             "subscribed": true,
-            "template": ""
+            "template": "null"
           }
         },
         "is_default": true,
@@ -2738,7 +3859,7 @@ Success
           },
           "email": {
             "subscribed": true,
-            "template": ""
+            "template": "null"
           }
         },
         "is_default": true,
@@ -2758,7 +3879,7 @@ Success
           },
           "email": {
             "subscribed": true,
-            "template": ""
+            "template": "null"
           }
         },
         "is_default": true,
@@ -2818,7 +3939,7 @@ Success
           },
           "email": {
             "subscribed": true,
-            "template": ""
+            "template": "null"
           }
         },
         "is_default": true,
@@ -2838,6 +3959,167 @@ Success
       "item_total": 28,
       "has_next": false
     }
+  }
+}
+```
+</details>
+
+</details>
+
+
+
+
+
+
+
+
+
+---
+
+
+### getGlobalVariables
+get global variables
+
+
+
+
+```kotlin
+platformClient.application("<APPLICATION_ID>").communication.getGlobalVariables().safeAwait{ response, error->
+    response?.let{
+      // Use response
+    } ->
+    error?.let{
+      
+    } 
+}
+```
+
+
+
+
+
+
+get global variables
+
+*Returned Response:*
+
+
+
+
+[GlobalVariablesGetResponse](#GlobalVariablesGetResponse)
+
+Refer `GlobalVariablesGetResponse` schema for more details.
+
+
+
+
+<details>
+<summary><i>&nbsp; Examples:</i></summary>
+
+
+<details>
+<summary><i>&nbsp; default</i></summary>
+
+```json
+{
+  "value": {
+    "read_only": {
+      "app.address.address_line": [],
+      "app.shipping_policy": "",
+      "app.returns_policy": "",
+      "app.terms_policy": "",
+      "app.copyright_text": null,
+      "app.address_line": "",
+      "app.city_pincode": "",
+      "app.logo_url": null,
+      "app.support_email": null,
+      "app.support_mobile": null,
+      "app.contact_us": "",
+      "app.domain": "",
+      "app.privacy_policy": "https://fynd.freshdesk.com/support/solutions/articles/33000214398-privacy-policy"
+    },
+    "editable": {
+      "service_country": "uzbekistan",
+      "service_name": "fynd",
+      "service_platform": "fynd platform"
+    }
+  }
+}
+```
+</details>
+
+</details>
+
+
+
+
+
+
+
+
+
+---
+
+
+### postGlobalVariables
+post global variables
+
+
+
+
+```kotlin
+platformClient.application("<APPLICATION_ID>").communication.postGlobalVariables(body: body).safeAwait{ response, error->
+    response?.let{
+      // Use response
+    } ->
+    error?.let{
+      
+    } 
+}
+```
+
+
+
+
+
+| Argument  |  Type  | Required | Description |
+| --------- | -----  | -------- | ----------- |
+| body | [GlobalVariablesReq](#GlobalVariablesReq) | yes | Request body |
+
+
+psot global variables
+
+*Returned Response:*
+
+
+
+
+[GlobalVariablesPostResponse](#GlobalVariablesPostResponse)
+
+Refer `GlobalVariablesPostResponse` schema for more details.
+
+
+
+
+<details>
+<summary><i>&nbsp; Examples:</i></summary>
+
+
+<details>
+<summary><i>&nbsp; default</i></summary>
+
+```json
+{
+  "value": {
+    "_id": "64a2be215cc595c57fa0e40a",
+    "category": "website",
+    "application": "637b6355dc65337da9b5c951",
+    "global_variables": {
+      "service_country": "uzbekistan",
+      "service_name": "fynd-plato",
+      "service_platform": "fynd platform"
+    },
+    "created_at": "2023-07-03T12:25:05.819Z"
   }
 }
 ```
@@ -3201,7 +4483,7 @@ Success
     ],
     "page": {
       "type": "cursor",
-      "next_id": "",
+      "next_id": "null",
       "has_previous": false,
       "has_next": false
     }
@@ -3658,6 +4940,75 @@ Success
 ---
 
 
+### getDefaultSmsProviders
+Get default sms providers
+
+
+
+
+```kotlin
+platformClient.application("<APPLICATION_ID>").communication.getDefaultSmsProviders().safeAwait{ response, error->
+    response?.let{
+      // Use response
+    } ->
+    error?.let{
+      
+    } 
+}
+```
+
+
+
+
+
+
+Get default sms providers
+
+*Returned Response:*
+
+
+
+
+[ArrayList<DefaultSmsProviders>](#ArrayList<DefaultSmsProviders>)
+
+Successful retrieval of the default SMS providers list
+
+
+
+
+<details>
+<summary><i>&nbsp; Examples:</i></summary>
+
+
+<details>
+<summary><i>&nbsp; default</i></summary>
+
+```json
+{
+  "value": [
+    {
+      "_id": "63db8c68975237fff4f2133e",
+      "name": "Fynd timesinternet",
+      "is_default": true
+    }
+  ]
+}
+```
+</details>
+
+</details>
+
+
+
+
+
+
+
+
+
+---
+
+
 ### getSmsProviderById
 Get sms provider by id
 
@@ -3824,6 +5175,79 @@ Success
 ---
 
 
+### deleteSmsProviderById
+Delete sms provider by id
+
+
+
+
+```kotlin
+platformClient.application("<APPLICATION_ID>").communication.deleteSmsProviderById(id: id).safeAwait{ response, error->
+    response?.let{
+      // Use response
+    } ->
+    error?.let{
+      
+    } 
+}
+```
+
+
+
+
+
+| Argument  |  Type  | Required | Description |
+| --------- | -----  | -------- | ----------- | 
+| id | String | yes | Sms provider id |  
+
+
+
+Delete sms provider by id
+
+*Returned Response:*
+
+
+
+
+[GenericDelete](#GenericDelete)
+
+Refer `GenericDelete` schema for more details.
+
+
+
+
+<details>
+<summary><i>&nbsp; Examples:</i></summary>
+
+
+<details>
+<summary><i>&nbsp; default</i></summary>
+
+```json
+{
+  "value": {
+    "message": "Deletion Successfull",
+    "acknowledged": true,
+    "affected": 1,
+    "operation": "TEMP-ST-DEL:ID"
+  }
+}
+```
+</details>
+
+</details>
+
+
+
+
+
+
+
+
+
+---
+
+
 ### getSmsTemplates
 Get sms templates
 
@@ -3853,7 +5277,7 @@ platformClient.application("<APPLICATION_ID>").communication.getSmsTemplates(pag
 
 
 
-Get sms templates
+SMS templates are predefined message formats linked to various events for delivering messages to users. Use this API to get all sms templates.
 
 *Returned Response:*
 
@@ -3862,7 +5286,7 @@ Get sms templates
 
 [SmsTemplates](#SmsTemplates)
 
-Success
+Refer `SmsTemplates` schema for more details.
 
 
 
@@ -3879,32 +5303,46 @@ Success
   "value": {
     "items": [
       {
+        "url_shorten": {
+          "enabled": false
+        },
+        "_id": "649968feca21d7edd0595b35",
+        "application": "637b6355dc65337da9b5c951",
         "is_system": false,
-        "is_internal": true,
-        "description": "This is a test sms template",
-        "priority": "high",
-        "tags": [],
-        "published": true,
-        "_id": "5fd447728394dbf0d21329b3",
-        "slug": "test-sms",
-        "name": "Test sms",
+        "is_internal": false,
+        "meta": {
+          "type": "cloned",
+          "template": "61963d42ce3af81bde44a67d",
+          "is_system": true
+        },
+        "name": "TD sms templates",
+        "description": "description",
         "message": {
           "template_type": "nunjucks",
-          "template": "This is a test sms for order - {{ orderId }}"
+          "template": "This is a test message"
         },
+        "priority": "low",
+        "tags": [
+          "tag1",
+          "tag2"
+        ],
         "template_variables": {
-          "orderId": "12345"
+          "hello": "world"
         },
-        "created_at": "2020-12-12T04:30:42.456Z",
-        "updated_at": "2020-12-24T15:13:20.558Z",
+        "template_id": "1234567891234567890123",
+        "published": true,
+        "category": "website",
+        "created_at": "2023-06-26T10:31:26.212Z",
+        "updated_at": "2023-06-26T10:31:26.212Z",
+        "slug": "TD-sms-templates-KwtzEUcpn",
         "__v": 0
       }
     ],
     "page": {
       "type": "number",
       "current": 1,
-      "size": 1,
-      "item_total": 66,
+      "size": 10,
+      "item_total": 17,
       "has_next": true
     }
   }
@@ -3951,16 +5389,16 @@ platformClient.application("<APPLICATION_ID>").communication.createSmsTemplate(b
 | body | [SmsTemplateReq](#SmsTemplateReq) | yes | Request body |
 
 
-Create sms template
+SMS templates are predefined message formats linked to various events for delivering messages to users. Use this API to create an sms template.
 
 *Returned Response:*
 
 
 
 
-[SmsTemplateRes](#SmsTemplateRes)
+[SmsTemplate](#SmsTemplate)
 
-Success
+Refer `SmsTemplate` schema for more details.
 
 
 
@@ -3975,26 +5413,161 @@ Success
 ```json
 {
   "value": {
+    "url_shorten": {
+      "enabled": false
+    },
+    "_id": "649968feca21d7edd0595b35",
+    "application": "637b6355dc65337da9b5c951",
     "is_system": false,
-    "is_internal": true,
-    "description": "This is a test sms template",
-    "priority": "high",
-    "tags": [],
-    "published": true,
-    "_id": "5fd447728394dbf0d21329b3",
-    "slug": "test-sms",
-    "name": "Test sms",
+    "is_internal": false,
+    "meta": {
+      "type": "cloned",
+      "template": "61963d42ce3af81bde44a67d",
+      "is_system": true
+    },
+    "name": "TD sms templates",
+    "description": "description",
     "message": {
       "template_type": "nunjucks",
-      "template": "This is a test sms for order - {{ orderId }}"
+      "template": "This is a test message"
     },
+    "priority": "low",
+    "tags": [
+      "tag1",
+      "tag2"
+    ],
     "template_variables": {
-      "orderId": "12345"
+      "hello": "world"
     },
-    "created_at": "2020-12-12T04:30:42.456Z",
-    "updated_at": "2020-12-24T15:13:20.558Z",
+    "template_id": "1234567891234567890123",
+    "published": true,
+    "category": "website",
+    "created_at": "2023-06-26T10:31:26.212Z",
+    "updated_at": "2023-06-26T10:31:26.212Z",
+    "slug": "TD-sms-templates-KwtzEUcpn",
     "__v": 0
   }
+}
+```
+</details>
+
+</details>
+
+
+
+
+
+
+
+
+
+---
+
+
+### getSystemSmsTemplates
+Get system sms templates
+
+
+
+
+```kotlin
+platformClient.application("<APPLICATION_ID>").communication.getSystemSmsTemplates().safeAwait{ response, error->
+    response?.let{
+      // Use response
+    } ->
+    error?.let{
+      
+    } 
+}
+```
+
+
+
+
+
+
+SMS templates are predefined message formats linked to various events for delivering messages to users. Use this API to get all system sms templates.
+
+*Returned Response:*
+
+
+
+
+[ArrayList<SystemSmsTemplates>](#ArrayList<SystemSmsTemplates>)
+
+Refer `SystemSmsTemplates` schema for more details.
+
+
+
+
+<details>
+<summary><i>&nbsp; Examples:</i></summary>
+
+
+<details>
+<summary><i>&nbsp; default</i></summary>
+
+```json
+{
+  "value": [
+    {
+      "url_shorten": {
+        "enabled": false
+      },
+      "_id": "646b73e7e10612283cfd9773",
+      "is_system": true,
+      "is_internal": false,
+      "name": "Order Arrived at Store",
+      "description": "Use this SMS template, for notifying the customers, that their requested order has arrived at the store.",
+      "slug": "arrived_at_store-sms",
+      "message": {
+        "template_type": "nunjucks",
+        "template": "Delivered. Your shipment for {{ articles }} with {{ orderID }} has been delivered today at {{ delivered_at }}. You can collect it from store on or before {{ collection_date }}. Notification via Fynd"
+      },
+      "priority": "low",
+      "tags": [],
+      "template_variables": {
+        "email": "care@fynd.com",
+        "orderID": "Order ID FY5E53AFAA091115C235",
+        "brand": "SAPPER",
+        "name": "Alwira Sheikh",
+        "tracking_url": "http://go.fyndi.ng/track-order",
+        "articles": "Blue Solid Slim Fit Trackpants (28)",
+        "contact": 8767087087,
+        "ordering_channel": "ECOMM",
+        "delivered_at": "GT_Store, Vashi",
+        "collection_date": "Fri, Nov 15",
+        "credits": 0,
+        "slot": "By 9:00 PM",
+        "datetime": "Feb 28",
+        "cashback": 0,
+        "ref_application": {
+          "support_email": "care@fynd.com",
+          "app_information": {
+            "additional_data": {
+              "address_line": "Kurar village,Malad",
+              "city_pincode": "Mumbai - 400097",
+              "contactUs": "https://uniket-testing.addsale.link/contact-us",
+              "domain": "uniket-testing.addsale.link",
+              "privacyPolicy": "https://fynd.freshdesk.com/support/solutions/articles/33000214398-privacy-policy"
+            }
+          },
+          "domain": {
+            "name": "https://fynd.com"
+          },
+          "logo": {
+            "secure_url": "https://res.cloudinary.com/dwzm9bysq/image/upload/v1587981831/production/system/pointblank/fynd_logo_square_vunk4f.png"
+          }
+        }
+      },
+      "template_id": "1007569169965694807",
+      "published": true,
+      "category": "website",
+      "created_at": "2023-05-22T13:53:43.439Z",
+      "updated_at": "2023-05-22T13:53:43.439Z",
+      "__v": 0
+    }
+  ]
 }
 ```
 </details>
@@ -4039,7 +5612,7 @@ platformClient.application("<APPLICATION_ID>").communication.getSmsTemplateById(
 
 
 
-Get sms template by id
+SMS templates are predefined message formats linked to various events for delivering messages to users. Use this API to get an sms template by ID.
 
 *Returned Response:*
 
@@ -4048,7 +5621,7 @@ Get sms template by id
 
 [SmsTemplate](#SmsTemplate)
 
-Success
+Refer `SmsTemplate` schema for more details.
 
 
 
@@ -4063,24 +5636,38 @@ Success
 ```json
 {
   "value": {
+    "url_shorten": {
+      "enabled": false
+    },
+    "_id": "649968feca21d7edd0595b35",
+    "application": "637b6355dc65337da9b5c951",
     "is_system": false,
-    "is_internal": true,
-    "description": "This is a test sms template",
-    "priority": "high",
-    "tags": [],
-    "published": true,
-    "_id": "5fd447728394dbf0d21329b3",
-    "slug": "test-sms",
-    "name": "Test sms",
+    "is_internal": false,
+    "meta": {
+      "type": "cloned",
+      "template": "61963d42ce3af81bde44a67d",
+      "is_system": true
+    },
+    "name": "TD sms templates",
+    "description": "description",
     "message": {
       "template_type": "nunjucks",
-      "template": "This is a test sms for order - {{ orderId }}"
+      "template": "This is a test message"
     },
+    "priority": "low",
+    "tags": [
+      "tag1",
+      "tag2"
+    ],
     "template_variables": {
-      "orderId": "12345"
+      "hello": "world"
     },
-    "created_at": "2020-12-12T04:30:42.456Z",
-    "updated_at": "2020-12-24T15:13:20.558Z",
+    "template_id": "1234567891234567890123",
+    "published": true,
+    "category": "website",
+    "created_at": "2023-06-26T10:31:26.212Z",
+    "updated_at": "2023-06-26T10:31:26.212Z",
+    "slug": "TD-sms-templates-KwtzEUcpn",
     "__v": 0
   }
 }
@@ -4127,16 +5714,16 @@ platformClient.application("<APPLICATION_ID>").communication.updateSmsTemplateBy
 | body | [SmsTemplateReq](#SmsTemplateReq) | yes | Request body |
 
 
-Update sms template by id
+SMS templates are predefined message formats linked to various events for delivering messages to users. Use this API to update an sms template by ID.
 
 *Returned Response:*
 
 
 
 
-[SmsTemplateRes](#SmsTemplateRes)
+[SmsTemplate](#SmsTemplate)
 
-Success
+Refer `SmsTemplate` schema for more details.
 
 
 
@@ -4151,24 +5738,38 @@ Success
 ```json
 {
   "value": {
+    "url_shorten": {
+      "enabled": false
+    },
+    "_id": "649968feca21d7edd0595b35",
+    "application": "637b6355dc65337da9b5c951",
     "is_system": false,
-    "is_internal": true,
-    "description": "This is a test sms template",
-    "priority": "high",
-    "tags": [],
-    "published": true,
-    "_id": "5fd447728394dbf0d21329b3",
-    "slug": "test-sms",
-    "name": "Test sms",
+    "is_internal": false,
+    "meta": {
+      "type": "cloned",
+      "template": "61963d42ce3af81bde44a67d",
+      "is_system": true
+    },
+    "name": "TD sms templates",
+    "description": "description",
     "message": {
       "template_type": "nunjucks",
-      "template": "This is a test sms for order - {{ orderId }}"
+      "template": "This is a test message"
     },
+    "priority": "low",
+    "tags": [
+      "tag1",
+      "tag2"
+    ],
     "template_variables": {
-      "orderId": "12345"
+      "hello": "world"
     },
-    "created_at": "2020-12-12T04:30:42.456Z",
-    "updated_at": "2020-12-24T15:13:20.558Z",
+    "template_id": "1234567891234567890123",
+    "published": true,
+    "category": "website",
+    "created_at": "2023-06-26T10:31:26.212Z",
+    "updated_at": "2023-06-26T10:31:26.212Z",
+    "slug": "TD-sms-templates-KwtzEUcpn",
     "__v": 0
   }
 }
@@ -4215,16 +5816,16 @@ platformClient.application("<APPLICATION_ID>").communication.deleteSmsTemplateBy
 
 
 
-Delete sms template by id
+SMS templates are predefined message formats linked to various events for delivering messages to users. Use this API to delete an sms template by ID.
 
 *Returned Response:*
 
 
 
 
-[SmsTemplateDeleteSuccessRes](#SmsTemplateDeleteSuccessRes)
+[GenericDelete](#GenericDelete)
 
-Success
+Refer `GenericDelete` schema for more details.
 
 
 
@@ -4239,8 +5840,10 @@ Success
 ```json
 {
   "value": {
-    "success": true,
-    "message": "Deleted successfully"
+    "message": "Deletion Successfull",
+    "acknowledged": true,
+    "affected": 1,
+    "operation": "TEMP-ST-DEL:ID"
   }
 }
 ```
@@ -4259,14 +5862,14 @@ Success
 ---
 
 
-### getSystemSystemTemplates
-Get system sms templates
+### getSubscribedSmsTemplates
+Get subscribed sms templates
 
 
 
 
 ```kotlin
-platformClient.application("<APPLICATION_ID>").communication.getSystemSystemTemplates(pageNo: pageNo, pageSize: pageSize, sort: sort).safeAwait{ response, error->
+platformClient.application("<APPLICATION_ID>").communication.getSubscribedSmsTemplates(pageNo: pageNo, pageSize: pageSize).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -4283,21 +5886,20 @@ platformClient.application("<APPLICATION_ID>").communication.getSystemSystemTemp
 | Argument  |  Type  | Required | Description |
 | --------- | -----  | -------- | ----------- | 
 | pageNo | Int? | no | Current page no |   
-| pageSize | Int? | no | Current request items count |   
-| sort | HashMap<String,Any>? | no | To sort based on created_at |  
+| pageSize | Int? | no | Current request items count |  
 
 
 
-Get system sms templates
+SMS templates are predefined message formats linked to various events for delivering messages to users. Use this API to get all subscribed sms templates.
 
 *Returned Response:*
 
 
 
 
-[SystemSmsTemplates](#SystemSmsTemplates)
+[SmsTemplates](#SmsTemplates)
 
-Success
+Refer `SmsTemplates` schema for more details.
 
 
 
@@ -4314,32 +5916,46 @@ Success
   "value": {
     "items": [
       {
-        "is_system": true,
-        "is_internal": true,
-        "description": "This is a test sms template",
-        "priority": "high",
-        "tags": [],
-        "published": true,
-        "_id": "5fd447728394dbf0d21329b3",
-        "slug": "test-sms",
-        "name": "Test sms",
+        "url_shorten": {
+          "enabled": false
+        },
+        "_id": "649968feca21d7edd0595b35",
+        "application": "637b6355dc65337da9b5c951",
+        "is_system": false,
+        "is_internal": false,
+        "meta": {
+          "type": "cloned",
+          "template": "61963d42ce3af81bde44a67d",
+          "is_system": true
+        },
+        "name": "TD sms templates",
+        "description": "description",
         "message": {
           "template_type": "nunjucks",
-          "template": "This is a test sms for order - {{ orderId }}"
+          "template": "This is a test message"
         },
+        "priority": "low",
+        "tags": [
+          "tag1",
+          "tag2"
+        ],
         "template_variables": {
-          "orderId": "12345"
+          "hello": "world"
         },
-        "created_at": "2020-12-12T04:30:42.456Z",
-        "updated_at": "2020-12-24T15:13:20.558Z",
+        "template_id": "1234567891234567890123",
+        "published": true,
+        "category": "website",
+        "created_at": "2023-06-26T10:31:26.212Z",
+        "updated_at": "2023-06-26T10:31:26.212Z",
+        "slug": "TD-sms-templates-KwtzEUcpn",
         "__v": 0
       }
     ],
     "page": {
       "type": "number",
       "current": 1,
-      "size": 1,
-      "item_total": 66,
+      "size": 10,
+      "item_total": 17,
       "has_next": true
     }
   }
@@ -4362,6 +5978,98 @@ Success
 
 
 ### Schemas
+
+ 
+ 
+ #### [AppProvider](#AppProvider)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | email | [AppProviderRes](#AppProviderRes)? |  yes  |  |
+ | sms | [AppProviderRes](#AppProviderRes)? |  yes  |  |
+ | voice | [AppProviderResVoice](#AppProviderResVoice)? |  yes  |  |
+ | id | String? |  yes  |  |
+ | application | String? |  yes  |  |
+ | createdAt | String? |  yes  |  |
+ | updatedAt | String? |  yes  |  |
+ | v | Int? |  yes  |  |
+
+---
+
+
+ 
+ 
+ #### [AppProviderRes](#AppProviderRes)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | transaction | [AppProviderResObj](#AppProviderResObj)? |  yes  |  |
+ | promotional | [AppProviderResObj](#AppProviderResObj)? |  yes  |  |
+ | otp | [AppProviderResObj](#AppProviderResObj)? |  yes  |  |
+
+---
+
+
+ 
+ 
+ #### [AppProviderResVoice](#AppProviderResVoice)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | transaction | [AppProviderResObj](#AppProviderResObj)? |  yes  |  |
+ | otp | [AppProviderResObj](#AppProviderResObj)? |  yes  |  |
+
+---
+
+
+ 
+ 
+ #### [AppProviderResObj](#AppProviderResObj)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | provider | String? |  yes  |  |
+
+---
+
+
+ 
+ 
+ #### [GlobalProviders](#GlobalProviders)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | email | ArrayList<[GlobalProvidersResObj](#GlobalProvidersResObj)>? |  yes  |  |
+ | sms | ArrayList<[GlobalProvidersResObj](#GlobalProvidersResObj)>? |  yes  |  |
+ | voice | ArrayList<[GlobalProvidersResObj](#GlobalProvidersResObj)>? |  yes  |  |
+
+---
+
+
+ 
+ 
+ #### [GlobalProvidersResObj](#GlobalProvidersResObj)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | id | String? |  yes  |  |
+ | name | String? |  yes  |  |
+
+---
+
+
+ 
+ 
+ #### [AppProviderReq](#AppProviderReq)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | email | [AppProviderRes](#AppProviderRes)? |  yes  |  |
+ | sms | [AppProviderRes](#AppProviderRes)? |  yes  |  |
+ | voice | [AppProviderResVoice](#AppProviderResVoice)? |  yes  |  |
+
+---
+
 
  
  
@@ -4564,35 +6272,53 @@ Success
 
  
  
- #### [BigqueryHeadersReq](#BigqueryHeadersReq)
-
- | Properties | Type | Nullable | Description |
- | ---------- | ---- | -------- | ----------- |
- | query | String? |  yes  |  |
- | type | String? |  yes  |  |
-
----
-
-
- 
- 
- #### [BigqueryHeadersResHeaders](#BigqueryHeadersResHeaders)
+ #### [AudienceReq](#AudienceReq)
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
  | name | String? |  yes  |  |
+ | description | String? |  yes  |  |
+ | tags | ArrayList<String>? |  yes  |  |
+ | fileUrl | String? |  yes  |  |
  | type | String? |  yes  |  |
+ | recordsCount | Int? |  yes  |  |
+ | headers | ArrayList<String>? |  yes  |  |
 
 ---
 
 
  
  
- #### [BigqueryHeadersRes](#BigqueryHeadersRes)
+ #### [Audience](#Audience)
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | headers | ArrayList<[BigqueryHeadersResHeaders](#BigqueryHeadersResHeaders)>? |  yes  |  |
+ | id | String? |  yes  |  |
+ | application | String? |  yes  |  |
+ | name | String? |  yes  |  |
+ | description | String? |  yes  |  |
+ | recordsCount | Int? |  yes  |  |
+ | type | String? |  yes  |  |
+ | tags | ArrayList<String>? |  yes  |  |
+ | headers | ArrayList<String>? |  yes  |  |
+ | fileUrl | String? |  yes  |  |
+ | isActive | Boolean? |  yes  |  |
+ | createdAt | String? |  yes  |  |
+ | updatedAt | String? |  yes  |  |
+ | slug | String? |  yes  |  |
+ | v | Int? |  yes  |  |
+
+---
+
+
+ 
+ 
+ #### [Audiences](#Audiences)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | items | ArrayList<[Audience](#Audience)>? |  yes  |  |
+ | page | [Page](#Page)? |  yes  |  |
 
 ---
 
@@ -4638,55 +6364,35 @@ Success
 
  
  
- #### [AudienceReq](#AudienceReq)
+ #### [DummyDatasources](#DummyDatasources)
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | description | String? |  yes  |  |
- | tags | ArrayList<String>? |  yes  |  |
- | headers | ArrayList<String>? |  yes  |  |
- | isActive | Boolean? |  yes  |  |
+ | id | Int? |  yes  |  |
  | name | String? |  yes  |  |
- | fileUrl | String? |  yes  |  |
- | type | String? |  yes  |  |
- | recordsCount | Int? |  yes  |  |
- | application | String? |  yes  |  |
 
 ---
 
 
  
  
- #### [Audience](#Audience)
+ #### [DummyDatasourcesMeta](#DummyDatasourcesMeta)
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | description | String? |  yes  |  |
- | tags | ArrayList<String>? |  yes  |  |
- | headers | ArrayList<String>? |  yes  |  |
- | isActive | Boolean? |  yes  |  |
- | id | String? |  yes  |  |
- | name | String? |  yes  |  |
- | fileUrl | String? |  yes  |  |
- | type | String? |  yes  |  |
- | recordsCount | Int? |  yes  |  |
- | application | String? |  yes  |  |
- | createdAt | String? |  yes  |  |
- | updatedAt | String? |  yes  |  |
- | slug | String? |  yes  |  |
- | v | Int? |  yes  |  |
+ | id | Int? |  yes  |  |
+ | data | [DummyDatasourcesMetaObj](#DummyDatasourcesMetaObj)? |  yes  |  |
 
 ---
 
 
  
  
- #### [Audiences](#Audiences)
+ #### [DummyDatasourcesMetaObj](#DummyDatasourcesMetaObj)
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | items | ArrayList<[Audience](#Audience)>? |  yes  |  |
- | page | [Page](#Page)? |  yes  |  |
+ | b | Int? |  yes  |  |
 
 ---
 
@@ -4756,30 +6462,6 @@ Success
 
  
  
- #### [EmailTemplateDeleteSuccessRes](#EmailTemplateDeleteSuccessRes)
-
- | Properties | Type | Nullable | Description |
- | ---------- | ---- | -------- | ----------- |
- | success | Boolean? |  yes  |  |
- | message | String? |  yes  |  |
-
----
-
-
- 
- 
- #### [EmailTemplateDeleteFailureRes](#EmailTemplateDeleteFailureRes)
-
- | Properties | Type | Nullable | Description |
- | ---------- | ---- | -------- | ----------- |
- | success | Boolean? |  yes  |  |
- | message | String? |  yes  |  |
-
----
-
-
- 
- 
  #### [EmailTemplateKeys](#EmailTemplateKeys)
 
  | Properties | Type | Nullable | Description |
@@ -4809,19 +6491,25 @@ Success
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | name | String? |  yes  |  |
+ | name | String |  no  |  |
  | description | String? |  yes  |  |
- | keys | [EmailTemplateKeys](#EmailTemplateKeys)? |  yes  |  |
+ | fromName | String? |  yes  |  |
  | staticTo | ArrayList<String>? |  yes  |  |
  | staticCc | ArrayList<String>? |  yes  |  |
  | staticBcc | ArrayList<String>? |  yes  |  |
  | replyTo | String? |  yes  |  |
- | headers | ArrayList<[EmailTemplateHeaders](#EmailTemplateHeaders)>? |  yes  |  |
+ | priority | String? |  yes  |  |
+ | tags | ArrayList<String>? |  yes  |  |
+ | templateVariables | HashMap<String,Any>? |  yes  |  |
+ | published | Boolean? |  yes  |  |
  | subject | [TemplateAndType](#TemplateAndType)? |  yes  |  |
  | html | [TemplateAndType](#TemplateAndType)? |  yes  |  |
+ | editorType | String? |  yes  |  |
+ | editorMeta | String? |  yes  |  |
+ | attachments | ArrayList<Int>? |  yes  |  |
+ | headers | ArrayList<[EmailTemplateHeaders](#EmailTemplateHeaders)>? |  yes  |  |
+ | keys | [EmailTemplateKeys](#EmailTemplateKeys)? |  yes  |  |
  | text | [TemplateAndType](#TemplateAndType)? |  yes  |  |
- | attachments | ArrayList<Any>? |  yes  |  |
- | priority | String? |  yes  |  |
 
 ---
 
@@ -4840,63 +6528,38 @@ Success
 
  
  
- #### [EmailTemplateRes](#EmailTemplateRes)
-
- | Properties | Type | Nullable | Description |
- | ---------- | ---- | -------- | ----------- |
- | isSystem | Boolean? |  yes  |  |
- | isInternal | Boolean? |  yes  |  |
- | description | String? |  yes  |  |
- | staticTo | ArrayList<String>? |  yes  |  |
- | staticCc | ArrayList<String>? |  yes  |  |
- | staticBcc | ArrayList<String>? |  yes  |  |
- | tags | ArrayList<Any>? |  yes  |  |
- | priority | String? |  yes  |  |
- | published | Boolean? |  yes  |  |
- | id | String? |  yes  |  |
- | name | String? |  yes  |  |
- | keys | [EmailTemplateKeys](#EmailTemplateKeys)? |  yes  |  |
- | replyTo | String? |  yes  |  |
- | headers | ArrayList<[EmailTemplateHeaders](#EmailTemplateHeaders)>? |  yes  |  |
- | subject | [TemplateAndType](#TemplateAndType)? |  yes  |  |
- | html | [TemplateAndType](#TemplateAndType)? |  yes  |  |
- | text | [TemplateAndType](#TemplateAndType)? |  yes  |  |
- | attachments | ArrayList<Any>? |  yes  |  |
- | createdAt | String? |  yes  |  |
- | updatedAt | String? |  yes  |  |
- | slug | String? |  yes  |  |
- | v | Int? |  yes  |  |
-
----
-
-
- 
- 
  #### [EmailTemplate](#EmailTemplate)
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
+ | application | String? |  yes  |  |
  | isSystem | Boolean? |  yes  |  |
  | isInternal | Boolean? |  yes  |  |
- | description | String? |  yes  |  |
- | staticTo | ArrayList<Any>? |  yes  |  |
- | staticCc | ArrayList<Any>? |  yes  |  |
- | staticBcc | ArrayList<Any>? |  yes  |  |
- | tags | ArrayList<Any>? |  yes  |  |
- | priority | String? |  yes  |  |
- | published | Boolean? |  yes  |  |
- | id | String? |  yes  |  |
- | slug | String? |  yes  |  |
  | name | String? |  yes  |  |
- | fromName | String? |  yes  |  |
+ | description | String? |  yes  |  |
+ | editorType | String? |  yes  |  |
+ | editorMeta | String? |  yes  |  |
+ | staticTo | ArrayList<String>? |  yes  |  |
+ | staticCc | ArrayList<String>? |  yes  |  |
+ | staticBcc | ArrayList<String>? |  yes  |  |
+ | replyTo | String? |  yes  |  |
+ | tags | ArrayList<String>? |  yes  |  |
  | subject | [TemplateAndType](#TemplateAndType)? |  yes  |  |
  | html | [TemplateAndType](#TemplateAndType)? |  yes  |  |
- | text | [TemplateAndType](#TemplateAndType)? |  yes  |  |
- | headers | ArrayList<Any>? |  yes  |  |
- | attachments | ArrayList<Any>? |  yes  |  |
+ | urlShorten | [EnabledObj](#EnabledObj)? |  yes  |  |
+ | priority | String? |  yes  |  |
+ | templateVariables | HashMap<String,Any>? |  yes  |  |
+ | published | Boolean? |  yes  |  |
+ | category | String? |  yes  |  |
+ | id | String? |  yes  |  |
+ | headers | ArrayList<[EmailTemplateHeaders](#EmailTemplateHeaders)>? |  yes  |  |
+ | attachments | ArrayList<Int>? |  yes  |  |
  | createdAt | String? |  yes  |  |
  | updatedAt | String? |  yes  |  |
+ | slug | String? |  yes  |  |
  | v | Int? |  yes  |  |
+ | fromName | String? |  yes  |  |
+ | text | [TemplateAndType](#TemplateAndType)? |  yes  |  |
 
 ---
 
@@ -4909,25 +6572,27 @@ Success
  | ---------- | ---- | -------- | ----------- |
  | isSystem | Boolean? |  yes  |  |
  | isInternal | Boolean? |  yes  |  |
- | description | String? |  yes  |  |
- | staticTo | ArrayList<Any>? |  yes  |  |
- | staticCc | ArrayList<Any>? |  yes  |  |
- | staticBcc | ArrayList<Any>? |  yes  |  |
- | tags | ArrayList<Any>? |  yes  |  |
- | priority | String? |  yes  |  |
- | published | Boolean? |  yes  |  |
- | id | String? |  yes  |  |
- | slug | String? |  yes  |  |
  | name | String? |  yes  |  |
- | fromName | String? |  yes  |  |
+ | description | String? |  yes  |  |
+ | staticTo | ArrayList<String>? |  yes  |  |
+ | staticCc | ArrayList<String>? |  yes  |  |
+ | staticBcc | ArrayList<String>? |  yes  |  |
+ | tags | ArrayList<String>? |  yes  |  |
  | subject | [TemplateAndType](#TemplateAndType)? |  yes  |  |
  | html | [TemplateAndType](#TemplateAndType)? |  yes  |  |
- | text | [TemplateAndType](#TemplateAndType)? |  yes  |  |
- | headers | ArrayList<Any>? |  yes  |  |
- | attachments | ArrayList<Any>? |  yes  |  |
+ | urlShorten | [EnabledObj](#EnabledObj)? |  yes  |  |
+ | priority | String? |  yes  |  |
+ | templateVariables | HashMap<String,Any>? |  yes  |  |
+ | published | Boolean? |  yes  |  |
+ | category | String? |  yes  |  |
+ | id | String? |  yes  |  |
+ | headers | ArrayList<[EmailTemplateHeaders](#EmailTemplateHeaders)>? |  yes  |  |
+ | attachments | ArrayList<Int>? |  yes  |  |
  | createdAt | String? |  yes  |  |
  | updatedAt | String? |  yes  |  |
+ | slug | String? |  yes  |  |
  | v | Int? |  yes  |  |
+ | text | [TemplateAndType](#TemplateAndType)? |  yes  |  |
 
 ---
 
@@ -4951,7 +6616,6 @@ Success
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
  | items | ArrayList<[SystemEmailTemplate](#SystemEmailTemplate)>? |  yes  |  |
- | page | [Page](#Page)? |  yes  |  |
 
 ---
 
@@ -5146,6 +6810,66 @@ Success
 
  
  
+ #### [TriggerJobResponse](#TriggerJobResponse)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | status | Int? |  yes  |  |
+
+---
+
+
+ 
+ 
+ #### [TriggerJobRequest](#TriggerJobRequest)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | jobId | String? |  yes  |  |
+
+---
+
+
+ 
+ 
+ #### [GlobalVariablesGetResponse](#GlobalVariablesGetResponse)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | readOnly | HashMap<String,Any>? |  yes  |  |
+ | editable | HashMap<String,Any>? |  yes  |  |
+
+---
+
+
+ 
+ 
+ #### [GlobalVariablesPostResponse](#GlobalVariablesPostResponse)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | id | String? |  yes  |  |
+ | category | String? |  yes  |  |
+ | application | String? |  yes  |  |
+ | globalVariables | HashMap<String,Any>? |  yes  |  |
+ | createdAt | String? |  yes  |  |
+
+---
+
+
+ 
+ 
+ #### [GlobalVariablesReq](#GlobalVariablesReq)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | globalVariables | HashMap<String,Any>? |  yes  |  |
+
+---
+
+
+ 
+ 
  #### [Job](#Job)
 
  | Properties | Type | Nullable | Description |
@@ -5206,28 +6930,6 @@ Success
 
  
  
- #### [TriggerJobResponse](#TriggerJobResponse)
-
- | Properties | Type | Nullable | Description |
- | ---------- | ---- | -------- | ----------- |
- | status | Int? |  yes  |  |
-
----
-
-
- 
- 
- #### [TriggerJobRequest](#TriggerJobRequest)
-
- | Properties | Type | Nullable | Description |
- | ---------- | ---- | -------- | ----------- |
- | jobId | String? |  yes  |  |
-
----
-
-
- 
- 
  #### [LogEmail](#LogEmail)
 
  | Properties | Type | Nullable | Description |
@@ -5277,8 +6979,6 @@ Success
  | application | String? |  yes  |  |
  | service | String? |  yes  |  |
  | step | String? |  yes  |  |
- | source | String? |  yes  |  |
- | channelType | String? |  yes  |  |
  | status | String? |  yes  |  |
  | data | Any? |  yes  |  |
  | expireAt | String? |  yes  |  |
@@ -5337,18 +7037,6 @@ Success
 
  
  
- #### [SendOtpEmailCommsProvider](#SendOtpEmailCommsProvider)
-
- | Properties | Type | Nullable | Description |
- | ---------- | ---- | -------- | ----------- |
- | slug | String? |  yes  |  |
- | id | String? |  yes  |  |
-
----
-
-
- 
- 
  #### [SendOtpCommsReqData](#SendOtpCommsReqData)
 
  | Properties | Type | Nullable | Description |
@@ -5384,7 +7072,6 @@ Success
  | otpLength | Int? |  yes  |  |
  | expiry | Int? |  yes  |  |
  | template | [SendOtpEmailCommsTemplate](#SendOtpEmailCommsTemplate)? |  yes  |  |
- | provider | [SendOtpEmailCommsProvider](#SendOtpEmailCommsProvider)? |  yes  |  |
 
 ---
 
@@ -5538,24 +7225,13 @@ Success
 
  
  
- #### [SmsTemplateDeleteSuccessRes](#SmsTemplateDeleteSuccessRes)
+ #### [DefaultSmsProviders](#DefaultSmsProviders)
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | success | Boolean? |  yes  |  |
- | message | String? |  yes  |  |
-
----
-
-
- 
- 
- #### [SmsTemplateDeleteFailureRes](#SmsTemplateDeleteFailureRes)
-
- | Properties | Type | Nullable | Description |
- | ---------- | ---- | -------- | ----------- |
- | success | Boolean? |  yes  |  |
- | message | String? |  yes  |  |
+ | id | String? |  yes  |  |
+ | name | String? |  yes  |  |
+ | isDefault | Boolean? |  yes  |  |
 
 ---
 
@@ -5574,94 +7250,6 @@ Success
 
  
  
- #### [SmsTemplateReq](#SmsTemplateReq)
-
- | Properties | Type | Nullable | Description |
- | ---------- | ---- | -------- | ----------- |
- | name | String? |  yes  |  |
- | description | String? |  yes  |  |
- | message | [SmsTemplateMessage](#SmsTemplateMessage)? |  yes  |  |
- | templateVariables | Any? |  yes  |  |
- | attachments | ArrayList<Any>? |  yes  |  |
- | priority | String? |  yes  |  |
-
----
-
-
- 
- 
- #### [SmsTemplateRes](#SmsTemplateRes)
-
- | Properties | Type | Nullable | Description |
- | ---------- | ---- | -------- | ----------- |
- | isSystem | Boolean? |  yes  |  |
- | isInternal | Boolean? |  yes  |  |
- | description | String? |  yes  |  |
- | tags | ArrayList<Any>? |  yes  |  |
- | priority | String? |  yes  |  |
- | published | Boolean? |  yes  |  |
- | id | String? |  yes  |  |
- | name | String? |  yes  |  |
- | message | [SmsTemplateMessage](#SmsTemplateMessage)? |  yes  |  |
- | templateVariables | Any? |  yes  |  |
- | createdAt | String? |  yes  |  |
- | updatedAt | String? |  yes  |  |
- | slug | String? |  yes  |  |
- | v | Int? |  yes  |  |
-
----
-
-
- 
- 
- #### [SmsTemplate](#SmsTemplate)
-
- | Properties | Type | Nullable | Description |
- | ---------- | ---- | -------- | ----------- |
- | isSystem | Boolean? |  yes  |  |
- | isInternal | Boolean? |  yes  |  |
- | description | String? |  yes  |  |
- | priority | String? |  yes  |  |
- | tags | ArrayList<Any>? |  yes  |  |
- | published | Boolean? |  yes  |  |
- | id | String? |  yes  |  |
- | slug | String? |  yes  |  |
- | name | String? |  yes  |  |
- | message | [SmsTemplateMessage](#SmsTemplateMessage)? |  yes  |  |
- | templateVariables | Any? |  yes  |  |
- | createdAt | String? |  yes  |  |
- | updatedAt | String? |  yes  |  |
- | v | Int? |  yes  |  |
-
----
-
-
- 
- 
- #### [SystemSmsTemplate](#SystemSmsTemplate)
-
- | Properties | Type | Nullable | Description |
- | ---------- | ---- | -------- | ----------- |
- | isSystem | Boolean? |  yes  |  |
- | isInternal | Boolean? |  yes  |  |
- | description | String? |  yes  |  |
- | tags | ArrayList<Any>? |  yes  |  |
- | priority | String? |  yes  |  |
- | published | Boolean? |  yes  |  |
- | id | String? |  yes  |  |
- | slug | String? |  yes  |  |
- | name | String? |  yes  |  |
- | message | [SmsTemplateMessage](#SmsTemplateMessage)? |  yes  |  |
- | templateVariables | Any? |  yes  |  |
- | createdAt | String? |  yes  |  |
- | updatedAt | String? |  yes  |  |
- | v | Int? |  yes  |  |
-
----
-
-
- 
- 
  #### [SmsTemplates](#SmsTemplates)
 
  | Properties | Type | Nullable | Description |
@@ -5674,12 +7262,87 @@ Success
 
  
  
+ #### [SmsTemplate](#SmsTemplate)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | urlShorten | [EnabledObj](#EnabledObj)? |  yes  |  |
+ | id | String? |  yes  |  |
+ | application | String? |  yes  |  |
+ | isSystem | Boolean? |  yes  |  |
+ | isInternal | Boolean? |  yes  |  |
+ | meta | [metaObj](#metaObj)? |  yes  |  |
+ | name | String? |  yes  |  |
+ | description | String? |  yes  |  |
+ | message | [SmsTemplateMessage](#SmsTemplateMessage)? |  yes  |  |
+ | priority | String? |  yes  |  |
+ | tags | ArrayList<String>? |  yes  |  |
+ | templateVariables | HashMap<String,Any>? |  yes  |  |
+ | templateId | String? |  yes  |  |
+ | published | Boolean? |  yes  |  |
+ | category | String? |  yes  |  |
+ | createdAt | String? |  yes  |  |
+ | updatedAt | String? |  yes  |  |
+ | slug | String? |  yes  |  |
+ | v | Int? |  yes  |  |
+
+---
+
+
+ 
+ 
  #### [SystemSmsTemplates](#SystemSmsTemplates)
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | items | ArrayList<[SystemSmsTemplate](#SystemSmsTemplate)>? |  yes  |  |
- | page | [Page](#Page)? |  yes  |  |
+ | urlShorten | [EnabledObj](#EnabledObj)? |  yes  |  |
+ | id | String? |  yes  |  |
+ | isSystem | Boolean? |  yes  |  |
+ | isInternal | Boolean? |  yes  |  |
+ | name | String? |  yes  |  |
+ | description | String? |  yes  |  |
+ | message | [SmsTemplateMessage](#SmsTemplateMessage)? |  yes  |  |
+ | priority | String? |  yes  |  |
+ | tags | ArrayList<String>? |  yes  |  |
+ | templateVariables | HashMap<String,Any>? |  yes  |  |
+ | templateId | String? |  yes  |  |
+ | published | Boolean? |  yes  |  |
+ | category | String? |  yes  |  |
+ | createdAt | String? |  yes  |  |
+ | updatedAt | String? |  yes  |  |
+ | slug | String? |  yes  |  |
+ | v | Int? |  yes  |  |
+
+---
+
+
+ 
+ 
+ #### [metaObj](#metaObj)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | type | String? |  yes  |  |
+ | isSystem | Boolean? |  yes  |  |
+ | template | String? |  yes  |  |
+
+---
+
+
+ 
+ 
+ #### [SmsTemplateReq](#SmsTemplateReq)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | name | String |  no  |  |
+ | description | String? |  yes  |  |
+ | priority | String? |  yes  |  |
+ | templateId | String? |  yes  |  |
+ | meta | [metaObj](#metaObj)? |  yes  |  |
+ | templateVariables | HashMap<String,Any>? |  yes  |  |
+ | published | Boolean? |  yes  |  |
+ | message | [SmsTemplateMessage](#SmsTemplateMessage)? |  yes  |  |
 
 ---
 
@@ -5754,6 +7417,57 @@ Success
  | itemTotal | Int? |  yes  |  |
  | nextId | String? |  yes  |  |
  | hasPrevious | Boolean? |  yes  |  |
+
+---
+
+
+ 
+ 
+ #### [GenericError](#GenericError)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | message | [Message](#Message)? |  yes  |  |
+ | sentry | String? |  yes  |  |
+
+---
+
+
+ 
+ 
+ #### [GenericDelete](#GenericDelete)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | message | String? |  yes  |  |
+ | acknowledged | Boolean? |  yes  |  |
+ | affected | Int? |  yes  |  |
+ | operation | String? |  yes  |  |
+
+---
+
+
+ 
+ 
+ #### [Message](#Message)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | message | String? |  yes  |  |
+ | success | Boolean? |  yes  |  |
+ | info | String? |  yes  |  |
+ | operation | String? |  yes  |  |
+
+---
+
+
+ 
+ 
+ #### [EnabledObj](#EnabledObj)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | enabled | Boolean? |  yes  |  |
 
 ---
 

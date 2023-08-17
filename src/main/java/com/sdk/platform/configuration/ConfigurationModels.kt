@@ -526,7 +526,7 @@ data class DeliveryCharges(
     var enabled: Boolean?=null,
     
     @SerializedName("charges")
-    var charges: Charges?=null
+    var charges: ArrayList<Charges>?=null
     
 ): Parcelable {
     

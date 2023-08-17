@@ -420,7 +420,7 @@ Success
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | items | [LocationCountry](#LocationCountry)? |  yes  |  |
+ | items | ArrayList<[LocationCountry](#LocationCountry)>? |  yes  | Object Containing Country Locations Details |
 
 ---
 

@@ -96,6 +96,10 @@ interface ConfigurationApiList {
     suspend fun updateOrderingStoreConfig(@Path("company_id") companyId: String, @Path("application_id") applicationId: String,@Body body: OrderingStoreConfig)
     : Response<DeploymentMeta>
     
+    @GET ("/service/platform/configuration/v1.0/company/{company_id}/application/{application_id}/ordering-store")
+    suspend fun getOrderingStoreConfig(@Path("company_id") companyId: String, @Path("application_id") applicationId: String)
+    : Response<OrderingStoreConfig>
+    
     @GET ("/service/platform/configuration/v1.0/company/{company_id}/application/{application_id}/ordering-store/staff-stores")
     suspend fun getStaffOrderingStores(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Query("page_no") pageNo: Int?, @Query("page_size") pageSize: Int?, @Query("q") q: String?)
     : Response<OrderingStoresResponse>

@@ -6,27 +6,27 @@
 
 ## Lead Methods
 Handles communication between Administrator
-* [getTickets](#gettickets)
+* [getPlatformTickets](#getplatformtickets)
 * [createTicket](#createticket)
-* [getNewTickets](#getnewtickets)
+* [getTickets](#gettickets)
+* [getPlatformTicket](#getplatformticket)
+* [editPlatformTicket](#editplatformticket)
 * [getTicket](#getticket)
 * [editTicket](#editticket)
-* [getNewTicket](#getnewticket)
-* [editNewTicket](#editnewticket)
-* [createHistory](#createhistory)
-* [getTicketHistory](#gettickethistory)
+* [createPlatformTicketHistory](#createplatformtickethistory)
+* [getPlatformTicketHistory](#getplatformtickethistory)
 * [getFeedbacks](#getfeedbacks)
 * [submitFeedback](#submitfeedback)
-* [createNewHistory](#createnewhistory)
-* [getNewTicketHistory](#getnewtickethistory)
+* [createHistory](#createhistory)
+* [getTicketHistory](#gettickethistory)
 * [getCustomForm](#getcustomform)
 * [editCustomForm](#editcustomform)
 * [getCustomForms](#getcustomforms)
 * [createCustomForm](#createcustomform)
+* [getTokenForPlatformVideoRoom](#gettokenforplatformvideoroom)
 * [getTokenForVideoRoom](#gettokenforvideoroom)
-* [getNewTokenForVideoRoom](#getnewtokenforvideoroom)
+* [getPlatformVideoParticipants](#getplatformvideoparticipants)
 * [getVideoParticipants](#getvideoparticipants)
-* [getNewVideoParticipants](#getnewvideoparticipants)
 * [openVideoRoom](#openvideoroom)
 * [closeVideoRoom](#closevideoroom)
 * [getGeneralConfig](#getgeneralconfig)
@@ -36,14 +36,14 @@ Handles communication between Administrator
 ## Methods with example and description
 
 
-### getTickets
+### getPlatformTickets
 Gets the list of company level tickets and/or ticket filters depending on query params
 
 
 
 
 ```kotlin
-platformClient.lead.getTickets(items: items, filters: filters, q: q, status: status, priority: priority, category: category, pageNo: pageNo, pageSize: pageSize).safeAwait{ response, error->
+platformClient.lead.getPlatformTickets(items: items, filters: filters, q: q, status: status, priority: priority, category: category, pageNo: pageNo, pageSize: pageSize).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -734,14 +734,14 @@ Success
 ---
 
 
-### getNewTickets
+### getTickets
 Gets the list of Application level Tickets and/or ticket filters depending on query params
 
 
 
 
 ```kotlin
-platformClient.application("<APPLICATION_ID>").lead.getNewTickets(items: items, filters: filters, q: q, status: status, priority: priority, category: category).safeAwait{ response, error->
+platformClient.application("<APPLICATION_ID>").lead.getTickets(items: items, filters: filters, q: q, status: status, priority: priority, category: category).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -1173,14 +1173,14 @@ Success
 ---
 
 
-### getTicket
+### getPlatformTicket
 Retreives ticket details of a company level ticket with ticket ID
 
 
 
 
 ```kotlin
-platformClient.lead.getTicket(id: id).safeAwait{ response, error->
+platformClient.lead.getPlatformTicket(id: id).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -1431,14 +1431,14 @@ Success
 ---
 
 
-### editTicket
+### editPlatformTicket
 Edits ticket details of a company level ticket
 
 
 
 
 ```kotlin
-platformClient.lead.editTicket(id: id, body: body).safeAwait{ response, error->
+platformClient.lead.editPlatformTicket(id: id, body: body).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -1689,14 +1689,14 @@ Success
 ---
 
 
-### getNewTicket
+### getTicket
 Retreives ticket details of a application level ticket
 
 
 
 
 ```kotlin
-platformClient.application("<APPLICATION_ID>").lead.getNewTicket(id: id).safeAwait{ response, error->
+platformClient.application("<APPLICATION_ID>").lead.getTicket(id: id).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -1948,14 +1948,14 @@ Success
 ---
 
 
-### editNewTicket
+### editTicket
 Edits ticket details of a application level ticket
 
 
 
 
 ```kotlin
-platformClient.application("<APPLICATION_ID>").lead.editNewTicket(id: id, body: body).safeAwait{ response, error->
+platformClient.application("<APPLICATION_ID>").lead.editTicket(id: id, body: body).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -2207,14 +2207,14 @@ Success
 ---
 
 
-### createHistory
+### createPlatformTicketHistory
 Create history for specific company level ticket
 
 
 
 
 ```kotlin
-platformClient.lead.createHistory(id: id, body: body).safeAwait{ response, error->
+platformClient.lead.createPlatformTicketHistory(id: id, body: body).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -2311,14 +2311,14 @@ Success
 ---
 
 
-### getTicketHistory
+### getPlatformTicketHistory
 Gets history list for specific company level ticket
 
 
 
 
 ```kotlin
-platformClient.lead.getTicketHistory(id: id).safeAwait{ response, error->
+platformClient.lead.getPlatformTicketHistory(id: id).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -2703,14 +2703,14 @@ Success
 ---
 
 
-### createNewHistory
+### createHistory
 Create history for specific application level ticket
 
 
 
 
 ```kotlin
-platformClient.application("<APPLICATION_ID>").lead.createNewHistory(id: id, body: body).safeAwait{ response, error->
+platformClient.application("<APPLICATION_ID>").lead.createHistory(id: id, body: body).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -2807,14 +2807,14 @@ Success
 ---
 
 
-### getNewTicketHistory
+### getTicketHistory
 Gets history list for specific application level ticket
 
 
 
 
 ```kotlin
-platformClient.application("<APPLICATION_ID>").lead.getNewTicketHistory(id: id).safeAwait{ response, error->
+platformClient.application("<APPLICATION_ID>").lead.getTicketHistory(id: id).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -3577,6 +3577,76 @@ Success
 ---
 
 
+### getTokenForPlatformVideoRoom
+Get Token to join a specific Video Room using it's unqiue name
+
+
+
+
+```kotlin
+platformClient.lead.getTokenForPlatformVideoRoom(uniqueName: uniqueName).safeAwait{ response, error->
+    response?.let{
+      // Use response
+    } ->
+    error?.let{
+      
+    } 
+}
+```
+
+
+
+
+
+| Argument  |  Type  | Required | Description |
+| --------- | -----  | -------- | ----------- | 
+| uniqueName | String | yes | Unique name of video room |  
+
+
+
+Get Token to join a specific Video Room using it's unqiue name, this Token is your ticket to Room and also creates your identity there.
+
+*Returned Response:*
+
+
+
+
+[GetTokenForVideoRoomResponse](#GetTokenForVideoRoomResponse)
+
+Success
+
+
+
+
+<details>
+<summary><i>&nbsp; Examples:</i></summary>
+
+
+<details>
+<summary><i>&nbsp; Default</i></summary>
+
+```json
+{
+  "value": {
+    "access_token": "your_token_to_the_room"
+  }
+}
+```
+</details>
+
+</details>
+
+
+
+
+
+
+
+
+
+---
+
+
 ### getTokenForVideoRoom
 Get Token to join a specific Video Room using it's unqiue name
 
@@ -3584,7 +3654,7 @@ Get Token to join a specific Video Room using it's unqiue name
 
 
 ```kotlin
-platformClient.lead.getTokenForVideoRoom(uniqueName: uniqueName).safeAwait{ response, error->
+platformClient.application("<APPLICATION_ID>").lead.getTokenForVideoRoom(uniqueName: uniqueName).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -3647,84 +3717,14 @@ Success
 ---
 
 
-### getNewTokenForVideoRoom
-Get Token to join a specific Video Room using it's unqiue name
-
-
-
-
-```kotlin
-platformClient.application("<APPLICATION_ID>").lead.getNewTokenForVideoRoom(uniqueName: uniqueName).safeAwait{ response, error->
-    response?.let{
-      // Use response
-    } ->
-    error?.let{
-      
-    } 
-}
-```
-
-
-
-
-
-| Argument  |  Type  | Required | Description |
-| --------- | -----  | -------- | ----------- | 
-| uniqueName | String | yes | Unique name of video room |  
-
-
-
-Get Token to join a specific Video Room using it's unqiue name, this Token is your ticket to Room and also creates your identity there.
-
-*Returned Response:*
-
-
-
-
-[GetTokenForVideoRoomResponse](#GetTokenForVideoRoomResponse)
-
-Success
-
-
-
-
-<details>
-<summary><i>&nbsp; Examples:</i></summary>
-
-
-<details>
-<summary><i>&nbsp; Default</i></summary>
-
-```json
-{
-  "value": {
-    "access_token": "your_token_to_the_room"
-  }
-}
-```
-</details>
-
-</details>
-
-
-
-
-
-
-
-
-
----
-
-
-### getVideoParticipants
+### getPlatformVideoParticipants
 Get participants of a specific Video Room using it's unique name
 
 
 
 
 ```kotlin
-platformClient.lead.getVideoParticipants(uniqueName: uniqueName).safeAwait{ response, error->
+platformClient.lead.getPlatformVideoParticipants(uniqueName: uniqueName).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -3787,14 +3787,14 @@ Success
 ---
 
 
-### getNewVideoParticipants
+### getVideoParticipants
 Get participants of a specific Video Room using it's unique name
 
 
 
 
 ```kotlin
-platformClient.application("<APPLICATION_ID>").lead.getNewVideoParticipants(uniqueName: uniqueName).safeAwait{ response, error->
+platformClient.application("<APPLICATION_ID>").lead.getVideoParticipants(uniqueName: uniqueName).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->

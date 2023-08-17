@@ -630,7 +630,7 @@ data class Locations(
     
     
     @SerializedName("items")
-    var items: LocationCountry?=null
+    var items: ArrayList<LocationCountry>?=null
     
 ): Parcelable {
     
