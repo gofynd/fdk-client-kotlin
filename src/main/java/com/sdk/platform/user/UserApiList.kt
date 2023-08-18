@@ -13,7 +13,7 @@ interface UserApiList {
     : Response<CustomerListResponseSchema>
     
     @GET ("/service/platform/user/v1.0/company/{company_id}/application/{application_id}/customers/search")
-    suspend fun searchUsers(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Query("q") q: String?, @Query("query") query: ArrayList<Any>?)
+    suspend fun searchUsers(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Query("q") q: String?, @Query("query") query: ArrayList<String>?)
     : Response<UserSearchResponseSchema>
     
     @POST ("/service/platform/user/v1.0/company/{company_id}/application/{application_id}/customers")
