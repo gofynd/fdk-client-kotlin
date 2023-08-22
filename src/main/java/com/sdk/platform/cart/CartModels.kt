@@ -7476,12 +7476,42 @@ data class Files(
 
              
 /*
+    Model: CartCheckoutCustomMeta
+*/
+@Parcelize
+data class CartCheckoutCustomMeta(
+    
+    
+    
+    @SerializedName("key")
+    var key: String?=null,
+    
+    @SerializedName("value")
+    var value: String?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
     Model: PlatformCartCheckoutDetailRequest
 */
 @Parcelize
 data class PlatformCartCheckoutDetailRequest(
     
     
+    
+    @SerializedName("custom_meta")
+    var customMeta: ArrayList<CartCheckoutCustomMeta>?=null,
     
     @SerializedName("address_id")
     var addressId: String?=null,
@@ -7559,6 +7589,8 @@ data class PlatformCartCheckoutDetailRequest(
     var orderingStore: Int?=null
     
 ): Parcelable {
+    
+    
     
     
     

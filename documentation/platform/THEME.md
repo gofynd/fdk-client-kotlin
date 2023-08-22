@@ -15341,7 +15341,7 @@ platformClient.application("<APPLICATION_ID>").theme.addThemeToApplication(body:
 
 | Argument  |  Type  | Required | Description |
 | --------- | -----  | -------- | ----------- |
-| body | [CompanyThemeSchema](#CompanyThemeSchema) | yes | Request body |
+| body | [ThemeReq](#ThemeReq) | yes | Request body |
 
 
 Add a theme to an application by providing the marketplace theme ID.

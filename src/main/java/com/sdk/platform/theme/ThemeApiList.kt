@@ -97,7 +97,7 @@ interface ThemeApiList {
     : Response<ThemesSchema>
     
     @POST ("/service/platform/theme/v2.0/company/{company_id}/application/{application_id}/")
-    suspend fun addThemeToApplication(@Path("company_id") companyId: String, @Path("application_id") applicationId: String,@Body body: CompanyThemeSchema)
+    suspend fun addThemeToApplication(@Path("company_id") companyId: String, @Path("application_id") applicationId: String,@Body body: ThemeReq)
     : Response<ThemesSchema>
     
     @PATCH ("/service/platform/theme/v2.0/company/{company_id}/application/{application_id}/{theme_id}/name")

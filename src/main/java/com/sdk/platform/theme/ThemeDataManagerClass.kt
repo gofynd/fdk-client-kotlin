@@ -305,7 +305,7 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     }
     
     
-    suspend fun addThemeToApplication(body: CompanyThemeSchema)
+    suspend fun addThemeToApplication(body: ThemeReq)
     : Response<ThemesSchema>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 themeApiList?.addThemeToApplication(companyId = config.companyId , applicationId = applicationId , body = body)
