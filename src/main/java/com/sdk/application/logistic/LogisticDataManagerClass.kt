@@ -109,10 +109,10 @@ class LogisticDataManagerClass(val config: ApplicationConfig, val unauthorizedAc
 
     
     
-    suspend fun getCountries(onboarding: Boolean?=null): Response<GetCountries>? {
+    suspend fun getCountries(onboarding: Boolean?=null, pageNo: Int?=null, pageSize: Int?=null, q: String?=null): Response<GetCountries>? {
         var fullUrl : String? = _relativeUrls["getCountries"] 
         
-        return logisticApiList?.getCountries(fullUrl    ,  onboarding = onboarding)}
+        return logisticApiList?.getCountries(fullUrl    ,  onboarding = onboarding,    pageNo = pageNo,    pageSize = pageSize,    q = q)}
 
     
     
@@ -125,12 +125,12 @@ class LogisticDataManagerClass(val config: ApplicationConfig, val unauthorizedAc
 
     
     
-    suspend fun getLocalities(localityType: String, country: String?=null, state: String?=null, city: String?=null): Response<GetLocalities>? {
+    suspend fun getLocalities(localityType: String, country: String?=null, state: String?=null, city: String?=null, pageNo: Int?=null, pageSize: Int?=null, q: String?=null): Response<GetLocalities>? {
         var fullUrl : String? = _relativeUrls["getLocalities"] 
         
         fullUrl = fullUrl?.replace("{" + "locality_type" +"}",localityType.toString())
         
-        return logisticApiList?.getLocalities(fullUrl     ,  country = country,    state = state,    city = city)}
+        return logisticApiList?.getLocalities(fullUrl     ,  country = country,    state = state,    city = city,    pageNo = pageNo,    pageSize = pageSize,    q = q)}
 
     
     

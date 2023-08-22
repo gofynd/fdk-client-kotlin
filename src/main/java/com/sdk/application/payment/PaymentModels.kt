@@ -3526,6 +3526,9 @@ data class CreditSummary(
     @SerializedName("due_amount")
     var dueAmount: BalanceDetails?=null,
     
+    @SerializedName("due_date")
+    var dueDate: String?=null,
+    
     @SerializedName("balance")
     var balance: BalanceDetails?=null,
     
@@ -3534,6 +3537,9 @@ data class CreditSummary(
     
     @SerializedName("repayment_url")
     var repaymentUrl: String?=null,
+    
+    @SerializedName("soa_url")
+    var soaUrl: String?=null,
     
     @SerializedName("is_eligible_for_txn")
     var isEligibleForTxn: Boolean?=null,
@@ -3548,6 +3554,10 @@ data class CreditSummary(
     var activationUrl: String?=null
     
 ): Parcelable {
+    
+    
+    
+    
     
     
     

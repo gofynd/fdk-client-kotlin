@@ -3781,7 +3781,8 @@ Success. Returns the status of payment. Check the example shown below or refer `
       "formatted_value": "₹ 12,576.00",
       "currency": "INR"
     },
-    "repayment_url": "https://example_url.com/example/"
+    "repayment_url": "https://example_url.com/example/",
+    "soa_url": "https://example_url.com/example/"
   }
 }
 ```
@@ -5398,9 +5399,11 @@ Success. Returns the status of API. Check the example shown below or refer `Paid
  | creditLineId | String? |  yes  | ID at Credit aggregator's end |
  | amountAvailable | [BalanceDetails](#BalanceDetails)? |  yes  | Credit summary of user. |
  | dueAmount | [BalanceDetails](#BalanceDetails)? |  yes  | Amount that is due for repayment |
+ | dueDate | String? |  yes  | Due date for repayment |
  | balance | [BalanceDetails](#BalanceDetails)? |  yes  | Credit summary of user. |
  | statusMessage | String? |  yes  | message to customer |
  | repaymentUrl | String? |  yes  | Url for repayment |
+ | soaUrl | String? |  yes  | Statement of accounts. Show payment history. |
  | isEligibleForTxn | Boolean? |  yes  | Eligiblity flag to complete transaction |
  | merchantCustomerRefId | String? |  yes  | Unique aggregator customer id |
  | buyerStatus | String? |  yes  | Status from Credit aggregator's end |
@@ -5570,7 +5573,7 @@ Success. Returns the status of API. Check the example shown below or refer `Paid
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | personalInfo | [UserPersonalInfoInDetails](#UserPersonalInfoInDetails) |  no  | Credit summary of user. |
+ | personalInfo | [UserPersonalInfoInDetails](#UserPersonalInfoInDetails)? |  yes  | Credit summary of user. |
  | mcc | String? |  yes  | Mcc |
  | aggregator | String |  no  | Aggregator Name |
  | marketplaceInfo | [MarketplaceInfo](#MarketplaceInfo)? |  yes  | Market Place info. |
@@ -5587,8 +5590,8 @@ Success. Returns the status of API. Check the example shown below or refer `Paid
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | redirectUrl | String |  no  | URL to which the user may redirect. |
- | session | HashMap<String,Any> |  no  | User Session |
+ | redirectUrl | String? |  yes  | URL to which the user may redirect. |
+ | session | HashMap<String,Any>? |  yes  | User Session |
  | status | Boolean |  no  | Transaction status |
  | statusRemark | String? |  yes  | Decription of status |
  | isEligibleForTxn | Boolean? |  yes  | Whether is eligible for transaction |

@@ -36,7 +36,7 @@ interface LogisticApiList {
     
     
     @GET 
-    suspend fun getCountries(@Url url1: String?    ,  @Query("onboarding") onboarding: Boolean?)
+    suspend fun getCountries(@Url url1: String?    ,     @Query("onboarding") onboarding: Boolean?, @Query("page_no") pageNo: Int?, @Query("page_size") pageSize: Int?, @Query("q") q: String?)
     : Response<GetCountries>
     
     
@@ -46,7 +46,7 @@ interface LogisticApiList {
     
     
     @GET 
-    suspend fun getLocalities(@Url url1: String?     ,    @Query("country") country: String?, @Query("state") state: String?, @Query("city") city: String?)
+    suspend fun getLocalities(@Url url1: String?     ,       @Query("country") country: String?, @Query("state") state: String?, @Query("city") city: String?, @Query("page_no") pageNo: Int?, @Query("page_size") pageSize: Int?, @Query("q") q: String?)
     : Response<GetLocalities>
     
     
