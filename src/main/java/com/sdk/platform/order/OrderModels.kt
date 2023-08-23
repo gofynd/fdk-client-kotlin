@@ -4843,6 +4843,157 @@ data class VerifyOtpResponse(
 
              
 /*
+    Model: CourierPartnerTrackingDetails
+*/
+@Parcelize
+data class CourierPartnerTrackingDetails(
+    
+    
+    
+    @SerializedName("operational_status")
+    var operationalStatus: String?=null,
+    
+    @SerializedName("dp_status")
+    var dpStatus: String?=null,
+    
+    @SerializedName("shipment_id")
+    var shipmentId: String?=null,
+    
+    @SerializedName("awb")
+    var awb: String?=null,
+    
+    @SerializedName("dp_status_updated_at")
+    var dpStatusUpdatedAt: String?=null,
+    
+    @SerializedName("remark")
+    var remark: String?=null,
+    
+    @SerializedName("id")
+    var id: Int?=null,
+    
+    @SerializedName("dp_location")
+    var dpLocation: String?=null,
+    
+    @SerializedName("estimated_delivery_date")
+    var estimatedDeliveryDate: String?=null,
+    
+    @SerializedName("journey")
+    var journey: String?=null,
+    
+    @SerializedName("meta")
+    var meta: @RawValue HashMap<String,Any>?=null,
+    
+    @SerializedName("dp_name")
+    var dpName: String?=null,
+    
+    @SerializedName("promised_delivery_date")
+    var promisedDeliveryDate: String?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: PageDetails
+*/
+@Parcelize
+data class PageDetails(
+    
+    
+    
+    @SerializedName("item_total")
+    var itemTotal: Int?=null,
+    
+    @SerializedName("current")
+    var current: Int?=null,
+    
+    @SerializedName("size")
+    var size: Int?=null,
+    
+    @SerializedName("type")
+    var type: String?=null,
+    
+    @SerializedName("has_next")
+    var hasNext: Boolean?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: CourierPartnerTrackingResponse
+*/
+@Parcelize
+data class CourierPartnerTrackingResponse(
+    
+    
+    
+    @SerializedName("items")
+    var items: ArrayList<CourierPartnerTrackingDetails>?=null,
+    
+    @SerializedName("page")
+    var page: PageDetails?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
     Model: BulkReportsDownloadRequest
 */
 @Parcelize
