@@ -1033,7 +1033,7 @@ data class ThemeConfiguration(
     var name: String?=null,
     
     @SerializedName("global_config")
-    var globalConfig: GlobalConfig?=null,
+    var globalConfig: @RawValue HashMap<String,Any>?=null,
     
     @SerializedName("custom")
     var custom: CustomConfig?=null,
@@ -1069,15 +1069,10 @@ data class GlobalConfig(
     @SerializedName("statics")
     var statics: StaticConfig?=null,
     
-    @SerializedName("auth")
-    var auth: AuthConfig?=null,
-    
-    @SerializedName("palette")
-    var palette: PaletteConfig?=null
+    @SerializedName("custom")
+    var custom: CustomConfig?=null
     
 ): Parcelable {
-    
-    
     
     
     
@@ -1102,60 +1097,6 @@ data class StaticConfig(
     var props: StaticProps?=null
     
 ): Parcelable {
-    
-    
-    
-    
-    
-}
-
-
-
-             
-/*
-    Model: AuthConfig
-*/
-@Parcelize
-data class AuthConfig(
-    
-    
-    
-    @SerializedName("show_header_auth")
-    var showHeaderAuth: Boolean?=null,
-    
-    @SerializedName("show_footer_auth")
-    var showFooterAuth: Boolean?=null
-    
-): Parcelable {
-    
-    
-    
-    
-    
-    
-    
-}
-
-
-
-             
-/*
-    Model: PaletteConfig
-*/
-@Parcelize
-data class PaletteConfig(
-    
-    
-    
-    @SerializedName("general_setting")
-    var generalSetting: GeneralSetting?=null,
-    
-    @SerializedName("advance_setting")
-    var advanceSetting: AdvanceSetting?=null
-    
-): Parcelable {
-    
-    
     
     
     
@@ -1306,9 +1247,14 @@ data class StaticProps(
     var colors: Colors?=null,
     
     @SerializedName("auth")
-    var auth: AuthConfig?=null
+    var auth: AuthConfig?=null,
+    
+    @SerializedName("palette")
+    var palette: PaletteConfig?=null
     
 ): Parcelable {
+    
+    
     
     
     
@@ -1356,6 +1302,60 @@ data class Colors(
     
     
     
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: AuthConfig
+*/
+@Parcelize
+data class AuthConfig(
+    
+    
+    
+    @SerializedName("show_header_auth")
+    var showHeaderAuth: Boolean?=null,
+    
+    @SerializedName("show_footer_auth")
+    var showFooterAuth: Boolean?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: PaletteConfig
+*/
+@Parcelize
+data class PaletteConfig(
+    
+    
+    
+    @SerializedName("general_setting")
+    var generalSetting: GeneralSetting?=null,
+    
+    @SerializedName("advance_setting")
+    var advanceSetting: AdvanceSetting?=null
+    
+): Parcelable {
     
     
     
