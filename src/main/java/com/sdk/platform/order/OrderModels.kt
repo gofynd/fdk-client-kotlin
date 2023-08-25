@@ -5115,6 +5115,144 @@ data class BulkReportsDownloadFailedResponse(
 
              
 /*
+    Model: EInvoiceRetryShipmentData
+*/
+@Parcelize
+data class EInvoiceRetryShipmentData(
+    
+    
+    
+    @SerializedName("shipment_id")
+    var shipmentId: String?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: EInvoiceRetry
+*/
+@Parcelize
+data class EInvoiceRetry(
+    
+    
+    
+    @SerializedName("shipments_data")
+    var shipmentsData: ArrayList<EInvoiceRetryShipmentData>?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: EInvoiceResponseData
+*/
+@Parcelize
+data class EInvoiceResponseData(
+    
+    
+    
+    @SerializedName("shipment_id")
+    var shipmentId: String?=null,
+    
+    @SerializedName("message")
+    var message: String?=null,
+    
+    @SerializedName("success")
+    var success: Boolean?=null,
+    
+    @SerializedName("ack_no")
+    var ackNo: String?=null,
+    
+    @SerializedName("irn")
+    var irn: String?=null,
+    
+    @SerializedName("ack_dt")
+    var ackDt: String?=null,
+    
+    @SerializedName("timeout")
+    var timeout: Int?=null,
+    
+    @SerializedName("timeout_unit")
+    var timeoutUnit: String?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: EInvoiceRetryResponse
+*/
+@Parcelize
+data class EInvoiceRetryResponse(
+    
+    
+    
+    @SerializedName("success")
+    var success: Boolean?=null,
+    
+    @SerializedName("success_count")
+    var successCount: Int?=null,
+    
+    @SerializedName("message")
+    var message: String?=null,
+    
+    @SerializedName("response_data")
+    var responseData: ArrayList<EInvoiceResponseData>?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
     Model: ShipmentStatus
 */
 @Parcelize

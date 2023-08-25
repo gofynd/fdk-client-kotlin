@@ -3190,9 +3190,69 @@ data class SmsProviderReq(
     var type: String?=null,
     
     @SerializedName("provider")
-    var provider: String?=null
+    var provider: String?=null,
+    
+    @SerializedName("password")
+    var password: String?=null,
+    
+    @SerializedName("senderid")
+    var senderid: String?=null,
+    
+    @SerializedName("feedid")
+    var feedid: String?=null,
+    
+    @SerializedName("entityid")
+    var entityid: String?=null,
+    
+    @SerializedName("override_dnd")
+    var overrideDnd: Boolean?=null,
+    
+    @SerializedName("host")
+    var host: String?=null,
+    
+    @SerializedName("port")
+    var port: Int?=null,
+    
+    @SerializedName("entity_id")
+    var entityId: String?=null,
+    
+    @SerializedName("apikey")
+    var apikey: String?=null,
+    
+    @SerializedName("version_id")
+    var versionId: Int?=null,
+    
+    @SerializedName("sender_id")
+    var senderId: String?=null,
+    
+    @SerializedName("api_key")
+    var apiKey: String?=null
     
 ): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     
     
     

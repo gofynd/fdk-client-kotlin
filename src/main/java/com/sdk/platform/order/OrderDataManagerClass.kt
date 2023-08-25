@@ -380,6 +380,18 @@ class OrderDataManagerClass(val config: PlatformConfig, val unauthorizedAction: 
     }
     
     
+    suspend fun eInvoiceRetry(body: EInvoiceRetry)
+    : Response<EInvoiceRetryResponse>? {
+        
+        return if (config.oauthClient.isAccessTokenValid()) {
+            orderApiList?.eInvoiceRetry(
+        companyId = config.companyId, body = body)
+        } else {
+            null
+        } 
+    }
+    
+    
     suspend fun trackShipment(shipmentId: String?=null, awb: String?=null, pageNo: Int?=null, pageSize: Int?=null)
     : Response<CourierPartnerTrackingResponse>? {
         
@@ -564,6 +576,7 @@ class OrderDataManagerClass(val config: PlatformConfig, val unauthorizedAction: 
 
 inner class ApplicationClient(val applicationId:String,val config: PlatformConfig){
 
+    
     
     
     

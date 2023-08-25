@@ -120,6 +120,10 @@ interface OrderApiList {
     suspend fun downloadLanesReport(@Path("company_id") companyId: String,@Body body: BulkReportsDownloadRequest)
     : Response<BulkReportsDownloadResponse>
     
+    @POST ("/service/platform/order-manage/v1.0/company/{company_id}/einvoice/retry/irn")
+    suspend fun eInvoiceRetry(@Path("company_id") companyId: String,@Body body: EInvoiceRetry)
+    : Response<EInvoiceRetryResponse>
+    
     @GET ("/service/platform/order-manage/v1.0/company/{company_id}/tracking")
     suspend fun trackShipment(@Path("company_id") companyId: String, @Query("shipment_id") shipmentId: String?, @Query("awb") awb: String?, @Query("page_no") pageNo: Int?, @Query("page_size") pageSize: Int?)
     : Response<CourierPartnerTrackingResponse>

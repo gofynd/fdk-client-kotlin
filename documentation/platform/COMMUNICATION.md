@@ -9,6 +9,17 @@ Manages email, sms, push notifications sent to users
 * [getAppProviders](#getappproviders)
 * [updateAppProviders](#updateappproviders)
 * [getGlobalProviders](#getglobalproviders)
+* [getEmailProviders](#getemailproviders)
+* [createEmailProvider](#createemailprovider)
+* [getEmailProviderById](#getemailproviderbyid)
+* [updateEmailProviderById](#updateemailproviderbyid)
+* [deleteEmailProviderById](#deleteemailproviderbyid)
+* [getSmsProviders](#getsmsproviders)
+* [createSmsProvider](#createsmsprovider)
+* [getDefaultSmsProviders](#getdefaultsmsproviders)
+* [getSmsProviderById](#getsmsproviderbyid)
+* [updateSmsProviderById](#updatesmsproviderbyid)
+* [deleteSmsProviderById](#deletesmsproviderbyid)
 * [getCampaigns](#getcampaigns)
 * [createCampaign](#createcampaign)
 * [getCampaignById](#getcampaignbyid)
@@ -25,15 +36,10 @@ Manages email, sms, push notifications sent to users
 * [getAudienceById](#getaudiencebyid)
 * [updateAudienceById](#updateaudiencebyid)
 * [deleteAudienceById](#deleteaudiencebyid)
-* [getNSampleRecordsFromCsvByGet](#getnsamplerecordsfromcsvbyget)
-* [getNSampleRecordsFromCsv](#getnsamplerecordsfromcsv)
 * [getDummyDatasources](#getdummydatasources)
 * [getDummyDatasourcesMeta](#getdummydatasourcesmeta)
-* [getEmailProviders](#getemailproviders)
-* [createEmailProvider](#createemailprovider)
-* [getEmailProviderById](#getemailproviderbyid)
-* [updateEmailProviderById](#updateemailproviderbyid)
-* [deleteEmailProviderById](#deleteemailproviderbyid)
+* [getNSampleRecordsFromCsvByGet](#getnsamplerecordsfromcsvbyget)
+* [getNSampleRecordsFromCsv](#getnsamplerecordsfromcsv)
 * [getEmailTemplates](#getemailtemplates)
 * [createEmailTemplate](#createemailtemplate)
 * [getSystemEmailTemplates](#getsystememailtemplates)
@@ -41,6 +47,13 @@ Manages email, sms, push notifications sent to users
 * [updateEmailTemplateById](#updateemailtemplatebyid)
 * [deleteEmailTemplateById](#deleteemailtemplatebyid)
 * [getSubscribedEmailTemplates](#getsubscribedemailtemplates)
+* [getSmsTemplates](#getsmstemplates)
+* [createSmsTemplate](#createsmstemplate)
+* [getSystemSmsTemplates](#getsystemsmstemplates)
+* [getSmsTemplateById](#getsmstemplatebyid)
+* [updateSmsTemplateById](#updatesmstemplatebyid)
+* [deleteSmsTemplateById](#deletesmstemplatebyid)
+* [getSubscribedSmsTemplates](#getsubscribedsmstemplates)
 * [sendCommunicationSynchronously](#sendcommunicationsynchronously)
 * [sendCommunicationAsynchronously](#sendcommunicationasynchronously)
 * [getEventSubscriptions](#geteventsubscriptions)
@@ -53,19 +66,6 @@ Manages email, sms, push notifications sent to users
 * [getSystemNotifications](#getsystemnotifications)
 * [sendOtp](#sendotp)
 * [verfiyOtp](#verfiyotp)
-* [getSmsProviders](#getsmsproviders)
-* [createSmsProvider](#createsmsprovider)
-* [getDefaultSmsProviders](#getdefaultsmsproviders)
-* [getSmsProviderById](#getsmsproviderbyid)
-* [updateSmsProviderById](#updatesmsproviderbyid)
-* [deleteSmsProviderById](#deletesmsproviderbyid)
-* [getSmsTemplates](#getsmstemplates)
-* [createSmsTemplate](#createsmstemplate)
-* [getSystemSmsTemplates](#getsystemsmstemplates)
-* [getSmsTemplateById](#getsmstemplatebyid)
-* [updateSmsTemplateById](#updatesmstemplatebyid)
-* [deleteSmsTemplateById](#deletesmstemplatebyid)
-* [getSubscribedSmsTemplates](#getsubscribedsmstemplates)
 
 
 
@@ -342,6 +342,925 @@ Success
         "name": "Fynd-exotel"
       }
     ]
+  }
+}
+```
+</details>
+
+</details>
+
+
+
+
+
+
+
+
+
+---
+
+
+### getEmailProviders
+Get email providers
+
+
+
+
+```kotlin
+platformClient.application("<APPLICATION_ID>").communication.getEmailProviders(pageNo: pageNo, pageSize: pageSize, sort: sort).safeAwait{ response, error->
+    response?.let{
+      // Use response
+    } ->
+    error?.let{
+      
+    } 
+}
+```
+
+
+
+
+
+| Argument  |  Type  | Required | Description |
+| --------- | -----  | -------- | ----------- | 
+| pageNo | Int? | no | Current page no |   
+| pageSize | Int? | no | Current request items count |   
+| sort | HashMap<String,Any>? | no | To sort based on created_at |  
+
+
+
+Get email providers
+
+*Returned Response:*
+
+
+
+
+[EmailProviders](#EmailProviders)
+
+Success
+
+
+
+
+<details>
+<summary><i>&nbsp; Examples:</i></summary>
+
+
+<details>
+<summary><i>&nbsp; default</i></summary>
+
+```json
+{
+  "value": {
+    "items": [
+      {
+        "type": "application",
+        "provider": "falconide",
+        "from_address": [
+          {
+            "is_default": true,
+            "name": "abc",
+            "email": "abc@test.com"
+          }
+        ],
+        "_id": "5fd9fd44c474a7e3d5d376d6",
+        "name": "test falconide",
+        "description": "test",
+        "api_key": "testtttt",
+        "application": "000000000000000000000004",
+        "created_at": "2020-12-16T12:27:48.051Z",
+        "updated_at": "2020-12-16T12:27:48.051Z",
+        "slug": "test-falconide-application-falconide-ZTD-D7wbB",
+        "__v": 0
+      }
+    ],
+    "page": {
+      "type": "number",
+      "current": 1,
+      "size": 10,
+      "item_total": 1,
+      "has_next": false
+    }
+  }
+}
+```
+</details>
+
+</details>
+
+
+
+
+
+
+
+
+
+---
+
+
+### createEmailProvider
+Create email provider
+
+
+
+
+```kotlin
+platformClient.application("<APPLICATION_ID>").communication.createEmailProvider(body: body).safeAwait{ response, error->
+    response?.let{
+      // Use response
+    } ->
+    error?.let{
+      
+    } 
+}
+```
+
+
+
+
+
+| Argument  |  Type  | Required | Description |
+| --------- | -----  | -------- | ----------- |
+| body | [EmailProviderReq](#EmailProviderReq) | yes | Request body |
+
+
+Create email provider
+
+*Returned Response:*
+
+
+
+
+[EmailProvider](#EmailProvider)
+
+Success
+
+
+
+
+<details>
+<summary><i>&nbsp; Examples:</i></summary>
+
+
+<details>
+<summary><i>&nbsp; default</i></summary>
+
+```json
+{
+  "value": {
+    "type": "application",
+    "provider": "falconide",
+    "from_address": [
+      {
+        "is_default": true,
+        "name": "abc",
+        "email": "abc@test.com"
+      }
+    ],
+    "_id": "5fd9fd44c474a7e3d5d376d6",
+    "name": "test falconide",
+    "description": "test",
+    "api_key": "testtttt",
+    "application": "000000000000000000000004",
+    "created_at": "2020-12-16T12:27:48.051Z",
+    "updated_at": "2020-12-16T12:27:48.051Z",
+    "slug": "test-falconide-application-falconide-ZTD-D7wbB",
+    "__v": 0
+  }
+}
+```
+</details>
+
+</details>
+
+
+
+
+
+
+
+
+
+---
+
+
+### getEmailProviderById
+Get email provider by id
+
+
+
+
+```kotlin
+platformClient.application("<APPLICATION_ID>").communication.getEmailProviderById(id: id).safeAwait{ response, error->
+    response?.let{
+      // Use response
+    } ->
+    error?.let{
+      
+    } 
+}
+```
+
+
+
+
+
+| Argument  |  Type  | Required | Description |
+| --------- | -----  | -------- | ----------- | 
+| id | String | yes | Email provider id |  
+
+
+
+Get email provider by id
+
+*Returned Response:*
+
+
+
+
+[EmailProvider](#EmailProvider)
+
+Success
+
+
+
+
+<details>
+<summary><i>&nbsp; Examples:</i></summary>
+
+
+<details>
+<summary><i>&nbsp; default</i></summary>
+
+```json
+{
+  "value": {
+    "type": "application",
+    "provider": "falconide",
+    "from_address": [
+      {
+        "is_default": true,
+        "name": "abc",
+        "email": "abc@test.com"
+      }
+    ],
+    "_id": "5fd9fd44c474a7e3d5d376d6",
+    "name": "test falconide",
+    "description": "test",
+    "api_key": "testtttt",
+    "application": "000000000000000000000004",
+    "created_at": "2020-12-16T12:27:48.051Z",
+    "updated_at": "2020-12-16T12:27:48.051Z",
+    "slug": "test-falconide-application-falconide-ZTD-D7wbB",
+    "__v": 0
+  }
+}
+```
+</details>
+
+</details>
+
+
+
+
+
+
+
+
+
+---
+
+
+### updateEmailProviderById
+Update email provider by id
+
+
+
+
+```kotlin
+platformClient.application("<APPLICATION_ID>").communication.updateEmailProviderById(id: id, body: body).safeAwait{ response, error->
+    response?.let{
+      // Use response
+    } ->
+    error?.let{
+      
+    } 
+}
+```
+
+
+
+
+
+| Argument  |  Type  | Required | Description |
+| --------- | -----  | -------- | ----------- | 
+| id | String | yes | Email provider id |  
+| body | [EmailProviderReq](#EmailProviderReq) | yes | Request body |
+
+
+Update email provider by id
+
+*Returned Response:*
+
+
+
+
+[EmailProvider](#EmailProvider)
+
+Success
+
+
+
+
+<details>
+<summary><i>&nbsp; Examples:</i></summary>
+
+
+<details>
+<summary><i>&nbsp; default</i></summary>
+
+```json
+{
+  "value": {
+    "type": "application",
+    "provider": "falconide",
+    "from_address": [
+      {
+        "is_default": true,
+        "name": "abc",
+        "email": "abc@test.com"
+      }
+    ],
+    "_id": "5fd9fd44c474a7e3d5d376d6",
+    "name": "test falconide",
+    "description": "test",
+    "api_key": "testtttt",
+    "application": "000000000000000000000004",
+    "created_at": "2020-12-16T12:27:48.051Z",
+    "updated_at": "2020-12-16T12:27:48.051Z",
+    "slug": "test-falconide-application-falconide-ZTD-D7wbB",
+    "__v": 0
+  }
+}
+```
+</details>
+
+</details>
+
+
+
+
+
+
+
+
+
+---
+
+
+### deleteEmailProviderById
+Delete email provider by id
+
+
+
+
+```kotlin
+platformClient.application("<APPLICATION_ID>").communication.deleteEmailProviderById(id: id).safeAwait{ response, error->
+    response?.let{
+      // Use response
+    } ->
+    error?.let{
+      
+    } 
+}
+```
+
+
+
+
+
+| Argument  |  Type  | Required | Description |
+| --------- | -----  | -------- | ----------- | 
+| id | String | yes | Email provider id |  
+
+
+
+Delete email provider by id
+
+*Returned Response:*
+
+
+
+
+[GenericDelete](#GenericDelete)
+
+Refer `GenericDelete` schema for more details.
+
+
+
+
+<details>
+<summary><i>&nbsp; Examples:</i></summary>
+
+
+<details>
+<summary><i>&nbsp; default</i></summary>
+
+```json
+{
+  "value": {
+    "message": "Deletion Successfull",
+    "acknowledged": true,
+    "affected": 1,
+    "operation": "TEMP-ST-DEL:ID"
+  }
+}
+```
+</details>
+
+</details>
+
+
+
+
+
+
+
+
+
+---
+
+
+### getSmsProviders
+Get sms providers
+
+
+
+
+```kotlin
+platformClient.application("<APPLICATION_ID>").communication.getSmsProviders(pageNo: pageNo, pageSize: pageSize, sort: sort).safeAwait{ response, error->
+    response?.let{
+      // Use response
+    } ->
+    error?.let{
+      
+    } 
+}
+```
+
+
+
+
+
+| Argument  |  Type  | Required | Description |
+| --------- | -----  | -------- | ----------- | 
+| pageNo | Int? | no | Current page no |   
+| pageSize | Int? | no | Current request items count |   
+| sort | HashMap<String,Any>? | no | To sort based on created_at |  
+
+
+
+Get sms providers
+
+*Returned Response:*
+
+
+
+
+[HashMap<String,Any>](#HashMap<String,Any>)
+
+Success
+
+
+
+
+<details>
+<summary><i>&nbsp; Examples:</i></summary>
+
+
+<details>
+<summary><i>&nbsp; default</i></summary>
+
+```json
+{
+  "value": {
+    "items": [
+      {
+        "rpt": 1,
+        "type": "application",
+        "provider": "telspiel",
+        "_id": "5fd9fd07c474a7710dd376d5",
+        "name": "test telspiel",
+        "description": "test",
+        "sender": "test",
+        "username": "test",
+        "authkey": "test",
+        "application": "000000000000000000000004",
+        "created_at": "2020-12-16T12:26:47.794Z",
+        "updated_at": "2020-12-16T12:26:47.794Z",
+        "slug": "test-telspiel-application-telspiel-p9UY1r7nG",
+        "__v": 0
+      }
+    ],
+    "page": {
+      "type": "number",
+      "current": 1,
+      "size": 1,
+      "item_total": 1,
+      "has_next": false
+    }
+  }
+}
+```
+</details>
+
+</details>
+
+
+
+
+
+
+
+
+
+---
+
+
+### createSmsProvider
+Create sms provider
+
+
+
+
+```kotlin
+platformClient.application("<APPLICATION_ID>").communication.createSmsProvider(body: body).safeAwait{ response, error->
+    response?.let{
+      // Use response
+    } ->
+    error?.let{
+      
+    } 
+}
+```
+
+
+
+
+
+| Argument  |  Type  | Required | Description |
+| --------- | -----  | -------- | ----------- |
+| body | [SmsProviderReq](#SmsProviderReq) | yes | Request body |
+
+
+Create sms provider
+
+*Returned Response:*
+
+
+
+
+[HashMap<String,Any>](#HashMap<String,Any>)
+
+Success
+
+
+
+
+<details>
+<summary><i>&nbsp; Examples:</i></summary>
+
+
+<details>
+<summary><i>&nbsp; default</i></summary>
+
+```json
+{
+  "value": {
+    "rpt": 1,
+    "type": "application",
+    "provider": "telspiel",
+    "_id": "5fd9fd07c474a7710dd376d5",
+    "name": "test telspiel",
+    "description": "test",
+    "sender": "test",
+    "username": "test",
+    "authkey": "test",
+    "application": "000000000000000000000004",
+    "created_at": "2020-12-16T12:26:47.794Z",
+    "updated_at": "2020-12-16T12:26:47.794Z",
+    "slug": "test-telspiel-application-telspiel-p9UY1r7nG",
+    "__v": 0
+  }
+}
+```
+</details>
+
+</details>
+
+
+
+
+
+
+
+
+
+---
+
+
+### getDefaultSmsProviders
+Get default sms providers
+
+
+
+
+```kotlin
+platformClient.application("<APPLICATION_ID>").communication.getDefaultSmsProviders().safeAwait{ response, error->
+    response?.let{
+      // Use response
+    } ->
+    error?.let{
+      
+    } 
+}
+```
+
+
+
+
+
+
+Get default sms providers
+
+*Returned Response:*
+
+
+
+
+[ArrayList<DefaultSmsProviders>](#ArrayList<DefaultSmsProviders>)
+
+Successful retrieval of the default SMS providers list
+
+
+
+
+<details>
+<summary><i>&nbsp; Examples:</i></summary>
+
+
+<details>
+<summary><i>&nbsp; default</i></summary>
+
+```json
+{
+  "value": [
+    {
+      "_id": "63db8c68975237fff4f2133e",
+      "name": "Fynd timesinternet",
+      "is_default": true
+    }
+  ]
+}
+```
+</details>
+
+</details>
+
+
+
+
+
+
+
+
+
+---
+
+
+### getSmsProviderById
+Get sms provider by id
+
+
+
+
+```kotlin
+platformClient.application("<APPLICATION_ID>").communication.getSmsProviderById(id: id).safeAwait{ response, error->
+    response?.let{
+      // Use response
+    } ->
+    error?.let{
+      
+    } 
+}
+```
+
+
+
+
+
+| Argument  |  Type  | Required | Description |
+| --------- | -----  | -------- | ----------- | 
+| id | String | yes | Sms provider id |  
+
+
+
+Get sms provider by id
+
+*Returned Response:*
+
+
+
+
+[HashMap<String,Any>](#HashMap<String,Any>)
+
+Success
+
+
+
+
+<details>
+<summary><i>&nbsp; Examples:</i></summary>
+
+
+<details>
+<summary><i>&nbsp; default</i></summary>
+
+```json
+{
+  "value": {
+    "rpt": 1,
+    "type": "application",
+    "provider": "telspiel",
+    "_id": "5fd9fd07c474a7710dd376d5",
+    "name": "test telspiel",
+    "description": "test",
+    "sender": "test",
+    "username": "test",
+    "authkey": "test",
+    "application": "000000000000000000000004",
+    "created_at": "2020-12-16T12:26:47.794Z",
+    "updated_at": "2020-12-16T12:26:47.794Z",
+    "slug": "test-telspiel-application-telspiel-p9UY1r7nG",
+    "__v": 0
+  }
+}
+```
+</details>
+
+</details>
+
+
+
+
+
+
+
+
+
+---
+
+
+### updateSmsProviderById
+Update sms provider by id
+
+
+
+
+```kotlin
+platformClient.application("<APPLICATION_ID>").communication.updateSmsProviderById(id: id, body: body).safeAwait{ response, error->
+    response?.let{
+      // Use response
+    } ->
+    error?.let{
+      
+    } 
+}
+```
+
+
+
+
+
+| Argument  |  Type  | Required | Description |
+| --------- | -----  | -------- | ----------- | 
+| id | String | yes | Sms provider id |  
+| body | [SmsProviderReq](#SmsProviderReq) | yes | Request body |
+
+
+Update sms provider by id
+
+*Returned Response:*
+
+
+
+
+[HashMap<String,Any>](#HashMap<String,Any>)
+
+Success
+
+
+
+
+<details>
+<summary><i>&nbsp; Examples:</i></summary>
+
+
+<details>
+<summary><i>&nbsp; default</i></summary>
+
+```json
+{
+  "value": {
+    "rpt": 1,
+    "type": "application",
+    "provider": "telspiel",
+    "_id": "5fd9fd07c474a7710dd376d5",
+    "name": "test telspiel",
+    "description": "test",
+    "sender": "test",
+    "username": "test",
+    "authkey": "test",
+    "application": "000000000000000000000004",
+    "created_at": "2020-12-16T12:26:47.794Z",
+    "updated_at": "2020-12-16T12:26:47.794Z",
+    "slug": "test-telspiel-application-telspiel-p9UY1r7nG",
+    "__v": 0
+  }
+}
+```
+</details>
+
+</details>
+
+
+
+
+
+
+
+
+
+---
+
+
+### deleteSmsProviderById
+Delete sms provider by id
+
+
+
+
+```kotlin
+platformClient.application("<APPLICATION_ID>").communication.deleteSmsProviderById(id: id).safeAwait{ response, error->
+    response?.let{
+      // Use response
+    } ->
+    error?.let{
+      
+    } 
+}
+```
+
+
+
+
+
+| Argument  |  Type  | Required | Description |
+| --------- | -----  | -------- | ----------- | 
+| id | String | yes | Sms provider id |  
+
+
+
+Delete sms provider by id
+
+*Returned Response:*
+
+
+
+
+[GenericDelete](#GenericDelete)
+
+Refer `GenericDelete` schema for more details.
+
+
+
+
+<details>
+<summary><i>&nbsp; Examples:</i></summary>
+
+
+<details>
+<summary><i>&nbsp; default</i></summary>
+
+```json
+{
+  "value": {
+    "message": "Deletion Successfull",
+    "acknowledged": true,
+    "affected": 1,
+    "operation": "TEMP-ST-DEL:ID"
   }
 }
 ```
@@ -1696,156 +2615,6 @@ Refer `GenericDelete` schema for more details.
 ---
 
 
-### getNSampleRecordsFromCsvByGet
-Get n sample records from csv
-
-
-
-
-```kotlin
-platformClient.application("<APPLICATION_ID>").communication.getNSampleRecordsFromCsvByGet().safeAwait{ response, error->
-    response?.let{
-      // Use response
-    } ->
-    error?.let{
-      
-    } 
-}
-```
-
-
-
-
-
-
-Audience is used to import CSV files containing emails, phone numbers, and other variables in order to populate email/SMS templates for bulk delivery via a Campaign. Use this API to get n sample records from csv.
-
-*Returned Response:*
-
-
-
-
-[GetNRecordsCsvRes](#GetNRecordsCsvRes)
-
-Refer `GetNRecordsCsvRes` schema for more details.
-
-
-
-
-<details>
-<summary><i>&nbsp; Examples:</i></summary>
-
-
-<details>
-<summary><i>&nbsp; default</i></summary>
-
-```json
-{
-  "value": {
-    "items": [
-      {
-        "phone_number": "1234567890",
-        "email": "abcxyz@gofynd.com",
-        "firstname": "Abc",
-        "lastname": "Xyz",
-        "orderid": "1"
-      }
-    ]
-  }
-}
-```
-</details>
-
-</details>
-
-
-
-
-
-
-
-
-
----
-
-
-### getNSampleRecordsFromCsv
-Get n sample records from csv
-
-
-
-
-```kotlin
-platformClient.application("<APPLICATION_ID>").communication.getNSampleRecordsFromCsv(body: body).safeAwait{ response, error->
-    response?.let{
-      // Use response
-    } ->
-    error?.let{
-      
-    } 
-}
-```
-
-
-
-
-
-| Argument  |  Type  | Required | Description |
-| --------- | -----  | -------- | ----------- |
-| body | [GetNRecordsCsvReq](#GetNRecordsCsvReq) | yes | Request body |
-
-
-Audience is used to import CSV files containing emails, phone numbers, and other variables in order to populate email/SMS templates for bulk delivery via a Campaign. Use this API to get n sample records from csv
-
-*Returned Response:*
-
-
-
-
-[GetNRecordsCsvRes](#GetNRecordsCsvRes)
-
-Refer `GetNRecordsCsvRes` schema for more details.
-
-
-
-
-<details>
-<summary><i>&nbsp; Examples:</i></summary>
-
-
-<details>
-<summary><i>&nbsp; default</i></summary>
-
-```json
-{
-  "value": {
-    "items": [
-      {
-        "phone_number": "1234567890",
-        "email": "abcxyz@gofynd.com",
-        "firstname": "Abc",
-        "lastname": "Xyz",
-        "orderid": "1"
-      }
-    ]
-  }
-}
-```
-</details>
-
-</details>
-
-
-
-
-
-
-
-
-
----
-
-
 ### getDummyDatasources
 Get dummy data sources
 
@@ -1991,14 +2760,14 @@ Refer `DummyDatasourcesMeta` schema for more details.
 ---
 
 
-### getEmailProviders
-Get email providers
+### getNSampleRecordsFromCsvByGet
+Get n sample records from csv
 
 
 
 
 ```kotlin
-platformClient.application("<APPLICATION_ID>").communication.getEmailProviders(pageNo: pageNo, pageSize: pageSize, sort: sort).safeAwait{ response, error->
+platformClient.application("<APPLICATION_ID>").communication.getNSampleRecordsFromCsvByGet().safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -2012,24 +2781,17 @@ platformClient.application("<APPLICATION_ID>").communication.getEmailProviders(p
 
 
 
-| Argument  |  Type  | Required | Description |
-| --------- | -----  | -------- | ----------- | 
-| pageNo | Int? | no | Current page no |   
-| pageSize | Int? | no | Current request items count |   
-| sort | HashMap<String,Any>? | no | To sort based on created_at |  
 
-
-
-Get email providers
+Audience is used to import CSV files containing emails, phone numbers, and other variables in order to populate email/SMS templates for bulk delivery via a Campaign. Use this API to get n sample records from csv.
 
 *Returned Response:*
 
 
 
 
-[EmailProviders](#EmailProviders)
+[GetNRecordsCsvRes](#GetNRecordsCsvRes)
 
-Success
+Refer `GetNRecordsCsvRes` schema for more details.
 
 
 
@@ -2046,33 +2808,13 @@ Success
   "value": {
     "items": [
       {
-        "type": "application",
-        "provider": "falconide",
-        "from_address": [
-          {
-            "is_default": true,
-            "name": "abc",
-            "email": "abc@test.com"
-          }
-        ],
-        "_id": "5fd9fd44c474a7e3d5d376d6",
-        "name": "test falconide",
-        "description": "test",
-        "api_key": "testtttt",
-        "application": "000000000000000000000004",
-        "created_at": "2020-12-16T12:27:48.051Z",
-        "updated_at": "2020-12-16T12:27:48.051Z",
-        "slug": "test-falconide-application-falconide-ZTD-D7wbB",
-        "__v": 0
+        "phone_number": "1234567890",
+        "email": "abcxyz@gofynd.com",
+        "firstname": "Abc",
+        "lastname": "Xyz",
+        "orderid": "1"
       }
-    ],
-    "page": {
-      "type": "number",
-      "current": 1,
-      "size": 10,
-      "item_total": 1,
-      "has_next": false
-    }
+    ]
   }
 }
 ```
@@ -2091,14 +2833,14 @@ Success
 ---
 
 
-### createEmailProvider
-Create email provider
+### getNSampleRecordsFromCsv
+Get n sample records from csv
 
 
 
 
 ```kotlin
-platformClient.application("<APPLICATION_ID>").communication.createEmailProvider(body: body).safeAwait{ response, error->
+platformClient.application("<APPLICATION_ID>").communication.getNSampleRecordsFromCsv(body: body).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -2114,19 +2856,19 @@ platformClient.application("<APPLICATION_ID>").communication.createEmailProvider
 
 | Argument  |  Type  | Required | Description |
 | --------- | -----  | -------- | ----------- |
-| body | [EmailProviderReq](#EmailProviderReq) | yes | Request body |
+| body | [GetNRecordsCsvReq](#GetNRecordsCsvReq) | yes | Request body |
 
 
-Create email provider
+Audience is used to import CSV files containing emails, phone numbers, and other variables in order to populate email/SMS templates for bulk delivery via a Campaign. Use this API to get n sample records from csv
 
 *Returned Response:*
 
 
 
 
-[EmailProvider](#EmailProvider)
+[GetNRecordsCsvRes](#GetNRecordsCsvRes)
 
-Success
+Refer `GetNRecordsCsvRes` schema for more details.
 
 
 
@@ -2141,271 +2883,15 @@ Success
 ```json
 {
   "value": {
-    "type": "application",
-    "provider": "falconide",
-    "from_address": [
+    "items": [
       {
-        "is_default": true,
-        "name": "abc",
-        "email": "abc@test.com"
+        "phone_number": "1234567890",
+        "email": "abcxyz@gofynd.com",
+        "firstname": "Abc",
+        "lastname": "Xyz",
+        "orderid": "1"
       }
-    ],
-    "_id": "5fd9fd44c474a7e3d5d376d6",
-    "name": "test falconide",
-    "description": "test",
-    "api_key": "testtttt",
-    "application": "000000000000000000000004",
-    "created_at": "2020-12-16T12:27:48.051Z",
-    "updated_at": "2020-12-16T12:27:48.051Z",
-    "slug": "test-falconide-application-falconide-ZTD-D7wbB",
-    "__v": 0
-  }
-}
-```
-</details>
-
-</details>
-
-
-
-
-
-
-
-
-
----
-
-
-### getEmailProviderById
-Get email provider by id
-
-
-
-
-```kotlin
-platformClient.application("<APPLICATION_ID>").communication.getEmailProviderById(id: id).safeAwait{ response, error->
-    response?.let{
-      // Use response
-    } ->
-    error?.let{
-      
-    } 
-}
-```
-
-
-
-
-
-| Argument  |  Type  | Required | Description |
-| --------- | -----  | -------- | ----------- | 
-| id | String | yes | Email provider id |  
-
-
-
-Get email provider by id
-
-*Returned Response:*
-
-
-
-
-[EmailProvider](#EmailProvider)
-
-Success
-
-
-
-
-<details>
-<summary><i>&nbsp; Examples:</i></summary>
-
-
-<details>
-<summary><i>&nbsp; default</i></summary>
-
-```json
-{
-  "value": {
-    "type": "application",
-    "provider": "falconide",
-    "from_address": [
-      {
-        "is_default": true,
-        "name": "abc",
-        "email": "abc@test.com"
-      }
-    ],
-    "_id": "5fd9fd44c474a7e3d5d376d6",
-    "name": "test falconide",
-    "description": "test",
-    "api_key": "testtttt",
-    "application": "000000000000000000000004",
-    "created_at": "2020-12-16T12:27:48.051Z",
-    "updated_at": "2020-12-16T12:27:48.051Z",
-    "slug": "test-falconide-application-falconide-ZTD-D7wbB",
-    "__v": 0
-  }
-}
-```
-</details>
-
-</details>
-
-
-
-
-
-
-
-
-
----
-
-
-### updateEmailProviderById
-Update email provider by id
-
-
-
-
-```kotlin
-platformClient.application("<APPLICATION_ID>").communication.updateEmailProviderById(id: id, body: body).safeAwait{ response, error->
-    response?.let{
-      // Use response
-    } ->
-    error?.let{
-      
-    } 
-}
-```
-
-
-
-
-
-| Argument  |  Type  | Required | Description |
-| --------- | -----  | -------- | ----------- | 
-| id | String | yes | Email provider id |  
-| body | [EmailProviderReq](#EmailProviderReq) | yes | Request body |
-
-
-Update email provider by id
-
-*Returned Response:*
-
-
-
-
-[EmailProvider](#EmailProvider)
-
-Success
-
-
-
-
-<details>
-<summary><i>&nbsp; Examples:</i></summary>
-
-
-<details>
-<summary><i>&nbsp; default</i></summary>
-
-```json
-{
-  "value": {
-    "type": "application",
-    "provider": "falconide",
-    "from_address": [
-      {
-        "is_default": true,
-        "name": "abc",
-        "email": "abc@test.com"
-      }
-    ],
-    "_id": "5fd9fd44c474a7e3d5d376d6",
-    "name": "test falconide",
-    "description": "test",
-    "api_key": "testtttt",
-    "application": "000000000000000000000004",
-    "created_at": "2020-12-16T12:27:48.051Z",
-    "updated_at": "2020-12-16T12:27:48.051Z",
-    "slug": "test-falconide-application-falconide-ZTD-D7wbB",
-    "__v": 0
-  }
-}
-```
-</details>
-
-</details>
-
-
-
-
-
-
-
-
-
----
-
-
-### deleteEmailProviderById
-Delete email provider by id
-
-
-
-
-```kotlin
-platformClient.application("<APPLICATION_ID>").communication.deleteEmailProviderById(id: id).safeAwait{ response, error->
-    response?.let{
-      // Use response
-    } ->
-    error?.let{
-      
-    } 
-}
-```
-
-
-
-
-
-| Argument  |  Type  | Required | Description |
-| --------- | -----  | -------- | ----------- | 
-| id | String | yes | Email provider id |  
-
-
-
-Delete email provider by id
-
-*Returned Response:*
-
-
-
-
-[GenericDelete](#GenericDelete)
-
-Refer `GenericDelete` schema for more details.
-
-
-
-
-<details>
-<summary><i>&nbsp; Examples:</i></summary>
-
-
-<details>
-<summary><i>&nbsp; default</i></summary>
-
-```json
-{
-  "value": {
-    "message": "Deletion Successfull",
-    "acknowledged": true,
-    "affected": 1,
-    "operation": "TEMP-ST-DEL:ID"
+    ]
   }
 }
 ```
@@ -3179,6 +3665,734 @@ Refer `EmailTemplates` schema for more details.
       "current": 1,
       "size": 1,
       "item_total": 66,
+      "has_next": true
+    }
+  }
+}
+```
+</details>
+
+</details>
+
+
+
+
+
+
+
+
+
+---
+
+
+### getSmsTemplates
+Get sms templates
+
+
+
+
+```kotlin
+platformClient.application("<APPLICATION_ID>").communication.getSmsTemplates(pageNo: pageNo, pageSize: pageSize, sort: sort).safeAwait{ response, error->
+    response?.let{
+      // Use response
+    } ->
+    error?.let{
+      
+    } 
+}
+```
+
+
+
+
+
+| Argument  |  Type  | Required | Description |
+| --------- | -----  | -------- | ----------- | 
+| pageNo | Int? | no | Current page no |   
+| pageSize | Int? | no | Current request items count |   
+| sort | HashMap<String,Any>? | no | To sort based on created_at |  
+
+
+
+SMS templates are predefined message formats linked to various events for delivering messages to users. Use this API to get all sms templates.
+
+*Returned Response:*
+
+
+
+
+[SmsTemplates](#SmsTemplates)
+
+Refer `SmsTemplates` schema for more details.
+
+
+
+
+<details>
+<summary><i>&nbsp; Examples:</i></summary>
+
+
+<details>
+<summary><i>&nbsp; default</i></summary>
+
+```json
+{
+  "value": {
+    "items": [
+      {
+        "url_shorten": {
+          "enabled": false
+        },
+        "_id": "649968feca21d7edd0595b35",
+        "application": "637b6355dc65337da9b5c951",
+        "is_system": false,
+        "is_internal": false,
+        "meta": {
+          "type": "cloned",
+          "template": "61963d42ce3af81bde44a67d",
+          "is_system": true
+        },
+        "name": "TD sms templates",
+        "description": "description",
+        "message": {
+          "template_type": "nunjucks",
+          "template": "This is a test message"
+        },
+        "priority": "low",
+        "tags": [
+          "tag1",
+          "tag2"
+        ],
+        "template_variables": {
+          "hello": "world"
+        },
+        "template_id": "1234567891234567890123",
+        "published": true,
+        "category": "website",
+        "created_at": "2023-06-26T10:31:26.212Z",
+        "updated_at": "2023-06-26T10:31:26.212Z",
+        "slug": "TD-sms-templates-KwtzEUcpn",
+        "__v": 0
+      }
+    ],
+    "page": {
+      "type": "number",
+      "current": 1,
+      "size": 10,
+      "item_total": 17,
+      "has_next": true
+    }
+  }
+}
+```
+</details>
+
+</details>
+
+
+
+
+
+
+
+
+
+---
+
+
+### createSmsTemplate
+Create sms template
+
+
+
+
+```kotlin
+platformClient.application("<APPLICATION_ID>").communication.createSmsTemplate(body: body).safeAwait{ response, error->
+    response?.let{
+      // Use response
+    } ->
+    error?.let{
+      
+    } 
+}
+```
+
+
+
+
+
+| Argument  |  Type  | Required | Description |
+| --------- | -----  | -------- | ----------- |
+| body | [SmsTemplateReq](#SmsTemplateReq) | yes | Request body |
+
+
+SMS templates are predefined message formats linked to various events for delivering messages to users. Use this API to create an sms template.
+
+*Returned Response:*
+
+
+
+
+[SmsTemplate](#SmsTemplate)
+
+Refer `SmsTemplate` schema for more details.
+
+
+
+
+<details>
+<summary><i>&nbsp; Examples:</i></summary>
+
+
+<details>
+<summary><i>&nbsp; default</i></summary>
+
+```json
+{
+  "value": {
+    "url_shorten": {
+      "enabled": false
+    },
+    "_id": "649968feca21d7edd0595b35",
+    "application": "637b6355dc65337da9b5c951",
+    "is_system": false,
+    "is_internal": false,
+    "meta": {
+      "type": "cloned",
+      "template": "61963d42ce3af81bde44a67d",
+      "is_system": true
+    },
+    "name": "TD sms templates",
+    "description": "description",
+    "message": {
+      "template_type": "nunjucks",
+      "template": "This is a test message"
+    },
+    "priority": "low",
+    "tags": [
+      "tag1",
+      "tag2"
+    ],
+    "template_variables": {
+      "hello": "world"
+    },
+    "template_id": "1234567891234567890123",
+    "published": true,
+    "category": "website",
+    "created_at": "2023-06-26T10:31:26.212Z",
+    "updated_at": "2023-06-26T10:31:26.212Z",
+    "slug": "TD-sms-templates-KwtzEUcpn",
+    "__v": 0
+  }
+}
+```
+</details>
+
+</details>
+
+
+
+
+
+
+
+
+
+---
+
+
+### getSystemSmsTemplates
+Get system sms templates
+
+
+
+
+```kotlin
+platformClient.application("<APPLICATION_ID>").communication.getSystemSmsTemplates().safeAwait{ response, error->
+    response?.let{
+      // Use response
+    } ->
+    error?.let{
+      
+    } 
+}
+```
+
+
+
+
+
+
+SMS templates are predefined message formats linked to various events for delivering messages to users. Use this API to get all system sms templates.
+
+*Returned Response:*
+
+
+
+
+[ArrayList<SystemSmsTemplates>](#ArrayList<SystemSmsTemplates>)
+
+Refer `SystemSmsTemplates` schema for more details.
+
+
+
+
+<details>
+<summary><i>&nbsp; Examples:</i></summary>
+
+
+<details>
+<summary><i>&nbsp; default</i></summary>
+
+```json
+{
+  "value": [
+    {
+      "url_shorten": {
+        "enabled": false
+      },
+      "_id": "646b73e7e10612283cfd9773",
+      "is_system": true,
+      "is_internal": false,
+      "name": "Order Arrived at Store",
+      "description": "Use this SMS template, for notifying the customers, that their requested order has arrived at the store.",
+      "slug": "arrived_at_store-sms",
+      "message": {
+        "template_type": "nunjucks",
+        "template": "Delivered. Your shipment for {{ articles }} with {{ orderID }} has been delivered today at {{ delivered_at }}. You can collect it from store on or before {{ collection_date }}. Notification via Fynd"
+      },
+      "priority": "low",
+      "tags": [],
+      "template_variables": {
+        "email": "care@fynd.com",
+        "orderID": "Order ID FY5E53AFAA091115C235",
+        "brand": "SAPPER",
+        "name": "Alwira Sheikh",
+        "tracking_url": "http://go.fyndi.ng/track-order",
+        "articles": "Blue Solid Slim Fit Trackpants (28)",
+        "contact": 8767087087,
+        "ordering_channel": "ECOMM",
+        "delivered_at": "GT_Store, Vashi",
+        "collection_date": "Fri, Nov 15",
+        "credits": 0,
+        "slot": "By 9:00 PM",
+        "datetime": "Feb 28",
+        "cashback": 0,
+        "ref_application": {
+          "support_email": "care@fynd.com",
+          "app_information": {
+            "additional_data": {
+              "address_line": "Kurar village,Malad",
+              "city_pincode": "Mumbai - 400097",
+              "contactUs": "https://uniket-testing.addsale.link/contact-us",
+              "domain": "uniket-testing.addsale.link",
+              "privacyPolicy": "https://fynd.freshdesk.com/support/solutions/articles/33000214398-privacy-policy"
+            }
+          },
+          "domain": {
+            "name": "https://fynd.com"
+          },
+          "logo": {
+            "secure_url": "https://res.cloudinary.com/dwzm9bysq/image/upload/v1587981831/production/system/pointblank/fynd_logo_square_vunk4f.png"
+          }
+        }
+      },
+      "template_id": "1007569169965694807",
+      "published": true,
+      "category": "website",
+      "created_at": "2023-05-22T13:53:43.439Z",
+      "updated_at": "2023-05-22T13:53:43.439Z",
+      "__v": 0
+    }
+  ]
+}
+```
+</details>
+
+</details>
+
+
+
+
+
+
+
+
+
+---
+
+
+### getSmsTemplateById
+Get sms template by id
+
+
+
+
+```kotlin
+platformClient.application("<APPLICATION_ID>").communication.getSmsTemplateById(id: id).safeAwait{ response, error->
+    response?.let{
+      // Use response
+    } ->
+    error?.let{
+      
+    } 
+}
+```
+
+
+
+
+
+| Argument  |  Type  | Required | Description |
+| --------- | -----  | -------- | ----------- | 
+| id | String | yes | Sms template id |  
+
+
+
+SMS templates are predefined message formats linked to various events for delivering messages to users. Use this API to get an sms template by ID.
+
+*Returned Response:*
+
+
+
+
+[SmsTemplate](#SmsTemplate)
+
+Refer `SmsTemplate` schema for more details.
+
+
+
+
+<details>
+<summary><i>&nbsp; Examples:</i></summary>
+
+
+<details>
+<summary><i>&nbsp; default</i></summary>
+
+```json
+{
+  "value": {
+    "url_shorten": {
+      "enabled": false
+    },
+    "_id": "649968feca21d7edd0595b35",
+    "application": "637b6355dc65337da9b5c951",
+    "is_system": false,
+    "is_internal": false,
+    "meta": {
+      "type": "cloned",
+      "template": "61963d42ce3af81bde44a67d",
+      "is_system": true
+    },
+    "name": "TD sms templates",
+    "description": "description",
+    "message": {
+      "template_type": "nunjucks",
+      "template": "This is a test message"
+    },
+    "priority": "low",
+    "tags": [
+      "tag1",
+      "tag2"
+    ],
+    "template_variables": {
+      "hello": "world"
+    },
+    "template_id": "1234567891234567890123",
+    "published": true,
+    "category": "website",
+    "created_at": "2023-06-26T10:31:26.212Z",
+    "updated_at": "2023-06-26T10:31:26.212Z",
+    "slug": "TD-sms-templates-KwtzEUcpn",
+    "__v": 0
+  }
+}
+```
+</details>
+
+</details>
+
+
+
+
+
+
+
+
+
+---
+
+
+### updateSmsTemplateById
+Update sms template by id
+
+
+
+
+```kotlin
+platformClient.application("<APPLICATION_ID>").communication.updateSmsTemplateById(id: id, body: body).safeAwait{ response, error->
+    response?.let{
+      // Use response
+    } ->
+    error?.let{
+      
+    } 
+}
+```
+
+
+
+
+
+| Argument  |  Type  | Required | Description |
+| --------- | -----  | -------- | ----------- | 
+| id | String | yes | Sms template id |  
+| body | [SmsTemplateReq](#SmsTemplateReq) | yes | Request body |
+
+
+SMS templates are predefined message formats linked to various events for delivering messages to users. Use this API to update an sms template by ID.
+
+*Returned Response:*
+
+
+
+
+[SmsTemplate](#SmsTemplate)
+
+Refer `SmsTemplate` schema for more details.
+
+
+
+
+<details>
+<summary><i>&nbsp; Examples:</i></summary>
+
+
+<details>
+<summary><i>&nbsp; default</i></summary>
+
+```json
+{
+  "value": {
+    "url_shorten": {
+      "enabled": false
+    },
+    "_id": "649968feca21d7edd0595b35",
+    "application": "637b6355dc65337da9b5c951",
+    "is_system": false,
+    "is_internal": false,
+    "meta": {
+      "type": "cloned",
+      "template": "61963d42ce3af81bde44a67d",
+      "is_system": true
+    },
+    "name": "TD sms templates",
+    "description": "description",
+    "message": {
+      "template_type": "nunjucks",
+      "template": "This is a test message"
+    },
+    "priority": "low",
+    "tags": [
+      "tag1",
+      "tag2"
+    ],
+    "template_variables": {
+      "hello": "world"
+    },
+    "template_id": "1234567891234567890123",
+    "published": true,
+    "category": "website",
+    "created_at": "2023-06-26T10:31:26.212Z",
+    "updated_at": "2023-06-26T10:31:26.212Z",
+    "slug": "TD-sms-templates-KwtzEUcpn",
+    "__v": 0
+  }
+}
+```
+</details>
+
+</details>
+
+
+
+
+
+
+
+
+
+---
+
+
+### deleteSmsTemplateById
+Delete sms template by id
+
+
+
+
+```kotlin
+platformClient.application("<APPLICATION_ID>").communication.deleteSmsTemplateById(id: id).safeAwait{ response, error->
+    response?.let{
+      // Use response
+    } ->
+    error?.let{
+      
+    } 
+}
+```
+
+
+
+
+
+| Argument  |  Type  | Required | Description |
+| --------- | -----  | -------- | ----------- | 
+| id | String | yes | Sms template id |  
+
+
+
+SMS templates are predefined message formats linked to various events for delivering messages to users. Use this API to delete an sms template by ID.
+
+*Returned Response:*
+
+
+
+
+[GenericDelete](#GenericDelete)
+
+Refer `GenericDelete` schema for more details.
+
+
+
+
+<details>
+<summary><i>&nbsp; Examples:</i></summary>
+
+
+<details>
+<summary><i>&nbsp; default</i></summary>
+
+```json
+{
+  "value": {
+    "message": "Deletion Successfull",
+    "acknowledged": true,
+    "affected": 1,
+    "operation": "TEMP-ST-DEL:ID"
+  }
+}
+```
+</details>
+
+</details>
+
+
+
+
+
+
+
+
+
+---
+
+
+### getSubscribedSmsTemplates
+Get subscribed sms templates
+
+
+
+
+```kotlin
+platformClient.application("<APPLICATION_ID>").communication.getSubscribedSmsTemplates(pageNo: pageNo, pageSize: pageSize).safeAwait{ response, error->
+    response?.let{
+      // Use response
+    } ->
+    error?.let{
+      
+    } 
+}
+```
+
+
+
+
+
+| Argument  |  Type  | Required | Description |
+| --------- | -----  | -------- | ----------- | 
+| pageNo | Int? | no | Current page no |   
+| pageSize | Int? | no | Current request items count |  
+
+
+
+SMS templates are predefined message formats linked to various events for delivering messages to users. Use this API to get all subscribed sms templates.
+
+*Returned Response:*
+
+
+
+
+[SmsTemplates](#SmsTemplates)
+
+Refer `SmsTemplates` schema for more details.
+
+
+
+
+<details>
+<summary><i>&nbsp; Examples:</i></summary>
+
+
+<details>
+<summary><i>&nbsp; default</i></summary>
+
+```json
+{
+  "value": {
+    "items": [
+      {
+        "url_shorten": {
+          "enabled": false
+        },
+        "_id": "649968feca21d7edd0595b35",
+        "application": "637b6355dc65337da9b5c951",
+        "is_system": false,
+        "is_internal": false,
+        "meta": {
+          "type": "cloned",
+          "template": "61963d42ce3af81bde44a67d",
+          "is_system": true
+        },
+        "name": "TD sms templates",
+        "description": "description",
+        "message": {
+          "template_type": "nunjucks",
+          "template": "This is a test message"
+        },
+        "priority": "low",
+        "tags": [
+          "tag1",
+          "tag2"
+        ],
+        "template_variables": {
+          "hello": "world"
+        },
+        "template_id": "1234567891234567890123",
+        "published": true,
+        "category": "website",
+        "created_at": "2023-06-26T10:31:26.212Z",
+        "updated_at": "2023-06-26T10:31:26.212Z",
+        "slug": "TD-sms-templates-KwtzEUcpn",
+        "__v": 0
+      }
+    ],
+    "page": {
+      "type": "number",
+      "current": 1,
+      "size": 10,
+      "item_total": 17,
       "has_next": true
     }
   }
@@ -4762,1220 +5976,6 @@ Success
 ---
 
 
-### getSmsProviders
-Get sms providers
-
-
-
-
-```kotlin
-platformClient.application("<APPLICATION_ID>").communication.getSmsProviders(pageNo: pageNo, pageSize: pageSize, sort: sort).safeAwait{ response, error->
-    response?.let{
-      // Use response
-    } ->
-    error?.let{
-      
-    } 
-}
-```
-
-
-
-
-
-| Argument  |  Type  | Required | Description |
-| --------- | -----  | -------- | ----------- | 
-| pageNo | Int? | no | Current page no |   
-| pageSize | Int? | no | Current request items count |   
-| sort | HashMap<String,Any>? | no | To sort based on created_at |  
-
-
-
-Get sms providers
-
-*Returned Response:*
-
-
-
-
-[SmsProviders](#SmsProviders)
-
-Success
-
-
-
-
-<details>
-<summary><i>&nbsp; Examples:</i></summary>
-
-
-<details>
-<summary><i>&nbsp; default</i></summary>
-
-```json
-{
-  "value": {
-    "items": [
-      {
-        "rpt": 1,
-        "type": "application",
-        "provider": "telspiel",
-        "_id": "5fd9fd07c474a7710dd376d5",
-        "name": "test telspiel",
-        "description": "test",
-        "sender": "test",
-        "username": "test",
-        "authkey": "test",
-        "application": "000000000000000000000004",
-        "created_at": "2020-12-16T12:26:47.794Z",
-        "updated_at": "2020-12-16T12:26:47.794Z",
-        "slug": "test-telspiel-application-telspiel-p9UY1r7nG",
-        "__v": 0
-      }
-    ],
-    "page": {
-      "type": "number",
-      "current": 1,
-      "size": 1,
-      "item_total": 1,
-      "has_next": false
-    }
-  }
-}
-```
-</details>
-
-</details>
-
-
-
-
-
-
-
-
-
----
-
-
-### createSmsProvider
-Create sms provider
-
-
-
-
-```kotlin
-platformClient.application("<APPLICATION_ID>").communication.createSmsProvider(body: body).safeAwait{ response, error->
-    response?.let{
-      // Use response
-    } ->
-    error?.let{
-      
-    } 
-}
-```
-
-
-
-
-
-| Argument  |  Type  | Required | Description |
-| --------- | -----  | -------- | ----------- |
-| body | [SmsProviderReq](#SmsProviderReq) | yes | Request body |
-
-
-Create sms provider
-
-*Returned Response:*
-
-
-
-
-[SmsProvider](#SmsProvider)
-
-Success
-
-
-
-
-<details>
-<summary><i>&nbsp; Examples:</i></summary>
-
-
-<details>
-<summary><i>&nbsp; default</i></summary>
-
-```json
-{
-  "value": {
-    "rpt": 1,
-    "type": "application",
-    "provider": "telspiel",
-    "_id": "5fd9fd07c474a7710dd376d5",
-    "name": "test telspiel",
-    "description": "test",
-    "sender": "test",
-    "username": "test",
-    "authkey": "test",
-    "application": "000000000000000000000004",
-    "created_at": "2020-12-16T12:26:47.794Z",
-    "updated_at": "2020-12-16T12:26:47.794Z",
-    "slug": "test-telspiel-application-telspiel-p9UY1r7nG",
-    "__v": 0
-  }
-}
-```
-</details>
-
-</details>
-
-
-
-
-
-
-
-
-
----
-
-
-### getDefaultSmsProviders
-Get default sms providers
-
-
-
-
-```kotlin
-platformClient.application("<APPLICATION_ID>").communication.getDefaultSmsProviders().safeAwait{ response, error->
-    response?.let{
-      // Use response
-    } ->
-    error?.let{
-      
-    } 
-}
-```
-
-
-
-
-
-
-Get default sms providers
-
-*Returned Response:*
-
-
-
-
-[ArrayList<DefaultSmsProviders>](#ArrayList<DefaultSmsProviders>)
-
-Successful retrieval of the default SMS providers list
-
-
-
-
-<details>
-<summary><i>&nbsp; Examples:</i></summary>
-
-
-<details>
-<summary><i>&nbsp; default</i></summary>
-
-```json
-{
-  "value": [
-    {
-      "_id": "63db8c68975237fff4f2133e",
-      "name": "Fynd timesinternet",
-      "is_default": true
-    }
-  ]
-}
-```
-</details>
-
-</details>
-
-
-
-
-
-
-
-
-
----
-
-
-### getSmsProviderById
-Get sms provider by id
-
-
-
-
-```kotlin
-platformClient.application("<APPLICATION_ID>").communication.getSmsProviderById(id: id).safeAwait{ response, error->
-    response?.let{
-      // Use response
-    } ->
-    error?.let{
-      
-    } 
-}
-```
-
-
-
-
-
-| Argument  |  Type  | Required | Description |
-| --------- | -----  | -------- | ----------- | 
-| id | String | yes | Sms provider id |  
-
-
-
-Get sms provider by id
-
-*Returned Response:*
-
-
-
-
-[SmsProvider](#SmsProvider)
-
-Success
-
-
-
-
-<details>
-<summary><i>&nbsp; Examples:</i></summary>
-
-
-<details>
-<summary><i>&nbsp; default</i></summary>
-
-```json
-{
-  "value": {
-    "rpt": 1,
-    "type": "application",
-    "provider": "telspiel",
-    "_id": "5fd9fd07c474a7710dd376d5",
-    "name": "test telspiel",
-    "description": "test",
-    "sender": "test",
-    "username": "test",
-    "authkey": "test",
-    "application": "000000000000000000000004",
-    "created_at": "2020-12-16T12:26:47.794Z",
-    "updated_at": "2020-12-16T12:26:47.794Z",
-    "slug": "test-telspiel-application-telspiel-p9UY1r7nG",
-    "__v": 0
-  }
-}
-```
-</details>
-
-</details>
-
-
-
-
-
-
-
-
-
----
-
-
-### updateSmsProviderById
-Update sms provider by id
-
-
-
-
-```kotlin
-platformClient.application("<APPLICATION_ID>").communication.updateSmsProviderById(id: id, body: body).safeAwait{ response, error->
-    response?.let{
-      // Use response
-    } ->
-    error?.let{
-      
-    } 
-}
-```
-
-
-
-
-
-| Argument  |  Type  | Required | Description |
-| --------- | -----  | -------- | ----------- | 
-| id | String | yes | Sms provider id |  
-| body | [SmsProviderReq](#SmsProviderReq) | yes | Request body |
-
-
-Update sms provider by id
-
-*Returned Response:*
-
-
-
-
-[SmsProvider](#SmsProvider)
-
-Success
-
-
-
-
-<details>
-<summary><i>&nbsp; Examples:</i></summary>
-
-
-<details>
-<summary><i>&nbsp; default</i></summary>
-
-```json
-{
-  "value": {
-    "rpt": 1,
-    "type": "application",
-    "provider": "telspiel",
-    "_id": "5fd9fd07c474a7710dd376d5",
-    "name": "test telspiel",
-    "description": "test",
-    "sender": "test",
-    "username": "test",
-    "authkey": "test",
-    "application": "000000000000000000000004",
-    "created_at": "2020-12-16T12:26:47.794Z",
-    "updated_at": "2020-12-16T12:26:47.794Z",
-    "slug": "test-telspiel-application-telspiel-p9UY1r7nG",
-    "__v": 0
-  }
-}
-```
-</details>
-
-</details>
-
-
-
-
-
-
-
-
-
----
-
-
-### deleteSmsProviderById
-Delete sms provider by id
-
-
-
-
-```kotlin
-platformClient.application("<APPLICATION_ID>").communication.deleteSmsProviderById(id: id).safeAwait{ response, error->
-    response?.let{
-      // Use response
-    } ->
-    error?.let{
-      
-    } 
-}
-```
-
-
-
-
-
-| Argument  |  Type  | Required | Description |
-| --------- | -----  | -------- | ----------- | 
-| id | String | yes | Sms provider id |  
-
-
-
-Delete sms provider by id
-
-*Returned Response:*
-
-
-
-
-[GenericDelete](#GenericDelete)
-
-Refer `GenericDelete` schema for more details.
-
-
-
-
-<details>
-<summary><i>&nbsp; Examples:</i></summary>
-
-
-<details>
-<summary><i>&nbsp; default</i></summary>
-
-```json
-{
-  "value": {
-    "message": "Deletion Successfull",
-    "acknowledged": true,
-    "affected": 1,
-    "operation": "TEMP-ST-DEL:ID"
-  }
-}
-```
-</details>
-
-</details>
-
-
-
-
-
-
-
-
-
----
-
-
-### getSmsTemplates
-Get sms templates
-
-
-
-
-```kotlin
-platformClient.application("<APPLICATION_ID>").communication.getSmsTemplates(pageNo: pageNo, pageSize: pageSize, sort: sort).safeAwait{ response, error->
-    response?.let{
-      // Use response
-    } ->
-    error?.let{
-      
-    } 
-}
-```
-
-
-
-
-
-| Argument  |  Type  | Required | Description |
-| --------- | -----  | -------- | ----------- | 
-| pageNo | Int? | no | Current page no |   
-| pageSize | Int? | no | Current request items count |   
-| sort | HashMap<String,Any>? | no | To sort based on created_at |  
-
-
-
-SMS templates are predefined message formats linked to various events for delivering messages to users. Use this API to get all sms templates.
-
-*Returned Response:*
-
-
-
-
-[SmsTemplates](#SmsTemplates)
-
-Refer `SmsTemplates` schema for more details.
-
-
-
-
-<details>
-<summary><i>&nbsp; Examples:</i></summary>
-
-
-<details>
-<summary><i>&nbsp; default</i></summary>
-
-```json
-{
-  "value": {
-    "items": [
-      {
-        "url_shorten": {
-          "enabled": false
-        },
-        "_id": "649968feca21d7edd0595b35",
-        "application": "637b6355dc65337da9b5c951",
-        "is_system": false,
-        "is_internal": false,
-        "meta": {
-          "type": "cloned",
-          "template": "61963d42ce3af81bde44a67d",
-          "is_system": true
-        },
-        "name": "TD sms templates",
-        "description": "description",
-        "message": {
-          "template_type": "nunjucks",
-          "template": "This is a test message"
-        },
-        "priority": "low",
-        "tags": [
-          "tag1",
-          "tag2"
-        ],
-        "template_variables": {
-          "hello": "world"
-        },
-        "template_id": "1234567891234567890123",
-        "published": true,
-        "category": "website",
-        "created_at": "2023-06-26T10:31:26.212Z",
-        "updated_at": "2023-06-26T10:31:26.212Z",
-        "slug": "TD-sms-templates-KwtzEUcpn",
-        "__v": 0
-      }
-    ],
-    "page": {
-      "type": "number",
-      "current": 1,
-      "size": 10,
-      "item_total": 17,
-      "has_next": true
-    }
-  }
-}
-```
-</details>
-
-</details>
-
-
-
-
-
-
-
-
-
----
-
-
-### createSmsTemplate
-Create sms template
-
-
-
-
-```kotlin
-platformClient.application("<APPLICATION_ID>").communication.createSmsTemplate(body: body).safeAwait{ response, error->
-    response?.let{
-      // Use response
-    } ->
-    error?.let{
-      
-    } 
-}
-```
-
-
-
-
-
-| Argument  |  Type  | Required | Description |
-| --------- | -----  | -------- | ----------- |
-| body | [SmsTemplateReq](#SmsTemplateReq) | yes | Request body |
-
-
-SMS templates are predefined message formats linked to various events for delivering messages to users. Use this API to create an sms template.
-
-*Returned Response:*
-
-
-
-
-[SmsTemplate](#SmsTemplate)
-
-Refer `SmsTemplate` schema for more details.
-
-
-
-
-<details>
-<summary><i>&nbsp; Examples:</i></summary>
-
-
-<details>
-<summary><i>&nbsp; default</i></summary>
-
-```json
-{
-  "value": {
-    "url_shorten": {
-      "enabled": false
-    },
-    "_id": "649968feca21d7edd0595b35",
-    "application": "637b6355dc65337da9b5c951",
-    "is_system": false,
-    "is_internal": false,
-    "meta": {
-      "type": "cloned",
-      "template": "61963d42ce3af81bde44a67d",
-      "is_system": true
-    },
-    "name": "TD sms templates",
-    "description": "description",
-    "message": {
-      "template_type": "nunjucks",
-      "template": "This is a test message"
-    },
-    "priority": "low",
-    "tags": [
-      "tag1",
-      "tag2"
-    ],
-    "template_variables": {
-      "hello": "world"
-    },
-    "template_id": "1234567891234567890123",
-    "published": true,
-    "category": "website",
-    "created_at": "2023-06-26T10:31:26.212Z",
-    "updated_at": "2023-06-26T10:31:26.212Z",
-    "slug": "TD-sms-templates-KwtzEUcpn",
-    "__v": 0
-  }
-}
-```
-</details>
-
-</details>
-
-
-
-
-
-
-
-
-
----
-
-
-### getSystemSmsTemplates
-Get system sms templates
-
-
-
-
-```kotlin
-platformClient.application("<APPLICATION_ID>").communication.getSystemSmsTemplates().safeAwait{ response, error->
-    response?.let{
-      // Use response
-    } ->
-    error?.let{
-      
-    } 
-}
-```
-
-
-
-
-
-
-SMS templates are predefined message formats linked to various events for delivering messages to users. Use this API to get all system sms templates.
-
-*Returned Response:*
-
-
-
-
-[ArrayList<SystemSmsTemplates>](#ArrayList<SystemSmsTemplates>)
-
-Refer `SystemSmsTemplates` schema for more details.
-
-
-
-
-<details>
-<summary><i>&nbsp; Examples:</i></summary>
-
-
-<details>
-<summary><i>&nbsp; default</i></summary>
-
-```json
-{
-  "value": [
-    {
-      "url_shorten": {
-        "enabled": false
-      },
-      "_id": "646b73e7e10612283cfd9773",
-      "is_system": true,
-      "is_internal": false,
-      "name": "Order Arrived at Store",
-      "description": "Use this SMS template, for notifying the customers, that their requested order has arrived at the store.",
-      "slug": "arrived_at_store-sms",
-      "message": {
-        "template_type": "nunjucks",
-        "template": "Delivered. Your shipment for {{ articles }} with {{ orderID }} has been delivered today at {{ delivered_at }}. You can collect it from store on or before {{ collection_date }}. Notification via Fynd"
-      },
-      "priority": "low",
-      "tags": [],
-      "template_variables": {
-        "email": "care@fynd.com",
-        "orderID": "Order ID FY5E53AFAA091115C235",
-        "brand": "SAPPER",
-        "name": "Alwira Sheikh",
-        "tracking_url": "http://go.fyndi.ng/track-order",
-        "articles": "Blue Solid Slim Fit Trackpants (28)",
-        "contact": 8767087087,
-        "ordering_channel": "ECOMM",
-        "delivered_at": "GT_Store, Vashi",
-        "collection_date": "Fri, Nov 15",
-        "credits": 0,
-        "slot": "By 9:00 PM",
-        "datetime": "Feb 28",
-        "cashback": 0,
-        "ref_application": {
-          "support_email": "care@fynd.com",
-          "app_information": {
-            "additional_data": {
-              "address_line": "Kurar village,Malad",
-              "city_pincode": "Mumbai - 400097",
-              "contactUs": "https://uniket-testing.addsale.link/contact-us",
-              "domain": "uniket-testing.addsale.link",
-              "privacyPolicy": "https://fynd.freshdesk.com/support/solutions/articles/33000214398-privacy-policy"
-            }
-          },
-          "domain": {
-            "name": "https://fynd.com"
-          },
-          "logo": {
-            "secure_url": "https://res.cloudinary.com/dwzm9bysq/image/upload/v1587981831/production/system/pointblank/fynd_logo_square_vunk4f.png"
-          }
-        }
-      },
-      "template_id": "1007569169965694807",
-      "published": true,
-      "category": "website",
-      "created_at": "2023-05-22T13:53:43.439Z",
-      "updated_at": "2023-05-22T13:53:43.439Z",
-      "__v": 0
-    }
-  ]
-}
-```
-</details>
-
-</details>
-
-
-
-
-
-
-
-
-
----
-
-
-### getSmsTemplateById
-Get sms template by id
-
-
-
-
-```kotlin
-platformClient.application("<APPLICATION_ID>").communication.getSmsTemplateById(id: id).safeAwait{ response, error->
-    response?.let{
-      // Use response
-    } ->
-    error?.let{
-      
-    } 
-}
-```
-
-
-
-
-
-| Argument  |  Type  | Required | Description |
-| --------- | -----  | -------- | ----------- | 
-| id | String | yes | Sms template id |  
-
-
-
-SMS templates are predefined message formats linked to various events for delivering messages to users. Use this API to get an sms template by ID.
-
-*Returned Response:*
-
-
-
-
-[SmsTemplate](#SmsTemplate)
-
-Refer `SmsTemplate` schema for more details.
-
-
-
-
-<details>
-<summary><i>&nbsp; Examples:</i></summary>
-
-
-<details>
-<summary><i>&nbsp; default</i></summary>
-
-```json
-{
-  "value": {
-    "url_shorten": {
-      "enabled": false
-    },
-    "_id": "649968feca21d7edd0595b35",
-    "application": "637b6355dc65337da9b5c951",
-    "is_system": false,
-    "is_internal": false,
-    "meta": {
-      "type": "cloned",
-      "template": "61963d42ce3af81bde44a67d",
-      "is_system": true
-    },
-    "name": "TD sms templates",
-    "description": "description",
-    "message": {
-      "template_type": "nunjucks",
-      "template": "This is a test message"
-    },
-    "priority": "low",
-    "tags": [
-      "tag1",
-      "tag2"
-    ],
-    "template_variables": {
-      "hello": "world"
-    },
-    "template_id": "1234567891234567890123",
-    "published": true,
-    "category": "website",
-    "created_at": "2023-06-26T10:31:26.212Z",
-    "updated_at": "2023-06-26T10:31:26.212Z",
-    "slug": "TD-sms-templates-KwtzEUcpn",
-    "__v": 0
-  }
-}
-```
-</details>
-
-</details>
-
-
-
-
-
-
-
-
-
----
-
-
-### updateSmsTemplateById
-Update sms template by id
-
-
-
-
-```kotlin
-platformClient.application("<APPLICATION_ID>").communication.updateSmsTemplateById(id: id, body: body).safeAwait{ response, error->
-    response?.let{
-      // Use response
-    } ->
-    error?.let{
-      
-    } 
-}
-```
-
-
-
-
-
-| Argument  |  Type  | Required | Description |
-| --------- | -----  | -------- | ----------- | 
-| id | String | yes | Sms template id |  
-| body | [SmsTemplateReq](#SmsTemplateReq) | yes | Request body |
-
-
-SMS templates are predefined message formats linked to various events for delivering messages to users. Use this API to update an sms template by ID.
-
-*Returned Response:*
-
-
-
-
-[SmsTemplate](#SmsTemplate)
-
-Refer `SmsTemplate` schema for more details.
-
-
-
-
-<details>
-<summary><i>&nbsp; Examples:</i></summary>
-
-
-<details>
-<summary><i>&nbsp; default</i></summary>
-
-```json
-{
-  "value": {
-    "url_shorten": {
-      "enabled": false
-    },
-    "_id": "649968feca21d7edd0595b35",
-    "application": "637b6355dc65337da9b5c951",
-    "is_system": false,
-    "is_internal": false,
-    "meta": {
-      "type": "cloned",
-      "template": "61963d42ce3af81bde44a67d",
-      "is_system": true
-    },
-    "name": "TD sms templates",
-    "description": "description",
-    "message": {
-      "template_type": "nunjucks",
-      "template": "This is a test message"
-    },
-    "priority": "low",
-    "tags": [
-      "tag1",
-      "tag2"
-    ],
-    "template_variables": {
-      "hello": "world"
-    },
-    "template_id": "1234567891234567890123",
-    "published": true,
-    "category": "website",
-    "created_at": "2023-06-26T10:31:26.212Z",
-    "updated_at": "2023-06-26T10:31:26.212Z",
-    "slug": "TD-sms-templates-KwtzEUcpn",
-    "__v": 0
-  }
-}
-```
-</details>
-
-</details>
-
-
-
-
-
-
-
-
-
----
-
-
-### deleteSmsTemplateById
-Delete sms template by id
-
-
-
-
-```kotlin
-platformClient.application("<APPLICATION_ID>").communication.deleteSmsTemplateById(id: id).safeAwait{ response, error->
-    response?.let{
-      // Use response
-    } ->
-    error?.let{
-      
-    } 
-}
-```
-
-
-
-
-
-| Argument  |  Type  | Required | Description |
-| --------- | -----  | -------- | ----------- | 
-| id | String | yes | Sms template id |  
-
-
-
-SMS templates are predefined message formats linked to various events for delivering messages to users. Use this API to delete an sms template by ID.
-
-*Returned Response:*
-
-
-
-
-[GenericDelete](#GenericDelete)
-
-Refer `GenericDelete` schema for more details.
-
-
-
-
-<details>
-<summary><i>&nbsp; Examples:</i></summary>
-
-
-<details>
-<summary><i>&nbsp; default</i></summary>
-
-```json
-{
-  "value": {
-    "message": "Deletion Successfull",
-    "acknowledged": true,
-    "affected": 1,
-    "operation": "TEMP-ST-DEL:ID"
-  }
-}
-```
-</details>
-
-</details>
-
-
-
-
-
-
-
-
-
----
-
-
-### getSubscribedSmsTemplates
-Get subscribed sms templates
-
-
-
-
-```kotlin
-platformClient.application("<APPLICATION_ID>").communication.getSubscribedSmsTemplates(pageNo: pageNo, pageSize: pageSize).safeAwait{ response, error->
-    response?.let{
-      // Use response
-    } ->
-    error?.let{
-      
-    } 
-}
-```
-
-
-
-
-
-| Argument  |  Type  | Required | Description |
-| --------- | -----  | -------- | ----------- | 
-| pageNo | Int? | no | Current page no |   
-| pageSize | Int? | no | Current request items count |  
-
-
-
-SMS templates are predefined message formats linked to various events for delivering messages to users. Use this API to get all subscribed sms templates.
-
-*Returned Response:*
-
-
-
-
-[SmsTemplates](#SmsTemplates)
-
-Refer `SmsTemplates` schema for more details.
-
-
-
-
-<details>
-<summary><i>&nbsp; Examples:</i></summary>
-
-
-<details>
-<summary><i>&nbsp; default</i></summary>
-
-```json
-{
-  "value": {
-    "items": [
-      {
-        "url_shorten": {
-          "enabled": false
-        },
-        "_id": "649968feca21d7edd0595b35",
-        "application": "637b6355dc65337da9b5c951",
-        "is_system": false,
-        "is_internal": false,
-        "meta": {
-          "type": "cloned",
-          "template": "61963d42ce3af81bde44a67d",
-          "is_system": true
-        },
-        "name": "TD sms templates",
-        "description": "description",
-        "message": {
-          "template_type": "nunjucks",
-          "template": "This is a test message"
-        },
-        "priority": "low",
-        "tags": [
-          "tag1",
-          "tag2"
-        ],
-        "template_variables": {
-          "hello": "world"
-        },
-        "template_id": "1234567891234567890123",
-        "published": true,
-        "category": "website",
-        "created_at": "2023-06-26T10:31:26.212Z",
-        "updated_at": "2023-06-26T10:31:26.212Z",
-        "slug": "TD-sms-templates-KwtzEUcpn",
-        "__v": 0
-      }
-    ],
-    "page": {
-      "type": "number",
-      "current": 1,
-      "size": 10,
-      "item_total": 17,
-      "has_next": true
-    }
-  }
-}
-```
-</details>
-
-</details>
-
-
-
-
-
-
-
-
-
----
-
-
 
 ### Schemas
 
@@ -7183,6 +7183,18 @@ Refer `SmsTemplates` schema for more details.
  | authkey | String? |  yes  |  |
  | type | String? |  yes  |  |
  | provider | String? |  yes  |  |
+ | password | String? |  yes  | The password for the test. |
+ | senderid | String? |  yes  | The sender ID for the test. |
+ | feedid | String? |  yes  | The feed ID for the test. |
+ | entityid | String? |  yes  | The entity ID for the test. |
+ | overrideDnd | Boolean? |  yes  | Whether to override Do Not Disturb. |
+ | host | String? |  yes  | The host for the test. |
+ | port | Int? |  yes  | The port for the test. |
+ | entityId | String? |  yes  | The entity ID for the test. |
+ | apikey | String? |  yes  | The apikey for the test. |
+ | versionId | Int? |  yes  | The version ID for the test. |
+ | senderId | String? |  yes  | The sender ID for the test. |
+ | apiKey | String? |  yes  | The api_key for the test. |
 
 ---
 
