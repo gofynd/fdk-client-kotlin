@@ -1752,9 +1752,34 @@ data class GetLocationSerializer(
     var notificationEmails: ArrayList<String>?=null,
     
     @SerializedName("modified_by")
-    var modifiedBy: UserSerializer?=null
+    var modifiedBy: UserSerializer?=null,
+    
+    @SerializedName("tags")
+    var tags: ArrayList<String>?=null,
+    
+    @SerializedName("default_order_acceptance_timing")
+    var defaultOrderAcceptanceTiming: Boolean?=null,
+    
+    @SerializedName("order_acceptance_timing")
+    var orderAcceptanceTiming: ArrayList<LocationDayWiseSerializer>?=null,
+    
+    @SerializedName("avg_order_processing_time")
+    var avgOrderProcessingTime: AverageOrderProcessingTime?=null,
+    
+    @SerializedName("bulk_shipment")
+    var bulkShipment: Boolean?=null
     
 ): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     
     
     
