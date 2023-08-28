@@ -72,4 +72,8 @@ interface BillingApiList {
     suspend fun planStatusUpdate(@Path("company_id") companyId: String,@Body body: PlanStatusUpdateReq)
     : Response<Plan>
     
+    @POST ("/service/platform/billing/v1.0/company/{company_id}/payment/initiate")
+    suspend fun subscripePlan(@Path("company_id") companyId: String,@Body body: SunscribePlan)
+    : Response<SubscribePlanRes>
+    
 }

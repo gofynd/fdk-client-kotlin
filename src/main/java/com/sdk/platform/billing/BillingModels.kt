@@ -2491,5 +2491,116 @@ data class PlanStatusUpdateReq(
 
 
 
+             
+/*
+    Model: SunscribePlan
+*/
+@Parcelize
+data class SunscribePlan(
+    
+    
+    
+    @SerializedName("entity_type")
+    var entityType: String?=null,
+    
+    @SerializedName("collection_type")
+    var collectionType: String?=null,
+    
+    @SerializedName("plan_id")
+    var planId: String?=null,
+    
+    @SerializedName("callback_url")
+    var callbackUrl: String?=null,
+    
+    @SerializedName("meta")
+    var meta: Meta?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: Meta
+*/
+@Parcelize
+data class Meta(
+    
+    
+    
+    @SerializedName("subscribe")
+    var subscribe: Boolean?=null,
+    
+    @SerializedName("is_custom_plan")
+    var isCustomPlan: Boolean?=null,
+    
+    @SerializedName("is_plan_upgrade")
+    var isPlanUpgrade: Boolean?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: SubscribePlanRes
+*/
+@Parcelize
+data class SubscribePlanRes(
+    
+    
+    
+    @SerializedName("redirect_url")
+    var redirectUrl: String?=null,
+    
+    @SerializedName("transaction_id")
+    var transactionId: String?=null,
+    
+    @SerializedName("current_status")
+    var currentStatus: String?=null,
+    
+    @SerializedName("meta")
+    var meta: Meta?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
 
 

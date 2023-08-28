@@ -22,6 +22,7 @@ Handle platform subscription
 * [cancelSubscriptionPlan](#cancelsubscriptionplan)
 * [getEnterprisePlans](#getenterpriseplans)
 * [planStatusUpdate](#planstatusupdate)
+* [subscripePlan](#subscripeplan)
 
 
 
@@ -2486,6 +2487,82 @@ Success
 ---
 
 
+### subscripePlan
+Subscribe plan.
+
+
+
+
+```kotlin
+platformClient.billing.subscripePlan(body: body).safeAwait{ response, error->
+    response?.let{
+      // Use response
+    } ->
+    error?.let{
+      
+    } 
+}
+```
+
+
+
+
+
+| Argument  |  Type  | Required | Description |
+| --------- | -----  | -------- | ----------- |
+| body | [SunscribePlan](#SunscribePlan) | yes | Request body |
+
+
+It will subscribe a plan.
+
+*Returned Response:*
+
+
+
+
+[SubscribePlanRes](#SubscribePlanRes)
+
+Success
+
+
+
+
+<details>
+<summary><i>&nbsp; Examples:</i></summary>
+
+
+<details>
+<summary><i>&nbsp; default</i></summary>
+
+```json
+{
+  "value": {
+    "redirect_url": "https://platform.fyndx1.de/company/8029/subscription/renew-plan?plan_id=64e8c18e548ddf67f0c4cb1f&transaction_id=64ec54e3202d2b0bd9fcd120&renew=true&callback_url=https://platform.fyndx1.de/company/8029/billing/bills&meta={\"subscribe\":true,\"is_custom_plan\":true,\"is_plan_upgrade\":false}",
+    "transaction_id": "64ec54e3202d2b0bd9fcd120",
+    "current_status": "initiated",
+    "meta": {
+      "subscribe": true,
+      "is_custom_plan": true,
+      "is_plan_upgrade": false
+    }
+  }
+}
+```
+</details>
+
+</details>
+
+
+
+
+
+
+
+
+
+---
+
+
 
 ### Schemas
 
@@ -3357,6 +3434,48 @@ Success
  | planId | String? |  yes  |  |
  | reason | String? |  yes  |  |
  | sellerStatus | String? |  yes  |  |
+
+---
+
+
+ 
+ 
+ #### [SunscribePlan](#SunscribePlan)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | entityType | String? |  yes  |  |
+ | collectionType | String? |  yes  |  |
+ | planId | String? |  yes  |  |
+ | callbackUrl | String? |  yes  |  |
+ | meta | [Meta](#Meta)? |  yes  |  |
+
+---
+
+
+ 
+ 
+ #### [Meta](#Meta)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | subscribe | Boolean? |  yes  |  |
+ | isCustomPlan | Boolean? |  yes  |  |
+ | isPlanUpgrade | Boolean? |  yes  |  |
+
+---
+
+
+ 
+ 
+ #### [SubscribePlanRes](#SubscribePlanRes)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | redirectUrl | String? |  yes  |  |
+ | transactionId | String? |  yes  |  |
+ | currentStatus | String? |  yes  |  |
+ | meta | [Meta](#Meta)? |  yes  |  |
 
 ---
 

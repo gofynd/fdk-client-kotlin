@@ -1711,7 +1711,6 @@ Price Adjustment Updated successfully
   "success": true,
   "data": {
     "id": "cc8154592ccb42c88b481ce4c21ab602",
-    "cart_value": 250,
     "cart_id": "fa45f5cbd3764a6297bfa79d6bedf71c",
     "is_authenticated": true,
     "article_ids": [
@@ -1719,7 +1718,8 @@ Price Adjustment Updated successfully
         "article_id": "f322167ce70f4dca8f8ac0efdc496abe",
         "value": 100,
         "code": "abs120",
-        "meta": {}
+        "meta": {},
+        "quantity": 2
       }
     ],
     "type": "discount",
@@ -1859,7 +1859,6 @@ Price Adjustment Created successfully
   "success": true,
   "data": {
     "id": "cc8154592ccb42c88b481ce4c21ab602",
-    "cart_value": 250,
     "cart_id": "fa45f5cbd3764a6297bfa79d6bedf71c",
     "is_authenticated": true,
     "article_ids": [
@@ -1867,7 +1866,8 @@ Price Adjustment Created successfully
         "article_id": "f322167ce70f4dca8f8ac0efdc496abe",
         "value": 100,
         "code": "abs120",
-        "meta": {}
+        "meta": {},
+        "quantity": 2
       }
     ],
     "type": "discount",
@@ -13851,11 +13851,12 @@ Success. Returns a Cart object as shown below. Refer `CartDetailResponse` for mo
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | meta | HashMap<String,Any>? |  yes  |  |
- | articleId | String |  no  |  |
- | type | String? |  yes  |  |
- | value | Double? |  yes  |  |
- | code | String? |  yes  |  |
+ | value | Double? |  yes  | value of price adjustment for article |
+ | code | String? |  yes  | code to identify price adjustment on article |
+ | type | String? |  yes  | type of price adjusment |
+ | articleId | String |  no  | id of article |
+ | quantity | Int? |  yes  | total quantity of the article to be considered (currently used only in discount type) |
+ | meta | HashMap<String,Any>? |  yes  | meta related to article |
 
 ---
 
@@ -13878,19 +13879,18 @@ Success. Returns a Cart object as shown below. Refer `CartDetailResponse` for mo
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | applyExpiry | String? |  yes  |  |
- | cartId | String |  no  |  |
- | cartValue | Double? |  yes  |  |
- | meta | HashMap<String,Any>? |  yes  |  |
- | type | String |  no  |  |
+ | modifiedBy | String? |  yes  | The entity that modified the field |
  | value | Double |  no  |  |
- | articleLevelDistribution | Boolean |  no  |  |
- | articleIds | ArrayList<[Article](#Article)> |  no  |  |
- | modifiedBy | String? |  yes  |  |
- | isAuthenticated | Boolean |  no  |  |
- | allowedRefund | Boolean? |  yes  |  |
- | message | String |  no  |  |
+ | message | String |  no  | The message associated with the price adjustment |
+ | applyExpiry | String? |  yes  | The date and time when the expiry should be applied |
+ | articleLevelDistribution | Boolean |  no  | Flag indicating whether the distribution should is done at the article level |
  | collection | [Collection](#Collection) |  no  |  |
+ | type | String |  no  | type of price adjusment |
+ | allowedRefund | Boolean? |  yes  | Flag indicating whether refunds are allowed (default: False) |
+ | isAuthenticated | Boolean |  no  | Flag indicating whether the user is authenticated |
+ | articleIds | ArrayList<[Article](#Article)> |  no  | The list of article object in the price adjustment |
+ | meta | HashMap<String,Any>? |  yes  |  |
+ | cartId | String |  no  | The ID of the cart |
 
 ---
 
@@ -13901,19 +13901,18 @@ Success. Returns a Cart object as shown below. Refer `CartDetailResponse` for mo
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | applyExpiry | String? |  yes  |  |
- | cartId | String |  no  |  |
- | cartValue | Double? |  yes  |  |
- | meta | HashMap<String,Any>? |  yes  |  |
- | type | String |  no  |  |
  | value | Double |  no  |  |
- | articleLevelDistribution | Boolean |  no  |  |
- | articleIds | ArrayList<[Article](#Article)> |  no  |  |
+ | message | String |  no  | The message associated with the price adjustment |
+ | applyExpiry | String? |  yes  | The date and time when the expiry should be applied |
+ | articleLevelDistribution | Boolean |  no  | Flag indicating whether the distribution should is done at the article level |
  | id | String? |  yes  |  |
- | isAuthenticated | Boolean |  no  |  |
- | allowedRefund | Boolean? |  yes  |  |
- | message | String |  no  |  |
  | collection | [Collection](#Collection) |  no  |  |
+ | type | String |  no  | type of price adjusment |
+ | allowedRefund | Boolean? |  yes  | Flag indicating whether refunds are allowed (default: False) |
+ | isAuthenticated | Boolean |  no  | Flag indicating whether the user is authenticated |
+ | articleIds | ArrayList<[Article](#Article)> |  no  | The list of article object in the price adjustment |
+ | meta | HashMap<String,Any>? |  yes  |  |
+ | cartId | String |  no  | The ID of the cart |
 
 ---
 
@@ -13935,19 +13934,18 @@ Success. Returns a Cart object as shown below. Refer `CartDetailResponse` for mo
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | applyExpiry | String? |  yes  |  |
- | cartId | String |  no  |  |
- | cartValue | Double? |  yes  |  |
- | meta | HashMap<String,Any>? |  yes  |  |
- | type | String |  no  |  |
- | createdBy | String? |  yes  |  |
  | value | Double |  no  |  |
- | articleLevelDistribution | Boolean |  no  |  |
- | articleIds | ArrayList<[Article](#Article)> |  no  |  |
- | isAuthenticated | Boolean |  no  |  |
- | allowedRefund | Boolean? |  yes  |  |
- | message | String |  no  |  |
+ | message | String |  no  | The message associated with the price adjustment |
+ | applyExpiry | String? |  yes  | The date and time when the expiry should be applied |
+ | createdBy | String? |  yes  | The entity that created the field |
+ | articleLevelDistribution | Boolean |  no  | Flag indicating whether the distribution should is done at the article level |
  | collection | [Collection](#Collection) |  no  |  |
+ | type | String |  no  | type of price adjusment |
+ | allowedRefund | Boolean? |  yes  | Flag indicating whether refunds are allowed (default: False) |
+ | isAuthenticated | Boolean |  no  | Flag indicating whether the user is authenticated |
+ | articleIds | ArrayList<[Article](#Article)> |  no  | The list of article object in the price adjustment |
+ | meta | HashMap<String,Any>? |  yes  |  |
+ | cartId | String |  no  | The ID of the cart |
 
 ---
 

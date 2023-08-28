@@ -235,9 +235,22 @@ class BillingDataManagerClass(val config: PlatformConfig, val unauthorizedAction
         } 
     }
     
+    
+    suspend fun subscripePlan(body: SunscribePlan)
+    : Response<SubscribePlanRes>? {
+        
+        return if (config.oauthClient.isAccessTokenValid()) {
+            billingApiList?.subscripePlan(
+        companyId = config.companyId, body = body)
+        } else {
+            null
+        } 
+    }
+    
 
 inner class ApplicationClient(val applicationId:String,val config: PlatformConfig){
 
+    
     
     
     
