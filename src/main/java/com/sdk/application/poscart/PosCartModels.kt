@@ -229,10 +229,15 @@ data class AppliedPromotion(
     @SerializedName("ownership")
     var ownership: Ownership?=null,
     
+    @SerializedName("currency")
+    var currency: CartCurrency?=null,
+    
     @SerializedName("promotion_group")
     var promotionGroup: String?=null
     
 ): Parcelable {
+    
+    
     
     
     

@@ -14303,6 +14303,7 @@ Success. Returns a Cart object as shown below. Refer `CartDetailResponse` for mo
  | ---------- | ---- | -------- | ----------- |
  | articleQuantity | Int? |  yes  | Quantity of article on which promotion is applicable |
  | ownership | [Ownership2](#Ownership2)? |  yes  | Ownership of promotion |
+ | currency | [CartCurrency](#CartCurrency)? |  yes  |  |
  | discountRules | ArrayList<[DiscountRulesApp](#DiscountRulesApp)>? |  yes  | Discount rules for promotions |
  | appliedFreeArticles | ArrayList<[AppliedFreeArticles](#AppliedFreeArticles)>? |  yes  | Applied free article for free gift item promotions |
  | promotionName | String? |  yes  | Promotion name of current promotion |
@@ -15049,6 +15050,7 @@ Success. Returns a Cart object as shown below. Refer `CartDetailResponse` for mo
  | cartValue | Double? |  yes  |  |
  | createdOn | String? |  yes  |  |
  | userId | String? |  yes  |  |
+ | currencyCode | String? |  yes  |  |
  | itemCounts | Int? |  yes  |  |
 
 ---

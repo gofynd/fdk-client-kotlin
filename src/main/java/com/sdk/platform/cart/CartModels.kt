@@ -3837,6 +3837,9 @@ data class AppliedPromotion(
     @SerializedName("ownership")
     var ownership: Ownership2?=null,
     
+    @SerializedName("currency")
+    var currency: CartCurrency?=null,
+    
     @SerializedName("discount_rules")
     var discountRules: ArrayList<DiscountRulesApp>?=null,
     
@@ -3868,6 +3871,8 @@ data class AppliedPromotion(
     var promoId: String?=null
     
 ): Parcelable {
+    
+    
     
     
     
@@ -6109,10 +6114,15 @@ data class CartList(
     @SerializedName("user_id")
     var userId: String?=null,
     
+    @SerializedName("currency_code")
+    var currencyCode: String?=null,
+    
     @SerializedName("item_counts")
     var itemCounts: Int?=null
     
 ): Parcelable {
+    
+    
     
     
     
