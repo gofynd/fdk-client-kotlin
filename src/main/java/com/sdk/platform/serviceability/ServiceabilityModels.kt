@@ -14,6 +14,28 @@ import com.google.gson.annotations.SerializedName
 
              
 /*
+    Model: ServiceabilityPayloadSchema
+*/
+@Parcelize
+data class ServiceabilityPayloadSchema(
+    
+    
+    
+    @SerializedName("serviceability_type")
+    var serviceabilityType: String?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
     Model: ServiceabilityErrorResponse
 */
 @Parcelize
@@ -3406,7 +3428,7 @@ data class ApplicationSelfShipConfig(
     
     
     @SerializedName("self_ship")
-    var selfShip: SelfShipResponse?=null
+    var selfShip: @RawValue HashMap<String,Any>?=null
     
 ): Parcelable {
     

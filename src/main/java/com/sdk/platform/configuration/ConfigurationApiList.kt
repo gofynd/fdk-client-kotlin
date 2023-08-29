@@ -96,6 +96,10 @@ interface ConfigurationApiList {
     suspend fun updateOrderingStoreConfig(@Path("company_id") companyId: String, @Path("application_id") applicationId: String,@Body body: OrderingStoreConfig)
     : Response<DeploymentMeta>
     
+    @GET ("/service/platform/configuration/v1.0/company/{company_id}/application/{application_id}/ordering-store")
+    suspend fun getOrderingStoreConfig(@Path("company_id") companyId: String, @Path("application_id") applicationId: String)
+    : Response<OrderingStoreConfig>
+    
     @GET ("/service/platform/configuration/v1.0/company/{company_id}/application/{application_id}/ordering-store/staff-stores")
     suspend fun getStaffOrderingStores(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Query("page_no") pageNo: Int?, @Query("page_size") pageSize: Int?, @Query("q") q: String?)
     : Response<OrderingStoresResponse>
@@ -184,7 +188,7 @@ interface ConfigurationApiList {
     suspend fun getStoreByBrands(@Path("company_id") companyId: String, @Query("page_no") pageNo: Int?, @Query("page_size") pageSize: Int?,@Body body: StoreByBrandsRequest)
     : Response<StoreByBrandsResponse>
     
-    @GET ("/service/platform/configuration/v1.0/company/{company_id}/other-seller-applications/")
+    @GET ("/service/platform/configuration/v1.0/company/{company_id}/other-seller-applications")
     suspend fun getOtherSellerApplications(@Path("company_id") companyId: String, @Query("page_no") pageNo: Int?, @Query("page_size") pageSize: Int?)
     : Response<OtherSellerApplications>
     

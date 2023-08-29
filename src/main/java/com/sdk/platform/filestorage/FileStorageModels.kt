@@ -286,180 +286,17 @@ data class CompleteResponse(
 
              
 /*
-    Model: Opts
+    Model: DestinationNamespace
 */
 @Parcelize
-data class Opts(
-    
-    
-    
-    @SerializedName("attempts")
-    var attempts: Int?=null,
-    
-    @SerializedName("timestamp")
-    var timestamp: Int?=null,
-    
-    @SerializedName("delay")
-    var delay: Int?=null
-    
-): Parcelable {
-    
-    
-    
-    
-    
-    
-    
-    
-    
-}
-
-
-
-             
-/*
-    Model: CopyFileTask
-*/
-@Parcelize
-data class CopyFileTask(
-    
-    
-    
-    @SerializedName("id")
-    var id: String?=null,
-    
-    @SerializedName("name")
-    var name: String?=null,
-    
-    @SerializedName("data")
-    var data: BulkRequest?=null,
-    
-    @SerializedName("opts")
-    var opts: Opts?=null,
-    
-    @SerializedName("progress")
-    var progress: Int?=null,
-    
-    @SerializedName("delay")
-    var delay: Int?=null,
-    
-    @SerializedName("timestamp")
-    var timestamp: Int?=null,
-    
-    @SerializedName("attempts_made")
-    var attemptsMade: Int?=null,
-    
-    @SerializedName("stacktrace")
-    var stacktrace: ArrayList<String>?=null,
-    
-    @SerializedName("finished_on")
-    var finishedOn: Int?=null,
-    
-    @SerializedName("processed_on")
-    var processedOn: Int?=null
-    
-): Parcelable {
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-}
-
-
-
-             
-/*
-    Model: BulkUploadResponse
-*/
-@Parcelize
-data class BulkUploadResponse(
-    
-    
-    
-    @SerializedName("tracking_url")
-    var trackingUrl: String?=null,
-    
-    @SerializedName("task")
-    var task: CopyFileTask?=null
-    
-): Parcelable {
-    
-    
-    
-    
-    
-    
-    
-}
-
-
-
-             
-/*
-    Model: ReqConfiguration
-*/
-@Parcelize
-data class ReqConfiguration(
-    
-    
-    
-    @SerializedName("concurrency")
-    var concurrency: Int?=null
-    
-): Parcelable {
-    
-    
-    
-    
-    
-}
-
-
-
-             
-/*
-    Model: Destination
-*/
-@Parcelize
-data class Destination(
+data class DestinationNamespace(
     
     
     
     @SerializedName("namespace")
-    var namespace: String?=null,
-    
-    @SerializedName("rewrite")
-    var rewrite: String?=null,
-    
-    @SerializedName("basepath")
-    var basepath: String?=null
+    var namespace: String?=null
     
 ): Parcelable {
-    
-    
-    
-    
     
     
     
@@ -471,10 +308,10 @@ data class Destination(
 
              
 /*
-    Model: BulkRequest
+    Model: CopyFiles
 */
 @Parcelize
-data class BulkRequest(
+data class CopyFiles(
     
     
     
@@ -482,14 +319,9 @@ data class BulkRequest(
     var urls: ArrayList<String>?=null,
     
     @SerializedName("destination")
-    var destination: Destination?=null,
-    
-    @SerializedName("configuration")
-    var configuration: ReqConfiguration?=null
+    var destination: DestinationNamespace?=null
     
 ): Parcelable {
-    
-    
     
     
     
@@ -727,6 +559,472 @@ data class BrowseResponse(
     var page: Page?=null
     
 ): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: InvoiceTypesResponse
+*/
+@Parcelize
+data class InvoiceTypesResponse(
+    
+    
+    
+    @SerializedName("_id")
+    var id: String?=null,
+    
+    @SerializedName("pdf_type_id")
+    var pdfTypeId: Int?=null,
+    
+    @SerializedName("name")
+    var name: String?=null,
+    
+    @SerializedName("format")
+    var format: ArrayList<String>?=null,
+    
+    @SerializedName("__v")
+    var v: Int?=null,
+    
+    @SerializedName("visibility")
+    var visibility: Boolean?=null,
+    
+    @SerializedName("schema")
+    var schema: @RawValue HashMap<String,Any>?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: DummyTemplateDataItems
+*/
+@Parcelize
+data class DummyTemplateDataItems(
+    
+    
+    
+    @SerializedName("_id")
+    var id: String?=null,
+    
+    @SerializedName("pdf_type_id")
+    var pdfTypeId: Double?=null,
+    
+    @SerializedName("payload")
+    var payload: @RawValue HashMap<String,Any>?=null,
+    
+    @SerializedName("__v")
+    var v: Int?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: Status
+*/
+@Parcelize
+data class Status(
+    
+    
+    
+    @SerializedName("total")
+    var total: Double?=null,
+    
+    @SerializedName("failed")
+    var failed: Double?=null,
+    
+    @SerializedName("succeeded")
+    var succeeded: Double?=null,
+    
+    @SerializedName("result")
+    var result: String?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: FileSrc
+*/
+@Parcelize
+data class FileSrc(
+    
+    
+    
+    @SerializedName("method")
+    var method: String?=null,
+    
+    @SerializedName("url")
+    var url: String?=null,
+    
+    @SerializedName("namespace")
+    var namespace: String?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: File
+*/
+@Parcelize
+data class File(
+    
+    
+    
+    @SerializedName("src")
+    var src: FileSrc?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: FilesSuccess
+*/
+@Parcelize
+data class FilesSuccess(
+    
+    
+    
+    @SerializedName("success")
+    var success: Boolean?=null,
+    
+    @SerializedName("file")
+    var file: File?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: BulkUploadSyncMode
+*/
+@Parcelize
+data class BulkUploadSyncMode(
+    
+    
+    
+    @SerializedName("status")
+    var status: Status?=null,
+    
+    @SerializedName("files")
+    var files: ArrayList<FilesSuccess>?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: BulkUploadFailResponse
+*/
+@Parcelize
+data class BulkUploadFailResponse(
+    
+    
+    
+    @SerializedName("status")
+    var status: Status?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: pdfRender
+*/
+@Parcelize
+data class pdfRender(
+    
+    
+    
+    @SerializedName("format")
+    var format: String?=null,
+    
+    @SerializedName("payload")
+    var payload: @RawValue HashMap<String,Any>?=null,
+    
+    @SerializedName("template")
+    var template: String?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: pdfConfig
+*/
+@Parcelize
+data class pdfConfig(
+    
+    
+    
+    @SerializedName("format")
+    var format: String?=null,
+    
+    @SerializedName("template")
+    var template: String?=null,
+    
+    @SerializedName("pdf_type_id")
+    var pdfTypeId: Int?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: PdfConfigSuccess
+*/
+@Parcelize
+data class PdfConfigSuccess(
+    
+    
+    
+    @SerializedName("_id")
+    var id: String?=null,
+    
+    @SerializedName("company_id")
+    var companyId: Int?=null,
+    
+    @SerializedName("application_id")
+    var applicationId: String?=null,
+    
+    @SerializedName("pdf_type_id")
+    var pdfTypeId: Int?=null,
+    
+    @SerializedName("format")
+    var format: String?=null,
+    
+    @SerializedName("template")
+    var template: String?=null,
+    
+    @SerializedName("__v")
+    var v: Int?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: PdfConfigSaveSuccess
+*/
+@Parcelize
+data class PdfConfigSaveSuccess(
+    
+    
+    
+    @SerializedName("_id")
+    var id: String?=null,
+    
+    @SerializedName("company_id")
+    var companyId: Int?=null,
+    
+    @SerializedName("application_id")
+    var applicationId: String?=null,
+    
+    @SerializedName("pdf_type_id")
+    var pdfTypeId: Int?=null,
+    
+    @SerializedName("format")
+    var format: String?=null,
+    
+    @SerializedName("template")
+    var template: String?=null,
+    
+    @SerializedName("__v")
+    var v: Int?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: PdfDefaultTemplateSuccess
+*/
+@Parcelize
+data class PdfDefaultTemplateSuccess(
+    
+    
+    
+    @SerializedName("_id")
+    var id: String?=null,
+    
+    @SerializedName("pdf_type_id")
+    var pdfTypeId: Int?=null,
+    
+    @SerializedName("format")
+    var format: String?=null,
+    
+    @SerializedName("template")
+    var template: String?=null,
+    
+    @SerializedName("__v")
+    var v: Int?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
     
     
     

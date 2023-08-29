@@ -45,6 +45,7 @@ class ServiceabilityDataManagerClass(val config: PlatformConfig, val unauthorize
     
     
     
+    
     suspend fun getEntityRegionView(body: EntityRegionView_Request)
     : Response<EntityRegionView_Response>? {
         
@@ -287,6 +288,16 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     }
     
     
+    suspend fun updateApplicationServiceability(body: ServiceabilityPayloadSchema)
+    : Response<ApplicationServiceabilityConfigResponse>? {
+        return if (config.oauthClient.isAccessTokenValid()) {
+                serviceabilityApiList?.updateApplicationServiceability(companyId = config.companyId , applicationId = applicationId , body = body)
+        } else {
+            null
+        }
+    }
+    
+    
     
     
     
@@ -405,20 +416,20 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     }
     
     
-    suspend fun patchApplicationServiceabilitySelfShipment(body: SelfShipResponse)
+    suspend fun updateSelfShip(body: SelfShipResponse)
     : Response<ApplicationSelfShipConfigResponse>? {
         return if (config.oauthClient.isAccessTokenValid()) {
-                serviceabilityApiList?.patchApplicationServiceabilitySelfShipment(companyId = config.companyId , applicationId = applicationId , body = body)
+                serviceabilityApiList?.updateSelfShip(companyId = config.companyId , applicationId = applicationId , body = body)
         } else {
             null
         }
     }
     
     
-    suspend fun getApplicationServiceabilitySelfShipment()
+    suspend fun getSelfShip()
     : Response<ApplicationSelfShipConfigResponse>? {
         return if (config.oauthClient.isAccessTokenValid()) {
-                serviceabilityApiList?.getApplicationServiceabilitySelfShipment(companyId = config.companyId , applicationId = applicationId  )
+                serviceabilityApiList?.getSelfShip(companyId = config.companyId , applicationId = applicationId  )
         } else {
             null
         }

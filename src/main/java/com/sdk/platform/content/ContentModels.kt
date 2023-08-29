@@ -291,7 +291,7 @@ data class SeoSchema(
     var cannonicalEnabled: Boolean?=null,
     
     @SerializedName("custom_meta_tags")
-    var customMetaTags: @RawValue ArrayList<HashMap<String,Any>>?=null,
+    var customMetaTags: ArrayList<CustomMetaTag>?=null,
     
     @SerializedName("details")
     var details: Detail?=null,
@@ -577,7 +577,7 @@ data class ScheduleSchema(
     var duration: Double?=null,
     
     @SerializedName("next_schedule")
-    var nextSchedule: @RawValue ArrayList<HashMap<String,Any>>?=null
+    var nextSchedule: ArrayList<NextSchedule>?=null
     
 ): Parcelable {
     
@@ -603,60 +603,6 @@ data class ScheduleSchema(
 */
 @Parcelize
 data class NextSchedule(
-    
-    
-    
-    @SerializedName("start")
-    var start: String?=null,
-    
-    @SerializedName("end")
-    var end: String?=null
-    
-): Parcelable {
-    
-    
-    
-    
-    
-    
-    
-}
-
-
-
-             
-/*
-    Model: AnnouncementSchema
-*/
-@Parcelize
-data class AnnouncementSchema(
-    
-    
-    
-    @SerializedName("announcement")
-    var announcement: String?=null,
-    
-    @SerializedName("schedule")
-    var schedule: ScheduleStartSchema?=null
-    
-): Parcelable {
-    
-    
-    
-    
-    
-    
-    
-}
-
-
-
-             
-/*
-    Model: ScheduleStartSchema
-*/
-@Parcelize
-data class ScheduleStartSchema(
     
     
     
@@ -1177,76 +1123,9 @@ data class DataLoaderResetResponseSchema(
     
     
     @SerializedName("reset")
-    var reset: String?=null
+    var reset: Boolean?=null
     
 ): Parcelable {
-    
-    
-    
-    
-    
-}
-
-
-
-             
-/*
-    Model: Navigation
-*/
-@Parcelize
-data class Navigation(
-    
-    
-    
-    @SerializedName("name")
-    var name: String?=null,
-    
-    @SerializedName("slug")
-    var slug: String?=null,
-    
-    @SerializedName("orientation")
-    var orientation: String?=null,
-    
-    @SerializedName("created_by")
-    var createdBy: CreatedBySchema?=null,
-    
-    @SerializedName("date_meta")
-    var dateMeta: DateMeta?=null,
-    
-    @SerializedName("_id")
-    var id: String?=null,
-    
-    @SerializedName("position")
-    var position: String?=null,
-    
-    @SerializedName("application")
-    var application: String?=null,
-    
-    @SerializedName("platform")
-    var platform: String?=null,
-    
-    @SerializedName("navigation")
-    var navigation: NavigationReference?=null
-    
-): Parcelable {
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
     
     
     
@@ -1448,33 +1327,6 @@ data class NavigationReference(
 
              
 /*
-    Model: LandingPage
-*/
-@Parcelize
-data class LandingPage(
-    
-    
-    
-    @SerializedName("data")
-    var data: LandingPageSchema?=null,
-    
-    @SerializedName("success")
-    var success: Boolean?=null
-    
-): Parcelable {
-    
-    
-    
-    
-    
-    
-    
-}
-
-
-
-             
-/*
     Model: ConfigurationSchema
 */
 @Parcelize
@@ -1548,87 +1400,6 @@ data class SlideshowMedia(
     
     
     
-    
-    
-    
-    
-    
-}
-
-
-
-             
-/*
-    Model: Slideshow
-*/
-@Parcelize
-data class Slideshow(
-    
-    
-    
-    @SerializedName("data")
-    var data: SlideshowSchema?=null,
-    
-    @SerializedName("success")
-    var success: Boolean?=null
-    
-): Parcelable {
-    
-    
-    
-    
-    
-    
-    
-}
-
-
-
-             
-/*
-    Model: AnnouncementsResponseSchema
-*/
-@Parcelize
-data class AnnouncementsResponseSchema(
-    
-    
-    
-    @SerializedName("announcements")
-    var announcements: HashMap<String,ArrayList<AnnouncementSchema>>?=null,
-    
-    @SerializedName("refresh_rate")
-    var refreshRate: Int?=null,
-    
-    @SerializedName("refresh_pages")
-    var refreshPages: ArrayList<String>?=null
-    
-): Parcelable {
-    
-    
-    
-    
-    
-    
-    
-    
-    
-}
-
-
-
-             
-/*
-    Model: FaqResponseSchema
-*/
-@Parcelize
-data class FaqResponseSchema(
-    
-    
-    
-    @SerializedName("faqs")
-    var faqs: ArrayList<FaqSchema>?=null
-    
-): Parcelable {
     
     
     
@@ -2806,164 +2577,6 @@ data class NavigationRequest(
 
              
 /*
-    Model: CustomPageSchema
-*/
-@Parcelize
-data class CustomPageSchema(
-    
-    
-    
-    @SerializedName("_id")
-    var id: String?=null,
-    
-    @SerializedName("platform")
-    var platform: String?=null,
-    
-    @SerializedName("title")
-    var title: String?=null,
-    
-    @SerializedName("slug")
-    var slug: String?=null,
-    
-    @SerializedName("type")
-    var type: String?=null,
-    
-    @SerializedName("orientation")
-    var orientation: String?=null,
-    
-    @SerializedName("application")
-    var application: String?=null,
-    
-    @SerializedName("description")
-    var description: String?=null,
-    
-    @SerializedName("published")
-    var published: Boolean?=null,
-    
-    @SerializedName("tags")
-    var tags: ArrayList<String>?=null,
-    
-    @SerializedName("content")
-    var content: @RawValue ArrayList<HashMap<String,Any>>?=null,
-    
-    @SerializedName("created_by")
-    var createdBy: CreatedBySchema?=null,
-    
-    @SerializedName("date_meta")
-    var dateMeta: DateMeta?=null,
-    
-    @SerializedName("_schedule")
-    var schedule: ScheduleSchema?=null
-    
-): Parcelable {
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-}
-
-
-
-             
-/*
-    Model: ContentSchema
-*/
-@Parcelize
-data class ContentSchema(
-    
-    
-    
-    @SerializedName("type")
-    var type: String?=null,
-    
-    @SerializedName("value")
-    var value: @RawValue HashMap<String,Any>?=null
-    
-): Parcelable {
-    
-    
-    
-    
-    
-    
-    
-}
-
-
-
-             
-/*
-    Model: CustomPage
-*/
-@Parcelize
-data class CustomPage(
-    
-    
-    
-    @SerializedName("data")
-    var data: CustomPageSchema?=null
-    
-): Parcelable {
-    
-    
-    
-    
-    
-}
-
-
-
-             
-/*
-    Model: FeatureImage
-*/
-@Parcelize
-data class FeatureImage(
-    
-    
-    
-    @SerializedName("secure_url")
-    var secureUrl: String?=null
-    
-): Parcelable {
-    
-    
-    
-    
-    
-}
-
-
-
-             
-/*
     Model: PageGetResponse
 */
 @Parcelize
@@ -2999,7 +2612,7 @@ data class PageSpec(
     
     
     @SerializedName("specifications")
-    var specifications: @RawValue ArrayList<HashMap<String,Any>>?=null
+    var specifications: ArrayList<PageSpecItem>?=null
     
 ): Parcelable {
     
@@ -3215,60 +2828,6 @@ data class CreatedBySchema(
     var id: String?=null
     
 ): Parcelable {
-    
-    
-    
-    
-    
-}
-
-
-
-             
-/*
-    Model: PageContent
-*/
-@Parcelize
-data class PageContent(
-    
-    
-    
-    @SerializedName("type")
-    var type: String?=null,
-    
-    @SerializedName("value")
-    var value: @RawValue HashMap<String,Any>?=null
-    
-): Parcelable {
-    
-    
-    
-    
-    
-    
-    
-}
-
-
-
-             
-/*
-    Model: PageMeta
-*/
-@Parcelize
-data class PageMeta(
-    
-    
-    
-    @SerializedName("key")
-    var key: String?=null,
-    
-    @SerializedName("value")
-    var value: @RawValue HashMap<String,Any>?=null
-    
-): Parcelable {
-    
-    
     
     
     

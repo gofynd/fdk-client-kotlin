@@ -93,7 +93,7 @@ class FinanceDataManagerClass(val config: PlatformConfig, val unauthorizedAction
     
     
     suspend fun getReportList(body: GetReportListRequest)
-    : Response<GetEngineResponse>? {
+    : Response<GetReportListResponse>? {
         
         return if (config.oauthClient.isAccessTokenValid()) {
             financeApiList?.getReportList(
@@ -199,9 +199,152 @@ class FinanceDataManagerClass(val config: PlatformConfig, val unauthorizedAction
         } 
     }
     
+    
+    suspend fun isCnRefundMethod(body: IsCnRefundMethodRequest)
+    : Response<IsCnRefundMethodResponse>? {
+        
+        return if (config.oauthClient.isAccessTokenValid()) {
+            financeApiList?.isCnRefundMethod(
+        companyId = config.companyId, body = body)
+        } else {
+            null
+        } 
+    }
+    
+    
+    suspend fun createSellerCreditNoteConfig(body: CreateSellerCreditNoteConfigRequest)
+    : Response<CreateSellerCreditNoteConfigResponse>? {
+        
+        return if (config.oauthClient.isAccessTokenValid()) {
+            financeApiList?.createSellerCreditNoteConfig(
+        companyId = config.companyId, body = body)
+        } else {
+            null
+        } 
+    }
+    
+    
+    suspend fun deleteConfig(body: DeleteConfigRequest)
+    : Response<DeleteConfigResponse>? {
+        
+        return if (config.oauthClient.isAccessTokenValid()) {
+            financeApiList?.deleteConfig(
+        companyId = config.companyId, body = body)
+        } else {
+            null
+        } 
+    }
+    
+    
+    suspend fun channelDisplayName(filterKey: String)
+    : Response<ChannelDisplayNameResponse>? {
+        
+        return if (config.oauthClient.isAccessTokenValid()) {
+            financeApiList?.channelDisplayName(
+        companyId = config.companyId, filterKey = filterKey )
+        } else {
+            null
+        } 
+    }
+    
+    
+    suspend fun getPdfUrlView(body: GetPdfUrlViewRequest)
+    : Response<GetPdfUrlViewResponse>? {
+        
+        return if (config.oauthClient.isAccessTokenValid()) {
+            financeApiList?.getPdfUrlView(
+        companyId = config.companyId, body = body)
+        } else {
+            null
+        } 
+    }
+    
+    
+    suspend fun creditNoteDetails(body: CreditNoteDetailsRequest)
+    : Response<CreditNoteDetailsResponse>? {
+        
+        return if (config.oauthClient.isAccessTokenValid()) {
+            financeApiList?.creditNoteDetails(
+        companyId = config.companyId, body = body)
+        } else {
+            null
+        } 
+    }
+    
+    
+    suspend fun getCustomerCreditBalance(body: GetCustomerCreditBalanceRequest)
+    : Response<GetCustomerCreditBalanceResponse>? {
+        
+        return if (config.oauthClient.isAccessTokenValid()) {
+            financeApiList?.getCustomerCreditBalance(
+        companyId = config.companyId, body = body)
+        } else {
+            null
+        } 
+    }
+    
+    
+    suspend fun getCnConfig(body: GetCnConfigRequest)
+    : Response<GetCnConfigResponse>? {
+        
+        return if (config.oauthClient.isAccessTokenValid()) {
+            financeApiList?.getCnConfig(
+        companyId = config.companyId, body = body)
+        } else {
+            null
+        } 
+    }
+    
+    
+    suspend fun generateReportCustomerCn(body: GenerateReportCustomerCnRequest)
+    : Response<GenerateReportCustomerCnResponse>? {
+        
+        return if (config.oauthClient.isAccessTokenValid()) {
+            financeApiList?.generateReportCustomerCn(
+        companyId = config.companyId, body = body)
+        } else {
+            null
+        } 
+    }
+    
+    
+    suspend fun downloadReportCustomerCn(body: DownloadReportCustomerCnRequest)
+    : Response<DownloadReportCustomerCnResponse>? {
+        
+        return if (config.oauthClient.isAccessTokenValid()) {
+            financeApiList?.downloadReportCustomerCn(
+        companyId = config.companyId, body = body)
+        } else {
+            null
+        } 
+    }
+    
+    
+    suspend fun getReportingFilters(filterKey: String, affiliateId: String?=null)
+    : Response<GetReportingFiltersResponse>? {
+        
+        return if (config.oauthClient.isAccessTokenValid()) {
+            financeApiList?.getReportingFilters(
+        companyId = config.companyId, filterKey = filterKey, affiliateId = affiliateId )
+        } else {
+            null
+        } 
+    }
+    
 
 inner class ApplicationClient(val applicationId:String,val config: PlatformConfig){
 
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     
     
     

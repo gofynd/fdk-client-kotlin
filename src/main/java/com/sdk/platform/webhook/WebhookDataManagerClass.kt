@@ -44,12 +44,144 @@ class WebhookDataManagerClass(val config: PlatformConfig, val unauthorizedAction
     }
     
     
-    suspend fun getSubscribersByCompany(pageNo: Int?=null, pageSize: Int?=null, extensionId: String?=null)
+    suspend fun manualRetryOfFailedEvent(body: EventProcessRequest)
+    : Response<EventProcessedSuccessResponse>? {
+        
+        return if (config.oauthClient.isAccessTokenValid()) {
+            webhookApiList?.manualRetryOfFailedEvent(
+        companyId = config.companyId, body = body)
+        } else {
+            null
+        } 
+    }
+    
+    
+    suspend fun getEventCounts(body: EventProcessRequest)
+    : Response<FailedEventsCountSuccessResponse>? {
+        
+        return if (config.oauthClient.isAccessTokenValid()) {
+            webhookApiList?.getEventCounts(
+        companyId = config.companyId, body = body)
+        } else {
+            null
+        } 
+    }
+    
+    
+    suspend fun getManualRetryStatus()
+    : Response<RetryStatusResponse>? {
+        
+        return if (config.oauthClient.isAccessTokenValid()) {
+            webhookApiList?.getManualRetryStatus(
+        companyId = config.companyId )
+        } else {
+            null
+        } 
+    }
+    
+    
+    suspend fun manualRetryCancel()
+    : Response<EventSuccessResponse>? {
+        
+        return if (config.oauthClient.isAccessTokenValid()) {
+            webhookApiList?.manualRetryCancel(
+        companyId = config.companyId )
+        } else {
+            null
+        } 
+    }
+    
+    
+    suspend fun getDeliveryReports(body: EventProcessRequest)
+    : Response<EventProcessReports>? {
+        
+        return if (config.oauthClient.isAccessTokenValid()) {
+            webhookApiList?.getDeliveryReports(
+        companyId = config.companyId, body = body)
+        } else {
+            null
+        } 
+    }
+    
+    
+    suspend fun downloadDeliveryReport(body: EventProcessRequest)
+    : Response<HashMap<String,Any>>? {
+        
+        return if (config.oauthClient.isAccessTokenValid()) {
+            webhookApiList?.downloadDeliveryReport(
+        companyId = config.companyId, body = body)
+        } else {
+            null
+        } 
+    }
+    
+    
+    suspend fun pingWebhook(body: PingWebhook)
+    : Response<PingWebhookResponse>? {
+        
+        return if (config.oauthClient.isAccessTokenValid()) {
+            webhookApiList?.pingWebhook(
+        companyId = config.companyId, body = body)
+        } else {
+            null
+        } 
+    }
+    
+    
+    suspend fun fetchAllEventConfigurations()
+    : Response<EventConfigResponse>? {
+        
+        return if (config.oauthClient.isAccessTokenValid()) {
+            webhookApiList?.fetchAllEventConfigurations(
+        companyId = config.companyId )
+        } else {
+            null
+        } 
+    }
+    
+    
+    suspend fun getReportFilters(body: ReportFiltersPayload)
+    : Response<ReportFilterResponse>? {
+        
+        return if (config.oauthClient.isAccessTokenValid()) {
+            webhookApiList?.getReportFilters(
+        companyId = config.companyId, body = body)
+        } else {
+            null
+        } 
+    }
+    
+    
+    suspend fun getHistoricalReports(body: HistoryPayload)
+    : Response<HistoryResponse>? {
+        
+        return if (config.oauthClient.isAccessTokenValid()) {
+            webhookApiList?.getHistoricalReports(
+        companyId = config.companyId, body = body)
+        } else {
+            null
+        } 
+    }
+    
+    
+    suspend fun cancelJobByName(filename: String)
+    : Response<CancelResponse>? {
+        
+        return if (config.oauthClient.isAccessTokenValid()) {
+            webhookApiList?.cancelJobByName(
+        companyId = config.companyId, filename = filename )
+        } else {
+            null
+        } 
+    }
+    
+    
+    suspend fun getSubscribersByCompany(pageNo: Int?=null, pageSize: Int?=null, extensionId: Int?=null)
     : Response<SubscriberResponse>? {
         
         return if (config.oauthClient.isAccessTokenValid()) {
             webhookApiList?.getSubscribersByCompany(
-        pageNo = pageNo, pageSize = pageSize, companyId = config.companyId, extensionId = extensionId )
+        pageNo = pageNo, pageSize = pageSize, extensionId = extensionId, companyId = config.companyId )
         } else {
             null
         } 
@@ -80,18 +212,6 @@ class WebhookDataManagerClass(val config: PlatformConfig, val unauthorizedAction
     }
     
     
-    suspend fun getSubscribersByExtensionId(pageNo: Int?=null, pageSize: Int?=null, extensionId: String)
-    : Response<SubscriberConfigList>? {
-        
-        return if (config.oauthClient.isAccessTokenValid()) {
-            webhookApiList?.getSubscribersByExtensionId(
-        pageNo = pageNo, pageSize = pageSize, companyId = config.companyId, extensionId = extensionId )
-        } else {
-            null
-        } 
-    }
-    
-    
     suspend fun getSubscriberById(subscriberId: String)
     : Response<SubscriberResponse>? {
         
@@ -104,12 +224,12 @@ class WebhookDataManagerClass(val config: PlatformConfig, val unauthorizedAction
     }
     
     
-    suspend fun fetchAllEventConfigurations()
-    : Response<EventConfigResponse>? {
+    suspend fun getSubscribersByExtensionId(pageNo: Int?=null, pageSize: Int?=null, extensionId: String)
+    : Response<SubscriberConfigList>? {
         
         return if (config.oauthClient.isAccessTokenValid()) {
-            webhookApiList?.fetchAllEventConfigurations(
-        companyId = config.companyId )
+            webhookApiList?.getSubscribersByExtensionId(
+        pageNo = pageNo, pageSize = pageSize, companyId = config.companyId, extensionId = extensionId )
         } else {
             null
         } 
@@ -118,6 +238,16 @@ class WebhookDataManagerClass(val config: PlatformConfig, val unauthorizedAction
 
 inner class ApplicationClient(val applicationId:String,val config: PlatformConfig){
 
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     
     
     

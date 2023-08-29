@@ -20,6 +20,9 @@ Handle platform subscription
 * [getFeatureLimitConfig](#getfeaturelimitconfig)
 * [activateSubscriptionPlan](#activatesubscriptionplan)
 * [cancelSubscriptionPlan](#cancelsubscriptionplan)
+* [getEnterprisePlans](#getenterpriseplans)
+* [planStatusUpdate](#planstatusupdate)
+* [subscripePlan](#subscripeplan)
 
 
 
@@ -445,7 +448,6 @@ Success
           "phone": "91 1234567890",
           "address_lines": [
             "TV TOWER, Foot Over Bridge Khar",
-            null,
             "Mumbai, 400079, Maharashtra, India"
           ]
         },
@@ -490,7 +492,7 @@ Success
         "modified_at": "2020-12-16T07:00:22.980Z",
         "hash_identifier": "575999aca03e36f0fa54db5235bc7f25",
         "payment_method": {
-          "pg_payment_method_id": null
+          "pg_payment_method_id": ""
         },
         "invoice_items": [
           {
@@ -744,7 +746,7 @@ Success
       "client": {
         "address_lines": [
           "TV TOWER, Foot Over Bridge Khar",
-          null,
+          "",
           "Mumbai, 400079, Maharashtra, India"
         ],
         "name": "RELIANCE RETAIL LTD",
@@ -789,7 +791,7 @@ Success
       "modified_at": "2020-12-16T07:00:22.980Z",
       "hash_identifier": "575999aca03e36f0fa54db5235bc7f25",
       "payment_method": {
-        "pg_payment_method_id": null
+        "pg_payment_method_id": ""
       }
     },
     "invoice_items": [
@@ -1510,7 +1512,7 @@ Success
       "hash_identifier": "987abf78c61bfef585242bbbeaab1b59",
       "pdf_url": "https://cdn.pixelbin.io/v2/falling-surf-7c8bb8/fyndnp/wrkr/addsale/company/13781/self/subscription/documents/invoices/original/U6ffgNlo_-PS-P-A00515-FY24-paid.pdf"
     },
-    "mandate_amount": 630000,
+    "mandate_amount": "630000",
     "current_subscriptions": [
       {
         "current_period": {
@@ -2031,47 +2033,538 @@ Success
 ---
 
 
+### getEnterprisePlans
+Get Enterprise Plans
+
+
+
+
+```kotlin
+platformClient.billing.getEnterprisePlans().safeAwait{ response, error->
+    response?.let{
+      // Use response
+    } ->
+    error?.let{
+      
+    } 
+}
+```
+
+
+
+
+
+
+Get Enterprise Plans.
+
+
+*Returned Response:*
+
+
+
+
+[ArrayList<Plan>](#ArrayList<Plan>)
+
+Success
+
+
+
+
+<details>
+<summary><i>&nbsp; Examples:</i></summary>
+
+
+<details>
+<summary><i>&nbsp; Enterprise Plans</i></summary>
+
+```json
+{
+  "value": [
+    {
+      "recurring": {
+        "interval": "month",
+        "interval_count": 1
+      },
+      "is_trial_plan": false,
+      "plan_group": "default",
+      "tag_lines": [],
+      "currency": "INR",
+      "is_active": true,
+      "is_visible": true,
+      "trial_period": 0,
+      "addons": [],
+      "tags": [],
+      "type": "public",
+      "country": "IN",
+      "_id": "60093f1aabffb61debbcb44b",
+      "product_suite_id": "60093f13632a0a1d6fb5cdc3",
+      "name": "2020won",
+      "description": "2020won",
+      "amount": 21,
+      "meta": {
+        "tags": [
+          "2020won"
+        ]
+      },
+      "created_at": "2021-01-21T08:45:14.601Z",
+      "modified_at": "2021-01-21T08:45:14.601Z"
+    },
+    {
+      "recurring": {
+        "interval": "month",
+        "interval_count": 1
+      },
+      "is_trial_plan": false,
+      "plan_group": "default",
+      "tag_lines": [],
+      "currency": "INR",
+      "is_active": true,
+      "is_visible": true,
+      "trial_period": 0,
+      "addons": [],
+      "tags": [],
+      "type": "public",
+      "country": "IN",
+      "_id": "60093f13632a0a1d6fb5cddc",
+      "name": "Standard",
+      "description": "Standard",
+      "amount": 999,
+      "product_suite_id": "60093f13632a0a1d6fb5cdc3",
+      "created_at": "2021-01-21T08:45:07.979Z",
+      "modified_at": "2021-01-21T08:45:07.979Z"
+    },
+    {
+      "recurring": {
+        "interval": "month",
+        "interval_count": 1
+      },
+      "is_trial_plan": false,
+      "plan_group": "default",
+      "tag_lines": [],
+      "currency": "INR",
+      "is_active": true,
+      "is_visible": true,
+      "trial_period": 0,
+      "addons": [],
+      "tags": [],
+      "type": "public",
+      "country": "IN",
+      "_id": "60093f13632a0a1d6fb5cde0",
+      "name": "Professional",
+      "description": "Professional",
+      "amount": 1499,
+      "product_suite_id": "60093f13632a0a1d6fb5cdc3",
+      "created_at": "2021-01-21T08:45:07.985Z",
+      "modified_at": "2021-01-21T08:45:07.985Z"
+    },
+    {
+      "recurring": {
+        "interval": "month",
+        "interval_count": 1
+      },
+      "is_trial_plan": false,
+      "plan_group": "default",
+      "tag_lines": [],
+      "currency": "INR",
+      "is_active": true,
+      "is_visible": true,
+      "trial_period": 0,
+      "addons": [],
+      "tags": [
+        "popular"
+      ],
+      "type": "public",
+      "country": "IN",
+      "_id": "60093f13632a0a1d6fb5cde1",
+      "name": "Premium",
+      "description": "Premium",
+      "amount": 2499,
+      "product_suite_id": "60093f13632a0a1d6fb5cdc3",
+      "created_at": "2021-01-21T08:45:07.985Z",
+      "modified_at": "2021-01-21T08:45:07.985Z"
+    },
+    {
+      "recurring": {
+        "interval": "month",
+        "interval_count": 1
+      },
+      "is_trial_plan": false,
+      "plan_group": "default",
+      "tag_lines": [],
+      "currency": "INR",
+      "is_active": true,
+      "is_visible": true,
+      "trial_period": 0,
+      "addons": [],
+      "tags": [],
+      "type": "public",
+      "country": "IN",
+      "_id": "60093f13632a0a1d6fb5cddf",
+      "name": "Ultra Premium",
+      "description": "Ultra Premium",
+      "amount": 2999,
+      "product_suite_id": "60093f13632a0a1d6fb5cdc3",
+      "created_at": "2021-01-21T08:45:07.979Z",
+      "modified_at": "2021-01-21T08:45:07.979Z"
+    }
+  ]
+}
+```
+</details>
+
+</details>
+
+
+
+
+
+
+
+
+
+---
+
+
+### planStatusUpdate
+Update Status of The plan
+
+
+
+
+```kotlin
+platformClient.billing.planStatusUpdate(body: body).safeAwait{ response, error->
+    response?.let{
+      // Use response
+    } ->
+    error?.let{
+      
+    } 
+}
+```
+
+
+
+
+
+| Argument  |  Type  | Required | Description |
+| --------- | -----  | -------- | ----------- |
+| body | [PlanStatusUpdateReq](#PlanStatusUpdateReq) | yes | Request body |
+
+
+It will update the status of the plan
+
+*Returned Response:*
+
+
+
+
+[Plan](#Plan)
+
+Success
+
+
+
+
+<details>
+<summary><i>&nbsp; Examples:</i></summary>
+
+
+<details>
+<summary><i>&nbsp; default</i></summary>
+
+```json
+{
+  "value": {
+    "recurring": {
+      "interval": "month",
+      "interval_count": 1
+    },
+    "is_trial_plan": false,
+    "plan_group": "default",
+    "tag_lines": [],
+    "currency": "INR",
+    "is_active": true,
+    "is_visible": true,
+    "trial_period": 0,
+    "addons": [],
+    "tags": [],
+    "type": "public",
+    "country": "IN",
+    "_id": "5f3a8786c90d780037723a12",
+    "name": "Standard",
+    "description": "Standard",
+    "amount": 999,
+    "product_suite_id": "5f3a8786c90d7800377239f3",
+    "created_at": "2020-08-17T13:35:02.547Z",
+    "modified_at": "2020-08-17T13:35:02.547Z",
+    "components": [
+      {
+        "name": "Shipping",
+        "slug": "shipping",
+        "description": "",
+        "group": "feature",
+        "icon": "",
+        "links": {},
+        "enabled": true,
+        "display_text": "As per rate card"
+      },
+      {
+        "name": "Transaction Fee",
+        "slug": "transaction-fee",
+        "description": "",
+        "group": "feature",
+        "icon": "",
+        "links": {},
+        "enabled": true,
+        "display_text": "4.5%"
+      },
+      {
+        "name": "Number of Customers",
+        "slug": "customers",
+        "description": "",
+        "group": "feature",
+        "icon": "",
+        "links": {},
+        "enabled": true,
+        "display_text": "Unlimited"
+      },
+      {
+        "name": "Team Management",
+        "slug": "team-management",
+        "description": "",
+        "group": "feature",
+        "icon": "",
+        "links": {},
+        "enabled": true,
+        "display_text": "20"
+      },
+      {
+        "name": "Selling Locations",
+        "slug": "selling-locations",
+        "description": "",
+        "group": "feature",
+        "icon": "",
+        "links": {},
+        "enabled": true,
+        "display_text": "10"
+      },
+      {
+        "name": "Number of Products",
+        "slug": "products",
+        "description": "",
+        "group": "feature",
+        "icon": "",
+        "links": {},
+        "enabled": true,
+        "display_text": "Unlimited"
+      },
+      {
+        "name": "Fynd supported Payment Gateway",
+        "slug": "fynd-supported-payment-gateway",
+        "description": "",
+        "group": "feature",
+        "icon": "",
+        "links": {},
+        "enabled": true,
+        "display_text": "Yes"
+      },
+      {
+        "name": "SSL Certificates",
+        "slug": "ssl-certificates",
+        "description": "SSL certificates",
+        "group": "feature",
+        "icon": "",
+        "links": {},
+        "enabled": true,
+        "display_text": "Free"
+      },
+      {
+        "name": "Themes",
+        "slug": "themes",
+        "description": "",
+        "group": "feature",
+        "icon": "",
+        "links": {},
+        "enabled": true,
+        "display_text": "Basic Themes <br> Use themes by Partners"
+      },
+      {
+        "name": "Email Campaign",
+        "slug": "email-campagin",
+        "description": "email-campagin",
+        "group": "feature",
+        "icon": "",
+        "links": {},
+        "enabled": true,
+        "display_text": "Free 5000 email <br> Additional email charged at 0.25 INR per email"
+      },
+      {
+        "name": "Sale Websites",
+        "slug": "sale-websites",
+        "description": "",
+        "group": "feature",
+        "icon": "",
+        "links": {},
+        "enabled": true,
+        "display_text": "2"
+      },
+      {
+        "name": "SMS campaign",
+        "slug": "sms-campagin",
+        "description": "Sms campagin",
+        "group": "feature",
+        "icon": "",
+        "links": {},
+        "enabled": true,
+        "display_text": "Free 5000 SMS <br> Additional SMS charged at 0.25 INR per SMS"
+      },
+      {
+        "name": "Analytics - Campaign Source",
+        "slug": "analytics-campaign-source",
+        "description": "",
+        "group": "feature",
+        "icon": "",
+        "links": {},
+        "enabled": true,
+        "display_text": "CSV + Basic Events"
+      },
+      {
+        "name": "Content Management",
+        "slug": "content-managment",
+        "description": "",
+        "group": "feature",
+        "icon": "",
+        "links": {},
+        "enabled": true,
+        "display_text": "Yes"
+      },
+      {
+        "name": "Custom Domain",
+        "slug": "custom-domain",
+        "description": "",
+        "group": "feature",
+        "icon": "",
+        "links": {},
+        "enabled": true,
+        "display_text": "Yes"
+      },
+      {
+        "name": "Service-Level Agreement",
+        "slug": "sla",
+        "description": "",
+        "group": "feature",
+        "icon": "",
+        "links": {},
+        "enabled": true,
+        "display_text": "48Hr"
+      },
+      {
+        "name": "Support",
+        "slug": "support",
+        "description": "",
+        "group": "feature",
+        "icon": "",
+        "links": {},
+        "enabled": true,
+        "display_text": "Email"
+      }
+    ]
+  }
+}
+```
+</details>
+
+</details>
+
+
+
+
+
+
+
+
+
+---
+
+
+### subscripePlan
+Subscribe plan.
+
+
+
+
+```kotlin
+platformClient.billing.subscripePlan(body: body).safeAwait{ response, error->
+    response?.let{
+      // Use response
+    } ->
+    error?.let{
+      
+    } 
+}
+```
+
+
+
+
+
+| Argument  |  Type  | Required | Description |
+| --------- | -----  | -------- | ----------- |
+| body | [SunscribePlan](#SunscribePlan) | yes | Request body |
+
+
+It will subscribe a plan.
+
+*Returned Response:*
+
+
+
+
+[SubscribePlanRes](#SubscribePlanRes)
+
+Success
+
+
+
+
+<details>
+<summary><i>&nbsp; Examples:</i></summary>
+
+
+<details>
+<summary><i>&nbsp; default</i></summary>
+
+```json
+{
+  "value": {
+    "redirect_url": "https://platform.fyndx1.de/company/8029/subscription/renew-plan?plan_id=64e8c18e548ddf67f0c4cb1f&transaction_id=64ec54e3202d2b0bd9fcd120&renew=true&callback_url=https://platform.fyndx1.de/company/8029/billing/bills&meta={\"subscribe\":true,\"is_custom_plan\":true,\"is_plan_upgrade\":false}",
+    "transaction_id": "64ec54e3202d2b0bd9fcd120",
+    "current_status": "initiated",
+    "meta": {
+      "subscribe": true,
+      "is_custom_plan": true,
+      "is_plan_upgrade": false
+    }
+  }
+}
+```
+</details>
+
+</details>
+
+
+
+
+
+
+
+
+
+---
+
+
 
 ### Schemas
-
- 
- 
- #### [Page](#Page)
-
- | Properties | Type | Nullable | Description |
- | ---------- | ---- | -------- | ----------- |
- | itemTotal | Int? |  yes  |  |
- | nextId | String? |  yes  |  |
- | hasPrevious | Boolean? |  yes  |  |
- | hasNext | Boolean? |  yes  |  |
- | current | Int? |  yes  |  |
- | type | String |  no  |  |
- | size | Int? |  yes  |  |
-
----
-
-
- 
- 
- #### [UnauthenticatedUser](#UnauthenticatedUser)
-
- | Properties | Type | Nullable | Description |
- | ---------- | ---- | -------- | ----------- |
- | message | String? |  yes  | Failure message. |
-
----
-
-
- 
- 
- #### [UnauthenticatedApplication](#UnauthenticatedApplication)
-
- | Properties | Type | Nullable | Description |
- | ---------- | ---- | -------- | ----------- |
- | message | String? |  yes  | Failure message. |
-
----
-
 
  
  
@@ -2156,55 +2649,6 @@ Success
  | productSuiteId | String? |  yes  |  |
  | createdAt | String? |  yes  |  |
  | modifiedAt | String? |  yes  |  |
-
----
-
-
- 
- 
- #### [DetailedPlanComponents](#DetailedPlanComponents)
-
- | Properties | Type | Nullable | Description |
- | ---------- | ---- | -------- | ----------- |
- | name | String? |  yes  |  |
- | slug | String? |  yes  |  |
- | description | String? |  yes  |  |
- | group | String? |  yes  |  |
- | icon | String? |  yes  |  |
- | links | HashMap<String,Any>? |  yes  |  |
- | enabled | Boolean? |  yes  |  |
- | displayText | String? |  yes  |  |
- | config | HashMap<String,Any>? |  yes  |  |
-
----
-
-
- 
- 
- #### [DetailedPlan](#DetailedPlan)
-
- | Properties | Type | Nullable | Description |
- | ---------- | ---- | -------- | ----------- |
- | recurring | [PlanRecurring](#PlanRecurring)? |  yes  |  |
- | isTrialPlan | Boolean? |  yes  |  |
- | planGroup | String? |  yes  |  |
- | tagLines | ArrayList<String>? |  yes  |  |
- | currency | String? |  yes  |  |
- | isActive | Boolean? |  yes  |  |
- | isVisible | Boolean? |  yes  |  |
- | trialPeriod | Double? |  yes  |  |
- | addons | ArrayList<String>? |  yes  |  |
- | tags | ArrayList<String>? |  yes  |  |
- | type | String? |  yes  |  |
- | country | String? |  yes  |  |
- | id | String? |  yes  |  |
- | name | String? |  yes  |  |
- | description | String? |  yes  |  |
- | amount | Double? |  yes  |  |
- | productSuiteId | String? |  yes  |  |
- | createdAt | String? |  yes  |  |
- | modifiedAt | String? |  yes  |  |
- | components | ArrayList<[DetailedPlanComponents](#DetailedPlanComponents)>? |  yes  |  |
 
 ---
 
@@ -2448,79 +2892,6 @@ Success
  | id | String? |  yes  |  |
  | value | String? |  yes  |  |
  | timestamp | String? |  yes  |  |
-
----
-
-
- 
- 
- #### [InvoiceDetailsPaymentMethodsDataChecks](#InvoiceDetailsPaymentMethodsDataChecks)
-
- | Properties | Type | Nullable | Description |
- | ---------- | ---- | -------- | ----------- |
- | cvcCheck | String? |  yes  |  |
- | addressLine1Check | String? |  yes  |  |
- | addressPostalCodeCheck | String? |  yes  |  |
-
----
-
-
- 
- 
- #### [InvoiceDetailsPaymentMethodsDataNetworks](#InvoiceDetailsPaymentMethodsDataNetworks)
-
- | Properties | Type | Nullable | Description |
- | ---------- | ---- | -------- | ----------- |
- | available | ArrayList<String>? |  yes  |  |
- | preferred | String? |  yes  |  |
-
----
-
-
- 
- 
- #### [InvoiceDetailsPaymentMethodsDataThreeDSecureUsage](#InvoiceDetailsPaymentMethodsDataThreeDSecureUsage)
-
- | Properties | Type | Nullable | Description |
- | ---------- | ---- | -------- | ----------- |
- | supported | Boolean? |  yes  |  |
-
----
-
-
- 
- 
- #### [InvoiceDetailsPaymentMethodsData](#InvoiceDetailsPaymentMethodsData)
-
- | Properties | Type | Nullable | Description |
- | ---------- | ---- | -------- | ----------- |
- | brand | String? |  yes  |  |
- | last4 | String? |  yes  |  |
- | checks | [InvoiceDetailsPaymentMethodsDataChecks](#InvoiceDetailsPaymentMethodsDataChecks)? |  yes  |  |
- | wallet | String? |  yes  |  |
- | country | String? |  yes  |  |
- | funding | String? |  yes  |  |
- | expYear | Int? |  yes  |  |
- | networks | [InvoiceDetailsPaymentMethodsDataNetworks](#InvoiceDetailsPaymentMethodsDataNetworks)? |  yes  |  |
- | expMonth | Int? |  yes  |  |
- | fingerprint | String? |  yes  |  |
- | generatedFrom | String? |  yes  |  |
- | threeDSecureUsage | [InvoiceDetailsPaymentMethodsDataThreeDSecureUsage](#InvoiceDetailsPaymentMethodsDataThreeDSecureUsage)? |  yes  |  |
-
----
-
-
- 
- 
- #### [InvoiceDetailsPaymentMethods](#InvoiceDetailsPaymentMethods)
-
- | Properties | Type | Nullable | Description |
- | ---------- | ---- | -------- | ----------- |
- | id | Int? |  yes  |  |
- | type | String? |  yes  |  |
- | pgPaymentMethodId | String? |  yes  |  |
- | data | [InvoiceDetailsPaymentMethodsData](#InvoiceDetailsPaymentMethodsData)? |  yes  |  |
- | isDefault | Boolean? |  yes  |  |
 
 ---
 
@@ -3050,6 +3421,61 @@ Success
  | ---------- | ---- | -------- | ----------- |
  | success | Boolean? |  yes  |  |
  | data | [Subscription](#Subscription)? |  yes  |  |
+
+---
+
+
+ 
+ 
+ #### [PlanStatusUpdateReq](#PlanStatusUpdateReq)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | planId | String? |  yes  |  |
+ | reason | String? |  yes  |  |
+ | sellerStatus | String? |  yes  |  |
+
+---
+
+
+ 
+ 
+ #### [SunscribePlan](#SunscribePlan)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | entityType | String? |  yes  |  |
+ | collectionType | String? |  yes  |  |
+ | planId | String? |  yes  |  |
+ | callbackUrl | String? |  yes  |  |
+ | meta | [Meta](#Meta)? |  yes  |  |
+
+---
+
+
+ 
+ 
+ #### [Meta](#Meta)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | subscribe | Boolean? |  yes  |  |
+ | isCustomPlan | Boolean? |  yes  |  |
+ | isPlanUpgrade | Boolean? |  yes  |  |
+
+---
+
+
+ 
+ 
+ #### [SubscribePlanRes](#SubscribePlanRes)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | redirectUrl | String? |  yes  |  |
+ | transactionId | String? |  yes  |  |
+ | currentStatus | String? |  yes  |  |
+ | meta | [Meta](#Meta)? |  yes  |  |
 
 ---
 

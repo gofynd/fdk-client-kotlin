@@ -60,4 +60,8 @@ interface CompanyProfileApiList {
     suspend fun createLocationBulk(@Path("company_id") companyId: String,@Body body: BulkLocationSerializer)
     : Response<ProfileSuccessResponse>
     
+    @GET ("/service/platform/company-profile/v1.0/company/{company_id}/location/tags")
+    suspend fun getLocationTags(@Path("company_id") companyId: String)
+    : Response<StoreTagsResponseSchema>
+    
 }

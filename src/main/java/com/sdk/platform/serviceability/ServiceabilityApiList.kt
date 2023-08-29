@@ -12,6 +12,10 @@ interface ServiceabilityApiList {
     suspend fun getApplicationServiceability(@Path("company_id") companyId: String, @Path("application_id") applicationId: String)
     : Response<ApplicationServiceabilityConfigResponse>
     
+    @POST ("/service/platform/logistics/v1.0/company/{company_id}/application/{application_id}/serviceability")
+    suspend fun updateApplicationServiceability(@Path("company_id") companyId: String, @Path("application_id") applicationId: String,@Body body: ServiceabilityPayloadSchema)
+    : Response<ApplicationServiceabilityConfigResponse>
+    
     @POST ("/service/platform/logistics/v1.0/company/{company_id}/regions")
     suspend fun getEntityRegionView(@Path("company_id") companyId: String,@Body body: EntityRegionView_Request)
     : Response<EntityRegionView_Response>
@@ -125,11 +129,11 @@ interface ServiceabilityApiList {
     : Response<DPApplicationRuleResponse>
     
     @PATCH ("/service/platform/logistics/v1.0/company/{company_id}/application/{application_id}/selfship")
-    suspend fun patchApplicationServiceabilitySelfShipment(@Path("company_id") companyId: String, @Path("application_id") applicationId: String,@Body body: SelfShipResponse)
+    suspend fun updateSelfShip(@Path("company_id") companyId: String, @Path("application_id") applicationId: String,@Body body: SelfShipResponse)
     : Response<ApplicationSelfShipConfigResponse>
     
     @GET ("/service/platform/logistics/v1.0/company/{company_id}/application/{application_id}/selfship")
-    suspend fun getApplicationServiceabilitySelfShipment(@Path("company_id") companyId: String, @Path("application_id") applicationId: String)
+    suspend fun getSelfShip(@Path("company_id") companyId: String, @Path("application_id") applicationId: String)
     : Response<ApplicationSelfShipConfigResponse>
     
 }

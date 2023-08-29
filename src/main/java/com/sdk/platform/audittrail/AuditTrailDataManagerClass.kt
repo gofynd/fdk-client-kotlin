@@ -44,12 +44,12 @@ class AuditTrailDataManagerClass(val config: PlatformConfig, val unauthorizedAct
     }
     
     
-    suspend fun getAuditLogs(qs: String)
+    suspend fun getAuditLogs(qs: String, limit: Int?=null, sort: HashMap<String,Any>?=null)
     : Response<LogSchemaResponse>? {
         
         return if (config.oauthClient.isAccessTokenValid()) {
             auditTrailApiList?.getAuditLogs(
-        companyId = config.companyId, qs = qs )
+        companyId = config.companyId, qs = qs, limit = limit, sort = sort )
         } else {
             null
         } 

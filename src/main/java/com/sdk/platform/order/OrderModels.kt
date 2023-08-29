@@ -3232,8 +3232,8 @@ data class LineItem(
     @SerializedName("meta")
     var meta: @RawValue HashMap<String,Any>?=null,
     
-    @SerializedName("custom_messasge")
-    var customMessasge: String?=null,
+    @SerializedName("custom_message")
+    var customMessage: String?=null,
     
     @SerializedName("quantity")
     var quantity: Int?=null,
@@ -3640,9 +3640,14 @@ data class TaxInfo(
     var b2BGstinNumber: String?=null,
     
     @SerializedName("gstin")
-    var gstin: String?=null
+    var gstin: String?=null,
+    
+    @SerializedName("pan_no")
+    var panNo: String?=null
     
 ): Parcelable {
+    
+    
     
     
     
@@ -4235,6 +4240,33 @@ data class BagStateTransitionMap(
 
              
 /*
+    Model: RoleBaseStateTransitionMapping
+*/
+@Parcelize
+data class RoleBaseStateTransitionMapping(
+    
+    
+    
+    @SerializedName("success")
+    var success: Boolean?=null,
+    
+    @SerializedName("next_statuses")
+    var nextStatuses: ArrayList<String>?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
     Model: FetchCreditBalanceRequestPayload
 */
 @Parcelize
@@ -4792,6 +4824,416 @@ data class VerifyOtpResponse(
     
     @SerializedName("data")
     var data: VerifyOtpResponseData?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: CourierPartnerTrackingDetails
+*/
+@Parcelize
+data class CourierPartnerTrackingDetails(
+    
+    
+    
+    @SerializedName("operational_status")
+    var operationalStatus: String?=null,
+    
+    @SerializedName("dp_status")
+    var dpStatus: String?=null,
+    
+    @SerializedName("shipment_id")
+    var shipmentId: String?=null,
+    
+    @SerializedName("awb")
+    var awb: String?=null,
+    
+    @SerializedName("dp_status_updated_at")
+    var dpStatusUpdatedAt: String?=null,
+    
+    @SerializedName("remark")
+    var remark: String?=null,
+    
+    @SerializedName("id")
+    var id: Int?=null,
+    
+    @SerializedName("dp_location")
+    var dpLocation: String?=null,
+    
+    @SerializedName("estimated_delivery_date")
+    var estimatedDeliveryDate: String?=null,
+    
+    @SerializedName("journey")
+    var journey: String?=null,
+    
+    @SerializedName("meta")
+    var meta: @RawValue HashMap<String,Any>?=null,
+    
+    @SerializedName("dp_name")
+    var dpName: String?=null,
+    
+    @SerializedName("promised_delivery_date")
+    var promisedDeliveryDate: String?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: PageDetails
+*/
+@Parcelize
+data class PageDetails(
+    
+    
+    
+    @SerializedName("item_total")
+    var itemTotal: Int?=null,
+    
+    @SerializedName("current")
+    var current: Int?=null,
+    
+    @SerializedName("size")
+    var size: Int?=null,
+    
+    @SerializedName("type")
+    var type: String?=null,
+    
+    @SerializedName("has_next")
+    var hasNext: Boolean?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: CourierPartnerTrackingResponse
+*/
+@Parcelize
+data class CourierPartnerTrackingResponse(
+    
+    
+    
+    @SerializedName("items")
+    var items: ArrayList<CourierPartnerTrackingDetails>?=null,
+    
+    @SerializedName("page")
+    var page: PageDetails?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: BulkReportsDownloadRequest
+*/
+@Parcelize
+data class BulkReportsDownloadRequest(
+    
+    
+    
+    @SerializedName("store_ids")
+    var storeIds: ArrayList<String>?=null,
+    
+    @SerializedName("lane_type")
+    var laneType: String?=null,
+    
+    @SerializedName("custom_headers")
+    var customHeaders: String?=null,
+    
+    @SerializedName("report_type")
+    var reportType: String?=null,
+    
+    @SerializedName("from_date")
+    var fromDate: String?=null,
+    
+    @SerializedName("to_date")
+    var toDate: String?=null,
+    
+    @SerializedName("entities")
+    var entities: ArrayList<String>?=null,
+    
+    @SerializedName("filter_type")
+    var filterType: String?=null,
+    
+    @SerializedName("is_cross_company_enabled")
+    var isCrossCompanyEnabled: Boolean?=null,
+    
+    @SerializedName("custom_filters_for_lane")
+    var customFiltersForLane: @RawValue HashMap<String,Any>?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: BulkReportsDownloadResponse
+*/
+@Parcelize
+data class BulkReportsDownloadResponse(
+    
+    
+    
+    @SerializedName("success")
+    var success: Boolean?=null,
+    
+    @SerializedName("batch_id")
+    var batchId: String?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: BulkReportsDownloadFailedResponse
+*/
+@Parcelize
+data class BulkReportsDownloadFailedResponse(
+    
+    
+    
+    @SerializedName("status")
+    var status: Boolean?=null,
+    
+    @SerializedName("error")
+    var error: String?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: EInvoiceRetryShipmentData
+*/
+@Parcelize
+data class EInvoiceRetryShipmentData(
+    
+    
+    
+    @SerializedName("shipment_id")
+    var shipmentId: String?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: EInvoiceRetry
+*/
+@Parcelize
+data class EInvoiceRetry(
+    
+    
+    
+    @SerializedName("shipments_data")
+    var shipmentsData: ArrayList<EInvoiceRetryShipmentData>?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: EInvoiceResponseData
+*/
+@Parcelize
+data class EInvoiceResponseData(
+    
+    
+    
+    @SerializedName("shipment_id")
+    var shipmentId: String?=null,
+    
+    @SerializedName("message")
+    var message: String?=null,
+    
+    @SerializedName("success")
+    var success: Boolean?=null,
+    
+    @SerializedName("ack_no")
+    var ackNo: String?=null,
+    
+    @SerializedName("irn")
+    var irn: String?=null,
+    
+    @SerializedName("ack_dt")
+    var ackDt: String?=null,
+    
+    @SerializedName("timeout")
+    var timeout: Int?=null,
+    
+    @SerializedName("timeout_unit")
+    var timeoutUnit: String?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: EInvoiceRetryResponse
+*/
+@Parcelize
+data class EInvoiceRetryResponse(
+    
+    
+    
+    @SerializedName("success")
+    var success: Boolean?=null,
+    
+    @SerializedName("success_count")
+    var successCount: Int?=null,
+    
+    @SerializedName("message")
+    var message: String?=null,
+    
+    @SerializedName("response_data")
+    var responseData: ArrayList<EInvoiceResponseData>?=null
     
 ): Parcelable {
     

@@ -23,7 +23,7 @@ Get paginated audit logs
 
 
 ```kotlin
-platformClient.audittrail.getAuditLogs(qs: qs).safeAwait{ response, error->
+platformClient.audittrail.getAuditLogs(qs: qs, limit: limit, sort: sort).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -39,7 +39,9 @@ platformClient.audittrail.getAuditLogs(qs: qs).safeAwait{ response, error->
 
 | Argument  |  Type  | Required | Description |
 | --------- | -----  | -------- | ----------- | 
-| qs | String | yes | Logs Query |  
+| qs | String | yes | Logs Query |   
+| limit | Int? | no | Current request items count |   
+| sort | HashMap<String,Any>? | no | To sort based on _id |  
 
 
 
@@ -85,7 +87,7 @@ Success
           }
         },
         "_id": "634eef735e84e7e1b09aa07c",
-        "application": null,
+        "application": "",
         "date": "2022-10-18T18:24:51.329Z",
         "created_at": "2022-10-18T18:24:51.400Z",
         "modified_at": "2022-10-18T18:24:51.400Z"
@@ -534,17 +536,6 @@ Success
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
  | message | String? |  yes  | Failure message. |
-
----
-
-
- 
- 
- #### [ResourceNotFound](#ResourceNotFound)
-
- | Properties | Type | Nullable | Description |
- | ---------- | ---- | -------- | ----------- |
- | message | String? |  yes  | Resource not found with {id} |
 
 ---
 

@@ -3023,7 +3023,7 @@ data class CartCheckoutDetailRequest(
     var customMeta: ArrayList<CartCheckoutCustomMeta>?=null,
     
     @SerializedName("customer_details")
-    var customerDetails: CustomerDetails?=null,
+    var customerDetails: @RawValue HashMap<String,Any>?=null,
     
     @SerializedName("merchant_code")
     var merchantCode: String?=null,
@@ -4171,7 +4171,7 @@ data class CartCheckoutDetailV2Request(
     var customMeta: @RawValue HashMap<String,Any>?=null,
     
     @SerializedName("customer_details")
-    var customerDetails: CustomerDetails?=null,
+    var customerDetails: @RawValue HashMap<String,Any>?=null,
     
     @SerializedName("merchant_code")
     var merchantCode: String?=null,

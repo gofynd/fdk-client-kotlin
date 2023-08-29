@@ -245,11 +245,11 @@ interface CatalogApiList {
     : Response<TemplatesResponse>
     
     @GET ("/service/platform/catalog/v1.0/company/{company_id}/products/templates/{slug}/validation/schema/")
-    suspend fun validateProductTemplate(@Path("company_id") companyId: String, @Path("slug") slug: String)
+    suspend fun validateProductTemplate(@Path("company_id") companyId: String, @Path("slug") slug: String, @Query("item_type") itemType: String?, @Query("bulk") bulk: Boolean?)
     : Response<TemplatesValidationResponse>
     
     @GET ("/service/platform/catalog/v1.0/company/{company_id}/products/templates/{slug}/download/")
-    suspend fun downloadProductTemplateViews(@Path("company_id") companyId: String, @Path("slug") slug: String)
+    suspend fun downloadProductTemplateViews(@Path("company_id") companyId: String, @Path("slug") slug: String, @Query("item_type") itemType: String?, @Query("type") type: String?)
     : Response<ResponseBody>
     
     @GET ("/service/platform/catalog/v1.0/company/{company_id}/inventory/templates/download/")

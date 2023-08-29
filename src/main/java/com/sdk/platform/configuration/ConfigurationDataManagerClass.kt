@@ -72,6 +72,7 @@ class ConfigurationDataManagerClass(val config: PlatformConfig, val unauthorized
     
     
     
+    
     suspend fun createApplication(body: CreateApplicationRequest)
     : Response<CreateAppResponse>? {
         
@@ -689,6 +690,16 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     : Response<DeploymentMeta>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 configurationApiList?.updateOrderingStoreConfig(companyId = config.companyId , applicationId = applicationId , body = body)
+        } else {
+            null
+        }
+    }
+    
+    
+    suspend fun getOrderingStoreConfig()
+    : Response<OrderingStoreConfig>? {
+        return if (config.oauthClient.isAccessTokenValid()) {
+                configurationApiList?.getOrderingStoreConfig(companyId = config.companyId , applicationId = applicationId  )
         } else {
             null
         }

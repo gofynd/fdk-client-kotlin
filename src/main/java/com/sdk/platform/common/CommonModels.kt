@@ -22,26 +22,7 @@ data class ApplicationResponse(
     
     
     @SerializedName("application")
-    var application: Application?=null
-    
-): Parcelable {
-    
-    
-    
-    
-    
-}
-
-
-
-             
-/*
-    Model: Currency
-*/
-@Parcelize
-data class Currency(
-    
-    
+    var application: Application?=null,
     
     @SerializedName("_id")
     var id: String?=null,
@@ -68,6 +49,8 @@ data class Currency(
     var symbol: String?=null
     
 ): Parcelable {
+    
+    
     
     
     
@@ -478,58 +461,6 @@ data class BadRequest(
 
              
 /*
-    Model: Page
-*/
-@Parcelize
-data class Page(
-    
-    
-    
-    @SerializedName("item_total")
-    var itemTotal: Int?=null,
-    
-    @SerializedName("next_id")
-    var nextId: String?=null,
-    
-    @SerializedName("has_previous")
-    var hasPrevious: Boolean?=null,
-    
-    @SerializedName("has_next")
-    var hasNext: Boolean?=null,
-    
-    @SerializedName("current")
-    var current: Int?=null,
-    
-    @SerializedName("type")
-    var type: String?=null,
-    
-    @SerializedName("size")
-    var size: Int?=null
-    
-): Parcelable {
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-}
-
-
-
-             
-/*
     Model: LocationDefaultLanguage
 */
 @Parcelize
@@ -699,7 +630,7 @@ data class Locations(
     
     
     @SerializedName("items")
-    var items: @RawValue ArrayList<HashMap<String,Any>>?=null
+    var items: ArrayList<LocationCountry>?=null
     
 ): Parcelable {
     

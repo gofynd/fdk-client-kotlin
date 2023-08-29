@@ -44,11 +44,11 @@ class LeadDataManagerClass(val config: PlatformConfig, val unauthorizedAction: (
     }
     
     
-    suspend fun getTickets(items: Boolean?=null, filters: Boolean?=null, q: String?=null, status: String?=null, priority: PriorityEnum?=null, category: String?=null, pageNo: Int?=null, pageSize: Int?=null)
+    suspend fun getPlatformTickets(items: Boolean?=null, filters: Boolean?=null, q: String?=null, status: String?=null, priority: PriorityEnum?=null, category: String?=null, pageNo: Int?=null, pageSize: Int?=null)
     : Response<TicketList>? {
         
         return if (config.oauthClient.isAccessTokenValid()) {
-            leadApiList?.getTickets(
+            leadApiList?.getPlatformTickets(
         companyId = config.companyId, items = items, filters = filters, q = q, status = status, priority = priority, category = category, pageNo = pageNo, pageSize = pageSize )
         } else {
             null
@@ -69,11 +69,11 @@ class LeadDataManagerClass(val config: PlatformConfig, val unauthorizedAction: (
     
     
     
-    suspend fun getTicket(id: String)
+    suspend fun getPlatformTicket(id: String)
     : Response<Ticket>? {
         
         return if (config.oauthClient.isAccessTokenValid()) {
-            leadApiList?.getTicket(
+            leadApiList?.getPlatformTicket(
         companyId = config.companyId, id = id )
         } else {
             null
@@ -81,11 +81,11 @@ class LeadDataManagerClass(val config: PlatformConfig, val unauthorizedAction: (
     }
     
     
-    suspend fun editTicket(id: String,body: EditTicketPayload)
+    suspend fun editPlatformTicket(id: String,body: EditTicketPayload)
     : Response<Ticket>? {
         
         return if (config.oauthClient.isAccessTokenValid()) {
-            leadApiList?.editTicket(
+            leadApiList?.editPlatformTicket(
         companyId = config.companyId, id = id, body = body)
         } else {
             null
@@ -95,11 +95,11 @@ class LeadDataManagerClass(val config: PlatformConfig, val unauthorizedAction: (
     
     
     
-    suspend fun createHistory(id: String,body: TicketHistoryPayload)
+    suspend fun createPlatformTicketHistory(id: String,body: TicketHistoryPayload)
     : Response<TicketHistory>? {
         
         return if (config.oauthClient.isAccessTokenValid()) {
-            leadApiList?.createHistory(
+            leadApiList?.createPlatformTicketHistory(
         companyId = config.companyId, id = id, body = body)
         } else {
             null
@@ -107,11 +107,11 @@ class LeadDataManagerClass(val config: PlatformConfig, val unauthorizedAction: (
     }
     
     
-    suspend fun getTicketHistory(id: String)
+    suspend fun getPlatformTicketHistory(id: String)
     : Response<TicketHistoryList>? {
         
         return if (config.oauthClient.isAccessTokenValid()) {
-            leadApiList?.getTicketHistory(
+            leadApiList?.getPlatformTicketHistory(
         companyId = config.companyId, id = id )
         } else {
             null
@@ -149,11 +149,11 @@ class LeadDataManagerClass(val config: PlatformConfig, val unauthorizedAction: (
     
     
     
-    suspend fun getTokenForVideoRoom(uniqueName: String)
+    suspend fun getTokenForPlatformVideoRoom(uniqueName: String)
     : Response<GetTokenForVideoRoomResponse>? {
         
         return if (config.oauthClient.isAccessTokenValid()) {
-            leadApiList?.getTokenForVideoRoom(
+            leadApiList?.getTokenForPlatformVideoRoom(
         companyId = config.companyId, uniqueName = uniqueName )
         } else {
             null
@@ -162,11 +162,11 @@ class LeadDataManagerClass(val config: PlatformConfig, val unauthorizedAction: (
     
     
     
-    suspend fun getVideoParticipants(uniqueName: String)
+    suspend fun getPlatformVideoParticipants(uniqueName: String)
     : Response<GetParticipantsInsideVideoRoomResponse>? {
         
         return if (config.oauthClient.isAccessTokenValid()) {
-            leadApiList?.getVideoParticipants(
+            leadApiList?.getPlatformVideoParticipants(
         companyId = config.companyId, uniqueName = uniqueName )
         } else {
             null

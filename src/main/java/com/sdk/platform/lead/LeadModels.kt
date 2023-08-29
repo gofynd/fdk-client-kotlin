@@ -517,33 +517,6 @@ data class TicketHistoryPayload(
 
              
 /*
-    Model: CustomFormSubmissionPayload
-*/
-@Parcelize
-data class CustomFormSubmissionPayload(
-    
-    
-    
-    @SerializedName("response")
-    var response: @RawValue ArrayList<HashMap<String,Any>>?=null,
-    
-    @SerializedName("attachments")
-    var attachments: ArrayList<TicketAsset>?=null
-    
-): Parcelable {
-    
-    
-    
-    
-    
-    
-    
-}
-
-
-
-             
-/*
     Model: GetTokenForVideoRoomResponse
 */
 @Parcelize
@@ -823,33 +796,6 @@ data class Debug(
 
              
 /*
-    Model: SubmitCustomFormResponse
-*/
-@Parcelize
-data class SubmitCustomFormResponse(
-    
-    
-    
-    @SerializedName("message")
-    var message: String?=null,
-    
-    @SerializedName("ticket")
-    var ticket: Ticket?=null
-    
-): Parcelable {
-    
-    
-    
-    
-    
-    
-    
-}
-
-
-
-             
-/*
     Model: TicketContext
 */
 @Parcelize
@@ -1087,33 +1033,6 @@ data class Status(
 
              
 /*
-    Model: TicketFeedbackForm
-*/
-@Parcelize
-data class TicketFeedbackForm(
-    
-    
-    
-    @SerializedName("title")
-    var title: String?=null,
-    
-    @SerializedName("display")
-    var display: @RawValue ArrayList<HashMap<String,Any>>?=null
-    
-): Parcelable {
-    
-    
-    
-    
-    
-    
-    
-}
-
-
-
-             
-/*
     Model: TicketFeedbackList
 */
 @Parcelize
@@ -1314,110 +1233,6 @@ data class CustomForm(
 
              
 /*
-    Model: CommunicationDetails
-*/
-@Parcelize
-data class CommunicationDetails(
-    
-    
-    
-    @SerializedName("type")
-    var type: String?=null,
-    
-    @SerializedName("title")
-    var title: String?=null,
-    
-    @SerializedName("value")
-    var value: String?=null,
-    
-    @SerializedName("description")
-    var description: String?=null,
-    
-    @SerializedName("enabled")
-    var enabled: Boolean?=null
-    
-): Parcelable {
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-}
-
-
-
-             
-/*
-    Model: SupportGeneralConfig
-*/
-@Parcelize
-data class SupportGeneralConfig(
-    
-    
-    
-    @SerializedName("_id")
-    var id: String?=null,
-    
-    @SerializedName("support_email")
-    var supportEmail: CommunicationDetails?=null,
-    
-    @SerializedName("support_phone")
-    var supportPhone: CommunicationDetails?=null,
-    
-    @SerializedName("support_faq")
-    var supportFaq: CommunicationDetails?=null,
-    
-    @SerializedName("show_communication_info")
-    var showCommunicationInfo: Boolean?=null,
-    
-    @SerializedName("support_communication")
-    var supportCommunication: CommunicationDetails?=null,
-    
-    @SerializedName("show_support_dris")
-    var showSupportDris: Boolean?=null,
-    
-    @SerializedName("integration")
-    var integration: @RawValue HashMap<String,Any>?=null,
-    
-    @SerializedName("type")
-    var type: String?=null
-    
-): Parcelable {
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-}
-
-
-
-             
-/*
     Model: FeedbackForm
 */
 @Parcelize
@@ -1433,38 +1248,6 @@ data class FeedbackForm(
     
     @SerializedName("timestamps")
     var timestamps: @RawValue HashMap<String,Any>?=null
-    
-): Parcelable {
-    
-    
-    
-    
-    
-    
-    
-    
-    
-}
-
-
-
-             
-/*
-    Model: TicketSubCategory
-*/
-@Parcelize
-data class TicketSubCategory(
-    
-    
-    
-    @SerializedName("key")
-    var key: String?=null,
-    
-    @SerializedName("display")
-    var display: String?=null,
-    
-    @SerializedName("sub_categories")
-    var subCategories: TicketSubCategory?=null
     
 ): Parcelable {
     
@@ -1505,100 +1288,6 @@ data class TicketCategory(
     var feedbackForm: FeedbackForm?=null
     
 ): Parcelable {
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-}
-
-
-
-             
-/*
-    Model: CategoryData
-*/
-@Parcelize
-data class CategoryData(
-    
-    
-    
-    @SerializedName("list")
-    var list: TicketCategory?=null
-    
-): Parcelable {
-    
-    
-    
-    
-    
-}
-
-
-
-             
-/*
-    Model: IntegrationConfig
-*/
-@Parcelize
-data class IntegrationConfig(
-    
-    
-    
-    @SerializedName("_id")
-    var id: String?=null,
-    
-    @SerializedName("integration_type")
-    var integrationType: String?=null,
-    
-    @SerializedName("base_url")
-    var baseUrl: String?=null,
-    
-    @SerializedName("create_ticket_apikey")
-    var createTicketApikey: String?=null,
-    
-    @SerializedName("update_ticket_apikey")
-    var updateTicketApikey: String?=null,
-    
-    @SerializedName("category_sync_apikey")
-    var categorySyncApikey: String?=null,
-    
-    @SerializedName("category_data")
-    var categoryData: CategoryData?=null,
-    
-    @SerializedName("webhook_apikey")
-    var webhookApikey: String?=null,
-    
-    @SerializedName("config_completed")
-    var configCompleted: Boolean?=null,
-    
-    @SerializedName("allow_ticket_creation")
-    var allowTicketCreation: Boolean?=null,
-    
-    @SerializedName("show_listing")
-    var showListing: Boolean?=null
-    
-): Parcelable {
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
     
     
     
@@ -1991,33 +1680,6 @@ data class Ticket(
         companion object {
             fun valueOfTicketSourceEnum(value : String): TicketSourceEnum? {
                 return TicketSourceEnum.values().find {
-                    it.value == value
-                }
-            }
-        }
-    }
-
-
-
-    /*
-        Enum: TicketIntegrationDetails
-        Used By: Lead
-    */
-    enum class TicketIntegrationDetails(val value:String){
-        
-        @SerializedName("default")
-        defaultCase("default"), 
-        
-        @SerializedName("freshdesk")
-        freshdesk("freshdesk"), 
-        
-        @SerializedName("kapture")
-        kapture("kapture");
-        
-
-        companion object {
-            fun valueOfTicketIntegrationDetails(value : String): TicketIntegrationDetails? {
-                return TicketIntegrationDetails.values().find {
                     it.value == value
                 }
             }
