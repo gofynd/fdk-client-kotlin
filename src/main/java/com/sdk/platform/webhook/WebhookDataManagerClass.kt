@@ -176,7 +176,7 @@ class WebhookDataManagerClass(val config: PlatformConfig, val unauthorizedAction
     }
     
     
-    suspend fun getSubscribersByCompany(pageNo: Int?=null, pageSize: Int?=null, extensionId: Int?=null)
+    suspend fun getSubscribersByCompany(pageNo: Int?=null, pageSize: Int?=null, extensionId: String?=null)
     : Response<SubscriberResponse>? {
         
         return if (config.oauthClient.isAccessTokenValid()) {

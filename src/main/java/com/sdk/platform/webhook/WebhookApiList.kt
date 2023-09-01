@@ -53,7 +53,7 @@ interface WebhookApiList {
     : Response<CancelResponse>
     
     @GET ("/service/platform/webhook/v1.0/company/{company_id}/subscriber")
-    suspend fun getSubscribersByCompany(@Query("page_no") pageNo: Int?, @Query("page_size") pageSize: Int?, @Query("extension_id") extensionId: Int?, @Path("company_id") companyId: String)
+    suspend fun getSubscribersByCompany(@Query("page_no") pageNo: Int?, @Query("page_size") pageSize: Int?, @Query("extension_id") extensionId: String?, @Path("company_id") companyId: String)
     : Response<SubscriberResponse>
     
     @POST ("/service/platform/webhook/v1.0/company/{company_id}/subscriber")

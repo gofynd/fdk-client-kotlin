@@ -1245,6 +1245,9 @@ data class RawBreakup(
     @SerializedName("mrp_total")
     var mrpTotal: Double?=null,
     
+    @SerializedName("mop_total")
+    var mopTotal: Double?=null,
+    
     @SerializedName("coupon")
     var coupon: Double?=null,
     
@@ -1261,6 +1264,8 @@ data class RawBreakup(
     var codCharge: Double?=null
     
 ): Parcelable {
+    
+    
     
     
     
