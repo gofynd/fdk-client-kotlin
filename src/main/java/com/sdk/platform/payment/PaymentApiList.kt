@@ -9,7 +9,7 @@ import com.sdk.platform.*
 interface PaymentApiList {
     
     @GET ("/service/platform/payment/v1.0/company/{company_id}/application/{application_id}/aggregator/request")
-    suspend fun getBrandPaymentGatewayConfig(@Path("company_id") companyId: String, @Path("application_id") applicationId: String)
+    suspend fun getBrandPaymentGatewayConfig(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Query("aggregator") aggregator: String?, @Query("config_type") configType: String?)
     : Response<PaymentGatewayConfigResponse>
     
     @POST ("/service/platform/payment/v1.0/company/{company_id}/application/{application_id}/aggregator/request")

@@ -5550,13 +5550,13 @@ data class GSTDetailsData(
     var hsnCodeId: String?=null,
     
     @SerializedName("igst_gst_fee")
-    var igstGstFee: String?=null,
+    var igstGstFee: Double?=null,
     
     @SerializedName("is_default_hsn_code")
     var isDefaultHsnCode: Boolean?=null,
     
     @SerializedName("sgst_gst_fee")
-    var sgstGstFee: String?=null,
+    var sgstGstFee: Double?=null,
     
     @SerializedName("tax_collected_at_source")
     var taxCollectedAtSource: Double?=null,
@@ -5565,7 +5565,7 @@ data class GSTDetailsData(
     var brandCalculatedAmount: Double?=null,
     
     @SerializedName("cgst_gst_fee")
-    var cgstGstFee: String?=null,
+    var cgstGstFee: Double?=null,
     
     @SerializedName("gst_tag")
     var gstTag: String?=null,
@@ -9874,7 +9874,7 @@ data class OrderMeta(
     var orderPlatform: String?=null,
     
     @SerializedName("employee_id")
-    var employeeId: Int?=null,
+    var employeeId: String?=null,
     
     @SerializedName("order_tags")
     var orderTags: @RawValue ArrayList<HashMap<String,Any>>?=null,

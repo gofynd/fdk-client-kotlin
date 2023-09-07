@@ -68,7 +68,7 @@ Get All Brand Payment Gateway Config Secret
 
 
 ```kotlin
-platformClient.application("<APPLICATION_ID>").payment.getBrandPaymentGatewayConfig().safeAwait{ response, error->
+platformClient.application("<APPLICATION_ID>").payment.getBrandPaymentGatewayConfig(aggregator: aggregator, configType: configType).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -80,6 +80,12 @@ platformClient.application("<APPLICATION_ID>").payment.getBrandPaymentGatewayCon
 
 
 
+
+
+| Argument  |  Type  | Required | Description |
+| --------- | -----  | -------- | ----------- | 
+| aggregator | String? | no | aggregator slug |   
+| configType | String? | no |  |  
 
 
 
@@ -6372,6 +6378,31 @@ Success.
 
  
  
+ #### [ProductCODData](#ProductCODData)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | items | HashMap<String,Any>? |  yes  | item id with its cod availability. |
+ | codCharges | HashMap<String,Any>? |  yes  | cod charges and its allowed limits. |
+
+---
+
+
+ 
+ 
+ #### [CODChargesLimitsResponse](#CODChargesLimitsResponse)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | maxCartValue | Double? |  yes  | max allowed cart value for cod order. |
+ | minCartValue | Double? |  yes  | min allowed cart value for cod order. |
+ | codCharge | Double? |  yes  | cod charges to be applied on order. |
+
+---
+
+
+ 
+ 
  #### [PaymentModeLogo](#PaymentModeLogo)
 
  | Properties | Type | Nullable | Description |
@@ -6428,6 +6459,8 @@ Success.
  | logoUrl | HashMap<String,Any>? |  yes  | Logo |
  | cardToken | String? |  yes  | card_token |
  | aggregatorName | String |  no  | aggregator_name |
+ | codCharges | Double? |  yes  | cod charges to be applied on order. |
+ | productCodData | HashMap<String,Any>? |  yes  | product cod configurations. |
  | codLimit | Double? |  yes  | cod limit |
  | intentApp | ArrayList<[IntentApp](#IntentApp)>? |  yes  | intent_app |
  | nickname | String? |  yes  | nickname |

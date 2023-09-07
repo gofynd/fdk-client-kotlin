@@ -275,6 +275,65 @@ data class IntentAppErrorList(
 
              
 /*
+    Model: ProductCODData
+*/
+@Parcelize
+data class ProductCODData(
+    
+    
+    
+    @SerializedName("items")
+    var items: @RawValue HashMap<String,Any>?=null,
+    
+    @SerializedName("cod_charges")
+    var codCharges: @RawValue HashMap<String,Any>?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: CODChargesLimitsResponse
+*/
+@Parcelize
+data class CODChargesLimitsResponse(
+    
+    
+    
+    @SerializedName("max_cart_value")
+    var maxCartValue: Double?=null,
+    
+    @SerializedName("min_cart_value")
+    var minCartValue: Double?=null,
+    
+    @SerializedName("cod_charge")
+    var codCharge: Double?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
     Model: PaymentModeLogo
 */
 @Parcelize
@@ -424,6 +483,12 @@ data class PaymentModeList(
     @SerializedName("aggregator_name")
     var aggregatorName: String?=null,
     
+    @SerializedName("cod_charges")
+    var codCharges: Double?=null,
+    
+    @SerializedName("product_cod_data")
+    var productCodData: @RawValue HashMap<String,Any>?=null,
+    
     @SerializedName("cod_limit")
     var codLimit: Double?=null,
     
@@ -446,6 +511,10 @@ data class PaymentModeList(
     var intentAppErrorList: ArrayList<String>?=null
     
 ): Parcelable {
+    
+    
+    
+    
     
     
     

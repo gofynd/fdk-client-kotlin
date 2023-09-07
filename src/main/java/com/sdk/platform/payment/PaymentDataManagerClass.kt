@@ -207,10 +207,10 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
 
     
     
-    suspend fun getBrandPaymentGatewayConfig()
+    suspend fun getBrandPaymentGatewayConfig(aggregator: String?=null, configType: String?=null)
     : Response<PaymentGatewayConfigResponse>? {
         return if (config.oauthClient.isAccessTokenValid()) {
-                paymentApiList?.getBrandPaymentGatewayConfig(companyId = config.companyId , applicationId = applicationId  )
+                paymentApiList?.getBrandPaymentGatewayConfig(companyId = config.companyId , applicationId = applicationId , aggregator = aggregator, configType = configType )
         } else {
             null
         }
