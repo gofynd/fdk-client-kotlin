@@ -2088,9 +2088,14 @@ data class AffiliateConfig(
     var app: AffiliateAppConfig?=null,
     
     @SerializedName("inventory")
-    var inventory: AffiliateInventoryConfig?=null
+    var inventory: AffiliateInventoryConfig?=null,
+    
+    @SerializedName("app_company_id")
+    var appCompanyId: Int?=null
     
 ): Parcelable {
+    
+    
     
     
     
@@ -7580,9 +7585,14 @@ data class OrderDetailsData(
     var orderValue: String?=null,
     
     @SerializedName("ordering_channel")
-    var orderingChannel: String?=null
+    var orderingChannel: String?=null,
+    
+    @SerializedName("meta")
+    var meta: OrderMeta?=null
     
 ): Parcelable {
+    
+    
     
     
     
@@ -8352,6 +8362,9 @@ data class AffiliateDetails(
     @SerializedName("pdf_links")
     var pdfLinks: PDFLinks?=null,
     
+    @SerializedName("config")
+    var config: AffiliateConfig?=null,
+    
     @SerializedName("affiliate_id")
     var affiliateId: String?=null,
     
@@ -8365,6 +8378,8 @@ data class AffiliateDetails(
     var adId: String?=null
     
 ): Parcelable {
+    
+    
     
     
     
@@ -9517,9 +9532,29 @@ data class PlatformShipment(
     var totalBags: Int?=null,
     
     @SerializedName("shipment_created_at")
-    var shipmentCreatedAt: String?=null
+    var shipmentCreatedAt: String?=null,
+    
+    @SerializedName("previous_shipment_id")
+    var previousShipmentId: String?=null,
+    
+    @SerializedName("shipment_update_time")
+    var shipmentUpdateTime: Double?=null,
+    
+    @SerializedName("rto_address")
+    var rtoAddress: PlatformDeliveryAddress?=null,
+    
+    @SerializedName("credit_note_id")
+    var creditNoteId: String?=null
     
 ): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+    
     
     
     
