@@ -9017,7 +9017,7 @@ data class CurrentStatus(
     var shipmentId: String?=null,
     
     @SerializedName("updated_at")
-    var updatedAt: Int?=null,
+    var updatedAt: String?=null,
     
     @SerializedName("bag_state_mapper")
     var bagStateMapper: BagStateMapper?=null,
