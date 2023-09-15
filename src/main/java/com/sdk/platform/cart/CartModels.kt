@@ -809,9 +809,14 @@ data class CouponAdd(
     var validity: Validity?=null,
     
     @SerializedName("rule_definition")
-    var ruleDefinition: RuleDefinition?=null
+    var ruleDefinition: RuleDefinition?=null,
+    
+    @SerializedName("_id")
+    var id: String?=null
     
 ): Parcelable {
+    
+    
     
     
     
@@ -913,7 +918,7 @@ data class CouponsResponse(
     
     
     @SerializedName("items")
-    var items: CouponAdd?=null,
+    var items: ArrayList<CouponAdd>?=null,
     
     @SerializedName("page")
     var page: Page?=null

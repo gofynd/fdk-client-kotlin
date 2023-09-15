@@ -2395,7 +2395,7 @@ Shipment Tracking updated successfully
 
 
 ```kotlin
-platformClient.order.getShipments(lane: lane, bagStatus: bagStatus, statusOverrideLane: statusOverrideLane, timeToDispatch: timeToDispatch, searchType: searchType, searchValue: searchValue, fromDate: fromDate, toDate: toDate, dpIds: dpIds, stores: stores, salesChannels: salesChannels, pageNo: pageNo, pageSize: pageSize, fetchActiveShipment: fetchActiveShipment, excludeLockedShipments: excludeLockedShipments, paymentMethods: paymentMethods, channelShipmentId: channelShipmentId, channelOrderId: channelOrderId, customMeta: customMeta, orderingChannel: orderingChannel, companyAffiliateTag: companyAffiliateTag, myOrders: myOrders, platformUserId: platformUserId, sortType: sortType, showCrossCompanyData: showCrossCompanyData, tags: tags, customerId: customerId).safeAwait{ response, error->
+platformClient.order.getShipments(lane: lane, bagStatus: bagStatus, statusOverrideLane: statusOverrideLane, timeToDispatch: timeToDispatch, searchType: searchType, searchValue: searchValue, fromDate: fromDate, toDate: toDate, dpIds: dpIds, stores: stores, salesChannels: salesChannels, pageNo: pageNo, pageSize: pageSize, fetchActiveShipment: fetchActiveShipment, excludeLockedShipments: excludeLockedShipments, paymentMethods: paymentMethods, channelShipmentId: channelShipmentId, channelOrderId: channelOrderId, customMeta: customMeta, orderingChannel: orderingChannel, companyAffiliateTag: companyAffiliateTag, myOrders: myOrders, platformUserId: platformUserId, sortType: sortType, showCrossCompanyData: showCrossCompanyData, tags: tags, customerId: customerId, orderType: orderType).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -2437,7 +2437,8 @@ platformClient.order.getShipments(lane: lane, bagStatus: bagStatus, statusOverri
 | sortType | String? | no | Sort the result data on basis of input |   
 | showCrossCompanyData | Boolean? | no | Flag to view cross & non-cross company order |   
 | tags | String? | no | Comma separated values of tags |   
-| customerId | String? | no |  |  
+| customerId | String? | no |  |   
+| orderType | String? | no |  |  
 
 
 
@@ -3670,7 +3671,7 @@ We are processing the report!
 
 
 ```kotlin
-platformClient.order.getLaneConfig(superLane: superLane, groupEntity: groupEntity, fromDate: fromDate, toDate: toDate, dpIds: dpIds, stores: stores, salesChannels: salesChannels, paymentMode: paymentMode, bagStatus: bagStatus, searchType: searchType, searchValue: searchValue, tags: tags, timeToDispatch: timeToDispatch, paymentMethods: paymentMethods, myOrders: myOrders, showCrossCompanyData: showCrossCompanyData).safeAwait{ response, error->
+platformClient.order.getLaneConfig(superLane: superLane, groupEntity: groupEntity, fromDate: fromDate, toDate: toDate, dpIds: dpIds, stores: stores, salesChannels: salesChannels, paymentMode: paymentMode, bagStatus: bagStatus, searchType: searchType, searchValue: searchValue, tags: tags, timeToDispatch: timeToDispatch, paymentMethods: paymentMethods, myOrders: myOrders, showCrossCompanyData: showCrossCompanyData, orderType: orderType).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -3701,7 +3702,8 @@ platformClient.order.getLaneConfig(superLane: superLane, groupEntity: groupEntit
 | timeToDispatch | String? | no |  |   
 | paymentMethods | String? | no |  |   
 | myOrders | Boolean? | no |  |   
-| showCrossCompanyData | Boolean? | no | Flag to view cross & non-cross company order |  
+| showCrossCompanyData | Boolean? | no | Flag to view cross & non-cross company order |   
+| orderType | String? | no |  |  
 
 
 
@@ -3818,7 +3820,7 @@ Response containing count of shipments of the given status
 
 
 ```kotlin
-platformClient.order.getOrders(lane: lane, searchType: searchType, bagStatus: bagStatus, timeToDispatch: timeToDispatch, paymentMethods: paymentMethods, tags: tags, searchValue: searchValue, fromDate: fromDate, toDate: toDate, dpIds: dpIds, stores: stores, salesChannels: salesChannels, pageNo: pageNo, pageSize: pageSize, isPrioritySort: isPrioritySort, customMeta: customMeta, myOrders: myOrders, showCrossCompanyData: showCrossCompanyData, customerId: customerId).safeAwait{ response, error->
+platformClient.order.getOrders(lane: lane, searchType: searchType, bagStatus: bagStatus, timeToDispatch: timeToDispatch, paymentMethods: paymentMethods, tags: tags, searchValue: searchValue, fromDate: fromDate, toDate: toDate, dpIds: dpIds, stores: stores, salesChannels: salesChannels, pageNo: pageNo, pageSize: pageSize, isPrioritySort: isPrioritySort, customMeta: customMeta, myOrders: myOrders, showCrossCompanyData: showCrossCompanyData, customerId: customerId, orderType: orderType).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -3852,7 +3854,8 @@ platformClient.order.getOrders(lane: lane, searchType: searchType, bagStatus: ba
 | customMeta | String? | no |  |   
 | myOrders | Boolean? | no |  |   
 | showCrossCompanyData | Boolean? | no | Flag to view cross & non-cross company order |   
-| customerId | String? | no |  |  
+| customerId | String? | no |  |   
+| orderType | String? | no |  |  
 
 
 
@@ -7507,6 +7510,7 @@ We are processing the request!
  | customerNote | String? |  yes  |  |
  | totalBags | Int |  no  |  |
  | shipmentCreatedAt | String |  no  |  |
+ | modeOfPayment | String? |  yes  |  |
 
 ---
 
@@ -7792,6 +7796,7 @@ We are processing the request!
  | forwardAffiliateOrderId | String? |  yes  |  |
  | returnAffiliateOrderId | String? |  yes  |  |
  | bagWeight | HashMap<String,Any>? |  yes  |  |
+ | refundTo | String? |  yes  |  |
 
 ---
 
@@ -8106,6 +8111,7 @@ We are processing the request!
  | currentStatus | [CurrentStatus](#CurrentStatus)? |  yes  |  |
  | bagId | Int |  no  |  |
  | entityType | String? |  yes  |  |
+ | isParent | Boolean? |  yes  |  |
 
 ---
 
@@ -8222,6 +8228,8 @@ We are processing the request!
  | shipmentUpdateTime | Double? |  yes  |  |
  | rtoAddress | [PlatformDeliveryAddress](#PlatformDeliveryAddress)? |  yes  |  |
  | creditNoteId | String? |  yes  |  |
+ | isSelfShip | Boolean? |  yes  |  |
+ | modeOfPayment | String? |  yes  |  |
 
 ---
 
@@ -8323,6 +8331,7 @@ We are processing the request!
  | customerNote | String? |  yes  |  |
  | staff | HashMap<String,Any>? |  yes  |  |
  | cartId | Int? |  yes  |  |
+ | cartObjectId | String? |  yes  |  |
 
 ---
 
