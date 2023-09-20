@@ -104,6 +104,14 @@ interface ConfigurationApiList {
     suspend fun getStaffOrderingStores(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Query("page_no") pageNo: Int?, @Query("page_size") pageSize: Int?, @Query("q") q: String?)
     : Response<OrderingStoresResponse>
     
+    @POST ("/service/platform/configuration/v1.0/company/{company_id}/application/{application_id}/ordering-store/select")
+    suspend fun getOrderingStoreCookie(@Path("company_id") companyId: String, @Path("application_id") applicationId: String,@Body body: OrderingStoreSelectRequest)
+    : Response<SuccessMessageResponse>
+    
+    @DELETE ("/service/platform/configuration/v1.0/company/{company_id}/application/{application_id}/ordering-store/select")
+    suspend fun removeOrderingStoreCookie(@Path("company_id") companyId: String, @Path("application_id") applicationId: String)
+    : Response<SuccessMessageResponse>
+    
     @GET ("/service/platform/configuration/v1.0/company/{company_id}/application/{application_id}/domain")
     suspend fun getDomains(@Path("company_id") companyId: String, @Path("application_id") applicationId: String)
     : Response<DomainsResponse>

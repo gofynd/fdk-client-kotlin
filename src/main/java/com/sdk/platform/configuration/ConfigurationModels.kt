@@ -3265,6 +3265,50 @@ data class OrderingStoreConfig(
 
              
 /*
+    Model: OrderingStoreSelectRequest
+*/
+@Parcelize
+data class OrderingStoreSelectRequest(
+    
+    
+    
+    @SerializedName("ordering_store")
+    var orderingStore: OrderingStoreSelect?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: OrderingStoreSelect
+*/
+@Parcelize
+data class OrderingStoreSelect(
+    
+    
+    
+    @SerializedName("uid")
+    var uid: Int?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
     Model: OtherSellerCompany
 */
 @Parcelize

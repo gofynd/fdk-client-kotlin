@@ -809,9 +809,14 @@ data class CouponAdd(
     var validity: Validity?=null,
     
     @SerializedName("rule_definition")
-    var ruleDefinition: RuleDefinition?=null
+    var ruleDefinition: RuleDefinition?=null,
+    
+    @SerializedName("_id")
+    var id: String?=null
     
 ): Parcelable {
+    
+    
     
     
     
@@ -913,7 +918,7 @@ data class CouponsResponse(
     
     
     @SerializedName("items")
-    var items: CouponAdd?=null,
+    var items: ArrayList<CouponAdd>?=null,
     
     @SerializedName("page")
     var page: Page?=null
@@ -7576,9 +7581,14 @@ data class PlatformCartCheckoutDetailRequest(
     var files: ArrayList<Files>?=null,
     
     @SerializedName("ordering_store")
-    var orderingStore: Int?=null
+    var orderingStore: Int?=null,
+    
+    @SerializedName("payment_extra_identifiers")
+    var paymentExtraIdentifiers: @RawValue HashMap<String,Any>?=null
     
 ): Parcelable {
+    
+    
     
     
     
@@ -8188,9 +8198,14 @@ data class PaymentMethod(
     var amount: Double?=null,
     
     @SerializedName("name")
-    var name: String?=null
+    var name: String?=null,
+    
+    @SerializedName("payment_extra_identifiers")
+    var paymentExtraIdentifiers: @RawValue HashMap<String,Any>?=null
     
 ): Parcelable {
+    
+    
     
     
     

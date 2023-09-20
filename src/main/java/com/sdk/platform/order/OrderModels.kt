@@ -7278,9 +7278,14 @@ data class ShipmentItem(
     var totalBags: Int?=null,
     
     @SerializedName("shipment_created_at")
-    var shipmentCreatedAt: String?=null
+    var shipmentCreatedAt: String?=null,
+    
+    @SerializedName("mode_of_payment")
+    var modeOfPayment: String?=null
     
 ): Parcelable {
+    
+    
     
     
     
@@ -8150,9 +8155,14 @@ data class ShipmentMeta(
     var returnAffiliateOrderId: String?=null,
     
     @SerializedName("bag_weight")
-    var bagWeight: @RawValue HashMap<String,Any>?=null
+    var bagWeight: @RawValue HashMap<String,Any>?=null,
+    
+    @SerializedName("refund_to")
+    var refundTo: String?=null
     
 ): Parcelable {
+    
+    
     
     
     
@@ -9087,7 +9097,7 @@ data class OrderBags(
     
     
     @SerializedName("gst_details")
-    var gstDetails: BagGST?=null,
+    var gstDetails: GSTDetailsData?=null,
     
     @SerializedName("parent_promo_bags")
     var parentPromoBags: @RawValue HashMap<String,Any>?=null,
@@ -9156,9 +9166,14 @@ data class OrderBags(
     var bagId: Int?=null,
     
     @SerializedName("entity_type")
-    var entityType: String?=null
+    var entityType: String?=null,
+    
+    @SerializedName("is_parent")
+    var isParent: Boolean?=null
     
 ): Parcelable {
+    
+    
     
     
     
@@ -9544,9 +9559,19 @@ data class PlatformShipment(
     var rtoAddress: PlatformDeliveryAddress?=null,
     
     @SerializedName("credit_note_id")
-    var creditNoteId: String?=null
+    var creditNoteId: String?=null,
+    
+    @SerializedName("is_self_ship")
+    var isSelfShip: Boolean?=null,
+    
+    @SerializedName("mode_of_payment")
+    var modeOfPayment: String?=null
     
 ): Parcelable {
+    
+    
+    
+    
     
     
     
@@ -9921,9 +9946,14 @@ data class OrderMeta(
     var staff: @RawValue HashMap<String,Any>?=null,
     
     @SerializedName("cart_id")
-    var cartId: Int?=null
+    var cartId: Int?=null,
+    
+    @SerializedName("cart_object_id")
+    var cartObjectId: String?=null
     
 ): Parcelable {
+    
+    
     
     
     
@@ -11831,7 +11861,7 @@ data class BagDetailsPlatformResponse(
     var id: Int?=null,
     
     @SerializedName("gst_details")
-    var gstDetails: BagGSTDetails?=null,
+    var gstDetails: GSTDetailsData?=null,
     
     @SerializedName("parent_promo_bags")
     var parentPromoBags: @RawValue HashMap<String,Any>?=null,
