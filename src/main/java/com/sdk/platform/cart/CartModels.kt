@@ -7581,9 +7581,14 @@ data class PlatformCartCheckoutDetailRequest(
     var files: ArrayList<Files>?=null,
     
     @SerializedName("ordering_store")
-    var orderingStore: Int?=null
+    var orderingStore: Int?=null,
+    
+    @SerializedName("payment_extra_identifiers")
+    var paymentExtraIdentifiers: @RawValue HashMap<String,Any>?=null
     
 ): Parcelable {
+    
+    
     
     
     
@@ -8193,9 +8198,14 @@ data class PaymentMethod(
     var amount: Double?=null,
     
     @SerializedName("name")
-    var name: String?=null
+    var name: String?=null,
+    
+    @SerializedName("payment_extra_identifiers")
+    var paymentExtraIdentifiers: @RawValue HashMap<String,Any>?=null
     
 ): Parcelable {
+    
+    
     
     
     

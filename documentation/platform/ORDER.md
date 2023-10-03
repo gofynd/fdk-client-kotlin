@@ -2729,7 +2729,8 @@ We are processing the report!
             "gst_tax_percentage": 5,
             "is_default_hsn_code": true,
             "brand_calculated_amount": 499,
-            "gst_fee": 23.76
+            "gst_fee": 23.76,
+            "tax_collected_at_source": 0
           },
           "article": {
             "uid": "6237fdfec0903e7ae543c201",
@@ -3320,9 +3321,9 @@ We are processing the report!
             "igst_tax_percentage": 0,
             "sgst_tax_percentage": 9,
             "cgst_tax_percentage": 9,
-            "igst_gst_fee": "0",
-            "cgst_gst_fee": "36.17",
-            "sgst_gst_fee": "36.17"
+            "igst_gst_fee": 0,
+            "cgst_gst_fee": 36.17,
+            "sgst_gst_fee": 36.17
           },
           "article": {
             "uid": "62f495f2a604499934540c69",
@@ -8087,7 +8088,7 @@ We are processing the request!
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | gstDetails | [BagGST](#BagGST)? |  yes  |  |
+ | gstDetails | [GSTDetailsData](#GSTDetailsData)? |  yes  |  |
  | parentPromoBags | HashMap<String,Any>? |  yes  |  |
  | financialBreakup | [FinancialBreakup](#FinancialBreakup)? |  yes  |  |
  | bagConfigs | [BagConfigs](#BagConfigs)? |  yes  |  |
@@ -8964,7 +8965,7 @@ We are processing the request!
  | ---------- | ---- | -------- | ----------- |
  | bagUpdateTime | Double? |  yes  |  |
  | id | Int? |  yes  |  |
- | gstDetails | [BagGSTDetails](#BagGSTDetails)? |  yes  |  |
+ | gstDetails | [GSTDetailsData](#GSTDetailsData)? |  yes  |  |
  | parentPromoBags | HashMap<String,Any>? |  yes  |  |
  | tags | ArrayList<String>? |  yes  |  |
  | financialBreakup | ArrayList<[FinancialBreakup](#FinancialBreakup)>? |  yes  |  |

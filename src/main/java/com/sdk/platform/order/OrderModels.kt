@@ -9097,7 +9097,7 @@ data class OrderBags(
     
     
     @SerializedName("gst_details")
-    var gstDetails: BagGST?=null,
+    var gstDetails: GSTDetailsData?=null,
     
     @SerializedName("parent_promo_bags")
     var parentPromoBags: @RawValue HashMap<String,Any>?=null,
@@ -11861,7 +11861,7 @@ data class BagDetailsPlatformResponse(
     var id: Int?=null,
     
     @SerializedName("gst_details")
-    var gstDetails: BagGSTDetails?=null,
+    var gstDetails: GSTDetailsData?=null,
     
     @SerializedName("parent_promo_bags")
     var parentPromoBags: @RawValue HashMap<String,Any>?=null,

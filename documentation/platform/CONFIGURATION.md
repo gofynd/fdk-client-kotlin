@@ -30,6 +30,8 @@ Application configuration apis
 * [updateOrderingStoreConfig](#updateorderingstoreconfig)
 * [getOrderingStoreConfig](#getorderingstoreconfig)
 * [getStaffOrderingStores](#getstafforderingstores)
+* [getOrderingStoreCookie](#getorderingstorecookie)
+* [removeOrderingStoreCookie](#removeorderingstorecookie)
 * [getDomains](#getdomains)
 * [addDomain](#adddomain)
 * [removeDomainById](#removedomainbyid)
@@ -3003,6 +3005,124 @@ Success. Check the example shown below or refer `OrderingStoresResponse` for mor
 
 ```json
 
+```
+</details>
+
+
+
+
+
+
+
+
+
+---
+
+
+### getOrderingStoreCookie
+Get an Ordering Store signed cookie on selection of ordering store.
+
+
+
+
+```kotlin
+platformClient.application("<APPLICATION_ID>").configuration.getOrderingStoreCookie(body: body).safeAwait{ response, error->
+    response?.let{
+      // Use response
+    } ->
+    error?.let{
+      
+    } 
+}
+```
+
+
+
+
+
+| Argument  |  Type  | Required | Description |
+| --------- | -----  | -------- | ----------- |
+| body | [OrderingStoreSelectRequest](#OrderingStoreSelectRequest) | yes | Request body |
+
+
+Use this API to get an Ordering Store signed cookie upon selecting an ordering store. This will be used by the cart service to verify a coupon against the selected ordering store in cart.
+
+*Returned Response:*
+
+
+
+
+[SuccessMessageResponse](#SuccessMessageResponse)
+
+Success
+
+
+
+
+<details>
+<summary><i>&nbsp; Example:</i></summary>
+
+```json
+{
+  "message": "success"
+}
+```
+</details>
+
+
+
+
+
+
+
+
+
+---
+
+
+### removeOrderingStoreCookie
+Unset the Ordering Store signed cookie.
+
+
+
+
+```kotlin
+platformClient.application("<APPLICATION_ID>").configuration.removeOrderingStoreCookie().safeAwait{ response, error->
+    response?.let{
+      // Use response
+    } ->
+    error?.let{
+      
+    } 
+}
+```
+
+
+
+
+
+
+Use this API to unset the Ordering Store cookie upon changing the sales channel, by its domain URL, in the Universal Fynd Store app.
+
+*Returned Response:*
+
+
+
+
+[SuccessMessageResponse](#SuccessMessageResponse)
+
+Success
+
+
+
+
+<details>
+<summary><i>&nbsp; Example:</i></summary>
+
+```json
+{
+  "message": "success"
+}
 ```
 </details>
 
@@ -6399,6 +6519,28 @@ Success
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
  | deploymentMeta | [DeploymentMeta](#DeploymentMeta)? |  yes  |  |
+
+---
+
+
+ 
+ 
+ #### [OrderingStoreSelectRequest](#OrderingStoreSelectRequest)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | orderingStore | [OrderingStoreSelect](#OrderingStoreSelect) |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [OrderingStoreSelect](#OrderingStoreSelect)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | uid | Int |  no  | Ordering store unique uid. It is required. |
 
 ---
 

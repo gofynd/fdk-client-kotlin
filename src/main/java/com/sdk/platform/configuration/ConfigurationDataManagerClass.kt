@@ -73,6 +73,8 @@ class ConfigurationDataManagerClass(val config: PlatformConfig, val unauthorized
     
     
     
+    
+    
     suspend fun createApplication(body: CreateApplicationRequest)
     : Response<CreateAppResponse>? {
         
@@ -779,6 +781,26 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     })
     return paginator
     }
+    
+    suspend fun getOrderingStoreCookie(body: OrderingStoreSelectRequest)
+    : Response<SuccessMessageResponse>? {
+        return if (config.oauthClient.isAccessTokenValid()) {
+                configurationApiList?.getOrderingStoreCookie(companyId = config.companyId , applicationId = applicationId , body = body)
+        } else {
+            null
+        }
+    }
+    
+    
+    suspend fun removeOrderingStoreCookie()
+    : Response<SuccessMessageResponse>? {
+        return if (config.oauthClient.isAccessTokenValid()) {
+                configurationApiList?.removeOrderingStoreCookie(companyId = config.companyId , applicationId = applicationId  )
+        } else {
+            null
+        }
+    }
+    
     
     suspend fun getDomains()
     : Response<DomainsResponse>? {

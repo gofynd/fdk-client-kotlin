@@ -24,7 +24,7 @@ class ApplicationHeaderInterceptor(
             }
             header("Accept-Language", languageCode)
             header("x-currency-code", currencyCode)
-            header("x-fp-sdk-version", "1.3.3-beta.3")
+            header("x-fp-sdk-version", "1.3.4-beta.1")
             val bearerToken =
                 Base64.encodeToString(
                     "$applicationId:$applicationToken".toByteArray(),
