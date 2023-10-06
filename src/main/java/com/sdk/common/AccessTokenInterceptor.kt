@@ -10,15 +10,20 @@ class AccessTokenInterceptor(
     override fun intercept(chain: Interceptor.Chain): Response {
         val original = chain.request()
         
-        val builder = original.newBuilder()
-            .header("User-Agent", platformConfig?.userAgent ?: "")
-            .header("Authorization", "Bearer ${platformConfig?.oauthClient?.token?.token}")
-            .header("x-fp-sdk-version", "1.3.2")
-	platformConfig?.extraHeaders?.let {
-                for ((key, value) in it) {
-                    builder.header(key,value)
-            	}
+        val builder = original.newBuilder().apply {
+            header("User-Agent", platformConfig?.userAgent ?: "")
+            header("Authorization", "Bearer ${platformConfig?.oauthClient?.token?.token}")
+            header("x-fp-sdk-version", "1.3.3")
+            header("x-currency-code", platformConfig?.currencyCode ?: "INR")
+            platformConfig?.locationDetail?.let {
+                header("X-Location-Detail", HttpClient.gson.toJson(it))
             }
+            platformConfig?.extraHeaders?.let {
+                for ((key, value) in it) {
+                    header(key, value)
+                }
+            }
+        }
         val request = builder.build()
         return chain.proceed(request)
     }
