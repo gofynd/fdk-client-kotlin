@@ -66,7 +66,6 @@ Content System
 * [getSupportInformation](#getsupportinformation)
 * [updateSupportInformation](#updatesupportinformation)
 * [updateInjectableTag](#updateinjectabletag)
-* [deleteAllInjectableTags](#deleteallinjectabletags)
 * [getInjectableTags](#getinjectabletags)
 * [addInjectableTag](#addinjectabletag)
 * [removeInjectableTag](#removeinjectabletag)
@@ -6847,7 +6846,7 @@ Success. Refer `Support` for more details.
 
 
 ### updateInjectableTag
-Update a tag
+Update the exisitng tags for an application by replacing with provided tags
 
 
 
@@ -6872,84 +6871,7 @@ platformClient.application("<APPLICATION_ID>").content.updateInjectableTag(body:
 | body | [CreateTagRequestSchema](#CreateTagRequestSchema) | yes | Request body |
 
 
-Use this API to edit the details of an existing tag. This includes the tag name, tag type (css/js), url and position of the tag.
-
-*Returned Response:*
-
-
-
-
-[TagsSchema](#TagsSchema)
-
-Success.
-
-
-
-
-<details>
-<summary><i>&nbsp; Example:</i></summary>
-
-```json
-{
-  "_id": "601f77e7aa61066feda44487",
-  "tags": [
-    {
-      "name": "Test",
-      "sub_type": "external",
-      "_id": "601f77e7aa61066feda44488",
-      "type": "js",
-      "url": "youtube.com/watch?v=AaxFIY-cWH0&list=PL3O3jhFJEElBHFbs6XsOqZAWZLtlEkZTw&index=31",
-      "position": "head"
-    },
-    {
-      "name": "Test 2",
-      "sub_type": "external",
-      "_id": "601f77e7aa61066feda44489",
-      "type": "js",
-      "url": "youtube.com/watch?v=AaxFIY-cWH0&list=PL3O3jhFJEElBHFbs6XsOqZAWZLtlEkZTw&index=31",
-      "position": "head"
-    }
-  ],
-  "application": "000000000000000000000001",
-  "__v": 0
-}
-```
-</details>
-
-
-
-
-
-
-
-
-
----
-
-
-### deleteAllInjectableTags
-Delete tags in application
-
-
-
-
-```kotlin
-platformClient.application("<APPLICATION_ID>").content.deleteAllInjectableTags().safeAwait{ response, error->
-    response?.let{
-      // Use response
-    } ->
-    error?.let{
-      
-    } 
-}
-```
-
-
-
-
-
-
-Use this API to delete all the existing tags at once.
+Use this API to edit and override all existing tags. All existing tags will be replaced by the new tags provided in body. 
 
 *Returned Response:*
 
@@ -7011,7 +6933,7 @@ Get all the tags in an application
 
 
 ```kotlin
-platformClient.application("<APPLICATION_ID>").content.getInjectableTags().safeAwait{ response, error->
+platformClient.application("<APPLICATION_ID>").content.getInjectableTags(all: all).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -7025,8 +6947,13 @@ platformClient.application("<APPLICATION_ID>").content.getInjectableTags().safeA
 
 
 
+| Argument  |  Type  | Required | Description |
+| --------- | -----  | -------- | ----------- | 
+| all | Boolean? | no | Get all tags irrespective of the creator of tags |  
 
-Use this API to get all the CSS and JS injected in the application in the form of tags.
+
+
+Use this API to get the CSS and JS injected in the application in the form of tags.
 
 *Returned Response:*
 

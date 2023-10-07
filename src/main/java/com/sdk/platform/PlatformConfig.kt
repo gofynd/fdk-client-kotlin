@@ -1,7 +1,8 @@
 package com.sdk.platform
 
-import okhttp3.Interceptor
 import com.sdk.common.BaseRepository
+import com.sdk.common.LocationHeader
+import okhttp3.Interceptor
 import java.net.CookieStore
 
 class PlatformConfig(
@@ -12,6 +13,8 @@ class PlatformConfig(
     var apiSecret: String? = null,
     val persistentCookieStore: CookieStore?=null,
     var debuggable: Boolean = false,
+    var currencyCode: String = "INR",
+    var locationDetail: LocationHeader? = null,
     var extraHeaders: HashMap<String,String>,
     var interceptors: List<Interceptor>? = null,
     val certPublicKey: String? = null,

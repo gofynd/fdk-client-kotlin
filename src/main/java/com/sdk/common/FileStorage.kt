@@ -3,6 +3,7 @@ package com.sdk.common
 import com.sdk.application.filestorage.CompleteResponse
 import com.sdk.application.filestorage.FileStorageDataManagerClass
 import com.sdk.application.filestorage.StartRequest
+import com.sdk.application.filestorage.Params
 import kotlinx.coroutines.Deferred
 import kotlinx.parcelize.RawValue
 import okhttp3.MediaType.Companion.toMediaType
@@ -23,7 +24,7 @@ suspend fun FileStorageDataManagerClass.uploadMedia(
     namespace: String? = null,
     file: File? = null,
     tags: ArrayList<String>?=null,
-    params: @RawValue HashMap<String,Any>?=null,
+    params: Params?=null,
     onResponse: (Event<CompleteResponse>?, FdkError?) -> Unit = { response, error -> }
 ) {
 

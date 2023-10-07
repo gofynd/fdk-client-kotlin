@@ -112,7 +112,6 @@ class ContentDataManagerClass(val config: PlatformConfig, val unauthorizedAction
     
     
     
-    
 
 inner class ApplicationClient(val applicationId:String,val config: PlatformConfig){
 
@@ -1023,20 +1022,10 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     }
     
     
-    suspend fun deleteAllInjectableTags()
+    suspend fun getInjectableTags(all: Boolean?=null)
     : Response<TagsSchema>? {
         return if (config.oauthClient.isAccessTokenValid()) {
-                contentApiList?.deleteAllInjectableTags(companyId = config.companyId , applicationId = applicationId  )
-        } else {
-            null
-        }
-    }
-    
-    
-    suspend fun getInjectableTags()
-    : Response<TagsSchema>? {
-        return if (config.oauthClient.isAccessTokenValid()) {
-                contentApiList?.getInjectableTags(companyId = config.companyId , applicationId = applicationId  )
+                contentApiList?.getInjectableTags(companyId = config.companyId , applicationId = applicationId , all = all )
         } else {
             null
         }

@@ -2,6 +2,7 @@ package com.sdk.platform
 
 import com.sdk.platform.*
 import com.sdk.common.HttpClient
+import com.sdk.common.LocationHeader
  
 import com.sdk.platform.audittrail.* 
 import com.sdk.platform.billing.* 
@@ -32,6 +33,14 @@ class PlatformClient(val config:PlatformConfig, val unauthorizedAction: ((url: S
 
     init {
         HttpClient.reset()
+    }
+
+    fun setLocationHeader(locationHeader: LocationHeader){
+            config.locationDetail = locationHeader
+    }
+
+    fun setCurrencyCode(currencyCode:String){
+        config.currencyCode = currencyCode
     }
 
     

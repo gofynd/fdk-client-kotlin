@@ -14,28 +14,6 @@ import com.google.gson.annotations.SerializedName
 
              
 /*
-    Model: FailedResponse
-*/
-@Parcelize
-data class FailedResponse(
-    
-    
-    
-    @SerializedName("message")
-    var message: String?=null
-    
-): Parcelable {
-    
-    
-    
-    
-    
-}
-
-
-
-             
-/*
     Model: CDN
 */
 @Parcelize
@@ -162,6 +140,28 @@ data class StartResponse(
 
              
 /*
+    Model: Params
+*/
+@Parcelize
+data class Params(
+    
+    
+    
+    @SerializedName("subpath")
+    var subpath: String?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
     Model: StartRequest
 */
 @Parcelize
@@ -182,7 +182,7 @@ data class StartRequest(
     var tags: ArrayList<String>?=null,
     
     @SerializedName("params")
-    var params: @RawValue HashMap<String,Any>?=null
+    var params: Params?=null
     
 ): Parcelable {
     
@@ -193,6 +193,28 @@ data class StartRequest(
     
     
     
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: CreatedBy
+*/
+@Parcelize
+data class CreatedBy(
+    
+    
+    
+    @SerializedName("username")
+    var username: String?=null
+    
+): Parcelable {
     
     
     
@@ -248,9 +270,14 @@ data class CompleteResponse(
     var createdOn: String?=null,
     
     @SerializedName("modified_on")
-    var modifiedOn: String?=null
+    var modifiedOn: String?=null,
+    
+    @SerializedName("created_by")
+    var createdBy: CreatedBy?=null
     
 ): Parcelable {
+    
+    
     
     
     

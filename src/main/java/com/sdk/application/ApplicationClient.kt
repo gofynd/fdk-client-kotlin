@@ -18,8 +18,18 @@ import com.sdk.application.rewards.*
 import com.sdk.application.share.* 
 import com.sdk.application.theme.* 
 import com.sdk.application.user.*
+import com.sdk.common.LocationHeader
 
 class ApplicationClient(val config:ApplicationConfig, val unauthorizedAction: ((url: String, responseCode: Int) -> Unit)? = null) {
+
+    fun setLocationHeader(locationHeader: LocationHeader){
+            config.locationDetail = locationHeader
+    }
+
+    fun setCurrencyCode(currencyCode:String){
+        config.currencyCode = currencyCode
+    }
+
     
     val cart by lazy { CartDataManagerClass(config, unauthorizedAction)}
     

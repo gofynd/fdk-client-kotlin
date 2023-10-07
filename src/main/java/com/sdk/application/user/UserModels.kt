@@ -288,6 +288,38 @@ data class SendEmailOtpRequestSchema(
 
              
 /*
+    Model: SendEmailForgotOtpRequestSchema
+*/
+@Parcelize
+data class SendEmailForgotOtpRequestSchema(
+    
+    
+    
+    @SerializedName("email")
+    var email: String?=null,
+    
+    @SerializedName("action")
+    var action: String?=null,
+    
+    @SerializedName("token")
+    var token: String?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
     Model: VerifyEmailOtpRequestSchema
 */
 @Parcelize
@@ -325,6 +357,33 @@ data class VerifyEmailOtpRequestSchema(
 
              
 /*
+    Model: VerifyEmailForgotOtpRequestSchema
+*/
+@Parcelize
+data class VerifyEmailForgotOtpRequestSchema(
+    
+    
+    
+    @SerializedName("email")
+    var email: String?=null,
+    
+    @SerializedName("otp")
+    var otp: String?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
     Model: VerifyOtpRequestSchema
 */
 @Parcelize
@@ -344,6 +403,33 @@ data class VerifyOtpRequestSchema(
 ): Parcelable {
     
     
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: VerifyMobileForgotOtpRequestSchema
+*/
+@Parcelize
+data class VerifyMobileForgotOtpRequestSchema(
+    
+    
+    
+    @SerializedName("request_id")
+    var requestId: String?=null,
+    
+    @SerializedName("otp")
+    var otp: String?=null
+    
+): Parcelable {
     
     
     
@@ -390,6 +476,48 @@ data class SendMobileOtpRequestSchema(
     
     
     
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: SendMobileForgotOtpRequestSchema
+*/
+@Parcelize
+data class SendMobileForgotOtpRequestSchema(
+    
+    
+    
+    @SerializedName("mobile")
+    var mobile: String?=null,
+    
+    @SerializedName("country_code")
+    var countryCode: String?=null,
+    
+    @SerializedName("action")
+    var action: String?=null,
+    
+    @SerializedName("token")
+    var token: String?=null,
+    
+    @SerializedName("android_hash")
+    var androidHash: String?=null
+    
+): Parcelable {
     
     
     
@@ -1011,6 +1139,28 @@ data class LoginSuccess(
 
              
 /*
+    Model: ResetForgotPasswordSuccess
+*/
+@Parcelize
+data class ResetForgotPasswordSuccess(
+    
+    
+    
+    @SerializedName("success")
+    var success: Boolean?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
     Model: VerifyOtpSuccess
 */
 @Parcelize
@@ -1030,6 +1180,33 @@ data class VerifyOtpSuccess(
 ): Parcelable {
     
     
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: VerifyForgotOtpSuccess
+*/
+@Parcelize
+data class VerifyForgotOtpSuccess(
+    
+    
+    
+    @SerializedName("success")
+    var success: Boolean?=null,
+    
+    @SerializedName("forgot_token")
+    var forgotToken: String?=null
+    
+): Parcelable {
     
     
     
@@ -1467,6 +1644,48 @@ data class AuthenticationApiErrorSchema(
     var message: String?=null
     
 ): Parcelable {
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: APIError
+*/
+@Parcelize
+data class APIError(
+    
+    
+    
+    @SerializedName("code")
+    var code: String?=null,
+    
+    @SerializedName("message")
+    var message: String?=null,
+    
+    @SerializedName("info")
+    var info: String?=null,
+    
+    @SerializedName("request_id")
+    var requestId: String?=null,
+    
+    @SerializedName("meta")
+    var meta: @RawValue HashMap<String,Any>?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+    
     
     
     

@@ -39,6 +39,8 @@ class UserDataManagerClass(val config: ApplicationConfig, val unauthorizedAction
             
                     _relativeUrls["forgotPassword"] = "/service/application/user/authentication/v1.0/login/password/reset/forgot".substring(1)
             
+                    _relativeUrls["resetForgotPassword"] = "/service/application/user/authentication/v1.0/login/password/forgot".substring(1)
+            
                     _relativeUrls["sendResetToken"] = "/service/application/user/authentication/v1.0/login/password/reset/token".substring(1)
             
                     _relativeUrls["loginWithToken"] = "/service/application/user/authentication/v1.0/login/token".substring(1)
@@ -59,11 +61,19 @@ class UserDataManagerClass(val config: ApplicationConfig, val unauthorizedAction
             
                     _relativeUrls["sendOTPOnMobile"] = "/service/application/user/authentication/v1.0/otp/mobile/send".substring(1)
             
+                    _relativeUrls["sendForgotOTPOnMobile"] = "/service/application/user/authentication/v1.0/otp/forgot/mobile/send".substring(1)
+            
                     _relativeUrls["verifyMobileOTP"] = "/service/application/user/authentication/v1.0/otp/mobile/verify".substring(1)
+            
+                    _relativeUrls["verifyMobileForgotOTP"] = "/service/application/user/authentication/v1.0/otp/forgot/mobile/verify".substring(1)
             
                     _relativeUrls["sendOTPOnEmail"] = "/service/application/user/authentication/v1.0/otp/email/send".substring(1)
             
+                    _relativeUrls["sendForgotOTPOnEmail"] = "/service/application/user/authentication/v1.0/otp/forgot/email/send".substring(1)
+            
                     _relativeUrls["verifyEmailOTP"] = "/service/application/user/authentication/v1.0/otp/email/verify".substring(1)
+            
+                    _relativeUrls["verifyEmailForgotOTP"] = "/service/application/user/authentication/v1.0/otp/forgot/email/verify".substring(1)
             
                     _relativeUrls["getLoggedInUser"] = "/service/application/user/authentication/v1.0/session".substring(1)
             
@@ -194,6 +204,13 @@ class UserDataManagerClass(val config: ApplicationConfig, val unauthorizedAction
 
     
     
+    suspend fun resetForgotPassword(body: ForgotPasswordRequestSchema): Response<ResetForgotPasswordSuccess>? {
+        var fullUrl : String? = _relativeUrls["resetForgotPassword"] 
+        
+        return userApiList?.resetForgotPassword(fullUrl  ,body = body)}
+
+    
+    
     suspend fun sendResetToken(body: CodeRequestBodySchema): Response<ResetPasswordSuccess>? {
         var fullUrl : String? = _relativeUrls["sendResetToken"] 
         
@@ -264,10 +281,24 @@ class UserDataManagerClass(val config: ApplicationConfig, val unauthorizedAction
 
     
     
+    suspend fun sendForgotOTPOnMobile(platform: String?=null, body: SendMobileForgotOtpRequestSchema): Response<OtpSuccess>? {
+        var fullUrl : String? = _relativeUrls["sendForgotOTPOnMobile"] 
+        
+        return userApiList?.sendForgotOTPOnMobile(fullUrl    ,  platform = platform, body = body)}
+
+    
+    
     suspend fun verifyMobileOTP(platform: String?=null, body: VerifyOtpRequestSchema): Response<VerifyOtpSuccess>? {
         var fullUrl : String? = _relativeUrls["verifyMobileOTP"] 
         
         return userApiList?.verifyMobileOTP(fullUrl    ,  platform = platform, body = body)}
+
+    
+    
+    suspend fun verifyMobileForgotOTP(platform: String?=null, body: VerifyMobileForgotOtpRequestSchema): Response<VerifyForgotOtpSuccess>? {
+        var fullUrl : String? = _relativeUrls["verifyMobileForgotOTP"] 
+        
+        return userApiList?.verifyMobileForgotOTP(fullUrl    ,  platform = platform, body = body)}
 
     
     
@@ -278,10 +309,24 @@ class UserDataManagerClass(val config: ApplicationConfig, val unauthorizedAction
 
     
     
+    suspend fun sendForgotOTPOnEmail(platform: String?=null, body: SendEmailForgotOtpRequestSchema): Response<EmailOtpSuccess>? {
+        var fullUrl : String? = _relativeUrls["sendForgotOTPOnEmail"] 
+        
+        return userApiList?.sendForgotOTPOnEmail(fullUrl    ,  platform = platform, body = body)}
+
+    
+    
     suspend fun verifyEmailOTP(platform: String?=null, body: VerifyEmailOtpRequestSchema): Response<VerifyOtpSuccess>? {
         var fullUrl : String? = _relativeUrls["verifyEmailOTP"] 
         
         return userApiList?.verifyEmailOTP(fullUrl    ,  platform = platform, body = body)}
+
+    
+    
+    suspend fun verifyEmailForgotOTP(platform: String?=null, body: VerifyEmailForgotOtpRequestSchema): Response<VerifyForgotOtpSuccess>? {
+        var fullUrl : String? = _relativeUrls["verifyEmailForgotOTP"] 
+        
+        return userApiList?.verifyEmailForgotOTP(fullUrl    ,  platform = platform, body = body)}
 
     
     

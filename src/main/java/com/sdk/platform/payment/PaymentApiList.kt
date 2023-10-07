@@ -204,4 +204,16 @@ interface PaymentApiList {
     suspend fun getPGConfigAggregators(@Path("company_id") companyId: String, @Path("application_id") applicationId: String)
     : Response<MerchnatPaymentModeResponse>
     
+    @GET ("/service/platform/payment/v1.0/company/{company_id}/application/{application_id}/refund_priority/config/{config_type}")
+    suspend fun getMerchantRefundPriority(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Path("config_type") configType: String)
+    : Response<RefundPriorityResponseSerializer>
+    
+    @POST ("/service/platform/payment/v1.0/company/{company_id}/application/{application_id}/refund_priority/config/{config_type}")
+    suspend fun createMerchantRefundPriority(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Path("config_type") configType: String,@Body body: RefundPriorityRequestSerializer)
+    : Response<RefundPriorityResponseSerializer>
+    
+    @PUT ("/service/platform/payment/v1.0/company/{company_id}/application/{application_id}/refund_priority/config/{config_type}")
+    suspend fun updateMerchantRefundPriority(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Path("config_type") configType: String,@Body body: RefundPriorityRequestSerializer)
+    : Response<RefundPriorityResponseSerializer>
+    
 }

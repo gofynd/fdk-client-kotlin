@@ -61,6 +61,11 @@ interface UserApiList {
     
     
     @POST 
+    suspend fun resetForgotPassword(@Url url1: String?   ,@Body body: ForgotPasswordRequestSchema)
+    : Response<ResetForgotPasswordSuccess>
+    
+    
+    @POST 
     suspend fun sendResetToken(@Url url1: String?   ,@Body body: CodeRequestBodySchema)
     : Response<ResetPasswordSuccess>
     
@@ -111,8 +116,18 @@ interface UserApiList {
     
     
     @POST 
+    suspend fun sendForgotOTPOnMobile(@Url url1: String?    ,  @Query("platform") platform: String?, @Body body: SendMobileForgotOtpRequestSchema)
+    : Response<OtpSuccess>
+    
+    
+    @POST 
     suspend fun verifyMobileOTP(@Url url1: String?    ,  @Query("platform") platform: String?, @Body body: VerifyOtpRequestSchema)
     : Response<VerifyOtpSuccess>
+    
+    
+    @POST 
+    suspend fun verifyMobileForgotOTP(@Url url1: String?    ,  @Query("platform") platform: String?, @Body body: VerifyMobileForgotOtpRequestSchema)
+    : Response<VerifyForgotOtpSuccess>
     
     
     @POST 
@@ -121,8 +136,18 @@ interface UserApiList {
     
     
     @POST 
+    suspend fun sendForgotOTPOnEmail(@Url url1: String?    ,  @Query("platform") platform: String?, @Body body: SendEmailForgotOtpRequestSchema)
+    : Response<EmailOtpSuccess>
+    
+    
+    @POST 
     suspend fun verifyEmailOTP(@Url url1: String?    ,  @Query("platform") platform: String?, @Body body: VerifyEmailOtpRequestSchema)
     : Response<VerifyOtpSuccess>
+    
+    
+    @POST 
+    suspend fun verifyEmailForgotOTP(@Url url1: String?    ,  @Query("platform") platform: String?, @Body body: VerifyEmailForgotOtpRequestSchema)
+    : Response<VerifyForgotOtpSuccess>
     
     
     @GET 

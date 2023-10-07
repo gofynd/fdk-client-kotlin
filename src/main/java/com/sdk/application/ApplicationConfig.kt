@@ -1,5 +1,6 @@
 package com.sdk.application
 
+import com.sdk.common.LocationHeader
 import okhttp3.Interceptor
 import java.net.CookieStore
 
@@ -11,6 +12,7 @@ class ApplicationConfig(
     val persistentCookieStore: CookieStore?=null,
     var languageCode: String = "en-IN",
     var currencyCode: String = "INR",
+    var locationDetail: LocationHeader? = null,
     var debuggable: Boolean = false,
     var extraHeaders: HashMap<String,String>? = null,
     var interceptors: List<Interceptor>? = null,

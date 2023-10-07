@@ -16,6 +16,7 @@ Authentication Service
 * [sendResetPasswordEmail](#sendresetpasswordemail)
 * [sendResetPasswordMobile](#sendresetpasswordmobile)
 * [forgotPassword](#forgotpassword)
+* [resetForgotPassword](#resetforgotpassword)
 * [sendResetToken](#sendresettoken)
 * [loginWithToken](#loginwithtoken)
 * [registerWithForm](#registerwithform)
@@ -26,9 +27,13 @@ Authentication Service
 * [deleteUser](#deleteuser)
 * [logout](#logout)
 * [sendOTPOnMobile](#sendotponmobile)
+* [sendForgotOTPOnMobile](#sendforgototponmobile)
 * [verifyMobileOTP](#verifymobileotp)
+* [verifyMobileForgotOTP](#verifymobileforgototp)
 * [sendOTPOnEmail](#sendotponemail)
+* [sendForgotOTPOnEmail](#sendforgototponemail)
 * [verifyEmailOTP](#verifyemailotp)
+* [verifyEmailForgotOTP](#verifyemailforgototp)
 * [getLoggedInUser](#getloggedinuser)
 * [getListOfActiveSessions](#getlistofactivesessions)
 * [getPlatformConfig](#getplatformconfig)
@@ -915,6 +920,75 @@ Success. Check the example shown below or refer `LoginSuccess` for more details.
 ---
 
 
+### resetForgotPassword
+Reset forgot Password
+
+
+
+
+```kotlin
+applicationClient.user.resetForgotPassword(body: body).safeAwait{ response, error->
+    response?.let{
+      // Use response
+    } ->
+    error?.let{
+      
+    } 
+}
+```
+
+
+
+
+
+| Argument  |  Type  | Required | Description |
+| --------- | -----  | -------- | ----------- |
+| body | [ForgotPasswordRequestSchema](#ForgotPasswordRequestSchema) | yes | Request body |
+
+
+Use this API to reset a password using the code sent on email or SMS.
+
+*Returned Response:*
+
+
+
+
+[ResetForgotPasswordSuccess](#ResetForgotPasswordSuccess)
+
+Success. Check the example shown below or refer `ResetForgotPasswordSuccess` for more details.
+
+
+
+
+<details>
+<summary><i>&nbsp; Examples:</i></summary>
+
+
+<details>
+<summary><i>&nbsp; reset forgot password success</i></summary>
+
+```json
+{
+  "value": {
+    "success": true
+  }
+}
+```
+</details>
+
+</details>
+
+
+
+
+
+
+
+
+
+---
+
+
 ### sendResetToken
 Reset Password using token
 
@@ -1583,6 +1657,82 @@ Success. Returns a JSON object as shown below. Refer `OtpSuccess` for more detai
 ---
 
 
+### sendForgotOTPOnMobile
+Send Forgot OTP on mobile
+
+
+
+
+```kotlin
+applicationClient.user.sendForgotOTPOnMobile(platform: platform, body: body).safeAwait{ response, error->
+    response?.let{
+      // Use response
+    } ->
+    error?.let{
+      
+    } 
+}
+```
+
+
+
+
+
+| Argument  |  Type  | Required | Description |
+| --------- | -----  | -------- | ----------- | 
+| platform | String? | no | ID of the application |  
+| body | [SendMobileForgotOtpRequestSchema](#SendMobileForgotOtpRequestSchema) | yes | Request body |
+
+
+Use this API to send an Forgot OTP to a mobile number.
+
+*Returned Response:*
+
+
+
+
+[OtpSuccess](#OtpSuccess)
+
+Success. Returns a JSON object as shown below. Refer `OtpSuccess` for more details.
+
+
+
+
+<details>
+<summary><i>&nbsp; Examples:</i></summary>
+
+
+<details>
+<summary><i>&nbsp; send forgot otp on mobile success</i></summary>
+
+```json
+{
+  "value": {
+    "success": true,
+    "request_id": "01503005aeab87cbed93d40f46cc2749",
+    "message": "OTP sent",
+    "mobile": "8652523958",
+    "country_code": "91",
+    "resend_timer": 30,
+    "resend_token": "18fc3d60-66e5-11eb-9399-0312fbf2c2a6"
+  }
+}
+```
+</details>
+
+</details>
+
+
+
+
+
+
+
+
+
+---
+
+
 ### verifyMobileOTP
 Verify OTP on mobile
 
@@ -1699,6 +1849,77 @@ Success. Returns a JSON object as shown below. Refer `VerifyOtpSuccess` for more
 ---
 
 
+### verifyMobileForgotOTP
+Verify Forgot OTP on mobile
+
+
+
+
+```kotlin
+applicationClient.user.verifyMobileForgotOTP(platform: platform, body: body).safeAwait{ response, error->
+    response?.let{
+      // Use response
+    } ->
+    error?.let{
+      
+    } 
+}
+```
+
+
+
+
+
+| Argument  |  Type  | Required | Description |
+| --------- | -----  | -------- | ----------- | 
+| platform | String? | no | ID of the application |  
+| body | [VerifyMobileForgotOtpRequestSchema](#VerifyMobileForgotOtpRequestSchema) | yes | Request body |
+
+
+Use this API to verify the Forgot OTP received on a mobile number.
+
+*Returned Response:*
+
+
+
+
+[VerifyForgotOtpSuccess](#VerifyForgotOtpSuccess)
+
+Success. Returns a JSON object as shown below. Refer `VerifyForgotOtpSuccess` for more details.
+
+
+
+
+<details>
+<summary><i>&nbsp; Examples:</i></summary>
+
+
+<details>
+<summary><i>&nbsp; verify forgot otp on mobile success</i></summary>
+
+```json
+{
+  "value": {
+    "success": true,
+    "forgot_token": "d6c9df22-7e65-41be-9852-8207a8d2d54d"
+  }
+}
+```
+</details>
+
+</details>
+
+
+
+
+
+
+
+
+
+---
+
+
 ### sendOTPOnEmail
 Send OTP on email
 
@@ -1748,6 +1969,76 @@ Success. Returns a JSON object as shown below. Refer `EmailOtpSuccess` for more 
   "success": true
 }
 ```
+</details>
+
+
+
+
+
+
+
+
+
+---
+
+
+### sendForgotOTPOnEmail
+Send Forgot OTP on email
+
+
+
+
+```kotlin
+applicationClient.user.sendForgotOTPOnEmail(platform: platform, body: body).safeAwait{ response, error->
+    response?.let{
+      // Use response
+    } ->
+    error?.let{
+      
+    } 
+}
+```
+
+
+
+
+
+| Argument  |  Type  | Required | Description |
+| --------- | -----  | -------- | ----------- | 
+| platform | String? | no | ID of the application |  
+| body | [SendEmailForgotOtpRequestSchema](#SendEmailForgotOtpRequestSchema) | yes | Request body |
+
+
+Use this API to send an Forgot OTP to an email ID.
+
+*Returned Response:*
+
+
+
+
+[EmailOtpSuccess](#EmailOtpSuccess)
+
+Success. Returns a JSON object as shown below. Refer `EmailOtpSuccess` for more details.
+
+
+
+
+<details>
+<summary><i>&nbsp; Examples:</i></summary>
+
+
+<details>
+<summary><i>&nbsp; send forgot otp on email success</i></summary>
+
+```json
+{
+  "value": {
+    "success": true
+  }
+}
+```
+</details>
+
 </details>
 
 
@@ -1859,6 +2150,77 @@ Success. Returns a JSON object as shown below. Refer `VerifyOtpSuccess` for more
       "created_at": "2020-03-11T09:28:41.982Z",
       "updated_at": "2021-02-04T10:10:44.981Z"
     }
+  }
+}
+```
+</details>
+
+</details>
+
+
+
+
+
+
+
+
+
+---
+
+
+### verifyEmailForgotOTP
+Verify Forgot OTP on email
+
+
+
+
+```kotlin
+applicationClient.user.verifyEmailForgotOTP(platform: platform, body: body).safeAwait{ response, error->
+    response?.let{
+      // Use response
+    } ->
+    error?.let{
+      
+    } 
+}
+```
+
+
+
+
+
+| Argument  |  Type  | Required | Description |
+| --------- | -----  | -------- | ----------- | 
+| platform | String? | no | ID of the application |  
+| body | [VerifyEmailForgotOtpRequestSchema](#VerifyEmailForgotOtpRequestSchema) | yes | Request body |
+
+
+Use this API to verify the Forgot OTP received on an email ID.
+
+*Returned Response:*
+
+
+
+
+[VerifyForgotOtpSuccess](#VerifyForgotOtpSuccess)
+
+Success. Returns a JSON object as shown below. Refer `VerifyForgotOtpSuccess` for more details.
+
+
+
+
+<details>
+<summary><i>&nbsp; Examples:</i></summary>
+
+
+<details>
+<summary><i>&nbsp; verify forgot otp on email success</i></summary>
+
+```json
+{
+  "value": {
+    "success": true,
+    "forgot_token": "d6c9df22-7e65-41be-9852-8207a8d2d54d"
   }
 }
 ```
@@ -3284,6 +3646,19 @@ Request body must contain an email ID. Refer `EditEmailRequestSchema` for more d
 
  
  
+ #### [SendEmailForgotOtpRequestSchema](#SendEmailForgotOtpRequestSchema)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | email | String? |  yes  |  |
+ | action | String? |  yes  |  |
+ | token | String? |  yes  |  |
+
+---
+
+
+ 
+ 
  #### [VerifyEmailOtpRequestSchema](#VerifyEmailOtpRequestSchema)
 
  | Properties | Type | Nullable | Description |
@@ -3291,6 +3666,18 @@ Request body must contain an email ID. Refer `EditEmailRequestSchema` for more d
  | email | String? |  yes  |  |
  | action | String? |  yes  |  |
  | registerToken | String? |  yes  |  |
+ | otp | String? |  yes  |  |
+
+---
+
+
+ 
+ 
+ #### [VerifyEmailForgotOtpRequestSchema](#VerifyEmailForgotOtpRequestSchema)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | email | String? |  yes  |  |
  | otp | String? |  yes  |  |
 
 ---
@@ -3311,6 +3698,18 @@ Request body must contain an email ID. Refer `EditEmailRequestSchema` for more d
 
  
  
+ #### [VerifyMobileForgotOtpRequestSchema](#VerifyMobileForgotOtpRequestSchema)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | requestId | String? |  yes  |  |
+ | otp | String? |  yes  |  |
+
+---
+
+
+ 
+ 
  #### [SendMobileOtpRequestSchema](#SendMobileOtpRequestSchema)
 
  | Properties | Type | Nullable | Description |
@@ -3322,6 +3721,21 @@ Request body must contain an email ID. Refer `EditEmailRequestSchema` for more d
  | androidHash | String? |  yes  |  |
  | force | String? |  yes  |  |
  | captchaCode | String? |  yes  |  |
+
+---
+
+
+ 
+ 
+ #### [SendMobileForgotOtpRequestSchema](#SendMobileForgotOtpRequestSchema)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | mobile | String? |  yes  |  |
+ | countryCode | String? |  yes  |  |
+ | action | String? |  yes  |  |
+ | token | String? |  yes  |  |
+ | androidHash | String? |  yes  |  |
 
 ---
 
@@ -3554,6 +3968,17 @@ Request body must contain an email ID. Refer `EditEmailRequestSchema` for more d
 
  
  
+ #### [ResetForgotPasswordSuccess](#ResetForgotPasswordSuccess)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | success | Boolean? |  yes  |  |
+
+---
+
+
+ 
+ 
  #### [VerifyOtpSuccess](#VerifyOtpSuccess)
 
  | Properties | Type | Nullable | Description |
@@ -3561,6 +3986,18 @@ Request body must contain an email ID. Refer `EditEmailRequestSchema` for more d
  | user | [UserSchema](#UserSchema)? |  yes  |  |
  | userExists | Boolean? |  yes  |  |
  | registerToken | String? |  yes  |  |
+
+---
+
+
+ 
+ 
+ #### [VerifyForgotOtpSuccess](#VerifyForgotOtpSuccess)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | success | Boolean? |  yes  |  |
+ | forgotToken | String? |  yes  |  |
 
 ---
 
@@ -3747,6 +4184,21 @@ Request body must contain an email ID. Refer `EditEmailRequestSchema` for more d
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
  | message | String? |  yes  |  |
+
+---
+
+
+ 
+ 
+ #### [APIError](#APIError)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | code | String? |  yes  |  |
+ | message | String? |  yes  |  |
+ | info | String? |  yes  | Error code description link |
+ | requestId | String? |  yes  |  |
+ | meta | HashMap<String,Any>? |  yes  |  |
 
 ---
 
