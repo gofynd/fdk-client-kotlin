@@ -142,6 +142,15 @@ Success. Returns a Product object. Check the example shown below or refer `Produ
     },
     "_custom_json": {}
   },
+  "department": {
+    "name": "Electronics",
+    "uid": 1,
+    "logo": {
+      "type": "image",
+      "url": "https://hdn-1.fynd.com/media/logo/brand/original/12391_0d956c6c71a4427895c15e44cba82f88.jpg"
+    },
+    "slug": "electronics"
+  },
   "uid": 1,
   "slug": "benchmark-collaborative-paradigms",
   "attributes": {
@@ -8015,6 +8024,20 @@ Success. Returns a ProductSizeSellerV3 object. Check the example shown below or 
 
  
  
+ #### [ProductDepartment](#ProductDepartment)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | uid | Int? |  yes  |  |
+ | logo | [Media](#Media)? |  yes  |  |
+ | slug | String? |  yes  |  |
+ | name | String? |  yes  |  |
+
+---
+
+
+ 
+ 
  #### [ProductCategoryMap](#ProductCategoryMap)
 
  | Properties | Type | Nullable | Description |
@@ -8180,6 +8203,7 @@ Success. Returns a ProductSizeSellerV3 object. Check the example shown below or 
  | highlights | ArrayList<String>? |  yes  |  |
  | price | [ProductListingPrice](#ProductListingPrice)? |  yes  |  |
  | brand | [ProductBrand](#ProductBrand)? |  yes  |  |
+ | department | [ProductDepartment](#ProductDepartment)? |  yes  |  |
  | teaserTag | String? |  yes  |  |
 
 ---

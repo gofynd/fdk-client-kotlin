@@ -248,12 +248,8 @@ interface ContentApiList {
     suspend fun updateInjectableTag(@Path("company_id") companyId: String, @Path("application_id") applicationId: String,@Body body: CreateTagRequestSchema)
     : Response<TagsSchema>
     
-    @DELETE ("/service/platform/content/v1.0/company/{company_id}/application/{application_id}/tags")
-    suspend fun deleteAllInjectableTags(@Path("company_id") companyId: String, @Path("application_id") applicationId: String)
-    : Response<TagsSchema>
-    
     @GET ("/service/platform/content/v1.0/company/{company_id}/application/{application_id}/tags")
-    suspend fun getInjectableTags(@Path("company_id") companyId: String, @Path("application_id") applicationId: String)
+    suspend fun getInjectableTags(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Query("all") all: Boolean?)
     : Response<TagsSchema>
     
     @PUT ("/service/platform/content/v1.0/company/{company_id}/application/{application_id}/tags/add")

@@ -1304,6 +1304,85 @@ data class UpdateUserGroupSchema(
 
              
 /*
+    Model: PartialUserGroupUpdateSchema
+*/
+@Parcelize
+data class PartialUserGroupUpdateSchema(
+    
+    
+    
+    @SerializedName("type")
+    var type: String?=null,
+    
+    @SerializedName("name")
+    var name: String?=null,
+    
+    @SerializedName("description")
+    var description: String?=null,
+    
+    @SerializedName("file_url")
+    var fileUrl: String?=null,
+    
+    @SerializedName("user_data")
+    var userData: ArrayList<UserGroupUpdateData>?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: UserGroupUpdateData
+*/
+@Parcelize
+data class UserGroupUpdateData(
+    
+    
+    
+    @SerializedName("user_id")
+    var userId: String?=null,
+    
+    @SerializedName("phone_number")
+    var phoneNumber: String?=null,
+    
+    @SerializedName("email")
+    var email: String?=null,
+    
+    @SerializedName("action")
+    var action: String?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
     Model: UpdateUserRequestSchema
 */
 @Parcelize

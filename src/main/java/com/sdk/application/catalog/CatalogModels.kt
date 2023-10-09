@@ -206,6 +206,43 @@ data class ProductBrand(
 
              
 /*
+    Model: ProductDepartment
+*/
+@Parcelize
+data class ProductDepartment(
+    
+    
+    
+    @SerializedName("uid")
+    var uid: Int?=null,
+    
+    @SerializedName("logo")
+    var logo: Media?=null,
+    
+    @SerializedName("slug")
+    var slug: String?=null,
+    
+    @SerializedName("name")
+    var name: String?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
     Model: ProductCategoryMap
 */
 @Parcelize
@@ -618,10 +655,15 @@ data class ProductDetail(
     @SerializedName("brand")
     var brand: ProductBrand?=null,
     
+    @SerializedName("department")
+    var department: ProductDepartment?=null,
+    
     @SerializedName("teaser_tag")
     var teaserTag: String?=null
     
 ): Parcelable {
+    
+    
     
     
     

@@ -2414,7 +2414,7 @@ platformClient.order.getShipments(lane: lane, bagStatus: bagStatus, statusOverri
 | lane | String? | no | Name of lane for which data is to be fetched |   
 | bagStatus | String? | no | Comma separated values of bag statuses |   
 | statusOverrideLane | Boolean? | no | Use this flag to fetch by bag_status and override lane |   
-| timeToDispatch | Double? | no |  |   
+| timeToDispatch | Int? | no |  |   
 | searchType | String? | no | Search type key |   
 | searchValue | String? | no | Search type value |   
 | fromDate | String? | no | Start Date in DD-MM-YYYY format |   
@@ -3700,7 +3700,7 @@ platformClient.order.getLaneConfig(superLane: superLane, groupEntity: groupEntit
 | searchType | String? | no |  |   
 | searchValue | String? | no |  |   
 | tags | String? | no |  |   
-| timeToDispatch | String? | no |  |   
+| timeToDispatch | Int? | no |  |   
 | paymentMethods | String? | no |  |   
 | myOrders | Boolean? | no |  |   
 | showCrossCompanyData | Boolean? | no | Flag to view cross & non-cross company order |   
@@ -3840,7 +3840,7 @@ platformClient.order.getOrders(lane: lane, searchType: searchType, bagStatus: ba
 | lane | String? | no | lane refers to a section where orders are assigned, indicating its grouping |   
 | searchType | String? | no | search_type refers to the field that will be used as the target for the search operation |   
 | bagStatus | String? | no | bag_status refers to status of the entity. Filters orders based on the status. |   
-| timeToDispatch | String? | no | time_to_dispatch refers to estimated SLA time. |   
+| timeToDispatch | Int? | no | time_to_dispatch refers to estimated SLA time. |   
 | paymentMethods | String? | no |  |   
 | tags | String? | no | tags refers to additional descriptive labels associated with the order |   
 | searchValue | String? | no | search_value is matched against the field specified by the search_type |   
@@ -7449,6 +7449,7 @@ We are processing the request!
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
  | sameStoreAvailable | Boolean? |  yes  |  |
+ | isSelfShip | Boolean? |  yes  |  |
  | isInternational | Boolean? |  yes  |  |
  | formatted | [Formatted](#Formatted)? |  yes  |  |
  | debugInfo | HashMap<String,Any>? |  yes  |  |
@@ -7758,11 +7759,14 @@ We are processing the request!
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
+ | trackingUrl | String? |  yes  |  |
+ | estimatedDeliveryDate | String? |  yes  |  |
  | sameStoreAvailable | Boolean |  no  |  |
  | b2BBuyerDetails | [BuyerDetails](#BuyerDetails)? |  yes  |  |
  | formatted | [Formatted](#Formatted)? |  yes  |  |
  | debugInfo | [DebugInfo](#DebugInfo)? |  yes  |  |
  | returnAwbNumber | String? |  yes  |  |
+ | isSelfShip | Boolean? |  yes  |  |
  | boxType | String? |  yes  |  |
  | einvoiceInfo | [EinvoiceInfo](#EinvoiceInfo)? |  yes  |  |
  | returnAffiliateShipmentId | String? |  yes  |  |
@@ -7925,7 +7929,7 @@ We are processing the request!
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
  | logo | String? |  yes  |  |
- | company | Int |  no  |  |
+ | company | Int? |  yes  |  |
  | id | Int |  no  |  |
  | createdOn | String? |  yes  |  |
  | brandName | String? |  yes  |  |

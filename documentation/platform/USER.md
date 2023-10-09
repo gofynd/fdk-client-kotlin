@@ -23,6 +23,7 @@ Authentication Service
 * [getUserGroups](#getusergroups)
 * [updateUserGroup](#updateusergroup)
 * [getUserGroupById](#getusergroupbyid)
+* [updateUserGroupPartially](#updateusergrouppartially)
 
 
 
@@ -1527,6 +1528,78 @@ Success. User Group details. `UserGroupResponseSchema` for more details.
 ---
 
 
+### updateUserGroupPartially
+Add or Remove an user from particular user group and update user group details
+
+
+
+
+```kotlin
+platformClient.application("<APPLICATION_ID>").user.updateUserGroupPartially(groupId: groupId, body: body).safeAwait{ response, error->
+    response?.let{
+      // Use response
+    } ->
+    error?.let{
+      
+    } 
+}
+```
+
+
+
+
+
+| Argument  |  Type  | Required | Description |
+| --------- | -----  | -------- | ----------- | 
+| groupId | String | yes | Numeric ID allotted to a User Group |  
+| body | [PartialUserGroupUpdateSchema](#PartialUserGroupUpdateSchema) | yes | Request body |
+
+
+Use this API to update user group details and add or remove an user to the user group.
+
+*Returned Response:*
+
+
+
+
+[UserGroupResponseSchema](#UserGroupResponseSchema)
+
+Success. returns updated User Group. `UserGroupResponseSchema` for more details.
+
+
+
+
+<details>
+<summary><i>&nbsp; Example:</i></summary>
+
+```json
+{
+  "is_active": true,
+  "_id": "6345677535474fbb6944b7ce",
+  "name": "Group 1",
+  "description": "description",
+  "file_url": "url",
+  "status": "pending",
+  "uid": 1,
+  "application_id": "000000000000000000000001",
+  "created_at": "2022-10-11T12:54:13.539Z",
+  "modified_at": "2022-10-11T12:54:13.539Z",
+  "__v": 0
+}
+```
+</details>
+
+
+
+
+
+
+
+
+
+---
+
+
 
 ### Schemas
 
@@ -2048,6 +2121,35 @@ Success. User Group details. `UserGroupResponseSchema` for more details.
  | name | String? |  yes  |  |
  | description | String? |  yes  |  |
  | fileUrl | String? |  yes  |  |
+
+---
+
+
+ 
+ 
+ #### [PartialUserGroupUpdateSchema](#PartialUserGroupUpdateSchema)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | type | String? |  yes  | Source of update to be used to update individual users. Default value is considered file_url if not passed. |
+ | name | String? |  yes  |  |
+ | description | String? |  yes  |  |
+ | fileUrl | String? |  yes  | Required property when passed type file_url. Internet reachable csv file url which will be used to fetch download data. It must have one of columns from `phone_number``, `email``, `user_id`` and must have `action` column. `action` column can have `add` or `remove` value. |
+ | userData | ArrayList<[UserGroupUpdateData](#UserGroupUpdateData)>? |  yes  | Required property when passed type json. Array of user data. Must have `action` field and one of `phone_number`, `email` or `user_id` field in object |
+
+---
+
+
+ 
+ 
+ #### [UserGroupUpdateData](#UserGroupUpdateData)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | userId | String? |  yes  | Must be valid mongodb objectid of existing user |
+ | phoneNumber | String? |  yes  | Phone number of registered user |
+ | email | String? |  yes  | Email of registered user |
+ | action | String |  no  |  |
 
 ---
 

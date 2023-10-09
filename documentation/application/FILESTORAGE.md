@@ -69,17 +69,46 @@ This operation will return the URL of the uploaded file.
 
 [StartResponse](#StartResponse)
 
-Success. Next, call the `completeUpload` API and pass the response payload of this API to finish the upload process.
+Success. Returns a response containing relaving and absolute_url of storage service
 
 
 
 
 <details>
-<summary><i>&nbsp; Example:</i></summary>
+<summary><i>&nbsp; Examples:</i></summary>
+
+
+<details>
+<summary><i>&nbsp; success</i></summary>
 
 ```json
-
+{
+  "value": {
+    "file_name": "shirt.png",
+    "file_path": "/path/qwertyuiop-shirt.png",
+    "content_type": "image/png",
+    "method": "PUT",
+    "namespace": "products-item-images",
+    "operation": "putObject",
+    "tags": [
+      "clothing",
+      "shirt"
+    ],
+    "size": 9999,
+    "cdn": {
+      "url": "https://xxx.xxx.xxx/products/pictures/free/original/qwertyuiop-shirt.png",
+      "absolute_url": "https://xxx.xxx.xxx/products/pictures/free/original/qwertyuiop-shirt.png",
+      "relative_url": "products/pictures/free/original/qwertyuiop-shirt.png"
+    },
+    "upload": {
+      "expiry": 5000,
+      "url": "https://xxx.xxx.xxx/products/pictures/free/original/qwertyuiop-shirt.png?AWSAccessKeyId=xxx&Content-Type=image%2Fpng&Expires=5000&Signature=xxx&x-amz-acl=public-read"
+    }
+  }
+}
 ```
+</details>
+
 </details>
 
 
@@ -153,11 +182,47 @@ Success
 
 
 <details>
-<summary><i>&nbsp; Example:</i></summary>
+<summary><i>&nbsp; Examples:</i></summary>
+
+
+<details>
+<summary><i>&nbsp; success</i></summary>
 
 ```json
-
+{
+  "value": {
+    "success": true,
+    "_id": "xxxxxxxxxxxxxxxxxxxxxx",
+    "file_name": "shirt.png",
+    "file_path": "/path/qwertyuiop-shirt.png",
+    "content_type": "image/png",
+    "namespace": "products-item-images",
+    "operation": "putObject",
+    "company_id": 2,
+    "tags": [
+      "clothing",
+      "shirt"
+    ],
+    "size": 9999,
+    "cdn": {
+      "url": "https://xxx.xxx.xxx/products/pictures/free/original/qwertyuiop-shirt.png",
+      "absolute_url": "https://xxx.xxx.xxx/products/pictures/free/original/qwertyuiop-shirt.png",
+      "relative_url": "products/pictures/free/original/qwertyuiop-shirt.png"
+    },
+    "upload": {
+      "expiry": 5000,
+      "url": "https://xxx.xxx.xxx/products/pictures/free/original/qwertyuiop-shirt.png?AWSAccessKeyId=xxx&Content-Type=image%2Fpng&Expires=5000&Signature=xxx&x-amz-acl=public-read"
+    },
+    "created_on": "2020-02-03T09:50:04.240Z",
+    "modified_on": "2020-02-03T09:50:04.240Z",
+    "created_by": {
+      "username": "app@fynd.com"
+    }
+  }
+}
 ```
+</details>
+
 </details>
 
 
@@ -212,11 +277,27 @@ Success
 
 
 <details>
-<summary><i>&nbsp; Example:</i></summary>
+<summary><i>&nbsp; Examples:</i></summary>
+
+
+<details>
+<summary><i>&nbsp; success</i></summary>
 
 ```json
-
+{
+  "value": {
+    "urls": [
+      {
+        "url": "https://cdn.pixelbin.io/v2/falling-surf-7c8bb8/fyndnp/wrkr/x0/documents/manifest/PDFs/test/s3EtYk5p9-new_fee.pdf",
+        "signed_url": "https://fynd-staging-assets-private.s3-accelerate.amazonaws.com/addsale/v2/falling-surf-7c8bb8/fyndnp/wrkr/x0/documents/manifest/PDFs/test/s3EtYk5p9-new_fee.pdf",
+        "expiry": 1800
+      }
+    ]
+  }
+}
 ```
+</details>
+
 </details>
 
 
@@ -232,17 +313,6 @@ Success
 
 
 ### Schemas
-
- 
- 
- #### [FailedResponse](#FailedResponse)
-
- | Properties | Type | Nullable | Description |
- | ---------- | ---- | -------- | ----------- |
- | message | String |  no  |  |
-
----
-
 
  
  
@@ -291,6 +361,17 @@ Success
 
  
  
+ #### [Params](#Params)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | subpath | String? |  yes  | The subpath for the file. |
+
+---
+
+
+ 
+ 
  #### [StartRequest](#StartRequest)
 
  | Properties | Type | Nullable | Description |
@@ -299,7 +380,18 @@ Success
  | contentType | String |  no  |  |
  | size | Int |  no  |  |
  | tags | ArrayList<String>? |  yes  |  |
- | params | HashMap<String,Any>? |  yes  |  |
+ | params | [Params](#Params)? |  yes  |  |
+
+---
+
+
+ 
+ 
+ #### [CreatedBy](#CreatedBy)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | username | String? |  yes  |  |
 
 ---
 
@@ -323,6 +415,7 @@ Success
  | tags | ArrayList<String>? |  yes  |  |
  | createdOn | String |  no  |  |
  | modifiedOn | String |  no  |  |
+ | createdBy | [CreatedBy](#CreatedBy)? |  yes  |  |
 
 ---
 

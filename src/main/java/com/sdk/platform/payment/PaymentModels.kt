@@ -4433,5 +4433,106 @@ data class RefundSessionResponseSerializer(
 
 
 
+             
+/*
+    Model: RefundSourcesPriority
+*/
+@Parcelize
+data class RefundSourcesPriority(
+    
+    
+    
+    @SerializedName("description")
+    var description: String?=null,
+    
+    @SerializedName("priority")
+    var priority: Int?=null,
+    
+    @SerializedName("source")
+    var source: String?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: RefundPriorityResponseSerializer
+*/
+@Parcelize
+data class RefundPriorityResponseSerializer(
+    
+    
+    
+    @SerializedName("configuration")
+    var configuration: String?=null,
+    
+    @SerializedName("success")
+    var success: Boolean?=null,
+    
+    @SerializedName("apportion")
+    var apportion: Boolean?=null,
+    
+    @SerializedName("refund_sources_priority")
+    var refundSourcesPriority: ArrayList<RefundSourcesPriority>?=null,
+    
+    @SerializedName("message")
+    var message: String?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: RefundPriorityRequestSerializer
+*/
+@Parcelize
+data class RefundPriorityRequestSerializer(
+    
+    
+    
+    @SerializedName("apportion")
+    var apportion: Boolean?=null,
+    
+    @SerializedName("refund_sources_priority")
+    var refundSourcesPriority: ArrayList<RefundSourcesPriority>?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
 
 

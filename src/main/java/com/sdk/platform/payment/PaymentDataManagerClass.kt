@@ -202,6 +202,9 @@ class PaymentDataManagerClass(val config: PlatformConfig, val unauthorizedAction
     
     
     
+    
+    
+    
 
 inner class ApplicationClient(val applicationId:String,val config: PlatformConfig){
 
@@ -601,6 +604,36 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     : Response<MerchnatPaymentModeResponse>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 paymentApiList?.getPGConfigAggregators(companyId = config.companyId , applicationId = applicationId  )
+        } else {
+            null
+        }
+    }
+    
+    
+    suspend fun getMerchantRefundPriority(configType: String)
+    : Response<RefundPriorityResponseSerializer>? {
+        return if (config.oauthClient.isAccessTokenValid()) {
+                paymentApiList?.getMerchantRefundPriority(companyId = config.companyId , applicationId = applicationId , configType = configType )
+        } else {
+            null
+        }
+    }
+    
+    
+    suspend fun createMerchantRefundPriority(configType: String,body: RefundPriorityRequestSerializer)
+    : Response<RefundPriorityResponseSerializer>? {
+        return if (config.oauthClient.isAccessTokenValid()) {
+                paymentApiList?.createMerchantRefundPriority(companyId = config.companyId , applicationId = applicationId , configType = configType, body = body)
+        } else {
+            null
+        }
+    }
+    
+    
+    suspend fun updateMerchantRefundPriority(configType: String,body: RefundPriorityRequestSerializer)
+    : Response<RefundPriorityResponseSerializer>? {
+        return if (config.oauthClient.isAccessTokenValid()) {
+                paymentApiList?.updateMerchantRefundPriority(companyId = config.companyId , applicationId = applicationId , configType = configType, body = body)
         } else {
             null
         }

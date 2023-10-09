@@ -27,7 +27,7 @@ class ApplicationHeaderInterceptor(
                 header("X-Location-Detail", HttpClient.gson.toJson(it))
             }
             header("x-currency-code", currencyCode)
-            header("x-fp-sdk-version", "1.3.3")
+            header("x-fp-sdk-version", "1.3.4")
             val bearerToken =
                 Base64.encodeToString(
                     "$applicationId:$applicationToken".toByteArray(),

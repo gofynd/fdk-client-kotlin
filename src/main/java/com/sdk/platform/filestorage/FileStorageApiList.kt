@@ -30,46 +30,50 @@ interface FileStorageApiList {
     
     @POST ("/service/platform/assets/v1.0/company/{company_id}/uploads/copy")
     suspend fun copyFiles(@Query("sync") sync: Boolean?, @Path("company_id") companyId: String,@Body body: CopyFiles)
-    : Response<BulkUploadSyncMode>
+    : Response<HashMap<String,Any>>
     
     @POST ("/service/platform/assets/v1.0/company/{company_id}/application/{application_id}/uploads/copy")
     suspend fun appCopyFiles(@Query("sync") sync: Boolean?, @Path("company_id") companyId: String, @Path("application_id") applicationId: String,@Body body: CopyFiles)
-    : Response<BulkUploadSyncMode>
+    : Response<HashMap<String,Any>>
     
     @GET ("/service/platform/assets/v1.0/company/{company_id}/namespaces/{namespace}/browse")
     suspend fun browse(@Path("namespace") namespace: String, @Path("company_id") companyId: String, @Query("page") page: Int?, @Query("limit") limit: Int?)
-    : Response<BrowseResponse>
+    : Response<HashMap<String,Any>>
     
     @GET ("/service/platform/assets/v1.0/company/{company_id}/application/{application_id}/namespaces/{namespace}/browse")
     suspend fun appbrowse(@Path("namespace") namespace: String, @Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Query("page") page: Int?, @Query("limit") limit: Int?)
-    : Response<BrowseResponse>
+    : Response<HashMap<String,Any>>
     
     @GET ("/service/platform/assets/v1.0/company/{company_id}/proxy")
     suspend fun proxy(@Path("company_id") companyId: String, @Query("url") url: String)
-    : Response<ResponseBody>
+    : Response<String>
     
     @GET ("/service/platform/assets/v1.0/company/{company_id}/application/{application_id}/pdf/types")
     suspend fun getPdfTypes(@Path("company_id") companyId: String, @Path("application_id") applicationId: String)
-    : Response<ArrayList<InvoiceTypesResponse>>
+    : Response<InvoiceTypesResponse>
     
     @GET ("/service/platform/assets/v1.0/company/{company_id}/application/{application_id}/pdf/mapper")
     suspend fun getDefaultPdfData(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Query("pdf_type_id") pdfTypeId: Int)
-    : Response<ArrayList<DummyTemplateDataItems>>
+    : Response<DummyTemplateDataItems>
+    
+    @PUT ("/service/platform/assets/v1.0/company/{company_id}/application/{application_id}/pdf/config/{id}")
+    suspend fun updateHtmlTemplate(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Path("id") id: String,@Body body: PdfConfig)
+    : Response<PdfConfigSaveSuccess>
     
     @GET ("/service/platform/assets/v1.0/company/{company_id}/application/{application_id}/pdf/config")
     suspend fun getDefaultHtmlTemplate(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Query("pdf_type_id") pdfTypeId: Int, @Query("format") format: String)
-    : Response<ArrayList<PdfConfigSuccess>>
+    : Response<PdfConfigSuccess>
     
-    @PUT ("/service/platform/assets/v1.0/company/{company_id}/application/{application_id}/pdf/config")
-    suspend fun saveHtmlTemplate(@Path("company_id") companyId: String, @Path("application_id") applicationId: String,@Body body: pdfConfig)
-    : Response<ArrayList<PdfConfigSaveSuccess>>
-    
-    @POST ("/service/platform/assets/v1.0/company/{company_id}/application/{application_id}/pdf/render")
-    suspend fun previewTemplate(@Path("company_id") companyId: String, @Path("application_id") applicationId: String,@Body body: pdfRender)
-    : Response<String>
+    @POST ("/service/platform/assets/v1.0/company/{company_id}/application/{application_id}/pdf/config")
+    suspend fun saveHtmlTemplate(@Path("company_id") companyId: String, @Path("application_id") applicationId: String,@Body body: PdfConfig)
+    : Response<PdfConfigSaveSuccess>
     
     @GET ("/service/platform/assets/v1.0/company/{company_id}/application/{application_id}/pdf/default-template")
     suspend fun getDefaultPdfTemplate(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Query("pdf_type_id") pdfTypeId: Int, @Query("format") format: String)
-    : Response<ArrayList<PdfDefaultTemplateSuccess>>
+    : Response<PdfDefaultTemplateSuccess>
+    
+    @POST ("/service/platform/assets/v1.0/company/{company_id}/application/{application_id}/pdf/payment-receipt")
+    suspend fun generatePaymentReceipt(@Path("company_id") companyId: String, @Path("application_id") applicationId: String,@Body body: PaymentReceiptRequestBody)
+    : Response<HashMap<String,Any>>
     
 }

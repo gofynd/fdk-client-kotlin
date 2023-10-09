@@ -7049,6 +7049,9 @@ data class ShipmentItemMeta(
     @SerializedName("same_store_available")
     var sameStoreAvailable: Boolean?=null,
     
+    @SerializedName("is_self_ship")
+    var isSelfShip: Boolean?=null,
+    
     @SerializedName("is_international")
     var isInternational: Boolean?=null,
     
@@ -7134,6 +7137,8 @@ data class ShipmentItemMeta(
     var bagWeight: @RawValue HashMap<String,Any>?=null
     
 ): Parcelable {
+    
+    
     
     
     
@@ -8040,6 +8045,12 @@ data class ShipmentMeta(
     
     
     
+    @SerializedName("tracking_url")
+    var trackingUrl: String?=null,
+    
+    @SerializedName("estimated_delivery_date")
+    var estimatedDeliveryDate: String?=null,
+    
     @SerializedName("same_store_available")
     var sameStoreAvailable: Boolean?=null,
     
@@ -8054,6 +8065,9 @@ data class ShipmentMeta(
     
     @SerializedName("return_awb_number")
     var returnAwbNumber: String?=null,
+    
+    @SerializedName("is_self_ship")
+    var isSelfShip: Boolean?=null,
     
     @SerializedName("box_type")
     var boxType: String?=null,
@@ -8161,6 +8175,12 @@ data class ShipmentMeta(
     var refundTo: String?=null
     
 ): Parcelable {
+    
+    
+    
+    
+    
+    
     
     
     
