@@ -10865,7 +10865,7 @@ data class ProductBulkRequestList(
     
     
     @SerializedName("items")
-    var items: ProductBulkRequest?=null,
+    var items: ArrayList<ProductBulkRequest>?=null,
     
     @SerializedName("page")
     var page: Page?=null
