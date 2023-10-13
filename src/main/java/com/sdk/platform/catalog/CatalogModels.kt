@@ -10771,7 +10771,7 @@ data class ProductBulkRequest(
     var cancelled: Int?=null,
     
     @SerializedName("cancelled_records")
-    var cancelledRecords: ArrayList<String>?=null,
+    var cancelledRecords: @RawValue ArrayList<HashMap<String,Any>>?=null,
     
     @SerializedName("company_id")
     var companyId: Int?=null,
@@ -10786,7 +10786,7 @@ data class ProductBulkRequest(
     var failed: Int?=null,
     
     @SerializedName("failed_records")
-    var failedRecords: ArrayList<String>?=null,
+    var failedRecords: @RawValue ArrayList<HashMap<String,Any>>?=null,
     
     @SerializedName("file_path")
     var filePath: String?=null,
