@@ -3341,14 +3341,9 @@ data class Shipment(
     var priority: Int?=null,
     
     @SerializedName("location_id")
-    var locationId: Int?=null,
-    
-    @SerializedName("order_type")
-    var orderType: String?=null
+    var locationId: Int?=null
     
 ): Parcelable {
-    
-    
     
     
     
@@ -9391,14 +9386,9 @@ data class ShipmentStatusData(
     var status: String?=null,
     
     @SerializedName("display_name")
-    var displayName: String?=null,
-    
-    @SerializedName("current_shipment_status")
-    var currentShipmentStatus: String?=null
+    var displayName: String?=null
     
 ): Parcelable {
-    
-    
     
     
     
