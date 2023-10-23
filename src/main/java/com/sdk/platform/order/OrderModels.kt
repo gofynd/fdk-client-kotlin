@@ -3341,9 +3341,14 @@ data class Shipment(
     var priority: Int?=null,
     
     @SerializedName("location_id")
-    var locationId: Int?=null
+    var locationId: Int?=null,
+    
+    @SerializedName("order_type")
+    var orderType: String?=null
     
 ): Parcelable {
+    
+    
     
     
     
@@ -3634,6 +3639,58 @@ data class BillingInfo(
 
              
 /*
+    Model: UserInfo
+*/
+@Parcelize
+data class UserInfo(
+    
+    
+    
+    @SerializedName("user_id")
+    var userId: String?=null,
+    
+    @SerializedName("user_type")
+    var userType: String?=null,
+    
+    @SerializedName("email")
+    var email: String?=null,
+    
+    @SerializedName("gender")
+    var gender: String?=null,
+    
+    @SerializedName("first_name")
+    var firstName: String?=null,
+    
+    @SerializedName("last_name")
+    var lastName: String?=null,
+    
+    @SerializedName("mobile")
+    var mobile: String?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
     Model: TaxInfo
 */
 @Parcelize
@@ -3783,9 +3840,14 @@ data class CreateOrderAPI(
     var config: @RawValue HashMap<String,Any>?=null,
     
     @SerializedName("payment_info")
-    var paymentInfo: PaymentInfo?=null
+    var paymentInfo: PaymentInfo?=null,
+    
+    @SerializedName("user_info")
+    var userInfo: UserInfo?=null
     
 ): Parcelable {
+    
+    
     
     
     
@@ -9386,9 +9448,14 @@ data class ShipmentStatusData(
     var status: String?=null,
     
     @SerializedName("display_name")
-    var displayName: String?=null
+    var displayName: String?=null,
+    
+    @SerializedName("current_shipment_status")
+    var currentShipmentStatus: String?=null
     
 ): Parcelable {
+    
+    
     
     
     

@@ -402,9 +402,14 @@ data class FileJobResponse(
     var fileType: String?=null,
     
     @SerializedName("_id")
-    var id: String?=null
+    var id: String?=null,
+    
+    @SerializedName("file_path")
+    var filePath: String?=null
     
 ): Parcelable {
+    
+    
     
     
     

@@ -707,9 +707,14 @@ data class Item(
     var l2Categories: ArrayList<String>?=null,
     
     @SerializedName("size")
-    var size: String?=null
+    var size: String?=null,
+    
+    @SerializedName("attributes")
+    var attributes: @RawValue HashMap<String,Any>?=null
     
 ): Parcelable {
+    
+    
     
     
     

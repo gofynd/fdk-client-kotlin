@@ -1647,7 +1647,8 @@ Success. Check the example shown below or refer `ShipmentById` for more details.
           "size": "OS",
           "code": "TIS-102",
           "id": 7500474,
-          "seller_identifier": "987432134"
+          "seller_identifier": "987432134",
+          "attributes": {}
         },
         "financial_breakup": [
           {
@@ -2754,6 +2755,7 @@ Successfully updateShipmentStatus!
  | slugKey | String? |  yes  |  |
  | l2Categories | ArrayList<String>? |  yes  |  |
  | size | String? |  yes  |  |
+ | attributes | HashMap<String,Any>? |  yes  |  |
 
 ---
 

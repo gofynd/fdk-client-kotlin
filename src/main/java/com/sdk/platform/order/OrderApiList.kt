@@ -141,7 +141,7 @@ interface OrderApiList {
     : Response<ShipmentInfoResponse>
     
     @GET ("/service/platform/order/v1.0/company/{company_id}/order-details")
-    suspend fun getOrderById(@Path("company_id") companyId: String, @Query("order_id") orderId: String)
+    suspend fun getOrderById(@Path("company_id") companyId: String, @Query("order_id") orderId: String, @Query("my_orders") myOrders: Boolean?)
     : Response<OrderDetailsResponse>
     
     @GET ("/service/platform/order/v1.0/company/{company_id}/lane-config/")
