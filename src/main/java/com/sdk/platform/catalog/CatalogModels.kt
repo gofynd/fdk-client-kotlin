@@ -618,9 +618,14 @@ data class ApplicationItemMeta(
     var moq: ApplicationItemMOQ?=null,
     
     @SerializedName("seo")
-    var seo: ApplicationItemSEO?=null
+    var seo: ApplicationItemSEO?=null,
+    
+    @SerializedName("size_promotion_threshold")
+    var sizePromotionThreshold: SizePromotionThreshold?=null
     
 ): Parcelable {
+    
+    
     
     
     
@@ -10771,7 +10776,7 @@ data class ProductBulkRequest(
     var cancelled: Int?=null,
     
     @SerializedName("cancelled_records")
-    var cancelledRecords: ArrayList<String>?=null,
+    var cancelledRecords: @RawValue ArrayList<HashMap<String,Any>>?=null,
     
     @SerializedName("company_id")
     var companyId: Int?=null,
@@ -10786,7 +10791,7 @@ data class ProductBulkRequest(
     var failed: Int?=null,
     
     @SerializedName("failed_records")
-    var failedRecords: ArrayList<String>?=null,
+    var failedRecords: @RawValue ArrayList<HashMap<String,Any>>?=null,
     
     @SerializedName("file_path")
     var filePath: String?=null,
@@ -10865,7 +10870,7 @@ data class ProductBulkRequestList(
     
     
     @SerializedName("items")
-    var items: ProductBulkRequest?=null,
+    var items: ArrayList<ProductBulkRequest>?=null,
     
     @SerializedName("page")
     var page: Page?=null
@@ -13236,6 +13241,195 @@ data class ReturnConfigResponse(
 
              
 /*
+    Model: Sitemap
+*/
+@Parcelize
+data class Sitemap(
+    
+    
+    
+    @SerializedName("priority")
+    var priority: Double?=null,
+    
+    @SerializedName("frequency")
+    var frequency: String?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: ApplicationItemSeoAction
+*/
+@Parcelize
+data class ApplicationItemSeoAction(
+    
+    
+    
+    @SerializedName("page")
+    var page: @RawValue HashMap<String,Any>?=null,
+    
+    @SerializedName("type")
+    var type: String?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: ApplicationItemSeoBreadcrumbs
+*/
+@Parcelize
+data class ApplicationItemSeoBreadcrumbs(
+    
+    
+    
+    @SerializedName("url")
+    var url: String?=null,
+    
+    @SerializedName("action")
+    var action: ArrayList<ApplicationItemSeoAction>?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: ApplicationItemSeoMetaTagItem
+*/
+@Parcelize
+data class ApplicationItemSeoMetaTagItem(
+    
+    
+    
+    @SerializedName("key")
+    var key: String?=null,
+    
+    @SerializedName("value")
+    var value: String?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: ApplicationItemSeoMetaTags
+*/
+@Parcelize
+data class ApplicationItemSeoMetaTags(
+    
+    
+    
+    @SerializedName("title")
+    var title: String?=null,
+    
+    @SerializedName("items")
+    var items: ArrayList<ApplicationItemSeoMetaTagItem>?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: Metatags
+*/
+@Parcelize
+data class Metatags(
+    
+    
+    
+    @SerializedName("title")
+    var title: String?=null,
+    
+    @SerializedName("items")
+    var items: ArrayList<ApplicationItemSeoMetaTags>?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: SizePromotionThreshold
+*/
+@Parcelize
+data class SizePromotionThreshold(
+    
+    
+    
+    @SerializedName("threshold_type")
+    var thresholdType: String?=null,
+    
+    @SerializedName("threshold_value")
+    var thresholdValue: Int?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
     Model: SEOData
 */
 @Parcelize
@@ -13247,9 +13441,24 @@ data class SEOData(
     var description: String?=null,
     
     @SerializedName("title")
-    var title: String?=null
+    var title: String?=null,
+    
+    @SerializedName("sitemap")
+    var sitemap: Sitemap?=null,
+    
+    @SerializedName("breadcrumbs")
+    var breadcrumbs: ArrayList<ApplicationItemSeoBreadcrumbs>?=null,
+    
+    @SerializedName("meta_tags")
+    var metaTags: ArrayList<Metatags>?=null
     
 ): Parcelable {
+    
+    
+    
+    
+    
+    
     
     
     
@@ -13412,9 +13621,24 @@ data class SeoDetail(
     var description: String?=null,
     
     @SerializedName("title")
-    var title: String?=null
+    var title: String?=null,
+    
+    @SerializedName("sitemap")
+    var sitemap: @RawValue HashMap<String,Any>?=null,
+    
+    @SerializedName("breadcrumbs")
+    var breadcrumbs: ArrayList<ApplicationItemSeoBreadcrumbs>?=null,
+    
+    @SerializedName("meta_tags")
+    var metaTags: ArrayList<Metatags>?=null
     
 ): Parcelable {
+    
+    
+    
+    
+    
+    
     
     
     

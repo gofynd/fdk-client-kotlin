@@ -646,9 +646,14 @@ data class UserSchema(
     var createdAt: String?=null,
     
     @SerializedName("updated_at")
-    var updatedAt: String?=null
+    var updatedAt: String?=null,
+    
+    @SerializedName("external_id")
+    var externalId: String?=null
     
 ): Parcelable {
+    
+    
     
     
     

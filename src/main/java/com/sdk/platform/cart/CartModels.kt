@@ -7933,6 +7933,9 @@ data class PickupStoreDetail(
     @SerializedName("id")
     var id: Int?=null,
     
+    @SerializedName("store_manager_name")
+    var storeManagerName: String?=null,
+    
     @SerializedName("name")
     var name: String?=null,
     
@@ -7952,6 +7955,8 @@ data class PickupStoreDetail(
     var address: String?=null
     
 ): Parcelable {
+    
+    
     
     
     

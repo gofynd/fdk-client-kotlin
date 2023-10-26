@@ -440,12 +440,12 @@ class OrderDataManagerClass(val config: PlatformConfig, val unauthorizedAction: 
     }
     
     
-    suspend fun getOrderById(orderId: String)
+    suspend fun getOrderById(orderId: String, myOrders: Boolean?=null)
     : Response<OrderDetailsResponse>? {
         
         return if (config.oauthClient.isAccessTokenValid()) {
             orderApiList?.getOrderById(
-        companyId = config.companyId, orderId = orderId )
+        companyId = config.companyId, orderId = orderId, myOrders = myOrders )
         } else {
             null
         } 

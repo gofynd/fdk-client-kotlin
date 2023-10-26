@@ -167,7 +167,7 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     
     
     suspend fun deleteActiveSessions(id: String, reason: String)
-    : Response<SessionDeleteResponseSchema>? {
+    : Response<SessionsDeleteResponseSchema>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 userApiList?.deleteActiveSessions(companyId = config.companyId , applicationId = applicationId , id = id, reason = reason )
         } else {
