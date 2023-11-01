@@ -727,6 +727,80 @@ data class ProductPriceInfo(
 
              
 /*
+    Model: ProductPricePerUnit
+*/
+@Parcelize
+data class ProductPricePerUnit(
+    
+    
+    
+    @SerializedName("currency_symbol")
+    var currencySymbol: String?=null,
+    
+    @SerializedName("selling_price")
+    var sellingPrice: Double?=null,
+    
+    @SerializedName("currency_code")
+    var currencyCode: String?=null,
+    
+    @SerializedName("add_on")
+    var addOn: Double?=null,
+    
+    @SerializedName("effective")
+    var effective: Double?=null,
+    
+    @SerializedName("marked")
+    var marked: Double?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: ProductPricePerUnitInfo
+*/
+@Parcelize
+data class ProductPricePerUnitInfo(
+    
+    
+    
+    @SerializedName("base")
+    var base: ProductPricePerUnit?=null,
+    
+    @SerializedName("converted")
+    var converted: ProductPricePerUnit?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
     Model: ProductAvailabilitySize
 */
 @Parcelize
@@ -1112,7 +1186,7 @@ data class CartProductInfo(
     var isSet: Boolean?=null,
     
     @SerializedName("price_per_unit")
-    var pricePerUnit: ProductPriceInfo?=null,
+    var pricePerUnit: ProductPricePerUnitInfo?=null,
     
     @SerializedName("promotions_applied")
     var promotionsApplied: ArrayList<AppliedPromotion>?=null

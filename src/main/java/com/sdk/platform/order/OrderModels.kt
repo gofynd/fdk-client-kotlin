@@ -5392,6 +5392,12 @@ data class UserDataInfo(
     @SerializedName("uid")
     var uid: Int?=null,
     
+    @SerializedName("user_oid")
+    var userOid: String?=null,
+    
+    @SerializedName("external_customer_id")
+    var externalCustomerId: String?=null,
+    
     @SerializedName("first_name")
     var firstName: String?=null,
     
@@ -5417,6 +5423,10 @@ data class UserDataInfo(
     var gender: String?=null
     
 ): Parcelable {
+    
+    
+    
+    
     
     
     
@@ -7318,7 +7328,7 @@ data class ShipmentItem(
     var fulfillingStore: ShipmentItemFulFillingStore?=null,
     
     @SerializedName("meta")
-    var meta: ShipmentItemMeta?=null,
+    var meta: @RawValue HashMap<String,Any>?=null,
     
     @SerializedName("payment_mode")
     var paymentMode: String?=null,
@@ -7601,9 +7611,14 @@ data class InvoiceInfo(
     var labelUrl: String?=null,
     
     @SerializedName("credit_note_id")
-    var creditNoteId: String?=null
+    var creditNoteId: String?=null,
+    
+    @SerializedName("links")
+    var links: @RawValue HashMap<String,Any>?=null
     
 ): Parcelable {
+    
+    
     
     
     
@@ -7660,7 +7675,7 @@ data class OrderDetailsData(
     var orderingChannel: String?=null,
     
     @SerializedName("meta")
-    var meta: OrderMeta?=null
+    var meta: @RawValue HashMap<String,Any>?=null
     
 ): Parcelable {
     
@@ -9233,7 +9248,7 @@ data class OrderBags(
     var lineNumber: Int?=null,
     
     @SerializedName("meta")
-    var meta: BagMeta?=null,
+    var meta: @RawValue HashMap<String,Any>?=null,
     
     @SerializedName("applied_promos")
     var appliedPromos: ArrayList<AppliedPromos>?=null,
@@ -9598,7 +9613,7 @@ data class PlatformShipment(
     var fulfillingStore: FulfillingStore?=null,
     
     @SerializedName("meta")
-    var meta: ShipmentMeta?=null,
+    var meta: @RawValue HashMap<String,Any>?=null,
     
     @SerializedName("pdf_links")
     var pdfLinks: @RawValue HashMap<String,Any>?=null,
@@ -10102,7 +10117,7 @@ data class OrderData(
     var taxDetails: TaxDetails?=null,
     
     @SerializedName("meta")
-    var meta: OrderMeta?=null,
+    var meta: @RawValue HashMap<String,Any>?=null,
     
     @SerializedName("fynd_order_id")
     var fyndOrderId: String?=null,
@@ -12023,7 +12038,7 @@ data class BagDetailsPlatformResponse(
     var restoreCoupon: Boolean?=null,
     
     @SerializedName("meta")
-    var meta: BagMeta?=null,
+    var meta: @RawValue HashMap<String,Any>?=null,
     
     @SerializedName("no_of_bags_order")
     var noOfBagsOrder: Int?=null,

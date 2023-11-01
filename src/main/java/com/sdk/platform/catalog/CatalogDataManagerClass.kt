@@ -90,6 +90,13 @@ class CatalogDataManagerClass(val config: PlatformConfig, val unauthorizedAction
     
     
     
+    
+    
+    
+    
+    
+    
+    
     suspend fun listCategories(level: String?=null, departments: String?=null, q: String?=null, pageNo: Int?=null, pageSize: Int?=null)
     : Response<CategoryResponse>? {
         
@@ -1785,6 +1792,76 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     : Response<RawProductListingResponse>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 catalogApiList?.getAppProducts(companyId = config.companyId , applicationId = applicationId , brandIds = brandIds, categoryIds = categoryIds, departmentIds = departmentIds, tags = tags, itemIds = itemIds, pageNo = pageNo, pageSize = pageSize, q = q )
+        } else {
+            null
+        }
+    }
+    
+    
+    suspend fun getAppReturnConfiguration()
+    : Response<AppReturnConfigResponse>? {
+        return if (config.oauthClient.isAccessTokenValid()) {
+                catalogApiList?.getAppReturnConfiguration(companyId = config.companyId , applicationId = applicationId  )
+        } else {
+            null
+        }
+    }
+    
+    
+    suspend fun createAppReturnConfiguration(body: CreateUpdateAppReturnConfig)
+    : Response<SuccessResponse1>? {
+        return if (config.oauthClient.isAccessTokenValid()) {
+                catalogApiList?.createAppReturnConfiguration(companyId = config.companyId , applicationId = applicationId , body = body)
+        } else {
+            null
+        }
+    }
+    
+    
+    suspend fun updateAppReturnConfiguration(body: CreateUpdateAppReturnConfig)
+    : Response<SuccessResponse1>? {
+        return if (config.oauthClient.isAccessTokenValid()) {
+                catalogApiList?.updateAppReturnConfiguration(companyId = config.companyId , applicationId = applicationId , body = body)
+        } else {
+            null
+        }
+    }
+    
+    
+    suspend fun deleteAppCategoryReturnConfiguration(body: DeleteAppCategoryReturnConfig)
+    : Response<SuccessResponse>? {
+        return if (config.oauthClient.isAccessTokenValid()) {
+                catalogApiList?.deleteAppCategoryReturnConfiguration(companyId = config.companyId , applicationId = applicationId , body = body)
+        } else {
+            null
+        }
+    }
+    
+    
+    suspend fun getAppCategoryReturnConfig()
+    : Response<BaseAppCategoryReturnConfigResponse>? {
+        return if (config.oauthClient.isAccessTokenValid()) {
+                catalogApiList?.getAppCategoryReturnConfig(companyId = config.companyId , applicationId = applicationId  )
+        } else {
+            null
+        }
+    }
+    
+    
+    suspend fun createAppCategoryReturnConfiguration(body: BaseAppCategoryReturnConfig)
+    : Response<SuccessResponse1>? {
+        return if (config.oauthClient.isAccessTokenValid()) {
+                catalogApiList?.createAppCategoryReturnConfiguration(companyId = config.companyId , applicationId = applicationId , body = body)
+        } else {
+            null
+        }
+    }
+    
+    
+    suspend fun updateAppCategoryReturnConfiguration(body: BaseAppCategoryReturnConfig)
+    : Response<SuccessResponse>? {
+        return if (config.oauthClient.isAccessTokenValid()) {
+                catalogApiList?.updateAppCategoryReturnConfiguration(companyId = config.companyId , applicationId = applicationId , body = body)
         } else {
             null
         }

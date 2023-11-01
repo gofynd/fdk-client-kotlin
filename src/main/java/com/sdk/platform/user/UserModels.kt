@@ -286,10 +286,42 @@ data class SessionDeleteResponseSchema(
     
     
     
-    @SerializedName("items")
-    var items: ArrayList<String>?=null
+    @SerializedName("user_id")
+    var userId: String?=null,
+    
+    @SerializedName("session_id")
+    var sessionId: String?=null
     
 ): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: SessionsDeleteResponseSchema
+*/
+@Parcelize
+data class SessionsDeleteResponseSchema(
+    
+    
+    
+    @SerializedName("user_id")
+    var userId: String?=null,
+    
+    @SerializedName("session_ids")
+    var sessionIds: ArrayList<String>?=null
+    
+): Parcelable {
+    
+    
     
     
     

@@ -50,7 +50,7 @@ interface UserApiList {
     
     @DELETE ("/service/platform/user/v1.0/company/{company_id}/application/{application_id}/customers/sessions")
     suspend fun deleteActiveSessions(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Query("id") id: String, @Query("reason") reason: String)
-    : Response<SessionDeleteResponseSchema>
+    : Response<SessionsDeleteResponseSchema>
     
     @GET ("/service/platform/user/v1.0/company/{company_id}/application/{application_id}/platform/config")
     suspend fun getPlatformConfig(@Path("company_id") companyId: String, @Path("application_id") applicationId: String)

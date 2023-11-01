@@ -132,6 +132,34 @@ interface CatalogApiList {
     suspend fun getAppProducts(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Query("brand_ids") brandIds: ArrayList<Int>?, @Query("category_ids") categoryIds: ArrayList<Int>?, @Query("department_ids") departmentIds: ArrayList<Int>?, @Query("tags") tags: ArrayList<String>?, @Query("item_ids") itemIds: ArrayList<Int>?, @Query("page_no") pageNo: Int?, @Query("page_size") pageSize: Int?, @Query("q") q: String?)
     : Response<RawProductListingResponse>
     
+    @GET ("/service/platform/catalog/v1.0/company/{company_id}/application/{application_id}/return-config")
+    suspend fun getAppReturnConfiguration(@Path("company_id") companyId: String, @Path("application_id") applicationId: String)
+    : Response<AppReturnConfigResponse>
+    
+    @POST ("/service/platform/catalog/v1.0/company/{company_id}/application/{application_id}/return-config")
+    suspend fun createAppReturnConfiguration(@Path("company_id") companyId: String, @Path("application_id") applicationId: String,@Body body: CreateUpdateAppReturnConfig)
+    : Response<SuccessResponse1>
+    
+    @PUT ("/service/platform/catalog/v1.0/company/{company_id}/application/{application_id}/return-config")
+    suspend fun updateAppReturnConfiguration(@Path("company_id") companyId: String, @Path("application_id") applicationId: String,@Body body: CreateUpdateAppReturnConfig)
+    : Response<SuccessResponse1>
+    
+    @DELETE ("/service/platform/catalog/v1.0/company/{company_id}/application/{application_id}/return-config/categories")
+    suspend fun deleteAppCategoryReturnConfiguration(@Path("company_id") companyId: String, @Path("application_id") applicationId: String,@Body body: DeleteAppCategoryReturnConfig)
+    : Response<SuccessResponse>
+    
+    @GET ("/service/platform/catalog/v1.0/company/{company_id}/application/{application_id}/return-config/categories")
+    suspend fun getAppCategoryReturnConfig(@Path("company_id") companyId: String, @Path("application_id") applicationId: String)
+    : Response<BaseAppCategoryReturnConfigResponse>
+    
+    @POST ("/service/platform/catalog/v1.0/company/{company_id}/application/{application_id}/return-config/categories")
+    suspend fun createAppCategoryReturnConfiguration(@Path("company_id") companyId: String, @Path("application_id") applicationId: String,@Body body: BaseAppCategoryReturnConfig)
+    : Response<SuccessResponse1>
+    
+    @PUT ("/service/platform/catalog/v1.0/company/{company_id}/application/{application_id}/return-config/categories")
+    suspend fun updateAppCategoryReturnConfiguration(@Path("company_id") companyId: String, @Path("application_id") applicationId: String,@Body body: BaseAppCategoryReturnConfig)
+    : Response<SuccessResponse>
+    
     @GET ("/service/platform/catalog/v1.0/company/{company_id}/application/{application_id}/search/autocomplete/")
     suspend fun getAutocompleteConfig(@Path("company_id") companyId: String, @Path("application_id") applicationId: String)
     : Response<GetAutocompleteWordsResponse>
