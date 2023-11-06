@@ -416,6 +416,18 @@ class OrderDataManagerClass(val config: PlatformConfig, val unauthorizedAction: 
     }
     
     
+    suspend fun getShipmentBagReasons(shipmentId: String, lineNumber: String)
+    : Response<ShipmentBagReasons>? {
+        
+        return if (config.oauthClient.isAccessTokenValid()) {
+            orderApiList?.getShipmentBagReasons(
+        companyId = config.companyId, shipmentId = shipmentId, lineNumber = lineNumber )
+        } else {
+            null
+        } 
+    }
+    
+    
     suspend fun getShipments(lane: String?=null, bagStatus: String?=null, statusOverrideLane: Boolean?=null, timeToDispatch: Int?=null, searchType: String?=null, searchValue: String?=null, fromDate: String?=null, toDate: String?=null, dpIds: String?=null, stores: String?=null, salesChannels: String?=null, pageNo: Int?=null, pageSize: Int?=null, fetchActiveShipment: Boolean?=null, excludeLockedShipments: Boolean?=null, paymentMethods: String?=null, channelShipmentId: String?=null, channelOrderId: String?=null, customMeta: String?=null, orderingChannel: String?=null, companyAffiliateTag: String?=null, myOrders: Boolean?=null, platformUserId: String?=null, sortType: String?=null, showCrossCompanyData: Boolean?=null, tags: String?=null, customerId: String?=null, orderType: String?=null)
     : Response<ShipmentInternalPlatformViewResponse>? {
         
@@ -576,6 +588,7 @@ class OrderDataManagerClass(val config: PlatformConfig, val unauthorizedAction: 
 
 inner class ApplicationClient(val applicationId:String,val config: PlatformConfig){
 
+    
     
     
     

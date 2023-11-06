@@ -132,6 +132,10 @@ interface OrderApiList {
     suspend fun updateShipmentTracking(@Path("company_id") companyId: String,@Body body: CourierPartnerTrackingDetails)
     : Response<CourierPartnerTrackingDetails>
     
+    @GET ("/service/platform/order/v1.0/company/{company_id}/application/<application_id>/orders/shipments/<shipment_id>/line_number/<line_number>/reasons")
+    suspend fun getShipmentBagReasons(@Path("company_id") companyId: String, @Path("shipment_id") shipmentId: String, @Path("line_number") lineNumber: String)
+    : Response<ShipmentBagReasons>
+    
     @GET ("/service/platform/order/v1.0/company/{company_id}/shipments-listing")
     suspend fun getShipments(@Path("company_id") companyId: String, @Query("lane") lane: String?, @Query("bag_status") bagStatus: String?, @Query("status_override_lane") statusOverrideLane: Boolean?, @Query("time_to_dispatch") timeToDispatch: Int?, @Query("search_type") searchType: String?, @Query("search_value") searchValue: String?, @Query("from_date") fromDate: String?, @Query("to_date") toDate: String?, @Query("dp_ids") dpIds: String?, @Query("stores") stores: String?, @Query("sales_channels") salesChannels: String?, @Query("page_no") pageNo: Int?, @Query("page_size") pageSize: Int?, @Query("fetch_active_shipment") fetchActiveShipment: Boolean?, @Query("exclude_locked_shipments") excludeLockedShipments: Boolean?, @Query("payment_methods") paymentMethods: String?, @Query("channel_shipment_id") channelShipmentId: String?, @Query("channel_order_id") channelOrderId: String?, @Query("custom_meta") customMeta: String?, @Query("ordering_channel") orderingChannel: String?, @Query("company_affiliate_tag") companyAffiliateTag: String?, @Query("my_orders") myOrders: Boolean?, @Query("platform_user_id") platformUserId: String?, @Query("sort_type") sortType: String?, @Query("show_cross_company_data") showCrossCompanyData: Boolean?, @Query("tags") tags: String?, @Query("customer_id") customerId: String?, @Query("order_type") orderType: String?)
     : Response<ShipmentInternalPlatformViewResponse>

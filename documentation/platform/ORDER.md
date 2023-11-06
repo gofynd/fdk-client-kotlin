@@ -37,6 +37,7 @@ Handles all platform order and shipment api(s)
 * [eInvoiceRetry](#einvoiceretry)
 * [trackShipment](#trackshipment)
 * [updateShipmentTracking](#updateshipmenttracking)
+* [getShipmentBagReasons](#getshipmentbagreasons)
 * [getShipments](#getshipments)
 * [getShipmentById](#getshipmentbyid)
 * [getOrderById](#getorderbyid)
@@ -2375,6 +2376,109 @@ Shipment Tracking updated successfully
 ```
 </details>
 
+</details>
+
+
+
+
+
+
+
+
+
+---
+
+
+### getShipmentBagReasons
+Get reasons behind full or partial cancellation of a shipment
+
+
+
+
+```kotlin
+platformClient.order.getShipmentBagReasons(shipmentId: shipmentId, lineNumber: lineNumber).safeAwait{ response, error->
+    response?.let{
+      // Use response
+    } ->
+    error?.let{
+      
+    } 
+}
+```
+
+
+
+
+
+| Argument  |  Type  | Required | Description |
+| --------- | -----  | -------- | ----------- | 
+| shipmentId | String | yes | ID of the bag. An order may contain multiple items and may get divided into one or more shipment, each having its own ID. |   
+| lineNumber | Int | yes | line number of bag. |  
+
+
+
+Use this API to retrieve the issues that led to the cancellation of bags within a shipment.
+
+*Returned Response:*
+
+
+
+
+[ShipmentBagReasons](#ShipmentBagReasons)
+
+Success. Check the example shown below or refer `ShipmentBagReasons` for more details.
+
+
+
+
+<details>
+<summary><i>&nbsp; Example:</i></summary>
+
+```json
+{
+  "success": true,
+  "reasons": [
+    {
+      "id": 1,
+      "display_name": "Not available",
+      "qc_type": [],
+      "question_set": []
+    },
+    {
+      "reasons": [
+        {
+          "id": 2,
+          "display_name": "Processing other orders",
+          "qc_type": [],
+          "question_set": []
+        },
+        {
+          "id": 3,
+          "display_name": "Printer not working",
+          "qc_type": [],
+          "question_set": []
+        },
+        {
+          "reasons": [
+            {
+              "id": 4,
+              "display_name": "Card issues",
+              "qc_type": [],
+              "question_set": []
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "display_name": "Card issues",
+      "qc_type": [],
+      "question_set": []
+    }
+  ]
+}
+```
 </details>
 
 
@@ -6276,11 +6380,11 @@ We are processing the request!
  | ---------- | ---- | -------- | ----------- |
  | userId | String? |  yes  |  |
  | userType | String? |  yes  |  |
- | email | String |  no  |  |
+ | primaryEmail | String |  no  |  |
  | gender | String? |  yes  |  |
  | firstName | String |  no  |  |
  | lastName | String? |  yes  |  |
- | mobile | String |  no  |  |
+ | primaryMobileNumber | String |  no  |  |
 
 ---
 
@@ -6917,6 +7021,57 @@ We are processing the request!
  | successCount | Int |  no  |  |
  | message | String? |  yes  |  |
  | responseData | ArrayList<[EInvoiceResponseData](#EInvoiceResponseData)> |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [BagReasonMeta](#BagReasonMeta)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | showTextArea | Boolean? |  yes  |  |
+
+---
+
+
+ 
+ 
+ #### [QuestionSet](#QuestionSet)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | id | Int? |  yes  |  |
+ | displayName | String? |  yes  |  |
+
+---
+
+
+ 
+ 
+ #### [BagReasons](#BagReasons)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | qcType | ArrayList<String>? |  yes  |  |
+ | id | Int? |  yes  |  |
+ | displayName | String? |  yes  |  |
+ | meta | [BagReasonMeta](#BagReasonMeta)? |  yes  |  |
+ | questionSet | ArrayList<[QuestionSet](#QuestionSet)>? |  yes  |  |
+ | reasons | ArrayList<[BagReasons](#BagReasons)>? |  yes  |  |
+
+---
+
+
+ 
+ 
+ #### [ShipmentBagReasons](#ShipmentBagReasons)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | reasons | ArrayList<[BagReasons](#BagReasons)>? |  yes  |  |
+ | success | Boolean? |  yes  |  |
 
 ---
 
@@ -8630,18 +8785,6 @@ We are processing the request!
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
  | templateXSlug | ArrayList<[BulkActionTemplate](#BulkActionTemplate)>? |  yes  | Allowed bulk action template slugs |
-
----
-
-
- 
- 
- #### [QuestionSet](#QuestionSet)
-
- | Properties | Type | Nullable | Description |
- | ---------- | ---- | -------- | ----------- |
- | id | Int? |  yes  |  |
- | displayName | String? |  yes  |  |
 
 ---
 

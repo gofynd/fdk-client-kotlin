@@ -3652,8 +3652,8 @@ data class UserInfo(
     @SerializedName("user_type")
     var userType: String?=null,
     
-    @SerializedName("email")
-    var email: String?=null,
+    @SerializedName("primary_email")
+    var primaryEmail: String?=null,
     
     @SerializedName("gender")
     var gender: String?=null,
@@ -3664,8 +3664,8 @@ data class UserInfo(
     @SerializedName("last_name")
     var lastName: String?=null,
     
-    @SerializedName("mobile")
-    var mobile: String?=null
+    @SerializedName("primary_mobile_number")
+    var primaryMobileNumber: String?=null
     
 ): Parcelable {
     
@@ -5307,6 +5307,129 @@ data class EInvoiceRetryResponse(
     
     
     
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: BagReasonMeta
+*/
+@Parcelize
+data class BagReasonMeta(
+    
+    
+    
+    @SerializedName("show_text_area")
+    var showTextArea: Boolean?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: QuestionSet
+*/
+@Parcelize
+data class QuestionSet(
+    
+    
+    
+    @SerializedName("id")
+    var id: Int?=null,
+    
+    @SerializedName("display_name")
+    var displayName: String?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: BagReasons
+*/
+@Parcelize
+data class BagReasons(
+    
+    
+    
+    @SerializedName("qc_type")
+    var qcType: ArrayList<String>?=null,
+    
+    @SerializedName("id")
+    var id: Int?=null,
+    
+    @SerializedName("display_name")
+    var displayName: String?=null,
+    
+    @SerializedName("meta")
+    var meta: BagReasonMeta?=null,
+    
+    @SerializedName("question_set")
+    var questionSet: ArrayList<QuestionSet>?=null,
+    
+    @SerializedName("reasons")
+    var reasons: ArrayList<BagReasons>?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: ShipmentBagReasons
+*/
+@Parcelize
+data class ShipmentBagReasons(
+    
+    
+    
+    @SerializedName("reasons")
+    var reasons: ArrayList<BagReasons>?=null,
+    
+    @SerializedName("success")
+    var success: Boolean?=null
+    
+): Parcelable {
     
     
     
@@ -10810,33 +10933,6 @@ data class BulkActionTemplateResponse(
     var templateXSlug: ArrayList<BulkActionTemplate>?=null
     
 ): Parcelable {
-    
-    
-    
-    
-    
-}
-
-
-
-             
-/*
-    Model: QuestionSet
-*/
-@Parcelize
-data class QuestionSet(
-    
-    
-    
-    @SerializedName("id")
-    var id: Int?=null,
-    
-    @SerializedName("display_name")
-    var displayName: String?=null
-    
-): Parcelable {
-    
-    
     
     
     
