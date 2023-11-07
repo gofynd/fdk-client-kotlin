@@ -9064,6 +9064,34 @@ Success. Returns the status of cart checkout. Refer `CartCheckoutResponseSchema`
 
  
  
+ #### [ProductPricePerUnit](#ProductPricePerUnit)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | currencySymbol | String? |  yes  |  |
+ | sellingPrice | Double? |  yes  |  |
+ | currencyCode | String? |  yes  |  |
+ | addOn | Double? |  yes  |  |
+ | effective | Double? |  yes  |  |
+ | marked | Double? |  yes  |  |
+
+---
+
+
+ 
+ 
+ #### [ProductPricePerUnitInfo](#ProductPricePerUnitInfo)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | base | [ProductPricePerUnit](#ProductPricePerUnit)? |  yes  |  |
+ | converted | [ProductPricePerUnit](#ProductPricePerUnit)? |  yes  |  |
+
+---
+
+
+ 
+ 
  #### [ProductAvailabilitySize](#ProductAvailabilitySize)
 
  | Properties | Type | Nullable | Description |
@@ -9210,7 +9238,7 @@ Success. Returns the status of cart checkout. Refer `CartCheckoutResponseSchema`
  | key | String? |  yes  |  |
  | message | String? |  yes  |  |
  | isSet | Boolean? |  yes  |  |
- | pricePerUnit | [ProductPriceInfo](#ProductPriceInfo)? |  yes  |  |
+ | pricePerUnit | [ProductPricePerUnitInfo](#ProductPricePerUnitInfo)? |  yes  |  |
  | promotionsApplied | ArrayList<[AppliedPromotion](#AppliedPromotion)>? |  yes  |  |
 
 ---

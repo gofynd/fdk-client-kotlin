@@ -7025,6 +7025,18 @@ Success
 
  
  
+ #### [SendOtpEmailCommsProvider](#SendOtpEmailCommsProvider)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | slug | String? |  yes  |  |
+ | id | String? |  yes  |  |
+
+---
+
+
+ 
+ 
  #### [SendOtpEmailCommsTemplate](#SendOtpEmailCommsTemplate)
 
  | Properties | Type | Nullable | Description |
@@ -7072,6 +7084,7 @@ Success
  | otpLength | Int? |  yes  |  |
  | expiry | Int? |  yes  |  |
  | template | [SendOtpEmailCommsTemplate](#SendOtpEmailCommsTemplate)? |  yes  |  |
+ | provider | [SendOtpEmailCommsProvider](#SendOtpEmailCommsProvider)? |  yes  |  |
 
 ---
 

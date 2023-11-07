@@ -234,6 +234,75 @@ data class AppCatalogConfiguration(
 
              
 /*
+    Model: AppCategoryReturnConfig
+*/
+@Parcelize
+data class AppCategoryReturnConfig(
+    
+    
+    
+    @SerializedName("category_id")
+    var categoryId: Int?=null,
+    
+    @SerializedName("return_config")
+    var returnConfig: ProductReturnConfigBaseSerializer?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: AppCategoryReturnConfigResponse
+*/
+@Parcelize
+data class AppCategoryReturnConfigResponse(
+    
+    
+    
+    @SerializedName("app_id")
+    var appId: String?=null,
+    
+    @SerializedName("category_id")
+    var categoryId: Int?=null,
+    
+    @SerializedName("logo")
+    var logo: String?=null,
+    
+    @SerializedName("name")
+    var name: String?=null,
+    
+    @SerializedName("return_config")
+    var returnConfig: ProductReturnConfigBaseSerializer?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
     Model: AppConfiguration
 */
 @Parcelize
@@ -729,6 +798,58 @@ data class ApplicationStoreJson(
     var customJson: @RawValue HashMap<String,Any>?=null
     
 ): Parcelable {
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: AppReturnConfigResponse
+*/
+@Parcelize
+data class AppReturnConfigResponse(
+    
+    
+    
+    @SerializedName("app_id")
+    var appId: String?=null,
+    
+    @SerializedName("category_count")
+    var categoryCount: Int?=null,
+    
+    @SerializedName("company_id")
+    var companyId: Int?=null,
+    
+    @SerializedName("created_by")
+    var createdBy: @RawValue HashMap<String,Any>?=null,
+    
+    @SerializedName("modified_by")
+    var modifiedBy: @RawValue HashMap<String,Any>?=null,
+    
+    @SerializedName("modified_on")
+    var modifiedOn: String?=null,
+    
+    @SerializedName("return_config_level")
+    var returnConfigLevel: String?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     
     
     
@@ -1460,6 +1581,65 @@ data class BannerImage(
 ): Parcelable {
     
     
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: BaseAppCategoryReturnConfig
+*/
+@Parcelize
+data class BaseAppCategoryReturnConfig(
+    
+    
+    
+    @SerializedName("app_id")
+    var appId: String?=null,
+    
+    @SerializedName("company_id")
+    var companyId: Int?=null,
+    
+    @SerializedName("data")
+    var data: ArrayList<AppCategoryReturnConfig>?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: BaseAppCategoryReturnConfigResponse
+*/
+@Parcelize
+data class BaseAppCategoryReturnConfigResponse(
+    
+    
+    
+    @SerializedName("data")
+    var data: ArrayList<AppCategoryReturnConfigResponse>?=null,
+    
+    @SerializedName("page")
+    var page: PageResponse?=null
+    
+): Parcelable {
     
     
     
@@ -4134,6 +4314,38 @@ data class CreateSearchKeyword(
 
              
 /*
+    Model: CreateUpdateAppReturnConfig
+*/
+@Parcelize
+data class CreateUpdateAppReturnConfig(
+    
+    
+    
+    @SerializedName("app_id")
+    var appId: String?=null,
+    
+    @SerializedName("company_id")
+    var companyId: Int?=null,
+    
+    @SerializedName("return_config_level")
+    var returnConfigLevel: String?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
     Model: CrossSellingData
 */
 @Parcelize
@@ -4268,6 +4480,38 @@ data class DefaultKeyRequest(
     var defaultKey: String?=null
     
 ): Parcelable {
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: DeleteAppCategoryReturnConfig
+*/
+@Parcelize
+data class DeleteAppCategoryReturnConfig(
+    
+    
+    
+    @SerializedName("app_id")
+    var appId: String?=null,
+    
+    @SerializedName("category_ids")
+    var categoryIds: ArrayList<Int>?=null,
+    
+    @SerializedName("company_id")
+    var companyId: Int?=null
+    
+): Parcelable {
+    
+    
+    
+    
     
     
     
@@ -10110,6 +10354,53 @@ data class PageResponse(
 
              
 /*
+    Model: PageResponse1
+*/
+@Parcelize
+data class PageResponse1(
+    
+    
+    
+    @SerializedName("current")
+    var current: Int?=null,
+    
+    @SerializedName("has_next")
+    var hasNext: Boolean?=null,
+    
+    @SerializedName("has_previous")
+    var hasPrevious: Boolean?=null,
+    
+    @SerializedName("item_total")
+    var itemTotal: Int?=null,
+    
+    @SerializedName("size")
+    var size: Int?=null,
+    
+    @SerializedName("type")
+    var type: String?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
     Model: PageResponseType
 */
 @Parcelize
@@ -12036,6 +12327,38 @@ data class ProductReturnConfigSerializer(
     var storeUid: Int?=null
     
 ): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: ProductReturnConfigBaseSerializer
+*/
+@Parcelize
+data class ProductReturnConfigBaseSerializer(
+    
+    
+    
+    @SerializedName("returnable")
+    var returnable: Boolean?=null,
+    
+    @SerializedName("time")
+    var time: Int?=null,
+    
+    @SerializedName("unit")
+    var unit: String?=null
+    
+): Parcelable {
+    
+    
     
     
     
