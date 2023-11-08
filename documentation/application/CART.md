@@ -47,7 +47,7 @@ Fetch all items added to the cart
 
 
 ```kotlin
-applicationClient.cart.getCart(id: id, i: i, b: b, assignCardId: assignCardId, areaCode: areaCode, buyNow: buyNow).safeAwait{ response, error->
+applicationClient.cart.getCart(id: id, i: i, b: b, c: c, assignCardId: assignCardId, areaCode: areaCode, buyNow: buyNow).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -66,6 +66,7 @@ applicationClient.cart.getCart(id: id, i: i, b: b, assignCardId: assignCardId, a
 | id | String? | no |  |   
 | i | Boolean? | no |  |   
 | b | Boolean? | no |  |   
+| c | Boolean? | no |  |   
 | assignCardId | Int? | no |  |   
 | areaCode | String? | no |  |   
 | buyNow | Boolean? | no |  |  

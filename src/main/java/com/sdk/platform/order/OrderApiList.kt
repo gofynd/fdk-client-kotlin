@@ -132,7 +132,7 @@ interface OrderApiList {
     suspend fun updateShipmentTracking(@Path("company_id") companyId: String,@Body body: CourierPartnerTrackingDetails)
     : Response<CourierPartnerTrackingDetails>
     
-    @GET ("/service/platform/order/v1.0/company/{company_id}/application/<application_id>/orders/shipments/<shipment_id>/line_number/<line_number>/reasons")
+    @GET ("/service/platform/order/v1.0/company/{company_id}/application/{application_id}/orders/shipments/{shipment_id}/line_number/{line_number}/reasons")
     suspend fun getShipmentBagReasons(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Path("shipment_id") shipmentId: String, @Path("line_number") lineNumber: String)
     : Response<ShipmentBagReasons>
     
