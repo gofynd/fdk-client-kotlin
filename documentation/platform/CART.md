@@ -3151,7 +3151,7 @@ Fetch all items added to the cart
 
 
 ```kotlin
-platformClient.application("<APPLICATION_ID>").cart.getAbandonedCartDetails(id: id, i: i, b: b, c: c).safeAwait{ response, error->
+platformClient.application("<APPLICATION_ID>").cart.getAbandonedCartDetails(id: id, i: i, b: b).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -3169,8 +3169,7 @@ platformClient.application("<APPLICATION_ID>").cart.getAbandonedCartDetails(id: 
 | --------- | -----  | -------- | ----------- | 
 | id | String? | no |  |   
 | i | Boolean? | no |  |   
-| b | Boolean? | no |  |   
-| c | Boolean? | no |  |  
+| b | Boolean? | no |  |  
 
 
 

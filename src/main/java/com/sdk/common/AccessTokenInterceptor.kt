@@ -13,7 +13,7 @@ class AccessTokenInterceptor(
         val builder = original.newBuilder().apply {
             header("User-Agent", platformConfig?.userAgent ?: "")
             header("Authorization", "Bearer ${platformConfig?.oauthClient?.token?.token}")
-            header("x-fp-sdk-version", "1.3.8")
+            header("x-fp-sdk-version", "1.3.9-beta.101")
             header("x-currency-code", platformConfig?.currencyCode ?: "INR")
             platformConfig?.locationDetail?.let {
                 header("x-location-detail", HttpClient.gson.toJson(it))

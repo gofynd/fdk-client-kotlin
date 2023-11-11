@@ -108,10 +108,10 @@ class PosCartDataManagerClass(val config: ApplicationConfig, val unauthorizedAct
         return retrofitHttpClient?.initializeRestClient(PosCartApiList::class.java) as? PosCartApiList
     }
     
-    suspend fun getCart(id: String?=null, i: Boolean?=null, b: Boolean?=null, c: Boolean?=null, assignCardId: Int?=null, areaCode: String?=null, buyNow: Boolean?=null): Response<CartDetailResponse>? {
+    suspend fun getCart(id: String?=null, i: Boolean?=null, b: Boolean?=null, assignCardId: Int?=null, areaCode: String?=null, buyNow: Boolean?=null): Response<CartDetailResponse>? {
         var fullUrl : String? = _relativeUrls["getCart"] 
         
-        return posCartApiList?.getCart(fullUrl    ,  id = id,    i = i,    b = b,    c = c,    assignCardId = assignCardId,    areaCode = areaCode,    buyNow = buyNow)}
+        return posCartApiList?.getCart(fullUrl    ,  id = id,    i = i,    b = b,    assignCardId = assignCardId,    areaCode = areaCode,    buyNow = buyNow)}
 
     
     
