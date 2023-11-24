@@ -9350,10 +9350,73 @@ Success. Returns the status of cart checkout. Refer `CartCheckoutResponseSchema`
 
  
  
+ #### [CartDetailCoupon](#CartDetailCoupon)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | cashbackAmount | Double? |  yes  |  |
+ | cashbackMessagePrimary | String? |  yes  |  |
+ | cashbackMessageSecondary | String? |  yes  |  |
+ | couponCode | String? |  yes  |  |
+ | couponDescription | String? |  yes  |  |
+ | couponId | String? |  yes  |  |
+ | couponSubtitle | String? |  yes  |  |
+ | couponTitle | String? |  yes  |  |
+ | couponType | String? |  yes  |  |
+ | couponValue | Double? |  yes  |  |
+ | discount | Double? |  yes  |  |
+ | isApplied | Boolean? |  yes  |  |
+ | isValid | Boolean? |  yes  |  |
+ | maximumDiscountValue | Double? |  yes  |  |
+ | message | String? |  yes  |  |
+ | minimumCartValue | Double? |  yes  |  |
+
+---
+
+
+ 
+ 
+ #### [ChargesThreshold](#ChargesThreshold)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | charges | Double? |  yes  |  |
+ | threshold | Double? |  yes  |  |
+
+---
+
+
+ 
+ 
+ #### [DeliveryChargesConfig](#DeliveryChargesConfig)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | enabled | Boolean? |  yes  |  |
+ | charges | ArrayList<[ChargesThreshold](#ChargesThreshold)>? |  yes  |  |
+
+---
+
+
+ 
+ 
+ #### [CartCommonConfig](#CartCommonConfig)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | deliveryChargesConfig | [DeliveryChargesConfig](#DeliveryChargesConfig)? |  yes  |  |
+
+---
+
+
+ 
+ 
  #### [CartDetailResponse](#CartDetailResponse)
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
+ | cartId | Int? |  yes  |  |
+ | uid | String? |  yes  |  |
  | appliedPromoDetails | ArrayList<[AppliedPromotion](#AppliedPromotion)>? |  yes  |  |
  | checkoutMode | String? |  yes  |  |
  | panNo | String? |  yes  |  |
@@ -9364,7 +9427,12 @@ Success. Returns the status of cart checkout. Refer `CartCheckoutResponseSchema`
  | comment | String? |  yes  |  |
  | items | ArrayList<[CartProductInfo](#CartProductInfo)>? |  yes  |  |
  | deliveryChargeInfo | String? |  yes  |  |
+ | commonConfig | [CartCommonConfig](#CartCommonConfig)? |  yes  |  |
+ | coupon | [CartDetailCoupon](#CartDetailCoupon)? |  yes  |  |
  | message | String? |  yes  |  |
+ | notification | HashMap<String,Any>? |  yes  |  |
+ | staffUserId | String? |  yes  |  |
+ | success | Boolean? |  yes  |  |
  | gstin | String? |  yes  |  |
  | restrictCheckout | Boolean? |  yes  |  |
  | lastModified | String? |  yes  |  |

@@ -730,15 +730,20 @@ class CatalogDataManagerClass(val config: ApplicationConfig, val unauthorizedAct
 
     
     
-    suspend fun getStores(pageNo: Int?=null, pageSize: Int?=null, q: String?=null, city: String?=null, range: Int?=null, latitude: Double?=null, longitude: Double?=null): Response<StoreListingResponse>? {
+    suspend fun getStores(pageNo: Int?=null, pageSize: Int?=null, q: String?=null, city: String?=null, range: Int?=null, latitude: Double?=null, longitude: Double?=null, tags: String?=null): Response<StoreListingResponse>? {
         var fullUrl : String? = _relativeUrls["getStores"] 
         
-        return catalogApiList?.getStores(fullUrl    ,  pageNo = pageNo,    pageSize = pageSize,    q = q,    city = city,    range = range,    latitude = latitude,    longitude = longitude)}
+        return catalogApiList?.getStores(fullUrl    ,  pageNo = pageNo,    pageSize = pageSize,    q = q,    city = city,    range = range,    latitude = latitude,    longitude = longitude,    tags = tags)}
 
     
     
     
         
+            
+            
+        
+            
+                
             
             
         
@@ -776,7 +781,7 @@ class CatalogDataManagerClass(val config: ApplicationConfig, val unauthorizedAct
     *
     * Summary: Paginator for getStores
     **/
-    fun getStoresPaginator(pageSize: Int?=null, q: String?=null, city: String?=null, range: Int?=null, latitude: Double?=null, longitude: Double?=null) : Paginator<StoreListingResponse>{
+    fun getStoresPaginator(pageSize: Int?=null, q: String?=null, city: String?=null, range: Int?=null, latitude: Double?=null, longitude: Double?=null, tags: String?=null) : Paginator<StoreListingResponse>{
 
     val paginator = Paginator<StoreListingResponse>()
 
@@ -789,7 +794,7 @@ class CatalogDataManagerClass(val config: ApplicationConfig, val unauthorizedAct
                 val pageType = "number"
                 var fullUrl : String? = _relativeUrls["getStores"] 
                 
-                catalogApiList?.getStores(fullUrl , pageNo = pageNo, pageSize = pageSize, q = q, city = city, range = range, latitude = latitude, longitude = longitude)?.safeAwait{ response, error ->
+                catalogApiList?.getStores(fullUrl , pageNo = pageNo, pageSize = pageSize, q = q, city = city, range = range, latitude = latitude, longitude = longitude, tags = tags)?.safeAwait{ response, error ->
                     response?.let {
                         val page = response.peekContent()?.page
                         paginator.setPaginator(hasNext=page?.hasNext?:false,pageNo=if (page?.hasNext == true) ((pageNo ?: 0) + 1) else pageNo)

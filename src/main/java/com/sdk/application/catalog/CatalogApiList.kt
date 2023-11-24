@@ -131,7 +131,7 @@ interface CatalogApiList {
     
     
     @GET 
-    suspend fun getStores(@Url url1: String?    ,        @Query("page_no") pageNo: Int?, @Query("page_size") pageSize: Int?, @Query("q") q: String?, @Query("city") city: String?, @Query("range") range: Int?, @Query("latitude") latitude: Double?, @Query("longitude") longitude: Double?)
+    suspend fun getStores(@Url url1: String?    ,         @Query("page_no") pageNo: Int?, @Query("page_size") pageSize: Int?, @Query("q") q: String?, @Query("city") city: String?, @Query("range") range: Int?, @Query("latitude") latitude: Double?, @Query("longitude") longitude: Double?, @Query("tags") tags: String?)
     : Response<StoreListingResponse>
     
     
