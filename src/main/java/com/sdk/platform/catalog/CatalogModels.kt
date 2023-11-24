@@ -2848,6 +2848,9 @@ data class CollectionCreateResponse(
     
     
     
+    @SerializedName("uid")
+    var uid: String?=null,
+    
     @SerializedName("_schedule")
     var schedule: @RawValue HashMap<String,Any>?=null,
     
@@ -2906,6 +2909,8 @@ data class CollectionCreateResponse(
     var visibleFacetsKeys: ArrayList<String>?=null
     
 ): Parcelable {
+    
+    
     
     
     

@@ -43,6 +43,7 @@ Handles all platform order and shipment api(s)
 * [getOrderById](#getorderbyid)
 * [getLaneConfig](#getlaneconfig)
 * [getOrders](#getorders)
+* [getApplicationShipments](#getapplicationshipments)
 * [trackShipmentPlatform](#trackshipmentplatform)
 * [getfilters](#getfilters)
 * [getBulkShipmentExcelFile](#getbulkshipmentexcelfile)
@@ -2396,7 +2397,7 @@ Get reasons behind full or partial cancellation of a shipment
 
 
 ```kotlin
-platformClient.order.getShipmentBagReasons(shipmentId: shipmentId, lineNumber: lineNumber).safeAwait{ response, error->
+platformClient.application("<APPLICATION_ID>").order.getShipmentBagReasons(shipmentId: shipmentId, lineNumber: lineNumber).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -2499,7 +2500,7 @@ Success. Check the example shown below or refer `ShipmentBagReasons` for more de
 
 
 ```kotlin
-platformClient.order.getShipments(lane: lane, bagStatus: bagStatus, statusOverrideLane: statusOverrideLane, timeToDispatch: timeToDispatch, searchType: searchType, searchValue: searchValue, fromDate: fromDate, toDate: toDate, dpIds: dpIds, stores: stores, salesChannels: salesChannels, pageNo: pageNo, pageSize: pageSize, fetchActiveShipment: fetchActiveShipment, excludeLockedShipments: excludeLockedShipments, paymentMethods: paymentMethods, channelShipmentId: channelShipmentId, channelOrderId: channelOrderId, customMeta: customMeta, orderingChannel: orderingChannel, companyAffiliateTag: companyAffiliateTag, myOrders: myOrders, platformUserId: platformUserId, sortType: sortType, showCrossCompanyData: showCrossCompanyData, tags: tags, customerId: customerId, orderType: orderType).safeAwait{ response, error->
+platformClient.order.getShipments(lane: lane, bagStatus: bagStatus, statusOverrideLane: statusOverrideLane, timeToDispatch: timeToDispatch, searchType: searchType, searchValue: searchValue, fromDate: fromDate, toDate: toDate, dpIds: dpIds, stores: stores, salesChannels: salesChannels, pageNo: pageNo, pageSize: pageSize, fetchActiveShipment: fetchActiveShipment, allowInactive: allowInactive, excludeLockedShipments: excludeLockedShipments, paymentMethods: paymentMethods, channelShipmentId: channelShipmentId, channelOrderId: channelOrderId, customMeta: customMeta, orderingChannel: orderingChannel, companyAffiliateTag: companyAffiliateTag, myOrders: myOrders, platformUserId: platformUserId, sortType: sortType, showCrossCompanyData: showCrossCompanyData, tags: tags, customerId: customerId, orderType: orderType).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -2529,6 +2530,7 @@ platformClient.order.getShipments(lane: lane, bagStatus: bagStatus, statusOverri
 | pageNo | Int? | no | Page number for paginated data |   
 | pageSize | Int? | no | Page size of data received per page |   
 | fetchActiveShipment | Boolean? | no | flag to fetch active shipments |   
+| allowInactive | Boolean? | no | Flag to allow inactive shipments |   
 | excludeLockedShipments | Boolean? | no | flag to fetch locked shipments |   
 | paymentMethods | String? | no | Comma separated values of payment methods |   
 | channelShipmentId | String? | no | App Shipment Id |   
@@ -3973,6 +3975,80 @@ Get Orders Listing
 
 
 [OrderListingResponse](#OrderListingResponse)
+
+We are processing the report!
+
+
+
+
+<details>
+<summary><i>&nbsp; Example:</i></summary>
+
+```json
+
+```
+</details>
+
+
+
+
+
+
+
+
+
+---
+
+
+### getApplicationShipments
+
+
+
+
+
+```kotlin
+platformClient.application("<APPLICATION_ID>").order.getApplicationShipments(lane: lane, searchType: searchType, searchId: searchId, fromDate: fromDate, toDate: toDate, dpIds: dpIds, orderingCompanyId: orderingCompanyId, stores: stores, salesChannel: salesChannel, requestByExt: requestByExt, pageNo: pageNo, pageSize: pageSize, customerId: customerId, isPrioritySort: isPrioritySort, excludeLockedShipments: excludeLockedShipments).safeAwait{ response, error->
+    response?.let{
+      // Use response
+    } ->
+    error?.let{
+      
+    } 
+}
+```
+
+
+
+
+
+| Argument  |  Type  | Required | Description |
+| --------- | -----  | -------- | ----------- | 
+| lane | String? | no |  |   
+| searchType | String? | no |  |   
+| searchId | String? | no |  |   
+| fromDate | String? | no |  |   
+| toDate | String? | no |  |   
+| dpIds | String? | no |  |   
+| orderingCompanyId | String? | no |  |   
+| stores | String? | no |  |   
+| salesChannel | String? | no |  |   
+| requestByExt | String? | no |  |   
+| pageNo | Int? | no |  |   
+| pageSize | Int? | no |  |   
+| customerId | String? | no |  |   
+| isPrioritySort | Boolean? | no |  |   
+| excludeLockedShipments | Boolean? | no |  |  
+
+
+
+
+
+*Returned Response:*
+
+
+
+
+[ShipmentInternalPlatformViewResponse](#ShipmentInternalPlatformViewResponse)
 
 We are processing the report!
 
@@ -7394,6 +7470,9 @@ We are processing the request!
  | dueDate | String? |  yes  |  |
  | couponCode | String? |  yes  |  |
  | isPriority | Boolean? |  yes  |  |
+ | isSerialNumberRequired | Boolean? |  yes  |  |
+ | fulfilmentPriority | Int? |  yes  |  |
+ | customerSellingPrice | Double? |  yes  |  |
 
 ---
 

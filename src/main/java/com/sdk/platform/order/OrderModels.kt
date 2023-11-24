@@ -6487,9 +6487,24 @@ data class AffiliateMeta(
     var couponCode: String?=null,
     
     @SerializedName("is_priority")
-    var isPriority: Boolean?=null
+    var isPriority: Boolean?=null,
+    
+    @SerializedName("is_serial_number_required")
+    var isSerialNumberRequired: Boolean?=null,
+    
+    @SerializedName("fulfilment_priority")
+    var fulfilmentPriority: Int?=null,
+    
+    @SerializedName("customer_selling_price")
+    var customerSellingPrice: Double?=null
     
 ): Parcelable {
+    
+    
+    
+    
+    
+    
     
     
     

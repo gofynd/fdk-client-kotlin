@@ -2792,6 +2792,33 @@ data class SendOtpSmsCommsProvider(
 
              
 /*
+    Model: SendOtpEmailCommsProvider
+*/
+@Parcelize
+data class SendOtpEmailCommsProvider(
+    
+    
+    
+    @SerializedName("slug")
+    var slug: String?=null,
+    
+    @SerializedName("_id")
+    var id: String?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
     Model: SendOtpEmailCommsTemplate
 */
 @Parcelize
@@ -2907,9 +2934,14 @@ data class SendOtpCommsReqEmail(
     var expiry: Int?=null,
     
     @SerializedName("template")
-    var template: SendOtpEmailCommsTemplate?=null
+    var template: SendOtpEmailCommsTemplate?=null,
+    
+    @SerializedName("provider")
+    var provider: SendOtpEmailCommsProvider?=null
     
 ): Parcelable {
+    
+    
     
     
     
