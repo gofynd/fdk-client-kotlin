@@ -8925,9 +8925,14 @@ data class AffiliateBagsDetails(
     var affiliateBagId: String?=null,
     
     @SerializedName("coupon_code")
-    var couponCode: String?=null
+    var couponCode: String?=null,
+    
+    @SerializedName("affiliate_meta")
+    var affiliateMeta: AffiliateMeta?=null
     
 ): Parcelable {
+    
+    
     
     
     
