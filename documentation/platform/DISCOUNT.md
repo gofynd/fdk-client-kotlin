@@ -6,6 +6,8 @@
 
 ## Discount Methods
 Discount
+
+Default
 * [getDiscounts](#getdiscounts)
 * [createDiscount](#creatediscount)
 * [getDiscount](#getdiscount)
@@ -20,7 +22,9 @@ Discount
 
 
 
+
 ## Methods with example and description
+
 
 
 ### getDiscounts
@@ -691,6 +695,7 @@ Success
 
 
 
+
 ### Schemas
 
  
@@ -723,6 +728,7 @@ Success
  | filePath | String? |  yes  |  |
  | brandIds | ArrayList<Int>? |  yes  |  |
  | storeIds | ArrayList<Int>? |  yes  |  |
+ | zoneIds | ArrayList<String>? |  yes  |  |
  | validity | [ValidityObject](#ValidityObject) |  no  |  |
  | discountMeta | [DiscountMeta](#DiscountMeta)? |  yes  |  |
 

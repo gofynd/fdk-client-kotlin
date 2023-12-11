@@ -7065,7 +7065,7 @@ data class ShipmentItemFulFillingStore(
     var phone: String?=null,
     
     @SerializedName("brand_store_tags")
-    var brandStoreTags: String?=null,
+    var brandStoreTags: ArrayList<String>?=null,
     
     @SerializedName("pincode")
     var pincode: String?=null,
@@ -9339,6 +9339,9 @@ data class OrderBags(
     @SerializedName("gst_details")
     var gstDetails: GSTDetailsData?=null,
     
+    @SerializedName("bag_status")
+    var bagStatus: ArrayList<BagStatusHistory>?=null,
+    
     @SerializedName("parent_promo_bags")
     var parentPromoBags: @RawValue HashMap<String,Any>?=null,
     
@@ -9412,6 +9415,8 @@ data class OrderBags(
     var isParent: Boolean?=null
     
 ): Parcelable {
+    
+    
     
     
     

@@ -84,6 +84,9 @@ data class CreateUpdateDiscount(
     @SerializedName("store_ids")
     var storeIds: ArrayList<Int>?=null,
     
+    @SerializedName("zone_ids")
+    var zoneIds: ArrayList<String>?=null,
+    
     @SerializedName("validity")
     var validity: ValidityObject?=null,
     
@@ -91,6 +94,8 @@ data class CreateUpdateDiscount(
     var discountMeta: DiscountMeta?=null
     
 ): Parcelable {
+    
+    
     
     
     

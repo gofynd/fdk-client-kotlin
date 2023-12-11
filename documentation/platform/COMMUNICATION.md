@@ -6,6 +6,8 @@
 
 ## Communication Methods
 Manages email, sms, push notifications sent to users
+
+Default
 * [getAppProviders](#getappproviders)
 * [updateAppProviders](#updateappproviders)
 * [getGlobalProviders](#getglobalproviders)
@@ -69,7 +71,9 @@ Manages email, sms, push notifications sent to users
 
 
 
+
 ## Methods with example and description
+
 
 
 ### getAppProviders
@@ -5974,6 +5978,7 @@ Success
 
 
 ---
+
 
 
 

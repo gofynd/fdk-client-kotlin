@@ -6,13 +6,17 @@
 
 ## FileStorage Methods
 File Storage
+
+Default
 * [startUpload](#startupload)
 * [completeUpload](#completeupload)
 * [signUrls](#signurls)
 
 
 
+
 ## Methods with example and description
+
 
 
 ### startUpload
@@ -309,6 +313,7 @@ Success
 
 
 ---
+
 
 
 

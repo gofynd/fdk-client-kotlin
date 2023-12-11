@@ -6,6 +6,8 @@
 
 ## Cart Methods
 Manages Cart, Coupons, Promotions, Checkout
+
+Default
 * [getCart](#getcart)
 * [getCartLastModified](#getcartlastmodified)
 * [addItems](#additems)
@@ -37,7 +39,9 @@ Manages Cart, Coupons, Promotions, Checkout
 
 
 
+
 ## Methods with example and description
+
 
 
 ### getCart
@@ -8790,6 +8794,7 @@ Success. Returns the status of cart checkout. Refer `CartCheckoutResponseSchema`
 
 
 ---
+
 
 
 
