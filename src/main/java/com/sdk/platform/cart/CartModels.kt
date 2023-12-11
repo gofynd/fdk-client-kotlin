@@ -3405,9 +3405,14 @@ data class CartProduct(
     var itemCode: String?=null,
     
     @SerializedName("categories")
-    var categories: ArrayList<CategoryInfo>?=null
+    var categories: ArrayList<CategoryInfo>?=null,
+    
+    @SerializedName("attributes")
+    var attributes: @RawValue HashMap<String,Any>?=null
     
 ): Parcelable {
+    
+    
     
     
     
@@ -4219,6 +4224,9 @@ data class CartProductInfo(
     @SerializedName("product")
     var product: CartProduct?=null,
     
+    @SerializedName("product_ean_id")
+    var productEanId: String?=null,
+    
     @SerializedName("parent_item_identifiers")
     var parentItemIdentifiers: @RawValue HashMap<String,Any>?=null,
     
@@ -4274,6 +4282,8 @@ data class CartProductInfo(
     var customOrder: @RawValue HashMap<String,Any>?=null
     
 ): Parcelable {
+    
+    
     
     
     
@@ -5235,12 +5245,191 @@ data class CartCurrency(
 
              
 /*
+    Model: CartDetailCoupon
+*/
+@Parcelize
+data class CartDetailCoupon(
+    
+    
+    
+    @SerializedName("cashback_amount")
+    var cashbackAmount: Double?=null,
+    
+    @SerializedName("cashback_message_primary")
+    var cashbackMessagePrimary: String?=null,
+    
+    @SerializedName("cashback_message_secondary")
+    var cashbackMessageSecondary: String?=null,
+    
+    @SerializedName("coupon_code")
+    var couponCode: String?=null,
+    
+    @SerializedName("coupon_description")
+    var couponDescription: String?=null,
+    
+    @SerializedName("coupon_id")
+    var couponId: String?=null,
+    
+    @SerializedName("coupon_subtitle")
+    var couponSubtitle: String?=null,
+    
+    @SerializedName("coupon_title")
+    var couponTitle: String?=null,
+    
+    @SerializedName("coupon_type")
+    var couponType: String?=null,
+    
+    @SerializedName("coupon_value")
+    var couponValue: Double?=null,
+    
+    @SerializedName("discount")
+    var discount: Double?=null,
+    
+    @SerializedName("is_applied")
+    var isApplied: Boolean?=null,
+    
+    @SerializedName("is_valid")
+    var isValid: Boolean?=null,
+    
+    @SerializedName("maximum_discount_value")
+    var maximumDiscountValue: Double?=null,
+    
+    @SerializedName("message")
+    var message: String?=null,
+    
+    @SerializedName("minimum_cart_value")
+    var minimumCartValue: Double?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: ChargesThreshold
+*/
+@Parcelize
+data class ChargesThreshold(
+    
+    
+    
+    @SerializedName("charges")
+    var charges: Double?=null,
+    
+    @SerializedName("threshold")
+    var threshold: Double?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: DeliveryChargesConfig
+*/
+@Parcelize
+data class DeliveryChargesConfig(
+    
+    
+    
+    @SerializedName("enabled")
+    var enabled: Boolean?=null,
+    
+    @SerializedName("charges")
+    var charges: ArrayList<ChargesThreshold>?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: CartCommonConfig
+*/
+@Parcelize
+data class CartCommonConfig(
+    
+    
+    
+    @SerializedName("delivery_charges_config")
+    var deliveryChargesConfig: DeliveryChargesConfig?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
     Model: CartDetailResponse
 */
 @Parcelize
 data class CartDetailResponse(
     
     
+    
+    @SerializedName("cart_id")
+    var cartId: Int?=null,
+    
+    @SerializedName("uid")
+    var uid: String?=null,
     
     @SerializedName("coupon_text")
     var couponText: String?=null,
@@ -5266,11 +5455,26 @@ data class CartDetailResponse(
     @SerializedName("delivery_charge_info")
     var deliveryChargeInfo: String?=null,
     
+    @SerializedName("common_config")
+    var commonConfig: CartCommonConfig?=null,
+    
+    @SerializedName("coupon")
+    var coupon: CartDetailCoupon?=null,
+    
     @SerializedName("restrict_checkout")
     var restrictCheckout: Boolean?=null,
     
     @SerializedName("message")
     var message: String?=null,
+    
+    @SerializedName("notification")
+    var notification: @RawValue HashMap<String,Any>?=null,
+    
+    @SerializedName("staff_user_id")
+    var staffUserId: String?=null,
+    
+    @SerializedName("success")
+    var success: Boolean?=null,
     
     @SerializedName("breakup_values")
     var breakupValues: CartBreakup?=null,
@@ -5300,6 +5504,20 @@ data class CartDetailResponse(
     var panNo: String?=null
     
 ): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     
     
     

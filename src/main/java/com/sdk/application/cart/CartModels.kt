@@ -1056,9 +1056,14 @@ data class CartProduct(
     var tags: ArrayList<String>?=null,
     
     @SerializedName("type")
-    var type: String?=null
+    var type: String?=null,
+    
+    @SerializedName("attributes")
+    var attributes: @RawValue HashMap<String,Any>?=null
     
 ): Parcelable {
+    
+    
     
     
     
@@ -1161,6 +1166,9 @@ data class CartProductInfo(
     @SerializedName("product")
     var product: CartProduct?=null,
     
+    @SerializedName("product_ean_id")
+    var productEanId: String?=null,
+    
     @SerializedName("bulk_offer")
     var bulkOffer: @RawValue HashMap<String,Any>?=null,
     
@@ -1192,6 +1200,8 @@ data class CartProductInfo(
     var promotionsApplied: ArrayList<AppliedPromotion>?=null
     
 ): Parcelable {
+    
+    
     
     
     
