@@ -5320,6 +5320,146 @@ data class EInvoiceRetryResponse(
 
              
 /*
+    Model: GenerateInvoiceIDResponseData
+*/
+@Parcelize
+data class GenerateInvoiceIDResponseData(
+    
+    
+    
+    @SerializedName("shipment_id")
+    var shipmentId: String?=null,
+    
+    @SerializedName("success")
+    var success: Boolean?=null,
+    
+    @SerializedName("invoice_id")
+    var invoiceId: String?=null,
+    
+    @SerializedName("error_message")
+    var errorMessage: Boolean?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: GenerateInvoiceIDErrorResponseData
+*/
+@Parcelize
+data class GenerateInvoiceIDErrorResponseData(
+    
+    
+    
+    @SerializedName("shipment_id")
+    var shipmentId: String?=null,
+    
+    @SerializedName("success")
+    var success: Boolean?=null,
+    
+    @SerializedName("invoice_id")
+    var invoiceId: Boolean?=null,
+    
+    @SerializedName("error_message")
+    var errorMessage: String?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: GenerateInvoiceIDRequest
+*/
+@Parcelize
+data class GenerateInvoiceIDRequest(
+    
+    
+    
+    @SerializedName("shipment_ids")
+    var shipmentIds: ArrayList<String>?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: GenerateInvoiceIDResponse
+*/
+@Parcelize
+data class GenerateInvoiceIDResponse(
+    
+    
+    
+    @SerializedName("items")
+    var items: GenerateInvoiceIDResponseData?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: GenerateInvoiceIDErrorResponse
+*/
+@Parcelize
+data class GenerateInvoiceIDErrorResponse(
+    
+    
+    
+    @SerializedName("items")
+    var items: GenerateInvoiceIDErrorResponseData?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
     Model: BagReasonMeta
 */
 @Parcelize
