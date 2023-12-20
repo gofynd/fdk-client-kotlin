@@ -5424,7 +5424,7 @@ data class GenerateInvoiceIDResponse(
     
     
     @SerializedName("items")
-    var items: GenerateInvoiceIDResponseData?=null
+    var items: ArrayList<GenerateInvoiceIDResponseData>?=null
     
 ): Parcelable {
     
@@ -5446,7 +5446,7 @@ data class GenerateInvoiceIDErrorResponse(
     
     
     @SerializedName("items")
-    var items: GenerateInvoiceIDErrorResponseData?=null
+    var items: ArrayList<GenerateInvoiceIDErrorResponseData>?=null
     
 ): Parcelable {
     
