@@ -7205,7 +7205,7 @@ data class ShipmentItemFulFillingStore(
     var phone: String?=null,
     
     @SerializedName("brand_store_tags")
-    var brandStoreTags: ArrayList<String>?=null,
+    var brandStoreTags: String?=null,
     
     @SerializedName("pincode")
     var pincode: String?=null,
