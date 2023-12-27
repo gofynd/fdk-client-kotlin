@@ -58,12 +58,24 @@ class ThemeDataManagerClass(val config: PlatformConfig, val unauthorizedAction: 
     
     
     
-    suspend fun getCompanyLevelThemes()
+    suspend fun getCompanyLevelThemes(searchText: String?=null)
     : Response<ArrayList<CompanyThemeSchema>>? {
         
         return if (config.oauthClient.isAccessTokenValid()) {
             themeApiList?.getCompanyLevelThemes(
-        companyId = config.companyId )
+        companyId = config.companyId, searchText = searchText )
+        } else {
+            null
+        } 
+    }
+    
+    
+    suspend fun getCompanyLevelPrivateThemes(searchText: String?=null)
+    : Response<ArrayList<CompanyPrivateTheme>>? {
+        
+        return if (config.oauthClient.isAccessTokenValid()) {
+            themeApiList?.getCompanyLevelPrivateThemes(
+        companyId = config.companyId, searchText = searchText )
         } else {
             null
         } 
@@ -250,6 +262,7 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
             null
         }
     }
+    
     
     
     

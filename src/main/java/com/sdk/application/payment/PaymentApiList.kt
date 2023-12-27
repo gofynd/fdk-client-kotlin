@@ -56,13 +56,28 @@ interface PaymentApiList {
     
     
     @GET 
-    suspend fun getPaymentModeRoutes(@Url url1: String?    ,        @Query("amount") amount: Int, @Query("cart_id") cartId: String, @Query("pincode") pincode: String, @Query("checkout_mode") checkoutMode: String, @Query("refresh") refresh: Boolean?, @Query("card_reference") cardReference: String?, @Query("user_details") userDetails: String?)
+    suspend fun getPaymentModeRoutes(@Url url1: String?    ,           @Query("amount") amount: Int, @Query("cart_id") cartId: String?, @Query("checkout_mode") checkoutMode: String?, @Query("refresh") refresh: Boolean?, @Query("order_id") orderId: String?, @Query("card_reference") cardReference: String?, @Query("user_details") userDetails: String?, @Query("display_split") displaySplit: Boolean?, @Query("advance_payment") advancePayment: Boolean?, @Query("shipment_id") shipmentId: String?)
     : Response<PaymentModeRouteResponse>
     
     
     @GET 
-    suspend fun getPosPaymentModeRoutes(@Url url1: String?    ,         @Query("amount") amount: Int, @Query("cart_id") cartId: String, @Query("pincode") pincode: String, @Query("checkout_mode") checkoutMode: String, @Query("refresh") refresh: Boolean?, @Query("card_reference") cardReference: String?, @Query("order_type") orderType: String, @Query("user_details") userDetails: String?)
+    suspend fun getPosPaymentModeRoutes(@Url url1: String?    ,         @Query("amount") amount: Int, @Query("cart_id") cartId: String?, @Query("pincode") pincode: String, @Query("checkout_mode") checkoutMode: String?, @Query("refresh") refresh: Boolean?, @Query("card_reference") cardReference: String?, @Query("order_type") orderType: String, @Query("user_details") userDetails: String?)
     : Response<PaymentModeRouteResponse>
+    
+    
+    @POST 
+    suspend fun walletLinkInitate(@Url url1: String?   ,@Body body: WalletLinkRequestSchema)
+    : Response<WalletResponseSchema>
+    
+    
+    @POST 
+    suspend fun linkWallet(@Url url1: String?   ,@Body body: WalletVerifyRequestSchema)
+    : Response<WalletResponseSchema>
+    
+    
+    @POST 
+    suspend fun delinkWallet(@Url url1: String?   ,@Body body: WalletDelinkRequestSchema)
+    : Response<WalletResponseSchema>
     
     
     @GET 
@@ -218,5 +233,10 @@ interface PaymentApiList {
     @GET 
     suspend fun paidOrderDetails(@Url url1: String?    ,  @Query("aggregator") aggregator: String?)
     : Response<PaidOrderDetailsResponse>
+    
+    
+    @POST 
+    suspend fun createPaymentOrder(@Url url1: String?   ,@Body body: PaymentOrderRequest)
+    : Response<PaymentOrderResponse>
     
 }

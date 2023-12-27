@@ -76,6 +76,11 @@ interface ContentApiList {
     
     
     @GET 
+    suspend fun getSEOMarkupSchemas(@Url url1: String?    ,   @Query("page_type") pageType: String?, @Query("active") active: Boolean?)
+    : Response<SeoSchemaComponent>
+    
+    
+    @GET 
     suspend fun getSlideshows(@Url url1: String?    ,   @Query("page_no") pageNo: Int?, @Query("page_size") pageSize: Int?)
     : Response<SlideshowGetResponse>
     
@@ -103,5 +108,15 @@ interface ContentApiList {
     @GET 
     suspend fun getPages(@Url url1: String?    ,   @Query("page_no") pageNo: Int?, @Query("page_size") pageSize: Int?)
     : Response<PageGetResponse>
+    
+    
+    @GET 
+    suspend fun getCustomObject(@Url url1: String?    )
+    : Response<CustomObjectByIdSchema>
+    
+    
+    @GET 
+    suspend fun getCustomFields(@Url url1: String?     )
+    : Response<CustomFieldsResponseByResourceIdSchema>
     
 }

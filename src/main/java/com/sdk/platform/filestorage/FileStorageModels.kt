@@ -1847,8 +1847,8 @@ data class DummyTemplateDataPayload(
     
     
     
-    @SerializedName("is_international")
-    var isInternational: Boolean?=null,
+    @SerializedName("is_export")
+    var isExport: Boolean?=null,
     
     @SerializedName("app_domain_name")
     var appDomainName: String?=null,
@@ -2048,10 +2048,15 @@ data class DummyTemplateData(
     @SerializedName("payload")
     var payload: DummyTemplateDataPayload?=null,
     
+    @SerializedName("country_code")
+    var countryCode: String?=null,
+    
     @SerializedName("__v")
     var v: Int?=null
     
 ): Parcelable {
+    
+    
     
     
     
@@ -2697,6 +2702,28 @@ data class PaymentReceiptMeta(
     
     
     
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: ExtensionSlug
+*/
+@Parcelize
+data class ExtensionSlug(
+    
+    
+    
+    @SerializedName("extension_slug")
+    var extensionSlug: String?=null
+    
+): Parcelable {
     
     
     

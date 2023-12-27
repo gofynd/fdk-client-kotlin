@@ -46,11 +46,11 @@ interface CatalogApiList {
     
     @GET ("/service/platform/catalog/v1.0/company/{company_id}/application/{application_id}/collections/query-options/")
     suspend fun getQueryFilters(@Path("company_id") companyId: String, @Path("application_id") applicationId: String)
-    : Response<GetCollectionQueryOptionResponse>
+    : Response<GetQueryFiltersResponse>
     
     @DELETE ("/service/platform/catalog/v1.0/company/{company_id}/application/{application_id}/collections/{id}/")
     suspend fun deleteCollection(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Path("id") id: String)
-    : Response<DeleteResponse>
+    : Response<CommonResponseSchemaCollection>
     
     @PUT ("/service/platform/catalog/v1.0/company/{company_id}/application/{application_id}/collections/{id}/")
     suspend fun updateCollection(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Path("id") id: String,@Body body: UpdateCollection)
@@ -66,7 +66,7 @@ interface CatalogApiList {
     
     @GET ("/service/platform/catalog/v1.0/company/{company_id}/application/{application_id}/collections/{slug}/")
     suspend fun getCollectionDetail(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Path("slug") slug: String)
-    : Response<CollectionDetailResponse>
+    : Response<GetCollectionDetailResponse>
     
     @GET ("/service/platform/catalog/v1.0/company/{company_id}/application/{application_id}/department")
     suspend fun getApplicationDepartmentListing(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Query("page_no") pageNo: Int?, @Query("page_size") pageSize: Int?, @Query("q") q: String?)
@@ -85,7 +85,7 @@ interface CatalogApiList {
     : Response<InventoryStockResponse>
     
     @GET ("/service/platform/catalog/v1.0/company/{company_id}/application/{application_id}/locations")
-    suspend fun getAppLocations(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Query("store_type") storeType: String?, @Query("uid") uid: ArrayList<Int>?, @Query("q") q: String?, @Query("stage") stage: String?, @Query("page_no") pageNo: Int?, @Query("page_size") pageSize: Int?)
+    suspend fun getAppLocations(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Query("store_type") storeType: String?, @Query("uid") uid: ArrayList<Int>?, @Query("q") q: String?, @Query("stage") stage: String?, @Query("page_no") pageNo: Int?, @Query("page_size") pageSize: Int?, @Query("tags") tags: ArrayList<String>?, @Query("store_types") storeTypes: ArrayList<String>?)
     : Response<LocationListSerializer>
     
     @GET ("/service/platform/catalog/v1.0/company/{company_id}/application/{application_id}/product-configuration/")
@@ -221,7 +221,7 @@ interface CatalogApiList {
     : Response<SuccessResponse1>
     
     @GET ("/service/platform/catalog/v1.0/company/{company_id}/category/")
-    suspend fun listCategories(@Path("company_id") companyId: String, @Query("level") level: String?, @Query("departments") departments: String?, @Query("q") q: String?, @Query("page_no") pageNo: Int?, @Query("page_size") pageSize: Int?)
+    suspend fun listCategories(@Path("company_id") companyId: String, @Query("level") level: String?, @Query("department") department: Int?, @Query("q") q: String?, @Query("page_no") pageNo: Int?, @Query("page_size") pageSize: Int?, @Query("uids") uids: ArrayList<Int>?)
     : Response<CategoryResponse>
     
     @POST ("/service/platform/catalog/v1.0/company/{company_id}/category/")
@@ -449,7 +449,7 @@ interface CatalogApiList {
     : Response<ProductVariantsResponse>
     
     @GET ("/service/platform/catalog/v1.0/company/{company_id}/sizeguide")
-    suspend fun getSizeGuides(@Path("company_id") companyId: String, @Query("active") active: Boolean?, @Query("q") q: String?, @Query("tag") tag: String?, @Query("page_no") pageNo: Int?, @Query("page_size") pageSize: Int?)
+    suspend fun getSizeGuides(@Path("company_id") companyId: String, @Query("active") active: Boolean?, @Query("q") q: String?, @Query("tag") tag: String?, @Query("page_no") pageNo: Int?, @Query("page_size") pageSize: Int?, @Query("brand_id") brandId: Int?)
     : Response<ListSizeGuide>
     
     @POST ("/service/platform/catalog/v1.0/company/{company_id}/sizeguide")
@@ -505,7 +505,7 @@ interface CatalogApiList {
     : Response<AppConfigurationsSort>
     
     @GET ("/service/platform/catalog/v2.0/company/{company_id}/application/{application_id}/product-configuration/{config_type}/metadata/")
-    suspend fun getConfigurationMetadata(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Path("config_type") configType: String, @Query("template_slug") templateSlug: String?)
+    suspend fun getConfigurationMetadata(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Path("config_type") configType: String, @Query("template_slug") templateSlug: String?, @Query("page_no") pageNo: Int?, @Query("page_size") pageSize: Int?, @Query("q") q: String?)
     : Response<GetConfigMetadataResponse>
     
     @GET ("/service/platform/catalog/v2.0/company/{company_id}/hsn/")
@@ -534,7 +534,7 @@ interface CatalogApiList {
     
     @POST ("/service/platform/catalog/v2.0/company/{company_id}/products/")
     suspend fun createProduct(@Path("company_id") companyId: String,@Body body: ProductCreateUpdateSchemaV2)
-    : Response<SuccessResponse>
+    : Response<SuccessResponse1>
     
     @POST ("/service/platform/catalog/v2.0/company/{company_id}/products/bulk")
     suspend fun uploadBulkProducts(@Path("company_id") companyId: String, @Query("department") department: String, @Query("product_type") productType: String,@Body body: BulkJob)
@@ -571,5 +571,13 @@ interface CatalogApiList {
     @POST ("/service/platform/catalog/v2.0/company/{company_id}/products/{item_id}/inventory/{seller_identifier}")
     suspend fun updateRealtimeInventory(@Path("company_id") companyId: String, @Path("item_id") itemId: String, @Path("seller_identifier") sellerIdentifier: String,@Body body: InventoryRequestSchemaV2)
     : Response<InventoryUpdateResponse>
+    
+    @GET ("/service/platform/catalog/v1.0/company/{company_id}/channel")
+    suspend fun getMarketplaces(@Path("company_id") companyId: String)
+    : Response<GetAllMarketplaces>
+    
+    @PUT ("/service/platform/catalog/v1.0/company/{company_id}/channel/{marketplace_slug}/opt-in")
+    suspend fun updateMarketplaceOptin(@Path("company_id") companyId: String, @Path("marketplace_slug") marketplaceSlug: String,@Body body: UpdateMarketplaceOptinRequest)
+    : Response<UpdateMarketplaceOptinResponse>
     
 }

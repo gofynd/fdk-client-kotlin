@@ -152,10 +152,10 @@ class CartDataManagerClass(val config: ApplicationConfig, val unauthorizedAction
 
     
     
-    suspend fun getCoupons(id: String?=null, buyNow: Boolean?=null): Response<GetCouponResponse>? {
+    suspend fun getCoupons(id: String?=null, buyNow: Boolean?=null, slug: String?=null, storeId: String?=null): Response<GetCouponResponse>? {
         var fullUrl : String? = _relativeUrls["getCoupons"] 
         
-        return cartApiList?.getCoupons(fullUrl    ,  id = id,    buyNow = buyNow)}
+        return cartApiList?.getCoupons(fullUrl    ,  id = id,    buyNow = buyNow,    slug = slug,    storeId = storeId)}
 
     
     
