@@ -300,12 +300,12 @@ class ContentDataManagerClass(val config: PlatformConfig, val unauthorizedAction
     }
     
     
-    suspend fun getCustomObjects()
+    suspend fun getCustomObjects(definitionId: String?=null, pageNo: String, pageSize: String)
     : Response<CustomObjectsSchema>? {
         
         return if (config.oauthClient.isAccessTokenValid()) {
             contentApiList?.getCustomObjects(
-        companyId = config.companyId )
+        companyId = config.companyId, definitionId = definitionId, pageNo = pageNo, pageSize = pageSize )
         } else {
             null
         } 
@@ -1247,7 +1247,7 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     }
     
     
-    suspend fun editSEOMarkupSchema(id: String,body: SEOSchemaMarkupTemplate)
+    suspend fun editSEOMarkupSchema(id: String,body: SEOSchemaMarkupTemplateRequestBody)
     : Response<SEOSchemaMarkupTemplate>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 contentApiList?.editSEOMarkupSchema(companyId = config.companyId , applicationId = applicationId , id = id, body = body)
@@ -1734,10 +1734,10 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     }
     
     
-    suspend fun getAppCustomObjects()
+    suspend fun getAppCustomObjects(definitionId: String?=null, pageNo: String, pageSize: String)
     : Response<CustomObjectsSchema>? {
         return if (config.oauthClient.isAccessTokenValid()) {
-                contentApiList?.getAppCustomObjects(companyId = config.companyId , applicationId = applicationId  )
+                contentApiList?.getAppCustomObjects(companyId = config.companyId , applicationId = applicationId , definitionId = definitionId, pageNo = pageNo, pageSize = pageSize )
         } else {
             null
         }

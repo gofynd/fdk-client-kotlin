@@ -237,7 +237,7 @@ interface ContentApiList {
     : Response<SEOSchemaMarkupTemplate>
     
     @PUT ("/service/platform/content/v1.0/company/{company_id}/application/{application_id}/seo/schema/{id}")
-    suspend fun editSEOMarkupSchema(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Path("id") id: String,@Body body: SEOSchemaMarkupTemplate)
+    suspend fun editSEOMarkupSchema(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Path("id") id: String,@Body body: SEOSchemaMarkupTemplateRequestBody)
     : Response<SEOSchemaMarkupTemplate>
     
     @DELETE ("/service/platform/content/v1.0/company/{company_id}/application/{application_id}/seo/schema/{id}")
@@ -373,7 +373,7 @@ interface ContentApiList {
     : Response<CustomObjectDefinitionDeleteResponseSchema>
     
     @GET ("/service/platform/content/v1.0/company/{company_id}/metaobjects")
-    suspend fun getCustomObjects(@Path("company_id") companyId: String)
+    suspend fun getCustomObjects(@Path("company_id") companyId: String, @Query("definition_id") definitionId: String?, @Query("page_no") pageNo: String, @Query("page_size") pageSize: String)
     : Response<CustomObjectsSchema>
     
     @POST ("/service/platform/content/v1.0/company/{company_id}/metaobjects")
@@ -469,7 +469,7 @@ interface ContentApiList {
     : Response<CustomObjectDefinitionDeleteResponseSchema>
     
     @GET ("/service/platform/content/v1.0/company/{company_id}/application/{application_id}/metaobjects")
-    suspend fun getAppCustomObjects(@Path("company_id") companyId: String, @Path("application_id") applicationId: String)
+    suspend fun getAppCustomObjects(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Query("definition_id") definitionId: String?, @Query("page_no") pageNo: String, @Query("page_size") pageSize: String)
     : Response<CustomObjectsSchema>
     
     @POST ("/service/platform/content/v1.0/company/{company_id}/application/{application_id}/metaobjects")

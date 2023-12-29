@@ -458,9 +458,14 @@ data class SEOSchemaMarkupTemplate(
     var updatedAt: String?=null,
     
     @SerializedName("application")
-    var application: String?=null
+    var application: String?=null,
+    
+    @SerializedName("target_json")
+    var targetJson: @RawValue HashMap<String,Any>?=null
     
 ): Parcelable {
+    
+    
     
     
     
@@ -507,6 +512,9 @@ data class SEOSchemaMarkupTemplateRequestBody(
     @SerializedName("description")
     var description: String?=null,
     
+    @SerializedName("target_json")
+    var targetJson: @RawValue HashMap<String,Any>?=null,
+    
     @SerializedName("active")
     var active: Boolean?=null,
     
@@ -517,6 +525,8 @@ data class SEOSchemaMarkupTemplateRequestBody(
     var updatedAt: String?=null
     
 ): Parcelable {
+    
+    
     
     
     
@@ -736,9 +746,14 @@ data class DefaultSEOSchemaMarkupTemplate(
     var pageType: String?=null,
     
     @SerializedName("schema")
-    var schema: String?=null
+    var schema: String?=null,
+    
+    @SerializedName("target_json")
+    var targetJson: @RawValue HashMap<String,Any>?=null
     
 ): Parcelable {
+    
+    
     
     
     

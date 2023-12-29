@@ -162,28 +162,6 @@ data class StartResponse(
 
              
 /*
-    Model: Params
-*/
-@Parcelize
-data class Params(
-    
-    
-    
-    @SerializedName("subpath")
-    var subpath: String?=null
-    
-): Parcelable {
-    
-    
-    
-    
-    
-}
-
-
-
-             
-/*
     Model: StartRequest
 */
 @Parcelize
@@ -204,7 +182,7 @@ data class StartRequest(
     var tags: ArrayList<String>?=null,
     
     @SerializedName("params")
-    var params: Params?=null
+    var params: @RawValue HashMap<String,Any>?=null
     
 ): Parcelable {
     
