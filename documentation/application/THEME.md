@@ -5,7 +5,7 @@
 ##### [Back to Application docs](./README.md)
 
 ## Theme Methods
-The Theme module makes theme management more efficient and effective. It allows you to view all theme pages, obtain details about specific theme pages, check the current app theme, and preview and test themes before applying them live.
+Responsible for Storefront
 
 Default
 * [getAllPages](#getallpages)
@@ -78,13 +78,6 @@ Success. Returns an array all the pages of the theme. Refer `AllAvailablePageSch
         "seo": {
           "title": "",
           "description": "",
-          "canonical_url": "",
-          "breadcrumbs": [],
-          "sitemap": {
-            "priority": 0.5,
-            "frequency": "never"
-          },
-          "meta_tags": [],
           "_id": "60210832d7e981639e13f6b2"
         },
         "_id": "60ab5ca6d572fed64294eb0e",
@@ -100,13 +93,6 @@ Success. Returns an array all the pages of the theme. Refer `AllAvailablePageSch
         "seo": {
           "title": "",
           "description": "",
-          "canonical_url": "",
-          "breadcrumbs": [],
-          "sitemap": {
-            "priority": 0.5,
-            "frequency": "never"
-          },
-          "meta_tags": [],
           "_id": "60210832d7e981fc5d13f6b9"
         },
         "_id": "60ab5ca6d572fed64294eaf9",
@@ -122,13 +108,6 @@ Success. Returns an array all the pages of the theme. Refer `AllAvailablePageSch
         "seo": {
           "title": "",
           "description": "",
-          "canonical_url": "",
-          "breadcrumbs": [],
-          "sitemap": {
-            "priority": 0.5,
-            "frequency": "never"
-          },
-          "meta_tags": [],
           "_id": "60210832d7e981cbca13f6b1"
         },
         "_id": "60ab5ca6d572fed64294eb0b",
@@ -144,13 +123,6 @@ Success. Returns an array all the pages of the theme. Refer `AllAvailablePageSch
         "seo": {
           "title": "",
           "description": "",
-          "canonical_url": "",
-          "breadcrumbs": [],
-          "sitemap": {
-            "priority": 0.5,
-            "frequency": "never"
-          },
-          "meta_tags": [],
           "_id": "60210832d7e9812fdf13f6ae"
         },
         "_id": "60ab5ca6d572fed64294eb02",
@@ -166,13 +138,6 @@ Success. Returns an array all the pages of the theme. Refer `AllAvailablePageSch
         "seo": {
           "title": "",
           "description": "",
-          "canonical_url": "",
-          "breadcrumbs": [],
-          "sitemap": {
-            "priority": 0.5,
-            "frequency": "never"
-          },
-          "meta_tags": [],
           "_id": "60210832d7e9815c9713f6ab"
         },
         "_id": "60ab5ca6d572fed64294eaf6",
@@ -188,13 +153,6 @@ Success. Returns an array all the pages of the theme. Refer `AllAvailablePageSch
         "seo": {
           "title": "",
           "description": "",
-          "canonical_url": "",
-          "breadcrumbs": [],
-          "sitemap": {
-            "priority": 0.5,
-            "frequency": "never"
-          },
-          "meta_tags": [],
           "_id": "60ab5ca6d572fed64294eb24"
         },
         "_id": "60ab5ca6d572fed64294eb25",
@@ -210,13 +168,6 @@ Success. Returns an array all the pages of the theme. Refer `AllAvailablePageSch
         "seo": {
           "title": "",
           "description": "",
-          "canonical_url": "",
-          "breadcrumbs": [],
-          "sitemap": {
-            "priority": 0.5,
-            "frequency": "never"
-          },
-          "meta_tags": [],
           "_id": "60ab5ca6d572fed64294eb22"
         },
         "_id": "60ab5ca6d572fed64294eb23",
@@ -232,13 +183,6 @@ Success. Returns an array all the pages of the theme. Refer `AllAvailablePageSch
         "seo": {
           "title": "",
           "description": "",
-          "canonical_url": "",
-          "breadcrumbs": [],
-          "sitemap": {
-            "priority": 0.5,
-            "frequency": "never"
-          },
-          "meta_tags": [],
           "_id": "60210832d7e9814fed13f6b5"
         },
         "_id": "60ab5ca6d572fed64294eb17",
@@ -254,13 +198,6 @@ Success. Returns an array all the pages of the theme. Refer `AllAvailablePageSch
         "seo": {
           "title": "",
           "description": "",
-          "canonical_url": "",
-          "breadcrumbs": [],
-          "sitemap": {
-            "priority": 0.5,
-            "frequency": "never"
-          },
-          "meta_tags": [],
           "_id": "60210832d7e981b32713f6b6"
         },
         "_id": "60ab5ca6d572fed64294eb1a",
@@ -276,13 +213,6 @@ Success. Returns an array all the pages of the theme. Refer `AllAvailablePageSch
         "seo": {
           "title": "",
           "description": "",
-          "canonical_url": "",
-          "breadcrumbs": [],
-          "sitemap": {
-            "priority": 0.5,
-            "frequency": "never"
-          },
-          "meta_tags": [],
           "_id": "60ab5ca6d572fed64294eb28"
         },
         "_id": "60ab5ca6d572fed64294eb29",
@@ -298,13 +228,6 @@ Success. Returns an array all the pages of the theme. Refer `AllAvailablePageSch
         "seo": {
           "title": "",
           "description": "",
-          "canonical_url": "",
-          "breadcrumbs": [],
-          "sitemap": {
-            "priority": 0.5,
-            "frequency": "never"
-          },
-          "meta_tags": [],
           "_id": "60210832d7e981dd2d13f6b3"
         },
         "_id": "60ab5ca6d572fed64294eb11",
@@ -320,13 +243,6 @@ Success. Returns an array all the pages of the theme. Refer `AllAvailablePageSch
         "seo": {
           "title": "",
           "description": "",
-          "canonical_url": "",
-          "breadcrumbs": [],
-          "sitemap": {
-            "priority": 0.5,
-            "frequency": "never"
-          },
-          "meta_tags": [],
           "_id": "60ab5ca6d572fed64294eb26"
         },
         "_id": "60ab5ca6d572fed64294eb27",
@@ -342,13 +258,6 @@ Success. Returns an array all the pages of the theme. Refer `AllAvailablePageSch
         "seo": {
           "title": "",
           "description": "",
-          "canonical_url": "",
-          "breadcrumbs": [],
-          "sitemap": {
-            "priority": 0.5,
-            "frequency": "never"
-          },
-          "meta_tags": [],
           "_id": "60210832d7e981161a13f6ad"
         },
         "_id": "60ab5ca6d572fed64294eaff",
@@ -364,13 +273,6 @@ Success. Returns an array all the pages of the theme. Refer `AllAvailablePageSch
         "seo": {
           "title": "",
           "description": "",
-          "canonical_url": "",
-          "breadcrumbs": [],
-          "sitemap": {
-            "priority": 0.5,
-            "frequency": "never"
-          },
-          "meta_tags": [],
           "_id": "60210832d7e98115b013f6ac"
         },
         "_id": "60ab5ca6d572fed64294eafc",
@@ -386,13 +288,6 @@ Success. Returns an array all the pages of the theme. Refer `AllAvailablePageSch
         "seo": {
           "title": "",
           "description": "",
-          "canonical_url": "",
-          "breadcrumbs": [],
-          "sitemap": {
-            "priority": 0.5,
-            "frequency": "never"
-          },
-          "meta_tags": [],
           "_id": "60210832d7e981ad0b13f6b0"
         },
         "_id": "60ab5ca6d572fed64294eb08",
@@ -408,13 +303,6 @@ Success. Returns an array all the pages of the theme. Refer `AllAvailablePageSch
         "seo": {
           "title": "",
           "description": "",
-          "canonical_url": "",
-          "breadcrumbs": [],
-          "sitemap": {
-            "priority": 0.5,
-            "frequency": "never"
-          },
-          "meta_tags": [],
           "_id": "60210832d7e981872c13f6af"
         },
         "_id": "60ab5ca6d572fed64294eb05",
@@ -430,13 +318,6 @@ Success. Returns an array all the pages of the theme. Refer `AllAvailablePageSch
         "seo": {
           "title": "",
           "description": "",
-          "canonical_url": "",
-          "breadcrumbs": [],
-          "sitemap": {
-            "priority": 0.5,
-            "frequency": "never"
-          },
-          "meta_tags": [],
           "_id": "60210832d7e98177f713f6b4"
         },
         "_id": "60ab5ca6d572fed64294eb14",
@@ -452,13 +333,6 @@ Success. Returns an array all the pages of the theme. Refer `AllAvailablePageSch
         "seo": {
           "title": "",
           "description": "",
-          "canonical_url": "",
-          "breadcrumbs": [],
-          "sitemap": {
-            "priority": 0.5,
-            "frequency": "never"
-          },
-          "meta_tags": [],
           "_id": "60210832d7e98170b813f6b8"
         },
         "_id": "60ab5ca6d572fed64294eb20",
@@ -474,13 +348,6 @@ Success. Returns an array all the pages of the theme. Refer `AllAvailablePageSch
         "seo": {
           "title": "",
           "description": "",
-          "canonical_url": "",
-          "breadcrumbs": [],
-          "sitemap": {
-            "priority": 0.5,
-            "frequency": "never"
-          },
-          "meta_tags": [],
           "_id": "60210832d7e981469613f6b7"
         },
         "_id": "60ab5ca6d572fed64294eb1d",
@@ -516,7 +383,7 @@ Get page of a theme
 
 
 ```kotlin
-applicationClient.theme.getPage(themeId: themeId, pageValue: pageValue, filters: filters, company: company).safeAwait{ response, error->
+applicationClient.theme.getPage(themeId: themeId, pageValue: pageValue).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -533,9 +400,7 @@ applicationClient.theme.getPage(themeId: themeId, pageValue: pageValue, filters:
 | Argument  |  Type  | Required | Description |
 | --------- | -----  | -------- | ----------- | 
 | themeId | String | yes | ID of the theme to be retrieved |   
-| pageValue | String | yes | Value of the page to be retrieved |   
-| filters | String? | no | Filters on sections to be applied or not |   
-| company | Int? | no | Company id of the application |  
+| pageValue | String | yes | Value of the page to be retrieved |  
 
 
 
@@ -568,13 +433,6 @@ Success. Returns an object of the pages.  Refer `AvailablePageSchema` for more d
     "seo": {
       "title": "",
       "description": "",
-      "canonical_url": "",
-      "breadcrumbs": [],
-      "sitemap": {
-        "priority": 0.5,
-        "frequency": "never"
-      },
-      "meta_tags": [],
       "_id": "60210832d7e98115b013f6ac"
     },
     "props": [],
@@ -2972,8 +2830,7 @@ Success. Returns a JSON object of the theme. Check the example shown below or   
         }
       }
     ],
-    "src": "https://cdn.fynd.com/v2/falling-surf-7c8bb8/fyndnp/wrkr/addsale/organization/64b0eb01c35f990518880a82/theme/assets/7yuL57qP2-archive.zip",
-    "company_id": 1
+    "src": "https://cdn.fynd.com/v2/falling-surf-7c8bb8/fyndnp/wrkr/addsale/organization/64b0eb01c35f990518880a82/theme/assets/7yuL57qP2-archive.zip"
   }
 }
 ```
@@ -5022,8 +4879,7 @@ Success. Returns a JSON object of the theme. Check the example shown below or re
         }
       }
     ],
-    "src": "https://cdn.fynd.com/v2/falling-surf-7c8bb8/fyndnp/wrkr/addsale/organization/64b0eb01c35f990518880a82/theme/assets/7yuL57qP2-archive.zip",
-    "company_id": 1
+    "src": "https://cdn.fynd.com/v2/falling-surf-7c8bb8/fyndnp/wrkr/addsale/organization/64b0eb01c35f990518880a82/theme/assets/7yuL57qP2-archive.zip"
   }
 }
 ```
@@ -5090,91 +4946,12 @@ Success. Returns a JSON object of the theme. Check the example shown below or re
 
  
  
- #### [SEOMetaItem](#SEOMetaItem)
-
- | Properties | Type | Nullable | Description |
- | ---------- | ---- | -------- | ----------- |
- | title | String? |  yes  |  |
- | items | ArrayList<[SEOMetaItems](#SEOMetaItems)>? |  yes  |  |
-
----
-
-
- 
- 
- #### [SEOMetaItems](#SEOMetaItems)
-
- | Properties | Type | Nullable | Description |
- | ---------- | ---- | -------- | ----------- |
- | key | String? |  yes  |  |
- | value | String? |  yes  |  |
-
----
-
-
- 
- 
- #### [SEOSitemap](#SEOSitemap)
-
- | Properties | Type | Nullable | Description |
- | ---------- | ---- | -------- | ----------- |
- | priority | Double? |  yes  |  |
- | frequency | String? |  yes  |  |
-
----
-
-
- 
- 
- #### [SEObreadcrumb](#SEObreadcrumb)
-
- | Properties | Type | Nullable | Description |
- | ---------- | ---- | -------- | ----------- |
- | url | String? |  yes  |  |
- | action | [Action](#Action)? |  yes  |  |
-
----
-
-
- 
- 
- #### [Action](#Action)
-
- | Properties | Type | Nullable | Description |
- | ---------- | ---- | -------- | ----------- |
- | page | [ActionPage](#ActionPage)? |  yes  |  |
- | popup | [ActionPage](#ActionPage)? |  yes  |  |
- | type | String? |  yes  |  |
-
----
-
-
- 
- 
- #### [ActionPage](#ActionPage)
-
- | Properties | Type | Nullable | Description |
- | ---------- | ---- | -------- | ----------- |
- | params | HashMap<String,ArrayList<String>>? |  yes  |  |
- | query | HashMap<String,ArrayList<String>>? |  yes  |  |
- | url | String? |  yes  |  |
- | type | String? |  yes  |  |
-
----
-
-
- 
- 
  #### [AvailablePageSeo](#AvailablePageSeo)
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
  | title | String? |  yes  |  |
  | description | String? |  yes  |  |
- | canonicalUrl | String? |  yes  |  |
- | metaTags | ArrayList<[SEOMetaItem](#SEOMetaItem)>? |  yes  |  |
- | sitemap | [SEOSitemap](#SEOSitemap)? |  yes  |  |
- | breadcrumb | ArrayList<[SEObreadcrumb](#SEObreadcrumb)>? |  yes  |  |
  | id | String? |  yes  |  |
 
 ---
@@ -5205,9 +4982,6 @@ Success. Returns a JSON object of the theme. Check the example shown below or re
  | screen | [AvailablePageScreenPredicate](#AvailablePageScreenPredicate)? |  yes  |  |
  | user | [AvailablePageUserPredicate](#AvailablePageUserPredicate)? |  yes  |  |
  | route | [AvailablePageRoutePredicate](#AvailablePageRoutePredicate)? |  yes  |  |
- | schedule | [AvailablePageSchedulePredicate](#AvailablePageSchedulePredicate)? |  yes  |  |
- | platform | [AvailablePagePlatformPredicate](#AvailablePagePlatformPredicate)? |  yes  |  |
- | zones | ArrayList<String>? |  yes  | An array of zone ids associated with the section |
 
 ---
 
@@ -5252,19 +5026,6 @@ Success. Returns a JSON object of the theme. Check the example shown below or re
 
  
  
- #### [AvailablePageSchedulePredicate](#AvailablePageSchedulePredicate)
-
- | Properties | Type | Nullable | Description |
- | ---------- | ---- | -------- | ----------- |
- | cron | String? |  yes  |  |
- | start | String? |  yes  |  |
- | end | String? |  yes  |  |
-
----
-
-
- 
- 
  #### [ThemesSchema](#ThemesSchema)
 
  | Properties | Type | Nullable | Description |
@@ -5277,7 +5038,7 @@ Success. Returns a JSON object of the theme. Check the example shown below or re
  | id | String? |  yes  | The unique identifier of the theme |
  | applicationId | String? |  yes  | The ID of the application |
  | marketplaceThemeId | String? |  yes  | The ID of the theme in the marketplace |
- | meta | [ThemeMeta](#ThemeMeta)? |  yes  |  |
+ | meta | [Meta](#Meta)? |  yes  |  |
  | name | String? |  yes  | The name of the theme |
  | templateThemeId | String? |  yes  | The ID of the template theme |
  | version | String? |  yes  | The version of the theme |
@@ -5286,8 +5047,6 @@ Success. Returns a JSON object of the theme. Check the example shown below or re
  | updatedAt | String? |  yes  | The last update timestamp of the theme |
  | assets | [Assets](#Assets)? |  yes  |  |
  | availableSections | ArrayList<[SectionItem](#SectionItem)>? |  yes  | Available sections information |
- | themeType | String? |  yes  |  |
- | companyId | Double? |  yes  | The company id in which sales channel exists |
 
 ---
 
@@ -5637,7 +5396,7 @@ Success. Returns a JSON object of the theme. Check the example shown below or re
 
  
  
- #### [ThemeMeta](#ThemeMeta)
+ #### [Meta](#Meta)
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
@@ -5974,19 +5733,6 @@ Success. Returns a JSON object of the theme. Check the example shown below or re
 
  
  
- #### [AvailablePagePlatformPredicate](#AvailablePagePlatformPredicate)
-
- | Properties | Type | Nullable | Description |
- | ---------- | ---- | -------- | ----------- |
- | ios | Boolean? |  yes  | Section visibility on ios platform |
- | android | Boolean? |  yes  | Section visibility on android platform |
- | web | Boolean? |  yes  | Section visibility on web platform |
-
----
-
-
- 
- 
  #### [BlitzkriegInternalServerErrorSchema](#BlitzkriegInternalServerErrorSchema)
 
  | Properties | Type | Nullable | Description |
@@ -6005,71 +5751,6 @@ Success. Returns a JSON object of the theme. Check the example shown below or re
  | message | String? |  yes  |  |
 
 ---
-
-
-
-
-### Enums
-
-
-
-
-
- #### [PageType](#PageType)
- Type : string
-
- | Name | Value | Description |
- | ---- | ----- | ----------- |
- | aboutUs | about-us | Symbolic link for About Us: /about-us |
- | addresses | addresses | Symbolic link for Saved Addresses: /profile/address |
- | blog | blog | Symbolic link for Blog: /blog/:slug |
- | brands | brands | Symbolic link for Brands: /brands/:department |
- | cards | cards | Symbolic link for Saved Cards: /profile/my-cards |
- | cart | cart | Symbolic link for Cart: /cart/bag/ |
- | categories | categories | Symbolic link for Categories: /categories/:department |
- | brand | brand | Symbolic link for Brand: /brand/:slug |
- | category | category | Symbolic link for Category: /category/:slug |
- | collection | collection | Symbolic link for Collection: /collection/:slug |
- | collections | collections | Symbolic link for Collections: /collections/ |
- | contactUs | contact-us | Symbolic link for Contact Us: /contact-us/ |
- | external | external | Symbolic link for External Link: /external/ |
- | faq | faq | Symbolic link for FAQ: /faq |
- | freshchat | freshchat | Symbolic link for Chat by Freshchat: /freshchat |
- | home | home | Symbolic link for Home: / |
- | notificationSettings | notification-settings | Symbolic link for Notification Settings: /notification-settings |
- | orders | orders | Symbolic link for Orders: /profile/orders |
- | page | page | Symbolic link for Page: /page/:slug |
- | policy | policy | Symbolic link for Privacy Policy: /privacy-policy |
- | product | product | Symbolic link for Product: /product/:slug |
- | productRequest | product-request | Symbolic link for Product Request: /product-request/ |
- | products | products | Symbolic link for Products: /products/ |
- | profile | profile | Symbolic link for Profile: /profile |
- | profileOrderShipment | profile-order-shipment | Symbolic link for profile orders shipment: /profile/orders/shipment/:shipmentid |
- | profileBasic | profile-basic | Symbolic link for Basic Profile: /profile/details |
- | profileCompany | profile-company | Symbolic link for Profile Company: /profile/company |
- | profileEmails | profile-emails | Symbolic link for Profile Emails: /profile/email |
- | profilePhones | profile-phones | Symbolic link for Profile Phones: /profile/phone |
- | rateUs | rate-us | Symbolic link for Rate Us: /rate-us |
- | referEarn | refer-earn | Symbolic link for Refer & Earn: /profile/refer-earn |
- | settings | settings | Symbolic link for Settings: /setting/currency |
- | sharedCart | shared-cart | Symbolic link for Shared Cart: /shared-cart/:token |
- | tnc | tnc | Symbolic link for Terms and Conditions: /terms-and-conditions |
- | trackOrder | track-order | Symbolic link for Track Order: /order-tracking/:orderId |
- | wishlist | wishlist | Symbolic link for Wishlist: /wishlist/ |
- | sections | sections | Symbolic link for Sections: /sections/:group |
- | form | form | Symbolic link for Form: /form/:slug |
- | cartDelivery | cart-delivery | Symbolic link for Cart Delivery: /cart/delivery |
- | cartPayment | cart-payment | Symbolic link for Cart Payment Information: /cart/payment-info |
- | cartReview | cart-review | Symbolic link for Cart Order Review: /cart/order-review |
- | login | login | Symbolic link for Login: /auth/login |
- | register | register | Symbolic link for Register: /auth/register |
- | shippingPolicy | shipping-policy | Symbolic link for Shipping policy: /shipping-policy |
- | returnPolicy | return-policy | Symbolic link for Return policy: /return-policy |
- | orderStatus | order-status | Symbolic link for Order status: /cart/order-status |
-
----
-
-
 
 
 

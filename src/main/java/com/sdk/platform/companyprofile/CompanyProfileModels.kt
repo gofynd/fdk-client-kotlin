@@ -176,38 +176,6 @@ data class ContactDetails(
 
              
 /*
-    Model: CountryCurrencyInfo
-*/
-@Parcelize
-data class CountryCurrencyInfo(
-    
-    
-    
-    @SerializedName("code")
-    var code: String?=null,
-    
-    @SerializedName("symbol")
-    var symbol: String?=null,
-    
-    @SerializedName("name")
-    var name: String?=null
-    
-): Parcelable {
-    
-    
-    
-    
-    
-    
-    
-    
-    
-}
-
-
-
-             
-/*
     Model: BusinessCountryInfo
 */
 @Parcelize
@@ -219,19 +187,9 @@ data class BusinessCountryInfo(
     var countryCode: String?=null,
     
     @SerializedName("country")
-    var country: String?=null,
-    
-    @SerializedName("currency")
-    var currency: CountryCurrencyInfo?=null,
-    
-    @SerializedName("timezone")
-    var timezone: String?=null
+    var country: String?=null
     
 ): Parcelable {
-    
-    
-    
-    
     
     
     
@@ -318,12 +276,6 @@ data class GetAddressSerializer(
     @SerializedName("state")
     var state: String?=null,
     
-    @SerializedName("state_code")
-    var stateCode: String?=null,
-    
-    @SerializedName("sector")
-    var sector: String?=null,
-    
     @SerializedName("address1")
     var address1: String?=null,
     
@@ -334,10 +286,6 @@ data class GetAddressSerializer(
     var latitude: Double?=null
     
 ): Parcelable {
-    
-    
-    
-    
     
     
     
@@ -1819,14 +1767,9 @@ data class GetLocationSerializer(
     var avgOrderProcessingTime: AverageOrderProcessingTime?=null,
     
     @SerializedName("bulk_shipment")
-    var bulkShipment: Boolean?=null,
-    
-    @SerializedName("auto_assign_courier_partner")
-    var autoAssignCourierPartner: Boolean?=null
+    var bulkShipment: Boolean?=null
     
 ): Parcelable {
-    
-    
     
     
     
@@ -1958,12 +1901,6 @@ data class AddressSerializer(
     @SerializedName("state")
     var state: String?=null,
     
-    @SerializedName("sector")
-    var sector: String?=null,
-    
-    @SerializedName("state_code")
-    var stateCode: String?=null,
-    
     @SerializedName("address1")
     var address1: String?=null,
     
@@ -1974,10 +1911,6 @@ data class AddressSerializer(
     var latitude: Double?=null
     
 ): Parcelable {
-    
-    
-    
-    
     
     
     
@@ -2089,14 +2022,9 @@ data class LocationSerializer(
     var avgOrderProcessingTime: AverageOrderProcessingTime?=null,
     
     @SerializedName("bulk_shipment")
-    var bulkShipment: Boolean?=null,
-    
-    @SerializedName("auto_assign_courier_partner")
-    var autoAssignCourierPartner: Boolean?=null
+    var bulkShipment: Boolean?=null
     
 ): Parcelable {
-    
-    
     
     
     

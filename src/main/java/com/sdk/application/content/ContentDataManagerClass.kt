@@ -45,8 +45,6 @@ class ContentDataManagerClass(val config: ApplicationConfig, val unauthorizedAct
             
                     _relativeUrls["getSEOConfiguration"] = "/service/application/content/v1.0/seo".substring(1)
             
-                    _relativeUrls["getSEOMarkupSchemas"] = "/service/application/content/v1.0/seo/schema".substring(1)
-            
                     _relativeUrls["getSlideshows"] = "/service/application/content/v1.0/slideshow/".substring(1)
             
                     _relativeUrls["getSlideshow"] = "/service/application/content/v1.0/slideshow/{slug}".substring(1)
@@ -58,10 +56,6 @@ class ContentDataManagerClass(val config: ApplicationConfig, val unauthorizedAct
                     _relativeUrls["getPage"] = "/service/application/content/v2.0/pages/{slug}".substring(1)
             
                     _relativeUrls["getPages"] = "/service/application/content/v2.0/pages/".substring(1)
-            
-                    _relativeUrls["getCustomObject"] = "/service/application/content/v1.0/metaobjects/{metaobject_id}".substring(1)
-            
-                    _relativeUrls["getCustomFields"] = "/service/application/content/v1.0/metafields/{resource}/{resource_id}".substring(1)
             
     }
 
@@ -287,13 +281,6 @@ class ContentDataManagerClass(val config: ApplicationConfig, val unauthorizedAct
 
     
     
-    suspend fun getSEOMarkupSchemas(pageType: String?=null, active: Boolean?=null): Response<SeoSchemaComponent>? {
-        var fullUrl : String? = _relativeUrls["getSEOMarkupSchemas"] 
-        
-        return contentApiList?.getSEOMarkupSchemas(fullUrl    ,  pageType = pageType,    active = active)}
-
-    
-    
     suspend fun getSlideshows(pageNo: Int?=null, pageSize: Int?=null): Response<SlideshowGetResponse>? {
         var fullUrl : String? = _relativeUrls["getSlideshows"] 
         
@@ -429,25 +416,5 @@ class ContentDataManagerClass(val config: ApplicationConfig, val unauthorizedAct
     
     return paginator
     }
-    
-    suspend fun getCustomObject(metaobjectId: String): Response<CustomObjectByIdSchema>? {
-        var fullUrl : String? = _relativeUrls["getCustomObject"] 
-        
-        fullUrl = fullUrl?.replace("{" + "metaobject_id" +"}",metaobjectId.toString())
-        
-        return contentApiList?.getCustomObject(fullUrl   )}
-
-    
-    
-    suspend fun getCustomFields(resource: String, resourceId: String): Response<CustomFieldsResponseByResourceIdSchema>? {
-        var fullUrl : String? = _relativeUrls["getCustomFields"] 
-        
-        fullUrl = fullUrl?.replace("{" + "resource" +"}",resource.toString())
-        
-        fullUrl = fullUrl?.replace("{" + "resource_id" +"}",resourceId.toString())
-        
-        return contentApiList?.getCustomFields(fullUrl    )}
-
-    
     
 }

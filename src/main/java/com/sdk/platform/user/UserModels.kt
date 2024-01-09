@@ -14,410 +14,6 @@ import com.google.gson.annotations.SerializedName
 
              
 /*
-    Model: SuccessMessageResponse
-*/
-@Parcelize
-data class SuccessMessageResponse(
-    
-    
-    
-    @SerializedName("success")
-    var success: String?=null
-    
-): Parcelable {
-    
-    
-    
-    
-    
-}
-
-
-
-             
-/*
-    Model: UserAttributeDefinition
-*/
-@Parcelize
-data class UserAttributeDefinition(
-    
-    
-    
-    @SerializedName("_id")
-    var id: String?=null,
-    
-    @SerializedName("name")
-    var name: String?=null,
-    
-    @SerializedName("slug")
-    var slug: String?=null,
-    
-    @SerializedName("description")
-    var description: String?=null,
-    
-    @SerializedName("application_id")
-    var applicationId: String?=null,
-    
-    @SerializedName("type")
-    var type: String?=null,
-    
-    @SerializedName("multi_value")
-    var multiValue: Boolean?=null,
-    
-    @SerializedName("customer_editable")
-    var customerEditable: Boolean?=null,
-    
-    @SerializedName("encrypted")
-    var encrypted: Boolean?=null,
-    
-    @SerializedName("pinned")
-    var pinned: Boolean?=null,
-    
-    @SerializedName("pin_order")
-    var pinOrder: Int?=null,
-    
-    @SerializedName("validations")
-    var validations: @RawValue ArrayList<HashMap<String,Any>>?=null,
-    
-    @SerializedName("is_locked")
-    var isLocked: Boolean?=null,
-    
-    @SerializedName("created_at")
-    var createdAt: String?=null,
-    
-    @SerializedName("modified_at")
-    var modifiedAt: String?=null,
-    
-    @SerializedName("__v")
-    var v: Int?=null
-    
-): Parcelable {
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-}
-
-
-
-             
-/*
-    Model: UserAttributeDefinitionResponse
-*/
-@Parcelize
-data class UserAttributeDefinitionResponse(
-    
-    
-    
-    @SerializedName("_id")
-    var id: String?=null,
-    
-    @SerializedName("name")
-    var name: String?=null,
-    
-    @SerializedName("slug")
-    var slug: String?=null,
-    
-    @SerializedName("description")
-    var description: String?=null,
-    
-    @SerializedName("application_id")
-    var applicationId: String?=null,
-    
-    @SerializedName("type")
-    var type: String?=null,
-    
-    @SerializedName("multi_value")
-    var multiValue: Boolean?=null,
-    
-    @SerializedName("customer_editable")
-    var customerEditable: Boolean?=null,
-    
-    @SerializedName("encrypted")
-    var encrypted: Boolean?=null,
-    
-    @SerializedName("pinned")
-    var pinned: Boolean?=null,
-    
-    @SerializedName("pin_order")
-    var pinOrder: Int?=null,
-    
-    @SerializedName("validations")
-    var validations: ArrayList<UserAttributeDefinitionValidation>?=null,
-    
-    @SerializedName("is_locked")
-    var isLocked: Boolean?=null,
-    
-    @SerializedName("created_by")
-    var createdBy: String?=null,
-    
-    @SerializedName("updated_by")
-    var updatedBy: String?=null,
-    
-    @SerializedName("created_at")
-    var createdAt: String?=null,
-    
-    @SerializedName("modified_at")
-    var modifiedAt: String?=null
-    
-): Parcelable {
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-}
-
-
-
-             
-/*
-    Model: UserAttributeDefinitionValidation
-*/
-@Parcelize
-data class UserAttributeDefinitionValidation(
-    
-    
-    
-    @SerializedName("type")
-    var type: String?=null,
-    
-    @SerializedName("value")
-    var value: @RawValue Any?=null
-    
-): Parcelable {
-    
-    
-    
-    
-    
-    
-    
-}
-
-
-
-             
-/*
-    Model: UserAttributeResponse
-*/
-@Parcelize
-data class UserAttributeResponse(
-    
-    
-    
-    @SerializedName("_id")
-    var id: String?=null,
-    
-    @SerializedName("name")
-    var name: String?=null,
-    
-    @SerializedName("user_id")
-    var userId: String?=null,
-    
-    @SerializedName("application_id")
-    var applicationId: String?=null,
-    
-    @SerializedName("type")
-    var type: String?=null,
-    
-    @SerializedName("customer_overriden")
-    var customerOverriden: Boolean?=null,
-    
-    @SerializedName("attribute")
-    var attribute: @RawValue HashMap<String,Any>?=null,
-    
-    @SerializedName("updated_by")
-    var updatedBy: String?=null
-    
-): Parcelable {
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-}
-
-
-
-             
-/*
-    Model: CreateUserAttributeRequest
-*/
-@Parcelize
-data class CreateUserAttributeRequest(
-    
-    
-    
-    @SerializedName("customer_overriden")
-    var customerOverriden: Boolean?=null,
-    
-    @SerializedName("attribute")
-    var attribute: @RawValue HashMap<String,Any>?=null
-    
-): Parcelable {
-    
-    
-    
-    
-    
-    
-    
-}
-
-
-
-             
-/*
-    Model: CreateUserAttributeDefinition
-*/
-@Parcelize
-data class CreateUserAttributeDefinition(
-    
-    
-    
-    @SerializedName("name")
-    var name: String?=null,
-    
-    @SerializedName("slug")
-    var slug: String?=null,
-    
-    @SerializedName("description")
-    var description: String?=null,
-    
-    @SerializedName("type")
-    var type: String?=null,
-    
-    @SerializedName("multi_value")
-    var multiValue: Boolean?=null,
-    
-    @SerializedName("customer_editable")
-    var customerEditable: Boolean?=null,
-    
-    @SerializedName("encrypted")
-    var encrypted: Boolean?=null,
-    
-    @SerializedName("pinned")
-    var pinned: Boolean?=null,
-    
-    @SerializedName("pin_order")
-    var pinOrder: Double?=null,
-    
-    @SerializedName("default_value")
-    var defaultValue: String?=null,
-    
-    @SerializedName("validations")
-    var validations: @RawValue ArrayList<HashMap<String,Any>>?=null
-    
-): Parcelable {
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-}
-
-
-
-             
-/*
     Model: BlockUserRequestSchema
 */
 @Parcelize
@@ -801,82 +397,12 @@ data class SessionListResponseInfo(
 
              
 /*
-    Model: Conditions
-*/
-@Parcelize
-data class Conditions(
-    
-    
-    
-    @SerializedName("user_attribute_definition_id")
-    var userAttributeDefinitionId: String?=null,
-    
-    @SerializedName("type")
-    var type: String?=null,
-    
-    @SerializedName("value")
-    var value: String?=null,
-    
-    @SerializedName("key")
-    var key: String?=null
-    
-): Parcelable {
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-}
-
-
-
-             
-/*
-    Model: UserResponseErrorSchema
-*/
-@Parcelize
-data class UserResponseErrorSchema(
-    
-    
-    
-    @SerializedName("count")
-    var count: Int?=null,
-    
-    @SerializedName("file_url")
-    var fileUrl: String?=null
-    
-): Parcelable {
-    
-    
-    
-    
-    
-    
-    
-}
-
-
-
-             
-/*
     Model: UserGroupResponseSchema
 */
 @Parcelize
 data class UserGroupResponseSchema(
     
     
-    
-    @SerializedName("conditions")
-    var conditions: ArrayList<Conditions>?=null,
-    
-    @SerializedName("error")
-    var error: UserResponseErrorSchema?=null,
     
     @SerializedName("name")
     var name: String?=null,
@@ -892,12 +418,6 @@ data class UserGroupResponseSchema(
     
     @SerializedName("status")
     var status: String?=null,
-    
-    @SerializedName("is_active")
-    var isActive: Boolean?=null,
-    
-    @SerializedName("type")
-    var type: String?=null,
     
     @SerializedName("uid")
     var uid: Int?=null,
@@ -915,14 +435,6 @@ data class UserGroupResponseSchema(
     var v: Int?=null
     
 ): Parcelable {
-    
-    
-    
-    
-    
-    
-    
-    
     
     
     
@@ -979,50 +491,12 @@ data class UserGroupListResponseSchema(
 
              
 /*
-    Model: ConditionsSchema
+    Model: CreateUserGroupSchema
 */
 @Parcelize
-data class ConditionsSchema(
+data class CreateUserGroupSchema(
     
     
-    
-    @SerializedName("user_attribute_definition_id")
-    var userAttributeDefinitionId: String?=null,
-    
-    @SerializedName("type")
-    var type: String?=null,
-    
-    @SerializedName("value")
-    var value: String?=null
-    
-): Parcelable {
-    
-    
-    
-    
-    
-    
-    
-    
-    
-}
-
-
-
-             
-/*
-    Model: CreateUserGroup
-*/
-@Parcelize
-data class CreateUserGroup(
-    
-    
-    
-    @SerializedName("conditions")
-    var conditions: ArrayList<ConditionsSchema>?=null,
-    
-    @SerializedName("type")
-    var type: String?=null,
     
     @SerializedName("name")
     var name: String?=null,
@@ -1034,10 +508,6 @@ data class CreateUserGroup(
     var fileUrl: String?=null
     
 ): Parcelable {
-    
-    
-    
-    
     
     
     
@@ -1846,12 +1316,6 @@ data class UpdateUserGroupSchema(
     
     
     
-    @SerializedName("conditions")
-    var conditions: ArrayList<ConditionsSchema>?=null,
-    
-    @SerializedName("type")
-    var type: String?=null,
-    
     @SerializedName("name")
     var name: String?=null,
     
@@ -1862,10 +1326,6 @@ data class UpdateUserGroupSchema(
     var fileUrl: String?=null
     
 ): Parcelable {
-    
-    
-    
-    
     
     
     

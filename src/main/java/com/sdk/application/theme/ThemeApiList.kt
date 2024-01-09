@@ -16,7 +16,7 @@ interface ThemeApiList {
     
     
     @GET 
-    suspend fun getPage(@Url url1: String?      ,   @Query("filters") filters: String?, @Query("company") company: Int?)
+    suspend fun getPage(@Url url1: String?     )
     : Response<AvailablePageSchema>
     
     

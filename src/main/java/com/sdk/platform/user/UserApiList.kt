@@ -9,7 +9,7 @@ import com.sdk.platform.*
 interface UserApiList {
     
     @GET ("/service/platform/user/v1.0/company/{company_id}/application/{application_id}/customers/list")
-    suspend fun getCustomers(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Query("q") q: String?, @Query("page_size") pageSize: Int?, @Query("page_no") pageNo: Int?)
+    suspend fun getCustomers(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Query("q") q: HashMap<String,Any>?, @Query("page_size") pageSize: Int?, @Query("page_no") pageNo: Int?)
     : Response<CustomerListResponseSchema>
     
     @GET ("/service/platform/user/v1.0/company/{company_id}/application/{application_id}/customers/search")
@@ -61,11 +61,11 @@ interface UserApiList {
     : Response<PlatformSchema>
     
     @POST ("/service/platform/user/v1.0/company/{company_id}/application/{application_id}/user_group")
-    suspend fun createUserGroup(@Path("company_id") companyId: String, @Path("application_id") applicationId: String,@Body body: CreateUserGroup)
+    suspend fun createUserGroup(@Path("company_id") companyId: String, @Path("application_id") applicationId: String,@Body body: CreateUserGroupSchema)
     : Response<UserGroupResponseSchema>
     
     @GET ("/service/platform/user/v1.0/company/{company_id}/application/{application_id}/user_group")
-    suspend fun getUserGroups(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Query("page_no") pageNo: String?, @Query("page_size") pageSize: String?, @Query("name") name: String?, @Query("type") type: String?, @Query("status") status: String?, @Query("group_uid") groupUid: Int?)
+    suspend fun getUserGroups(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Query("page_no") pageNo: String?, @Query("page_size") pageSize: String?, @Query("name") name: String?, @Query("status") status: String?, @Query("group_uid") groupUid: Int?)
     : Response<UserGroupListResponseSchema>
     
     @PUT ("/service/platform/user/v1.0/company/{company_id}/application/{application_id}/user_group/{group_id}")
@@ -79,45 +79,5 @@ interface UserApiList {
     @PATCH ("/service/platform/user/v1.0/company/{company_id}/application/{application_id}/user_group/{group_id}")
     suspend fun updateUserGroupPartially(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Path("group_id") groupId: String,@Body body: PartialUserGroupUpdateSchema)
     : Response<UserGroupResponseSchema>
-    
-    @POST ("/service/platform/user/v1.0/company/{company_id}/application/{application_id}/user_attribute/definition")
-    suspend fun createUserAttributeDefinition(@Path("company_id") companyId: String, @Path("application_id") applicationId: String,@Body body: CreateUserAttributeDefinition)
-    : Response<UserAttributeDefinitionResponse>
-    
-    @GET ("/service/platform/user/v1.0/company/{company_id}/application/{application_id}/user_attribute/definition")
-    suspend fun getUserAttributeDefinitions(@Query("excluding_ids") excludingIds: String?, @Query("slug") slug: String?, @Query("type") type: String?, @Query("customer_editable") customerEditable: Boolean?, @Query("encrypted") encrypted: Boolean?, @Query("pinned") pinned: Boolean?, @Query("pin_order") pinOrder: Int?, @Query("is_locked") isLocked: Boolean?, @Query("name") name: String?, @Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Query("page_size") pageSize: Int?, @Query("page_no") pageNo: Int?)
-    : Response<HashMap<String,Any>>
-    
-    @PUT ("/service/platform/user/v1.0/company/{company_id}/application/{application_id}/user_attribute/definition/{attribute_def_id}")
-    suspend fun updateUserAttributeDefinition(@Path("attribute_def_id") attributeDefId: String, @Path("application_id") applicationId: String, @Path("company_id") companyId: String,@Body body: CreateUserAttributeDefinition)
-    : Response<UserAttributeDefinition>
-    
-    @DELETE ("/service/platform/user/v1.0/company/{company_id}/application/{application_id}/user_attribute/definition/{attribute_def_id}")
-    suspend fun deleteUserAttributeDefinitionById(@Path("attribute_def_id") attributeDefId: String, @Path("company_id") companyId: String, @Path("application_id") applicationId: String)
-    : Response<SuccessMessageResponse>
-    
-    @GET ("/service/platform/user/v1.0/company/{company_id}/application/{application_id}/user_attribute/definition/{attribute_def_id}")
-    suspend fun getUserAttributeDefinitionById(@Path("attribute_def_id") attributeDefId: String, @Path("company_id") companyId: String, @Path("application_id") applicationId: String)
-    : Response<UserAttributeDefinition>
-    
-    @PUT ("/service/platform/user/v1.0/company/{company_id}/application/{application_id}/user_attribute/definition/{attribute_def_id}/user/{user_id}")
-    suspend fun updateUserAttribute(@Path("attribute_def_id") attributeDefId: String, @Path("user_id") userId: String, @Path("application_id") applicationId: String, @Path("company_id") companyId: String,@Body body: CreateUserAttributeRequest)
-    : Response<UserAttributeResponse>
-    
-    @GET ("/service/platform/user/v1.0/company/{company_id}/application/{application_id}/user_attribute/definition/{attribute_def_id}/user/{user_id}")
-    suspend fun getUserAttribute(@Path("attribute_def_id") attributeDefId: String, @Path("user_id") userId: String, @Path("application_id") applicationId: String, @Path("company_id") companyId: String)
-    : Response<UserAttributeResponse>
-    
-    @DELETE ("/service/platform/user/v1.0/company/{company_id}/application/{application_id}/user_attribute/definition/{attribute_def_id}/user/{user_id}")
-    suspend fun deleteUserAttribute(@Path("attribute_def_id") attributeDefId: String, @Path("user_id") userId: String, @Path("application_id") applicationId: String, @Path("company_id") companyId: String)
-    : Response<SuccessMessageResponse>
-    
-    @GET ("/service/platform/user/v1.0/company/{company_id}/application/{application_id}/user_attribute/user/{user_id}")
-    suspend fun getUserAttributesForUser(@Path("user_id") userId: String, @Path("application_id") applicationId: String, @Path("company_id") companyId: String, @Query("page_size") pageSize: Int?, @Query("page_no") pageNo: Int?)
-    : Response<HashMap<String,Any>>
-    
-    @GET ("/service/platform/user/v1.0/company/{company_id}/application/{application_id}/user_attribute/attribute/{attribute_id}")
-    suspend fun getUserAttributeById(@Path("attribute_id") attributeId: String, @Path("application_id") applicationId: String, @Path("company_id") companyId: String)
-    : Response<UserAttributeResponse>
     
 }

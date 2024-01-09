@@ -65,12 +65,8 @@ interface ThemeApiList {
     : Response<DummyResponse>
     
     @GET ("/service/platform/theme/v2.0/company/{company_id}/themes")
-    suspend fun getCompanyLevelThemes(@Path("company_id") companyId: String, @Query("search_text") searchText: String?)
+    suspend fun getCompanyLevelThemes(@Path("company_id") companyId: String)
     : Response<ArrayList<CompanyThemeSchema>>
-    
-    @GET ("/service/platform/theme/v2.0/company/{company_id}/private_themes")
-    suspend fun getCompanyLevelPrivateThemes(@Path("company_id") companyId: String, @Query("search_text") searchText: String?)
-    : Response<ArrayList<CompanyPrivateTheme>>
     
     @POST ("/service/platform/theme/v2.0/company/{company_id}")
     suspend fun addMarketplaceThemeToCompany(@Path("company_id") companyId: String,@Body body: ThemeReq)

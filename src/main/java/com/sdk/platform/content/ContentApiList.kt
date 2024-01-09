@@ -68,10 +68,6 @@ interface ContentApiList {
     suspend fun editDataLoader(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Path("data_loader_id") dataLoaderId: String,@Body body: DataLoaderSchema)
     : Response<DataLoaderResponseSchema>
     
-    @GET ("/service/platform/content/v1.0/company/{company_id}/application/{application_id}/data-loader/service/{service_name}")
-    suspend fun getDataLoadersByService(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Path("service_name") serviceName: String)
-    : Response<DataLoaderResponseSchema>
-    
     @PUT ("/service/platform/content/v1.0/company/{company_id}/application/{application_id}/data-loader/{data_loader_id}/select")
     suspend fun selectDataLoader(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Path("data_loader_id") dataLoaderId: String)
     : Response<DataLoaderResponseSchema>
@@ -220,35 +216,11 @@ interface ContentApiList {
     suspend fun updateSEOConfiguration(@Path("company_id") companyId: String, @Path("application_id") applicationId: String,@Body body: SeoComponent)
     : Response<SeoSchema>
     
-    @GET ("/service/platform/content/v1.0/company/{company_id}/application/{application_id}/seo/schema/default")
-    suspend fun getDefaultSEOMarkupSchema(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Query("page_type") pageType: String?)
-    : Response<DefaultSchemaComponent>
-    
-    @GET ("/service/platform/content/v1.0/company/{company_id}/application/{application_id}/seo/schema")
-    suspend fun getSEOMarkupSchemas(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Query("title") title: String?, @Query("active") active: String?, @Query("page_no") pageNo: Int?, @Query("page_size") pageSize: Int?)
-    : Response<SeoSchemaComponent>
-    
-    @POST ("/service/platform/content/v1.0/company/{company_id}/application/{application_id}/seo/schema")
-    suspend fun createSEOMarkupSchema(@Path("company_id") companyId: String, @Path("application_id") applicationId: String,@Body body: SEOSchemaMarkupTemplateRequestBody)
-    : Response<SEOSchemaMarkupTemplate>
-    
-    @GET ("/service/platform/content/v1.0/company/{company_id}/application/{application_id}/seo/schema/{id}")
-    suspend fun getSEOMarkupSchema(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Path("id") id: String)
-    : Response<SEOSchemaMarkupTemplate>
-    
-    @PUT ("/service/platform/content/v1.0/company/{company_id}/application/{application_id}/seo/schema/{id}")
-    suspend fun editSEOMarkupSchema(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Path("id") id: String,@Body body: SEOSchemaMarkupTemplateRequestBody)
-    : Response<SEOSchemaMarkupTemplate>
-    
-    @DELETE ("/service/platform/content/v1.0/company/{company_id}/application/{application_id}/seo/schema/{id}")
-    suspend fun deleteSEOMarkupSchema(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Path("id") id: String)
-    : Response<SEOSchemaMarkupTemplate>
-    
-    @GET ("/service/platform/content/v1.0/company/{company_id}/application/{application_id}/slideshows")
+    @GET ("/service/platform/content/v1.0/company/{company_id}/application/{application_id}/slideshows/")
     suspend fun getSlideshows(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Query("device_platform") devicePlatform: String, @Query("page_no") pageNo: Int?, @Query("page_size") pageSize: Int?)
     : Response<SlideshowGetResponse>
     
-    @POST ("/service/platform/content/v1.0/company/{company_id}/application/{application_id}/slideshows")
+    @POST ("/service/platform/content/v1.0/company/{company_id}/application/{application_id}/slideshows/")
     suspend fun createSlideshow(@Path("company_id") companyId: String, @Path("application_id") applicationId: String,@Body body: SlideshowRequest)
     : Response<SlideshowSchema>
     
@@ -311,197 +283,5 @@ interface ContentApiList {
     @GET ("/service/platform/content/v2.0/company/{company_id}/application/{application_id}/pages/{slug}")
     suspend fun getPageBySlug(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Path("slug") slug: String)
     : Response<PageSchema>
-    
-    @GET ("/service/platform/content/v1.0/company/{company_id}/metafields/types")
-    suspend fun getCustomFieldTypes(@Path("company_id") companyId: String)
-    : Response<CustomObjectByIdSchema>
-    
-    @GET ("/service/platform/content/v1.0/company/{company_id}/metafields/resources")
-    suspend fun getResources(@Path("company_id") companyId: String)
-    : Response<ResourcesSchema>
-    
-    @GET ("/service/platform/content/v1.0/company/{company_id}/metafields/definitions")
-    suspend fun getCustomFieldDefinitions(@Path("company_id") companyId: String, @Query("page_no") pageNo: String, @Query("page_size") pageSize: String, @Query("resource") resource: String?, @Query("type") type: String?, @Query("search") search: String?)
-    : Response<CustomFieldDefinitionsSchema>
-    
-    @POST ("/service/platform/content/v1.0/company/{company_id}/metafields/definitions")
-    suspend fun createCustomFieldDefinition(@Path("company_id") companyId: String,@Body body: CustomFieldDefinitionRequestSchema)
-    : Response<CustomFieldDefinitionDetailResSchema>
-    
-    @GET ("/service/platform/content/v1.0/company/{company_id}/metafields/definitions/{definition_id}")
-    suspend fun getCustomFieldDefinition(@Path("company_id") companyId: String, @Path("definition_id") definitionId: String)
-    : Response<CustomFieldDefinitionDetailResSchema>
-    
-    @PUT ("/service/platform/content/v1.0/company/{company_id}/metafields/definitions/{definition_id}")
-    suspend fun updateCustomFieldDefinition(@Path("company_id") companyId: String, @Path("definition_id") definitionId: String,@Body body: CustomFieldDefinitionRequestSchema)
-    : Response<CustomFieldDefinitionDetailResSchema>
-    
-    @DELETE ("/service/platform/content/v1.0/company/{company_id}/metafields/definitions/{definition_id}")
-    suspend fun deleteCustomFieldDefinition(@Path("company_id") companyId: String, @Path("definition_id") definitionId: String)
-    : Response<CustomDataDeleteSchema>
-    
-    @GET ("/service/platform/content/v1.0/company/{company_id}/metafields/{resource}")
-    suspend fun getCustomFields(@Path("company_id") companyId: String, @Path("resource") resource: String)
-    : Response<CustomFieldsResponseSchema>
-    
-    @GET ("/service/platform/content/v1.0/company/{company_id}/metafields/{resource}/{resource_id}")
-    suspend fun getCustomFieldsByResourceId(@Path("company_id") companyId: String, @Path("resource") resource: String, @Path("resource_id") resourceId: String)
-    : Response<CustomFieldsResponseByResourceIdSchema>
-    
-    @PUT ("/service/platform/content/v1.0/company/{company_id}/metafields/{resource}/{resource_id}")
-    suspend fun createCustomFieldByResourceId(@Path("company_id") companyId: String, @Path("resource") resource: String, @Path("resource_id") resourceId: String,@Body body: CustomFieldRequestSchema)
-    : Response<CustomFieldsResponseByResourceIdSchema>
-    
-    @POST ("/service/platform/content/v1.0/company/{company_id}/metaobjects/definitions")
-    suspend fun createCustomObjectDefinition(@Path("company_id") companyId: String,@Body body: CustomObjectDefinitionRequestSchema)
-    : Response<CustomObjectDefinitionSchema>
-    
-    @GET ("/service/platform/content/v1.0/company/{company_id}/metaobjects/definitions")
-    suspend fun getCustomObjectDefinitions(@Path("company_id") companyId: String, @Query("page_no") pageNo: String, @Query("page_size") pageSize: String, @Query("search") search: String?)
-    : Response<CustomObjectDefinitionsSchema>
-    
-    @GET ("/service/platform/content/v1.0/company/{company_id}/metaobjects/definitions/{definition_id}")
-    suspend fun getCustomObjectDefinition(@Path("company_id") companyId: String, @Path("definition_id") definitionId: String)
-    : Response<CustomObjectDefinitionSchema>
-    
-    @PUT ("/service/platform/content/v1.0/company/{company_id}/metaobjects/definitions/{definition_id}")
-    suspend fun updateCustomObjectDefinition(@Path("company_id") companyId: String, @Path("definition_id") definitionId: String,@Body body: CustomObjectDefinitionUpdateRequestSchema)
-    : Response<CustomObjectDefinitionSchema>
-    
-    @DELETE ("/service/platform/content/v1.0/company/{company_id}/metaobjects/definitions/{definition_id}")
-    suspend fun deleteCustomObjectDefinition(@Path("company_id") companyId: String, @Path("definition_id") definitionId: String)
-    : Response<CustomObjectDefinitionDeleteResponseSchema>
-    
-    @GET ("/service/platform/content/v1.0/company/{company_id}/metaobjects")
-    suspend fun getCustomObjects(@Path("company_id") companyId: String, @Query("definition_id") definitionId: String?, @Query("page_no") pageNo: String, @Query("page_size") pageSize: String)
-    : Response<CustomObjectsSchema>
-    
-    @POST ("/service/platform/content/v1.0/company/{company_id}/metaobjects")
-    suspend fun createCustomObject(@Path("company_id") companyId: String,@Body body: CustomObjectRequestSchema)
-    : Response<CustomObjectSchema>
-    
-    @GET ("/service/platform/content/v1.0/company/{company_id}/metaobjects/{metaobject_id}")
-    suspend fun getCustomObject(@Path("company_id") companyId: String, @Path("metaobject_id") metaobjectId: String)
-    : Response<CustomObjectByIdSchema>
-    
-    @DELETE ("/service/platform/content/v1.0/company/{company_id}/metaobjects/{metaobject_id}")
-    suspend fun deleteCustomObject(@Path("company_id") companyId: String, @Path("metaobject_id") metaobjectId: String)
-    : Response<CustomDataDeleteSchema>
-    
-    @PUT ("/service/platform/content/v1.0/company/{company_id}/metaobjects/{metaobject_id}")
-    suspend fun updateCustomObject(@Path("company_id") companyId: String, @Path("metaobject_id") metaobjectId: String,@Body body: CustomObjectRequestSchema)
-    : Response<CustomObjectByIdSchema>
-    
-    @GET ("/service/platform/content/v1.0/company/{company_id}/metaobjects/jobs")
-    suspend fun getJobs(@Path("company_id") companyId: String, @Query("page") page: String, @Query("page_size") pageSize: String, @Query("action_type") actionType: String)
-    : Response<CustomObjectBulkEntry>
-    
-    @POST ("/service/platform/content/v1.0/company/{company_id}/metaobjects/bulk/{definition_id}/upload")
-    suspend fun importCustomObjectEntries(@Path("company_id") companyId: String, @Path("definition_id") definitionId: String,@Body body: CustomObjectBulkSchema)
-    : Response<CustomObjectEntryBulkUploadResponse>
-    
-    @GET ("/service/platform/content/v1.0/company/{company_id}/metaobjects/bulk/{definition_id}/download")
-    suspend fun exportCustomObjectEntries(@Path("company_id") companyId: String, @Path("definition_id") definitionId: String)
-    : Response<CustomObjectBulkEntryInitiateDownload>
-    
-    @GET ("/service/platform/content/v1.0/company/{company_id}/metaobjects/bulk/{definition_id}/sample")
-    suspend fun sampleCustomObjectBulkEntry(@Path("company_id") companyId: String, @Path("definition_id") definitionId: String)
-    : Response<String>
-    
-    @GET ("/service/platform/content/v1.0/company/{company_id}/application/{application_id}/metafields/types")
-    suspend fun getAppCustomFieldTypes(@Path("company_id") companyId: String, @Path("application_id") applicationId: String)
-    : Response<CustomObjectByIdSchema>
-    
-    @GET ("/service/platform/content/v1.0/company/{company_id}/application/{application_id}/metafields/resources")
-    suspend fun getAppResources(@Path("company_id") companyId: String, @Path("application_id") applicationId: String)
-    : Response<ResourcesSchema>
-    
-    @GET ("/service/platform/content/v1.0/company/{company_id}/application/{application_id}/metafields/definitions")
-    suspend fun getAppCustomFieldDefinitions(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Query("page_no") pageNo: String, @Query("page_size") pageSize: String, @Query("resource") resource: String?, @Query("type") type: String?, @Query("search") search: String?)
-    : Response<CustomFieldDefinitionsSchema>
-    
-    @POST ("/service/platform/content/v1.0/company/{company_id}/application/{application_id}/metafields/definitions")
-    suspend fun createAppCustomFieldDefinition(@Path("company_id") companyId: String, @Path("application_id") applicationId: String,@Body body: CustomFieldDefinitionRequestSchema)
-    : Response<CustomFieldDefinitionDetailResSchema>
-    
-    @GET ("/service/platform/content/v1.0/company/{company_id}/application/{application_id}/metafields/definitions/{definition_id}")
-    suspend fun getAppCustomFieldDefinition(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Path("definition_id") definitionId: String)
-    : Response<CustomFieldDefinitionDetailResSchema>
-    
-    @PUT ("/service/platform/content/v1.0/company/{company_id}/application/{application_id}/metafields/definitions/{definition_id}")
-    suspend fun updateAppCustomFieldDefinition(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Path("definition_id") definitionId: String,@Body body: CustomFieldDefinitionRequestSchema)
-    : Response<CustomFieldDefinitionDetailResSchema>
-    
-    @DELETE ("/service/platform/content/v1.0/company/{company_id}/application/{application_id}/metafields/definitions/{definition_id}")
-    suspend fun deleteAppCustomFieldDefinition(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Path("definition_id") definitionId: String)
-    : Response<CustomDataDeleteSchema>
-    
-    @GET ("/service/platform/content/v1.0/company/{company_id}/application/{application_id}/metafields/{resource}")
-    suspend fun getAppCustomFields(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Path("resource") resource: String)
-    : Response<CustomFieldsResponseSchema>
-    
-    @GET ("/service/platform/content/v1.0/company/{company_id}/application/{application_id}/metafields/{resource}/{resource_id}")
-    suspend fun getAppCustomFieldsByResourceId(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Path("resource") resource: String, @Path("resource_id") resourceId: String)
-    : Response<CustomFieldsResponseByResourceIdSchema>
-    
-    @PUT ("/service/platform/content/v1.0/company/{company_id}/application/{application_id}/metafields/{resource}/{resource_id}")
-    suspend fun createAppCustomFieldByResourceId(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Path("resource") resource: String, @Path("resource_id") resourceId: String,@Body body: CustomFieldRequestSchema)
-    : Response<CustomFieldsResponseByResourceIdSchema>
-    
-    @POST ("/service/platform/content/v1.0/company/{company_id}/application/{application_id}/metaobjects/definitions")
-    suspend fun createAppCustomObjectDefinition(@Path("company_id") companyId: String, @Path("application_id") applicationId: String,@Body body: CustomObjectDefinitionRequestSchema)
-    : Response<CustomObjectDefinitionSchema>
-    
-    @GET ("/service/platform/content/v1.0/company/{company_id}/application/{application_id}/metaobjects/definitions")
-    suspend fun getAppCustomObjectDefinitions(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Query("page_no") pageNo: String, @Query("page_size") pageSize: String, @Query("search") search: String?)
-    : Response<CustomObjectDefinitionsSchema>
-    
-    @GET ("/service/platform/content/v1.0/company/{company_id}/application/{application_id}/metaobjects/definitions/{definition_id}")
-    suspend fun getAppCustomObjectDefinition(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Path("definition_id") definitionId: String)
-    : Response<CustomObjectDefinitionSchema>
-    
-    @PUT ("/service/platform/content/v1.0/company/{company_id}/application/{application_id}/metaobjects/definitions/{definition_id}")
-    suspend fun updateAppCustomObjectDefinition(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Path("definition_id") definitionId: String,@Body body: CustomObjectDefinitionUpdateRequestSchema)
-    : Response<CustomObjectDefinitionSchema>
-    
-    @DELETE ("/service/platform/content/v1.0/company/{company_id}/application/{application_id}/metaobjects/definitions/{definition_id}")
-    suspend fun deleteAppCustomObjectDefinition(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Path("definition_id") definitionId: String)
-    : Response<CustomObjectDefinitionDeleteResponseSchema>
-    
-    @GET ("/service/platform/content/v1.0/company/{company_id}/application/{application_id}/metaobjects")
-    suspend fun getAppCustomObjects(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Query("definition_id") definitionId: String?, @Query("page_no") pageNo: String, @Query("page_size") pageSize: String)
-    : Response<CustomObjectsSchema>
-    
-    @POST ("/service/platform/content/v1.0/company/{company_id}/application/{application_id}/metaobjects")
-    suspend fun createAppCustomObject(@Path("company_id") companyId: String, @Path("application_id") applicationId: String,@Body body: CustomObjectRequestSchema)
-    : Response<CustomObjectSchema>
-    
-    @GET ("/service/platform/content/v1.0/company/{company_id}/application/{application_id}/metaobjects/{metaobject_id}")
-    suspend fun getAppCustomObject(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Path("metaobject_id") metaobjectId: String)
-    : Response<CustomObjectByIdSchema>
-    
-    @DELETE ("/service/platform/content/v1.0/company/{company_id}/application/{application_id}/metaobjects/{metaobject_id}")
-    suspend fun deleteAppCustomObject(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Path("metaobject_id") metaobjectId: String)
-    : Response<CustomDataDeleteSchema>
-    
-    @PUT ("/service/platform/content/v1.0/company/{company_id}/application/{application_id}/metaobjects/{metaobject_id}")
-    suspend fun updateAppCustomObject(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Path("metaobject_id") metaobjectId: String,@Body body: CustomObjectRequestSchema)
-    : Response<CustomObjectByIdSchema>
-    
-    @GET ("/service/platform/content/v1.0/company/{company_id}/application/{application_id}/metaobjects/jobs")
-    suspend fun getAppJobs(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Query("page") page: String, @Query("page_size") pageSize: String, @Query("action_type") actionType: String)
-    : Response<CustomObjectBulkEntry>
-    
-    @POST ("/service/platform/content/v1.0/company/{company_id}/application/{application_id}/metaobjects/bulk/{definition_id}/upload")
-    suspend fun importAppCustomObjectEntries(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Path("definition_id") definitionId: String,@Body body: CustomObjectBulkSchema)
-    : Response<CustomObjectEntryBulkUploadResponse>
-    
-    @GET ("/service/platform/content/v1.0/company/{company_id}/application/{application_id}/metaobjects/bulk/{definition_id}/download")
-    suspend fun exportAppCustomObjectEntries(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Path("definition_id") definitionId: String)
-    : Response<CustomObjectBulkEntryInitiateDownload>
-    
-    @GET ("/service/platform/content/v1.0/company/{company_id}/application/{application_id}/metaobjects/bulk/{definition_id}/sample")
-    suspend fun sampleAppCustomObjectBulkEntry(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Path("definition_id") definitionId: String)
-    : Response<String>
     
 }

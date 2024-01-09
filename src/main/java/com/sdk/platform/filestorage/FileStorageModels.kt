@@ -162,6 +162,28 @@ data class StartResponse(
 
              
 /*
+    Model: Params
+*/
+@Parcelize
+data class Params(
+    
+    
+    
+    @SerializedName("subpath")
+    var subpath: String?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
     Model: StartRequest
 */
 @Parcelize
@@ -182,7 +204,7 @@ data class StartRequest(
     var tags: ArrayList<String>?=null,
     
     @SerializedName("params")
-    var params: @RawValue HashMap<String,Any>?=null
+    var params: Params?=null
     
 ): Parcelable {
     
@@ -1825,8 +1847,8 @@ data class DummyTemplateDataPayload(
     
     
     
-    @SerializedName("is_export")
-    var isExport: Boolean?=null,
+    @SerializedName("is_international")
+    var isInternational: Boolean?=null,
     
     @SerializedName("app_domain_name")
     var appDomainName: String?=null,
@@ -2026,15 +2048,10 @@ data class DummyTemplateData(
     @SerializedName("payload")
     var payload: DummyTemplateDataPayload?=null,
     
-    @SerializedName("country_code")
-    var countryCode: String?=null,
-    
     @SerializedName("__v")
     var v: Int?=null
     
 ): Parcelable {
-    
-    
     
     
     
@@ -2680,28 +2697,6 @@ data class PaymentReceiptMeta(
     
     
     
-    
-    
-    
-    
-    
-}
-
-
-
-             
-/*
-    Model: ExtensionSlug
-*/
-@Parcelize
-data class ExtensionSlug(
-    
-    
-    
-    @SerializedName("extension_slug")
-    var extensionSlug: String?=null
-    
-): Parcelable {
     
     
     

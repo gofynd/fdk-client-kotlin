@@ -104,16 +104,4 @@ interface FinanceApiList {
     suspend fun getReportingFilters(@Path("company_id") companyId: String, @Query("filter_key") filterKey: String, @Query("affiliate_id") affiliateId: String?)
     : Response<GetReportingFiltersResponse>
     
-    @GET ("/service/platform/finance/v1.0/company/{company_id}/invoice/{invoice_number}/payment")
-    suspend fun invoicePaymentDetails(@Path("company_id") companyId: String, @Path("invoice_number") invoiceNumber: String)
-    : Response<InvoicePaymentDetailsResponse>
-    
-    @GET ("/service/platform/finance/v1.0/company/{company_id}/invoice/{invoice_number}/activity")
-    suspend fun invoiceActivityLogs(@Path("company_id") companyId: String, @Path("invoice_number") invoiceNumber: String)
-    : Response<InvoiceActivityLogsResponse>
-    
-    @POST ("/service/platform/finance/v1.0/company/{company_id}/credit-notes/unlock")
-    suspend fun unlockCreditNote(@Path("company_id") companyId: String,@Body body: UnlockCreditNoteRequest)
-    : Response<UnlockCreditNoteResponse>
-    
 }

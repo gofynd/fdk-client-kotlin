@@ -17,7 +17,7 @@ interface LeadApiList {
     : Response<Ticket>
     
     @GET ("/service/platform/lead/v1.0/company/{company_id}/application/{application_id}/ticket")
-    suspend fun getNewTickets(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Query("items") items: Boolean?, @Query("filters") filters: Boolean?, @Query("q") q: String?, @Query("status") status: String?, @Query("priority") priority: PriorityEnum?, @Query("category") category: String?)
+    suspend fun getTickets(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Query("items") items: Boolean?, @Query("filters") filters: Boolean?, @Query("q") q: String?, @Query("status") status: String?, @Query("priority") priority: PriorityEnum?, @Query("category") category: String?)
     : Response<TicketList>
     
     @GET ("/service/platform/lead/v1.0/company/{company_id}/ticket/{id}")
@@ -29,11 +29,11 @@ interface LeadApiList {
     : Response<Ticket>
     
     @GET ("/service/platform/lead/v1.0/company/{company_id}/application/{application_id}/ticket/{id}")
-    suspend fun getNewTicket(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Path("id") id: String)
+    suspend fun getTicket(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Path("id") id: String)
     : Response<Ticket>
     
     @PUT ("/service/platform/lead/v1.0/company/{company_id}/application/{application_id}/ticket/{id}")
-    suspend fun editNewTicket(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Path("id") id: String,@Body body: EditTicketPayload)
+    suspend fun editTicket(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Path("id") id: String,@Body body: EditTicketPayload)
     : Response<Ticket>
     
     @POST ("/service/platform/lead/v1.0/company/{company_id}/ticket/{id}/history")
@@ -53,11 +53,11 @@ interface LeadApiList {
     : Response<TicketFeedback>
     
     @POST ("/service/platform/lead/v1.0/company/{company_id}/application/{application_id}/ticket/{id}/history")
-    suspend fun createNewHistory(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Path("id") id: String,@Body body: TicketHistoryPayload)
+    suspend fun createHistory(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Path("id") id: String,@Body body: TicketHistoryPayload)
     : Response<TicketHistory>
     
     @GET ("/service/platform/lead/v1.0/company/{company_id}/application/{application_id}/ticket/{id}/history")
-    suspend fun getNewTicketHistory(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Path("id") id: String)
+    suspend fun getTicketHistory(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Path("id") id: String)
     : Response<TicketHistoryList>
     
     @GET ("/service/platform/lead/v1.0/company/{company_id}/application/{application_id}/form/{slug}")
@@ -66,10 +66,6 @@ interface LeadApiList {
     
     @PUT ("/service/platform/lead/v1.0/company/{company_id}/application/{application_id}/form/{slug}")
     suspend fun editCustomForm(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Path("slug") slug: String,@Body body: EditCustomFormPayload)
-    : Response<CustomForm>
-    
-    @DELETE ("/service/platform/lead/v1.0/company/{company_id}/application/{application_id}/form/{slug}")
-    suspend fun deleteCustomForm(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Path("slug") slug: String)
     : Response<CustomForm>
     
     @GET ("/service/platform/lead/v1.0/company/{company_id}/application/{application_id}/form")
@@ -85,7 +81,7 @@ interface LeadApiList {
     : Response<GetTokenForVideoRoomResponse>
     
     @GET ("/service/platform/lead/v1.0/company/{company_id}/application/{application_id}/video/room/{unique_name}/token")
-    suspend fun getNewTokenForVideoRoom(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Path("unique_name") uniqueName: String)
+    suspend fun getTokenForVideoRoom(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Path("unique_name") uniqueName: String)
     : Response<GetTokenForVideoRoomResponse>
     
     @GET ("/service/platform/lead/v1.0/company/{company_id}/video/room/{unique_name}/participants")
@@ -93,7 +89,7 @@ interface LeadApiList {
     : Response<GetParticipantsInsideVideoRoomResponse>
     
     @GET ("/service/platform/lead/v1.0/company/{company_id}/application/{application_id}/video/room/{unique_name}/participants")
-    suspend fun getNewVideoParticipants(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Path("unique_name") uniqueName: String)
+    suspend fun getVideoParticipants(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Path("unique_name") uniqueName: String)
     : Response<GetParticipantsInsideVideoRoomResponse>
     
     @POST ("/service/platform/lead/v1.0/company/{company_id}/application/{application_id}/video/room")

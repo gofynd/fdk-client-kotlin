@@ -209,19 +209,4 @@ interface UserApiList {
     suspend fun sendVerificationLinkToEmail(@Url url1: String?    ,  @Query("platform") platform: String?, @Body body: EditEmailRequestSchema)
     : Response<SendEmailVerifyLinkSuccess>
     
-    
-    @GET 
-    suspend fun userExists(@Url url1: String?    ,  @Query("q") q: String)
-    : Response<UserExistsResponse>
-    
-    
-    @GET 
-    suspend fun getUserAttributes(@Url url1: String?    ,  @Query("slug") slug: String?)
-    : Response<UserAttributes>
-    
-    
-    @PATCH 
-    suspend fun updateUserAttributes(@Url url1: String?   ,@Body body: UpdateUserAttributesRequest)
-    : Response<UserAttributes>
-    
 }

@@ -5,31 +5,30 @@
 ##### [Back to Platform docs](./README.md)
 
 ## Lead Methods
-Handles communication between Administrator-Staff and Staff-Users
+Handles communication between Administrator
 
 Default
 * [getPlatformTickets](#getplatformtickets)
 * [createTicket](#createticket)
-* [getNewTickets](#getnewtickets)
+* [getTickets](#gettickets)
 * [getPlatformTicket](#getplatformticket)
 * [editPlatformTicket](#editplatformticket)
-* [getNewTicket](#getnewticket)
-* [editNewTicket](#editnewticket)
+* [getTicket](#getticket)
+* [editTicket](#editticket)
 * [createPlatformTicketHistory](#createplatformtickethistory)
 * [getPlatformTicketHistory](#getplatformtickethistory)
 * [getFeedbacks](#getfeedbacks)
 * [submitFeedback](#submitfeedback)
-* [createNewHistory](#createnewhistory)
-* [getNewTicketHistory](#getnewtickethistory)
+* [createHistory](#createhistory)
+* [getTicketHistory](#gettickethistory)
 * [getCustomForm](#getcustomform)
 * [editCustomForm](#editcustomform)
-* [deleteCustomForm](#deletecustomform)
 * [getCustomForms](#getcustomforms)
 * [createCustomForm](#createcustomform)
 * [getTokenForPlatformVideoRoom](#gettokenforplatformvideoroom)
-* [getNewTokenForVideoRoom](#getnewtokenforvideoroom)
+* [getTokenForVideoRoom](#gettokenforvideoroom)
 * [getPlatformVideoParticipants](#getplatformvideoparticipants)
-* [getNewVideoParticipants](#getnewvideoparticipants)
+* [getVideoParticipants](#getvideoparticipants)
 * [openVideoRoom](#openvideoroom)
 * [closeVideoRoom](#closevideoroom)
 * [getGeneralConfig](#getgeneralconfig)
@@ -739,14 +738,14 @@ Success
 ---
 
 
-### getNewTickets
+### getTickets
 Gets the list of Application level Tickets and/or ticket filters depending on query params
 
 
 
 
 ```kotlin
-platformClient.application("<APPLICATION_ID>").lead.getNewTickets(items: items, filters: filters, q: q, status: status, priority: priority, category: category).safeAwait{ response, error->
+platformClient.application("<APPLICATION_ID>").lead.getTickets(items: items, filters: filters, q: q, status: status, priority: priority, category: category).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -1694,14 +1693,14 @@ Success
 ---
 
 
-### getNewTicket
+### getTicket
 Retreives ticket details of a application level ticket
 
 
 
 
 ```kotlin
-platformClient.application("<APPLICATION_ID>").lead.getNewTicket(id: id).safeAwait{ response, error->
+platformClient.application("<APPLICATION_ID>").lead.getTicket(id: id).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -1953,14 +1952,14 @@ Success
 ---
 
 
-### editNewTicket
+### editTicket
 Edits ticket details of a application level ticket
 
 
 
 
 ```kotlin
-platformClient.application("<APPLICATION_ID>").lead.editNewTicket(id: id, body: body).safeAwait{ response, error->
+platformClient.application("<APPLICATION_ID>").lead.editTicket(id: id, body: body).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -2708,14 +2707,14 @@ Success
 ---
 
 
-### createNewHistory
+### createHistory
 Create history for specific application level ticket
 
 
 
 
 ```kotlin
-platformClient.application("<APPLICATION_ID>").lead.createNewHistory(id: id, body: body).safeAwait{ response, error->
+platformClient.application("<APPLICATION_ID>").lead.createHistory(id: id, body: body).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -2812,14 +2811,14 @@ Success
 ---
 
 
-### getNewTicketHistory
+### getTicketHistory
 Gets history list for specific application level ticket
 
 
 
 
 ```kotlin
-platformClient.application("<APPLICATION_ID>").lead.getNewTicketHistory(id: id).safeAwait{ response, error->
+platformClient.application("<APPLICATION_ID>").lead.getTicketHistory(id: id).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -3163,131 +3162,6 @@ platformClient.application("<APPLICATION_ID>").lead.editCustomForm(slug: slug, b
 
 
 Edit the given custom form field such as adding or deleting input, assignee, title, decription, notification and polling information.
-
-*Returned Response:*
-
-
-
-
-[CustomForm](#CustomForm)
-
-Success
-
-
-
-
-<details>
-<summary><i>&nbsp; Examples:</i></summary>
-
-
-<details>
-<summary><i>&nbsp; Default</i></summary>
-
-```json
-{
-  "value": [
-    {
-      "required": false,
-      "login_required": false,
-      "should_notify": false,
-      "inputs": [
-        {
-          "type": "email",
-          "showRegexInput": true,
-          "enum": [],
-          "regex": "\\S+@\\S+\\.\\S+",
-          "display": "email",
-          "required": true,
-          "key": "email"
-        },
-        {
-          "type": "number",
-          "showRegexInput": false,
-          "enum": [],
-          "display": "Enter your fav number",
-          "placeholder": "123",
-          "key": "enter-your-fav-number"
-        }
-      ],
-      "available_assignees": [],
-      "_id": "602e900a2042255c03cadaf0",
-      "title": "service-test-satyen",
-      "description": "testing form from service",
-      "slug": "service-test-satyen",
-      "header_image": "https://hdn-1.addsale.com/x0/support-ticket/files/free/original/KZL86aN5l-service-test-satyen.jpeg",
-      "application_id": "000000000000000000000001",
-      "created_on": {
-        "user_agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 11_2_0) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/88.0.4324.150 Safari/537.36",
-        "platform": "web",
-        "meta": {
-          "browser": {
-            "name": "Chrome",
-            "version": "88.0.4324.150"
-          },
-          "os": {
-            "name": "macOS",
-            "version": "11.2.0"
-          },
-          "platform": {
-            "type": "desktop",
-            "vendor": "Apple"
-          },
-          "engine": {
-            "name": "Blink"
-          }
-        }
-      },
-      "created_by": "5f8147abbd1a0a870f61f1a6",
-      "createdAt": "2021-02-18T16:04:26.495Z",
-      "updatedAt": "2021-02-26T10:16:49.272Z",
-      "__v": 0
-    }
-  ]
-}
-```
-</details>
-
-</details>
-
-
-
-
-
-
-
-
-
----
-
-
-### deleteCustomForm
-Delete a custom form
-
-
-
-
-```kotlin
-platformClient.application("<APPLICATION_ID>").lead.deleteCustomForm(slug: slug).safeAwait{ response, error->
-    response?.let{
-      // Use response
-    } ->
-    error?.let{
-      
-    } 
-}
-```
-
-
-
-
-
-| Argument  |  Type  | Required | Description |
-| --------- | -----  | -------- | ----------- | 
-| slug | String | yes | Slug of form whose response is getting submitted |  
-
-
-
-Delete a custom form using it's slug
 
 *Returned Response:*
 
@@ -3777,14 +3651,14 @@ Success
 ---
 
 
-### getNewTokenForVideoRoom
+### getTokenForVideoRoom
 Get Token to join a specific Video Room using it's unqiue name
 
 
 
 
 ```kotlin
-platformClient.application("<APPLICATION_ID>").lead.getNewTokenForVideoRoom(uniqueName: uniqueName).safeAwait{ response, error->
+platformClient.application("<APPLICATION_ID>").lead.getTokenForVideoRoom(uniqueName: uniqueName).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -3917,14 +3791,14 @@ Success
 ---
 
 
-### getNewVideoParticipants
+### getVideoParticipants
 Get participants of a specific Video Room using it's unique name
 
 
 
 
 ```kotlin
-platformClient.application("<APPLICATION_ID>").lead.getNewVideoParticipants(uniqueName: uniqueName).safeAwait{ response, error->
+platformClient.application("<APPLICATION_ID>").lead.getVideoParticipants(uniqueName: uniqueName).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -4758,17 +4632,6 @@ Success
 ---
 
 
- 
- 
- #### [ErrorMessage](#ErrorMessage)
-
- | Properties | Type | Nullable | Description |
- | ---------- | ---- | -------- | ----------- |
- | message | String? |  yes  |  |
-
----
-
-
 
 
 ### Enums
@@ -4799,7 +4662,6 @@ Success
  | rating | rating | This means history event is a rating |
  | log | log | This means history event is a changelog |
  | comment | comment | This means history event is a comment |
- | thread | thread | This means history event is a thread |
 
 ---
 

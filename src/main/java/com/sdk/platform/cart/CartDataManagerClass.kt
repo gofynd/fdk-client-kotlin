@@ -747,10 +747,10 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     }
     
     
-    suspend fun getAppCoupons(id: String?=null, buyNow: Boolean?=null, slug: String?=null, storeId: String?=null)
+    suspend fun getAppCoupons(id: String?=null, buyNow: Boolean?=null)
     : Response<GetCouponResponse>? {
         return if (config.oauthClient.isAccessTokenValid()) {
-                cartApiList?.getAppCoupons(companyId = config.companyId , applicationId = applicationId , id = id, buyNow = buyNow, slug = slug, storeId = storeId )
+                cartApiList?.getAppCoupons(companyId = config.companyId , applicationId = applicationId , id = id, buyNow = buyNow )
         } else {
             null
         }

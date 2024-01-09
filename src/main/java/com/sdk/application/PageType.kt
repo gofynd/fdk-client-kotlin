@@ -246,5 +246,3 @@ import android.net.Uri
         }
     }
 
-
-

@@ -53,7 +53,7 @@ interface BillingApiList {
     : Response<SubscriptionStatus>
     
     @GET ("/service/platform/billing/v1.0/company/{company_id}/subscription/current-limit")
-    suspend fun getFeatureLimitConfig(@Path("company_id") companyId: String, @Query("product_suite") productSuite: String?, @Query("type") type: String?)
+    suspend fun getFeatureLimitConfig(@Path("company_id") companyId: String)
     : Response<SubscriptionLimit>
     
     @POST ("/service/platform/billing/v1.0/company/{company_id}/subscription/activate")
@@ -75,9 +75,5 @@ interface BillingApiList {
     @POST ("/service/platform/billing/v1.0/company/{company_id}/payment/initiate")
     suspend fun subscripePlan(@Path("company_id") companyId: String,@Body body: SunscribePlan)
     : Response<SubscribePlanRes>
-    
-    @GET ("/service/platform/billing/v1.0/company/{company_id}/entity/detail")
-    suspend fun getentityDetail(@Path("company_id") companyId: String, @Query("entity_name") entityName: String, @Query("entity_id") entityId: String?, @Query("channel") channel: String, @Query("component") component: String?, @Query("component_name") componentName: String?)
-    : Response<EntityResponse>
     
 }

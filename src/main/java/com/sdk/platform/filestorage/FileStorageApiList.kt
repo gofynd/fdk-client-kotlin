@@ -41,11 +41,7 @@ interface FileStorageApiList {
     : Response<HashMap<String,Any>>
     
     @GET ("/service/platform/assets/v1.0/company/{company_id}/application/{application_id}/namespaces/{namespace}/browse")
-    suspend fun appbrowse(@Path("namespace") namespace: String, @Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Query("page") page: Int?, @Query("limit") limit: Int?, @Query("search") search: String?)
-    : Response<HashMap<String,Any>>
-    
-    @POST ("/service/platform/assets/v1.0/company/{company_id}/application/{application_id}/namespaces/{namespace}/browse")
-    suspend fun browsefiles(@Path("namespace") namespace: String, @Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Query("page") page: Int?, @Query("limit") limit: Int?, @Query("search") search: String?,@Body body: ExtensionSlug)
+    suspend fun appbrowse(@Path("namespace") namespace: String, @Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Query("page") page: Int?, @Query("limit") limit: Int?)
     : Response<HashMap<String,Any>>
     
     @GET ("/service/platform/assets/v1.0/company/{company_id}/proxy")
@@ -53,11 +49,11 @@ interface FileStorageApiList {
     : Response<String>
     
     @GET ("/service/platform/assets/v1.0/company/{company_id}/application/{application_id}/pdf/types")
-    suspend fun getPdfTypes(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Query("country_code") countryCode: String?)
+    suspend fun getPdfTypes(@Path("company_id") companyId: String, @Path("application_id") applicationId: String)
     : Response<InvoiceTypesResponse>
     
     @GET ("/service/platform/assets/v1.0/company/{company_id}/application/{application_id}/pdf/mapper")
-    suspend fun getDefaultPdfData(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Query("pdf_type_id") pdfTypeId: Int, @Query("country_code") countryCode: String?)
+    suspend fun getDefaultPdfData(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Query("pdf_type_id") pdfTypeId: Int)
     : Response<DummyTemplateDataItems>
     
     @PUT ("/service/platform/assets/v1.0/company/{company_id}/application/{application_id}/pdf/config/{id}")
@@ -65,7 +61,7 @@ interface FileStorageApiList {
     : Response<PdfConfigSaveSuccess>
     
     @GET ("/service/platform/assets/v1.0/company/{company_id}/application/{application_id}/pdf/config")
-    suspend fun getDefaultHtmlTemplate(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Query("pdf_type_id") pdfTypeId: Int, @Query("format") format: String, @Query("country_code") countryCode: String?)
+    suspend fun getDefaultHtmlTemplate(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Query("pdf_type_id") pdfTypeId: Int, @Query("format") format: String)
     : Response<PdfConfigSuccess>
     
     @POST ("/service/platform/assets/v1.0/company/{company_id}/application/{application_id}/pdf/config")
@@ -73,7 +69,7 @@ interface FileStorageApiList {
     : Response<PdfConfigSaveSuccess>
     
     @GET ("/service/platform/assets/v1.0/company/{company_id}/application/{application_id}/pdf/default-template")
-    suspend fun getDefaultPdfTemplate(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Query("pdf_type_id") pdfTypeId: Int, @Query("format") format: String, @Query("country_code") countryCode: String?)
+    suspend fun getDefaultPdfTemplate(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Query("pdf_type_id") pdfTypeId: Int, @Query("format") format: String)
     : Response<PdfDefaultTemplateSuccess>
     
     @POST ("/service/platform/assets/v1.0/company/{company_id}/application/{application_id}/pdf/payment-receipt")

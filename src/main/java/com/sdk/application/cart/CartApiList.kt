@@ -41,7 +41,7 @@ interface CartApiList {
     
     
     @GET 
-    suspend fun getCoupons(@Url url1: String?    ,     @Query("id") id: String?, @Query("buy_now") buyNow: Boolean?, @Query("slug") slug: String?, @Query("store_id") storeId: String?)
+    suspend fun getCoupons(@Url url1: String?    ,   @Query("id") id: String?, @Query("buy_now") buyNow: Boolean?)
     : Response<GetCouponResponse>
     
     

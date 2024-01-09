@@ -101,12 +101,6 @@ class CommunicationDataManagerClass(val config: PlatformConfig, val unauthorized
     
     
     
-    
-    
-    
-    
-    
-    
     suspend fun getSystemNotifications(pageNo: Int?=null, pageSize: Int?=null)
     : Response<SystemNotifications>? {
         
@@ -117,8 +111,6 @@ class CommunicationDataManagerClass(val config: PlatformConfig, val unauthorized
             null
         } 
     }
-    
-    
     
     
     
@@ -157,10 +149,10 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     }
     
     
-    suspend fun getEmailProviders(pageNo: Int?=null, pageSize: Int?=null, sort: HashMap<String,Any>?=null, query: HashMap<String,Any>?=null)
+    suspend fun getEmailProviders(pageNo: Int?=null, pageSize: Int?=null, sort: HashMap<String,Any>?=null)
     : Response<EmailProviders>? {
         return if (config.oauthClient.isAccessTokenValid()) {
-                communicationApiList?.getEmailProviders(companyId = config.companyId , applicationId = applicationId , pageNo = pageNo, pageSize = pageSize, sort = sort, query = query )
+                communicationApiList?.getEmailProviders(companyId = config.companyId , applicationId = applicationId , pageNo = pageNo, pageSize = pageSize, sort = sort )
         } else {
             null
         }
@@ -192,17 +184,12 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
             
             
         
-            
-                
-            
-            
-        
     /**
     *
     * Summary: Paginator for getEmailProviders
     **/
     fun getEmailProvidersPaginator(
-    pageSize: Int?=null, sort: HashMap<String,Any>?=null, query: HashMap<String,Any>?=null
+    pageSize: Int?=null, sort: HashMap<String,Any>?=null
     
     ) : Paginator<EmailProviders>{
         val paginator = Paginator<EmailProviders>()
@@ -215,7 +202,7 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
                     val pageId = paginator.nextId
                     val pageNo = paginator.pageNo
                     val pageType = "number"
-                    communicationApiList?.getEmailProviders(companyId = config.companyId , applicationId = applicationId , pageNo = pageNo, pageSize = pageSize, sort = sort, query = query)?.safeAwait{ response, error ->
+                    communicationApiList?.getEmailProviders(companyId = config.companyId , applicationId = applicationId , pageNo = pageNo, pageSize = pageSize, sort = sort)?.safeAwait{ response, error ->
                         response?.let {
                             val page = response.peekContent()?.page
                             paginator.setPaginator(hasNext=page?.hasNext?:false,pageNo=if (page?.hasNext == true) ((pageNo ?: 0) + 1) else pageNo)
@@ -336,15 +323,79 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     }
     
     
-    suspend fun getCampaigns(query: HashMap<String,Any>?=null, pageNo: Int?=null, pageSize: Int?=null, sort: HashMap<String,Any>?=null)
+    suspend fun getCampaigns(pageNo: Int?=null, pageSize: Int?=null, sort: HashMap<String,Any>?=null)
     : Response<Campaigns>? {
         return if (config.oauthClient.isAccessTokenValid()) {
-                communicationApiList?.getCampaigns(companyId = config.companyId , applicationId = applicationId , query = query, pageNo = pageNo, pageSize = pageSize, sort = sort )
+                communicationApiList?.getCampaigns(companyId = config.companyId , applicationId = applicationId , pageNo = pageNo, pageSize = pageSize, sort = sort )
         } else {
             null
         }
     }
     
+    
+    
+        
+            
+                
+            
+            
+        
+            
+                
+            
+            
+        
+            
+            
+        
+            
+                
+            
+            
+        
+            
+                
+            
+            
+        
+    /**
+    *
+    * Summary: Paginator for getCampaigns
+    **/
+    fun getCampaignsPaginator(
+    pageSize: Int?=null, sort: HashMap<String,Any>?=null
+    
+    ) : Paginator<Campaigns>{
+        val paginator = Paginator<Campaigns>()
+        paginator.setCallBack(object : PaginatorCallback<Campaigns> {
+            
+            override suspend fun onNext(
+                onResponse: (Event<Campaigns>?,FdkError?) -> Unit){
+
+                if (config.oauthClient.isAccessTokenValid()) {
+                    val pageId = paginator.nextId
+                    val pageNo = paginator.pageNo
+                    val pageType = "number"
+                    communicationApiList?.getCampaigns(companyId = config.companyId , applicationId = applicationId , pageNo = pageNo, pageSize = pageSize, sort = sort)?.safeAwait{ response, error ->
+                        response?.let {
+                            val page = response.peekContent()?.page
+                            paginator.setPaginator(hasNext=page?.hasNext?:false,pageNo=if (page?.hasNext == true) ((pageNo ?: 0) + 1) else pageNo)
+                            onResponse.invoke(response,null)
+                        }
+                        
+                        error?.let {
+                            onResponse.invoke(null,error)
+                        }
+                    }
+
+                } else {
+                    null
+                }
+            }
+        
+    })
+    return paginator
+    }
     
     suspend fun createCampaign(body: CampaignReq)
     : Response<Campaign>? {
@@ -446,10 +497,10 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     }
     
     
-    suspend fun getAudiences(pageNo: Int?=null, pageSize: Int?=null, sort: HashMap<String,Any>?=null, query: HashMap<String,Any>?=null)
+    suspend fun getAudiences(pageNo: Int?=null, pageSize: Int?=null, sort: HashMap<String,Any>?=null)
     : Response<Audiences>? {
         return if (config.oauthClient.isAccessTokenValid()) {
-                communicationApiList?.getAudiences(companyId = config.companyId , applicationId = applicationId , pageNo = pageNo, pageSize = pageSize, sort = sort, query = query )
+                communicationApiList?.getAudiences(companyId = config.companyId , applicationId = applicationId , pageNo = pageNo, pageSize = pageSize, sort = sort )
         } else {
             null
         }
@@ -481,17 +532,12 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
             
             
         
-            
-                
-            
-            
-        
     /**
     *
     * Summary: Paginator for getAudiences
     **/
     fun getAudiencesPaginator(
-    pageSize: Int?=null, sort: HashMap<String,Any>?=null, query: HashMap<String,Any>?=null
+    pageSize: Int?=null, sort: HashMap<String,Any>?=null
     
     ) : Paginator<Audiences>{
         val paginator = Paginator<Audiences>()
@@ -504,7 +550,7 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
                     val pageId = paginator.nextId
                     val pageNo = paginator.pageNo
                     val pageType = "number"
-                    communicationApiList?.getAudiences(companyId = config.companyId , applicationId = applicationId , pageNo = pageNo, pageSize = pageSize, sort = sort, query = query)?.safeAwait{ response, error ->
+                    communicationApiList?.getAudiences(companyId = config.companyId , applicationId = applicationId , pageNo = pageNo, pageSize = pageSize, sort = sort)?.safeAwait{ response, error ->
                         response?.let {
                             val page = response.peekContent()?.page
                             paginator.setPaginator(hasNext=page?.hasNext?:false,pageNo=if (page?.hasNext == true) ((pageNo ?: 0) + 1) else pageNo)
@@ -555,10 +601,10 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     }
     
     
-    suspend fun deleteAudienceById(id: String,body: AudienceReq)
-    : Response<Audience>? {
+    suspend fun deleteAudienceById(id: String)
+    : Response<GenericDelete>? {
         return if (config.oauthClient.isAccessTokenValid()) {
-                communicationApiList?.deleteAudienceById(companyId = config.companyId , applicationId = applicationId , id = id, body = body)
+                communicationApiList?.deleteAudienceById(companyId = config.companyId , applicationId = applicationId , id = id )
         } else {
             null
         }
@@ -605,10 +651,10 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     }
     
     
-    suspend fun getEmailTemplates(pageNo: Int?=null, pageSize: Int?=null, sort: HashMap<String,Any>?=null, query: HashMap<String,Any>?=null)
+    suspend fun getEmailTemplates(pageNo: Int?=null, pageSize: Int?=null, sort: HashMap<String,Any>?=null)
     : Response<EmailTemplates>? {
         return if (config.oauthClient.isAccessTokenValid()) {
-                communicationApiList?.getEmailTemplates(companyId = config.companyId , applicationId = applicationId , pageNo = pageNo, pageSize = pageSize, sort = sort, query = query )
+                communicationApiList?.getEmailTemplates(companyId = config.companyId , applicationId = applicationId , pageNo = pageNo, pageSize = pageSize, sort = sort )
         } else {
             null
         }
@@ -640,17 +686,12 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
             
             
         
-            
-                
-            
-            
-        
     /**
     *
     * Summary: Paginator for getEmailTemplates
     **/
     fun getEmailTemplatesPaginator(
-    pageSize: Int?=null, sort: HashMap<String,Any>?=null, query: HashMap<String,Any>?=null
+    pageSize: Int?=null, sort: HashMap<String,Any>?=null
     
     ) : Paginator<EmailTemplates>{
         val paginator = Paginator<EmailTemplates>()
@@ -663,7 +704,7 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
                     val pageId = paginator.nextId
                     val pageNo = paginator.pageNo
                     val pageType = "number"
-                    communicationApiList?.getEmailTemplates(companyId = config.companyId , applicationId = applicationId , pageNo = pageNo, pageSize = pageSize, sort = sort, query = query)?.safeAwait{ response, error ->
+                    communicationApiList?.getEmailTemplates(companyId = config.companyId , applicationId = applicationId , pageNo = pageNo, pageSize = pageSize, sort = sort)?.safeAwait{ response, error ->
                         response?.let {
                             val page = response.peekContent()?.page
                             paginator.setPaginator(hasNext=page?.hasNext?:false,pageNo=if (page?.hasNext == true) ((pageNo ?: 0) + 1) else pageNo)
@@ -734,10 +775,10 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     }
     
     
-    suspend fun getSubscribedEmailTemplates(pageNo: Int?=null, pageSize: Int?=null, query: HashMap<String,Any>?=null)
+    suspend fun getSubscribedEmailTemplates(pageNo: Int?=null, pageSize: Int?=null)
     : Response<EmailTemplates>? {
         return if (config.oauthClient.isAccessTokenValid()) {
-                communicationApiList?.getSubscribedEmailTemplates(companyId = config.companyId , applicationId = applicationId , pageNo = pageNo, pageSize = pageSize, query = query )
+                communicationApiList?.getSubscribedEmailTemplates(companyId = config.companyId , applicationId = applicationId , pageNo = pageNo, pageSize = pageSize )
         } else {
             null
         }
@@ -764,17 +805,12 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
             
             
         
-            
-                
-            
-            
-        
     /**
     *
     * Summary: Paginator for getSubscribedEmailTemplates
     **/
     fun getSubscribedEmailTemplatesPaginator(
-    pageSize: Int?=null, query: HashMap<String,Any>?=null
+    pageSize: Int?=null
     
     ) : Paginator<EmailTemplates>{
         val paginator = Paginator<EmailTemplates>()
@@ -787,7 +823,7 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
                     val pageId = paginator.nextId
                     val pageNo = paginator.pageNo
                     val pageType = "number"
-                    communicationApiList?.getSubscribedEmailTemplates(companyId = config.companyId , applicationId = applicationId , pageNo = pageNo, pageSize = pageSize, query = query)?.safeAwait{ response, error ->
+                    communicationApiList?.getSubscribedEmailTemplates(companyId = config.companyId , applicationId = applicationId , pageNo = pageNo, pageSize = pageSize)?.safeAwait{ response, error ->
                         response?.let {
                             val page = response.peekContent()?.page
                             paginator.setPaginator(hasNext=page?.hasNext?:false,pageNo=if (page?.hasNext == true) ((pageNo ?: 0) + 1) else pageNo)
@@ -808,10 +844,10 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     return paginator
     }
     
-    suspend fun getSmsTemplates(pageNo: Int?=null, pageSize: Int?=null, sort: HashMap<String,Any>?=null, query: HashMap<String,Any>?=null)
+    suspend fun getSmsTemplates(pageNo: Int?=null, pageSize: Int?=null, sort: HashMap<String,Any>?=null)
     : Response<SmsTemplates>? {
         return if (config.oauthClient.isAccessTokenValid()) {
-                communicationApiList?.getSmsTemplates(companyId = config.companyId , applicationId = applicationId , pageNo = pageNo, pageSize = pageSize, sort = sort, query = query )
+                communicationApiList?.getSmsTemplates(companyId = config.companyId , applicationId = applicationId , pageNo = pageNo, pageSize = pageSize, sort = sort )
         } else {
             null
         }
@@ -843,17 +879,12 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
             
             
         
-            
-                
-            
-            
-        
     /**
     *
     * Summary: Paginator for getSmsTemplates
     **/
     fun getSmsTemplatesPaginator(
-    pageSize: Int?=null, sort: HashMap<String,Any>?=null, query: HashMap<String,Any>?=null
+    pageSize: Int?=null, sort: HashMap<String,Any>?=null
     
     ) : Paginator<SmsTemplates>{
         val paginator = Paginator<SmsTemplates>()
@@ -866,7 +897,7 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
                     val pageId = paginator.nextId
                     val pageNo = paginator.pageNo
                     val pageType = "number"
-                    communicationApiList?.getSmsTemplates(companyId = config.companyId , applicationId = applicationId , pageNo = pageNo, pageSize = pageSize, sort = sort, query = query)?.safeAwait{ response, error ->
+                    communicationApiList?.getSmsTemplates(companyId = config.companyId , applicationId = applicationId , pageNo = pageNo, pageSize = pageSize, sort = sort)?.safeAwait{ response, error ->
                         response?.let {
                             val page = response.peekContent()?.page
                             paginator.setPaginator(hasNext=page?.hasNext?:false,pageNo=if (page?.hasNext == true) ((pageNo ?: 0) + 1) else pageNo)
@@ -937,10 +968,10 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     }
     
     
-    suspend fun getSubscribedSmsTemplates(pageNo: Int?=null, pageSize: Int?=null, query: HashMap<String,Any>?=null)
+    suspend fun getSubscribedSmsTemplates(pageNo: Int?=null, pageSize: Int?=null)
     : Response<SmsTemplates>? {
         return if (config.oauthClient.isAccessTokenValid()) {
-                communicationApiList?.getSubscribedSmsTemplates(companyId = config.companyId , applicationId = applicationId , pageNo = pageNo, pageSize = pageSize, query = query )
+                communicationApiList?.getSubscribedSmsTemplates(companyId = config.companyId , applicationId = applicationId , pageNo = pageNo, pageSize = pageSize )
         } else {
             null
         }
@@ -967,17 +998,12 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
             
             
         
-            
-                
-            
-            
-        
     /**
     *
     * Summary: Paginator for getSubscribedSmsTemplates
     **/
     fun getSubscribedSmsTemplatesPaginator(
-    pageSize: Int?=null, query: HashMap<String,Any>?=null
+    pageSize: Int?=null
     
     ) : Paginator<SmsTemplates>{
         val paginator = Paginator<SmsTemplates>()
@@ -990,7 +1016,7 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
                     val pageId = paginator.nextId
                     val pageNo = paginator.pageNo
                     val pageType = "number"
-                    communicationApiList?.getSubscribedSmsTemplates(companyId = config.companyId , applicationId = applicationId , pageNo = pageNo, pageSize = pageSize, query = query)?.safeAwait{ response, error ->
+                    communicationApiList?.getSubscribedSmsTemplates(companyId = config.companyId , applicationId = applicationId , pageNo = pageNo, pageSize = pageSize)?.safeAwait{ response, error ->
                         response?.let {
                             val page = response.peekContent()?.page
                             paginator.setPaginator(hasNext=page?.hasNext?:false,pageNo=if (page?.hasNext == true) ((pageNo ?: 0) + 1) else pageNo)
@@ -1105,56 +1131,6 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     return paginator
     }
     
-    suspend fun createEventSubscriptions(body: SubscriptionsObject)
-    : Response<EventSubscriptionsBulkUpdateResponse>? {
-        return if (config.oauthClient.isAccessTokenValid()) {
-                communicationApiList?.createEventSubscriptions(companyId = config.companyId , applicationId = applicationId , body = body)
-        } else {
-            null
-        }
-    }
-    
-    
-    suspend fun getEventSubscriptionsById(id: String, populate: String?=null)
-    : Response<EventSubscription>? {
-        return if (config.oauthClient.isAccessTokenValid()) {
-                communicationApiList?.getEventSubscriptionsById(companyId = config.companyId , applicationId = applicationId , id = id, populate = populate )
-        } else {
-            null
-        }
-    }
-    
-    
-    suspend fun editEventSubscriptions(id: String,body: SubscriptionsObject)
-    : Response<EventSubscriptionsBulkUpdateResponse>? {
-        return if (config.oauthClient.isAccessTokenValid()) {
-                communicationApiList?.editEventSubscriptions(companyId = config.companyId , applicationId = applicationId , id = id, body = body)
-        } else {
-            null
-        }
-    }
-    
-    
-    suspend fun deleteEventSubscriptionsById(id: String)
-    : Response<GenericDelete>? {
-        return if (config.oauthClient.isAccessTokenValid()) {
-                communicationApiList?.deleteEventSubscriptionsById(companyId = config.companyId , applicationId = applicationId , id = id )
-        } else {
-            null
-        }
-    }
-    
-    
-    suspend fun createEventSubscriptionsByBulk(body: EventSubscriptionsBulkUpdateRequest)
-    : Response<ArrayList<EventSubscriptionsBulkUpdateResponse>>? {
-        return if (config.oauthClient.isAccessTokenValid()) {
-                communicationApiList?.createEventSubscriptionsByBulk(companyId = config.companyId , applicationId = applicationId , body = body)
-        } else {
-            null
-        }
-    }
-    
-    
     suspend fun getGlobalVariables()
     : Response<GlobalVariablesGetResponse>? {
         return if (config.oauthClient.isAccessTokenValid()) {
@@ -1175,10 +1151,10 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     }
     
     
-    suspend fun getJobs(pageNo: Int?=null, pageSize: Int?=null, sort: HashMap<String,Any>?=null, query: HashMap<String,Any>?=null)
+    suspend fun getJobs(pageNo: Int?=null, pageSize: Int?=null, sort: HashMap<String,Any>?=null)
     : Response<Jobs>? {
         return if (config.oauthClient.isAccessTokenValid()) {
-                communicationApiList?.getJobs(companyId = config.companyId , applicationId = applicationId , pageNo = pageNo, pageSize = pageSize, sort = sort, query = query )
+                communicationApiList?.getJobs(companyId = config.companyId , applicationId = applicationId , pageNo = pageNo, pageSize = pageSize, sort = sort )
         } else {
             null
         }
@@ -1210,17 +1186,12 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
             
             
         
-            
-                
-            
-            
-        
     /**
     *
     * Summary: Paginator for getJobs
     **/
     fun getJobsPaginator(
-    pageSize: Int?=null, sort: HashMap<String,Any>?=null, query: HashMap<String,Any>?=null
+    pageSize: Int?=null, sort: HashMap<String,Any>?=null
     
     ) : Paginator<Jobs>{
         val paginator = Paginator<Jobs>()
@@ -1233,7 +1204,7 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
                     val pageId = paginator.nextId
                     val pageNo = paginator.pageNo
                     val pageType = "number"
-                    communicationApiList?.getJobs(companyId = config.companyId , applicationId = applicationId , pageNo = pageNo, pageSize = pageSize, sort = sort, query = query)?.safeAwait{ response, error ->
+                    communicationApiList?.getJobs(companyId = config.companyId , applicationId = applicationId , pageNo = pageNo, pageSize = pageSize, sort = sort)?.safeAwait{ response, error ->
                         response?.let {
                             val page = response.peekContent()?.page
                             paginator.setPaginator(hasNext=page?.hasNext?:false,pageNo=if (page?.hasNext == true) ((pageNo ?: 0) + 1) else pageNo)
@@ -1254,16 +1225,6 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     return paginator
     }
     
-    suspend fun createJobs(body: CreateJobsReq)
-    : Response<CreateJobsRes>? {
-        return if (config.oauthClient.isAccessTokenValid()) {
-                communicationApiList?.createJobs(companyId = config.companyId , applicationId = applicationId , body = body)
-        } else {
-            null
-        }
-    }
-    
-    
     suspend fun triggerCampaignJob(body: TriggerJobRequest)
     : Response<TriggerJobResponse>? {
         return if (config.oauthClient.isAccessTokenValid()) {
@@ -1274,10 +1235,10 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     }
     
     
-    suspend fun getJobLogs(pageNo: Int?=null, pageSize: Int?=null, sort: HashMap<String,Any>?=null, query: HashMap<String,Any>?=null)
+    suspend fun getJobLogs(pageNo: Int?=null, pageSize: Int?=null, sort: HashMap<String,Any>?=null)
     : Response<JobLogs>? {
         return if (config.oauthClient.isAccessTokenValid()) {
-                communicationApiList?.getJobLogs(companyId = config.companyId , applicationId = applicationId , pageNo = pageNo, pageSize = pageSize, sort = sort, query = query )
+                communicationApiList?.getJobLogs(companyId = config.companyId , applicationId = applicationId , pageNo = pageNo, pageSize = pageSize, sort = sort )
         } else {
             null
         }
@@ -1296,11 +1257,6 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
             
             
         
-            
-            
-        
-            
-                
             
             
         
@@ -1319,7 +1275,7 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     * Summary: Paginator for getJobLogs
     **/
     fun getJobLogsPaginator(
-    pageSize: Int?=null, sort: HashMap<String,Any>?=null, query: HashMap<String,Any>?=null
+    pageSize: Int?=null, sort: HashMap<String,Any>?=null
     
     ) : Paginator<JobLogs>{
         val paginator = Paginator<JobLogs>()
@@ -1332,7 +1288,7 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
                     val pageId = paginator.nextId
                     val pageNo = paginator.pageNo
                     val pageType = "number"
-                    communicationApiList?.getJobLogs(companyId = config.companyId , applicationId = applicationId , pageNo = pageNo, pageSize = pageSize, sort = sort, query = query)?.safeAwait{ response, error ->
+                    communicationApiList?.getJobLogs(companyId = config.companyId , applicationId = applicationId , pageNo = pageNo, pageSize = pageSize, sort = sort)?.safeAwait{ response, error ->
                         response?.let {
                             val page = response.peekContent()?.page
                             paginator.setPaginator(hasNext=page?.hasNext?:false,pageNo=if (page?.hasNext == true) ((pageNo ?: 0) + 1) else pageNo)
@@ -1449,26 +1405,6 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     : Response<VerifyOtpCommsSuccessRes>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 communicationApiList?.verfiyOtp(companyId = config.companyId , applicationId = applicationId , body = body)
-        } else {
-            null
-        }
-    }
-    
-    
-    suspend fun getOtpConfiguration()
-    : Response<OtpConfiguration>? {
-        return if (config.oauthClient.isAccessTokenValid()) {
-                communicationApiList?.getOtpConfiguration(companyId = config.companyId , applicationId = applicationId  )
-        } else {
-            null
-        }
-    }
-    
-    
-    suspend fun updateOtpConfiguration()
-    : Response<OtpConfiguration>? {
-        return if (config.oauthClient.isAccessTokenValid()) {
-                communicationApiList?.updateOtpConfiguration(companyId = config.companyId , applicationId = applicationId  )
         } else {
             null
         }

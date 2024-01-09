@@ -21,7 +21,7 @@ interface CommunicationApiList {
     : Response<GlobalProviders>
     
     @GET ("/service/platform/communication/v1.0/company/{company_id}/application/{application_id}/email/providers")
-    suspend fun getEmailProviders(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Query("page_no") pageNo: Int?, @Query("page_size") pageSize: Int?, @Query("sort") sort: HashMap<String,Any>?, @Query("query") query: HashMap<String,Any>?)
+    suspend fun getEmailProviders(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Query("page_no") pageNo: Int?, @Query("page_size") pageSize: Int?, @Query("sort") sort: HashMap<String,Any>?)
     : Response<EmailProviders>
     
     @POST ("/service/platform/communication/v1.0/company/{company_id}/application/{application_id}/email/providers")
@@ -65,7 +65,7 @@ interface CommunicationApiList {
     : Response<GenericDelete>
     
     @GET ("/service/platform/communication/v1.0/company/{company_id}/application/{application_id}/campaigns/campaigns")
-    suspend fun getCampaigns(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Query("query") query: HashMap<String,Any>?, @Query("page_no") pageNo: Int?, @Query("page_size") pageSize: Int?, @Query("sort") sort: HashMap<String,Any>?)
+    suspend fun getCampaigns(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Query("page_no") pageNo: Int?, @Query("page_size") pageSize: Int?, @Query("sort") sort: HashMap<String,Any>?)
     : Response<Campaigns>
     
     @POST ("/service/platform/communication/v1.0/company/{company_id}/application/{application_id}/campaigns/campaigns")
@@ -109,7 +109,7 @@ interface CommunicationApiList {
     : Response<HashMap<String,Any>>
     
     @GET ("/service/platform/communication/v1.0/company/{company_id}/application/{application_id}/sources/datasources")
-    suspend fun getAudiences(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Query("page_no") pageNo: Int?, @Query("page_size") pageSize: Int?, @Query("sort") sort: HashMap<String,Any>?, @Query("query") query: HashMap<String,Any>?)
+    suspend fun getAudiences(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Query("page_no") pageNo: Int?, @Query("page_size") pageSize: Int?, @Query("sort") sort: HashMap<String,Any>?)
     : Response<Audiences>
     
     @POST ("/service/platform/communication/v1.0/company/{company_id}/application/{application_id}/sources/datasources")
@@ -125,8 +125,8 @@ interface CommunicationApiList {
     : Response<Audience>
     
     @DELETE ("/service/platform/communication/v1.0/company/{company_id}/application/{application_id}/sources/datasources/{id}")
-    suspend fun deleteAudienceById(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Path("id") id: String,@Body body: AudienceReq)
-    : Response<Audience>
+    suspend fun deleteAudienceById(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Path("id") id: String)
+    : Response<GenericDelete>
     
     @GET ("/service/platform/communication/v1.0/company/{company_id}/application/{application_id}/sources/datasources/dummy-data-sources")
     suspend fun getDummyDatasources(@Path("company_id") companyId: String, @Path("application_id") applicationId: String)
@@ -145,7 +145,7 @@ interface CommunicationApiList {
     : Response<GetNRecordsCsvRes>
     
     @GET ("/service/platform/communication/v1.0/company/{company_id}/application/{application_id}/email/templates")
-    suspend fun getEmailTemplates(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Query("page_no") pageNo: Int?, @Query("page_size") pageSize: Int?, @Query("sort") sort: HashMap<String,Any>?, @Query("query") query: HashMap<String,Any>?)
+    suspend fun getEmailTemplates(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Query("page_no") pageNo: Int?, @Query("page_size") pageSize: Int?, @Query("sort") sort: HashMap<String,Any>?)
     : Response<EmailTemplates>
     
     @POST ("/service/platform/communication/v1.0/company/{company_id}/application/{application_id}/email/templates")
@@ -169,11 +169,11 @@ interface CommunicationApiList {
     : Response<GenericDelete>
     
     @GET ("/service/platform/communication/v1.0/company/{company_id}/application/{application_id}/email/subscribedTemplates")
-    suspend fun getSubscribedEmailTemplates(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Query("page_no") pageNo: Int?, @Query("page_size") pageSize: Int?, @Query("query") query: HashMap<String,Any>?)
+    suspend fun getSubscribedEmailTemplates(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Query("page_no") pageNo: Int?, @Query("page_size") pageSize: Int?)
     : Response<EmailTemplates>
     
     @GET ("/service/platform/communication/v1.0/company/{company_id}/application/{application_id}/sms/templates")
-    suspend fun getSmsTemplates(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Query("page_no") pageNo: Int?, @Query("page_size") pageSize: Int?, @Query("sort") sort: HashMap<String,Any>?, @Query("query") query: HashMap<String,Any>?)
+    suspend fun getSmsTemplates(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Query("page_no") pageNo: Int?, @Query("page_size") pageSize: Int?, @Query("sort") sort: HashMap<String,Any>?)
     : Response<SmsTemplates>
     
     @POST ("/service/platform/communication/v1.0/company/{company_id}/application/{application_id}/sms/templates")
@@ -197,7 +197,7 @@ interface CommunicationApiList {
     : Response<GenericDelete>
     
     @GET ("/service/platform/communication/v1.0/company/{company_id}/application/{application_id}/sms/subscribedTemplates")
-    suspend fun getSubscribedSmsTemplates(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Query("page_no") pageNo: Int?, @Query("page_size") pageSize: Int?, @Query("query") query: HashMap<String,Any>?)
+    suspend fun getSubscribedSmsTemplates(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Query("page_no") pageNo: Int?, @Query("page_size") pageSize: Int?)
     : Response<SmsTemplates>
     
     @POST ("/service/platform/communication/v1.0/company/{company_id}/application/{application_id}/engine/send-instant")
@@ -212,26 +212,6 @@ interface CommunicationApiList {
     suspend fun getEventSubscriptions(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Query("page_no") pageNo: Int?, @Query("page_size") pageSize: Int?, @Query("populate") populate: String?)
     : Response<EventSubscriptions>
     
-    @POST ("/service/platform/communication/v1.0/company/{company_id}/application/{application_id}/event/event-subscriptions")
-    suspend fun createEventSubscriptions(@Path("company_id") companyId: String, @Path("application_id") applicationId: String,@Body body: SubscriptionsObject)
-    : Response<EventSubscriptionsBulkUpdateResponse>
-    
-    @GET ("/service/platform/communication/v1.0/company/{company_id}/application/{application_id}/event/event-subscriptions/{id}")
-    suspend fun getEventSubscriptionsById(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Path("id") id: String, @Query("populate") populate: String?)
-    : Response<EventSubscription>
-    
-    @PUT ("/service/platform/communication/v1.0/company/{company_id}/application/{application_id}/event/event-subscriptions/{id}")
-    suspend fun editEventSubscriptions(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Path("id") id: String,@Body body: SubscriptionsObject)
-    : Response<EventSubscriptionsBulkUpdateResponse>
-    
-    @DELETE ("/service/platform/communication/v1.0/company/{company_id}/application/{application_id}/event/event-subscriptions/{id}")
-    suspend fun deleteEventSubscriptionsById(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Path("id") id: String)
-    : Response<GenericDelete>
-    
-    @POST ("/service/platform/communication/v1.0/company/{company_id}/application/{application_id}/event/event-subscriptions/bulkUpdate")
-    suspend fun createEventSubscriptionsByBulk(@Path("company_id") companyId: String, @Path("application_id") applicationId: String,@Body body: EventSubscriptionsBulkUpdateRequest)
-    : Response<ArrayList<EventSubscriptionsBulkUpdateResponse>>
-    
     @GET ("/service/platform/communication/v1.0/company/{company_id}/application/{application_id}/global-variables")
     suspend fun getGlobalVariables(@Path("company_id") companyId: String, @Path("application_id") applicationId: String)
     : Response<GlobalVariablesGetResponse>
@@ -241,19 +221,15 @@ interface CommunicationApiList {
     : Response<GlobalVariablesPostResponse>
     
     @GET ("/service/platform/communication/v1.0/company/{company_id}/application/{application_id}/jobs/jobs")
-    suspend fun getJobs(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Query("page_no") pageNo: Int?, @Query("page_size") pageSize: Int?, @Query("sort") sort: HashMap<String,Any>?, @Query("query") query: HashMap<String,Any>?)
+    suspend fun getJobs(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Query("page_no") pageNo: Int?, @Query("page_size") pageSize: Int?, @Query("sort") sort: HashMap<String,Any>?)
     : Response<Jobs>
-    
-    @POST ("/service/platform/communication/v1.0/company/{company_id}/application/{application_id}/jobs/jobs")
-    suspend fun createJobs(@Path("company_id") companyId: String, @Path("application_id") applicationId: String,@Body body: CreateJobsReq)
-    : Response<CreateJobsRes>
     
     @POST ("/service/platform/communication/v1.0/company/{company_id}/application/{application_id}/jobs/trigger-job")
     suspend fun triggerCampaignJob(@Path("company_id") companyId: String, @Path("application_id") applicationId: String,@Body body: TriggerJobRequest)
     : Response<TriggerJobResponse>
     
     @GET ("/service/platform/communication/v1.0/company/{company_id}/application/{application_id}/jobs/logs")
-    suspend fun getJobLogs(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Query("page_no") pageNo: Int?, @Query("page_size") pageSize: Int?, @Query("sort") sort: HashMap<String,Any>?, @Query("query") query: HashMap<String,Any>?)
+    suspend fun getJobLogs(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Query("page_no") pageNo: Int?, @Query("page_size") pageSize: Int?, @Query("sort") sort: HashMap<String,Any>?)
     : Response<JobLogs>
     
     @GET ("/service/platform/communication/v1.0/company/{company_id}/application/{application_id}/log")
@@ -271,13 +247,5 @@ interface CommunicationApiList {
     @POST ("/service/platform/communication/v1.0/company/{company_id}/application/{application_id}/otp/verify-otp-comms")
     suspend fun verfiyOtp(@Path("company_id") companyId: String, @Path("application_id") applicationId: String,@Body body: VerifyOtpCommsReq)
     : Response<VerifyOtpCommsSuccessRes>
-    
-    @GET ("/service/platform/communication/v1.0/company/{company_id}/application/{application_id}/otp/otp-configuration")
-    suspend fun getOtpConfiguration(@Path("company_id") companyId: String, @Path("application_id") applicationId: String)
-    : Response<OtpConfiguration>
-    
-    @PUT ("/service/platform/communication/v1.0/company/{company_id}/application/{application_id}/otp/otp-configuration")
-    suspend fun updateOtpConfiguration(@Path("company_id") companyId: String, @Path("application_id") applicationId: String)
-    : Response<OtpConfiguration>
     
 }

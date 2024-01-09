@@ -108,7 +108,6 @@ class FileStorageDataManagerClass(val config: PlatformConfig, val unauthorizedAc
     
     
     
-    
     suspend fun proxy(url: String)
     : Response<String>? {
         
@@ -167,20 +166,10 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     
     
     
-    suspend fun appbrowse(namespace: String, page: Int?=null, limit: Int?=null, search: String?=null)
+    suspend fun appbrowse(namespace: String, page: Int?=null, limit: Int?=null)
     : Response<HashMap<String,Any>>? {
         return if (config.oauthClient.isAccessTokenValid()) {
-                fileStorageApiList?.appbrowse(namespace = namespace, companyId = config.companyId , applicationId = applicationId , page = page, limit = limit, search = search )
-        } else {
-            null
-        }
-    }
-    
-    
-    suspend fun browsefiles(namespace: String, page: Int?=null, limit: Int?=null, search: String?=null,body: ExtensionSlug)
-    : Response<HashMap<String,Any>>? {
-        return if (config.oauthClient.isAccessTokenValid()) {
-                fileStorageApiList?.browsefiles(namespace = namespace, companyId = config.companyId , applicationId = applicationId , page = page, limit = limit, search = search, body = body)
+                fileStorageApiList?.appbrowse(namespace = namespace, companyId = config.companyId , applicationId = applicationId , page = page, limit = limit )
         } else {
             null
         }
@@ -188,20 +177,20 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     
     
     
-    suspend fun getPdfTypes(countryCode: String?=null)
+    suspend fun getPdfTypes()
     : Response<InvoiceTypesResponse>? {
         return if (config.oauthClient.isAccessTokenValid()) {
-                fileStorageApiList?.getPdfTypes(companyId = config.companyId , applicationId = applicationId , countryCode = countryCode )
+                fileStorageApiList?.getPdfTypes(companyId = config.companyId , applicationId = applicationId  )
         } else {
             null
         }
     }
     
     
-    suspend fun getDefaultPdfData(pdfTypeId: Int, countryCode: String?=null)
+    suspend fun getDefaultPdfData(pdfTypeId: Int)
     : Response<DummyTemplateDataItems>? {
         return if (config.oauthClient.isAccessTokenValid()) {
-                fileStorageApiList?.getDefaultPdfData(companyId = config.companyId , applicationId = applicationId , pdfTypeId = pdfTypeId, countryCode = countryCode )
+                fileStorageApiList?.getDefaultPdfData(companyId = config.companyId , applicationId = applicationId , pdfTypeId = pdfTypeId )
         } else {
             null
         }
@@ -218,10 +207,10 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     }
     
     
-    suspend fun getDefaultHtmlTemplate(pdfTypeId: Int, format: String, countryCode: String?=null)
+    suspend fun getDefaultHtmlTemplate(pdfTypeId: Int, format: String)
     : Response<PdfConfigSuccess>? {
         return if (config.oauthClient.isAccessTokenValid()) {
-                fileStorageApiList?.getDefaultHtmlTemplate(companyId = config.companyId , applicationId = applicationId , pdfTypeId = pdfTypeId, format = format, countryCode = countryCode )
+                fileStorageApiList?.getDefaultHtmlTemplate(companyId = config.companyId , applicationId = applicationId , pdfTypeId = pdfTypeId, format = format )
         } else {
             null
         }
@@ -238,10 +227,10 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     }
     
     
-    suspend fun getDefaultPdfTemplate(pdfTypeId: Int, format: String, countryCode: String?=null)
+    suspend fun getDefaultPdfTemplate(pdfTypeId: Int, format: String)
     : Response<PdfDefaultTemplateSuccess>? {
         return if (config.oauthClient.isAccessTokenValid()) {
-                fileStorageApiList?.getDefaultPdfTemplate(companyId = config.companyId , applicationId = applicationId , pdfTypeId = pdfTypeId, format = format, countryCode = countryCode )
+                fileStorageApiList?.getDefaultPdfTemplate(companyId = config.companyId , applicationId = applicationId , pdfTypeId = pdfTypeId, format = format )
         } else {
             null
         }
