@@ -151,12 +151,12 @@ interface CatalogApiList {
     
     
     @GET 
-    suspend fun getProductPriceBySlug(@Url url1: String?      ,    @Query("store_id") storeId: Int?, @Query("pincode") pincode: String?, @Query("moq") moq: Int?)
+    suspend fun getProductPriceBySlug(@Url url1: String?      ,   @Query("store_id") storeId: Int?, @Query("moq") moq: Int?)
     : Response<ProductSizePriceResponseV3>
     
     
     @GET 
-    suspend fun getProductSellersBySlug(@Url url1: String?      ,     @Query("pincode") pincode: String?, @Query("strategy") strategy: String?, @Query("page_no") pageNo: Int?, @Query("page_size") pageSize: Int?)
+    suspend fun getProductSellersBySlug(@Url url1: String?      ,    @Query("strategy") strategy: String?, @Query("page_no") pageNo: Int?, @Query("page_size") pageSize: Int?)
     : Response<ProductSizeSellersResponseV3>
     
 }

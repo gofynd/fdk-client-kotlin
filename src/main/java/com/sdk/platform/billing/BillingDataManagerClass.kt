@@ -176,12 +176,12 @@ class BillingDataManagerClass(val config: PlatformConfig, val unauthorizedAction
     }
     
     
-    suspend fun getFeatureLimitConfig()
+    suspend fun getFeatureLimitConfig(productSuite: String?=null, type: String?=null)
     : Response<SubscriptionLimit>? {
         
         return if (config.oauthClient.isAccessTokenValid()) {
             billingApiList?.getFeatureLimitConfig(
-        companyId = config.companyId )
+        companyId = config.companyId, productSuite = productSuite, type = type )
         } else {
             null
         } 
@@ -247,9 +247,22 @@ class BillingDataManagerClass(val config: PlatformConfig, val unauthorizedAction
         } 
     }
     
+    
+    suspend fun getentityDetail(entityName: String, entityId: String?=null, channel: String, component: String?=null, componentName: String?=null)
+    : Response<EntityResponse>? {
+        
+        return if (config.oauthClient.isAccessTokenValid()) {
+            billingApiList?.getentityDetail(
+        companyId = config.companyId, entityName = entityName, entityId = entityId, channel = channel, component = component, componentName = componentName )
+        } else {
+            null
+        } 
+    }
+    
 
 inner class ApplicationClient(val applicationId:String,val config: PlatformConfig){
 
+    
     
     
     

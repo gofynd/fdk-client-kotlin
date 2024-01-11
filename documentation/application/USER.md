@@ -5,7 +5,9 @@
 ##### [Back to Application docs](./README.md)
 
 ## User Methods
-Authentication Service
+The User Authentication module prioritizes security, offering multiple login options, password management, and profile updates. This module allows users to log in using social accounts, mobile OTPs, or passwords, and also enables secure password resets. It manages mobile and email verification, profile details, and session information.
+
+Default
 * [loginWithFacebook](#loginwithfacebook)
 * [loginWithGoogle](#loginwithgoogle)
 * [loginWithGoogleAndroid](#loginwithgoogleandroid)
@@ -46,10 +48,15 @@ Authentication Service
 * [deleteEmail](#deleteemail)
 * [setEmailAsPrimary](#setemailasprimary)
 * [sendVerificationLinkToEmail](#sendverificationlinktoemail)
+* [userExists](#userexists)
+* [getUserAttributes](#getuserattributes)
+* [updateUserAttributes](#updateuserattributes)
+
 
 
 
 ## Methods with example and description
+
 
 
 ### loginWithFacebook
@@ -3540,8 +3547,246 @@ Request body must contain an email ID. Refer `EditEmailRequestSchema` for more d
 ---
 
 
+### userExists
+Check user is already registered or not
+
+
+
+
+```kotlin
+applicationClient.user.userExists(q: q).safeAwait{ response, error->
+    response?.let{
+      // Use response
+    } ->
+    error?.let{
+      
+    } 
+}
+```
+
+
+
+
+
+| Argument  |  Type  | Required | Description |
+| --------- | -----  | -------- | ----------- | 
+| q | String | yes | email id or phone number of user |  
+
+
+
+Use this API to check whether user is already registered or not to the sales channel.
+
+*Returned Response:*
+
+
+
+
+[UserExistsResponse](#UserExistsResponse)
+
+Returns true or false based on user is registered or not.
+
+
+
+
+<details>
+<summary><i>&nbsp; Examples:</i></summary>
+
+
+<details>
+<summary><i>&nbsp; Success</i></summary>
+
+```json
+{
+  "value": {
+    "user_exists": true
+  }
+}
+```
+</details>
+
+</details>
+
+
+
+
+
+
+
+
+
+---
+
+
+### getUserAttributes
+Get user attributes
+
+
+
+
+```kotlin
+applicationClient.user.getUserAttributes(slug: slug).safeAwait{ response, error->
+    response?.let{
+      // Use response
+    } ->
+    error?.let{
+      
+    } 
+}
+```
+
+
+
+
+
+| Argument  |  Type  | Required | Description |
+| --------- | -----  | -------- | ----------- | 
+| slug | String? | no | Filter by attribute slug. |  
+
+
+
+Use this API to get the list of user attributes
+
+*Returned Response:*
+
+
+
+
+[UserAttributes](#UserAttributes)
+
+Returns a list of users attributes
+
+
+
+
+<details>
+<summary><i>&nbsp; Examples:</i></summary>
+
+
+<details>
+<summary><i>&nbsp; Success</i></summary>
+
+```json
+{
+  "value": {
+    "attributes": {
+      "Attribute_01": 1,
+      "Attribute_02": "String01"
+    }
+  }
+}
+```
+</details>
+
+</details>
+
+
+
+
+
+
+
+
+
+---
+
+
+### updateUserAttributes
+Update user attributes
+
+
+
+
+```kotlin
+applicationClient.user.updateUserAttributes(body: body).safeAwait{ response, error->
+    response?.let{
+      // Use response
+    } ->
+    error?.let{
+      
+    } 
+}
+```
+
+
+
+
+
+| Argument  |  Type  | Required | Description |
+| --------- | -----  | -------- | ----------- |
+| body | [UpdateUserAttributesRequest](#UpdateUserAttributesRequest) | yes | Request body |
+
+
+Use this API to update user attributes
+
+*Returned Response:*
+
+
+
+
+[UserAttributes](#UserAttributes)
+
+Returns a list of users attributes
+
+
+
+
+<details>
+<summary><i>&nbsp; Examples:</i></summary>
+
+
+<details>
+<summary><i>&nbsp; Success</i></summary>
+
+```json
+{
+  "value": {
+    "attributes": {
+      "Attribute_01": 1,
+      "Attribute_02": "String01"
+    }
+  }
+}
+```
+</details>
+
+</details>
+
+
+
+
+
+
+
+
+
+---
+
+
+
 
 ### Schemas
+
+ 
+ 
+ #### [UpdateUserAttributesRequest](#UpdateUserAttributesRequest)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | attributes | HashMap<String,Any>? |  yes  |  |
+
+---
+
+
+ 
+ 
+ #### [UserAttributes](#UserAttributes)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | attributes | HashMap<String,Any>? |  yes  |  |
+
+---
+
 
  
  
@@ -3639,7 +3884,6 @@ Request body must contain an email ID. Refer `EditEmailRequestSchema` for more d
  | action | String? |  yes  |  |
  | token | String? |  yes  |  |
  | registerToken | String? |  yes  |  |
- | captchaCode | String? |  yes  |  |
 
 ---
 
@@ -3720,7 +3964,6 @@ Request body must contain an email ID. Refer `EditEmailRequestSchema` for more d
  | token | String? |  yes  |  |
  | androidHash | String? |  yes  |  |
  | force | String? |  yes  |  |
- | captchaCode | String? |  yes  |  |
 
 ---
 
@@ -3810,7 +4053,6 @@ Request body must contain an email ID. Refer `EditEmailRequestSchema` for more d
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
  | email | String? |  yes  |  |
- | captchaCode | String? |  yes  |  |
 
 ---
 
@@ -3823,7 +4065,6 @@ Request body must contain an email ID. Refer `EditEmailRequestSchema` for more d
  | ---------- | ---- | -------- | ----------- |
  | countryCode | String? |  yes  |  |
  | mobile | String? |  yes  |  |
- | captchaCode | String? |  yes  |  |
 
 ---
 
@@ -3834,7 +4075,6 @@ Request body must contain an email ID. Refer `EditEmailRequestSchema` for more d
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | captchaCode | String? |  yes  |  |
  | password | String? |  yes  |  |
  | username | String? |  yes  |  |
 
@@ -3848,7 +4088,6 @@ Request body must contain an email ID. Refer `EditEmailRequestSchema` for more d
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
  | countryCode | String? |  yes  |  |
- | captchaCode | String? |  yes  |  |
  | mobile | String? |  yes  |  |
  | androidHash | String? |  yes  |  |
 
@@ -3901,6 +4140,17 @@ Request body must contain an email ID. Refer `EditEmailRequestSchema` for more d
  | registerToken | String? |  yes  |  |
  | userExists | Boolean? |  yes  |  |
  | user | [UserSchema](#UserSchema)? |  yes  |  |
+
+---
+
+
+ 
+ 
+ #### [UserExistsResponse](#UserExistsResponse)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | userExists | Boolean? |  yes  |  |
 
 ---
 

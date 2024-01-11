@@ -14,6 +14,50 @@ import com.google.gson.annotations.SerializedName
 
              
 /*
+    Model: UpdateUserAttributesRequest
+*/
+@Parcelize
+data class UpdateUserAttributesRequest(
+    
+    
+    
+    @SerializedName("attributes")
+    var attributes: @RawValue HashMap<String,Any>?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: UserAttributes
+*/
+@Parcelize
+data class UserAttributes(
+    
+    
+    
+    @SerializedName("attributes")
+    var attributes: @RawValue HashMap<String,Any>?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
     Model: DeleteApplicationUserRequestSchema
 */
 @Parcelize
@@ -263,14 +307,9 @@ data class SendEmailOtpRequestSchema(
     var token: String?=null,
     
     @SerializedName("register_token")
-    var registerToken: String?=null,
-    
-    @SerializedName("captcha_code")
-    var captchaCode: String?=null
+    var registerToken: String?=null
     
 ): Parcelable {
-    
-    
     
     
     
@@ -466,14 +505,9 @@ data class SendMobileOtpRequestSchema(
     var androidHash: String?=null,
     
     @SerializedName("force")
-    var force: String?=null,
-    
-    @SerializedName("captcha_code")
-    var captchaCode: String?=null
+    var force: String?=null
     
 ): Parcelable {
-    
-    
     
     
     
@@ -695,14 +729,9 @@ data class SendResetPasswordEmailRequestSchema(
     
     
     @SerializedName("email")
-    var email: String?=null,
-    
-    @SerializedName("captcha_code")
-    var captchaCode: String?=null
+    var email: String?=null
     
 ): Parcelable {
-    
-    
     
     
     
@@ -725,14 +754,9 @@ data class SendResetPasswordMobileRequestSchema(
     var countryCode: String?=null,
     
     @SerializedName("mobile")
-    var mobile: String?=null,
-    
-    @SerializedName("captcha_code")
-    var captchaCode: String?=null
+    var mobile: String?=null
     
 ): Parcelable {
-    
-    
     
     
     
@@ -753,9 +777,6 @@ data class PasswordLoginRequestSchema(
     
     
     
-    @SerializedName("captcha_code")
-    var captchaCode: String?=null,
-    
     @SerializedName("password")
     var password: String?=null,
     
@@ -763,8 +784,6 @@ data class PasswordLoginRequestSchema(
     var username: String?=null
     
 ): Parcelable {
-    
-    
     
     
     
@@ -788,9 +807,6 @@ data class SendOtpRequestSchema(
     @SerializedName("country_code")
     var countryCode: String?=null,
     
-    @SerializedName("captcha_code")
-    var captchaCode: String?=null,
-    
     @SerializedName("mobile")
     var mobile: String?=null,
     
@@ -798,8 +814,6 @@ data class SendOtpRequestSchema(
     var androidHash: String?=null
     
 ): Parcelable {
-    
-    
     
     
     
@@ -922,6 +936,28 @@ data class AuthSuccess(
     
     
     
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: UserExistsResponse
+*/
+@Parcelize
+data class UserExistsResponse(
+    
+    
+    
+    @SerializedName("user_exists")
+    var userExists: Boolean?=null
+    
+): Parcelable {
     
     
     
