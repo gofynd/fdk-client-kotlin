@@ -2602,5 +2602,168 @@ data class SubscribePlanRes(
 
 
 
+             
+/*
+    Model: Features
+*/
+@Parcelize
+data class Features(
+    
+    
+    
+    @SerializedName("name")
+    var name: String?=null,
+    
+    @SerializedName("slug")
+    var slug: String?=null,
+    
+    @SerializedName("description")
+    var description: String?=null,
+    
+    @SerializedName("group")
+    var group: String?=null,
+    
+    @SerializedName("enabled")
+    var enabled: Boolean?=null,
+    
+    @SerializedName("display_text")
+    var displayText: String?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: FeeComponents
+*/
+@Parcelize
+data class FeeComponents(
+    
+    
+    
+    @SerializedName("brand")
+    var brand: ArrayList<String>?=null,
+    
+    @SerializedName("location")
+    var location: ArrayList<String>?=null,
+    
+    @SerializedName("channel")
+    var channel: @RawValue ArrayList<HashMap<String,Any>>?=null,
+    
+    @SerializedName("business_lead")
+    var businessLead: String?=null,
+    
+    @SerializedName("settlement_type")
+    var settlementType: String?=null,
+    
+    @SerializedName("settle_cycle_period")
+    var settleCyclePeriod: @RawValue HashMap<String,Any>?=null,
+    
+    @SerializedName("components")
+    var components: @RawValue ArrayList<HashMap<String,Any>>?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: Details
+*/
+@Parcelize
+data class Details(
+    
+    
+    
+    @SerializedName("fee_components")
+    var feeComponents: ArrayList<FeeComponents>?=null,
+    
+    @SerializedName("features")
+    var features: ArrayList<Features>?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: EntityResponse
+*/
+@Parcelize
+data class EntityResponse(
+    
+    
+    
+    @SerializedName("success")
+    var success: Boolean?=null,
+    
+    @SerializedName("page")
+    var page: Int?=null,
+    
+    @SerializedName("page_size")
+    var pageSize: Int?=null,
+    
+    @SerializedName("items")
+    var items: ArrayList<Details>?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
 
 

@@ -29,6 +29,18 @@ class LogisticDataManagerClass(val config: ApplicationConfig, val unauthorizedAc
             
                     _relativeUrls["getOptimalLocations"] = "/service/application/logistics/v1.0/reassign_stores".substring(1)
             
+                    _relativeUrls["getLocations"] = "/service/application/logistics/v1.0/locations".substring(1)
+            
+                    _relativeUrls["getCountries"] = "/service/application/logistics/v1.0/countries".substring(1)
+            
+                    _relativeUrls["getCountry"] = "/service/application/logistics/v1.0/countries/{country_iso_code}".substring(1)
+            
+                    _relativeUrls["getLocalities"] = "/service/application/logistics/v1.0/localities/{locality_type}".substring(1)
+            
+                    _relativeUrls["getLocality"] = "/service/application/logistics/v1.0/localities/{locality_type}/{locality_value}".substring(1)
+            
+                    _relativeUrls["validateAddress"] = "/service/application/logistics/v1.0/country/{country_iso_code}/address/templates/{template_name}/validate".substring(1)
+            
     }
 
     public fun update(updatedUrlMap : HashMap<String,String>){
@@ -98,6 +110,60 @@ class LogisticDataManagerClass(val config: ApplicationConfig, val unauthorizedAc
         var fullUrl : String? = _relativeUrls["getOptimalLocations"] 
         
         return logisticApiList?.getOptimalLocations(fullUrl  ,body = body)}
+
+    
+    
+    suspend fun getLocations(xApplicationId: String, xApplicationData: String, country: String?=null, state: String?=null, city: String?=null, pincode: Int?=null, sector: String?=null, pageNo: Int?=null, pageSize: Int?=null): Response<GetStoreResponse>? {
+        var fullUrl : String? = _relativeUrls["getLocations"] 
+        
+        return logisticApiList?.getLocations(fullUrl    ,  xApplicationId = xApplicationId,    xApplicationData = xApplicationData,    country = country,    state = state,    city = city,    pincode = pincode,    sector = sector,    pageNo = pageNo,    pageSize = pageSize)}
+
+    
+    
+    suspend fun getCountries(onboarding: Boolean?=null, pageNo: Int?=null, pageSize: Int?=null, q: String?=null): Response<GetCountries>? {
+        var fullUrl : String? = _relativeUrls["getCountries"] 
+        
+        return logisticApiList?.getCountries(fullUrl    ,  onboarding = onboarding,    pageNo = pageNo,    pageSize = pageSize,    q = q)}
+
+    
+    
+    suspend fun getCountry(countryIsoCode: String): Response<GetCountry>? {
+        var fullUrl : String? = _relativeUrls["getCountry"] 
+        
+        fullUrl = fullUrl?.replace("{" + "country_iso_code" +"}",countryIsoCode.toString())
+        
+        return logisticApiList?.getCountry(fullUrl   )}
+
+    
+    
+    suspend fun getLocalities(localityType: String, country: String?=null, state: String?=null, city: String?=null, pageNo: Int?=null, pageSize: Int?=null, q: String?=null): Response<GetLocalities>? {
+        var fullUrl : String? = _relativeUrls["getLocalities"] 
+        
+        fullUrl = fullUrl?.replace("{" + "locality_type" +"}",localityType.toString())
+        
+        return logisticApiList?.getLocalities(fullUrl     ,  country = country,    state = state,    city = city,    pageNo = pageNo,    pageSize = pageSize,    q = q)}
+
+    
+    
+    suspend fun getLocality(localityType: String, localityValue: String, country: String?=null, state: String?=null, city: String?=null): Response<GetLocality>? {
+        var fullUrl : String? = _relativeUrls["getLocality"] 
+        
+        fullUrl = fullUrl?.replace("{" + "locality_type" +"}",localityType.toString())
+        
+        fullUrl = fullUrl?.replace("{" + "locality_value" +"}",localityValue.toString())
+        
+        return logisticApiList?.getLocality(fullUrl      ,  country = country,    state = state,    city = city)}
+
+    
+    
+    suspend fun validateAddress(countryIsoCode: String, templateName: String, body: ValidateAddressRequest): Response<ValidateAddressRequest>? {
+        var fullUrl : String? = _relativeUrls["validateAddress"] 
+        
+        fullUrl = fullUrl?.replace("{" + "country_iso_code" +"}",countryIsoCode.toString())
+        
+        fullUrl = fullUrl?.replace("{" + "template_name" +"}",templateName.toString())
+        
+        return logisticApiList?.validateAddress(fullUrl    ,body = body)}
 
     
     

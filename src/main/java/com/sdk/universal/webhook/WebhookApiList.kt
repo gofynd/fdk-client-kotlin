@@ -19,4 +19,19 @@ interface WebhookApiList {
     suspend fun queryWebhookEventDetails(@Url url1: String?   ,@Body body: ArrayList<EventConfigBase>)
     : Response<EventConfigResponse>
     
+    
+    @GET 
+    suspend fun notifyDepricatedEvent(@Url url1: String?   )
+    : Response<EventNotifier>
+    
+    
+    @POST 
+    suspend fun testHandlerTransformation(@Url url1: String?   ,@Body body: TransformEventRequest)
+    : Response<TransformEventResponse>
+    
+    
+    @POST 
+    suspend fun validateSchema(@Url url1: String?   ,@Body body: ValidateSchemaRequest)
+    : Response<ValidateSchemaResponse>
+    
 }

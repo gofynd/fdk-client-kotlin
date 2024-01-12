@@ -230,19 +230,9 @@ data class AppliedPromotion(
     var appliedFreeArticles: ArrayList<AppliedFreeArticles>?=null,
     
     @SerializedName("promotion_type")
-    var promotionType: String?=null,
-    
-    @SerializedName("meta")
-    var meta: @RawValue HashMap<String,Any>?=null,
-    
-    @SerializedName("code")
-    var code: String?=null
+    var promotionType: String?=null
     
 ): Parcelable {
-    
-    
-    
-    
     
     
     
@@ -335,6 +325,33 @@ data class PromiseFormatted(
 
              
 /*
+    Model: PromiseISOFormat
+*/
+@Parcelize
+data class PromiseISOFormat(
+    
+    
+    
+    @SerializedName("max")
+    var max: String?=null,
+    
+    @SerializedName("min")
+    var min: String?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
     Model: PromiseTimestamp
 */
 @Parcelize
@@ -373,9 +390,14 @@ data class ShipmentPromise(
     var formatted: PromiseFormatted?=null,
     
     @SerializedName("timestamp")
-    var timestamp: PromiseTimestamp?=null
+    var timestamp: PromiseTimestamp?=null,
+    
+    @SerializedName("iso")
+    var iso: PromiseISOFormat?=null
     
 ): Parcelable {
+    
+    
     
     
     
@@ -571,9 +593,14 @@ data class ProductArticle(
     var isGiftVisible: Boolean?=null,
     
     @SerializedName("type")
-    var type: String?=null
+    var type: String?=null,
+    
+    @SerializedName("tags")
+    var tags: ArrayList<String>?=null
     
 ): Parcelable {
+    
+    
     
     
     
@@ -652,6 +679,80 @@ data class PromoMeta(
     var message: String?=null
     
 ): Parcelable {
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: ChargesAmount
+*/
+@Parcelize
+data class ChargesAmount(
+    
+    
+    
+    @SerializedName("value")
+    var value: Double?=null,
+    
+    @SerializedName("currency")
+    var currency: String?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: Charges
+*/
+@Parcelize
+data class Charges(
+    
+    
+    
+    @SerializedName("meta")
+    var meta: @RawValue HashMap<String,Any>?=null,
+    
+    @SerializedName("amount")
+    var amount: ChargesAmount?=null,
+    
+    @SerializedName("name")
+    var name: String?=null,
+    
+    @SerializedName("allow_refund")
+    var allowRefund: Boolean?=null,
+    
+    @SerializedName("code")
+    var code: String?=null,
+    
+    @SerializedName("type")
+    var type: String?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     
     
     
@@ -1164,6 +1265,9 @@ data class CartProductInfo(
     @SerializedName("quantity")
     var quantity: Int?=null,
     
+    @SerializedName("charges")
+    var charges: ArrayList<Charges>?=null,
+    
     @SerializedName("discount")
     var discount: String?=null,
     
@@ -1255,6 +1359,8 @@ data class CartProductInfo(
     
     
     
+    
+    
 }
 
 
@@ -1284,9 +1390,14 @@ data class DisplayBreakup(
     var currencyCode: String?=null,
     
     @SerializedName("value")
-    var value: Double?=null
+    var value: Double?=null,
+    
+    @SerializedName("preset")
+    var preset: Double?=null
     
 ): Parcelable {
+    
+    
     
     
     
@@ -1342,6 +1453,9 @@ data class RawBreakup(
     @SerializedName("mop_total")
     var mopTotal: Double?=null,
     
+    @SerializedName("total_charge")
+    var totalCharge: Double?=null,
+    
     @SerializedName("coupon")
     var coupon: Double?=null,
     
@@ -1358,6 +1472,8 @@ data class RawBreakup(
     var codCharge: Double?=null
     
 ): Parcelable {
+    
+    
     
     
     
@@ -1945,9 +2061,14 @@ data class AddProductCart(
     var itemId: Int?=null,
     
     @SerializedName("meta")
-    var meta: @RawValue HashMap<String,Any>?=null
+    var meta: @RawValue HashMap<String,Any>?=null,
+    
+    @SerializedName("seller_identifier")
+    var sellerIdentifier: String?=null
     
 ): Parcelable {
+    
+    
     
     
     
@@ -2273,6 +2394,9 @@ data class Coupon(
     
     
     
+    @SerializedName("coupon_amount")
+    var couponAmount: Double?=null,
+    
     @SerializedName("coupon_value")
     var couponValue: Double?=null,
     
@@ -2307,9 +2431,26 @@ data class Coupon(
     var description: String?=null,
     
     @SerializedName("is_applied")
-    var isApplied: Boolean?=null
+    var isApplied: Boolean?=null,
+    
+    @SerializedName("start_date")
+    var startDate: String?=null,
+    
+    @SerializedName("end_date")
+    var endDate: String?=null,
+    
+    @SerializedName("coupon_applicable_message")
+    var couponApplicableMessage: String?=null
     
 ): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+    
     
     
     
@@ -2651,6 +2792,12 @@ data class Address(
     @SerializedName("city")
     var city: String?=null,
     
+    @SerializedName("sector")
+    var sector: String?=null,
+    
+    @SerializedName("state_code")
+    var stateCode: String?=null,
+    
     @SerializedName("created_by_user_id")
     var createdByUserId: String?=null,
     
@@ -2697,6 +2844,10 @@ data class Address(
     var meta: @RawValue HashMap<String,Any>?=null
     
 ): Parcelable {
+    
+    
+    
+    
     
     
     
@@ -3459,7 +3610,7 @@ data class CheckCart(
     var isValid: Boolean?=null,
     
     @SerializedName("delivery_charges")
-    var deliveryCharges: Int?=null,
+    var deliveryCharges: Double?=null,
     
     @SerializedName("id")
     var id: String?=null,
@@ -3528,7 +3679,7 @@ data class CheckCart(
     var buyNow: Boolean?=null,
     
     @SerializedName("cod_charges")
-    var codCharges: Int?=null
+    var codCharges: Double?=null
     
 ): Parcelable {
     

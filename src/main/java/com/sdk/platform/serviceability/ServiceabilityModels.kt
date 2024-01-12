@@ -14,10 +14,10 @@ import com.google.gson.annotations.SerializedName
 
              
 /*
-    Model: ServiceabilityPayloadSchema
+    Model: UpdateZoneConfigRequest
 */
 @Parcelize
-data class ServiceabilityPayloadSchema(
+data class UpdateZoneConfigRequest(
     
     
     
@@ -233,6 +233,75 @@ data class EntityRegionView_page(
 
              
 /*
+    Model: getAppRegionZonesResponse
+*/
+@Parcelize
+data class getAppRegionZonesResponse(
+    
+    
+    
+    @SerializedName("page")
+    var page: ArrayList<PageSchema>?=null,
+    
+    @SerializedName("items")
+    var items: ArrayList<ListViewItems>?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: PageSchema
+*/
+@Parcelize
+data class PageSchema(
+    
+    
+    
+    @SerializedName("has_next")
+    var hasNext: Boolean?=null,
+    
+    @SerializedName("item_total")
+    var itemTotal: Int?=null,
+    
+    @SerializedName("size")
+    var size: Int?=null,
+    
+    @SerializedName("current")
+    var current: Int?=null,
+    
+    @SerializedName("type")
+    var type: String?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
     Model: EntityRegionView_Items
 */
 @Parcelize
@@ -247,14 +316,9 @@ data class EntityRegionView_Items(
     var uid: String?=null,
     
     @SerializedName("name")
-    var name: String?=null,
-    
-    @SerializedName("display_name")
-    var displayName: String?=null
+    var name: String?=null
     
 ): Parcelable {
-    
-    
     
     
     
@@ -283,8 +347,8 @@ data class EntityRegionView_Response(
     @SerializedName("page")
     var page: EntityRegionView_page?=null,
     
-    @SerializedName("items")
-    var items: ArrayList<EntityRegionView_Items>?=null,
+    @SerializedName("data")
+    var data: ArrayList<EntityRegionView_Items>?=null,
     
     @SerializedName("success")
     var success: Boolean?=null
@@ -460,14 +524,14 @@ data class ListViewItems(
     @SerializedName("product")
     var product: ListViewProduct?=null,
     
-    @SerializedName("pincodes_count")
-    var pincodesCount: Int?=null,
+    @SerializedName("regions_count")
+    var regionsCount: Int?=null,
     
     @SerializedName("company_id")
     var companyId: Int?=null,
     
     @SerializedName("channels")
-    var channels: ArrayList<ListViewChannels>?=null
+    var channels: ListViewChannels?=null
     
 ): Parcelable {
     
@@ -504,18 +568,13 @@ data class ListViewResponse(
     
     
     
-    @SerializedName("summary")
-    var summary: ListViewSummary?=null,
-    
     @SerializedName("page")
-    var page: ZoneDataItem?=null,
+    var page: ArrayList<ZoneDataItem>?=null,
     
     @SerializedName("items")
     var items: ArrayList<ListViewItems>?=null
     
 ): Parcelable {
-    
-    
     
     
     
@@ -851,14 +910,9 @@ data class GetZoneDataViewItems(
     var assignmentPreference: String?=null,
     
     @SerializedName("stores_count")
-    var storesCount: Int?=null,
-    
-    @SerializedName("pincodes_count")
-    var pincodesCount: Int?=null
+    var storesCount: Int?=null
     
 ): Parcelable {
-    
-    
     
     
     
@@ -914,12 +968,15 @@ data class GetSingleZoneDataViewResponse(
 
              
 /*
-    Model: CreateZoneData
+    Model: GetZoneByIdSchema
 */
 @Parcelize
-data class CreateZoneData(
+data class GetZoneByIdSchema(
     
     
+    
+    @SerializedName("zone_id")
+    var zoneId: String?=null,
     
     @SerializedName("name")
     var name: String?=null,
@@ -949,9 +1006,16 @@ data class CreateZoneData(
     var mapping: ArrayList<ZoneMappingType>?=null,
     
     @SerializedName("assignment_preference")
-    var assignmentPreference: String?=null
+    var assignmentPreference: String?=null,
+    
+    @SerializedName("stores_count")
+    var storesCount: Int?=null
     
 ): Parcelable {
+    
+    
+    
+    
     
     
     
@@ -981,20 +1045,55 @@ data class CreateZoneData(
 
              
 /*
-    Model: ZoneRequest
+    Model: CreateZoneData
 */
 @Parcelize
-data class ZoneRequest(
+data class CreateZoneData(
     
     
     
-    @SerializedName("identifier")
-    var identifier: String?=null,
+    @SerializedName("name")
+    var name: String?=null,
     
-    @SerializedName("data")
-    var data: CreateZoneData?=null
+    @SerializedName("slug")
+    var slug: String?=null,
+    
+    @SerializedName("company_id")
+    var companyId: Int?=null,
+    
+    @SerializedName("is_active")
+    var isActive: Boolean?=null,
+    
+    @SerializedName("channels")
+    var channels: ArrayList<GetZoneDataViewChannels>?=null,
+    
+    @SerializedName("store_ids")
+    var storeIds: ArrayList<Int>?=null,
+    
+    @SerializedName("region_type")
+    var regionType: String?=null,
+    
+    @SerializedName("mapping")
+    var mapping: ArrayList<ZoneMappingType>?=null,
+    
+    @SerializedName("assignment_preference")
+    var assignmentPreference: String?=null
     
 ): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     
     
     
@@ -2022,65 +2121,6 @@ data class ReAssignStoreResponse(
 
              
 /*
-    Model: ApplicationCompanyDpViewResponse
-*/
-@Parcelize
-data class ApplicationCompanyDpViewResponse(
-    
-    
-    
-    @SerializedName("courier_partner_id")
-    var courierPartnerId: Int?=null,
-    
-    @SerializedName("company_id")
-    var companyId: Int?=null,
-    
-    @SerializedName("application_id")
-    var applicationId: String?=null,
-    
-    @SerializedName("success")
-    var success: Boolean?=null
-    
-): Parcelable {
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-}
-
-
-
-             
-/*
-    Model: ApplicationCompanyDpViewRequest
-*/
-@Parcelize
-data class ApplicationCompanyDpViewRequest(
-    
-    
-    
-    @SerializedName("dp_id")
-    var dpId: String?=null
-    
-): Parcelable {
-    
-    
-    
-    
-    
-}
-
-
-
-             
-/*
     Model: PincodeMopData
 */
 @Parcelize
@@ -2636,67 +2676,161 @@ data class PincodeMopUpdateAuditHistoryResponseData(
 
              
 /*
-    Model: Dp1
+    Model: ArithmeticOperations
 */
 @Parcelize
-data class Dp1(
+data class ArithmeticOperations(
     
     
     
-    @SerializedName("is_self_ship")
-    var isSelfShip: Boolean?=null,
+    @SerializedName("lt")
+    var lt: Int?=null,
     
-    @SerializedName("name")
-    var name: String?=null,
+    @SerializedName("gt")
+    var gt: Int?=null,
     
-    @SerializedName("plan_id")
-    var planId: String?=null,
+    @SerializedName("lte")
+    var lte: Int?=null,
     
-    @SerializedName("stage")
-    var stage: String?=null,
+    @SerializedName("gte")
+    var gte: Int?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: SchemeRulesFeatures
+*/
+@Parcelize
+data class SchemeRulesFeatures(
+    
+    
+    
+    @SerializedName("quality_check")
+    var qualityCheck: Boolean?=null,
+    
+    @SerializedName("quick_response_code")
+    var quickResponseCode: Boolean?=null,
+    
+    @SerializedName("e_waybill")
+    var eWaybill: Boolean?=null,
+    
+    @SerializedName("multi_part_shipments")
+    var multiPartShipments: Boolean?=null,
+    
+    @SerializedName("flammable")
+    var flammable: Boolean?=null,
+    
+    @SerializedName("hazmat")
+    var hazmat: Boolean?=null,
+    
+    @SerializedName("battery_operated")
+    var batteryOperated: Boolean?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: SchemeRules
+*/
+@Parcelize
+data class SchemeRules(
+    
+    
+    
+    @SerializedName("weight")
+    var weight: ArithmeticOperations?=null,
+    
+    @SerializedName("transport_type")
+    var transportType: ArrayList<String>?=null,
+    
+    @SerializedName("region")
+    var region: String?=null,
+    
+    @SerializedName("payment_mode")
+    var paymentMode: ArrayList<String>?=null,
+    
+    @SerializedName("feature")
+    var feature: SchemeRulesFeatures?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: CourierAccount
+*/
+@Parcelize
+data class CourierAccount(
+    
+    
+    
+    @SerializedName("extension_id")
+    var extensionId: String?=null,
     
     @SerializedName("account_id")
     var accountId: String?=null,
     
-    @SerializedName("dp_id")
-    var dpId: String?=null,
+    @SerializedName("scheme_id")
+    var schemeId: String?=null,
     
-    @SerializedName("plan_rules")
-    var planRules: @RawValue HashMap<String,Any>?=null
+    @SerializedName("is_self_ship")
+    var isSelfShip: Boolean?=null,
     
-): Parcelable {
+    @SerializedName("stage")
+    var stage: String?=null,
     
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-}
-
-
-
-             
-/*
-    Model: CompanyDpAccountRequest
-*/
-@Parcelize
-data class CompanyDpAccountRequest(
-    
-    
-    
-    @SerializedName("data")
-    var data: ArrayList<Dp1>?=null
+    @SerializedName("is_own_account")
+    var isOwnAccount: Boolean?=null
     
 ): Parcelable {
     
@@ -2704,23 +2838,11 @@ data class CompanyDpAccountRequest(
     
     
     
-}
-
-
-
-             
-/*
-    Model: CompanyDpAccountResponse
-*/
-@Parcelize
-data class CompanyDpAccountResponse(
     
     
     
-    @SerializedName("success")
-    var success: Boolean?=null
     
-): Parcelable {
+    
     
     
     
@@ -2739,11 +2861,11 @@ data class ErrorResponse(
     
     
     
-    @SerializedName("message")
-    var message: String?=null,
-    
     @SerializedName("value")
     var value: String?=null,
+    
+    @SerializedName("message")
+    var message: String?=null,
     
     @SerializedName("type")
     var type: String?=null
@@ -2764,25 +2886,20 @@ data class ErrorResponse(
 
              
 /*
-    Model: DpAccountFailureResponse
+    Model: CourierPartnerAccountFailureResponse
 */
 @Parcelize
-data class DpAccountFailureResponse(
+data class CourierPartnerAccountFailureResponse(
     
     
-    
-    @SerializedName("status_code")
-    var statusCode: Int?=null,
-    
-    @SerializedName("error")
-    var error: ArrayList<ErrorResponse>?=null,
     
     @SerializedName("success")
-    var success: Boolean?=null
+    var success: Boolean?=null,
+    
+    @SerializedName("error")
+    var error: ArrayList<ErrorResponse>?=null
     
 ): Parcelable {
-    
-    
     
     
     
@@ -2848,113 +2965,229 @@ data class Page(
 
              
 /*
-    Model: CompanyDpAccountListResponse
+    Model: CourierPartnerList
 */
 @Parcelize
-data class CompanyDpAccountListResponse(
+data class CourierPartnerList(
     
     
     
-    @SerializedName("success")
-    var success: Boolean?=null,
+    @SerializedName("extension_id")
+    var extensionId: String?=null,
     
-    @SerializedName("page")
-    var page: Page?=null,
-    
-    @SerializedName("items")
-    var items: ArrayList<Dp1>?=null
-    
-): Parcelable {
-    
-    
-    
-    
-    
-    
-    
-    
-    
-}
-
-
-
-             
-/*
-    Model: DpRulesUpdateRequest
-*/
-@Parcelize
-data class DpRulesUpdateRequest(
-    
-    
-    
-    @SerializedName("is_active")
-    var isActive: Boolean?=null,
-    
-    @SerializedName("conditions")
-    var conditions: @RawValue ArrayList<HashMap<String,Any>>?=null,
-    
-    @SerializedName("dp_ids")
-    var dpIds: @RawValue HashMap<String,HashMap<String,Any>>?=null,
-    
-    @SerializedName("name")
-    var name: String?=null
-    
-): Parcelable {
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-}
-
-
-
-             
-/*
-    Model: DpRuleResponse
-*/
-@Parcelize
-data class DpRuleResponse(
-    
-    
-    
-    @SerializedName("created_on")
-    var createdOn: String?=null,
+    @SerializedName("account_id")
+    var accountId: String?=null,
     
     @SerializedName("name")
     var name: String?=null,
     
-    @SerializedName("modified_by")
-    var modifiedBy: @RawValue HashMap<String,Any>?=null,
-    
-    @SerializedName("dp_ids")
-    var dpIds: @RawValue HashMap<String,Any>?=null,
-    
-    @SerializedName("is_active")
-    var isActive: Boolean?=null,
-    
-    @SerializedName("modified_on")
-    var modifiedOn: String?=null,
-    
-    @SerializedName("uid")
-    var uid: String?=null,
-    
-    @SerializedName("created_by")
-    var createdBy: @RawValue HashMap<String,Any>?=null,
-    
-    @SerializedName("company_id")
-    var companyId: Int?=null,
-    
-    @SerializedName("conditions")
-    var conditions: ArrayList<String>?=null
+    @SerializedName("is_self_ship")
+    var isSelfShip: Boolean?=null
     
 ): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: LocationRuleValues
+*/
+@Parcelize
+data class LocationRuleValues(
+    
+    
+    
+    @SerializedName("id")
+    var id: String?=null,
+    
+    @SerializedName("sub_type")
+    var subType: String?=null,
+    
+    @SerializedName("name")
+    var name: String?=null,
+    
+    @SerializedName("display_name")
+    var displayName: String?=null,
+    
+    @SerializedName("parent_id")
+    var parentId: String?=null,
+    
+    @SerializedName("parent_ids")
+    var parentIds: ArrayList<String>?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: LocationRule
+*/
+@Parcelize
+data class LocationRule(
+    
+    
+    
+    @SerializedName("type")
+    var type: String?=null,
+    
+    @SerializedName("includes")
+    var includes: ArrayList<LocationRuleValues>?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: StringComparisonOperations
+*/
+@Parcelize
+data class StringComparisonOperations(
+    
+    
+    
+    @SerializedName("includes")
+    var includes: ArrayList<String>?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: IntComparisonOperations
+*/
+@Parcelize
+data class IntComparisonOperations(
+    
+    
+    
+    @SerializedName("includes")
+    var includes: ArrayList<Int>?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: CourierPartnerRuleConditions
+*/
+@Parcelize
+data class CourierPartnerRuleConditions(
+    
+    
+    
+    @SerializedName("forward")
+    var forward: LocationRule?=null,
+    
+    @SerializedName("reverse")
+    var reverse: LocationRule?=null,
+    
+    @SerializedName("payment_mode")
+    var paymentMode: StringComparisonOperations?=null,
+    
+    @SerializedName("category_ids")
+    var categoryIds: IntComparisonOperations?=null,
+    
+    @SerializedName("product_ids")
+    var productIds: IntComparisonOperations?=null,
+    
+    @SerializedName("product_tags")
+    var productTags: StringComparisonOperations?=null,
+    
+    @SerializedName("zone_ids")
+    var zoneIds: StringComparisonOperations?=null,
+    
+    @SerializedName("department_ids")
+    var departmentIds: IntComparisonOperations?=null,
+    
+    @SerializedName("brand_ids")
+    var brandIds: IntComparisonOperations?=null,
+    
+    @SerializedName("order_place_date")
+    var orderPlaceDate: ArithmeticOperations?=null,
+    
+    @SerializedName("store_ids")
+    var storeIds: IntComparisonOperations?=null,
+    
+    @SerializedName("store_type")
+    var storeType: StringComparisonOperations?=null,
+    
+    @SerializedName("store_tags")
+    var storeTags: StringComparisonOperations?=null,
+    
+    @SerializedName("shipment_weight")
+    var shipmentWeight: ArithmeticOperations?=null,
+    
+    @SerializedName("shipment_cost")
+    var shipmentCost: ArithmeticOperations?=null,
+    
+    @SerializedName("shipment_volumetric_weight")
+    var shipmentVolumetricWeight: ArithmeticOperations?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     
     
     
@@ -2984,23 +3217,33 @@ data class DpRuleResponse(
 
              
 /*
-    Model: DpRuleUpdateSuccessResponse
+    Model: CourierPartnerRule
 */
 @Parcelize
-data class DpRuleUpdateSuccessResponse(
+data class CourierPartnerRule(
     
     
     
-    @SerializedName("status_code")
-    var statusCode: Int?=null,
+    @SerializedName("is_active")
+    var isActive: Boolean?=null,
     
-    @SerializedName("data")
-    var data: DpRuleResponse?=null,
+    @SerializedName("cp_list")
+    var cpList: ArrayList<CourierPartnerList>?=null,
     
-    @SerializedName("success")
-    var success: Boolean?=null
+    @SerializedName("name")
+    var name: String?=null,
+    
+    @SerializedName("conditions")
+    var conditions: CourierPartnerRuleConditions?=null,
+    
+    @SerializedName("sort")
+    var sort: ArrayList<String>?=null
     
 ): Parcelable {
+    
+    
+    
+    
     
     
     
@@ -3023,255 +3266,13 @@ data class FailureResponse(
     
     
     
-    @SerializedName("status_code")
-    var statusCode: Int?=null,
-    
-    @SerializedName("error")
-    var error: ArrayList<ErrorResponse>?=null,
-    
-    @SerializedName("success")
-    var success: Boolean?=null
-    
-): Parcelable {
-    
-    
-    
-    
-    
-    
-    
-    
-    
-}
-
-
-
-             
-/*
-    Model: DpSchemaInRuleListing
-*/
-@Parcelize
-data class DpSchemaInRuleListing(
-    
-    
-    
-    @SerializedName("is_self_ship")
-    var isSelfShip: Boolean?=null,
-    
-    @SerializedName("name")
-    var name: String?=null,
-    
-    @SerializedName("plan_id")
-    var planId: String?=null,
-    
-    @SerializedName("stage")
-    var stage: String?=null,
-    
-    @SerializedName("account_id")
-    var accountId: String?=null,
-    
-    @SerializedName("priority")
-    var priority: Int?=null,
-    
-    @SerializedName("dp_id")
-    var dpId: String?=null,
-    
-    @SerializedName("plan_rules")
-    var planRules: @RawValue HashMap<String,Any>?=null
-    
-): Parcelable {
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-}
-
-
-
-             
-/*
-    Model: DpRule
-*/
-@Parcelize
-data class DpRule(
-    
-    
-    
-    @SerializedName("name")
-    var name: String?=null,
-    
-    @SerializedName("dp_ids")
-    var dpIds: HashMap<String,DpSchemaInRuleListing>?=null,
-    
-    @SerializedName("is_active")
-    var isActive: Boolean?=null,
-    
-    @SerializedName("company_id")
-    var companyId: Int?=null,
-    
-    @SerializedName("conditions")
-    var conditions: @RawValue ArrayList<HashMap<String,Any>>?=null
-    
-): Parcelable {
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-}
-
-
-
-             
-/*
-    Model: DpRuleSuccessResponse
-*/
-@Parcelize
-data class DpRuleSuccessResponse(
-    
-    
-    
-    @SerializedName("status_code")
-    var statusCode: Int?=null,
-    
-    @SerializedName("data")
-    var data: DpRule?=null,
-    
-    @SerializedName("success")
-    var success: Boolean?=null
-    
-): Parcelable {
-    
-    
-    
-    
-    
-    
-    
-    
-    
-}
-
-
-
-             
-/*
-    Model: DpIds
-*/
-@Parcelize
-data class DpIds(
-    
-    
-    
-    @SerializedName("enabled")
-    var enabled: Boolean?=null,
-    
-    @SerializedName("priority")
-    var priority: Int?=null,
-    
-    @SerializedName("meta")
-    var meta: @RawValue HashMap<String,Any>?=null
-    
-): Parcelable {
-    
-    
-    
-    
-    
-    
-    
-    
-    
-}
-
-
-
-             
-/*
-    Model: DpRuleRequest
-*/
-@Parcelize
-data class DpRuleRequest(
-    
-    
-    
-    @SerializedName("name")
-    var name: String?=null,
-    
-    @SerializedName("dp_ids")
-    var dpIds: HashMap<String,DpIds>?=null,
-    
-    @SerializedName("is_active")
-    var isActive: Boolean?=null,
-    
-    @SerializedName("company_id")
-    var companyId: Int?=null,
-    
-    @SerializedName("conditions")
-    var conditions: @RawValue ArrayList<HashMap<String,Any>>?=null
-    
-): Parcelable {
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-}
-
-
-
-             
-/*
-    Model: DpMultipleRuleSuccessResponse
-*/
-@Parcelize
-data class DpMultipleRuleSuccessResponse(
-    
-    
-    
     @SerializedName("success")
     var success: Boolean?=null,
     
-    @SerializedName("page")
-    var page: Page?=null,
-    
-    @SerializedName("items")
-    var items: ArrayList<DpRule>?=null
+    @SerializedName("error")
+    var error: ArrayList<ErrorResponse>?=null
     
 ): Parcelable {
-    
-    
     
     
     
@@ -3285,15 +3286,74 @@ data class DpMultipleRuleSuccessResponse(
 
              
 /*
-    Model: DPCompanyRuleRequest
+    Model: CourierPartnerRulesListResponse
 */
 @Parcelize
-data class DPCompanyRuleRequest(
+data class CourierPartnerRulesListResponse(
+    
+    
+    
+    @SerializedName("items")
+    var items: ArrayList<CourierPartnerRule>?=null,
+    
+    @SerializedName("page")
+    var page: Page?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: CompanyConfig
+*/
+@Parcelize
+data class CompanyConfig(
     
     
     
     @SerializedName("rule_ids")
-    var ruleIds: ArrayList<String>?=null
+    var ruleIds: ArrayList<String>?=null,
+    
+    @SerializedName("sort")
+    var sort: ArrayList<String>?=null,
+    
+    @SerializedName("logistics_as_actual")
+    var logisticsAsActual: Boolean?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: ZoneConfig
+*/
+@Parcelize
+data class ZoneConfig(
+    
+    
+    
+    @SerializedName("serviceability_type")
+    var serviceabilityType: String?=null
     
 ): Parcelable {
     
@@ -3307,23 +3367,132 @@ data class DPCompanyRuleRequest(
 
              
 /*
-    Model: DPCompanyRuleResponse
+    Model: ApplicationConfig
 */
 @Parcelize
-data class DPCompanyRuleResponse(
+data class ApplicationConfig(
     
     
     
-    @SerializedName("status_code")
-    var statusCode: Int?=null,
+    @SerializedName("rule_ids")
+    var ruleIds: ArrayList<String>?=null,
     
-    @SerializedName("data")
-    var data: ArrayList<DpRuleResponse>?=null,
+    @SerializedName("sort")
+    var sort: ArrayList<String>?=null,
+    
+    @SerializedName("zones")
+    var zones: ZoneConfig?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: BulkRegionJobSerializer
+*/
+@Parcelize
+data class BulkRegionJobSerializer(
+    
+    
+    
+    @SerializedName("file_path")
+    var filePath: String?=null,
+    
+    @SerializedName("country")
+    var country: String?=null,
+    
+    @SerializedName("action")
+    var action: String?=null,
+    
+    @SerializedName("region")
+    var region: String?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: BulkRegionResponseItemData
+*/
+@Parcelize
+data class BulkRegionResponseItemData(
+    
+    
+    
+    @SerializedName("file_path")
+    var filePath: String?=null,
+    
+    @SerializedName("failed")
+    var failed: Int?=null,
+    
+    @SerializedName("failed_records")
+    var failedRecords: @RawValue ArrayList<HashMap<String,Any>>?=null,
+    
+    @SerializedName("action")
+    var action: String?=null,
+    
+    @SerializedName("batch_id")
+    var batchId: String?=null,
+    
+    @SerializedName("country")
+    var country: String?=null,
     
     @SerializedName("success")
-    var success: Boolean?=null
+    var success: Int?=null,
+    
+    @SerializedName("region")
+    var region: String?=null,
+    
+    @SerializedName("status")
+    var status: String?=null,
+    
+    @SerializedName("total")
+    var total: Int?=null,
+    
+    @SerializedName("error_file_path")
+    var errorFilePath: String?=null
     
 ): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     
     
     
@@ -3339,47 +3508,20 @@ data class DPCompanyRuleResponse(
 
              
 /*
-    Model: DPApplicationRuleRequest
+    Model: BulkRegionResponse
 */
 @Parcelize
-data class DPApplicationRuleRequest(
+data class BulkRegionResponse(
     
     
     
-    @SerializedName("shipping_rules")
-    var shippingRules: ArrayList<String>?=null
+    @SerializedName("items")
+    var items: ArrayList<BulkRegionResponseItemData>?=null,
     
-): Parcelable {
-    
-    
-    
-    
-    
-}
-
-
-
-             
-/*
-    Model: DPApplicationRuleResponse
-*/
-@Parcelize
-data class DPApplicationRuleResponse(
-    
-    
-    
-    @SerializedName("status_code")
-    var statusCode: Boolean?=null,
-    
-    @SerializedName("data")
-    var data: ArrayList<DpRuleResponse>?=null,
-    
-    @SerializedName("success")
-    var success: Boolean?=null
+    @SerializedName("page")
+    var page: Page?=null
     
 ): Parcelable {
-    
-    
     
     
     
@@ -3463,6 +3605,1347 @@ data class ApplicationSelfShipConfigResponse(
     
     
     
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: StoreRuleConfigData
+*/
+@Parcelize
+data class StoreRuleConfigData(
+    
+    
+    
+    @SerializedName("rule_ids")
+    var ruleIds: ArrayList<String>?=null,
+    
+    @SerializedName("type_based_priority")
+    var typeBasedPriority: ArrayList<String>?=null,
+    
+    @SerializedName("tag_based_priority")
+    var tagBasedPriority: ArrayList<String>?=null,
+    
+    @SerializedName("store_priority")
+    var storePriority: ArrayList<StorePrioritySchema>?=null,
+    
+    @SerializedName("sort")
+    var sort: ArrayList<String>?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: CustomerRadiusSchema
+*/
+@Parcelize
+data class CustomerRadiusSchema(
+    
+    
+    
+    @SerializedName("unit")
+    var unit: String?=null,
+    
+    @SerializedName("lt")
+    var lt: Int?=null,
+    
+    @SerializedName("lte")
+    var lte: Int?=null,
+    
+    @SerializedName("gt")
+    var gt: Int?=null,
+    
+    @SerializedName("gte")
+    var gte: Int?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: StoreRuleConditionSchema
+*/
+@Parcelize
+data class StoreRuleConditionSchema(
+    
+    
+    
+    @SerializedName("department_ids")
+    var departmentIds: IntComparisonOperations?=null,
+    
+    @SerializedName("category_ids")
+    var categoryIds: IntComparisonOperations?=null,
+    
+    @SerializedName("brand_ids")
+    var brandIds: IntComparisonOperations?=null,
+    
+    @SerializedName("to_location")
+    var toLocation: LocationRule?=null,
+    
+    @SerializedName("customer_radius")
+    var customerRadius: CustomerRadiusSchema?=null,
+    
+    @SerializedName("store_type")
+    var storeType: StringComparisonOperations?=null,
+    
+    @SerializedName("product_tags")
+    var productTags: StringComparisonOperations?=null,
+    
+    @SerializedName("product_ids")
+    var productIds: IntComparisonOperations?=null,
+    
+    @SerializedName("store_tags")
+    var storeTags: StringComparisonOperations?=null,
+    
+    @SerializedName("order_place_date")
+    var orderPlaceDate: ArithmeticOperations?=null,
+    
+    @SerializedName("zone_ids")
+    var zoneIds: StringComparisonOperations?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: StoreRuleDataSchema
+*/
+@Parcelize
+data class StoreRuleDataSchema(
+    
+    
+    
+    @SerializedName("id")
+    var id: String?=null,
+    
+    @SerializedName("name")
+    var name: String?=null,
+    
+    @SerializedName("company_id")
+    var companyId: Int?=null,
+    
+    @SerializedName("application_id")
+    var applicationId: String?=null,
+    
+    @SerializedName("type_based_priority")
+    var typeBasedPriority: ArrayList<String>?=null,
+    
+    @SerializedName("tag_based_priority")
+    var tagBasedPriority: ArrayList<String>?=null,
+    
+    @SerializedName("store_priority")
+    var storePriority: ArrayList<StorePrioritySchema>?=null,
+    
+    @SerializedName("sort")
+    var sort: ArrayList<String>?=null,
+    
+    @SerializedName("conditions")
+    var conditions: StoreRuleConditionSchema?=null,
+    
+    @SerializedName("is_active")
+    var isActive: Boolean?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: StorePrioritySchema
+*/
+@Parcelize
+data class StorePrioritySchema(
+    
+    
+    
+    @SerializedName("id")
+    var id: String?=null,
+    
+    @SerializedName("name")
+    var name: String?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: GetStoreRulesApiResponse
+*/
+@Parcelize
+data class GetStoreRulesApiResponse(
+    
+    
+    
+    @SerializedName("items")
+    var items: ArrayList<StoreRuleDataSchema>?=null,
+    
+    @SerializedName("page")
+    var page: Page?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: CreateStoreRuleRequestSchema
+*/
+@Parcelize
+data class CreateStoreRuleRequestSchema(
+    
+    
+    
+    @SerializedName("name")
+    var name: String?=null,
+    
+    @SerializedName("is_active")
+    var isActive: Boolean?=null,
+    
+    @SerializedName("conditions")
+    var conditions: StoreRuleConditionSchema?=null,
+    
+    @SerializedName("type_based_priority")
+    var typeBasedPriority: ArrayList<String>?=null,
+    
+    @SerializedName("tag_based_priority")
+    var tagBasedPriority: ArrayList<String>?=null,
+    
+    @SerializedName("store_priority")
+    var storePriority: ArrayList<StorePrioritySchema>?=null,
+    
+    @SerializedName("sort")
+    var sort: ArrayList<String>?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: StoreRuleResponseSchema
+*/
+@Parcelize
+data class StoreRuleResponseSchema(
+    
+    
+    
+    @SerializedName("id")
+    var id: String?=null,
+    
+    @SerializedName("name")
+    var name: String?=null,
+    
+    @SerializedName("type")
+    var type: String?=null,
+    
+    @SerializedName("type_based_priority")
+    var typeBasedPriority: ArrayList<String>?=null,
+    
+    @SerializedName("tag_based_priority")
+    var tagBasedPriority: ArrayList<String>?=null,
+    
+    @SerializedName("store_priority")
+    var storePriority: ArrayList<StorePrioritySchema>?=null,
+    
+    @SerializedName("sort")
+    var sort: ArrayList<String>?=null,
+    
+    @SerializedName("conditions")
+    var conditions: StoreRuleConditionSchema?=null,
+    
+    @SerializedName("is_active")
+    var isActive: Boolean?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: StoreRuleUpdateResponseSchema
+*/
+@Parcelize
+data class StoreRuleUpdateResponseSchema(
+    
+    
+    
+    @SerializedName("id")
+    var id: String?=null,
+    
+    @SerializedName("name")
+    var name: String?=null,
+    
+    @SerializedName("type")
+    var type: String?=null,
+    
+    @SerializedName("type_based_priority")
+    var typeBasedPriority: ArrayList<String>?=null,
+    
+    @SerializedName("tag_based_priority")
+    var tagBasedPriority: ArrayList<String>?=null,
+    
+    @SerializedName("store_priority")
+    var storePriority: ArrayList<StorePrioritySchema>?=null,
+    
+    @SerializedName("sort")
+    var sort: ArrayList<String>?=null,
+    
+    @SerializedName("conditions")
+    var conditions: StoreRuleConditionSchema?=null,
+    
+    @SerializedName("is_active")
+    var isActive: Boolean?=null,
+    
+    @SerializedName("company_id")
+    var companyId: Int?=null,
+    
+    @SerializedName("application_id")
+    var applicationId: String?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: ServiceabilityModel
+*/
+@Parcelize
+data class ServiceabilityModel(
+    
+    
+    
+    @SerializedName("lm_cod_limit")
+    var lmCodLimit: Int?=null,
+    
+    @SerializedName("is_qc")
+    var isQc: Boolean?=null,
+    
+    @SerializedName("pickup_cutoff")
+    var pickupCutoff: String?=null,
+    
+    @SerializedName("route_code")
+    var routeCode: String?=null,
+    
+    @SerializedName("is_first_mile")
+    var isFirstMile: Boolean?=null,
+    
+    @SerializedName("is_return")
+    var isReturn: Boolean?=null,
+    
+    @SerializedName("is_installation")
+    var isInstallation: Boolean?=null,
+    
+    @SerializedName("is_last_mile")
+    var isLastMile: Boolean?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: CourierPartnerSchemeFeatures
+*/
+@Parcelize
+data class CourierPartnerSchemeFeatures(
+    
+    
+    
+    @SerializedName("doorstep_qc")
+    var doorstepQc: Boolean?=null,
+    
+    @SerializedName("qr")
+    var qr: Boolean?=null,
+    
+    @SerializedName("mps")
+    var mps: Boolean?=null,
+    
+    @SerializedName("ndr")
+    var ndr: Boolean?=null,
+    
+    @SerializedName("ndr_attempts")
+    var ndrAttempts: Int?=null,
+    
+    @SerializedName("dangerous_goods")
+    var dangerousGoods: Boolean?=null,
+    
+    @SerializedName("fragile_goods")
+    var fragileGoods: Boolean?=null,
+    
+    @SerializedName("restricted_goods")
+    var restrictedGoods: Boolean?=null,
+    
+    @SerializedName("cold_storage_goods")
+    var coldStorageGoods: Boolean?=null,
+    
+    @SerializedName("doorstep_exchange")
+    var doorstepExchange: Boolean?=null,
+    
+    @SerializedName("doorstep_return")
+    var doorstepReturn: Boolean?=null,
+    
+    @SerializedName("product_installation")
+    var productInstallation: Boolean?=null,
+    
+    @SerializedName("openbox_delivery")
+    var openboxDelivery: Boolean?=null,
+    
+    @SerializedName("status_updates")
+    var statusUpdates: String?=null,
+    
+    @SerializedName("multi_pick_single_drop")
+    var multiPickSingleDrop: Boolean?=null,
+    
+    @SerializedName("single_pick_multi_drop")
+    var singlePickMultiDrop: Boolean?=null,
+    
+    @SerializedName("multi_pick_multi_drop")
+    var multiPickMultiDrop: Boolean?=null,
+    
+    @SerializedName("ewaybill")
+    var ewaybill: Boolean?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: CourierPartnerSchemeModel
+*/
+@Parcelize
+data class CourierPartnerSchemeModel(
+    
+    
+    
+    @SerializedName("extension_id")
+    var extensionId: String?=null,
+    
+    @SerializedName("scheme_id")
+    var schemeId: String?=null,
+    
+    @SerializedName("weight")
+    var weight: ArithmeticOperations?=null,
+    
+    @SerializedName("transport_type")
+    var transportType: String?=null,
+    
+    @SerializedName("region")
+    var region: String?=null,
+    
+    @SerializedName("delivery_type")
+    var deliveryType: String?=null,
+    
+    @SerializedName("payment_mode")
+    var paymentMode: ArrayList<String>?=null,
+    
+    @SerializedName("stage")
+    var stage: String?=null,
+    
+    @SerializedName("feature")
+    var feature: CourierPartnerSchemeFeatures?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: CourierAccountResponse
+*/
+@Parcelize
+data class CourierAccountResponse(
+    
+    
+    
+    @SerializedName("account_id")
+    var accountId: String?=null,
+    
+    @SerializedName("scheme_id")
+    var schemeId: String?=null,
+    
+    @SerializedName("is_self_ship")
+    var isSelfShip: Boolean?=null,
+    
+    @SerializedName("stage")
+    var stage: String?=null,
+    
+    @SerializedName("is_own_account")
+    var isOwnAccount: Boolean?=null,
+    
+    @SerializedName("scheme_rules")
+    var schemeRules: CourierPartnerSchemeModel?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: CompanyCourierPartnerAccountListResponse
+*/
+@Parcelize
+data class CompanyCourierPartnerAccountListResponse(
+    
+    
+    
+    @SerializedName("items")
+    var items: ArrayList<CourierAccountResponse>?=null,
+    
+    @SerializedName("page")
+    var page: Page?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: PackageMaterial
+*/
+@Parcelize
+data class PackageMaterial(
+    
+    
+    
+    @SerializedName("name")
+    var name: String?=null,
+    
+    @SerializedName("width")
+    var width: Double?=null,
+    
+    @SerializedName("height")
+    var height: Double?=null,
+    
+    @SerializedName("length")
+    var length: Double?=null,
+    
+    @SerializedName("rules")
+    var rules: ArrayList<PackageMaterialRule>?=null,
+    
+    @SerializedName("store_ids")
+    var storeIds: ArrayList<Int>?=null,
+    
+    @SerializedName("weight")
+    var weight: Double?=null,
+    
+    @SerializedName("error_rate")
+    var errorRate: Double?=null,
+    
+    @SerializedName("package_type")
+    var packageType: String?=null,
+    
+    @SerializedName("size")
+    var size: String?=null,
+    
+    @SerializedName("media")
+    var media: ArrayList<String>?=null,
+    
+    @SerializedName("channels")
+    var channels: ArrayList<Channel>?=null,
+    
+    @SerializedName("track_inventory")
+    var trackInventory: Boolean?=null,
+    
+    @SerializedName("status")
+    var status: String?=null,
+    
+    @SerializedName("max_weight")
+    var maxWeight: Double?=null,
+    
+    @SerializedName("package_vol_weight")
+    var packageVolWeight: Double?=null,
+    
+    @SerializedName("auto_calculate")
+    var autoCalculate: Boolean?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: PackageMaterialResponse
+*/
+@Parcelize
+data class PackageMaterialResponse(
+    
+    
+    
+    @SerializedName("name")
+    var name: String?=null,
+    
+    @SerializedName("id")
+    var id: String?=null,
+    
+    @SerializedName("item_id")
+    var itemId: Int?=null,
+    
+    @SerializedName("width")
+    var width: Double?=null,
+    
+    @SerializedName("height")
+    var height: Double?=null,
+    
+    @SerializedName("length")
+    var length: Double?=null,
+    
+    @SerializedName("rules")
+    var rules: ArrayList<PackageMaterialRule>?=null,
+    
+    @SerializedName("store_ids")
+    var storeIds: ArrayList<Int>?=null,
+    
+    @SerializedName("weight")
+    var weight: Double?=null,
+    
+    @SerializedName("error_rate")
+    var errorRate: Double?=null,
+    
+    @SerializedName("package_type")
+    var packageType: String?=null,
+    
+    @SerializedName("size")
+    var size: String?=null,
+    
+    @SerializedName("media")
+    var media: ArrayList<String>?=null,
+    
+    @SerializedName("channels")
+    var channels: ArrayList<Channel>?=null,
+    
+    @SerializedName("track_inventory")
+    var trackInventory: Boolean?=null,
+    
+    @SerializedName("status")
+    var status: String?=null,
+    
+    @SerializedName("max_weight")
+    var maxWeight: Double?=null,
+    
+    @SerializedName("package_vol_weight")
+    var packageVolWeight: Double?=null,
+    
+    @SerializedName("auto_calculate")
+    var autoCalculate: Boolean?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: PackageMaterialRule
+*/
+@Parcelize
+data class PackageMaterialRule(
+    
+    
+    
+    @SerializedName("rule_id")
+    var ruleId: String?=null,
+    
+    @SerializedName("quantity")
+    var quantity: PackageMaterialRuleQuantity?=null,
+    
+    @SerializedName("weight")
+    var weight: Int?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: PackageRule
+*/
+@Parcelize
+data class PackageRule(
+    
+    
+    
+    @SerializedName("name")
+    var name: String?=null,
+    
+    @SerializedName("company_id")
+    var companyId: Int?=null,
+    
+    @SerializedName("type")
+    var type: String?=null,
+    
+    @SerializedName("is_active")
+    var isActive: Boolean?=null,
+    
+    @SerializedName("product_tag")
+    var productTag: PackageRuleProductTag?=null,
+    
+    @SerializedName("product_id")
+    var productId: PackageRuleProduct?=null,
+    
+    @SerializedName("category_id")
+    var categoryId: PackageRuleCategory?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: PackageRuleResponse
+*/
+@Parcelize
+data class PackageRuleResponse(
+    
+    
+    
+    @SerializedName("id")
+    var id: String?=null,
+    
+    @SerializedName("name")
+    var name: String?=null,
+    
+    @SerializedName("company_id")
+    var companyId: Int?=null,
+    
+    @SerializedName("type")
+    var type: String?=null,
+    
+    @SerializedName("is_active")
+    var isActive: Boolean?=null,
+    
+    @SerializedName("product_tag")
+    var productTag: PackageRuleProductTag?=null,
+    
+    @SerializedName("product_id")
+    var productId: PackageRuleProduct?=null,
+    
+    @SerializedName("category_id")
+    var categoryId: PackageRuleCategory?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: Channel
+*/
+@Parcelize
+data class Channel(
+    
+    
+    
+    @SerializedName("type")
+    var type: String?=null,
+    
+    @SerializedName("id")
+    var id: String?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: PackageMaterialRuleList
+*/
+@Parcelize
+data class PackageMaterialRuleList(
+    
+    
+    
+    @SerializedName("items")
+    var items: PackageRuleResponse?=null,
+    
+    @SerializedName("page")
+    var page: Page?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: PackageMaterialList
+*/
+@Parcelize
+data class PackageMaterialList(
+    
+    
+    
+    @SerializedName("items")
+    var items: PackageMaterialResponse?=null,
+    
+    @SerializedName("page")
+    var page: Page?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: PackageRuleProduct
+*/
+@Parcelize
+data class PackageRuleProduct(
+    
+    
+    
+    @SerializedName("includes")
+    var includes: ArrayList<Int>?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: PackageRuleProductTag
+*/
+@Parcelize
+data class PackageRuleProductTag(
+    
+    
+    
+    @SerializedName("includes")
+    var includes: ArrayList<String>?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: PackageRuleCategory
+*/
+@Parcelize
+data class PackageRuleCategory(
+    
+    
+    
+    @SerializedName("includes")
+    var includes: ArrayList<Int>?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: PackageMaterialRuleQuantity
+*/
+@Parcelize
+data class PackageMaterialRuleQuantity(
+    
+    
+    
+    @SerializedName("min")
+    var min: Int?=null,
+    
+    @SerializedName("max")
+    var max: Int?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: RulePriorityRequest
+*/
+@Parcelize
+data class RulePriorityRequest(
+    
+    
+    
+    @SerializedName("rule_id")
+    var ruleId: String?=null,
+    
+    @SerializedName("priority")
+    var priority: Int?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: RulePriorityResponse
+*/
+@Parcelize
+data class RulePriorityResponse(
+    
+    
+    
+    @SerializedName("success")
+    var success: Boolean?=null
+    
+): Parcelable {
     
     
     

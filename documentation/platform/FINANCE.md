@@ -32,6 +32,9 @@ Default
 * [generateReportCustomerCn](#generatereportcustomercn)
 * [downloadReportCustomerCn](#downloadreportcustomercn)
 * [getReportingFilters](#getreportingfilters)
+* [invoicePaymentDetails](#invoicepaymentdetails)
+* [invoiceActivityLogs](#invoiceactivitylogs)
+* [unlockCreditNote](#unlockcreditnote)
 
 
 
@@ -1280,7 +1283,12 @@ Success
       "status": "UNPAID",
       "is_downloadable": true,
       "invoice_id": "18d6bf81-21f8-4dd7-9c37-72751173a24a",
-      "source_id": ""
+      "source_id": "",
+      "currency": {
+        "code": "INR",
+        "symbol": "r",
+        "name": "Indian Rupee"
+      }
     }
   ],
   "unpaid_invoice_data": {
@@ -2306,6 +2314,229 @@ Success
 ---
 
 
+### invoicePaymentDetails
+Display payment details of an invoice.
+
+
+
+
+```kotlin
+platformClient.finance.invoicePaymentDetails(invoiceNumber: invoiceNumber).safeAwait{ response, error->
+    response?.let{
+      // Use response
+    } ->
+    error?.let{
+      
+    } 
+}
+```
+
+
+
+
+
+| Argument  |  Type  | Required | Description |
+| --------- | -----  | -------- | ----------- | 
+| invoiceNumber | String | yes | Invoice Number for which the data will be returned.Invoice_Number is required. |  
+
+
+
+Display payment details of invoice.
+
+*Returned Response:*
+
+
+
+
+[InvoicePaymentDetailsResponse](#InvoicePaymentDetailsResponse)
+
+Success
+
+
+
+
+<details>
+<summary><i>&nbsp; Example:</i></summary>
+
+```json
+{
+  "payment_details_visible": true,
+  "paid_invoice_payment_details": [
+    {
+      "payment_details": [
+        {
+          "display_name": "Type of Payment",
+          "value": "Online"
+        },
+        {
+          "display_name": "Mode of Payment",
+          "value": "Upi"
+        },
+        {
+          "display_name": "UPI ID",
+          "value": "8787987654@ybl"
+        },
+        {
+          "display_name": "Reference Number",
+          "value": "882648404204"
+        }
+      ],
+      "date_of_payment": "2023-07-19 13:12:15.901928",
+      "amount": 8000
+    }
+  ],
+  "failed_attempts_details": []
+}
+```
+</details>
+
+
+
+
+
+
+
+
+
+---
+
+
+### invoiceActivityLogs
+Display activity log details of an invoice.
+
+
+
+
+```kotlin
+platformClient.finance.invoiceActivityLogs(invoiceNumber: invoiceNumber).safeAwait{ response, error->
+    response?.let{
+      // Use response
+    } ->
+    error?.let{
+      
+    } 
+}
+```
+
+
+
+
+
+| Argument  |  Type  | Required | Description |
+| --------- | -----  | -------- | ----------- | 
+| invoiceNumber | String | yes | Invoice Number for which the data will be returned. Invoice_number is required. |  
+
+
+
+Display activity log details of invoice.
+
+*Returned Response:*
+
+
+
+
+[InvoiceActivityLogsResponse](#InvoiceActivityLogsResponse)
+
+Success
+
+
+
+
+<details>
+<summary><i>&nbsp; Example:</i></summary>
+
+```json
+{
+  "data": [
+    {
+      "performed_by": "system",
+      "status": "processed",
+      "reason": "",
+      "is_resolved": true,
+      "retry_attempts": 0,
+      "max_retry_attempts": 3
+    }
+  ]
+}
+```
+</details>
+
+
+
+
+
+
+
+
+
+---
+
+
+### unlockCreditNote
+Unlocks credit notes.
+
+
+
+
+```kotlin
+platformClient.finance.unlockCreditNote(body: body).safeAwait{ response, error->
+    response?.let{
+      // Use response
+    } ->
+    error?.let{
+      
+    } 
+}
+```
+
+
+
+
+
+| Argument  |  Type  | Required | Description |
+| --------- | -----  | -------- | ----------- |
+| body | [UnlockCreditNoteRequest](#UnlockCreditNoteRequest) | yes | Request body |
+
+
+Used to unlock all request credit notes.
+
+*Returned Response:*
+
+
+
+
+[UnlockCreditNoteResponse](#UnlockCreditNoteResponse)
+
+Success
+
+
+
+
+<details>
+<summary><i>&nbsp; Example:</i></summary>
+
+```json
+{
+  "success": true,
+  "data": {
+    "is_cn_unlocked": true,
+    "status": "completed"
+  }
+}
+```
+</details>
+
+
+
+
+
+
+
+
+
+---
+
+
 
 
 ### Schemas
@@ -2368,11 +2599,24 @@ Success
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | itemTotal | Int? |  yes  |  |
+ | itemCount | Int? |  yes  |  |
  | current | Int? |  yes  |  |
  | hasNext | Boolean? |  yes  |  |
  | size | Int? |  yes  |  |
  | type | String? |  yes  |  |
+
+---
+
+
+ 
+ 
+ #### [Currency](#Currency)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | code | String? |  yes  |  |
+ | symbol | String? |  yes  |  |
+ | name | String? |  yes  |  |
 
 ---
 
@@ -2739,7 +2983,7 @@ Success
  | items | ArrayList<HashMap<String,Any>>? |  yes  |  |
  | code | Int? |  yes  |  |
  | showMr | Boolean? |  yes  |  |
- | page | HashMap<String,Any>? |  yes  |  |
+ | page | [Page](#Page)? |  yes  |  |
  | message | String? |  yes  |  |
  | headers | ArrayList<String>? |  yes  |  |
  | itemCount | Int? |  yes  |  |
@@ -2897,6 +3141,7 @@ Success
  | invoiceNumber | String? |  yes  |  |
  | isDownloadable | Boolean? |  yes  |  |
  | invoiceId | String? |  yes  |  |
+ | currency | [Currency](#Currency)? |  yes  |  |
 
 ---
 
@@ -3213,7 +3458,7 @@ Success
  | cnStatus | String? |  yes  |  |
  | customerMobileNumber | String? |  yes  |  |
  | cnReferenceNumber | String? |  yes  |  |
- | cnDetails | HashMap<String,Any>? |  yes  |  |
+ | cnDetails | [CnDetails](#CnDetails)? |  yes  |  |
  | redemptionDetails | ArrayList<[RedemptionDetails](#RedemptionDetails)>? |  yes  |  |
  | remainingCnAmount | Int? |  yes  |  |
  | availableCnBalance | Int? |  yes  |  |
@@ -3533,6 +3778,143 @@ Success
  | search | [GetReportingFilters](#GetReportingFilters)? |  yes  |  |
  | filters | ArrayList<[GetReportingNestedFilters](#GetReportingNestedFilters)>? |  yes  |  |
  | status | [GetReportingFilters](#GetReportingFilters)? |  yes  |  |
+
+---
+
+
+ 
+ 
+ #### [PaymentDetail](#PaymentDetail)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | displayName | String? |  yes  |  |
+ | value | String? |  yes  |  |
+
+---
+
+
+ 
+ 
+ #### [PaidInvoicePaymentDetail](#PaidInvoicePaymentDetail)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | paymentDetails | ArrayList<[PaymentDetail](#PaymentDetail)>? |  yes  |  |
+ | dateOfPayment | String? |  yes  |  |
+ | amount | Double? |  yes  |  |
+
+---
+
+
+ 
+ 
+ #### [InvoicePaymentDetailsResponseData](#InvoicePaymentDetailsResponseData)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | paidInvoicePaymentDetails | ArrayList<[PaidInvoicePaymentDetail](#PaidInvoicePaymentDetail)>? |  yes  |  |
+ | failedAttemptsDetails | ArrayList<HashMap<String,Any>>? |  yes  |  |
+
+---
+
+
+ 
+ 
+ #### [InvoicePaymentDetailsResponse](#InvoicePaymentDetailsResponse)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | data | [InvoicePaymentDetailsResponseData](#InvoicePaymentDetailsResponseData)? |  yes  |  |
+ | success | Boolean? |  yes  |  |
+ | paymentDetailsVisible | Boolean? |  yes  |  |
+
+---
+
+
+ 
+ 
+ #### [InvoiceActivityLogsResponseData](#InvoiceActivityLogsResponseData)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | performedBy | String? |  yes  |  |
+ | status | String? |  yes  |  |
+ | reason | String? |  yes  |  |
+ | isResolved | Boolean? |  yes  |  |
+ | retryAttempts | Double? |  yes  |  |
+ | maxRetryAttempts | Double? |  yes  |  |
+
+---
+
+
+ 
+ 
+ #### [InvoiceActivityLogsResponse](#InvoiceActivityLogsResponse)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | data | ArrayList<[InvoiceActivityLogsResponseData](#InvoiceActivityLogsResponseData)>? |  yes  |  |
+
+---
+
+
+ 
+ 
+ #### [InvoiceActivityLogError](#InvoiceActivityLogError)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | reason | String? |  yes  |  |
+
+---
+
+
+ 
+ 
+ #### [UnlockCreditNoteRequestData](#UnlockCreditNoteRequestData)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | sellerId | String? |  yes  |  |
+ | lockedCreditNotes | ArrayList<String>? |  yes  |  |
+ | unlockReason | String? |  yes  |  |
+ | description | String? |  yes  |  |
+
+---
+
+
+ 
+ 
+ #### [UnlockCreditNoteRequest](#UnlockCreditNoteRequest)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | data | [UnlockCreditNoteRequestData](#UnlockCreditNoteRequestData)? |  yes  |  |
+
+---
+
+
+ 
+ 
+ #### [UnlockCreditNoteResponseData](#UnlockCreditNoteResponseData)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | isCnUnlocked | Boolean? |  yes  |  |
+ | status | String? |  yes  |  |
+
+---
+
+
+ 
+ 
+ #### [UnlockCreditNoteResponse](#UnlockCreditNoteResponse)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | success | Boolean? |  yes  |  |
+ | data | [UnlockCreditNoteResponseData](#UnlockCreditNoteResponseData)? |  yes  |  |
 
 ---
 

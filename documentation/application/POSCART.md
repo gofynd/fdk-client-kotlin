@@ -5,7 +5,7 @@
 ##### [Back to Application docs](./README.md)
 
 ## PosCart Methods
-Cart APIs
+The POS Cart module optimizes the shopping and checkout experience. Use it to manage cart items, apply discounts, update addresses, and choose delivery options. It also supports shared cart options for collaborative shopping.
 
 Default
 * [getCart](#getcart)
@@ -766,6 +766,7 @@ Success. Returns a Cart object. Check the example shown below or refer `CartDeta
       "moq": {},
       "article": {
         "type": "article",
+        "tags": [],
         "uid": "604_902_SSTC60401_636BLUE_1",
         "size": "1",
         "seller": {
@@ -4972,42 +4973,92 @@ Success. Returns an Address object containing a list of address saved in the acc
 
 
 <details>
-<summary><i>&nbsp; Example:</i></summary>
+<summary><i>&nbsp; Examples:</i></summary>
+
+
+<details>
+<summary><i>&nbsp; example1</i></summary>
 
 ```json
 {
-  "address": [
-    {
-      "landmark": "",
-      "area_code": "410218",
-      "id": "8b526f521bb14a2593a8b9e3ce8c76b3",
-      "state": "Maharashtra",
-      "meta": {},
-      "user_id": "8b526f521bb14a2593a8b9e3ce8c76b3",
-      "created_by_user_id": "8b526f521bb14a2593a8b9e3ce8c76b3",
-      "country_code": "IND",
-      "country_phone_code": "91",
-      "country_iso_code": "IND",
-      "phone": "9915347757",
-      "geo_location": {},
-      "country": "India",
-      "is_default_address": true,
-      "is_active": true,
-      "city": "Mumbai",
-      "pincode": 400093,
-      "checkout_mode": "self",
-      "address_type": "home",
-      "tags": [],
-      "area": "Sector 127",
-      "name": "abc",
-      "email": "ankur@gofynd1.com",
-      "address": "Megatron2",
-      "store_name": "store123",
-      "_custom_json": {}
-    }
-  ]
+  "summary": "Address for India",
+  "value": {
+    "address": [
+      {
+        "landmark": "",
+        "area_code": "8b526f521bb14a2593a8b9e3ce8c76b3",
+        "id": "8b526f521bb14a2593a8b9e3ce8c76b3",
+        "state": "Maharashtra",
+        "meta": {},
+        "user_id": "8b526f521bb14a2593a8b9e3ce8c76b3",
+        "created_by_user_id": "8b526f521bb14a2593a8b9e3ce8c76b3",
+        "country_code": "+91",
+        "state_code": "MH",
+        "country_phone_code": "91",
+        "country_iso_code": "IN",
+        "phone": "9915347757",
+        "geo_location": {},
+        "country": "India",
+        "is_default_address": true,
+        "is_active": true,
+        "city": "Mumbai",
+        "pincode": 400093,
+        "checkout_mode": "self",
+        "address_type": "home",
+        "tags": [],
+        "area": "Sector 127",
+        "name": "abc",
+        "email": "ankur@gofynd1.com",
+        "address": "Megatron2",
+        "_custom_json": {}
+      }
+    ]
+  }
 }
 ```
+</details>
+
+<details>
+<summary><i>&nbsp; example2</i></summary>
+
+```json
+{
+  "summary": "Address for Dubai",
+  "value": {
+    "address": [
+      {
+        "landmark": "",
+        "area_code": "",
+        "id": "651c0b882dbd5f702f711677",
+        "state": "",
+        "meta": {},
+        "user_id": "8b526f521bb14a2593a8b9e3ce8c76b3",
+        "created_by_user_id": "8b526f521bb14a2593a8b9e3ce8c76b3",
+        "country_code": "+971",
+        "country_phone_code": "+971",
+        "country_iso_code": "AE",
+        "phone": "551234567",
+        "geo_location": {},
+        "country": "United Arab Emirates",
+        "is_default_address": true,
+        "is_active": true,
+        "city": "Sharjah",
+        "sector": "Al Fisht",
+        "checkout_mode": "self",
+        "address_type": "home",
+        "tags": [],
+        "area": "Dubai Park",
+        "name": "Shaikh Ahmed",
+        "email": "example@gmail.com",
+        "address": "B-62",
+        "_custom_json": {}
+      }
+    ]
+  }
+}
+```
+</details>
+
 </details>
 
 
@@ -5143,6 +5194,7 @@ Success. Returns an Address object containing a list of address saved in the acc
   "user_id": "8b526f521bb14a2593a8b9e3ce8c76b3",
   "created_by_user_id": "8b526f521bb14a2593a8b9e3ce8c76b3",
   "country_code": "IND",
+  "state_code": "MH",
   "country_phone_code": "91",
   "country_iso_code": "IND",
   "phone": "9915347757",
@@ -6365,6 +6417,10 @@ Success. Returns delivery promise along with shipment details and price breakup.
           "formatted": {
             "min": "Aug 24",
             "max": "Aug 28"
+          },
+          "iso": {
+            "min": "2019-08-25T00:35:08.000Z",
+            "max": "2019-08-29T07:55:08.000Z"
           }
         },
         "box_type": "Small Courier bag",
@@ -6426,6 +6482,7 @@ Success. Returns delivery promise along with shipment details and price breakup.
             },
             "article": {
               "type": "article",
+              "tags": [],
               "uid": "381_610_IGPL01_SPIRAL19ANAVY_L",
               "size": "L",
               "seller": {
@@ -7072,6 +7129,10 @@ Success. Returns delivery promise along with shipment details and price breakup.
           "formatted": {
             "min": "Aug 24",
             "max": "Aug 28"
+          },
+          "iso": {
+            "min": "2019-08-25T00:35:08.000Z",
+            "max": "2019-08-29T07:55:08.000Z"
           }
         },
         "box_type": "Small Courier bag",
@@ -8952,6 +9013,7 @@ Success. Returns a merged or replaced cart as per the valid token. Refer `Shared
  | promoId | String? |  yes  | Promotion id |
  | appliedFreeArticles | ArrayList<[AppliedFreeArticles](#AppliedFreeArticles)>? |  yes  | Applied free article for free gift item promotions |
  | ownership | [Ownership](#Ownership)? |  yes  | Ownership of promotion |
+ | currency | [CartCurrency](#CartCurrency)? |  yes  |  |
  | promotionGroup | String? |  yes  | Promotion group for the promotion |
 
 ---
@@ -9086,12 +9148,25 @@ Success. Returns a merged or replaced cart as per the valid token. Refer `Shared
 
  
  
+ #### [PromiseISOFormat](#PromiseISOFormat)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | max | String? |  yes  | Max promise in ISO format. |
+ | min | String? |  yes  | Min Promise in ISO format. |
+
+---
+
+
+ 
+ 
  #### [ShipmentPromise](#ShipmentPromise)
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
  | timestamp | [PromiseTimestamp](#PromiseTimestamp)? |  yes  |  |
  | formatted | [PromiseFormatted](#PromiseFormatted)? |  yes  |  |
+ | iso | [PromiseISOFormat](#PromiseISOFormat)? |  yes  |  |
 
 ---
 
@@ -9171,6 +9246,7 @@ Success. Returns a merged or replaced cart as per the valid token. Refer `Shared
  | giftCard | HashMap<String,Any>? |  yes  |  |
  | productGroupTags | ArrayList<String>? |  yes  |  |
  | isGiftVisible | Boolean? |  yes  |  |
+ | tags | ArrayList<String>? |  yes  | a list of article tags |
 
 ---
 
@@ -9692,6 +9768,8 @@ Success. Returns a merged or replaced cart as per the valid token. Refer `Shared
  | area | String? |  yes  |  |
  | isActive | Boolean? |  yes  |  |
  | city | String? |  yes  |  |
+ | sector | String? |  yes  |  |
+ | stateCode | String? |  yes  | State code for international address |
  | addressType | String? |  yes  |  |
  | state | String? |  yes  |  |
  | isDefaultAddress | Boolean? |  yes  |  |
@@ -9985,7 +10063,7 @@ Success. Returns a merged or replaced cart as per the valid token. Refer `Shared
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
  | comment | String? |  yes  |  |
- | deliveryCharges | Int? |  yes  |  |
+ | deliveryCharges | Double? |  yes  |  |
  | couponText | String? |  yes  |  |
  | lastModified | String? |  yes  |  |
  | isValid | Boolean? |  yes  |  |
@@ -10004,7 +10082,7 @@ Success. Returns a merged or replaced cart as per the valid token. Refer `Shared
  | cartId | Int? |  yes  |  |
  | breakupValues | [CartBreakup](#CartBreakup)? |  yes  |  |
  | orderId | String? |  yes  |  |
- | codCharges | Int? |  yes  |  |
+ | codCharges | Double? |  yes  |  |
  | deliveryChargeInfo | String? |  yes  |  |
  | userType | String? |  yes  |  |
  | paymentSelectionLock | [PaymentSelectionLock](#PaymentSelectionLock)? |  yes  |  |

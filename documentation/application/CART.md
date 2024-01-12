@@ -5,7 +5,7 @@
 ##### [Back to Application docs](./README.md)
 
 ## Cart Methods
-Manages Cart, Coupons, Promotions, Checkout
+The Cart and Checkout module manages cart items, applies coupons and reward points, and allows you to select delivery addresses. This module also enables you to update payment information and view ongoing promotions. Additionally, it manages cart sharing, merging, and replacing, as well as providing details on shared carts.
 
 Default
 * [getCart](#getcart)
@@ -767,6 +767,7 @@ Success. Returns a Cart object. Check the example shown below or refer `CartDeta
       "moq": {},
       "article": {
         "type": "article",
+        "tags": [],
         "uid": "604_902_SSTC60401_636BLUE_1",
         "size": "1",
         "seller": {
@@ -793,6 +794,21 @@ Success. Returns a Cart object. Check the example shown below or refer `CartDeta
       },
       "coupon_message": "",
       "key": "707569_1",
+      "charges": [
+        {
+          "type": "convenience fee",
+          "name": "convenience fee",
+          "code": "convenience fee",
+          "amount": {
+            "value": 10,
+            "currency": "INR"
+          },
+          "meta": {
+            "price_adjustment_id": "64c22d66fe278c0796bd8e4d",
+            "article_level_distribution": true
+          }
+        }
+      ],
       "availability": {
         "available_sizes": [
           {
@@ -882,6 +898,7 @@ Success. Returns a Cart object. Check the example shown below or refer `CartDeta
       "gst_charges": 47.57,
       "mrp_total": 2999,
       "mop_total": 0,
+      "total_charge": 10,
       "subtotal": 999,
       "total": 999,
       "vog": 951.43,
@@ -1739,6 +1756,7 @@ Success. Returns a cart object as shown below. Refer `AddCartDetailResponse` for
           "gst_charges": 1529.96,
           "mrp_total": 17486,
           "mop_total": 0,
+          "total_charge": 10,
           "subtotal": 13946,
           "total": 13946,
           "vog": 12416.04,
@@ -1805,6 +1823,21 @@ Success. Returns a cart object as shown below. Refer `AddCartDetailResponse` for
               }
             }
           },
+          "charges": [
+            {
+              "type": "convenience fee",
+              "name": "convenience fee",
+              "code": "convenience fee",
+              "amount": {
+                "value": 10,
+                "currency": "INR"
+              },
+              "meta": {
+                "price_adjustment_id": "64c22d66fe278c0796bd8e4d",
+                "article_level_distribution": true
+              }
+            }
+          ],
           "price": {
             "base": {
               "add_on": 4798,
@@ -1915,6 +1948,21 @@ Success. Returns a cart object as shown below. Refer `AddCartDetailResponse` for
               }
             }
           },
+          "charges": [
+            {
+              "type": "convenience fee",
+              "name": "convenience fee",
+              "code": "convenience fee",
+              "amount": {
+                "value": 10,
+                "currency": "INR"
+              },
+              "meta": {
+                "price_adjustment_id": "64c22d66fe278c0796bd8e4d",
+                "article_level_distribution": true
+              }
+            }
+          ],
           "price": {
             "base": {
               "add_on": 4490,
@@ -2029,6 +2077,21 @@ Success. Returns a cart object as shown below. Refer `AddCartDetailResponse` for
               }
             }
           },
+          "charges": [
+            {
+              "type": "convenience fee",
+              "name": "convenience fee",
+              "code": "convenience fee",
+              "amount": {
+                "value": 10,
+                "currency": "INR"
+              },
+              "meta": {
+                "price_adjustment_id": "64c22d66fe278c0796bd8e4d",
+                "article_level_distribution": true
+              }
+            }
+          ],
           "price": {
             "base": {
               "add_on": 1599,
@@ -2142,6 +2205,21 @@ Success. Returns a cart object as shown below. Refer `AddCartDetailResponse` for
               }
             }
           },
+          "charges": [
+            {
+              "type": "convenience fee",
+              "name": "convenience fee",
+              "code": "convenience fee",
+              "amount": {
+                "value": 10,
+                "currency": "INR"
+              },
+              "meta": {
+                "price_adjustment_id": "64c22d66fe278c0796bd8e4d",
+                "article_level_distribution": true
+              }
+            }
+          ],
           "price": {
             "base": {
               "add_on": 3059,
@@ -2251,6 +2329,7 @@ Success. Returns a cart object as shown below. Refer `AddCartDetailResponse` for
           "gst_charges": 4804.71,
           "mrp_total": 302899,
           "mop_total": 0,
+          "total_charge": 10,
           "subtotal": 100899,
           "total": 100899,
           "vog": 96094.29,
@@ -2346,6 +2425,21 @@ Success. Returns a cart object as shown below. Refer `AddCartDetailResponse` for
               }
             }
           },
+          "charges": [
+            {
+              "type": "convenience fee",
+              "name": "convenience fee",
+              "code": "convenience fee",
+              "amount": {
+                "value": 10,
+                "currency": "INR"
+              },
+              "meta": {
+                "price_adjustment_id": "64c22d66fe278c0796bd8e4d",
+                "article_level_distribution": true
+              }
+            }
+          ],
           "coupon_message": "",
           "key": "707569_1",
           "availability": {
@@ -2514,6 +2608,7 @@ Success. Updates and returns a cart object as shown below. Refer `UpdateCartDeta
           "gst_charges": 4804.71,
           "mrp_total": 302899,
           "mop_total": 0,
+          "total_charge": 10,
           "subtotal": 100899,
           "total": 100899,
           "vog": 96094.29,
@@ -2609,6 +2704,21 @@ Success. Updates and returns a cart object as shown below. Refer `UpdateCartDeta
               }
             }
           },
+          "charges": [
+            {
+              "type": "convenience fee",
+              "name": "convenience fee",
+              "code": "convenience fee",
+              "amount": {
+                "value": 10,
+                "currency": "INR"
+              },
+              "meta": {
+                "price_adjustment_id": "64c22d66fe278c0796bd8e4d",
+                "article_level_distribution": true
+              }
+            }
+          ],
           "coupon_message": "",
           "key": "707569_1",
           "availability": {
@@ -3388,6 +3498,7 @@ Success. Updates and returns a cart object as shown below. Refer `UpdateCartDeta
           "gst_charges": 838.83,
           "mrp_total": 5499,
           "mop_total": 0,
+          "total_charge": 10,
           "subtotal": 5499,
           "total": 5499,
           "vog": 4660.17,
@@ -3512,6 +3623,21 @@ Success. Updates and returns a cart object as shown below. Refer `UpdateCartDeta
               }
             }
           },
+          "charges": [
+            {
+              "type": "convenience fee",
+              "name": "convenience fee",
+              "code": "convenience fee",
+              "amount": {
+                "value": 10,
+                "currency": "INR"
+              },
+              "meta": {
+                "price_adjustment_id": "64c22d66fe278c0796bd8e4d",
+                "article_level_distribution": true
+              }
+            }
+          ],
           "coupon_message": "",
           "availability": {
             "available_sizes": [
@@ -3706,7 +3832,7 @@ Fetch Coupon
 
 
 ```kotlin
-applicationClient.cart.getCoupons(id: id, buyNow: buyNow).safeAwait{ response, error->
+applicationClient.cart.getCoupons(id: id, buyNow: buyNow, slug: slug, storeId: storeId).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -3723,7 +3849,9 @@ applicationClient.cart.getCoupons(id: id, buyNow: buyNow).safeAwait{ response, e
 | Argument  |  Type  | Required | Description |
 | --------- | -----  | -------- | ----------- | 
 | id | String? | no |  |   
-| buyNow | Boolean? | no |  |  
+| buyNow | Boolean? | no |  |   
+| slug | String? | no |  |   
+| storeId | String? | no |  |  
 
 
 
@@ -3749,6 +3877,7 @@ Success. Returns a coupon object which has a list of all the eligible coupons. R
   "available_coupon_list": [
     {
       "coupon_value": 500,
+      "coupon_amount": 43.5,
       "minimum_cart_value": 0,
       "coupon_code": "RAJA500",
       "title": "RAJA500 | Fynd coupon",
@@ -3762,6 +3891,7 @@ Success. Returns a coupon object which has a list of all the eligible coupons. R
     },
     {
       "coupon_value": 2250,
+      "coupon_amount": 43.5,
       "minimum_cart_value": 0,
       "coupon_code": "PRISMC22250111",
       "title": "celio 2 time coupn to kalim hsp",
@@ -3857,6 +3987,7 @@ Success. Returns coupons applied to the cart along with item details and price b
       "gst_charges": 2139.08,
       "mrp_total": 26983,
       "mop_total": 0,
+      "total_charge": 10,
       "subtotal": 19742.7837,
       "total": 17492.7837,
       "vog": 15353.7,
@@ -4007,7 +4138,22 @@ Success. Returns coupons applied to the cart along with item details and price b
             "currency_code": "INR"
           }
         }
-      }
+      },
+      "charges": [
+        {
+          "type": "convenience fee",
+          "name": "convenience fee",
+          "code": "convenience fee",
+          "amount": {
+            "value": 10,
+            "currency": "INR"
+          },
+          "meta": {
+            "price_adjustment_id": "64c22d66fe278c0796bd8e4d",
+            "article_level_distribution": true
+          }
+        }
+      ]
     },
     {
       "identifiers": {},
@@ -4103,7 +4249,22 @@ Success. Returns coupons applied to the cart along with item details and price b
             "currency_code": "INR"
           }
         }
-      }
+      },
+      "charges": [
+        {
+          "type": "convenience fee",
+          "name": "convenience fee",
+          "code": "convenience fee",
+          "amount": {
+            "value": 10,
+            "currency": "INR"
+          },
+          "meta": {
+            "price_adjustment_id": "64c22d66fe278c0796bd8e4d",
+            "article_level_distribution": true
+          }
+        }
+      ]
     },
     {
       "identifiers": {},
@@ -4198,7 +4359,22 @@ Success. Returns coupons applied to the cart along with item details and price b
             "currency_code": "INR"
           }
         }
-      }
+      },
+      "charges": [
+        {
+          "type": "convenience fee",
+          "name": "convenience fee",
+          "code": "convenience fee",
+          "amount": {
+            "value": 10,
+            "currency": "INR"
+          },
+          "meta": {
+            "price_adjustment_id": "64c22d66fe278c0796bd8e4d",
+            "article_level_distribution": true
+          }
+        }
+      ]
     },
     {
       "identifiers": {},
@@ -4290,7 +4466,22 @@ Success. Returns coupons applied to the cart along with item details and price b
             "currency_code": "INR"
           }
         }
-      }
+      },
+      "charges": [
+        {
+          "type": "convenience fee",
+          "name": "convenience fee",
+          "code": "convenience fee",
+          "amount": {
+            "value": 10,
+            "currency": "INR"
+          },
+          "meta": {
+            "price_adjustment_id": "64c22d66fe278c0796bd8e4d",
+            "article_level_distribution": true
+          }
+        }
+      ]
     },
     {
       "identifiers": {},
@@ -4382,7 +4573,22 @@ Success. Returns coupons applied to the cart along with item details and price b
             "currency_code": "INR"
           }
         }
-      }
+      },
+      "charges": [
+        {
+          "type": "convenience fee",
+          "name": "convenience fee",
+          "code": "convenience fee",
+          "amount": {
+            "value": 10,
+            "currency": "INR"
+          },
+          "meta": {
+            "price_adjustment_id": "64c22d66fe278c0796bd8e4d",
+            "article_level_distribution": true
+          }
+        }
+      ]
     }
   ],
   "delivery_charge_info": "",
@@ -4468,6 +4674,7 @@ Success. Returns coupons removed from the cart along with item details and price
       "gst_charges": 342.75,
       "mrp_total": 3199,
       "mop_total": 0,
+      "total_charge": 10,
       "subtotal": 3199,
       "total": 3199,
       "vog": 2856.25,
@@ -4603,7 +4810,22 @@ Success. Returns coupons removed from the cart along with item details and price
             "currency_code": "INR"
           }
         }
-      }
+      },
+      "charges": [
+        {
+          "type": "convenience fee",
+          "name": "convenience fee",
+          "code": "convenience fee",
+          "amount": {
+            "value": 10,
+            "currency": "INR"
+          },
+          "meta": {
+            "price_adjustment_id": "64c22d66fe278c0796bd8e4d",
+            "article_level_distribution": true
+          }
+        }
+      ]
     }
   ],
   "delivery_charge_info": "",
@@ -4845,6 +5067,21 @@ Success. Returns a Cart object. Check the example shown below or refer `CartDeta
           }
         }
       },
+      "charges": [
+        {
+          "type": "convenience fee",
+          "name": "convenience fee",
+          "code": "convenience fee",
+          "amount": {
+            "value": 10,
+            "currency": "INR"
+          },
+          "meta": {
+            "price_adjustment_id": "64c22d66fe278c0796bd8e4d",
+            "article_level_distribution": true
+          }
+        }
+      ],
       "coupon_message": "",
       "key": "707569_1",
       "availability": {
@@ -4929,6 +5166,7 @@ Success. Returns a Cart object. Check the example shown below or refer `CartDeta
       "gst_charges": 47.57,
       "mrp_total": 2999,
       "mop_total": 0,
+      "total_charge": 10,
       "subtotal": 999,
       "total": 999,
       "vog": 951.43,
@@ -5044,42 +5282,92 @@ Success. Returns an Address object containing a list of address saved in the acc
 
 
 <details>
-<summary><i>&nbsp; Example:</i></summary>
+<summary><i>&nbsp; Examples:</i></summary>
+
+
+<details>
+<summary><i>&nbsp; example1</i></summary>
 
 ```json
 {
-  "address": [
-    {
-      "landmark": "",
-      "area_code": "8b526f521bb14a2593a8b9e3ce8c76b3",
-      "id": "8b526f521bb14a2593a8b9e3ce8c76b3",
-      "state": "Maharashtra",
-      "meta": {},
-      "user_id": "8b526f521bb14a2593a8b9e3ce8c76b3",
-      "created_by_user_id": "8b526f521bb14a2593a8b9e3ce8c76b3",
-      "country_code": "IND",
-      "country_phone_code": "91",
-      "country_iso_code": "IND",
-      "phone": "9915347757",
-      "geo_location": {},
-      "country": "India",
-      "is_default_address": true,
-      "is_active": true,
-      "city": "Mumbai",
-      "pincode": 400093,
-      "checkout_mode": "self",
-      "address_type": "home",
-      "tags": [],
-      "area": "Sector 127",
-      "name": "abc",
-      "email": "ankur@gofynd1.com",
-      "address": "Megatron2",
-      "store_name": "store123",
-      "_custom_json": {}
-    }
-  ]
+  "summary": "Address for India",
+  "value": {
+    "address": [
+      {
+        "landmark": "",
+        "area_code": "8b526f521bb14a2593a8b9e3ce8c76b3",
+        "id": "8b526f521bb14a2593a8b9e3ce8c76b3",
+        "state": "Maharashtra",
+        "meta": {},
+        "user_id": "8b526f521bb14a2593a8b9e3ce8c76b3",
+        "created_by_user_id": "8b526f521bb14a2593a8b9e3ce8c76b3",
+        "country_code": "+91",
+        "country_phone_code": "91",
+        "country_iso_code": "IN",
+        "phone": "9915347757",
+        "geo_location": {},
+        "country": "India",
+        "is_default_address": true,
+        "is_active": true,
+        "city": "Mumbai",
+        "pincode": 400093,
+        "checkout_mode": "self",
+        "address_type": "home",
+        "tags": [],
+        "area": "Sector 127",
+        "state_code": "MH",
+        "name": "abc",
+        "email": "ankur@gofynd1.com",
+        "address": "Megatron2",
+        "_custom_json": {}
+      }
+    ]
+  }
 }
 ```
+</details>
+
+<details>
+<summary><i>&nbsp; example2</i></summary>
+
+```json
+{
+  "summary": "Address for Dubai",
+  "value": {
+    "address": [
+      {
+        "landmark": "",
+        "area_code": "",
+        "id": "651c0b882dbd5f702f711677",
+        "state": "",
+        "meta": {},
+        "user_id": "8b526f521bb14a2593a8b9e3ce8c76b3",
+        "created_by_user_id": "8b526f521bb14a2593a8b9e3ce8c76b3",
+        "country_code": "+971",
+        "country_phone_code": "+971",
+        "country_iso_code": "AE",
+        "phone": "551234567",
+        "geo_location": {},
+        "country": "United Arab Emirates",
+        "is_default_address": true,
+        "is_active": true,
+        "city": "Sharjah",
+        "sector": "Al Fisht",
+        "checkout_mode": "self",
+        "address_type": "home",
+        "tags": [],
+        "area": "Dubai Park",
+        "name": "Shaikh Ahmed",
+        "email": "example@gmail.com",
+        "address": "B-62",
+        "_custom_json": {}
+      }
+    ]
+  }
+}
+```
+</details>
+
 </details>
 
 
@@ -5215,6 +5503,7 @@ Success. Returns an Address object containing a list of address saved in the acc
   "user_id": "8b526f521bb14a2593a8b9e3ce8c76b3",
   "created_by_user_id": "8b526f521bb14a2593a8b9e3ce8c76b3",
   "country_code": "IND",
+  "state_code": "MH",
   "country_phone_code": "91",
   "country_iso_code": "IND",
   "phone": "9915347757",
@@ -5439,6 +5728,7 @@ Success. Returns a Cart object as shown below. Refer `CartDetailResponse` for mo
       "gst_charges": 315.86,
       "mrp_total": 5198,
       "mop_total": 0,
+      "total_charge": 10,
       "subtotal": 5198,
       "total": 2948,
       "vog": 2632.15,
@@ -5547,6 +5837,21 @@ Success. Returns a Cart object as shown below. Refer `CartDetailResponse` for mo
           }
         }
       },
+      "charges": [
+        {
+          "type": "convenience fee",
+          "name": "convenience fee",
+          "code": "convenience fee",
+          "amount": {
+            "value": 10,
+            "currency": "INR"
+          },
+          "meta": {
+            "price_adjustment_id": "64c22d66fe278c0796bd8e4d",
+            "article_level_distribution": true
+          }
+        }
+      ],
       "product": {
         "type": "product",
         "uid": 857596,
@@ -5641,6 +5946,21 @@ Success. Returns a Cart object as shown below. Refer `CartDetailResponse` for mo
           }
         }
       },
+      "charges": [
+        {
+          "type": "convenience fee",
+          "name": "convenience fee",
+          "code": "convenience fee",
+          "amount": {
+            "value": 10,
+            "currency": "INR"
+          },
+          "meta": {
+            "price_adjustment_id": "64c22d66fe278c0796bd8e4d",
+            "article_level_distribution": true
+          }
+        }
+      ],
       "product": {
         "type": "product",
         "uid": 820312,
@@ -5768,6 +6088,7 @@ Success. Returns a Cart object as shown below. Refer `CartDetailResponse` for mo
       "gst_charges": 315.86,
       "mrp_total": 5198,
       "mop_total": 0,
+      "total_charge": 10,
       "subtotal": 5198,
       "total": 2948,
       "vog": 2632.15,
@@ -5876,6 +6197,21 @@ Success. Returns a Cart object as shown below. Refer `CartDetailResponse` for mo
           }
         }
       },
+      "charges": [
+        {
+          "type": "convenience fee",
+          "name": "convenience fee",
+          "code": "convenience fee",
+          "amount": {
+            "value": 10,
+            "currency": "INR"
+          },
+          "meta": {
+            "price_adjustment_id": "64c22d66fe278c0796bd8e4d",
+            "article_level_distribution": true
+          }
+        }
+      ],
       "product": {
         "type": "product",
         "uid": 857596,
@@ -5970,6 +6306,21 @@ Success. Returns a Cart object as shown below. Refer `CartDetailResponse` for mo
           }
         }
       },
+      "charges": [
+        {
+          "type": "convenience fee",
+          "name": "convenience fee",
+          "code": "convenience fee",
+          "amount": {
+            "value": 10,
+            "currency": "INR"
+          },
+          "meta": {
+            "price_adjustment_id": "64c22d66fe278c0796bd8e4d",
+            "article_level_distribution": true
+          }
+        }
+      ],
       "product": {
         "type": "product",
         "uid": 820312,
@@ -6377,6 +6728,7 @@ Success. Returns delivery promise along with shipment details and price breakup.
         "gst_charges": 214.18,
         "mrp_total": 1999,
         "mop_total": 0,
+        "total_charge": 10,
         "subtotal": 1999,
         "total": 1999,
         "vog": 1784.82,
@@ -6441,6 +6793,10 @@ Success. Returns delivery promise along with shipment details and price breakup.
           "formatted": {
             "min": "Aug 24",
             "max": "Aug 28"
+          },
+          "iso": {
+            "min": "2019-08-25T00:35:08.000Z",
+            "max": "2019-08-29T07:55:08.000Z"
           }
         },
         "box_type": "Small Courier bag",
@@ -6513,6 +6869,7 @@ Success. Returns delivery promise along with shipment details and price breakup.
                 "name": "Kormangala"
               },
               "quantity": 2,
+              "tags": [],
               "price": {
                 "base": {
                   "marked": 1999,
@@ -6526,6 +6883,21 @@ Success. Returns delivery promise along with shipment details and price breakup.
                 }
               }
             },
+            "charges": [
+              {
+                "type": "convenience fee",
+                "name": "convenience fee",
+                "code": "convenience fee",
+                "amount": {
+                  "value": 10,
+                  "currency": "INR"
+                },
+                "meta": {
+                  "price_adjustment_id": "64c22d66fe278c0796bd8e4d",
+                  "article_level_distribution": true
+                }
+              }
+            ],
             "availability": {
               "sizes": [
                 "L",
@@ -6770,6 +7142,7 @@ Success. Returns delivery promise along with shipment details and price breakup.
         "gst_charges": 214.18,
         "mrp_total": 1999,
         "mop_total": 0,
+        "total_charge": 10,
         "subtotal": 1999,
         "total": 1999,
         "vog": 1784.82,
@@ -7108,6 +7481,7 @@ Success. Returns the status of cart checkout. Refer `CartCheckoutResponseSchema`
           "gst_charges": 214.18,
           "mrp_total": 1999,
           "mop_total": 0,
+          "total_charge": 10,
           "subtotal": 1999,
           "total": 1999,
           "vog": 1784.82,
@@ -7216,6 +7590,21 @@ Success. Returns the status of cart checkout. Refer `CartCheckoutResponseSchema`
               }
             }
           },
+          "charges": [
+            {
+              "type": "convenience fee",
+              "name": "convenience fee",
+              "code": "convenience fee",
+              "amount": {
+                "value": 10,
+                "currency": "INR"
+              },
+              "meta": {
+                "price_adjustment_id": "64c22d66fe278c0796bd8e4d",
+                "article_level_distribution": true
+              }
+            }
+          ],
           "coupon_message": "",
           "availability": {
             "sizes": [
@@ -7493,6 +7882,21 @@ Success. Returns a Cart object as per the valid token. Refer `SharedCartResponse
             }
           }
         },
+        "charges": [
+          {
+            "type": "convenience fee",
+            "name": "convenience fee",
+            "code": "convenience fee",
+            "amount": {
+              "value": 10,
+              "currency": "INR"
+            },
+            "meta": {
+              "price_adjustment_id": "64c22d66fe278c0796bd8e4d",
+              "article_level_distribution": true
+            }
+          }
+        ],
         "product": {
           "type": "product",
           "uid": 791651,
@@ -7589,6 +7993,21 @@ Success. Returns a Cart object as per the valid token. Refer `SharedCartResponse
             }
           }
         },
+        "charges": [
+          {
+            "type": "convenience fee",
+            "name": "convenience fee",
+            "code": "convenience fee",
+            "amount": {
+              "value": 10,
+              "currency": "INR"
+            },
+            "meta": {
+              "price_adjustment_id": "64c22d66fe278c0796bd8e4d",
+              "article_level_distribution": true
+            }
+          }
+        ],
         "product": {
           "type": "product",
           "uid": 791651,
@@ -7667,6 +8086,7 @@ Success. Returns a Cart object as per the valid token. Refer `SharedCartResponse
         "gst_charges": 958.73,
         "mrp_total": 6285,
         "mop_total": 0,
+        "total_charge": 10,
         "subtotal": 6285,
         "total": 6285,
         "vog": 5326.27,
@@ -7838,6 +8258,21 @@ Success. Returns a merged or replaced cart as per the valid token. Refer `Shared
               }
             }
           },
+          "charges": [
+            {
+              "type": "convenience fee",
+              "name": "convenience fee",
+              "code": "convenience fee",
+              "amount": {
+                "value": 10,
+                "currency": "INR"
+              },
+              "meta": {
+                "price_adjustment_id": "64c22d66fe278c0796bd8e4d",
+                "article_level_distribution": true
+              }
+            }
+          ],
           "product": {
             "type": "product",
             "uid": 791651,
@@ -7934,6 +8369,21 @@ Success. Returns a merged or replaced cart as per the valid token. Refer `Shared
               }
             }
           },
+          "charges": [
+            {
+              "type": "convenience fee",
+              "name": "convenience fee",
+              "code": "convenience fee",
+              "amount": {
+                "value": 10,
+                "currency": "INR"
+              },
+              "meta": {
+                "price_adjustment_id": "64c22d66fe278c0796bd8e4d",
+                "article_level_distribution": true
+              }
+            }
+          ],
           "product": {
             "type": "product",
             "uid": 791651,
@@ -8012,6 +8462,7 @@ Success. Returns a merged or replaced cart as per the valid token. Refer `Shared
           "gst_charges": 958.73,
           "mrp_total": 6285,
           "mop_total": 0,
+          "total_charge": 10,
           "subtotal": 6285,
           "total": 6285,
           "vog": 5326.27,
@@ -8639,6 +9090,7 @@ Success. Returns the status of cart checkout. Refer `CartCheckoutResponseSchema`
           "gst_charges": 214.18,
           "mrp_total": 1999,
           "mop_total": 0,
+          "total_charge": 10,
           "subtotal": 1999,
           "total": 1999,
           "vog": 1784.82,
@@ -8747,6 +9199,21 @@ Success. Returns the status of cart checkout. Refer `CartCheckoutResponseSchema`
               }
             }
           },
+          "charges": [
+            {
+              "type": "convenience fee",
+              "name": "convenience fee",
+              "code": "convenience fee",
+              "amount": {
+                "value": 10,
+                "currency": "INR"
+              },
+              "meta": {
+                "price_adjustment_id": "64c22d66fe278c0796bd8e4d",
+                "article_level_distribution": true
+              }
+            }
+          ],
           "coupon_message": "",
           "availability": {
             "sizes": [
@@ -8886,8 +9353,6 @@ Success. Returns the status of cart checkout. Refer `CartCheckoutResponseSchema`
  | articleQuantity | Int? |  yes  | Quantity of article on which promotion is applicable |
  | appliedFreeArticles | ArrayList<[AppliedFreeArticles](#AppliedFreeArticles)>? |  yes  | Applied free article for free gift item promotions |
  | promotionType | String? |  yes  | Promotion type of current promotion |
- | meta | HashMap<String,Any>? |  yes  | Meta object for extra data |
- | code | String? |  yes  | Promotion code |
 
 ---
 
@@ -8919,6 +9384,18 @@ Success. Returns the status of cart checkout. Refer `CartCheckoutResponseSchema`
 
  
  
+ #### [PromiseISOFormat](#PromiseISOFormat)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | max | String? |  yes  | Max promise in ISO format. |
+ | min | String? |  yes  | Min Promise in ISO format. |
+
+---
+
+
+ 
+ 
  #### [PromiseTimestamp](#PromiseTimestamp)
 
  | Properties | Type | Nullable | Description |
@@ -8937,6 +9414,7 @@ Success. Returns the status of cart checkout. Refer `CartCheckoutResponseSchema`
  | ---------- | ---- | -------- | ----------- |
  | formatted | [PromiseFormatted](#PromiseFormatted)? |  yes  |  |
  | timestamp | [PromiseTimestamp](#PromiseTimestamp)? |  yes  |  |
+ | iso | [PromiseISOFormat](#PromiseISOFormat)? |  yes  |  |
 
 ---
 
@@ -9016,6 +9494,7 @@ Success. Returns the status of cart checkout. Refer `CartCheckoutResponseSchema`
  | giftCard | HashMap<String,Any>? |  yes  |  |
  | isGiftVisible | Boolean? |  yes  |  |
  | type | String? |  yes  |  |
+ | tags | ArrayList<String>? |  yes  | a list of article tags |
 
 ---
 
@@ -9038,6 +9517,34 @@ Success. Returns the status of cart checkout. Refer `CartCheckoutResponseSchema`
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
  | message | String? |  yes  |  |
+
+---
+
+
+ 
+ 
+ #### [ChargesAmount](#ChargesAmount)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | value | Double? |  yes  | This is the value of amount added |
+ | currency | String? |  yes  | This is destination currency of value |
+
+---
+
+
+ 
+ 
+ #### [Charges](#Charges)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | meta | HashMap<String,Any>? |  yes  | This object contains the meta data realted to charges price adjustment |
+ | amount | [ChargesAmount](#ChargesAmount)? |  yes  |  |
+ | name | String? |  yes  | This is the name of the charge applied |
+ | allowRefund | Boolean? |  yes  | This boolean value defines that refund is allowed or not for the charge |
+ | code | String? |  yes  | This is the code of the charge applied |
+ | type | String? |  yes  | This is the type of the charge applied |
 
 ---
 
@@ -9235,6 +9742,7 @@ Success. Returns the status of cart checkout. Refer `CartCheckoutResponseSchema`
  | promoMeta | [PromoMeta](#PromoMeta)? |  yes  |  |
  | price | [ProductPriceInfo](#ProductPriceInfo)? |  yes  |  |
  | quantity | Int? |  yes  |  |
+ | charges | ArrayList<[Charges](#Charges)>? |  yes  |  |
  | discount | String? |  yes  |  |
  | availability | [ProductAvailability](#ProductAvailability)? |  yes  |  |
  | deliveryPromise | [ShipmentPromise](#ShipmentPromise)? |  yes  |  |
@@ -9266,6 +9774,7 @@ Success. Returns the status of cart checkout. Refer `CartCheckoutResponseSchema`
  | message | ArrayList<String>? |  yes  |  |
  | currencyCode | String? |  yes  |  |
  | value | Double? |  yes  |  |
+ | preset | Double? |  yes  |  |
 
 ---
 
@@ -9285,6 +9794,7 @@ Success. Returns the status of cart checkout. Refer `CartCheckoutResponseSchema`
  | gstCharges | Double? |  yes  |  |
  | mrpTotal | Double? |  yes  |  |
  | mopTotal | Double? |  yes  |  |
+ | totalCharge | Double? |  yes  |  |
  | coupon | Double? |  yes  |  |
  | total | Double? |  yes  |  |
  | giftCard | Double? |  yes  |  |
@@ -9474,6 +9984,7 @@ Success. Returns the status of cart checkout. Refer `CartCheckoutResponseSchema`
  | pos | Boolean? |  yes  |  |
  | itemId | Int? |  yes  |  |
  | meta | HashMap<String,Any>? |  yes  |  |
+ | sellerIdentifier | String? |  yes  | Add items using seller identifier for store os |
 
 ---
 
@@ -9593,6 +10104,7 @@ Success. Returns the status of cart checkout. Refer `CartCheckoutResponseSchema`
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
+ | couponAmount | Double? |  yes  | The amount based on cart value |
  | couponValue | Double? |  yes  |  |
  | title | String? |  yes  |  |
  | minimumCartValue | Double? |  yes  |  |
@@ -9605,6 +10117,9 @@ Success. Returns the status of cart checkout. Refer `CartCheckoutResponseSchema`
  | isApplicable | Boolean? |  yes  |  |
  | description | String? |  yes  |  |
  | isApplied | Boolean? |  yes  |  |
+ | startDate | String? |  yes  |  |
+ | endDate | String? |  yes  |  |
+ | couponApplicableMessage | String? |  yes  |  |
 
 ---
 
@@ -9739,6 +10254,8 @@ Success. Returns the status of cart checkout. Refer `CartCheckoutResponseSchema`
  | id | String? |  yes  |  |
  | customJson | HashMap<String,Any>? |  yes  |  |
  | city | String? |  yes  |  |
+ | sector | String? |  yes  |  |
+ | stateCode | String? |  yes  | State code for international address |
  | createdByUserId | String? |  yes  |  |
  | landmark | String? |  yes  |  |
  | userId | String? |  yes  |  |
@@ -9997,7 +10514,7 @@ Success. Returns the status of cart checkout. Refer `CartCheckoutResponseSchema`
  | codMessage | String? |  yes  |  |
  | cartId | Int? |  yes  |  |
  | isValid | Boolean? |  yes  |  |
- | deliveryCharges | Int? |  yes  |  |
+ | deliveryCharges | Double? |  yes  |  |
  | id | String? |  yes  |  |
  | paymentSelectionLock | [PaymentSelectionLock](#PaymentSelectionLock)? |  yes  |  |
  | errorMessage | String? |  yes  |  |
@@ -10020,7 +10537,7 @@ Success. Returns the status of cart checkout. Refer `CartCheckoutResponseSchema`
  | storeEmps | ArrayList<HashMap<String,Any>>? |  yes  |  |
  | couponText | String? |  yes  |  |
  | buyNow | Boolean? |  yes  |  |
- | codCharges | Int? |  yes  |  |
+ | codCharges | Double? |  yes  |  |
 
 ---
 

@@ -404,10 +404,15 @@ data class TrackingDetails(
     @SerializedName("time")
     var time: String?=null,
     
+    @SerializedName("created_ts")
+    var createdTs: String?=null,
+    
     @SerializedName("tracking_details")
     var trackingDetails: ArrayList<NestedTrackingDetails>?=null
     
 ): Parcelable {
+    
+    
     
     
     
@@ -1229,6 +1234,9 @@ data class DeliveryAddress(
     @SerializedName("address1")
     var address1: String?=null,
     
+    @SerializedName("display_address")
+    var displayAddress: String?=null,
+    
     @SerializedName("name")
     var name: String?=null,
     
@@ -1254,6 +1262,8 @@ data class DeliveryAddress(
     var country: String?=null
     
 ): Parcelable {
+    
+    
     
     
     
@@ -1383,6 +1393,9 @@ data class Shipments(
     @SerializedName("shipment_created_at")
     var shipmentCreatedAt: String?=null,
     
+    @SerializedName("shipment_created_ts")
+    var shipmentCreatedTs: String?=null,
+    
     @SerializedName("size_info")
     var sizeInfo: @RawValue HashMap<String,Any>?=null,
     
@@ -1423,6 +1436,8 @@ data class Shipments(
     var deliveryDate: String?=null
     
 ): Parcelable {
+    
+    
     
     
     
@@ -1597,6 +1612,9 @@ data class OrderSchema(
     @SerializedName("order_created_time")
     var orderCreatedTime: String?=null,
     
+    @SerializedName("order_created_ts")
+    var orderCreatedTs: String?=null,
+    
     @SerializedName("order_id")
     var orderId: String?=null,
     
@@ -1607,6 +1625,8 @@ data class OrderSchema(
     var bagsForReorder: ArrayList<BagsForReorder>?=null
     
 ): Parcelable {
+    
+    
     
     
     
