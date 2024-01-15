@@ -331,9 +331,48 @@ class FinanceDataManagerClass(val config: PlatformConfig, val unauthorizedAction
         } 
     }
     
+    
+    suspend fun invoicePaymentDetails(invoiceNumber: String)
+    : Response<InvoicePaymentDetailsResponse>? {
+        
+        return if (config.oauthClient.isAccessTokenValid()) {
+            financeApiList?.invoicePaymentDetails(
+        companyId = config.companyId, invoiceNumber = invoiceNumber )
+        } else {
+            null
+        } 
+    }
+    
+    
+    suspend fun invoiceActivityLogs(invoiceNumber: String)
+    : Response<InvoiceActivityLogsResponse>? {
+        
+        return if (config.oauthClient.isAccessTokenValid()) {
+            financeApiList?.invoiceActivityLogs(
+        companyId = config.companyId, invoiceNumber = invoiceNumber )
+        } else {
+            null
+        } 
+    }
+    
+    
+    suspend fun unlockCreditNote(body: UnlockCreditNoteRequest)
+    : Response<UnlockCreditNoteResponse>? {
+        
+        return if (config.oauthClient.isAccessTokenValid()) {
+            financeApiList?.unlockCreditNote(
+        companyId = config.companyId, body = body)
+        } else {
+            null
+        } 
+    }
+    
 
 inner class ApplicationClient(val applicationId:String,val config: PlatformConfig){
 
+    
+    
+    
     
     
     

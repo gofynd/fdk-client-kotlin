@@ -71,14 +71,14 @@ class ThemeDataManagerClass(val config: ApplicationConfig, val unauthorizedActio
 
     
     
-    suspend fun getPage(themeId: String, pageValue: String): Response<AvailablePageSchema>? {
+    suspend fun getPage(themeId: String, pageValue: String, filters: String?=null, company: Int?=null): Response<AvailablePageSchema>? {
         var fullUrl : String? = _relativeUrls["getPage"] 
         
         fullUrl = fullUrl?.replace("{" + "theme_id" +"}",themeId.toString())
         
         fullUrl = fullUrl?.replace("{" + "page_value" +"}",pageValue.toString())
         
-        return themeApiList?.getPage(fullUrl    )}
+        return themeApiList?.getPage(fullUrl      ,  filters = filters,    company = company)}
 
     
     

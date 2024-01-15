@@ -78,19 +78,19 @@ class OrderDataManagerClass(val config: ApplicationConfig, val unauthorizedActio
         return retrofitHttpClient?.initializeRestClient(OrderApiList::class.java) as? OrderApiList
     }
     
-    suspend fun getOrders(status: Int?=null, pageNo: Int?=null, pageSize: Int?=null, fromDate: String?=null, toDate: String?=null, customMeta: String?=null): Response<OrderList>? {
+    suspend fun getOrders(status: Int?=null, pageNo: Int?=null, pageSize: Int?=null, fromDate: String?=null, toDate: String?=null, startDate: String?=null, endDate: String?=null, customMeta: String?=null): Response<OrderList>? {
         var fullUrl : String? = _relativeUrls["getOrders"] 
         
-        return orderApiList?.getOrders(fullUrl    ,  status = status,    pageNo = pageNo,    pageSize = pageSize,    fromDate = fromDate,    toDate = toDate,    customMeta = customMeta)}
+        return orderApiList?.getOrders(fullUrl    ,  status = status,    pageNo = pageNo,    pageSize = pageSize,    fromDate = fromDate,    toDate = toDate,    startDate = startDate,    endDate = endDate,    customMeta = customMeta)}
 
     
     
-    suspend fun getOrderById(orderId: String): Response<OrderById>? {
+    suspend fun getOrderById(orderId: String, allowInactive: Boolean?=null): Response<OrderById>? {
         var fullUrl : String? = _relativeUrls["getOrderById"] 
         
         fullUrl = fullUrl?.replace("{" + "order_id" +"}",orderId.toString())
         
-        return orderApiList?.getOrderById(fullUrl   )}
+        return orderApiList?.getOrderById(fullUrl     ,  allowInactive = allowInactive)}
 
     
     
@@ -103,12 +103,12 @@ class OrderDataManagerClass(val config: ApplicationConfig, val unauthorizedActio
 
     
     
-    suspend fun getShipmentById(shipmentId: String): Response<ShipmentById>? {
+    suspend fun getShipmentById(shipmentId: String, allowInactive: Boolean?=null): Response<ShipmentById>? {
         var fullUrl : String? = _relativeUrls["getShipmentById"] 
         
         fullUrl = fullUrl?.replace("{" + "shipment_id" +"}",shipmentId.toString())
         
-        return orderApiList?.getShipmentById(fullUrl   )}
+        return orderApiList?.getShipmentById(fullUrl     ,  allowInactive = allowInactive)}
 
     
     

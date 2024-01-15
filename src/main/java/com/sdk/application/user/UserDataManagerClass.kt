@@ -99,6 +99,12 @@ class UserDataManagerClass(val config: ApplicationConfig, val unauthorizedAction
             
                     _relativeUrls["sendVerificationLinkToEmail"] = "/service/application/user/profile/v1.0/email/link/send".substring(1)
             
+                    _relativeUrls["userExists"] = "/service/application/user/authentication/v1.0/user-exists".substring(1)
+            
+                    _relativeUrls["getUserAttributes"] = "/service/application/user/profile/v1.0/user-attributes".substring(1)
+            
+                    _relativeUrls["updateUserAttributes"] = "/service/application/user/profile/v1.0/user-attributes".substring(1)
+            
     }
 
     public fun update(updatedUrlMap : HashMap<String,String>){
@@ -411,6 +417,27 @@ class UserDataManagerClass(val config: ApplicationConfig, val unauthorizedAction
         var fullUrl : String? = _relativeUrls["sendVerificationLinkToEmail"] 
         
         return userApiList?.sendVerificationLinkToEmail(fullUrl    ,  platform = platform, body = body)}
+
+    
+    
+    suspend fun userExists(q: String): Response<UserExistsResponse>? {
+        var fullUrl : String? = _relativeUrls["userExists"] 
+        
+        return userApiList?.userExists(fullUrl    ,  q = q)}
+
+    
+    
+    suspend fun getUserAttributes(slug: String?=null): Response<UserAttributes>? {
+        var fullUrl : String? = _relativeUrls["getUserAttributes"] 
+        
+        return userApiList?.getUserAttributes(fullUrl    ,  slug = slug)}
+
+    
+    
+    suspend fun updateUserAttributes(body: UpdateUserAttributesRequest): Response<UserAttributes>? {
+        var fullUrl : String? = _relativeUrls["updateUserAttributes"] 
+        
+        return userApiList?.updateUserAttributes(fullUrl  ,body = body)}
 
     
     

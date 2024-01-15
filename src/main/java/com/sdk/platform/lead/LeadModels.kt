@@ -1563,6 +1563,28 @@ data class Ticket(
 
 
 
+             
+/*
+    Model: ErrorMessage
+*/
+@Parcelize
+data class ErrorMessage(
+    
+    
+    
+    @SerializedName("message")
+    var message: String?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+}
+
+
+
 
 
 
@@ -1610,7 +1632,10 @@ data class Ticket(
         log("log"), 
         
         @SerializedName("comment")
-        comment("comment");
+        comment("comment"), 
+        
+        @SerializedName("thread")
+        thread("thread");
         
 
         companion object {

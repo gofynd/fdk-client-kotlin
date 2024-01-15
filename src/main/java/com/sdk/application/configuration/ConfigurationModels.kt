@@ -22,19 +22,9 @@ data class ApplicationAboutResponse(
     
     
     @SerializedName("application_info")
-    var applicationInfo: ApplicationInfo?=null,
-    
-    @SerializedName("company_info")
-    var companyInfo: CompanyInfo?=null,
-    
-    @SerializedName("owner_info")
-    var ownerInfo: OwnerInfo?=null
+    var applicationInfo: ApplicationInfo?=null
     
 ): Parcelable {
-    
-    
-    
-    
     
     
     
@@ -52,6 +42,12 @@ data class ApplicationAboutResponse(
 data class ApplicationInfo(
     
     
+    
+    @SerializedName("company_info")
+    var companyInfo: CompanyInfo?=null,
+    
+    @SerializedName("owner_info")
+    var ownerInfo: OwnerInfo?=null,
     
     @SerializedName("_id")
     var id: String?=null,
@@ -72,7 +68,7 @@ data class ApplicationInfo(
     var name: String?=null,
     
     @SerializedName("meta")
-    var meta: ApplicationMeta?=null,
+    var meta: ArrayList<ApplicationMeta>?=null,
     
     @SerializedName("token")
     var token: String?=null,
@@ -90,9 +86,43 @@ data class ApplicationInfo(
     var logo: SecureUrl?=null,
     
     @SerializedName("is_active")
-    var isActive: Boolean?=null
+    var isActive: Boolean?=null,
+    
+    @SerializedName("mode")
+    var mode: String?=null,
+    
+    @SerializedName("tokens")
+    var tokens: ArrayList<TokenSchema>?=null,
+    
+    @SerializedName("domains")
+    var domains: ArrayList<Domain>?=null,
+    
+    @SerializedName("favicon")
+    var favicon: SecureUrl?=null,
+    
+    @SerializedName("mobile_logo")
+    var mobileLogo: SecureUrl?=null,
+    
+    @SerializedName("slug")
+    var slug: String?=null
     
 ): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     
     
     
@@ -455,8 +485,8 @@ data class AppTokenResponse(
     @SerializedName("created_at")
     var createdAt: String?=null,
     
-    @SerializedName("updated_at")
-    var updatedAt: String?=null,
+    @SerializedName("modified_at")
+    var modifiedAt: String?=null,
     
     @SerializedName("__v")
     var v: Int?=null
@@ -1489,8 +1519,8 @@ data class AppFeature(
     @SerializedName("created_at")
     var createdAt: String?=null,
     
-    @SerializedName("updated_at")
-    var updatedAt: String?=null,
+    @SerializedName("modified_at")
+    var modifiedAt: String?=null,
     
     @SerializedName("__v")
     var v: Int?=null
@@ -1584,7 +1614,13 @@ data class CommonFeature(
     var compareProducts: CompareProductsFeature?=null,
     
     @SerializedName("reward_points")
-    var rewardPoints: RewardPointsConfig?=null
+    var rewardPoints: RewardPointsConfig?=null,
+    
+    @SerializedName("listing_page")
+    var listingPage: ListingPageFeature?=null,
+    
+    @SerializedName("international_shipping")
+    var internationalShipping: InternationalShipping?=null
     
 ): Parcelable {
     
@@ -1601,6 +1637,32 @@ data class CommonFeature(
     
     
     
+    
+    
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: InternationalShipping
+*/
+@Parcelize
+data class InternationalShipping(
+    
+    
+    
+    @SerializedName("enabled")
+    var enabled: Boolean?=null
+    
+): Parcelable {
     
     
     
@@ -1677,6 +1739,28 @@ data class ListingPriceFeature(
 ): Parcelable {
     
     
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: ListingPageFeature
+*/
+@Parcelize
+data class ListingPageFeature(
+    
+    
+    
+    @SerializedName("sort_on")
+    var sortOn: String?=null
+    
+): Parcelable {
     
     
     
@@ -1948,16 +2032,26 @@ data class Currency(
     @SerializedName("created_at")
     var createdAt: String?=null,
     
-    @SerializedName("updated_at")
-    var updatedAt: String?=null,
+    @SerializedName("modified_at")
+    var modifiedAt: String?=null,
     
     @SerializedName("decimal_digits")
     var decimalDigits: Int?=null,
     
     @SerializedName("symbol")
-    var symbol: String?=null
+    var symbol: String?=null,
+    
+    @SerializedName("country_name")
+    var countryName: String?=null,
+    
+    @SerializedName("country_code")
+    var countryCode: String?=null
     
 ): Parcelable {
+    
+    
+    
+    
     
     
     
@@ -2237,8 +2331,8 @@ data class Application(
     @SerializedName("created_at")
     var createdAt: String?=null,
     
-    @SerializedName("updated_at")
-    var updatedAt: String?=null,
+    @SerializedName("modified_at")
+    var modifiedAt: String?=null,
     
     @SerializedName("__v")
     var v: Int?=null,
@@ -2262,9 +2356,29 @@ data class Application(
     var mobileLogo: SecureUrl?=null,
     
     @SerializedName("domain")
-    var domain: Domain?=null
+    var domain: Domain?=null,
+    
+    @SerializedName("slug")
+    var slug: String?=null,
+    
+    @SerializedName("mode")
+    var mode: String?=null,
+    
+    @SerializedName("status")
+    var status: String?=null,
+    
+    @SerializedName("tokens")
+    var tokens: ArrayList<TokenSchema>?=null
     
 ): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+    
     
     
     
@@ -2324,10 +2438,64 @@ data class Application(
 
              
 /*
+    Model: TokenSchema
+*/
+@Parcelize
+data class TokenSchema(
+    
+    
+    
+    @SerializedName("token")
+    var token: String?=null,
+    
+    @SerializedName("created_by")
+    var createdBy: @RawValue HashMap<String,Any>?=null,
+    
+    @SerializedName("created_at")
+    var createdAt: String?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
     Model: NotFound
 */
 @Parcelize
 data class NotFound(
+    
+    
+    
+    @SerializedName("message")
+    var message: String?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: InvalidPayloadRequest
+*/
+@Parcelize
+data class InvalidPayloadRequest(
     
     
     
@@ -2590,7 +2758,7 @@ data class ApplicationInformation(
     var socialLinks: SocialLinks?=null,
     
     @SerializedName("links")
-    var links: Links?=null,
+    var links: ArrayList<Links>?=null,
     
     @SerializedName("copyright_text")
     var copyrightText: String?=null,
@@ -2599,7 +2767,7 @@ data class ApplicationInformation(
     var id: String?=null,
     
     @SerializedName("business_highlights")
-    var businessHighlights: BusinessHighlights?=null,
+    var businessHighlights: ArrayList<BusinessHighlights>?=null,
     
     @SerializedName("application")
     var application: String?=null,
@@ -2607,8 +2775,8 @@ data class ApplicationInformation(
     @SerializedName("created_at")
     var createdAt: String?=null,
     
-    @SerializedName("updated_at")
-    var updatedAt: String?=null,
+    @SerializedName("modified_at")
+    var modifiedAt: String?=null,
     
     @SerializedName("__v")
     var v: Int?=null
@@ -2653,13 +2821,13 @@ data class InformationAddress(
     
     
     @SerializedName("loc")
-    var loc: String?=null,
+    var loc: InformationLoc?=null,
     
     @SerializedName("address_line")
     var addressLine: ArrayList<String>?=null,
     
     @SerializedName("phone")
-    var phone: InformationPhone?=null,
+    var phone: ArrayList<InformationPhone>?=null,
     
     @SerializedName("city")
     var city: String?=null,
@@ -2719,6 +2887,92 @@ data class InformationPhone(
 
              
 /*
+    Model: InformationSupportPhone
+*/
+@Parcelize
+data class InformationSupportPhone(
+    
+    
+    
+    @SerializedName("code")
+    var code: String?=null,
+    
+    @SerializedName("number")
+    var number: String?=null,
+    
+    @SerializedName("key")
+    var key: String?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: InformationSupportEmail
+*/
+@Parcelize
+data class InformationSupportEmail(
+    
+    
+    
+    @SerializedName("value")
+    var value: String?=null,
+    
+    @SerializedName("key")
+    var key: String?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: InformationLoc
+*/
+@Parcelize
+data class InformationLoc(
+    
+    
+    
+    @SerializedName("type")
+    var type: String?=null,
+    
+    @SerializedName("coordinates")
+    var coordinates: ArrayList<Int>?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
     Model: InformationSupport
 */
 @Parcelize
@@ -2727,10 +2981,10 @@ data class InformationSupport(
     
     
     @SerializedName("phone")
-    var phone: ArrayList<String>?=null,
+    var phone: ArrayList<InformationSupportPhone>?=null,
     
     @SerializedName("email")
-    var email: ArrayList<String>?=null,
+    var email: ArrayList<InformationSupportEmail>?=null,
     
     @SerializedName("timing")
     var timing: String?=null
@@ -3197,9 +3451,19 @@ data class ApplicationDetail(
     var domains: ArrayList<Domain>?=null,
     
     @SerializedName("_id")
-    var id: String?=null
+    var id: String?=null,
+    
+    @SerializedName("slug")
+    var slug: String?=null,
+    
+    @SerializedName("company_id")
+    var companyId: Int?=null
     
 ): Parcelable {
+    
+    
+    
+    
     
     
     
@@ -3290,9 +3554,24 @@ data class AppCurrencyResponse(
     var defaultCurrency: DefaultCurrency?=null,
     
     @SerializedName("supported_currency")
-    var supportedCurrency: ArrayList<Currency>?=null
+    var supportedCurrency: ArrayList<Currency>?=null,
+    
+    @SerializedName("_id")
+    var id: String?=null,
+    
+    @SerializedName("created_at")
+    var createdAt: String?=null,
+    
+    @SerializedName("modified_at")
+    var modifiedAt: String?=null
     
 ): Parcelable {
+    
+    
+    
+    
+    
+    
     
     
     

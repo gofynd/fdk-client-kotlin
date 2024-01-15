@@ -6,26 +6,30 @@
 
 ## Webhook Methods
 This service provides functionality to emits different events to the subscribed webhook url's. It auto retry three times for all the failed events after certain interval as well as you can also retry manually the failed events and can view the reports.
+
+Default
 * [manualRetryOfFailedEvent](#manualretryoffailedevent)
 * [getEventCounts](#geteventcounts)
 * [getManualRetryStatus](#getmanualretrystatus)
 * [manualRetryCancel](#manualretrycancel)
-* [getDeliveryReports](#getdeliveryreports)
 * [downloadDeliveryReport](#downloaddeliveryreport)
 * [pingWebhook](#pingwebhook)
-* [fetchAllEventConfigurations](#fetchalleventconfigurations)
 * [getReportFilters](#getreportfilters)
 * [getHistoricalReports](#gethistoricalreports)
 * [cancelJobByName](#canceljobbyname)
-* [getSubscribersByCompany](#getsubscribersbycompany)
+* [getDeliveryReports](#getdeliveryreports)
+* [fetchAllEventConfigurations](#fetchalleventconfigurations)
 * [registerSubscriberToEvent](#registersubscribertoevent)
+* [getSubscribersByCompany](#getsubscribersbycompany)
 * [updateSubscriberConfig](#updatesubscriberconfig)
 * [getSubscriberById](#getsubscriberbyid)
 * [getSubscribersByExtensionId](#getsubscribersbyextensionid)
 
 
 
+
 ## Methods with example and description
+
 
 
 ### manualRetryOfFailedEvent
@@ -51,7 +55,7 @@ platformClient.webhook.manualRetryOfFailedEvent(body: body).safeAwait{ response,
 
 | Argument  |  Type  | Required | Description |
 | --------- | -----  | -------- | ----------- |
-| body | [EventProcessRequest](#EventProcessRequest) | yes | Request body |
+| body | [RetryEventRequest](#RetryEventRequest) | yes | Request body |
 
 
 Initiates a manual retry for event processing for a specific company. This endpoint allows the user to specify the date range (start_date and end_date) within which the events should be retried.
@@ -62,19 +66,29 @@ Initiates a manual retry for event processing for a specific company. This endpo
 
 
 
-[EventProcessedSuccessResponse](#EventProcessedSuccessResponse)
+[RetrySuccessResponse](#RetrySuccessResponse)
 
-Manual Retry Processed Started Successfully
+Initiates a manual retry for event processing for a specific company. This endpoint allows the user to specify the date range (start_date and end_date) within which the events should be retried.
 
 
 
 
 <details>
-<summary><i>&nbsp; Example:</i></summary>
+<summary><i>&nbsp; Examples:</i></summary>
+
+
+<details>
+<summary><i>&nbsp; success</i></summary>
 
 ```json
-"Manual Retry Processed Started Successfully"
+{
+  "value": {
+    "message": "Manual Retry Processed Started Successfully"
+  }
+}
 ```
+</details>
+
 </details>
 
 
@@ -111,7 +125,7 @@ platformClient.webhook.getEventCounts(body: body).safeAwait{ response, error->
 
 | Argument  |  Type  | Required | Description |
 | --------- | -----  | -------- | ----------- |
-| body | [EventProcessRequest](#EventProcessRequest) | yes | Request body |
+| body | [RetryEventRequest](#RetryEventRequest) | yes | Request body |
 
 
 Retrieves the count of failed events for a specific company within the specified date range. The user can filter the count based on specific event types if provided.
@@ -122,9 +136,9 @@ Retrieves the count of failed events for a specific company within the specified
 
 
 
-[FailedEventsCountSuccessResponse](#FailedEventsCountSuccessResponse)
+[RetryCountResponse](#RetryCountResponse)
 
-Successful response with the count of failed events.
+Initiates a manual retry for event processing for a specific company. This endpoint allows the user to specify the date range (start_date and end_date) within which the events should be retried.
 
 
 
@@ -134,7 +148,7 @@ Successful response with the count of failed events.
 
 
 <details>
-<summary><i>&nbsp; default</i></summary>
+<summary><i>&nbsp; success</i></summary>
 
 ```json
 {
@@ -142,7 +156,7 @@ Successful response with the count of failed events.
     "items": [
       {
         "status": "FAILED",
-        "count": 2297
+        "count": 10
       }
     ]
   }
@@ -205,7 +219,7 @@ Successful response with the retry status.
 
 
 <details>
-<summary><i>&nbsp; default</i></summary>
+<summary><i>&nbsp; success</i></summary>
 
 ```json
 {
@@ -262,7 +276,7 @@ Cancels the active manual retry for a specific company's failed events. If a man
 
 
 
-[EventSuccessResponse](#EventSuccessResponse)
+[String](#String)
 
 Manual retry cancelled successfully.
 
@@ -270,70 +284,19 @@ Manual retry cancelled successfully.
 
 
 <details>
-<summary><i>&nbsp; Example:</i></summary>
-
-```json
-"Events cancelled successfully"
-```
-</details>
-
-
-
-
-
-
-
-
-
----
-
-
-### getDeliveryReports
-Get processed events report for a company
-
-
-
-
-```kotlin
-platformClient.webhook.getDeliveryReports(body: body).safeAwait{ response, error->
-    response?.let{
-      // Use response
-    } ->
-    error?.let{
-      
-    } 
-}
-```
-
-
-
-
-
-| Argument  |  Type  | Required | Description |
-| --------- | -----  | -------- | ----------- |
-| body | [EventProcessRequest](#EventProcessRequest) | yes | Request body |
-
-
-Retrieve a list of processed events for a specific company based on the provided filters.
-
-*Returned Response:*
-
-
-
-
-[EventProcessReports](#EventProcessReports)
-
-Successfully retrieved the processed events report.
-
-
+<summary><i>&nbsp; Examples:</i></summary>
 
 
 <details>
-<summary><i>&nbsp; Example:</i></summary>
+<summary><i>&nbsp; success</i></summary>
 
 ```json
-
+{
+  "value": "Events cancelled successfully"
+}
 ```
+</details>
+
 </details>
 
 
@@ -348,7 +311,7 @@ Successfully retrieved the processed events report.
 
 
 ### downloadDeliveryReport
-Download processed events report for a company
+Download processed events report for a company.
 
 
 
@@ -375,12 +338,13 @@ platformClient.webhook.downloadDeliveryReport(body: body).safeAwait{ response, e
 
 Download reports for a specific company based on the provided filters.
 
+
 *Returned Response:*
 
 
 
 
-[HashMap<String,Any>](#HashMap<String,Any>)
+[DownloadReportResponse](#DownloadReportResponse)
 
 Successfully downloaded the report.
 
@@ -388,11 +352,21 @@ Successfully downloaded the report.
 
 
 <details>
-<summary><i>&nbsp; Example:</i></summary>
+<summary><i>&nbsp; Examples:</i></summary>
+
+
+<details>
+<summary><i>&nbsp; success</i></summary>
 
 ```json
-
+{
+  "value": {
+    "file_name": "exportJMehD_1689675047609"
+  }
+}
 ```
+</details>
+
 </details>
 
 
@@ -407,7 +381,7 @@ Successfully downloaded the report.
 
 
 ### pingWebhook
-Ping and validate webhook url
+Ping and validate webhook url.
 
 
 
@@ -432,7 +406,8 @@ platformClient.webhook.pingWebhook(body: body).safeAwait{ response, error->
 | body | [PingWebhook](#PingWebhook) | yes | Request body |
 
 
-Ping and validate webhook url
+Ping and validate webhook url.
+
 
 *Returned Response:*
 
@@ -441,7 +416,7 @@ Ping and validate webhook url
 
 [PingWebhookResponse](#PingWebhookResponse)
 
-Successfully retrieved the processed events report.
+Successfully received ping for the provided webhook url.
 
 
 
@@ -451,13 +426,13 @@ Successfully retrieved the processed events report.
 
 
 <details>
-<summary><i>&nbsp; default</i></summary>
+<summary><i>&nbsp; success</i></summary>
 
 ```json
 {
   "value": {
-    "status": "SUCCESS",
-    "message": "",
+    "status": "FAILED",
+    "message": "Request failed with status code 429",
     "code": 200
   }
 }
@@ -477,86 +452,8 @@ Successfully retrieved the processed events report.
 ---
 
 
-### fetchAllEventConfigurations
-
-
-
-
-
-```kotlin
-platformClient.webhook.fetchAllEventConfigurations().safeAwait{ response, error->
-    response?.let{
-      // Use response
-    } ->
-    error?.let{
-      
-    } 
-}
-```
-
-
-
-
-
-
-Get All Webhook Events
-
-*Returned Response:*
-
-
-
-
-[EventConfigResponse](#EventConfigResponse)
-
-Success
-
-
-
-
-<details>
-<summary><i>&nbsp; Examples:</i></summary>
-
-
-<details>
-<summary><i>&nbsp; default</i></summary>
-
-```json
-{
-  "value": {
-    "event_configs": [
-      {
-        "id": 1,
-        "event_name": "article",
-        "event_type": "create",
-        "event_category": "application",
-        "version": "1",
-        "display_name": "article",
-        "description": "This event gets triggered when an article is created",
-        "event_schema": {},
-        "created_on": "2021-12-20T17:38:22.922Z",
-        "updated_on": "2023-07-26T12:30:30.930Z"
-      }
-    ]
-  }
-}
-```
-</details>
-
-</details>
-
-
-
-
-
-
-
-
-
----
-
-
 ### getReportFilters
-Get filters for a company
+Get filters for a company.
 
 
 
@@ -583,12 +480,13 @@ platformClient.webhook.getReportFilters(body: body).safeAwait{ response, error->
 
 Retrieve filters for a specific company based on the provided subscriber IDs.
 
+
 *Returned Response:*
 
 
 
 
-[ReportFilterResponse](#ReportFilterResponse)
+[ArrayList<ReportFilterResponse>](#ArrayList<ReportFilterResponse>)
 
 Successfully retrieved the filters.
 
@@ -600,7 +498,7 @@ Successfully retrieved the filters.
 
 
 <details>
-<summary><i>&nbsp; default</i></summary>
+<summary><i>&nbsp; success</i></summary>
 
 ```json
 {
@@ -616,41 +514,6 @@ Successfully retrieved the filters.
             "event_category": "company",
             "version": "1"
           }
-        },
-        {
-          "text": "article.delete-v1 (company)",
-          "value": {
-            "event_name": "article",
-            "event_type": "delete",
-            "event_category": "company",
-            "version": "1"
-          }
-        },
-        {
-          "text": "article.update-v1 (company)",
-          "value": {
-            "event_name": "article",
-            "event_type": "update",
-            "event_category": "company",
-            "version": "1"
-          }
-        }
-      ]
-    },
-    {
-      "filter_name": "Subscriber Name",
-      "values": [
-        {
-          "text": "3AugWebhook",
-          "value": 93
-        },
-        {
-          "text": "Alda.Kuhn",
-          "value": 51
-        },
-        {
-          "text": "Alfred.Crona69",
-          "value": 59
         }
       ]
     }
@@ -673,7 +536,7 @@ Successfully retrieved the filters.
 
 
 ### getHistoricalReports
-Get report download history
+Get report download history.
 
 
 
@@ -700,6 +563,7 @@ platformClient.webhook.getHistoricalReports(body: body).safeAwait{ response, err
 
 Retrieve history reports for a specific company based on the provided filters.
 
+
 *Returned Response:*
 
 
@@ -707,17 +571,55 @@ Retrieve history reports for a specific company based on the provided filters.
 
 [HistoryResponse](#HistoryResponse)
 
-Successfully retrieved the history reports.
+It will give list of all the reports that was downloaded.
 
 
 
 
 <details>
-<summary><i>&nbsp; Example:</i></summary>
+<summary><i>&nbsp; Examples:</i></summary>
+
+
+<details>
+<summary><i>&nbsp; success</i></summary>
 
 ```json
-
+{
+  "value": [
+    {
+      "id": 25,
+      "association": {
+        "company_id": 24
+      },
+      "filters": {
+        "status": "FAILED",
+        "end_date": "2023-07-18T09:38:07.000Z",
+        "start_date": "2023-07-17T09:38:07.000Z",
+        "subscribers": [
+          40
+        ]
+      },
+      "filename": "exportJMehD_1689675047609",
+      "status": "COMPLETED",
+      "upload_service_response": {
+        "cdn": {
+          "urls": [
+            {
+              "url": "https://storage.googleapis.com/fynd-data-platform-fynd-x0/fp-analytics-query-result/exportJMehD_1689675047609/000000000000.csv.gz?GoogleAccessId=dms-to-bq%40fynd-1088.iam.gserviceaccount.com&Expires=1692267060&Signature=aPhTRMOJswVhx5jTYF7JV42aPQKJ4Mkzv9vJr8zqrbpso00GytuhmBnpP1Gxt%2BoTnIINyWUWAuchlm6paS9yKFrjCXemsqSM0hqTA8T0MUjng3swZAtZuWK4dVK2jMyOv88l1Xn8tkrwOFo7ohG3scFwgjplrU%2FkMUNZqxw4fdgdUUXZ%2BJrnGC5jlGkz5PTooRtForUXtTkA8Kf9mJvX3F6f6p5I2VvhzmXHGMabavEjgZ56JUe2%2B0o5POs4jN0s%2F6fZGOz4hhLa9hMIyQpjoodbcGO%2BRCKukxRbY1s00%2F1WNGLLYYuU4bvqtME60rCnj0FHEmbte4Tr73SmOU4xwg%3D%3D",
+              "name": "000000000000.csv.gz"
+            }
+          ]
+        }
+      },
+      "created_on": "2023-07-18T10:10:49.189Z",
+      "updated_on": "2023-07-18T10:10:50.798Z",
+      "message": "Completed in less than 1 min"
+    }
+  ]
+}
 ```
+</details>
+
 </details>
 
 
@@ -732,7 +634,7 @@ Successfully retrieved the history reports.
 
 
 ### cancelJobByName
-Cancel a report export
+Cancel a report export.
 
 
 
@@ -754,11 +656,12 @@ platformClient.webhook.cancelJobByName(filename: filename).safeAwait{ response, 
 
 | Argument  |  Type  | Required | Description |
 | --------- | -----  | -------- | ----------- | 
-| filename | String | yes | Filename of the specific report export to cancel. |  
+| filename | String | yes |  |  
 
 
 
 Cancel the export of a specific report for a company.
+
 
 *Returned Response:*
 
@@ -773,13 +676,273 @@ Report export canceled successfully.
 
 
 <details>
-<summary><i>&nbsp; Example:</i></summary>
+<summary><i>&nbsp; Examples:</i></summary>
+
+
+<details>
+<summary><i>&nbsp; success</i></summary>
 
 ```json
 {
-  "code": 200
+  "value": {
+    "code": 200
+  }
 }
 ```
+</details>
+
+</details>
+
+
+
+
+
+
+
+
+
+---
+
+
+### getDeliveryReports
+Get processed events report for a company.
+
+
+
+
+```kotlin
+platformClient.webhook.getDeliveryReports(body: body).safeAwait{ response, error->
+    response?.let{
+      // Use response
+    } ->
+    error?.let{
+      
+    } 
+}
+```
+
+
+
+
+
+| Argument  |  Type  | Required | Description |
+| --------- | -----  | -------- | ----------- |
+| body | [EventProcessRequest](#EventProcessRequest) | yes | Request body |
+
+
+Retrieve a list of processed events for a specific company based on the provided filters.
+
+
+*Returned Response:*
+
+
+
+
+[EventProcessReports](#EventProcessReports)
+
+Successfully retrieved the processed events report.
+
+
+
+
+<details>
+<summary><i>&nbsp; Examples:</i></summary>
+
+
+<details>
+<summary><i>&nbsp; success</i></summary>
+
+```json
+{
+  "value": {
+    "rows": [
+      {
+        "event_name": "article.create.v1.application",
+        "response_code": 404,
+        "response_message": "Not Found",
+        "data": "{}",
+        "attempt": 3,
+        "last_attempted_on": 1696835661617,
+        "status": "FAILED",
+        "name": "sub23",
+        "webhook_url": "https://webhook.site/512b843c-4a3b-4263-9acf-6fc9ad50c042",
+        "response_time": "20000,",
+        "message_id": "tYYGTlhqxW7byvmDEIqTXOMmGoF8O5zAZ87IT3TV8DA=",
+        "event_trace_id": "[\"wildrider.c6a8c2b0-659f-11ee-b7f8-ba52e867b4c8\"]"
+      }
+    ]
+  }
+}
+```
+</details>
+
+</details>
+
+
+
+
+
+
+
+
+
+---
+
+
+### fetchAllEventConfigurations
+Get All Webhook Events.
+
+
+
+
+```kotlin
+platformClient.webhook.fetchAllEventConfigurations().safeAwait{ response, error->
+    response?.let{
+      // Use response
+    } ->
+    error?.let{
+      
+    } 
+}
+```
+
+
+
+
+
+
+To fetch all webhook events.
+
+
+*Returned Response:*
+
+
+
+
+[EventConfigResponse](#EventConfigResponse)
+
+Successfully received ping for the provided webhook url.
+
+
+
+
+<details>
+<summary><i>&nbsp; Examples:</i></summary>
+
+
+<details>
+<summary><i>&nbsp; success</i></summary>
+
+```json
+{
+  "value": {
+    "event_configs": [
+      {
+        "id": 1,
+        "event_name": "article",
+        "event_type": "create",
+        "event_category": "application",
+        "version": "1",
+        "display_name": "article",
+        "description": "This event gets triggered when an article is created",
+        "event_schema": null,
+        "created_on": "2021-12-20T17:38:22.922Z",
+        "updated_on": "2023-07-26T12:30:30.930Z"
+      }
+    ]
+  }
+}
+```
+</details>
+
+</details>
+
+
+
+
+
+
+
+
+
+---
+
+
+### registerSubscriberToEvent
+Register Subscriber.
+
+
+
+
+```kotlin
+platformClient.webhook.registerSubscriberToEvent(body: body).safeAwait{ response, error->
+    response?.let{
+      // Use response
+    } ->
+    error?.let{
+      
+    } 
+}
+```
+
+
+
+
+
+| Argument  |  Type  | Required | Description |
+| --------- | -----  | -------- | ----------- |
+| body | [SubscriberConfig](#SubscriberConfig) | yes | Request body |
+
+
+Register Subscriber.
+
+
+*Returned Response:*
+
+
+
+
+[SubscriberConfigResponse](#SubscriberConfigResponse)
+
+Success
+
+
+
+
+<details>
+<summary><i>&nbsp; Examples:</i></summary>
+
+
+<details>
+<summary><i>&nbsp; success</i></summary>
+
+```json
+{
+  "value": {
+    "name": "xyz webhook",
+    "webhook_url": "https://xyz.requestcatcher.com/test",
+    "association": {
+      "company_id": 1,
+      "extension_id": "64affd97cbddb85348ca8f93",
+      "application_id": [
+        "63a0490757475baff6154585",
+        "63a42b512df5d4731c5eb601"
+      ]
+    },
+    "custom_headers": {},
+    "status": "active",
+    "email_id": "axyz@gofynd.com",
+    "auth_meta": {},
+    "event_id": [
+      10,
+      11,
+      17
+    ]
+  }
+}
+```
+</details>
+
 </details>
 
 
@@ -794,7 +957,7 @@ Report export canceled successfully.
 
 
 ### getSubscribersByCompany
-Get Subscribers By Company ID
+Get Subscribers By CompanyId.
 
 
 
@@ -822,16 +985,17 @@ platformClient.webhook.getSubscribersByCompany(pageNo: pageNo, pageSize: pageSiz
 
 
 
-Get Subscribers By CompanyId
+Get Subscribers By Company ID.
+
 
 *Returned Response:*
 
 
 
 
-[SubscriberResponse](#SubscriberResponse)
+[SubscriberConfigList](#SubscriberConfigList)
 
-Success
+Subscribers By Company ID.
 
 
 
@@ -841,7 +1005,7 @@ Success
 
 
 <details>
-<summary><i>&nbsp; default</i></summary>
+<summary><i>&nbsp; success</i></summary>
 
 ```json
 {
@@ -922,93 +1086,6 @@ Success
 ---
 
 
-### registerSubscriberToEvent
-Register Subscriber
-
-
-
-
-```kotlin
-platformClient.webhook.registerSubscriberToEvent(body: body).safeAwait{ response, error->
-    response?.let{
-      // Use response
-    } ->
-    error?.let{
-      
-    } 
-}
-```
-
-
-
-
-
-| Argument  |  Type  | Required | Description |
-| --------- | -----  | -------- | ----------- |
-| body | [SubscriberConfig](#SubscriberConfig) | yes | Request body |
-
-
-Register Subscriber
-
-*Returned Response:*
-
-
-
-
-[SubscriberConfig](#SubscriberConfig)
-
-Success
-
-
-
-
-<details>
-<summary><i>&nbsp; Examples:</i></summary>
-
-
-<details>
-<summary><i>&nbsp; default</i></summary>
-
-```json
-{
-  "value": {
-    "id": 35,
-    "name": "xyz webhook",
-    "webhook_url": "https://xyz.requestcatcher.com/test",
-    "association": {
-      "company_id": 2,
-      "application_id": [
-        "63a0490757475baff6154585",
-        "63a42b512df5d4731c5eb601"
-      ]
-    },
-    "custom_headers": {},
-    "status": "active",
-    "email_id": "axyz@gofynd.com",
-    "auth_meta": {},
-    "event_id": [
-      10,
-      11,
-      17
-    ]
-  }
-}
-```
-</details>
-
-</details>
-
-
-
-
-
-
-
-
-
----
-
-
 ### updateSubscriberConfig
 Update Subscriber
 
@@ -1042,7 +1119,7 @@ Update Subscriber
 
 
 
-[SubscriberConfig](#SubscriberConfig)
+[SubscriberConfigResponse](#SubscriberConfigResponse)
 
 Success
 
@@ -1054,7 +1131,7 @@ Success
 
 
 <details>
-<summary><i>&nbsp; default</i></summary>
+<summary><i>&nbsp; success</i></summary>
 
 ```json
 {
@@ -1142,16 +1219,16 @@ Success
 
 
 <details>
-<summary><i>&nbsp; default</i></summary>
+<summary><i>&nbsp; success</i></summary>
 
 ```json
 {
   "value": {
-    "id": 35,
-    "name": "Deepa webhook",
+    "id": 1,
+    "name": "praveen's webhook",
     "webhook_url": "https://webhook.site/67493d35-6468-4c0a-8226-9a50954eb4c3",
     "association": {
-      "company_id": 2,
+      "company_id": 1,
       "application_id": [],
       "criteria": "EMPTY"
     },
@@ -1162,7 +1239,7 @@ Success
     "type": null,
     "created_on": "2023-06-07T06:57:24.567Z",
     "updated_on": "2023-06-07T06:57:24.567Z",
-    "modified_by": null,
+    "modified_by": "praveen",
     "event_configs": [
       {
         "id": 10,
@@ -1172,321 +1249,11 @@ Success
         "version": "1",
         "display_name": "article",
         "description": "This event gets triggered when article is created",
-        "event_schema": {
-          "type": "object",
-          "required": [
-            "data"
-          ],
-          "properties": {
-            "data": {
-              "type": "object",
-              "required": [
-                "payload"
-              ],
-              "properties": {
-                "payload": {
-                  "type": "object",
-                  "required": [
-                    "articles"
-                  ],
-                  "properties": {
-                    "articles": {
-                      "type": "array",
-                      "items": {
-                        "type": "object",
-                        "required": [
-                          "uid",
-                          "item_id",
-                          "fynd_item_code",
-                          "store",
-                          "brand",
-                          "company",
-                          "size",
-                          "identifier",
-                          "seller_identifier",
-                          "price",
-                          "total_quantity",
-                          "dimension",
-                          "weight",
-                          "manufacturer",
-                          "country_of_origin"
-                        ],
-                        "properties": {
-                          "id": {
-                            "type": "string"
-                          },
-                          "uid": {
-                            "type": "string"
-                          },
-                          "size": {
-                            "type": "string"
-                          },
-                          "brand": {
-                            "type": "object",
-                            "required": [
-                              "id"
-                            ],
-                            "properties": {
-                              "id": {
-                                "type": "integer"
-                              }
-                            }
-                          },
-                          "price": {
-                            "type": "object",
-                            "required": [
-                              "transfer",
-                              "effective",
-                              "marked",
-                              "currency"
-                            ],
-                            "properties": {
-                              "marked": {
-                                "type": "number"
-                              },
-                              "currency": {
-                                "type": "string"
-                              },
-                              "transfer": {
-                                "type": "number"
-                              },
-                              "effective": {
-                                "type": "number"
-                              }
-                            }
-                          },
-                          "stage": {
-                            "type": "string"
-                          },
-                          "store": {
-                            "type": "object",
-                            "required": [
-                              "id"
-                            ],
-                            "properties": {
-                              "id": {
-                                "type": "integer"
-                              }
-                            }
-                          },
-                          "is_set": {
-                            "type": "boolean"
-                          },
-                          "weight": {
-                            "type": "object",
-                            "required": [
-                              "unit",
-                              "shipping"
-                            ],
-                            "properties": {
-                              "unit": {
-                                "type": "string"
-                              },
-                              "shipping": {
-                                "type": "integer"
-                              },
-                              "is_default": {
-                                "type": "string"
-                              }
-                            }
-                          },
-                          "company": {
-                            "type": "object",
-                            "required": [
-                              "id"
-                            ],
-                            "properties": {
-                              "id": {
-                                "type": "integer"
-                              }
-                            }
-                          },
-                          "item_id": {
-                            "type": "integer"
-                          },
-                          "date_meta": {
-                            "type": "object",
-                            "required": [
-                              "created_on",
-                              "modified_on"
-                            ],
-                            "properties": {
-                              "created_on": {
-                                "type": "string"
-                              },
-                              "modified_on": {
-                                "type": "string"
-                              },
-                              "added_on_store": {
-                                "type": "string"
-                              },
-                              "inventory_updated_on": {
-                                "type": "string"
-                              }
-                            }
-                          },
-                          "dimension": {
-                            "type": "object",
-                            "required": [
-                              "unit",
-                              "height",
-                              "width",
-                              "length"
-                            ],
-                            "properties": {
-                              "unit": {
-                                "type": "string"
-                              },
-                              "width": {
-                                "type": "integer"
-                              },
-                              "height": {
-                                "type": "integer"
-                              },
-                              "length": {
-                                "type": "integer"
-                              }
-                            }
-                          },
-                          "is_active": {
-                            "type": "boolean"
-                          },
-                          "identifier": {
-                            "type": "object"
-                          },
-                          "quantities": {
-                            "type": "object",
-                            "required": [
-                              "sellable"
-                            ],
-                            "properties": {
-                              "damaged": {
-                                "type": [
-                                  "object",
-                                  "null"
-                                ],
-                                "required": [
-                                  "count",
-                                  "updated_at"
-                                ],
-                                "properties": {
-                                  "count": {
-                                    "type": "integer"
-                                  },
-                                  "updated_at": {
-                                    "type": "string"
-                                  }
-                                }
-                              },
-                              "sellable": {
-                                "type": "object",
-                                "required": [
-                                  "count",
-                                  "updated_at"
-                                ],
-                                "properties": {
-                                  "count": {
-                                    "type": "integer"
-                                  },
-                                  "updated_at": {
-                                    "type": "string"
-                                  }
-                                }
-                              },
-                              "not_available": {
-                                "type": [
-                                  "object",
-                                  "null"
-                                ],
-                                "required": [
-                                  "count",
-                                  "updated_at"
-                                ],
-                                "properties": {
-                                  "count": {
-                                    "type": "integer"
-                                  },
-                                  "updated_at": {
-                                    "type": "string"
-                                  }
-                                }
-                              }
-                            }
-                          },
-                          "_custom_json": {
-                            "type": "object"
-                          },
-                          "manufacturer": {
-                            "type": "object",
-                            "required": [
-                              "name",
-                              "address"
-                            ],
-                            "properties": {
-                              "name": {
-                                "type": "string"
-                              },
-                              "address": {
-                                "type": "string"
-                              }
-                            }
-                          },
-                          "return_config": {
-                            "type": "object",
-                            "required": [
-                              "returnable"
-                            ],
-                            "properties": {
-                              "time": {
-                                "type": "integer"
-                              },
-                              "unit": {
-                                "enum": [
-                                  "days",
-                                  "hours"
-                                ],
-                                "type": "string"
-                              },
-                              "returnable": {
-                                "type": "boolean"
-                              }
-                            }
-                          },
-                          "fynd_item_code": {
-                            "type": "string"
-                          },
-                          "tax_identifier": {
-                            "type": "object"
-                          },
-                          "total_quantity": {
-                            "type": "integer"
-                          },
-                          "expiration_date": {
-                            "type": "string"
-                          },
-                          "track_inventory": {
-                            "type": "boolean"
-                          },
-                          "country_of_origin": {
-                            "type": "string"
-                          },
-                          "fynd_article_code": {
-                            "type": "string"
-                          },
-                          "seller_identifier": {
-                            "type": "string"
-                          }
-                        }
-                      }
-                    }
-                  }
-                }
-              }
-            }
-          }
-        },
+        "type": null,
+        "event_schema": {},
         "created_on": "2021-07-05T11:16:18.175Z",
         "updated_on": "2023-01-02T05:04:24.492Z",
+        "modified_by": "praveen",
         "subscriber_event_mapping": {
           "id": 77,
           "event_id": 10,
@@ -1538,7 +1305,7 @@ platformClient.webhook.getSubscribersByExtensionId(pageNo: pageNo, pageSize: pag
 | --------- | -----  | -------- | ----------- | 
 | pageNo | Int? | no | Page Number |   
 | pageSize | Int? | no | Page Size |   
-| extensionId | String | yes | extension id |  
+| extensionId | String | yes | extension_id |  
 
 
 
@@ -1561,7 +1328,7 @@ Success
 
 
 <details>
-<summary><i>&nbsp; default</i></summary>
+<summary><i>&nbsp; success</i></summary>
 
 ```json
 {
@@ -1597,7 +1364,7 @@ Success
             "version": "1",
             "display_name": "shipment",
             "description": "This event gets triggered when shipment is update",
-            "event_schema": null,
+            "event_schema": {},
             "created_on": "2021-07-02T13:25:34.804Z",
             "updated_on": "2021-07-02T13:25:34.804Z",
             "subscriber_event_mapping": {
@@ -1637,30 +1404,16 @@ Success
 
 
 
+
 ### Schemas
 
  
  
- #### [CancelResponse](#CancelResponse)
+ #### [Error](#Error)
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | code | Int? |  yes  | The HTTP status code of the response (e.g., 200). |
-
----
-
-
- 
- 
- #### [EventProcessRequest](#EventProcessRequest)
-
- | Properties | Type | Nullable | Description |
- | ---------- | ---- | -------- | ----------- |
- | searchText | String? |  yes  |  |
- | endDate | String? |  yes  |  |
- | startDate | String? |  yes  |  |
- | subscriberIds | ArrayList<Int>? |  yes  |  |
- | event | ArrayList<[Event](#Event)>? |  yes  |  |
+ | error | String? |  yes  | Error message describing the reason for the failure. |
 
 ---
 
@@ -1681,38 +1434,75 @@ Success
 
  
  
- #### [ManualRetryFailedResponse](#ManualRetryFailedResponse)
+ #### [RetryEventRequest](#RetryEventRequest)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | searchText | String? |  yes  |  |
+ | endDate | String? |  yes  |  |
+ | startDate | String? |  yes  |  |
+ | subscriberIds | ArrayList<Int>? |  yes  |  |
+ | event | ArrayList<[Event](#Event)>? |  yes  |  |
+ | status | String? |  yes  |  |
+
+---
+
+
+ 
+ 
+ #### [Item](#Item)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | status | String? |  yes  |  |
+ | count | Int? |  yes  |  |
+
+---
+
+
+ 
+ 
+ #### [RetryCountResponse](#RetryCountResponse)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | items | ArrayList<[Item](#Item)>? |  yes  |  |
+
+---
+
+
+ 
+ 
+ #### [RetrySuccessResponse](#RetrySuccessResponse)
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
  | success | Boolean? |  yes  |  |
  | message | String? |  yes  |  |
- | requestId | String? |  yes  |  |
- | meta | HashMap<String,Any>? |  yes  |  |
- | stackTrace | String? |  yes  |  |
 
 ---
 
 
  
  
- #### [FailedEventsCountSuccessResponse](#FailedEventsCountSuccessResponse)
+ #### [Err](#Err)
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | items | ArrayList<[EventCountItem](#EventCountItem)>? |  yes  |  |
+ | msg | String? |  yes  |  |
+ | param | String? |  yes  |  |
+ | location | String? |  yes  |  |
 
 ---
 
 
  
  
- #### [EventCountItem](#EventCountItem)
+ #### [RetryFailureResponse](#RetryFailureResponse)
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | status | String? |  yes  | The status of the event (e.g., "FAILED"). |
- | count | Int? |  yes  | The count of events with the specified status |
+ | err | ArrayList<[Err](#Err)>? |  yes  |  |
 
 ---
 
@@ -1733,35 +1523,39 @@ Success
 
  
  
- #### [EventSuccessResponse](#EventSuccessResponse)
+ #### [EventProcessRequest](#EventProcessRequest)
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | success | Boolean? |  yes  |  |
- | message | String? |  yes  |  |
+ | searchText | String? |  yes  |  |
+ | endDate | String? |  yes  |  |
+ | startDate | String? |  yes  |  |
+ | subscriberIds | ArrayList<Int>? |  yes  |  |
+ | status | String? |  yes  |  |
+ | event | ArrayList<[Event](#Event)>? |  yes  |  |
 
 ---
 
 
  
  
- #### [EventProcessedSuccessResponse](#EventProcessedSuccessResponse)
+ #### [DownloadReportResponse](#DownloadReportResponse)
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | success | Boolean? |  yes  |  |
- | message | String? |  yes  |  |
+ | fileName | String? |  yes  |  |
 
 ---
 
 
  
  
- #### [Error](#Error)
+ #### [EventProcessReports](#EventProcessReports)
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | error | String? |  yes  | Error message describing the reason for the failure. |
+ | rows | ArrayList<[EventProcessReportObject](#EventProcessReportObject)>? |  yes  |  |
+ | page | [Page](#Page)? |  yes  |  |
 
 ---
 
@@ -1775,25 +1569,32 @@ Success
  | eventName | String? |  yes  | The name of the processed event. |
  | responseCode | Int? |  yes  | The response code of the event. |
  | responseMessage | String? |  yes  | The response message of the event. |
- | data | String? |  yes  | The data associated with the event. |
+ | data | HashMap<String,Any>? |  yes  | The data associated with the event. |
  | attempt | Int? |  yes  | The attempt number of the event. |
  | lastAttemptedOn | Int? |  yes  | The timestamp of the last attempted event. |
  | status | String? |  yes  | The status of the event (e.g., "FAILED"). |
  | name | String? |  yes  | The name of the event. |
  | webhookUrl | String? |  yes  | The webhook URL associated with the event. |
  | responseTime | Int? |  yes  | The response time of the event. |
+ | messageId | String? |  yes  |  |
+ | eventTraceId | String? |  yes  |  |
 
 ---
 
 
  
  
- #### [EventProcessReports](#EventProcessReports)
+ #### [Page](#Page)
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | rows | ArrayList<[EventProcessReportObject](#EventProcessReportObject)>? |  yes  |  |
- | page | [Page](#Page)? |  yes  |  |
+ | current | Double? |  yes  | The current page number. |
+ | hasNext | Boolean? |  yes  | Indicates if there is a next page. |
+ | hasPrevious | Boolean? |  yes  | Indicates if there is a previous page. |
+ | totalPage | Int? |  yes  |  |
+ | itemTotal | Double? |  yes  | The total number of items. |
+ | size | Double? |  yes  | The number of items per page. |
+ | type | String? |  yes  | Type of the response (e.g., "number"). |
 
 ---
 
@@ -1826,35 +1627,20 @@ Success
 
  
  
- #### [ReportFiltersPayload](#ReportFiltersPayload)
+ #### [EventConfig](#EventConfig)
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | subscriberIds | ArrayList<Int>? |  yes  | An array of subscriber IDs for filtering filters (optional). |
-
----
-
-
- 
- 
- #### [FilterValues](#FilterValues)
-
- | Properties | Type | Nullable | Description |
- | ---------- | ---- | -------- | ----------- |
- | text | String? |  yes  | The display text for the filter value. |
- | value | HashMap<String,Any>? |  yes  | The value associated with the filter value. |
-
----
-
-
- 
- 
- #### [FilterResponseObject](#FilterResponseObject)
-
- | Properties | Type | Nullable | Description |
- | ---------- | ---- | -------- | ----------- |
- | filterName | String? |  yes  | The name of the filter. |
- | values | ArrayList<[FilterValues](#FilterValues)>? |  yes  |  |
+ | id | Int? |  yes  |  |
+ | eventName | String? |  yes  |  |
+ | eventType | String? |  yes  |  |
+ | eventCategory | String? |  yes  |  |
+ | eventSchema | HashMap<String,Any>? |  yes  |  |
+ | version | String? |  yes  |  |
+ | displayName | String? |  yes  |  |
+ | description | String? |  yes  |  |
+ | createdOn | String? |  yes  |  |
+ | updatedOn | String? |  yes  |  |
 
 ---
 
@@ -1872,18 +1658,11 @@ Success
 
  
  
- #### [EventConfig](#EventConfig)
+ #### [ReportFiltersPayload](#ReportFiltersPayload)
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | id | Int? |  yes  |  |
- | eventName | String? |  yes  |  |
- | eventType | String? |  yes  |  |
- | eventCategory | String? |  yes  |  |
- | version | String? |  yes  |  |
- | displayName | String? |  yes  |  |
- | description | String? |  yes  |  |
- | createdOn | String? |  yes  |  |
+ | subscriberIds | ArrayList<Int>? |  yes  | An array of subscriber IDs for filtering filters (optional). |
 
 ---
 
@@ -1894,7 +1673,8 @@ Success
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | items | ArrayList<[FilterResponseObject](#FilterResponseObject)>? |  yes  |  |
+ | filterName | String? |  yes  | The name of the filter. |
+ | values | ArrayList<HashMap<String,Any>>? |  yes  |  |
 
 ---
 
@@ -1918,6 +1698,8 @@ Success
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
+ | events | ArrayList<String>? |  yes  |  |
+ | searchText | String? |  yes  |  |
  | status | String? |  yes  | The status of the history report (e.g., "FAILED"). |
  | endDate | String? |  yes  | The end date and time of the history report. |
  | startDate | String? |  yes  | The start date and time of the history report. |
@@ -1962,12 +1744,24 @@ Success
 
  
  
- #### [HistoryResponseObject](#HistoryResponseObject)
+ #### [HistoryAssociation](#HistoryAssociation)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | companyId | Int? |  yes  |  |
+ | subscriberIds | ArrayList<Int>? |  yes  |  |
+
+---
+
+
+ 
+ 
+ #### [HistoryItems](#HistoryItems)
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
  | id | Int? |  yes  | The ID of the history report. |
- | association | [AssociationDetails](#AssociationDetails)? |  yes  |  |
+ | association | [HistoryAssociation](#HistoryAssociation)? |  yes  |  |
  | filters | [HistoryFilters](#HistoryFilters)? |  yes  |  |
  | filename | String? |  yes  | The filename of the history report. |
  | status | String? |  yes  | The status of the history report (e.g., "COMPLETED"). |
@@ -1985,67 +1779,19 @@ Success
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | items | ArrayList<[HistoryResponseObject](#HistoryResponseObject)>? |  yes  |  |
+ | items | ArrayList<[HistoryItems](#HistoryItems)>? |  yes  |  |
+ | page | [Page](#Page)? |  yes  |  |
 
 ---
 
 
  
  
- #### [Page](#Page)
+ #### [CancelResponse](#CancelResponse)
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | current | Double? |  yes  | The current page number. |
- | hasNext | Boolean? |  yes  | Indicates if there is a next page. |
- | hasPrevious | Boolean? |  yes  | Indicates if there is a previous page. |
- | itemTotal | Double? |  yes  | The total number of items. |
- | size | Double? |  yes  | The number of items per page. |
- | type | String? |  yes  | Type of the response (e.g., "number"). |
-
----
-
-
- 
- 
- #### [AssociationDetails](#AssociationDetails)
-
- | Properties | Type | Nullable | Description |
- | ---------- | ---- | -------- | ----------- |
- | companyId | Int? |  yes  |  |
-
----
-
-
- 
- 
- #### [SubscriberResponse](#SubscriberResponse)
-
- | Properties | Type | Nullable | Description |
- | ---------- | ---- | -------- | ----------- |
- | id | Int? |  yes  |  |
- | name | String? |  yes  |  |
- | webhookUrl | String? |  yes  |  |
- | association | [Association](#Association)? |  yes  |  |
- | customHeaders | HashMap<String,Any>? |  yes  |  |
- | emailId | String? |  yes  |  |
- | status | [SubscriberStatus](#SubscriberStatus)? |  yes  |  |
- | authMeta | [AuthMeta](#AuthMeta)? |  yes  |  |
- | createdOn | String? |  yes  |  |
- | updatedOn | String? |  yes  |  |
- | eventConfigs | ArrayList<[EventConfig](#EventConfig)>? |  yes  |  |
-
----
-
-
- 
- 
- #### [AuthMeta](#AuthMeta)
-
- | Properties | Type | Nullable | Description |
- | ---------- | ---- | -------- | ----------- |
- | type | String? |  yes  |  |
- | secret | String? |  yes  |  |
+ | message | String? |  yes  | The HTTP status code of the response (e.g., 200). |
 
 ---
 
@@ -2066,6 +1812,89 @@ Success
 
  
  
+ #### [AuthMeta](#AuthMeta)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | type | String? |  yes  |  |
+ | secret | String? |  yes  |  |
+
+---
+
+
+ 
+ 
+ #### [SubscriberFailureResponse](#SubscriberFailureResponse)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | message | String? |  yes  |  |
+ | code | String? |  yes  |  |
+ | stack | String? |  yes  |  |
+
+---
+
+
+ 
+ 
+ #### [EventConfigs](#EventConfigs)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | id | Int? |  yes  |  |
+ | eventName | String? |  yes  |  |
+ | eventType | String? |  yes  |  |
+ | eventCategory | String? |  yes  |  |
+ | eventSchema | HashMap<String,Any>? |  yes  |  |
+ | version | String? |  yes  |  |
+ | displayName | String? |  yes  |  |
+ | description | String? |  yes  |  |
+ | createdOn | String? |  yes  |  |
+ | updatedOn | String? |  yes  |  |
+ | subscriberEventMapping | [SubscriberEventMapping](#SubscriberEventMapping)? |  yes  |  |
+
+---
+
+
+ 
+ 
+ #### [SubscriberEventMapping](#SubscriberEventMapping)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | id | Int? |  yes  |  |
+ | eventId | Int? |  yes  |  |
+ | subscriberId | Int? |  yes  |  |
+ | createdOn | String? |  yes  |  |
+
+---
+
+
+ 
+ 
+ #### [SubscriberResponse](#SubscriberResponse)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | id | Int? |  yes  |  |
+ | modifiedBy | String? |  yes  |  |
+ | name | String? |  yes  |  |
+ | webhookUrl | String? |  yes  |  |
+ | association | [Association](#Association)? |  yes  |  |
+ | customHeaders | HashMap<String,Any>? |  yes  |  |
+ | status | [SubscriberStatus](#SubscriberStatus)? |  yes  |  |
+ | emailId | String? |  yes  |  |
+ | updatedOn | String? |  yes  |  |
+ | createdOn | String? |  yes  |  |
+ | type | String? |  yes  |  |
+ | authMeta | [AuthMeta](#AuthMeta)? |  yes  |  |
+ | eventConfigs | ArrayList<[EventConfigs](#EventConfigs)>? |  yes  |  |
+
+---
+
+
+ 
+ 
  #### [SubscriberConfig](#SubscriberConfig)
 
  | Properties | Type | Nullable | Description |
@@ -2077,6 +1906,29 @@ Success
  | customHeaders | HashMap<String,Any>? |  yes  |  |
  | status | [SubscriberStatus](#SubscriberStatus)? |  yes  |  |
  | emailId | String? |  yes  |  |
+ | authMeta | [AuthMeta](#AuthMeta)? |  yes  |  |
+ | eventId | ArrayList<Int>? |  yes  |  |
+
+---
+
+
+ 
+ 
+ #### [SubscriberConfigResponse](#SubscriberConfigResponse)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | id | Int? |  yes  |  |
+ | modifiedBy | String? |  yes  |  |
+ | name | String? |  yes  |  |
+ | webhookUrl | String? |  yes  |  |
+ | association | [Association](#Association)? |  yes  |  |
+ | customHeaders | HashMap<String,Any>? |  yes  |  |
+ | status | [SubscriberStatus](#SubscriberStatus)? |  yes  |  |
+ | emailId | String? |  yes  |  |
+ | updatedOn | String? |  yes  |  |
+ | createdOn | String? |  yes  |  |
+ | type | String? |  yes  |  |
  | authMeta | [AuthMeta](#AuthMeta)? |  yes  |  |
  | eventId | ArrayList<Int>? |  yes  |  |
 
