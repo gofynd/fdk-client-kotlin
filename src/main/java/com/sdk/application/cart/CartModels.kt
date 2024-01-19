@@ -230,9 +230,19 @@ data class AppliedPromotion(
     var appliedFreeArticles: ArrayList<AppliedFreeArticles>?=null,
     
     @SerializedName("promotion_type")
-    var promotionType: String?=null
+    var promotionType: String?=null,
+    
+    @SerializedName("meta")
+    var meta: @RawValue HashMap<String,Any>?=null,
+    
+    @SerializedName("code")
+    var code: String?=null
     
 ): Parcelable {
+    
+    
+    
+    
     
     
     

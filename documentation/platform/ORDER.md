@@ -7396,23 +7396,12 @@ Sucessfully Created the Template Url.
 
  
  
- #### [PostActivityHistory](#PostActivityHistory)
+ #### [PostHistoryDict](#PostHistoryDict)
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
  | filters | ArrayList<[PostHistoryFilters](#PostHistoryFilters)> |  no  |  |
  | data | [PostHistoryData](#PostHistoryData) |  no  |  |
-
----
-
-
- 
- 
- #### [PostHistoryDict](#PostHistoryDict)
-
- | Properties | Type | Nullable | Description |
- | ---------- | ---- | -------- | ----------- |
- | activityHistory | [PostActivityHistory](#PostActivityHistory) |  no  |  |
 
 ---
 

@@ -2719,10 +2719,10 @@ data class PostHistoryData(
 
              
 /*
-    Model: PostActivityHistory
+    Model: PostHistoryDict
 */
 @Parcelize
-data class PostActivityHistory(
+data class PostHistoryDict(
     
     
     
@@ -2735,28 +2735,6 @@ data class PostActivityHistory(
 ): Parcelable {
     
     
-    
-    
-    
-    
-    
-}
-
-
-
-             
-/*
-    Model: PostHistoryDict
-*/
-@Parcelize
-data class PostHistoryDict(
-    
-    
-    
-    @SerializedName("activity_history")
-    var activityHistory: PostActivityHistory?=null
-    
-): Parcelable {
     
     
     

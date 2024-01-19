@@ -3910,9 +3910,19 @@ data class AppliedPromotion(
     var promotionGroup: String?=null,
     
     @SerializedName("promo_id")
-    var promoId: String?=null
+    var promoId: String?=null,
+    
+    @SerializedName("meta")
+    var meta: @RawValue HashMap<String,Any>?=null,
+    
+    @SerializedName("code")
+    var code: String?=null
     
 ): Parcelable {
+    
+    
+    
+    
     
     
     

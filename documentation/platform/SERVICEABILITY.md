@@ -3461,7 +3461,7 @@ Response status_code
  | product | [ListViewProduct](#ListViewProduct) |  no  |  |
  | regionsCount | Int |  no  |  |
  | companyId | Int |  no  |  |
- | channels | [ListViewChannels](#ListViewChannels) |  no  |  |
+ | channels | ArrayList<[ListViewChannels](#ListViewChannels)> |  no  |  |
 
 ---
 

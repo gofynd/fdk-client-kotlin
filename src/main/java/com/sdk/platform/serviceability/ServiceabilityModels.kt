@@ -531,7 +531,7 @@ data class ListViewItems(
     var companyId: Int?=null,
     
     @SerializedName("channels")
-    var channels: ListViewChannels?=null
+    var channels: ArrayList<ListViewChannels>?=null
     
 ): Parcelable {
     
