@@ -41,7 +41,7 @@ class PaymentDataManagerClass(val config: ApplicationConfig, val unauthorizedAct
             
                     _relativeUrls["getPosPaymentModeRoutes"] = "/service/application/payment/v1.0/payment/options/pos".substring(1)
             
-                    _relativeUrls["walletLinkInitate"] = "/service/application/payment/v1.0/payment/options/wallet/link".substring(1)
+                    _relativeUrls["walletLinkInitiate"] = "/service/application/payment/v1.0/payment/options/wallet/link".substring(1)
             
                     _relativeUrls["linkWallet"] = "/service/application/payment/v1.0/payment/options/wallet/verify".substring(1)
             
@@ -223,10 +223,10 @@ class PaymentDataManagerClass(val config: ApplicationConfig, val unauthorizedAct
 
     
     
-    suspend fun walletLinkInitate(body: WalletLinkRequestSchema): Response<WalletResponseSchema>? {
-        var fullUrl : String? = _relativeUrls["walletLinkInitate"] 
+    suspend fun walletLinkInitiate(body: WalletLinkRequestSchema): Response<WalletResponseSchema>? {
+        var fullUrl : String? = _relativeUrls["walletLinkInitiate"] 
         
-        return paymentApiList?.walletLinkInitate(fullUrl  ,body = body)}
+        return paymentApiList?.walletLinkInitiate(fullUrl  ,body = body)}
 
     
     

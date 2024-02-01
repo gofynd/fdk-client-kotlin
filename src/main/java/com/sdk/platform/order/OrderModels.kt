@@ -305,9 +305,14 @@ data class UpdateShipmentLockPayload(
     var actionType: String?=null,
     
     @SerializedName("entities")
-    var entities: ArrayList<Entities>?=null
+    var entities: ArrayList<Entities>?=null,
+    
+    @SerializedName("resume_tasks_after_unlock")
+    var resumeTasksAfterUnlock: Boolean?=null
     
 ): Parcelable {
+    
+    
     
     
     
@@ -9812,6 +9817,9 @@ data class OrderDetailsData(
     @SerializedName("affiliate_id")
     var affiliateId: String?=null,
     
+    @SerializedName("affiliate_order_id")
+    var affiliateOrderId: String?=null,
+    
     @SerializedName("ordering_channel_logo")
     var orderingChannelLogo: @RawValue HashMap<String,Any>?=null,
     
@@ -9825,6 +9833,8 @@ data class OrderDetailsData(
     var meta: @RawValue HashMap<String,Any>?=null
     
 ): Parcelable {
+    
+    
     
     
     
@@ -13110,7 +13120,7 @@ data class Store(
     
     
     @SerializedName("phone")
-    var phone: Int?=null,
+    var phone: String?=null,
     
     @SerializedName("is_active")
     var isActive: Boolean?=null,
@@ -13338,7 +13348,7 @@ data class Brand(
     var brandId: Int?=null,
     
     @SerializedName("modified_on")
-    var modifiedOn: Int?=null,
+    var modifiedOn: String?=null,
     
     @SerializedName("id")
     var id: Int?=null
@@ -13689,7 +13699,7 @@ data class ShipmentGstDetails(
     var taxCollectedAtSource: Double?=null,
     
     @SerializedName("gstin_code")
-    var gstinCode: Double?=null
+    var gstinCode: String?=null
     
 ): Parcelable {
     

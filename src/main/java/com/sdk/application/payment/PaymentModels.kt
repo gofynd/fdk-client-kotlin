@@ -2067,9 +2067,14 @@ data class ValidateVPARequest(
     
     
     @SerializedName("upi_vpa")
-    var upiVpa: String?=null
+    var upiVpa: String?=null,
+    
+    @SerializedName("aggregator")
+    var aggregator: String?=null
     
 ): Parcelable {
+    
+    
     
     
     
