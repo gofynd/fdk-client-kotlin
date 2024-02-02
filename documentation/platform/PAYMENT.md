@@ -8996,6 +8996,7 @@ Success.
  | currency | String |  no  | currency of the payment. |
  | paymentDetails | ArrayList<[PaymentSessionDetail](#PaymentSessionDetail)> |  no  | The payment details with the schema `PaymentSessionDetail`. |
  | totalAmount | Int |  no  | amount paid. |
+ | checksum | String |  no  | Checksum to verify the payload |
 
 ---
 
@@ -9049,9 +9050,10 @@ Success.
  | currency | String |  no  | The currency of the payment. |
  | paymentDetails | [PaymentSessionDetail](#PaymentSessionDetail) |  no  | details of the payment |
  | totalAmount | Int |  no  | The total amount refunded. |
- | refundDetails | ArrayList<[RefundSessionDetail](#RefundSessionDetail)>? |  yes  | details of the refund |
+ | refundDetails | ArrayList<[RefundSessionDetail](#RefundSessionDetail)> |  no  | details of the refund |
  | error | [ErrorDescription](#ErrorDescription)? |  yes  |  |
  | message | String? |  yes  | The status of the refund. |
+ | checksum | String |  no  | Checksum to verify payload |
 
 ---
 

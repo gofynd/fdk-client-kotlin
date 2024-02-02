@@ -521,9 +521,6 @@ data class ListViewItems(
     @SerializedName("is_active")
     var isActive: Boolean?=null,
     
-    @SerializedName("product")
-    var product: ListViewProduct?=null,
-    
     @SerializedName("regions_count")
     var regionsCount: Int?=null,
     
@@ -534,8 +531,6 @@ data class ListViewItems(
     var channels: ArrayList<ListViewChannels>?=null
     
 ): Parcelable {
-    
-    
     
     
     
@@ -569,7 +564,7 @@ data class ListViewResponse(
     
     
     @SerializedName("page")
-    var page: ArrayList<ZoneDataItem>?=null,
+    var page: ZoneDataItem?=null,
     
     @SerializedName("items")
     var items: ArrayList<ListViewItems>?=null

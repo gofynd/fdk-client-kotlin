@@ -4555,9 +4555,14 @@ data class PaymentSessionRequestSerializer(
     var paymentDetails: ArrayList<PaymentSessionDetail>?=null,
     
     @SerializedName("total_amount")
-    var totalAmount: Int?=null
+    var totalAmount: Int?=null,
+    
+    @SerializedName("checksum")
+    var checksum: String?=null
     
 ): Parcelable {
+    
+    
     
     
     
@@ -4732,9 +4737,14 @@ data class RefundSessionRequestSerializer(
     var error: ErrorDescription?=null,
     
     @SerializedName("message")
-    var message: String?=null
+    var message: String?=null,
+    
+    @SerializedName("checksum")
+    var checksum: String?=null
     
 ): Parcelable {
+    
+    
     
     
     
