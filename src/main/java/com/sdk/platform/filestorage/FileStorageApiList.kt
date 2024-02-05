@@ -50,11 +50,15 @@ interface FileStorageApiList {
     
     @GET ("/service/platform/assets/v1.0/company/{company_id}/proxy")
     suspend fun proxy(@Path("company_id") companyId: String, @Query("url") url: String)
-    : Response<String>
+    : Response<ProxyResponse>
     
     @GET ("/service/platform/assets/v1.0/company/{company_id}/application/{application_id}/pdf/types")
-    suspend fun getPdfTypes(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Query("country_code") countryCode: String?)
+    suspend fun getPdfTypes(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Query("country_code") countryCode: String?, @Query("store_os") storeOs: Boolean)
     : Response<InvoiceTypesResponse>
+    
+    @DELETE ("/service/platform/assets/v1.0/company/{company_id}/application/{application_id}/pdf/types/{id}")
+    suspend fun deletePdfType(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Path("id") id: String)
+    : Response<String>
     
     @GET ("/service/platform/assets/v1.0/company/{company_id}/application/{application_id}/pdf/mapper")
     suspend fun getDefaultPdfData(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Query("pdf_type_id") pdfTypeId: Int, @Query("country_code") countryCode: String?)
@@ -63,6 +67,10 @@ interface FileStorageApiList {
     @PUT ("/service/platform/assets/v1.0/company/{company_id}/application/{application_id}/pdf/config/{id}")
     suspend fun updateHtmlTemplate(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Path("id") id: String,@Body body: PdfConfig)
     : Response<PdfConfigSaveSuccess>
+    
+    @DELETE ("/service/platform/assets/v1.0/company/{company_id}/application/{application_id}/pdf/config/{id}")
+    suspend fun deletePdfConfigTemplate(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Path("id") id: String)
+    : Response<String>
     
     @GET ("/service/platform/assets/v1.0/company/{company_id}/application/{application_id}/pdf/config")
     suspend fun getDefaultHtmlTemplate(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Query("pdf_type_id") pdfTypeId: Int, @Query("format") format: String, @Query("country_code") countryCode: String?)

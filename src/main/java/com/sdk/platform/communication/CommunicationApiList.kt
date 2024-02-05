@@ -265,7 +265,7 @@ interface CommunicationApiList {
     : Response<SystemNotifications>
     
     @POST ("/service/platform/communication/v1.0/company/{company_id}/application/{application_id}/otp/send-otp-comms")
-    suspend fun sendOtp(@Path("company_id") companyId: String, @Path("application_id") applicationId: String,@Body body: SendOtpCommsReq)
+    suspend fun sendOtp(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Query("ci") ci: Boolean?,@Body body: SendOtpCommsReq)
     : Response<SendOtpCommsRes>
     
     @POST ("/service/platform/communication/v1.0/company/{company_id}/application/{application_id}/otp/verify-otp-comms")

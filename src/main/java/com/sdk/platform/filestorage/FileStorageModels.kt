@@ -318,6 +318,33 @@ data class CompleteResponse(
 
              
 /*
+    Model: ProxyResponse
+*/
+@Parcelize
+data class ProxyResponse(
+    
+    
+    
+    @SerializedName("data")
+    var data: @RawValue HashMap<String,Any>?=null,
+    
+    @SerializedName("support")
+    var support: @RawValue HashMap<String,Any>?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
     Model: DestinationNamespace
 */
 @Parcelize
@@ -476,10 +503,15 @@ data class InvoiceTypesDataResponse(
     @SerializedName("visibility")
     var visibility: Boolean?=null,
     
+    @SerializedName("store_os")
+    var storeOs: Boolean?=null,
+    
     @SerializedName("country_code")
     var countryCode: String?=null
     
 ): Parcelable {
+    
+    
     
     
     

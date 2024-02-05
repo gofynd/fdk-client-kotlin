@@ -1632,6 +1632,9 @@ data class NavigationReference(
     @SerializedName("sort_order")
     var sortOrder: Int?=null,
     
+    @SerializedName("schedule")
+    var schedule: CronBasedScheduleSchema?=null,
+    
     @SerializedName("sub_navigation")
     var subNavigation: ArrayList<NavigationReference>?=null
     
@@ -1648,6 +1651,45 @@ data class NavigationReference(
     
     
     
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: CronBasedScheduleSchema
+*/
+@Parcelize
+data class CronBasedScheduleSchema(
+    
+    
+    
+    @SerializedName("enabled")
+    var enabled: Boolean?=null,
+    
+    @SerializedName("cron")
+    var cron: String?=null,
+    
+    @SerializedName("start")
+    var start: String?=null,
+    
+    @SerializedName("end")
+    var end: String?=null
+    
+): Parcelable {
     
     
     
@@ -4324,28 +4366,6 @@ data class CustomDataDeleteSchema(
 
              
 /*
-    Model: CustomFieldValue
-*/
-@Parcelize
-data class CustomFieldValue(
-    
-    
-    
-    @SerializedName("value")
-    var value: @RawValue Any?=null
-    
-): Parcelable {
-    
-    
-    
-    
-    
-}
-
-
-
-             
-/*
     Model: CustomFieldSchema
 */
 @Parcelize
@@ -4369,7 +4389,7 @@ data class CustomFieldSchema(
     var creator: String?=null,
     
     @SerializedName("value")
-    var value: ArrayList<CustomFieldValue>?=null,
+    var value: @RawValue ArrayList<Any>?=null,
     
     @SerializedName("resource_id")
     var resourceId: String?=null,

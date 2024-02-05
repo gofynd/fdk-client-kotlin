@@ -31,6 +31,8 @@ class CartDataManagerClass(val config: ApplicationConfig, val unauthorizedAction
             
                     _relativeUrls["getItemCount"] = "/service/application/cart/v1.0/basic".substring(1)
             
+                    _relativeUrls["getItemCountV2"] = "/service/application/cart/v2.0/basic".substring(1)
+            
                     _relativeUrls["getCoupons"] = "/service/application/cart/v1.0/coupon".substring(1)
             
                     _relativeUrls["applyCoupon"] = "/service/application/cart/v1.0/coupon".substring(1)
@@ -75,6 +77,10 @@ class CartDataManagerClass(val config: ApplicationConfig, val unauthorizedAction
             
                     _relativeUrls["checkoutCartV2"] = "/service/application/cart/v2.0/checkout".substring(1)
             
+                    _relativeUrls["getCartMetaConfigs"] = "/service/application/cart/v1.0/cart/configuration".substring(1)
+            
+                    _relativeUrls["getCartMetaConfig"] = "/service/application/cart/v1.0/cart/configuration/{cart_meta_id}".substring(1)
+            
     }
 
     public fun update(updatedUrlMap : HashMap<String,String>){
@@ -110,10 +116,10 @@ class CartDataManagerClass(val config: ApplicationConfig, val unauthorizedAction
         return retrofitHttpClient?.initializeRestClient(CartApiList::class.java) as? CartApiList
     }
     
-    suspend fun getCart(id: String?=null, i: Boolean?=null, b: Boolean?=null, c: Boolean?=null, assignCardId: Int?=null, areaCode: String?=null, buyNow: Boolean?=null): Response<CartDetailResponse>? {
+    suspend fun getCart(id: String?=null, i: Boolean?=null, b: Boolean?=null, c: Boolean?=null, assignCardId: Int?=null, areaCode: String?=null, buyNow: Boolean?=null, cartType: String?=null): Response<CartDetailResponse>? {
         var fullUrl : String? = _relativeUrls["getCart"] 
         
-        return cartApiList?.getCart(fullUrl    ,  id = id,    i = i,    b = b,    c = c,    assignCardId = assignCardId,    areaCode = areaCode,    buyNow = buyNow)}
+        return cartApiList?.getCart(fullUrl    ,  id = id,    i = i,    b = b,    c = c,    assignCardId = assignCardId,    areaCode = areaCode,    buyNow = buyNow,    cartType = cartType)}
 
     
     
@@ -124,24 +130,24 @@ class CartDataManagerClass(val config: ApplicationConfig, val unauthorizedAction
 
     
     
-    suspend fun addItems(i: Boolean?=null, b: Boolean?=null, areaCode: String?=null, buyNow: Boolean?=null, id: String?=null, body: AddCartRequest): Response<AddCartDetailResponse>? {
+    suspend fun addItems(i: Boolean?=null, b: Boolean?=null, areaCode: String?=null, buyNow: Boolean?=null, id: String?=null, cartType: String?=null, body: AddCartRequest): Response<AddCartDetailResponse>? {
         var fullUrl : String? = _relativeUrls["addItems"] 
         
-        return cartApiList?.addItems(fullUrl    ,  i = i,    b = b,    areaCode = areaCode,    buyNow = buyNow,    id = id, body = body)}
+        return cartApiList?.addItems(fullUrl    ,  i = i,    b = b,    areaCode = areaCode,    buyNow = buyNow,    id = id,    cartType = cartType, body = body)}
 
     
     
-    suspend fun updateCart(id: String?=null, i: Boolean?=null, b: Boolean?=null, areaCode: String?=null, buyNow: Boolean?=null, body: UpdateCartRequest): Response<UpdateCartDetailResponse>? {
+    suspend fun updateCart(id: String?=null, i: Boolean?=null, b: Boolean?=null, areaCode: String?=null, buyNow: Boolean?=null, cartType: String?=null, body: UpdateCartRequest): Response<UpdateCartDetailResponse>? {
         var fullUrl : String? = _relativeUrls["updateCart"] 
         
-        return cartApiList?.updateCart(fullUrl    ,  id = id,    i = i,    b = b,    areaCode = areaCode,    buyNow = buyNow, body = body)}
+        return cartApiList?.updateCart(fullUrl    ,  id = id,    i = i,    b = b,    areaCode = areaCode,    buyNow = buyNow,    cartType = cartType, body = body)}
 
     
     
-    suspend fun deleteCart(id: String?=null): Response<DeleteCartDetailResponse>? {
+    suspend fun deleteCart(id: String?=null, cartType: String?=null): Response<DeleteCartDetailResponse>? {
         var fullUrl : String? = _relativeUrls["deleteCart"] 
         
-        return cartApiList?.deleteCart(fullUrl    ,  id = id)}
+        return cartApiList?.deleteCart(fullUrl    ,  id = id,    cartType = cartType)}
 
     
     
@@ -152,6 +158,13 @@ class CartDataManagerClass(val config: ApplicationConfig, val unauthorizedAction
 
     
     
+    suspend fun getItemCountV2(id: String?=null, buyNow: Boolean?=null): Response<CartItemCountResponseV2>? {
+        var fullUrl : String? = _relativeUrls["getItemCountV2"] 
+        
+        return cartApiList?.getItemCountV2(fullUrl    ,  id = id,    buyNow = buyNow)}
+
+    
+    
     suspend fun getCoupons(id: String?=null, buyNow: Boolean?=null, slug: String?=null, storeId: String?=null): Response<GetCouponResponse>? {
         var fullUrl : String? = _relativeUrls["getCoupons"] 
         
@@ -159,31 +172,31 @@ class CartDataManagerClass(val config: ApplicationConfig, val unauthorizedAction
 
     
     
-    suspend fun applyCoupon(i: Boolean?=null, b: Boolean?=null, p: Boolean?=null, id: String?=null, buyNow: Boolean?=null, body: ApplyCouponRequest): Response<CartDetailResponse>? {
+    suspend fun applyCoupon(i: Boolean?=null, b: Boolean?=null, p: Boolean?=null, id: String?=null, buyNow: Boolean?=null, cartType: String?=null, body: ApplyCouponRequest): Response<CartDetailResponse>? {
         var fullUrl : String? = _relativeUrls["applyCoupon"] 
         
-        return cartApiList?.applyCoupon(fullUrl    ,  i = i,    b = b,    p = p,    id = id,    buyNow = buyNow, body = body)}
+        return cartApiList?.applyCoupon(fullUrl    ,  i = i,    b = b,    p = p,    id = id,    buyNow = buyNow,    cartType = cartType, body = body)}
 
     
     
-    suspend fun removeCoupon(id: String?=null, buyNow: Boolean?=null): Response<CartDetailResponse>? {
+    suspend fun removeCoupon(id: String?=null, buyNow: Boolean?=null, cartType: String?=null): Response<CartDetailResponse>? {
         var fullUrl : String? = _relativeUrls["removeCoupon"] 
         
-        return cartApiList?.removeCoupon(fullUrl    ,  id = id,    buyNow = buyNow)}
+        return cartApiList?.removeCoupon(fullUrl    ,  id = id,    buyNow = buyNow,    cartType = cartType)}
 
     
     
-    suspend fun getBulkDiscountOffers(itemId: Int?=null, articleId: String?=null, uid: Int?=null, slug: String?=null): Response<BulkPriceResponse>? {
+    suspend fun getBulkDiscountOffers(itemId: Int?=null, articleId: String?=null, uid: Int?=null, slug: String?=null, cartType: String?=null): Response<BulkPriceResponse>? {
         var fullUrl : String? = _relativeUrls["getBulkDiscountOffers"] 
         
-        return cartApiList?.getBulkDiscountOffers(fullUrl    ,  itemId = itemId,    articleId = articleId,    uid = uid,    slug = slug)}
+        return cartApiList?.getBulkDiscountOffers(fullUrl    ,  itemId = itemId,    articleId = articleId,    uid = uid,    slug = slug,    cartType = cartType)}
 
     
     
-    suspend fun applyRewardPoints(id: String?=null, i: Boolean?=null, b: Boolean?=null, buyNow: Boolean?=null, body: RewardPointRequest): Response<CartDetailResponse>? {
+    suspend fun applyRewardPoints(id: String?=null, i: Boolean?=null, b: Boolean?=null, buyNow: Boolean?=null, cartType: String?=null, body: RewardPointRequest): Response<CartDetailResponse>? {
         var fullUrl : String? = _relativeUrls["applyRewardPoints"] 
         
-        return cartApiList?.applyRewardPoints(fullUrl    ,  id = id,    i = i,    b = b,    buyNow = buyNow, body = body)}
+        return cartApiList?.applyRewardPoints(fullUrl    ,  id = id,    i = i,    b = b,    buyNow = buyNow,    cartType = cartType, body = body)}
 
     
     
@@ -242,10 +255,10 @@ class CartDataManagerClass(val config: ApplicationConfig, val unauthorizedAction
 
     
     
-    suspend fun validateCouponForPayment(id: String?=null, buyNow: Boolean?=null, addressId: String?=null, paymentMode: String?=null, paymentIdentifier: String?=null, aggregatorName: String?=null, merchantCode: String?=null, iin: String?=null, network: String?=null, type: String?=null, cardId: String?=null): Response<PaymentCouponValidate>? {
+    suspend fun validateCouponForPayment(id: String?=null, buyNow: Boolean?=null, addressId: String?=null, paymentMode: String?=null, paymentIdentifier: String?=null, aggregatorName: String?=null, merchantCode: String?=null, iin: String?=null, network: String?=null, type: String?=null, cardId: String?=null, cartType: String?=null): Response<PaymentCouponValidate>? {
         var fullUrl : String? = _relativeUrls["validateCouponForPayment"] 
         
-        return cartApiList?.validateCouponForPayment(fullUrl    ,  id = id,    buyNow = buyNow,    addressId = addressId,    paymentMode = paymentMode,    paymentIdentifier = paymentIdentifier,    aggregatorName = aggregatorName,    merchantCode = merchantCode,    iin = iin,    network = network,    type = type,    cardId = cardId)}
+        return cartApiList?.validateCouponForPayment(fullUrl    ,  id = id,    buyNow = buyNow,    addressId = addressId,    paymentMode = paymentMode,    paymentIdentifier = paymentIdentifier,    aggregatorName = aggregatorName,    merchantCode = merchantCode,    iin = iin,    network = network,    type = type,    cardId = cardId,    cartType = cartType)}
 
     
     
@@ -256,10 +269,10 @@ class CartDataManagerClass(val config: ApplicationConfig, val unauthorizedAction
 
     
     
-    suspend fun checkoutCart(buyNow: Boolean?=null, body: CartCheckoutDetailRequest): Response<CartCheckoutResponse>? {
+    suspend fun checkoutCart(buyNow: Boolean?=null, cartType: String?=null, body: CartCheckoutDetailRequest): Response<CartCheckoutResponse>? {
         var fullUrl : String? = _relativeUrls["checkoutCart"] 
         
-        return cartApiList?.checkoutCart(fullUrl    ,  buyNow = buyNow, body = body)}
+        return cartApiList?.checkoutCart(fullUrl    ,  buyNow = buyNow,    cartType = cartType, body = body)}
 
     
     
@@ -297,10 +310,10 @@ class CartDataManagerClass(val config: ApplicationConfig, val unauthorizedAction
 
     
     
-    suspend fun getPromotionOffers(slug: String?=null, pageSize: Int?=null, promotionGroup: String?=null, storeId: Int?=null): Response<PromotionOffersResponse>? {
+    suspend fun getPromotionOffers(slug: String?=null, pageSize: Int?=null, promotionGroup: String?=null, storeId: Int?=null, cartType: String?=null): Response<PromotionOffersResponse>? {
         var fullUrl : String? = _relativeUrls["getPromotionOffers"] 
         
-        return cartApiList?.getPromotionOffers(fullUrl    ,  slug = slug,    pageSize = pageSize,    promotionGroup = promotionGroup,    storeId = storeId)}
+        return cartApiList?.getPromotionOffers(fullUrl    ,  slug = slug,    pageSize = pageSize,    promotionGroup = promotionGroup,    storeId = storeId,    cartType = cartType)}
 
     
     
@@ -311,10 +324,26 @@ class CartDataManagerClass(val config: ApplicationConfig, val unauthorizedAction
 
     
     
-    suspend fun checkoutCartV2(buyNow: Boolean?=null, body: CartCheckoutDetailV2Request): Response<CartCheckoutResponse>? {
+    suspend fun checkoutCartV2(buyNow: Boolean?=null, cartType: String?=null, body: CartCheckoutDetailV2Request): Response<CartCheckoutResponse>? {
         var fullUrl : String? = _relativeUrls["checkoutCartV2"] 
         
-        return cartApiList?.checkoutCartV2(fullUrl    ,  buyNow = buyNow, body = body)}
+        return cartApiList?.checkoutCartV2(fullUrl    ,  buyNow = buyNow,    cartType = cartType, body = body)}
+
+    
+    
+    suspend fun getCartMetaConfigs(): Response<CartConfigListResponse>? {
+        var fullUrl : String? = _relativeUrls["getCartMetaConfigs"] 
+        
+        return cartApiList?.getCartMetaConfigs(fullUrl  )}
+
+    
+    
+    suspend fun getCartMetaConfig(cartMetaId: String): Response<CartConfigDetailResponse>? {
+        var fullUrl : String? = _relativeUrls["getCartMetaConfig"] 
+        
+        fullUrl = fullUrl?.replace("{" + "cart_meta_id" +"}",cartMetaId.toString())
+        
+        return cartApiList?.getCartMetaConfig(fullUrl   )}
 
     
     

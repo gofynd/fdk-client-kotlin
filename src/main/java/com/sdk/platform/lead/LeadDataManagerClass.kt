@@ -179,7 +179,7 @@ class LeadDataManagerClass(val config: PlatformConfig, val unauthorizedAction: (
     
     
     suspend fun getGeneralConfig()
-    : Response<CloseVideoRoomResponse>? {
+    : Response<GeneralConfigResponse>? {
         
         return if (config.oauthClient.isAccessTokenValid()) {
             leadApiList?.getGeneralConfig(

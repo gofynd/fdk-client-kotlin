@@ -24,10 +24,6 @@ interface UserApiList {
     suspend fun blockOrUnblockUsers(@Path("company_id") companyId: String, @Path("application_id") applicationId: String,@Body body: BlockUserRequestSchema)
     : Response<BlockUserSuccess>
     
-    @PUT ("/service/platform/user/v1.0/company/{company_id}/application/{application_id}/customers/archive")
-    suspend fun archiveUser(@Path("company_id") companyId: String, @Path("application_id") applicationId: String,@Body body: ArchiveUserRequestSchema)
-    : Response<ArchiveUserSuccess>
-    
     @PUT ("/service/platform/user/v1.0/company/{company_id}/application/{application_id}/customers/undelete")
     suspend fun unDeleteUser(@Path("company_id") companyId: String, @Path("application_id") applicationId: String,@Body body: UnDeleteUserRequestSchema)
     : Response<UnDeleteUserSuccess>
@@ -51,6 +47,10 @@ interface UserApiList {
     @DELETE ("/service/platform/user/v1.0/company/{company_id}/application/{application_id}/customers/sessions")
     suspend fun deleteActiveSessions(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Query("id") id: String, @Query("reason") reason: String)
     : Response<SessionsDeleteResponseSchema>
+    
+    @PUT ("/service/platform/user/v1.0/company/{company_id}/application/{application_id}/customers/archive")
+    suspend fun archiveUser(@Path("company_id") companyId: String, @Path("application_id") applicationId: String,@Body body: ArchiveUserRequestSchema)
+    : Response<ArchiveUserSuccess>
     
     @GET ("/service/platform/user/v1.0/company/{company_id}/application/{application_id}/platform/config")
     suspend fun getPlatformConfig(@Path("company_id") companyId: String, @Path("application_id") applicationId: String)

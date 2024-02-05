@@ -1435,10 +1435,10 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     }
     
     
-    suspend fun sendOtp(body: SendOtpCommsReq)
+    suspend fun sendOtp(ci: Boolean?=null,body: SendOtpCommsReq)
     : Response<SendOtpCommsRes>? {
         return if (config.oauthClient.isAccessTokenValid()) {
-                communicationApiList?.sendOtp(companyId = config.companyId , applicationId = applicationId , body = body)
+                communicationApiList?.sendOtp(companyId = config.companyId , applicationId = applicationId , ci = ci, body = body)
         } else {
             null
         }

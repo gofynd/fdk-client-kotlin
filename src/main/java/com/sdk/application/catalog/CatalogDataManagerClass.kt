@@ -460,10 +460,10 @@ class CatalogDataManagerClass(val config: ApplicationConfig, val unauthorizedAct
 
     
     
-    suspend fun getSearchResults(q: String): Response<AutoCompleteResponse>? {
+    suspend fun getSearchResults(q: String?=null, categorySuggestion: Int?=null, brandSuggestion: Int?=null, collectionSuggestion: Int?=null, productSuggestion: Int?=null, querySuggestion: Int?=null): Response<AutoCompleteResponse>? {
         var fullUrl : String? = _relativeUrls["getSearchResults"] 
         
-        return catalogApiList?.getSearchResults(fullUrl    ,  q = q)}
+        return catalogApiList?.getSearchResults(fullUrl    ,  q = q,    categorySuggestion = categorySuggestion,    brandSuggestion = brandSuggestion,    collectionSuggestion = collectionSuggestion,    productSuggestion = productSuggestion,    querySuggestion = querySuggestion)}
 
     
     
@@ -905,14 +905,14 @@ class CatalogDataManagerClass(val config: ApplicationConfig, val unauthorizedAct
 
     
     
-    suspend fun getProductPriceBySlug(slug: String, size: String, storeId: Int?=null, moq: Int?=null): Response<ProductSizePriceResponseV3>? {
+    suspend fun getProductPriceBySlug(slug: String, size: String, storeId: Int?=null, exchangeSellerIdentifier: String?=null, moq: Int?=null, sellerId: Int?=null): Response<ProductSizePriceResponseV3>? {
         var fullUrl : String? = _relativeUrls["getProductPriceBySlug"] 
         
         fullUrl = fullUrl?.replace("{" + "slug" +"}",slug.toString())
         
         fullUrl = fullUrl?.replace("{" + "size" +"}",size.toString())
         
-        return catalogApiList?.getProductPriceBySlug(fullUrl      ,  storeId = storeId,    moq = moq)}
+        return catalogApiList?.getProductPriceBySlug(fullUrl      ,  storeId = storeId,    exchangeSellerIdentifier = exchangeSellerIdentifier,    moq = moq,    sellerId = sellerId)}
 
     
     

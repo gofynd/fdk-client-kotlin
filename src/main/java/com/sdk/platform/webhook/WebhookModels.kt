@@ -1082,6 +1082,9 @@ data class SubscriberResponse(
     @SerializedName("name")
     var name: String?=null,
     
+    @SerializedName("provider")
+    var provider: String?=null,
+    
     @SerializedName("webhook_url")
     var webhookUrl: String?=null,
     
@@ -1119,6 +1122,102 @@ data class SubscriberResponse(
     
     
     
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: Events
+*/
+@Parcelize
+data class Events(
+    
+    
+    
+    @SerializedName("slug")
+    var slug: String?=null,
+    
+    @SerializedName("topic")
+    var topic: String?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: SubscriberConfigRequestV2
+*/
+@Parcelize
+data class SubscriberConfigRequestV2(
+    
+    
+    
+    @SerializedName("id")
+    var id: Int?=null,
+    
+    @SerializedName("name")
+    var name: String?=null,
+    
+    @SerializedName("webhook_url")
+    var webhookUrl: String?=null,
+    
+    @SerializedName("provider")
+    var provider: String?=null,
+    
+    @SerializedName("association")
+    var association: Association?=null,
+    
+    @SerializedName("custom_headers")
+    var customHeaders: @RawValue HashMap<String,Any>?=null,
+    
+    @SerializedName("status")
+    var status: String?=null,
+    
+    @SerializedName("email_id")
+    var emailId: String?=null,
+    
+    @SerializedName("auth_meta")
+    var authMeta: AuthMeta?=null,
+    
+    @SerializedName("events")
+    var events: ArrayList<Events>?=null
+    
+): Parcelable {
     
     
     
@@ -1229,6 +1328,9 @@ data class SubscriberConfigResponse(
     @SerializedName("webhook_url")
     var webhookUrl: String?=null,
     
+    @SerializedName("provider")
+    var provider: String?=null,
+    
     @SerializedName("association")
     var association: Association?=null,
     
@@ -1257,6 +1359,8 @@ data class SubscriberConfigResponse(
     var eventId: ArrayList<Int>?=null
     
 ): Parcelable {
+    
+    
     
     
     

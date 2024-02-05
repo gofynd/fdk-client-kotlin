@@ -1355,7 +1355,6 @@ Success
  | filePath | String? |  yes  |  |
  | brandIds | ArrayList<Int>? |  yes  |  |
  | storeIds | ArrayList<Int>? |  yes  |  |
- | zoneIds | ArrayList<String>? |  yes  |  |
  | validity | [ValidityObject](#ValidityObject) |  no  |  |
  | discountMeta | [DiscountMeta](#DiscountMeta)? |  yes  |  |
 

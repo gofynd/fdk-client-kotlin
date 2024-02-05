@@ -53,7 +53,7 @@ interface ServiceabilityApiList {
     : Response<CourierAccount>
     
     @GET ("/service/platform/logistics/v1.0/company/{company_id}/courier-partner/account")
-    suspend fun getCourierPartnerAccounts(@Path("company_id") companyId: String, @Query("page_no") pageNo: Int?, @Query("page_size") pageSize: Int?, @Query("stage") stage: String?, @Query("payment_mode") paymentMode: String?, @Query("transport_type") transportType: String?)
+    suspend fun getCourierPartnerAccounts(@Path("company_id") companyId: String, @Query("page_no") pageNo: Int?, @Query("page_size") pageSize: Int?, @Query("stage") stage: String?, @Query("payment_mode") paymentMode: String?, @Query("transport_type") transportType: String?, @Query("account_ids") accountIds: ArrayList<String>?)
     : Response<CompanyCourierPartnerAccountListResponse>
     
     @PUT ("/service/platform/logistics/v1.0/company/{company_id}/courier-partner/account/{account_id}")
@@ -95,6 +95,10 @@ interface ServiceabilityApiList {
     @GET ("/service/platform/logistics/v1.0/company/{company_id}/application/{application_id}/configuration")
     suspend fun getApplicationConfiguration(@Path("company_id") companyId: String, @Path("application_id") applicationId: String)
     : Response<ApplicationConfig>
+    
+    @PATCH ("/service/platform/logistics/v1.0/company/{company_id}/application/{application_id}/configuration")
+    suspend fun patchApplicationConfiguration(@Path("company_id") companyId: String, @Path("application_id") applicationId: String,@Body body: ApplicationConfigPatchRequest)
+    : Response<ApplicationConfigPatchResponse>
     
     @POST ("/service/platform/logistics/v1.0/company/{company_id}/courier-partner/{extension_id}/scheme/{scheme_id}/tat")
     suspend fun bulkTat(@Path("company_id") companyId: String, @Path("extension_id") extensionId: String, @Path("scheme_id") schemeId: String,@Body body: BulkRegionJobSerializer)

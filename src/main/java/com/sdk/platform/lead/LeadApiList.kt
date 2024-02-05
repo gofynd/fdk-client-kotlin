@@ -106,6 +106,6 @@ interface LeadApiList {
     
     @GET ("/service/platform/lead/v1.0/company/{company_id}/general-config")
     suspend fun getGeneralConfig(@Path("company_id") companyId: String)
-    : Response<CloseVideoRoomResponse>
+    : Response<GeneralConfigResponse>
     
 }

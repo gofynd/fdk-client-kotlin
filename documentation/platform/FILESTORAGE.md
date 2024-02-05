@@ -21,8 +21,10 @@ Default
 * [browsefiles](#browsefiles)
 * [proxy](#proxy)
 * [getPdfTypes](#getpdftypes)
+* [deletePdfType](#deletepdftype)
 * [getDefaultPdfData](#getdefaultpdfdata)
 * [updateHtmlTemplate](#updatehtmltemplate)
+* [deletePdfConfigTemplate](#deletepdfconfigtemplate)
 * [getDefaultHtmlTemplate](#getdefaulthtmltemplate)
 * [saveHtmlTemplate](#savehtmltemplate)
 * [getDefaultPdfTemplate](#getdefaultpdftemplate)
@@ -1106,7 +1108,7 @@ Proxy
 
 
 
-[String](#String)
+[ProxyResponse](#ProxyResponse)
 
 Success
 
@@ -1122,7 +1124,21 @@ Success
 
 ```json
 {
-  "value": "Binary stream data"
+  "value": {
+    "data": {
+      "id": 2,
+      "email": "janet.weaver@reqres.in",
+      "first_name": "Janet",
+      "last_name": "Weaver",
+      "avatar": "https://reqres.in/img/faces/2-image.jpg",
+      "additionalProperty": "This is an additional property in the example"
+    },
+    "support": {
+      "url": "https://reqres.in/#support-heading",
+      "text": "To keep ReqRes free, contributions towards server costs are appreciated!",
+      "additionalProperty": "This is another additional property in the example"
+    }
+  }
 }
 ```
 </details>
@@ -1147,7 +1163,7 @@ Get all the supported invoice pdf types
 
 
 ```kotlin
-platformClient.application("<APPLICATION_ID>").filestorage.getPdfTypes(countryCode: countryCode).safeAwait{ response, error->
+platformClient.application("<APPLICATION_ID>").filestorage.getPdfTypes(countryCode: countryCode, storeOs: storeOs).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -1163,7 +1179,8 @@ platformClient.application("<APPLICATION_ID>").filestorage.getPdfTypes(countryCo
 
 | Argument  |  Type  | Required | Description |
 | --------- | -----  | -------- | ----------- | 
-| countryCode | String? | no |  |  
+| countryCode | String? | no |  |   
+| storeOs | Boolean | yes |  |  
 
 
 
@@ -1203,11 +1220,80 @@ Get all the invoice types and its format
         ],
         "visibility": true,
         "country_code": "IN",
+        "store_os": false,
         "__v": 0
       }
     ],
     "success": true
   }
+}
+```
+</details>
+
+</details>
+
+
+
+
+
+
+
+
+
+---
+
+
+### deletePdfType
+delete Pdf Type
+
+
+
+
+```kotlin
+platformClient.application("<APPLICATION_ID>").filestorage.deletePdfType(id: id).safeAwait{ response, error->
+    response?.let{
+      // Use response
+    } ->
+    error?.let{
+      
+    } 
+}
+```
+
+
+
+
+
+| Argument  |  Type  | Required | Description |
+| --------- | -----  | -------- | ----------- | 
+| id | String | yes |  |  
+
+
+
+delete Pdf Type for invoice such as Invoice, Label, Deliver challan
+
+*Returned Response:*
+
+
+
+
+[String](#String)
+
+pdf type deleted successfully for given id.
+
+
+
+
+<details>
+<summary><i>&nbsp; Examples:</i></summary>
+
+
+<details>
+<summary><i>&nbsp; success</i></summary>
+
+```json
+{
+  "value": "Pdf type deleted successfully"
 }
 ```
 </details>
@@ -1641,6 +1727,74 @@ Update html template for invoice
     },
     "success": true
   }
+}
+```
+</details>
+
+</details>
+
+
+
+
+
+
+
+
+
+---
+
+
+### deletePdfConfigTemplate
+delete html template for invoice or label
+
+
+
+
+```kotlin
+platformClient.application("<APPLICATION_ID>").filestorage.deletePdfConfigTemplate(id: id).safeAwait{ response, error->
+    response?.let{
+      // Use response
+    } ->
+    error?.let{
+      
+    } 
+}
+```
+
+
+
+
+
+| Argument  |  Type  | Required | Description |
+| --------- | -----  | -------- | ----------- | 
+| id | String | yes |  |  
+
+
+
+delete html template for invoice such as Invoice, Label, Deliver challan
+
+*Returned Response:*
+
+
+
+
+[String](#String)
+
+pdf config Template deleted successfully for given id.
+
+
+
+
+<details>
+<summary><i>&nbsp; Examples:</i></summary>
+
+
+<details>
+<summary><i>&nbsp; success</i></summary>
+
+```json
+{
+  "value": "Configured template deleted successfully"
 }
 ```
 </details>
@@ -2107,6 +2261,18 @@ Kafka response published to generate payment receipt
 
  
  
+ #### [ProxyResponse](#ProxyResponse)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | data | HashMap<String,Any>? |  yes  |  |
+ | support | HashMap<String,Any>? |  yes  |  |
+
+---
+
+
+ 
+ 
  #### [DestinationNamespace](#DestinationNamespace)
 
  | Properties | Type | Nullable | Description |
@@ -2177,6 +2343,7 @@ Kafka response published to generate payment receipt
  | format | ArrayList<String> |  no  |  |
  | v | Int |  no  |  |
  | visibility | Boolean |  no  |  |
+ | storeOs | Boolean |  no  |  |
  | countryCode | String |  no  |  |
 
 ---

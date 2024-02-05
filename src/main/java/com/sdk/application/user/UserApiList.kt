@@ -56,6 +56,11 @@ interface UserApiList {
     
     
     @POST 
+    suspend fun sendResetToken(@Url url1: String?   ,@Body body: CodeRequestBodySchema)
+    : Response<ResetPasswordSuccess>
+    
+    
+    @POST 
     suspend fun forgotPassword(@Url url1: String?   ,@Body body: ForgotPasswordRequestSchema)
     : Response<LoginSuccess>
     
@@ -63,11 +68,6 @@ interface UserApiList {
     @POST 
     suspend fun resetForgotPassword(@Url url1: String?   ,@Body body: ForgotPasswordRequestSchema)
     : Response<ResetForgotPasswordSuccess>
-    
-    
-    @POST 
-    suspend fun sendResetToken(@Url url1: String?   ,@Body body: CodeRequestBodySchema)
-    : Response<ResetPasswordSuccess>
     
     
     @POST 
@@ -98,16 +98,6 @@ interface UserApiList {
     @POST 
     suspend fun updatePassword(@Url url1: String?   ,@Body body: UpdatePasswordRequestSchema)
     : Response<VerifyEmailSuccess>
-    
-    
-    @POST 
-    suspend fun deleteUser(@Url url1: String?   ,@Body body: DeleteApplicationUserRequestSchema)
-    : Response<DeleteUserSuccess>
-    
-    
-    @GET 
-    suspend fun logout(@Url url1: String?   )
-    : Response<LogoutSuccess>
     
     
     @POST 
@@ -213,6 +203,16 @@ interface UserApiList {
     @GET 
     suspend fun userExists(@Url url1: String?    ,  @Query("q") q: String)
     : Response<UserExistsResponse>
+    
+    
+    @POST 
+    suspend fun deleteUser(@Url url1: String?   ,@Body body: DeleteApplicationUserRequestSchema)
+    : Response<DeleteUserSuccess>
+    
+    
+    @GET 
+    suspend fun logout(@Url url1: String?   )
+    : Response<LogoutSuccess>
     
     
     @GET 

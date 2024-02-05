@@ -6377,7 +6377,7 @@ Send OTP using email and sms
 
 
 ```kotlin
-platformClient.application("<APPLICATION_ID>").communication.sendOtp(body: body).safeAwait{ response, error->
+platformClient.application("<APPLICATION_ID>").communication.sendOtp(ci: ci, body: body).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -6392,7 +6392,8 @@ platformClient.application("<APPLICATION_ID>").communication.sendOtp(body: body)
 
 
 | Argument  |  Type  | Required | Description |
-| --------- | -----  | -------- | ----------- |
+| --------- | -----  | -------- | ----------- | 
+| ci | Boolean? | no | Common Information |  
 | body | [SendOtpCommsReq](#SendOtpCommsReq) | yes | Request body |
 
 

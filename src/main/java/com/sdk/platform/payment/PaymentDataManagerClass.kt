@@ -213,6 +213,15 @@ class PaymentDataManagerClass(val config: PlatformConfig, val unauthorizedAction
     
     
     
+    
+    
+    
+    
+    
+    
+    
+    
+    
 
 inner class ApplicationClient(val applicationId:String,val config: PlatformConfig){
 
@@ -319,7 +328,7 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     
     
     suspend fun setUserCODlimitRoutes(body: SetCODForUserRequest)
-    : Response<SetCODOptionResponse>? {
+    : Response<GetUserCODLimitResponse>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 paymentApiList?.setUserCODlimitRoutes(companyId = config.companyId , applicationId = applicationId , body = body)
         } else {
@@ -618,10 +627,10 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     }
     
     
-    suspend fun getMerchantPaymentOption()
-    : Response<PlatformPaymentModeResponse>? {
+    suspend fun getMerchantPaymentOption(paymentOptionType: String?=null)
+    : Response<PlatformOnlineOfflinePaymentResponse>? {
         return if (config.oauthClient.isAccessTokenValid()) {
-                paymentApiList?.getMerchantPaymentOption(companyId = config.companyId , applicationId = applicationId  )
+                paymentApiList?.getMerchantPaymentOption(companyId = config.companyId , applicationId = applicationId , paymentOptionType = paymentOptionType )
         } else {
             null
         }
@@ -722,6 +731,96 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     : Response<PlatformPaymentModeResponse>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 paymentApiList?.patchMerchantPaymentOptionVersion(companyId = config.companyId , applicationId = applicationId , aggregatorId = aggregatorId, body = body)
+        } else {
+            null
+        }
+    }
+    
+    
+    suspend fun deleteBeneficiaryDetails(beneficiaryId: String)
+    : Response<DeleteRefundAccountResponse>? {
+        return if (config.oauthClient.isAccessTokenValid()) {
+                paymentApiList?.deleteBeneficiaryDetails(companyId = config.companyId , applicationId = applicationId , beneficiaryId = beneficiaryId )
+        } else {
+            null
+        }
+    }
+    
+    
+    suspend fun getRefundOptions(configuration: String, productType: String?=null, amount: String?=null)
+    : Response<RefundOptionResponse>? {
+        return if (config.oauthClient.isAccessTokenValid()) {
+                paymentApiList?.getRefundOptions(companyId = config.companyId , applicationId = applicationId , configuration = configuration, productType = productType, amount = amount )
+        } else {
+            null
+        }
+    }
+    
+    
+    suspend fun setRefundOptionforShipment(body: ShipmentRefundRequest)
+    : Response<ShipmentRefundResponse>? {
+        return if (config.oauthClient.isAccessTokenValid()) {
+                paymentApiList?.setRefundOptionforShipment(companyId = config.companyId , applicationId = applicationId , body = body)
+        } else {
+            null
+        }
+    }
+    
+    
+    suspend fun getSelectedRefundOption(shipmentId: String, orderId: String)
+    : Response<SelectedRefundOptionResponse>? {
+        return if (config.oauthClient.isAccessTokenValid()) {
+                paymentApiList?.getSelectedRefundOption(companyId = config.companyId , applicationId = applicationId , shipmentId = shipmentId, orderId = orderId )
+        } else {
+            null
+        }
+    }
+    
+    
+    suspend fun getUserBeneficiariesDetailV2(orderId: String?=null, shipmentId: String?=null, mop: String?=null)
+    : Response<OrderBeneficiaryResponseSchemaV2>? {
+        return if (config.oauthClient.isAccessTokenValid()) {
+                paymentApiList?.getUserBeneficiariesDetailV2(companyId = config.companyId , applicationId = applicationId , orderId = orderId, shipmentId = shipmentId, mop = mop )
+        } else {
+            null
+        }
+    }
+    
+    
+    suspend fun validateBeneficiaryAddress(body: ValidateValidateAddressRequest)
+    : Response<ValidateValidateAddressResponse>? {
+        return if (config.oauthClient.isAccessTokenValid()) {
+                paymentApiList?.validateBeneficiaryAddress(companyId = config.companyId , applicationId = applicationId , body = body)
+        } else {
+            null
+        }
+    }
+    
+    
+    suspend fun updateDefaultBeneficiary(body: SetDefaultBeneficiaryRequest)
+    : Response<SetDefaultBeneficiaryResponse>? {
+        return if (config.oauthClient.isAccessTokenValid()) {
+                paymentApiList?.updateDefaultBeneficiary(companyId = config.companyId , applicationId = applicationId , body = body)
+        } else {
+            null
+        }
+    }
+    
+    
+    suspend fun getPennyDropValidation()
+    : Response<PennyDropValidationResponse>? {
+        return if (config.oauthClient.isAccessTokenValid()) {
+                paymentApiList?.getPennyDropValidation(companyId = config.companyId , applicationId = applicationId  )
+        } else {
+            null
+        }
+    }
+    
+    
+    suspend fun updatePennyDropValidation(body: UpdatePennyDropValidationRequest)
+    : Response<PennyDropValidationResponse>? {
+        return if (config.oauthClient.isAccessTokenValid()) {
+                paymentApiList?.updatePennyDropValidation(companyId = config.companyId , applicationId = applicationId , body = body)
         } else {
             null
         }

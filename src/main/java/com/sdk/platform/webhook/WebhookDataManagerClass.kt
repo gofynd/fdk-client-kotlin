@@ -176,6 +176,18 @@ class WebhookDataManagerClass(val config: PlatformConfig, val unauthorizedAction
     }
     
     
+    suspend fun registerSubscriberToEventV2(body: SubscriberConfigRequestV2)
+    : Response<SubscriberConfigResponse>? {
+        
+        return if (config.oauthClient.isAccessTokenValid()) {
+            webhookApiList?.registerSubscriberToEventV2(
+        companyId = config.companyId, body = body)
+        } else {
+            null
+        } 
+    }
+    
+    
     suspend fun registerSubscriberToEvent(body: SubscriberConfig)
     : Response<SubscriberConfigResponse>? {
         
@@ -238,6 +250,7 @@ class WebhookDataManagerClass(val config: PlatformConfig, val unauthorizedAction
 
 inner class ApplicationClient(val applicationId:String,val config: PlatformConfig){
 
+    
     
     
     

@@ -127,7 +127,7 @@ Get short links
 
 
 ```kotlin
-platformClient.application("<APPLICATION_ID>").share.getShortLinks(pageNo: pageNo, pageSize: pageSize, createdBy: createdBy, active: active, q: q).safeAwait{ response, error->
+platformClient.application("<APPLICATION_ID>").share.getShortLinks(pageNo: pageNo, pageSize: pageSize, createdBy: createdBy, active: active, shortUrl: shortUrl, originalUrl: originalUrl, title: title).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -147,7 +147,9 @@ platformClient.application("<APPLICATION_ID>").share.getShortLinks(pageNo: pageN
 | pageSize | Int? | no | Current page size |   
 | createdBy | String? | no | Short link creator |   
 | active | String? | no | Short link active status |   
-| q | String? | no | Search text for original and short url |  
+| shortUrl | String? | no | Search for short url |   
+| originalUrl | String? | no | Search for original url |   
+| title | String? | no | Search text for title |  
 
 
 

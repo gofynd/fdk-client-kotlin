@@ -180,6 +180,9 @@ data class AppInventoryConfig(
     @SerializedName("discount")
     var discount: InventoryDiscount?=null,
     
+    @SerializedName("pricing_strategy")
+    var pricingStrategy: PricingStrategy?=null,
+    
     @SerializedName("out_of_stock")
     var outOfStock: Boolean?=null,
     
@@ -202,6 +205,8 @@ data class AppInventoryConfig(
     var companyId: Int?=null
     
 ): Parcelable {
+    
+    
     
     
     
@@ -3099,9 +3104,14 @@ data class InventoryConfig(
     var outOfStock: Boolean?=null,
     
     @SerializedName("only_verified_products")
-    var onlyVerifiedProducts: Boolean?=null
+    var onlyVerifiedProducts: Boolean?=null,
+    
+    @SerializedName("pricing_strategy")
+    var pricingStrategy: PricingStrategy?=null
     
 ): Parcelable {
+    
+    
     
     
     
@@ -4879,6 +4889,9 @@ data class AppFeature(
     @SerializedName("order")
     var order: OrderFeature?=null,
     
+    @SerializedName("buybox")
+    var buybox: BuyboxFeature?=null,
+    
     @SerializedName("_id")
     var id: String?=null,
     
@@ -4895,6 +4908,8 @@ data class AppFeature(
     var v: Int?=null
     
 ): Parcelable {
+    
+    
     
     
     
@@ -5324,6 +5339,38 @@ data class OrderFeature(
     var buyAgain: Boolean?=null
     
 ): Parcelable {
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: BuyboxFeature
+*/
+@Parcelize
+data class BuyboxFeature(
+    
+    
+    
+    @SerializedName("show_name")
+    var showName: Boolean?=null,
+    
+    @SerializedName("enable_selection")
+    var enableSelection: Boolean?=null,
+    
+    @SerializedName("is_seller_buybox_enabled")
+    var isSellerBuyboxEnabled: Boolean?=null
+    
+): Parcelable {
+    
+    
+    
+    
     
     
     
@@ -5836,6 +5883,33 @@ data class InventoryBrandRule(
     
     @SerializedName("brands")
     var brands: ArrayList<Int>?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: PricingStrategy
+*/
+@Parcelize
+data class PricingStrategy(
+    
+    
+    
+    @SerializedName("is_active")
+    var isActive: Boolean?=null,
+    
+    @SerializedName("value")
+    var value: String?=null
     
 ): Parcelable {
     
