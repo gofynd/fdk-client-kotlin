@@ -321,7 +321,7 @@ interface ContentApiList {
     : Response<ResourcesSchema>
     
     @GET ("/service/platform/content/v1.0/company/{company_id}/metafields/definitions")
-    suspend fun getCustomFieldDefinitions(@Path("company_id") companyId: String, @Query("page_no") pageNo: String, @Query("page_size") pageSize: String, @Query("resources") resources: String?, @Query("types") types: String?, @Query("search") search: String?)
+    suspend fun getCustomFieldDefinitions(@Path("company_id") companyId: String, @Query("page_no") pageNo: String, @Query("page_size") pageSize: String, @Query("resource") resource: String?, @Query("type") type: String?, @Query("search") search: String?)
     : Response<CustomFieldDefinitionsSchema>
     
     @POST ("/service/platform/content/v1.0/company/{company_id}/metafields/definitions")
@@ -417,7 +417,7 @@ interface ContentApiList {
     : Response<ResourcesSchema>
     
     @GET ("/service/platform/content/v1.0/company/{company_id}/application/{application_id}/metafields/definitions")
-    suspend fun getAppCustomFieldDefinitions(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Query("page_no") pageNo: String, @Query("page_size") pageSize: String, @Query("resources") resources: String?, @Query("types") types: String?, @Query("search") search: String?)
+    suspend fun getAppCustomFieldDefinitions(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Query("page_no") pageNo: String, @Query("page_size") pageSize: String, @Query("resource") resource: String?, @Query("type") type: String?, @Query("search") search: String?)
     : Response<CustomFieldDefinitionsSchema>
     
     @POST ("/service/platform/content/v1.0/company/{company_id}/application/{application_id}/metafields/definitions")

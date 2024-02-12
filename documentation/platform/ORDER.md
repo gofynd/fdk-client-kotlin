@@ -9,11 +9,6 @@ Handles all platform order and shipment api(s)
 
 Default
 * [invalidateShipmentCache](#invalidateshipmentcache)
-* [postRefundStateConfiguration](#postrefundstateconfiguration)
-* [getRefundStateConfiguration](#getrefundstateconfiguration)
-* [getRefundEnableStateList](#getrefundenablestatelist)
-* [postRefundConfiguration](#postrefundconfiguration)
-* [getRefundConfiguration](#getrefundconfiguration)
 * [reassignLocation](#reassignlocation)
 * [updateShipmentLock](#updateshipmentlock)
 * [getAnnouncements](#getannouncements)
@@ -53,16 +48,8 @@ Default
 * [trackShipment](#trackshipment)
 * [updateShipmentTracking](#updateshipmenttracking)
 * [failedOrderLogs](#failedorderlogs)
+* [generateInvoiceID](#generateinvoiceid)
 * [failedOrderLogDetails](#failedorderlogdetails)
-* [getQuestions](#getquestions)
-* [getRuleLaneConfig](#getrulelaneconfig)
-* [createRule](#createrule)
-* [getRuleById](#getrulebyid)
-* [updateRule](#updaterule)
-* [deleteRule](#deleterule)
-* [updateRulePosition](#updateruleposition)
-* [getRuleParameters](#getruleparameters)
-* [getRuleList](#getrulelist)
 * [getShipmentBagReasons](#getshipmentbagreasons)
 * [getShipments](#getshipments)
 * [getShipmentById](#getshipmentbyid)
@@ -71,11 +58,6 @@ Default
 * [getOrders](#getorders)
 * [getApplicationShipments](#getapplicationshipments)
 * [trackShipmentPlatform](#trackshipmentplatform)
-* [getuserviews](#getuserviews)
-* [postuserviews](#postuserviews)
-* [updateuserviews](#updateuserviews)
-* [deleteuserviews](#deleteuserviews)
-* [globalfilters](#globalfilters)
 * [getfilters](#getfilters)
 * [getBulkShipmentExcelFile](#getbulkshipmentexcelfile)
 * [getBulkActionTemplate](#getbulkactiontemplate)
@@ -160,352 +142,6 @@ Successfully updated shipment cache!
       "error": "Internal Exception"
     }
   ]
-}
-```
-</details>
-
-
-
-
-
-
-
-
-
----
-
-
-### postRefundStateConfiguration
-
-
-
-
-
-```kotlin
-platformClient.order.postRefundStateConfiguration(appId: appId, body: body).safeAwait{ response, error->
-    response?.let{
-      // Use response
-    } ->
-    error?.let{
-      
-    } 
-}
-```
-
-
-
-
-
-| Argument  |  Type  | Required | Description |
-| --------- | -----  | -------- | ----------- | 
-| appId | String | yes |  |  
-| body | [PostRefundStateConfiguration](#PostRefundStateConfiguration) | yes | Request body |
-
-
-Refund State Configuration
-
-*Returned Response:*
-
-
-
-
-[PostRefundStateConfigurationResponse](#PostRefundStateConfigurationResponse)
-
-create refund configuration successfully
-
-
-
-
-<details>
-<summary><i>&nbsp; Example:</i></summary>
-
-```json
-{
-  "success": true,
-  "message": "update refund configuration successfully"
-}
-```
-</details>
-
-
-
-
-
-
-
-
-
----
-
-
-### getRefundStateConfiguration
-
-
-
-
-
-```kotlin
-platformClient.order.getRefundStateConfiguration(appId: appId).safeAwait{ response, error->
-    response?.let{
-      // Use response
-    } ->
-    error?.let{
-      
-    } 
-}
-```
-
-
-
-
-
-| Argument  |  Type  | Required | Description |
-| --------- | -----  | -------- | ----------- | 
-| appId | String | yes |  |  
-
-
-
-Refund State Configuration
-
-*Returned Response:*
-
-
-
-
-[GetRefundStateConfigurationResponse](#GetRefundStateConfigurationResponse)
-
-It shows the Refund configuration
-
-
-
-
-<details>
-<summary><i>&nbsp; Example:</i></summary>
-
-```json
-{
-  "success": true,
-  "config": {
-    "prepaid": [
-      "cancelled_customer",
-      "cancelled_fynd"
-    ],
-    "non_prepaid": [
-      "return_bag_picked"
-    ]
-  }
-}
-```
-</details>
-
-
-
-
-
-
-
-
-
----
-
-
-### getRefundEnableStateList
-
-
-
-
-
-```kotlin
-platformClient.order.getRefundEnableStateList().safeAwait{ response, error->
-    response?.let{
-      // Use response
-    } ->
-    error?.let{
-      
-    } 
-}
-```
-
-
-
-
-
-
-Refund State Configuration
-
-*Returned Response:*
-
-
-
-
-[GetRefundStates](#GetRefundStates)
-
-It shows the Refund states
-
-
-
-
-<details>
-<summary><i>&nbsp; Example:</i></summary>
-
-```json
-{
-  "items": [
-    {
-      "state": "cancelled_customer",
-      "display_name": "Cancelled by Customer"
-    },
-    {
-      "state": "cancelled_fynd",
-      "display_name": "Cancelled by Fynd"
-    }
-  ],
-  "success": true,
-  "status": 200
-}
-```
-</details>
-
-
-
-
-
-
-
-
-
----
-
-
-### postRefundConfiguration
-
-
-
-
-
-```kotlin
-platformClient.order.postRefundConfiguration(appId: appId, body: body).safeAwait{ response, error->
-    response?.let{
-      // Use response
-    } ->
-    error?.let{
-      
-    } 
-}
-```
-
-
-
-
-
-| Argument  |  Type  | Required | Description |
-| --------- | -----  | -------- | ----------- | 
-| appId | String | yes |  |  
-| body | [RefundStateConfigurationManualSchema](#RefundStateConfigurationManualSchema) | yes | Request body |
-
-
-refund configuration.
-
-*Returned Response:*
-
-
-
-
-[RefundStateConfigurationManualSchemaResponse](#RefundStateConfigurationManualSchemaResponse)
-
-refund config.
-
-
-
-
-<details>
-<summary><i>&nbsp; Example:</i></summary>
-
-```json
-{
-  "success": true,
-  "data": {
-    "prepaid": {
-      "message": "manual refund for prepaid",
-      "is_manual": false
-    },
-    "non_prepaid": {
-      "message": "manual refund for non_prepaid",
-      "is_manual": true
-    }
-  }
-}
-```
-</details>
-
-
-
-
-
-
-
-
-
----
-
-
-### getRefundConfiguration
-
-
-
-
-
-```kotlin
-platformClient.order.getRefundConfiguration(appId: appId).safeAwait{ response, error->
-    response?.let{
-      // Use response
-    } ->
-    error?.let{
-      
-    } 
-}
-```
-
-
-
-
-
-| Argument  |  Type  | Required | Description |
-| --------- | -----  | -------- | ----------- | 
-| appId | String | yes |  |  
-
-
-
-refund configuration.
-
-*Returned Response:*
-
-
-
-
-[RefundStateConfigurationManualSchemaResponse](#RefundStateConfigurationManualSchemaResponse)
-
-refund config.
-
-
-
-
-<details>
-<summary><i>&nbsp; Example:</i></summary>
-
-```json
-{
-  "success": true,
-  "data": {
-    "prepaid": {
-      "message": "manual refund for prepaid",
-      "is_manual": false
-    },
-    "non_prepaid": {
-      "message": "manual refund for non_prepaid",
-      "is_manual": true
-    }
-  }
 }
 ```
 </details>
@@ -3727,6 +3363,75 @@ Order Logs listing fetched successfully
 ---
 
 
+### generateInvoiceID
+
+
+
+
+
+```kotlin
+platformClient.order.generateInvoiceID(invoiceType: invoiceType, body: body).safeAwait{ response, error->
+    response?.let{
+      // Use response
+    } ->
+    error?.let{
+      
+    } 
+}
+```
+
+
+
+
+
+| Argument  |  Type  | Required | Description |
+| --------- | -----  | -------- | ----------- | 
+| invoiceType | String | yes | mention the type of invoice id to generate |  
+| body | [GenerateInvoiceIDRequest](#GenerateInvoiceIDRequest) | yes | Request body |
+
+
+This API is used to manually generate Invoice ID against shipments.
+
+*Returned Response:*
+
+
+
+
+[GenerateInvoiceIDResponse](#GenerateInvoiceIDResponse)
+
+NOTE success response can contains success and failed result as well
+
+
+
+
+<details>
+<summary><i>&nbsp; Example:</i></summary>
+
+```json
+{
+  "items": [
+    {
+      "shipment_id": "16838049724111283577",
+      "success": true,
+      "invoice_id": "A0B1C2D3",
+      "error_message": null
+    }
+  ]
+}
+```
+</details>
+
+
+
+
+
+
+
+
+
+---
+
+
 ### failedOrderLogDetails
 Get failed order logs according to the filter provided
 
@@ -3764,541 +3469,6 @@ This endpoint allows users to get the exact error trace from the log id provided
 [FailedOrderLogDetails](#FailedOrderLogDetails)
 
 Order Logs listing fetched successfully
-
-
-
-
-<details>
-<summary><i>&nbsp; Example:</i></summary>
-
-```json
-
-```
-</details>
-
-
-
-
-
-
-
-
-
----
-
-
-### getQuestions
-
-
-
-
-
-```kotlin
-platformClient.application("<APPLICATION_ID>").order.getQuestions(pageNo: pageNo, pageSize: pageSize, q: q, isActive: isActive).safeAwait{ response, error->
-    response?.let{
-      // Use response
-    } ->
-    error?.let{
-      
-    } 
-}
-```
-
-
-
-
-
-| Argument  |  Type  | Required | Description |
-| --------- | -----  | -------- | ----------- | 
-| pageNo | Int? | no |  |   
-| pageSize | Int? | no |  |   
-| q | String? | no | To search questions using query |   
-| isActive | String? | no | To get active questions |  
-
-
-
-Get all questions of that cluster
-
-*Returned Response:*
-
-
-
-
-[HashMap<String,Any>](#HashMap<String,Any>)
-
-Successful response
-
-
-
-
-<details>
-<summary><i>&nbsp; Example:</i></summary>
-
-```json
-
-```
-</details>
-
-
-
-
-
-
-
-
-
----
-
-
-### getRuleLaneConfig
-
-
-
-
-
-```kotlin
-platformClient.application("<APPLICATION_ID>").order.getRuleLaneConfig(searchValue: searchValue).safeAwait{ response, error->
-    response?.let{
-      // Use response
-    } ->
-    error?.let{
-      
-    } 
-}
-```
-
-
-
-
-
-| Argument  |  Type  | Required | Description |
-| --------- | -----  | -------- | ----------- | 
-| searchValue | String? | no |  |  
-
-
-
-Retrieve rule lane configurations
-
-*Returned Response:*
-
-
-
-
-[HashMap<String,Any>](#HashMap<String,Any>)
-
-Successful response
-
-
-
-
-<details>
-<summary><i>&nbsp; Example:</i></summary>
-
-```json
-
-```
-</details>
-
-
-
-
-
-
-
-
-
----
-
-
-### createRule
-
-
-
-
-
-```kotlin
-platformClient.application("<APPLICATION_ID>").order.createRule(body: body).safeAwait{ response, error->
-    response?.let{
-      // Use response
-    } ->
-    error?.let{
-      
-    } 
-}
-```
-
-
-
-
-
-| Argument  |  Type  | Required | Description |
-| --------- | -----  | -------- | ----------- |
-| body | [RuleRequest](#RuleRequest) | yes | Request body |
-
-
-Create a new rule
-
-*Returned Response:*
-
-
-
-
-[CreateRuleResponse](#CreateRuleResponse)
-
-Successful response
-
-
-
-
-<details>
-<summary><i>&nbsp; Example:</i></summary>
-
-```json
-
-```
-</details>
-
-
-
-
-
-
-
-
-
----
-
-
-### getRuleById
-
-
-
-
-
-```kotlin
-platformClient.application("<APPLICATION_ID>").order.getRuleById(ruleId: ruleId).safeAwait{ response, error->
-    response?.let{
-      // Use response
-    } ->
-    error?.let{
-      
-    } 
-}
-```
-
-
-
-
-
-| Argument  |  Type  | Required | Description |
-| --------- | -----  | -------- | ----------- | 
-| ruleId | String | yes |  |  
-
-
-
-Get a specific rule by ID
-
-*Returned Response:*
-
-
-
-
-[RuleResponse](#RuleResponse)
-
-Successful response
-
-
-
-
-<details>
-<summary><i>&nbsp; Example:</i></summary>
-
-```json
-
-```
-</details>
-
-
-
-
-
-
-
-
-
----
-
-
-### updateRule
-
-
-
-
-
-```kotlin
-platformClient.application("<APPLICATION_ID>").order.updateRule(ruleId: ruleId, body: body).safeAwait{ response, error->
-    response?.let{
-      // Use response
-    } ->
-    error?.let{
-      
-    } 
-}
-```
-
-
-
-
-
-| Argument  |  Type  | Required | Description |
-| --------- | -----  | -------- | ----------- | 
-| ruleId | String | yes |  |  
-| body | [RuleUpdateRequest](#RuleUpdateRequest) | yes | Request body |
-
-
-Update a specific rule by ID
-
-*Returned Response:*
-
-
-
-
-[RuleUpdateResponse](#RuleUpdateResponse)
-
-Successful response
-
-
-
-
-<details>
-<summary><i>&nbsp; Example:</i></summary>
-
-```json
-
-```
-</details>
-
-
-
-
-
-
-
-
-
----
-
-
-### deleteRule
-
-
-
-
-
-```kotlin
-platformClient.application("<APPLICATION_ID>").order.deleteRule(ruleId: ruleId).safeAwait{ response, error->
-    response?.let{
-      // Use response
-    } ->
-    error?.let{
-      
-    } 
-}
-```
-
-
-
-
-
-| Argument  |  Type  | Required | Description |
-| --------- | -----  | -------- | ----------- | 
-| ruleId | String | yes |  |  
-
-
-
-Delete a specific rule by ID
-
-*Returned Response:*
-
-
-
-
-[DeleteRuleResponse](#DeleteRuleResponse)
-
-Successful response
-
-
-
-
-<details>
-<summary><i>&nbsp; Example:</i></summary>
-
-```json
-
-```
-</details>
-
-
-
-
-
-
-
-
-
----
-
-
-### updateRulePosition
-
-
-
-
-
-```kotlin
-platformClient.application("<APPLICATION_ID>").order.updateRulePosition(body: body).safeAwait{ response, error->
-    response?.let{
-      // Use response
-    } ->
-    error?.let{
-      
-    } 
-}
-```
-
-
-
-
-
-| Argument  |  Type  | Required | Description |
-| --------- | -----  | -------- | ----------- |
-| body | [UpdateRulePositionRequest](#UpdateRulePositionRequest) | yes | Request body |
-
-
-Update the position of a rule
-
-*Returned Response:*
-
-
-
-
-[UpdateRulePositionResponse](#UpdateRulePositionResponse)
-
-Successful response
-
-
-
-
-<details>
-<summary><i>&nbsp; Example:</i></summary>
-
-```json
-
-```
-</details>
-
-
-
-
-
-
-
-
-
----
-
-
-### getRuleParameters
-
-
-
-
-
-```kotlin
-platformClient.application("<APPLICATION_ID>").order.getRuleParameters().safeAwait{ response, error->
-    response?.let{
-      // Use response
-    } ->
-    error?.let{
-      
-    } 
-}
-```
-
-
-
-
-
-
-Get available rule parameters
-
-*Returned Response:*
-
-
-
-
-[RuleParametersResponse](#RuleParametersResponse)
-
-Successful response
-
-
-
-
-<details>
-<summary><i>&nbsp; Example:</i></summary>
-
-```json
-
-```
-</details>
-
-
-
-
-
-
-
-
-
----
-
-
-### getRuleList
-
-
-
-
-
-```kotlin
-platformClient.application("<APPLICATION_ID>").order.getRuleList(body: body).safeAwait{ response, error->
-    response?.let{
-      // Use response
-    } ->
-    error?.let{
-      
-    } 
-}
-```
-
-
-
-
-
-| Argument  |  Type  | Required | Description |
-| --------- | -----  | -------- | ----------- |
-| body | [RuleListRequest](#RuleListRequest) | yes | Request body |
-
-
-Get a list of rules
-
-*Returned Response:*
-
-
-
-
-[RuleListResponse](#RuleListResponse)
-
-Successful response
 
 
 
@@ -4785,10 +3955,7 @@ We are processing the report!
               "time": 30,
               "unit": "days",
               "returnable": true
-            },
-            "tags": [
-              "1P"
-            ]
+            }
           },
           "quantity": 1
         }
@@ -5387,10 +4554,7 @@ We are processing the report!
               "time": 7,
               "unit": "days",
               "returnable": true
-            },
-            "tags": [
-              "1P"
-            ]
+            }
           },
           "affiliate_bag_details": {
             "coupon_code": null
@@ -6098,876 +5262,6 @@ Success. Check the example shown below or refer `PlatformShipmentTrack` for more
       "meta": {}
     }
   ]
-}
-```
-</details>
-
-
-
-
-
-
-
-
-
----
-
-
-### getuserviews
-
-
-
-
-
-```kotlin
-platformClient.order.getuserviews().safeAwait{ response, error->
-    response?.let{
-      // Use response
-    } ->
-    error?.let{
-      
-    } 
-}
-```
-
-
-
-
-
-
-Get User views(User cross company views)
-
-*Returned Response:*
-
-
-
-
-[UserViewsResponse](#UserViewsResponse)
-
-Success. Check the example shown below.
-
-
-
-
-<details>
-<summary><i>&nbsp; Example:</i></summary>
-
-```json
-{
-  "parent_views": [
-    {
-      "views": [
-        {
-          "id": "65858ec5e5a448bea2d30c0d",
-          "slug": "packed",
-          "text": "Packed",
-          "filters": [
-            {
-              "label": "Shipment Status",
-              "value": "bag_status",
-              "options": [
-                {
-                  "label": "Placed",
-                  "value": "placed"
-                },
-                {
-                  "label": "My New State",
-                  "value": "my_new_state"
-                }
-              ]
-            },
-            {
-              "label": "Shipment Active Status",
-              "value": "is_active",
-              "options": [
-                {
-                  "label": "Active Shipments",
-                  "value": true
-                },
-                {
-                  "label": "Inactive Shipments",
-                  "value": false
-                }
-              ]
-            },
-            {
-              "label": "Shipment Lock Status",
-              "value": "lock_status",
-              "options": [
-                {
-                  "label": "Locked Shipments",
-                  "value": "locked"
-                },
-                {
-                  "label": "Unlocked Shipments",
-                  "value": "complete"
-                }
-              ]
-            },
-            {
-              "label": "Delivery Partners",
-              "value": "dps",
-              "options": [
-                {
-                  "label": "Xpress Bee",
-                  "value": "3b2r8g27r8"
-                },
-                {
-                  "label": "Self Ship",
-                  "value": "self_ship"
-                }
-              ]
-            }
-          ]
-        }
-      ],
-      "parent_slug": "processed",
-      "parent_text": "Processed"
-    },
-    {
-      "views": [
-        {
-          "id": "65858e50e5a448bea2d30c0c",
-          "slug": "reassigned",
-          "text": "Reassigned",
-          "filters": [
-            {
-              "label": "Shipment Status",
-              "value": "bag_status",
-              "options": [
-                {
-                  "label": "Placed",
-                  "value": "placed"
-                },
-                {
-                  "label": "My New State",
-                  "value": "my_new_state"
-                }
-              ]
-            },
-            {
-              "label": "Shipment Active Status",
-              "value": "is_active",
-              "options": [
-                {
-                  "label": "Active Shipments",
-                  "value": true
-                },
-                {
-                  "label": "Inactive Shipments",
-                  "value": false
-                }
-              ]
-            },
-            {
-              "label": "Shipment Lock Status",
-              "value": "lock_status",
-              "options": [
-                {
-                  "label": "Locked Shipments",
-                  "value": "locked"
-                },
-                {
-                  "label": "Unlocked Shipments",
-                  "value": "complete"
-                }
-              ]
-            },
-            {
-              "label": "Delivery Partners",
-              "value": "dps",
-              "options": [
-                {
-                  "label": "Xpress Bee",
-                  "value": "3b2r8g27r8"
-                },
-                {
-                  "label": "Self Ship",
-                  "value": "self_ship"
-                }
-              ]
-            }
-          ]
-        }
-      ],
-      "parent_slug": "unfilfilled",
-      "parent_text": "Unfulfilled"
-    }
-  ]
-}
-```
-</details>
-
-
-
-
-
-
-
-
-
----
-
-
-### postuserviews
-
-
-
-
-
-```kotlin
-platformClient.order.postuserviews(body: body).safeAwait{ response, error->
-    response?.let{
-      // Use response
-    } ->
-    error?.let{
-      
-    } 
-}
-```
-
-
-
-
-
-| Argument  |  Type  | Required | Description |
-| --------- | -----  | -------- | ----------- |
-| body | [UserViewsResponse](#UserViewsResponse) | yes | Request body |
-
-
-Add User views(User cross company views)
-
-*Returned Response:*
-
-
-
-
-[CreateUpdateDeleteResponse](#CreateUpdateDeleteResponse)
-
-Success. Check the example shown below.
-
-
-
-
-<details>
-<summary><i>&nbsp; Example:</i></summary>
-
-```json
-{
-  "message": "User view added successfully"
-}
-```
-</details>
-
-
-
-
-
-
-
-
-
----
-
-
-### updateuserviews
-
-
-
-
-
-```kotlin
-platformClient.order.updateuserviews(body: body).safeAwait{ response, error->
-    response?.let{
-      // Use response
-    } ->
-    error?.let{
-      
-    } 
-}
-```
-
-
-
-
-
-| Argument  |  Type  | Required | Description |
-| --------- | -----  | -------- | ----------- |
-| body | [UserViewsResponse](#UserViewsResponse) | yes | Request body |
-
-
-Update User views(User cross company views)
-
-*Returned Response:*
-
-
-
-
-[CreateUpdateDeleteResponse](#CreateUpdateDeleteResponse)
-
-Success. Check the example shown below.
-
-
-
-
-<details>
-<summary><i>&nbsp; Example:</i></summary>
-
-```json
-{
-  "message": "User view updated successfully"
-}
-```
-</details>
-
-
-
-
-
-
-
-
-
----
-
-
-### deleteuserviews
-
-
-
-
-
-```kotlin
-platformClient.order.deleteuserviews(id: id).safeAwait{ response, error->
-    response?.let{
-      // Use response
-    } ->
-    error?.let{
-      
-    } 
-}
-```
-
-
-
-
-
-| Argument  |  Type  | Required | Description |
-| --------- | -----  | -------- | ----------- | 
-| id | String | yes | Id of view |  
-
-
-
-Delete User views(User cross company views)
-
-*Returned Response:*
-
-
-
-
-[CreateUpdateDeleteResponse](#CreateUpdateDeleteResponse)
-
-Success. Check the example shown below.
-
-
-
-
-<details>
-<summary><i>&nbsp; Example:</i></summary>
-
-```json
-{
-  "message": "User view deleted successfully"
-}
-```
-</details>
-
-
-
-
-
-
-
-
-
----
-
-
-### globalfilters
-
-
-
-
-
-```kotlin
-platformClient.order.globalfilters(showIn: showIn, requestSource: requestSource).safeAwait{ response, error->
-    response?.let{
-      // Use response
-    } ->
-    error?.let{
-      
-    } 
-}
-```
-
-
-
-
-
-| Argument  |  Type  | Required | Description |
-| --------- | -----  | -------- | ----------- | 
-| showIn | String | yes | Name of view to get filters for |   
-| requestSource | String | yes | Name of site (Platform/Admin) |  
-
-
-
-Get Global Filters
-
-*Returned Response:*
-
-
-
-
-[GlobalFiltersResponse](#GlobalFiltersResponse)
-
-Global list of filters
-
-
-
-
-<details>
-<summary><i>&nbsp; Example:</i></summary>
-
-```json
-{
-  "filters": [
-    {
-      "label": "Fulfilling Stores",
-      "value": "stores",
-      "filter_type": "global",
-      "type": "single_select",
-      "options": []
-    },
-    {
-      "label": "Sort Type",
-      "value": "sort_type",
-      "type": "single_select",
-      "filter_type": "global",
-      "options": [
-        {
-          "label": "SLA",
-          "value": "sla_asc"
-        },
-        {
-          "label": "Newest First",
-          "value": "created_date_desc"
-        },
-        {
-          "label": "Oldest First",
-          "value": "created_date_asc"
-        }
-      ]
-    },
-    {
-      "label": "Search Types",
-      "value": "search_type",
-      "type": "single_select",
-      "filter_type": "global",
-      "options": [
-        {
-          "label": "Auto",
-          "value": "auto",
-          "placeholder_text": "Search by Shipment ID, Order ID or Customer Email",
-          "min_search_size": 5,
-          "show_ui": true
-        },
-        {
-          "label": "Shipment ID",
-          "value": "shipment_id",
-          "placeholder_text": "Search by Shipment ID",
-          "min_search_size": 6,
-          "show_ui": true
-        },
-        {
-          "text": "User ID",
-          "value": "user_id",
-          "placeholder_text": "Search by User ID",
-          "min_search_size": 4,
-          "show_ui": false
-        },
-        {
-          "label": "Bag ID",
-          "value": "bag_id",
-          "placeholder_text": "Search by Bag ID",
-          "min_search_size": 4,
-          "show_ui": true
-        },
-        {
-          "label": "Order ID",
-          "value": "order_id",
-          "placeholder_text": "Search by Order ID",
-          "min_search_size": 6,
-          "show_ui": true
-        },
-        {
-          "label": "External Order ID",
-          "value": "external_order_id",
-          "placeholder_text": "Search by External Order ID",
-          "min_search_size": 6,
-          "show_ui": true
-        },
-        {
-          "label": "External Bag ID",
-          "value": "external_bag_id",
-          "placeholder_text": "Search by External Bag ID",
-          "min_search_size": 6,
-          "show_ui": true
-        },
-        {
-          "label": "External Shipment ID",
-          "value": "external_shipment_id",
-          "placeholder_text": "Search by External Shipment ID",
-          "min_search_size": 6,
-          "show_ui": true
-        },
-        {
-          "label": "Channel Shipment ID",
-          "value": "channel_shipment_id",
-          "placeholder_text": "Search by Channel Shipment ID",
-          "min_search_size": 6,
-          "show_ui": true
-        },
-        {
-          "label": "Invoice",
-          "value": "invoice_id",
-          "placeholder_text": "Search by Invoice",
-          "min_search_size": 5,
-          "show_ui": true
-        },
-        {
-          "label": "AWB",
-          "value": "awb_no",
-          "placeholder_text": "Search by AWB",
-          "min_search_size": 10,
-          "show_ui": true
-        },
-        {
-          "label": "SKU",
-          "value": "sku",
-          "placeholder_text": "Search by SKU",
-          "min_search_size": 3,
-          "show_ui": true
-        },
-        {
-          "label": "EAN",
-          "value": "ean",
-          "placeholder_text": "Search by EAN",
-          "min_search_size": 3,
-          "show_ui": true
-        },
-        {
-          "label": "ALU",
-          "value": "alu",
-          "placeholder_text": "Search by ALU",
-          "min_search_size": 3,
-          "show_ui": true
-        },
-        {
-          "label": "UPC",
-          "value": "upc",
-          "placeholder_text": "Search by UPC",
-          "min_search_size": 3,
-          "show_ui": true
-        },
-        {
-          "label": "Customer Registered Phone",
-          "value": "registered_phone",
-          "placeholder_text": "Search by Customer Registered Phone",
-          "min_search_size": 3,
-          "show_ui": true
-        },
-        {
-          "label": "Customer Name",
-          "value": "name",
-          "placeholder_text": "Search by Customer Name",
-          "min_search_size": 3,
-          "show_ui": true
-        },
-        {
-          "label": "Customer Phone",
-          "value": "phone",
-          "placeholder_text": "Search by Customer Phone",
-          "min_search_size": 3,
-          "show_ui": true
-        },
-        {
-          "label": "Customer Email",
-          "value": "email",
-          "placeholder_text": "Search by Customer Email",
-          "min_search_size": 5,
-          "show_ui": true
-        },
-        {
-          "label": "Return ID",
-          "value": "return_id",
-          "placeholder_text": "Search by Return ID",
-          "min_search_size": 5,
-          "show_ui": true
-        },
-        {
-          "text": "Tags",
-          "value": "tags",
-          "placeholder_text": "Search by Tags",
-          "min_search_size": 3,
-          "show_ui": false
-        }
-      ]
-    },
-    {
-      "label": "Shipment Status",
-      "filter_type": "advance",
-      "value": "bag_status",
-      "type": "multi_select",
-      "options": [
-        {
-          "label": "Order Start 1",
-          "value": {
-            "state_type": "operational",
-            "slug": "order-start",
-            "label": "Order Start 1"
-          }
-        },
-        {
-          "label": "sameeer",
-          "value": {
-            "state_type": "operational",
-            "slug": "sameeer",
-            "label": "sameeer"
-          }
-        },
-        {
-          "label": "Talha test demo 2",
-          "value": {
-            "state_type": "operational",
-            "slug": "talha-test-demo-2",
-            "label": "Talha test demo 2"
-          }
-        },
-        {
-          "label": "Refund Acknowledged 22",
-          "value": {
-            "state_type": "financial",
-            "slug": "refund-acknowledged-22",
-            "label": "Refund Acknowledged 22"
-          }
-        },
-        {
-          "label": "Shomin Test",
-          "value": {
-            "state_type": "operational",
-            "slug": "shomin-test",
-            "label": "Shomin Test"
-          }
-        },
-        {
-          "label": "Amit",
-          "value": {
-            "state_type": "operational",
-            "slug": "amit",
-            "label": "Amit"
-          }
-        },
-        {
-          "label": "Niteen A",
-          "value": {
-            "state_type": "operational",
-            "slug": "niteen-a",
-            "label": "Niteen A"
-          }
-        },
-        {
-          "label": "Rahul rathod",
-          "value": {
-            "state_type": "operational",
-            "slug": "rahul-rathod",
-            "label": "Rahul rathod"
-          }
-        },
-        {
-          "label": "Sameer Kadam",
-          "value": {
-            "state_type": "operational",
-            "slug": "sameer-kadam",
-            "label": "Sameer Kadam"
-          }
-        },
-        {
-          "label": "sameer",
-          "value": {
-            "state_type": "operational",
-            "slug": "sameer",
-            "label": "sameer"
-          }
-        },
-        {
-          "label": "talha test 6",
-          "value": {
-            "state_type": "operational",
-            "slug": "ta",
-            "label": "talha test 6"
-          }
-        },
-        {
-          "label": "Talha",
-          "value": {
-            "state_type": "operational",
-            "slug": "talha",
-            "label": "Talha"
-          }
-        },
-        {
-          "label": "Refund Acknowledged 22",
-          "value": {
-            "state_type": "financial",
-            "slug": "refund_acknowledged_22",
-            "label": "Refund Acknowledged 22"
-          }
-        },
-        {
-          "label": "Refund On Hold 24",
-          "value": {
-            "state_type": "financial",
-            "slug": "refund_on_hold_24",
-            "label": "Refund On Hold 24"
-          }
-        },
-        {
-          "label": "refund_acknowledged_22",
-          "value": {
-            "state_type": "operational",
-            "slug": "Refund Acknowledged 22",
-            "label": "refund_acknowledged_22"
-          }
-        },
-        {
-          "label": "Refund on Hold 2",
-          "value": {
-            "state_type": "financial",
-            "slug": "refund_on_hold_2",
-            "label": "Refund on Hold 2"
-          }
-        },
-        {
-          "label": "Refund Acknowledged 3",
-          "value": {
-            "state_type": "operational",
-            "slug": "refund_acknowledged_2",
-            "label": "Refund Acknowledged 3"
-          }
-        },
-        {
-          "label": "Refund Acknowledged 21",
-          "value": {
-            "state_type": "operational",
-            "slug": "refund_acknowledged_1",
-            "label": "Refund Acknowledged 21"
-          }
-        },
-        {
-          "label": "Refund Acknowledged",
-          "value": {
-            "state_type": "financial",
-            "slug": "refund_acknowledged",
-            "label": "Refund Acknowledged"
-          }
-        },
-        {
-          "label": "Refund pending for Approval",
-          "value": {
-            "state_type": "financial",
-            "slug": "refund_pending_for_approval",
-            "label": "Refund pending for Approval"
-          }
-        }
-      ]
-    },
-    {
-      "label": "Time to Dispatch",
-      "value": "time_to_dispatch",
-      "type": "single_select",
-      "filter_type": "advance",
-      "placeholder_text": "Select time to dispatch",
-      "options": [
-        {
-          "label": "Breached",
-          "value": "1"
-        },
-        {
-          "label": "Not Breached",
-          "value": "-1"
-        }
-      ]
-    },
-    {
-      "label": "Payment Methods",
-      "value": "payment_methods",
-      "type": "single_select",
-      "filter_type": "advance",
-      "placeholder_text": "Select payment methods",
-      "options": [
-        {
-          "label": "COD",
-          "value": "COD"
-        },
-        {
-          "label": "Prepaid",
-          "value": "PREPAID"
-        }
-      ]
-    },
-    {
-      "label": "Delivery Partner",
-      "value": "dp_ids",
-      "filter_type": "advance",
-      "type": "multi_select",
-      "placeholder_text": "Select delivery partners",
-      "required": true,
-      "options": [
-        {
-          "label": "Self Delivery",
-          "value": "652255c58ab4101b2595c6c5|652255c58ab4101b2595c6c5",
-          "name": "Self Delivery"
-        }
-      ]
-    },
-    {
-      "label": "Sales Channel",
-      "value": "sales_channels",
-      "placeholder_text": "Select sales channels",
-      "filter_type": "advance",
-      "type": "multi_select",
-      "required": false,
-      "options": [
-        {
-          "label": "Test Company - 1",
-          "value": "655cbbb68bd7831239082ce1",
-          "name": "Test Company - 1"
-        }
-      ]
-    },
-    {
-      "label": "Tags",
-      "value": "tags",
-      "filter_type": "advance",
-      "type": "multi_select",
-      "placeholder_text": "Select tags",
-      "required": false,
-      "options": []
-    }
-  ],
-  "company_id": null,
-  "request_source": "platform",
-  "show_in": "shipment_view"
 }
 ```
 </details>
@@ -8166,139 +6460,6 @@ Sucessfully Created the Template Url.
 
  
  
- #### [QuestionErrorResponse](#QuestionErrorResponse)
-
- | Properties | Type | Nullable | Description |
- | ---------- | ---- | -------- | ----------- |
- | type | String? |  yes  |  |
- | value | String? |  yes  |  |
- | message | Any? |  yes  |  |
-
----
-
-
- 
- 
- #### [PostRefundStateConfiguration](#PostRefundStateConfiguration)
-
- | Properties | Type | Nullable | Description |
- | ---------- | ---- | -------- | ----------- |
- | prepaid | ArrayList<String>? |  yes  |  |
- | nonPrepaid | ArrayList<String>? |  yes  |  |
-
----
-
-
- 
- 
- #### [PostRefundStateConfigurationResponse](#PostRefundStateConfigurationResponse)
-
- | Properties | Type | Nullable | Description |
- | ---------- | ---- | -------- | ----------- |
- | message | String? |  yes  |  |
- | success | Boolean? |  yes  |  |
-
----
-
-
- 
- 
- #### [GetRefundStateConfigurationResponse](#GetRefundStateConfigurationResponse)
-
- | Properties | Type | Nullable | Description |
- | ---------- | ---- | -------- | ----------- |
- | success | Boolean? |  yes  |  |
- | config | [PostRefundStateConfiguration](#PostRefundStateConfiguration)? |  yes  |  |
-
----
-
-
- 
- 
- #### [RefundStates](#RefundStates)
-
- | Properties | Type | Nullable | Description |
- | ---------- | ---- | -------- | ----------- |
- | state | String? |  yes  |  |
- | displayName | String? |  yes  |  |
-
----
-
-
- 
- 
- #### [GetRefundStates](#GetRefundStates)
-
- | Properties | Type | Nullable | Description |
- | ---------- | ---- | -------- | ----------- |
- | success | Boolean? |  yes  |  |
- | items | ArrayList<[RefundStates](#RefundStates)>? |  yes  |  |
- | status | Int? |  yes  |  |
-
----
-
-
- 
- 
- #### [RefundStateManualWithoutMessage](#RefundStateManualWithoutMessage)
-
- | Properties | Type | Nullable | Description |
- | ---------- | ---- | -------- | ----------- |
- | isManual | Boolean? |  yes  |  |
-
----
-
-
- 
- 
- #### [RefundStateManualWithMessage](#RefundStateManualWithMessage)
-
- | Properties | Type | Nullable | Description |
- | ---------- | ---- | -------- | ----------- |
- | isManual | Boolean? |  yes  |  |
- | message | String? |  yes  |  |
-
----
-
-
- 
- 
- #### [RefundStateManualWithMessageData](#RefundStateManualWithMessageData)
-
- | Properties | Type | Nullable | Description |
- | ---------- | ---- | -------- | ----------- |
- | prepaid | [RefundStateManualWithMessage](#RefundStateManualWithMessage)? |  yes  |  |
- | nonPrepaid | [RefundStateManualWithMessage](#RefundStateManualWithMessage)? |  yes  |  |
-
----
-
-
- 
- 
- #### [RefundStateConfigurationManualSchema](#RefundStateConfigurationManualSchema)
-
- | Properties | Type | Nullable | Description |
- | ---------- | ---- | -------- | ----------- |
- | prepaid | [RefundStateManualWithoutMessage](#RefundStateManualWithoutMessage)? |  yes  |  |
- | nonPrepaid | [RefundStateManualWithoutMessage](#RefundStateManualWithoutMessage)? |  yes  |  |
-
----
-
-
- 
- 
- #### [RefundStateConfigurationManualSchemaResponse](#RefundStateConfigurationManualSchemaResponse)
-
- | Properties | Type | Nullable | Description |
- | ---------- | ---- | -------- | ----------- |
- | success | Boolean? |  yes  |  |
- | data | [RefundStateManualWithMessageData](#RefundStateManualWithMessageData)? |  yes  |  |
-
----
-
-
- 
- 
  #### [StoreReassign](#StoreReassign)
 
  | Properties | Type | Nullable | Description |
@@ -8355,6 +6516,7 @@ Sucessfully Created the Template Url.
  | action | String |  no  | Expected Actions: [lock, unlock, check] |
  | actionType | String |  no  | Expected action_type: [complete, operational, financial] |
  | entities | ArrayList<[Entities](#Entities)> |  no  | Shipment/Entity |
+ | resumeTasksAfterUnlock | Boolean? |  yes  |  |
 
 ---
 
@@ -9574,6 +7736,7 @@ Sucessfully Created the Template Url.
  | primaryEmail | String? |  yes  |  |
  | address2 | String? |  yes  |  |
  | countryCode | String? |  yes  |  |
+ | countryIsoCode | String? |  yes  | Country Code in ISO 2 format (e.g. US, IN) |
 
 ---
 
@@ -9608,6 +7771,7 @@ Sucessfully Created the Template Url.
  | address2 | String? |  yes  |  |
  | landmark | String? |  yes  |  |
  | countryCode | String? |  yes  |  |
+ | countryIsoCode | String? |  yes  | Country Code in ISO 2 format (e.g. US, IN) |
 
 ---
 
@@ -10877,490 +9041,61 @@ Sucessfully Created the Template Url.
 
  
  
- #### [StateTransitionFlag](#StateTransitionFlag)
+ #### [GenerateInvoiceIDResponseData](#GenerateInvoiceIDResponseData)
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | id | Int? |  yes  |  |
- | name | String? |  yes  |  |
- | displayName | String? |  yes  |  |
- | description | String? |  yes  |  |
- | type | String? |  yes  |  |
- | options | HashMap<String,Any>? |  yes  |  |
- | defaultValue | String? |  yes  |  |
-
----
-
-
- 
- 
- #### [StateManagerFilter](#StateManagerFilter)
-
- | Properties | Type | Nullable | Description |
- | ---------- | ---- | -------- | ----------- |
- | id | Int? |  yes  |  |
- | name | String? |  yes  |  |
- | displayName | String? |  yes  |  |
- | description | String? |  yes  |  |
- | type | String? |  yes  |  |
- | options | HashMap<String,Any>? |  yes  |  |
- | defaultValue | String? |  yes  |  |
-
----
-
-
- 
- 
- #### [StateManagerTask](#StateManagerTask)
-
- | Properties | Type | Nullable | Description |
- | ---------- | ---- | -------- | ----------- |
- | id | Int? |  yes  |  |
- | name | String? |  yes  |  |
- | displayName | String? |  yes  |  |
- | description | String? |  yes  |  |
- | docString | String? |  yes  |  |
- | kwargs | HashMap<String,Any>? |  yes  |  |
-
----
-
-
- 
- 
- #### [PaginationInfo](#PaginationInfo)
-
- | Properties | Type | Nullable | Description |
- | ---------- | ---- | -------- | ----------- |
- | current | Int? |  yes  |  |
- | hasPrevious | Boolean? |  yes  |  |
- | hasNext | Boolean? |  yes  |  |
- | total | Int? |  yes  |  |
- | itemTotal | Int? |  yes  |  |
- | type | String? |  yes  |  |
- | size | Int? |  yes  |  |
-
----
-
-
- 
- 
- #### [StateManagerState](#StateManagerState)
-
- | Properties | Type | Nullable | Description |
- | ---------- | ---- | -------- | ----------- |
- | id | Int? |  yes  | Unique identifier for the state |
- | state | String? |  yes  | The name of the state |
- | platformDisplayName | String? |  yes  | The platform display name |
- | appFacing | Boolean? |  yes  | Whether state is for app facing or not |
- | appDisplayName | String? |  yes  | The application display name |
- | isActive | Boolean? |  yes  | Whether state is active or not |
- | stateType | String? |  yes  | Type of the state |
- | journeyType | String? |  yes  | Type of the journey |
-
----
-
-
- 
- 
- #### [PaginatedStates](#PaginatedStates)
-
- | Properties | Type | Nullable | Description |
- | ---------- | ---- | -------- | ----------- |
- | items | ArrayList<[StateManagerState](#StateManagerState)>? |  yes  |  |
- | page | [PaginationInfo](#PaginationInfo)? |  yes  |  |
-
----
-
-
- 
- 
- #### [RuleLaneConfigErrorResponse](#RuleLaneConfigErrorResponse)
-
- | Properties | Type | Nullable | Description |
- | ---------- | ---- | -------- | ----------- |
- | type | String? |  yes  |  |
- | value | String? |  yes  |  |
- | message | Any? |  yes  |  |
-
----
-
-
- 
- 
- #### [QuestionSetItem](#QuestionSetItem)
-
- | Properties | Type | Nullable | Description |
- | ---------- | ---- | -------- | ----------- |
- | id | Int |  no  |  |
- | displayName | String |  no  |  |
-
----
-
-
- 
- 
- #### [Reason](#Reason)
-
- | Properties | Type | Nullable | Description |
- | ---------- | ---- | -------- | ----------- |
- | id | Int |  no  |  |
- | displayName | String |  no  |  |
- | remarkRequired | Boolean |  no  |  |
- | qcType | ArrayList<String> |  no  |  |
- | questionSet | ArrayList<[QuestionSet](#QuestionSet)> |  no  |  |
- | meta | HashMap<String,Any> |  no  |  |
- | isActive | Boolean |  no  |  |
- | isDeleted | Boolean |  no  |  |
-
----
-
-
- 
- 
- #### [RuleRequest](#RuleRequest)
-
- | Properties | Type | Nullable | Description |
- | ---------- | ---- | -------- | ----------- |
- | flowType | String |  no  |  |
- | name | String |  no  |  |
- | description | String? |  yes  |  |
- | entityType | String |  no  |  |
- | value | String |  no  |  |
- | channel | String |  no  |  |
- | ruleType | String |  no  |  |
- | isDeleted | Boolean |  no  |  |
- | restrictForwardServicability | Boolean? |  yes  |  |
- | conditions | ArrayList<[Condition](#Condition)> |  no  |  |
- | meta | [RuleMeta](#RuleMeta) |  no  |  |
- | qcEnabled | Boolean |  no  |  |
- | isActive | Boolean |  no  |  |
- | actions | [RuleAction](#RuleAction) |  no  |  |
-
----
-
-
- 
- 
- #### [CreateRuleResponse](#CreateRuleResponse)
-
- | Properties | Type | Nullable | Description |
- | ---------- | ---- | -------- | ----------- |
- | id | Int? |  yes  |  |
+ | shipmentId | String? |  yes  |  |
  | success | Boolean? |  yes  |  |
- | error | [RuleError](#RuleError)? |  yes  |  |
+ | invoiceId | String? |  yes  |  |
+ | errorMessage | Boolean? |  yes  |  |
 
 ---
 
 
  
  
- #### [RuleResponse](#RuleResponse)
+ #### [GenerateInvoiceIDErrorResponseData](#GenerateInvoiceIDErrorResponseData)
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | id | String? |  yes  |  |
- | items | [RuleItem](#RuleItem)? |  yes  |  |
+ | shipmentId | String? |  yes  |  |
  | success | Boolean? |  yes  |  |
- | error | [RuleError](#RuleError)? |  yes  |  |
+ | invoiceId | Boolean? |  yes  |  |
+ | errorMessage | String? |  yes  |  |
 
 ---
 
 
  
  
- #### [RuleUpdateRequest](#RuleUpdateRequest)
+ #### [GenerateInvoiceIDRequest](#GenerateInvoiceIDRequest)
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | flowType | String |  no  |  |
- | name | String |  no  |  |
- | description | String? |  yes  |  |
- | entityType | String |  no  |  |
- | value | String |  no  |  |
- | channel | String |  no  |  |
- | ruleType | String |  no  |  |
- | isDeleted | Boolean |  no  |  |
- | position | Int |  no  |  |
- | restrictForwardServicability | Boolean |  no  |  |
- | conditions | ArrayList<[Condition](#Condition)> |  no  |  |
- | meta | [RuleMeta](#RuleMeta) |  no  |  |
- | qcEnabled | Boolean |  no  |  |
- | isActive | Boolean |  no  |  |
- | actions | [RuleAction](#RuleAction) |  no  |  |
+ | shipmentIds | ArrayList<String> |  no  |  |
 
 ---
 
 
  
  
- #### [Condition](#Condition)
+ #### [GenerateInvoiceIDResponse](#GenerateInvoiceIDResponse)
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | value | String |  no  |  |
- | variable | String |  no  |  |
- | operation | String |  no  |  |
+ | items | ArrayList<[GenerateInvoiceIDResponseData](#GenerateInvoiceIDResponseData)>? |  yes  |  |
 
 ---
 
 
  
  
- #### [RuleMeta](#RuleMeta)
+ #### [GenerateInvoiceIDErrorResponse](#GenerateInvoiceIDErrorResponse)
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | department | [Department](#Department)? |  yes  |  |
- | l3 | [L3](#L3)? |  yes  |  |
-
----
-
-
- 
- 
- #### [RuleAction](#RuleAction)
-
- | Properties | Type | Nullable | Description |
- | ---------- | ---- | -------- | ----------- |
- | reasons | ArrayList<[Reason](#Reason)>? |  yes  |  |
-
----
-
-
- 
- 
- #### [Department](#Department)
-
- | Properties | Type | Nullable | Description |
- | ---------- | ---- | -------- | ----------- |
- | id | String? |  yes  |  |
- | displayName | String? |  yes  |  |
-
----
-
-
- 
- 
- #### [L3](#L3)
-
- | Properties | Type | Nullable | Description |
- | ---------- | ---- | -------- | ----------- |
- | id | String? |  yes  |  |
- | displayName | String? |  yes  |  |
-
----
-
-
- 
- 
- #### [Error](#Error)
-
- | Properties | Type | Nullable | Description |
- | ---------- | ---- | -------- | ----------- |
- | type | String? |  yes  |  |
- | value | String? |  yes  |  |
- | message | String? |  yes  |  |
- | success | Boolean? |  yes  |  |
-
----
-
-
- 
- 
- #### [RuleUpdateResponse](#RuleUpdateResponse)
-
- | Properties | Type | Nullable | Description |
- | ---------- | ---- | -------- | ----------- |
- | id | String? |  yes  |  |
- | success | Boolean? |  yes  |  |
- | error | [RuleError](#RuleError)? |  yes  |  |
-
----
-
-
- 
- 
- #### [DeleteRuleResponse](#DeleteRuleResponse)
-
- | Properties | Type | Nullable | Description |
- | ---------- | ---- | -------- | ----------- |
- | id | String? |  yes  |  |
- | success | Boolean? |  yes  |  |
- | error | [RuleError](#RuleError)? |  yes  |  |
-
----
-
-
- 
- 
- #### [UpdateRulePositionRequest](#UpdateRulePositionRequest)
-
- | Properties | Type | Nullable | Description |
- | ---------- | ---- | -------- | ----------- |
- | ruleId | Int |  no  |  |
- | pageNo | Int |  no  |  |
- | pageSize | Int |  no  |  |
- | position | Int |  no  |  |
- | flowType | String |  no  |  |
-
----
-
-
- 
- 
- #### [UpdateRulePositionResponse](#UpdateRulePositionResponse)
-
- | Properties | Type | Nullable | Description |
- | ---------- | ---- | -------- | ----------- |
- | page | [PageInfo](#PageInfo)? |  yes  |  |
- | items | ArrayList<[RuleItem](#RuleItem)>? |  yes  |  |
- | success | Boolean? |  yes  |  |
- | error | [RuleError](#RuleError)? |  yes  |  |
-
----
-
-
- 
- 
- #### [RuleItem](#RuleItem)
-
- | Properties | Type | Nullable | Description |
- | ---------- | ---- | -------- | ----------- |
- | id | String |  no  |  |
- | entityType | String |  no  |  |
- | value | String |  no  |  |
- | channel | String |  no  |  |
- | actions | [RuleAction](#RuleAction) |  no  |  |
- | qcEnabled | Boolean |  no  |  |
- | isDeleted | Boolean |  no  |  |
- | conditions | [Condition](#Condition) |  no  |  |
- | meta | [Meta](#Meta) |  no  |  |
- | ruleType | String |  no  |  |
- | isActive | Boolean |  no  |  |
- | name | String |  no  |  |
- | description | String |  no  |  |
- | flowType | String |  no  |  |
- | position | Int |  no  |  |
-
----
-
-
- 
- 
- #### [RuleParametersResponse](#RuleParametersResponse)
-
- | Properties | Type | Nullable | Description |
- | ---------- | ---- | -------- | ----------- |
- | response | ArrayList<[ParameterResponse](#ParameterResponse)>? |  yes  |  |
-
----
-
-
- 
- 
- #### [ParameterResponse](#ParameterResponse)
-
- | Properties | Type | Nullable | Description |
- | ---------- | ---- | -------- | ----------- |
- | text | String? |  yes  |  |
- | value | String? |  yes  |  |
-
----
-
-
- 
- 
- #### [RuleListRequest](#RuleListRequest)
-
- | Properties | Type | Nullable | Description |
- | ---------- | ---- | -------- | ----------- |
- | pageSize | Int? |  yes  |  |
- | pageNo | Int? |  yes  |  |
- | flowType | String? |  yes  |  |
- | laneType | String? |  yes  |  |
-
----
-
-
- 
- 
- #### [RuleListResponse](#RuleListResponse)
-
- | Properties | Type | Nullable | Description |
- | ---------- | ---- | -------- | ----------- |
- | page | [PageInfo](#PageInfo)? |  yes  |  |
- | items | ArrayList<[RuleListItem](#RuleListItem)>? |  yes  |  |
- | success | Boolean? |  yes  |  |
- | error | [RuleErrorResponse](#RuleErrorResponse)? |  yes  |  |
-
----
-
-
- 
- 
- #### [RuleListItem](#RuleListItem)
-
- | Properties | Type | Nullable | Description |
- | ---------- | ---- | -------- | ----------- |
- | id | String |  no  |  |
- | entityType | String |  no  |  |
- | value | String |  no  |  |
- | channel | String |  no  |  |
- | actions | [RuleAction](#RuleAction) |  no  |  |
- | qcEnabled | Boolean |  no  |  |
- | isDeleted | Boolean |  no  |  |
- | conditions | [Condition](#Condition) |  no  |  |
- | meta | [Meta](#Meta) |  no  |  |
- | ruleType | String |  no  |  |
- | isActive | Boolean |  no  |  |
- | name | String |  no  |  |
- | description | String |  no  |  |
- | flowType | String |  no  |  |
- | position | Int |  no  |  |
- | success | Boolean |  no  |  |
- | error | [RuleError](#RuleError) |  no  |  |
-
----
-
-
- 
- 
- #### [RuleError](#RuleError)
-
- | Properties | Type | Nullable | Description |
- | ---------- | ---- | -------- | ----------- |
- | type | String |  no  |  |
- | value | String |  no  |  |
- | message | String |  no  |  |
-
----
-
-
- 
- 
- #### [RuleErrorResponse](#RuleErrorResponse)
-
- | Properties | Type | Nullable | Description |
- | ---------- | ---- | -------- | ----------- |
- | success | Boolean? |  yes  |  |
- | error | [RuleError](#RuleError)? |  yes  |  |
-
----
-
-
- 
- 
- #### [PageInfo](#PageInfo)
-
- | Properties | Type | Nullable | Description |
- | ---------- | ---- | -------- | ----------- |
- | type | String? |  yes  |  |
- | current | Int? |  yes  |  |
- | size | Int? |  yes  |  |
- | itemTotal | Int? |  yes  |  |
- | hasPrevious | Boolean? |  yes  |  |
- | hasNext | Boolean? |  yes  |  |
- | pageSize | Int? |  yes  |  |
+ | items | ArrayList<[GenerateInvoiceIDErrorResponseData](#GenerateInvoiceIDErrorResponseData)>? |  yes  |  |
 
 ---
 
@@ -11739,7 +9474,6 @@ Sucessfully Created the Template Url.
  | rawMeta | String? |  yes  |  |
  | size | String |  no  |  |
  | isSet | Boolean? |  yes  |  |
- | tags | ArrayList<String>? |  yes  |  |
 
 ---
 
@@ -12425,7 +10159,6 @@ Sucessfully Created the Template Url.
  | returnConfig | [ReturnConfig](#ReturnConfig)? |  yes  |  |
  | uid | String? |  yes  |  |
  | size | String? |  yes  |  |
- | tags | ArrayList<String>? |  yes  |  |
 
 ---
 
@@ -12753,25 +10486,6 @@ Sucessfully Created the Template Url.
 
  
  
- #### [PaymentInfoData](#PaymentInfoData)
-
- | Properties | Type | Nullable | Description |
- | ---------- | ---- | -------- | ----------- |
- | meta | HashMap<String,Any>? |  yes  |  |
- | mode | String? |  yes  |  |
- | name | String? |  yes  |  |
- | amount | Double? |  yes  |  |
- | collected | Boolean? |  yes  |  |
- | refundBy | String? |  yes  |  |
- | collectBy | String? |  yes  |  |
- | displayName | String? |  yes  |  |
- | merchantTransactionId | String? |  yes  |  |
-
----
-
-
- 
- 
  #### [OrderData](#OrderData)
 
  | Properties | Type | Nullable | Description |
@@ -12783,7 +10497,7 @@ Sucessfully Created the Template Url.
  | fyndOrderId | String |  no  |  |
  | prices | [Prices](#Prices)? |  yes  |  |
  | paymentMethods | HashMap<String,Any>? |  yes  |  |
- | paymentInfo | ArrayList<[PaymentInfoData](#PaymentInfoData)>? |  yes  |  |
+ | paymentInfo | ArrayList<HashMap<String,Any>>? |  yes  |  |
 
 ---
 
@@ -12956,99 +10670,6 @@ Sucessfully Created the Template Url.
 
  
  
- #### [FilterOptions](#FilterOptions)
-
- | Properties | Type | Nullable | Description |
- | ---------- | ---- | -------- | ----------- |
- | label | String |  no  |  |
- | value | String |  no  |  |
- | name | String? |  yes  |  |
-
----
-
-
- 
- 
- #### [FiltersList](#FiltersList)
-
- | Properties | Type | Nullable | Description |
- | ---------- | ---- | -------- | ----------- |
- | label | String |  no  |  |
- | value | String |  no  |  |
- | filterType | String |  no  |  |
- | type | String |  no  |  |
- | placeholderText | String? |  yes  |  |
- | required | Boolean? |  yes  |  |
- | options | ArrayList<[FilterOptions](#FilterOptions)> |  no  |  |
-
----
-
-
- 
- 
- #### [GlobalFiltersResponse](#GlobalFiltersResponse)
-
- | Properties | Type | Nullable | Description |
- | ---------- | ---- | -------- | ----------- |
- | filters | ArrayList<[FiltersList](#FiltersList)> |  no  |  |
- | companyId | Int |  no  |  |
- | requestSource | String? |  yes  |  |
- | showIn | String |  no  |  |
-
----
-
-
- 
- 
- #### [ViewDetails](#ViewDetails)
-
- | Properties | Type | Nullable | Description |
- | ---------- | ---- | -------- | ----------- |
- | id | String? |  yes  |  |
- | slug | String? |  yes  |  |
- | text | String? |  yes  |  |
- | filters | ArrayList<[FiltersList](#FiltersList)>? |  yes  |  |
-
----
-
-
- 
- 
- #### [ParentViews](#ParentViews)
-
- | Properties | Type | Nullable | Description |
- | ---------- | ---- | -------- | ----------- |
- | views | ArrayList<[ViewDetails](#ViewDetails)>? |  yes  |  |
- | parentSlug | String? |  yes  |  |
- | parentText | String? |  yes  |  |
-
----
-
-
- 
- 
- #### [UserViewsResponse](#UserViewsResponse)
-
- | Properties | Type | Nullable | Description |
- | ---------- | ---- | -------- | ----------- |
- | parentViews | ArrayList<[ParentViews](#ParentViews)>? |  yes  |  |
-
----
-
-
- 
- 
- #### [CreateUpdateDeleteResponse](#CreateUpdateDeleteResponse)
-
- | Properties | Type | Nullable | Description |
- | ---------- | ---- | -------- | ----------- |
- | message | String? |  yes  |  |
-
----
-
-
- 
- 
  #### [FiltersResponse](#FiltersResponse)
 
  | Properties | Type | Nullable | Description |
@@ -13101,6 +10722,20 @@ Sucessfully Created the Template Url.
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
  | templateXSlug | ArrayList<[BulkActionTemplate](#BulkActionTemplate)>? |  yes  | Allowed bulk action template slugs |
+
+---
+
+
+ 
+ 
+ #### [Reason](#Reason)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | qcType | ArrayList<String>? |  yes  |  |
+ | id | Int? |  yes  |  |
+ | questionSet | ArrayList<[QuestionSet](#QuestionSet)>? |  yes  |  |
+ | displayName | String? |  yes  |  |
 
 ---
 
@@ -13679,6 +11314,18 @@ Sucessfully Created the Template Url.
  | ---------- | ---- | -------- | ----------- |
  | fileName | String? |  yes  |  |
  | url | String? |  yes  |  |
+
+---
+
+
+ 
+ 
+ #### [Error](#Error)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | message | String? |  yes  |  |
+ | success | Boolean? |  yes  |  |
 
 ---
 

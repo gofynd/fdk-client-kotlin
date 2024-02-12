@@ -19,7 +19,6 @@ Default
 * [cancelJobByName](#canceljobbyname)
 * [getDeliveryReports](#getdeliveryreports)
 * [fetchAllEventConfigurations](#fetchalleventconfigurations)
-* [registerSubscriberToEventV2](#registersubscribertoeventv2)
 * [registerSubscriberToEvent](#registersubscribertoevent)
 * [getSubscribersByCompany](#getsubscribersbycompany)
 * [updateSubscriberConfig](#updatesubscriberconfig)
@@ -869,95 +868,6 @@ Successfully received ping for the provided webhook url.
 ---
 
 
-### registerSubscriberToEventV2
-Register Subscriber.
-
-
-
-
-```kotlin
-platformClient.webhook.registerSubscriberToEventV2(body: body).safeAwait{ response, error->
-    response?.let{
-      // Use response
-    } ->
-    error?.let{
-      
-    } 
-}
-```
-
-
-
-
-
-| Argument  |  Type  | Required | Description |
-| --------- | -----  | -------- | ----------- |
-| body | [SubscriberConfigRequestV2](#SubscriberConfigRequestV2) | yes | Request body |
-
-
-Register Subscriber.
-
-
-*Returned Response:*
-
-
-
-
-[SubscriberConfigResponse](#SubscriberConfigResponse)
-
-Success
-
-
-
-
-<details>
-<summary><i>&nbsp; Examples:</i></summary>
-
-
-<details>
-<summary><i>&nbsp; success</i></summary>
-
-```json
-{
-  "value": {
-    "name": "xyz webhook",
-    "provider": "kafka",
-    "webhook_url": "https://xyz.requestcatcher.com/test",
-    "association": {
-      "company_id": 1,
-      "extension_id": "64affd97cbddb85348ca8f93",
-      "application_id": [
-        "63a0490757475baff6154585",
-        "63a42b512df5d4731c5eb601"
-      ]
-    },
-    "custom_headers": {},
-    "status": "active",
-    "email_id": "axyz@gofynd.com",
-    "auth_meta": {},
-    "event_id": [
-      10,
-      11,
-      17
-    ]
-  }
-}
-```
-</details>
-
-</details>
-
-
-
-
-
-
-
-
-
----
-
-
 ### registerSubscriberToEvent
 Register Subscriber.
 
@@ -1316,7 +1226,6 @@ Success
   "value": {
     "id": 1,
     "name": "praveen's webhook",
-    "provider": "kafka",
     "webhook_url": "https://webhook.site/67493d35-6468-4c0a-8226-9a50954eb4c3",
     "association": {
       "company_id": 1,
@@ -1922,7 +1831,6 @@ Success
  | id | Int? |  yes  |  |
  | modifiedBy | String? |  yes  |  |
  | name | String? |  yes  |  |
- | provider | String? |  yes  |  |
  | webhookUrl | String? |  yes  |  |
  | association | [Association](#Association)? |  yes  |  |
  | customHeaders | HashMap<String,Any>? |  yes  |  |
@@ -1933,38 +1841,6 @@ Success
  | type | String? |  yes  |  |
  | authMeta | [AuthMeta](#AuthMeta)? |  yes  |  |
  | eventConfigs | ArrayList<[EventConfig](#EventConfig)>? |  yes  |  |
-
----
-
-
- 
- 
- #### [Events](#Events)
-
- | Properties | Type | Nullable | Description |
- | ---------- | ---- | -------- | ----------- |
- | slug | String? |  yes  |  |
- | topic | String? |  yes  |  |
-
----
-
-
- 
- 
- #### [SubscriberConfigRequestV2](#SubscriberConfigRequestV2)
-
- | Properties | Type | Nullable | Description |
- | ---------- | ---- | -------- | ----------- |
- | id | Int? |  yes  |  |
- | name | String? |  yes  |  |
- | webhookUrl | String? |  yes  |  |
- | provider | String? |  yes  |  |
- | association | [Association](#Association)? |  yes  |  |
- | customHeaders | HashMap<String,Any>? |  yes  |  |
- | status | String? |  yes  |  |
- | emailId | String? |  yes  |  |
- | authMeta | [AuthMeta](#AuthMeta)? |  yes  |  |
- | events | ArrayList<[Events](#Events)>? |  yes  |  |
 
 ---
 
@@ -1998,7 +1874,6 @@ Success
  | modifiedBy | String? |  yes  |  |
  | name | String? |  yes  |  |
  | webhookUrl | String? |  yes  |  |
- | provider | String? |  yes  |  |
  | association | [Association](#Association)? |  yes  |  |
  | customHeaders | HashMap<String,Any>? |  yes  |  |
  | status | [SubscriberStatus](#SubscriberStatus)? |  yes  |  |

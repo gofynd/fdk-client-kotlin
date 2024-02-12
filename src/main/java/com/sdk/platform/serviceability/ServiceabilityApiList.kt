@@ -9,7 +9,7 @@ import com.sdk.platform.*
 interface ServiceabilityApiList {
     
     @GET ("/service/platform/logistics/v2.0/company/{company_id}/zones")
-    suspend fun getZones(@Path("company_id") companyId: String, @Query("page_no") pageNo: Int?, @Query("page_size") pageSize: Int?, @Query("is_active") isActive: Boolean?, @Query("channel_id") channelId: String?, @Query("q") q: String?, @Query("country") country: String?, @Query("state") state: String?, @Query("city") city: String?, @Query("pincode") pincode: String?, @Query("sector") sector: String?)
+    suspend fun getZones(@Path("company_id") companyId: String, @Query("page_no") pageNo: Int?, @Query("page_size") pageSize: Int?, @Query("is_active") isActive: Boolean?, @Query("channel_id") channelId: String?, @Query("q") q: String?, @Query("country_iso_code") countryIsoCode: String?, @Query("state") state: String?, @Query("city") city: String?, @Query("pincode") pincode: String?, @Query("sector") sector: String?)
     : Response<ListViewResponse>
     
     @POST ("/service/platform/logistics/v2.0/company/{company_id}/zones")
@@ -27,10 +27,6 @@ interface ServiceabilityApiList {
     @GET ("/service/platform/logistics/v1.0/company/{company_id}/logistics/stores")
     suspend fun getAllStores(@Path("company_id") companyId: String)
     : Response<GetStoresViewResponse>
-    
-    @POST ("/service/platform/logistics/v1.0/company/{company_id}/reassign")
-    suspend fun getOptimalLocations(@Path("company_id") companyId: String,@Body body: ReAssignStoreRequest)
-    : Response<ReAssignStoreResponse>
     
     @POST ("/service/platform/logistics/v1.0/company/{company_id}/application/{application_id}/pincode-mop-update")
     suspend fun updatePincodeMopView(@Path("company_id") companyId: String, @Path("application_id") applicationId: String,@Body body: PincodeMopData)
@@ -53,7 +49,7 @@ interface ServiceabilityApiList {
     : Response<CourierAccount>
     
     @GET ("/service/platform/logistics/v1.0/company/{company_id}/courier-partner/account")
-    suspend fun getCourierPartnerAccounts(@Path("company_id") companyId: String, @Query("page_no") pageNo: Int?, @Query("page_size") pageSize: Int?, @Query("stage") stage: String?, @Query("payment_mode") paymentMode: String?, @Query("transport_type") transportType: String?, @Query("account_ids") accountIds: ArrayList<String>?)
+    suspend fun getCourierPartnerAccounts(@Path("company_id") companyId: String, @Query("page_no") pageNo: Int?, @Query("page_size") pageSize: Int?, @Query("stage") stage: String?, @Query("payment_mode") paymentMode: String?, @Query("transport_type") transportType: String?)
     : Response<CompanyCourierPartnerAccountListResponse>
     
     @PUT ("/service/platform/logistics/v1.0/company/{company_id}/courier-partner/account/{account_id}")
@@ -95,10 +91,6 @@ interface ServiceabilityApiList {
     @GET ("/service/platform/logistics/v1.0/company/{company_id}/application/{application_id}/configuration")
     suspend fun getApplicationConfiguration(@Path("company_id") companyId: String, @Path("application_id") applicationId: String)
     : Response<ApplicationConfig>
-    
-    @PATCH ("/service/platform/logistics/v1.0/company/{company_id}/application/{application_id}/configuration")
-    suspend fun patchApplicationConfiguration(@Path("company_id") companyId: String, @Path("application_id") applicationId: String,@Body body: ApplicationConfigPatchRequest)
-    : Response<ApplicationConfigPatchResponse>
     
     @POST ("/service/platform/logistics/v1.0/company/{company_id}/courier-partner/{extension_id}/scheme/{scheme_id}/tat")
     suspend fun bulkTat(@Path("company_id") companyId: String, @Path("extension_id") extensionId: String, @Path("scheme_id") schemeId: String,@Body body: BulkRegionJobSerializer)
@@ -195,5 +187,9 @@ interface ServiceabilityApiList {
     @PUT ("/service/platform/logistics/v1.0/company/{company_id}/application/{application_id}/courier-partner/rules/priority")
     suspend fun updateCourierPartnerRulePriority(@Path("company_id") companyId: String, @Path("application_id") applicationId: String,@Body body: RulePriorityRequest)
     : Response<RulePriorityResponse>
+    
+    @POST ("/service/platform/logistics/v1.0/company/{company_id}/optimal-locations")
+    suspend fun getOptimalLocations(@Path("company_id") companyId: String,@Body body: OptimlLocationsRequestSchema)
+    : Response<OptimalLocationsResponse>
     
 }

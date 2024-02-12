@@ -1122,14 +1122,9 @@ data class Bags(
     var sellerIdentifier: String?=null,
     
     @SerializedName("current_status")
-    var currentStatus: CurrentStatus?=null,
-    
-    @SerializedName("article")
-    var article: Article?=null
+    var currentStatus: CurrentStatus?=null
     
 ): Parcelable {
-    
-    
     
     
     
@@ -1189,28 +1184,6 @@ data class FulfillingCompany(
 ): Parcelable {
     
     
-    
-    
-    
-    
-    
-}
-
-
-
-             
-/*
-    Model: Article
-*/
-@Parcelize
-data class Article(
-    
-    
-    
-    @SerializedName("tags")
-    var tags: ArrayList<String>?=null
-    
-): Parcelable {
     
     
     
@@ -1473,14 +1446,9 @@ data class Shipments(
     var returnMeta: @RawValue HashMap<String,Any>?=null,
     
     @SerializedName("delivery_date")
-    var deliveryDate: String?=null,
-    
-    @SerializedName("order")
-    var order: OrderRequest?=null
+    var deliveryDate: String?=null
     
 ): Parcelable {
-    
-    
     
     
     
@@ -2655,28 +2623,6 @@ data class StatuesRequest(
     
     
     
-    
-    
-    
-    
-    
-}
-
-
-
-             
-/*
-    Model: OrderRequest
-*/
-@Parcelize
-data class OrderRequest(
-    
-    
-    
-    @SerializedName("meta")
-    var meta: @RawValue HashMap<String,Any>?=null
-    
-): Parcelable {
     
     
     

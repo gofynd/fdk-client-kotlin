@@ -14,102 +14,6 @@ import com.google.gson.annotations.SerializedName
 
              
 /*
-    Model: GeneralConfigResponse
-*/
-@Parcelize
-data class GeneralConfigResponse(
-    
-    
-    
-    @SerializedName("support_communication")
-    var supportCommunication: ArrayList<SupportCommunicationSchema>?=null,
-    
-    @SerializedName("type")
-    var type: String?=null,
-    
-    @SerializedName("integration")
-    var integration: GeneralConfigIntegrationSchema?=null,
-    
-    @SerializedName("available_integration")
-    var availableIntegration: ArrayList<String>?=null
-    
-): Parcelable {
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-}
-
-
-
-             
-/*
-    Model: SupportCommunicationSchema
-*/
-@Parcelize
-data class SupportCommunicationSchema(
-    
-    
-    
-    @SerializedName("type")
-    var type: String?=null,
-    
-    @SerializedName("title")
-    var title: String?=null,
-    
-    @SerializedName("description")
-    var description: String?=null,
-    
-    @SerializedName("enabled")
-    var enabled: Boolean?=null
-    
-): Parcelable {
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-}
-
-
-
-             
-/*
-    Model: GeneralConfigIntegrationSchema
-*/
-@Parcelize
-data class GeneralConfigIntegrationSchema(
-    
-    
-    
-    @SerializedName("type")
-    var type: String?=null
-    
-): Parcelable {
-    
-    
-    
-    
-    
-}
-
-
-
-             
-/*
     Model: TicketList
 */
 @Parcelize
@@ -1380,7 +1284,7 @@ data class TicketCategory(
     var key: String?=null,
     
     @SerializedName("sub_categories")
-    var subCategories: ArrayList<TicketCategory>?=null,
+    var subCategories: TicketCategory?=null,
     
     @SerializedName("group_id")
     var groupId: Double?=null,

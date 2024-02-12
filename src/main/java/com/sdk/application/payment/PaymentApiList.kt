@@ -66,7 +66,7 @@ interface PaymentApiList {
     
     
     @POST 
-    suspend fun walletLinkInitate(@Url url1: String?   ,@Body body: WalletLinkRequestSchema)
+    suspend fun walletLinkInitiate(@Url url1: String?   ,@Body body: WalletLinkRequestSchema)
     : Response<WalletResponseSchema>
     
     
@@ -238,35 +238,5 @@ interface PaymentApiList {
     @POST 
     suspend fun createPaymentOrder(@Url url1: String?   ,@Body body: PaymentOrderRequest)
     : Response<PaymentOrderResponse>
-    
-    
-    @DELETE 
-    suspend fun deleteBeneficiaryDetails(@Url url1: String?    )
-    : Response<DeleteRefundAccountResponse>
-    
-    
-    @GET 
-    suspend fun getRefundOptions(@Url url1: String?    ,    @Query("configuration") configuration: String, @Query("product_type") productType: String?, @Query("amount") amount: String?)
-    : Response<RefundOptionResponse>
-    
-    
-    @POST 
-    suspend fun setRefundOptionforShipment(@Url url1: String?   ,@Body body: ShipmentRefundRequest)
-    : Response<ShipmentRefundResponse>
-    
-    
-    @GET 
-    suspend fun getSelectedRefundOption(@Url url1: String?    ,   @Query("shipment_id") shipmentId: String, @Query("order_id") orderId: String)
-    : Response<SelectedRefundOptionResponse>
-    
-    
-    @GET 
-    suspend fun getUserBeneficiariesDetailV2(@Url url1: String?    ,    @Query("order_id") orderId: String?, @Query("shipment_id") shipmentId: String?, @Query("mop") mop: String?)
-    : Response<OrderBeneficiaryResponseSchemaV2>
-    
-    
-    @POST 
-    suspend fun validateBeneficiaryAddress(@Url url1: String?   ,@Body body: ValidateValidateAddressRequest)
-    : Response<ValidateValidateAddressResponse>
     
 }

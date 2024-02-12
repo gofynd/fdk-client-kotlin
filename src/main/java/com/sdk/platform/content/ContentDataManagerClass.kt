@@ -144,12 +144,12 @@ class ContentDataManagerClass(val config: PlatformConfig, val unauthorizedAction
     }
     
     
-    suspend fun getCustomFieldDefinitions(pageNo: String, pageSize: String, resources: String?=null, types: String?=null, search: String?=null)
+    suspend fun getCustomFieldDefinitions(pageNo: String, pageSize: String, resource: String?=null, type: String?=null, search: String?=null)
     : Response<CustomFieldDefinitionsSchema>? {
         
         return if (config.oauthClient.isAccessTokenValid()) {
             contentApiList?.getCustomFieldDefinitions(
-        companyId = config.companyId, pageNo = pageNo, pageSize = pageSize, resources = resources, types = types, search = search )
+        companyId = config.companyId, pageNo = pageNo, pageSize = pageSize, resource = resource, type = type, search = search )
         } else {
             null
         } 
@@ -1604,10 +1604,10 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     }
     
     
-    suspend fun getAppCustomFieldDefinitions(pageNo: String, pageSize: String, resources: String?=null, types: String?=null, search: String?=null)
+    suspend fun getAppCustomFieldDefinitions(pageNo: String, pageSize: String, resource: String?=null, type: String?=null, search: String?=null)
     : Response<CustomFieldDefinitionsSchema>? {
         return if (config.oauthClient.isAccessTokenValid()) {
-                contentApiList?.getAppCustomFieldDefinitions(companyId = config.companyId , applicationId = applicationId , pageNo = pageNo, pageSize = pageSize, resources = resources, types = types, search = search )
+                contentApiList?.getAppCustomFieldDefinitions(companyId = config.companyId , applicationId = applicationId , pageNo = pageNo, pageSize = pageSize, resource = resource, type = type, search = search )
         } else {
             null
         }

@@ -818,7 +818,7 @@ data class TicketCategory(
     var key: String?=null,
     
     @SerializedName("sub_categories")
-    var subCategories: ArrayList<TicketCategory>?=null,
+    var subCategories: TicketCategory?=null,
     
     @SerializedName("group_id")
     var groupId: Double?=null,

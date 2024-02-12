@@ -1467,7 +1467,7 @@ data class InvoiceListingResponseItems(
     
     
     @SerializedName("amount")
-    var amount: Double?=null,
+    var amount: String?=null,
     
     @SerializedName("company")
     var company: String?=null,

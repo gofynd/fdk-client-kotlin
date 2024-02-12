@@ -198,8 +198,8 @@ data class EditProfileRequestSchema(
     
     
     
-    @SerializedName("ci")
-    var ci: Boolean?=null,
+    @SerializedName("encrypt_otp")
+    var encryptOtp: Boolean?=null,
     
     @SerializedName("first_name")
     var firstName: String?=null,
@@ -494,8 +494,8 @@ data class SendMobileOtpRequestSchema(
     
     
     
-    @SerializedName("ci")
-    var ci: Boolean?=null,
+    @SerializedName("encrypt_otp")
+    var encryptOtp: Boolean?=null,
     
     @SerializedName("mobile")
     var mobile: String?=null,
@@ -814,8 +814,8 @@ data class SendOtpRequestSchema(
     
     
     
-    @SerializedName("ci")
-    var ci: Boolean?=null,
+    @SerializedName("encrypt_otp")
+    var encryptOtp: Boolean?=null,
     
     @SerializedName("country_code")
     var countryCode: String?=null,

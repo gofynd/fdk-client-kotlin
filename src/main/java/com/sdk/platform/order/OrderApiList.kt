@@ -12,26 +12,6 @@ interface OrderApiList {
     suspend fun invalidateShipmentCache(@Path("company_id") companyId: String,@Body body: InvalidateShipmentCachePayload)
     : Response<InvalidateShipmentCacheResponse>
     
-    @POST ("/service/platform/order-manage/v1.0/company/{company_id}/refund/states/config")
-    suspend fun postRefundStateConfiguration(@Path("company_id") companyId: String, @Query("app_id") appId: String,@Body body: PostRefundStateConfiguration)
-    : Response<PostRefundStateConfigurationResponse>
-    
-    @GET ("/service/platform/order-manage/v1.0/company/{company_id}/refund/states/config")
-    suspend fun getRefundStateConfiguration(@Path("company_id") companyId: String, @Query("app_id") appId: String)
-    : Response<GetRefundStateConfigurationResponse>
-    
-    @GET ("/service/platform/order-manage/v1.0/company/{company_id}/refund/states")
-    suspend fun getRefundEnableStateList(@Path("company_id") companyId: String)
-    : Response<GetRefundStates>
-    
-    @POST ("/service/platform/order-manage/v1.0/company/{company_id}/refund/config")
-    suspend fun postRefundConfiguration(@Path("company_id") companyId: String, @Query("app_id") appId: String,@Body body: RefundStateConfigurationManualSchema)
-    : Response<RefundStateConfigurationManualSchemaResponse>
-    
-    @GET ("/service/platform/order-manage/v1.0/company/{company_id}/refund/config")
-    suspend fun getRefundConfiguration(@Path("company_id") companyId: String, @Query("app_id") appId: String)
-    : Response<RefundStateConfigurationManualSchemaResponse>
-    
     @POST ("/service/platform/order-manage/v1.0/company/{company_id}/store/reassign-internal")
     suspend fun reassignLocation(@Path("company_id") companyId: String,@Body body: StoreReassign)
     : Response<StoreReassignResponse>
@@ -188,45 +168,13 @@ interface OrderApiList {
     suspend fun failedOrderLogs(@Path("company_id") companyId: String, @Query("application_id") applicationId: String?, @Query("page_no") pageNo: Int?, @Query("page_size") pageSize: Int?, @Query("search_type") searchType: String?, @Query("search_value") searchValue: String?)
     : Response<FailedOrderLogs>
     
+    @POST ("/service/platform/order-manage/v1.0/company/{company_id}/{invoice_type}/id/generate")
+    suspend fun generateInvoiceID(@Path("company_id") companyId: String, @Path("invoice_type") invoiceType: String,@Body body: GenerateInvoiceIDRequest)
+    : Response<GenerateInvoiceIDResponse>
+    
     @GET ("/service/platform/order-manage/v1.0/company/{company_id}/orders/failed/logs/{log_id}")
     suspend fun failedOrderLogDetails(@Path("company_id") companyId: String, @Path("log_id") logId: String)
     : Response<FailedOrderLogDetails>
-    
-    @GET ("/service/platform/order-manage/v1.0/company/{company_id}/application/{application_id}/question/")
-    suspend fun getQuestions(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Query("page_no") pageNo: Int?, @Query("page_size") pageSize: Int?, @Query("q") q: String?, @Query("is_active") isActive: String?)
-    : Response<HashMap<String,Any>>
-    
-    @GET ("/service/platform/order-manage/v1.0/company/{company_id}/application/{application_id}/rule-lane-config")
-    suspend fun getRuleLaneConfig(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Query("search_value") searchValue: String?)
-    : Response<HashMap<String,Any>>
-    
-    @POST ("/service/platform/order-manage/v1.0/company/{company_id}/application/{application_id}/rule")
-    suspend fun createRule(@Path("company_id") companyId: String, @Path("application_id") applicationId: String,@Body body: RuleRequest)
-    : Response<CreateRuleResponse>
-    
-    @GET ("/service/platform/order-manage/v1.0/company/{company_id}/application/{application_id}/rule/{rule_id}")
-    suspend fun getRuleById(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Path("rule_id") ruleId: String)
-    : Response<RuleResponse>
-    
-    @PUT ("/service/platform/order-manage/v1.0/company/{company_id}/application/{application_id}/rule/{rule_id}")
-    suspend fun updateRule(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Path("rule_id") ruleId: String,@Body body: RuleUpdateRequest)
-    : Response<RuleUpdateResponse>
-    
-    @DELETE ("/service/platform/order-manage/v1.0/company/{company_id}/application/{application_id}/rule/{rule_id}")
-    suspend fun deleteRule(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Path("rule_id") ruleId: String)
-    : Response<DeleteRuleResponse>
-    
-    @POST ("/service/platform/order-manage/v1.0/company/{company_id}/application/{application_id}/rule-position/")
-    suspend fun updateRulePosition(@Path("company_id") companyId: String, @Path("application_id") applicationId: String,@Body body: UpdateRulePositionRequest)
-    : Response<UpdateRulePositionResponse>
-    
-    @GET ("/service/platform/order-manage/v1.0/company/{company_id}/application/{application_id}/rule-parameters/")
-    suspend fun getRuleParameters(@Path("company_id") companyId: String, @Path("application_id") applicationId: String)
-    : Response<RuleParametersResponse>
-    
-    @POST ("/service/platform/order-manage/v1.0/company/{company_id}/application/{application_id}/rule_list")
-    suspend fun getRuleList(@Path("company_id") companyId: String, @Path("application_id") applicationId: String,@Body body: RuleListRequest)
-    : Response<RuleListResponse>
     
     @GET ("/service/platform/order/v1.0/company/{company_id}/application/{application_id}/orders/shipments/{shipment_id}/line_number/{line_number}/reasons")
     suspend fun getShipmentBagReasons(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Path("shipment_id") shipmentId: String, @Path("line_number") lineNumber: String)
@@ -259,26 +207,6 @@ interface OrderApiList {
     @GET ("/service/platform/order/v1.0/company/{company_id}/application/{application_id}/orders/shipments/{shipment_id}/track")
     suspend fun trackShipmentPlatform(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Path("shipment_id") shipmentId: String)
     : Response<PlatformShipmentTrack>
-    
-    @GET ("/service/platform/order/v1.0/company/{company_id}/views")
-    suspend fun getuserviews(@Path("company_id") companyId: String)
-    : Response<UserViewsResponse>
-    
-    @POST ("/service/platform/order/v1.0/company/{company_id}/views")
-    suspend fun postuserviews(@Path("company_id") companyId: String,@Body body: UserViewsResponse)
-    : Response<CreateUpdateDeleteResponse>
-    
-    @PUT ("/service/platform/order/v1.0/company/{company_id}/views")
-    suspend fun updateuserviews(@Path("company_id") companyId: String,@Body body: UserViewsResponse)
-    : Response<CreateUpdateDeleteResponse>
-    
-    @DELETE ("/service/platform/order/v1.0/company/{company_id}/views/{id}")
-    suspend fun deleteuserviews(@Path("company_id") companyId: String, @Path("id") id: String)
-    : Response<CreateUpdateDeleteResponse>
-    
-    @GET ("/service/platform/order/v1.0/company/{company_id}/filters")
-    suspend fun globalfilters(@Path("company_id") companyId: String, @Query("show_in") showIn: String, @Query("request_source") requestSource: String)
-    : Response<GlobalFiltersResponse>
     
     @GET ("/service/platform/order/v1.0/company/{company_id}/filter-listing")
     suspend fun getfilters(@Path("company_id") companyId: String, @Query("view") view: String, @Query("group_entity") groupEntity: String?)

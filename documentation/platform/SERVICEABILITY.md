@@ -13,7 +13,6 @@ Default
 * [updateZoneById](#updatezonebyid)
 * [getZoneById](#getzonebyid)
 * [getAllStores](#getallstores)
-* [getOptimalLocations](#getoptimallocations)
 * [updatePincodeMopView](#updatepincodemopview)
 * [updatePincodeBulkView](#updatepincodebulkview)
 * [updatePincodeCoDListing](#updatepincodecodlisting)
@@ -30,7 +29,6 @@ Default
 * [getCompanyConfiguration](#getcompanyconfiguration)
 * [updateApplicationConfiguration](#updateapplicationconfiguration)
 * [getApplicationConfiguration](#getapplicationconfiguration)
-* [patchApplicationConfiguration](#patchapplicationconfiguration)
 * [bulkTat](#bulktat)
 * [getBulkTat](#getbulktat)
 * [patchApplicationServiceabilitySelfShipment](#patchapplicationserviceabilityselfshipment)
@@ -55,6 +53,7 @@ Default
 * [updatePackageMaterials](#updatepackagematerials)
 * [getPackageMaterials](#getpackagematerials)
 * [updateCourierPartnerRulePriority](#updatecourierpartnerrulepriority)
+* [getOptimalLocations](#getoptimallocations)
 
 
 
@@ -70,7 +69,7 @@ Shows zones defined at the company level
 
 
 ```kotlin
-platformClient.serviceability.getZones(pageNo: pageNo, pageSize: pageSize, isActive: isActive, channelId: channelId, q: q, country: country, state: state, city: city, pincode: pincode, sector: sector).safeAwait{ response, error->
+platformClient.serviceability.getZones(pageNo: pageNo, pageSize: pageSize, isActive: isActive, channelId: channelId, q: q, countryIsoCode: countryIsoCode, state: state, city: city, pincode: pincode, sector: sector).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -91,7 +90,7 @@ platformClient.serviceability.getZones(pageNo: pageNo, pageSize: pageSize, isAct
 | isActive | Boolean? | no | Status of Zone (either active or inactive) |   
 | channelId | String? | no | Zones filtered by an application |   
 | q | String? | no | search with name as a free text |   
-| country | String? | no | ISO2 code of the country |   
+| countryIsoCode | String? | no | ISO2 code of the country |   
 | state | String? | no | State name |   
 | city | String? | no | City name |   
 | pincode | String? | no | Pincode value to search zones |   
@@ -456,65 +455,6 @@ Response status_code
 ---
 
 
-### getOptimalLocations
-Get serviceable store of the item
-
-
-
-
-```kotlin
-platformClient.serviceability.getOptimalLocations(body: body).safeAwait{ response, error->
-    response?.let{
-      // Use response
-    } ->
-    error?.let{
-      
-    } 
-}
-```
-
-
-
-
-
-| Argument  |  Type  | Required | Description |
-| --------- | -----  | -------- | ----------- |
-| body | [ReAssignStoreRequest](#ReAssignStoreRequest) | yes | Request body |
-
-
-This API returns serviceable store of the item.
-
-*Returned Response:*
-
-
-
-
-[ReAssignStoreResponse](#ReAssignStoreResponse)
-
-Response status_code
-
-
-
-
-<details>
-<summary><i>&nbsp; Example:</i></summary>
-
-```json
-
-```
-</details>
-
-
-
-
-
-
-
-
-
----
-
-
 ### updatePincodeMopView
 PincodeView update of MOP.
 
@@ -820,7 +760,7 @@ Getting Courier Account list of a company.
 
 
 ```kotlin
-platformClient.serviceability.getCourierPartnerAccounts(pageNo: pageNo, pageSize: pageSize, stage: stage, paymentMode: paymentMode, transportType: transportType, accountIds: accountIds).safeAwait{ response, error->
+platformClient.serviceability.getCourierPartnerAccounts(pageNo: pageNo, pageSize: pageSize, stage: stage, paymentMode: paymentMode, transportType: transportType).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -840,8 +780,7 @@ platformClient.serviceability.getCourierPartnerAccounts(pageNo: pageNo, pageSize
 | pageSize | Int? | no | determines the items to be displayed in a page |   
 | stage | String? | no | stage of the account. enabled/disabled |   
 | paymentMode | String? | no | Filters dp accounts based on payment mode |   
-| transportType | String? | no | Filters dp accounts based on transport_type |   
-| accountIds | ArrayList<String>? | no | Filters dp accounts based on their ids |  
+| transportType | String? | no | Filters dp accounts based on transport_type |  
 
 
 
@@ -1413,7 +1352,7 @@ Response status_code
 
 
 ### getApplicationConfiguration
-Get All application configs
+Get All Courier Rules applied to application
 
 
 
@@ -1434,7 +1373,7 @@ platformClient.application("<APPLICATION_ID>").serviceability.getApplicationConf
 
 
 
-This API returns all config applied to an application
+This API returns all the Courier Rules applied to an application
 
 *Returned Response:*
 
@@ -1449,160 +1388,11 @@ Response status_code
 
 
 <details>
-<summary><i>&nbsp; Examples:</i></summary>
-
-
-<details>
-<summary><i>&nbsp; ApplicationConfig</i></summary>
+<summary><i>&nbsp; Example:</i></summary>
 
 ```json
-{
-  "value": {
-    "application_id": "test_app",
-    "company_id": 1,
-    "rule_ids": [
-      "64b4337a0c607fbfbcd0156b",
-      "64b4337a0c607fbfbcd01564"
-    ],
-    "sort": [
-      "fastest"
-    ],
-    "zones": {
-      "serviceability_type": "zone-based",
-      "active_count": 0,
-      "total_count": 0
-    },
-    "buybox_config": {
-      "show_seller": true,
-      "enable_selection": true,
-      "is_seller_buybox_enabled": true
-    },
-    "buybox_rule_config": {
-      "store_type_priority": [
-        "FC",
-        "STORE"
-      ],
-      "store_tag_proiority": [
-        "store_tag_1",
-        "store_tag_2"
-      ],
-      "sort": [
-        "price",
-        "store_type",
-        "promise",
-        "store_creation_date",
-        "distance",
-        "store_tag"
-      ]
-    },
-    "promise_types": [
-      {
-        "display_name": "Standard Delivery",
-        "slug": "standard_delivery",
-        "description": "A standard promise type for general use",
-        "is_active": true,
-        "is_default": true
-      },
-      {
-        "display_name": "Express Delivery",
-        "slug": "express_delivery",
-        "description": "A express promise type for general use",
-        "is_active": true,
-        "is_default": false
-      }
-    ],
-    "promise_config": {
-      "store_attributes": {
-        "is_operational_timing_enabled": true,
-        "is_order_acceptance_timing_enabled": true,
-        "is_average_processing_time": true,
-        "is_holiday_enabled": true
-      },
-      "delivery_service_attributes": {
-        "is_pickup_cutoff_time_enabled": "true,",
-        "is_service_tat_enabled": true,
-        "is_holiday_enabled": true
-      },
-      "buffer_field": {
-        "unit": "hours",
-        "value": 10,
-        "enabled": true
-      }
-    }
-  }
-}
+
 ```
-</details>
-
-</details>
-
-
-
-
-
-
-
-
-
----
-
-
-### patchApplicationConfiguration
-To patch any config which can be applied to application.
-
-
-
-
-```kotlin
-platformClient.application("<APPLICATION_ID>").serviceability.patchApplicationConfiguration(body: body).safeAwait{ response, error->
-    response?.let{
-      // Use response
-    } ->
-    error?.let{
-      
-    } 
-}
-```
-
-
-
-
-
-| Argument  |  Type  | Required | Description |
-| --------- | -----  | -------- | ----------- |
-| body | [ApplicationConfigPatchRequest](#ApplicationConfigPatchRequest) | yes | Request body |
-
-
-Apply configs to application and for reference, refer to examples
-
-*Returned Response:*
-
-
-
-
-[ApplicationConfigPatchResponse](#ApplicationConfigPatchResponse)
-
-Response status_code
-
-
-
-
-<details>
-<summary><i>&nbsp; Examples:</i></summary>
-
-
-<details>
-<summary><i>&nbsp; ApplicationConfigPatchResponse</i></summary>
-
-```json
-{
-  "value": {
-    "success": true
-  }
-}
-```
-</details>
-
 </details>
 
 
@@ -3394,6 +3184,65 @@ Response status_code
 ---
 
 
+### getOptimalLocations
+Retrieve optimal locations
+
+
+
+
+```kotlin
+platformClient.serviceability.getOptimalLocations(body: body).safeAwait{ response, error->
+    response?.let{
+      // Use response
+    } ->
+    error?.let{
+      
+    } 
+}
+```
+
+
+
+
+
+| Argument  |  Type  | Required | Description |
+| --------- | -----  | -------- | ----------- |
+| body | [OptimlLocationsRequestSchema](#OptimlLocationsRequestSchema) | yes | Request body |
+
+
+Retrieve optimal locations based on the specific criteria
+
+*Returned Response:*
+
+
+
+
+[OptimalLocationsResponse](#OptimalLocationsResponse)
+
+Optimal Locations Success
+
+
+
+
+<details>
+<summary><i>&nbsp; Example:</i></summary>
+
+```json
+
+```
+</details>
+
+
+
+
+
+
+
+
+
+---
+
+
 
 
 ### Schemas
@@ -4161,35 +4010,6 @@ Response status_code
 
  
  
- #### [ReAssignStoreRequest](#ReAssignStoreRequest)
-
- | Properties | Type | Nullable | Description |
- | ---------- | ---- | -------- | ----------- |
- | toPincode | String |  no  |  |
- | identifier | String |  no  |  |
- | configuration | HashMap<String,Any> |  no  |  |
- | ignoredLocations | ArrayList<String> |  no  |  |
- | articles | ArrayList<HashMap<String,Any>> |  no  |  |
-
----
-
-
- 
- 
- #### [ReAssignStoreResponse](#ReAssignStoreResponse)
-
- | Properties | Type | Nullable | Description |
- | ---------- | ---- | -------- | ----------- |
- | toPincode | String |  no  |  |
- | success | Boolean |  no  |  |
- | error | HashMap<String,Any> |  no  |  |
- | articles | ArrayList<HashMap<String,Any>>? |  yes  |  |
-
----
-
-
- 
- 
  #### [PincodeMopData](#PincodeMopData)
 
  | Properties | Type | Nullable | Description |
@@ -4601,7 +4421,6 @@ Response status_code
  | cpList | ArrayList<[CourierPartnerList](#CourierPartnerList)>? |  yes  |  |
  | name | String |  no  |  |
  | conditions | [CourierPartnerRuleConditions](#CourierPartnerRuleConditions) |  no  |  |
- | manualPriority | ArrayList<String>? |  yes  |  |
  | sort | ArrayList<String> |  no  |  |
 
 ---
@@ -4657,139 +4476,13 @@ Response status_code
 
  
  
- #### [BuyboxConfig](#BuyboxConfig)
-
- | Properties | Type | Nullable | Description |
- | ---------- | ---- | -------- | ----------- |
- | showSeller | Boolean |  no  |  |
- | enableSelection | Boolean |  no  |  |
- | isSellerBuyboxEnabled | Boolean |  no  |  |
-
----
-
-
- 
- 
- #### [BuyboxRuleConfig](#BuyboxRuleConfig)
-
- | Properties | Type | Nullable | Description |
- | ---------- | ---- | -------- | ----------- |
- | storeTypePriority | ArrayList<String>? |  yes  |  |
- | storeTagPriority | ArrayList<String>? |  yes  |  |
- | sort | ArrayList<String>? |  yes  |  |
-
----
-
-
- 
- 
- #### [PromiseType](#PromiseType)
-
- | Properties | Type | Nullable | Description |
- | ---------- | ---- | -------- | ----------- |
- | displayName | String |  no  |  |
- | slug | String |  no  |  |
- | description | String |  no  |  |
- | isActive | Boolean |  no  |  |
- | isDefault | Boolean |  no  |  |
-
----
-
-
- 
- 
- #### [StorePromiseAttributeConfig](#StorePromiseAttributeConfig)
-
- | Properties | Type | Nullable | Description |
- | ---------- | ---- | -------- | ----------- |
- | isOperationalTimingEnabled | Boolean? |  yes  |  |
- | isOrderAcceptanceTimingEnabled | Boolean? |  yes  |  |
- | isAverageProcessingTime | Boolean? |  yes  |  |
- | isHolidayEnabled | Boolean? |  yes  |  |
-
----
-
-
- 
- 
- #### [DeliveryServiceAttributeConfig](#DeliveryServiceAttributeConfig)
-
- | Properties | Type | Nullable | Description |
- | ---------- | ---- | -------- | ----------- |
- | isPickupCutoffTimeEnabled | Boolean? |  yes  |  |
- | isServiceTatEnabled | Boolean? |  yes  |  |
- | isHolidayEnabled | Boolean? |  yes  |  |
-
----
-
-
- 
- 
- #### [BufferField](#BufferField)
-
- | Properties | Type | Nullable | Description |
- | ---------- | ---- | -------- | ----------- |
- | unit | String? |  yes  |  |
- | value | Int? |  yes  |  |
- | enabled | Boolean? |  yes  |  |
-
----
-
-
- 
- 
- #### [PromiseConfig](#PromiseConfig)
-
- | Properties | Type | Nullable | Description |
- | ---------- | ---- | -------- | ----------- |
- | storeAttributes | [StorePromiseAttributeConfig](#StorePromiseAttributeConfig)? |  yes  |  |
- | deliveryServiceAttributes | [DeliveryServiceAttributeConfig](#DeliveryServiceAttributeConfig)? |  yes  |  |
- | bufferField | [BufferField](#BufferField)? |  yes  |  |
-
----
-
-
- 
- 
  #### [ApplicationConfig](#ApplicationConfig)
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
  | ruleIds | ArrayList<String>? |  yes  |  |
  | sort | ArrayList<String>? |  yes  |  |
- | applicationId | String? |  yes  |  |
- | companyId | Int? |  yes  |  |
- | manualPriority | ArrayList<String>? |  yes  |  |
  | zones | [ZoneConfig](#ZoneConfig)? |  yes  |  |
- | buyboxConfig | [BuyboxConfig](#BuyboxConfig)? |  yes  |  |
- | buyboxRuleConfig | [BuyboxRuleConfig](#BuyboxRuleConfig)? |  yes  |  |
- | promiseTypes | ArrayList<[PromiseType](#PromiseType)>? |  yes  |  |
- | promiseConfig | [PromiseConfig](#PromiseConfig)? |  yes  |  |
-
----
-
-
- 
- 
- #### [ApplicationConfigPatchRequest](#ApplicationConfigPatchRequest)
-
- | Properties | Type | Nullable | Description |
- | ---------- | ---- | -------- | ----------- |
- | buyboxConfig | [BuyboxConfig](#BuyboxConfig)? |  yes  |  |
- | buyboxRuleConfig | [BuyboxRuleConfig](#BuyboxRuleConfig)? |  yes  |  |
- | promiseTypes | ArrayList<[PromiseType](#PromiseType)>? |  yes  |  |
- | promiseConfig | [PromiseConfig](#PromiseConfig)? |  yes  |  |
-
----
-
-
- 
- 
- #### [ApplicationConfigPatchResponse](#ApplicationConfigPatchResponse)
-
- | Properties | Type | Nullable | Description |
- | ---------- | ---- | -------- | ----------- |
- | success | Boolean? |  yes  |  |
 
 ---
 
@@ -4888,7 +4581,6 @@ Response status_code
  | tagBasedPriority | ArrayList<String>? |  yes  |  |
  | storePriority | ArrayList<[StorePrioritySchema](#StorePrioritySchema)>? |  yes  |  |
  | sort | ArrayList<String>? |  yes  |  |
- | manualPriority | ArrayList<String>? |  yes  |  |
 
 ---
 
@@ -4943,7 +4635,6 @@ Response status_code
  | tagBasedPriority | ArrayList<String>? |  yes  |  |
  | storePriority | ArrayList<[StorePrioritySchema](#StorePrioritySchema)>? |  yes  |  |
  | sort | ArrayList<String>? |  yes  |  |
- | manualPriority | ArrayList<String>? |  yes  |  |
  | conditions | [StoreRuleConditionSchema](#StoreRuleConditionSchema)? |  yes  |  |
  | isActive | Boolean? |  yes  |  |
 
@@ -4986,7 +4677,6 @@ Response status_code
  | typeBasedPriority | ArrayList<String>? |  yes  |  |
  | tagBasedPriority | ArrayList<String>? |  yes  |  |
  | storePriority | ArrayList<[StorePrioritySchema](#StorePrioritySchema)>? |  yes  |  |
- | manualPriority | ArrayList<String>? |  yes  |  |
  | sort | ArrayList<String>? |  yes  |  |
 
 ---
@@ -5005,7 +4695,6 @@ Response status_code
  | tagBasedPriority | ArrayList<String>? |  yes  |  |
  | storePriority | ArrayList<[StorePrioritySchema](#StorePrioritySchema)>? |  yes  |  |
  | sort | ArrayList<String>? |  yes  |  |
- | manualPriority | ArrayList<String>? |  yes  |  |
  | conditions | [StoreRuleConditionSchema](#StoreRuleConditionSchema)? |  yes  |  |
  | isActive | Boolean? |  yes  |  |
 
@@ -5025,7 +4714,6 @@ Response status_code
  | tagBasedPriority | ArrayList<String>? |  yes  |  |
  | storePriority | ArrayList<[StorePrioritySchema](#StorePrioritySchema)>? |  yes  |  |
  | sort | ArrayList<String>? |  yes  |  |
- | manualPriority | ArrayList<String>? |  yes  |  |
  | conditions | [StoreRuleConditionSchema](#StoreRuleConditionSchema)? |  yes  |  |
  | isActive | Boolean? |  yes  |  |
  | companyId | Int? |  yes  |  |
@@ -5331,6 +5019,128 @@ Response status_code
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
  | success | Boolean? |  yes  |  |
+
+---
+
+
+ 
+ 
+ #### [ArticleAssignment](#ArticleAssignment)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | level | String? |  yes  |  |
+ | strategy | String? |  yes  | The strategy parameter allows users to specify the desired approach or criteria for selecting optimal locations. |
+
+---
+
+
+ 
+ 
+ #### [ServiceabilityLocation](#ServiceabilityLocation)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | longitude | String |  no  | The longitude of the serviceability location. |
+ | latitude | String |  no  | The latitude of the serviceability location. |
+
+---
+
+
+ 
+ 
+ #### [LocationDetailsServiceability](#LocationDetailsServiceability)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | pincode | String? |  yes  | The pincode of the serviceability location. |
+ | sector | String? |  yes  | The sector of the serviceability location. |
+ | state | String? |  yes  | The state of the serviceability location. |
+ | country | String |  no  | The country of the serviceability location. |
+ | city | String? |  yes  | The city of the serviceability location. |
+ | countryIsoCode | String |  no  | The ISO code of the country. |
+ | location | [ServiceabilityLocation](#ServiceabilityLocation)? |  yes  |  |
+
+---
+
+
+ 
+ 
+ #### [OptimalLocationsArticles](#OptimalLocationsArticles)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | itemId | Int |  no  |  |
+ | size | String |  no  |  |
+ | quantity | String |  no  |  |
+ | groupId | String? |  yes  |  |
+ | isPrimaryItem | Boolean? |  yes  |  |
+ | meta | HashMap<String,Any>? |  yes  |  |
+ | articleAssignment | [ArticleAssignment](#ArticleAssignment) |  no  |  |
+ | ignoreLocations | ArrayList<Int> |  no  |  |
+ | assignLocations | ArrayList<Int> |  no  |  |
+ | sellerId | Int? |  yes  |  |
+
+---
+
+
+ 
+ 
+ #### [OptimlLocationsRequestSchema](#OptimlLocationsRequestSchema)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | channelId | String |  no  |  |
+ | channelType | String |  no  |  |
+ | toServiceability | [LocationDetailsServiceability](#LocationDetailsServiceability) |  no  |  |
+ | article | [OptimalLocationsArticles](#OptimalLocationsArticles)? |  yes  |  |
+
+---
+
+
+ 
+ 
+ #### [OptimalLocationArticlesResponse](#OptimalLocationArticlesResponse)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | itemId | Int |  no  |  |
+ | size | String |  no  |  |
+ | quantity | Int |  no  |  |
+ | groupId | String? |  yes  |  |
+ | isPrimaryItem | Boolean? |  yes  |  |
+ | meta | HashMap<String,Any>? |  yes  |  |
+ | articleAssignment | [ArticleAssignment](#ArticleAssignment) |  no  |  |
+ | sellerId | Int? |  yes  |  |
+ | ignoreLocations | ArrayList<Int> |  no  |  |
+ | assignLocations | ArrayList<Int> |  no  |  |
+ | priceEffective | Double |  no  |  |
+ | mtoQuantity | Int |  no  |  |
+ | id | String |  no  |  |
+ | uid | String |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [OptimalLocationAssignedStoresResponse](#OptimalLocationAssignedStoresResponse)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | storeId | Int |  no  |  |
+ | articles | ArrayList<[OptimalLocationArticlesResponse](#OptimalLocationArticlesResponse)> |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [OptimalLocationsResponse](#OptimalLocationsResponse)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | assignedStores | ArrayList<[OptimalLocationAssignedStoresResponse](#OptimalLocationAssignedStoresResponse)> |  no  |  |
 
 ---
 

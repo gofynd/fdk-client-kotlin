@@ -127,8 +127,6 @@ class FileStorageDataManagerClass(val config: PlatformConfig, val unauthorizedAc
     
     
     
-    
-    
 
 inner class ApplicationClient(val applicationId:String,val config: PlatformConfig){
 
@@ -200,16 +198,6 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     }
     
     
-    suspend fun deletePdfType(id: String)
-    : Response<String>? {
-        return if (config.oauthClient.isAccessTokenValid()) {
-                fileStorageApiList?.deletePdfType(companyId = config.companyId , applicationId = applicationId , id = id )
-        } else {
-            null
-        }
-    }
-    
-    
     suspend fun getDefaultPdfData(pdfTypeId: Int, countryCode: String?=null)
     : Response<DummyTemplateDataItems>? {
         return if (config.oauthClient.isAccessTokenValid()) {
@@ -224,16 +212,6 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     : Response<PdfConfigSaveSuccess>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 fileStorageApiList?.updateHtmlTemplate(companyId = config.companyId , applicationId = applicationId , id = id, body = body)
-        } else {
-            null
-        }
-    }
-    
-    
-    suspend fun deletePdfConfigTemplate(id: String)
-    : Response<String>? {
-        return if (config.oauthClient.isAccessTokenValid()) {
-                fileStorageApiList?.deletePdfConfigTemplate(companyId = config.companyId , applicationId = applicationId , id = id )
         } else {
             null
         }

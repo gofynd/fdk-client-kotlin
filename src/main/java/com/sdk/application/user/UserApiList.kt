@@ -52,7 +52,7 @@ interface UserApiList {
     
     @POST 
     suspend fun sendResetPasswordMobile(@Url url1: String?    ,  @Query("platform") platform: String?, @Body body: SendResetPasswordMobileRequestSchema)
-    : Response<ResetPasswordSuccess>
+    : Response<Any>
     
     
     @POST 

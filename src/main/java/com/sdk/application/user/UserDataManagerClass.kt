@@ -196,7 +196,7 @@ class UserDataManagerClass(val config: ApplicationConfig, val unauthorizedAction
 
     
     
-    suspend fun sendResetPasswordMobile(platform: String?=null, body: SendResetPasswordMobileRequestSchema): Response<ResetPasswordSuccess>? {
+    suspend fun sendResetPasswordMobile(platform: String?=null, body: SendResetPasswordMobileRequestSchema): Response<Any>? {
         var fullUrl : String? = _relativeUrls["sendResetPasswordMobile"] 
         
         return userApiList?.sendResetPasswordMobile(fullUrl    ,  platform = platform, body = body)}

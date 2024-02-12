@@ -4366,6 +4366,28 @@ data class CustomDataDeleteSchema(
 
              
 /*
+    Model: CustomFieldValue
+*/
+@Parcelize
+data class CustomFieldValue(
+    
+    
+    
+    @SerializedName("value")
+    var value: @RawValue Any?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
     Model: CustomFieldSchema
 */
 @Parcelize
@@ -4389,7 +4411,7 @@ data class CustomFieldSchema(
     var creator: String?=null,
     
     @SerializedName("value")
-    var value: @RawValue ArrayList<Any>?=null,
+    var value: ArrayList<CustomFieldValue>?=null,
     
     @SerializedName("resource_id")
     var resourceId: String?=null,
