@@ -1705,8 +1705,8 @@ data class SocialTokens(
     @SerializedName("facebook")
     var facebook: Facebook?=null,
     
-    @SerializedName("accountkit")
-    var accountkit: Accountkit?=null,
+    @SerializedName("account_kit")
+    var accountKit: Accountkit?=null,
     
     @SerializedName("google")
     var google: Google?=null

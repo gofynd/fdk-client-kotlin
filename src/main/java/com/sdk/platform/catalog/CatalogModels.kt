@@ -7401,10 +7401,10 @@ data class CollectionItemSchemaV2(
 
              
 /*
-    Model: CollectionItemUpdateSchemaV2
+    Model: CollectionItemUpdateSchema
 */
 @Parcelize
-data class CollectionItemUpdateSchemaV2(
+data class CollectionItemUpdateSchema(
     
     
     

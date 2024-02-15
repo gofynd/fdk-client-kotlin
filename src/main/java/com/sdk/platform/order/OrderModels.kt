@@ -8676,9 +8676,14 @@ data class Article(
     var size: String?=null,
     
     @SerializedName("is_set")
-    var isSet: Boolean?=null
+    var isSet: Boolean?=null,
+    
+    @SerializedName("tags")
+    var tags: ArrayList<String>?=null
     
 ): Parcelable {
+    
+    
     
     
     
@@ -10902,9 +10907,14 @@ data class OrderBagArticle(
     var uid: String?=null,
     
     @SerializedName("size")
-    var size: String?=null
+    var size: String?=null,
+    
+    @SerializedName("tags")
+    var tags: ArrayList<String>?=null
     
 ): Parcelable {
+    
+    
     
     
     
@@ -11999,6 +12009,68 @@ data class TaxDetails(
 
              
 /*
+    Model: PaymentInfoData
+*/
+@Parcelize
+data class PaymentInfoData(
+    
+    
+    
+    @SerializedName("meta")
+    var meta: @RawValue HashMap<String,Any>?=null,
+    
+    @SerializedName("mode")
+    var mode: String?=null,
+    
+    @SerializedName("name")
+    var name: String?=null,
+    
+    @SerializedName("amount")
+    var amount: Double?=null,
+    
+    @SerializedName("collected")
+    var collected: Boolean?=null,
+    
+    @SerializedName("refund_by")
+    var refundBy: String?=null,
+    
+    @SerializedName("collect_by")
+    var collectBy: String?=null,
+    
+    @SerializedName("display_name")
+    var displayName: String?=null,
+    
+    @SerializedName("merchant_transaction_id")
+    var merchantTransactionId: String?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
     Model: OrderData
 */
 @Parcelize
@@ -12028,7 +12100,7 @@ data class OrderData(
     var paymentMethods: @RawValue HashMap<String,Any>?=null,
     
     @SerializedName("payment_info")
-    var paymentInfo: @RawValue ArrayList<HashMap<String,Any>>?=null
+    var paymentInfo: ArrayList<PaymentInfoData>?=null
     
 ): Parcelable {
     

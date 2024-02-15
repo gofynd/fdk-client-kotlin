@@ -902,6 +902,95 @@ class CatalogDataManagerClass(val config: PlatformConfig, val unauthorizedAction
     }
     
     
+    
+        
+            
+                
+            
+            
+        
+            
+                
+            
+            
+        
+            
+                
+            
+            
+        
+            
+                
+            
+            
+        
+            
+                
+            
+            
+        
+            
+                
+            
+            
+        
+            
+                
+            
+            
+        
+            
+                
+            
+            
+        
+            
+            
+        
+            
+                
+            
+            
+        
+    /**
+    *
+    * Summary: Paginator for getProducts
+    **/
+    fun getProductsPaginator() : Paginator<ProductListingResponseV2>{
+        val paginator = Paginator<ProductListingResponseV2>()
+        paginator.setCallBack(object : PaginatorCallback<ProductListingResponseV2> {
+           
+            override suspend fun onNext(
+                onResponse: (Event<ProductListingResponseV2>?,FdkError?) -> Unit){
+
+                if (config.oauthClient.isAccessTokenValid()) {
+                    val pageId = paginator.nextId
+                    val pageNo = paginator.pageNo
+                    val pageType = "number"
+                    catalogApiList?.getProducts(
+                    companyId = config.companyId, brandIds = brandIds, categoryIds = categoryIds, itemIds = itemIds, departmentIds = departmentIds, itemCode = itemCode, q = q, tags = tags, pageNo = pageNo, pageSize = pageSize
+                    )?.safeAwait{ response, error ->
+                        response?.let {
+                            val page = response.peekContent()?.page
+                            paginator.setPaginator(hasNext=page?.hasNext?:false,pageNo=if (page?.hasNext == true) ((pageNo ?: 0) + 1) else pageNo)
+                            onResponse.invoke(response,null)
+                        }
+                        
+                        error?.let {
+                            onResponse.invoke(null,error)
+                        }
+                    }
+
+                } else {
+                    null
+                }
+            }
+        
+
+    })
+        return paginator
+    }
+    
     suspend fun createProduct(body: ProductCreateUpdateSchemaV2)
     : Response<SuccessResponse1>? {
         
@@ -1337,6 +1426,90 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     }
     
     
+    
+        
+            
+                
+            
+            
+        
+            
+                
+            
+            
+        
+            
+                
+            
+            
+        
+            
+                
+            
+            
+        
+            
+                
+            
+            
+        
+            
+                
+            
+            
+        
+            
+                
+            
+            
+        
+            
+            
+        
+            
+                
+            
+            
+        
+    /**
+    *
+    * Summary: Paginator for getAllCollections
+    **/
+    fun getAllCollectionsPaginator(
+    q: String?=null, scheduleStatus: String?=null, type: String?=null, tags: ArrayList<String>?=null, isActive: Boolean?=null, pageSize: Int?=null
+    
+    ) : Paginator<GetCollectionListingResponse>{
+        val paginator = Paginator<GetCollectionListingResponse>()
+        paginator.setCallBack(object : PaginatorCallback<GetCollectionListingResponse> {
+            
+            override suspend fun onNext(
+                onResponse: (Event<GetCollectionListingResponse>?,FdkError?) -> Unit){
+
+                if (config.oauthClient.isAccessTokenValid()) {
+                    val pageId = paginator.nextId
+                    val pageNo = paginator.pageNo
+                    val pageType = "number"
+                    catalogApiList?.getAllCollections(companyId = config.companyId , applicationId = applicationId , q = q, scheduleStatus = scheduleStatus, type = type, tags = tags, isActive = isActive, pageNo = pageNo, pageSize = pageSize)?.safeAwait{ response, error ->
+                        response?.let {
+                            val page = response.peekContent()?.page
+                            paginator.setPaginator(hasNext=page?.hasNext?:false,pageNo=if (page?.hasNext == true) ((pageNo ?: 0) + 1) else pageNo)
+                            onResponse.invoke(response,null)
+                        }
+                        
+                        error?.let {
+                            onResponse.invoke(null,error)
+                        }
+                    }
+
+                } else {
+                    null
+                }
+            }
+        
+    })
+    return paginator
+    }
+    
     suspend fun createCollection(body: CreateCollection)
     : Response<CollectionCreateResponse>? {
         return if (config.oauthClient.isAccessTokenValid()) {
@@ -1407,8 +1580,8 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     }
     
     
-    suspend fun addCollectionItems(id: String,body: CollectionItemUpdate)
-    : Response<UpdatedResponse>? {
+    suspend fun addCollectionItems(id: String,body: CollectionItemUpdateSchema)
+    : Response<CommonResponseSchemaCollection>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 catalogApiList?.addCollectionItems(companyId = config.companyId , applicationId = applicationId , id = id, body = body)
         } else {
@@ -1822,6 +1995,85 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     }
     
     
+    
+        
+            
+                
+            
+            
+        
+            
+                
+            
+            
+        
+            
+                
+            
+            
+        
+            
+                
+            
+            
+        
+            
+            
+        
+            
+                
+            
+            
+        
+            
+                
+            
+            
+        
+            
+                
+            
+            
+        
+    /**
+    *
+    * Summary: Paginator for getDiscountedInventoryBySizeIdentifier
+    **/
+    fun getDiscountedInventoryBySizeIdentifierPaginator(
+    itemId: Int, sizeIdentifier: String, pageSize: Int?=null, q: String?=null, locationIds: ArrayList<Int>?=null
+    
+    ) : Paginator<InventorySellerIdentifierResponsePaginated>{
+        val paginator = Paginator<InventorySellerIdentifierResponsePaginated>()
+        paginator.setCallBack(object : PaginatorCallback<InventorySellerIdentifierResponsePaginated> {
+            
+            override suspend fun onNext(
+                onResponse: (Event<InventorySellerIdentifierResponsePaginated>?,FdkError?) -> Unit){
+
+                if (config.oauthClient.isAccessTokenValid()) {
+                    val pageId = paginator.nextId
+                    val pageNo = paginator.pageNo
+                    val pageType = "number"
+                    catalogApiList?.getDiscountedInventoryBySizeIdentifier(companyId = config.companyId , applicationId = applicationId , itemId = itemId, sizeIdentifier = sizeIdentifier, pageNo = pageNo, pageSize = pageSize, q = q, locationIds = locationIds)?.safeAwait{ response, error ->
+                        response?.let {
+                            val page = response.peekContent()?.page
+                            paginator.setPaginator(hasNext=page?.hasNext?:false,pageNo=if (page?.hasNext == true) ((pageNo ?: 0) + 1) else pageNo)
+                            onResponse.invoke(response,null)
+                        }
+                        
+                        error?.let {
+                            onResponse.invoke(null,error)
+                        }
+                    }
+
+                } else {
+                    null
+                }
+            }
+        
+    })
+    return paginator
+    }
+    
     suspend fun getProductDetailBySlug(slug: String)
     : Response<ProductDetail>? {
         return if (config.oauthClient.isAccessTokenValid()) {
@@ -1841,6 +2093,95 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
         }
     }
     
+    
+    
+        
+            
+                
+            
+            
+        
+            
+                
+            
+            
+        
+            
+                
+            
+            
+        
+            
+                
+            
+            
+        
+            
+                
+            
+            
+        
+            
+                
+            
+            
+        
+            
+                
+            
+            
+        
+            
+            
+        
+            
+                
+            
+            
+        
+            
+                
+            
+            
+        
+    /**
+    *
+    * Summary: Paginator for getAppProducts
+    **/
+    fun getAppProductsPaginator(
+    brandIds: ArrayList<Int>?=null, categoryIds: ArrayList<Int>?=null, departmentIds: ArrayList<Int>?=null, tags: ArrayList<String>?=null, itemIds: ArrayList<Int>?=null, pageSize: Int?=null, q: String?=null
+    
+    ) : Paginator<RawProductListingResponse>{
+        val paginator = Paginator<RawProductListingResponse>()
+        paginator.setCallBack(object : PaginatorCallback<RawProductListingResponse> {
+            
+            override suspend fun onNext(
+                onResponse: (Event<RawProductListingResponse>?,FdkError?) -> Unit){
+
+                if (config.oauthClient.isAccessTokenValid()) {
+                    val pageId = paginator.nextId
+                    val pageNo = paginator.pageNo
+                    val pageType = "number"
+                    catalogApiList?.getAppProducts(companyId = config.companyId , applicationId = applicationId , brandIds = brandIds, categoryIds = categoryIds, departmentIds = departmentIds, tags = tags, itemIds = itemIds, pageNo = pageNo, pageSize = pageSize, q = q)?.safeAwait{ response, error ->
+                        response?.let {
+                            val page = response.peekContent()?.page
+                            paginator.setPaginator(hasNext=page?.hasNext?:false,pageNo=if (page?.hasNext == true) ((pageNo ?: 0) + 1) else pageNo)
+                            onResponse.invoke(response,null)
+                        }
+                        
+                        error?.let {
+                            onResponse.invoke(null,error)
+                        }
+                    }
+
+                } else {
+                    null
+                }
+            }
+        
+    })
+    return paginator
+    }
     
     suspend fun getAppReturnConfiguration()
     : Response<AppReturnConfigResponse>? {

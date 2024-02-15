@@ -110,7 +110,7 @@ class FileStorageDataManagerClass(val config: PlatformConfig, val unauthorizedAc
     
     
     suspend fun proxy(url: String)
-    : Response<ProxyResponse>? {
+    : Response<String>? {
         
         return if (config.oauthClient.isAccessTokenValid()) {
             fileStorageApiList?.proxy(

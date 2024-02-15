@@ -5765,6 +5765,205 @@ data class Application(
 
              
 /*
+    Model: ApplicationById
+*/
+@Parcelize
+data class ApplicationById(
+    
+    
+    
+    @SerializedName("website")
+    var website: ApplicationWebsite?=null,
+    
+    @SerializedName("cors")
+    var cors: ApplicationCors?=null,
+    
+    @SerializedName("auth")
+    var auth: ApplicationAuth?=null,
+    
+    @SerializedName("description")
+    var description: String?=null,
+    
+    @SerializedName("channel_type")
+    var channelType: String?=null,
+    
+    @SerializedName("cache_ttl")
+    var cacheTtl: Int?=null,
+    
+    @SerializedName("is_internal")
+    var isInternal: Boolean?=null,
+    
+    @SerializedName("is_active")
+    var isActive: Boolean?=null,
+    
+    @SerializedName("_id")
+    var id: String?=null,
+    
+    @SerializedName("name")
+    var name: String?=null,
+    
+    @SerializedName("owner")
+    var owner: String?=null,
+    
+    @SerializedName("company_id")
+    var companyId: Int?=null,
+    
+    @SerializedName("token")
+    var token: String?=null,
+    
+    @SerializedName("redirections")
+    var redirections: ArrayList<ApplicationRedirections>?=null,
+    
+    @SerializedName("meta")
+    var meta: ArrayList<ApplicationMeta>?=null,
+    
+    @SerializedName("created_at")
+    var createdAt: String?=null,
+    
+    @SerializedName("modified_at")
+    var modifiedAt: String?=null,
+    
+    @SerializedName("__v")
+    var v: Int?=null,
+    
+    @SerializedName("banner")
+    var banner: SecureUrl?=null,
+    
+    @SerializedName("logo")
+    var logo: SecureUrl?=null,
+    
+    @SerializedName("favicon")
+    var favicon: SecureUrl?=null,
+    
+    @SerializedName("domains")
+    var domains: ArrayList<Domain>?=null,
+    
+    @SerializedName("app_type")
+    var appType: String?=null,
+    
+    @SerializedName("mobile_logo")
+    var mobileLogo: SecureUrl?=null,
+    
+    @SerializedName("domain")
+    var domain: Domain?=null,
+    
+    @SerializedName("slug")
+    var slug: String?=null,
+    
+    @SerializedName("mode")
+    var mode: String?=null,
+    
+    @SerializedName("status")
+    var status: String?=null,
+    
+    @SerializedName("tokens")
+    var tokens: ArrayList<TokenSchemaID>?=null,
+    
+    @SerializedName("secret")
+    var secret: String?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: TokenSchemaID
+*/
+@Parcelize
+data class TokenSchemaID(
+    
+    
+    
+    @SerializedName("token")
+    var token: String?=null,
+    
+    @SerializedName("created_by")
+    var createdBy: String?=null,
+    
+    @SerializedName("created_at")
+    var createdAt: String?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
     Model: TokenSchema
 */
 @Parcelize

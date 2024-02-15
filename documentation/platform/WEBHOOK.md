@@ -7,7 +7,7 @@
 ## Webhook Methods
 This service provides functionality to emits different events to the subscribed webhook url's. It auto retry three times for all the failed events after certain interval as well as you can also retry manually the failed events and can view the reports.
 
-Default
+Webhook event management
 * [manualRetryOfFailedEvent](#manualretryoffailedevent)
 * [getEventCounts](#geteventcounts)
 * [getManualRetryStatus](#getmanualretrystatus)
@@ -33,7 +33,7 @@ Default
 
 
 ### manualRetryOfFailedEvent
-Initiate a manual retry for event processing.
+Manual retry of failed event.
 
 
 
@@ -58,8 +58,7 @@ platformClient.webhook.manualRetryOfFailedEvent(body: body).safeAwait{ response,
 | body | [RetryEventRequest](#RetryEventRequest) | yes | Request body |
 
 
-Initiates a manual retry for event processing for a specific company. This endpoint allows the user to specify the date range (start_date and end_date) within which the events should be retried.
-
+Trigger a manual retry for an event that failed to deliver.
 
 *Returned Response:*
 
@@ -103,7 +102,7 @@ Initiates a manual retry for event processing for a specific company. This endpo
 
 
 ### getEventCounts
-Get the count of failed events for a company within a specified date range.
+Get event counts.
 
 
 
@@ -128,8 +127,7 @@ platformClient.webhook.getEventCounts(body: body).safeAwait{ response, error->
 | body | [RetryEventRequest](#RetryEventRequest) | yes | Request body |
 
 
-Retrieves the count of failed events for a specific company within the specified date range. The user can filter the count based on specific event types if provided.
-
+Retrieve the counts of events based on their status.
 
 *Returned Response:*
 
@@ -178,7 +176,7 @@ Initiates a manual retry for event processing for a specific company. This endpo
 
 
 ### getManualRetryStatus
-Get the retry status for a company's failed events.
+Get manual retry status.
 
 
 
@@ -199,8 +197,7 @@ platformClient.webhook.getManualRetryStatus().safeAwait{ response, error->
 
 
 
-Retrieves the status of retry for a specific company's failed events. This endpoint returns the total number of events, the count of successfully retried events, the count of failed retry attempts, and the overall status of the retry process.
-
+Check the status of a manual retry operation.
 
 *Returned Response:*
 
@@ -247,7 +244,7 @@ Successful response with the retry status.
 
 
 ### manualRetryCancel
-Cancel the active manual retry for a company's failed events.
+Manual retry cancellation.
 
 
 
@@ -268,8 +265,7 @@ platformClient.webhook.manualRetryCancel().safeAwait{ response, error->
 
 
 
-Cancels the active manual retry for a specific company's failed events. If a manual retry is currently in progress, it will be cancelled.
-
+Cancel a manual retry operation for a failed event.
 
 *Returned Response:*
 
@@ -311,7 +307,7 @@ Manual retry cancelled successfully.
 
 
 ### downloadDeliveryReport
-Download processed events report for a company.
+Download delivery report.
 
 
 
@@ -336,8 +332,7 @@ platformClient.webhook.downloadDeliveryReport(body: body).safeAwait{ response, e
 | body | [EventProcessRequest](#EventProcessRequest) | yes | Request body |
 
 
-Download reports for a specific company based on the provided filters.
-
+Download detailed delivery reports for events.
 
 *Returned Response:*
 
@@ -381,7 +376,7 @@ Successfully downloaded the report.
 
 
 ### pingWebhook
-Ping and validate webhook url.
+Ping webhook.
 
 
 
@@ -406,8 +401,7 @@ platformClient.webhook.pingWebhook(body: body).safeAwait{ response, error->
 | body | [PingWebhook](#PingWebhook) | yes | Request body |
 
 
-Ping and validate webhook url.
-
+Send a test ping to a webhook for verification.
 
 *Returned Response:*
 
@@ -453,7 +447,7 @@ Successfully received ping for the provided webhook url.
 
 
 ### getReportFilters
-Get filters for a company.
+Get report filters.
 
 
 
@@ -478,8 +472,7 @@ platformClient.webhook.getReportFilters(body: body).safeAwait{ response, error->
 | body | [ReportFiltersPayload](#ReportFiltersPayload) | yes | Request body |
 
 
-Retrieve filters for a specific company based on the provided subscriber IDs.
-
+Retrieve filters used for generating reports.
 
 *Returned Response:*
 
@@ -536,7 +529,7 @@ Successfully retrieved the filters.
 
 
 ### getHistoricalReports
-Get report download history.
+Get historical reports.
 
 
 
@@ -561,8 +554,7 @@ platformClient.webhook.getHistoricalReports(body: body).safeAwait{ response, err
 | body | [HistoryPayload](#HistoryPayload) | yes | Request body |
 
 
-Retrieve history reports for a specific company based on the provided filters.
-
+Retrieve historical reports of webhook events.
 
 *Returned Response:*
 
@@ -634,7 +626,7 @@ It will give list of all the reports that was downloaded.
 
 
 ### cancelJobByName
-Cancel a report export.
+Cancel job by name.
 
 
 
@@ -660,8 +652,7 @@ platformClient.webhook.cancelJobByName(filename: filename).safeAwait{ response, 
 
 
 
-Cancel the export of a specific report for a company.
-
+Cancel a specific job by its name.
 
 *Returned Response:*
 
@@ -705,7 +696,7 @@ Report export canceled successfully.
 
 
 ### getDeliveryReports
-Get processed events report for a company.
+Get delivery reports.
 
 
 
@@ -730,8 +721,7 @@ platformClient.webhook.getDeliveryReports(body: body).safeAwait{ response, error
 | body | [EventProcessRequest](#EventProcessRequest) | yes | Request body |
 
 
-Retrieve a list of processed events for a specific company based on the provided filters.
-
+Retrieve reports on the delivery status of events.
 
 *Returned Response:*
 
@@ -790,7 +780,7 @@ Successfully retrieved the processed events report.
 
 
 ### fetchAllEventConfigurations
-Get All Webhook Events.
+Fetch all event configurations.
 
 
 
@@ -811,8 +801,7 @@ platformClient.webhook.fetchAllEventConfigurations().safeAwait{ response, error-
 
 
 
-To fetch all webhook events.
-
+Retrieve all configurations for event handling.
 
 *Returned Response:*
 
@@ -869,7 +858,7 @@ Successfully received ping for the provided webhook url.
 
 
 ### registerSubscriberToEvent
-Register Subscriber.
+Register subscriber to event.
 
 
 
@@ -894,8 +883,7 @@ platformClient.webhook.registerSubscriberToEvent(body: body).safeAwait{ response
 | body | [SubscriberConfig](#SubscriberConfig) | yes | Request body |
 
 
-Register Subscriber.
-
+Add a subscriber to receive events of a specific type.
 
 *Returned Response:*
 
@@ -957,7 +945,7 @@ Success
 
 
 ### getSubscribersByCompany
-Get Subscribers By CompanyId.
+Get subscribers by company.
 
 
 
@@ -985,8 +973,7 @@ platformClient.webhook.getSubscribersByCompany(pageNo: pageNo, pageSize: pageSiz
 
 
 
-Get Subscribers By Company ID.
-
+Retrieve subscribers associated with a company.
 
 *Returned Response:*
 
@@ -1087,7 +1074,7 @@ Subscribers By Company ID.
 
 
 ### updateSubscriberConfig
-Update Subscriber
+Update subscriber config.
 
 
 
@@ -1112,7 +1099,7 @@ platformClient.webhook.updateSubscriberConfig(body: body).safeAwait{ response, e
 | body | [SubscriberConfig](#SubscriberConfig) | yes | Request body |
 
 
-Update Subscriber
+Modify and update subscriber configuration settings.
 
 *Returned Response:*
 
@@ -1174,7 +1161,7 @@ Success
 
 
 ### getSubscriberById
-Get Subscriber By Subscriber ID
+Get subscriber by ID.
 
 
 
@@ -1200,7 +1187,7 @@ platformClient.webhook.getSubscriberById(subscriberId: subscriberId).safeAwait{ 
 
 
 
-Get Subscriber By Subscriber ID
+Retrieve a subscriber's details by their unique identifier.
 
 *Returned Response:*
 
@@ -1281,7 +1268,7 @@ Success
 
 
 ### getSubscribersByExtensionId
-Get Subscribers By Extension ID
+Get subscribers by extension ID.
 
 
 
@@ -1309,7 +1296,7 @@ platformClient.webhook.getSubscribersByExtensionId(pageNo: pageNo, pageSize: pag
 
 
 
-Get Subscribers By ExtensionID
+Retrieve subscribers associated with a specific extension.
 
 *Returned Response:*
 
@@ -1818,6 +1805,54 @@ Success
  | ---------- | ---- | -------- | ----------- |
  | type | String? |  yes  |  |
  | secret | String? |  yes  |  |
+
+---
+
+
+ 
+ 
+ #### [SubscriberFailureResponse](#SubscriberFailureResponse)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | message | String? |  yes  |  |
+ | code | String? |  yes  |  |
+ | stack | String? |  yes  |  |
+
+---
+
+
+ 
+ 
+ #### [EventConfigs](#EventConfigs)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | id | Int? |  yes  |  |
+ | eventName | String? |  yes  |  |
+ | eventType | String? |  yes  |  |
+ | eventCategory | String? |  yes  |  |
+ | eventSchema | HashMap<String,Any>? |  yes  |  |
+ | version | String? |  yes  |  |
+ | displayName | String? |  yes  |  |
+ | description | String? |  yes  |  |
+ | createdOn | String? |  yes  |  |
+ | updatedOn | String? |  yes  |  |
+ | subscriberEventMapping | [SubscriberEventMapping](#SubscriberEventMapping)? |  yes  |  |
+
+---
+
+
+ 
+ 
+ #### [SubscriberEventMapping](#SubscriberEventMapping)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | id | Int? |  yes  |  |
+ | eventId | Int? |  yes  |  |
+ | subscriberId | Int? |  yes  |  |
+ | createdOn | String? |  yes  |  |
 
 ---
 

@@ -426,70 +426,6 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     }
     
     
-    
-        
-            
-                
-            
-            
-        
-            
-                
-            
-            
-        
-            
-                
-            
-            
-        
-            
-            
-        
-            
-                
-            
-            
-        
-    /**
-    *
-    * Summary: Paginator for getAppCompanies
-    **/
-    fun getAppCompaniesPaginator(
-    uid: Int?=null, pageSize: Int?=null
-    
-    ) : Paginator<CompaniesResponse>{
-        val paginator = Paginator<CompaniesResponse>()
-        paginator.setCallBack(object : PaginatorCallback<CompaniesResponse> {
-            
-            override suspend fun onNext(
-                onResponse: (Event<CompaniesResponse>?,FdkError?) -> Unit){
-
-                if (config.oauthClient.isAccessTokenValid()) {
-                    val pageId = paginator.nextId
-                    val pageNo = paginator.pageNo
-                    val pageType = "number"
-                    configurationApiList?.getAppCompanies(companyId = config.companyId , applicationId = applicationId , uid = uid, pageNo = pageNo, pageSize = pageSize)?.safeAwait{ response, error ->
-                        response?.let {
-                            val page = response.peekContent()?.page
-                            paginator.setPaginator(hasNext=page?.hasNext?:false,pageNo=if (page?.hasNext == true) ((pageNo ?: 0) + 1) else pageNo)
-                            onResponse.invoke(response,null)
-                        }
-                        
-                        error?.let {
-                            onResponse.invoke(null,error)
-                        }
-                    }
-
-                } else {
-                    null
-                }
-            }
-        
-    })
-    return paginator
-    }
-    
     suspend fun getAppStores(pageNo: Int?=null, pageSize: Int?=null)
     : Response<StoresResponse>? {
         return if (config.oauthClient.isAccessTokenValid()) {
@@ -499,65 +435,6 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
         }
     }
     
-    
-    
-        
-            
-                
-            
-            
-        
-            
-                
-            
-            
-        
-            
-            
-        
-            
-                
-            
-            
-        
-    /**
-    *
-    * Summary: Paginator for getAppStores
-    **/
-    fun getAppStoresPaginator(
-    pageSize: Int?=null
-    
-    ) : Paginator<StoresResponse>{
-        val paginator = Paginator<StoresResponse>()
-        paginator.setCallBack(object : PaginatorCallback<StoresResponse> {
-            
-            override suspend fun onNext(
-                onResponse: (Event<StoresResponse>?,FdkError?) -> Unit){
-
-                if (config.oauthClient.isAccessTokenValid()) {
-                    val pageId = paginator.nextId
-                    val pageNo = paginator.pageNo
-                    val pageType = "number"
-                    configurationApiList?.getAppStores(companyId = config.companyId , applicationId = applicationId , pageNo = pageNo, pageSize = pageSize)?.safeAwait{ response, error ->
-                        response?.let {
-                            val page = response.peekContent()?.page
-                            paginator.setPaginator(hasNext=page?.hasNext?:false,pageNo=if (page?.hasNext == true) ((pageNo ?: 0) + 1) else pageNo)
-                            onResponse.invoke(response,null)
-                        }
-                        
-                        error?.let {
-                            onResponse.invoke(null,error)
-                        }
-                    }
-
-                } else {
-                    null
-                }
-            }
-        
-    })
-    return paginator
-    }
     
     suspend fun getInventoryConfig()
     : Response<ApplicationInventory>? {
@@ -629,65 +506,6 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     }
     
     
-    
-        
-            
-                
-            
-            
-        
-            
-                
-            
-            
-        
-            
-            
-        
-            
-                
-            
-            
-        
-    /**
-    *
-    * Summary: Paginator for getOrderingStoresByFilter
-    **/
-    fun getOrderingStoresByFilterPaginator(
-    pageSize: Int?=null,
-    body: FilterOrderingStoreRequest
-    ) : Paginator<OrderingStores>{
-        val paginator = Paginator<OrderingStores>()
-        paginator.setCallBack(object : PaginatorCallback<OrderingStores> {
-            
-            override suspend fun onNext(
-                onResponse: (Event<OrderingStores>?,FdkError?) -> Unit){
-
-                if (config.oauthClient.isAccessTokenValid()) {
-                    val pageId = paginator.nextId
-                    val pageNo = paginator.pageNo
-                    val pageType = "number"
-                    configurationApiList?.getOrderingStoresByFilter(companyId = config.companyId , applicationId = applicationId , pageNo = pageNo, pageSize = pageSize,body = body )?.safeAwait{ response, error ->
-                        response?.let {
-                            val page = response.peekContent()?.page
-                            paginator.setPaginator(hasNext=page?.hasNext?:false,pageNo=if (page?.hasNext == true) ((pageNo ?: 0) + 1) else pageNo)
-                            onResponse.invoke(response,null)
-                        }
-                        
-                        error?.let {
-                            onResponse.invoke(null,error)
-                        }
-                    }
-
-                } else {
-                    null
-                }
-            }
-        
-    })
-    return paginator
-    }
-    
     suspend fun updateOrderingStoreConfig(body: OrderingStoreConfig)
     : Response<DeploymentMeta>? {
         return if (config.oauthClient.isAccessTokenValid()) {
@@ -717,70 +535,6 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
         }
     }
     
-    
-    
-        
-            
-                
-            
-            
-        
-            
-                
-            
-            
-        
-            
-            
-        
-            
-                
-            
-            
-        
-            
-                
-            
-            
-        
-    /**
-    *
-    * Summary: Paginator for getStaffOrderingStores
-    **/
-    fun getStaffOrderingStoresPaginator(
-    pageSize: Int?=null, q: String?=null
-    
-    ) : Paginator<OrderingStoresResponse>{
-        val paginator = Paginator<OrderingStoresResponse>()
-        paginator.setCallBack(object : PaginatorCallback<OrderingStoresResponse> {
-            
-            override suspend fun onNext(
-                onResponse: (Event<OrderingStoresResponse>?,FdkError?) -> Unit){
-
-                if (config.oauthClient.isAccessTokenValid()) {
-                    val pageId = paginator.nextId
-                    val pageNo = paginator.pageNo
-                    val pageType = "number"
-                    configurationApiList?.getStaffOrderingStores(companyId = config.companyId , applicationId = applicationId , pageNo = pageNo, pageSize = pageSize, q = q)?.safeAwait{ response, error ->
-                        response?.let {
-                            val page = response.peekContent()?.page
-                            paginator.setPaginator(hasNext=page?.hasNext?:false,pageNo=if (page?.hasNext == true) ((pageNo ?: 0) + 1) else pageNo)
-                            onResponse.invoke(response,null)
-                        }
-                        
-                        error?.let {
-                            onResponse.invoke(null,error)
-                        }
-                    }
-
-                } else {
-                    null
-                }
-            }
-        
-    })
-    return paginator
-    }
     
     suspend fun getOrderingStoreCookie(body: OrderingStoreSelectRequest)
     : Response<SuccessMessageResponse>? {
@@ -855,7 +609,7 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     
     
     suspend fun getApplicationById()
-    : Response<Application>? {
+    : Response<ApplicationById>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 configurationApiList?.getApplicationById(companyId = config.companyId , applicationId = applicationId  )
         } else {

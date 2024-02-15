@@ -7,43 +7,88 @@
 ## Configuration Methods
 Application configuration apis
 
-Default
+Build Configuration
 * [getBuildConfig](#getbuildconfig)
 * [updateBuildConfig](#updatebuildconfig)
+
+
+Application Versions
 * [getPreviousVersions](#getpreviousversions)
+
+
+App Features Management
 * [getAppFeatures](#getappfeatures)
 * [updateAppFeatures](#updateappfeatures)
 * [modifyAppFeatures](#modifyappfeatures)
+
+
+Application Basic Details
 * [getAppBasicDetails](#getappbasicdetails)
 * [updateAppBasicDetails](#updateappbasicdetails)
+
+
+Contact Information
 * [getAppContactInfo](#getappcontactinfo)
 * [updateAppContactInfo](#updateappcontactinfo)
+
+
+API Tokens
 * [getAppApiTokens](#getappapitokens)
 * [updateAppApiTokens](#updateappapitokens)
+
+
+Company and Store Information
 * [getAppCompanies](#getappcompanies)
 * [getAppStores](#getappstores)
+
+
+Product Listing Configuration
 * [getInventoryConfig](#getinventoryconfig)
 * [updateInventoryConfig](#updateinventoryconfig)
 * [partiallyUpdateInventoryConfig](#partiallyupdateinventoryconfig)
+
+
+Currency Configuration
 * [getAppCurrencyConfig](#getappcurrencyconfig)
 * [updateAppCurrencyConfig](#updateappcurrencyconfig)
 * [getAppSupportedCurrency](#getappsupportedcurrency)
+
+
+Ordering Stores
 * [getOrderingStoresByFilter](#getorderingstoresbyfilter)
 * [updateOrderingStoreConfig](#updateorderingstoreconfig)
 * [getOrderingStoreConfig](#getorderingstoreconfig)
 * [getStaffOrderingStores](#getstafforderingstores)
+
+
+Default
 * [getOrderingStoreCookie](#getorderingstorecookie)
 * [removeOrderingStoreCookie](#removeorderingstorecookie)
+
+
+Domain Management
 * [getDomains](#getdomains)
 * [addDomain](#adddomain)
 * [removeDomainById](#removedomainbyid)
 * [changeDomainType](#changedomaintype)
 * [getDomainStatus](#getdomainstatus)
+
+
+Application Management
 * [createApplication](#createapplication)
 * [getApplications](#getapplications)
 * [getApplicationById](#getapplicationbyid)
+
+
+Currency Information
 * [getCurrencies](#getcurrencies)
+
+
+Domain Availability
 * [getDomainAvailibility](#getdomainavailibility)
+
+
+Integration Configuration
 * [getIntegrationById](#getintegrationbyid)
 * [getAvailableOptIns](#getavailableoptins)
 * [getSelectedOptIns](#getselectedoptins)
@@ -52,9 +97,15 @@ Default
 * [getIntegrationByLevelId](#getintegrationbylevelid)
 * [updateLevelUidIntegration](#updateleveluidintegration)
 * [getLevelActiveIntegrations](#getlevelactiveintegrations)
+
+
+Brands and Companies
 * [getBrandsByCompany](#getbrandsbycompany)
 * [getCompanyByBrands](#getcompanybybrands)
 * [getStoreByBrands](#getstorebybrands)
+
+
+Other Seller Applications
 * [getOtherSellerApplications](#getothersellerapplications)
 * [getOtherSellerApplicationById](#getothersellerapplicationbyid)
 * [optOutFromApplication](#optoutfromapplication)
@@ -67,7 +118,7 @@ Default
 
 
 ### getBuildConfig
-Get configuration of latest mobile build
+Get build configuration.
 
 
 
@@ -93,7 +144,7 @@ platformClient.application("<APPLICATION_ID>").configuration.getBuildConfig(plat
 
 
 
-Fetch latest build configuration, such as app name, landing page image, splash image used in a mobile build.
+Retrieve latest build configuration, such as app name, landing page image, splash image used in a mobile build.
 
 *Returned Response:*
 
@@ -153,7 +204,7 @@ Success
 
 
 ### updateBuildConfig
-Update the configuration for next mobile build
+Update build configuration.
 
 
 
@@ -238,8 +289,10 @@ Success
 ---
 
 
+
+
 ### getPreviousVersions
-Get details of previous mobile builds
+Get previous versions.
 
 
 
@@ -265,7 +318,7 @@ platformClient.application("<APPLICATION_ID>").configuration.getPreviousVersions
 
 
 
-Fetch version details of the app, this includes the build status, build date, version name, latest version, and a lot more.
+Retrieve version details of the app, this includes the build status, build date, version name, latest version, and a lot more.
 
 *Returned Response:*
 
@@ -324,8 +377,10 @@ Success
 ---
 
 
+
+
 ### getAppFeatures
-Get the sales channel configuration and features
+Get application features.
 
 
 
@@ -490,7 +545,7 @@ Success
 
 
 ### updateAppFeatures
-Update the sales channel configuration and features
+Update application features.
 
 
 
@@ -641,7 +696,7 @@ Success
 
 
 ### modifyAppFeatures
-Update features of application
+Modify application features.
 
 
 
@@ -791,8 +846,10 @@ Success
 ---
 
 
+
+
 ### getAppBasicDetails
-Get sales channel details
+Get application basic details.
 
 
 
@@ -896,7 +953,7 @@ Success
 
 
 ### updateAppBasicDetails
-Update sales channel details
+Update application basic details.
 
 
 
@@ -1000,8 +1057,10 @@ Success
 ---
 
 
+
+
 ### getAppContactInfo
-Get current information of the sales channel
+Get application contact information.
 
 
 
@@ -1177,7 +1236,7 @@ Success
 
 
 ### updateAppContactInfo
-Save or update current information of the sales channel
+Update application contact information.
 
 
 
@@ -1350,8 +1409,10 @@ Success
 ---
 
 
+
+
 ### getAppApiTokens
-Get social tokens for the sales channel
+Get application API tokens.
 
 
 
@@ -1372,7 +1433,7 @@ platformClient.application("<APPLICATION_ID>").configuration.getAppApiTokens().s
 
 
 
-Use this API to retrieve the tokens used for integrating Firebase, MoEngage, Segment, GTM, Freshchat, Safetynet, Google Map, Google, and Facebook auth. **Note** - Token values are encrypted with AES encryption using a secret key.
+Retrieve the tokens used for integrating Firebase, MoEngage, Segment, GTM, Freshchat, Safetynet, Google Map, Google, and Facebook auth. 
 
 *Returned Response:*
 
@@ -1481,7 +1542,7 @@ Success
 
 
 ### updateAppApiTokens
-Add or update social tokens for the sales channel
+Update application API tokens.
 
 
 
@@ -1506,7 +1567,7 @@ platformClient.application("<APPLICATION_ID>").configuration.updateAppApiTokens(
 | body | [TokenResponse](#TokenResponse) | yes | Request body |
 
 
-Use this API to add or edit the tokens used for integrating Firebase, MoEngage, Segment, GTM, Freshchat, Safetynet, Google Map, Google and Facebook auth.
+Add or edit the tokens used for integrating Firebase, MoEngage, Segment, GTM, Freshchat, Safetynet, Google Map, Google and Facebook auth.
 
 *Returned Response:*
 
@@ -1625,8 +1686,10 @@ Success
 ---
 
 
+
+
 ### getAppCompanies
-Get companies enabled in the sales channel inventory
+Get application companies.
 
 
 
@@ -1654,7 +1717,7 @@ platformClient.application("<APPLICATION_ID>").configuration.getAppCompanies(uid
 
 
 
-Fetch info of all the companies (e.g. name, uid, and company type) whose inventory is fetched into the current sales channel application
+Retrieve info of all the companies (e.g. name, uid, and company type) whose inventory is fetched into the current sales channel application
 
 *Returned Response:*
 
@@ -1711,7 +1774,7 @@ Success
 
 
 ### getAppStores
-Get stores enabled in the sales channel inventory
+Get application stores.
 
 
 
@@ -1738,7 +1801,7 @@ platformClient.application("<APPLICATION_ID>").configuration.getAppStores(pageNo
 
 
 
-Fetch info of all the companies (e.g. uid, name, display name, store type, store code and company id) whose inventory is fetched into the current sales channel application
+Retrieve information of all the companies (e.g. uid, name, display name, store type, store code and company id) whose inventory is fetched into the current sales channel application
 
 *Returned Response:*
 
@@ -1812,8 +1875,10 @@ Success
 ---
 
 
+
+
 ### getInventoryConfig
-Get sales channel configuration
+Get inventory configuration.
 
 
 
@@ -1834,7 +1899,7 @@ platformClient.application("<APPLICATION_ID>").configuration.getInventoryConfig(
 
 
 
-Use this API to fetch configuration details of authentication, inventory, article assignment rules, reward points, cart, payment, order, logistics, etc.
+Retrieve configuration details of authentication, inventory, article assignment rules, reward points, cart, payment, order, logistics, etc.
 
 *Returned Response:*
 
@@ -2085,7 +2150,7 @@ Success
 
 
 ### updateInventoryConfig
-Update sales channel configuration
+Update inventory configuration.
 
 
 
@@ -2361,7 +2426,7 @@ Success
 
 
 ### partiallyUpdateInventoryConfig
-Partially update sales channel configuration
+Partially update inventory configuration.
 
 
 
@@ -2636,8 +2701,10 @@ Success
 ---
 
 
+
+
 ### getAppCurrencyConfig
-Get currencies supported in the application
+Get application currency configuration.
 
 
 
@@ -2658,7 +2725,7 @@ platformClient.application("<APPLICATION_ID>").configuration.getAppCurrencyConfi
 
 
 
-Get a list of currencies supported in the current sales channel. Moreover, get the cuurency that is set as the default one in the application.
+Retrieve a list of currencies supported in the current sales channel. Moreover, get the cuurency that is set as the default one in the application.
 
 *Returned Response:*
 
@@ -2716,7 +2783,7 @@ Success
 
 
 ### updateAppCurrencyConfig
-Update initial sales channel supported currency
+Update application currency configuration.
 
 
 
@@ -2741,7 +2808,7 @@ platformClient.application("<APPLICATION_ID>").configuration.updateAppCurrencyCo
 | body | [AppSupportedCurrency](#AppSupportedCurrency) | yes | Request body |
 
 
-Use this API to add and edit the currencies supported in the application. Initially, INR will be enabled by default.
+Modify currency configuration settings for the application. Add and edit the currencies supported in the application. Initially, INR will be enabled by default.
 
 *Returned Response:*
 
@@ -2799,7 +2866,7 @@ Success
 
 
 ### getAppSupportedCurrency
-Get currencies enabled in the application
+Get supported currencies.
 
 
 
@@ -2820,7 +2887,7 @@ platformClient.application("<APPLICATION_ID>").configuration.getAppSupportedCurr
 
 
 
-Use this API to get a list of currencies allowed in the current application. Moreover, get the name, code, symbol, and the decimal digits of the currencies.
+Retrieve a list of supported currencies for the application. A list of currencies allowed in the current application. Moreover, get the name, code, symbol, and the decimal digits of the currencies.
 
 *Returned Response:*
 
@@ -2879,8 +2946,10 @@ Success. Check the example shown below or refer `AppCurrencyResponse` for more d
 ---
 
 
+
+
 ### getOrderingStoresByFilter
-Get ordering store by filter
+Get ordering stores by filter.
 
 
 
@@ -2907,7 +2976,7 @@ platformClient.application("<APPLICATION_ID>").configuration.getOrderingStoresBy
 | body | [FilterOrderingStoreRequest](#FilterOrderingStoreRequest) | yes | Request body |
 
 
-Use this API to use filters and retrieve the details of the deployment stores (the selling locations where the application will be utilised for placing orders).
+Retrieve ordering stores based on specified filters. Use filters and retrieve the details of the deployment stores (the selling locations where the application will be utilised for placing orders).
 
 *Returned Response:*
 
@@ -3033,7 +3102,7 @@ Success
 
 
 ### updateOrderingStoreConfig
-Add/Update ordering store config
+Update ordering store configuration.
 
 
 
@@ -3058,7 +3127,7 @@ platformClient.application("<APPLICATION_ID>").configuration.updateOrderingStore
 | body | [OrderingStoreConfig](#OrderingStoreConfig) | yes | Request body |
 
 
-Use this API to edit the details of the deployment stores (the selling locations where the application will be utilised for placing orders)
+Modify configuration settings for ordering stores. Edit the details of the deployment stores (the selling locations where the application will be utilised for placing orders)
 
 *Returned Response:*
 
@@ -3110,7 +3179,7 @@ Success
 
 
 ### getOrderingStoreConfig
-Get ordering store config
+Get ordering store configuration.
 
 
 
@@ -3131,7 +3200,7 @@ platformClient.application("<APPLICATION_ID>").configuration.getOrderingStoreCon
 
 
 
-Fetch the details of the deployment stores (the selling locations where the application will be utilised for placing orders).
+Retrieve configuration settings for ordering stores. Retrieve the details of the deployment stores (the selling locations where the application will be utilised for placing orders).
 
 *Returned Response:*
 
@@ -3185,7 +3254,7 @@ Success
 
 
 ### getStaffOrderingStores
-Get deployment stores
+Get staff ordering stores.
 
 
 
@@ -3213,7 +3282,7 @@ platformClient.application("<APPLICATION_ID>").configuration.getStaffOrderingSto
 
 
 
-Use this API to retrieve the details of all stores access given to the staff member (the selling locations where the application will be utilized for placing orders).
+Retrieve ordering stores accessible to staff members. Retrieve the details of all stores access given to the staff member (the selling locations where the application will be utilized for placing orders).
 
 *Returned Response:*
 
@@ -3254,6 +3323,8 @@ Success. Check the example shown below or refer `OrderingStoresResponse` for mor
 
 
 ---
+
+
 
 
 ### getOrderingStoreCookie
@@ -3390,8 +3461,10 @@ Success
 ---
 
 
+
+
 ### getDomains
-Fetch all the domains added to an  application (sales channel website), including pre-defined domain (free domain) or custom domain (owned by the brand). Know the verification status of each domain name, and find out which one is the primary domain, short link domain, or both.
+Get domains.
 
 
 
@@ -3412,7 +3485,7 @@ platformClient.application("<APPLICATION_ID>").configuration.getDomains().safeAw
 
 
 
-Get list of domains
+Get list of domains. 
 
 *Returned Response:*
 
@@ -3481,7 +3554,7 @@ Success
 
 
 ### addDomain
-Add new domain to current sales channel
+Add domain.
 
 
 
@@ -3506,7 +3579,7 @@ platformClient.application("<APPLICATION_ID>").configuration.addDomain(body: bod
 | body | [DomainAddRequest](#DomainAddRequest) | yes | Request body |
 
 
-Add a new domain to current sales channel, including pre-defined domain (free domain) or custom domain (owned by the brand)
+Add a new domain. Add a new domain to current sales channel, including pre-defined domain (free domain) or custom domain (owned by the brand)
 
 *Returned Response:*
 
@@ -3555,7 +3628,7 @@ Success
 
 
 ### removeDomainById
-Remove attached domain from current sales channel
+Remove domain by ID.
 
 
 
@@ -3581,7 +3654,7 @@ platformClient.application("<APPLICATION_ID>").configuration.removeDomainById(id
 
 
 
-Delete a domain (secondary or shortlink domain) added to a sales channel. It will disable user's access to website, shared links, and other features associated with this domain.
+Delete a specific domain from the application. Delete a domain (secondary or shortlink domain) added to a sales channel. It will disable user's access to website, shared links, and other features associated with this domain.
 
 *Returned Response:*
 
@@ -3625,7 +3698,7 @@ Success
 
 
 ### changeDomainType
-Change the type of domain in the current sales channel
+Change domain type.
 
 
 
@@ -3650,7 +3723,7 @@ platformClient.application("<APPLICATION_ID>").configuration.changeDomainType(bo
 | body | [UpdateDomainTypeRequest](#UpdateDomainTypeRequest) | yes | Request body |
 
 
-Primary domain is used as the URL of your website. Short link domain is comparatively smaller and used while generating short links. Use this API to change a domain to either Primary or a Shortlink domain.
+Modify the type of a specific domain. Primary domain is used as the URL of your website. Short link domain is comparatively smaller and used while generating short links.
 
 *Returned Response:*
 
@@ -3716,7 +3789,7 @@ Success
 
 
 ### getDomainStatus
-Get the status of connected domain
+Get domain status.
 
 
 
@@ -3741,7 +3814,7 @@ platformClient.application("<APPLICATION_ID>").configuration.getDomainStatus(bod
 | body | [DomainStatusRequest](#DomainStatusRequest) | yes | Request body |
 
 
-Shows if the A records and TXT records of the domain correctly points to appropriate IP on Fynd Servers.
+Retrieve the status of a specific domain. Shows if the A records and TXT records of the domain correctly points to appropriate IP on Fynd Servers.
 
 *Returned Response:*
 
@@ -3798,8 +3871,10 @@ Success
 ---
 
 
+
+
 ### createApplication
-Create a new sales channel
+Create application.
 
 
 
@@ -3824,7 +3899,7 @@ platformClient.configuration.createApplication(body: body).safeAwait{ response, 
 | body | [CreateApplicationRequest](#CreateApplicationRequest) | yes | Request body |
 
 
-Applications are sales channel websites which can be configured, personalized and customized. Use this API to create a new application in the current company.
+Generate and add a new application. Applications are sales channel websites which can be configured, personalized and customized. Use this API to create a new application in the current company.
 
 *Returned Response:*
 
@@ -3870,7 +3945,7 @@ Success
 
 
 ### getApplications
-Get list of registered sales channels under company
+Get applications.
 
 
 
@@ -3898,7 +3973,7 @@ platformClient.configuration.getApplications(pageNo: pageNo, pageSize: pageSize,
 
 
 
-Applications are sales channel websites which can be configured, personalized and customised. Use this API to fetch a list of applications created within a company.
+Retrieve a list of available applications. Applications are sales channel websites which can be configured, personalized and customised. Use this API to fetch a list of applications created within a company.
 
 *Returned Response:*
 
@@ -3945,7 +4020,7 @@ Success
 
 
 ### getApplicationById
-Get sales channel data by ID
+Get application by ID.
 
 
 
@@ -3966,14 +4041,14 @@ platformClient.application("<APPLICATION_ID>").configuration.getApplicationById(
 
 
 
-Use application ID to get the current sales channel details which includes channel name, description, banner, logo, favicon, domain details, token, etc.
+Retrieve detailed information about a specific application. Use application ID to get the current sales channel details which includes channel name, description, banner, logo, favicon, domain details, token, etc.
 
 *Returned Response:*
 
 
 
 
-[Application](#Application)
+[ApplicationById](#ApplicationById)
 
 Success
 
@@ -4010,8 +4085,10 @@ Success
 ---
 
 
+
+
 ### getCurrencies
-Get all currencies
+Get currencies.
 
 
 
@@ -4032,7 +4109,7 @@ platformClient.configuration.getCurrencies().safeAwait{ response, error->
 
 
 
-Use this API to get a list of currencies allowed in the company. Moreover, get the name, code, symbol, and the decimal digits of the currencies.
+Retrieve a list of available currencies. Use this API to get a list of currencies allowed in the company. Moreover, get the name, code, symbol, and the decimal digits of the currencies.
 
 *Returned Response:*
 
@@ -4086,8 +4163,10 @@ Currencies Success response
 ---
 
 
+
+
 ### getDomainAvailibility
-Check domain availability before linking to application
+Get domain availability.
 
 
 
@@ -4112,7 +4191,7 @@ platformClient.configuration.getDomainAvailibility(body: body).safeAwait{ respon
 | body | [DomainSuggestionsRequest](#DomainSuggestionsRequest) | yes | Request body |
 
 
-Use this API to check the domain availability before linking it to application. Also sends domain suggestions that are similar to the queried domain. Note - Custom domain search is currently powered by GoDaddy provider.
+Check the availability of a specific domain. Use this API to check the domain availability before linking it to application. Also sends domain suggestions that are similar to the queried domain. Note - Custom domain search is currently powered by GoDaddy provider.
 
 *Returned Response:*
 
@@ -4186,8 +4265,10 @@ Success
 ---
 
 
+
+
 ### getIntegrationById
-Get integration data by its ID
+Get integration by ID.
 
 
 
@@ -4213,7 +4294,7 @@ platformClient.configuration.getIntegrationById(id: id).safeAwait{ response, err
 
 
 
-Use this API to fetch the details of an integration (such as Ginesys, SAP, etc.) using its ID
+Retrieve detailed information about a specific integration. Retrieve the details of an integration (such as Ginesys, SAP, etc.) using its ID.
 
 *Returned Response:*
 
@@ -4350,7 +4431,7 @@ Success
 
 
 ### getAvailableOptIns
-Get all available integration opt-ins
+Get available opt-ins.
 
 
 
@@ -4377,7 +4458,7 @@ platformClient.configuration.getAvailableOptIns(pageNo: pageNo, pageSize: pageSi
 
 
 
-Use this API to get a list of all available integrations in a company
+Retrieve a list of available opt-ins.  Retrieve a list of all available integrations in a company. 
 
 *Returned Response:*
 
@@ -4526,7 +4607,7 @@ Success
 
 
 ### getSelectedOptIns
-Get company/store level integration opt-ins
+Get selected opt-ins.
 
 
 
@@ -4555,7 +4636,7 @@ platformClient.configuration.getSelectedOptIns(level: level, uid: uid, pageNo: p
 
 
 
-Use this API to get the store-level/company-level integrations configured in a company
+Retrieve a list of selected opt-ins. Retrieve the store-level/company-level integrations configured in a company
 
 *Returned Response:*
 
@@ -4704,7 +4785,7 @@ Success
 
 
 ### getIntegrationLevelConfig
-Get integration level config
+Get integration level configuration.
 
 
 
@@ -4733,7 +4814,7 @@ platformClient.configuration.getIntegrationLevelConfig(id: id, level: level, opt
 
 
 
-Use this API to get the configuration details of an integration such as token, permissions, level, opted value, uid, meta, location ID, etc.
+Retrieve configuration settings for integration levels. Retrieve the configuration details of an integration such as token, permissions, level, opted value, uid, meta, location ID, etc.
 
 *Returned Response:*
 
@@ -4792,7 +4873,7 @@ Success
 
 
 ### updateLevelIntegration
-Update a store level integration you opted
+Update level integration.
 
 
 
@@ -4819,7 +4900,7 @@ platformClient.configuration.updateLevelIntegration(id: id, level: level, body: 
 | body | [UpdateIntegrationLevelRequest](#UpdateIntegrationLevelRequest) | yes | Request body |
 
 
-Use this API to update the configuration details of an integration such as token, permissions, level, opted value, uid, meta, location ID, etc. at a particular level (store/company).
+Modify level integration. Update the configuration details of an integration such as token, permissions, level, opted value, uid, meta, location ID, etc. at a particular level (store/company).
 
 *Returned Response:*
 
@@ -4874,7 +4955,7 @@ Success
 
 
 ### getIntegrationByLevelId
-Get integration config at a particular level (store/company)
+Get integration by level ID.
 
 
 
@@ -4902,7 +4983,7 @@ platformClient.configuration.getIntegrationByLevelId(id: id, level: level, uid: 
 
 
 
-Use this API to get the configuration details of an integration such as token, permissions, level, opted value, uid, meta, location ID, etc. at a particular level (store/company).
+Retrieve integration details for a specific level. Retrieve the configuration details of an integration such as token, permissions, level, opted value, uid, meta, location ID, etc. at a particular level (store/company).
 
 *Returned Response:*
 
@@ -4957,7 +5038,7 @@ Success
 
 
 ### updateLevelUidIntegration
-Update integration level by store UID
+Update level UID integration.
 
 
 
@@ -4985,7 +5066,7 @@ platformClient.configuration.updateLevelUidIntegration(id: id, level: level, uid
 | body | [IntegrationLevel](#IntegrationLevel) | yes | Request body |
 
 
-Update the level of integration by store UID
+Modify UID-based integration. Update the level of integration by store UID
 
 *Returned Response:*
 
@@ -5041,7 +5122,7 @@ Success
 
 
 ### getLevelActiveIntegrations
-Check active integration at store
+Get active integrations for a level.
 
 
 
@@ -5069,7 +5150,7 @@ platformClient.configuration.getLevelActiveIntegrations(id: id, level: level, ui
 
 
 
-Use this API to check if a store is already opted-in for any integration
+Check if a store is already opted-in for any integration
 
 *Returned Response:*
 
@@ -5125,6 +5206,8 @@ Success
 ---
 
 
+
+
 ### getBrandsByCompany
 Get brands by company.
 
@@ -5152,7 +5235,7 @@ platformClient.configuration.getBrandsByCompany(q: q).safeAwait{ response, error
 
 
 
-Use this API to get all the brands added in a company. Get all the brand names, along with URLs of their logo, banner, and portrait image.
+Retrieve all the brands added in a company. Get all the brand names, along with URLs of their logo, banner, and portrait image.
 
 *Returned Response:*
 
@@ -5204,7 +5287,7 @@ Success
 
 
 ### getCompanyByBrands
-Get company by brand uids
+Get company by brands.
 
 
 
@@ -5231,7 +5314,7 @@ platformClient.configuration.getCompanyByBrands(pageNo: pageNo, pageSize: pageSi
 | body | [CompanyByBrandsRequest](#CompanyByBrandsRequest) | yes | Request body |
 
 
-Use this API to get a list of companies by the brands they deal
+Retrieve companies associated with specific brands. Retrieve a list of companies by the brands they deal.
 
 *Returned Response:*
 
@@ -5295,7 +5378,7 @@ Success
 
 
 ### getStoreByBrands
-Get stores by brand uids for the current company
+Get store by brands.
 
 
 
@@ -5322,7 +5405,7 @@ platformClient.configuration.getStoreByBrands(pageNo: pageNo, pageSize: pageSize
 | body | [StoreByBrandsRequest](#StoreByBrandsRequest) | yes | Request body |
 
 
-Use this API to get a list of selling locations (stores) by the brands they deal. Store has information about store name, store type, store code, store address, and company detail.
+Retrieve stores associated with specific brands. Retrieve a list of selling locations (stores) by the brands they deal. Store has information about store name, store type, store code, store address, and company detail.
 
 *Returned Response:*
 
@@ -5424,8 +5507,10 @@ Success
 ---
 
 
+
+
 ### getOtherSellerApplications
-Get other seller sales channels
+Get other seller applications.
 
 
 
@@ -5452,7 +5537,7 @@ platformClient.configuration.getOtherSellerApplications(pageNo: pageNo, pageSize
 
 
 
-Use this API to fetch all other seller applications that were not created within the current company. but have opted for the current company's inventory
+Retrieve applications from other sellers. Retrieve all other seller applications that were not created within the current company. but have opted for the current company's inventory.
 
 *Returned Response:*
 
@@ -5537,7 +5622,7 @@ Success
 
 
 ### getOtherSellerApplicationById
-Get other seller's sales channel by ID
+Get other seller application by ID.
 
 
 
@@ -5563,7 +5648,7 @@ platformClient.configuration.getOtherSellerApplicationById(id: id).safeAwait{ re
 
 
 
-Use application ID to fetch details of a seller application that was not created within the current company. but has opted for the current company's inventory
+Retrieve details of a seller application that was not created within the current company. but has opted for the current company's inventory
 
 *Returned Response:*
 
@@ -5652,7 +5737,7 @@ Success
 
 
 ### optOutFromApplication
-Opt-out company or store from other seller application
+Opt out from an application.
 
 
 
@@ -5678,7 +5763,7 @@ platformClient.configuration.optOutFromApplication(id: id, body: body).safeAwait
 | body | [OptOutInventory](#OptOutInventory) | yes | Request body |
 
 
-Use this API to opt-out your company or store from other seller application. The specific seller application will no longer fetch inventory from your company or store.
+Choose to opt-out your company or store from other seller application. The specific seller application will no longer fetch inventory from your company or store.
 
 *Returned Response:*
 
@@ -7832,7 +7917,7 @@ Success
  | name | String? |  yes  | Name of the sales channel, e.g. Zenz Fashion |
  | owner | String? |  yes  | The unique identifier (24-digit Mongo Object ID) of owner who owns the application |
  | companyId | Int? |  yes  | Numeric ID allotted to a business account where the sales channel exists |
- | token | String? |  yes  | Random generated fix length string for sales channel. It is required and auto-generated.           |
+ | token | String? |  yes  | Random generated fix length string for sales channel. It is required and auto-generated. |
  | redirections | ArrayList<[ApplicationRedirections](#ApplicationRedirections)>? |  yes  |  |
  | meta | ArrayList<[ApplicationMeta](#ApplicationMeta)>? |  yes  |  |
  | createdAt | String? |  yes  | ISO 8601 timestamp of sales channel creation |
@@ -7850,6 +7935,59 @@ Success
  | status | String? |  yes  |  |
  | tokens | ArrayList<[TokenSchema](#TokenSchema)>? |  yes  |  |
  | secret | String? |  yes  |  |
+
+---
+
+
+ 
+ 
+ #### [ApplicationById](#ApplicationById)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | website | [ApplicationWebsite](#ApplicationWebsite)? |  yes  |  |
+ | cors | [ApplicationCors](#ApplicationCors)? |  yes  |  |
+ | auth | [ApplicationAuth](#ApplicationAuth)? |  yes  |  |
+ | description | String? |  yes  | It contains detailed information about the sales channel. |
+ | channelType | String? |  yes  | It indicates different types of channels, such as store, website, and mobile apps, with 'store' being the default value. |
+ | cacheTtl | Int? |  yes  | An integer value that specifies the number of seconds until the key expires |
+ | isInternal | Boolean? |  yes  | Indicates whether a sales channel is internal or not |
+ | isActive | Boolean? |  yes  | Indicates sales channel is active or not active |
+ | id | String? |  yes  | The unique identifier (24-digit Mongo Object ID) of the sales channel |
+ | name | String? |  yes  | Name of the sales channel, e.g. Zenz Fashion |
+ | owner | String? |  yes  | The unique identifier (24-digit Mongo Object ID) of owner who owns the application |
+ | companyId | Int? |  yes  | Numeric ID allotted to a business account where the sales channel exists |
+ | token | String? |  yes  | Random generated fix length string for sales channel. It is required and auto-generated. |
+ | redirections | ArrayList<[ApplicationRedirections](#ApplicationRedirections)>? |  yes  |  |
+ | meta | ArrayList<[ApplicationMeta](#ApplicationMeta)>? |  yes  |  |
+ | createdAt | String? |  yes  | ISO 8601 timestamp of sales channel creation |
+ | modifiedAt | String? |  yes  | ISO 8601 timestamp of sales channel updation |
+ | v | Int? |  yes  | Version key for tracking revisions. Default value is zero. |
+ | banner | [SecureUrl](#SecureUrl)? |  yes  |  |
+ | logo | [SecureUrl](#SecureUrl)? |  yes  |  |
+ | favicon | [SecureUrl](#SecureUrl)? |  yes  |  |
+ | domains | ArrayList<[Domain](#Domain)>? |  yes  |  |
+ | appType | String? |  yes  | It shows application is live or in development mode. |
+ | mobileLogo | [SecureUrl](#SecureUrl)? |  yes  |  |
+ | domain | [Domain](#Domain)? |  yes  |  |
+ | slug | String? |  yes  |  |
+ | mode | String? |  yes  |  |
+ | status | String? |  yes  |  |
+ | tokens | ArrayList<[TokenSchemaID](#TokenSchemaID)>? |  yes  |  |
+ | secret | String? |  yes  |  |
+
+---
+
+
+ 
+ 
+ #### [TokenSchemaID](#TokenSchemaID)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | token | String? |  yes  |  |
+ | createdBy | String? |  yes  |  |
+ | createdAt | String? |  yes  | ISO 8601 timestamp of when token created |
 
 ---
 

@@ -7,8 +7,11 @@
 ## Common Methods
 Application configuration apis
 
-Default
+Application Information
 * [searchApplication](#searchapplication)
+
+
+Location Management
 * [getLocations](#getlocations)
 
 
@@ -19,7 +22,7 @@ Default
 
 
 ### searchApplication
-Search Application
+Search for applications.
 
 
 
@@ -140,8 +143,10 @@ Success
 ---
 
 
+
+
 ### getLocations
-Get countries, states, cities
+Get company locations.
 
 
 
@@ -168,7 +173,7 @@ platformClient.common.getLocations(locationType: locationType, id: id).safeAwait
 
 
 
-Retrieve a list of countries, states, or cities based on the provided location_type and id parameters.
+Retrieve a list of locations associated with the company.
 
 *Returned Response:*
 

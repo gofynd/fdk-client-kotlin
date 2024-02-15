@@ -975,9 +975,14 @@ data class OperationErrorResponse(
     var success: Boolean?=null,
     
     @SerializedName("message")
-    var message: String?=null
+    var message: String?=null,
+    
+    @SerializedName("error")
+    var error: String?=null
     
 ): Parcelable {
+    
+    
     
     
     
@@ -1935,9 +1940,14 @@ data class PromotionListItem(
     var dateMeta: PromotionDateMeta?=null,
     
     @SerializedName("_id")
-    var id: String?=null
+    var id: String?=null,
+    
+    @SerializedName("tags")
+    var tags: ArrayList<String>?=null
     
 ): Parcelable {
+    
+    
     
     
     
@@ -2091,9 +2101,14 @@ data class PromotionAdd(
     var customJson: @RawValue HashMap<String,Any>?=null,
     
     @SerializedName("date_meta")
-    var dateMeta: PromotionDateMeta?=null
+    var dateMeta: PromotionDateMeta?=null,
+    
+    @SerializedName("tags")
+    var tags: ArrayList<String>?=null
     
 ): Parcelable {
+    
+    
     
     
     
@@ -2218,9 +2233,14 @@ data class PromotionUpdate(
     var customJson: @RawValue HashMap<String,Any>?=null,
     
     @SerializedName("date_meta")
-    var dateMeta: PromotionDateMeta?=null
+    var dateMeta: PromotionDateMeta?=null,
+    
+    @SerializedName("tags")
+    var tags: ArrayList<String>?=null
     
 ): Parcelable {
+    
+    
     
     
     
@@ -2432,6 +2452,9 @@ data class CartMetaConfigUpdate(
     @SerializedName("min_cart_value")
     var minCartValue: Int?=null,
     
+    @SerializedName("max_cart_value")
+    var maxCartValue: Int?=null,
+    
     @SerializedName("bulk_coupons")
     var bulkCoupons: Boolean?=null,
     
@@ -2454,6 +2477,8 @@ data class CartMetaConfigUpdate(
     var enabled: Boolean?=null
     
 ): Parcelable {
+    
+    
     
     
     
@@ -2489,6 +2514,9 @@ data class CartMetaConfigAdd(
     @SerializedName("min_cart_value")
     var minCartValue: Int?=null,
     
+    @SerializedName("max_cart_value")
+    var maxCartValue: Int?=null,
+    
     @SerializedName("bulk_coupons")
     var bulkCoupons: Boolean?=null,
     
@@ -2511,6 +2539,8 @@ data class CartMetaConfigAdd(
     var enabled: Boolean?=null
     
 ): Parcelable {
+    
+    
     
     
     
