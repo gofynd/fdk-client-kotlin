@@ -121,6 +121,56 @@ class ConfigurationDataManagerClass(val config: ApplicationConfig, val unauthori
 
     
     
+    
+        
+            
+            
+        
+            
+                
+            
+            
+        
+            
+                
+            
+            
+        
+    /**
+    *
+    * Summary: Paginator for getOrderingStores
+    **/
+    fun getOrderingStoresPaginator(pageSize: Int?=null, q: String?=null) : Paginator<OrderingStores>{
+
+    val paginator = Paginator<OrderingStores>()
+
+    paginator.setCallBack(object : PaginatorCallback<OrderingStores> {
+
+            override suspend fun onNext(
+                onResponse: (Event<OrderingStores>?,FdkError?) -> Unit) {
+                val pageId = paginator.nextId
+                val pageNo = paginator.pageNo
+                val pageType = "number"
+                var fullUrl : String? = _relativeUrls["getOrderingStores"] 
+                
+                configurationApiList?.getOrderingStores(fullUrl , pageNo = pageNo, pageSize = pageSize, q = q)?.safeAwait{ response, error ->
+                    response?.let {
+                        val page = response.peekContent()?.page
+                        paginator.setPaginator(hasNext=page?.hasNext?:false,pageNo=if (page?.hasNext == true) ((pageNo ?: 0) + 1) else pageNo)
+                        onResponse.invoke(response, null)
+                    }
+
+                    error?.let {
+                        onResponse.invoke(null,error)
+                    }
+            }
+        }
+
+    })
+    
+    return paginator
+    }
+    
     suspend fun getStoreDetailById(storeId: Int): Response<OrderingStore>? {
         var fullUrl : String? = _relativeUrls["getStoreDetailById"] 
         
@@ -194,6 +244,71 @@ class ConfigurationDataManagerClass(val config: ApplicationConfig, val unauthori
         return configurationApiList?.getAppStaffList(fullUrl    ,  pageNo = pageNo,    pageSize = pageSize,    orderIncent = orderIncent,    orderingStore = orderingStore,    user = user,    userName = userName)}
 
     
+    
+    
+        
+            
+            
+        
+            
+                
+            
+            
+        
+            
+                
+            
+            
+        
+            
+                
+            
+            
+        
+            
+                
+            
+            
+        
+            
+                
+            
+            
+        
+    /**
+    *
+    * Summary: Paginator for getAppStaffList
+    **/
+    fun getAppStaffListPaginator(pageSize: Int?=null, orderIncent: Boolean?=null, orderingStore: Int?=null, user: String?=null, userName: String?=null) : Paginator<AppStaffListResponse>{
+
+    val paginator = Paginator<AppStaffListResponse>()
+
+    paginator.setCallBack(object : PaginatorCallback<AppStaffListResponse> {
+
+            override suspend fun onNext(
+                onResponse: (Event<AppStaffListResponse>?,FdkError?) -> Unit) {
+                val pageId = paginator.nextId
+                val pageNo = paginator.pageNo
+                val pageType = "number"
+                var fullUrl : String? = _relativeUrls["getAppStaffList"] 
+                
+                configurationApiList?.getAppStaffList(fullUrl , pageNo = pageNo, pageSize = pageSize, orderIncent = orderIncent, orderingStore = orderingStore, user = user, userName = userName)?.safeAwait{ response, error ->
+                    response?.let {
+                        val page = response.peekContent()?.page
+                        paginator.setPaginator(hasNext=page?.hasNext?:false,pageNo=if (page?.hasNext == true) ((pageNo ?: 0) + 1) else pageNo)
+                        onResponse.invoke(response, null)
+                    }
+
+                    error?.let {
+                        onResponse.invoke(null,error)
+                    }
+            }
+        }
+
+    })
+    
+    return paginator
+    }
     
     suspend fun getAppStaffs(orderIncent: Boolean?=null, orderingStore: Int?=null, user: String?=null): Response<AppStaffResponse>? {
         var fullUrl : String? = _relativeUrls["getAppStaffs"] 

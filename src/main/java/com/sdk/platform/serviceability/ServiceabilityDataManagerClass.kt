@@ -104,6 +104,18 @@ class ServiceabilityDataManagerClass(val config: PlatformConfig, val unauthorize
     }
     
     
+    suspend fun getOptimalLocations(body: ReAssignStoreRequest)
+    : Response<ReAssignStoreResponse>? {
+        
+        return if (config.oauthClient.isAccessTokenValid()) {
+            serviceabilityApiList?.getOptimalLocations(
+        companyId = config.companyId, body = body)
+        } else {
+            null
+        } 
+    }
+    
+    
     
     
     
@@ -120,12 +132,12 @@ class ServiceabilityDataManagerClass(val config: PlatformConfig, val unauthorize
     }
     
     
-    suspend fun getCourierPartnerAccounts(pageNo: Int?=null, pageSize: Int?=null, stage: String?=null, paymentMode: String?=null, transportType: String?=null)
+    suspend fun getCourierPartnerAccounts(pageNo: Int?=null, pageSize: Int?=null, stage: String?=null, paymentMode: String?=null, transportType: String?=null, accountIds: ArrayList<String>?=null)
     : Response<CompanyCourierPartnerAccountListResponse>? {
         
         return if (config.oauthClient.isAccessTokenValid()) {
             serviceabilityApiList?.getCourierPartnerAccounts(
-        companyId = config.companyId, pageNo = pageNo, pageSize = pageSize, stage = stage, paymentMode = paymentMode, transportType = transportType )
+        companyId = config.companyId, pageNo = pageNo, pageSize = pageSize, stage = stage, paymentMode = paymentMode, transportType = transportType, accountIds = accountIds )
         } else {
             null
         } 
@@ -182,6 +194,7 @@ class ServiceabilityDataManagerClass(val config: PlatformConfig, val unauthorize
             null
         } 
     }
+    
     
     
     
@@ -363,21 +376,10 @@ class ServiceabilityDataManagerClass(val config: PlatformConfig, val unauthorize
     }
     
     
-    
-    suspend fun getOptimalLocations(body: OptimlLocationsRequestSchema)
-    : Response<OptimalLocationsResponse>? {
-        
-        return if (config.oauthClient.isAccessTokenValid()) {
-            serviceabilityApiList?.getOptimalLocations(
-        companyId = config.companyId, body = body)
-        } else {
-            null
-        } 
-    }
-    
 
 inner class ApplicationClient(val applicationId:String,val config: PlatformConfig){
 
+    
     
     
     
@@ -485,6 +487,16 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     : Response<ApplicationConfig>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 serviceabilityApiList?.getApplicationConfiguration(companyId = config.companyId , applicationId = applicationId  )
+        } else {
+            null
+        }
+    }
+    
+    
+    suspend fun patchApplicationConfiguration(body: ApplicationConfigPatchRequest)
+    : Response<ApplicationConfigPatchResponse>? {
+        return if (config.oauthClient.isAccessTokenValid()) {
+                serviceabilityApiList?.patchApplicationConfiguration(companyId = config.companyId , applicationId = applicationId , body = body)
         } else {
             null
         }
@@ -603,7 +615,6 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
             null
         }
     }
-    
     
 }
 }

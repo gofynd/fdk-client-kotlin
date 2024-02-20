@@ -56,6 +56,66 @@ class OrderDataManagerClass(val config: PlatformConfig, val unauthorizedAction: 
     }
     
     
+    suspend fun postRefundStateConfiguration(appId: String,body: PostRefundStateConfiguration)
+    : Response<PostRefundStateConfigurationResponse>? {
+        
+        return if (config.oauthClient.isAccessTokenValid()) {
+            orderApiList?.postRefundStateConfiguration(
+        companyId = config.companyId, appId = appId, body = body)
+        } else {
+            null
+        } 
+    }
+    
+    
+    suspend fun getRefundStateConfiguration(appId: String)
+    : Response<GetRefundStateConfigurationResponse>? {
+        
+        return if (config.oauthClient.isAccessTokenValid()) {
+            orderApiList?.getRefundStateConfiguration(
+        companyId = config.companyId, appId = appId )
+        } else {
+            null
+        } 
+    }
+    
+    
+    suspend fun getRefundEnableStateList()
+    : Response<GetRefundStates>? {
+        
+        return if (config.oauthClient.isAccessTokenValid()) {
+            orderApiList?.getRefundEnableStateList(
+        companyId = config.companyId )
+        } else {
+            null
+        } 
+    }
+    
+    
+    suspend fun postRefundConfiguration(appId: String,body: RefundStateConfigurationManualSchema)
+    : Response<RefundStateConfigurationManualSchemaResponse>? {
+        
+        return if (config.oauthClient.isAccessTokenValid()) {
+            orderApiList?.postRefundConfiguration(
+        companyId = config.companyId, appId = appId, body = body)
+        } else {
+            null
+        } 
+    }
+    
+    
+    suspend fun getRefundConfiguration(appId: String)
+    : Response<RefundStateConfigurationManualSchemaResponse>? {
+        
+        return if (config.oauthClient.isAccessTokenValid()) {
+            orderApiList?.getRefundConfiguration(
+        companyId = config.companyId, appId = appId )
+        } else {
+            null
+        } 
+    }
+    
+    
     suspend fun reassignLocation(body: StoreReassign)
     : Response<StoreReassignResponse>? {
         
@@ -524,18 +584,6 @@ class OrderDataManagerClass(val config: PlatformConfig, val unauthorizedAction: 
     }
     
     
-    suspend fun generateInvoiceID(invoiceType: String,body: GenerateInvoiceIDRequest)
-    : Response<GenerateInvoiceIDResponse>? {
-        
-        return if (config.oauthClient.isAccessTokenValid()) {
-            orderApiList?.generateInvoiceID(
-        companyId = config.companyId, invoiceType = invoiceType, body = body)
-        } else {
-            null
-        } 
-    }
-    
-    
     suspend fun failedOrderLogDetails(logId: String)
     : Response<FailedOrderLogDetails>? {
         
@@ -546,6 +594,15 @@ class OrderDataManagerClass(val config: PlatformConfig, val unauthorizedAction: 
             null
         } 
     }
+    
+    
+    
+    
+    
+    
+    
+    
+    
     
     
     
@@ -609,6 +666,66 @@ class OrderDataManagerClass(val config: PlatformConfig, val unauthorizedAction: 
     }
     
     
+    
+    
+    suspend fun getuserviews()
+    : Response<UserViewsResponse>? {
+        
+        return if (config.oauthClient.isAccessTokenValid()) {
+            orderApiList?.getuserviews(
+        companyId = config.companyId )
+        } else {
+            null
+        } 
+    }
+    
+    
+    suspend fun postuserviews(body: UserViewsResponse)
+    : Response<CreateUpdateDeleteResponse>? {
+        
+        return if (config.oauthClient.isAccessTokenValid()) {
+            orderApiList?.postuserviews(
+        companyId = config.companyId, body = body)
+        } else {
+            null
+        } 
+    }
+    
+    
+    suspend fun updateuserviews(body: UserViewsResponse)
+    : Response<CreateUpdateDeleteResponse>? {
+        
+        return if (config.oauthClient.isAccessTokenValid()) {
+            orderApiList?.updateuserviews(
+        companyId = config.companyId, body = body)
+        } else {
+            null
+        } 
+    }
+    
+    
+    suspend fun deleteuserviews(id: String)
+    : Response<CreateUpdateDeleteResponse>? {
+        
+        return if (config.oauthClient.isAccessTokenValid()) {
+            orderApiList?.deleteuserviews(
+        companyId = config.companyId, id = id )
+        } else {
+            null
+        } 
+    }
+    
+    
+    suspend fun globalfilters(showIn: String, requestSource: String)
+    : Response<GlobalFiltersResponse>? {
+        
+        return if (config.oauthClient.isAccessTokenValid()) {
+            orderApiList?.globalfilters(
+        companyId = config.companyId, showIn = showIn, requestSource = requestSource )
+        } else {
+            null
+        } 
+    }
     
     
     suspend fun getfilters(view: String, groupEntity: String?=null)
@@ -778,6 +895,100 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     
     
     
+    
+    
+    
+    
+    suspend fun getQuestions(pageNo: Int?=null, pageSize: Int?=null, q: String?=null, isActive: String?=null)
+    : Response<HashMap<String,Any>>? {
+        return if (config.oauthClient.isAccessTokenValid()) {
+                orderApiList?.getQuestions(companyId = config.companyId , applicationId = applicationId , pageNo = pageNo, pageSize = pageSize, q = q, isActive = isActive )
+        } else {
+            null
+        }
+    }
+    
+    
+    suspend fun getRuleLaneConfig(searchValue: String?=null)
+    : Response<HashMap<String,Any>>? {
+        return if (config.oauthClient.isAccessTokenValid()) {
+                orderApiList?.getRuleLaneConfig(companyId = config.companyId , applicationId = applicationId , searchValue = searchValue )
+        } else {
+            null
+        }
+    }
+    
+    
+    suspend fun createRule(body: RuleRequest)
+    : Response<CreateRuleResponse>? {
+        return if (config.oauthClient.isAccessTokenValid()) {
+                orderApiList?.createRule(companyId = config.companyId , applicationId = applicationId , body = body)
+        } else {
+            null
+        }
+    }
+    
+    
+    suspend fun getRuleById(ruleId: String)
+    : Response<RuleResponse>? {
+        return if (config.oauthClient.isAccessTokenValid()) {
+                orderApiList?.getRuleById(companyId = config.companyId , applicationId = applicationId , ruleId = ruleId )
+        } else {
+            null
+        }
+    }
+    
+    
+    suspend fun updateRule(ruleId: String,body: RuleUpdateRequest)
+    : Response<RuleUpdateResponse>? {
+        return if (config.oauthClient.isAccessTokenValid()) {
+                orderApiList?.updateRule(companyId = config.companyId , applicationId = applicationId , ruleId = ruleId, body = body)
+        } else {
+            null
+        }
+    }
+    
+    
+    suspend fun deleteRule(ruleId: String)
+    : Response<DeleteRuleResponse>? {
+        return if (config.oauthClient.isAccessTokenValid()) {
+                orderApiList?.deleteRule(companyId = config.companyId , applicationId = applicationId , ruleId = ruleId )
+        } else {
+            null
+        }
+    }
+    
+    
+    suspend fun updateRulePosition(body: UpdateRulePositionRequest)
+    : Response<UpdateRulePositionResponse>? {
+        return if (config.oauthClient.isAccessTokenValid()) {
+                orderApiList?.updateRulePosition(companyId = config.companyId , applicationId = applicationId , body = body)
+        } else {
+            null
+        }
+    }
+    
+    
+    suspend fun getRuleParameters()
+    : Response<RuleParametersResponse>? {
+        return if (config.oauthClient.isAccessTokenValid()) {
+                orderApiList?.getRuleParameters(companyId = config.companyId , applicationId = applicationId  )
+        } else {
+            null
+        }
+    }
+    
+    
+    suspend fun getRuleList(body: RuleListRequest)
+    : Response<RuleListResponse>? {
+        return if (config.oauthClient.isAccessTokenValid()) {
+                orderApiList?.getRuleList(companyId = config.companyId , applicationId = applicationId , body = body)
+        } else {
+            null
+        }
+    }
+    
+    
     suspend fun getShipmentBagReasons(shipmentId: String, lineNumber: String)
     : Response<ShipmentBagReasons>? {
         return if (config.oauthClient.isAccessTokenValid()) {
@@ -811,6 +1022,11 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
             null
         }
     }
+    
+    
+    
+    
+    
     
     
     

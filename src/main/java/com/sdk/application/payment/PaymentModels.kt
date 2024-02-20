@@ -1386,38 +1386,6 @@ data class AggregatorRoute(
 
              
 /*
-    Model: PaymentDefaultSelection
-*/
-@Parcelize
-data class PaymentDefaultSelection(
-    
-    
-    
-    @SerializedName("mode")
-    var mode: String?=null,
-    
-    @SerializedName("identifier")
-    var identifier: String?=null,
-    
-    @SerializedName("skip")
-    var skip: Boolean?=null
-    
-): Parcelable {
-    
-    
-    
-    
-    
-    
-    
-    
-    
-}
-
-
-
-             
-/*
     Model: PaymentFlow
 */
 @Parcelize
@@ -1513,17 +1481,12 @@ data class PaymentOptionAndFlow(
     
     
     @SerializedName("payment_option")
-    var paymentOption: RootPaymentMode?=null,
+    var paymentOption: ArrayList<RootPaymentMode>?=null,
     
     @SerializedName("payment_flows")
-    var paymentFlows: PaymentFlow?=null,
-    
-    @SerializedName("payment_default_selection")
-    var paymentDefaultSelection: PaymentDefaultSelection?=null
+    var paymentFlows: PaymentFlow?=null
     
 ): Parcelable {
-    
-    
     
     
     
@@ -2104,14 +2067,9 @@ data class ValidateVPARequest(
     
     
     @SerializedName("upi_vpa")
-    var upiVpa: String?=null,
-    
-    @SerializedName("aggregator")
-    var aggregator: String?=null
+    var upiVpa: String?=null
     
 ): Parcelable {
-    
-    
     
     
     
@@ -3077,9 +3035,14 @@ data class SetDefaultBeneficiaryRequest(
     var orderId: String?=null,
     
     @SerializedName("beneficiary_id")
-    var beneficiaryId: String?=null
+    var beneficiaryId: String?=null,
+    
+    @SerializedName("shipment_id")
+    var shipmentId: String?=null
     
 ): Parcelable {
+    
+    
     
     
     

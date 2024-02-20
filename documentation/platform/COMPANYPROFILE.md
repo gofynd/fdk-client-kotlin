@@ -7,24 +7,15 @@
 ## CompanyProfile Methods
 Catalog CBS - platform Front API's
 
-Company Onboarding and Metrics
+Default
 * [cbsOnboardGet](#cbsonboardget)
 * [updateCompany](#updatecompany)
 * [getCompanyMetrics](#getcompanymetrics)
-
-
-Brand Management
 * [getBrand](#getbrand)
 * [editBrand](#editbrand)
 * [createBrand](#createbrand)
 * [getBrands](#getbrands)
-
-
-Company-Brand Mapping
 * [createCompanyBrandMapping](#createcompanybrandmapping)
-
-
-Location Management
 * [getLocations](#getlocations)
 * [createLocation](#createlocation)
 * [getLocationDetail](#getlocationdetail)
@@ -40,7 +31,7 @@ Location Management
 
 
 ### cbsOnboardGet
-Get company onboard data.
+Get company profile
 
 
 
@@ -61,7 +52,7 @@ platformClient.companyprofile.cbsOnboardGet().safeAwait{ response, error->
 
 
 
-View the company profile of the seller account.
+This API allows to view the company profile of the seller account.
 
 *Returned Response:*
 
@@ -162,7 +153,7 @@ Company profile object. See example below or refer `GetCompanyProfileSerializerR
 
 
 ### updateCompany
-Update company information.
+Edit company profile
 
 
 
@@ -187,7 +178,7 @@ platformClient.companyprofile.updateCompany(body: body).safeAwait{ response, err
 | body | [UpdateCompany](#UpdateCompany) | yes | Request body |
 
 
-Allows to edit the company profile of the seller account.
+This API allows to edit the company profile of the seller account.
 
 *Returned Response:*
 
@@ -224,7 +215,7 @@ Returns a success message
 
 
 ### getCompanyMetrics
-Get company metrics.
+Get company metrics
 
 
 
@@ -245,7 +236,7 @@ platformClient.companyprofile.getCompanyMetrics().safeAwait{ response, error->
 
 
 
-Allows to view the company metrics, i.e. the status of its brand and stores. Also its allows to view the number of products, company documents & store documents which are verified and unverified.
+This API allows to view the company metrics, i.e. the status of its brand and stores. Also its allows to view the number of products, company documents & store documents which are verified and unverified.
 
 *Returned Response:*
 
@@ -301,10 +292,8 @@ Metrics response object. See example below or refer `MetricsSerializer` for deta
 ---
 
 
-
-
 ### getBrand
-Get brand details.
+Get a single company brand.
 
 
 
@@ -330,7 +319,7 @@ platformClient.companyprofile.getBrand(brandId: brandId).safeAwait{ response, er
 
 
 
-Retrieve detailed information about a specific brand. Get data associated to a particular company brand.
+This API helps to get data associated to a particular company brand.
 
 *Returned Response:*
 
@@ -392,7 +381,7 @@ Brand object. See example below or refer `GetBrandResponseSerializer` for detail
 
 
 ### editBrand
-Edit brand details.
+Edit a brand.
 
 
 
@@ -418,7 +407,7 @@ platformClient.companyprofile.editBrand(brandId: brandId, body: body).safeAwait{
 | body | [CreateUpdateBrandRequestSerializer](#CreateUpdateBrandRequestSerializer) | yes | Request body |
 
 
-Modify details and settings of a specific brand. Allows to edit meta of a brand.
+This API allows to edit meta of a brand.
 
 *Returned Response:*
 
@@ -455,7 +444,7 @@ Returns a success response
 
 
 ### createBrand
-Create brand.
+Create a Brand.
 
 
 
@@ -480,7 +469,7 @@ platformClient.companyprofile.createBrand(body: body).safeAwait{ response, error
 | body | [CreateUpdateBrandRequestSerializer](#CreateUpdateBrandRequestSerializer) | yes | Request body |
 
 
-Allows to create a brand associated to a company.
+This API allows to create a brand associated to a company.
 
 *Returned Response:*
 
@@ -517,7 +506,7 @@ Returns a success response
 
 
 ### getBrands
-Get brands.
+Get brands associated to a company
 
 
 
@@ -545,7 +534,7 @@ platformClient.companyprofile.getBrands(pageNo: pageNo, pageSize: pageSize, q: q
 
 
 
-Retrieve a list of available brands.
+This API helps to get view brands associated to a particular company.
 
 *Returned Response:*
 
@@ -666,10 +655,8 @@ Brand object. See example below or refer `CompanyBrandListSerializer` for detail
 ---
 
 
-
-
 ### createCompanyBrandMapping
-Create company-brand mapping.
+Create a company brand mapping.
 
 
 
@@ -694,7 +681,7 @@ platformClient.companyprofile.createCompanyBrandMapping(body: body).safeAwait{ r
 | body | [CompanyBrandPostRequestSerializer](#CompanyBrandPostRequestSerializer) | yes | Request body |
 
 
-Establish a mapping between a company and a brand.
+This API allows to create a company brand mapping, for a already existing brand in the system.
 
 *Returned Response:*
 
@@ -729,10 +716,8 @@ Returns a success response
 ---
 
 
-
-
 ### getLocations
-Get company locations.
+Get list of locations
 
 
 
@@ -765,7 +750,7 @@ platformClient.companyprofile.getLocations(storeType: storeType, q: q, stage: st
 
 
 
-Retrieve a list of locations associated with the company.
+This API allows to view all the locations associated to a company.
 
 *Returned Response:*
 
@@ -983,7 +968,7 @@ Company profile object. See example below or refer `LocationListSerializer` for 
 
 
 ### createLocation
-Create location.
+Create a location associated to a company.
 
 
 
@@ -1008,7 +993,7 @@ platformClient.companyprofile.createLocation(body: body).safeAwait{ response, er
 | body | [LocationSerializer](#LocationSerializer) | yes | Request body |
 
 
-Create a new location. Allows to edit a location associated to a company.
+This API allows to edit a location associated to a company.
 
 *Returned Response:*
 
@@ -1045,7 +1030,7 @@ Returns a success response
 
 
 ### getLocationDetail
-Get location detail.
+Get details of a specific location.
 
 
 
@@ -1071,7 +1056,7 @@ platformClient.companyprofile.getLocationDetail(locationId: locationId).safeAwai
 
 
 
-Retrieve detailed information about a specific location. Get data associated to a specific location.
+This API helps to get data associated to a specific location.
 
 *Returned Response:*
 
@@ -1286,7 +1271,7 @@ Brand object. See example below or refer `GetLocationSerializer` for details
 
 
 ### updateLocation
-Update location.
+Edit a location asscoiated to a company.
 
 
 
@@ -1312,7 +1297,7 @@ platformClient.companyprofile.updateLocation(locationId: locationId, body: body)
 | body | [LocationSerializer](#LocationSerializer) | yes | Request body |
 
 
-Allows to edit a location associated to a company.
+This API allows to edit a location associated to a company.
 
 *Returned Response:*
 
@@ -1349,7 +1334,7 @@ Returns a success response
 
 
 ### createLocationBulk
-Create locations in bulk.
+Create a location asscoiated to a company in bulk.
 
 
 
@@ -1374,7 +1359,7 @@ platformClient.companyprofile.createLocationBulk(body: body).safeAwait{ response
 | body | [BulkLocationSerializer](#BulkLocationSerializer) | yes | Request body |
 
 
-Allows to create a location associated to a company.
+This API allows to create a location associated to a company.
 
 *Returned Response:*
 
@@ -1411,7 +1396,7 @@ Returns a success response
 
 
 ### getLocationTags
-Get location tags.
+Get tags associated with locations for a company.
 
 
 
@@ -1432,7 +1417,7 @@ platformClient.companyprofile.getLocationTags().safeAwait{ response, error->
 
 
 
-Retrieve all the tags associated to a company.
+This API fetches all the tags associated to a company.
 
 *Returned Response:*
 

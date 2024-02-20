@@ -11,7 +11,7 @@ interface CartApiList {
     
     
     @GET 
-    suspend fun getCart(@Url url1: String?    ,        @Query("id") id: String?, @Query("i") i: Boolean?, @Query("b") b: Boolean?, @Query("c") c: Boolean?, @Query("assign_card_id") assignCardId: Int?, @Query("area_code") areaCode: String?, @Query("buy_now") buyNow: Boolean?)
+    suspend fun getCart(@Url url1: String?    ,         @Query("id") id: String?, @Query("i") i: Boolean?, @Query("b") b: Boolean?, @Query("c") c: Boolean?, @Query("assign_card_id") assignCardId: Int?, @Query("area_code") areaCode: String?, @Query("buy_now") buyNow: Boolean?, @Query("cart_type") cartType: String?)
     : Response<CartDetailResponse>
     
     
@@ -21,7 +21,7 @@ interface CartApiList {
     
     
     @POST 
-    suspend fun addItems(@Url url1: String?    ,      @Query("i") i: Boolean?, @Query("b") b: Boolean?, @Query("area_code") areaCode: String?, @Query("buy_now") buyNow: Boolean?, @Query("id") id: String?, @Body body: AddCartRequest)
+    suspend fun addItems(@Url url1: String?    ,       @Query("i") i: Boolean?, @Query("b") b: Boolean?, @Query("area_code") areaCode: String?, @Query("buy_now") buyNow: Boolean?, @Query("id") id: String?, @Query("cart_type") cartType: String?, @Body body: AddCartRequest)
     : Response<AddCartDetailResponse>
     
     
@@ -31,13 +31,18 @@ interface CartApiList {
     
     
     @PUT 
-    suspend fun deleteCart(@Url url1: String?    ,  @Query("id") id: String?)
+    suspend fun deleteCart(@Url url1: String?    ,   @Query("id") id: String?, @Query("cart_type") cartType: String?)
     : Response<DeleteCartDetailResponse>
     
     
     @GET 
     suspend fun getItemCount(@Url url1: String?    ,   @Query("id") id: String?, @Query("buy_now") buyNow: Boolean?)
     : Response<CartItemCountResponse>
+    
+    
+    @GET 
+    suspend fun getItemCountV2(@Url url1: String?    ,   @Query("id") id: String?, @Query("buy_now") buyNow: Boolean?)
+    : Response<CartItemCountResponseV2>
     
     
     @GET 
@@ -51,17 +56,17 @@ interface CartApiList {
     
     
     @DELETE 
-    suspend fun removeCoupon(@Url url1: String?    ,   @Query("id") id: String?, @Query("buy_now") buyNow: Boolean?)
+    suspend fun removeCoupon(@Url url1: String?    ,    @Query("id") id: String?, @Query("buy_now") buyNow: Boolean?, @Query("cart_type") cartType: String?)
     : Response<CartDetailResponse>
     
     
     @GET 
-    suspend fun getBulkDiscountOffers(@Url url1: String?    ,     @Query("item_id") itemId: Int?, @Query("article_id") articleId: String?, @Query("uid") uid: Int?, @Query("slug") slug: String?)
+    suspend fun getBulkDiscountOffers(@Url url1: String?    ,      @Query("item_id") itemId: Int?, @Query("article_id") articleId: String?, @Query("uid") uid: Int?, @Query("slug") slug: String?, @Query("cart_type") cartType: String?)
     : Response<BulkPriceResponse>
     
     
     @POST 
-    suspend fun applyRewardPoints(@Url url1: String?    ,     @Query("id") id: String?, @Query("i") i: Boolean?, @Query("b") b: Boolean?, @Query("buy_now") buyNow: Boolean?, @Body body: RewardPointRequest)
+    suspend fun applyRewardPoints(@Url url1: String?    ,      @Query("id") id: String?, @Query("i") i: Boolean?, @Query("b") b: Boolean?, @Query("buy_now") buyNow: Boolean?, @Query("cart_type") cartType: String?, @Body body: RewardPointRequest)
     : Response<CartDetailResponse>
     
     
@@ -148,5 +153,15 @@ interface CartApiList {
     @POST 
     suspend fun checkoutCartV2(@Url url1: String?    ,   @Query("buy_now") buyNow: Boolean?, @Query("cart_type") cartType: String?, @Body body: CartCheckoutDetailV2Request)
     : Response<CartCheckoutResponse>
+    
+    
+    @GET 
+    suspend fun getCartMetaConfigs(@Url url1: String?   )
+    : Response<CartConfigListResponse>
+    
+    
+    @GET 
+    suspend fun getCartMetaConfig(@Url url1: String?    )
+    : Response<CartConfigDetailResponse>
     
 }

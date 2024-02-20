@@ -11,16 +11,6 @@ interface LogisticApiList {
     
     
     @GET 
-    suspend fun getPincodeCity(@Url url1: String?    )
-    : Response<PincodeApiResponse>
-    
-    
-    @POST 
-    suspend fun getTatProduct(@Url url1: String?   ,@Body body: TATViewRequest)
-    : Response<TATViewResponse>
-    
-    
-    @GET 
     suspend fun getAllCountries(@Url url1: String?   )
     : Response<CountryListResponse>
     

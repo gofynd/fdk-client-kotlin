@@ -7,12 +7,9 @@
 ## FileStorage Methods
 The File Storage module simplifies your file upload and storage tasks. Use the 'Initiate Upload' module to start and complete file uploads. Once the upload is successful, employ the 'Complete Upload' module to retrieve the file's URL. For added security, utilize the 'Sign URLs' module, which grants authorized access through signed URLs.
 
-File Upload Management
+Default
 * [startUpload](#startupload)
 * [completeUpload](#completeupload)
-
-
-URL Signing
 * [signUrls](#signurls)
 
 
@@ -23,7 +20,7 @@ URL Signing
 
 
 ### startUpload
-Initiates file upload
+Initiates an upload and returns a storage link that is valid for 30 minutes. You can use the storage link to make subsequent upload request with file buffer or blob.
 
 
 
@@ -49,7 +46,25 @@ applicationClient.filestorage.startUpload(namespace: namespace, body: body).safe
 | body | [StartRequest](#StartRequest) | yes | Request body |
 
 
-Starts the process of uploading a file to storage location, and returns a storage link in response.
+Use this API to perform the first step of uploading (i.e. **Start**) an arbitrarily sized buffer or blob.
+
+The three major steps are:
+* Start
+* Upload
+* Complete
+
+### Start
+Initiates the assets upload using `startUpload`.
+It returns a storage link in response.
+
+### Upload
+Use the storage link to upload a file (Buffer or Blob) to the File Storage.
+Make a `PUT` request on storage link received from `startUpload` API with the file (Buffer or Blob) in the request body.
+
+### Complete
+After successfully upload, call the `completeUpload` API to finish the upload process.
+This operation will return the URL of the uploaded file.
+
 
 *Returned Response:*
 
@@ -112,7 +127,7 @@ Success. Returns a response containing relaving and absolute_url of storage serv
 
 
 ### completeUpload
-Finalizes upload process.
+Completes the upload process. After successfully uploading a file, call this API to finish the upload process.
 
 
 
@@ -138,7 +153,25 @@ applicationClient.filestorage.completeUpload(namespace: namespace, body: body).s
 | body | [StartResponse](#StartResponse) | yes | Request body |
 
 
-Complete the process of uploading the file, and will return the URL of the uploaded file
+Use this API to perform the third step of uploading (i.e. **Complete**) an arbitrarily sized buffer or blob.
+
+The three major steps are:
+* Start
+* Upload
+* Complete
+
+### Start
+Initiates the assets upload using `startUpload`.
+It returns a storage link in response.
+
+### Upload
+Use the storage link to upload a file (Buffer or Blob) to the File Storage.
+Make a `PUT` request on storage link received from `startUpload` API with the file (Buffer or Blob) in the request body.
+
+### Complete
+After successfully upload, call the `completeUpload` API to finish the upload process.
+This operation will return the URL of the uploaded file.
+
 
 *Returned Response:*
 
@@ -207,10 +240,8 @@ Success
 ---
 
 
-
-
 ### signUrls
-Signs file URLs.
+Explain here
 
 
 
@@ -235,7 +266,7 @@ applicationClient.filestorage.signUrls(body: body).safeAwait{ response, error->
 | body | [SignUrlRequest](#SignUrlRequest) | yes | Request body |
 
 
-Generates secure, signed URLs that is valid for certain expiry time for accessing stored files.
+Describe here
 
 *Returned Response:*
 

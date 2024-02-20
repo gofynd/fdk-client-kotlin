@@ -7,7 +7,7 @@
 ## Partner Methods
 Partner configuration apis
 
-Proxy Path Management
+Default
 * [addProxyPath](#addproxypath)
 * [removeProxyPath](#removeproxypath)
 
@@ -19,7 +19,7 @@ Proxy Path Management
 
 
 ### addProxyPath
-Add proxy path.
+Create proxy URL for the external URL
 
 
 
@@ -45,7 +45,7 @@ platformClient.application("<APPLICATION_ID>").partner.addProxyPath(extensionId:
 | body | [AddProxyReq](#AddProxyReq) | yes | Request body |
 
 
-Create and add a new proxy path.
+Use this API to generate proxy URL for the external URL
 
 *Returned Response:*
 
@@ -96,7 +96,7 @@ Proxy created successfully
 
 
 ### removeProxyPath
-Remove proxy path.
+Remove proxy URL for the external URL
 
 
 
@@ -123,7 +123,7 @@ platformClient.application("<APPLICATION_ID>").partner.removeProxyPath(extension
 
 
 
-Delete a proxy path from the platform.
+Use this API to remove the proxy URL which is already generated for the external URL
 
 *Returned Response:*
 

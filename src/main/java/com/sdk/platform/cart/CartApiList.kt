@@ -16,6 +16,14 @@ interface CartApiList {
     suspend fun createCoupon(@Path("company_id") companyId: String, @Path("application_id") applicationId: String,@Body body: CouponAdd)
     : Response<SuccessMessage>
     
+    @GET ("/service/platform/cart/v1.0/company/{company_id}/application/{application_id}/coupon-tags")
+    suspend fun getCouponTags(@Path("company_id") companyId: String, @Path("application_id") applicationId: String)
+    : Response<TagsViewResponse>
+    
+    @GET ("/service/platform/cart/v1.0/company/{company_id}/application/{application_id}/promo-tags")
+    suspend fun getPromotionTags(@Path("company_id") companyId: String, @Path("application_id") applicationId: String)
+    : Response<TagsViewResponse>
+    
     @GET ("/service/platform/cart/v1.0/company/{company_id}/application/{application_id}/coupon/{id}")
     suspend fun getCouponById(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Path("id") id: String)
     : Response<CouponUpdate>
@@ -52,17 +60,29 @@ interface CartApiList {
     suspend fun getPromosCouponConfig(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Query("entity_type") entityType: String?, @Query("is_hidden") isHidden: Boolean?)
     : Response<ActivePromosResponse>
     
+    @GET ("/service/platform/cart/v1.0/company/{company_id}/application/{application_id}/cart_configuration/{cart_meta_id}")
+    suspend fun getCartMetaConfig(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Path("cart_meta_id") cartMetaId: String)
+    : Response<CartMetaConfigDetailResponse>
+    
     @PUT ("/service/platform/cart/v1.0/company/{company_id}/application/{application_id}/cart_configuration/{cart_meta_id}")
     suspend fun updateCartMetaConfig(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Path("cart_meta_id") cartMetaId: String,@Body body: CartMetaConfigUpdate)
-    : Response<CartMetaConfigUpdate>
+    : Response<CartMetaConfigDetailResponse>
+    
+    @PATCH ("/service/platform/cart/v1.0/company/{company_id}/application/{application_id}/cart_configuration/{cart_meta_id}")
+    suspend fun upateCartMetaActiveStatus(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Path("cart_meta_id") cartMetaId: String,@Body body: CartMetaConfigUpdate)
+    : Response<CartMetaConfigDetailResponse>
+    
+    @DELETE ("/service/platform/cart/v1.0/company/{company_id}/application/{application_id}/cart_configuration/{cart_meta_id}")
+    suspend fun deleteCartMetaConfig(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Path("cart_meta_id") cartMetaId: String)
+    : Response<SuccessMessage>
     
     @GET ("/service/platform/cart/v1.0/company/{company_id}/application/{application_id}/cart_configuration")
-    suspend fun fetchCartMetaConfig(@Path("company_id") companyId: String, @Path("application_id") applicationId: String)
-    : Response<CartMetaConfigAdd>
+    suspend fun getCartMetaConfigs(@Path("company_id") companyId: String, @Path("application_id") applicationId: String)
+    : Response<CartMetaConfigListResponse>
     
     @POST ("/service/platform/cart/v1.0/company/{company_id}/application/{application_id}/cart_configuration")
     suspend fun createCartMetaConfig(@Path("company_id") companyId: String, @Path("application_id") applicationId: String,@Body body: CartMetaConfigAdd)
-    : Response<CartMetaConfigAdd>
+    : Response<CartMetaConfigDetailResponse>
     
     @PUT ("/service/platform/cart/v1.0/company/{company_id}/application/{application_id}/price-adjustment/{id}")
     suspend fun updatePriceAdjustment(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Path("id") id: String,@Body body: PriceAdjustmentUpdate)
@@ -74,6 +94,10 @@ interface CartApiList {
     
     @POST ("/service/platform/cart/v1.0/company/{company_id}/application/{application_id}/price-adjustment")
     suspend fun addPriceAdjustment(@Path("company_id") companyId: String, @Path("application_id") applicationId: String,@Body body: PriceAdjustmentAdd)
+    : Response<PriceAdjustmentResponse>
+    
+    @GET ("/service/platform/cart/v1.0/company/{company_id}/application/{application_id}/price-adjustment")
+    suspend fun getPriceAdjustments(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Query("cart_id") cartId: String)
     : Response<PriceAdjustmentResponse>
     
     @POST ("/service/platform/cart/v1.0/company/{company_id}/application/{application_id}/cart/validate")
@@ -141,23 +165,23 @@ interface CartApiList {
     : Response<UserCartMappingResponse>
     
     @GET ("/service/platform/cart/v1.0/company/{company_id}/application/{application_id}/detail")
-    suspend fun getCart(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Query("id") id: String?, @Query("user_id") userId: String?, @Query("i") i: Boolean?, @Query("b") b: Boolean?, @Query("assign_card_id") assignCardId: Int?, @Query("buy_now") buyNow: Boolean?)
+    suspend fun getCart(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Query("id") id: String?, @Query("user_id") userId: String?, @Query("i") i: Boolean?, @Query("b") b: Boolean?, @Query("assign_card_id") assignCardId: Int?, @Query("buy_now") buyNow: Boolean?, @Query("cart_type") cartType: String?)
     : Response<CartDetailResponse>
     
     @POST ("/service/platform/cart/v1.0/company/{company_id}/application/{application_id}/detail")
-    suspend fun platformAddItems(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Query("i") i: Boolean?, @Query("b") b: Boolean?, @Query("buy_now") buyNow: Boolean?, @Query("id") id: String?,@Body body: PlatformAddCartRequest)
+    suspend fun platformAddItems(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Query("i") i: Boolean?, @Query("b") b: Boolean?, @Query("buy_now") buyNow: Boolean?, @Query("id") id: String?, @Query("cart_type") cartType: String?,@Body body: PlatformAddCartRequest)
     : Response<AddCartDetailResponse>
     
     @PUT ("/service/platform/cart/v1.0/company/{company_id}/application/{application_id}/detail")
-    suspend fun platformUpdateCart(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Query("id") id: String?, @Query("i") i: Boolean?, @Query("b") b: Boolean?, @Query("buy_now") buyNow: Boolean?,@Body body: PlatformUpdateCartRequest)
+    suspend fun platformUpdateCart(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Query("id") id: String?, @Query("i") i: Boolean?, @Query("b") b: Boolean?, @Query("buy_now") buyNow: Boolean?, @Query("cart_type") cartType: String?,@Body body: PlatformUpdateCartRequest)
     : Response<UpdateCartDetailResponse>
     
     @PUT ("/service/platform/cart/v1.0/company/{company_id}/application/{application_id}/cart_archive")
-    suspend fun deleteCart(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Query("id") id: String?,@Body body: DeleteCartRequest)
+    suspend fun deleteCart(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Query("id") id: String?, @Query("cart_type") cartType: String?,@Body body: DeleteCartRequest)
     : Response<DeleteCartDetailResponse>
     
     @GET ("/service/platform/cart/v1.0/company/{company_id}/application/{application_id}/basic")
-    suspend fun getItemCount(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Query("id") id: String?, @Query("buy_now") buyNow: Boolean?)
+    suspend fun getItemCount(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Query("id") id: String?, @Query("buy_now") buyNow: Boolean?, @Query("cart_type") cartType: String?)
     : Response<CartItemCountResponse>
     
     @GET ("/service/platform/cart/v1.0/company/{company_id}/application/{application_id}/platform-pos-coupon")
@@ -209,7 +233,7 @@ interface CartApiList {
     : Response<CartMetaResponse>
     
     @POST ("/service/platform/cart/v1.0/company/{company_id}/application/{application_id}/checkout")
-    suspend fun platformCheckoutCart(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Query("id") id: String?,@Body body: PlatformCartCheckoutDetailRequest)
+    suspend fun platformCheckoutCart(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Query("id") id: String?, @Query("cart_type") cartType: String?,@Body body: PlatformCartCheckoutDetailRequest)
     : Response<CartCheckoutResponse>
     
     @GET ("/service/platform/cart/v1.0/company/{company_id}/application/{application_id}/available-delivery-mode")
@@ -229,7 +253,7 @@ interface CartApiList {
     : Response<PaymentCouponValidate>
     
     @POST ("/service/platform/cart/v2.0/company/{company_id}/application/{application_id}/checkout")
-    suspend fun platformCheckoutCartV2(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Query("id") id: String?,@Body body: PlatformCartCheckoutDetailV2Request)
+    suspend fun platformCheckoutCartV2(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Query("id") id: String?, @Query("cart_type") cartType: String?,@Body body: PlatformCartCheckoutDetailV2Request)
     : Response<CartCheckoutResponse>
     
     @PUT ("/service/platform/cart/v2.0/company/{company_id}/application/{application_id}/payment")

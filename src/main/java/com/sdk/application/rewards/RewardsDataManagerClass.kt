@@ -91,6 +91,53 @@ class RewardsDataManagerClass(val config: ApplicationConfig, val unauthorizedAct
 
     
     
+    
+        
+            
+            
+                
+            
+        
+            
+                
+            
+            
+        
+    /**
+    *
+    * Summary: Paginator for getUserPointsHistory
+    **/
+    fun getUserPointsHistoryPaginator(pageSize: Int?=null) : Paginator<PointsHistoryResponse>{
+
+    val paginator = Paginator<PointsHistoryResponse>()
+
+    paginator.setCallBack(object : PaginatorCallback<PointsHistoryResponse> {
+
+            override suspend fun onNext(
+                onResponse: (Event<PointsHistoryResponse>?,FdkError?) -> Unit) {
+                val pageId = paginator.nextId
+                val pageNo = paginator.pageNo
+                val pageType = "cursor"
+                var fullUrl : String? = _relativeUrls["getUserPointsHistory"] 
+                
+                rewardsApiList?.getUserPointsHistory(fullUrl , pageId = pageId, pageSize = pageSize)?.safeAwait{ response, error ->
+                    response?.let {
+                        val page = response.peekContent()?.page
+                        paginator.setPaginator(hasNext=page?.hasNext?:false,nextId=page?.nextId)
+                        onResponse.invoke(response, null)
+                    }
+
+                    error?.let {
+                        onResponse.invoke(null,error)
+                    }
+            }
+        }
+
+    })
+    
+    return paginator
+    }
+    
     suspend fun getUserPoints(): Response<PointsResponse>? {
         var fullUrl : String? = _relativeUrls["getUserPoints"] 
         

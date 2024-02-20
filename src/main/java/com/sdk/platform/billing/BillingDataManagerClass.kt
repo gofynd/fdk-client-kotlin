@@ -259,9 +259,113 @@ class BillingDataManagerClass(val config: PlatformConfig, val unauthorizedAction
         } 
     }
     
+    
+    suspend fun paymentOptions(code: String)
+    : Response<PaymentOptions>? {
+        
+        return if (config.oauthClient.isAccessTokenValid()) {
+            billingApiList?.paymentOptions(
+        companyId = config.companyId, code = code )
+        } else {
+            null
+        } 
+    }
+    
+    
+    suspend fun verifyPayment(body: VerifyPaymentReq)
+    : Response<VerifyPaymentRes>? {
+        
+        return if (config.oauthClient.isAccessTokenValid()) {
+            billingApiList?.verifyPayment(
+        companyId = config.companyId, body = body)
+        } else {
+            null
+        } 
+    }
+    
+    
+    suspend fun globalSettings(pageNo: Int, pageSize: Int, query: HashMap<String,Any>)
+    : Response<GlobalSettings>? {
+        
+        return if (config.oauthClient.isAccessTokenValid()) {
+            billingApiList?.globalSettings(
+        companyId = config.companyId, pageNo = pageNo, pageSize = pageSize, query = query )
+        } else {
+            null
+        } 
+    }
+    
+    
+    suspend fun subscriptionMethods(uniqueExternalId: HashMap<String,Any>)
+    : Response<SubscriptionMethods>? {
+        
+        return if (config.oauthClient.isAccessTokenValid()) {
+            billingApiList?.subscriptionMethods(
+        companyId = config.companyId, uniqueExternalId = uniqueExternalId )
+        } else {
+            null
+        } 
+    }
+    
+    
+    suspend fun subscriptionConfigs()
+    : Response<ConfigRes>? {
+        
+        return if (config.oauthClient.isAccessTokenValid()) {
+            billingApiList?.subscriptionConfigs(
+        companyId = config.companyId )
+        } else {
+            null
+        } 
+    }
+    
+    
+    suspend fun subscriptionPlanChange(productSuite: String?=null, uniqueId: Int?=null, platform: String?=null)
+    : Response<PlanChangeDetails>? {
+        
+        return if (config.oauthClient.isAccessTokenValid()) {
+            billingApiList?.subscriptionPlanChange(
+        companyId = config.companyId, productSuite = productSuite, uniqueId = uniqueId, platform = platform )
+        } else {
+            null
+        } 
+    }
+    
+    
+    suspend fun getPaymentTransaction(transactionId: String)
+    : Response<PaymentTransactionDetails>? {
+        
+        return if (config.oauthClient.isAccessTokenValid()) {
+            billingApiList?.getPaymentTransaction(
+        companyId = config.companyId, transactionId = transactionId )
+        } else {
+            null
+        } 
+    }
+    
+    
+    suspend fun getPaymentOptions(transactionId: String)
+    : Response<GetPaymentOptions>? {
+        
+        return if (config.oauthClient.isAccessTokenValid()) {
+            billingApiList?.getPaymentOptions(
+        companyId = config.companyId, transactionId = transactionId )
+        } else {
+            null
+        } 
+    }
+    
 
 inner class ApplicationClient(val applicationId:String,val config: PlatformConfig){
 
+    
+    
+    
+    
+    
+    
+    
+    
     
     
     

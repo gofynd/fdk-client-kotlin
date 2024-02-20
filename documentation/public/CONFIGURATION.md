@@ -7,11 +7,8 @@
 ## Configuration Methods
 Application configuration apis
 
-Application Information
-* [searchApplication](#searchapplication)
-
-
 Default
+* [searchApplication](#searchapplication)
 * [getLocations](#getlocations)
 
 
@@ -22,7 +19,7 @@ Default
 
 
 ### searchApplication
-Search application.
+Search Application
 
 
 
@@ -49,7 +46,7 @@ publicClient.configuration.searchApplication(authorization: authorization, query
 
 
 
-Provide application name or domain url.
+Provide application name or domain url
 
 *Returned Response:*
 
@@ -141,8 +138,6 @@ Success
 
 
 ---
-
-
 
 
 ### getLocations
