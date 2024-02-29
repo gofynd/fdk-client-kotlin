@@ -111,18 +111,6 @@ class PaymentDataManagerClass(val config: ApplicationConfig, val unauthorizedAct
             
                     _relativeUrls["createPaymentOrder"] = "/service/application/payment/v1.0/payment-orders/".substring(1)
             
-                    _relativeUrls["deleteBeneficiaryDetails"] = "/service/application/payment/v1.0/refund/account/{beneficiary_id}".substring(1)
-            
-                    _relativeUrls["getRefundOptions"] = "/service/application/payment/v1.0/payment/refundoptions/".substring(1)
-            
-                    _relativeUrls["setRefundOptionforShipment"] = "/service/application/payment/v1.0/payment/refundoptions/".substring(1)
-            
-                    _relativeUrls["getSelectedRefundOption"] = "/service/application/payment/v1.0/payment/selected_refund_options".substring(1)
-            
-                    _relativeUrls["getUserBeneficiariesDetailV2"] = "/service/application/payment/v2.0/refund/user/beneficiary".substring(1)
-            
-                    _relativeUrls["validateBeneficiaryAddress"] = "/service/application/payment/v1.0/validate/beneficiary-address".substring(1)
-            
     }
 
     public fun update(updatedUrlMap : HashMap<String,String>){
@@ -479,50 +467,6 @@ class PaymentDataManagerClass(val config: ApplicationConfig, val unauthorizedAct
         var fullUrl : String? = _relativeUrls["createPaymentOrder"] 
         
         return paymentApiList?.createPaymentOrder(fullUrl  ,body = body)}
-
-    
-    
-    suspend fun deleteBeneficiaryDetails(beneficiaryId: String): Response<DeleteRefundAccountResponse>? {
-        var fullUrl : String? = _relativeUrls["deleteBeneficiaryDetails"] 
-        
-        fullUrl = fullUrl?.replace("{" + "beneficiary_id" +"}",beneficiaryId.toString())
-        
-        return paymentApiList?.deleteBeneficiaryDetails(fullUrl   )}
-
-    
-    
-    suspend fun getRefundOptions(configuration: String, productType: String?=null, amount: String?=null): Response<RefundOptionResponse>? {
-        var fullUrl : String? = _relativeUrls["getRefundOptions"] 
-        
-        return paymentApiList?.getRefundOptions(fullUrl    ,  configuration = configuration,    productType = productType,    amount = amount)}
-
-    
-    
-    suspend fun setRefundOptionforShipment(body: ShipmentRefundRequest): Response<ShipmentRefundResponse>? {
-        var fullUrl : String? = _relativeUrls["setRefundOptionforShipment"] 
-        
-        return paymentApiList?.setRefundOptionforShipment(fullUrl  ,body = body)}
-
-    
-    
-    suspend fun getSelectedRefundOption(shipmentId: String, orderId: String): Response<SelectedRefundOptionResponse>? {
-        var fullUrl : String? = _relativeUrls["getSelectedRefundOption"] 
-        
-        return paymentApiList?.getSelectedRefundOption(fullUrl    ,  shipmentId = shipmentId,    orderId = orderId)}
-
-    
-    
-    suspend fun getUserBeneficiariesDetailV2(orderId: String?=null, shipmentId: String?=null, mop: String?=null): Response<OrderBeneficiaryResponseSchemaV2>? {
-        var fullUrl : String? = _relativeUrls["getUserBeneficiariesDetailV2"] 
-        
-        return paymentApiList?.getUserBeneficiariesDetailV2(fullUrl    ,  orderId = orderId,    shipmentId = shipmentId,    mop = mop)}
-
-    
-    
-    suspend fun validateBeneficiaryAddress(body: ValidateValidateAddressRequest): Response<ValidateValidateAddressResponse>? {
-        var fullUrl : String? = _relativeUrls["validateBeneficiaryAddress"] 
-        
-        return paymentApiList?.validateBeneficiaryAddress(fullUrl  ,body = body)}
 
     
     

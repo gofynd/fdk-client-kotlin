@@ -110,7 +110,7 @@ class FileStorageDataManagerClass(val config: PlatformConfig, val unauthorizedAc
     
     
     suspend fun proxy(url: String)
-    : Response<ProxyResponse>? {
+    : Response<String>? {
         
         return if (config.oauthClient.isAccessTokenValid()) {
             fileStorageApiList?.proxy(
@@ -119,8 +119,6 @@ class FileStorageDataManagerClass(val config: PlatformConfig, val unauthorizedAc
             null
         } 
     }
-    
-    
     
     
     
@@ -190,20 +188,10 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     
     
     
-    suspend fun getPdfTypes(countryCode: String?=null, storeOs: Boolean)
+    suspend fun getPdfTypes(countryCode: String?=null)
     : Response<InvoiceTypesResponse>? {
         return if (config.oauthClient.isAccessTokenValid()) {
-                fileStorageApiList?.getPdfTypes(companyId = config.companyId , applicationId = applicationId , countryCode = countryCode, storeOs = storeOs )
-        } else {
-            null
-        }
-    }
-    
-    
-    suspend fun deletePdfType(id: String)
-    : Response<String>? {
-        return if (config.oauthClient.isAccessTokenValid()) {
-                fileStorageApiList?.deletePdfType(companyId = config.companyId , applicationId = applicationId , id = id )
+                fileStorageApiList?.getPdfTypes(companyId = config.companyId , applicationId = applicationId , countryCode = countryCode )
         } else {
             null
         }
@@ -224,16 +212,6 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     : Response<PdfConfigSaveSuccess>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 fileStorageApiList?.updateHtmlTemplate(companyId = config.companyId , applicationId = applicationId , id = id, body = body)
-        } else {
-            null
-        }
-    }
-    
-    
-    suspend fun deletePdfConfigTemplate(id: String)
-    : Response<String>? {
-        return if (config.oauthClient.isAccessTokenValid()) {
-                fileStorageApiList?.deletePdfConfigTemplate(companyId = config.companyId , applicationId = applicationId , id = id )
         } else {
             null
         }

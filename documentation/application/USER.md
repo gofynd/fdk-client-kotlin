@@ -7,7 +7,7 @@
 ## User Methods
 The User Authentication module prioritizes security, offering multiple login options, password management, and profile updates. This module allows users to log in using social accounts, mobile OTPs, or passwords, and also enables secure password resets. It manages mobile and email verification, profile details, and session information.
 
-Default
+Login and Authentication
 * [loginWithFacebook](#loginwithfacebook)
 * [loginWithGoogle](#loginwithgoogle)
 * [loginWithGoogleAndroid](#loginwithgoogleandroid)
@@ -15,17 +15,23 @@ Default
 * [loginWithAppleIOS](#loginwithappleios)
 * [loginWithOTP](#loginwithotp)
 * [loginWithEmailAndPassword](#loginwithemailandpassword)
+* [logout](#logout)
+
+
+Password Management
 * [sendResetPasswordEmail](#sendresetpasswordemail)
 * [sendResetPasswordMobile](#sendresetpasswordmobile)
 * [sendResetToken](#sendresettoken)
 * [forgotPassword](#forgotpassword)
 * [resetForgotPassword](#resetforgotpassword)
-* [loginWithToken](#loginwithtoken)
-* [registerWithForm](#registerwithform)
-* [verifyEmail](#verifyemail)
-* [verifyMobile](#verifymobile)
 * [hasPassword](#haspassword)
 * [updatePassword](#updatepassword)
+* [verifyEmailForgotOTP](#verifyemailforgototp)
+
+
+Login and Registration
+* [loginWithToken](#loginwithtoken)
+* [registerWithForm](#registerwithform)
 * [sendOTPOnMobile](#sendotponmobile)
 * [sendForgotOTPOnMobile](#sendforgototponmobile)
 * [verifyMobileOTP](#verifymobileotp)
@@ -33,22 +39,31 @@ Default
 * [sendOTPOnEmail](#sendotponemail)
 * [sendForgotOTPOnEmail](#sendforgototponemail)
 * [verifyEmailOTP](#verifyemailotp)
-* [verifyEmailForgotOTP](#verifyemailforgototp)
-* [getLoggedInUser](#getloggedinuser)
-* [getListOfActiveSessions](#getlistofactivesessions)
-* [getPlatformConfig](#getplatformconfig)
-* [updateProfile](#updateprofile)
-* [addMobileNumber](#addmobilenumber)
-* [deleteMobileNumber](#deletemobilenumber)
-* [setMobileNumberAsPrimary](#setmobilenumberasprimary)
 * [sendVerificationLinkToMobile](#sendverificationlinktomobile)
 * [addEmail](#addemail)
 * [deleteEmail](#deleteemail)
 * [setEmailAsPrimary](#setemailasprimary)
 * [sendVerificationLinkToEmail](#sendverificationlinktoemail)
+
+
+Email and Mobile Verification:
+* [verifyEmail](#verifyemail)
+* [verifyMobile](#verifymobile)
+
+
+User Account Management
+* [getLoggedInUser](#getloggedinuser)
+* [getListOfActiveSessions](#getlistofactivesessions)
+* [getPlatformConfig](#getplatformconfig)
 * [userExists](#userexists)
 * [deleteUser](#deleteuser)
-* [logout](#logout)
+
+
+Profile Management
+* [updateProfile](#updateprofile)
+* [addMobileNumber](#addmobilenumber)
+* [deleteMobileNumber](#deletemobilenumber)
+* [setMobileNumberAsPrimary](#setmobilenumberasprimary)
 * [getUserAttributes](#getuserattributes)
 * [updateUserAttributes](#updateuserattributes)
 
@@ -60,7 +75,7 @@ Default
 
 
 ### loginWithFacebook
-Login or Register using Facebook
+Facebook login.
 
 
 
@@ -86,7 +101,7 @@ applicationClient.user.loginWithFacebook(platform: platform, body: body).safeAwa
 | body | [OAuthRequestSchema](#OAuthRequestSchema) | yes | Request body |
 
 
-Use this API to login or register using Facebook credentials.
+Enables login through Facebook accounts.
 
 *Returned Response:*
 
@@ -148,7 +163,7 @@ Success. Returns a JSON object with the user details. Check the example shown be
 
 
 ### loginWithGoogle
-Login or Register using Google
+Google login.
 
 
 
@@ -174,7 +189,7 @@ applicationClient.user.loginWithGoogle(platform: platform, body: body).safeAwait
 | body | [OAuthRequestSchema](#OAuthRequestSchema) | yes | Request body |
 
 
-Use this API to login or register using Google Account credentials.
+Enables login through Google accounts.
 
 *Returned Response:*
 
@@ -236,7 +251,7 @@ Success. Returns a JSON object with the user details. Check the example shown be
 
 
 ### loginWithGoogleAndroid
-Login or Register using Google on Android
+Android Google login.
 
 
 
@@ -262,7 +277,7 @@ applicationClient.user.loginWithGoogleAndroid(platform: platform, body: body).sa
 | body | [OAuthRequestSchema](#OAuthRequestSchema) | yes | Request body |
 
 
-Use this API to login or register in Android app using Google Account credentials.
+Facilitates Google login specifically for Android users.
 
 *Returned Response:*
 
@@ -324,7 +339,7 @@ Success. Returns a JSON object with the user details. Check the example shown be
 
 
 ### loginWithGoogleIOS
-Login or Register using Google on iOS
+iOS Google login.
 
 
 
@@ -350,7 +365,7 @@ applicationClient.user.loginWithGoogleIOS(platform: platform, body: body).safeAw
 | body | [OAuthRequestSchema](#OAuthRequestSchema) | yes | Request body |
 
 
-Use this API to login or register in iOS app using Google Account credentials.
+Facilitates Google login specifically for iOS users.
 
 *Returned Response:*
 
@@ -412,7 +427,7 @@ Success. Returns a JSON object with the user details. Check the example shown be
 
 
 ### loginWithAppleIOS
-Login or Register using Apple on iOS
+Apple iOS login.
 
 
 
@@ -438,7 +453,7 @@ applicationClient.user.loginWithAppleIOS(platform: platform, body: body).safeAwa
 | body | [OAuthRequestAppleSchema](#OAuthRequestAppleSchema) | yes | Request body |
 
 
-Use this API to login or register in iOS app using Apple Account credentials.
+Enables login through Apple ID specifically for iOS users.
 
 *Returned Response:*
 
@@ -500,7 +515,7 @@ Success. Returns a JSON object with the user details. Check the example shown be
 
 
 ### loginWithOTP
-Login or Register with OTP
+OTP login.
 
 
 
@@ -526,7 +541,7 @@ applicationClient.user.loginWithOTP(platform: platform, body: body).safeAwait{ r
 | body | [SendOtpRequestSchema](#SendOtpRequestSchema) | yes | Request body |
 
 
-Use this API to login or register with a One-time Password (OTP) sent via Email or SMS.
+Allows users to log in using a one-time password.
 
 *Returned Response:*
 
@@ -576,7 +591,7 @@ Success. Check the example shown below or refer `SendOtpResponse` for more detai
 
 
 ### loginWithEmailAndPassword
-Login or Register with password
+Email/password login.
 
 
 
@@ -601,7 +616,7 @@ applicationClient.user.loginWithEmailAndPassword(body: body).safeAwait{ response
 | body | [PasswordLoginRequestSchema](#PasswordLoginRequestSchema) | yes | Request body |
 
 
-Use this API to login or register using an email address and password.
+Enables login using an email and password combination.
 
 *Returned Response:*
 
@@ -689,8 +704,75 @@ Success. Check the example shown below or refer `LoginSuccess` for more details.
 ---
 
 
+### logout
+Logs out currently logged in user
+
+
+
+
+```kotlin
+applicationClient.user.logout().safeAwait{ response, error->
+    response?.let{
+      // Use response
+    } ->
+    error?.let{
+      
+    } 
+}
+```
+
+
+
+
+
+
+Use this API to check to logout a user from the app.
+
+*Returned Response:*
+
+
+
+
+[LogoutSuccess](#LogoutSuccess)
+
+Success. Returns a success message as shown below. Refer `LogoutSuccess` for more details.
+
+
+
+
+<details>
+<summary><i>&nbsp; Examples:</i></summary>
+
+
+<details>
+<summary><i>&nbsp; logout success</i></summary>
+
+```json
+{
+  "value": {
+    "success": true
+  }
+}
+```
+</details>
+
+</details>
+
+
+
+
+
+
+
+
+
+---
+
+
+
+
 ### sendResetPasswordEmail
-Reset Password
+Reset password (Email).
 
 
 
@@ -716,7 +798,7 @@ applicationClient.user.sendResetPasswordEmail(platform: platform, body: body).sa
 | body | [SendResetPasswordEmailRequestSchema](#SendResetPasswordEmailRequestSchema) | yes | Request body |
 
 
-Use this API to reset a password using the link sent on email.
+Sends a password reset link to the user's email.
 
 *Returned Response:*
 
@@ -760,7 +842,7 @@ Success. Check the example shown below or refer `ResetPasswordSuccess` for more 
 
 
 ### sendResetPasswordMobile
-Reset Password
+Reset password (Mobile).
 
 
 
@@ -786,34 +868,9 @@ applicationClient.user.sendResetPasswordMobile(platform: platform, body: body).s
 | body | [SendResetPasswordMobileRequestSchema](#SendResetPasswordMobileRequestSchema) | yes | Request body |
 
 
-Use this API to reset a password using the link sent on mobile.
+Sends a password reset OTP to the user's mobile number.
 
 *Returned Response:*
-
-
-
-
-[ResetPasswordSuccess](#ResetPasswordSuccess)
-
-Success. Check the example shown below or refer `ResetPasswordSuccess` for more details.
-
-
-
-
-<details>
-<summary><i>&nbsp; Example:</i></summary>
-
-```json
-{
-  "status": "sent"
-}
-```
-</details>
-
-
-
-
-
 
 
 
@@ -891,7 +948,7 @@ Success. Check the example shown below or refer `ResetPasswordSuccess` for more 
 
 
 ### forgotPassword
-Forgot Password
+Forgot password.
 
 
 
@@ -916,7 +973,7 @@ applicationClient.user.forgotPassword(body: body).safeAwait{ response, error->
 | body | [ForgotPasswordRequestSchema](#ForgotPasswordRequestSchema) | yes | Request body |
 
 
-Use this API to reset a password using the code sent on email or SMS.
+Initiates the password recovery process for the user.
 
 *Returned Response:*
 
@@ -1005,7 +1062,7 @@ Success. Check the example shown below or refer `LoginSuccess` for more details.
 
 
 ### resetForgotPassword
-Reset forgot Password
+Forgot password.
 
 
 
@@ -1030,7 +1087,7 @@ applicationClient.user.resetForgotPassword(body: body).safeAwait{ response, erro
 | body | [ForgotPasswordRequestSchema](#ForgotPasswordRequestSchema) | yes | Request body |
 
 
-Use this API to reset a password using the code sent on email or SMS.
+Initiates the password recovery process for the user.
 
 *Returned Response:*
 
@@ -1071,6 +1128,213 @@ Success. Check the example shown below or refer `ResetForgotPasswordSuccess` for
 
 
 ---
+
+
+### hasPassword
+Check password.
+
+
+
+
+```kotlin
+applicationClient.user.hasPassword().safeAwait{ response, error->
+    response?.let{
+      // Use response
+    } ->
+    error?.let{
+      
+    } 
+}
+```
+
+
+
+
+
+
+Checks if the user has set a password for the account.
+
+*Returned Response:*
+
+
+
+
+[HasPasswordSuccess](#HasPasswordSuccess)
+
+Success. Returns a boolean value. Check the example shown below or refer `HasPasswordSuccess` for more details.
+
+
+
+
+<details>
+<summary><i>&nbsp; Examples:</i></summary>
+
+
+<details>
+<summary><i>&nbsp; has password success</i></summary>
+
+```json
+{
+  "value": {
+    "result": 1
+  }
+}
+```
+</details>
+
+</details>
+
+
+
+
+
+
+
+
+
+---
+
+
+### updatePassword
+Update password.
+
+
+
+
+```kotlin
+applicationClient.user.updatePassword(body: body).safeAwait{ response, error->
+    response?.let{
+      // Use response
+    } ->
+    error?.let{
+      
+    } 
+}
+```
+
+
+
+
+
+| Argument  |  Type  | Required | Description |
+| --------- | -----  | -------- | ----------- |
+| body | [UpdatePasswordRequestSchema](#UpdatePasswordRequestSchema) | yes | Request body |
+
+
+Allows users to update their existing password.
+
+*Returned Response:*
+
+
+
+
+[VerifyEmailSuccess](#VerifyEmailSuccess)
+
+Success. Returns a success message. Refer `VerifyEmailSuccess` for more details.
+
+
+
+
+<details>
+<summary><i>&nbsp; Examples:</i></summary>
+
+
+<details>
+<summary><i>&nbsp; update password success</i></summary>
+
+```json
+{
+  "value": {
+    "message": "success"
+  }
+}
+```
+</details>
+
+</details>
+
+
+
+
+
+
+
+
+
+---
+
+
+### verifyEmailForgotOTP
+Verify Email Forgot OTP
+
+
+
+
+```kotlin
+applicationClient.user.verifyEmailForgotOTP(platform: platform, body: body).safeAwait{ response, error->
+    response?.let{
+      // Use response
+    } ->
+    error?.let{
+      
+    } 
+}
+```
+
+
+
+
+
+| Argument  |  Type  | Required | Description |
+| --------- | -----  | -------- | ----------- | 
+| platform | String? | no | ID of the application |  
+| body | [VerifyEmailForgotOtpRequestSchema](#VerifyEmailForgotOtpRequestSchema) | yes | Request body |
+
+
+Validates the OTP sent to the user's forgot email address request.
+
+*Returned Response:*
+
+
+
+
+[VerifyForgotOtpSuccess](#VerifyForgotOtpSuccess)
+
+Success. Returns a JSON object as shown below. Refer `VerifyForgotOtpSuccess` for more details.
+
+
+
+
+<details>
+<summary><i>&nbsp; Examples:</i></summary>
+
+
+<details>
+<summary><i>&nbsp; verify forgot otp on email success</i></summary>
+
+```json
+{
+  "value": {
+    "success": true,
+    "forgot_token": "d6c9df22-7e65-41be-9852-8207a8d2d54d"
+  }
+}
+```
+</details>
+
+</details>
+
+
+
+
+
+
+
+
+
+---
+
+
 
 
 ### loginWithToken
@@ -1188,7 +1452,7 @@ Success. Check the example shown below or refer `LoginSuccess` for more details.
 
 
 ### registerWithForm
-Registration using a form
+User registration.
 
 
 
@@ -1214,7 +1478,7 @@ applicationClient.user.registerWithForm(platform: platform, body: body).safeAwai
 | body | [FormRegisterRequestSchema](#FormRegisterRequestSchema) | yes | Request body |
 
 
-Use this API to perform user registration by sending form data in the request body.
+Enables new users to register using a form.
 
 *Returned Response:*
 
@@ -1266,280 +1530,8 @@ Success. Check the example shown below or refer `RegisterFormSuccess` for more d
 ---
 
 
-### verifyEmail
-Verify email
-
-
-
-
-```kotlin
-applicationClient.user.verifyEmail(body: body).safeAwait{ response, error->
-    response?.let{
-      // Use response
-    } ->
-    error?.let{
-      
-    } 
-}
-```
-
-
-
-
-
-| Argument  |  Type  | Required | Description |
-| --------- | -----  | -------- | ----------- |
-| body | [CodeRequestBodySchema](#CodeRequestBodySchema) | yes | Request body |
-
-
-Use this API to send a verification code to verify an email.
-
-*Returned Response:*
-
-
-
-
-[VerifyEmailSuccess](#VerifyEmailSuccess)
-
-Success. Check the example shown below or refer `VerifyEmailSuccess` for more details.
-
-
-
-
-<details>
-<summary><i>&nbsp; Examples:</i></summary>
-
-
-<details>
-<summary><i>&nbsp; verify email success</i></summary>
-
-```json
-{
-  "value": {
-    "message": "verified"
-  }
-}
-```
-</details>
-
-</details>
-
-
-
-
-
-
-
-
-
----
-
-
-### verifyMobile
-Verify mobile
-
-
-
-
-```kotlin
-applicationClient.user.verifyMobile(body: body).safeAwait{ response, error->
-    response?.let{
-      // Use response
-    } ->
-    error?.let{
-      
-    } 
-}
-```
-
-
-
-
-
-| Argument  |  Type  | Required | Description |
-| --------- | -----  | -------- | ----------- |
-| body | [CodeRequestBodySchema](#CodeRequestBodySchema) | yes | Request body |
-
-
-Use this API to send a verification code to verify a mobile number.
-
-*Returned Response:*
-
-
-
-
-[VerifyEmailSuccess](#VerifyEmailSuccess)
-
-Success. Check the example shown below or refer `VerifyEmailSuccess` for more details.
-
-
-
-
-<details>
-<summary><i>&nbsp; Examples:</i></summary>
-
-
-<details>
-<summary><i>&nbsp; verify mobile success</i></summary>
-
-```json
-{
-  "value": {
-    "message": "verified"
-  }
-}
-```
-</details>
-
-</details>
-
-
-
-
-
-
-
-
-
----
-
-
-### hasPassword
-Check password
-
-
-
-
-```kotlin
-applicationClient.user.hasPassword().safeAwait{ response, error->
-    response?.let{
-      // Use response
-    } ->
-    error?.let{
-      
-    } 
-}
-```
-
-
-
-
-
-
-Use this API to check if user has created a password for login.
-
-*Returned Response:*
-
-
-
-
-[HasPasswordSuccess](#HasPasswordSuccess)
-
-Success. Returns a boolean value. Check the example shown below or refer `HasPasswordSuccess` for more details.
-
-
-
-
-<details>
-<summary><i>&nbsp; Examples:</i></summary>
-
-
-<details>
-<summary><i>&nbsp; has password success</i></summary>
-
-```json
-{
-  "value": {
-    "result": 1
-  }
-}
-```
-</details>
-
-</details>
-
-
-
-
-
-
-
-
-
----
-
-
-### updatePassword
-Update user password
-
-
-
-
-```kotlin
-applicationClient.user.updatePassword(body: body).safeAwait{ response, error->
-    response?.let{
-      // Use response
-    } ->
-    error?.let{
-      
-    } 
-}
-```
-
-
-
-
-
-| Argument  |  Type  | Required | Description |
-| --------- | -----  | -------- | ----------- |
-| body | [UpdatePasswordRequestSchema](#UpdatePasswordRequestSchema) | yes | Request body |
-
-
-Use this API to update the password.
-
-*Returned Response:*
-
-
-
-
-[VerifyEmailSuccess](#VerifyEmailSuccess)
-
-Success. Returns a success message. Refer `VerifyEmailSuccess` for more details.
-
-
-
-
-<details>
-<summary><i>&nbsp; Examples:</i></summary>
-
-
-<details>
-<summary><i>&nbsp; update password success</i></summary>
-
-```json
-{
-  "value": {
-    "message": "success"
-  }
-}
-```
-</details>
-
-</details>
-
-
-
-
-
-
-
-
-
----
-
-
 ### sendOTPOnMobile
-Send OTP on mobile
+Send mobile OTP.
 
 
 
@@ -1565,7 +1557,7 @@ applicationClient.user.sendOTPOnMobile(platform: platform, body: body).safeAwait
 | body | [SendMobileOtpRequestSchema](#SendMobileOtpRequestSchema) | yes | Request body |
 
 
-Use this API to send an OTP to a mobile number.
+Sends a one-time password to the user's mobile for verification.
 
 *Returned Response:*
 
@@ -1615,7 +1607,7 @@ Success. Returns a JSON object as shown below. Refer `OtpSuccess` for more detai
 
 
 ### sendForgotOTPOnMobile
-Send Forgot OTP on mobile
+Send forgot OTP on mobile
 
 
 
@@ -1641,7 +1633,7 @@ applicationClient.user.sendForgotOTPOnMobile(platform: platform, body: body).saf
 | body | [SendMobileForgotOtpRequestSchema](#SendMobileForgotOtpRequestSchema) | yes | Request body |
 
 
-Use this API to send an Forgot OTP to a mobile number.
+Sends a one-time password to the user's forgot mobile for verification request.
 
 *Returned Response:*
 
@@ -1691,7 +1683,7 @@ Success. Returns a JSON object as shown below. Refer `OtpSuccess` for more detai
 
 
 ### verifyMobileOTP
-Verify OTP on mobile
+Verify mobile OTP.
 
 
 
@@ -1717,7 +1709,7 @@ applicationClient.user.verifyMobileOTP(platform: platform, body: body).safeAwait
 | body | [VerifyOtpRequestSchema](#VerifyOtpRequestSchema) | yes | Request body |
 
 
-Use this API to verify the OTP received on a mobile number.
+Validates the OTP sent to the user's mobile.
 
 *Returned Response:*
 
@@ -1878,7 +1870,7 @@ Success. Returns a JSON object as shown below. Refer `VerifyForgotOtpSuccess` fo
 
 
 ### sendOTPOnEmail
-Send OTP on email
+Send email OTP.
 
 
 
@@ -1904,7 +1896,7 @@ applicationClient.user.sendOTPOnEmail(platform: platform, body: body).safeAwait{
 | body | [SendEmailOtpRequestSchema](#SendEmailOtpRequestSchema) | yes | Request body |
 
 
-Use this API to send an OTP to an email ID.
+Sends a one-time password to the user's email for verification.
 
 *Returned Response:*
 
@@ -1948,7 +1940,7 @@ Success. Returns a JSON object as shown below. Refer `EmailOtpSuccess` for more 
 
 
 ### sendForgotOTPOnEmail
-Send Forgot OTP on email
+Send Forgot OTP Email
 
 
 
@@ -1974,7 +1966,7 @@ applicationClient.user.sendForgotOTPOnEmail(platform: platform, body: body).safe
 | body | [SendEmailForgotOtpRequestSchema](#SendEmailForgotOtpRequestSchema) | yes | Request body |
 
 
-Use this API to send an Forgot OTP to an email ID.
+Sends a one-time password to the user's forgot email for verification request.
 
 *Returned Response:*
 
@@ -2018,7 +2010,7 @@ Success. Returns a JSON object as shown below. Refer `EmailOtpSuccess` for more 
 
 
 ### verifyEmailOTP
-Verify OTP on email
+Verify Email OTP
 
 
 
@@ -2044,7 +2036,7 @@ applicationClient.user.verifyEmailOTP(platform: platform, body: body).safeAwait{
 | body | [VerifyEmailOtpRequestSchema](#VerifyEmailOtpRequestSchema) | yes | Request body |
 
 
-Use this API to verify the OTP received on an email ID.
+Validates the OTP sent to the user's email address request.
 
 *Returned Response:*
 
@@ -2133,14 +2125,14 @@ Success. Returns a JSON object as shown below. Refer `VerifyOtpSuccess` for more
 ---
 
 
-### verifyEmailForgotOTP
-Verify Forgot OTP on email
+### sendVerificationLinkToMobile
+Verify new mobile.
 
 
 
 
 ```kotlin
-applicationClient.user.verifyEmailForgotOTP(platform: platform, body: body).safeAwait{ response, error->
+applicationClient.user.sendVerificationLinkToMobile(platform: platform, body: body).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -2157,19 +2149,19 @@ applicationClient.user.verifyEmailForgotOTP(platform: platform, body: body).safe
 | Argument  |  Type  | Required | Description |
 | --------- | -----  | -------- | ----------- | 
 | platform | String? | no | ID of the application |  
-| body | [VerifyEmailForgotOtpRequestSchema](#VerifyEmailForgotOtpRequestSchema) | yes | Request body |
+| body | [SendVerificationLinkMobileRequestSchema](#SendVerificationLinkMobileRequestSchema) | yes | Request body |
 
 
-Use this API to verify the Forgot OTP received on an email ID.
+Sends a verification link to a newly added mobile number.
 
 *Returned Response:*
 
 
 
 
-[VerifyForgotOtpSuccess](#VerifyForgotOtpSuccess)
+[SendMobileVerifyLinkSuccess](#SendMobileVerifyLinkSuccess)
 
-Success. Returns a JSON object as shown below. Refer `VerifyForgotOtpSuccess` for more details.
+Success. Check the example shown below or refer `SendMobileVerifyLinkSuccess` for more details.
 
 
 
@@ -2179,13 +2171,58 @@ Success. Returns a JSON object as shown below. Refer `VerifyForgotOtpSuccess` fo
 
 
 <details>
-<summary><i>&nbsp; verify forgot otp on email success</i></summary>
+<summary><i>&nbsp; send verification link to mobile success</i></summary>
 
 ```json
 {
   "value": {
-    "success": true,
-    "forgot_token": "d6c9df22-7e65-41be-9852-8207a8d2d54d"
+    "verify_mobile_link": true,
+    "user": {
+      "debug": {
+        "source": "deadlock",
+        "platform": "000000000000000000000001"
+      },
+      "gender": "male",
+      "account_type": "user",
+      "active": true,
+      "profile_pic_url": "https://d2co8r51m5ca2d.cloudfront.net/inapp_banners/default_profile_img.png",
+      "has_old_password_hash": false,
+      "_id": "5e68af49cfa09bf7233022f1",
+      "first_name": "Akash",
+      "last_name": "Mane",
+      "username": "akashmane_gofynd_com_10039",
+      "phone_numbers": [
+        {
+          "active": true,
+          "primary": true,
+          "verified": true,
+          "phone": "8652523958",
+          "country_code": 91
+        }
+      ],
+      "emails": [
+        {
+          "active": true,
+          "primary": true,
+          "verified": true,
+          "email": "akashmane@gofynd.com"
+        },
+        {
+          "active": true,
+          "primary": false,
+          "verified": true,
+          "email": "akashmane@fynd.com"
+        },
+        {
+          "active": true,
+          "primary": false,
+          "verified": true,
+          "email": "akashmane@uniket.store"
+        }
+      ],
+      "created_at": "2020-03-11T09:28:41.982Z",
+      "updated_at": "2021-02-04T10:10:44.981Z"
+    }
   }
 }
 ```
@@ -2204,8 +2241,569 @@ Success. Returns a JSON object as shown below. Refer `VerifyForgotOtpSuccess` fo
 ---
 
 
+### addEmail
+Add email.
+
+
+
+
+```kotlin
+applicationClient.user.addEmail(platform: platform, body: body).safeAwait{ response, error->
+    response?.let{
+      // Use response
+    } ->
+    error?.let{
+      
+    } 
+}
+```
+
+
+
+
+
+| Argument  |  Type  | Required | Description |
+| --------- | -----  | -------- | ----------- | 
+| platform | String? | no | ID of the application |  
+| body | [EditEmailRequestSchema](#EditEmailRequestSchema) | yes | Request body |
+
+
+Adds a new email address to the user's profile.
+
+*Returned Response:*
+
+
+
+
+[VerifyEmailOTPSuccess](#VerifyEmailOTPSuccess)
+
+Success. Returns a JSON object with user details. Refer `VerifyEmailOTPSuccess` for more details.
+
+
+
+
+<details>
+<summary><i>&nbsp; Examples:</i></summary>
+
+
+<details>
+<summary><i>&nbsp; add email to profile success</i></summary>
+
+```json
+{
+  "value": {
+    "verify_email_link": true,
+    "user": {
+      "debug": {
+        "source": "deadlock",
+        "platform": "000000000000000000000001"
+      },
+      "gender": "male",
+      "account_type": "user",
+      "active": true,
+      "profile_pic_url": "https://d2co8r51m5ca2d.cloudfront.net/inapp_banners/default_profile_img.png",
+      "has_old_password_hash": false,
+      "_id": "5e68af49cfa09bf7233022f1",
+      "first_name": "Akash",
+      "last_name": "Mane",
+      "username": "akashmane_gofynd_com_10039",
+      "phone_numbers": [
+        {
+          "active": true,
+          "primary": true,
+          "verified": true,
+          "phone": "8652523958",
+          "country_code": 91
+        }
+      ],
+      "emails": [
+        {
+          "active": true,
+          "primary": true,
+          "verified": true,
+          "email": "akashmane@gofynd.com"
+        },
+        {
+          "active": true,
+          "primary": false,
+          "verified": true,
+          "email": "akashmane@fynd.com"
+        },
+        {
+          "active": true,
+          "primary": false,
+          "verified": true,
+          "email": "akashmane@uniket.store"
+        }
+      ],
+      "created_at": "2020-03-11T09:28:41.982Z",
+      "updated_at": "2021-02-04T10:10:44.981Z"
+    }
+  }
+}
+```
+</details>
+
+</details>
+
+
+
+
+
+
+
+
+
+---
+
+
+### deleteEmail
+Delete email.
+
+
+
+
+```kotlin
+applicationClient.user.deleteEmail(platform: platform, active: active, primary: primary, verified: verified, email: email).safeAwait{ response, error->
+    response?.let{
+      // Use response
+    } ->
+    error?.let{
+      
+    } 
+}
+```
+
+
+
+
+
+| Argument  |  Type  | Required | Description |
+| --------- | -----  | -------- | ----------- | 
+| platform | String? | no | ID of the application |   
+| active | Boolean | yes | This is a boolean value to check if email ID is active 1. True - Email ID is active 2.False - Email ID is inactive |   
+| primary | Boolean | yes | This is a boolean value to check if email ID is primary (main email ID) 1. True - Email ID is primary 2.False - Email ID is not primary |   
+| verified | Boolean | yes | This is a boolean value to check if email ID is verified 1. True - Email ID is verified 2.False - Email ID is not verified yet |   
+| email | String | yes | The email ID to delete |  
+
+
+
+Removes an email address from the user's profile.
+
+*Returned Response:*
+
+
+
+
+[LoginSuccess](#LoginSuccess)
+
+Success. Returns a JSON object with user details. Refer `LoginSuccess` for more details.
+
+
+
+
+<details>
+<summary><i>&nbsp; Examples:</i></summary>
+
+
+<details>
+<summary><i>&nbsp; Delete email from profile success</i></summary>
+
+```json
+{
+  "value": {
+    "user": {
+      "debug": {
+        "source": "deadlock",
+        "platform": "000000000000000000000001"
+      },
+      "gender": "male",
+      "account_type": "user",
+      "active": true,
+      "profile_pic_url": "https://d2co8r51m5ca2d.cloudfront.net/inapp_banners/default_profile_img.png",
+      "has_old_password_hash": false,
+      "_id": "5e68af49cfa09bf7233022f1",
+      "first_name": "Akash",
+      "last_name": "Mane",
+      "username": "akashmane_gofynd_com_10039",
+      "phone_numbers": [
+        {
+          "active": true,
+          "primary": true,
+          "verified": true,
+          "phone": "8652523958",
+          "country_code": 91
+        }
+      ],
+      "emails": [
+        {
+          "active": true,
+          "primary": true,
+          "verified": true,
+          "email": "akashmane@gofynd.com"
+        },
+        {
+          "active": true,
+          "primary": false,
+          "verified": true,
+          "email": "akashmane@fynd.com"
+        },
+        {
+          "active": true,
+          "primary": false,
+          "verified": true,
+          "email": "akashmane@uniket.store"
+        }
+      ],
+      "created_at": "2020-03-11T09:28:41.982Z",
+      "updated_at": "2021-02-04T10:10:44.981Z"
+    }
+  }
+}
+```
+</details>
+
+</details>
+
+
+
+
+
+
+
+
+
+---
+
+
+### setEmailAsPrimary
+Set primary email.
+
+
+
+
+```kotlin
+applicationClient.user.setEmailAsPrimary(body: body).safeAwait{ response, error->
+    response?.let{
+      // Use response
+    } ->
+    error?.let{
+      
+    } 
+}
+```
+
+
+
+
+
+| Argument  |  Type  | Required | Description |
+| --------- | -----  | -------- | ----------- |
+| body | [EditEmailRequestSchema](#EditEmailRequestSchema) | yes | Request body |
+
+
+Sets an email address as the primary contact for the user.
+
+*Returned Response:*
+
+
+
+
+[LoginSuccess](#LoginSuccess)
+
+Success. Returns a JSON object with user details. Refer `LoginSuccess` for more details.
+
+
+
+
+<details>
+<summary><i>&nbsp; Examples:</i></summary>
+
+
+<details>
+<summary><i>&nbsp; set email as primary success</i></summary>
+
+```json
+{
+  "value": {
+    "user": {
+      "debug": {
+        "source": "deadlock",
+        "platform": "000000000000000000000001"
+      },
+      "gender": "male",
+      "account_type": "user",
+      "active": true,
+      "profile_pic_url": "https://d2co8r51m5ca2d.cloudfront.net/inapp_banners/default_profile_img.png",
+      "has_old_password_hash": false,
+      "_id": "5e68af49cfa09bf7233022f1",
+      "first_name": "Akash",
+      "last_name": "Mane",
+      "username": "akashmane_gofynd_com_10039",
+      "phone_numbers": [
+        {
+          "active": true,
+          "primary": true,
+          "verified": true,
+          "phone": "8652523958",
+          "country_code": 91
+        }
+      ],
+      "emails": [
+        {
+          "active": true,
+          "primary": true,
+          "verified": true,
+          "email": "akashmane@gofynd.com"
+        },
+        {
+          "active": true,
+          "primary": false,
+          "verified": true,
+          "email": "akashmane@fynd.com"
+        },
+        {
+          "active": true,
+          "primary": false,
+          "verified": true,
+          "email": "akashmane@uniket.store"
+        }
+      ],
+      "created_at": "2020-03-11T09:28:41.982Z",
+      "updated_at": "2021-02-04T10:10:44.981Z"
+    }
+  }
+}
+```
+</details>
+
+</details>
+
+
+
+
+
+
+
+
+
+---
+
+
+### sendVerificationLinkToEmail
+Verify new email.
+
+
+
+
+```kotlin
+applicationClient.user.sendVerificationLinkToEmail(platform: platform, body: body).safeAwait{ response, error->
+    response?.let{
+      // Use response
+    } ->
+    error?.let{
+      
+    } 
+}
+```
+
+
+
+
+
+| Argument  |  Type  | Required | Description |
+| --------- | -----  | -------- | ----------- | 
+| platform | String? | no | ID of the application |  
+| body | [EditEmailRequestSchema](#EditEmailRequestSchema) | yes | Request body |
+
+
+Sends a verification link to a newly added email address.
+
+*Returned Response:*
+
+
+
+
+[SendEmailVerifyLinkSuccess](#SendEmailVerifyLinkSuccess)
+
+Request body must contain an email ID. Refer `EditEmailRequestSchema` for more details.
+
+
+
+
+<details>
+<summary><i>&nbsp; Examples:</i></summary>
+
+
+<details>
+<summary><i>&nbsp; send verification link to email success</i></summary>
+
+```json
+{
+  "value": {
+    "verify_email_link": true
+  }
+}
+```
+</details>
+
+</details>
+
+
+
+
+
+
+
+
+
+---
+
+
+
+
+### verifyEmail
+Verify email.
+
+
+
+
+```kotlin
+applicationClient.user.verifyEmail(body: body).safeAwait{ response, error->
+    response?.let{
+      // Use response
+    } ->
+    error?.let{
+      
+    } 
+}
+```
+
+
+
+
+
+| Argument  |  Type  | Required | Description |
+| --------- | -----  | -------- | ----------- |
+| body | [CodeRequestBodySchema](#CodeRequestBodySchema) | yes | Request body |
+
+
+Verifies the user's email address.
+
+*Returned Response:*
+
+
+
+
+[VerifyEmailSuccess](#VerifyEmailSuccess)
+
+Success. Check the example shown below or refer `VerifyEmailSuccess` for more details.
+
+
+
+
+<details>
+<summary><i>&nbsp; Examples:</i></summary>
+
+
+<details>
+<summary><i>&nbsp; verify email success</i></summary>
+
+```json
+{
+  "value": {
+    "message": "verified"
+  }
+}
+```
+</details>
+
+</details>
+
+
+
+
+
+
+
+
+
+---
+
+
+### verifyMobile
+Verify mobile.
+
+
+
+
+```kotlin
+applicationClient.user.verifyMobile(body: body).safeAwait{ response, error->
+    response?.let{
+      // Use response
+    } ->
+    error?.let{
+      
+    } 
+}
+```
+
+
+
+
+
+| Argument  |  Type  | Required | Description |
+| --------- | -----  | -------- | ----------- |
+| body | [CodeRequestBodySchema](#CodeRequestBodySchema) | yes | Request body |
+
+
+Verifies the user's mobile number.
+
+*Returned Response:*
+
+
+
+
+[VerifyEmailSuccess](#VerifyEmailSuccess)
+
+Success. Check the example shown below or refer `VerifyEmailSuccess` for more details.
+
+
+
+
+<details>
+<summary><i>&nbsp; Examples:</i></summary>
+
+
+<details>
+<summary><i>&nbsp; verify mobile success</i></summary>
+
+```json
+{
+  "value": {
+    "message": "verified"
+  }
+}
+```
+</details>
+
+</details>
+
+
+
+
+
+
+
+
+
+---
+
+
+
+
 ### getLoggedInUser
-Get logged in user
+Current user.
 
 
 
@@ -2226,7 +2824,7 @@ applicationClient.user.getLoggedInUser().safeAwait{ response, error->
 
 
 
-Use this API  to get the details of a logged in user.
+Retrieve information about the currently logged-in user.
 
 *Returned Response:*
 
@@ -2383,7 +2981,7 @@ Success. Returns a JSON object containing an array of sessions. Refer `SessionLi
 
 
 ### getPlatformConfig
-Get platform configurations
+Platform config.
 
 
 
@@ -2409,7 +3007,7 @@ applicationClient.user.getPlatformConfig(name: name).safeAwait{ response, error-
 
 
 
-Use this API to get all the platform configurations such as mobile image, desktop image, social logins, and all other text.
+Retrieve configuration settings related to the user platform.
 
 *Returned Response:*
 
@@ -2531,6 +3129,147 @@ Success. Returns a JSON object containing the all the platform configurations. R
 ---
 
 
+### userExists
+Check user is already registered or not
+
+
+
+
+```kotlin
+applicationClient.user.userExists(q: q).safeAwait{ response, error->
+    response?.let{
+      // Use response
+    } ->
+    error?.let{
+      
+    } 
+}
+```
+
+
+
+
+
+| Argument  |  Type  | Required | Description |
+| --------- | -----  | -------- | ----------- | 
+| q | String | yes | email id or phone number of user |  
+
+
+
+Use this API to check whether user is already registered or not to the sales channel.
+
+*Returned Response:*
+
+
+
+
+[UserExistsResponse](#UserExistsResponse)
+
+Returns true or false based on user is registered or not.
+
+
+
+
+<details>
+<summary><i>&nbsp; Examples:</i></summary>
+
+
+<details>
+<summary><i>&nbsp; user exists success</i></summary>
+
+```json
+{
+  "value": {
+    "user_exists": true
+  }
+}
+```
+</details>
+
+</details>
+
+
+
+
+
+
+
+
+
+---
+
+
+### deleteUser
+verify otp and delete user
+
+
+
+
+```kotlin
+applicationClient.user.deleteUser(body: body).safeAwait{ response, error->
+    response?.let{
+      // Use response
+    } ->
+    error?.let{
+      
+    } 
+}
+```
+
+
+
+
+
+| Argument  |  Type  | Required | Description |
+| --------- | -----  | -------- | ----------- |
+| body | [DeleteApplicationUserRequestSchema](#DeleteApplicationUserRequestSchema) | yes | Request body |
+
+
+verify otp and delete user
+
+*Returned Response:*
+
+
+
+
+[DeleteUserSuccess](#DeleteUserSuccess)
+
+Success. Returns a success message. Refer `DeleteUserSuccess` for more details.
+
+
+
+
+<details>
+<summary><i>&nbsp; Examples:</i></summary>
+
+
+<details>
+<summary><i>&nbsp; delete user success</i></summary>
+
+```json
+{
+  "value": {
+    "success": true
+  }
+}
+```
+</details>
+
+</details>
+
+
+
+
+
+
+
+
+
+---
+
+
+
+
 ### updateProfile
 Edit Profile Details
 
@@ -2647,7 +3386,7 @@ Success. Check the example shown below or refer `LoginSuccess` for more details.
 
 
 ### addMobileNumber
-Add mobile number to profile
+Add mobile.
 
 
 
@@ -2673,7 +3412,7 @@ applicationClient.user.addMobileNumber(platform: platform, body: body).safeAwait
 | body | [EditMobileRequestSchema](#EditMobileRequestSchema) | yes | Request body |
 
 
-Use this API to add a new mobile number to a profile.
+Adds a new mobile number to the user's profile.
 
 *Returned Response:*
 
@@ -2883,7 +3622,7 @@ Success. Check the example shown below or refer `LoginSuccess` for more details.
 
 
 ### setMobileNumberAsPrimary
-Set mobile as primary
+Set primary mobile.
 
 
 
@@ -2908,7 +3647,7 @@ applicationClient.user.setMobileNumberAsPrimary(body: body).safeAwait{ response,
 | body | [SendVerificationLinkMobileRequestSchema](#SendVerificationLinkMobileRequestSchema) | yes | Request body |
 
 
-Use this API to set a mobile number as primary. Primary number is a verified number used for all future communications.
+Sets a mobile number as the primary contact for the user.
 
 *Returned Response:*
 
@@ -2978,745 +3717,6 @@ Success. Check the example shown below or refer `LoginSuccess` for more details.
       "created_at": "2020-03-11T09:28:41.982Z",
       "updated_at": "2021-02-04T10:10:44.981Z"
     }
-  }
-}
-```
-</details>
-
-</details>
-
-
-
-
-
-
-
-
-
----
-
-
-### sendVerificationLinkToMobile
-Send verification link to mobile
-
-
-
-
-```kotlin
-applicationClient.user.sendVerificationLinkToMobile(platform: platform, body: body).safeAwait{ response, error->
-    response?.let{
-      // Use response
-    } ->
-    error?.let{
-      
-    } 
-}
-```
-
-
-
-
-
-| Argument  |  Type  | Required | Description |
-| --------- | -----  | -------- | ----------- | 
-| platform | String? | no | ID of the application |  
-| body | [SendVerificationLinkMobileRequestSchema](#SendVerificationLinkMobileRequestSchema) | yes | Request body |
-
-
-Use this API to send a verification link to a mobile number
-
-*Returned Response:*
-
-
-
-
-[SendMobileVerifyLinkSuccess](#SendMobileVerifyLinkSuccess)
-
-Success. Check the example shown below or refer `SendMobileVerifyLinkSuccess` for more details.
-
-
-
-
-<details>
-<summary><i>&nbsp; Examples:</i></summary>
-
-
-<details>
-<summary><i>&nbsp; send verification link to mobile success</i></summary>
-
-```json
-{
-  "value": {
-    "verify_mobile_link": true,
-    "user": {
-      "debug": {
-        "source": "deadlock",
-        "platform": "000000000000000000000001"
-      },
-      "gender": "male",
-      "account_type": "user",
-      "active": true,
-      "profile_pic_url": "https://d2co8r51m5ca2d.cloudfront.net/inapp_banners/default_profile_img.png",
-      "has_old_password_hash": false,
-      "_id": "5e68af49cfa09bf7233022f1",
-      "first_name": "Akash",
-      "last_name": "Mane",
-      "username": "akashmane_gofynd_com_10039",
-      "phone_numbers": [
-        {
-          "active": true,
-          "primary": true,
-          "verified": true,
-          "phone": "8652523958",
-          "country_code": 91
-        }
-      ],
-      "emails": [
-        {
-          "active": true,
-          "primary": true,
-          "verified": true,
-          "email": "akashmane@gofynd.com"
-        },
-        {
-          "active": true,
-          "primary": false,
-          "verified": true,
-          "email": "akashmane@fynd.com"
-        },
-        {
-          "active": true,
-          "primary": false,
-          "verified": true,
-          "email": "akashmane@uniket.store"
-        }
-      ],
-      "created_at": "2020-03-11T09:28:41.982Z",
-      "updated_at": "2021-02-04T10:10:44.981Z"
-    }
-  }
-}
-```
-</details>
-
-</details>
-
-
-
-
-
-
-
-
-
----
-
-
-### addEmail
-Add email to profile
-
-
-
-
-```kotlin
-applicationClient.user.addEmail(platform: platform, body: body).safeAwait{ response, error->
-    response?.let{
-      // Use response
-    } ->
-    error?.let{
-      
-    } 
-}
-```
-
-
-
-
-
-| Argument  |  Type  | Required | Description |
-| --------- | -----  | -------- | ----------- | 
-| platform | String? | no | ID of the application |  
-| body | [EditEmailRequestSchema](#EditEmailRequestSchema) | yes | Request body |
-
-
-Use this API to add a new email address to a profile
-
-*Returned Response:*
-
-
-
-
-[VerifyEmailOTPSuccess](#VerifyEmailOTPSuccess)
-
-Success. Returns a JSON object with user details. Refer `VerifyEmailOTPSuccess` for more details.
-
-
-
-
-<details>
-<summary><i>&nbsp; Examples:</i></summary>
-
-
-<details>
-<summary><i>&nbsp; add email to profile success</i></summary>
-
-```json
-{
-  "value": {
-    "verify_email_link": true,
-    "user": {
-      "debug": {
-        "source": "deadlock",
-        "platform": "000000000000000000000001"
-      },
-      "gender": "male",
-      "account_type": "user",
-      "active": true,
-      "profile_pic_url": "https://d2co8r51m5ca2d.cloudfront.net/inapp_banners/default_profile_img.png",
-      "has_old_password_hash": false,
-      "_id": "5e68af49cfa09bf7233022f1",
-      "first_name": "Akash",
-      "last_name": "Mane",
-      "username": "akashmane_gofynd_com_10039",
-      "phone_numbers": [
-        {
-          "active": true,
-          "primary": true,
-          "verified": true,
-          "phone": "8652523958",
-          "country_code": 91
-        }
-      ],
-      "emails": [
-        {
-          "active": true,
-          "primary": true,
-          "verified": true,
-          "email": "akashmane@gofynd.com"
-        },
-        {
-          "active": true,
-          "primary": false,
-          "verified": true,
-          "email": "akashmane@fynd.com"
-        },
-        {
-          "active": true,
-          "primary": false,
-          "verified": true,
-          "email": "akashmane@uniket.store"
-        }
-      ],
-      "created_at": "2020-03-11T09:28:41.982Z",
-      "updated_at": "2021-02-04T10:10:44.981Z"
-    }
-  }
-}
-```
-</details>
-
-</details>
-
-
-
-
-
-
-
-
-
----
-
-
-### deleteEmail
-Delete email from profile
-
-
-
-
-```kotlin
-applicationClient.user.deleteEmail(platform: platform, active: active, primary: primary, verified: verified, email: email).safeAwait{ response, error->
-    response?.let{
-      // Use response
-    } ->
-    error?.let{
-      
-    } 
-}
-```
-
-
-
-
-
-| Argument  |  Type  | Required | Description |
-| --------- | -----  | -------- | ----------- | 
-| platform | String? | no | ID of the application |   
-| active | Boolean | yes | This is a boolean value to check if email ID is active 1. True - Email ID is active 2.False - Email ID is inactive |   
-| primary | Boolean | yes | This is a boolean value to check if email ID is primary (main email ID) 1. True - Email ID is primary 2.False - Email ID is not primary |   
-| verified | Boolean | yes | This is a boolean value to check if email ID is verified 1. True - Email ID is verified 2.False - Email ID is not verified yet |   
-| email | String | yes | The email ID to delete |  
-
-
-
-Use this API to delete an email address from a profile
-
-*Returned Response:*
-
-
-
-
-[LoginSuccess](#LoginSuccess)
-
-Success. Returns a JSON object with user details. Refer `LoginSuccess` for more details.
-
-
-
-
-<details>
-<summary><i>&nbsp; Examples:</i></summary>
-
-
-<details>
-<summary><i>&nbsp; Delete email from profile success</i></summary>
-
-```json
-{
-  "value": {
-    "user": {
-      "debug": {
-        "source": "deadlock",
-        "platform": "000000000000000000000001"
-      },
-      "gender": "male",
-      "account_type": "user",
-      "active": true,
-      "profile_pic_url": "https://d2co8r51m5ca2d.cloudfront.net/inapp_banners/default_profile_img.png",
-      "has_old_password_hash": false,
-      "_id": "5e68af49cfa09bf7233022f1",
-      "first_name": "Akash",
-      "last_name": "Mane",
-      "username": "akashmane_gofynd_com_10039",
-      "phone_numbers": [
-        {
-          "active": true,
-          "primary": true,
-          "verified": true,
-          "phone": "8652523958",
-          "country_code": 91
-        }
-      ],
-      "emails": [
-        {
-          "active": true,
-          "primary": true,
-          "verified": true,
-          "email": "akashmane@gofynd.com"
-        },
-        {
-          "active": true,
-          "primary": false,
-          "verified": true,
-          "email": "akashmane@fynd.com"
-        },
-        {
-          "active": true,
-          "primary": false,
-          "verified": true,
-          "email": "akashmane@uniket.store"
-        }
-      ],
-      "created_at": "2020-03-11T09:28:41.982Z",
-      "updated_at": "2021-02-04T10:10:44.981Z"
-    }
-  }
-}
-```
-</details>
-
-</details>
-
-
-
-
-
-
-
-
-
----
-
-
-### setEmailAsPrimary
-Set email as primary
-
-
-
-
-```kotlin
-applicationClient.user.setEmailAsPrimary(body: body).safeAwait{ response, error->
-    response?.let{
-      // Use response
-    } ->
-    error?.let{
-      
-    } 
-}
-```
-
-
-
-
-
-| Argument  |  Type  | Required | Description |
-| --------- | -----  | -------- | ----------- |
-| body | [EditEmailRequestSchema](#EditEmailRequestSchema) | yes | Request body |
-
-
-Use this API to set an email address as primary. Primary email ID is a email address used for all future communications.
-
-*Returned Response:*
-
-
-
-
-[LoginSuccess](#LoginSuccess)
-
-Success. Returns a JSON object with user details. Refer `LoginSuccess` for more details.
-
-
-
-
-<details>
-<summary><i>&nbsp; Examples:</i></summary>
-
-
-<details>
-<summary><i>&nbsp; set email as primary success</i></summary>
-
-```json
-{
-  "value": {
-    "user": {
-      "debug": {
-        "source": "deadlock",
-        "platform": "000000000000000000000001"
-      },
-      "gender": "male",
-      "account_type": "user",
-      "active": true,
-      "profile_pic_url": "https://d2co8r51m5ca2d.cloudfront.net/inapp_banners/default_profile_img.png",
-      "has_old_password_hash": false,
-      "_id": "5e68af49cfa09bf7233022f1",
-      "first_name": "Akash",
-      "last_name": "Mane",
-      "username": "akashmane_gofynd_com_10039",
-      "phone_numbers": [
-        {
-          "active": true,
-          "primary": true,
-          "verified": true,
-          "phone": "8652523958",
-          "country_code": 91
-        }
-      ],
-      "emails": [
-        {
-          "active": true,
-          "primary": true,
-          "verified": true,
-          "email": "akashmane@gofynd.com"
-        },
-        {
-          "active": true,
-          "primary": false,
-          "verified": true,
-          "email": "akashmane@fynd.com"
-        },
-        {
-          "active": true,
-          "primary": false,
-          "verified": true,
-          "email": "akashmane@uniket.store"
-        }
-      ],
-      "created_at": "2020-03-11T09:28:41.982Z",
-      "updated_at": "2021-02-04T10:10:44.981Z"
-    }
-  }
-}
-```
-</details>
-
-</details>
-
-
-
-
-
-
-
-
-
----
-
-
-### sendVerificationLinkToEmail
-Send verification link to email
-
-
-
-
-```kotlin
-applicationClient.user.sendVerificationLinkToEmail(platform: platform, body: body).safeAwait{ response, error->
-    response?.let{
-      // Use response
-    } ->
-    error?.let{
-      
-    } 
-}
-```
-
-
-
-
-
-| Argument  |  Type  | Required | Description |
-| --------- | -----  | -------- | ----------- | 
-| platform | String? | no | ID of the application |  
-| body | [EditEmailRequestSchema](#EditEmailRequestSchema) | yes | Request body |
-
-
-Use this API to send verification link to an email address.
-
-*Returned Response:*
-
-
-
-
-[SendEmailVerifyLinkSuccess](#SendEmailVerifyLinkSuccess)
-
-Request body must contain an email ID. Refer `EditEmailRequestSchema` for more details.
-
-
-
-
-<details>
-<summary><i>&nbsp; Examples:</i></summary>
-
-
-<details>
-<summary><i>&nbsp; send verification link to email success</i></summary>
-
-```json
-{
-  "value": {
-    "verify_email_link": true
-  }
-}
-```
-</details>
-
-</details>
-
-
-
-
-
-
-
-
-
----
-
-
-### userExists
-Check user is already registered or not
-
-
-
-
-```kotlin
-applicationClient.user.userExists(q: q).safeAwait{ response, error->
-    response?.let{
-      // Use response
-    } ->
-    error?.let{
-      
-    } 
-}
-```
-
-
-
-
-
-| Argument  |  Type  | Required | Description |
-| --------- | -----  | -------- | ----------- | 
-| q | String | yes | email id or phone number of user |  
-
-
-
-Use this API to check whether user is already registered or not to the sales channel.
-
-*Returned Response:*
-
-
-
-
-[UserExistsResponse](#UserExistsResponse)
-
-Returns true or false based on user is registered or not.
-
-
-
-
-<details>
-<summary><i>&nbsp; Examples:</i></summary>
-
-
-<details>
-<summary><i>&nbsp; user exists success</i></summary>
-
-```json
-{
-  "value": {
-    "user_exists": true
-  }
-}
-```
-</details>
-
-</details>
-
-
-
-
-
-
-
-
-
----
-
-
-### deleteUser
-verify otp and delete user
-
-
-
-
-```kotlin
-applicationClient.user.deleteUser(body: body).safeAwait{ response, error->
-    response?.let{
-      // Use response
-    } ->
-    error?.let{
-      
-    } 
-}
-```
-
-
-
-
-
-| Argument  |  Type  | Required | Description |
-| --------- | -----  | -------- | ----------- |
-| body | [DeleteApplicationUserRequestSchema](#DeleteApplicationUserRequestSchema) | yes | Request body |
-
-
-verify otp and delete user
-
-*Returned Response:*
-
-
-
-
-[DeleteUserSuccess](#DeleteUserSuccess)
-
-Success. Returns a success message. Refer `DeleteUserSuccess` for more details.
-
-
-
-
-<details>
-<summary><i>&nbsp; Examples:</i></summary>
-
-
-<details>
-<summary><i>&nbsp; delete user success</i></summary>
-
-```json
-{
-  "value": {
-    "success": true
-  }
-}
-```
-</details>
-
-</details>
-
-
-
-
-
-
-
-
-
----
-
-
-### logout
-Logs out currently logged in user
-
-
-
-
-```kotlin
-applicationClient.user.logout().safeAwait{ response, error->
-    response?.let{
-      // Use response
-    } ->
-    error?.let{
-      
-    } 
-}
-```
-
-
-
-
-
-
-Use this API to check to logout a user from the app.
-
-*Returned Response:*
-
-
-
-
-[LogoutSuccess](#LogoutSuccess)
-
-Success. Returns a success message as shown below. Refer `LogoutSuccess` for more details.
-
-
-
-
-<details>
-<summary><i>&nbsp; Examples:</i></summary>
-
-
-<details>
-<summary><i>&nbsp; logout success</i></summary>
-
-```json
-{
-  "value": {
-    "success": true
   }
 }
 ```
@@ -3965,7 +3965,7 @@ Returns a list of users attributes
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | ci | Boolean? |  yes  | set to true if you want to encrypt the OTP. |
+ | encryptOtp | Boolean? |  yes  | set to true if you want to encrypt the OTP. |
  | firstName | String? |  yes  |  |
  | lastName | String? |  yes  |  |
  | mobile | [EditProfileMobileSchema](#EditProfileMobileSchema)? |  yes  |  |
@@ -4077,7 +4077,7 @@ Returns a list of users attributes
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | ci | Boolean? |  yes  | set to true if you want to encrypt the OTP. |
+ | encryptOtp | Boolean? |  yes  | set to true if you want to encrypt the OTP. |
  | mobile | String? |  yes  |  |
  | countryCode | String? |  yes  |  |
  | action | String? |  yes  |  |
@@ -4207,7 +4207,7 @@ Returns a list of users attributes
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | ci | Boolean? |  yes  | set to true if you want to encrypt the OTP. |
+ | encryptOtp | Boolean? |  yes  | set to true if you want to encrypt the OTP. |
  | countryCode | String? |  yes  |  |
  | mobile | String? |  yes  |  |
  | androidHash | String? |  yes  |  |

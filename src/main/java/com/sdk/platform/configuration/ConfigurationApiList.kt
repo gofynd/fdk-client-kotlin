@@ -142,7 +142,7 @@ interface ConfigurationApiList {
     
     @GET ("/service/platform/configuration/v1.0/company/{company_id}/application/{application_id}")
     suspend fun getApplicationById(@Path("company_id") companyId: String, @Path("application_id") applicationId: String)
-    : Response<Application>
+    : Response<ApplicationById>
     
     @GET ("/service/platform/configuration/v1.0/company/{company_id}/currencies")
     suspend fun getCurrencies(@Path("company_id") companyId: String)

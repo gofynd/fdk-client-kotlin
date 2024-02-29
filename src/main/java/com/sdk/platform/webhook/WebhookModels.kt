@@ -406,7 +406,7 @@ data class EventProcessReportObject(
     var attempt: Int?=null,
     
     @SerializedName("last_attempted_on")
-    var lastAttemptedOn: Int?=null,
+    var lastAttemptedOn: Double?=null,
     
     @SerializedName("status")
     var status: String?=null,
@@ -1066,6 +1066,147 @@ data class AuthMeta(
 
              
 /*
+    Model: SubscriberFailureResponse
+*/
+@Parcelize
+data class SubscriberFailureResponse(
+    
+    
+    
+    @SerializedName("message")
+    var message: String?=null,
+    
+    @SerializedName("code")
+    var code: String?=null,
+    
+    @SerializedName("stack")
+    var stack: String?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: EventConfigs
+*/
+@Parcelize
+data class EventConfigs(
+    
+    
+    
+    @SerializedName("id")
+    var id: Int?=null,
+    
+    @SerializedName("event_name")
+    var eventName: String?=null,
+    
+    @SerializedName("event_type")
+    var eventType: String?=null,
+    
+    @SerializedName("event_category")
+    var eventCategory: String?=null,
+    
+    @SerializedName("event_schema")
+    var eventSchema: @RawValue HashMap<String,Any>?=null,
+    
+    @SerializedName("version")
+    var version: String?=null,
+    
+    @SerializedName("display_name")
+    var displayName: String?=null,
+    
+    @SerializedName("description")
+    var description: String?=null,
+    
+    @SerializedName("created_on")
+    var createdOn: String?=null,
+    
+    @SerializedName("updated_on")
+    var updatedOn: String?=null,
+    
+    @SerializedName("subscriber_event_mapping")
+    var subscriberEventMapping: SubscriberEventMapping?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: SubscriberEventMapping
+*/
+@Parcelize
+data class SubscriberEventMapping(
+    
+    
+    
+    @SerializedName("id")
+    var id: Int?=null,
+    
+    @SerializedName("event_id")
+    var eventId: Int?=null,
+    
+    @SerializedName("subscriber_id")
+    var subscriberId: Int?=null,
+    
+    @SerializedName("created_on")
+    var createdOn: String?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
     Model: SubscriberResponse
 */
 @Parcelize
@@ -1081,9 +1222,6 @@ data class SubscriberResponse(
     
     @SerializedName("name")
     var name: String?=null,
-    
-    @SerializedName("provider")
-    var provider: String?=null,
     
     @SerializedName("webhook_url")
     var webhookUrl: String?=null,
@@ -1122,102 +1260,6 @@ data class SubscriberResponse(
     
     
     
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-}
-
-
-
-             
-/*
-    Model: Events
-*/
-@Parcelize
-data class Events(
-    
-    
-    
-    @SerializedName("slug")
-    var slug: String?=null,
-    
-    @SerializedName("topic")
-    var topic: String?=null
-    
-): Parcelable {
-    
-    
-    
-    
-    
-    
-    
-}
-
-
-
-             
-/*
-    Model: SubscriberConfigRequestV2
-*/
-@Parcelize
-data class SubscriberConfigRequestV2(
-    
-    
-    
-    @SerializedName("id")
-    var id: Int?=null,
-    
-    @SerializedName("name")
-    var name: String?=null,
-    
-    @SerializedName("webhook_url")
-    var webhookUrl: String?=null,
-    
-    @SerializedName("provider")
-    var provider: String?=null,
-    
-    @SerializedName("association")
-    var association: Association?=null,
-    
-    @SerializedName("custom_headers")
-    var customHeaders: @RawValue HashMap<String,Any>?=null,
-    
-    @SerializedName("status")
-    var status: String?=null,
-    
-    @SerializedName("email_id")
-    var emailId: String?=null,
-    
-    @SerializedName("auth_meta")
-    var authMeta: AuthMeta?=null,
-    
-    @SerializedName("events")
-    var events: ArrayList<Events>?=null
-    
-): Parcelable {
     
     
     
@@ -1328,9 +1370,6 @@ data class SubscriberConfigResponse(
     @SerializedName("webhook_url")
     var webhookUrl: String?=null,
     
-    @SerializedName("provider")
-    var provider: String?=null,
-    
     @SerializedName("association")
     var association: Association?=null,
     
@@ -1359,8 +1398,6 @@ data class SubscriberConfigResponse(
     var eventId: ArrayList<Int>?=null
     
 ): Parcelable {
-    
-    
     
     
     

@@ -86,7 +86,7 @@ interface CatalogApiList {
     
     
     @GET 
-    suspend fun getSearchResults(@Url url1: String?    ,       @Query("q") q: String?, @Query("category_suggestion") categorySuggestion: Int?, @Query("brand_suggestion") brandSuggestion: Int?, @Query("collection_suggestion") collectionSuggestion: Int?, @Query("product_suggestion") productSuggestion: Int?, @Query("query_suggestion") querySuggestion: Int?)
+    suspend fun getSearchResults(@Url url1: String?    ,  @Query("q") q: String)
     : Response<AutoCompleteResponse>
     
     
@@ -151,7 +151,7 @@ interface CatalogApiList {
     
     
     @GET 
-    suspend fun getProductPriceBySlug(@Url url1: String?      ,     @Query("store_id") storeId: Int?, @Query("exchange_seller_identifier") exchangeSellerIdentifier: String?, @Query("moq") moq: Int?, @Query("seller_id") sellerId: Int?)
+    suspend fun getProductPriceBySlug(@Url url1: String?      ,   @Query("store_id") storeId: Int?, @Query("moq") moq: Int?)
     : Response<ProductSizePriceResponseV3>
     
     

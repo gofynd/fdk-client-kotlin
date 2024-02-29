@@ -19,6 +19,10 @@ class LogisticDataManagerClass(val config: ApplicationConfig, val unauthorizedAc
 
     init{
             
+                    _relativeUrls["getPincodeCity"] = "/service/application/logistics/v1.0/pincode/{pincode}".substring(1)
+            
+                    _relativeUrls["getTatProduct"] = "/service/application/logistics/v1.0/".substring(1)
+            
                     _relativeUrls["getAllCountries"] = "/service/application/logistics/v1.0/country-list".substring(1)
             
                     _relativeUrls["getPincodeZones"] = "/service/application/logistics/v1.0/pincode/zones".substring(1)
@@ -71,6 +75,22 @@ class LogisticDataManagerClass(val config: ApplicationConfig, val unauthorizedAc
         )
         return retrofitHttpClient?.initializeRestClient(LogisticApiList::class.java) as? LogisticApiList
     }
+    
+    suspend fun getPincodeCity(pincode: String): Response<PincodeApiResponse>? {
+        var fullUrl : String? = _relativeUrls["getPincodeCity"] 
+        
+        fullUrl = fullUrl?.replace("{" + "pincode" +"}",pincode.toString())
+        
+        return logisticApiList?.getPincodeCity(fullUrl   )}
+
+    
+    
+    suspend fun getTatProduct(body: TATViewRequest): Response<TATViewResponse>? {
+        var fullUrl : String? = _relativeUrls["getTatProduct"] 
+        
+        return logisticApiList?.getTatProduct(fullUrl  ,body = body)}
+
+    
     
     suspend fun getAllCountries(): Response<CountryListResponse>? {
         var fullUrl : String? = _relativeUrls["getAllCountries"] 

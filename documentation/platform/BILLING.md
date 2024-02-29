@@ -7,7 +7,7 @@
 ## Billing Methods
 Handle platform subscription
 
-Default
+Billing & Subscription
 * [checkCouponValidity](#checkcouponvalidity)
 * [createSubscriptionCharge](#createsubscriptioncharge)
 * [getSubscriptionCharge](#getsubscriptioncharge)
@@ -25,15 +25,10 @@ Default
 * [getEnterprisePlans](#getenterpriseplans)
 * [planStatusUpdate](#planstatusupdate)
 * [subscripePlan](#subscripeplan)
+
+
+Default
 * [getentityDetail](#getentitydetail)
-* [paymentOptions](#paymentoptions)
-* [verifyPayment](#verifypayment)
-* [globalSettings](#globalsettings)
-* [subscriptionMethods](#subscriptionmethods)
-* [subscriptionConfigs](#subscriptionconfigs)
-* [subscriptionPlanChange](#subscriptionplanchange)
-* [getPaymentTransaction](#getpaymenttransaction)
-* [getPaymentOptions](#getpaymentoptions)
 
 
 
@@ -43,7 +38,7 @@ Default
 
 
 ### checkCouponValidity
-Check coupon validity
+Verify coupon validity.
 
 
 
@@ -70,7 +65,7 @@ platformClient.billing.checkCouponValidity(plan: plan, couponCode: couponCode).s
 
 
 
-Check coupon validity.
+Checks whether a coupon code is valid for discounts while billing.
 
 *Returned Response:*
 
@@ -104,7 +99,7 @@ Success
 
 
 ### createSubscriptionCharge
-Create subscription charge
+Initiate subscription billing.
 
 
 
@@ -130,7 +125,7 @@ platformClient.billing.createSubscriptionCharge(extensionId: extensionId, body: 
 | body | [CreateSubscriptionCharge](#CreateSubscriptionCharge) | yes | Request body |
 
 
-Register subscription charge for a seller of your extension.
+Register a subscription charge for a seller using your extension.
 
 *Returned Response:*
 
@@ -164,7 +159,7 @@ Success
 
 
 ### getSubscriptionCharge
-Get subscription charge details
+Retrieve subscription charge details.
 
 
 
@@ -191,7 +186,7 @@ platformClient.billing.getSubscriptionCharge(extensionId: extensionId, subscript
 
 
 
-Get created subscription charge details
+Retrieve detailed information about subscription charges using this API.
 
 *Returned Response:*
 
@@ -225,7 +220,7 @@ Success
 
 
 ### cancelSubscriptionCharge
-Cancel subscription charge
+Cancel a subscription charge.
 
 
 
@@ -252,7 +247,7 @@ platformClient.billing.cancelSubscriptionCharge(extensionId: extensionId, subscr
 
 
 
-Cancel subscription and attached charges.
+Cancel an ongoing subscription charge for a customer.
 
 *Returned Response:*
 
@@ -286,7 +281,7 @@ Success
 
 
 ### createOneTimeCharge
-Create one time subscription charge
+Generate a one-time charge.
 
 
 
@@ -312,7 +307,7 @@ platformClient.billing.createOneTimeCharge(extensionId: extensionId, body: body)
 | body | [CreateOneTimeCharge](#CreateOneTimeCharge) | yes | Request body |
 
 
-Register one time subscription charge for a seller of your extension.
+Generate a one-time charge for specific services or products.
 
 *Returned Response:*
 
@@ -346,7 +341,7 @@ Success
 
 
 ### getChargeDetails
-Get subscription charge details
+Obtain charge details.
 
 
 
@@ -373,7 +368,7 @@ platformClient.billing.getChargeDetails(extensionId: extensionId, chargeId: char
 
 
 
-Get created subscription charge details
+Retrieve comprehensive details about a specific billing charge.
 
 *Returned Response:*
 
@@ -407,7 +402,7 @@ Success
 
 
 ### getInvoices
-Get invoices
+Retrieve invoices.
 
 
 
@@ -428,7 +423,7 @@ platformClient.billing.getInvoices().safeAwait{ response, error->
 
 
 
-Get invoices.
+Retrieve invoices for billing and payment tracking.
 
 *Returned Response:*
 
@@ -701,7 +696,7 @@ Success
 
 
 ### getInvoiceById
-Get invoice by id
+Get a specific invoice.
 
 
 
@@ -727,7 +722,7 @@ platformClient.billing.getInvoiceById(invoiceId: invoiceId).safeAwait{ response,
 
 
 
-Get invoice by id.
+Retrieve a particular invoice's details by providing its unique ID.
 
 *Returned Response:*
 
@@ -994,7 +989,7 @@ Success
 
 
 ### getCustomerDetail
-Get subscription customer detail
+Fetch customer details.
 
 
 
@@ -1015,7 +1010,7 @@ platformClient.billing.getCustomerDetail().safeAwait{ response, error->
 
 
 
-Get subscription customer detail.
+Obtain customer-related billing information.
 
 *Returned Response:*
 
@@ -1081,7 +1076,7 @@ Success
 
 
 ### upsertCustomerDetail
-Upsert subscription customer detail
+Update or insert customer details.
 
 
 
@@ -1106,7 +1101,7 @@ platformClient.billing.upsertCustomerDetail(body: body).safeAwait{ response, err
 | body | [SubscriptionCustomerCreate](#SubscriptionCustomerCreate) | yes | Request body |
 
 
-Upsert subscription customer detail.
+Allows you to modify or insert customer information in the billing system.
 
 *Returned Response:*
 
@@ -1172,7 +1167,7 @@ Success
 
 
 ### getSubscription
-Get current subscription detail
+Retrieve subscription details.
 
 
 
@@ -1193,8 +1188,7 @@ platformClient.billing.getSubscription().safeAwait{ response, error->
 
 
 
-If subscription is active then it will return is_enabled true and return subscription object. If subscription is not active then is_enabled false and message.
-
+Retrieve details of a customer's subscription information.
 
 *Returned Response:*
 
@@ -1525,7 +1519,7 @@ Success
       "hash_identifier": "987abf78c61bfef585242bbbeaab1b59",
       "pdf_url": "https://cdn.pixelbin.io/v2/falling-surf-7c8bb8/fyndnp/wrkr/addsale/company/13781/self/subscription/documents/invoices/original/U6ffgNlo_-PS-P-A00515-FY24-paid.pdf"
     },
-    "mandate_amount": 630000,
+    "mandate_amount": "630000",
     "current_subscriptions": [
       {
         "current_period": {
@@ -1724,7 +1718,7 @@ Success
 
 
 ### getFeatureLimitConfig
-Get subscription subscription limits
+Obtain feature limit configurations.
 
 
 
@@ -1751,7 +1745,7 @@ platformClient.billing.getFeatureLimitConfig(productSuite: productSuite, type: t
 
 
 
-Get subscription subscription limits.
+Retrieve configuration settings for feature limits in subscription plans.
 
 *Returned Response:*
 
@@ -1821,7 +1815,7 @@ Success
 
 
 ### activateSubscriptionPlan
-Activate subscription
+Activate a subscription plan.
 
 
 
@@ -1846,7 +1840,7 @@ platformClient.billing.activateSubscriptionPlan(body: body).safeAwait{ response,
 | body | [SubscriptionActivateReq](#SubscriptionActivateReq) | yes | Request body |
 
 
-It will activate subscription plan for customer
+Activate a specific subscription plan for a customer.
 
 *Returned Response:*
 
@@ -1936,7 +1930,7 @@ Success
 
 
 ### cancelSubscriptionPlan
-Cancel subscription
+Cancel a subscription plan.
 
 
 
@@ -1961,7 +1955,7 @@ platformClient.billing.cancelSubscriptionPlan(body: body).safeAwait{ response, e
 | body | [CancelSubscriptionReq](#CancelSubscriptionReq) | yes | Request body |
 
 
-It will cancel current active subscription.
+Cancel an active subscription plan for a customer
 
 *Returned Response:*
 
@@ -2053,7 +2047,7 @@ Success
 
 
 ### getEnterprisePlans
-Get Enterprise Plans
+Retrieve enterprise-level plans.
 
 
 
@@ -2074,8 +2068,7 @@ platformClient.billing.getEnterprisePlans().safeAwait{ response, error->
 
 
 
-Get Enterprise Plans.
-
+Retrieve available enterprise-level subscription plans.
 
 *Returned Response:*
 
@@ -2245,7 +2238,7 @@ Success
 
 
 ### planStatusUpdate
-Update Status of The plan
+Update subscription plan status.
 
 
 
@@ -2270,7 +2263,7 @@ platformClient.billing.planStatusUpdate(body: body).safeAwait{ response, error->
 | body | [PlanStatusUpdateReq](#PlanStatusUpdateReq) | yes | Request body |
 
 
-It will update the status of the plan
+Modify the status of a subscription plan.
 
 *Returned Response:*
 
@@ -2507,7 +2500,7 @@ Success
 
 
 ### subscripePlan
-Subscribe plan.
+Subscribe to a plan.
 
 
 
@@ -2532,7 +2525,7 @@ platformClient.billing.subscripePlan(body: body).safeAwait{ response, error->
 | body | [SunscribePlan](#SunscribePlan) | yes | Request body |
 
 
-It will subscribe a plan.
+Subscribe to a specific billing plan.
 
 *Returned Response:*
 
@@ -2582,6 +2575,8 @@ Success
 ---
 
 
+
+
 ### getentityDetail
 Generic api to get the entity detail
 
@@ -2621,484 +2616,6 @@ Generic api to get the entity detail
 
 
 [EntityResponse](#EntityResponse)
-
-Success
-
-
-
-
-<details>
-<summary><i>&nbsp; Example:</i></summary>
-
-```json
-
-```
-</details>
-
-
-
-
-
-
-
-
-
----
-
-
-### paymentOptions
-API to get payment details of requested payment options
-
-
-
-
-```kotlin
-platformClient.billing.paymentOptions(code: code).safeAwait{ response, error->
-    response?.let{
-      // Use response
-    } ->
-    error?.let{
-      
-    } 
-}
-```
-
-
-
-
-
-| Argument  |  Type  | Required | Description |
-| --------- | -----  | -------- | ----------- | 
-| code | String | yes | Payment options unique code. |  
-
-
-
-API to get payment details of requested payment options.
-
-*Returned Response:*
-
-
-
-
-[PaymentOptions](#PaymentOptions)
-
-Success
-
-
-
-
-<details>
-<summary><i>&nbsp; Example:</i></summary>
-
-```json
-
-```
-</details>
-
-
-
-
-
-
-
-
-
----
-
-
-### verifyPayment
-API to verify subscription payment
-
-
-
-
-```kotlin
-platformClient.billing.verifyPayment(body: body).safeAwait{ response, error->
-    response?.let{
-      // Use response
-    } ->
-    error?.let{
-      
-    } 
-}
-```
-
-
-
-
-
-| Argument  |  Type  | Required | Description |
-| --------- | -----  | -------- | ----------- |
-| body | [VerifyPaymentReq](#VerifyPaymentReq) | yes | Request body |
-
-
-API to verify subscription payment.
-
-*Returned Response:*
-
-
-
-
-[VerifyPaymentRes](#VerifyPaymentRes)
-
-Success
-
-
-
-
-<details>
-<summary><i>&nbsp; Example:</i></summary>
-
-```json
-
-```
-</details>
-
-
-
-
-
-
-
-
-
----
-
-
-### globalSettings
-API to get global settings details
-
-
-
-
-```kotlin
-platformClient.billing.globalSettings(pageNo: pageNo, pageSize: pageSize, query: query).safeAwait{ response, error->
-    response?.let{
-      // Use response
-    } ->
-    error?.let{
-      
-    } 
-}
-```
-
-
-
-
-
-| Argument  |  Type  | Required | Description |
-| --------- | -----  | -------- | ----------- | 
-| pageNo | Int | yes | number of pages needed |   
-| pageSize | Int | yes | number of items to be there in page |   
-| query | HashMap<String,Any> | yes | field which will be used in db query |  
-
-
-
-API to get global settings details.
-
-*Returned Response:*
-
-
-
-
-[GlobalSettings](#GlobalSettings)
-
-Success
-
-
-
-
-<details>
-<summary><i>&nbsp; Example:</i></summary>
-
-```json
-
-```
-</details>
-
-
-
-
-
-
-
-
-
----
-
-
-### subscriptionMethods
-API to get subscription methods
-
-
-
-
-```kotlin
-platformClient.billing.subscriptionMethods(uniqueExternalId: uniqueExternalId).safeAwait{ response, error->
-    response?.let{
-      // Use response
-    } ->
-    error?.let{
-      
-    } 
-}
-```
-
-
-
-
-
-| Argument  |  Type  | Required | Description |
-| --------- | -----  | -------- | ----------- | 
-| uniqueExternalId | HashMap<String,Any> | yes | unique id for external company |  
-
-
-
-API to get subscription methods.
-
-*Returned Response:*
-
-
-
-
-[SubscriptionMethods](#SubscriptionMethods)
-
-Success
-
-
-
-
-<details>
-<summary><i>&nbsp; Example:</i></summary>
-
-```json
-
-```
-</details>
-
-
-
-
-
-
-
-
-
----
-
-
-### subscriptionConfigs
-API to get subscription config details
-
-
-
-
-```kotlin
-platformClient.billing.subscriptionConfigs().safeAwait{ response, error->
-    response?.let{
-      // Use response
-    } ->
-    error?.let{
-      
-    } 
-}
-```
-
-
-
-
-
-
-API to get subscription config details.
-
-*Returned Response:*
-
-
-
-
-[ConfigRes](#ConfigRes)
-
-Success
-
-
-
-
-<details>
-<summary><i>&nbsp; Example:</i></summary>
-
-```json
-
-```
-</details>
-
-
-
-
-
-
-
-
-
----
-
-
-### subscriptionPlanChange
-API to get plan change details of subscription
-
-
-
-
-```kotlin
-platformClient.billing.subscriptionPlanChange(productSuite: productSuite, uniqueId: uniqueId, platform: platform).safeAwait{ response, error->
-    response?.let{
-      // Use response
-    } ->
-    error?.let{
-      
-    } 
-}
-```
-
-
-
-
-
-| Argument  |  Type  | Required | Description |
-| --------- | -----  | -------- | ----------- | 
-| productSuite | String? | no |  |   
-| uniqueId | Int? | no |  |   
-| platform | String? | no |  |  
-
-
-
-API to get plan change details of subscription.
-
-*Returned Response:*
-
-
-
-
-[PlanChangeDetails](#PlanChangeDetails)
-
-Success
-
-
-
-
-<details>
-<summary><i>&nbsp; Example:</i></summary>
-
-```json
-
-```
-</details>
-
-
-
-
-
-
-
-
-
----
-
-
-### getPaymentTransaction
-API to get payment transaction details
-
-
-
-
-```kotlin
-platformClient.billing.getPaymentTransaction(transactionId: transactionId).safeAwait{ response, error->
-    response?.let{
-      // Use response
-    } ->
-    error?.let{
-      
-    } 
-}
-```
-
-
-
-
-
-| Argument  |  Type  | Required | Description |
-| --------- | -----  | -------- | ----------- | 
-| transactionId | String | yes | Payment Transaction unique id. |  
-
-
-
-API to get payment transaction details.
-
-*Returned Response:*
-
-
-
-
-[PaymentTransactionDetails](#PaymentTransactionDetails)
-
-Success
-
-
-
-
-<details>
-<summary><i>&nbsp; Example:</i></summary>
-
-```json
-
-```
-</details>
-
-
-
-
-
-
-
-
-
----
-
-
-### getPaymentOptions
-API to get payment options
-
-
-
-
-```kotlin
-platformClient.billing.getPaymentOptions(transactionId: transactionId).safeAwait{ response, error->
-    response?.let{
-      // Use response
-    } ->
-    error?.let{
-      
-    } 
-}
-```
-
-
-
-
-
-| Argument  |  Type  | Required | Description |
-| --------- | -----  | -------- | ----------- | 
-| transactionId | String | yes | ID of the payment transaction. |  
-
-
-
-API to get payment options.
-
-*Returned Response:*
-
-
-
-
-[GetPaymentOptions](#GetPaymentOptions)
 
 Success
 
@@ -3829,7 +3346,7 @@ Success
  | latestInvoice | [InvoicesData](#InvoicesData)? |  yes  |  |
  | nextPlan | [Plan](#Plan)? |  yes  |  |
  | currentSubscriptions | ArrayList<[Subscription](#Subscription)>? |  yes  |  |
- | mandateAmount | Double? |  yes  |  |
+ | mandateAmount | String? |  yes  |  |
 
 ---
 
@@ -4097,375 +3614,6 @@ Success
  | page | Int? |  yes  |  |
  | pageSize | Int? |  yes  |  |
  | items | ArrayList<[Details](#Details)>? |  yes  |  |
-
----
-
-
- 
- 
- #### [PaymentOptions](#PaymentOptions)
-
- | Properties | Type | Nullable | Description |
- | ---------- | ---- | -------- | ----------- |
- | id | String? |  yes  |  |
- | name | String? |  yes  |  |
- | description | String? |  yes  |  |
- | logo | String? |  yes  |  |
- | aggregatorId | String? |  yes  |  |
- | aggregator | String? |  yes  |  |
- | createdAt | String? |  yes  |  |
- | modifiedAt | String? |  yes  |  |
- | v | Int? |  yes  |  |
-
----
-
-
- 
- 
- #### [VerifyPaymentReq](#VerifyPaymentReq)
-
- | Properties | Type | Nullable | Description |
- | ---------- | ---- | -------- | ----------- |
- | razorpayPaymentId | String? |  yes  |  |
- | razorpayOrderId | String? |  yes  |  |
- | razorpaySignature | String? |  yes  |  |
- | statusCode | Int? |  yes  |  |
- | providerType | String? |  yes  |  |
-
----
-
-
- 
- 
- #### [Documents](#Documents)
-
- | Properties | Type | Nullable | Description |
- | ---------- | ---- | -------- | ----------- |
- | pan | String? |  yes  |  |
-
----
-
-
- 
- 
- #### [BillingAddress](#BillingAddress)
-
- | Properties | Type | Nullable | Description |
- | ---------- | ---- | -------- | ----------- |
- | country | String? |  yes  |  |
- | state | String? |  yes  |  |
- | city | String? |  yes  |  |
- | line1 | String? |  yes  |  |
- | line2 | String? |  yes  |  |
- | postalCode | String? |  yes  |  |
- | countryCode | String? |  yes  |  |
-
----
-
-
- 
- 
- #### [Currency](#Currency)
-
- | Properties | Type | Nullable | Description |
- | ---------- | ---- | -------- | ----------- |
- | code | String? |  yes  |  |
- | symbol | String? |  yes  |  |
- | name | String? |  yes  |  |
-
----
-
-
- 
- 
- #### [BusinessCountryInfo](#BusinessCountryInfo)
-
- | Properties | Type | Nullable | Description |
- | ---------- | ---- | -------- | ----------- |
- | country | String? |  yes  |  |
- | countryCode | String? |  yes  |  |
- | currency | [Currency](#Currency)? |  yes  |  |
- | timezone | String? |  yes  |  |
-
----
-
-
- 
- 
- #### [SubscriberData](#SubscriberData)
-
- | Properties | Type | Nullable | Description |
- | ---------- | ---- | -------- | ----------- |
- | pgUserExists | Boolean? |  yes  |  |
- | id | String? |  yes  |  |
- | pgCustomerId | String? |  yes  |  |
-
----
-
-
- 
- 
- #### [Subscriber](#Subscriber)
-
- | Properties | Type | Nullable | Description |
- | ---------- | ---- | -------- | ----------- |
- | documents | [Documents](#Documents)? |  yes  |  |
- | phone | HashMap<String,Any>? |  yes  |  |
- | billingAddress | [BillingAddress](#BillingAddress)? |  yes  |  |
- | consent | Boolean? |  yes  |  |
- | comms | Boolean? |  yes  |  |
- | id | String? |  yes  |  |
- | type | String? |  yes  |  |
- | uniqueId | String? |  yes  |  |
- | name | String? |  yes  |  |
- | email | String? |  yes  |  |
- | businessCountryInfo | [BusinessCountryInfo](#BusinessCountryInfo)? |  yes  |  |
- | createdAt | String? |  yes  |  |
- | modifiedAt | String? |  yes  |  |
- | creditBalance | Int? |  yes  |  |
- | data | [SubscriberData](#SubscriberData)? |  yes  |  |
-
----
-
-
- 
- 
- #### [Author](#Author)
-
- | Properties | Type | Nullable | Description |
- | ---------- | ---- | -------- | ----------- |
- | modifiedByDetails | HashMap<String,Any>? |  yes  |  |
-
----
-
-
- 
- 
- #### [EndingBalance](#EndingBalance)
-
- | Properties | Type | Nullable | Description |
- | ---------- | ---- | -------- | ----------- |
- | amount | Int? |  yes  |  |
- | oldEntryRef | String? |  yes  |  |
-
----
-
-
- 
- 
- #### [PaymentData](#PaymentData)
-
- | Properties | Type | Nullable | Description |
- | ---------- | ---- | -------- | ----------- |
- | transactionId | String? |  yes  |  |
- | aggregator | String? |  yes  |  |
- | aggregatorOrderId | String? |  yes  |  |
-
----
-
-
- 
- 
- #### [CreditTransaction](#CreditTransaction)
-
- | Properties | Type | Nullable | Description |
- | ---------- | ---- | -------- | ----------- |
- | entity | HashMap<String,Any>? |  yes  |  |
- | author | [Author](#Author)? |  yes  |  |
- | id | String? |  yes  |  |
- | amount | Int? |  yes  |  |
- | currency | String? |  yes  |  |
- | subscriberId | String? |  yes  |  |
- | description | String? |  yes  |  |
- | isTest | Boolean? |  yes  |  |
- | endingBalance | [EndingBalance](#EndingBalance)? |  yes  |  |
- | payment | [PaymentData](#PaymentData)? |  yes  |  |
- | type | String? |  yes  |  |
- | createdAt | String? |  yes  |  |
- | modifiedAt | String? |  yes  |  |
-
----
-
-
- 
- 
- #### [VerifyPaymentData](#VerifyPaymentData)
-
- | Properties | Type | Nullable | Description |
- | ---------- | ---- | -------- | ----------- |
- | success | Boolean? |  yes  |  |
- | subscriber | [Subscriber](#Subscriber)? |  yes  |  |
- | creditTransaction | [CreditTransaction](#CreditTransaction)? |  yes  |  |
-
----
-
-
- 
- 
- #### [VerifyPaymentRes](#VerifyPaymentRes)
-
- | Properties | Type | Nullable | Description |
- | ---------- | ---- | -------- | ----------- |
- | status | String? |  yes  |  |
- | data | [VerifyPaymentData](#VerifyPaymentData)? |  yes  |  |
-
----
-
-
- 
- 
- #### [DefaultMerchants](#DefaultMerchants)
-
- | Properties | Type | Nullable | Description |
- | ---------- | ---- | -------- | ----------- |
- | stripe | String? |  yes  |  |
-
----
-
-
- 
- 
- #### [GlobalSettingsPayment](#GlobalSettingsPayment)
-
- | Properties | Type | Nullable | Description |
- | ---------- | ---- | -------- | ----------- |
- | defaultMerchants | [DefaultMerchants](#DefaultMerchants)? |  yes  |  |
-
----
-
-
- 
- 
- #### [GlobalSettingsData](#GlobalSettingsData)
-
- | Properties | Type | Nullable | Description |
- | ---------- | ---- | -------- | ----------- |
- | payment | [GlobalSettingsPayment](#GlobalSettingsPayment)? |  yes  |  |
- | freezePanel | Boolean? |  yes  |  |
- | id | String? |  yes  |  |
- | createdAt | String? |  yes  |  |
- | modifiedAt | String? |  yes  |  |
-
----
-
-
- 
- 
- #### [GlobalSettings](#GlobalSettings)
-
- | Properties | Type | Nullable | Description |
- | ---------- | ---- | -------- | ----------- |
- | status | String? |  yes  |  |
- | data | [GlobalSettingsData](#GlobalSettingsData)? |  yes  |  |
-
----
-
-
- 
- 
- #### [SubscriptionMethods](#SubscriptionMethods)
-
- | Properties | Type | Nullable | Description |
- | ---------- | ---- | -------- | ----------- |
- | success | Boolean? |  yes  |  |
- | data | ArrayList<String>? |  yes  |  |
-
----
-
-
- 
- 
- #### [ConfigPublicKey](#ConfigPublicKey)
-
- | Properties | Type | Nullable | Description |
- | ---------- | ---- | -------- | ----------- |
- | publicKey | String? |  yes  |  |
-
----
-
-
- 
- 
- #### [ConfigRes](#ConfigRes)
-
- | Properties | Type | Nullable | Description |
- | ---------- | ---- | -------- | ----------- |
- | success | Boolean? |  yes  |  |
- | aggregator | String? |  yes  |  |
- | config | [ConfigPublicKey](#ConfigPublicKey)? |  yes  |  |
-
----
-
-
- 
- 
- #### [PlanChangeData](#PlanChangeData)
-
- | Properties | Type | Nullable | Description |
- | ---------- | ---- | -------- | ----------- |
- | total | Int? |  yes  |  |
- | creditNoteAmount | Int? |  yes  |  |
- | taxableAmount | Int? |  yes  |  |
- | gstAmount | Int? |  yes  |  |
- | grossTotal | Int? |  yes  |  |
- | gst | Int? |  yes  |  |
-
----
-
-
- 
- 
- #### [PlanChangeDetails](#PlanChangeDetails)
-
- | Properties | Type | Nullable | Description |
- | ---------- | ---- | -------- | ----------- |
- | success | Boolean? |  yes  |  |
- | data | [PlanChangeData](#PlanChangeData)? |  yes  |  |
-
----
-
-
- 
- 
- #### [PaymentTransactionDetails](#PaymentTransactionDetails)
-
- | Properties | Type | Nullable | Description |
- | ---------- | ---- | -------- | ----------- |
- | aggregator | HashMap<String,Any>? |  yes  |  |
- | currency | String? |  yes  |  |
- | currentStatus | String? |  yes  |  |
- | id | String? |  yes  |  |
- | subscriberId | String? |  yes  |  |
- | amount | Double? |  yes  |  |
- | entityType | String? |  yes  |  |
- | collectionType | String? |  yes  |  |
- | meta | [Meta](#Meta)? |  yes  |  |
- | createdAt | String? |  yes  |  |
- | modifiedAt | String? |  yes  |  |
-
----
-
-
- 
- 
- #### [PaymentItems](#PaymentItems)
-
- | Properties | Type | Nullable | Description |
- | ---------- | ---- | -------- | ----------- |
- | name | String? |  yes  |  |
- | code | String? |  yes  |  |
- | aggregator | String? |  yes  |  |
-
----
-
-
- 
- 
- #### [GetPaymentOptions](#GetPaymentOptions)
-
- | Properties | Type | Nullable | Description |
- | ---------- | ---- | -------- | ----------- |
- | paymentOptions | ArrayList<[PaymentItems](#PaymentItems)>? |  yes  |  |
 
 ---
 

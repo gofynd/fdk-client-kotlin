@@ -495,14 +495,9 @@ data class ProductListingPrice(
     var effective: Price?=null,
     
     @SerializedName("marked")
-    var marked: Price?=null,
-    
-    @SerializedName("selling")
-    var selling: Price?=null
+    var marked: Price?=null
     
 ): Parcelable {
-    
-    
     
     
     
@@ -1833,9 +1828,6 @@ data class ProductListingDetail(
     @SerializedName("seo")
     var seo: ApplicationItemSEO?=null,
     
-    @SerializedName("discount_meta")
-    var discountMeta: DiscountMeta?=null,
-    
     @SerializedName("image_nature")
     var imageNature: String?=null,
     
@@ -1927,8 +1919,6 @@ data class ProductListingDetail(
     var teaserTag: String?=null
     
 ): Parcelable {
-    
-    
     
     
     

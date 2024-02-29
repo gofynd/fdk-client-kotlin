@@ -86,7 +86,7 @@ interface PaymentApiList {
     
     @PUT ("/service/platform/payment/v1.0/company/{company_id}/application/{application_id}/payment/user-cod")
     suspend fun setUserCODlimitRoutes(@Path("company_id") companyId: String, @Path("application_id") applicationId: String,@Body body: SetCODForUserRequest)
-    : Response<GetUserCODLimitResponse>
+    : Response<SetCODOptionResponse>
     
     @GET ("/service/platform/payment/v1.0/company/{company_id}/application/{application_id}/payment/edc-aggregator-list")
     suspend fun edcAggregatorsAndModelList(@Path("company_id") companyId: String, @Path("application_id") applicationId: String)
@@ -205,8 +205,8 @@ interface PaymentApiList {
     : Response<RefundSessionResponseSerializer>
     
     @GET ("/service/platform/payment/v1.0/company/{company_id}/application/{application_id}/payment/options/configuration")
-    suspend fun getMerchantPaymentOption(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Query("payment_option_type") paymentOptionType: String?)
-    : Response<PlatformOnlineOfflinePaymentResponse>
+    suspend fun getMerchantPaymentOption(@Path("company_id") companyId: String, @Path("application_id") applicationId: String)
+    : Response<PlatformPaymentModeResponse>
     
     @PATCH ("/service/platform/payment/v1.0/company/{company_id}/application/{application_id}/payment/options/configuration")
     suspend fun patchMerchantPaymentOption(@Path("company_id") companyId: String, @Path("application_id") applicationId: String,@Body body: MerchnatPaymentModeRequest)
@@ -247,41 +247,5 @@ interface PaymentApiList {
     @PATCH ("/service/platform/payment/v1.0/company/{company_id}/application/{application_id}/payment/options/aggregators/{aggregator_id}/version")
     suspend fun patchMerchantPaymentOptionVersion(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Path("aggregator_id") aggregatorId: String,@Body body: AggregatorControlRequest)
     : Response<PlatformPaymentModeResponse>
-    
-    @DELETE ("/service/platform/payment/v1.0/company/{company_id}/application/{application_id}/refund/account/{beneficiary_id}")
-    suspend fun deleteBeneficiaryDetails(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Path("beneficiary_id") beneficiaryId: String)
-    : Response<DeleteRefundAccountResponse>
-    
-    @GET ("/service/platform/payment/v1.0/company/{company_id}/application/{application_id}/payment/refundoptions/")
-    suspend fun getRefundOptions(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Query("configuration") configuration: String, @Query("product_type") productType: String?, @Query("amount") amount: String?)
-    : Response<RefundOptionResponse>
-    
-    @POST ("/service/platform/payment/v1.0/company/{company_id}/application/{application_id}/payment/refundoptions/")
-    suspend fun setRefundOptionforShipment(@Path("company_id") companyId: String, @Path("application_id") applicationId: String,@Body body: ShipmentRefundRequest)
-    : Response<ShipmentRefundResponse>
-    
-    @GET ("/service/platform/payment/v1.0/company/{company_id}/application/{application_id}/payment/selected_refund_options")
-    suspend fun getSelectedRefundOption(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Query("shipment_id") shipmentId: String, @Query("order_id") orderId: String)
-    : Response<SelectedRefundOptionResponse>
-    
-    @GET ("/service/platform/payment/v2.0/company/{company_id}/application/{application_id}/refund/user/beneficiary")
-    suspend fun getUserBeneficiariesDetailV2(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Query("order_id") orderId: String?, @Query("shipment_id") shipmentId: String?, @Query("mop") mop: String?)
-    : Response<OrderBeneficiaryResponseSchemaV2>
-    
-    @POST ("/service/platform/payment/v1.0/company/{company_id}/application/{application_id}/validate/beneficiary-address")
-    suspend fun validateBeneficiaryAddress(@Path("company_id") companyId: String, @Path("application_id") applicationId: String,@Body body: ValidateValidateAddressRequest)
-    : Response<ValidateValidateAddressResponse>
-    
-    @POST ("/service/platform/payment/v1.0/company/{company_id}/application/{application_id}/refund/beneficiary/default")
-    suspend fun updateDefaultBeneficiary(@Path("company_id") companyId: String, @Path("application_id") applicationId: String,@Body body: SetDefaultBeneficiaryRequest)
-    : Response<SetDefaultBeneficiaryResponse>
-    
-    @GET ("/service/platform/payment/v1.0/company/{company_id}/application/{application_id}/pennydrop/validation")
-    suspend fun getPennyDropValidation(@Path("company_id") companyId: String, @Path("application_id") applicationId: String)
-    : Response<PennyDropValidationResponse>
-    
-    @POST ("/service/platform/payment/v1.0/company/{company_id}/application/{application_id}/pennydrop/validation")
-    suspend fun updatePennyDropValidation(@Path("company_id") companyId: String, @Path("application_id") applicationId: String,@Body body: UpdatePennyDropValidationRequest)
-    : Response<PennyDropValidationResponse>
     
 }

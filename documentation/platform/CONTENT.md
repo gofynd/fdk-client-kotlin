@@ -7,60 +7,35 @@
 ## Content Methods
 Content System
 
-Default
+Announcement Management
 * [getAnnouncementsList](#getannouncementslist)
 * [createAnnouncement](#createannouncement)
 * [getAnnouncementById](#getannouncementbyid)
 * [updateAnnouncement](#updateannouncement)
 * [updateAnnouncementSchedule](#updateannouncementschedule)
 * [deleteAnnouncement](#deleteannouncement)
+
+
+Blog Management
 * [createBlog](#createblog)
 * [getBlogs](#getblogs)
 * [updateBlog](#updateblog)
 * [deleteBlog](#deleteblog)
+* [getBlogBySlug](#getblogbyslug)
+
+
+Component & Data Loader Management
 * [getComponentById](#getcomponentbyid)
 * [addDataLoader](#adddataloader)
 * [getDataLoaders](#getdataloaders)
 * [deleteDataLoader](#deletedataloader)
 * [editDataLoader](#editdataloader)
-* [getDataLoadersByService](#getdataloadersbyservice)
 * [selectDataLoader](#selectdataloader)
 * [resetDataLoader](#resetdataloader)
-* [getFaqCategories](#getfaqcategories)
-* [getFaqCategoryBySlugOrId](#getfaqcategorybyslugorid)
-* [createFaqCategory](#createfaqcategory)
-* [updateFaqCategory](#updatefaqcategory)
-* [deleteFaqCategory](#deletefaqcategory)
-* [getFaqsByCategoryIdOrSlug](#getfaqsbycategoryidorslug)
-* [addFaq](#addfaq)
-* [updateFaq](#updatefaq)
-* [deleteFaq](#deletefaq)
-* [getFaqByIdOrSlug](#getfaqbyidorslug)
-* [generateSEOTitle](#generateseotitle)
-* [getLandingPages](#getlandingpages)
-* [createLandingPage](#createlandingpage)
-* [updateLandingPage](#updatelandingpage)
-* [deleteLandingPage](#deletelandingpage)
-* [getLegalInformation](#getlegalinformation)
-* [updateLegalInformation](#updatelegalinformation)
-* [getNavigations](#getnavigations)
-* [createNavigation](#createnavigation)
-* [getDefaultNavigations](#getdefaultnavigations)
-* [getNavigationBySlug](#getnavigationbyslug)
-* [updateNavigation](#updatenavigation)
-* [deleteNavigation](#deletenavigation)
-* [getPageMeta](#getpagemeta)
-* [getPageSpec](#getpagespec)
-* [createPagePreview](#createpagepreview)
-* [updatePagePreview](#updatepagepreview)
-* [deletePage](#deletepage)
-* [addPathRedirectionRules](#addpathredirectionrules)
-* [getPathRedirectionRules](#getpathredirectionrules)
-* [getPathRedirectionRule](#getpathredirectionrule)
-* [updatePathRedirectionRules](#updatepathredirectionrules)
-* [deletePathRedirectionRules](#deletepathredirectionrules)
-* [getSEOConfiguration](#getseoconfiguration)
-* [updateSEOConfiguration](#updateseoconfiguration)
+
+
+Default
+* [getDataLoadersByService](#getdataloadersbyservice)
 * [getDefaultSEOMarkupSchema](#getdefaultseomarkupschema)
 * [getSEOMarkupSchemas](#getseomarkupschemas)
 * [createSEOMarkupSchema](#createseomarkupschema)
@@ -72,18 +47,6 @@ Default
 * [getSlideshowBySlug](#getslideshowbyslug)
 * [updateSlideshow](#updateslideshow)
 * [deleteSlideshow](#deleteslideshow)
-* [getSupportInformation](#getsupportinformation)
-* [updateSupportInformation](#updatesupportinformation)
-* [updateInjectableTag](#updateinjectabletag)
-* [getInjectableTags](#getinjectabletags)
-* [addInjectableTag](#addinjectabletag)
-* [removeInjectableTag](#removeinjectabletag)
-* [editInjectableTag](#editinjectabletag)
-* [getBlogBySlug](#getblogbyslug)
-* [createPage](#createpage)
-* [getPages](#getpages)
-* [updatePage](#updatepage)
-* [getPageBySlug](#getpagebyslug)
 * [getCustomFieldTypes](#getcustomfieldtypes)
 * [getResources](#getresources)
 * [getCustomFieldDefinitions](#getcustomfielddefinitions)
@@ -134,6 +97,82 @@ Default
 * [sampleAppCustomObjectBulkEntry](#sampleappcustomobjectbulkentry)
 
 
+FAQ Category and FAQ Management
+* [getFaqCategories](#getfaqcategories)
+* [getFaqCategoryBySlugOrId](#getfaqcategorybyslugorid)
+* [createFaqCategory](#createfaqcategory)
+* [updateFaqCategory](#updatefaqcategory)
+* [deleteFaqCategory](#deletefaqcategory)
+* [getFaqsByCategoryIdOrSlug](#getfaqsbycategoryidorslug)
+* [addFaq](#addfaq)
+* [updateFaq](#updatefaq)
+* [deleteFaq](#deletefaq)
+* [getFaqByIdOrSlug](#getfaqbyidorslug)
+
+
+SEO and Landing Page Management:
+* [generateSEOTitle](#generateseotitle)
+* [getLandingPages](#getlandingpages)
+* [createLandingPage](#createlandingpage)
+* [updateLandingPage](#updatelandingpage)
+* [deleteLandingPage](#deletelandingpage)
+
+
+Legal Information Management
+* [getLegalInformation](#getlegalinformation)
+* [updateLegalInformation](#updatelegalinformation)
+
+
+Navigation Management
+* [getNavigations](#getnavigations)
+* [createNavigation](#createnavigation)
+* [getDefaultNavigations](#getdefaultnavigations)
+* [getNavigationBySlug](#getnavigationbyslug)
+* [updateNavigation](#updatenavigation)
+* [deleteNavigation](#deletenavigation)
+
+
+Page management
+* [getPageMeta](#getpagemeta)
+* [getPageSpec](#getpagespec)
+* [createPagePreview](#createpagepreview)
+* [updatePagePreview](#updatepagepreview)
+* [getPages](#getpages)
+
+
+Page Management
+* [deletePage](#deletepage)
+* [createPage](#createpage)
+* [updatePage](#updatepage)
+* [getPageBySlug](#getpagebyslug)
+
+
+Path Redirection Rules
+* [addPathRedirectionRules](#addpathredirectionrules)
+* [getPathRedirectionRules](#getpathredirectionrules)
+* [getPathRedirectionRule](#getpathredirectionrule)
+* [updatePathRedirectionRules](#updatepathredirectionrules)
+* [deletePathRedirectionRules](#deletepathredirectionrules)
+
+
+SEO Configuration Management
+* [getSEOConfiguration](#getseoconfiguration)
+* [updateSEOConfiguration](#updateseoconfiguration)
+
+
+Support Information Management
+* [getSupportInformation](#getsupportinformation)
+* [updateSupportInformation](#updatesupportinformation)
+
+
+Injectable Tag Management
+* [updateInjectableTag](#updateinjectabletag)
+* [getInjectableTags](#getinjectabletags)
+* [addInjectableTag](#addinjectabletag)
+* [removeInjectableTag](#removeinjectabletag)
+* [editInjectableTag](#editinjectabletag)
+
+
 
 
 ## Methods with example and description
@@ -141,7 +180,7 @@ Default
 
 
 ### getAnnouncementsList
-Get a list of announcements
+Get announcements list.
 
 
 
@@ -168,7 +207,7 @@ platformClient.application("<APPLICATION_ID>").content.getAnnouncementsList(page
 
 
 
-Announcements are useful to highlight a message or information on top of a webpage. Use this API to retrieve a list of announcements.	
+Retrieve a list of announcements.
 
 *Returned Response:*
 
@@ -263,7 +302,7 @@ Success. Refer `GetAnnouncementListSchema` for more details.
 
 
 ### createAnnouncement
-Create an announcement
+Create announcement.
 
 
 
@@ -288,7 +327,7 @@ platformClient.application("<APPLICATION_ID>").content.createAnnouncement(body: 
 | body | [AdminAnnouncementSchema](#AdminAnnouncementSchema) | yes | Request body |
 
 
-Announcements are useful to highlight a message or information on top of a webpage. Use this API to create an announcement.
+Generate and add a new announcement.
 
 *Returned Response:*
 
@@ -376,7 +415,7 @@ Success. Refer `CreateAnnouncementSchema` for more details.
 
 
 ### getAnnouncementById
-Get announcement by ID
+Get announcement by ID.
 
 
 
@@ -402,7 +441,7 @@ platformClient.application("<APPLICATION_ID>").content.getAnnouncementById(annou
 
 
 
-Use this API to retrieve an announcement and its details such as the target platform and pages on which it's applicable
+Retrieve detailed information about a specific announcement.
 
 *Returned Response:*
 
@@ -485,7 +524,7 @@ Success. Refer `AdminAnnouncementSchema` for more details.
 
 
 ### updateAnnouncement
-Update an announcement
+Update announcement.
 
 
 
@@ -511,7 +550,7 @@ platformClient.application("<APPLICATION_ID>").content.updateAnnouncement(announ
 | body | [AdminAnnouncementSchema](#AdminAnnouncementSchema) | yes | Request body |
 
 
-Use this API to edit an existing announcement and its details such as the target platform and pages on which it's applicable
+Modify the content and settings of a specific announcement.
 
 *Returned Response:*
 
@@ -599,7 +638,7 @@ Success. Refer `CreateAnnouncementSchema` for more details.
 
 
 ### updateAnnouncementSchedule
-Update the schedule and the publish status of an announcement
+Update announcement schedule.
 
 
 
@@ -625,7 +664,7 @@ platformClient.application("<APPLICATION_ID>").content.updateAnnouncementSchedul
 | body | [ScheduleSchema](#ScheduleSchema) | yes | Request body |
 
 
-Use this API to edit the duration, i.e. start date-time and end date-time of an announcement. Moreover, you can enable/disable an announcement using this API.
+Modify the scheduling of a specific announcement.
 
 *Returned Response:*
 
@@ -713,7 +752,7 @@ Success. Refer `CreateAnnouncementSchema` for more details.
 
 
 ### deleteAnnouncement
-Delete announcement by id
+Delete announcement.
 
 
 
@@ -739,7 +778,7 @@ platformClient.application("<APPLICATION_ID>").content.deleteAnnouncement(announ
 
 
 
-Use this API to delete an existing announcement.
+Remove a specific announcement.
 
 *Returned Response:*
 
@@ -826,8 +865,10 @@ Success.
 ---
 
 
+
+
 ### createBlog
-Create a blog
+Create blog.
 
 
 
@@ -852,7 +893,7 @@ platformClient.application("<APPLICATION_ID>").content.createBlog(body: body).sa
 | body | [BlogRequest](#BlogRequest) | yes | Request body |
 
 
-Use this API to create a blog.
+Generate and add a new blog.
 
 *Returned Response:*
 
@@ -931,7 +972,7 @@ Success. Refer `BlogSchema` for more details.
 
 
 ### getBlogs
-Get blogs
+Get blogs.
 
 
 
@@ -958,7 +999,7 @@ platformClient.application("<APPLICATION_ID>").content.getBlogs(pageNo: pageNo, 
 
 
 
-Use this API to get a list of blogs along with their details, such as the title, reading time, publish status, feature image, tags, author, etc.
+Retrieve a list of available blogs.
 
 *Returned Response:*
 
@@ -1041,7 +1082,7 @@ Success. Refer `BlogGetResponse` for more details.
 
 
 ### updateBlog
-Update a blog
+Update blog.
 
 
 
@@ -1067,7 +1108,7 @@ platformClient.application("<APPLICATION_ID>").content.updateBlog(id: id, body: 
 | body | [BlogRequest](#BlogRequest) | yes | Request body |
 
 
-Use this API to update the details of an existing blog which includes title, feature image, content, SEO details, expiry, etc.
+Modify the content and settings of a specific blog.
 
 *Returned Response:*
 
@@ -1146,7 +1187,7 @@ Success.
 
 
 ### deleteBlog
-Delete blogs
+Delete blog.
 
 
 
@@ -1172,7 +1213,7 @@ platformClient.application("<APPLICATION_ID>").content.deleteBlog(id: id).safeAw
 
 
 
-Use this API to delete a blog.
+Remove a specific blog.
 
 *Returned Response:*
 
@@ -1250,8 +1291,115 @@ Success.
 ---
 
 
+### getBlogBySlug
+Get blog by slug.
+
+
+
+
+```kotlin
+platformClient.application("<APPLICATION_ID>").content.getBlogBySlug(slug: slug).safeAwait{ response, error->
+    response?.let{
+      // Use response
+    } ->
+    error?.let{
+      
+    } 
+}
+```
+
+
+
+
+
+| Argument  |  Type  | Required | Description |
+| --------- | -----  | -------- | ----------- | 
+| slug | String | yes | A short, human-readable, URL-friendly identifier of a blog page. You can get slug value of a blog from `getBlogs` API. |  
+
+
+
+Retrieve detailed information about a specific blog using its slug.
+
+*Returned Response:*
+
+
+
+
+[BlogSchema](#BlogSchema)
+
+Success. Returns a a JSON object with components. Refer `BlogSchema` for more details.
+
+
+
+
+<details>
+<summary><i>&nbsp; Examples:</i></summary>
+
+
+<details>
+<summary><i>&nbsp; default</i></summary>
+
+```json
+{
+  "value": {
+    "_id": "5eaa451a21a4dd75f0fd96c5",
+    "application": "5d3ebd89f540e7506b8b3548",
+    "tags": [
+      "abhinav"
+    ],
+    "title": "my first blog",
+    "slug": "1st_blog",
+    "feature_image": {
+      "secure_url": "https://google.com"
+    },
+    "content": [
+      {
+        "type": "html",
+        "value": "<p>hey there!</p>"
+      }
+    ],
+    "_schedule": {
+      "cron": "* 10 * * *",
+      "start": "2021-03-31T23:30:00.000Z",
+      "end": "2021-03-31T23:55:00.000Z",
+      "duration": 1000,
+      "next_schedule": [
+        {
+          "start": "2021-03-17T04:30:00.000Z",
+          "end": "2021-03-17T04:46:40.000Z"
+        }
+      ]
+    },
+    "published": true,
+    "author": {
+      "name": "Fynd App"
+    },
+    "date_meta": {
+      "created_on": "2021-03-14T06:49:03.945Z",
+      "modified_on": "2021-03-14T06:49:03.945Z"
+    }
+  }
+}
+```
+</details>
+
+</details>
+
+
+
+
+
+
+
+
+
+---
+
+
+
+
 ### getComponentById
-Get components of a blog
+Get component by ID.
 
 
 
@@ -1277,7 +1425,7 @@ platformClient.application("<APPLICATION_ID>").content.getComponentById(slug: sl
 
 
 
-Use this API to retrieve the components of a blog, such as title, slug, feature image, content, schedule, publish status, author, etc.
+Retrieve detailed information about a specific component.
 
 *Returned Response:*
 
@@ -1356,7 +1504,7 @@ Success. Returns a a JSON object with components. Refer `BlogSchema` for more de
 
 
 ### addDataLoader
-Adds a data loader
+Add data loader.
 
 
 
@@ -1381,7 +1529,7 @@ platformClient.application("<APPLICATION_ID>").content.addDataLoader(body: body)
 | body | [DataLoaderSchema](#DataLoaderSchema) | yes | Request body |
 
 
-Use this API to add data loader. This includes the data loader name, operationId, service name and its type (url/function) with corresponding value.
+Create and add a new data loader.
 
 *Returned Response:*
 
@@ -1423,7 +1571,7 @@ Success.
 
 
 ### getDataLoaders
-Get all the data loaders in an application
+Get data loaders.
 
 
 
@@ -1444,7 +1592,7 @@ platformClient.application("<APPLICATION_ID>").content.getDataLoaders().safeAwai
 
 
 
-Use this to get all data loaders of an application
+Retrieve a list of data loaders.
 
 *Returned Response:*
 
@@ -1511,7 +1659,7 @@ Success. Refer `DataLoadersSchema` for more details.
 
 
 ### deleteDataLoader
-Delete data loader in application
+Delete data loader.
 
 
 
@@ -1537,7 +1685,7 @@ platformClient.application("<APPLICATION_ID>").content.deleteDataLoader(dataLoad
 
 
 
-Use this API to delete data loader.
+Remove a specific data loader.
 
 *Returned Response:*
 
@@ -1579,7 +1727,7 @@ Success.
 
 
 ### editDataLoader
-Edit a data loader by id
+Edit data loader.
 
 
 
@@ -1605,7 +1753,7 @@ platformClient.application("<APPLICATION_ID>").content.editDataLoader(dataLoader
 | body | [DataLoaderSchema](#DataLoaderSchema) | yes | Request body |
 
 
-Use this API to edit the details of an existing data loader by its ID.
+Modify the settings of a specific data loader.
 
 *Returned Response:*
 
@@ -1644,6 +1792,139 @@ Success.
 
 
 ---
+
+
+### selectDataLoader
+Select data loader.
+
+
+
+
+```kotlin
+platformClient.application("<APPLICATION_ID>").content.selectDataLoader(dataLoaderId: dataLoaderId).safeAwait{ response, error->
+    response?.let{
+      // Use response
+    } ->
+    error?.let{
+      
+    } 
+}
+```
+
+
+
+
+
+| Argument  |  Type  | Required | Description |
+| --------- | -----  | -------- | ----------- | 
+| dataLoaderId | String | yes | ID allotted to the data loader. |  
+
+
+
+Choose and set a data loader for use.
+
+*Returned Response:*
+
+
+
+
+[DataLoaderResponseSchema](#DataLoaderResponseSchema)
+
+Success.
+
+
+
+
+<details>
+<summary><i>&nbsp; Example:</i></summary>
+
+```json
+{
+  "_id": "601f77e7aa61066feda44487",
+  "name": "Search API from Algolia",
+  "service": "catalog",
+  "operation_id": "fetchSuggestions",
+  "type": "url",
+  "application": "000000000000000000000001",
+  "__v": 0
+}
+```
+</details>
+
+
+
+
+
+
+
+
+
+---
+
+
+### resetDataLoader
+Reset data loader.
+
+
+
+
+```kotlin
+platformClient.application("<APPLICATION_ID>").content.resetDataLoader(service: service, operationId: operationId).safeAwait{ response, error->
+    response?.let{
+      // Use response
+    } ->
+    error?.let{
+      
+    } 
+}
+```
+
+
+
+
+
+| Argument  |  Type  | Required | Description |
+| --------- | -----  | -------- | ----------- | 
+| service | String | yes | Name of service. |   
+| operationId | String | yes | Name of operation id of the service. |  
+
+
+
+Clear and reset data loader settings.
+
+*Returned Response:*
+
+
+
+
+[DataLoaderResetResponseSchema](#DataLoaderResetResponseSchema)
+
+Success.
+
+
+
+
+<details>
+<summary><i>&nbsp; Example:</i></summary>
+
+```json
+{
+  "reset": true
+}
+```
+</details>
+
+
+
+
+
+
+
+
+
+---
+
+
 
 
 ### getDataLoadersByService
@@ -1726,4539 +2007,6 @@ Success. Refer `DataLoaderResponseSchema` for more details.
   ]
 }
 ```
-</details>
-
-
-
-
-
-
-
-
-
----
-
-
-### selectDataLoader
-Select a data loader by id
-
-
-
-
-```kotlin
-platformClient.application("<APPLICATION_ID>").content.selectDataLoader(dataLoaderId: dataLoaderId).safeAwait{ response, error->
-    response?.let{
-      // Use response
-    } ->
-    error?.let{
-      
-    } 
-}
-```
-
-
-
-
-
-| Argument  |  Type  | Required | Description |
-| --------- | -----  | -------- | ----------- | 
-| dataLoaderId | String | yes | ID allotted to the data loader. |  
-
-
-
-Use this API to select a data loader to be used in applications.
-
-*Returned Response:*
-
-
-
-
-[DataLoaderResponseSchema](#DataLoaderResponseSchema)
-
-Success.
-
-
-
-
-<details>
-<summary><i>&nbsp; Example:</i></summary>
-
-```json
-{
-  "_id": "601f77e7aa61066feda44487",
-  "name": "Search API from Algolia",
-  "service": "catalog",
-  "operation_id": "fetchSuggestions",
-  "type": "url",
-  "application": "000000000000000000000001",
-  "__v": 0
-}
-```
-</details>
-
-
-
-
-
-
-
-
-
----
-
-
-### resetDataLoader
-Reset a data loader by serive name and operation Id
-
-
-
-
-```kotlin
-platformClient.application("<APPLICATION_ID>").content.resetDataLoader(service: service, operationId: operationId).safeAwait{ response, error->
-    response?.let{
-      // Use response
-    } ->
-    error?.let{
-      
-    } 
-}
-```
-
-
-
-
-
-| Argument  |  Type  | Required | Description |
-| --------- | -----  | -------- | ----------- | 
-| service | String | yes | Name of service. |   
-| operationId | String | yes | Name of operation id of the service. |  
-
-
-
-Use this API to reselect a data loader.
-
-*Returned Response:*
-
-
-
-
-[DataLoaderResetResponseSchema](#DataLoaderResetResponseSchema)
-
-Success.
-
-
-
-
-<details>
-<summary><i>&nbsp; Example:</i></summary>
-
-```json
-{
-  "reset": true
-}
-```
-</details>
-
-
-
-
-
-
-
-
-
----
-
-
-### getFaqCategories
-Get a list of FAQ categories
-
-
-
-
-```kotlin
-platformClient.application("<APPLICATION_ID>").content.getFaqCategories().safeAwait{ response, error->
-    response?.let{
-      // Use response
-    } ->
-    error?.let{
-      
-    } 
-}
-```
-
-
-
-
-
-
-FAQs can be divided into categories. Use this API to get a list of FAQ categories.
-
-*Returned Response:*
-
-
-
-
-[GetFaqCategoriesSchema](#GetFaqCategoriesSchema)
-
-Success. Refer `GetFaqCategoriesSchema` for more details.
-
-
-
-
-<details>
-<summary><i>&nbsp; Example:</i></summary>
-
-```json
-{
-  "categories": [
-    {
-      "index": 0,
-      "children": [
-        "6026426ae507768b168dee4b"
-      ],
-      "title": "Test",
-      "_id": "60263f80c83c1f89f2863a8a",
-      "slug": "test",
-      "application": "000000000000000000000001"
-    }
-  ]
-}
-```
-</details>
-
-
-
-
-
-
-
-
-
----
-
-
-### getFaqCategoryBySlugOrId
-Get an FAQ category by slug or id
-
-
-
-
-```kotlin
-platformClient.application("<APPLICATION_ID>").content.getFaqCategoryBySlugOrId(idOrSlug: idOrSlug).safeAwait{ response, error->
-    response?.let{
-      // Use response
-    } ->
-    error?.let{
-      
-    } 
-}
-```
-
-
-
-
-
-| Argument  |  Type  | Required | Description |
-| --------- | -----  | -------- | ----------- | 
-| idOrSlug | String | yes | ID or the slug allotted to an FAQ category. Slug is a short, human-readable, URL-friendly identifier of an object. You can get slug value of an FAQ category from `getFaqCategories` API. |  
-
-
-
-FAQs can be divided into categories. Use this API to get an FAQ categories using its slug or ID.
-
-*Returned Response:*
-
-
-
-
-[GetFaqCategoryBySlugSchema](#GetFaqCategoryBySlugSchema)
-
-Success. Refer `GetFaqCategoryBySlugSchema` for more details.
-
-
-
-
-<details>
-<summary><i>&nbsp; Example:</i></summary>
-
-```json
-{
-  "category": {
-    "index": 0,
-    "children": [
-      {
-        "_id": "6026426ae507768b168dee4b",
-        "question": "question 1",
-        "answer": "answer 1",
-        "slug": "question-1",
-        "application": "000000000000000000000001"
-      }
-    ],
-    "_id": "60263f80c83c1f89f2863a8a",
-    "slug": "test",
-    "title": "Test",
-    "application": "000000000000000000000001"
-  }
-}
-```
-</details>
-
-
-
-
-
-
-
-
-
----
-
-
-### createFaqCategory
-Create an FAQ category
-
-
-
-
-```kotlin
-platformClient.application("<APPLICATION_ID>").content.createFaqCategory(body: body).safeAwait{ response, error->
-    response?.let{
-      // Use response
-    } ->
-    error?.let{
-      
-    } 
-}
-```
-
-
-
-
-
-| Argument  |  Type  | Required | Description |
-| --------- | -----  | -------- | ----------- |
-| body | [CreateFaqCategoryRequestSchema](#CreateFaqCategoryRequestSchema) | yes | Request body |
-
-
-FAQs help users to solve an issue or know more about a process. FAQs can be categorized separately, for e.g. some questions can be related to payment, some could be related to purchase, shipping, navigating, etc. Use this API to create an FAQ category.
-
-*Returned Response:*
-
-
-
-
-[CreateFaqCategorySchema](#CreateFaqCategorySchema)
-
-Success.
-
-
-
-
-<details>
-<summary><i>&nbsp; Example:</i></summary>
-
-```json
-{
-  "category": {
-    "index": 0,
-    "children": [],
-    "_id": "60263f80c83c1f89f2863a8a",
-    "slug": "test",
-    "application": "000000000000000000000001",
-    "title": "Test"
-  }
-}
-```
-</details>
-
-
-
-
-
-
-
-
-
----
-
-
-### updateFaqCategory
-Update an FAQ category
-
-
-
-
-```kotlin
-platformClient.application("<APPLICATION_ID>").content.updateFaqCategory(id: id, body: body).safeAwait{ response, error->
-    response?.let{
-      // Use response
-    } ->
-    error?.let{
-      
-    } 
-}
-```
-
-
-
-
-
-| Argument  |  Type  | Required | Description |
-| --------- | -----  | -------- | ----------- | 
-| id | String | yes | ID allotted to an FAQ category. |  
-| body | [UpdateFaqCategoryRequestSchema](#UpdateFaqCategoryRequestSchema) | yes | Request body |
-
-
-Use this API to edit an existing FAQ category.
-
-*Returned Response:*
-
-
-
-
-[CreateFaqCategorySchema](#CreateFaqCategorySchema)
-
-Success.
-
-
-
-
-<details>
-<summary><i>&nbsp; Example:</i></summary>
-
-```json
-{
-  "category": {
-    "index": 0,
-    "children": [],
-    "_id": "60263f80c83c1f89f2863a8a",
-    "title": "Test Updated",
-    "slug": "test",
-    "application": "000000000000000000000001"
-  }
-}
-```
-</details>
-
-
-
-
-
-
-
-
-
----
-
-
-### deleteFaqCategory
-Delete an FAQ category
-
-
-
-
-```kotlin
-platformClient.application("<APPLICATION_ID>").content.deleteFaqCategory(id: id).safeAwait{ response, error->
-    response?.let{
-      // Use response
-    } ->
-    error?.let{
-      
-    } 
-}
-```
-
-
-
-
-
-| Argument  |  Type  | Required | Description |
-| --------- | -----  | -------- | ----------- | 
-| id | String | yes | ID allotted to an FAQ category. |  
-
-
-
-Use this API to delete an FAQ category.
-
-*Returned Response:*
-
-
-
-
-[FaqSchema](#FaqSchema)
-
-Success.
-
-
-
-
-<details>
-<summary><i>&nbsp; Example:</i></summary>
-
-```json
-{
-  "category": {
-    "index": 0,
-    "children": [],
-    "_id": "60263f80c83c1f89f2863a8a",
-    "slug": "test",
-    "title": "Test",
-    "application": "000000000000000000000001",
-    "__v": 2
-  }
-}
-```
-</details>
-
-
-
-
-
-
-
-
-
----
-
-
-### getFaqsByCategoryIdOrSlug
-Get question and answers within an FAQ category
-
-
-
-
-```kotlin
-platformClient.application("<APPLICATION_ID>").content.getFaqsByCategoryIdOrSlug(idOrSlug: idOrSlug).safeAwait{ response, error->
-    response?.let{
-      // Use response
-    } ->
-    error?.let{
-      
-    } 
-}
-```
-
-
-
-
-
-| Argument  |  Type  | Required | Description |
-| --------- | -----  | -------- | ----------- | 
-| idOrSlug | String | yes | ID or the slug allotted to an FAQ category. Slug is a short, human-readable, URL-friendly identifier of an object. You can get slug value of an FAQ category from `getFaqCategories` API. |  
-
-
-
-Use this API to retrieve all the commonly asked question and answers belonging to an FAQ category.
-
-*Returned Response:*
-
-
-
-
-[GetFaqSchema](#GetFaqSchema)
-
-Success. Refer `GetFaqSchema` for more details.
-
-
-
-
-<details>
-<summary><i>&nbsp; Example:</i></summary>
-
-```json
-{
-  "faqs": [
-    {
-      "_id": "60265b64e507768b168dee4d",
-      "question": "question 1",
-      "answer": "answer 1",
-      "slug": "question-1",
-      "application": "000000000000000000000001"
-    }
-  ]
-}
-```
-</details>
-
-
-
-
-
-
-
-
-
----
-
-
-### addFaq
-Create an FAQ
-
-
-
-
-```kotlin
-platformClient.application("<APPLICATION_ID>").content.addFaq(categoryId: categoryId, body: body).safeAwait{ response, error->
-    response?.let{
-      // Use response
-    } ->
-    error?.let{
-      
-    } 
-}
-```
-
-
-
-
-
-| Argument  |  Type  | Required | Description |
-| --------- | -----  | -------- | ----------- | 
-| categoryId | String | yes | ID allotted to an FAQ category. |  
-| body | [CreateFaqSchema](#CreateFaqSchema) | yes | Request body |
-
-
-FAQs help users to solve an issue or know more about a process. Use this API to create an FAQ for a given FAQ category.
-
-*Returned Response:*
-
-
-
-
-[CreateFaqResponseSchema](#CreateFaqResponseSchema)
-
-Success.
-
-
-
-
-<details>
-<summary><i>&nbsp; Example:</i></summary>
-
-```json
-{
-  "faq": {
-    "_id": "60265b64e507768b168dee4d",
-    "question": "question 1",
-    "answer": "answer 1",
-    "slug": "question-1",
-    "application": "000000000000000000000001"
-  }
-}
-```
-</details>
-
-
-
-
-
-
-
-
-
----
-
-
-### updateFaq
-Update an FAQ
-
-
-
-
-```kotlin
-platformClient.application("<APPLICATION_ID>").content.updateFaq(categoryId: categoryId, faqId: faqId, body: body).safeAwait{ response, error->
-    response?.let{
-      // Use response
-    } ->
-    error?.let{
-      
-    } 
-}
-```
-
-
-
-
-
-| Argument  |  Type  | Required | Description |
-| --------- | -----  | -------- | ----------- | 
-| categoryId | String | yes | ID allotted to an FAQ category. |   
-| faqId | String | yes | ID allotted to an FAQ. |  
-| body | [CreateFaqSchema](#CreateFaqSchema) | yes | Request body |
-
-
-Use this API to edit an existing FAQ.
-
-*Returned Response:*
-
-
-
-
-[CreateFaqResponseSchema](#CreateFaqResponseSchema)
-
-Success.
-
-
-
-
-<details>
-<summary><i>&nbsp; Example:</i></summary>
-
-```json
-{
-  "faq": {
-    "_id": "60265b64e507768b168dee4d",
-    "question": "question 1 updated",
-    "answer": "answer 1",
-    "slug": "question-1",
-    "application": "000000000000000000000001"
-  }
-}
-```
-</details>
-
-
-
-
-
-
-
-
-
----
-
-
-### deleteFaq
-Delete an FAQ
-
-
-
-
-```kotlin
-platformClient.application("<APPLICATION_ID>").content.deleteFaq(categoryId: categoryId, faqId: faqId).safeAwait{ response, error->
-    response?.let{
-      // Use response
-    } ->
-    error?.let{
-      
-    } 
-}
-```
-
-
-
-
-
-| Argument  |  Type  | Required | Description |
-| --------- | -----  | -------- | ----------- | 
-| categoryId | String | yes | ID allotted to an FAQ category. |   
-| faqId | String | yes | ID allotted to an FAQ. |  
-
-
-
-Use this API to delete an existing FAQ.
-
-*Returned Response:*
-
-
-
-
-[CreateFaqResponseSchema](#CreateFaqResponseSchema)
-
-Success.
-
-
-
-
-<details>
-<summary><i>&nbsp; Example:</i></summary>
-
-```json
-{
-  "faq": {
-    "_id": "60265b64e507768b168dee4d",
-    "question": "question 1 updated",
-    "answer": "answer 1",
-    "slug": "question-1",
-    "application": "000000000000000000000001"
-  }
-}
-```
-</details>
-
-
-
-
-
-
-
-
-
----
-
-
-### getFaqByIdOrSlug
-Get an FAQ
-
-
-
-
-```kotlin
-platformClient.application("<APPLICATION_ID>").content.getFaqByIdOrSlug(idOrSlug: idOrSlug).safeAwait{ response, error->
-    response?.let{
-      // Use response
-    } ->
-    error?.let{
-      
-    } 
-}
-```
-
-
-
-
-
-| Argument  |  Type  | Required | Description |
-| --------- | -----  | -------- | ----------- | 
-| idOrSlug | String | yes | ID or the slug allotted to an FAQ category. Slug is a short, human-readable, URL-friendly identifier of an object. You can get slug value of an FAQ category from `getFaqCategories` API. |  
-
-
-
-Use this API to retrieve a specific FAQ. You will get the question and answer of that FAQ.
-
-*Returned Response:*
-
-
-
-
-[CreateFaqResponseSchema](#CreateFaqResponseSchema)
-
-Success. Refer `CreateFaqResponseSchema` for more details.
-
-
-
-
-<details>
-<summary><i>&nbsp; Example:</i></summary>
-
-```json
-{
-  "faq": {
-    "_id": "60265b64e507768b168dee4d",
-    "question": "question 1",
-    "answer": "answer 1",
-    "slug": "question-1",
-    "application": "000000000000000000000001"
-  }
-}
-```
-</details>
-
-
-
-
-
-
-
-
-
----
-
-
-### generateSEOTitle
-Get SEO meta tag title for content
-
-
-
-
-```kotlin
-platformClient.application("<APPLICATION_ID>").content.generateSEOTitle(type: type, body: body).safeAwait{ response, error->
-    response?.let{
-      // Use response
-    } ->
-    error?.let{
-      
-    } 
-}
-```
-
-
-
-
-
-| Argument  |  Type  | Required | Description |
-| --------- | -----  | -------- | ----------- | 
-| type | GenerationEntityType | yes | String representing the type of SEO content to be generated. Possible values are: title, description |  
-| body | [GenerateSEOContent](#GenerateSEOContent) | yes | Request body |
-
-
-Use this API to get GPT3 generated SEO meta tag title for content
-
-*Returned Response:*
-
-
-
-
-[GeneratedSEOContent](#GeneratedSEOContent)
-
-Returns the generated SEO title
-
-
-
-
-<details>
-<summary><i>&nbsp; Examples:</i></summary>
-
-
-<details>
-<summary><i>&nbsp; default</i></summary>
-
-```json
-{
-  "value": {
-    "title": "SEO Title example",
-    "description": "SEO Description example"
-  }
-}
-```
-</details>
-
-</details>
-
-
-
-
-
-
-
-
-
----
-
-
-### getLandingPages
-Get landing pages
-
-
-
-
-```kotlin
-platformClient.application("<APPLICATION_ID>").content.getLandingPages(pageNo: pageNo, pageSize: pageSize).safeAwait{ response, error->
-    response?.let{
-      // Use response
-    } ->
-    error?.let{
-      
-    } 
-}
-```
-
-
-
-
-
-| Argument  |  Type  | Required | Description |
-| --------- | -----  | -------- | ----------- | 
-| pageNo | Int? | no | The page number to navigate through the given set of results. Default value is 1. |   
-| pageSize | Int? | no | The number of items to retrieve in each page. Default value is 10. |  
-
-
-
-Landing page is the first page that a prospect lands upon while visiting a website. Use this API to fetch a list of landing pages.
-
-*Returned Response:*
-
-
-
-
-[LandingPageGetResponse](#LandingPageGetResponse)
-
-Success. Refer `LandingPageGetResponse` for more details.
-
-
-
-
-<details>
-<summary><i>&nbsp; Examples:</i></summary>
-
-
-<details>
-<summary><i>&nbsp; default</i></summary>
-
-```json
-{
-  "value": {
-    "items": [
-      {
-        "date_meta": {
-          "created_on": "2021-03-12T09:26:12.157Z",
-          "modified_on": "2021-03-12T09:26:12.157Z"
-        },
-        "platform": [
-          "android"
-        ],
-        "_id": "604b342e29f19310d8ae9743",
-        "slug": "landing-page-default-2",
-        "action": {
-          "page": {
-            "type": "default"
-          },
-          "popup": {},
-          "type": "page"
-        },
-        "application": "5cd3db5e9d692cfe5302a7bb",
-        "archived": false,
-        "_custom_json": {},
-        "__v": 0
-      }
-    ],
-    "page": {
-      "type": "number",
-      "current": 1,
-      "size": 1,
-      "item_total": 2,
-      "has_next": true
-    }
-  }
-}
-```
-</details>
-
-</details>
-
-
-
-
-
-
-
-
-
----
-
-
-### createLandingPage
-Create a landing page
-
-
-
-
-```kotlin
-platformClient.application("<APPLICATION_ID>").content.createLandingPage(body: body).safeAwait{ response, error->
-    response?.let{
-      // Use response
-    } ->
-    error?.let{
-      
-    } 
-}
-```
-
-
-
-
-
-| Argument  |  Type  | Required | Description |
-| --------- | -----  | -------- | ----------- |
-| body | [LandingPageSchema](#LandingPageSchema) | yes | Request body |
-
-
-Landing page is the first page that a prospect lands upon while visiting a website. Use this API to create a landing page.
-
-*Returned Response:*
-
-
-
-
-[LandingPageSchema](#LandingPageSchema)
-
-Success.
-
-
-
-
-<details>
-<summary><i>&nbsp; Examples:</i></summary>
-
-
-<details>
-<summary><i>&nbsp; default</i></summary>
-
-```json
-{
-  "value": {
-    "_id": "5eaa451a21a4dd75f0fd96c5",
-    "application": "5d3ebd89f540e7506b8b3548",
-    "_custom_json": {},
-    "slug": "pnc-landing",
-    "action": {
-      "page": {
-        "type": "home"
-      },
-      "popup": {},
-      "type": "page"
-    },
-    "platform": [
-      "web"
-    ],
-    "created_by": {
-      "id": "000000000000000000000000"
-    },
-    "date_meta": {
-      "created_on": "2020-04-30T03:25:14.549Z",
-      "modified_on": "2020-04-30T03:25:14.549Z"
-    },
-    "archived": false
-  }
-}
-```
-</details>
-
-</details>
-
-
-
-
-
-
-
-
-
----
-
-
-### updateLandingPage
-Update a landing page
-
-
-
-
-```kotlin
-platformClient.application("<APPLICATION_ID>").content.updateLandingPage(id: id, body: body).safeAwait{ response, error->
-    response?.let{
-      // Use response
-    } ->
-    error?.let{
-      
-    } 
-}
-```
-
-
-
-
-
-| Argument  |  Type  | Required | Description |
-| --------- | -----  | -------- | ----------- | 
-| id | String | yes | ID allotted to a landing page. |  
-| body | [LandingPageSchema](#LandingPageSchema) | yes | Request body |
-
-
-Use this API to edit the details of an existing landing page.
-
-*Returned Response:*
-
-
-
-
-[LandingPageSchema](#LandingPageSchema)
-
-Success.
-
-
-
-
-<details>
-<summary><i>&nbsp; Examples:</i></summary>
-
-
-<details>
-<summary><i>&nbsp; default</i></summary>
-
-```json
-{
-  "value": {
-    "_id": "5eaa451a21a4dd75f0fd96c5",
-    "application": "5d3ebd89f540e7506b8b3548",
-    "_custom_json": {},
-    "slug": "pnc-landing",
-    "action": {
-      "page": {
-        "type": "home"
-      },
-      "popup": {},
-      "type": "page"
-    },
-    "platform": [
-      "web"
-    ],
-    "created_by": {
-      "id": "000000000000000000000000"
-    },
-    "date_meta": {
-      "created_on": "2020-04-30T03:25:14.549Z",
-      "modified_on": "2020-04-30T03:25:14.549Z"
-    },
-    "archived": false
-  }
-}
-```
-</details>
-
-</details>
-
-
-
-
-
-
-
-
-
----
-
-
-### deleteLandingPage
-Delete a landing page
-
-
-
-
-```kotlin
-platformClient.application("<APPLICATION_ID>").content.deleteLandingPage(id: id).safeAwait{ response, error->
-    response?.let{
-      // Use response
-    } ->
-    error?.let{
-      
-    } 
-}
-```
-
-
-
-
-
-| Argument  |  Type  | Required | Description |
-| --------- | -----  | -------- | ----------- | 
-| id | String | yes | ID allotted to a landing page. |  
-
-
-
-Use this API to delete an existing landing page.
-
-*Returned Response:*
-
-
-
-
-[LandingPageSchema](#LandingPageSchema)
-
-Success.
-
-
-
-
-<details>
-<summary><i>&nbsp; Examples:</i></summary>
-
-
-<details>
-<summary><i>&nbsp; default</i></summary>
-
-```json
-{
-  "value": {
-    "_id": "5eaa451a21a4dd75f0fd96c5",
-    "application": "5d3ebd89f540e7506b8b3548",
-    "_custom_json": {},
-    "slug": "pnc-landing",
-    "action": {
-      "page": {
-        "type": "home"
-      },
-      "popup": {},
-      "type": "page"
-    },
-    "platform": [
-      "web"
-    ],
-    "created_by": {
-      "id": "000000000000000000000000"
-    },
-    "date_meta": {
-      "created_on": "2020-04-30T03:25:14.549Z",
-      "modified_on": "2020-04-30T03:25:14.549Z"
-    },
-    "archived": true
-  }
-}
-```
-</details>
-
-</details>
-
-
-
-
-
-
-
-
-
----
-
-
-### getLegalInformation
-Get legal information
-
-
-
-
-```kotlin
-platformClient.application("<APPLICATION_ID>").content.getLegalInformation().safeAwait{ response, error->
-    response?.let{
-      // Use response
-    } ->
-    error?.let{
-      
-    } 
-}
-```
-
-
-
-
-
-
-Use this API to get the legal information of an application, which includes Policy, Terms and Conditions, Shipping Policy and FAQ regarding the application.
-
-*Returned Response:*
-
-
-
-
-[ApplicationLegal](#ApplicationLegal)
-
-Success. Refer `ApplicationLegal` for more details.
-
-
-
-
-<details>
-<summary><i>&nbsp; Examples:</i></summary>
-
-
-<details>
-<summary><i>&nbsp; Success</i></summary>
-
-```json
-{
-  "value": {
-    "tnc": "**Terms and Conditions test**",
-    "policy": "**Privacy policy test**",
-    "shipping": "**Shipping term and conditions**",
-    "returns": "**Terms & conditions for returns **",
-    "_id": "5e8b2b96abe7dc94c02c9ac9",
-    "application": "000000000000000000000001",
-    "faq": [
-      {
-        "question": "New Question",
-        "answer": "New Answer"
-      },
-      {
-        "question": "New",
-        "answer": "sdfghjhg"
-      },
-      {
-        "question": "test",
-        "answer": "test"
-      },
-      {
-        "question": "New Test",
-        "answer": "New Test answer"
-      },
-      {
-        "question": "test",
-        "answer": "test"
-      }
-    ],
-    "created_at": "2020-04-06T13:16:06.818Z",
-    "updated_at": "2020-07-16T09:47:40.751Z",
-    "__v": 260
-  }
-}
-```
-</details>
-
-</details>
-
-
-
-
-
-
-
-
-
----
-
-
-### updateLegalInformation
-Save legal information
-
-
-
-
-```kotlin
-platformClient.application("<APPLICATION_ID>").content.updateLegalInformation(body: body).safeAwait{ response, error->
-    response?.let{
-      // Use response
-    } ->
-    error?.let{
-      
-    } 
-}
-```
-
-
-
-
-
-| Argument  |  Type  | Required | Description |
-| --------- | -----  | -------- | ----------- |
-| body | [ApplicationLegal](#ApplicationLegal) | yes | Request body |
-
-
-Use this API to edit, update and save the legal information of an application, which includes Policy, Terms and Conditions, Shipping Policy and FAQ regarding the application.
-
-*Returned Response:*
-
-
-
-
-[ApplicationLegal](#ApplicationLegal)
-
-Success. Refer `ApplicationLegal` for more details.
-
-
-
-
-<details>
-<summary><i>&nbsp; Example:</i></summary>
-
-```json
-{
-  "tnc": "This is terms and condition",
-  "policy": "This is policy",
-  "faq": [
-    {
-      "question": "This is question",
-      "answer": "This is answer"
-    }
-  ]
-}
-```
-</details>
-
-
-
-
-
-
-
-
-
----
-
-
-### getNavigations
-Get navigations
-
-
-
-
-```kotlin
-platformClient.application("<APPLICATION_ID>").content.getNavigations(devicePlatform: devicePlatform, pageNo: pageNo, pageSize: pageSize).safeAwait{ response, error->
-    response?.let{
-      // Use response
-    } ->
-    error?.let{
-      
-    } 
-}
-```
-
-
-
-
-
-| Argument  |  Type  | Required | Description |
-| --------- | -----  | -------- | ----------- | 
-| devicePlatform | String | yes | Filter navigations by platform. Acceptable values are: web, android, ios, all |   
-| pageNo | Int? | no | The page number to navigate through the given set of results. Default value is 1. |   
-| pageSize | Int? | no | The number of items to retrieve in each page. Default value is 10. |  
-
-
-
-Use this API to fetch the navigations details which includes the items of the navigation pane. It also shows the orientation, links, sub-navigations, etc.
-
-*Returned Response:*
-
-
-
-
-[NavigationGetResponse](#NavigationGetResponse)
-
-Success. Refer `NavigationGetResponse` for more details.
-
-
-
-
-<details>
-<summary><i>&nbsp; Examples:</i></summary>
-
-
-<details>
-<summary><i>&nbsp; default</i></summary>
-
-```json
-{
-  "value": {
-    "items": [
-      {
-        "_id": "5ffbd9b90ac98678ae0458d7",
-        "application": "000000000000000000000001",
-        "_custom_json": null,
-        "name": "temp",
-        "slug": "temp",
-        "platform": "web",
-        "position": "top",
-        "orientation": "landscape",
-        "navigation": [
-          {
-            "display": "Home",
-            "image": "https://res.cloudinary.com/dwzm9bysq/image/upload/v1567148153/production/system/icons/mystore-tab_y0dqzt.png",
-            "sort_order": 1,
-            "type": "",
-            "action": {
-              "page": {
-                "url": "/",
-                "type": "home"
-              },
-              "popup": {},
-              "type": "page"
-            },
-            "active": true,
-            "tags": {
-              "type": "array",
-              "items": {
-                "type": "string"
-              }
-            },
-            "acl": [
-              "all"
-            ],
-            "_locale_language": {
-              "hi": {
-                "display": ""
-              },
-              "ar": {
-                "display": ""
-              },
-              "en_us": {
-                "display": ""
-              }
-            },
-            "sub_navigation": [
-              {
-                "display": "Brands",
-                "image": "https://res.cloudinary.com/dwzm9bysq/image/upload/v1567148153/production/system/icons/brands-tab_sfinpk.png",
-                "sort_order": 1,
-                "type": "",
-                "action": {
-                  "page": {
-                    "url": "/brands/",
-                    "type": "brands"
-                  },
-                  "popup": {},
-                  "type": "page"
-                },
-                "active": true,
-                "tags": null,
-                "acl": [
-                  "all"
-                ],
-                "_locale_language": {
-                  "hi": {
-                    "display": ""
-                  },
-                  "ar": {
-                    "display": ""
-                  },
-                  "en_us": {
-                    "display": ""
-                  }
-                }
-              }
-            ]
-          },
-          {
-            "display": "Collections",
-            "image": "https://res.cloudinary.com/dwzm9bysq/image/upload/v1567148153/production/system/icons/collections-tab_a0tg9c.png",
-            "sort_order": 2,
-            "type": "",
-            "action": {
-              "page": {
-                "url": "/collections/",
-                "type": "collections"
-              },
-              "popup": {},
-              "type": "page"
-            },
-            "active": true,
-            "tags": null,
-            "acl": [
-              "all"
-            ],
-            "_locale_language": {
-              "hi": {
-                "display": ""
-              },
-              "ar": {
-                "display": ""
-              },
-              "en_us": {
-                "display": ""
-              }
-            },
-            "sub_navigation": [
-              {
-                "display": "Categories",
-                "image": "https://res.cloudinary.com/dwzm9bysq/image/upload/v1567148154/production/system/icons/categories-tab_ss8e0q.png",
-                "sort_order": 1,
-                "type": "",
-                "action": {
-                  "page": {
-                    "url": "/categories/",
-                    "type": "categories"
-                  },
-                  "popup": {},
-                  "type": "page"
-                },
-                "active": true,
-                "tags": null,
-                "acl": [
-                  "all"
-                ],
-                "_locale_language": {
-                  "hi": {
-                    "display": ""
-                  },
-                  "ar": {
-                    "display": ""
-                  },
-                  "en_us": {
-                    "display": ""
-                  }
-                }
-              }
-            ]
-          },
-          {
-            "display": "Primary Menu",
-            "image": "",
-            "sort_order": 3,
-            "type": "",
-            "action": {
-              "page": {
-                "type": "home"
-              },
-              "popup": {},
-              "type": "page"
-            },
-            "active": true,
-            "tags": null,
-            "acl": [
-              "all"
-            ],
-            "_locale_language": {
-              "hi": {
-                "display": ""
-              },
-              "ar": {
-                "display": ""
-              },
-              "en_us": {
-                "display": ""
-              }
-            }
-          }
-        ],
-        "created_by": {
-          "id": "000000000000000000000000"
-        },
-        "date_meta": {
-          "created_on": "2021-01-11T04:53:13.585Z",
-          "modified_on": "2021-01-14T10:24:34.485Z"
-        }
-      }
-    ],
-    "page": {
-      "type": "number",
-      "current": 1,
-      "size": 1,
-      "item_total": 2,
-      "has_next": true
-    }
-  }
-}
-```
-</details>
-
-</details>
-
-
-
-
-
-
-
-
-
----
-
-
-### createNavigation
-Create a navigation
-
-
-
-
-```kotlin
-platformClient.application("<APPLICATION_ID>").content.createNavigation(body: body).safeAwait{ response, error->
-    response?.let{
-      // Use response
-    } ->
-    error?.let{
-      
-    } 
-}
-```
-
-
-
-
-
-| Argument  |  Type  | Required | Description |
-| --------- | -----  | -------- | ----------- |
-| body | [NavigationRequest](#NavigationRequest) | yes | Request body |
-
-
-Navigation is the arrangement of navigational items to ease the accessibility of resources for users on a website. Use this API to create a navigation.
-
-*Returned Response:*
-
-
-
-
-[NavigationSchema](#NavigationSchema)
-
-Success.
-
-
-
-
-<details>
-<summary><i>&nbsp; Examples:</i></summary>
-
-
-<details>
-<summary><i>&nbsp; default</i></summary>
-
-```json
-{
-  "value": {
-    "_id": "5ffbd9b90ac98678ae0458d7",
-    "application": "000000000000000000000001",
-    "_custom_json": null,
-    "name": "test-nav",
-    "slug": "test-nav",
-    "platform": [
-      "ios",
-      "android"
-    ],
-    "orientation": {
-      "portrait": [
-        "left"
-      ]
-    },
-    "navigation": [
-      {
-        "display": "Home",
-        "image": "https://res.cloudinary.com/dwzm9bysq/image/upload/v1567148153/production/system/icons/mystore-tab_y0dqzt.png",
-        "sort_order": 1,
-        "type": "",
-        "action": {
-          "page": {
-            "url": "/",
-            "type": "home"
-          },
-          "popup": {},
-          "type": "page"
-        },
-        "active": true,
-        "tags": {
-          "type": "array",
-          "items": {
-            "type": "string"
-          }
-        },
-        "acl": [
-          "all"
-        ],
-        "_locale_language": {
-          "hi": {
-            "display": ""
-          },
-          "ar": {
-            "display": ""
-          },
-          "en_us": {
-            "display": ""
-          }
-        },
-        "sub_navigation": [
-          {
-            "display": "Brands",
-            "image": "https://res.cloudinary.com/dwzm9bysq/image/upload/v1567148153/production/system/icons/brands-tab_sfinpk.png",
-            "sort_order": 1,
-            "type": "",
-            "action": {
-              "page": {
-                "url": "/brands/",
-                "type": "brands"
-              },
-              "popup": {},
-              "type": "page"
-            },
-            "active": true,
-            "tags": null,
-            "acl": [
-              "all"
-            ],
-            "_locale_language": {
-              "hi": {
-                "display": ""
-              },
-              "ar": {
-                "display": ""
-              },
-              "en_us": {
-                "display": ""
-              }
-            }
-          }
-        ]
-      },
-      {
-        "display": "Collections",
-        "image": "https://res.cloudinary.com/dwzm9bysq/image/upload/v1567148153/production/system/icons/collections-tab_a0tg9c.png",
-        "sort_order": 2,
-        "type": "",
-        "action": {
-          "page": {
-            "url": "/collections/",
-            "type": "collections"
-          },
-          "popup": {},
-          "type": "page"
-        },
-        "active": true,
-        "tags": null,
-        "acl": [
-          "all"
-        ],
-        "_locale_language": {
-          "hi": {
-            "display": ""
-          },
-          "ar": {
-            "display": ""
-          },
-          "en_us": {
-            "display": ""
-          }
-        },
-        "sub_navigation": [
-          {
-            "display": "Categories",
-            "image": "https://res.cloudinary.com/dwzm9bysq/image/upload/v1567148154/production/system/icons/categories-tab_ss8e0q.png",
-            "sort_order": 1,
-            "type": "",
-            "action": {
-              "page": {
-                "url": "/categories/",
-                "type": "categories"
-              },
-              "popup": {},
-              "type": "page"
-            },
-            "active": true,
-            "tags": null,
-            "acl": [
-              "all"
-            ],
-            "_locale_language": {
-              "hi": {
-                "display": ""
-              },
-              "ar": {
-                "display": ""
-              },
-              "en_us": {
-                "display": ""
-              }
-            }
-          }
-        ]
-      },
-      {
-        "display": "Primary Menu",
-        "image": "",
-        "sort_order": 3,
-        "type": "",
-        "action": {
-          "page": {
-            "type": "home"
-          },
-          "popup": {},
-          "type": "page"
-        },
-        "active": true,
-        "tags": null,
-        "acl": [
-          "all"
-        ],
-        "_locale_language": {
-          "hi": {
-            "display": ""
-          },
-          "ar": {
-            "display": ""
-          },
-          "en_us": {
-            "display": ""
-          }
-        }
-      }
-    ],
-    "created_by": {
-      "id": "000000000000000000000000"
-    },
-    "date_meta": {
-      "created_on": "2021-01-11T04:53:13.585Z",
-      "modified_on": "2021-01-14T10:24:34.485Z"
-    },
-    "archived": false
-  }
-}
-```
-</details>
-
-</details>
-
-
-
-
-
-
-
-
-
----
-
-
-### getDefaultNavigations
-Get default navigations
-
-
-
-
-```kotlin
-platformClient.application("<APPLICATION_ID>").content.getDefaultNavigations().safeAwait{ response, error->
-    response?.let{
-      // Use response
-    } ->
-    error?.let{
-      
-    } 
-}
-```
-
-
-
-
-
-
-On any website (application), there are navigations that are present by default. Use this API to retrieve those default navigations.
-
-*Returned Response:*
-
-
-
-
-[DefaultNavigationResponse](#DefaultNavigationResponse)
-
-Success. Refer `DefaultNavigationResponse` for more details.
-
-
-
-
-<details>
-<summary><i>&nbsp; Examples:</i></summary>
-
-
-<details>
-<summary><i>&nbsp; default</i></summary>
-
-```json
-{
-  "value": {
-    "items": [
-      {
-        "name": "default-bottom",
-        "slug": "default-bottom-vIhLiJKQvUZdQvGWzDdrzLP3CTC4Hbxg",
-        "orientation": {
-          "landscape": [
-            "bottom"
-          ]
-        },
-        "version": 3,
-        "navigation": [
-          {
-            "display": "Home",
-            "image": "https://res.cloudinary.com/dwzm9bysq/image/upload/v1567148153/production/system/icons/mystore-tab_y0dqzt.png",
-            "sort_order": 1,
-            "acl": [
-              "all"
-            ],
-            "action": {
-              "page": {
-                "type": "home"
-              },
-              "type": "page"
-            },
-            "active": true
-          },
-          {
-            "display": "Brands",
-            "image": "https://res.cloudinary.com/dwzm9bysq/image/upload/v1567148153/production/system/icons/brands-tab_sfinpk.png",
-            "sort_order": 2,
-            "acl": [
-              "all"
-            ],
-            "action": {
-              "page": {
-                "type": "brands"
-              },
-              "type": "page"
-            },
-            "active": true
-          },
-          {
-            "display": "Collections",
-            "image": "https://res.cloudinary.com/dwzm9bysq/image/upload/v1567148153/production/system/icons/collections-tab_a0tg9c.png",
-            "sort_order": 3,
-            "acl": [
-              "all"
-            ],
-            "action": {
-              "page": {
-                "type": "collections"
-              },
-              "type": "page"
-            },
-            "active": true
-          },
-          {
-            "display": "Categories",
-            "image": "https://res.cloudinary.com/dwzm9bysq/image/upload/v1567148154/production/system/icons/categories-tab_ss8e0q.png",
-            "sort_order": 4,
-            "acl": [
-              "all"
-            ],
-            "action": {
-              "page": {
-                "type": "categories"
-              },
-              "type": "page"
-            },
-            "active": true
-          }
-        ],
-        "created_by": {},
-        "_id": "6050244dbd9e072063f1586b",
-        "platform": [
-          "android"
-        ]
-      },
-      {
-        "name": "default-bottom",
-        "slug": "default-bottom-SB0zLTfiPN4Z5doJQBKRagsLTDldm8Ug",
-        "orientation": {
-          "landscape": [
-            "bottom"
-          ]
-        },
-        "version": 3,
-        "navigation": [
-          {
-            "display": "Home",
-            "image": "https://res.cloudinary.com/dwzm9bysq/image/upload/v1567148153/production/system/icons/mystore-tab_y0dqzt.png",
-            "sort_order": 1,
-            "acl": [
-              "all"
-            ],
-            "action": {
-              "page": {
-                "type": "home"
-              },
-              "type": "page"
-            },
-            "active": true
-          },
-          {
-            "display": "Brands",
-            "image": "https://res.cloudinary.com/dwzm9bysq/image/upload/v1567148153/production/system/icons/brands-tab_sfinpk.png",
-            "sort_order": 2,
-            "acl": [
-              "all"
-            ],
-            "action": {
-              "page": {
-                "type": "brands"
-              },
-              "type": "page"
-            },
-            "active": true
-          },
-          {
-            "display": "Collections",
-            "image": "https://res.cloudinary.com/dwzm9bysq/image/upload/v1567148153/production/system/icons/collections-tab_a0tg9c.png",
-            "sort_order": 3,
-            "acl": [
-              "all"
-            ],
-            "action": {
-              "page": {
-                "type": "collections"
-              },
-              "type": "page"
-            },
-            "active": true
-          },
-          {
-            "display": "Categories",
-            "image": "https://res.cloudinary.com/dwzm9bysq/image/upload/v1567148154/production/system/icons/categories-tab_ss8e0q.png",
-            "sort_order": 4,
-            "acl": [
-              "all"
-            ],
-            "action": {
-              "page": {
-                "type": "categories"
-              },
-              "type": "page"
-            },
-            "active": true
-          }
-        ],
-        "created_by": {},
-        "_id": "6050244dbd9e072063f1586c",
-        "platform": [
-          "ios"
-        ]
-      },
-      {
-        "name": "default-left",
-        "slug": "default-left-dWrrfpfcNw6Arl0QtmK5VgunYYAHhGRR",
-        "orientation": {
-          "portrait": [
-            "left"
-          ]
-        },
-        "version": 3,
-        "navigation": [
-          {
-            "display": "Profile",
-            "image": "https://res.cloudinary.com/dwzm9bysq/image/upload/v1583938091/production/applications/app_000000000000000000000001/media/navigation/icon/hv0cd5jdo0rkhsqoizmi.png",
-            "sort_order": 1,
-            "type": "",
-            "action": {
-              "page": {
-                "url": "/",
-                "type": "profile"
-              },
-              "popup": {},
-              "type": "page"
-            },
-            "active": true,
-            "acl": [
-              "registered"
-            ]
-          },
-          {
-            "display": "Orders",
-            "image": "https://res.cloudinary.com/dwzm9bysq/image/upload/v1583938144/production/applications/app_000000000000000000000001/media/navigation/icon/lmv4fzpxxk0a6acitlfg.png",
-            "sort_order": 2,
-            "type": "",
-            "action": {
-              "page": {
-                "url": "/",
-                "type": "orders"
-              },
-              "popup": {},
-              "type": "page"
-            },
-            "active": true,
-            "acl": [
-              "registered"
-            ]
-          },
-          {
-            "display": "Track Order",
-            "image": "https://res.cloudinary.com/dwzm9bysq/image/upload/v1583938144/production/applications/app_000000000000000000000001/media/navigation/icon/lmv4fzpxxk0a6acitlfg.png",
-            "sort_order": 3,
-            "type": "",
-            "action": {
-              "page": {
-                "type": "track-order"
-              },
-              "popup": {},
-              "type": "page"
-            },
-            "active": true,
-            "acl": [
-              "anonymous"
-            ]
-          },
-          {
-            "display": "Addresses",
-            "image": "https://res.cloudinary.com/dwzm9bysq/image/upload/v1583938161/production/applications/app_000000000000000000000001/media/navigation/icon/qbod8vkjmot3qnaroibr.png",
-            "sort_order": 4,
-            "type": "",
-            "action": {
-              "page": {
-                "url": "/",
-                "type": "addresses"
-              },
-              "popup": {},
-              "type": "page"
-            },
-            "active": true,
-            "acl": [
-              "registered"
-            ]
-          },
-          {
-            "display": "Wishlist",
-            "image": "https://res.cloudinary.com/dwzm9bysq/image/upload/v1583938125/production/applications/app_000000000000000000000001/media/navigation/icon/u8c7jdke4a3wwc0ftz8x.png",
-            "sort_order": 5,
-            "type": "",
-            "action": {
-              "page": {
-                "url": "/wishlist/",
-                "type": "wishlist"
-              },
-              "popup": {},
-              "type": "page"
-            },
-            "active": true,
-            "acl": [
-              "registered"
-            ]
-          },
-          {
-            "display": "Settings",
-            "image": "https://res.cloudinary.com/dwzm9bysq/image/upload/v1584003256/production/applications/app_000000000000000000000001/media/navigation/icon/vywbdiio1zi7cbnltvgz.png",
-            "sort_order": 6,
-            "type": "",
-            "action": {
-              "page": {
-                "url": "/",
-                "type": "settings"
-              },
-              "popup": {},
-              "type": "page"
-            },
-            "active": true,
-            "acl": [
-              "all"
-            ]
-          },
-          {
-            "display": "Policy",
-            "image": "https://res.cloudinary.com/dwzm9bysq/image/upload/v1583939301/production/applications/app_000000000000000000000001/media/navigation/icon/bygqvme7hkrd45oemzy0.png",
-            "sort_order": 7,
-            "type": "",
-            "action": {
-              "page": {
-                "url": "/",
-                "type": "policy"
-              },
-              "popup": {},
-              "type": "page"
-            },
-            "active": true,
-            "acl": [
-              "all"
-            ]
-          },
-          {
-            "display": "Terms & Conditions",
-            "image": "https://res.cloudinary.com/dwzm9bysq/image/upload/v1583939382/production/applications/app_000000000000000000000001/media/navigation/icon/eaq0aagqr0xirojbuki3.png",
-            "sort_order": 8,
-            "type": "",
-            "action": {
-              "page": {
-                "url": "/",
-                "type": "tnc"
-              },
-              "popup": {},
-              "type": "page"
-            },
-            "active": true,
-            "acl": [
-              "all"
-            ]
-          },
-          {
-            "display": "Need Help",
-            "image": "https://res.cloudinary.com/dwzm9bysq/image/upload/v1583939416/production/applications/app_000000000000000000000001/media/navigation/icon/xeqv7pzyxagwtxcwvxbw.png",
-            "sort_order": 9,
-            "type": "",
-            "action": {
-              "page": {
-                "url": "/faq/",
-                "type": "faq"
-              },
-              "popup": {},
-              "type": "page"
-            },
-            "active": true,
-            "acl": [
-              "all"
-            ]
-          },
-          {
-            "display": "About Us",
-            "image": "https://res.cloudinary.com/dwzm9bysq/image/upload/v1583939196/production/applications/app_000000000000000000000001/media/navigation/icon/dccm5et4sgylisbug9xr.png",
-            "sort_order": 10,
-            "type": "",
-            "action": {
-              "page": {
-                "url": "/",
-                "type": "about-us"
-              },
-              "popup": {},
-              "type": "page"
-            },
-            "active": true,
-            "acl": [
-              "all"
-            ]
-          },
-          {
-            "display": "Rate Us",
-            "image": "https://res.cloudinary.com/dwzm9bysq/image/upload/v1584091739/production/applications/app_000000000000000000000001/media/navigation/icon/afryyfeccqgjyeosdmbz.png",
-            "sort_order": 11,
-            "type": "",
-            "action": {
-              "page": {
-                "url": "/",
-                "type": "rate-us"
-              },
-              "popup": {},
-              "type": "page"
-            },
-            "active": true,
-            "acl": [
-              "registered"
-            ]
-          }
-        ],
-        "created_by": {},
-        "_id": "6050244dbd9e072063f1586d",
-        "platform": [
-          "android"
-        ]
-      },
-      {
-        "name": "default-left",
-        "slug": "default-left-tRK1fsQVUD7BmdvX30Fb4u5ZVSrSi3KW",
-        "orientation": {
-          "portrait": [
-            "left"
-          ]
-        },
-        "version": 3,
-        "navigation": [
-          {
-            "display": "Profile",
-            "image": "https://res.cloudinary.com/dwzm9bysq/image/upload/v1583938091/production/applications/app_000000000000000000000001/media/navigation/icon/hv0cd5jdo0rkhsqoizmi.png",
-            "sort_order": 1,
-            "type": "",
-            "action": {
-              "page": {
-                "url": "/",
-                "type": "profile"
-              },
-              "popup": {},
-              "type": "page"
-            },
-            "active": true,
-            "acl": [
-              "registered"
-            ]
-          },
-          {
-            "display": "Orders",
-            "image": "https://res.cloudinary.com/dwzm9bysq/image/upload/v1583938144/production/applications/app_000000000000000000000001/media/navigation/icon/lmv4fzpxxk0a6acitlfg.png",
-            "sort_order": 2,
-            "type": "",
-            "action": {
-              "page": {
-                "url": "/",
-                "type": "orders"
-              },
-              "popup": {},
-              "type": "page"
-            },
-            "active": true,
-            "acl": [
-              "registered"
-            ]
-          },
-          {
-            "display": "Track Order",
-            "image": "https://res.cloudinary.com/dwzm9bysq/image/upload/v1583938144/production/applications/app_000000000000000000000001/media/navigation/icon/lmv4fzpxxk0a6acitlfg.png",
-            "sort_order": 3,
-            "type": "",
-            "action": {
-              "page": {
-                "type": "track-order"
-              },
-              "popup": {},
-              "type": "page"
-            },
-            "active": true,
-            "acl": [
-              "anonymous"
-            ]
-          },
-          {
-            "display": "Addresses",
-            "image": "https://res.cloudinary.com/dwzm9bysq/image/upload/v1583938161/production/applications/app_000000000000000000000001/media/navigation/icon/qbod8vkjmot3qnaroibr.png",
-            "sort_order": 4,
-            "type": "",
-            "action": {
-              "page": {
-                "url": "/",
-                "type": "addresses"
-              },
-              "popup": {},
-              "type": "page"
-            },
-            "active": true,
-            "acl": [
-              "registered"
-            ]
-          },
-          {
-            "display": "Wishlist",
-            "image": "https://res.cloudinary.com/dwzm9bysq/image/upload/v1583938125/production/applications/app_000000000000000000000001/media/navigation/icon/u8c7jdke4a3wwc0ftz8x.png",
-            "sort_order": 5,
-            "type": "",
-            "action": {
-              "page": {
-                "url": "/wishlist/",
-                "type": "wishlist"
-              },
-              "popup": {},
-              "type": "page"
-            },
-            "active": true,
-            "acl": [
-              "registered"
-            ]
-          },
-          {
-            "display": "Settings",
-            "image": "https://res.cloudinary.com/dwzm9bysq/image/upload/v1584003256/production/applications/app_000000000000000000000001/media/navigation/icon/vywbdiio1zi7cbnltvgz.png",
-            "sort_order": 6,
-            "type": "",
-            "action": {
-              "page": {
-                "url": "/",
-                "type": "settings"
-              },
-              "popup": {},
-              "type": "page"
-            },
-            "active": true,
-            "acl": [
-              "all"
-            ]
-          },
-          {
-            "display": "Policy",
-            "image": "https://res.cloudinary.com/dwzm9bysq/image/upload/v1583939301/production/applications/app_000000000000000000000001/media/navigation/icon/bygqvme7hkrd45oemzy0.png",
-            "sort_order": 7,
-            "type": "",
-            "action": {
-              "page": {
-                "url": "/",
-                "type": "policy"
-              },
-              "popup": {},
-              "type": "page"
-            },
-            "active": true,
-            "acl": [
-              "all"
-            ]
-          },
-          {
-            "display": "Terms & Conditions",
-            "image": "https://res.cloudinary.com/dwzm9bysq/image/upload/v1583939382/production/applications/app_000000000000000000000001/media/navigation/icon/eaq0aagqr0xirojbuki3.png",
-            "sort_order": 8,
-            "type": "",
-            "action": {
-              "page": {
-                "url": "/",
-                "type": "tnc"
-              },
-              "popup": {},
-              "type": "page"
-            },
-            "active": true,
-            "acl": [
-              "all"
-            ]
-          },
-          {
-            "display": "Need Help",
-            "image": "https://res.cloudinary.com/dwzm9bysq/image/upload/v1583939416/production/applications/app_000000000000000000000001/media/navigation/icon/xeqv7pzyxagwtxcwvxbw.png",
-            "sort_order": 9,
-            "type": "",
-            "action": {
-              "page": {
-                "url": "/faq/",
-                "type": "faq"
-              },
-              "popup": {},
-              "type": "page"
-            },
-            "active": true,
-            "acl": [
-              "all"
-            ]
-          },
-          {
-            "display": "About Us",
-            "image": "https://res.cloudinary.com/dwzm9bysq/image/upload/v1583939196/production/applications/app_000000000000000000000001/media/navigation/icon/dccm5et4sgylisbug9xr.png",
-            "sort_order": 10,
-            "type": "",
-            "action": {
-              "page": {
-                "url": "/",
-                "type": "about-us"
-              },
-              "popup": {},
-              "type": "page"
-            },
-            "active": true,
-            "acl": [
-              "all"
-            ]
-          },
-          {
-            "display": "Rate Us",
-            "image": "https://res.cloudinary.com/dwzm9bysq/image/upload/v1584091739/production/applications/app_000000000000000000000001/media/navigation/icon/afryyfeccqgjyeosdmbz.png",
-            "sort_order": 11,
-            "type": "",
-            "action": {
-              "page": {
-                "url": "/",
-                "type": "rate-us"
-              },
-              "popup": {},
-              "type": "page"
-            },
-            "active": true,
-            "acl": [
-              "registered"
-            ]
-          }
-        ],
-        "created_by": {},
-        "_id": "6050244dbd9e072063f1586e",
-        "platform": [
-          "ios"
-        ]
-      },
-      {
-        "name": "default-top",
-        "slug": "default-top-qrprb8dxqr3m698wwUGXWsvTfVkjt4cR",
-        "orientation": {
-          "landscape": [
-            "top"
-          ]
-        },
-        "version": 3,
-        "navigation": [
-          {
-            "display": "Home",
-            "image": "https://res.cloudinary.com/dwzm9bysq/image/upload/v1567148153/production/system/icons/mystore-tab_y0dqzt.png",
-            "sort_order": 1,
-            "acl": [
-              "all"
-            ],
-            "action": {
-              "page": {
-                "type": "home"
-              },
-              "type": "page"
-            },
-            "active": true
-          },
-          {
-            "display": "Brands",
-            "image": "https://res.cloudinary.com/dwzm9bysq/image/upload/v1567148153/production/system/icons/brands-tab_sfinpk.png",
-            "sort_order": 2,
-            "acl": [
-              "all"
-            ],
-            "action": {
-              "page": {
-                "type": "brands"
-              },
-              "type": "page"
-            },
-            "active": true
-          },
-          {
-            "display": "Collections",
-            "image": "https://res.cloudinary.com/dwzm9bysq/image/upload/v1567148153/production/system/icons/collections-tab_a0tg9c.png",
-            "sort_order": 3,
-            "acl": [
-              "all"
-            ],
-            "action": {
-              "page": {
-                "type": "collections"
-              },
-              "type": "page"
-            },
-            "active": true
-          },
-          {
-            "display": "Categories",
-            "image": "https://res.cloudinary.com/dwzm9bysq/image/upload/v1567148154/production/system/icons/categories-tab_ss8e0q.png",
-            "sort_order": 4,
-            "acl": [
-              "all"
-            ],
-            "action": {
-              "page": {
-                "type": "categories"
-              },
-              "type": "page"
-            },
-            "active": true
-          }
-        ],
-        "created_by": {},
-        "_id": "6050244dbd9e072063f1586f",
-        "platform": [
-          "web"
-        ]
-      }
-    ]
-  }
-}
-```
-</details>
-
-</details>
-
-
-
-
-
-
-
-
-
----
-
-
-### getNavigationBySlug
-Get a navigation by slug
-
-
-
-
-```kotlin
-platformClient.application("<APPLICATION_ID>").content.getNavigationBySlug(slug: slug, devicePlatform: devicePlatform).safeAwait{ response, error->
-    response?.let{
-      // Use response
-    } ->
-    error?.let{
-      
-    } 
-}
-```
-
-
-
-
-
-| Argument  |  Type  | Required | Description |
-| --------- | -----  | -------- | ----------- | 
-| slug | String | yes | A short, human-readable, URL-friendly identifier of a navigation. You can get slug value of a navigation from `getNavigations` API. |   
-| devicePlatform | String | yes | Filter navigations by platform. Acceptable values are: web, android, ios, all |  
-
-
-
-Use this API to retrieve a navigation by its slug.
-
-*Returned Response:*
-
-
-
-
-[NavigationSchema](#NavigationSchema)
-
-Success. Refer `NavigationSchema` for more details.
-
-
-
-
-<details>
-<summary><i>&nbsp; Examples:</i></summary>
-
-
-<details>
-<summary><i>&nbsp; default</i></summary>
-
-```json
-{
-  "value": {
-    "_id": "5ffbd9b90ac98678ae0458d7",
-    "application": "000000000000000000000001",
-    "_custom_json": null,
-    "name": "test-nav",
-    "slug": "test-nav",
-    "platform": [
-      "ios",
-      "android"
-    ],
-    "orientation": {
-      "portrait": [
-        "left"
-      ]
-    },
-    "navigation": [
-      {
-        "display": "Home",
-        "image": "https://res.cloudinary.com/dwzm9bysq/image/upload/v1567148153/production/system/icons/mystore-tab_y0dqzt.png",
-        "sort_order": 1,
-        "type": "",
-        "action": {
-          "page": {
-            "url": "/",
-            "type": "home"
-          },
-          "popup": {},
-          "type": "page"
-        },
-        "active": true,
-        "tags": {
-          "type": "array",
-          "items": {
-            "type": "string"
-          }
-        },
-        "acl": [
-          "all"
-        ],
-        "_locale_language": {
-          "hi": {
-            "display": ""
-          },
-          "ar": {
-            "display": ""
-          },
-          "en_us": {
-            "display": ""
-          }
-        },
-        "sub_navigation": [
-          {
-            "display": "Brands",
-            "image": "https://res.cloudinary.com/dwzm9bysq/image/upload/v1567148153/production/system/icons/brands-tab_sfinpk.png",
-            "sort_order": 1,
-            "type": "",
-            "action": {
-              "page": {
-                "url": "/brands/",
-                "type": "brands"
-              },
-              "popup": {},
-              "type": "page"
-            },
-            "active": true,
-            "tags": null,
-            "acl": [
-              "all"
-            ],
-            "_locale_language": {
-              "hi": {
-                "display": ""
-              },
-              "ar": {
-                "display": ""
-              },
-              "en_us": {
-                "display": ""
-              }
-            }
-          }
-        ]
-      },
-      {
-        "display": "Collections",
-        "image": "https://res.cloudinary.com/dwzm9bysq/image/upload/v1567148153/production/system/icons/collections-tab_a0tg9c.png",
-        "sort_order": 2,
-        "type": "",
-        "action": {
-          "page": {
-            "url": "/collections/",
-            "type": "collections"
-          },
-          "popup": {},
-          "type": "page"
-        },
-        "active": true,
-        "tags": null,
-        "acl": [
-          "all"
-        ],
-        "_locale_language": {
-          "hi": {
-            "display": ""
-          },
-          "ar": {
-            "display": ""
-          },
-          "en_us": {
-            "display": ""
-          }
-        },
-        "sub_navigation": [
-          {
-            "display": "Categories",
-            "image": "https://res.cloudinary.com/dwzm9bysq/image/upload/v1567148154/production/system/icons/categories-tab_ss8e0q.png",
-            "sort_order": 1,
-            "type": "",
-            "action": {
-              "page": {
-                "url": "/categories/",
-                "type": "categories"
-              },
-              "popup": {},
-              "type": "page"
-            },
-            "active": true,
-            "tags": null,
-            "acl": [
-              "all"
-            ],
-            "_locale_language": {
-              "hi": {
-                "display": ""
-              },
-              "ar": {
-                "display": ""
-              },
-              "en_us": {
-                "display": ""
-              }
-            }
-          }
-        ]
-      },
-      {
-        "display": "Primary Menu",
-        "image": "",
-        "sort_order": 3,
-        "type": "",
-        "action": {
-          "page": {
-            "type": "home"
-          },
-          "popup": {},
-          "type": "page"
-        },
-        "active": true,
-        "tags": null,
-        "acl": [
-          "all"
-        ],
-        "_locale_language": {
-          "hi": {
-            "display": ""
-          },
-          "ar": {
-            "display": ""
-          },
-          "en_us": {
-            "display": ""
-          }
-        }
-      }
-    ],
-    "created_by": {
-      "id": "000000000000000000000000"
-    },
-    "date_meta": {
-      "created_on": "2021-01-11T04:53:13.585Z",
-      "modified_on": "2021-01-14T10:24:34.485Z"
-    },
-    "archived": false
-  }
-}
-```
-</details>
-
-</details>
-
-
-
-
-
-
-
-
-
----
-
-
-### updateNavigation
-Update a navigation
-
-
-
-
-```kotlin
-platformClient.application("<APPLICATION_ID>").content.updateNavigation(id: id, body: body).safeAwait{ response, error->
-    response?.let{
-      // Use response
-    } ->
-    error?.let{
-      
-    } 
-}
-```
-
-
-
-
-
-| Argument  |  Type  | Required | Description |
-| --------- | -----  | -------- | ----------- | 
-| id | String | yes | ID allotted to the navigation. |  
-| body | [NavigationRequest](#NavigationRequest) | yes | Request body |
-
-
-Use this API to edit the details of an existing navigation.
-
-*Returned Response:*
-
-
-
-
-[NavigationSchema](#NavigationSchema)
-
-Success.
-
-
-
-
-<details>
-<summary><i>&nbsp; Examples:</i></summary>
-
-
-<details>
-<summary><i>&nbsp; default</i></summary>
-
-```json
-{
-  "value": {
-    "_id": "5ffbd9b90ac98678ae0458d7",
-    "application": "000000000000000000000001",
-    "_custom_json": null,
-    "name": "test-nav",
-    "slug": "test-nav",
-    "platform": [
-      "ios",
-      "android"
-    ],
-    "orientation": {
-      "portrait": [
-        "left"
-      ]
-    },
-    "navigation": [
-      {
-        "display": "Home",
-        "image": "https://res.cloudinary.com/dwzm9bysq/image/upload/v1567148153/production/system/icons/mystore-tab_y0dqzt.png",
-        "sort_order": 1,
-        "type": "",
-        "action": {
-          "page": {
-            "url": "/",
-            "type": "home"
-          },
-          "popup": {},
-          "type": "page"
-        },
-        "active": true,
-        "tags": {
-          "type": "array",
-          "items": {
-            "type": "string"
-          }
-        },
-        "acl": [
-          "all"
-        ],
-        "_locale_language": {
-          "hi": {
-            "display": ""
-          },
-          "ar": {
-            "display": ""
-          },
-          "en_us": {
-            "display": ""
-          }
-        },
-        "sub_navigation": [
-          {
-            "display": "Brands",
-            "image": "https://res.cloudinary.com/dwzm9bysq/image/upload/v1567148153/production/system/icons/brands-tab_sfinpk.png",
-            "sort_order": 1,
-            "type": "",
-            "action": {
-              "page": {
-                "url": "/brands/",
-                "type": "brands"
-              },
-              "popup": {},
-              "type": "page"
-            },
-            "active": true,
-            "tags": null,
-            "acl": [
-              "all"
-            ],
-            "_locale_language": {
-              "hi": {
-                "display": ""
-              },
-              "ar": {
-                "display": ""
-              },
-              "en_us": {
-                "display": ""
-              }
-            }
-          }
-        ]
-      },
-      {
-        "display": "Collections",
-        "image": "https://res.cloudinary.com/dwzm9bysq/image/upload/v1567148153/production/system/icons/collections-tab_a0tg9c.png",
-        "sort_order": 2,
-        "type": "",
-        "action": {
-          "page": {
-            "url": "/collections/",
-            "type": "collections"
-          },
-          "popup": {},
-          "type": "page"
-        },
-        "active": true,
-        "tags": null,
-        "acl": [
-          "all"
-        ],
-        "_locale_language": {
-          "hi": {
-            "display": ""
-          },
-          "ar": {
-            "display": ""
-          },
-          "en_us": {
-            "display": ""
-          }
-        },
-        "sub_navigation": [
-          {
-            "display": "Categories",
-            "image": "https://res.cloudinary.com/dwzm9bysq/image/upload/v1567148154/production/system/icons/categories-tab_ss8e0q.png",
-            "sort_order": 1,
-            "type": "",
-            "action": {
-              "page": {
-                "url": "/categories/",
-                "type": "categories"
-              },
-              "popup": {},
-              "type": "page"
-            },
-            "active": true,
-            "tags": null,
-            "acl": [
-              "all"
-            ],
-            "_locale_language": {
-              "hi": {
-                "display": ""
-              },
-              "ar": {
-                "display": ""
-              },
-              "en_us": {
-                "display": ""
-              }
-            }
-          }
-        ]
-      },
-      {
-        "display": "Primary Menu",
-        "image": "",
-        "sort_order": 3,
-        "type": "",
-        "action": {
-          "page": {
-            "type": "home"
-          },
-          "popup": {},
-          "type": "page"
-        },
-        "active": true,
-        "tags": null,
-        "acl": [
-          "all"
-        ],
-        "_locale_language": {
-          "hi": {
-            "display": ""
-          },
-          "ar": {
-            "display": ""
-          },
-          "en_us": {
-            "display": ""
-          }
-        }
-      }
-    ],
-    "created_by": {
-      "id": "000000000000000000000000"
-    },
-    "date_meta": {
-      "created_on": "2021-01-11T04:53:13.585Z",
-      "modified_on": "2021-01-14T10:24:34.485Z"
-    },
-    "archived": false
-  }
-}
-```
-</details>
-
-</details>
-
-
-
-
-
-
-
-
-
----
-
-
-### deleteNavigation
-Delete a navigation
-
-
-
-
-```kotlin
-platformClient.application("<APPLICATION_ID>").content.deleteNavigation(id: id).safeAwait{ response, error->
-    response?.let{
-      // Use response
-    } ->
-    error?.let{
-      
-    } 
-}
-```
-
-
-
-
-
-| Argument  |  Type  | Required | Description |
-| --------- | -----  | -------- | ----------- | 
-| id | String | yes | ID allotted to the navigation. |  
-
-
-
-Use this API to delete an existing navigation.
-
-*Returned Response:*
-
-
-
-
-[NavigationSchema](#NavigationSchema)
-
-Success.
-
-
-
-
-<details>
-<summary><i>&nbsp; Examples:</i></summary>
-
-
-<details>
-<summary><i>&nbsp; default</i></summary>
-
-```json
-{
-  "value": {
-    "_id": "5ffbd9b90ac98678ae0458d7",
-    "application": "000000000000000000000001",
-    "_custom_json": null,
-    "name": "temp",
-    "slug": "temp",
-    "platform": "[web]",
-    "orientation": {
-      "portrait": [
-        "left"
-      ]
-    },
-    "navigation": [
-      {
-        "display": "Home",
-        "image": "https://res.cloudinary.com/dwzm9bysq/image/upload/v1567148153/production/system/icons/mystore-tab_y0dqzt.png",
-        "sort_order": 1,
-        "type": "",
-        "action": {
-          "page": {
-            "url": "/",
-            "type": "home"
-          },
-          "popup": {},
-          "type": "page"
-        },
-        "active": true,
-        "tags": {
-          "type": "array",
-          "items": {
-            "type": "string"
-          }
-        },
-        "acl": [
-          "all"
-        ],
-        "_locale_language": {
-          "hi": {
-            "display": ""
-          },
-          "ar": {
-            "display": ""
-          },
-          "en_us": {
-            "display": ""
-          }
-        },
-        "sub_navigation": [
-          {
-            "display": "Brands",
-            "image": "https://res.cloudinary.com/dwzm9bysq/image/upload/v1567148153/production/system/icons/brands-tab_sfinpk.png",
-            "sort_order": 1,
-            "type": "",
-            "action": {
-              "page": {
-                "url": "/brands/",
-                "type": "brands"
-              },
-              "popup": {},
-              "type": "page"
-            },
-            "active": true,
-            "tags": null,
-            "acl": [
-              "all"
-            ],
-            "_locale_language": {
-              "hi": {
-                "display": ""
-              },
-              "ar": {
-                "display": ""
-              },
-              "en_us": {
-                "display": ""
-              }
-            }
-          }
-        ]
-      },
-      {
-        "display": "Collections",
-        "image": "https://res.cloudinary.com/dwzm9bysq/image/upload/v1567148153/production/system/icons/collections-tab_a0tg9c.png",
-        "sort_order": 2,
-        "type": "",
-        "action": {
-          "page": {
-            "url": "/collections/",
-            "type": "collections"
-          },
-          "popup": {},
-          "type": "page"
-        },
-        "active": true,
-        "tags": null,
-        "acl": [
-          "all"
-        ],
-        "_locale_language": {
-          "hi": {
-            "display": ""
-          },
-          "ar": {
-            "display": ""
-          },
-          "en_us": {
-            "display": ""
-          }
-        },
-        "sub_navigation": [
-          {
-            "display": "Categories",
-            "image": "https://res.cloudinary.com/dwzm9bysq/image/upload/v1567148154/production/system/icons/categories-tab_ss8e0q.png",
-            "sort_order": 1,
-            "type": "",
-            "action": {
-              "page": {
-                "url": "/categories/",
-                "type": "categories"
-              },
-              "popup": {},
-              "type": "page"
-            },
-            "active": true,
-            "tags": null,
-            "acl": [
-              "all"
-            ],
-            "_locale_language": {
-              "hi": {
-                "display": ""
-              },
-              "ar": {
-                "display": ""
-              },
-              "en_us": {
-                "display": ""
-              }
-            }
-          }
-        ]
-      },
-      {
-        "display": "Primary Menu",
-        "image": "",
-        "sort_order": 3,
-        "type": "",
-        "action": {
-          "page": {
-            "type": "home"
-          },
-          "popup": {},
-          "type": "page"
-        },
-        "active": true,
-        "tags": null,
-        "acl": [
-          "all"
-        ],
-        "_locale_language": {
-          "hi": {
-            "display": ""
-          },
-          "ar": {
-            "display": ""
-          },
-          "en_us": {
-            "display": ""
-          }
-        }
-      }
-    ],
-    "created_by": {
-      "id": "000000000000000000000000"
-    },
-    "date_meta": {
-      "created_on": "2021-01-11T04:53:13.585Z",
-      "modified_on": "2021-01-14T10:24:34.485Z"
-    },
-    "archived": true
-  }
-}
-```
-</details>
-
-</details>
-
-
-
-
-
-
-
-
-
----
-
-
-### getPageMeta
-Get page meta
-
-
-
-
-```kotlin
-platformClient.application("<APPLICATION_ID>").content.getPageMeta().safeAwait{ response, error->
-    response?.let{
-      // Use response
-    } ->
-    error?.let{
-      
-    } 
-}
-```
-
-
-
-
-
-
-Use this API to get the meta of custom pages (blog, page) and default system pages (e.g. home/brand/category/collection).
-
-*Returned Response:*
-
-
-
-
-[PageMetaSchema](#PageMetaSchema)
-
-Success. Refer `PageMetaSchema` for more details.
-
-
-
-
-<details>
-<summary><i>&nbsp; Examples:</i></summary>
-
-
-<details>
-<summary><i>&nbsp; default</i></summary>
-
-```json
-{
-  "value": {
-    "application_id": "000000000000000000000001",
-    "system_pages": [
-      {
-        "display": "Home",
-        "action": {
-          "page": {
-            "type": "home"
-          },
-          "type": "page"
-        },
-        "page_type": "home"
-      },
-      {
-        "display": "Brands",
-        "action": {
-          "page": {
-            "type": "brands"
-          },
-          "type": "page"
-        },
-        "page_type": "brands"
-      },
-      {
-        "display": "Collections",
-        "action": {
-          "page": {
-            "type": "collections"
-          },
-          "type": "page"
-        },
-        "page_type": "collections"
-      },
-      {
-        "display": "Categories",
-        "action": {
-          "page": {
-            "type": "categories"
-          },
-          "type": "page"
-        },
-        "page_type": "categories"
-      }
-    ],
-    "custom_pages": [
-      {
-        "display": "my first page",
-        "slug": "first_page"
-      },
-      {
-        "display": "my second page",
-        "slug": "second_page"
-      }
-    ]
-  }
-}
-```
-</details>
-
-</details>
-
-
-
-
-
-
-
-
-
----
-
-
-### getPageSpec
-Get page spec
-
-
-
-
-```kotlin
-platformClient.application("<APPLICATION_ID>").content.getPageSpec().safeAwait{ response, error->
-    response?.let{
-      // Use response
-    } ->
-    error?.let{
-      
-    } 
-}
-```
-
-
-
-
-
-
-Use this API to get the specifications of a page, such as page type, display name, params and query.
-
-*Returned Response:*
-
-
-
-
-[PageSpec](#PageSpec)
-
-Success. Refer `PageSpec` for more details.
-
-
-
-
-<details>
-<summary><i>&nbsp; Examples:</i></summary>
-
-
-<details>
-<summary><i>&nbsp; default</i></summary>
-
-```json
-{
-  "value": {
-    "specifications": [
-      {
-        "page_type": "home",
-        "display_name": "Home",
-        "params": [],
-        "query": []
-      },
-      {
-        "page_type": "collections",
-        "display_name": "Collections",
-        "params": [],
-        "query": []
-      },
-      {
-        "page_type": "collection",
-        "display_name": "Collection",
-        "params": [
-          {
-            "key": "slug",
-            "required": true
-          }
-        ],
-        "query": []
-      }
-    ]
-  }
-}
-```
-</details>
-
-</details>
-
-
-
-
-
-
-
-
-
----
-
-
-### createPagePreview
-Create a page preview
-
-
-
-
-```kotlin
-platformClient.application("<APPLICATION_ID>").content.createPagePreview(body: body).safeAwait{ response, error->
-    response?.let{
-      // Use response
-    } ->
-    error?.let{
-      
-    } 
-}
-```
-
-
-
-
-
-| Argument  |  Type  | Required | Description |
-| --------- | -----  | -------- | ----------- |
-| body | [PageRequest](#PageRequest) | yes | Request body |
-
-
-Use this API to create a page preview to check the appearance of a custom page.
-
-*Returned Response:*
-
-
-
-
-[PageSchema](#PageSchema)
-
-Success. Refer `PageSchema` for more details.
-
-
-
-
-<details>
-<summary><i>&nbsp; Examples:</i></summary>
-
-
-<details>
-<summary><i>&nbsp; default</i></summary>
-
-```json
-{
-  "value": {
-    "date_meta": {
-      "created_on": "2021-03-16T08:24:19.197Z",
-      "modified_on": "2021-03-16T08:24:19.197Z"
-    },
-    "tags": [
-      "my first page"
-    ],
-    "published": true,
-    "component_ids": [],
-    "archived": false,
-    "_id": "60506dcad18cb33946026862",
-    "title": "my first page",
-    "slug": "1st_page",
-    "feature_image": {
-      "secure_url": "https://google.com/some-image"
-    },
-    "content": [
-      {
-        "type": "html",
-        "value": "<div id=\"icfm\">Emtpy Page. Create Page here.</div><div id=\"izu5\" class=\"aa\">hello there!<div id=\"izzl\">how are you doing</div><div><br/></div></div><img id=\"ibgj\" src=\"https://hdn-1.addsale.com/x0/company/52/applications/614957b7e7a0ccc371e96094/pages/pictures/free-content/original/-zLi_CuyM-apple.jpeg\"/>"
-      },
-      {
-        "type": "css",
-        "value": "* { box-sizing: border-box; } body {margin: 0;}*{box-sizing:border-box;}body{margin-top:0px;margin-right:0px;margin-bottom:0px;margin-left:0px;}*{box-sizing:border-box;}body{margin-top:0px;margin-right:0px;margin-bottom:0px;margin-left:0px;}#icfm{text-align:center;padding-top:30px;padding-right:30px;padding-bottom:30px;padding-left:30px;}#izu5{padding-top:10px;padding-right:10px;padding-bottom:10px;padding-left:10px;}#ibgj{color:black;}#izzl{float:none;display:flex;}.aa{float:right;}"
-      },
-      {
-        "type": "js",
-        "value": ""
-      }
-    ],
-    "content_path": "https://hdn-1.fynd.com/company/1526/applications/61012f6a9250ccd1b9ef8a1d/pages/content/page_slug.html",
-    "platform": "web",
-    "description": "hey this is my first page",
-    "visibility": {
-      "test": true
-    },
-    "_schedule": {
-      "start": "2021-04-23T23:50:00.000Z",
-      "next_schedule": [
-        {}
-      ]
-    },
-    "seo": {
-      "title": "my first page",
-      "description": "hey this is my first page",
-      "image": {
-        "url": ""
-      }
-    },
-    "type": "rawhtml",
-    "application": "000000000000000000000001",
-    "orientation": "portrait",
-    "page_meta": []
-  }
-}
-```
-</details>
-
-</details>
-
-
-
-
-
-
-
-
-
----
-
-
-### updatePagePreview
-Change the publish status of a page
-
-
-
-
-```kotlin
-platformClient.application("<APPLICATION_ID>").content.updatePagePreview(slug: slug, body: body).safeAwait{ response, error->
-    response?.let{
-      // Use response
-    } ->
-    error?.let{
-      
-    } 
-}
-```
-
-
-
-
-
-| Argument  |  Type  | Required | Description |
-| --------- | -----  | -------- | ----------- | 
-| slug | String | yes | A short, human-readable, URL-friendly identifier of a page. You can get slug value of a page from `getPages` API. |  
-| body | [PagePublishRequest](#PagePublishRequest) | yes | Request body |
-
-
-Use this API to change the publish status of an existing page. Allows you to publish and unpublish the page.
-
-*Returned Response:*
-
-
-
-
-[PageSchema](#PageSchema)
-
-Success.
-
-
-
-
-<details>
-<summary><i>&nbsp; Examples:</i></summary>
-
-
-<details>
-<summary><i>&nbsp; default</i></summary>
-
-```json
-{
-  "value": {
-    "date_meta": {
-      "created_on": "2021-03-16T08:24:19.197Z",
-      "modified_on": "2021-03-16T08:24:19.197Z"
-    },
-    "tags": [
-      "my first page"
-    ],
-    "published": true,
-    "component_ids": [],
-    "archived": false,
-    "_id": "60506dcad18cb33946026862",
-    "title": "my first page",
-    "slug": "1st_page",
-    "feature_image": {
-      "secure_url": "https://google.com/some-image"
-    },
-    "content": [
-      {
-        "type": "html",
-        "value": "<div id=\"icfm\">Emtpy Page. Create Page here.</div><div id=\"izu5\" class=\"aa\">hello there!<div id=\"izzl\">how are you doing</div><div><br/></div></div><img id=\"ibgj\" src=\"https://hdn-1.addsale.com/x0/company/52/applications/614957b7e7a0ccc371e96094/pages/pictures/free-content/original/-zLi_CuyM-apple.jpeg\"/>"
-      },
-      {
-        "type": "css",
-        "value": "* { box-sizing: border-box; } body {margin: 0;}*{box-sizing:border-box;}body{margin-top:0px;margin-right:0px;margin-bottom:0px;margin-left:0px;}*{box-sizing:border-box;}body{margin-top:0px;margin-right:0px;margin-bottom:0px;margin-left:0px;}#icfm{text-align:center;padding-top:30px;padding-right:30px;padding-bottom:30px;padding-left:30px;}#izu5{padding-top:10px;padding-right:10px;padding-bottom:10px;padding-left:10px;}#ibgj{color:black;}#izzl{float:none;display:flex;}.aa{float:right;}"
-      },
-      {
-        "type": "js",
-        "value": ""
-      }
-    ],
-    "content_path": "https://hdn-1.fynd.com/company/1526/applications/61012f6a9250ccd1b9ef8a1d/pages/content/page_slug.html",
-    "platform": "web",
-    "description": "hey this is my first page",
-    "visibility": {
-      "test": true
-    },
-    "_schedule": {
-      "start": "2021-04-23T23:50:00.000Z",
-      "next_schedule": [
-        {}
-      ]
-    },
-    "seo": {
-      "title": "my first page",
-      "description": "hey this is my first page",
-      "image": {
-        "url": ""
-      }
-    },
-    "type": "rawhtml",
-    "application": "000000000000000000000001",
-    "orientation": "portrait",
-    "page_meta": []
-  }
-}
-```
-</details>
-
-</details>
-
-
-
-
-
-
-
-
-
----
-
-
-### deletePage
-Delete a page
-
-
-
-
-```kotlin
-platformClient.application("<APPLICATION_ID>").content.deletePage(id: id).safeAwait{ response, error->
-    response?.let{
-      // Use response
-    } ->
-    error?.let{
-      
-    } 
-}
-```
-
-
-
-
-
-| Argument  |  Type  | Required | Description |
-| --------- | -----  | -------- | ----------- | 
-| id | String | yes | ID allotted to the page. |  
-
-
-
-Use this API to delete an existing page.
-
-*Returned Response:*
-
-
-
-
-[PageSchema](#PageSchema)
-
-Success.
-
-
-
-
-<details>
-<summary><i>&nbsp; Examples:</i></summary>
-
-
-<details>
-<summary><i>&nbsp; default</i></summary>
-
-```json
-{
-  "value": {
-    "date_meta": {
-      "created_on": "2021-03-16T08:24:19.197Z",
-      "modified_on": "2021-03-16T08:24:19.197Z"
-    },
-    "tags": [
-      "my first page"
-    ],
-    "published": true,
-    "component_ids": [],
-    "archived": false,
-    "_id": "60506dcad18cb33946026862",
-    "title": "my first page",
-    "slug": "1st_page",
-    "feature_image": {
-      "secure_url": "https://google.com/some-image"
-    },
-    "content": [
-      {
-        "type": "html",
-        "value": "<div id=\"icfm\">Emtpy Page. Create Page here.</div><div id=\"izu5\" class=\"aa\">hello there!<div id=\"izzl\">how are you doing</div><div><br/></div></div><img id=\"ibgj\" src=\"https://hdn-1.addsale.com/x0/company/52/applications/614957b7e7a0ccc371e96094/pages/pictures/free-content/original/-zLi_CuyM-apple.jpeg\"/>"
-      },
-      {
-        "type": "css",
-        "value": "* { box-sizing: border-box; } body {margin: 0;}*{box-sizing:border-box;}body{margin-top:0px;margin-right:0px;margin-bottom:0px;margin-left:0px;}*{box-sizing:border-box;}body{margin-top:0px;margin-right:0px;margin-bottom:0px;margin-left:0px;}#icfm{text-align:center;padding-top:30px;padding-right:30px;padding-bottom:30px;padding-left:30px;}#izu5{padding-top:10px;padding-right:10px;padding-bottom:10px;padding-left:10px;}#ibgj{color:black;}#izzl{float:none;display:flex;}.aa{float:right;}"
-      },
-      {
-        "type": "js",
-        "value": ""
-      }
-    ],
-    "content_path": "https://hdn-1.fynd.com/company/1526/applications/61012f6a9250ccd1b9ef8a1d/pages/content/page_slug.html",
-    "platform": "web",
-    "description": "hey this is my first page",
-    "visibility": {
-      "test": true
-    },
-    "_schedule": {
-      "start": "2021-04-23T23:50:00.000Z",
-      "next_schedule": [
-        {}
-      ]
-    },
-    "seo": {
-      "title": "my first page",
-      "description": "hey this is my first page",
-      "image": {
-        "url": ""
-      }
-    },
-    "type": "rawhtml",
-    "application": "000000000000000000000001",
-    "orientation": "portrait",
-    "page_meta": []
-  }
-}
-```
-</details>
-
-</details>
-
-
-
-
-
-
-
-
-
----
-
-
-### addPathRedirectionRules
-Save path based redirection rules
-
-
-
-
-```kotlin
-platformClient.application("<APPLICATION_ID>").content.addPathRedirectionRules(body: body).safeAwait{ response, error->
-    response?.let{
-      // Use response
-    } ->
-    error?.let{
-      
-    } 
-}
-```
-
-
-
-
-
-| Argument  |  Type  | Required | Description |
-| --------- | -----  | -------- | ----------- |
-| body | [PathMappingSchema](#PathMappingSchema) | yes | Request body |
-
-
-Use this API to add redirection rules
-
-*Returned Response:*
-
-
-
-
-[PathMappingSchema](#PathMappingSchema)
-
-Success. Refer `PathMappingSchema` for more details.
-
-
-
-
-<details>
-<summary><i>&nbsp; Examples:</i></summary>
-
-
-<details>
-<summary><i>&nbsp; Success</i></summary>
-
-```json
-{
-  "value": {
-    "_id": "615188e9db1e444cb0f40837",
-    "application": "000000000000000000000002",
-    "redirect_from": "/from",
-    "redirect_to": "/to",
-    "createdAt": "2021-09-27T09:03:37.053Z",
-    "updatedAt": "2021-09-27T09:09:25.587Z"
-  }
-}
-```
-</details>
-
-</details>
-
-
-
-
-
-
-
-
-
----
-
-
-### getPathRedirectionRules
-Get path based redirection rules
-
-
-
-
-```kotlin
-platformClient.application("<APPLICATION_ID>").content.getPathRedirectionRules(pageSize: pageSize, pageNo: pageNo).safeAwait{ response, error->
-    response?.let{
-      // Use response
-    } ->
-    error?.let{
-      
-    } 
-}
-```
-
-
-
-
-
-| Argument  |  Type  | Required | Description |
-| --------- | -----  | -------- | ----------- | 
-| pageSize | Int? | no | The number of items to retrieve in each page. Default value is 5.  |   
-| pageNo | Int? | no | The page number to navigate through the given set of results. Default value is 1. |  
-
-
-
-Use this API to get path based redirection rules.
-
-*Returned Response:*
-
-
-
-
-[PathMappingSchema](#PathMappingSchema)
-
-Success. Refer `PathMappingSchema` for more details.
-
-
-
-
-<details>
-<summary><i>&nbsp; Examples:</i></summary>
-
-
-<details>
-<summary><i>&nbsp; Success</i></summary>
-
-```json
-{
-  "value": {
-    "_id": "615188e9db1e444cb0f40837",
-    "application": "000000000000000000000002",
-    "redirect_from": "/from",
-    "redirect_to": "/to",
-    "createdAt": "2021-09-27T09:03:37.053Z",
-    "updatedAt": "2021-09-27T09:09:25.587Z"
-  }
-}
-```
-</details>
-
-</details>
-
-
-
-
-
-
-
-
-
----
-
-
-### getPathRedirectionRule
-Get path based redirection rule
-
-
-
-
-```kotlin
-platformClient.application("<APPLICATION_ID>").content.getPathRedirectionRule(pathId: pathId).safeAwait{ response, error->
-    response?.let{
-      // Use response
-    } ->
-    error?.let{
-      
-    } 
-}
-```
-
-
-
-
-
-| Argument  |  Type  | Required | Description |
-| --------- | -----  | -------- | ----------- | 
-| pathId | String | yes | ID allotted to the path redirection rule. |  
-
-
-
-Use this API to get path based redirection rule.
-
-*Returned Response:*
-
-
-
-
-[PathMappingSchema](#PathMappingSchema)
-
-Success. Refer `PathMappingSchema` for more details.
-
-
-
-
-<details>
-<summary><i>&nbsp; Examples:</i></summary>
-
-
-<details>
-<summary><i>&nbsp; Success</i></summary>
-
-```json
-{
-  "value": {
-    "_id": "615188e9db1e444cb0f40837",
-    "application": "000000000000000000000002",
-    "redirect_from": "/from",
-    "redirect_to": "/to",
-    "createdAt": "2021-09-27T09:03:37.053Z",
-    "updatedAt": "2021-09-27T09:09:25.587Z"
-  }
-}
-```
-</details>
-
-</details>
-
-
-
-
-
-
-
-
-
----
-
-
-### updatePathRedirectionRules
-Update path based redirection rules
-
-
-
-
-```kotlin
-platformClient.application("<APPLICATION_ID>").content.updatePathRedirectionRules(pathId: pathId, body: body).safeAwait{ response, error->
-    response?.let{
-      // Use response
-    } ->
-    error?.let{
-      
-    } 
-}
-```
-
-
-
-
-
-| Argument  |  Type  | Required | Description |
-| --------- | -----  | -------- | ----------- | 
-| pathId | String | yes | ID allotted to the path redirection rule. |  
-| body | [PathMappingSchema](#PathMappingSchema) | yes | Request body |
-
-
-Use this API to update redirection rules
-
-*Returned Response:*
-
-
-
-
-[PathMappingSchema](#PathMappingSchema)
-
-Success. Refer `PathMappingSchema` for more details.
-
-
-
-
-<details>
-<summary><i>&nbsp; Examples:</i></summary>
-
-
-<details>
-<summary><i>&nbsp; Success</i></summary>
-
-```json
-{
-  "value": {
-    "_id": "615188e9db1e444cb0f40837",
-    "application": "000000000000000000000002",
-    "redirect_from": "/from",
-    "redirect_to": "/to",
-    "createdAt": "2021-09-27T09:03:37.053Z",
-    "updatedAt": "2021-09-27T09:09:25.587Z"
-  }
-}
-```
-</details>
-
-</details>
-
-
-
-
-
-
-
-
-
----
-
-
-### deletePathRedirectionRules
-Delete path based redirection rules
-
-
-
-
-```kotlin
-platformClient.application("<APPLICATION_ID>").content.deletePathRedirectionRules(pathId: pathId).safeAwait{ response, error->
-    response?.let{
-      // Use response
-    } ->
-    error?.let{
-      
-    } 
-}
-```
-
-
-
-
-
-| Argument  |  Type  | Required | Description |
-| --------- | -----  | -------- | ----------- | 
-| pathId | String | yes | ID allotted to the path redirection rule. |  
-
-
-
-Use this API to delete redirection rules
-
-*Returned Response:*
-
-
-
-
-[HashMap<String,Any>](#HashMap<String,Any>)
-
-Success.
-
-
-
-
-<details>
-<summary><i>&nbsp; Example:</i></summary>
-
-```json
-{
-  "message": "Redirection deleted successfully"
-}
-```
-</details>
-
-
-
-
-
-
-
-
-
----
-
-
-### getSEOConfiguration
-Get SEO configuration of an application
-
-
-
-
-```kotlin
-platformClient.application("<APPLICATION_ID>").content.getSEOConfiguration().safeAwait{ response, error->
-    response?.let{
-      // Use response
-    } ->
-    error?.let{
-      
-    } 
-}
-```
-
-
-
-
-
-
-Use this API to know how the SEO is configured in the application. This includes the sitemap, robot.txt, custom meta tags, etc.
-
-*Returned Response:*
-
-
-
-
-[SeoComponent](#SeoComponent)
-
-Success. Refer `SeoComponent` for more details.
-
-
-
-
-<details>
-<summary><i>&nbsp; Examples:</i></summary>
-
-
-<details>
-<summary><i>&nbsp; default</i></summary>
-
-```json
-{
-  "value": {
-    "seo": {
-      "details": {
-        "title": "Zyosa Zyosa",
-        "description": "",
-        "image_url": ""
-      },
-      "robots_txt": "User-agent: * \nAllow: / \nsancisciasn xwsaixjowqnxwsiwjs",
-      "sitemap_enabled": false,
-      "cannonical_enabled": false,
-      "_id": "6009819ee463ad40de397eb2",
-      "app": "000000000000000000000001",
-      "created_at": "2021-01-21T13:29:02.543Z",
-      "updated_at": "2021-02-05T06:36:16.048Z",
-      "__v": 11,
-      "custom_meta_tags": [
-        {
-          "name": "test 0000",
-          "content": "<meta name=\"test\" content=\"0000 cn dcje dcj rejre cjrenurenc \">",
-          "_id": "6017c301bde3c21dbb13b284"
-        },
-        {
-          "name": "cwdcdc",
-          "content": "<meta content=\"wdcewdewc\">",
-          "_id": "6017c675bde3c22cfb13b290"
-        }
-      ]
-    }
-  }
-}
-```
-</details>
-
-</details>
-
-
-
-
-
-
-
-
-
----
-
-
-### updateSEOConfiguration
-Update SEO of application
-
-
-
-
-```kotlin
-platformClient.application("<APPLICATION_ID>").content.updateSEOConfiguration(body: body).safeAwait{ response, error->
-    response?.let{
-      // Use response
-    } ->
-    error?.let{
-      
-    } 
-}
-```
-
-
-
-
-
-| Argument  |  Type  | Required | Description |
-| --------- | -----  | -------- | ----------- |
-| body | [SeoComponent](#SeoComponent) | yes | Request body |
-
-
-Use this API to edit the SEO details of an application. This includes the sitemap, robot.txt, custom meta tags, etc.
-
-*Returned Response:*
-
-
-
-
-[SeoSchema](#SeoSchema)
-
-Success. Refer `SeoSchema` for more details.
-
-
-
-
-<details>
-<summary><i>&nbsp; Examples:</i></summary>
-
-
-<details>
-<summary><i>&nbsp; default</i></summary>
-
-```json
-{
-  "value": {
-    "details": {
-      "title": "Zyosa Zyosa",
-      "description": "",
-      "image_url": ""
-    },
-    "robots_txt": "User-agent: * \nAllow: / \nsancisciasn xwsaixjowqnxwsiwjs",
-    "sitemap_enabled": false,
-    "_id": "6009819ee463ad40de397eb2",
-    "app": "000000000000000000000001",
-    "created_at": "2021-01-21T13:29:02.543Z",
-    "updated_at": "2021-02-05T06:36:16.048Z",
-    "__v": 11,
-    "custom_meta_tags": [
-      {
-        "name": "test 0000",
-        "content": "<meta name=\"test\" content=\"0000 cn dcje dcj rejre cjrenurenc \">",
-        "_id": "6017c301bde3c21dbb13b284"
-      },
-      {
-        "name": "cwdcdc",
-        "content": "<meta content=\"wdcewdewc\">",
-        "_id": "6017c675bde3c22cfb13b290"
-      }
-    ]
-  }
-}
-```
-</details>
-
 </details>
 
 
@@ -7165,1137 +2913,6 @@ Success.
     ],
     "application": "5cd3db5e9d692cfe5302a7bb",
     "active": true
-  }
-}
-```
-</details>
-
-</details>
-
-
-
-
-
-
-
-
-
----
-
-
-### getSupportInformation
-Get support information
-
-
-
-
-```kotlin
-platformClient.application("<APPLICATION_ID>").content.getSupportInformation().safeAwait{ response, error->
-    response?.let{
-      // Use response
-    } ->
-    error?.let{
-      
-    } 
-}
-```
-
-
-
-
-
-
-Use this API to get the contact details for customer support, including emails and phone numbers.
-
-*Returned Response:*
-
-
-
-
-[Support](#Support)
-
-Success. Refer `Support` for more details.
-
-
-
-
-<details>
-<summary><i>&nbsp; Examples:</i></summary>
-
-
-<details>
-<summary><i>&nbsp; default</i></summary>
-
-```json
-{
-  "value": {
-    "_id": "5ea4980b87a7944094216193",
-    "config_type": "app",
-    "application": "000000000000000000000001",
-    "created_at": "2020-04-25T20:05:31.300Z",
-    "updated_at": "2020-12-04T10:48:12.194Z",
-    "contact": {
-      "phone": {
-        "active": true,
-        "phone": [
-          {
-            "key": "Jane Doe",
-            "code": "91",
-            "number": "9988776655"
-          }
-        ]
-      },
-      "email": {
-        "active": false,
-        "email": []
-      }
-    },
-    "created": true
-  }
-}
-```
-</details>
-
-</details>
-
-
-
-
-
-
-
-
-
----
-
-
-### updateSupportInformation
-Update the support data of an application
-
-
-
-
-```kotlin
-platformClient.application("<APPLICATION_ID>").content.updateSupportInformation(body: body).safeAwait{ response, error->
-    response?.let{
-      // Use response
-    } ->
-    error?.let{
-      
-    } 
-}
-```
-
-
-
-
-
-| Argument  |  Type  | Required | Description |
-| --------- | -----  | -------- | ----------- |
-| body | [Support](#Support) | yes | Request body |
-
-
-Use this API to edit the existing contact details for customer support, including emails and phone numbers.
-
-*Returned Response:*
-
-
-
-
-[Support](#Support)
-
-Success. Refer `Support` for more details.
-
-
-
-
-<details>
-<summary><i>&nbsp; Examples:</i></summary>
-
-
-<details>
-<summary><i>&nbsp; default</i></summary>
-
-```json
-{
-  "value": {
-    "_id": "5ea4980b87a7944094216193",
-    "config_type": "app",
-    "application": "000000000000000000000001",
-    "created_at": "2020-04-25T20:05:31.300Z",
-    "updated_at": "2020-12-04T10:48:12.194Z",
-    "contact": {
-      "phone": {
-        "active": true,
-        "phone": [
-          {
-            "key": "Jane Doe",
-            "code": "91",
-            "number": "9988776655"
-          }
-        ]
-      },
-      "email": {
-        "active": false,
-        "email": []
-      }
-    },
-    "created": true
-  }
-}
-```
-</details>
-
-</details>
-
-
-
-
-
-
-
-
-
----
-
-
-### updateInjectableTag
-Update the exisitng tags for an application by replacing with provided tags
-
-
-
-
-```kotlin
-platformClient.application("<APPLICATION_ID>").content.updateInjectableTag(body: body).safeAwait{ response, error->
-    response?.let{
-      // Use response
-    } ->
-    error?.let{
-      
-    } 
-}
-```
-
-
-
-
-
-| Argument  |  Type  | Required | Description |
-| --------- | -----  | -------- | ----------- |
-| body | [CreateTagRequestSchema](#CreateTagRequestSchema) | yes | Request body |
-
-
-Use this API to edit and override all existing tags. All existing tags will be replaced by the new tags provided in body. 
-
-*Returned Response:*
-
-
-
-
-[TagsSchema](#TagsSchema)
-
-Success.
-
-
-
-
-<details>
-<summary><i>&nbsp; Example:</i></summary>
-
-```json
-{
-  "_id": "601f77e7aa61066feda44487",
-  "tags": [
-    {
-      "name": "Test",
-      "sub_type": "external",
-      "_id": "601f77e7aa61066feda44488",
-      "type": "js",
-      "url": "youtube.com/watch?v=AaxFIY-cWH0&list=PL3O3jhFJEElBHFbs6XsOqZAWZLtlEkZTw&index=31",
-      "position": "head"
-    },
-    {
-      "name": "Test 2",
-      "sub_type": "external",
-      "_id": "601f77e7aa61066feda44489",
-      "type": "js",
-      "url": "youtube.com/watch?v=AaxFIY-cWH0&list=PL3O3jhFJEElBHFbs6XsOqZAWZLtlEkZTw&index=31",
-      "position": "head"
-    }
-  ],
-  "application": "000000000000000000000001",
-  "__v": 0
-}
-```
-</details>
-
-
-
-
-
-
-
-
-
----
-
-
-### getInjectableTags
-Get all the tags in an application
-
-
-
-
-```kotlin
-platformClient.application("<APPLICATION_ID>").content.getInjectableTags(all: all).safeAwait{ response, error->
-    response?.let{
-      // Use response
-    } ->
-    error?.let{
-      
-    } 
-}
-```
-
-
-
-
-
-| Argument  |  Type  | Required | Description |
-| --------- | -----  | -------- | ----------- | 
-| all | Boolean? | no | Get all tags irrespective of the creator of tags |  
-
-
-
-Use this API to get the CSS and JS injected in the application in the form of tags.
-
-*Returned Response:*
-
-
-
-
-[TagsSchema](#TagsSchema)
-
-Success. Refer `TagsSchema` for more details.
-
-
-
-
-<details>
-<summary><i>&nbsp; Example:</i></summary>
-
-```json
-{
-  "_id": "601f77e7aa61066feda44487",
-  "tags": [
-    {
-      "name": "Test",
-      "sub_type": "external",
-      "_id": "601f77e7aa61066feda44488",
-      "type": "js",
-      "url": "youtube.com/watch?v=AaxFIY-cWH0&list=PL3O3jhFJEElBHFbs6XsOqZAWZLtlEkZTw&index=31",
-      "position": "head"
-    },
-    {
-      "name": "Test 2",
-      "sub_type": "external",
-      "_id": "601f77e7aa61066feda44489",
-      "type": "js",
-      "url": "youtube.com/watch?v=AaxFIY-cWH0&list=PL3O3jhFJEElBHFbs6XsOqZAWZLtlEkZTw&index=31",
-      "position": "head"
-    }
-  ],
-  "application": "000000000000000000000001",
-  "__v": 0
-}
-```
-</details>
-
-
-
-
-
-
-
-
-
----
-
-
-### addInjectableTag
-Add a tag
-
-
-
-
-```kotlin
-platformClient.application("<APPLICATION_ID>").content.addInjectableTag(body: body).safeAwait{ response, error->
-    response?.let{
-      // Use response
-    } ->
-    error?.let{
-      
-    } 
-}
-```
-
-
-
-
-
-| Argument  |  Type  | Required | Description |
-| --------- | -----  | -------- | ----------- |
-| body | [CreateTagRequestSchema](#CreateTagRequestSchema) | yes | Request body |
-
-
-CSS and JS can be injected in the application (website) with the help of tags. Use this API to create such tags by entering the tag name, tag type (css/js), url and position of the tag.
-
-*Returned Response:*
-
-
-
-
-[TagsSchema](#TagsSchema)
-
-Success.
-
-
-
-
-<details>
-<summary><i>&nbsp; Example:</i></summary>
-
-```json
-{
-  "_id": "601f77e7aa61066feda44487",
-  "tags": [
-    {
-      "name": "Test",
-      "sub_type": "external",
-      "_id": "601f77e7aa61066feda44488",
-      "type": "js",
-      "url": "youtube.com/watch?v=AaxFIY-cWH0&list=PL3O3jhFJEElBHFbs6XsOqZAWZLtlEkZTw&index=31",
-      "position": "head"
-    }
-  ],
-  "application": "000000000000000000000001",
-  "__v": 0
-}
-```
-</details>
-
-
-
-
-
-
-
-
-
----
-
-
-### removeInjectableTag
-Remove a tag
-
-
-
-
-```kotlin
-platformClient.application("<APPLICATION_ID>").content.removeInjectableTag(body: body).safeAwait{ response, error->
-    response?.let{
-      // Use response
-    } ->
-    error?.let{
-      
-    } 
-}
-```
-
-
-
-
-
-| Argument  |  Type  | Required | Description |
-| --------- | -----  | -------- | ----------- |
-| body | [RemoveHandpickedSchema](#RemoveHandpickedSchema) | yes | Request body |
-
-
-Use this API to delete an existing tag.
-
-*Returned Response:*
-
-
-
-
-[TagDeleteSuccessResponse](#TagDeleteSuccessResponse)
-
-Success.
-
-
-
-
-<details>
-<summary><i>&nbsp; Example:</i></summary>
-
-```json
-{
-  "success": true
-}
-```
-</details>
-
-
-
-
-
-
-
-
-
----
-
-
-### editInjectableTag
-Edit a tag by id
-
-
-
-
-```kotlin
-platformClient.application("<APPLICATION_ID>").content.editInjectableTag(tagId: tagId, body: body).safeAwait{ response, error->
-    response?.let{
-      // Use response
-    } ->
-    error?.let{
-      
-    } 
-}
-```
-
-
-
-
-
-| Argument  |  Type  | Required | Description |
-| --------- | -----  | -------- | ----------- | 
-| tagId | String | yes | ID allotted to the tag. |  
-| body | [UpdateHandpickedSchema](#UpdateHandpickedSchema) | yes | Request body |
-
-
-Use this API to edit the details of an existing tag by its ID.
-
-*Returned Response:*
-
-
-
-
-[TagsSchema](#TagsSchema)
-
-Success.
-
-
-
-
-<details>
-<summary><i>&nbsp; Example:</i></summary>
-
-```json
-{
-  "_id": "602671b3c0bac99158b10874",
-  "application": "000000000000000000000001",
-  "tags": [
-    {
-      "_id": "601f77e7aa61066feda44488",
-      "name": "floating whatsapp",
-      "sub_type": "inline",
-      "type": "css",
-      "position": "head",
-      "content": ".float{\n\tposition:fixed;\n\twidth:60px;\n\theight:60px;\n\tbottom:40px;\n\tright:40px;\n\tbackground-color:#25d366;\n\tcolor:#FFF;\n\tborder-radius:50px;\n\ttext-align:center;\n  font-size:30px;\n\tbox-shadow: 2px 2px 3px #999;\n  z-index:100;\n}\n\n.my-float{\n\tmargin-top:16px;\n}"
-    }
-  ],
-  "__v": 1
-}
-```
-</details>
-
-
-
-
-
-
-
-
-
----
-
-
-### getBlogBySlug
-Get blog by slug
-
-
-
-
-```kotlin
-platformClient.application("<APPLICATION_ID>").content.getBlogBySlug(slug: slug).safeAwait{ response, error->
-    response?.let{
-      // Use response
-    } ->
-    error?.let{
-      
-    } 
-}
-```
-
-
-
-
-
-| Argument  |  Type  | Required | Description |
-| --------- | -----  | -------- | ----------- | 
-| slug | String | yes | A short, human-readable, URL-friendly identifier of a blog page. You can get slug value of a blog from `getBlogs` API. |  
-
-
-
-Use this API to retrieve the components of a blog, such as title, slug, feature image, content, schedule, publish status, author, etc.
-
-*Returned Response:*
-
-
-
-
-[BlogSchema](#BlogSchema)
-
-Success. Returns a a JSON object with components. Refer `BlogSchema` for more details.
-
-
-
-
-<details>
-<summary><i>&nbsp; Examples:</i></summary>
-
-
-<details>
-<summary><i>&nbsp; default</i></summary>
-
-```json
-{
-  "value": {
-    "_id": "5eaa451a21a4dd75f0fd96c5",
-    "application": "5d3ebd89f540e7506b8b3548",
-    "tags": [
-      "abhinav"
-    ],
-    "title": "my first blog",
-    "slug": "1st_blog",
-    "feature_image": {
-      "secure_url": "https://google.com"
-    },
-    "content": [
-      {
-        "type": "html",
-        "value": "<p>hey there!</p>"
-      }
-    ],
-    "_schedule": {
-      "cron": "* 10 * * *",
-      "start": "2021-03-31T23:30:00.000Z",
-      "end": "2021-03-31T23:55:00.000Z",
-      "duration": 1000,
-      "next_schedule": [
-        {
-          "start": "2021-03-17T04:30:00.000Z",
-          "end": "2021-03-17T04:46:40.000Z"
-        }
-      ]
-    },
-    "published": true,
-    "author": {
-      "name": "Fynd App"
-    },
-    "date_meta": {
-      "created_on": "2021-03-14T06:49:03.945Z",
-      "modified_on": "2021-03-14T06:49:03.945Z"
-    }
-  }
-}
-```
-</details>
-
-</details>
-
-
-
-
-
-
-
-
-
----
-
-
-### createPage
-Create a page
-
-
-
-
-```kotlin
-platformClient.application("<APPLICATION_ID>").content.createPage(body: body).safeAwait{ response, error->
-    response?.let{
-      // Use response
-    } ->
-    error?.let{
-      
-    } 
-}
-```
-
-
-
-
-
-| Argument  |  Type  | Required | Description |
-| --------- | -----  | -------- | ----------- |
-| body | [PageRequest](#PageRequest) | yes | Request body |
-
-
-Use this API to create a custom page using a title, seo, publish status, feature image, tags, meta, etc.
-
-*Returned Response:*
-
-
-
-
-[PageSchema](#PageSchema)
-
-Success. Refer `PageSchema` for more details.
-
-
-
-
-<details>
-<summary><i>&nbsp; Examples:</i></summary>
-
-
-<details>
-<summary><i>&nbsp; default</i></summary>
-
-```json
-{
-  "value": {
-    "date_meta": {
-      "created_on": "2021-03-16T08:24:19.197Z",
-      "modified_on": "2021-03-16T08:24:19.197Z"
-    },
-    "tags": [
-      "my first page"
-    ],
-    "published": true,
-    "component_ids": [],
-    "archived": false,
-    "_id": "60506dcad18cb33946026862",
-    "title": "my first page",
-    "slug": "1st_page",
-    "feature_image": {
-      "secure_url": "https://google.com/some-image"
-    },
-    "content": [
-      {
-        "type": "html",
-        "value": "<div id=\"icfm\">Emtpy Page. Create Page here.</div><div id=\"izu5\" class=\"aa\">hello there!<div id=\"izzl\">how are you doing</div><div><br/></div></div><img id=\"ibgj\" src=\"https://hdn-1.addsale.com/x0/company/52/applications/614957b7e7a0ccc371e96094/pages/pictures/free-content/original/-zLi_CuyM-apple.jpeg\"/>"
-      },
-      {
-        "type": "css",
-        "value": "* { box-sizing: border-box; } body {margin: 0;}*{box-sizing:border-box;}body{margin-top:0px;margin-right:0px;margin-bottom:0px;margin-left:0px;}*{box-sizing:border-box;}body{margin-top:0px;margin-right:0px;margin-bottom:0px;margin-left:0px;}#icfm{text-align:center;padding-top:30px;padding-right:30px;padding-bottom:30px;padding-left:30px;}#izu5{padding-top:10px;padding-right:10px;padding-bottom:10px;padding-left:10px;}#ibgj{color:black;}#izzl{float:none;display:flex;}.aa{float:right;}"
-      },
-      {
-        "type": "js",
-        "value": ""
-      }
-    ],
-    "content_path": "https://hdn-1.fynd.com/company/1526/applications/61012f6a9250ccd1b9ef8a1d/pages/content/page_slug.html",
-    "platform": "web",
-    "description": "hey this is my first page",
-    "visibility": {
-      "test": true
-    },
-    "_schedule": {
-      "start": "2021-04-23T23:50:00.000Z",
-      "next_schedule": [
-        {}
-      ]
-    },
-    "seo": {
-      "title": "my first page",
-      "description": "hey this is my first page",
-      "image": {
-        "url": ""
-      }
-    },
-    "type": "rawhtml",
-    "application": "000000000000000000000001",
-    "orientation": "portrait",
-    "page_meta": []
-  }
-}
-```
-</details>
-
-</details>
-
-
-
-
-
-
-
-
-
----
-
-
-### getPages
-Get a list of pages
-
-
-
-
-```kotlin
-platformClient.application("<APPLICATION_ID>").content.getPages(pageNo: pageNo, pageSize: pageSize).safeAwait{ response, error->
-    response?.let{
-      // Use response
-    } ->
-    error?.let{
-      
-    } 
-}
-```
-
-
-
-
-
-| Argument  |  Type  | Required | Description |
-| --------- | -----  | -------- | ----------- | 
-| pageNo | Int? | no | The page number to navigate through the given set of results. Default value is 1. |   
-| pageSize | Int? | no | The number of items to retrieve in each page. Default value is 10. |  
-
-
-
-Use this API to retrieve a list of pages.
-
-*Returned Response:*
-
-
-
-
-[PageGetResponse](#PageGetResponse)
-
-Success. Refer `PageGetResponse` for more details.
-
-
-
-
-<details>
-<summary><i>&nbsp; Examples:</i></summary>
-
-
-<details>
-<summary><i>&nbsp; default</i></summary>
-
-```json
-{
-  "value": {
-    "items": [
-      {
-        "date_meta": {
-          "created_on": "2021-03-14T06:49:03.945Z",
-          "modified_on": "2021-03-14T06:49:03.945Z"
-        },
-        "tags": [
-          "my first page"
-        ],
-        "_id": "604db275b3ae202873964d94",
-        "content_path": "https://hdn-1.fynd.com/company/1526/applications/61012f6a9250ccd1b9ef8a1d/pages/content/page_slug.html",
-        "title": "test-page",
-        "slug": "test-page",
-        "published": true,
-        "_schedule": {
-          "next_schedule": [
-            {}
-          ],
-          "start": "2021-04-08T07:15:13.000Z",
-          "end": "2021-04-10T02:00:00.000Z"
-        },
-        "feature_image": {
-          "secure_url": "https://google.com/some-image"
-        },
-        "seo": {
-          "title": "my first page",
-          "description": "hey this is my first page",
-          "image": {
-            "url": ""
-          }
-        },
-        "application": "000000000000000000000001",
-        "author": {
-          "name": "Abhinav Maurya"
-        }
-      }
-    ],
-    "page": {
-      "type": "number",
-      "current": 1,
-      "size": 1,
-      "item_total": 2,
-      "has_next": true
-    }
-  }
-}
-```
-</details>
-
-</details>
-
-
-
-
-
-
-
-
-
----
-
-
-### updatePage
-Update a page
-
-
-
-
-```kotlin
-platformClient.application("<APPLICATION_ID>").content.updatePage(id: id, body: body).safeAwait{ response, error->
-    response?.let{
-      // Use response
-    } ->
-    error?.let{
-      
-    } 
-}
-```
-
-
-
-
-
-| Argument  |  Type  | Required | Description |
-| --------- | -----  | -------- | ----------- | 
-| id | String | yes | ID allotted to the page. |  
-| body | [PageSchema](#PageSchema) | yes | Request body |
-
-
-Use this API to edit the details of an existing page, such as its title, seo, publish status, feature image, tags, schedule, etc.
-
-*Returned Response:*
-
-
-
-
-[PageSchema](#PageSchema)
-
-Success. Refer `PageSchema` for more details.
-
-
-
-
-<details>
-<summary><i>&nbsp; Examples:</i></summary>
-
-
-<details>
-<summary><i>&nbsp; default</i></summary>
-
-```json
-{
-  "value": {
-    "date_meta": {
-      "created_on": "2021-03-16T08:24:19.197Z",
-      "modified_on": "2021-03-16T08:24:19.197Z"
-    },
-    "tags": [
-      "my first page"
-    ],
-    "published": true,
-    "component_ids": [],
-    "archived": false,
-    "_id": "60506dcad18cb33946026862",
-    "title": "my first page",
-    "slug": "1st_page",
-    "feature_image": {
-      "secure_url": "https://google.com/some-image"
-    },
-    "content": [
-      {
-        "type": "html",
-        "value": "<div id=\"icfm\">Emtpy Page. Create Page here.</div><div id=\"izu5\" class=\"aa\">hello there!<div id=\"izzl\">how are you doing</div><div><br/></div></div><img id=\"ibgj\" src=\"https://hdn-1.addsale.com/x0/company/52/applications/614957b7e7a0ccc371e96094/pages/pictures/free-content/original/-zLi_CuyM-apple.jpeg\"/>"
-      },
-      {
-        "type": "css",
-        "value": "* { box-sizing: border-box; } body {margin: 0;}*{box-sizing:border-box;}body{margin-top:0px;margin-right:0px;margin-bottom:0px;margin-left:0px;}*{box-sizing:border-box;}body{margin-top:0px;margin-right:0px;margin-bottom:0px;margin-left:0px;}#icfm{text-align:center;padding-top:30px;padding-right:30px;padding-bottom:30px;padding-left:30px;}#izu5{padding-top:10px;padding-right:10px;padding-bottom:10px;padding-left:10px;}#ibgj{color:black;}#izzl{float:none;display:flex;}.aa{float:right;}"
-      },
-      {
-        "type": "js",
-        "value": ""
-      }
-    ],
-    "content_path": "https://hdn-1.fynd.com/company/1526/applications/61012f6a9250ccd1b9ef8a1d/pages/content/page_slug.html",
-    "platform": "web",
-    "description": "hey this is my first page",
-    "visibility": {
-      "test": true
-    },
-    "_schedule": {
-      "start": "2021-04-23T23:50:00.000Z",
-      "next_schedule": [
-        {}
-      ]
-    },
-    "seo": {
-      "title": "my first page",
-      "description": "hey this is my first page",
-      "image": {
-        "url": ""
-      }
-    },
-    "type": "rawhtml",
-    "application": "000000000000000000000001",
-    "orientation": "portrait",
-    "page_meta": []
-  }
-}
-```
-</details>
-
-</details>
-
-
-
-
-
-
-
-
-
----
-
-
-### getPageBySlug
-Get page by slug
-
-
-
-
-```kotlin
-platformClient.application("<APPLICATION_ID>").content.getPageBySlug(slug: slug).safeAwait{ response, error->
-    response?.let{
-      // Use response
-    } ->
-    error?.let{
-      
-    } 
-}
-```
-
-
-
-
-
-| Argument  |  Type  | Required | Description |
-| --------- | -----  | -------- | ----------- | 
-| slug | String | yes | A short, human-readable, URL-friendly identifier of a page. You can get slug value of a page from `getPages` API. |  
-
-
-
-Use this API to retrieve the components of a page, such as its title, seo, publish status, feature image, tags, schedule, etc.
-
-*Returned Response:*
-
-
-
-
-[PageSchema](#PageSchema)
-
-Success. Returns a JSON object of components. Refer `PageSchema` for more details.
-
-
-
-
-<details>
-<summary><i>&nbsp; Examples:</i></summary>
-
-
-<details>
-<summary><i>&nbsp; default</i></summary>
-
-```json
-{
-  "value": {
-    "date_meta": {
-      "created_on": "2021-03-16T08:24:19.197Z",
-      "modified_on": "2021-03-16T08:24:19.197Z"
-    },
-    "tags": [
-      "my first page"
-    ],
-    "published": true,
-    "component_ids": [],
-    "archived": false,
-    "_id": "60506dcad18cb33946026862",
-    "title": "my first page",
-    "slug": "1st_page",
-    "feature_image": {
-      "secure_url": "https://google.com/some-image"
-    },
-    "content": [
-      {
-        "type": "html",
-        "value": "<div id=\"icfm\">Emtpy Page. Create Page here.</div><div id=\"izu5\" class=\"aa\">hello there!<div id=\"izzl\">how are you doing</div><div><br/></div></div><img id=\"ibgj\" src=\"https://hdn-1.addsale.com/x0/company/52/applications/614957b7e7a0ccc371e96094/pages/pictures/free-content/original/-zLi_CuyM-apple.jpeg\"/>"
-      },
-      {
-        "type": "css",
-        "value": "* { box-sizing: border-box; } body {margin: 0;}*{box-sizing:border-box;}body{margin-top:0px;margin-right:0px;margin-bottom:0px;margin-left:0px;}*{box-sizing:border-box;}body{margin-top:0px;margin-right:0px;margin-bottom:0px;margin-left:0px;}#icfm{text-align:center;padding-top:30px;padding-right:30px;padding-bottom:30px;padding-left:30px;}#izu5{padding-top:10px;padding-right:10px;padding-bottom:10px;padding-left:10px;}#ibgj{color:black;}#izzl{float:none;display:flex;}.aa{float:right;}"
-      },
-      {
-        "type": "js",
-        "value": ""
-      }
-    ],
-    "content_path": "https://hdn-1.fynd.com/company/1526/applications/61012f6a9250ccd1b9ef8a1d/pages/content/page_slug.html",
-    "platform": "web",
-    "description": "hey this is my first page",
-    "visibility": {
-      "test": true
-    },
-    "_schedule": {
-      "start": "2021-04-23T23:50:00.000Z",
-      "next_schedule": [
-        {}
-      ]
-    },
-    "seo": {
-      "title": "my first page",
-      "description": "hey this is my first page",
-      "image": {
-        "url": ""
-      }
-    },
-    "type": "rawhtml",
-    "application": "000000000000000000000001",
-    "orientation": "portrait",
-    "page_meta": []
   }
 }
 ```
@@ -12147,7 +6764,7 @@ Success. It will returns the message for delete successfully.
 
 
 ### getAppCustomFields
-Get list of custom fields of given resource
+Get list of custom fields of gives resource
 
 
 
@@ -12888,7 +7505,7 @@ Use this API to update a custom object definition for your application.
 
 [CustomObjectDefinitionSchema](#CustomObjectDefinitionSchema)
 
-Custom object definition details.
+Success. It will returns the message for delete successfully.
 
 
 
@@ -14024,6 +8641,5454 @@ Success. Get headers of custom object definition
 
 
 
+### getFaqCategories
+Get FAQ categories.
+
+
+
+
+```kotlin
+platformClient.application("<APPLICATION_ID>").content.getFaqCategories().safeAwait{ response, error->
+    response?.let{
+      // Use response
+    } ->
+    error?.let{
+      
+    } 
+}
+```
+
+
+
+
+
+
+Retrieve a list of FAQ categories.
+
+*Returned Response:*
+
+
+
+
+[GetFaqCategoriesSchema](#GetFaqCategoriesSchema)
+
+Success. Refer `GetFaqCategoriesSchema` for more details.
+
+
+
+
+<details>
+<summary><i>&nbsp; Example:</i></summary>
+
+```json
+{
+  "categories": [
+    {
+      "index": 0,
+      "children": [
+        "6026426ae507768b168dee4b"
+      ],
+      "title": "Test",
+      "_id": "60263f80c83c1f89f2863a8a",
+      "slug": "test",
+      "application": "000000000000000000000001"
+    }
+  ]
+}
+```
+</details>
+
+
+
+
+
+
+
+
+
+---
+
+
+### getFaqCategoryBySlugOrId
+Get FAQ category by slug or ID.
+
+
+
+
+```kotlin
+platformClient.application("<APPLICATION_ID>").content.getFaqCategoryBySlugOrId(idOrSlug: idOrSlug).safeAwait{ response, error->
+    response?.let{
+      // Use response
+    } ->
+    error?.let{
+      
+    } 
+}
+```
+
+
+
+
+
+| Argument  |  Type  | Required | Description |
+| --------- | -----  | -------- | ----------- | 
+| idOrSlug | String | yes | ID or the slug allotted to an FAQ category. Slug is a short, human-readable, URL-friendly identifier of an object. You can get slug value of an FAQ category from `getFaqCategories` API. |  
+
+
+
+Retrieve detailed information about a specific FAQ category.
+
+*Returned Response:*
+
+
+
+
+[GetFaqCategoryBySlugSchema](#GetFaqCategoryBySlugSchema)
+
+Success. Refer `GetFaqCategoryBySlugSchema` for more details.
+
+
+
+
+<details>
+<summary><i>&nbsp; Example:</i></summary>
+
+```json
+{
+  "category": {
+    "index": 0,
+    "children": [
+      {
+        "_id": "6026426ae507768b168dee4b",
+        "question": "question 1",
+        "answer": "answer 1",
+        "slug": "question-1",
+        "application": "000000000000000000000001"
+      }
+    ],
+    "_id": "60263f80c83c1f89f2863a8a",
+    "slug": "test",
+    "title": "Test",
+    "application": "000000000000000000000001"
+  }
+}
+```
+</details>
+
+
+
+
+
+
+
+
+
+---
+
+
+### createFaqCategory
+Create FAQ category.
+
+
+
+
+```kotlin
+platformClient.application("<APPLICATION_ID>").content.createFaqCategory(body: body).safeAwait{ response, error->
+    response?.let{
+      // Use response
+    } ->
+    error?.let{
+      
+    } 
+}
+```
+
+
+
+
+
+| Argument  |  Type  | Required | Description |
+| --------- | -----  | -------- | ----------- |
+| body | [CreateFaqCategoryRequestSchema](#CreateFaqCategoryRequestSchema) | yes | Request body |
+
+
+Generate and add a new FAQ category.
+
+*Returned Response:*
+
+
+
+
+[CreateFaqCategorySchema](#CreateFaqCategorySchema)
+
+Success.
+
+
+
+
+<details>
+<summary><i>&nbsp; Example:</i></summary>
+
+```json
+{
+  "category": {
+    "index": 0,
+    "children": [],
+    "_id": "60263f80c83c1f89f2863a8a",
+    "slug": "test",
+    "application": "000000000000000000000001",
+    "title": "Test"
+  }
+}
+```
+</details>
+
+
+
+
+
+
+
+
+
+---
+
+
+### updateFaqCategory
+Update FAQ category.
+
+
+
+
+```kotlin
+platformClient.application("<APPLICATION_ID>").content.updateFaqCategory(id: id, body: body).safeAwait{ response, error->
+    response?.let{
+      // Use response
+    } ->
+    error?.let{
+      
+    } 
+}
+```
+
+
+
+
+
+| Argument  |  Type  | Required | Description |
+| --------- | -----  | -------- | ----------- | 
+| id | String | yes | ID allotted to an FAQ category. |  
+| body | [UpdateFaqCategoryRequestSchema](#UpdateFaqCategoryRequestSchema) | yes | Request body |
+
+
+Modify the content and settings of a specific FAQ category.
+
+*Returned Response:*
+
+
+
+
+[CreateFaqCategorySchema](#CreateFaqCategorySchema)
+
+Success.
+
+
+
+
+<details>
+<summary><i>&nbsp; Example:</i></summary>
+
+```json
+{
+  "category": {
+    "index": 0,
+    "children": [],
+    "_id": "60263f80c83c1f89f2863a8a",
+    "title": "Test Updated",
+    "slug": "test",
+    "application": "000000000000000000000001"
+  }
+}
+```
+</details>
+
+
+
+
+
+
+
+
+
+---
+
+
+### deleteFaqCategory
+Delete FAQ category.
+
+
+
+
+```kotlin
+platformClient.application("<APPLICATION_ID>").content.deleteFaqCategory(id: id).safeAwait{ response, error->
+    response?.let{
+      // Use response
+    } ->
+    error?.let{
+      
+    } 
+}
+```
+
+
+
+
+
+| Argument  |  Type  | Required | Description |
+| --------- | -----  | -------- | ----------- | 
+| id | String | yes | ID allotted to an FAQ category. |  
+
+
+
+Remove a specific FAQ category.
+
+*Returned Response:*
+
+
+
+
+[FaqSchema](#FaqSchema)
+
+Success.
+
+
+
+
+<details>
+<summary><i>&nbsp; Example:</i></summary>
+
+```json
+{
+  "category": {
+    "index": 0,
+    "children": [],
+    "_id": "60263f80c83c1f89f2863a8a",
+    "slug": "test",
+    "title": "Test",
+    "application": "000000000000000000000001",
+    "__v": 2
+  }
+}
+```
+</details>
+
+
+
+
+
+
+
+
+
+---
+
+
+### getFaqsByCategoryIdOrSlug
+Get FAQs by category ID or slug.
+
+
+
+
+```kotlin
+platformClient.application("<APPLICATION_ID>").content.getFaqsByCategoryIdOrSlug(idOrSlug: idOrSlug).safeAwait{ response, error->
+    response?.let{
+      // Use response
+    } ->
+    error?.let{
+      
+    } 
+}
+```
+
+
+
+
+
+| Argument  |  Type  | Required | Description |
+| --------- | -----  | -------- | ----------- | 
+| idOrSlug | String | yes | ID or the slug allotted to an FAQ category. Slug is a short, human-readable, URL-friendly identifier of an object. You can get slug value of an FAQ category from `getFaqCategories` API. |  
+
+
+
+Retrieve a list of FAQs within a specific category.
+
+*Returned Response:*
+
+
+
+
+[GetFaqSchema](#GetFaqSchema)
+
+Success. Refer `GetFaqSchema` for more details.
+
+
+
+
+<details>
+<summary><i>&nbsp; Example:</i></summary>
+
+```json
+{
+  "faqs": [
+    {
+      "_id": "60265b64e507768b168dee4d",
+      "question": "question 1",
+      "answer": "answer 1",
+      "slug": "question-1",
+      "application": "000000000000000000000001"
+    }
+  ]
+}
+```
+</details>
+
+
+
+
+
+
+
+
+
+---
+
+
+### addFaq
+Add FAQ.
+
+
+
+
+```kotlin
+platformClient.application("<APPLICATION_ID>").content.addFaq(categoryId: categoryId, body: body).safeAwait{ response, error->
+    response?.let{
+      // Use response
+    } ->
+    error?.let{
+      
+    } 
+}
+```
+
+
+
+
+
+| Argument  |  Type  | Required | Description |
+| --------- | -----  | -------- | ----------- | 
+| categoryId | String | yes | ID allotted to an FAQ category. |  
+| body | [CreateFaqSchema](#CreateFaqSchema) | yes | Request body |
+
+
+Create and add a new FAQ.
+
+*Returned Response:*
+
+
+
+
+[CreateFaqResponseSchema](#CreateFaqResponseSchema)
+
+Success.
+
+
+
+
+<details>
+<summary><i>&nbsp; Example:</i></summary>
+
+```json
+{
+  "faq": {
+    "_id": "60265b64e507768b168dee4d",
+    "question": "question 1",
+    "answer": "answer 1",
+    "slug": "question-1",
+    "application": "000000000000000000000001"
+  }
+}
+```
+</details>
+
+
+
+
+
+
+
+
+
+---
+
+
+### updateFaq
+Update FAQ.
+
+
+
+
+```kotlin
+platformClient.application("<APPLICATION_ID>").content.updateFaq(categoryId: categoryId, faqId: faqId, body: body).safeAwait{ response, error->
+    response?.let{
+      // Use response
+    } ->
+    error?.let{
+      
+    } 
+}
+```
+
+
+
+
+
+| Argument  |  Type  | Required | Description |
+| --------- | -----  | -------- | ----------- | 
+| categoryId | String | yes | ID allotted to an FAQ category. |   
+| faqId | String | yes | ID allotted to an FAQ. |  
+| body | [CreateFaqSchema](#CreateFaqSchema) | yes | Request body |
+
+
+Modify the content and settings of a specific FAQ.
+
+*Returned Response:*
+
+
+
+
+[CreateFaqResponseSchema](#CreateFaqResponseSchema)
+
+Success.
+
+
+
+
+<details>
+<summary><i>&nbsp; Example:</i></summary>
+
+```json
+{
+  "faq": {
+    "_id": "60265b64e507768b168dee4d",
+    "question": "question 1 updated",
+    "answer": "answer 1",
+    "slug": "question-1",
+    "application": "000000000000000000000001"
+  }
+}
+```
+</details>
+
+
+
+
+
+
+
+
+
+---
+
+
+### deleteFaq
+Delete FAQ.
+
+
+
+
+```kotlin
+platformClient.application("<APPLICATION_ID>").content.deleteFaq(categoryId: categoryId, faqId: faqId).safeAwait{ response, error->
+    response?.let{
+      // Use response
+    } ->
+    error?.let{
+      
+    } 
+}
+```
+
+
+
+
+
+| Argument  |  Type  | Required | Description |
+| --------- | -----  | -------- | ----------- | 
+| categoryId | String | yes | ID allotted to an FAQ category. |   
+| faqId | String | yes | ID allotted to an FAQ. |  
+
+
+
+Remove a specific FAQ.
+
+*Returned Response:*
+
+
+
+
+[CreateFaqResponseSchema](#CreateFaqResponseSchema)
+
+Success.
+
+
+
+
+<details>
+<summary><i>&nbsp; Example:</i></summary>
+
+```json
+{
+  "faq": {
+    "_id": "60265b64e507768b168dee4d",
+    "question": "question 1 updated",
+    "answer": "answer 1",
+    "slug": "question-1",
+    "application": "000000000000000000000001"
+  }
+}
+```
+</details>
+
+
+
+
+
+
+
+
+
+---
+
+
+### getFaqByIdOrSlug
+Get FAQ by ID or slug.
+
+
+
+
+```kotlin
+platformClient.application("<APPLICATION_ID>").content.getFaqByIdOrSlug(idOrSlug: idOrSlug).safeAwait{ response, error->
+    response?.let{
+      // Use response
+    } ->
+    error?.let{
+      
+    } 
+}
+```
+
+
+
+
+
+| Argument  |  Type  | Required | Description |
+| --------- | -----  | -------- | ----------- | 
+| idOrSlug | String | yes | ID or the slug allotted to an FAQ category. Slug is a short, human-readable, URL-friendly identifier of an object. You can get slug value of an FAQ category from `getFaqCategories` API. |  
+
+
+
+Retrieve detailed information about a specific FAQ.
+
+*Returned Response:*
+
+
+
+
+[CreateFaqResponseSchema](#CreateFaqResponseSchema)
+
+Success. Refer `CreateFaqResponseSchema` for more details.
+
+
+
+
+<details>
+<summary><i>&nbsp; Example:</i></summary>
+
+```json
+{
+  "faq": {
+    "_id": "60265b64e507768b168dee4d",
+    "question": "question 1",
+    "answer": "answer 1",
+    "slug": "question-1",
+    "application": "000000000000000000000001"
+  }
+}
+```
+</details>
+
+
+
+
+
+
+
+
+
+---
+
+
+
+
+### generateSEOTitle
+Generate SEO title.
+
+
+
+
+```kotlin
+platformClient.application("<APPLICATION_ID>").content.generateSEOTitle(type: type, body: body).safeAwait{ response, error->
+    response?.let{
+      // Use response
+    } ->
+    error?.let{
+      
+    } 
+}
+```
+
+
+
+
+
+| Argument  |  Type  | Required | Description |
+| --------- | -----  | -------- | ----------- | 
+| type | GenerationEntityType | yes | String representing the type of SEO content to be generated. Possible values are: title, description |  
+| body | [GenerateSEOContent](#GenerateSEOContent) | yes | Request body |
+
+
+Create an SEO-friendly title for content.
+
+*Returned Response:*
+
+
+
+
+[GeneratedSEOContent](#GeneratedSEOContent)
+
+Returns the generated SEO title
+
+
+
+
+<details>
+<summary><i>&nbsp; Examples:</i></summary>
+
+
+<details>
+<summary><i>&nbsp; default</i></summary>
+
+```json
+{
+  "value": {
+    "title": "SEO Title example",
+    "description": "SEO Description example"
+  }
+}
+```
+</details>
+
+</details>
+
+
+
+
+
+
+
+
+
+---
+
+
+### getLandingPages
+Get landing pages.
+
+
+
+
+```kotlin
+platformClient.application("<APPLICATION_ID>").content.getLandingPages(pageNo: pageNo, pageSize: pageSize).safeAwait{ response, error->
+    response?.let{
+      // Use response
+    } ->
+    error?.let{
+      
+    } 
+}
+```
+
+
+
+
+
+| Argument  |  Type  | Required | Description |
+| --------- | -----  | -------- | ----------- | 
+| pageNo | Int? | no | The page number to navigate through the given set of results. Default value is 1. |   
+| pageSize | Int? | no | The number of items to retrieve in each page. Default value is 10. |  
+
+
+
+Retrieve a list of landing pages.
+
+*Returned Response:*
+
+
+
+
+[LandingPageGetResponse](#LandingPageGetResponse)
+
+Success. Refer `LandingPageGetResponse` for more details.
+
+
+
+
+<details>
+<summary><i>&nbsp; Examples:</i></summary>
+
+
+<details>
+<summary><i>&nbsp; default</i></summary>
+
+```json
+{
+  "value": {
+    "items": [
+      {
+        "date_meta": {
+          "created_on": "2021-03-12T09:26:12.157Z",
+          "modified_on": "2021-03-12T09:26:12.157Z"
+        },
+        "platform": [
+          "android"
+        ],
+        "_id": "604b342e29f19310d8ae9743",
+        "slug": "landing-page-default-2",
+        "action": {
+          "page": {
+            "type": "default"
+          },
+          "popup": {},
+          "type": "page"
+        },
+        "application": "5cd3db5e9d692cfe5302a7bb",
+        "archived": false,
+        "_custom_json": {},
+        "__v": 0
+      }
+    ],
+    "page": {
+      "type": "number",
+      "current": 1,
+      "size": 1,
+      "item_total": 2,
+      "has_next": true
+    }
+  }
+}
+```
+</details>
+
+</details>
+
+
+
+
+
+
+
+
+
+---
+
+
+### createLandingPage
+Create landing page.
+
+
+
+
+```kotlin
+platformClient.application("<APPLICATION_ID>").content.createLandingPage(body: body).safeAwait{ response, error->
+    response?.let{
+      // Use response
+    } ->
+    error?.let{
+      
+    } 
+}
+```
+
+
+
+
+
+| Argument  |  Type  | Required | Description |
+| --------- | -----  | -------- | ----------- |
+| body | [LandingPageSchema](#LandingPageSchema) | yes | Request body |
+
+
+Generate and add a new landing page.
+
+*Returned Response:*
+
+
+
+
+[LandingPageSchema](#LandingPageSchema)
+
+Success.
+
+
+
+
+<details>
+<summary><i>&nbsp; Examples:</i></summary>
+
+
+<details>
+<summary><i>&nbsp; default</i></summary>
+
+```json
+{
+  "value": {
+    "_id": "5eaa451a21a4dd75f0fd96c5",
+    "application": "5d3ebd89f540e7506b8b3548",
+    "_custom_json": {},
+    "slug": "pnc-landing",
+    "action": {
+      "page": {
+        "type": "home"
+      },
+      "popup": {},
+      "type": "page"
+    },
+    "platform": [
+      "web"
+    ],
+    "created_by": {
+      "id": "000000000000000000000000"
+    },
+    "date_meta": {
+      "created_on": "2020-04-30T03:25:14.549Z",
+      "modified_on": "2020-04-30T03:25:14.549Z"
+    },
+    "archived": false
+  }
+}
+```
+</details>
+
+</details>
+
+
+
+
+
+
+
+
+
+---
+
+
+### updateLandingPage
+Update landing page.
+
+
+
+
+```kotlin
+platformClient.application("<APPLICATION_ID>").content.updateLandingPage(id: id, body: body).safeAwait{ response, error->
+    response?.let{
+      // Use response
+    } ->
+    error?.let{
+      
+    } 
+}
+```
+
+
+
+
+
+| Argument  |  Type  | Required | Description |
+| --------- | -----  | -------- | ----------- | 
+| id | String | yes | ID allotted to a landing page. |  
+| body | [LandingPageSchema](#LandingPageSchema) | yes | Request body |
+
+
+Modify the content and settings of a specific landing page.
+
+*Returned Response:*
+
+
+
+
+[LandingPageSchema](#LandingPageSchema)
+
+Success.
+
+
+
+
+<details>
+<summary><i>&nbsp; Examples:</i></summary>
+
+
+<details>
+<summary><i>&nbsp; default</i></summary>
+
+```json
+{
+  "value": {
+    "_id": "5eaa451a21a4dd75f0fd96c5",
+    "application": "5d3ebd89f540e7506b8b3548",
+    "_custom_json": {},
+    "slug": "pnc-landing",
+    "action": {
+      "page": {
+        "type": "home"
+      },
+      "popup": {},
+      "type": "page"
+    },
+    "platform": [
+      "web"
+    ],
+    "created_by": {
+      "id": "000000000000000000000000"
+    },
+    "date_meta": {
+      "created_on": "2020-04-30T03:25:14.549Z",
+      "modified_on": "2020-04-30T03:25:14.549Z"
+    },
+    "archived": false
+  }
+}
+```
+</details>
+
+</details>
+
+
+
+
+
+
+
+
+
+---
+
+
+### deleteLandingPage
+Delete landing page.
+
+
+
+
+```kotlin
+platformClient.application("<APPLICATION_ID>").content.deleteLandingPage(id: id).safeAwait{ response, error->
+    response?.let{
+      // Use response
+    } ->
+    error?.let{
+      
+    } 
+}
+```
+
+
+
+
+
+| Argument  |  Type  | Required | Description |
+| --------- | -----  | -------- | ----------- | 
+| id | String | yes | ID allotted to a landing page. |  
+
+
+
+Remove a specific landing page.
+
+*Returned Response:*
+
+
+
+
+[LandingPageSchema](#LandingPageSchema)
+
+Success.
+
+
+
+
+<details>
+<summary><i>&nbsp; Examples:</i></summary>
+
+
+<details>
+<summary><i>&nbsp; default</i></summary>
+
+```json
+{
+  "value": {
+    "_id": "5eaa451a21a4dd75f0fd96c5",
+    "application": "5d3ebd89f540e7506b8b3548",
+    "_custom_json": {},
+    "slug": "pnc-landing",
+    "action": {
+      "page": {
+        "type": "home"
+      },
+      "popup": {},
+      "type": "page"
+    },
+    "platform": [
+      "web"
+    ],
+    "created_by": {
+      "id": "000000000000000000000000"
+    },
+    "date_meta": {
+      "created_on": "2020-04-30T03:25:14.549Z",
+      "modified_on": "2020-04-30T03:25:14.549Z"
+    },
+    "archived": true
+  }
+}
+```
+</details>
+
+</details>
+
+
+
+
+
+
+
+
+
+---
+
+
+
+
+### getLegalInformation
+Get legal related information for applicaiton
+
+
+
+
+```kotlin
+platformClient.application("<APPLICATION_ID>").content.getLegalInformation().safeAwait{ response, error->
+    response?.let{
+      // Use response
+    } ->
+    error?.let{
+      
+    } 
+}
+```
+
+
+
+
+
+
+Retrieve legal information and terms.
+
+*Returned Response:*
+
+
+
+
+[ApplicationLegal](#ApplicationLegal)
+
+Success. Refer `ApplicationLegal` for more details.
+
+
+
+
+<details>
+<summary><i>&nbsp; Examples:</i></summary>
+
+
+<details>
+<summary><i>&nbsp; Success</i></summary>
+
+```json
+{
+  "value": {
+    "tnc": "**Terms and Conditions test**",
+    "policy": "**Privacy policy test**",
+    "shipping": "**Shipping term and conditions**",
+    "returns": "**Terms & conditions for returns **",
+    "_id": "5e8b2b96abe7dc94c02c9ac9",
+    "application": "000000000000000000000001",
+    "faq": [
+      {
+        "question": "New Question",
+        "answer": "New Answer"
+      },
+      {
+        "question": "New",
+        "answer": "sdfghjhg"
+      },
+      {
+        "question": "test",
+        "answer": "test"
+      },
+      {
+        "question": "New Test",
+        "answer": "New Test answer"
+      },
+      {
+        "question": "test",
+        "answer": "test"
+      }
+    ],
+    "created_at": "2020-04-06T13:16:06.818Z",
+    "updated_at": "2020-07-16T09:47:40.751Z",
+    "__v": 260
+  }
+}
+```
+</details>
+
+</details>
+
+
+
+
+
+
+
+
+
+---
+
+
+### updateLegalInformation
+Update legal related information for application
+
+
+
+
+```kotlin
+platformClient.application("<APPLICATION_ID>").content.updateLegalInformation(body: body).safeAwait{ response, error->
+    response?.let{
+      // Use response
+    } ->
+    error?.let{
+      
+    } 
+}
+```
+
+
+
+
+
+| Argument  |  Type  | Required | Description |
+| --------- | -----  | -------- | ----------- |
+| body | [ApplicationLegal](#ApplicationLegal) | yes | Request body |
+
+
+Modify legal information and terms.
+
+*Returned Response:*
+
+
+
+
+[ApplicationLegal](#ApplicationLegal)
+
+Success. Refer `ApplicationLegal` for more details.
+
+
+
+
+<details>
+<summary><i>&nbsp; Example:</i></summary>
+
+```json
+{
+  "tnc": "This is terms and condition",
+  "policy": "This is policy",
+  "faq": [
+    {
+      "question": "This is question",
+      "answer": "This is answer"
+    }
+  ]
+}
+```
+</details>
+
+
+
+
+
+
+
+
+
+---
+
+
+
+
+### getNavigations
+Get navigation items
+
+
+
+
+```kotlin
+platformClient.application("<APPLICATION_ID>").content.getNavigations(devicePlatform: devicePlatform, pageNo: pageNo, pageSize: pageSize).safeAwait{ response, error->
+    response?.let{
+      // Use response
+    } ->
+    error?.let{
+      
+    } 
+}
+```
+
+
+
+
+
+| Argument  |  Type  | Required | Description |
+| --------- | -----  | -------- | ----------- | 
+| devicePlatform | String | yes | Filter navigations by platform. Acceptable values are: web, android, ios, all |   
+| pageNo | Int? | no | The page number to navigate through the given set of results. Default value is 1. |   
+| pageSize | Int? | no | The number of items to retrieve in each page. Default value is 10. |  
+
+
+
+Retrieve a list of navigational elements.
+
+*Returned Response:*
+
+
+
+
+[NavigationGetResponse](#NavigationGetResponse)
+
+Success. Refer `NavigationGetResponse` for more details.
+
+
+
+
+<details>
+<summary><i>&nbsp; Examples:</i></summary>
+
+
+<details>
+<summary><i>&nbsp; default</i></summary>
+
+```json
+{
+  "value": {
+    "items": [
+      {
+        "_id": "5ffbd9b90ac98678ae0458d7",
+        "application": "000000000000000000000001",
+        "_custom_json": null,
+        "name": "temp",
+        "slug": "temp",
+        "platform": "web",
+        "position": "top",
+        "orientation": "landscape",
+        "navigation": [
+          {
+            "display": "Home",
+            "image": "https://res.cloudinary.com/dwzm9bysq/image/upload/v1567148153/production/system/icons/mystore-tab_y0dqzt.png",
+            "sort_order": 1,
+            "type": "",
+            "action": {
+              "page": {
+                "url": "/",
+                "type": "home"
+              },
+              "popup": {},
+              "type": "page"
+            },
+            "active": true,
+            "tags": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "acl": [
+              "all"
+            ],
+            "_locale_language": {
+              "hi": {
+                "display": ""
+              },
+              "ar": {
+                "display": ""
+              },
+              "en_us": {
+                "display": ""
+              }
+            },
+            "sub_navigation": [
+              {
+                "display": "Brands",
+                "image": "https://res.cloudinary.com/dwzm9bysq/image/upload/v1567148153/production/system/icons/brands-tab_sfinpk.png",
+                "sort_order": 1,
+                "type": "",
+                "action": {
+                  "page": {
+                    "url": "/brands/",
+                    "type": "brands"
+                  },
+                  "popup": {},
+                  "type": "page"
+                },
+                "active": true,
+                "tags": null,
+                "acl": [
+                  "all"
+                ],
+                "_locale_language": {
+                  "hi": {
+                    "display": ""
+                  },
+                  "ar": {
+                    "display": ""
+                  },
+                  "en_us": {
+                    "display": ""
+                  }
+                }
+              }
+            ]
+          },
+          {
+            "display": "Collections",
+            "image": "https://res.cloudinary.com/dwzm9bysq/image/upload/v1567148153/production/system/icons/collections-tab_a0tg9c.png",
+            "sort_order": 2,
+            "type": "",
+            "action": {
+              "page": {
+                "url": "/collections/",
+                "type": "collections"
+              },
+              "popup": {},
+              "type": "page"
+            },
+            "active": true,
+            "tags": null,
+            "acl": [
+              "all"
+            ],
+            "_locale_language": {
+              "hi": {
+                "display": ""
+              },
+              "ar": {
+                "display": ""
+              },
+              "en_us": {
+                "display": ""
+              }
+            },
+            "sub_navigation": [
+              {
+                "display": "Categories",
+                "image": "https://res.cloudinary.com/dwzm9bysq/image/upload/v1567148154/production/system/icons/categories-tab_ss8e0q.png",
+                "sort_order": 1,
+                "type": "",
+                "action": {
+                  "page": {
+                    "url": "/categories/",
+                    "type": "categories"
+                  },
+                  "popup": {},
+                  "type": "page"
+                },
+                "active": true,
+                "tags": null,
+                "acl": [
+                  "all"
+                ],
+                "_locale_language": {
+                  "hi": {
+                    "display": ""
+                  },
+                  "ar": {
+                    "display": ""
+                  },
+                  "en_us": {
+                    "display": ""
+                  }
+                }
+              }
+            ]
+          },
+          {
+            "display": "Primary Menu",
+            "image": "",
+            "sort_order": 3,
+            "type": "",
+            "action": {
+              "page": {
+                "type": "home"
+              },
+              "popup": {},
+              "type": "page"
+            },
+            "active": true,
+            "tags": null,
+            "acl": [
+              "all"
+            ],
+            "_locale_language": {
+              "hi": {
+                "display": ""
+              },
+              "ar": {
+                "display": ""
+              },
+              "en_us": {
+                "display": ""
+              }
+            }
+          }
+        ],
+        "created_by": {
+          "id": "000000000000000000000000"
+        },
+        "date_meta": {
+          "created_on": "2021-01-11T04:53:13.585Z",
+          "modified_on": "2021-01-14T10:24:34.485Z"
+        }
+      }
+    ],
+    "page": {
+      "type": "number",
+      "current": 1,
+      "size": 1,
+      "item_total": 2,
+      "has_next": true
+    }
+  }
+}
+```
+</details>
+
+</details>
+
+
+
+
+
+
+
+
+
+---
+
+
+### createNavigation
+Create navigation items
+
+
+
+
+```kotlin
+platformClient.application("<APPLICATION_ID>").content.createNavigation(body: body).safeAwait{ response, error->
+    response?.let{
+      // Use response
+    } ->
+    error?.let{
+      
+    } 
+}
+```
+
+
+
+
+
+| Argument  |  Type  | Required | Description |
+| --------- | -----  | -------- | ----------- |
+| body | [NavigationRequest](#NavigationRequest) | yes | Request body |
+
+
+Generate and add a new navigation element.
+
+*Returned Response:*
+
+
+
+
+[NavigationSchema](#NavigationSchema)
+
+Success.
+
+
+
+
+<details>
+<summary><i>&nbsp; Examples:</i></summary>
+
+
+<details>
+<summary><i>&nbsp; default</i></summary>
+
+```json
+{
+  "value": {
+    "_id": "5ffbd9b90ac98678ae0458d7",
+    "application": "000000000000000000000001",
+    "_custom_json": null,
+    "name": "test-nav",
+    "slug": "test-nav",
+    "platform": [
+      "ios",
+      "android"
+    ],
+    "orientation": {
+      "portrait": [
+        "left"
+      ]
+    },
+    "navigation": [
+      {
+        "display": "Home",
+        "image": "https://res.cloudinary.com/dwzm9bysq/image/upload/v1567148153/production/system/icons/mystore-tab_y0dqzt.png",
+        "sort_order": 1,
+        "type": "",
+        "action": {
+          "page": {
+            "url": "/",
+            "type": "home"
+          },
+          "popup": {},
+          "type": "page"
+        },
+        "active": true,
+        "tags": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "acl": [
+          "all"
+        ],
+        "_locale_language": {
+          "hi": {
+            "display": ""
+          },
+          "ar": {
+            "display": ""
+          },
+          "en_us": {
+            "display": ""
+          }
+        },
+        "sub_navigation": [
+          {
+            "display": "Brands",
+            "image": "https://res.cloudinary.com/dwzm9bysq/image/upload/v1567148153/production/system/icons/brands-tab_sfinpk.png",
+            "sort_order": 1,
+            "type": "",
+            "action": {
+              "page": {
+                "url": "/brands/",
+                "type": "brands"
+              },
+              "popup": {},
+              "type": "page"
+            },
+            "active": true,
+            "tags": null,
+            "acl": [
+              "all"
+            ],
+            "_locale_language": {
+              "hi": {
+                "display": ""
+              },
+              "ar": {
+                "display": ""
+              },
+              "en_us": {
+                "display": ""
+              }
+            }
+          }
+        ]
+      },
+      {
+        "display": "Collections",
+        "image": "https://res.cloudinary.com/dwzm9bysq/image/upload/v1567148153/production/system/icons/collections-tab_a0tg9c.png",
+        "sort_order": 2,
+        "type": "",
+        "action": {
+          "page": {
+            "url": "/collections/",
+            "type": "collections"
+          },
+          "popup": {},
+          "type": "page"
+        },
+        "active": true,
+        "tags": null,
+        "acl": [
+          "all"
+        ],
+        "_locale_language": {
+          "hi": {
+            "display": ""
+          },
+          "ar": {
+            "display": ""
+          },
+          "en_us": {
+            "display": ""
+          }
+        },
+        "sub_navigation": [
+          {
+            "display": "Categories",
+            "image": "https://res.cloudinary.com/dwzm9bysq/image/upload/v1567148154/production/system/icons/categories-tab_ss8e0q.png",
+            "sort_order": 1,
+            "type": "",
+            "action": {
+              "page": {
+                "url": "/categories/",
+                "type": "categories"
+              },
+              "popup": {},
+              "type": "page"
+            },
+            "active": true,
+            "tags": null,
+            "acl": [
+              "all"
+            ],
+            "_locale_language": {
+              "hi": {
+                "display": ""
+              },
+              "ar": {
+                "display": ""
+              },
+              "en_us": {
+                "display": ""
+              }
+            }
+          }
+        ]
+      },
+      {
+        "display": "Primary Menu",
+        "image": "",
+        "sort_order": 3,
+        "type": "",
+        "action": {
+          "page": {
+            "type": "home"
+          },
+          "popup": {},
+          "type": "page"
+        },
+        "active": true,
+        "tags": null,
+        "acl": [
+          "all"
+        ],
+        "_locale_language": {
+          "hi": {
+            "display": ""
+          },
+          "ar": {
+            "display": ""
+          },
+          "en_us": {
+            "display": ""
+          }
+        }
+      }
+    ],
+    "created_by": {
+      "id": "000000000000000000000000"
+    },
+    "date_meta": {
+      "created_on": "2021-01-11T04:53:13.585Z",
+      "modified_on": "2021-01-14T10:24:34.485Z"
+    },
+    "archived": false
+  }
+}
+```
+</details>
+
+</details>
+
+
+
+
+
+
+
+
+
+---
+
+
+### getDefaultNavigations
+Get default navigations.
+
+
+
+
+```kotlin
+platformClient.application("<APPLICATION_ID>").content.getDefaultNavigations().safeAwait{ response, error->
+    response?.let{
+      // Use response
+    } ->
+    error?.let{
+      
+    } 
+}
+```
+
+
+
+
+
+
+Retrieve default navigation elements.
+
+*Returned Response:*
+
+
+
+
+[DefaultNavigationResponse](#DefaultNavigationResponse)
+
+Success. Refer `DefaultNavigationResponse` for more details.
+
+
+
+
+<details>
+<summary><i>&nbsp; Examples:</i></summary>
+
+
+<details>
+<summary><i>&nbsp; default</i></summary>
+
+```json
+{
+  "value": {
+    "items": [
+      {
+        "name": "default-bottom",
+        "slug": "default-bottom-vIhLiJKQvUZdQvGWzDdrzLP3CTC4Hbxg",
+        "orientation": {
+          "landscape": [
+            "bottom"
+          ]
+        },
+        "version": 3,
+        "navigation": [
+          {
+            "display": "Home",
+            "image": "https://res.cloudinary.com/dwzm9bysq/image/upload/v1567148153/production/system/icons/mystore-tab_y0dqzt.png",
+            "sort_order": 1,
+            "acl": [
+              "all"
+            ],
+            "action": {
+              "page": {
+                "type": "home"
+              },
+              "type": "page"
+            },
+            "active": true
+          },
+          {
+            "display": "Brands",
+            "image": "https://res.cloudinary.com/dwzm9bysq/image/upload/v1567148153/production/system/icons/brands-tab_sfinpk.png",
+            "sort_order": 2,
+            "acl": [
+              "all"
+            ],
+            "action": {
+              "page": {
+                "type": "brands"
+              },
+              "type": "page"
+            },
+            "active": true
+          },
+          {
+            "display": "Collections",
+            "image": "https://res.cloudinary.com/dwzm9bysq/image/upload/v1567148153/production/system/icons/collections-tab_a0tg9c.png",
+            "sort_order": 3,
+            "acl": [
+              "all"
+            ],
+            "action": {
+              "page": {
+                "type": "collections"
+              },
+              "type": "page"
+            },
+            "active": true
+          },
+          {
+            "display": "Categories",
+            "image": "https://res.cloudinary.com/dwzm9bysq/image/upload/v1567148154/production/system/icons/categories-tab_ss8e0q.png",
+            "sort_order": 4,
+            "acl": [
+              "all"
+            ],
+            "action": {
+              "page": {
+                "type": "categories"
+              },
+              "type": "page"
+            },
+            "active": true
+          }
+        ],
+        "created_by": {},
+        "_id": "6050244dbd9e072063f1586b",
+        "platform": [
+          "android"
+        ]
+      },
+      {
+        "name": "default-bottom",
+        "slug": "default-bottom-SB0zLTfiPN4Z5doJQBKRagsLTDldm8Ug",
+        "orientation": {
+          "landscape": [
+            "bottom"
+          ]
+        },
+        "version": 3,
+        "navigation": [
+          {
+            "display": "Home",
+            "image": "https://res.cloudinary.com/dwzm9bysq/image/upload/v1567148153/production/system/icons/mystore-tab_y0dqzt.png",
+            "sort_order": 1,
+            "acl": [
+              "all"
+            ],
+            "action": {
+              "page": {
+                "type": "home"
+              },
+              "type": "page"
+            },
+            "active": true
+          },
+          {
+            "display": "Brands",
+            "image": "https://res.cloudinary.com/dwzm9bysq/image/upload/v1567148153/production/system/icons/brands-tab_sfinpk.png",
+            "sort_order": 2,
+            "acl": [
+              "all"
+            ],
+            "action": {
+              "page": {
+                "type": "brands"
+              },
+              "type": "page"
+            },
+            "active": true
+          },
+          {
+            "display": "Collections",
+            "image": "https://res.cloudinary.com/dwzm9bysq/image/upload/v1567148153/production/system/icons/collections-tab_a0tg9c.png",
+            "sort_order": 3,
+            "acl": [
+              "all"
+            ],
+            "action": {
+              "page": {
+                "type": "collections"
+              },
+              "type": "page"
+            },
+            "active": true
+          },
+          {
+            "display": "Categories",
+            "image": "https://res.cloudinary.com/dwzm9bysq/image/upload/v1567148154/production/system/icons/categories-tab_ss8e0q.png",
+            "sort_order": 4,
+            "acl": [
+              "all"
+            ],
+            "action": {
+              "page": {
+                "type": "categories"
+              },
+              "type": "page"
+            },
+            "active": true
+          }
+        ],
+        "created_by": {},
+        "_id": "6050244dbd9e072063f1586c",
+        "platform": [
+          "ios"
+        ]
+      },
+      {
+        "name": "default-left",
+        "slug": "default-left-dWrrfpfcNw6Arl0QtmK5VgunYYAHhGRR",
+        "orientation": {
+          "portrait": [
+            "left"
+          ]
+        },
+        "version": 3,
+        "navigation": [
+          {
+            "display": "Profile",
+            "image": "https://res.cloudinary.com/dwzm9bysq/image/upload/v1583938091/production/applications/app_000000000000000000000001/media/navigation/icon/hv0cd5jdo0rkhsqoizmi.png",
+            "sort_order": 1,
+            "type": "",
+            "action": {
+              "page": {
+                "url": "/",
+                "type": "profile"
+              },
+              "popup": {},
+              "type": "page"
+            },
+            "active": true,
+            "acl": [
+              "registered"
+            ]
+          },
+          {
+            "display": "Orders",
+            "image": "https://res.cloudinary.com/dwzm9bysq/image/upload/v1583938144/production/applications/app_000000000000000000000001/media/navigation/icon/lmv4fzpxxk0a6acitlfg.png",
+            "sort_order": 2,
+            "type": "",
+            "action": {
+              "page": {
+                "url": "/",
+                "type": "orders"
+              },
+              "popup": {},
+              "type": "page"
+            },
+            "active": true,
+            "acl": [
+              "registered"
+            ]
+          },
+          {
+            "display": "Track Order",
+            "image": "https://res.cloudinary.com/dwzm9bysq/image/upload/v1583938144/production/applications/app_000000000000000000000001/media/navigation/icon/lmv4fzpxxk0a6acitlfg.png",
+            "sort_order": 3,
+            "type": "",
+            "action": {
+              "page": {
+                "type": "track-order"
+              },
+              "popup": {},
+              "type": "page"
+            },
+            "active": true,
+            "acl": [
+              "anonymous"
+            ]
+          },
+          {
+            "display": "Addresses",
+            "image": "https://res.cloudinary.com/dwzm9bysq/image/upload/v1583938161/production/applications/app_000000000000000000000001/media/navigation/icon/qbod8vkjmot3qnaroibr.png",
+            "sort_order": 4,
+            "type": "",
+            "action": {
+              "page": {
+                "url": "/",
+                "type": "addresses"
+              },
+              "popup": {},
+              "type": "page"
+            },
+            "active": true,
+            "acl": [
+              "registered"
+            ]
+          },
+          {
+            "display": "Wishlist",
+            "image": "https://res.cloudinary.com/dwzm9bysq/image/upload/v1583938125/production/applications/app_000000000000000000000001/media/navigation/icon/u8c7jdke4a3wwc0ftz8x.png",
+            "sort_order": 5,
+            "type": "",
+            "action": {
+              "page": {
+                "url": "/wishlist/",
+                "type": "wishlist"
+              },
+              "popup": {},
+              "type": "page"
+            },
+            "active": true,
+            "acl": [
+              "registered"
+            ]
+          },
+          {
+            "display": "Settings",
+            "image": "https://res.cloudinary.com/dwzm9bysq/image/upload/v1584003256/production/applications/app_000000000000000000000001/media/navigation/icon/vywbdiio1zi7cbnltvgz.png",
+            "sort_order": 6,
+            "type": "",
+            "action": {
+              "page": {
+                "url": "/",
+                "type": "settings"
+              },
+              "popup": {},
+              "type": "page"
+            },
+            "active": true,
+            "acl": [
+              "all"
+            ]
+          },
+          {
+            "display": "Policy",
+            "image": "https://res.cloudinary.com/dwzm9bysq/image/upload/v1583939301/production/applications/app_000000000000000000000001/media/navigation/icon/bygqvme7hkrd45oemzy0.png",
+            "sort_order": 7,
+            "type": "",
+            "action": {
+              "page": {
+                "url": "/",
+                "type": "policy"
+              },
+              "popup": {},
+              "type": "page"
+            },
+            "active": true,
+            "acl": [
+              "all"
+            ]
+          },
+          {
+            "display": "Terms & Conditions",
+            "image": "https://res.cloudinary.com/dwzm9bysq/image/upload/v1583939382/production/applications/app_000000000000000000000001/media/navigation/icon/eaq0aagqr0xirojbuki3.png",
+            "sort_order": 8,
+            "type": "",
+            "action": {
+              "page": {
+                "url": "/",
+                "type": "tnc"
+              },
+              "popup": {},
+              "type": "page"
+            },
+            "active": true,
+            "acl": [
+              "all"
+            ]
+          },
+          {
+            "display": "Need Help",
+            "image": "https://res.cloudinary.com/dwzm9bysq/image/upload/v1583939416/production/applications/app_000000000000000000000001/media/navigation/icon/xeqv7pzyxagwtxcwvxbw.png",
+            "sort_order": 9,
+            "type": "",
+            "action": {
+              "page": {
+                "url": "/faq/",
+                "type": "faq"
+              },
+              "popup": {},
+              "type": "page"
+            },
+            "active": true,
+            "acl": [
+              "all"
+            ]
+          },
+          {
+            "display": "About Us",
+            "image": "https://res.cloudinary.com/dwzm9bysq/image/upload/v1583939196/production/applications/app_000000000000000000000001/media/navigation/icon/dccm5et4sgylisbug9xr.png",
+            "sort_order": 10,
+            "type": "",
+            "action": {
+              "page": {
+                "url": "/",
+                "type": "about-us"
+              },
+              "popup": {},
+              "type": "page"
+            },
+            "active": true,
+            "acl": [
+              "all"
+            ]
+          },
+          {
+            "display": "Rate Us",
+            "image": "https://res.cloudinary.com/dwzm9bysq/image/upload/v1584091739/production/applications/app_000000000000000000000001/media/navigation/icon/afryyfeccqgjyeosdmbz.png",
+            "sort_order": 11,
+            "type": "",
+            "action": {
+              "page": {
+                "url": "/",
+                "type": "rate-us"
+              },
+              "popup": {},
+              "type": "page"
+            },
+            "active": true,
+            "acl": [
+              "registered"
+            ]
+          }
+        ],
+        "created_by": {},
+        "_id": "6050244dbd9e072063f1586d",
+        "platform": [
+          "android"
+        ]
+      },
+      {
+        "name": "default-left",
+        "slug": "default-left-tRK1fsQVUD7BmdvX30Fb4u5ZVSrSi3KW",
+        "orientation": {
+          "portrait": [
+            "left"
+          ]
+        },
+        "version": 3,
+        "navigation": [
+          {
+            "display": "Profile",
+            "image": "https://res.cloudinary.com/dwzm9bysq/image/upload/v1583938091/production/applications/app_000000000000000000000001/media/navigation/icon/hv0cd5jdo0rkhsqoizmi.png",
+            "sort_order": 1,
+            "type": "",
+            "action": {
+              "page": {
+                "url": "/",
+                "type": "profile"
+              },
+              "popup": {},
+              "type": "page"
+            },
+            "active": true,
+            "acl": [
+              "registered"
+            ]
+          },
+          {
+            "display": "Orders",
+            "image": "https://res.cloudinary.com/dwzm9bysq/image/upload/v1583938144/production/applications/app_000000000000000000000001/media/navigation/icon/lmv4fzpxxk0a6acitlfg.png",
+            "sort_order": 2,
+            "type": "",
+            "action": {
+              "page": {
+                "url": "/",
+                "type": "orders"
+              },
+              "popup": {},
+              "type": "page"
+            },
+            "active": true,
+            "acl": [
+              "registered"
+            ]
+          },
+          {
+            "display": "Track Order",
+            "image": "https://res.cloudinary.com/dwzm9bysq/image/upload/v1583938144/production/applications/app_000000000000000000000001/media/navigation/icon/lmv4fzpxxk0a6acitlfg.png",
+            "sort_order": 3,
+            "type": "",
+            "action": {
+              "page": {
+                "type": "track-order"
+              },
+              "popup": {},
+              "type": "page"
+            },
+            "active": true,
+            "acl": [
+              "anonymous"
+            ]
+          },
+          {
+            "display": "Addresses",
+            "image": "https://res.cloudinary.com/dwzm9bysq/image/upload/v1583938161/production/applications/app_000000000000000000000001/media/navigation/icon/qbod8vkjmot3qnaroibr.png",
+            "sort_order": 4,
+            "type": "",
+            "action": {
+              "page": {
+                "url": "/",
+                "type": "addresses"
+              },
+              "popup": {},
+              "type": "page"
+            },
+            "active": true,
+            "acl": [
+              "registered"
+            ]
+          },
+          {
+            "display": "Wishlist",
+            "image": "https://res.cloudinary.com/dwzm9bysq/image/upload/v1583938125/production/applications/app_000000000000000000000001/media/navigation/icon/u8c7jdke4a3wwc0ftz8x.png",
+            "sort_order": 5,
+            "type": "",
+            "action": {
+              "page": {
+                "url": "/wishlist/",
+                "type": "wishlist"
+              },
+              "popup": {},
+              "type": "page"
+            },
+            "active": true,
+            "acl": [
+              "registered"
+            ]
+          },
+          {
+            "display": "Settings",
+            "image": "https://res.cloudinary.com/dwzm9bysq/image/upload/v1584003256/production/applications/app_000000000000000000000001/media/navigation/icon/vywbdiio1zi7cbnltvgz.png",
+            "sort_order": 6,
+            "type": "",
+            "action": {
+              "page": {
+                "url": "/",
+                "type": "settings"
+              },
+              "popup": {},
+              "type": "page"
+            },
+            "active": true,
+            "acl": [
+              "all"
+            ]
+          },
+          {
+            "display": "Policy",
+            "image": "https://res.cloudinary.com/dwzm9bysq/image/upload/v1583939301/production/applications/app_000000000000000000000001/media/navigation/icon/bygqvme7hkrd45oemzy0.png",
+            "sort_order": 7,
+            "type": "",
+            "action": {
+              "page": {
+                "url": "/",
+                "type": "policy"
+              },
+              "popup": {},
+              "type": "page"
+            },
+            "active": true,
+            "acl": [
+              "all"
+            ]
+          },
+          {
+            "display": "Terms & Conditions",
+            "image": "https://res.cloudinary.com/dwzm9bysq/image/upload/v1583939382/production/applications/app_000000000000000000000001/media/navigation/icon/eaq0aagqr0xirojbuki3.png",
+            "sort_order": 8,
+            "type": "",
+            "action": {
+              "page": {
+                "url": "/",
+                "type": "tnc"
+              },
+              "popup": {},
+              "type": "page"
+            },
+            "active": true,
+            "acl": [
+              "all"
+            ]
+          },
+          {
+            "display": "Need Help",
+            "image": "https://res.cloudinary.com/dwzm9bysq/image/upload/v1583939416/production/applications/app_000000000000000000000001/media/navigation/icon/xeqv7pzyxagwtxcwvxbw.png",
+            "sort_order": 9,
+            "type": "",
+            "action": {
+              "page": {
+                "url": "/faq/",
+                "type": "faq"
+              },
+              "popup": {},
+              "type": "page"
+            },
+            "active": true,
+            "acl": [
+              "all"
+            ]
+          },
+          {
+            "display": "About Us",
+            "image": "https://res.cloudinary.com/dwzm9bysq/image/upload/v1583939196/production/applications/app_000000000000000000000001/media/navigation/icon/dccm5et4sgylisbug9xr.png",
+            "sort_order": 10,
+            "type": "",
+            "action": {
+              "page": {
+                "url": "/",
+                "type": "about-us"
+              },
+              "popup": {},
+              "type": "page"
+            },
+            "active": true,
+            "acl": [
+              "all"
+            ]
+          },
+          {
+            "display": "Rate Us",
+            "image": "https://res.cloudinary.com/dwzm9bysq/image/upload/v1584091739/production/applications/app_000000000000000000000001/media/navigation/icon/afryyfeccqgjyeosdmbz.png",
+            "sort_order": 11,
+            "type": "",
+            "action": {
+              "page": {
+                "url": "/",
+                "type": "rate-us"
+              },
+              "popup": {},
+              "type": "page"
+            },
+            "active": true,
+            "acl": [
+              "registered"
+            ]
+          }
+        ],
+        "created_by": {},
+        "_id": "6050244dbd9e072063f1586e",
+        "platform": [
+          "ios"
+        ]
+      },
+      {
+        "name": "default-top",
+        "slug": "default-top-qrprb8dxqr3m698wwUGXWsvTfVkjt4cR",
+        "orientation": {
+          "landscape": [
+            "top"
+          ]
+        },
+        "version": 3,
+        "navigation": [
+          {
+            "display": "Home",
+            "image": "https://res.cloudinary.com/dwzm9bysq/image/upload/v1567148153/production/system/icons/mystore-tab_y0dqzt.png",
+            "sort_order": 1,
+            "acl": [
+              "all"
+            ],
+            "action": {
+              "page": {
+                "type": "home"
+              },
+              "type": "page"
+            },
+            "active": true
+          },
+          {
+            "display": "Brands",
+            "image": "https://res.cloudinary.com/dwzm9bysq/image/upload/v1567148153/production/system/icons/brands-tab_sfinpk.png",
+            "sort_order": 2,
+            "acl": [
+              "all"
+            ],
+            "action": {
+              "page": {
+                "type": "brands"
+              },
+              "type": "page"
+            },
+            "active": true
+          },
+          {
+            "display": "Collections",
+            "image": "https://res.cloudinary.com/dwzm9bysq/image/upload/v1567148153/production/system/icons/collections-tab_a0tg9c.png",
+            "sort_order": 3,
+            "acl": [
+              "all"
+            ],
+            "action": {
+              "page": {
+                "type": "collections"
+              },
+              "type": "page"
+            },
+            "active": true
+          },
+          {
+            "display": "Categories",
+            "image": "https://res.cloudinary.com/dwzm9bysq/image/upload/v1567148154/production/system/icons/categories-tab_ss8e0q.png",
+            "sort_order": 4,
+            "acl": [
+              "all"
+            ],
+            "action": {
+              "page": {
+                "type": "categories"
+              },
+              "type": "page"
+            },
+            "active": true
+          }
+        ],
+        "created_by": {},
+        "_id": "6050244dbd9e072063f1586f",
+        "platform": [
+          "web"
+        ]
+      }
+    ]
+  }
+}
+```
+</details>
+
+</details>
+
+
+
+
+
+
+
+
+
+---
+
+
+### getNavigationBySlug
+Get navigation by slug.
+
+
+
+
+```kotlin
+platformClient.application("<APPLICATION_ID>").content.getNavigationBySlug(slug: slug, devicePlatform: devicePlatform).safeAwait{ response, error->
+    response?.let{
+      // Use response
+    } ->
+    error?.let{
+      
+    } 
+}
+```
+
+
+
+
+
+| Argument  |  Type  | Required | Description |
+| --------- | -----  | -------- | ----------- | 
+| slug | String | yes | A short, human-readable, URL-friendly identifier of a navigation. You can get slug value of a navigation from `getNavigations` API. |   
+| devicePlatform | String | yes | Filter navigations by platform. Acceptable values are: web, android, ios, all |  
+
+
+
+Retrieve detailed information about a specific navigation element.
+
+*Returned Response:*
+
+
+
+
+[NavigationSchema](#NavigationSchema)
+
+Success. Refer `NavigationSchema` for more details.
+
+
+
+
+<details>
+<summary><i>&nbsp; Examples:</i></summary>
+
+
+<details>
+<summary><i>&nbsp; default</i></summary>
+
+```json
+{
+  "value": {
+    "_id": "5ffbd9b90ac98678ae0458d7",
+    "application": "000000000000000000000001",
+    "_custom_json": null,
+    "name": "test-nav",
+    "slug": "test-nav",
+    "platform": [
+      "ios",
+      "android"
+    ],
+    "orientation": {
+      "portrait": [
+        "left"
+      ]
+    },
+    "navigation": [
+      {
+        "display": "Home",
+        "image": "https://res.cloudinary.com/dwzm9bysq/image/upload/v1567148153/production/system/icons/mystore-tab_y0dqzt.png",
+        "sort_order": 1,
+        "type": "",
+        "action": {
+          "page": {
+            "url": "/",
+            "type": "home"
+          },
+          "popup": {},
+          "type": "page"
+        },
+        "active": true,
+        "tags": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "acl": [
+          "all"
+        ],
+        "_locale_language": {
+          "hi": {
+            "display": ""
+          },
+          "ar": {
+            "display": ""
+          },
+          "en_us": {
+            "display": ""
+          }
+        },
+        "sub_navigation": [
+          {
+            "display": "Brands",
+            "image": "https://res.cloudinary.com/dwzm9bysq/image/upload/v1567148153/production/system/icons/brands-tab_sfinpk.png",
+            "sort_order": 1,
+            "type": "",
+            "action": {
+              "page": {
+                "url": "/brands/",
+                "type": "brands"
+              },
+              "popup": {},
+              "type": "page"
+            },
+            "active": true,
+            "tags": null,
+            "acl": [
+              "all"
+            ],
+            "_locale_language": {
+              "hi": {
+                "display": ""
+              },
+              "ar": {
+                "display": ""
+              },
+              "en_us": {
+                "display": ""
+              }
+            }
+          }
+        ]
+      },
+      {
+        "display": "Collections",
+        "image": "https://res.cloudinary.com/dwzm9bysq/image/upload/v1567148153/production/system/icons/collections-tab_a0tg9c.png",
+        "sort_order": 2,
+        "type": "",
+        "action": {
+          "page": {
+            "url": "/collections/",
+            "type": "collections"
+          },
+          "popup": {},
+          "type": "page"
+        },
+        "active": true,
+        "tags": null,
+        "acl": [
+          "all"
+        ],
+        "_locale_language": {
+          "hi": {
+            "display": ""
+          },
+          "ar": {
+            "display": ""
+          },
+          "en_us": {
+            "display": ""
+          }
+        },
+        "sub_navigation": [
+          {
+            "display": "Categories",
+            "image": "https://res.cloudinary.com/dwzm9bysq/image/upload/v1567148154/production/system/icons/categories-tab_ss8e0q.png",
+            "sort_order": 1,
+            "type": "",
+            "action": {
+              "page": {
+                "url": "/categories/",
+                "type": "categories"
+              },
+              "popup": {},
+              "type": "page"
+            },
+            "active": true,
+            "tags": null,
+            "acl": [
+              "all"
+            ],
+            "_locale_language": {
+              "hi": {
+                "display": ""
+              },
+              "ar": {
+                "display": ""
+              },
+              "en_us": {
+                "display": ""
+              }
+            }
+          }
+        ]
+      },
+      {
+        "display": "Primary Menu",
+        "image": "",
+        "sort_order": 3,
+        "type": "",
+        "action": {
+          "page": {
+            "type": "home"
+          },
+          "popup": {},
+          "type": "page"
+        },
+        "active": true,
+        "tags": null,
+        "acl": [
+          "all"
+        ],
+        "_locale_language": {
+          "hi": {
+            "display": ""
+          },
+          "ar": {
+            "display": ""
+          },
+          "en_us": {
+            "display": ""
+          }
+        }
+      }
+    ],
+    "created_by": {
+      "id": "000000000000000000000000"
+    },
+    "date_meta": {
+      "created_on": "2021-01-11T04:53:13.585Z",
+      "modified_on": "2021-01-14T10:24:34.485Z"
+    },
+    "archived": false
+  }
+}
+```
+</details>
+
+</details>
+
+
+
+
+
+
+
+
+
+---
+
+
+### updateNavigation
+Update navigation.
+
+
+
+
+```kotlin
+platformClient.application("<APPLICATION_ID>").content.updateNavigation(id: id, body: body).safeAwait{ response, error->
+    response?.let{
+      // Use response
+    } ->
+    error?.let{
+      
+    } 
+}
+```
+
+
+
+
+
+| Argument  |  Type  | Required | Description |
+| --------- | -----  | -------- | ----------- | 
+| id | String | yes | ID allotted to the navigation. |  
+| body | [NavigationRequest](#NavigationRequest) | yes | Request body |
+
+
+Modify the content and settings of a specific navigation element.
+
+*Returned Response:*
+
+
+
+
+[NavigationSchema](#NavigationSchema)
+
+Success.
+
+
+
+
+<details>
+<summary><i>&nbsp; Examples:</i></summary>
+
+
+<details>
+<summary><i>&nbsp; default</i></summary>
+
+```json
+{
+  "value": {
+    "_id": "5ffbd9b90ac98678ae0458d7",
+    "application": "000000000000000000000001",
+    "_custom_json": null,
+    "name": "test-nav",
+    "slug": "test-nav",
+    "platform": [
+      "ios",
+      "android"
+    ],
+    "orientation": {
+      "portrait": [
+        "left"
+      ]
+    },
+    "navigation": [
+      {
+        "display": "Home",
+        "image": "https://res.cloudinary.com/dwzm9bysq/image/upload/v1567148153/production/system/icons/mystore-tab_y0dqzt.png",
+        "sort_order": 1,
+        "type": "",
+        "action": {
+          "page": {
+            "url": "/",
+            "type": "home"
+          },
+          "popup": {},
+          "type": "page"
+        },
+        "active": true,
+        "tags": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "acl": [
+          "all"
+        ],
+        "_locale_language": {
+          "hi": {
+            "display": ""
+          },
+          "ar": {
+            "display": ""
+          },
+          "en_us": {
+            "display": ""
+          }
+        },
+        "sub_navigation": [
+          {
+            "display": "Brands",
+            "image": "https://res.cloudinary.com/dwzm9bysq/image/upload/v1567148153/production/system/icons/brands-tab_sfinpk.png",
+            "sort_order": 1,
+            "type": "",
+            "action": {
+              "page": {
+                "url": "/brands/",
+                "type": "brands"
+              },
+              "popup": {},
+              "type": "page"
+            },
+            "active": true,
+            "tags": null,
+            "acl": [
+              "all"
+            ],
+            "_locale_language": {
+              "hi": {
+                "display": ""
+              },
+              "ar": {
+                "display": ""
+              },
+              "en_us": {
+                "display": ""
+              }
+            }
+          }
+        ]
+      },
+      {
+        "display": "Collections",
+        "image": "https://res.cloudinary.com/dwzm9bysq/image/upload/v1567148153/production/system/icons/collections-tab_a0tg9c.png",
+        "sort_order": 2,
+        "type": "",
+        "action": {
+          "page": {
+            "url": "/collections/",
+            "type": "collections"
+          },
+          "popup": {},
+          "type": "page"
+        },
+        "active": true,
+        "tags": null,
+        "acl": [
+          "all"
+        ],
+        "_locale_language": {
+          "hi": {
+            "display": ""
+          },
+          "ar": {
+            "display": ""
+          },
+          "en_us": {
+            "display": ""
+          }
+        },
+        "sub_navigation": [
+          {
+            "display": "Categories",
+            "image": "https://res.cloudinary.com/dwzm9bysq/image/upload/v1567148154/production/system/icons/categories-tab_ss8e0q.png",
+            "sort_order": 1,
+            "type": "",
+            "action": {
+              "page": {
+                "url": "/categories/",
+                "type": "categories"
+              },
+              "popup": {},
+              "type": "page"
+            },
+            "active": true,
+            "tags": null,
+            "acl": [
+              "all"
+            ],
+            "_locale_language": {
+              "hi": {
+                "display": ""
+              },
+              "ar": {
+                "display": ""
+              },
+              "en_us": {
+                "display": ""
+              }
+            }
+          }
+        ]
+      },
+      {
+        "display": "Primary Menu",
+        "image": "",
+        "sort_order": 3,
+        "type": "",
+        "action": {
+          "page": {
+            "type": "home"
+          },
+          "popup": {},
+          "type": "page"
+        },
+        "active": true,
+        "tags": null,
+        "acl": [
+          "all"
+        ],
+        "_locale_language": {
+          "hi": {
+            "display": ""
+          },
+          "ar": {
+            "display": ""
+          },
+          "en_us": {
+            "display": ""
+          }
+        }
+      }
+    ],
+    "created_by": {
+      "id": "000000000000000000000000"
+    },
+    "date_meta": {
+      "created_on": "2021-01-11T04:53:13.585Z",
+      "modified_on": "2021-01-14T10:24:34.485Z"
+    },
+    "archived": false
+  }
+}
+```
+</details>
+
+</details>
+
+
+
+
+
+
+
+
+
+---
+
+
+### deleteNavigation
+Delete navigation.
+
+
+
+
+```kotlin
+platformClient.application("<APPLICATION_ID>").content.deleteNavigation(id: id).safeAwait{ response, error->
+    response?.let{
+      // Use response
+    } ->
+    error?.let{
+      
+    } 
+}
+```
+
+
+
+
+
+| Argument  |  Type  | Required | Description |
+| --------- | -----  | -------- | ----------- | 
+| id | String | yes | ID allotted to the navigation. |  
+
+
+
+Remove a specific navigation element.
+
+*Returned Response:*
+
+
+
+
+[NavigationSchema](#NavigationSchema)
+
+Success.
+
+
+
+
+<details>
+<summary><i>&nbsp; Examples:</i></summary>
+
+
+<details>
+<summary><i>&nbsp; default</i></summary>
+
+```json
+{
+  "value": {
+    "_id": "5ffbd9b90ac98678ae0458d7",
+    "application": "000000000000000000000001",
+    "_custom_json": null,
+    "name": "temp",
+    "slug": "temp",
+    "platform": "[web]",
+    "orientation": {
+      "portrait": [
+        "left"
+      ]
+    },
+    "navigation": [
+      {
+        "display": "Home",
+        "image": "https://res.cloudinary.com/dwzm9bysq/image/upload/v1567148153/production/system/icons/mystore-tab_y0dqzt.png",
+        "sort_order": 1,
+        "type": "",
+        "action": {
+          "page": {
+            "url": "/",
+            "type": "home"
+          },
+          "popup": {},
+          "type": "page"
+        },
+        "active": true,
+        "tags": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "acl": [
+          "all"
+        ],
+        "_locale_language": {
+          "hi": {
+            "display": ""
+          },
+          "ar": {
+            "display": ""
+          },
+          "en_us": {
+            "display": ""
+          }
+        },
+        "sub_navigation": [
+          {
+            "display": "Brands",
+            "image": "https://res.cloudinary.com/dwzm9bysq/image/upload/v1567148153/production/system/icons/brands-tab_sfinpk.png",
+            "sort_order": 1,
+            "type": "",
+            "action": {
+              "page": {
+                "url": "/brands/",
+                "type": "brands"
+              },
+              "popup": {},
+              "type": "page"
+            },
+            "active": true,
+            "tags": null,
+            "acl": [
+              "all"
+            ],
+            "_locale_language": {
+              "hi": {
+                "display": ""
+              },
+              "ar": {
+                "display": ""
+              },
+              "en_us": {
+                "display": ""
+              }
+            }
+          }
+        ]
+      },
+      {
+        "display": "Collections",
+        "image": "https://res.cloudinary.com/dwzm9bysq/image/upload/v1567148153/production/system/icons/collections-tab_a0tg9c.png",
+        "sort_order": 2,
+        "type": "",
+        "action": {
+          "page": {
+            "url": "/collections/",
+            "type": "collections"
+          },
+          "popup": {},
+          "type": "page"
+        },
+        "active": true,
+        "tags": null,
+        "acl": [
+          "all"
+        ],
+        "_locale_language": {
+          "hi": {
+            "display": ""
+          },
+          "ar": {
+            "display": ""
+          },
+          "en_us": {
+            "display": ""
+          }
+        },
+        "sub_navigation": [
+          {
+            "display": "Categories",
+            "image": "https://res.cloudinary.com/dwzm9bysq/image/upload/v1567148154/production/system/icons/categories-tab_ss8e0q.png",
+            "sort_order": 1,
+            "type": "",
+            "action": {
+              "page": {
+                "url": "/categories/",
+                "type": "categories"
+              },
+              "popup": {},
+              "type": "page"
+            },
+            "active": true,
+            "tags": null,
+            "acl": [
+              "all"
+            ],
+            "_locale_language": {
+              "hi": {
+                "display": ""
+              },
+              "ar": {
+                "display": ""
+              },
+              "en_us": {
+                "display": ""
+              }
+            }
+          }
+        ]
+      },
+      {
+        "display": "Primary Menu",
+        "image": "",
+        "sort_order": 3,
+        "type": "",
+        "action": {
+          "page": {
+            "type": "home"
+          },
+          "popup": {},
+          "type": "page"
+        },
+        "active": true,
+        "tags": null,
+        "acl": [
+          "all"
+        ],
+        "_locale_language": {
+          "hi": {
+            "display": ""
+          },
+          "ar": {
+            "display": ""
+          },
+          "en_us": {
+            "display": ""
+          }
+        }
+      }
+    ],
+    "created_by": {
+      "id": "000000000000000000000000"
+    },
+    "date_meta": {
+      "created_on": "2021-01-11T04:53:13.585Z",
+      "modified_on": "2021-01-14T10:24:34.485Z"
+    },
+    "archived": true
+  }
+}
+```
+</details>
+
+</details>
+
+
+
+
+
+
+
+
+
+---
+
+
+
+
+### getPageMeta
+Get page meta.
+
+
+
+
+```kotlin
+platformClient.application("<APPLICATION_ID>").content.getPageMeta().safeAwait{ response, error->
+    response?.let{
+      // Use response
+    } ->
+    error?.let{
+      
+    } 
+}
+```
+
+
+
+
+
+
+Retrieve metadata for a specific page.
+
+*Returned Response:*
+
+
+
+
+[PageMetaSchema](#PageMetaSchema)
+
+Success. Refer `PageMetaSchema` for more details.
+
+
+
+
+<details>
+<summary><i>&nbsp; Examples:</i></summary>
+
+
+<details>
+<summary><i>&nbsp; default</i></summary>
+
+```json
+{
+  "value": {
+    "application_id": "000000000000000000000001",
+    "system_pages": [
+      {
+        "display": "Home",
+        "action": {
+          "page": {
+            "type": "home"
+          },
+          "type": "page"
+        },
+        "page_type": "home"
+      },
+      {
+        "display": "Brands",
+        "action": {
+          "page": {
+            "type": "brands"
+          },
+          "type": "page"
+        },
+        "page_type": "brands"
+      },
+      {
+        "display": "Collections",
+        "action": {
+          "page": {
+            "type": "collections"
+          },
+          "type": "page"
+        },
+        "page_type": "collections"
+      },
+      {
+        "display": "Categories",
+        "action": {
+          "page": {
+            "type": "categories"
+          },
+          "type": "page"
+        },
+        "page_type": "categories"
+      }
+    ],
+    "custom_pages": [
+      {
+        "display": "my first page",
+        "slug": "first_page"
+      },
+      {
+        "display": "my second page",
+        "slug": "second_page"
+      }
+    ]
+  }
+}
+```
+</details>
+
+</details>
+
+
+
+
+
+
+
+
+
+---
+
+
+### getPageSpec
+Get page specification.
+
+
+
+
+```kotlin
+platformClient.application("<APPLICATION_ID>").content.getPageSpec().safeAwait{ response, error->
+    response?.let{
+      // Use response
+    } ->
+    error?.let{
+      
+    } 
+}
+```
+
+
+
+
+
+
+Retrieve specifications and details for a specific page.
+
+*Returned Response:*
+
+
+
+
+[PageSpec](#PageSpec)
+
+Success. Refer `PageSpec` for more details.
+
+
+
+
+<details>
+<summary><i>&nbsp; Examples:</i></summary>
+
+
+<details>
+<summary><i>&nbsp; default</i></summary>
+
+```json
+{
+  "value": {
+    "specifications": [
+      {
+        "page_type": "home",
+        "display_name": "Home",
+        "params": [],
+        "query": []
+      },
+      {
+        "page_type": "collections",
+        "display_name": "Collections",
+        "params": [],
+        "query": []
+      },
+      {
+        "page_type": "collection",
+        "display_name": "Collection",
+        "params": [
+          {
+            "key": "slug",
+            "required": true
+          }
+        ],
+        "query": []
+      }
+    ]
+  }
+}
+```
+</details>
+
+</details>
+
+
+
+
+
+
+
+
+
+---
+
+
+### createPagePreview
+Create page preview.
+
+
+
+
+```kotlin
+platformClient.application("<APPLICATION_ID>").content.createPagePreview(body: body).safeAwait{ response, error->
+    response?.let{
+      // Use response
+    } ->
+    error?.let{
+      
+    } 
+}
+```
+
+
+
+
+
+| Argument  |  Type  | Required | Description |
+| --------- | -----  | -------- | ----------- |
+| body | [PageRequest](#PageRequest) | yes | Request body |
+
+
+Generate and add a new page preview.
+
+*Returned Response:*
+
+
+
+
+[PageSchema](#PageSchema)
+
+Success. Refer `PageSchema` for more details.
+
+
+
+
+<details>
+<summary><i>&nbsp; Examples:</i></summary>
+
+
+<details>
+<summary><i>&nbsp; default</i></summary>
+
+```json
+{
+  "value": {
+    "date_meta": {
+      "created_on": "2021-03-16T08:24:19.197Z",
+      "modified_on": "2021-03-16T08:24:19.197Z"
+    },
+    "tags": [
+      "my first page"
+    ],
+    "published": true,
+    "component_ids": [],
+    "archived": false,
+    "_id": "60506dcad18cb33946026862",
+    "title": "my first page",
+    "slug": "1st_page",
+    "feature_image": {
+      "secure_url": "https://google.com/some-image"
+    },
+    "content": [
+      {
+        "type": "html",
+        "value": "<div id=\"icfm\">Emtpy Page. Create Page here.</div><div id=\"izu5\" class=\"aa\">hello there!<div id=\"izzl\">how are you doing</div><div><br/></div></div><img id=\"ibgj\" src=\"https://hdn-1.addsale.com/x0/company/52/applications/614957b7e7a0ccc371e96094/pages/pictures/free-content/original/-zLi_CuyM-apple.jpeg\"/>"
+      },
+      {
+        "type": "css",
+        "value": "* { box-sizing: border-box; } body {margin: 0;}*{box-sizing:border-box;}body{margin-top:0px;margin-right:0px;margin-bottom:0px;margin-left:0px;}*{box-sizing:border-box;}body{margin-top:0px;margin-right:0px;margin-bottom:0px;margin-left:0px;}#icfm{text-align:center;padding-top:30px;padding-right:30px;padding-bottom:30px;padding-left:30px;}#izu5{padding-top:10px;padding-right:10px;padding-bottom:10px;padding-left:10px;}#ibgj{color:black;}#izzl{float:none;display:flex;}.aa{float:right;}"
+      },
+      {
+        "type": "js",
+        "value": ""
+      }
+    ],
+    "content_path": "https://hdn-1.fynd.com/company/1526/applications/61012f6a9250ccd1b9ef8a1d/pages/content/page_slug.html",
+    "platform": "web",
+    "description": "hey this is my first page",
+    "visibility": {
+      "test": true
+    },
+    "_schedule": {
+      "start": "2021-04-23T23:50:00.000Z",
+      "next_schedule": [
+        {}
+      ]
+    },
+    "seo": {
+      "title": "my first page",
+      "description": "hey this is my first page",
+      "image": {
+        "url": ""
+      }
+    },
+    "type": "rawhtml",
+    "application": "000000000000000000000001",
+    "orientation": "portrait",
+    "page_meta": []
+  }
+}
+```
+</details>
+
+</details>
+
+
+
+
+
+
+
+
+
+---
+
+
+### updatePagePreview
+Update page preview.
+
+
+
+
+```kotlin
+platformClient.application("<APPLICATION_ID>").content.updatePagePreview(slug: slug, body: body).safeAwait{ response, error->
+    response?.let{
+      // Use response
+    } ->
+    error?.let{
+      
+    } 
+}
+```
+
+
+
+
+
+| Argument  |  Type  | Required | Description |
+| --------- | -----  | -------- | ----------- | 
+| slug | String | yes | A short, human-readable, URL-friendly identifier of a page. You can get slug value of a page from `getPages` API. |  
+| body | [PagePublishRequest](#PagePublishRequest) | yes | Request body |
+
+
+Modify the content and settings of a specific page preview.
+
+*Returned Response:*
+
+
+
+
+[PageSchema](#PageSchema)
+
+Success.
+
+
+
+
+<details>
+<summary><i>&nbsp; Examples:</i></summary>
+
+
+<details>
+<summary><i>&nbsp; default</i></summary>
+
+```json
+{
+  "value": {
+    "date_meta": {
+      "created_on": "2021-03-16T08:24:19.197Z",
+      "modified_on": "2021-03-16T08:24:19.197Z"
+    },
+    "tags": [
+      "my first page"
+    ],
+    "published": true,
+    "component_ids": [],
+    "archived": false,
+    "_id": "60506dcad18cb33946026862",
+    "title": "my first page",
+    "slug": "1st_page",
+    "feature_image": {
+      "secure_url": "https://google.com/some-image"
+    },
+    "content": [
+      {
+        "type": "html",
+        "value": "<div id=\"icfm\">Emtpy Page. Create Page here.</div><div id=\"izu5\" class=\"aa\">hello there!<div id=\"izzl\">how are you doing</div><div><br/></div></div><img id=\"ibgj\" src=\"https://hdn-1.addsale.com/x0/company/52/applications/614957b7e7a0ccc371e96094/pages/pictures/free-content/original/-zLi_CuyM-apple.jpeg\"/>"
+      },
+      {
+        "type": "css",
+        "value": "* { box-sizing: border-box; } body {margin: 0;}*{box-sizing:border-box;}body{margin-top:0px;margin-right:0px;margin-bottom:0px;margin-left:0px;}*{box-sizing:border-box;}body{margin-top:0px;margin-right:0px;margin-bottom:0px;margin-left:0px;}#icfm{text-align:center;padding-top:30px;padding-right:30px;padding-bottom:30px;padding-left:30px;}#izu5{padding-top:10px;padding-right:10px;padding-bottom:10px;padding-left:10px;}#ibgj{color:black;}#izzl{float:none;display:flex;}.aa{float:right;}"
+      },
+      {
+        "type": "js",
+        "value": ""
+      }
+    ],
+    "content_path": "https://hdn-1.fynd.com/company/1526/applications/61012f6a9250ccd1b9ef8a1d/pages/content/page_slug.html",
+    "platform": "web",
+    "description": "hey this is my first page",
+    "visibility": {
+      "test": true
+    },
+    "_schedule": {
+      "start": "2021-04-23T23:50:00.000Z",
+      "next_schedule": [
+        {}
+      ]
+    },
+    "seo": {
+      "title": "my first page",
+      "description": "hey this is my first page",
+      "image": {
+        "url": ""
+      }
+    },
+    "type": "rawhtml",
+    "application": "000000000000000000000001",
+    "orientation": "portrait",
+    "page_meta": []
+  }
+}
+```
+</details>
+
+</details>
+
+
+
+
+
+
+
+
+
+---
+
+
+### getPages
+Get pages.
+
+
+
+
+```kotlin
+platformClient.application("<APPLICATION_ID>").content.getPages(pageNo: pageNo, pageSize: pageSize).safeAwait{ response, error->
+    response?.let{
+      // Use response
+    } ->
+    error?.let{
+      
+    } 
+}
+```
+
+
+
+
+
+| Argument  |  Type  | Required | Description |
+| --------- | -----  | -------- | ----------- | 
+| pageNo | Int? | no | The page number to navigate through the given set of results. Default value is 1. |   
+| pageSize | Int? | no | The number of items to retrieve in each page. Default value is 10. |  
+
+
+
+Retrieve a list of available pages.
+
+*Returned Response:*
+
+
+
+
+[PageGetResponse](#PageGetResponse)
+
+Success. Refer `PageGetResponse` for more details.
+
+
+
+
+<details>
+<summary><i>&nbsp; Examples:</i></summary>
+
+
+<details>
+<summary><i>&nbsp; default</i></summary>
+
+```json
+{
+  "value": {
+    "items": [
+      {
+        "date_meta": {
+          "created_on": "2021-03-14T06:49:03.945Z",
+          "modified_on": "2021-03-14T06:49:03.945Z"
+        },
+        "tags": [
+          "my first page"
+        ],
+        "_id": "604db275b3ae202873964d94",
+        "content_path": "https://hdn-1.fynd.com/company/1526/applications/61012f6a9250ccd1b9ef8a1d/pages/content/page_slug.html",
+        "title": "test-page",
+        "slug": "test-page",
+        "published": true,
+        "_schedule": {
+          "next_schedule": [
+            {}
+          ],
+          "start": "2021-04-08T07:15:13.000Z",
+          "end": "2021-04-10T02:00:00.000Z"
+        },
+        "feature_image": {
+          "secure_url": "https://google.com/some-image"
+        },
+        "seo": {
+          "title": "my first page",
+          "description": "hey this is my first page",
+          "image": {
+            "url": ""
+          }
+        },
+        "application": "000000000000000000000001",
+        "author": {
+          "name": "Abhinav Maurya"
+        }
+      }
+    ],
+    "page": {
+      "type": "number",
+      "current": 1,
+      "size": 1,
+      "item_total": 2,
+      "has_next": true
+    }
+  }
+}
+```
+</details>
+
+</details>
+
+
+
+
+
+
+
+
+
+---
+
+
+
+
+### deletePage
+Delete page.
+
+
+
+
+```kotlin
+platformClient.application("<APPLICATION_ID>").content.deletePage(id: id).safeAwait{ response, error->
+    response?.let{
+      // Use response
+    } ->
+    error?.let{
+      
+    } 
+}
+```
+
+
+
+
+
+| Argument  |  Type  | Required | Description |
+| --------- | -----  | -------- | ----------- | 
+| id | String | yes | ID allotted to the page. |  
+
+
+
+Remove a page from the platform.
+
+*Returned Response:*
+
+
+
+
+[PageSchema](#PageSchema)
+
+Success.
+
+
+
+
+<details>
+<summary><i>&nbsp; Examples:</i></summary>
+
+
+<details>
+<summary><i>&nbsp; default</i></summary>
+
+```json
+{
+  "value": {
+    "date_meta": {
+      "created_on": "2021-03-16T08:24:19.197Z",
+      "modified_on": "2021-03-16T08:24:19.197Z"
+    },
+    "tags": [
+      "my first page"
+    ],
+    "published": true,
+    "component_ids": [],
+    "archived": false,
+    "_id": "60506dcad18cb33946026862",
+    "title": "my first page",
+    "slug": "1st_page",
+    "feature_image": {
+      "secure_url": "https://google.com/some-image"
+    },
+    "content": [
+      {
+        "type": "html",
+        "value": "<div id=\"icfm\">Emtpy Page. Create Page here.</div><div id=\"izu5\" class=\"aa\">hello there!<div id=\"izzl\">how are you doing</div><div><br/></div></div><img id=\"ibgj\" src=\"https://hdn-1.addsale.com/x0/company/52/applications/614957b7e7a0ccc371e96094/pages/pictures/free-content/original/-zLi_CuyM-apple.jpeg\"/>"
+      },
+      {
+        "type": "css",
+        "value": "* { box-sizing: border-box; } body {margin: 0;}*{box-sizing:border-box;}body{margin-top:0px;margin-right:0px;margin-bottom:0px;margin-left:0px;}*{box-sizing:border-box;}body{margin-top:0px;margin-right:0px;margin-bottom:0px;margin-left:0px;}#icfm{text-align:center;padding-top:30px;padding-right:30px;padding-bottom:30px;padding-left:30px;}#izu5{padding-top:10px;padding-right:10px;padding-bottom:10px;padding-left:10px;}#ibgj{color:black;}#izzl{float:none;display:flex;}.aa{float:right;}"
+      },
+      {
+        "type": "js",
+        "value": ""
+      }
+    ],
+    "content_path": "https://hdn-1.fynd.com/company/1526/applications/61012f6a9250ccd1b9ef8a1d/pages/content/page_slug.html",
+    "platform": "web",
+    "description": "hey this is my first page",
+    "visibility": {
+      "test": true
+    },
+    "_schedule": {
+      "start": "2021-04-23T23:50:00.000Z",
+      "next_schedule": [
+        {}
+      ]
+    },
+    "seo": {
+      "title": "my first page",
+      "description": "hey this is my first page",
+      "image": {
+        "url": ""
+      }
+    },
+    "type": "rawhtml",
+    "application": "000000000000000000000001",
+    "orientation": "portrait",
+    "page_meta": []
+  }
+}
+```
+</details>
+
+</details>
+
+
+
+
+
+
+
+
+
+---
+
+
+### createPage
+Create page.
+
+
+
+
+```kotlin
+platformClient.application("<APPLICATION_ID>").content.createPage(body: body).safeAwait{ response, error->
+    response?.let{
+      // Use response
+    } ->
+    error?.let{
+      
+    } 
+}
+```
+
+
+
+
+
+| Argument  |  Type  | Required | Description |
+| --------- | -----  | -------- | ----------- |
+| body | [PageRequest](#PageRequest) | yes | Request body |
+
+
+Generate and add a new page to the platform.
+
+*Returned Response:*
+
+
+
+
+[PageSchema](#PageSchema)
+
+Success. Refer `PageSchema` for more details.
+
+
+
+
+<details>
+<summary><i>&nbsp; Examples:</i></summary>
+
+
+<details>
+<summary><i>&nbsp; default</i></summary>
+
+```json
+{
+  "value": {
+    "date_meta": {
+      "created_on": "2021-03-16T08:24:19.197Z",
+      "modified_on": "2021-03-16T08:24:19.197Z"
+    },
+    "tags": [
+      "my first page"
+    ],
+    "published": true,
+    "component_ids": [],
+    "archived": false,
+    "_id": "60506dcad18cb33946026862",
+    "title": "my first page",
+    "slug": "1st_page",
+    "feature_image": {
+      "secure_url": "https://google.com/some-image"
+    },
+    "content": [
+      {
+        "type": "html",
+        "value": "<div id=\"icfm\">Emtpy Page. Create Page here.</div><div id=\"izu5\" class=\"aa\">hello there!<div id=\"izzl\">how are you doing</div><div><br/></div></div><img id=\"ibgj\" src=\"https://hdn-1.addsale.com/x0/company/52/applications/614957b7e7a0ccc371e96094/pages/pictures/free-content/original/-zLi_CuyM-apple.jpeg\"/>"
+      },
+      {
+        "type": "css",
+        "value": "* { box-sizing: border-box; } body {margin: 0;}*{box-sizing:border-box;}body{margin-top:0px;margin-right:0px;margin-bottom:0px;margin-left:0px;}*{box-sizing:border-box;}body{margin-top:0px;margin-right:0px;margin-bottom:0px;margin-left:0px;}#icfm{text-align:center;padding-top:30px;padding-right:30px;padding-bottom:30px;padding-left:30px;}#izu5{padding-top:10px;padding-right:10px;padding-bottom:10px;padding-left:10px;}#ibgj{color:black;}#izzl{float:none;display:flex;}.aa{float:right;}"
+      },
+      {
+        "type": "js",
+        "value": ""
+      }
+    ],
+    "content_path": "https://hdn-1.fynd.com/company/1526/applications/61012f6a9250ccd1b9ef8a1d/pages/content/page_slug.html",
+    "platform": "web",
+    "description": "hey this is my first page",
+    "visibility": {
+      "test": true
+    },
+    "_schedule": {
+      "start": "2021-04-23T23:50:00.000Z",
+      "next_schedule": [
+        {}
+      ]
+    },
+    "seo": {
+      "title": "my first page",
+      "description": "hey this is my first page",
+      "image": {
+        "url": ""
+      }
+    },
+    "type": "rawhtml",
+    "application": "000000000000000000000001",
+    "orientation": "portrait",
+    "page_meta": []
+  }
+}
+```
+</details>
+
+</details>
+
+
+
+
+
+
+
+
+
+---
+
+
+### updatePage
+Update page.
+
+
+
+
+```kotlin
+platformClient.application("<APPLICATION_ID>").content.updatePage(id: id, body: body).safeAwait{ response, error->
+    response?.let{
+      // Use response
+    } ->
+    error?.let{
+      
+    } 
+}
+```
+
+
+
+
+
+| Argument  |  Type  | Required | Description |
+| --------- | -----  | -------- | ----------- | 
+| id | String | yes | ID allotted to the page. |  
+| body | [PageSchema](#PageSchema) | yes | Request body |
+
+
+Modify and update the content of a page.
+
+*Returned Response:*
+
+
+
+
+[PageSchema](#PageSchema)
+
+Success. Refer `PageSchema` for more details.
+
+
+
+
+<details>
+<summary><i>&nbsp; Examples:</i></summary>
+
+
+<details>
+<summary><i>&nbsp; default</i></summary>
+
+```json
+{
+  "value": {
+    "date_meta": {
+      "created_on": "2021-03-16T08:24:19.197Z",
+      "modified_on": "2021-03-16T08:24:19.197Z"
+    },
+    "tags": [
+      "my first page"
+    ],
+    "published": true,
+    "component_ids": [],
+    "archived": false,
+    "_id": "60506dcad18cb33946026862",
+    "title": "my first page",
+    "slug": "1st_page",
+    "feature_image": {
+      "secure_url": "https://google.com/some-image"
+    },
+    "content": [
+      {
+        "type": "html",
+        "value": "<div id=\"icfm\">Emtpy Page. Create Page here.</div><div id=\"izu5\" class=\"aa\">hello there!<div id=\"izzl\">how are you doing</div><div><br/></div></div><img id=\"ibgj\" src=\"https://hdn-1.addsale.com/x0/company/52/applications/614957b7e7a0ccc371e96094/pages/pictures/free-content/original/-zLi_CuyM-apple.jpeg\"/>"
+      },
+      {
+        "type": "css",
+        "value": "* { box-sizing: border-box; } body {margin: 0;}*{box-sizing:border-box;}body{margin-top:0px;margin-right:0px;margin-bottom:0px;margin-left:0px;}*{box-sizing:border-box;}body{margin-top:0px;margin-right:0px;margin-bottom:0px;margin-left:0px;}#icfm{text-align:center;padding-top:30px;padding-right:30px;padding-bottom:30px;padding-left:30px;}#izu5{padding-top:10px;padding-right:10px;padding-bottom:10px;padding-left:10px;}#ibgj{color:black;}#izzl{float:none;display:flex;}.aa{float:right;}"
+      },
+      {
+        "type": "js",
+        "value": ""
+      }
+    ],
+    "content_path": "https://hdn-1.fynd.com/company/1526/applications/61012f6a9250ccd1b9ef8a1d/pages/content/page_slug.html",
+    "platform": "web",
+    "description": "hey this is my first page",
+    "visibility": {
+      "test": true
+    },
+    "_schedule": {
+      "start": "2021-04-23T23:50:00.000Z",
+      "next_schedule": [
+        {}
+      ]
+    },
+    "seo": {
+      "title": "my first page",
+      "description": "hey this is my first page",
+      "image": {
+        "url": ""
+      }
+    },
+    "type": "rawhtml",
+    "application": "000000000000000000000001",
+    "orientation": "portrait",
+    "page_meta": []
+  }
+}
+```
+</details>
+
+</details>
+
+
+
+
+
+
+
+
+
+---
+
+
+### getPageBySlug
+Get page by slug.
+
+
+
+
+```kotlin
+platformClient.application("<APPLICATION_ID>").content.getPageBySlug(slug: slug).safeAwait{ response, error->
+    response?.let{
+      // Use response
+    } ->
+    error?.let{
+      
+    } 
+}
+```
+
+
+
+
+
+| Argument  |  Type  | Required | Description |
+| --------- | -----  | -------- | ----------- | 
+| slug | String | yes | A short, human-readable, URL-friendly identifier of a page. You can get slug value of a page from `getPages` API. |  
+
+
+
+Retrieve detailed information about a specific page using its slug.
+
+*Returned Response:*
+
+
+
+
+[PageSchema](#PageSchema)
+
+Success. Returns a JSON object of components. Refer `PageSchema` for more details.
+
+
+
+
+<details>
+<summary><i>&nbsp; Examples:</i></summary>
+
+
+<details>
+<summary><i>&nbsp; default</i></summary>
+
+```json
+{
+  "value": {
+    "date_meta": {
+      "created_on": "2021-03-16T08:24:19.197Z",
+      "modified_on": "2021-03-16T08:24:19.197Z"
+    },
+    "tags": [
+      "my first page"
+    ],
+    "published": true,
+    "component_ids": [],
+    "archived": false,
+    "_id": "60506dcad18cb33946026862",
+    "title": "my first page",
+    "slug": "1st_page",
+    "feature_image": {
+      "secure_url": "https://google.com/some-image"
+    },
+    "content": [
+      {
+        "type": "html",
+        "value": "<div id=\"icfm\">Emtpy Page. Create Page here.</div><div id=\"izu5\" class=\"aa\">hello there!<div id=\"izzl\">how are you doing</div><div><br/></div></div><img id=\"ibgj\" src=\"https://hdn-1.addsale.com/x0/company/52/applications/614957b7e7a0ccc371e96094/pages/pictures/free-content/original/-zLi_CuyM-apple.jpeg\"/>"
+      },
+      {
+        "type": "css",
+        "value": "* { box-sizing: border-box; } body {margin: 0;}*{box-sizing:border-box;}body{margin-top:0px;margin-right:0px;margin-bottom:0px;margin-left:0px;}*{box-sizing:border-box;}body{margin-top:0px;margin-right:0px;margin-bottom:0px;margin-left:0px;}#icfm{text-align:center;padding-top:30px;padding-right:30px;padding-bottom:30px;padding-left:30px;}#izu5{padding-top:10px;padding-right:10px;padding-bottom:10px;padding-left:10px;}#ibgj{color:black;}#izzl{float:none;display:flex;}.aa{float:right;}"
+      },
+      {
+        "type": "js",
+        "value": ""
+      }
+    ],
+    "content_path": "https://hdn-1.fynd.com/company/1526/applications/61012f6a9250ccd1b9ef8a1d/pages/content/page_slug.html",
+    "platform": "web",
+    "description": "hey this is my first page",
+    "visibility": {
+      "test": true
+    },
+    "_schedule": {
+      "start": "2021-04-23T23:50:00.000Z",
+      "next_schedule": [
+        {}
+      ]
+    },
+    "seo": {
+      "title": "my first page",
+      "description": "hey this is my first page",
+      "image": {
+        "url": ""
+      }
+    },
+    "type": "rawhtml",
+    "application": "000000000000000000000001",
+    "orientation": "portrait",
+    "page_meta": []
+  }
+}
+```
+</details>
+
+</details>
+
+
+
+
+
+
+
+
+
+---
+
+
+
+
+### addPathRedirectionRules
+Add path redirection rules.
+
+
+
+
+```kotlin
+platformClient.application("<APPLICATION_ID>").content.addPathRedirectionRules(body: body).safeAwait{ response, error->
+    response?.let{
+      // Use response
+    } ->
+    error?.let{
+      
+    } 
+}
+```
+
+
+
+
+
+| Argument  |  Type  | Required | Description |
+| --------- | -----  | -------- | ----------- |
+| body | [PathMappingSchema](#PathMappingSchema) | yes | Request body |
+
+
+Create and add rules for path redirection.
+
+*Returned Response:*
+
+
+
+
+[PathMappingSchema](#PathMappingSchema)
+
+Success. Refer `PathMappingSchema` for more details.
+
+
+
+
+<details>
+<summary><i>&nbsp; Examples:</i></summary>
+
+
+<details>
+<summary><i>&nbsp; Success</i></summary>
+
+```json
+{
+  "value": {
+    "_id": "615188e9db1e444cb0f40837",
+    "application": "000000000000000000000002",
+    "redirect_from": "/from",
+    "redirect_to": "/to",
+    "createdAt": "2021-09-27T09:03:37.053Z",
+    "updatedAt": "2021-09-27T09:09:25.587Z"
+  }
+}
+```
+</details>
+
+</details>
+
+
+
+
+
+
+
+
+
+---
+
+
+### getPathRedirectionRules
+Get path redirection rules.
+
+
+
+
+```kotlin
+platformClient.application("<APPLICATION_ID>").content.getPathRedirectionRules(pageSize: pageSize, pageNo: pageNo).safeAwait{ response, error->
+    response?.let{
+      // Use response
+    } ->
+    error?.let{
+      
+    } 
+}
+```
+
+
+
+
+
+| Argument  |  Type  | Required | Description |
+| --------- | -----  | -------- | ----------- | 
+| pageSize | Int? | no | The number of items to retrieve in each page. Default value is 5.  |   
+| pageNo | Int? | no | The page number to navigate through the given set of results. Default value is 1. |  
+
+
+
+Retrieve a list of path redirection rules.
+
+*Returned Response:*
+
+
+
+
+[PathMappingSchema](#PathMappingSchema)
+
+Success. Refer `PathMappingSchema` for more details.
+
+
+
+
+<details>
+<summary><i>&nbsp; Examples:</i></summary>
+
+
+<details>
+<summary><i>&nbsp; Success</i></summary>
+
+```json
+{
+  "value": {
+    "_id": "615188e9db1e444cb0f40837",
+    "application": "000000000000000000000002",
+    "redirect_from": "/from",
+    "redirect_to": "/to",
+    "createdAt": "2021-09-27T09:03:37.053Z",
+    "updatedAt": "2021-09-27T09:09:25.587Z"
+  }
+}
+```
+</details>
+
+</details>
+
+
+
+
+
+
+
+
+
+---
+
+
+### getPathRedirectionRule
+Get path redirection rule.
+
+
+
+
+```kotlin
+platformClient.application("<APPLICATION_ID>").content.getPathRedirectionRule(pathId: pathId).safeAwait{ response, error->
+    response?.let{
+      // Use response
+    } ->
+    error?.let{
+      
+    } 
+}
+```
+
+
+
+
+
+| Argument  |  Type  | Required | Description |
+| --------- | -----  | -------- | ----------- | 
+| pathId | String | yes | ID allotted to the path redirection rule. |  
+
+
+
+Retrieve detailed information about a specific path redirection rule.
+
+*Returned Response:*
+
+
+
+
+[PathMappingSchema](#PathMappingSchema)
+
+Success. Refer `PathMappingSchema` for more details.
+
+
+
+
+<details>
+<summary><i>&nbsp; Examples:</i></summary>
+
+
+<details>
+<summary><i>&nbsp; Success</i></summary>
+
+```json
+{
+  "value": {
+    "_id": "615188e9db1e444cb0f40837",
+    "application": "000000000000000000000002",
+    "redirect_from": "/from",
+    "redirect_to": "/to",
+    "createdAt": "2021-09-27T09:03:37.053Z",
+    "updatedAt": "2021-09-27T09:09:25.587Z"
+  }
+}
+```
+</details>
+
+</details>
+
+
+
+
+
+
+
+
+
+---
+
+
+### updatePathRedirectionRules
+Update path redirection rules.
+
+
+
+
+```kotlin
+platformClient.application("<APPLICATION_ID>").content.updatePathRedirectionRules(pathId: pathId, body: body).safeAwait{ response, error->
+    response?.let{
+      // Use response
+    } ->
+    error?.let{
+      
+    } 
+}
+```
+
+
+
+
+
+| Argument  |  Type  | Required | Description |
+| --------- | -----  | -------- | ----------- | 
+| pathId | String | yes | ID allotted to the path redirection rule. |  
+| body | [PathMappingSchema](#PathMappingSchema) | yes | Request body |
+
+
+Modify settings for path redirection rules.
+
+*Returned Response:*
+
+
+
+
+[PathMappingSchema](#PathMappingSchema)
+
+Success. Refer `PathMappingSchema` for more details.
+
+
+
+
+<details>
+<summary><i>&nbsp; Examples:</i></summary>
+
+
+<details>
+<summary><i>&nbsp; Success</i></summary>
+
+```json
+{
+  "value": {
+    "_id": "615188e9db1e444cb0f40837",
+    "application": "000000000000000000000002",
+    "redirect_from": "/from",
+    "redirect_to": "/to",
+    "createdAt": "2021-09-27T09:03:37.053Z",
+    "updatedAt": "2021-09-27T09:09:25.587Z"
+  }
+}
+```
+</details>
+
+</details>
+
+
+
+
+
+
+
+
+
+---
+
+
+### deletePathRedirectionRules
+Delete path redirection rules.
+
+
+
+
+```kotlin
+platformClient.application("<APPLICATION_ID>").content.deletePathRedirectionRules(pathId: pathId).safeAwait{ response, error->
+    response?.let{
+      // Use response
+    } ->
+    error?.let{
+      
+    } 
+}
+```
+
+
+
+
+
+| Argument  |  Type  | Required | Description |
+| --------- | -----  | -------- | ----------- | 
+| pathId | String | yes | ID allotted to the path redirection rule. |  
+
+
+
+Remove specific path redirection rules.
+
+*Returned Response:*
+
+
+
+
+[HashMap<String,Any>](#HashMap<String,Any>)
+
+Success.
+
+
+
+
+<details>
+<summary><i>&nbsp; Example:</i></summary>
+
+```json
+{
+  "message": "Redirection deleted successfully"
+}
+```
+</details>
+
+
+
+
+
+
+
+
+
+---
+
+
+
+
+### getSEOConfiguration
+Get SEO configuration for an application
+
+
+
+
+```kotlin
+platformClient.application("<APPLICATION_ID>").content.getSEOConfiguration().safeAwait{ response, error->
+    response?.let{
+      // Use response
+    } ->
+    error?.let{
+      
+    } 
+}
+```
+
+
+
+
+
+
+Retrieve configuration settings for SEO.
+
+*Returned Response:*
+
+
+
+
+[SeoComponent](#SeoComponent)
+
+Success. Refer `SeoComponent` for more details.
+
+
+
+
+<details>
+<summary><i>&nbsp; Examples:</i></summary>
+
+
+<details>
+<summary><i>&nbsp; default</i></summary>
+
+```json
+{
+  "value": {
+    "seo": {
+      "details": {
+        "title": "Zyosa Zyosa",
+        "description": "",
+        "image_url": ""
+      },
+      "robots_txt": "User-agent: * \nAllow: / \nsancisciasn xwsaixjowqnxwsiwjs",
+      "sitemap_enabled": false,
+      "cannonical_enabled": false,
+      "_id": "6009819ee463ad40de397eb2",
+      "app": "000000000000000000000001",
+      "created_at": "2021-01-21T13:29:02.543Z",
+      "updated_at": "2021-02-05T06:36:16.048Z",
+      "__v": 11,
+      "custom_meta_tags": [
+        {
+          "name": "test 0000",
+          "content": "<meta name=\"test\" content=\"0000 cn dcje dcj rejre cjrenurenc \">",
+          "_id": "6017c301bde3c21dbb13b284"
+        },
+        {
+          "name": "cwdcdc",
+          "content": "<meta content=\"wdcewdewc\">",
+          "_id": "6017c675bde3c22cfb13b290"
+        }
+      ]
+    }
+  }
+}
+```
+</details>
+
+</details>
+
+
+
+
+
+
+
+
+
+---
+
+
+### updateSEOConfiguration
+Update SEO configuration for an application
+
+
+
+
+```kotlin
+platformClient.application("<APPLICATION_ID>").content.updateSEOConfiguration(body: body).safeAwait{ response, error->
+    response?.let{
+      // Use response
+    } ->
+    error?.let{
+      
+    } 
+}
+```
+
+
+
+
+
+| Argument  |  Type  | Required | Description |
+| --------- | -----  | -------- | ----------- |
+| body | [SeoComponent](#SeoComponent) | yes | Request body |
+
+
+Modify configuration settings for SEO.
+
+*Returned Response:*
+
+
+
+
+[SeoSchema](#SeoSchema)
+
+Success. Refer `SeoSchema` for more details.
+
+
+
+
+<details>
+<summary><i>&nbsp; Examples:</i></summary>
+
+
+<details>
+<summary><i>&nbsp; default</i></summary>
+
+```json
+{
+  "value": {
+    "details": {
+      "title": "Zyosa Zyosa",
+      "description": "",
+      "image_url": ""
+    },
+    "robots_txt": "User-agent: * \nAllow: / \nsancisciasn xwsaixjowqnxwsiwjs",
+    "sitemap_enabled": false,
+    "_id": "6009819ee463ad40de397eb2",
+    "app": "000000000000000000000001",
+    "created_at": "2021-01-21T13:29:02.543Z",
+    "updated_at": "2021-02-05T06:36:16.048Z",
+    "__v": 11,
+    "custom_meta_tags": [
+      {
+        "name": "test 0000",
+        "content": "<meta name=\"test\" content=\"0000 cn dcje dcj rejre cjrenurenc \">",
+        "_id": "6017c301bde3c21dbb13b284"
+      },
+      {
+        "name": "cwdcdc",
+        "content": "<meta content=\"wdcewdewc\">",
+        "_id": "6017c675bde3c22cfb13b290"
+      }
+    ]
+  }
+}
+```
+</details>
+
+</details>
+
+
+
+
+
+
+
+
+
+---
+
+
+
+
+### getSupportInformation
+Get support information.
+
+
+
+
+```kotlin
+platformClient.application("<APPLICATION_ID>").content.getSupportInformation().safeAwait{ response, error->
+    response?.let{
+      // Use response
+    } ->
+    error?.let{
+      
+    } 
+}
+```
+
+
+
+
+
+
+Retrieve information related to customer support.
+
+*Returned Response:*
+
+
+
+
+[Support](#Support)
+
+Success. Refer `Support` for more details.
+
+
+
+
+<details>
+<summary><i>&nbsp; Examples:</i></summary>
+
+
+<details>
+<summary><i>&nbsp; default</i></summary>
+
+```json
+{
+  "value": {
+    "_id": "5ea4980b87a7944094216193",
+    "config_type": "app",
+    "application": "000000000000000000000001",
+    "created_at": "2020-04-25T20:05:31.300Z",
+    "updated_at": "2020-12-04T10:48:12.194Z",
+    "contact": {
+      "phone": {
+        "active": true,
+        "phone": [
+          {
+            "key": "Jane Doe",
+            "code": "91",
+            "number": "9988776655"
+          }
+        ]
+      },
+      "email": {
+        "active": false,
+        "email": []
+      }
+    },
+    "created": true
+  }
+}
+```
+</details>
+
+</details>
+
+
+
+
+
+
+
+
+
+---
+
+
+### updateSupportInformation
+Update support related info for an application
+
+
+
+
+```kotlin
+platformClient.application("<APPLICATION_ID>").content.updateSupportInformation(body: body).safeAwait{ response, error->
+    response?.let{
+      // Use response
+    } ->
+    error?.let{
+      
+    } 
+}
+```
+
+
+
+
+
+| Argument  |  Type  | Required | Description |
+| --------- | -----  | -------- | ----------- |
+| body | [Support](#Support) | yes | Request body |
+
+
+Modify information related to customer support.
+
+*Returned Response:*
+
+
+
+
+[Support](#Support)
+
+Success. Refer `Support` for more details.
+
+
+
+
+<details>
+<summary><i>&nbsp; Examples:</i></summary>
+
+
+<details>
+<summary><i>&nbsp; default</i></summary>
+
+```json
+{
+  "value": {
+    "_id": "5ea4980b87a7944094216193",
+    "config_type": "app",
+    "application": "000000000000000000000001",
+    "created_at": "2020-04-25T20:05:31.300Z",
+    "updated_at": "2020-12-04T10:48:12.194Z",
+    "contact": {
+      "phone": {
+        "active": true,
+        "phone": [
+          {
+            "key": "Jane Doe",
+            "code": "91",
+            "number": "9988776655"
+          }
+        ]
+      },
+      "email": {
+        "active": false,
+        "email": []
+      }
+    },
+    "created": true
+  }
+}
+```
+</details>
+
+</details>
+
+
+
+
+
+
+
+
+
+---
+
+
+
+
+### updateInjectableTag
+Update HTML tag
+
+
+
+
+```kotlin
+platformClient.application("<APPLICATION_ID>").content.updateInjectableTag(body: body).safeAwait{ response, error->
+    response?.let{
+      // Use response
+    } ->
+    error?.let{
+      
+    } 
+}
+```
+
+
+
+
+
+| Argument  |  Type  | Required | Description |
+| --------- | -----  | -------- | ----------- |
+| body | [CreateTagRequestSchema](#CreateTagRequestSchema) | yes | Request body |
+
+
+Modify settings for an injectable tag.
+
+*Returned Response:*
+
+
+
+
+[TagsSchema](#TagsSchema)
+
+Success.
+
+
+
+
+<details>
+<summary><i>&nbsp; Example:</i></summary>
+
+```json
+{
+  "_id": "601f77e7aa61066feda44487",
+  "tags": [
+    {
+      "name": "Test",
+      "sub_type": "external",
+      "_id": "601f77e7aa61066feda44488",
+      "type": "js",
+      "url": "youtube.com/watch?v=AaxFIY-cWH0&list=PL3O3jhFJEElBHFbs6XsOqZAWZLtlEkZTw&index=31",
+      "position": "head"
+    },
+    {
+      "name": "Test 2",
+      "sub_type": "external",
+      "_id": "601f77e7aa61066feda44489",
+      "type": "js",
+      "url": "youtube.com/watch?v=AaxFIY-cWH0&list=PL3O3jhFJEElBHFbs6XsOqZAWZLtlEkZTw&index=31",
+      "position": "head"
+    }
+  ],
+  "application": "000000000000000000000001",
+  "__v": 0
+}
+```
+</details>
+
+
+
+
+
+
+
+
+
+---
+
+
+### getInjectableTags
+Get all HTML tags
+
+
+
+
+```kotlin
+platformClient.application("<APPLICATION_ID>").content.getInjectableTags(all: all).safeAwait{ response, error->
+    response?.let{
+      // Use response
+    } ->
+    error?.let{
+      
+    } 
+}
+```
+
+
+
+
+
+| Argument  |  Type  | Required | Description |
+| --------- | -----  | -------- | ----------- | 
+| all | Boolean? | no | Get all tags irrespective of the creator of tags |  
+
+
+
+Retrieve a list of injectable tags.
+
+*Returned Response:*
+
+
+
+
+[TagsSchema](#TagsSchema)
+
+Success. Refer `TagsSchema` for more details.
+
+
+
+
+<details>
+<summary><i>&nbsp; Example:</i></summary>
+
+```json
+{
+  "_id": "601f77e7aa61066feda44487",
+  "tags": [
+    {
+      "name": "Test",
+      "sub_type": "external",
+      "_id": "601f77e7aa61066feda44488",
+      "type": "js",
+      "url": "youtube.com/watch?v=AaxFIY-cWH0&list=PL3O3jhFJEElBHFbs6XsOqZAWZLtlEkZTw&index=31",
+      "position": "head"
+    },
+    {
+      "name": "Test 2",
+      "sub_type": "external",
+      "_id": "601f77e7aa61066feda44489",
+      "type": "js",
+      "url": "youtube.com/watch?v=AaxFIY-cWH0&list=PL3O3jhFJEElBHFbs6XsOqZAWZLtlEkZTw&index=31",
+      "position": "head"
+    }
+  ],
+  "application": "000000000000000000000001",
+  "__v": 0
+}
+```
+</details>
+
+
+
+
+
+
+
+
+
+---
+
+
+### addInjectableTag
+Create HTML tag.
+
+
+
+
+```kotlin
+platformClient.application("<APPLICATION_ID>").content.addInjectableTag(body: body).safeAwait{ response, error->
+    response?.let{
+      // Use response
+    } ->
+    error?.let{
+      
+    } 
+}
+```
+
+
+
+
+
+| Argument  |  Type  | Required | Description |
+| --------- | -----  | -------- | ----------- |
+| body | [CreateTagRequestSchema](#CreateTagRequestSchema) | yes | Request body |
+
+
+Create and add a new injectable tag.
+
+*Returned Response:*
+
+
+
+
+[TagsSchema](#TagsSchema)
+
+Success.
+
+
+
+
+<details>
+<summary><i>&nbsp; Example:</i></summary>
+
+```json
+{
+  "_id": "601f77e7aa61066feda44487",
+  "tags": [
+    {
+      "name": "Test",
+      "sub_type": "external",
+      "_id": "601f77e7aa61066feda44488",
+      "type": "js",
+      "url": "youtube.com/watch?v=AaxFIY-cWH0&list=PL3O3jhFJEElBHFbs6XsOqZAWZLtlEkZTw&index=31",
+      "position": "head"
+    }
+  ],
+  "application": "000000000000000000000001",
+  "__v": 0
+}
+```
+</details>
+
+
+
+
+
+
+
+
+
+---
+
+
+### removeInjectableTag
+Remove HTML tag.
+
+
+
+
+```kotlin
+platformClient.application("<APPLICATION_ID>").content.removeInjectableTag(body: body).safeAwait{ response, error->
+    response?.let{
+      // Use response
+    } ->
+    error?.let{
+      
+    } 
+}
+```
+
+
+
+
+
+| Argument  |  Type  | Required | Description |
+| --------- | -----  | -------- | ----------- |
+| body | [RemoveHandpickedSchema](#RemoveHandpickedSchema) | yes | Request body |
+
+
+Delete a specific injectable tag.
+
+*Returned Response:*
+
+
+
+
+[TagDeleteSuccessResponse](#TagDeleteSuccessResponse)
+
+Success.
+
+
+
+
+<details>
+<summary><i>&nbsp; Example:</i></summary>
+
+```json
+{
+  "success": true
+}
+```
+</details>
+
+
+
+
+
+
+
+
+
+---
+
+
+### editInjectableTag
+Update HTML tag
+
+
+
+
+```kotlin
+platformClient.application("<APPLICATION_ID>").content.editInjectableTag(tagId: tagId, body: body).safeAwait{ response, error->
+    response?.let{
+      // Use response
+    } ->
+    error?.let{
+      
+    } 
+}
+```
+
+
+
+
+
+| Argument  |  Type  | Required | Description |
+| --------- | -----  | -------- | ----------- | 
+| tagId | String | yes | ID allotted to the tag. |  
+| body | [UpdateHandpickedSchema](#UpdateHandpickedSchema) | yes | Request body |
+
+
+Modify settings for an injectable tag.
+
+*Returned Response:*
+
+
+
+
+[TagsSchema](#TagsSchema)
+
+Success.
+
+
+
+
+<details>
+<summary><i>&nbsp; Example:</i></summary>
+
+```json
+{
+  "_id": "602671b3c0bac99158b10874",
+  "application": "000000000000000000000001",
+  "tags": [
+    {
+      "_id": "601f77e7aa61066feda44488",
+      "name": "floating whatsapp",
+      "sub_type": "inline",
+      "type": "css",
+      "position": "head",
+      "content": ".float{\n\tposition:fixed;\n\twidth:60px;\n\theight:60px;\n\tbottom:40px;\n\tright:40px;\n\tbackground-color:#25d366;\n\tcolor:#FFF;\n\tborder-radius:50px;\n\ttext-align:center;\n  font-size:30px;\n\tbox-shadow: 2px 2px 3px #999;\n  z-index:100;\n}\n\n.my-float{\n\tmargin-top:16px;\n}"
+    }
+  ],
+  "__v": 1
+}
+```
+</details>
+
+
+
+
+
+
+
+
+
+---
+
+
+
+
 ### Schemas
 
  
@@ -14600,6 +14665,7 @@ Success. Get headers of custom object definition
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
  | page | [ActionPage](#ActionPage)? |  yes  |  |
+ | popup | [ActionPage](#ActionPage)? |  yes  |  |
  | type | String? |  yes  |  |
 
 ---
@@ -15630,6 +15696,17 @@ Success. Get headers of custom object definition
 
  
  
+ #### [CustomFieldValue](#CustomFieldValue)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | value | Any? |  yes  |  |
+
+---
+
+
+ 
+ 
  #### [CustomFieldSchema](#CustomFieldSchema)
 
  | Properties | Type | Nullable | Description |
@@ -15639,7 +15716,7 @@ Success. Get headers of custom object definition
  | key | String? |  yes  |  |
  | resource | String? |  yes  |  |
  | creator | String? |  yes  |  |
- | value | ArrayList<Any>? |  yes  |  |
+ | value | ArrayList<[CustomFieldValue](#CustomFieldValue)>? |  yes  |  |
  | resourceId | String? |  yes  |  |
  | type | String? |  yes  |  |
  | multiValue | Boolean? |  yes  |  |

@@ -162,6 +162,28 @@ data class StartResponse(
 
              
 /*
+    Model: Params
+*/
+@Parcelize
+data class Params(
+    
+    
+    
+    @SerializedName("subpath")
+    var subpath: String?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
     Model: StartRequest
 */
 @Parcelize
@@ -305,33 +327,6 @@ data class CompleteResponse(
     
     
     
-    
-    
-    
-    
-    
-    
-    
-}
-
-
-
-             
-/*
-    Model: ProxyResponse
-*/
-@Parcelize
-data class ProxyResponse(
-    
-    
-    
-    @SerializedName("data")
-    var data: @RawValue HashMap<String,Any>?=null,
-    
-    @SerializedName("support")
-    var support: @RawValue HashMap<String,Any>?=null
-    
-): Parcelable {
     
     
     
@@ -503,15 +498,10 @@ data class InvoiceTypesDataResponse(
     @SerializedName("visibility")
     var visibility: Boolean?=null,
     
-    @SerializedName("store_os")
-    var storeOs: Boolean?=null,
-    
     @SerializedName("country_code")
     var countryCode: String?=null
     
 ): Parcelable {
-    
-    
     
     
     

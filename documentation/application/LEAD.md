@@ -7,12 +7,18 @@
 ## Lead Methods
 The Leads Management module improves communication, support, and effective interaction. Utilize it to retrieve user tickets, create ticket histories, and generate new tickets. This module also enables you to set up video rooms for participants, providing room tokens for secure access.
 
-Default
+Ticket Management
 * [getTicket](#getticket)
 * [createHistory](#createhistory)
 * [createTicket](#createticket)
+
+
+Custom Form Handling
 * [getCustomForm](#getcustomform)
 * [submitCustomForm](#submitcustomform)
+
+
+Video Room Management
 * [getParticipantsInsideVideoRoom](#getparticipantsinsidevideoroom)
 * [getTokenForVideoRoom](#gettokenforvideoroom)
 
@@ -24,7 +30,7 @@ Default
 
 
 ### getTicket
-Get Ticket with the specific id
+Retrieves a support ticket.
 
 
 
@@ -50,7 +56,7 @@ applicationClient.lead.getTicket(id: id).safeAwait{ response, error->
 
 
 
-Get Ticket with the specific id, this is used to view the ticket details
+Retrieve details of a specific customer support ticket.
 
 *Returned Response:*
 
@@ -283,7 +289,7 @@ Success
 
 
 ### createHistory
-Create history for specific Ticket
+Logs ticket history.
 
 
 
@@ -309,7 +315,7 @@ applicationClient.lead.createHistory(id: id, body: body).safeAwait{ response, er
 | body | [TicketHistoryPayload](#TicketHistoryPayload) | yes | Request body |
 
 
-Create history for specific Ticket, this history is seen on ticket detail page, this can be comment, log or rating.
+Adds a history entry for a specific support ticket.
 
 *Returned Response:*
 
@@ -385,7 +391,7 @@ Success
 
 
 ### createTicket
-Create Ticket
+Creates a new ticket.
 
 
 
@@ -410,7 +416,7 @@ applicationClient.lead.createTicket(body: body).safeAwait{ response, error->
 | body | [AddTicketPayload](#AddTicketPayload) | yes | Request body |
 
 
-This is used to Create Ticket.
+Generates a new customer support ticket for a user query.
 
 *Returned Response:*
 
@@ -642,8 +648,10 @@ Success
 ---
 
 
+
+
 ### getCustomForm
-Get specific Custom Form using it's slug
+Fetches custom form.
 
 
 
@@ -669,7 +677,7 @@ applicationClient.lead.getCustomForm(slug: slug).safeAwait{ response, error->
 
 
 
-Get specific Custom Form using it's slug, this is used to view the form.
+Retrieves a customizable form template for data collection.
 
 *Returned Response:*
 
@@ -756,7 +764,7 @@ Success
 
 
 ### submitCustomForm
-Submit Response for a specific Custom Form using it's slug
+Submits form data.
 
 
 
@@ -782,7 +790,7 @@ applicationClient.lead.submitCustomForm(slug: slug, body: body).safeAwait{ respo
 | body | [CustomFormSubmissionPayload](#CustomFormSubmissionPayload) | yes | Request body |
 
 
-Submit Response for a specific Custom Form using it's slug, this response is then used to create a ticket on behalf of the user.
+Sends user-entered data from a custom form for processing.
 
 *Returned Response:*
 
@@ -1016,8 +1024,10 @@ Success
 ---
 
 
+
+
 ### getParticipantsInsideVideoRoom
-Get participants of a specific Video Room using it's unique name
+Lists video room participants.
 
 
 
@@ -1043,7 +1053,7 @@ applicationClient.lead.getParticipantsInsideVideoRoom(uniqueName: uniqueName).sa
 
 
 
-Get participants of a specific Video Room using it's unique name, this can be used to check if people are already there in the room and also to show their names.
+Gets the current participants inside a specific video room.
 
 *Returned Response:*
 
@@ -1087,7 +1097,7 @@ Success
 
 
 ### getTokenForVideoRoom
-Get Token to join a specific Video Room using it's unqiue name
+Retrieves video room token.
 
 
 
@@ -1113,7 +1123,7 @@ applicationClient.lead.getTokenForVideoRoom(uniqueName: uniqueName).safeAwait{ r
 
 
 
-Get Token to join a specific Video Room using it's unqiue name, this Token is your ticket to Room and also creates your identity there.
+Retrieves a secure token for accessing a video chat room.
 
 *Returned Response:*
 
@@ -1461,7 +1471,7 @@ Success
  | ---------- | ---- | -------- | ----------- |
  | display | String |  no  | Category display value identifier |
  | key | String |  no  | Category key value identifier |
- | subCategories | ArrayList<[TicketCategory](#TicketCategory)>? |  yes  |  |
+ | subCategories | [TicketCategory](#TicketCategory)? |  yes  |  |
  | groupId | Double? |  yes  | Group id of category releted data |
  | feedbackForm | [FeedbackForm](#FeedbackForm)? |  yes  |  |
 

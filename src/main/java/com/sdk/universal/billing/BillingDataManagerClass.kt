@@ -21,8 +21,6 @@ class BillingDataManagerClass(val config: PublicConfig, val unauthorizedAction: 
             
                     _relativeUrls["getStandardPlans"] = "/service/public/billing/v1.0/plan/detailed-list".substring(1)
             
-                    _relativeUrls["getPlanDetails"] = "/service/public/billing/v1.0/plan/details/{planId}".substring(1)
-            
     }
 
     public fun update(updatedUrlMap : HashMap<String,String>){
@@ -61,15 +59,6 @@ class BillingDataManagerClass(val config: PublicConfig, val unauthorizedAction: 
         var fullUrl : String? = _relativeUrls["getStandardPlans"] 
         
         return billingApiList?.getStandardPlans(fullUrl    ,  platformType = platformType)}
-
-    
-    
-    suspend fun getPlanDetails(planId: String): Response<PlanDetails>? {
-        var fullUrl : String? = _relativeUrls["getPlanDetails"] 
-        
-        fullUrl = fullUrl?.replace("{" + "planId" +"}",planId.toString())
-        
-        return billingApiList?.getPlanDetails(fullUrl   )}
 
     
     
