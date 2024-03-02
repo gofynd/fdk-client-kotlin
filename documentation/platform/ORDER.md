@@ -2121,7 +2121,7 @@ Fetches Bulk Action Listing
     "data": [
       {
         "store_id": 1462,
-        "uploaded_on": "2023-09-05T15:01:28+00:00",
+        "uploaded_on": "2023-09-05T15:01:28.000Z",
         "company_id": 2,
         "shipments_action_info": {
           "label": [],
@@ -2199,7 +2199,7 @@ Fetches Bulk Action Listing
     "data": [
       {
         "store_id": 2,
-        "uploaded_on": "2023-09-07T13:10:14+00:00",
+        "uploaded_on": "2023-09-07T13:10:14.000Z",
         "company_id": 2,
         "shipments_action_info": {
           "label": [],
@@ -2259,7 +2259,7 @@ Fetches Bulk Action Listing
     "data": [
       {
         "store_id": 1,
-        "uploaded_on": "2023-09-07T13:07:13+00:00",
+        "uploaded_on": "2023-09-07T13:07:13.000Z",
         "company_id": 2,
         "shipments_action_info": {
           "label": [],
@@ -2408,7 +2408,7 @@ Job details.
     ],
     "uploaded_by": "mohitmahatme_gofynd_com_31814",
     "user_id": "d7595ec4e390849545a68c92",
-    "uploaded_on": "2023-09-07T15:55:24+00:00",
+    "uploaded_on": "2023-09-07T15:55:24.000Z",
     "status": "FAILED"
   }
 }
@@ -2997,7 +2997,7 @@ E-invoice generated successfully for all/few shipments from given list of shipme
         "einvoice_info": {
           "irn_details": {
             "ack_no": "172313559180590",
-            "ack_dt": "2023-10-01 12:09:00",
+            "ack_dt": "2023-10-01T12:09:00.000Z",
             "irn": "5ac2752f161c356d6957d5e7e52759343acfa516638b92718a1309dc25ee0015",
             "signed_invoice": "d6GXwwhz86_aRlXmueRHboFRB8UhnWGU3CREZKesJkYz42e2HduZ5_d29zoh7yhIiIDC5TLueWHIMHE0UJ5C1z5i0QQSdjMrqBcamu7rpS6wOVIEt6RMs2CZulKt",
             "signed_qr_code": "d6GXwwhz86_aRlXmueRHboFRB8UhnWGU3CREZKesJkYz42e2HduZ5_d29zoh7yhIiIDC5TLueWHIMHE0UJ5C1z5i0QQSdjMrqBcamu7rpS6wOVIEt6RMs2CZulKt"
@@ -3012,7 +3012,7 @@ E-invoice generated successfully for all/few shipments from given list of shipme
         "einvoice_info": {
           "irn_details": {
             "ack_no": "172313559180590",
-            "ack_dt": "2023-10-01 12:09:00",
+            "ack_dt": "2023-10-01T12:09:00.000Z",
             "irn": "5ac2752f161c356d6957d5e7e52759343acfa516638b92718a1309dc25ee0015",
             "signed_invoice": "d6GXwwhz86_aRlXmueRHboFRB8UhnWGU3CREZKesJkYz42e2HduZ5_d29zoh7yhIiIDC5TLueWHIMHE0UJ5C1z5i0QQSdjMrqBcamu7rpS6wOVIEt6RMs2CZulKt",
             "signed_qr_code": "d6GXwwhz86_aRlXmueRHboFRB8UhnWGU3CREZKesJkYz42e2HduZ5_d29zoh7yhIiIDC5TLueWHIMHE0UJ5C1z5i0QQSdjMrqBcamu7rpS6wOVIEt6RMs2CZulKt"
@@ -3040,7 +3040,7 @@ E-invoice generated successfully for all/few shipments from given list of shipme
         "einvoice_info": {
           "irn_details": null,
           "ack_no": "172313559180590",
-          "ack_dt": "2023-10-01 12:09:00",
+          "ack_dt": "2023-10-01T12:09:00.000Z",
           "irn": "5ac2752f161c356d6957d5e7e52759343acfa516638b92718a1309dc25ee0015",
           "signed_invoice": "d6GXwwhz86_aRlXmueRHboFRB8UhnWGU3CREZKesJkYz42e2HduZ5_d29zoh7yhIiIDC5TLueWHIMHE0UJ5C1z5i0QQSdjMrqBcamu7rpS6wOVIEt6RMs2CZulKt",
           "signed_qr_code": "d6GXwwhz86_aRlXmueRHboFRB8UhnWGU3CREZKesJkYz42e2HduZ5_d29zoh7yhIiIDC5TLueWHIMHE0UJ5C1z5i0QQSdjMrqBcamu7rpS6wOVIEt6RMs2CZulKt"
@@ -3085,7 +3085,7 @@ E-invoice generated successfully for all/few shipments from given list of shipme
         "einvoice_info": {
           "irn_details": null,
           "ack_no": "172313559180590",
-          "ack_dt": "2023-10-01 12:09:00",
+          "ack_dt": "2023-10-01T12:09:00.000Z",
           "irn": "5ac2752f161c356d6957d5e7e52759343acfa516638b92718a1309dc25ee0015",
           "signed_invoice": "d6GXwwhz86_aRlXmueRHboFRB8UhnWGU3CREZKesJkYz42e2HduZ5_d29zoh7yhIiIDC5TLueWHIMHE0UJ5C1z5i0QQSdjMrqBcamu7rpS6wOVIEt6RMs2CZulKt",
           "signed_qr_code": "d6GXwwhz86_aRlXmueRHboFRB8UhnWGU3CREZKesJkYz42e2HduZ5_d29zoh7yhIiIDC5TLueWHIMHE0UJ5C1z5i0QQSdjMrqBcamu7rpS6wOVIEt6RMs2CZulKt"
@@ -3691,7 +3691,7 @@ Get shipment by ID.
 
 
 ```kotlin
-platformClient.order.getShipmentById(channelShipmentId: channelShipmentId, shipmentId: shipmentId, fetchActiveShipment: fetchActiveShipment).safeAwait{ response, error->
+platformClient.order.getShipmentById(channelShipmentId: channelShipmentId, shipmentId: shipmentId, fetchActiveShipment: fetchActiveShipment, allowInactive: allowInactive).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -3709,7 +3709,8 @@ platformClient.order.getShipmentById(channelShipmentId: channelShipmentId, shipm
 | --------- | -----  | -------- | ----------- | 
 | channelShipmentId | String? | no | App Shipment Id |   
 | shipmentId | String? | no | Shipment Id |   
-| fetchActiveShipment | Boolean? | no | flag to fetch active or deactivated shipments |  
+| fetchActiveShipment | Boolean? | no | flag to fetch active or deactivated shipments |   
+| allowInactive | Boolean? | no | Flag indicating whether inactive shipments are allowed |  
 
 
 
@@ -3736,7 +3737,7 @@ We are processing the report!
   "order": {
     "fynd_order_id": "FY62B13E2101810C19E4",
     "shipment_count": 1,
-    "order_date": "2022-06-21T09:12:26+00:00"
+    "order_date": "2022-06-21T09:12:26.000Z"
   },
   "shipments": [
     {
@@ -3798,7 +3799,7 @@ We are processing the report!
         "tax_details": {
           "gstin": null
         },
-        "order_date": "2022-06-21T09:12:26+00:00"
+        "order_date": "2022-06-21T09:12:26.000Z"
       },
       "gst_details": {
         "value_of_good": 475.24,
@@ -3811,7 +3812,7 @@ We are processing the report!
       "bag_status_history": [
         {
           "status": "pending",
-          "updated_at": "2022-06-21T09:12:26+00:00",
+          "updated_at": "2022-06-21T09:12:26.000Z",
           "state_type": "operational",
           "app_display_name": "Pending",
           "display_name": "Pending",
@@ -3819,7 +3820,7 @@ We are processing the report!
         },
         {
           "status": "placed",
-          "updated_at": "2022-06-21T09:12:32+00:00",
+          "updated_at": "2022-06-21T09:12:32.000Z",
           "state_type": "operational",
           "app_display_name": "Ordered",
           "display_name": "Placed",
@@ -3827,7 +3828,7 @@ We are processing the report!
         },
         {
           "status": "bag_confirmed",
-          "updated_at": "2022-06-21T09:39:13+00:00",
+          "updated_at": "2022-06-21T09:39:13.000Z",
           "state_type": "operational",
           "app_display_name": "Ordered",
           "display_name": "Bag Confirmed",
@@ -3835,7 +3836,7 @@ We are processing the report!
         },
         {
           "status": "dp_assigned",
-          "updated_at": "2022-06-21T09:40:04+00:00",
+          "updated_at": "2022-06-21T09:40:04.000Z",
           "state_type": "operational",
           "app_display_name": "DP Assigned",
           "display_name": "DP Assigned",
@@ -3843,7 +3844,7 @@ We are processing the report!
         },
         {
           "status": "bag_picked",
-          "updated_at": "2022-06-21T09:40:12+00:00",
+          "updated_at": "2022-06-21T09:40:12.000Z",
           "state_type": "operational",
           "app_display_name": "Shipped",
           "display_name": "In Transit",
@@ -3851,7 +3852,7 @@ We are processing the report!
         },
         {
           "status": "out_for_delivery",
-          "updated_at": "2022-06-21T09:40:29+00:00",
+          "updated_at": "2022-06-21T09:40:29.000Z",
           "state_type": "operational",
           "app_display_name": "Out For Delivery",
           "display_name": "Out For Delivery",
@@ -3859,7 +3860,7 @@ We are processing the report!
         },
         {
           "status": "delivery_done",
-          "updated_at": "2022-06-21T09:40:37+00:00",
+          "updated_at": "2022-06-21T09:40:37.000Z",
           "state_type": "operational",
           "app_display_name": "Delivered",
           "display_name": "Delivery Done",
@@ -3964,9 +3965,9 @@ We are processing the report!
       ],
       "delivery_slot": {
         "slot": "By 03:00 AM",
-        "upper_bound": "2022-06-21T03:42:23+00:00",
-        "lower_bound": "2022-06-21T03:42:23+00:00",
-        "date": "2022-06-21T03:42:23+00:00",
+        "upper_bound": "2022-06-21T03:42:23.000Z",
+        "lower_bound": "2022-06-21T03:42:23.000Z",
+        "date": "2022-06-21T03:42:23.000Z",
         "type": "order_window"
       },
       "total_items": 1,
@@ -4022,56 +4023,56 @@ We are processing the report!
       "tracking_list": [
         {
           "status": "Order Placed",
-          "time": "2022-06-21T09:12:32+00:00",
+          "time": "2022-06-21T09:12:32.000Z",
           "is_passed": true,
           "is_current": false,
           "text": ""
         },
         {
           "status": "Order Confirmed",
-          "time": "2022-06-21T09:39:13+00:00",
+          "time": "2022-06-21T09:39:13.000Z",
           "is_passed": true,
           "is_current": false,
           "text": ""
         },
         {
           "status": "Invoiced",
-          "time": "2022-06-21T09:40:12+00:00",
+          "time": "2022-06-21T09:40:12.000Z",
           "is_passed": true,
           "is_current": false,
           "text": ""
         },
         {
           "status": "Delivery Partner Assigned",
-          "time": "2022-06-21T09:40:12+00:00",
+          "time": "2022-06-21T09:40:12.000Z",
           "is_passed": true,
           "is_current": false,
           "text": ""
         },
         {
           "status": "Packed",
-          "time": "2022-06-21T09:40:12+00:00",
+          "time": "2022-06-21T09:40:12.000Z",
           "is_passed": true,
           "is_current": false,
           "text": ""
         },
         {
           "status": "In Transit",
-          "time": "2022-06-21T09:40:12+00:00",
+          "time": "2022-06-21T09:40:12.000Z",
           "is_passed": true,
           "is_current": false,
           "text": ""
         },
         {
           "status": "Out For Delivery",
-          "time": "2022-06-21T09:40:29+00:00",
+          "time": "2022-06-21T09:40:29.000Z",
           "is_passed": true,
           "is_current": false,
           "text": ""
         },
         {
           "status": "Delivered",
-          "time": "2022-06-21T09:40:37+00:00",
+          "time": "2022-06-21T09:40:37.000Z",
           "is_passed": true,
           "is_current": true,
           "text": ""
@@ -4172,7 +4173,7 @@ We are processing the report!
     "tax_details": {
       "gstin": null
     },
-    "order_date": "2022-11-22T22:15:53+00:00",
+    "order_date": "2022-11-22T22:15:53.000Z",
     "prices": {
       "amount_paid": 948.5,
       "refund_amount": 948.5,
@@ -4382,7 +4383,7 @@ We are processing the report!
         "tax_details": {
           "gstin": null
         },
-        "order_date": "2022-11-22T22:15:53+00:00",
+        "order_date": "2022-11-22T22:15:53.000Z",
         "prices": {
           "amount_paid": 948.5,
           "refund_amount": 948.5,
@@ -4416,7 +4417,7 @@ We are processing the report!
       "bag_status_history": [
         {
           "status": "pending",
-          "updated_at": "2022-11-22T22:15:54+00:00",
+          "updated_at": "2022-11-22T22:15:54.000Z",
           "state_type": "operational",
           "app_display_name": "Pending",
           "display_name": "Pending",
@@ -4424,7 +4425,7 @@ We are processing the report!
         },
         {
           "status": "placed",
-          "updated_at": "2022-11-22T22:15:59+00:00",
+          "updated_at": "2022-11-22T22:15:59.000Z",
           "state_type": "operational",
           "app_display_name": "Ordered",
           "display_name": "Placed",
@@ -4432,7 +4433,7 @@ We are processing the report!
         },
         {
           "status": "bag_confirmed",
-          "updated_at": "2022-11-22T22:54:50+00:00",
+          "updated_at": "2022-11-22T22:54:50.000Z",
           "state_type": "operational",
           "app_display_name": "Ordered",
           "display_name": "Bag Confirmed",
@@ -4515,10 +4516,10 @@ We are processing the report!
           },
           "brand": {
             "credit_note_expiry_days": null,
-            "modified_on": "2022-11-22T09:08:25",
+            "modified_on": "2022-11-22T09:08:25.000Z",
             "id": 2,
             "logo": "https://cdn.pixelbin.io/v2/falling-surf-7c8bb8/tira-n/wrkr/tiraz0/brands/pictures/square-logo/original/iCMr3gmUF-Logo.jpeg",
-            "created_on": "2022-08-09T13:17:41",
+            "created_on": "2022-08-09T13:17:41.000Z",
             "credit_note_allowed": false,
             "start_date": null,
             "company": null,
@@ -4611,9 +4612,9 @@ We are processing the report!
       "pickup_slot": {},
       "delivery_slot": {
         "slot": "By 16:00 PM",
-        "upper_bound": "2022-11-25T16:45:50+00:00",
-        "lower_bound": "2022-11-23T16:45:50+00:00",
-        "date": "2022-11-25T16:45:50+00:00",
+        "upper_bound": "2022-11-25T16:45:50.000Z",
+        "lower_bound": "2022-11-23T16:45:50.000Z",
+        "date": "2022-11-25T16:45:50.000Z",
         "type": "order_window"
       },
       "total_items": 1,
@@ -4640,7 +4641,7 @@ We are processing the report!
       "vertical": null,
       "priority_text": null,
       "status": {
-        "created_at": "2022-11-22T22:54:50+00:00",
+        "created_at": "2022-11-22T22:54:50.000Z",
         "id": 88117778,
         "meta": {
           "request_meta": {},
@@ -4653,7 +4654,7 @@ We are processing the report!
           "20472628"
         ],
         "current_shipment_status": "bag_confirmed",
-        "status_created_at": "2022-11-22T22:54:50"
+        "status_created_at": "2022-11-22T22:54:50.000Z"
       },
       "prices": {
         "amount_paid": 474.25,
@@ -4679,13 +4680,13 @@ We are processing the report!
           "text": "Placed",
           "status": "processing",
           "is_passed": true,
-          "time": "2022-11-22T22:15:59+00:00"
+          "time": "2022-11-22T22:15:59.000Z"
         },
         {
           "text": "Bag Confirmed",
           "status": "confirmed",
           "is_passed": true,
-          "time": "2022-11-22T22:54:50+00:00"
+          "time": "2022-11-22T22:54:50.000Z"
         },
         {
           "text": "Dp Assigned",
@@ -4717,7 +4718,7 @@ We are processing the report!
       "packaging_type": "POLYB_DFLT_L",
       "enable_dp_tracking": false,
       "invoice": {
-        "updated_date": "1970-01-01T00:00:00",
+        "updated_date": "1970-01-01T00:00:00.000Z",
         "store_invoice_id": null,
         "invoice_url": "",
         "label_url": "",
@@ -4754,7 +4755,7 @@ We are processing the report!
         "fulfilment_priority_text": null,
         "auto_trigger_dp_assignment_ACF": true
       },
-      "shipment_created_at": "2022-11-22T22:15:53+00:00",
+      "shipment_created_at": "2022-11-22T22:15:53.000Z",
       "mark_as_returnable": false,
       "ordering_store": {
         "id": 5,
@@ -5058,7 +5059,7 @@ Get orders.
 
 
 ```kotlin
-platformClient.order.getOrders(lane: lane, searchType: searchType, bagStatus: bagStatus, timeToDispatch: timeToDispatch, paymentMethods: paymentMethods, tags: tags, searchValue: searchValue, fromDate: fromDate, toDate: toDate, startDate: startDate, endDate: endDate, dpIds: dpIds, stores: stores, salesChannels: salesChannels, pageNo: pageNo, pageSize: pageSize, isPrioritySort: isPrioritySort, customMeta: customMeta, myOrders: myOrders, showCrossCompanyData: showCrossCompanyData, customerId: customerId, orderType: orderType).safeAwait{ response, error->
+platformClient.order.getOrders(lane: lane, searchType: searchType, bagStatus: bagStatus, timeToDispatch: timeToDispatch, paymentMethods: paymentMethods, tags: tags, searchValue: searchValue, fromDate: fromDate, toDate: toDate, startDate: startDate, endDate: endDate, dpIds: dpIds, stores: stores, salesChannels: salesChannels, pageNo: pageNo, pageSize: pageSize, isPrioritySort: isPrioritySort, customMeta: customMeta, myOrders: myOrders, showCrossCompanyData: showCrossCompanyData, customerId: customerId, orderType: orderType, allowInactive: allowInactive).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -5095,7 +5096,8 @@ platformClient.order.getOrders(lane: lane, searchType: searchType, bagStatus: ba
 | myOrders | Boolean? | no |  |   
 | showCrossCompanyData | Boolean? | no | Flag to view cross & non-cross company order |   
 | customerId | String? | no |  |   
-| orderType | String? | no |  |  
+| orderType | String? | no |  |   
+| allowInactive | Boolean? | no | Flag indicating whether inactive shipments are allowed |  
 
 
 
@@ -5260,7 +5262,7 @@ Success. Check the example shown below or refer `PlatformShipmentTrack` for more
       "reason": "Fyndr",
       "shipment_type": "forward",
       "status": "dp_assigned",
-      "updated_time": "2022-11-24T12:39:38+05:30",
+      "updated_time": "2022-11-24T07:09:38.000Z",
       "account_name": "fyndr",
       "awb": "2125658183710",
       "raw_status": "dp_assigned",

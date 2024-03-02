@@ -400,7 +400,7 @@ data class EventProcessReportObject(
     var responseMessage: String?=null,
     
     @SerializedName("data")
-    var data: @RawValue HashMap<String,Any>?=null,
+    var data: String?=null,
     
     @SerializedName("attempt")
     var attempt: Int?=null,
@@ -595,6 +595,9 @@ data class EventConfig(
     @SerializedName("event_category")
     var eventCategory: String?=null,
     
+    @SerializedName("subscriber_event_mapping")
+    var subscriberEventMapping: SubscriberEventMapping?=null,
+    
     @SerializedName("event_schema")
     var eventSchema: @RawValue HashMap<String,Any>?=null,
     
@@ -614,6 +617,8 @@ data class EventConfig(
     var updatedOn: String?=null
     
 ): Parcelable {
+    
+    
     
     
     
@@ -1053,110 +1058,6 @@ data class AuthMeta(
     var secret: String?=null
     
 ): Parcelable {
-    
-    
-    
-    
-    
-    
-    
-}
-
-
-
-             
-/*
-    Model: SubscriberFailureResponse
-*/
-@Parcelize
-data class SubscriberFailureResponse(
-    
-    
-    
-    @SerializedName("message")
-    var message: String?=null,
-    
-    @SerializedName("code")
-    var code: String?=null,
-    
-    @SerializedName("stack")
-    var stack: String?=null
-    
-): Parcelable {
-    
-    
-    
-    
-    
-    
-    
-    
-    
-}
-
-
-
-             
-/*
-    Model: EventConfigs
-*/
-@Parcelize
-data class EventConfigs(
-    
-    
-    
-    @SerializedName("id")
-    var id: Int?=null,
-    
-    @SerializedName("event_name")
-    var eventName: String?=null,
-    
-    @SerializedName("event_type")
-    var eventType: String?=null,
-    
-    @SerializedName("event_category")
-    var eventCategory: String?=null,
-    
-    @SerializedName("event_schema")
-    var eventSchema: @RawValue HashMap<String,Any>?=null,
-    
-    @SerializedName("version")
-    var version: String?=null,
-    
-    @SerializedName("display_name")
-    var displayName: String?=null,
-    
-    @SerializedName("description")
-    var description: String?=null,
-    
-    @SerializedName("created_on")
-    var createdOn: String?=null,
-    
-    @SerializedName("updated_on")
-    var updatedOn: String?=null,
-    
-    @SerializedName("subscriber_event_mapping")
-    var subscriberEventMapping: SubscriberEventMapping?=null
-    
-): Parcelable {
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
     
     
     
