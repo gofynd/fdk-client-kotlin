@@ -19,6 +19,10 @@ class UserDataManagerClass(val config: ApplicationConfig, val unauthorizedAction
 
     init{
             
+                    _relativeUrls["getUserAttributes"] = "/service/application/user/profile/v1.0/user-attributes".substring(1)
+            
+                    _relativeUrls["updateUserAttributes"] = "/service/application/user/profile/v1.0/user-attributes".substring(1)
+            
                     _relativeUrls["loginWithFacebook"] = "/service/application/user/authentication/v1.0/login/facebook-token".substring(1)
             
                     _relativeUrls["loginWithGoogle"] = "/service/application/user/authentication/v1.0/login/google-token".substring(1)
@@ -34,8 +38,6 @@ class UserDataManagerClass(val config: ApplicationConfig, val unauthorizedAction
                     _relativeUrls["loginWithEmailAndPassword"] = "/service/application/user/authentication/v1.0/login/password".substring(1)
             
                     _relativeUrls["sendResetPasswordEmail"] = "/service/application/user/authentication/v1.0/login/password/reset".substring(1)
-            
-                    _relativeUrls["sendResetPasswordMobile"] = "/service/application/user/authentication/v1.0/login/password/mobile/reset".substring(1)
             
                     _relativeUrls["sendResetToken"] = "/service/application/user/authentication/v1.0/login/password/reset/token".substring(1)
             
@@ -101,10 +103,6 @@ class UserDataManagerClass(val config: ApplicationConfig, val unauthorizedAction
             
                     _relativeUrls["logout"] = "/service/application/user/authentication/v1.0/logout".substring(1)
             
-                    _relativeUrls["getUserAttributes"] = "/service/application/user/profile/v1.0/user-attributes".substring(1)
-            
-                    _relativeUrls["updateUserAttributes"] = "/service/application/user/profile/v1.0/user-attributes".substring(1)
-            
     }
 
     public fun update(updatedUrlMap : HashMap<String,String>){
@@ -140,45 +138,59 @@ class UserDataManagerClass(val config: ApplicationConfig, val unauthorizedAction
         return retrofitHttpClient?.initializeRestClient(UserApiList::class.java) as? UserApiList
     }
     
-    suspend fun loginWithFacebook(platform: String?=null, body: OAuthRequestSchema): Response<AuthSuccess>? {
+    suspend fun getUserAttributes(slug: String?=null): Response<UserAttributes>? {
+        var fullUrl : String? = _relativeUrls["getUserAttributes"] 
+        
+        return userApiList?.getUserAttributes(fullUrl    ,  slug = slug)}
+
+    
+    
+    suspend fun updateUserAttributes(body: UpdateUserAttributesRequest): Response<UserAttributes>? {
+        var fullUrl : String? = _relativeUrls["updateUserAttributes"] 
+        
+        return userApiList?.updateUserAttributes(fullUrl  ,body = body)}
+
+    
+    
+    suspend fun loginWithFacebook(body: OAuthRequestSchema): Response<AuthSuccess>? {
         var fullUrl : String? = _relativeUrls["loginWithFacebook"] 
         
-        return userApiList?.loginWithFacebook(fullUrl    ,  platform = platform, body = body)}
+        return userApiList?.loginWithFacebook(fullUrl  ,body = body)}
 
     
     
-    suspend fun loginWithGoogle(platform: String?=null, body: OAuthRequestSchema): Response<AuthSuccess>? {
+    suspend fun loginWithGoogle(body: OAuthRequestSchema): Response<AuthSuccess>? {
         var fullUrl : String? = _relativeUrls["loginWithGoogle"] 
         
-        return userApiList?.loginWithGoogle(fullUrl    ,  platform = platform, body = body)}
+        return userApiList?.loginWithGoogle(fullUrl  ,body = body)}
 
     
     
-    suspend fun loginWithGoogleAndroid(platform: String?=null, body: OAuthRequestSchema): Response<AuthSuccess>? {
+    suspend fun loginWithGoogleAndroid(body: OAuthRequestSchema): Response<AuthSuccess>? {
         var fullUrl : String? = _relativeUrls["loginWithGoogleAndroid"] 
         
-        return userApiList?.loginWithGoogleAndroid(fullUrl    ,  platform = platform, body = body)}
+        return userApiList?.loginWithGoogleAndroid(fullUrl  ,body = body)}
 
     
     
-    suspend fun loginWithGoogleIOS(platform: String?=null, body: OAuthRequestSchema): Response<AuthSuccess>? {
+    suspend fun loginWithGoogleIOS(body: OAuthRequestSchema): Response<AuthSuccess>? {
         var fullUrl : String? = _relativeUrls["loginWithGoogleIOS"] 
         
-        return userApiList?.loginWithGoogleIOS(fullUrl    ,  platform = platform, body = body)}
+        return userApiList?.loginWithGoogleIOS(fullUrl  ,body = body)}
 
     
     
-    suspend fun loginWithAppleIOS(platform: String?=null, body: OAuthRequestAppleSchema): Response<AuthSuccess>? {
+    suspend fun loginWithAppleIOS(body: OAuthRequestAppleSchema): Response<AuthSuccess>? {
         var fullUrl : String? = _relativeUrls["loginWithAppleIOS"] 
         
-        return userApiList?.loginWithAppleIOS(fullUrl    ,  platform = platform, body = body)}
+        return userApiList?.loginWithAppleIOS(fullUrl  ,body = body)}
 
     
     
-    suspend fun loginWithOTP(platform: String?=null, body: SendOtpRequestSchema): Response<SendOtpResponse>? {
+    suspend fun loginWithOTP(body: SendOtpRequestSchema): Response<SendOtpResponse>? {
         var fullUrl : String? = _relativeUrls["loginWithOTP"] 
         
-        return userApiList?.loginWithOTP(fullUrl    ,  platform = platform, body = body)}
+        return userApiList?.loginWithOTP(fullUrl  ,body = body)}
 
     
     
@@ -189,17 +201,10 @@ class UserDataManagerClass(val config: ApplicationConfig, val unauthorizedAction
 
     
     
-    suspend fun sendResetPasswordEmail(platform: String?=null, body: SendResetPasswordEmailRequestSchema): Response<ResetPasswordSuccess>? {
+    suspend fun sendResetPasswordEmail(body: SendResetPasswordEmailRequestSchema): Response<ResetPasswordSuccess>? {
         var fullUrl : String? = _relativeUrls["sendResetPasswordEmail"] 
         
-        return userApiList?.sendResetPasswordEmail(fullUrl    ,  platform = platform, body = body)}
-
-    
-    
-    suspend fun sendResetPasswordMobile(platform: String?=null, body: SendResetPasswordMobileRequestSchema): Response<Any>? {
-        var fullUrl : String? = _relativeUrls["sendResetPasswordMobile"] 
-        
-        return userApiList?.sendResetPasswordMobile(fullUrl    ,  platform = platform, body = body)}
+        return userApiList?.sendResetPasswordEmail(fullUrl  ,body = body)}
 
     
     
@@ -231,10 +236,10 @@ class UserDataManagerClass(val config: ApplicationConfig, val unauthorizedAction
 
     
     
-    suspend fun registerWithForm(platform: String?=null, body: FormRegisterRequestSchema): Response<RegisterFormSuccess>? {
+    suspend fun registerWithForm(body: FormRegisterRequestSchema): Response<RegisterFormSuccess>? {
         var fullUrl : String? = _relativeUrls["registerWithForm"] 
         
-        return userApiList?.registerWithForm(fullUrl    ,  platform = platform, body = body)}
+        return userApiList?.registerWithForm(fullUrl  ,body = body)}
 
     
     
@@ -266,59 +271,59 @@ class UserDataManagerClass(val config: ApplicationConfig, val unauthorizedAction
 
     
     
-    suspend fun sendOTPOnMobile(platform: String?=null, body: SendMobileOtpRequestSchema): Response<OtpSuccess>? {
+    suspend fun sendOTPOnMobile(body: SendMobileOtpRequestSchema): Response<OtpSuccess>? {
         var fullUrl : String? = _relativeUrls["sendOTPOnMobile"] 
         
-        return userApiList?.sendOTPOnMobile(fullUrl    ,  platform = platform, body = body)}
+        return userApiList?.sendOTPOnMobile(fullUrl  ,body = body)}
 
     
     
-    suspend fun sendForgotOTPOnMobile(platform: String?=null, body: SendMobileForgotOtpRequestSchema): Response<OtpSuccess>? {
+    suspend fun sendForgotOTPOnMobile(body: SendMobileForgotOtpRequestSchema): Response<OtpSuccess>? {
         var fullUrl : String? = _relativeUrls["sendForgotOTPOnMobile"] 
         
-        return userApiList?.sendForgotOTPOnMobile(fullUrl    ,  platform = platform, body = body)}
+        return userApiList?.sendForgotOTPOnMobile(fullUrl  ,body = body)}
 
     
     
-    suspend fun verifyMobileOTP(platform: String?=null, body: VerifyOtpRequestSchema): Response<VerifyOtpSuccess>? {
+    suspend fun verifyMobileOTP(body: VerifyOtpRequestSchema): Response<VerifyOtpSuccess>? {
         var fullUrl : String? = _relativeUrls["verifyMobileOTP"] 
         
-        return userApiList?.verifyMobileOTP(fullUrl    ,  platform = platform, body = body)}
+        return userApiList?.verifyMobileOTP(fullUrl  ,body = body)}
 
     
     
-    suspend fun verifyMobileForgotOTP(platform: String?=null, body: VerifyMobileForgotOtpRequestSchema): Response<VerifyForgotOtpSuccess>? {
+    suspend fun verifyMobileForgotOTP(body: VerifyMobileForgotOtpRequestSchema): Response<VerifyForgotOtpSuccess>? {
         var fullUrl : String? = _relativeUrls["verifyMobileForgotOTP"] 
         
-        return userApiList?.verifyMobileForgotOTP(fullUrl    ,  platform = platform, body = body)}
+        return userApiList?.verifyMobileForgotOTP(fullUrl  ,body = body)}
 
     
     
-    suspend fun sendOTPOnEmail(platform: String?=null, body: SendEmailOtpRequestSchema): Response<EmailOtpSuccess>? {
+    suspend fun sendOTPOnEmail(body: SendEmailOtpRequestSchema): Response<EmailOtpSuccess>? {
         var fullUrl : String? = _relativeUrls["sendOTPOnEmail"] 
         
-        return userApiList?.sendOTPOnEmail(fullUrl    ,  platform = platform, body = body)}
+        return userApiList?.sendOTPOnEmail(fullUrl  ,body = body)}
 
     
     
-    suspend fun sendForgotOTPOnEmail(platform: String?=null, body: SendEmailForgotOtpRequestSchema): Response<EmailOtpSuccess>? {
+    suspend fun sendForgotOTPOnEmail(body: SendEmailForgotOtpRequestSchema): Response<EmailOtpSuccess>? {
         var fullUrl : String? = _relativeUrls["sendForgotOTPOnEmail"] 
         
-        return userApiList?.sendForgotOTPOnEmail(fullUrl    ,  platform = platform, body = body)}
+        return userApiList?.sendForgotOTPOnEmail(fullUrl  ,body = body)}
 
     
     
-    suspend fun verifyEmailOTP(platform: String?=null, body: VerifyEmailOtpRequestSchema): Response<VerifyOtpSuccess>? {
+    suspend fun verifyEmailOTP(body: VerifyEmailOtpRequestSchema): Response<VerifyOtpSuccess>? {
         var fullUrl : String? = _relativeUrls["verifyEmailOTP"] 
         
-        return userApiList?.verifyEmailOTP(fullUrl    ,  platform = platform, body = body)}
+        return userApiList?.verifyEmailOTP(fullUrl  ,body = body)}
 
     
     
-    suspend fun verifyEmailForgotOTP(platform: String?=null, body: VerifyEmailForgotOtpRequestSchema): Response<VerifyForgotOtpSuccess>? {
+    suspend fun verifyEmailForgotOTP(body: VerifyEmailForgotOtpRequestSchema): Response<VerifyForgotOtpSuccess>? {
         var fullUrl : String? = _relativeUrls["verifyEmailForgotOTP"] 
         
-        return userApiList?.verifyEmailForgotOTP(fullUrl    ,  platform = platform, body = body)}
+        return userApiList?.verifyEmailForgotOTP(fullUrl  ,body = body)}
 
     
     
@@ -343,17 +348,17 @@ class UserDataManagerClass(val config: ApplicationConfig, val unauthorizedAction
 
     
     
-    suspend fun updateProfile(platform: String?=null, body: EditProfileRequestSchema): Response<ProfileEditSuccess>? {
+    suspend fun updateProfile(body: EditProfileRequestSchema): Response<ProfileEditSuccess>? {
         var fullUrl : String? = _relativeUrls["updateProfile"] 
         
-        return userApiList?.updateProfile(fullUrl    ,  platform = platform, body = body)}
+        return userApiList?.updateProfile(fullUrl  ,body = body)}
 
     
     
-    suspend fun addMobileNumber(platform: String?=null, body: EditMobileRequestSchema): Response<VerifyMobileOTPSuccess>? {
+    suspend fun addMobileNumber(body: EditMobileRequestSchema): Response<VerifyMobileOTPSuccess>? {
         var fullUrl : String? = _relativeUrls["addMobileNumber"] 
         
-        return userApiList?.addMobileNumber(fullUrl    ,  platform = platform, body = body)}
+        return userApiList?.addMobileNumber(fullUrl  ,body = body)}
 
     
     
@@ -371,17 +376,17 @@ class UserDataManagerClass(val config: ApplicationConfig, val unauthorizedAction
 
     
     
-    suspend fun sendVerificationLinkToMobile(platform: String?=null, body: SendVerificationLinkMobileRequestSchema): Response<SendMobileVerifyLinkSuccess>? {
+    suspend fun sendVerificationLinkToMobile(body: SendVerificationLinkMobileRequestSchema): Response<SendMobileVerifyLinkSuccess>? {
         var fullUrl : String? = _relativeUrls["sendVerificationLinkToMobile"] 
         
-        return userApiList?.sendVerificationLinkToMobile(fullUrl    ,  platform = platform, body = body)}
+        return userApiList?.sendVerificationLinkToMobile(fullUrl  ,body = body)}
 
     
     
-    suspend fun addEmail(platform: String?=null, body: EditEmailRequestSchema): Response<VerifyEmailOTPSuccess>? {
+    suspend fun addEmail(body: EditEmailRequestSchema): Response<VerifyEmailOTPSuccess>? {
         var fullUrl : String? = _relativeUrls["addEmail"] 
         
-        return userApiList?.addEmail(fullUrl    ,  platform = platform, body = body)}
+        return userApiList?.addEmail(fullUrl  ,body = body)}
 
     
     
@@ -399,10 +404,10 @@ class UserDataManagerClass(val config: ApplicationConfig, val unauthorizedAction
 
     
     
-    suspend fun sendVerificationLinkToEmail(platform: String?=null, body: EditEmailRequestSchema): Response<SendEmailVerifyLinkSuccess>? {
+    suspend fun sendVerificationLinkToEmail(body: EditEmailRequestSchema): Response<SendEmailVerifyLinkSuccess>? {
         var fullUrl : String? = _relativeUrls["sendVerificationLinkToEmail"] 
         
-        return userApiList?.sendVerificationLinkToEmail(fullUrl    ,  platform = platform, body = body)}
+        return userApiList?.sendVerificationLinkToEmail(fullUrl  ,body = body)}
 
     
     
@@ -424,20 +429,6 @@ class UserDataManagerClass(val config: ApplicationConfig, val unauthorizedAction
         var fullUrl : String? = _relativeUrls["logout"] 
         
         return userApiList?.logout(fullUrl  )}
-
-    
-    
-    suspend fun getUserAttributes(slug: String?=null): Response<UserAttributes>? {
-        var fullUrl : String? = _relativeUrls["getUserAttributes"] 
-        
-        return userApiList?.getUserAttributes(fullUrl    ,  slug = slug)}
-
-    
-    
-    suspend fun updateUserAttributes(body: UpdateUserAttributesRequest): Response<UserAttributes>? {
-        var fullUrl : String? = _relativeUrls["updateUserAttributes"] 
-        
-        return userApiList?.updateUserAttributes(fullUrl  ,body = body)}
 
     
     

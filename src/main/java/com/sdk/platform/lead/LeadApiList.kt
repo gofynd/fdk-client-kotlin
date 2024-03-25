@@ -9,7 +9,7 @@ import com.sdk.platform.*
 interface LeadApiList {
     
     @GET ("/service/platform/lead/v1.0/company/{company_id}/ticket")
-    suspend fun getPlatformTickets(@Path("company_id") companyId: String, @Query("items") items: Boolean?, @Query("filters") filters: Boolean?, @Query("q") q: String?, @Query("status") status: String?, @Query("priority") priority: PriorityEnum?, @Query("category") category: String?, @Query("page_no") pageNo: Int?, @Query("page_size") pageSize: Int?)
+    suspend fun getPlatformTickets(@Path("company_id") companyId: String, @Query("items") items: Boolean?, @Query("filters") filters: Boolean?, @Query("q") q: String?, @Query("status") status: String?, @Query("priority") priority: String?, @Query("category") category: String?, @Query("page_no") pageNo: Int?, @Query("page_size") pageSize: Int?)
     : Response<TicketList>
     
     @POST ("/service/platform/lead/v1.0/company/{company_id}/ticket")
@@ -17,7 +17,7 @@ interface LeadApiList {
     : Response<Ticket>
     
     @GET ("/service/platform/lead/v1.0/company/{company_id}/application/{application_id}/ticket")
-    suspend fun getNewTickets(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Query("items") items: Boolean?, @Query("filters") filters: Boolean?, @Query("q") q: String?, @Query("status") status: String?, @Query("priority") priority: PriorityEnum?, @Query("category") category: String?)
+    suspend fun getNewTickets(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Query("items") items: Boolean?, @Query("filters") filters: Boolean?, @Query("q") q: String?, @Query("status") status: String?, @Query("priority") priority: String?, @Query("category") category: String?)
     : Response<TicketList>
     
     @GET ("/service/platform/lead/v1.0/company/{company_id}/ticket/{id}")
@@ -43,14 +43,6 @@ interface LeadApiList {
     @GET ("/service/platform/lead/v1.0/company/{company_id}/ticket/{id}/history")
     suspend fun getPlatformTicketHistory(@Path("company_id") companyId: String, @Path("id") id: String)
     : Response<TicketHistoryList>
-    
-    @GET ("/service/platform/lead/v1.0/company/{company_id}/ticket/{id}/feedback")
-    suspend fun getFeedbacks(@Path("company_id") companyId: String, @Path("id") id: String)
-    : Response<TicketFeedbackList>
-    
-    @POST ("/service/platform/lead/v1.0/company/{company_id}/ticket/{id}/feedback")
-    suspend fun submitFeedback(@Path("company_id") companyId: String, @Path("id") id: String,@Body body: TicketFeedbackPayload)
-    : Response<TicketFeedback>
     
     @POST ("/service/platform/lead/v1.0/company/{company_id}/application/{application_id}/ticket/{id}/history")
     suspend fun createNewHistory(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Path("id") id: String,@Body body: TicketHistoryPayload)
@@ -106,6 +98,6 @@ interface LeadApiList {
     
     @GET ("/service/platform/lead/v1.0/company/{company_id}/general-config")
     suspend fun getGeneralConfig(@Path("company_id") companyId: String)
-    : Response<CloseVideoRoomResponse>
+    : Response<GeneralConfigResponse>
     
 }

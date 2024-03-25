@@ -52,6 +52,14 @@ interface WebhookApiList {
     suspend fun fetchAllEventConfigurations(@Path("company_id") companyId: String)
     : Response<EventConfigResponse>
     
+    @POST ("/service/platform/webhook/v2.0/company/{company_id}/subscriber/")
+    suspend fun registerSubscriberToEventV2(@Path("company_id") companyId: String,@Body body: SubscriberConfigRequestV2)
+    : Response<SubscriberConfigResponse>
+    
+    @PUT ("/service/platform/webhook/v2.0/company/{company_id}/subscriber/")
+    suspend fun updateSubscriberV2(@Path("company_id") companyId: String,@Body body: SubscriberConfigRequestV2)
+    : Response<SubscriberConfigResponse>
+    
     @POST ("/service/platform/webhook/v1.0/company/{company_id}/subscriber/")
     suspend fun registerSubscriberToEvent(@Path("company_id") companyId: String,@Body body: SubscriberConfig)
     : Response<SubscriberConfigResponse>

@@ -48,21 +48,57 @@ interface FileStorageApiList {
     suspend fun browsefiles(@Path("namespace") namespace: String, @Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Query("page") page: Int?, @Query("limit") limit: Int?, @Query("search") search: String?,@Body body: ExtensionSlug)
     : Response<HashMap<String,Any>>
     
-    @GET ("/service/platform/assets/v1.0/company/{company_id}/proxy")
-    suspend fun proxy(@Path("company_id") companyId: String, @Query("url") url: String)
-    : Response<String>
-    
     @GET ("/service/platform/assets/v1.0/company/{company_id}/application/{application_id}/pdf/types")
-    suspend fun getPdfTypes(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Query("country_code") countryCode: String?)
+    suspend fun getPdfTypes(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Query("country_code") countryCode: String?, @Query("store_os") storeOs: Boolean)
     : Response<InvoiceTypesResponse>
+    
+    @POST ("/service/platform/assets/v1.0/company/{company_id}/application/{application_id}/pdf/types")
+    suspend fun savePdfTypes(@Path("company_id") companyId: String, @Path("application_id") applicationId: String,@Body body: UpdatePdfTypeRequest)
+    : Response<PdfTypeIdResponse>
+    
+    @GET ("/service/platform/assets/v1.0/company/{company_id}/application/{application_id}/pdf/types/{id}")
+    suspend fun fetchPdfTypeById(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Path("id") id: String)
+    : Response<PdfTypeIdResponse>
+    
+    @PUT ("/service/platform/assets/v1.0/company/{company_id}/application/{application_id}/pdf/types/{id}")
+    suspend fun updatePdfTypeById(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Path("id") id: String,@Body body: UpdatePdfTypeRequest)
+    : Response<PdfTypeIdResponse>
+    
+    @DELETE ("/service/platform/assets/v1.0/company/{company_id}/application/{application_id}/pdf/types/{id}")
+    suspend fun deletePdfType(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Path("id") id: String)
+    : Response<HashMap<String,Any>>
     
     @GET ("/service/platform/assets/v1.0/company/{company_id}/application/{application_id}/pdf/mapper")
     suspend fun getDefaultPdfData(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Query("pdf_type_id") pdfTypeId: Int, @Query("country_code") countryCode: String?)
     : Response<DummyTemplateDataItems>
     
+    @POST ("/service/platform/assets/v1.0/company/{company_id}/application/{application_id}/pdf/mapper")
+    suspend fun savePdfPayloadData(@Path("company_id") companyId: String, @Path("application_id") applicationId: String,@Body body: savePdfPayload)
+    : Response<DummyPayloadById>
+    
+    @GET ("/service/platform/assets/v1.0/company/{company_id}/application/{application_id}/pdf/mapper/{id}")
+    suspend fun getPdfPayloadById(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Path("id") id: String)
+    : Response<DummyPayloadById>
+    
+    @PUT ("/service/platform/assets/v1.0/company/{company_id}/application/{application_id}/pdf/mapper/{id}")
+    suspend fun updatePdfPayloadDataById(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Path("id") id: String,@Body body: DummyPayloadById)
+    : Response<DummyPayloadById>
+    
+    @DELETE ("/service/platform/assets/v1.0/company/{company_id}/application/{application_id}/pdf/mapper/{id}")
+    suspend fun deletePdfPayloadById(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Path("id") id: String)
+    : Response<DummyPayloadById>
+    
+    @GET ("/service/platform/assets/v1.0/company/{company_id}/application/{application_id}/pdf/config/{id}")
+    suspend fun getConfigHtmlTemplateById(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Path("id") id: String)
+    : Response<HashMap<String,Any>>
+    
     @PUT ("/service/platform/assets/v1.0/company/{company_id}/application/{application_id}/pdf/config/{id}")
     suspend fun updateHtmlTemplate(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Path("id") id: String,@Body body: PdfConfig)
     : Response<PdfConfigSaveSuccess>
+    
+    @DELETE ("/service/platform/assets/v1.0/company/{company_id}/application/{application_id}/pdf/config/{id}")
+    suspend fun deletePdfConfigTemplate(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Path("id") id: String)
+    : Response<HashMap<String,Any>>
     
     @GET ("/service/platform/assets/v1.0/company/{company_id}/application/{application_id}/pdf/config")
     suspend fun getDefaultHtmlTemplate(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Query("pdf_type_id") pdfTypeId: Int, @Query("format") format: String, @Query("country_code") countryCode: String?)
@@ -76,8 +112,28 @@ interface FileStorageApiList {
     suspend fun getDefaultPdfTemplate(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Query("pdf_type_id") pdfTypeId: Int, @Query("format") format: String, @Query("country_code") countryCode: String?)
     : Response<PdfDefaultTemplateSuccess>
     
+    @POST ("/service/platform/assets/v1.0/company/{company_id}/application/{application_id}/pdf/default-template")
+    suspend fun createTemplate(@Path("company_id") companyId: String, @Path("application_id") applicationId: String,@Body body: CreateTemplate)
+    : Response<PdfTemplateCreateSuccess>
+    
     @POST ("/service/platform/assets/v1.0/company/{company_id}/application/{application_id}/pdf/payment-receipt")
     suspend fun generatePaymentReceipt(@Path("company_id") companyId: String, @Path("application_id") applicationId: String,@Body body: PaymentReceiptRequestBody)
     : Response<HashMap<String,Any>>
+    
+    @GET ("/service/platform/assets/v1.0/company/{company_id}/application/{application_id}/pdf/default-template/{id}")
+    suspend fun fetchPdfDefaultTemplateById(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Path("id") id: String)
+    : Response<PdfDefaultTemplateResponse>
+    
+    @PUT ("/service/platform/assets/v1.0/company/{company_id}/application/{application_id}/pdf/default-template/{id}")
+    suspend fun updateTemplate(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Path("id") id: String,@Body body: UpdateTemplate)
+    : Response<PdfConfigurationResponse>
+    
+    @DELETE ("/service/platform/assets/v1.0/company/{company_id}/application/{application_id}/pdf/default-template/{id}")
+    suspend fun deletePdfTemplate(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Path("id") id: String)
+    : Response<HashMap<String,Any>>
+    
+    @GET ("/service/platform/assets/v1.0/company/{company_id}/proxy")
+    suspend fun proxy(@Path("company_id") companyId: String, @Query("url") url: String)
+    : Response<ProxyResponse>
     
 }

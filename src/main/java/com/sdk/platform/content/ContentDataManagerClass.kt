@@ -120,8 +120,10 @@ class ContentDataManagerClass(val config: PlatformConfig, val unauthorizedAction
     
     
     
+    
+    
     suspend fun getCustomFieldTypes()
-    : Response<CustomObjectByIdSchema>? {
+    : Response<MetafieldTypesSchema>? {
         
         return if (config.oauthClient.isAccessTokenValid()) {
             contentApiList?.getCustomFieldTypes(
@@ -168,36 +170,36 @@ class ContentDataManagerClass(val config: PlatformConfig, val unauthorizedAction
     }
     
     
-    suspend fun getCustomFieldDefinition(definitionId: String)
+    suspend fun getCustomFieldDefinition(id: String)
     : Response<CustomFieldDefinitionDetailResSchema>? {
         
         return if (config.oauthClient.isAccessTokenValid()) {
             contentApiList?.getCustomFieldDefinition(
-        companyId = config.companyId, definitionId = definitionId )
+        companyId = config.companyId, id = id )
         } else {
             null
         } 
     }
     
     
-    suspend fun updateCustomFieldDefinition(definitionId: String,body: CustomFieldDefinitionRequestSchema)
+    suspend fun updateCustomFieldDefinition(id: String,body: CustomFieldDefinitionRequestSchema)
     : Response<CustomFieldDefinitionDetailResSchema>? {
         
         return if (config.oauthClient.isAccessTokenValid()) {
             contentApiList?.updateCustomFieldDefinition(
-        companyId = config.companyId, definitionId = definitionId, body = body)
+        companyId = config.companyId, id = id, body = body)
         } else {
             null
         } 
     }
     
     
-    suspend fun deleteCustomFieldDefinition(definitionId: String)
+    suspend fun deleteCustomFieldDefinition(id: String)
     : Response<CustomDataDeleteSchema>? {
         
         return if (config.oauthClient.isAccessTokenValid()) {
             contentApiList?.deleteCustomFieldDefinition(
-        companyId = config.companyId, definitionId = definitionId )
+        companyId = config.companyId, id = id )
         } else {
             null
         } 
@@ -240,6 +242,42 @@ class ContentDataManagerClass(val config: PlatformConfig, val unauthorizedAction
     }
     
     
+    suspend fun updateCustomFieldByResourceId(resource: String, resourceId: String,body: CustomFieldRequestSchema)
+    : Response<CustomFieldsResponseByResourceIdSchema>? {
+        
+        return if (config.oauthClient.isAccessTokenValid()) {
+            contentApiList?.updateCustomFieldByResourceId(
+        companyId = config.companyId, resource = resource, resourceId = resourceId, body = body)
+        } else {
+            null
+        } 
+    }
+    
+    
+    suspend fun deleteCustomFieldsByResourceId(resource: String, resourceId: String, ids: String)
+    : Response<CustomFieldsDeleteSchema>? {
+        
+        return if (config.oauthClient.isAccessTokenValid()) {
+            contentApiList?.deleteCustomFieldsByResourceId(
+        companyId = config.companyId, resource = resource, resourceId = resourceId, ids = ids )
+        } else {
+            null
+        } 
+    }
+    
+    
+    suspend fun getCustomFieldJobs(page: String, pageSize: String, actionType: String)
+    : Response<CustomFieldBulkEntry>? {
+        
+        return if (config.oauthClient.isAccessTokenValid()) {
+            contentApiList?.getCustomFieldJobs(
+        companyId = config.companyId, page = page, pageSize = pageSize, actionType = actionType )
+        } else {
+            null
+        } 
+    }
+    
+    
     suspend fun createCustomObjectDefinition(body: CustomObjectDefinitionRequestSchema)
     : Response<CustomObjectDefinitionSchema>? {
         
@@ -264,36 +302,36 @@ class ContentDataManagerClass(val config: PlatformConfig, val unauthorizedAction
     }
     
     
-    suspend fun getCustomObjectDefinition(definitionId: String)
+    suspend fun getCustomObjectDefinition(id: String)
     : Response<CustomObjectDefinitionSchema>? {
         
         return if (config.oauthClient.isAccessTokenValid()) {
             contentApiList?.getCustomObjectDefinition(
-        companyId = config.companyId, definitionId = definitionId )
+        companyId = config.companyId, id = id )
         } else {
             null
         } 
     }
     
     
-    suspend fun updateCustomObjectDefinition(definitionId: String,body: CustomObjectDefinitionUpdateRequestSchema)
+    suspend fun updateCustomObjectDefinition(id: String,body: CustomObjectDefinitionUpdateRequestSchema)
     : Response<CustomObjectDefinitionSchema>? {
         
         return if (config.oauthClient.isAccessTokenValid()) {
             contentApiList?.updateCustomObjectDefinition(
-        companyId = config.companyId, definitionId = definitionId, body = body)
+        companyId = config.companyId, id = id, body = body)
         } else {
             null
         } 
     }
     
     
-    suspend fun deleteCustomObjectDefinition(definitionId: String)
+    suspend fun deleteCustomObjectDefinition(id: String)
     : Response<CustomObjectDefinitionDeleteResponseSchema>? {
         
         return if (config.oauthClient.isAccessTokenValid()) {
             contentApiList?.deleteCustomObjectDefinition(
-        companyId = config.companyId, definitionId = definitionId )
+        companyId = config.companyId, id = id )
         } else {
             null
         } 
@@ -324,36 +362,36 @@ class ContentDataManagerClass(val config: PlatformConfig, val unauthorizedAction
     }
     
     
-    suspend fun getCustomObject(metaobjectId: String)
+    suspend fun getCustomObject(id: String)
     : Response<CustomObjectByIdSchema>? {
         
         return if (config.oauthClient.isAccessTokenValid()) {
             contentApiList?.getCustomObject(
-        companyId = config.companyId, metaobjectId = metaobjectId )
+        companyId = config.companyId, id = id )
         } else {
             null
         } 
     }
     
     
-    suspend fun deleteCustomObject(metaobjectId: String)
+    suspend fun updateCustomObject(id: String,body: CustomObjectRequestSchema)
+    : Response<CustomObjectSchema>? {
+        
+        return if (config.oauthClient.isAccessTokenValid()) {
+            contentApiList?.updateCustomObject(
+        companyId = config.companyId, id = id, body = body)
+        } else {
+            null
+        } 
+    }
+    
+    
+    suspend fun deleteCustomObject(id: String)
     : Response<CustomDataDeleteSchema>? {
         
         return if (config.oauthClient.isAccessTokenValid()) {
             contentApiList?.deleteCustomObject(
-        companyId = config.companyId, metaobjectId = metaobjectId )
-        } else {
-            null
-        } 
-    }
-    
-    
-    suspend fun updateCustomObject(metaobjectId: String,body: CustomObjectRequestSchema)
-    : Response<CustomObjectByIdSchema>? {
-        
-        return if (config.oauthClient.isAccessTokenValid()) {
-            contentApiList?.updateCustomObject(
-        companyId = config.companyId, metaobjectId = metaobjectId, body = body)
+        companyId = config.companyId, id = id )
         } else {
             null
         } 
@@ -397,7 +435,7 @@ class ContentDataManagerClass(val config: PlatformConfig, val unauthorizedAction
     
     
     suspend fun sampleCustomObjectBulkEntry(definitionId: String)
-    : Response<String>? {
+    : Response<ResponseBody>? {
         
         return if (config.oauthClient.isAccessTokenValid()) {
             contentApiList?.sampleCustomObjectBulkEntry(
@@ -406,6 +444,9 @@ class ContentDataManagerClass(val config: PlatformConfig, val unauthorizedAction
             null
         } 
     }
+    
+    
+    
     
     
     
@@ -445,6 +486,65 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
         }
     }
     
+    
+    
+        
+            
+                
+            
+            
+        
+            
+                
+            
+            
+        
+            
+            
+        
+            
+                
+            
+            
+        
+    /**
+    *
+    * Summary: Paginator for getAnnouncementsList
+    **/
+    fun getAnnouncementsListPaginator(
+    pageSize: Int?=null
+    
+    ) : Paginator<GetAnnouncementListSchema>{
+        val paginator = Paginator<GetAnnouncementListSchema>()
+        paginator.setCallBack(object : PaginatorCallback<GetAnnouncementListSchema> {
+            
+            override suspend fun onNext(
+                onResponse: (Event<GetAnnouncementListSchema>?,FdkError?) -> Unit){
+
+                if (config.oauthClient.isAccessTokenValid()) {
+                    val pageId = paginator.nextId
+                    val pageNo = paginator.pageNo
+                    val pageType = "number"
+                    contentApiList?.getAnnouncementsList(companyId = config.companyId , applicationId = applicationId , pageNo = pageNo, pageSize = pageSize)?.safeAwait{ response, error ->
+                        response?.let {
+                            val page = response.peekContent()?.page
+                            paginator.setPaginator(hasNext=page?.hasNext?:false,pageNo=if (page?.hasNext == true) ((pageNo ?: 0) + 1) else pageNo)
+                            onResponse.invoke(response,null)
+                        }
+                        
+                        error?.let {
+                            onResponse.invoke(null,error)
+                        }
+                    }
+
+                } else {
+                    null
+                }
+            }
+        
+    })
+    return paginator
+    }
     
     suspend fun createAnnouncement(body: AdminAnnouncementSchema)
     : Response<CreateAnnouncementSchema>? {
@@ -516,6 +616,65 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     }
     
     
+    
+        
+            
+                
+            
+            
+        
+            
+                
+            
+            
+        
+            
+            
+        
+            
+                
+            
+            
+        
+    /**
+    *
+    * Summary: Paginator for getBlogs
+    **/
+    fun getBlogsPaginator(
+    pageSize: Int?=null
+    
+    ) : Paginator<BlogGetResponse>{
+        val paginator = Paginator<BlogGetResponse>()
+        paginator.setCallBack(object : PaginatorCallback<BlogGetResponse> {
+            
+            override suspend fun onNext(
+                onResponse: (Event<BlogGetResponse>?,FdkError?) -> Unit){
+
+                if (config.oauthClient.isAccessTokenValid()) {
+                    val pageId = paginator.nextId
+                    val pageNo = paginator.pageNo
+                    val pageType = "number"
+                    contentApiList?.getBlogs(companyId = config.companyId , applicationId = applicationId , pageNo = pageNo, pageSize = pageSize)?.safeAwait{ response, error ->
+                        response?.let {
+                            val page = response.peekContent()?.page
+                            paginator.setPaginator(hasNext=page?.hasNext?:false,pageNo=if (page?.hasNext == true) ((pageNo ?: 0) + 1) else pageNo)
+                            onResponse.invoke(response,null)
+                        }
+                        
+                        error?.let {
+                            onResponse.invoke(null,error)
+                        }
+                    }
+
+                } else {
+                    null
+                }
+            }
+        
+    })
+    return paginator
+    }
+    
     suspend fun updateBlog(id: String,body: BlogRequest)
     : Response<BlogSchema>? {
         return if (config.oauthClient.isAccessTokenValid()) {
@@ -566,6 +725,16 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     }
     
     
+    suspend fun getDataLoaderApiSpecs(dataLoader: String)
+    : Response<DataLoadersApiSpecSchema>? {
+        return if (config.oauthClient.isAccessTokenValid()) {
+                contentApiList?.getDataLoaderApiSpecs(companyId = config.companyId , applicationId = applicationId , dataLoader = dataLoader )
+        } else {
+            null
+        }
+    }
+    
+    
     suspend fun deleteDataLoader(dataLoaderId: String)
     : Response<DataLoaderResponseSchema>? {
         return if (config.oauthClient.isAccessTokenValid()) {
@@ -587,7 +756,7 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     
     
     suspend fun getDataLoadersByService(serviceName: String)
-    : Response<DataLoaderResponseSchema>? {
+    : Response<DataLoaderItemsResponseSchema>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 contentApiList?.getDataLoadersByService(companyId = config.companyId , applicationId = applicationId , serviceName = serviceName )
         } else {
@@ -657,7 +826,7 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     
     
     suspend fun deleteFaqCategory(id: String)
-    : Response<FaqSchema>? {
+    : Response<CreateFaqCategorySchema>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 contentApiList?.deleteFaqCategory(companyId = config.companyId , applicationId = applicationId , id = id )
         } else {
@@ -736,6 +905,65 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     }
     
     
+    
+        
+            
+                
+            
+            
+        
+            
+                
+            
+            
+        
+            
+            
+        
+            
+                
+            
+            
+        
+    /**
+    *
+    * Summary: Paginator for getLandingPages
+    **/
+    fun getLandingPagesPaginator(
+    pageSize: Int?=null
+    
+    ) : Paginator<LandingPageGetResponse>{
+        val paginator = Paginator<LandingPageGetResponse>()
+        paginator.setCallBack(object : PaginatorCallback<LandingPageGetResponse> {
+            
+            override suspend fun onNext(
+                onResponse: (Event<LandingPageGetResponse>?,FdkError?) -> Unit){
+
+                if (config.oauthClient.isAccessTokenValid()) {
+                    val pageId = paginator.nextId
+                    val pageNo = paginator.pageNo
+                    val pageType = "number"
+                    contentApiList?.getLandingPages(companyId = config.companyId , applicationId = applicationId , pageNo = pageNo, pageSize = pageSize)?.safeAwait{ response, error ->
+                        response?.let {
+                            val page = response.peekContent()?.page
+                            paginator.setPaginator(hasNext=page?.hasNext?:false,pageNo=if (page?.hasNext == true) ((pageNo ?: 0) + 1) else pageNo)
+                            onResponse.invoke(response,null)
+                        }
+                        
+                        error?.let {
+                            onResponse.invoke(null,error)
+                        }
+                    }
+
+                } else {
+                    null
+                }
+            }
+        
+    })
+    return paginator
+    }
+    
     suspend fun createLandingPage(body: LandingPageSchema)
     : Response<LandingPageSchema>? {
         return if (config.oauthClient.isAccessTokenValid()) {
@@ -795,6 +1023,70 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
         }
     }
     
+    
+    
+        
+            
+                
+            
+            
+        
+            
+                
+            
+            
+        
+            
+                
+            
+            
+        
+            
+            
+        
+            
+                
+            
+            
+        
+    /**
+    *
+    * Summary: Paginator for getNavigations
+    **/
+    fun getNavigationsPaginator(
+    devicePlatform: String, pageSize: Int?=null
+    
+    ) : Paginator<NavigationGetResponse>{
+        val paginator = Paginator<NavigationGetResponse>()
+        paginator.setCallBack(object : PaginatorCallback<NavigationGetResponse> {
+            
+            override suspend fun onNext(
+                onResponse: (Event<NavigationGetResponse>?,FdkError?) -> Unit){
+
+                if (config.oauthClient.isAccessTokenValid()) {
+                    val pageId = paginator.nextId
+                    val pageNo = paginator.pageNo
+                    val pageType = "number"
+                    contentApiList?.getNavigations(companyId = config.companyId , applicationId = applicationId , devicePlatform = devicePlatform, pageNo = pageNo, pageSize = pageSize)?.safeAwait{ response, error ->
+                        response?.let {
+                            val page = response.peekContent()?.page
+                            paginator.setPaginator(hasNext=page?.hasNext?:false,pageNo=if (page?.hasNext == true) ((pageNo ?: 0) + 1) else pageNo)
+                            onResponse.invoke(response,null)
+                        }
+                        
+                        error?.let {
+                            onResponse.invoke(null,error)
+                        }
+                    }
+
+                } else {
+                    null
+                }
+            }
+        
+    })
+    return paginator
+    }
     
     suspend fun createNavigation(body: NavigationRequest)
     : Response<NavigationSchema>? {
@@ -886,6 +1178,16 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     }
     
     
+    suspend fun updatePageV1(id: String,body: PageSchema)
+    : Response<PageSchema>? {
+        return if (config.oauthClient.isAccessTokenValid()) {
+                contentApiList?.updatePageV1(companyId = config.companyId , applicationId = applicationId , id = id, body = body)
+        } else {
+            null
+        }
+    }
+    
+    
     suspend fun deletePage(id: String)
     : Response<PageSchema>? {
         return if (config.oauthClient.isAccessTokenValid()) {
@@ -897,7 +1199,7 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     
     
     suspend fun addPathRedirectionRules(body: PathMappingSchema)
-    : Response<PathMappingSchema>? {
+    : Response<CreatePathMappingSchema>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 contentApiList?.addPathRedirectionRules(companyId = config.companyId , applicationId = applicationId , body = body)
         } else {
@@ -907,7 +1209,7 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     
     
     suspend fun getPathRedirectionRules(pageSize: Int?=null, pageNo: Int?=null)
-    : Response<PathMappingSchema>? {
+    : Response<GetAllPathMappingSchema>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 contentApiList?.getPathRedirectionRules(companyId = config.companyId , applicationId = applicationId , pageSize = pageSize, pageNo = pageNo )
         } else {
@@ -917,7 +1219,7 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     
     
     suspend fun getPathRedirectionRule(pathId: String)
-    : Response<PathMappingSchema>? {
+    : Response<DeletPathMappingSchema>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 contentApiList?.getPathRedirectionRule(companyId = config.companyId , applicationId = applicationId , pathId = pathId )
         } else {
@@ -927,7 +1229,7 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     
     
     suspend fun updatePathRedirectionRules(pathId: String,body: PathMappingSchema)
-    : Response<PathMappingSchema>? {
+    : Response<CreatePathMappingSchema>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 contentApiList?.updatePathRedirectionRules(companyId = config.companyId , applicationId = applicationId , pathId = pathId, body = body)
         } else {
@@ -937,7 +1239,7 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     
     
     suspend fun deletePathRedirectionRules(pathId: String)
-    : Response<HashMap<String,Any>>? {
+    : Response<DeletPathMappingSchema>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 contentApiList?.deletePathRedirectionRules(companyId = config.companyId , applicationId = applicationId , pathId = pathId )
         } else {
@@ -996,144 +1298,30 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     }
     
     
-    suspend fun getSEOMarkupSchema(id: String)
+    suspend fun getSEOMarkupSchema(schemaId: String)
     : Response<SEOSchemaMarkupTemplate>? {
         return if (config.oauthClient.isAccessTokenValid()) {
-                contentApiList?.getSEOMarkupSchema(companyId = config.companyId , applicationId = applicationId , id = id )
+                contentApiList?.getSEOMarkupSchema(companyId = config.companyId , applicationId = applicationId , schemaId = schemaId )
         } else {
             null
         }
     }
     
     
-    suspend fun editSEOMarkupSchema(id: String,body: SEOSchemaMarkupTemplateRequestBody)
+    suspend fun editSEOMarkupSchema(schemaId: String,body: SEOSchemaMarkupTemplateRequestBody)
     : Response<SEOSchemaMarkupTemplate>? {
         return if (config.oauthClient.isAccessTokenValid()) {
-                contentApiList?.editSEOMarkupSchema(companyId = config.companyId , applicationId = applicationId , id = id, body = body)
+                contentApiList?.editSEOMarkupSchema(companyId = config.companyId , applicationId = applicationId , schemaId = schemaId, body = body)
         } else {
             null
         }
     }
     
     
-    suspend fun deleteSEOMarkupSchema(id: String)
+    suspend fun deleteSEOMarkupSchema(schemaId: String)
     : Response<SEOSchemaMarkupTemplate>? {
         return if (config.oauthClient.isAccessTokenValid()) {
-                contentApiList?.deleteSEOMarkupSchema(companyId = config.companyId , applicationId = applicationId , id = id )
-        } else {
-            null
-        }
-    }
-    
-    
-    suspend fun getSlideshows(devicePlatform: String, pageNo: Int?=null, pageSize: Int?=null)
-    : Response<SlideshowGetResponse>? {
-        return if (config.oauthClient.isAccessTokenValid()) {
-                contentApiList?.getSlideshows(companyId = config.companyId , applicationId = applicationId , devicePlatform = devicePlatform, pageNo = pageNo, pageSize = pageSize )
-        } else {
-            null
-        }
-    }
-    
-    
-    
-        
-            
-                
-            
-            
-        
-            
-                
-            
-            
-        
-            
-                
-            
-            
-        
-            
-            
-        
-            
-                
-            
-            
-        
-    /**
-    *
-    * Summary: Paginator for getSlideshows
-    **/
-    fun getSlideshowsPaginator(
-    devicePlatform: String, pageSize: Int?=null
-    
-    ) : Paginator<SlideshowGetResponse>{
-        val paginator = Paginator<SlideshowGetResponse>()
-        paginator.setCallBack(object : PaginatorCallback<SlideshowGetResponse> {
-            
-            override suspend fun onNext(
-                onResponse: (Event<SlideshowGetResponse>?,FdkError?) -> Unit){
-
-                if (config.oauthClient.isAccessTokenValid()) {
-                    val pageId = paginator.nextId
-                    val pageNo = paginator.pageNo
-                    val pageType = "number"
-                    contentApiList?.getSlideshows(companyId = config.companyId , applicationId = applicationId , devicePlatform = devicePlatform, pageNo = pageNo, pageSize = pageSize)?.safeAwait{ response, error ->
-                        response?.let {
-                            val page = response.peekContent()?.page
-                            paginator.setPaginator(hasNext=page?.hasNext?:false,pageNo=if (page?.hasNext == true) ((pageNo ?: 0) + 1) else pageNo)
-                            onResponse.invoke(response,null)
-                        }
-                        
-                        error?.let {
-                            onResponse.invoke(null,error)
-                        }
-                    }
-
-                } else {
-                    null
-                }
-            }
-        
-    })
-    return paginator
-    }
-    
-    suspend fun createSlideshow(body: SlideshowRequest)
-    : Response<SlideshowSchema>? {
-        return if (config.oauthClient.isAccessTokenValid()) {
-                contentApiList?.createSlideshow(companyId = config.companyId , applicationId = applicationId , body = body)
-        } else {
-            null
-        }
-    }
-    
-    
-    suspend fun getSlideshowBySlug(slug: String, devicePlatform: String)
-    : Response<SlideshowSchema>? {
-        return if (config.oauthClient.isAccessTokenValid()) {
-                contentApiList?.getSlideshowBySlug(companyId = config.companyId , applicationId = applicationId , slug = slug, devicePlatform = devicePlatform )
-        } else {
-            null
-        }
-    }
-    
-    
-    suspend fun updateSlideshow(id: String,body: SlideshowRequest)
-    : Response<SlideshowSchema>? {
-        return if (config.oauthClient.isAccessTokenValid()) {
-                contentApiList?.updateSlideshow(companyId = config.companyId , applicationId = applicationId , id = id, body = body)
-        } else {
-            null
-        }
-    }
-    
-    
-    suspend fun deleteSlideshow(id: String)
-    : Response<SlideshowSchema>? {
-        return if (config.oauthClient.isAccessTokenValid()) {
-                contentApiList?.deleteSlideshow(companyId = config.companyId , applicationId = applicationId , id = id )
+                contentApiList?.deleteSEOMarkupSchema(companyId = config.companyId , applicationId = applicationId , schemaId = schemaId )
         } else {
             null
         }
@@ -1154,26 +1342,6 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     : Response<Support>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 contentApiList?.updateSupportInformation(companyId = config.companyId , applicationId = applicationId , body = body)
-        } else {
-            null
-        }
-    }
-    
-    
-    suspend fun updateInjectableTag(body: CreateTagRequestSchema)
-    : Response<TagsSchema>? {
-        return if (config.oauthClient.isAccessTokenValid()) {
-                contentApiList?.updateInjectableTag(companyId = config.companyId , applicationId = applicationId , body = body)
-        } else {
-            null
-        }
-    }
-    
-    
-    suspend fun getInjectableTags(all: Boolean?=null)
-    : Response<TagsSchema>? {
-        return if (config.oauthClient.isAccessTokenValid()) {
-                contentApiList?.getInjectableTags(companyId = config.companyId , applicationId = applicationId , all = all )
         } else {
             null
         }
@@ -1210,6 +1378,46 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     }
     
     
+    suspend fun createInjectableTag(body: CreateTagRequestSchema)
+    : Response<TagsSchema>? {
+        return if (config.oauthClient.isAccessTokenValid()) {
+                contentApiList?.createInjectableTag(companyId = config.companyId , applicationId = applicationId , body = body)
+        } else {
+            null
+        }
+    }
+    
+    
+    suspend fun updateInjectableTag(body: CreateTagRequestSchema)
+    : Response<TagsSchema>? {
+        return if (config.oauthClient.isAccessTokenValid()) {
+                contentApiList?.updateInjectableTag(companyId = config.companyId , applicationId = applicationId , body = body)
+        } else {
+            null
+        }
+    }
+    
+    
+    suspend fun deleteAllInjectableTags()
+    : Response<TagsSchema>? {
+        return if (config.oauthClient.isAccessTokenValid()) {
+                contentApiList?.deleteAllInjectableTags(companyId = config.companyId , applicationId = applicationId  )
+        } else {
+            null
+        }
+    }
+    
+    
+    suspend fun getInjectableTags()
+    : Response<TagsSchema>? {
+        return if (config.oauthClient.isAccessTokenValid()) {
+                contentApiList?.getInjectableTags(companyId = config.companyId , applicationId = applicationId  )
+        } else {
+            null
+        }
+    }
+    
+    
     suspend fun getBlogBySlug(slug: String)
     : Response<BlogSchema>? {
         return if (config.oauthClient.isAccessTokenValid()) {
@@ -1219,6 +1427,85 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
         }
     }
     
+    
+    suspend fun createPageV1(body: PageRequest)
+    : Response<PageSchema>? {
+        return if (config.oauthClient.isAccessTokenValid()) {
+                contentApiList?.createPageV1(companyId = config.companyId , applicationId = applicationId , body = body)
+        } else {
+            null
+        }
+    }
+    
+    
+    suspend fun getPagesV1(pageNo: Int?=null, pageSize: Int?=null)
+    : Response<PageGetResponse>? {
+        return if (config.oauthClient.isAccessTokenValid()) {
+                contentApiList?.getPagesV1(companyId = config.companyId , applicationId = applicationId , pageNo = pageNo, pageSize = pageSize )
+        } else {
+            null
+        }
+    }
+    
+    
+    
+        
+            
+                
+            
+            
+        
+            
+                
+            
+            
+        
+            
+            
+        
+            
+                
+            
+            
+        
+    /**
+    *
+    * Summary: Paginator for getPagesV1
+    **/
+    fun getPagesV1Paginator(
+    pageSize: Int?=null
+    
+    ) : Paginator<PageGetResponse>{
+        val paginator = Paginator<PageGetResponse>()
+        paginator.setCallBack(object : PaginatorCallback<PageGetResponse> {
+            
+            override suspend fun onNext(
+                onResponse: (Event<PageGetResponse>?,FdkError?) -> Unit){
+
+                if (config.oauthClient.isAccessTokenValid()) {
+                    val pageId = paginator.nextId
+                    val pageNo = paginator.pageNo
+                    val pageType = "number"
+                    contentApiList?.getPagesV1(companyId = config.companyId , applicationId = applicationId , pageNo = pageNo, pageSize = pageSize)?.safeAwait{ response, error ->
+                        response?.let {
+                            val page = response.peekContent()?.page
+                            paginator.setPaginator(hasNext=page?.hasNext?:false,pageNo=if (page?.hasNext == true) ((pageNo ?: 0) + 1) else pageNo)
+                            onResponse.invoke(response,null)
+                        }
+                        
+                        error?.let {
+                            onResponse.invoke(null,error)
+                        }
+                    }
+
+                } else {
+                    null
+                }
+            }
+        
+    })
+    return paginator
+    }
     
     suspend fun createPage(body: PageRequest)
     : Response<PageSchema>? {
@@ -1240,10 +1527,79 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     }
     
     
+    
+        
+            
+                
+            
+            
+        
+            
+                
+            
+            
+        
+            
+            
+        
+            
+                
+            
+            
+        
+    /**
+    *
+    * Summary: Paginator for getPages
+    **/
+    fun getPagesPaginator(
+    pageSize: Int?=null
+    
+    ) : Paginator<PageGetResponse>{
+        val paginator = Paginator<PageGetResponse>()
+        paginator.setCallBack(object : PaginatorCallback<PageGetResponse> {
+            
+            override suspend fun onNext(
+                onResponse: (Event<PageGetResponse>?,FdkError?) -> Unit){
+
+                if (config.oauthClient.isAccessTokenValid()) {
+                    val pageId = paginator.nextId
+                    val pageNo = paginator.pageNo
+                    val pageType = "number"
+                    contentApiList?.getPages(companyId = config.companyId , applicationId = applicationId , pageNo = pageNo, pageSize = pageSize)?.safeAwait{ response, error ->
+                        response?.let {
+                            val page = response.peekContent()?.page
+                            paginator.setPaginator(hasNext=page?.hasNext?:false,pageNo=if (page?.hasNext == true) ((pageNo ?: 0) + 1) else pageNo)
+                            onResponse.invoke(response,null)
+                        }
+                        
+                        error?.let {
+                            onResponse.invoke(null,error)
+                        }
+                    }
+
+                } else {
+                    null
+                }
+            }
+        
+    })
+    return paginator
+    }
+    
     suspend fun updatePage(id: String,body: PageSchema)
     : Response<PageSchema>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 contentApiList?.updatePage(companyId = config.companyId , applicationId = applicationId , id = id, body = body)
+        } else {
+            null
+        }
+    }
+    
+    
+    suspend fun getPageBySlugV1(slug: String)
+    : Response<PageSchema>? {
+        return if (config.oauthClient.isAccessTokenValid()) {
+                contentApiList?.getPageBySlugV1(companyId = config.companyId , applicationId = applicationId , slug = slug )
         } else {
             null
         }
@@ -1284,8 +1640,11 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     
     
     
+    
+    
+    
     suspend fun getAppCustomFieldTypes()
-    : Response<CustomObjectByIdSchema>? {
+    : Response<MetafieldTypesSchema>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 contentApiList?.getAppCustomFieldTypes(companyId = config.companyId , applicationId = applicationId  )
         } else {
@@ -1305,7 +1664,7 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     
     
     suspend fun getAppCustomFieldDefinitions(pageNo: String, pageSize: String, resources: String?=null, types: String?=null, search: String?=null)
-    : Response<CustomFieldDefinitionsSchema>? {
+    : Response<ApplicationCustomFieldDefinitionsSchema>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 contentApiList?.getAppCustomFieldDefinitions(companyId = config.companyId , applicationId = applicationId , pageNo = pageNo, pageSize = pageSize, resources = resources, types = types, search = search )
         } else {
@@ -1324,30 +1683,30 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     }
     
     
-    suspend fun getAppCustomFieldDefinition(definitionId: String)
+    suspend fun getAppCustomFieldDefinition(id: String)
     : Response<CustomFieldDefinitionDetailResSchema>? {
         return if (config.oauthClient.isAccessTokenValid()) {
-                contentApiList?.getAppCustomFieldDefinition(companyId = config.companyId , applicationId = applicationId , definitionId = definitionId )
+                contentApiList?.getAppCustomFieldDefinition(companyId = config.companyId , applicationId = applicationId , id = id )
         } else {
             null
         }
     }
     
     
-    suspend fun updateAppCustomFieldDefinition(definitionId: String,body: CustomFieldDefinitionRequestSchema)
+    suspend fun updateAppCustomFieldDefinition(id: String,body: CustomFieldDefinitionRequestSchema)
     : Response<CustomFieldDefinitionDetailResSchema>? {
         return if (config.oauthClient.isAccessTokenValid()) {
-                contentApiList?.updateAppCustomFieldDefinition(companyId = config.companyId , applicationId = applicationId , definitionId = definitionId, body = body)
+                contentApiList?.updateAppCustomFieldDefinition(companyId = config.companyId , applicationId = applicationId , id = id, body = body)
         } else {
             null
         }
     }
     
     
-    suspend fun deleteAppCustomFieldDefinition(definitionId: String)
+    suspend fun deleteAppCustomFieldDefinition(id: String)
     : Response<CustomDataDeleteSchema>? {
         return if (config.oauthClient.isAccessTokenValid()) {
-                contentApiList?.deleteAppCustomFieldDefinition(companyId = config.companyId , applicationId = applicationId , definitionId = definitionId )
+                contentApiList?.deleteAppCustomFieldDefinition(companyId = config.companyId , applicationId = applicationId , id = id )
         } else {
             null
         }
@@ -1384,6 +1743,36 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     }
     
     
+    suspend fun updateAppCustomFieldByResourceId(resource: String, resourceId: String,body: CustomFieldRequestSchema)
+    : Response<CustomFieldsResponseByResourceIdSchema>? {
+        return if (config.oauthClient.isAccessTokenValid()) {
+                contentApiList?.updateAppCustomFieldByResourceId(companyId = config.companyId , applicationId = applicationId , resource = resource, resourceId = resourceId, body = body)
+        } else {
+            null
+        }
+    }
+    
+    
+    suspend fun deleteAppCustomFieldsByResourceId(resource: String, resourceId: String, ids: String)
+    : Response<CustomFieldsDeleteSchema>? {
+        return if (config.oauthClient.isAccessTokenValid()) {
+                contentApiList?.deleteAppCustomFieldsByResourceId(companyId = config.companyId , applicationId = applicationId , resource = resource, resourceId = resourceId, ids = ids )
+        } else {
+            null
+        }
+    }
+    
+    
+    suspend fun getAppCustomFieldJobs(page: String, pageSize: String, actionType: String)
+    : Response<CustomFieldBulkEntry>? {
+        return if (config.oauthClient.isAccessTokenValid()) {
+                contentApiList?.getAppCustomFieldJobs(companyId = config.companyId , applicationId = applicationId , page = page, pageSize = pageSize, actionType = actionType )
+        } else {
+            null
+        }
+    }
+    
+    
     suspend fun createAppCustomObjectDefinition(body: CustomObjectDefinitionRequestSchema)
     : Response<CustomObjectDefinitionSchema>? {
         return if (config.oauthClient.isAccessTokenValid()) {
@@ -1404,30 +1793,30 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     }
     
     
-    suspend fun getAppCustomObjectDefinition(definitionId: String)
+    suspend fun getAppCustomObjectDefinition(id: String)
     : Response<CustomObjectDefinitionSchema>? {
         return if (config.oauthClient.isAccessTokenValid()) {
-                contentApiList?.getAppCustomObjectDefinition(companyId = config.companyId , applicationId = applicationId , definitionId = definitionId )
+                contentApiList?.getAppCustomObjectDefinition(companyId = config.companyId , applicationId = applicationId , id = id )
         } else {
             null
         }
     }
     
     
-    suspend fun updateAppCustomObjectDefinition(definitionId: String,body: CustomObjectDefinitionUpdateRequestSchema)
+    suspend fun updateAppCustomObjectDefinition(id: String,body: CustomObjectDefinitionUpdateRequestSchema)
     : Response<CustomObjectDefinitionSchema>? {
         return if (config.oauthClient.isAccessTokenValid()) {
-                contentApiList?.updateAppCustomObjectDefinition(companyId = config.companyId , applicationId = applicationId , definitionId = definitionId, body = body)
+                contentApiList?.updateAppCustomObjectDefinition(companyId = config.companyId , applicationId = applicationId , id = id, body = body)
         } else {
             null
         }
     }
     
     
-    suspend fun deleteAppCustomObjectDefinition(definitionId: String)
+    suspend fun deleteAppCustomObjectDefinition(id: String)
     : Response<CustomObjectDefinitionDeleteResponseSchema>? {
         return if (config.oauthClient.isAccessTokenValid()) {
-                contentApiList?.deleteAppCustomObjectDefinition(companyId = config.companyId , applicationId = applicationId , definitionId = definitionId )
+                contentApiList?.deleteAppCustomObjectDefinition(companyId = config.companyId , applicationId = applicationId , id = id )
         } else {
             null
         }
@@ -1454,30 +1843,30 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     }
     
     
-    suspend fun getAppCustomObject(metaobjectId: String)
+    suspend fun getAppCustomObject(id: String)
     : Response<CustomObjectByIdSchema>? {
         return if (config.oauthClient.isAccessTokenValid()) {
-                contentApiList?.getAppCustomObject(companyId = config.companyId , applicationId = applicationId , metaobjectId = metaobjectId )
+                contentApiList?.getAppCustomObject(companyId = config.companyId , applicationId = applicationId , id = id )
         } else {
             null
         }
     }
     
     
-    suspend fun deleteAppCustomObject(metaobjectId: String)
+    suspend fun updateAppCustomObject(id: String,body: CustomObjectRequestSchema)
+    : Response<CustomObjectSchema>? {
+        return if (config.oauthClient.isAccessTokenValid()) {
+                contentApiList?.updateAppCustomObject(companyId = config.companyId , applicationId = applicationId , id = id, body = body)
+        } else {
+            null
+        }
+    }
+    
+    
+    suspend fun deleteAppCustomObject(id: String)
     : Response<CustomDataDeleteSchema>? {
         return if (config.oauthClient.isAccessTokenValid()) {
-                contentApiList?.deleteAppCustomObject(companyId = config.companyId , applicationId = applicationId , metaobjectId = metaobjectId )
-        } else {
-            null
-        }
-    }
-    
-    
-    suspend fun updateAppCustomObject(metaobjectId: String,body: CustomObjectRequestSchema)
-    : Response<CustomObjectByIdSchema>? {
-        return if (config.oauthClient.isAccessTokenValid()) {
-                contentApiList?.updateAppCustomObject(companyId = config.companyId , applicationId = applicationId , metaobjectId = metaobjectId, body = body)
+                contentApiList?.deleteAppCustomObject(companyId = config.companyId , applicationId = applicationId , id = id )
         } else {
             null
         }
@@ -1515,7 +1904,7 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     
     
     suspend fun sampleAppCustomObjectBulkEntry(definitionId: String)
-    : Response<String>? {
+    : Response<ResponseBody>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 contentApiList?.sampleAppCustomObjectBulkEntry(companyId = config.companyId , applicationId = applicationId , definitionId = definitionId )
         } else {

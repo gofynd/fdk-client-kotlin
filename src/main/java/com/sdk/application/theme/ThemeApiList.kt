@@ -29,4 +29,14 @@ interface ThemeApiList {
     suspend fun getThemeForPreview(@Url url1: String?    )
     : Response<ThemesSchema>
     
+    
+    @GET 
+    suspend fun getAppliedThemeV1(@Url url1: String?   )
+    : Response<ThemesSchema>
+    
+    
+    @GET 
+    suspend fun getThemeForPreviewV1(@Url url1: String?    )
+    : Response<ThemesSchema>
+    
 }

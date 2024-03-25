@@ -737,58 +737,6 @@ data class SessionsDeleteResponseSchema(
 
              
 /*
-    Model: APIError
-*/
-@Parcelize
-data class APIError(
-    
-    
-    
-    @SerializedName("code")
-    var code: String?=null,
-    
-    @SerializedName("message")
-    var message: String?=null,
-    
-    @SerializedName("info")
-    var info: String?=null,
-    
-    @SerializedName("request_id")
-    var requestId: String?=null,
-    
-    @SerializedName("error")
-    var error: String?=null,
-    
-    @SerializedName("meta")
-    var meta: @RawValue HashMap<String,Any>?=null,
-    
-    @SerializedName("authenticated")
-    var authenticated: Boolean?=null
-    
-): Parcelable {
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-}
-
-
-
-             
-/*
     Model: SessionListResponseInfo
 */
 @Parcelize
@@ -910,6 +858,9 @@ data class UserGroupResponseSchema(
     @SerializedName("conditions")
     var conditions: ArrayList<Conditions>?=null,
     
+    @SerializedName("blacklisted_users")
+    var blacklistedUsers: ArrayList<String>?=null,
+    
     @SerializedName("error")
     var error: UserResponseErrorSchema?=null,
     
@@ -950,6 +901,8 @@ data class UserGroupResponseSchema(
     var v: Int?=null
     
 ): Parcelable {
+    
+    
     
     
     
@@ -1066,9 +1019,14 @@ data class CreateUserGroup(
     var description: String?=null,
     
     @SerializedName("file_url")
-    var fileUrl: String?=null
+    var fileUrl: String?=null,
+    
+    @SerializedName("blacklisted_users")
+    var blacklistedUsers: ArrayList<String>?=null
     
 ): Parcelable {
+    
+    
     
     
     
@@ -1266,6 +1224,12 @@ data class PlatformSchema(
     @SerializedName("login")
     var login: Login?=null,
     
+    @SerializedName("account_lockout")
+    var accountLockout: AccountLockout?=null,
+    
+    @SerializedName("password_settings")
+    var passwordSettings: PasswordSettings?=null,
+    
     @SerializedName("skip_captcha")
     var skipCaptcha: Boolean?=null,
     
@@ -1382,6 +1346,10 @@ data class PlatformSchema(
     
     
     
+    
+    
+    
+    
 }
 
 
@@ -1415,6 +1383,161 @@ data class LookAndFeel(
 
              
 /*
+    Model: PasswordConfigs
+*/
+@Parcelize
+data class PasswordConfigs(
+    
+    
+    
+    @SerializedName("length")
+    var length: Double?=null,
+    
+    @SerializedName("require_special_character")
+    var requireSpecialCharacter: Boolean?=null,
+    
+    @SerializedName("require_number")
+    var requireNumber: Boolean?=null,
+    
+    @SerializedName("require_capital_character")
+    var requireCapitalCharacter: Boolean?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: PasswordHistory
+*/
+@Parcelize
+data class PasswordHistory(
+    
+    
+    
+    @SerializedName("required")
+    var required: Boolean?=null,
+    
+    @SerializedName("count")
+    var count: Double?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: PasswordExpiry
+*/
+@Parcelize
+data class PasswordExpiry(
+    
+    
+    
+    @SerializedName("required")
+    var required: Boolean?=null,
+    
+    @SerializedName("duration")
+    var duration: Double?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: PasswordSettings
+*/
+@Parcelize
+data class PasswordSettings(
+    
+    
+    
+    @SerializedName("configs")
+    var configs: PasswordConfigs?=null,
+    
+    @SerializedName("history")
+    var history: PasswordHistory?=null,
+    
+    @SerializedName("expiry")
+    var expiry: PasswordExpiry?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: AccountLockout
+*/
+@Parcelize
+data class AccountLockout(
+    
+    
+    
+    @SerializedName("enable")
+    var enable: Boolean?=null,
+    
+    @SerializedName("attempts")
+    var attempts: Double?=null,
+    
+    @SerializedName("duration")
+    var duration: Double?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
     Model: Login
 */
 @Parcelize
@@ -1426,9 +1549,14 @@ data class Login(
     var password: Boolean?=null,
     
     @SerializedName("otp")
-    var otp: Boolean?=null
+    var otp: Boolean?=null,
+    
+    @SerializedName("via")
+    var via: String?=null
     
 ): Parcelable {
+    
+    
     
     
     
@@ -1501,6 +1629,28 @@ data class Social(
 
              
 /*
+    Model: PlatformPassword
+*/
+@Parcelize
+data class PlatformPassword(
+    
+    
+    
+    @SerializedName("is_required")
+    var isRequired: Boolean?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
     Model: RequiredFields
 */
 @Parcelize
@@ -1512,9 +1662,14 @@ data class RequiredFields(
     var email: PlatformEmail?=null,
     
     @SerializedName("mobile")
-    var mobile: PlatformMobile?=null
+    var mobile: PlatformMobile?=null,
+    
+    @SerializedName("password")
+    var password: PlatformPassword?=null
     
 ): Parcelable {
+    
+    
     
     
     
@@ -1593,9 +1748,14 @@ data class RegisterRequiredFields(
     var email: RegisterRequiredFieldsEmail?=null,
     
     @SerializedName("mobile")
-    var mobile: RegisterRequiredFieldsMobile?=null
+    var mobile: RegisterRequiredFieldsMobile?=null,
+    
+    @SerializedName("password")
+    var password: PlatformPassword?=null
     
 ): Parcelable {
+    
+    
     
     
     
@@ -1705,8 +1865,8 @@ data class SocialTokens(
     @SerializedName("facebook")
     var facebook: Facebook?=null,
     
-    @SerializedName("account_kit")
-    var accountKit: Accountkit?=null,
+    @SerializedName("accountkit")
+    var accountkit: Accountkit?=null,
     
     @SerializedName("google")
     var google: Google?=null
@@ -1956,9 +2116,19 @@ data class PartialUserGroupUpdateSchema(
     var fileUrl: String?=null,
     
     @SerializedName("user_data")
-    var userData: ArrayList<UserGroupUpdateData>?=null
+    var userData: ArrayList<UserGroupUpdateData>?=null,
+    
+    @SerializedName("whitelisted_users")
+    var whitelistedUsers: ArrayList<String>?=null,
+    
+    @SerializedName("blacklisted_users")
+    var blacklistedUsers: ArrayList<String>?=null
     
 ): Parcelable {
+    
+    
+    
+    
     
     
     
@@ -2146,6 +2316,33 @@ data class UserPhoneNumbers(
 
              
 /*
+    Model: UserPasswordHistory
+*/
+@Parcelize
+data class UserPasswordHistory(
+    
+    
+    
+    @SerializedName("salt")
+    var salt: String?=null,
+    
+    @SerializedName("hash")
+    var hash: String?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
     Model: UserSchema
 */
 @Parcelize
@@ -2158,6 +2355,12 @@ data class UserSchema(
     
     @SerializedName("user_id")
     var userId: String?=null,
+    
+    @SerializedName("password_last_modified")
+    var passwordLastModified: String?=null,
+    
+    @SerializedName("password_history")
+    var passwordHistory: ArrayList<UserPasswordHistory>?=null,
     
     @SerializedName("first_name")
     var firstName: String?=null,
@@ -2205,6 +2408,10 @@ data class UserSchema(
     var externalId: String?=null
     
 ): Parcelable {
+    
+    
+    
+    
     
     
     
@@ -2367,6 +2574,12 @@ data class PhoneNumber(
     
     
     
+    @SerializedName("phone")
+    var phone: String?=null,
+    
+    @SerializedName("country_code")
+    var countryCode: Int?=null,
+    
     @SerializedName("active")
     var active: Boolean?=null,
     
@@ -2374,13 +2587,7 @@ data class PhoneNumber(
     var primary: Boolean?=null,
     
     @SerializedName("verified")
-    var verified: Boolean?=null,
-    
-    @SerializedName("phone")
-    var phone: String?=null,
-    
-    @SerializedName("country_code")
-    var countryCode: Int?=null
+    var verified: Boolean?=null
     
 ): Parcelable {
     
@@ -2409,19 +2616,71 @@ data class Email(
     
     
     
-    @SerializedName("primary")
-    var primary: Boolean?=null,
-    
-    @SerializedName("verified")
-    var verified: Boolean?=null,
-    
     @SerializedName("email")
     var email: String?=null,
     
     @SerializedName("active")
-    var active: Boolean?=null
+    var active: Boolean?=null,
+    
+    @SerializedName("primary")
+    var primary: Boolean?=null,
+    
+    @SerializedName("verified")
+    var verified: Boolean?=null
     
 ): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: APIError
+*/
+@Parcelize
+data class APIError(
+    
+    
+    
+    @SerializedName("code")
+    var code: String?=null,
+    
+    @SerializedName("message")
+    var message: String?=null,
+    
+    @SerializedName("info")
+    var info: String?=null,
+    
+    @SerializedName("request_id")
+    var requestId: String?=null,
+    
+    @SerializedName("error")
+    var error: String?=null,
+    
+    @SerializedName("meta")
+    var meta: @RawValue HashMap<String,Any>?=null,
+    
+    @SerializedName("authenticated")
+    var authenticated: Boolean?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
     
     
     

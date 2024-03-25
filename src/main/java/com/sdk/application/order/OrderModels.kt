@@ -530,6 +530,9 @@ data class Prices(
     @SerializedName("delivery_charge")
     var deliveryCharge: Double?=null,
     
+    @SerializedName("tcs_charge")
+    var tcsCharge: Double?=null,
+    
     @SerializedName("coupon_value")
     var couponValue: Double?=null,
     
@@ -597,6 +600,8 @@ data class Prices(
     var amountToBeCollected: Double?=null
     
 ): Parcelable {
+    
+    
     
     
     
@@ -885,6 +890,9 @@ data class FinancialBreakup(
     @SerializedName("delivery_charge")
     var deliveryCharge: Double?=null,
     
+    @SerializedName("tcs_charge")
+    var tcsCharge: Double?=null,
+    
     @SerializedName("brand_calculated_amount")
     var brandCalculatedAmount: Double?=null,
     
@@ -964,6 +972,8 @@ data class FinancialBreakup(
     var amountToBeCollected: Double?=null
     
 ): Parcelable {
+    
+    
     
     
     
@@ -1476,9 +1486,19 @@ data class Shipments(
     var deliveryDate: String?=null,
     
     @SerializedName("order")
-    var order: OrderRequest?=null
+    var order: OrderRequest?=null,
+    
+    @SerializedName("meta")
+    var meta: @RawValue HashMap<String,Any>?=null,
+    
+    @SerializedName("can_pay_remaining_amount")
+    var canPayRemainingAmount: Boolean?=null
     
 ): Parcelable {
+    
+    
+    
+    
     
     
     

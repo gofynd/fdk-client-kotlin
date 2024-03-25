@@ -25,9 +25,19 @@ interface PaymentApiList {
     : Response<ActiveCardPaymentGatewayResponse>
     
     
+    @POST 
+    suspend fun updateUserCard(@Url url1: String?   ,@Body body: UpdateAggregatorCardRequest)
+    : Response<UpdateAggregatorCardResponse>
+    
+    
     @GET 
     suspend fun getActiveUserCards(@Url url1: String?    ,  @Query("force_refresh") forceRefresh: Boolean?)
     : Response<ListCardsResponse>
+    
+    
+    @POST 
+    suspend fun updateActiveCards(@Url url1: String?   ,@Body body: UpdateAggregatorCardRequest)
+    : Response<UpdateCardResponse>
     
     
     @POST 
@@ -136,18 +146,23 @@ interface PaymentApiList {
     
     
     @POST 
-    suspend fun verifyOtpAndAddBeneficiaryForBank(@Url url1: String?   ,@Body body: AddBeneficiaryViaOtpVerificationRequest)
-    : Response<AddBeneficiaryViaOtpVerificationResponse>
-    
-    
-    @POST 
     suspend fun addBeneficiaryDetails(@Url url1: String?   ,@Body body: AddBeneficiaryDetailsRequest)
     : Response<RefundAccountResponse>
     
     
     @POST 
+    suspend fun verifyOtpAndAddBeneficiaryForBank(@Url url1: String?   ,@Body body: AddBeneficiaryViaOtpVerificationRequest)
+    : Response<AddBeneficiaryViaOtpVerificationResponse>
+    
+    
+    @POST 
     suspend fun addRefundBankAccountUsingOTP(@Url url1: String?   ,@Body body: AddBeneficiaryDetailsOTPRequest)
-    : Response<RefundAccountResponse>
+    : Response<PostAddBeneficiaryDetailsOTPResponse>
+    
+    
+    @GET 
+    suspend fun getotpOrderBeneficiariesDetail(@Url url1: String?    ,   @Query("order_id") orderId: String, @Query("request_hash") requestHash: String)
+    : Response<AddBeneficiaryDetailsOTPResponse>
     
     
     @POST 
@@ -160,6 +175,11 @@ interface PaymentApiList {
     : Response<SetDefaultBeneficiaryResponse>
     
     
+    @POST 
+    suspend fun getBenficiaryOrder(@Url url1: String?   ,@Body body: RefundOrderBenRequest)
+    : Response<RefundOrderBenResponse>
+    
+    
     @GET 
     suspend fun getPaymentLink(@Url url1: String?    ,  @Query("payment_link_id") paymentLinkId: String?)
     : Response<GetPaymentLinkResponse>
@@ -170,14 +190,14 @@ interface PaymentApiList {
     : Response<CreatePaymentLinkResponse>
     
     
+    @GET 
+    suspend fun getPaymentLinkId(@Url url1: String?     ,  @Query("payment_link_id") paymentLinkId: String)
+    : Response<GetPaymentLinkResponse>
+    
+    
     @POST 
     suspend fun resendPaymentLink(@Url url1: String?   ,@Body body: CancelOrResendPaymentLinkRequest)
     : Response<ResendPaymentLinkResponse>
-    
-    
-    @POST 
-    suspend fun cancelPaymentLink(@Url url1: String?   ,@Body body: CancelOrResendPaymentLinkRequest)
-    : Response<CancelPaymentLinkResponse>
     
     
     @GET 
@@ -186,7 +206,7 @@ interface PaymentApiList {
     
     
     @GET 
-    suspend fun pollingPaymentLink(@Url url1: String?    ,  @Query("payment_link_id") paymentLinkId: String?)
+    suspend fun pollingPaymentLink(@Url url1: String?    ,  @Query("payment_link_id") paymentLinkId: String)
     : Response<PollingPaymentLinkResponse>
     
     
@@ -230,6 +250,11 @@ interface PaymentApiList {
     : Response<OutstandingOrderDetailsResponse>
     
     
+    @POST 
+    suspend fun cancelPaymentLink(@Url url1: String?   ,@Body body: CancelOrResendPaymentLinkRequest)
+    : Response<CancelPaymentLinkResponse>
+    
+    
     @GET 
     suspend fun paidOrderDetails(@Url url1: String?    ,  @Query("aggregator") aggregator: String?)
     : Response<PaidOrderDetailsResponse>
@@ -238,5 +263,40 @@ interface PaymentApiList {
     @POST 
     suspend fun createPaymentOrder(@Url url1: String?   ,@Body body: PaymentOrderRequest)
     : Response<PaymentOrderResponse>
+    
+    
+    @DELETE 
+    suspend fun deleteBeneficiaryDetails(@Url url1: String?    )
+    : Response<DeleteRefundAccountResponse>
+    
+    
+    @GET 
+    suspend fun getRefundOptions(@Url url1: String?    ,     @Query("configuration") configuration: String, @Query("product_type") productType: String?, @Query("amount") amount: String?, @Query("order_type") orderType: String?)
+    : Response<ShipmentRefundResponse>
+    
+    
+    @POST 
+    suspend fun setRefundOptionforShipment(@Url url1: String?   ,@Body body: ShipmentRefundRequest)
+    : Response<ShipmentRefundResponse>
+    
+    
+    @GET 
+    suspend fun getSelectedRefundOption(@Url url1: String?    ,   @Query("shipment_id") shipmentId: String, @Query("order_id") orderId: String)
+    : Response<SelectedRefundOptionResponse>
+    
+    
+    @GET 
+    suspend fun getUserBeneficiariesDetailV2(@Url url1: String?    ,    @Query("order_id") orderId: String?, @Query("shipment_id") shipmentId: String?, @Query("mop") mop: String?)
+    : Response<OrderBeneficiaryResponseSchemaV2>
+    
+    
+    @POST 
+    suspend fun validateBeneficiaryAddress(@Url url1: String?   ,@Body body: ValidateValidateAddressRequest)
+    : Response<ValidateValidateAddressResponse>
+    
+    
+    @POST 
+    suspend fun confirmPayment(@Url url1: String?   ,@Body body: PaymentConfirmationRequest)
+    : Response<PaymentConfirmationResponse>
     
 }

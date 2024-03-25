@@ -298,9 +298,19 @@ data class UrlInfo(
     
     
     @SerializedName("hash")
-    var hash: String?=null
+    var hash: String?=null,
+    
+    @SerializedName("url_hash")
+    var urlHash: String?=null,
+    
+    @SerializedName("alias")
+    var alias: String?=null
     
 ): Parcelable {
+    
+    
+    
+    
     
     
     

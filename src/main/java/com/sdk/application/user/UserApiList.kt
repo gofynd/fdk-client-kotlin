@@ -10,33 +10,43 @@ import com.sdk.application.*
 interface UserApiList {
     
     
+    @GET 
+    suspend fun getUserAttributes(@Url url1: String?    ,  @Query("slug") slug: String?)
+    : Response<UserAttributes>
+    
+    
+    @PATCH 
+    suspend fun updateUserAttributes(@Url url1: String?   ,@Body body: UpdateUserAttributesRequest)
+    : Response<UserAttributes>
+    
+    
     @POST 
-    suspend fun loginWithFacebook(@Url url1: String?    ,  @Query("platform") platform: String?, @Body body: OAuthRequestSchema)
+    suspend fun loginWithFacebook(@Url url1: String?   ,@Body body: OAuthRequestSchema)
     : Response<AuthSuccess>
     
     
     @POST 
-    suspend fun loginWithGoogle(@Url url1: String?    ,  @Query("platform") platform: String?, @Body body: OAuthRequestSchema)
+    suspend fun loginWithGoogle(@Url url1: String?   ,@Body body: OAuthRequestSchema)
     : Response<AuthSuccess>
     
     
     @POST 
-    suspend fun loginWithGoogleAndroid(@Url url1: String?    ,  @Query("platform") platform: String?, @Body body: OAuthRequestSchema)
+    suspend fun loginWithGoogleAndroid(@Url url1: String?   ,@Body body: OAuthRequestSchema)
     : Response<AuthSuccess>
     
     
     @POST 
-    suspend fun loginWithGoogleIOS(@Url url1: String?    ,  @Query("platform") platform: String?, @Body body: OAuthRequestSchema)
+    suspend fun loginWithGoogleIOS(@Url url1: String?   ,@Body body: OAuthRequestSchema)
     : Response<AuthSuccess>
     
     
     @POST 
-    suspend fun loginWithAppleIOS(@Url url1: String?    ,  @Query("platform") platform: String?, @Body body: OAuthRequestAppleSchema)
+    suspend fun loginWithAppleIOS(@Url url1: String?   ,@Body body: OAuthRequestAppleSchema)
     : Response<AuthSuccess>
     
     
     @POST 
-    suspend fun loginWithOTP(@Url url1: String?    ,  @Query("platform") platform: String?, @Body body: SendOtpRequestSchema)
+    suspend fun loginWithOTP(@Url url1: String?   ,@Body body: SendOtpRequestSchema)
     : Response<SendOtpResponse>
     
     
@@ -46,13 +56,8 @@ interface UserApiList {
     
     
     @POST 
-    suspend fun sendResetPasswordEmail(@Url url1: String?    ,  @Query("platform") platform: String?, @Body body: SendResetPasswordEmailRequestSchema)
+    suspend fun sendResetPasswordEmail(@Url url1: String?   ,@Body body: SendResetPasswordEmailRequestSchema)
     : Response<ResetPasswordSuccess>
-    
-    
-    @POST 
-    suspend fun sendResetPasswordMobile(@Url url1: String?    ,  @Query("platform") platform: String?, @Body body: SendResetPasswordMobileRequestSchema)
-    : Response<Any>
     
     
     @POST 
@@ -76,7 +81,7 @@ interface UserApiList {
     
     
     @POST 
-    suspend fun registerWithForm(@Url url1: String?    ,  @Query("platform") platform: String?, @Body body: FormRegisterRequestSchema)
+    suspend fun registerWithForm(@Url url1: String?   ,@Body body: FormRegisterRequestSchema)
     : Response<RegisterFormSuccess>
     
     
@@ -101,42 +106,42 @@ interface UserApiList {
     
     
     @POST 
-    suspend fun sendOTPOnMobile(@Url url1: String?    ,  @Query("platform") platform: String?, @Body body: SendMobileOtpRequestSchema)
+    suspend fun sendOTPOnMobile(@Url url1: String?   ,@Body body: SendMobileOtpRequestSchema)
     : Response<OtpSuccess>
     
     
     @POST 
-    suspend fun sendForgotOTPOnMobile(@Url url1: String?    ,  @Query("platform") platform: String?, @Body body: SendMobileForgotOtpRequestSchema)
+    suspend fun sendForgotOTPOnMobile(@Url url1: String?   ,@Body body: SendMobileForgotOtpRequestSchema)
     : Response<OtpSuccess>
     
     
     @POST 
-    suspend fun verifyMobileOTP(@Url url1: String?    ,  @Query("platform") platform: String?, @Body body: VerifyOtpRequestSchema)
+    suspend fun verifyMobileOTP(@Url url1: String?   ,@Body body: VerifyOtpRequestSchema)
     : Response<VerifyOtpSuccess>
     
     
     @POST 
-    suspend fun verifyMobileForgotOTP(@Url url1: String?    ,  @Query("platform") platform: String?, @Body body: VerifyMobileForgotOtpRequestSchema)
+    suspend fun verifyMobileForgotOTP(@Url url1: String?   ,@Body body: VerifyMobileForgotOtpRequestSchema)
     : Response<VerifyForgotOtpSuccess>
     
     
     @POST 
-    suspend fun sendOTPOnEmail(@Url url1: String?    ,  @Query("platform") platform: String?, @Body body: SendEmailOtpRequestSchema)
+    suspend fun sendOTPOnEmail(@Url url1: String?   ,@Body body: SendEmailOtpRequestSchema)
     : Response<EmailOtpSuccess>
     
     
     @POST 
-    suspend fun sendForgotOTPOnEmail(@Url url1: String?    ,  @Query("platform") platform: String?, @Body body: SendEmailForgotOtpRequestSchema)
+    suspend fun sendForgotOTPOnEmail(@Url url1: String?   ,@Body body: SendEmailForgotOtpRequestSchema)
     : Response<EmailOtpSuccess>
     
     
     @POST 
-    suspend fun verifyEmailOTP(@Url url1: String?    ,  @Query("platform") platform: String?, @Body body: VerifyEmailOtpRequestSchema)
+    suspend fun verifyEmailOTP(@Url url1: String?   ,@Body body: VerifyEmailOtpRequestSchema)
     : Response<VerifyOtpSuccess>
     
     
     @POST 
-    suspend fun verifyEmailForgotOTP(@Url url1: String?    ,  @Query("platform") platform: String?, @Body body: VerifyEmailForgotOtpRequestSchema)
+    suspend fun verifyEmailForgotOTP(@Url url1: String?   ,@Body body: VerifyEmailForgotOtpRequestSchema)
     : Response<VerifyForgotOtpSuccess>
     
     
@@ -156,12 +161,12 @@ interface UserApiList {
     
     
     @POST 
-    suspend fun updateProfile(@Url url1: String?    ,  @Query("platform") platform: String?, @Body body: EditProfileRequestSchema)
+    suspend fun updateProfile(@Url url1: String?   ,@Body body: EditProfileRequestSchema)
     : Response<ProfileEditSuccess>
     
     
     @PUT 
-    suspend fun addMobileNumber(@Url url1: String?    ,  @Query("platform") platform: String?, @Body body: EditMobileRequestSchema)
+    suspend fun addMobileNumber(@Url url1: String?   ,@Body body: EditMobileRequestSchema)
     : Response<VerifyMobileOTPSuccess>
     
     
@@ -176,12 +181,12 @@ interface UserApiList {
     
     
     @POST 
-    suspend fun sendVerificationLinkToMobile(@Url url1: String?    ,  @Query("platform") platform: String?, @Body body: SendVerificationLinkMobileRequestSchema)
+    suspend fun sendVerificationLinkToMobile(@Url url1: String?   ,@Body body: SendVerificationLinkMobileRequestSchema)
     : Response<SendMobileVerifyLinkSuccess>
     
     
     @PUT 
-    suspend fun addEmail(@Url url1: String?    ,  @Query("platform") platform: String?, @Body body: EditEmailRequestSchema)
+    suspend fun addEmail(@Url url1: String?   ,@Body body: EditEmailRequestSchema)
     : Response<VerifyEmailOTPSuccess>
     
     
@@ -196,7 +201,7 @@ interface UserApiList {
     
     
     @POST 
-    suspend fun sendVerificationLinkToEmail(@Url url1: String?    ,  @Query("platform") platform: String?, @Body body: EditEmailRequestSchema)
+    suspend fun sendVerificationLinkToEmail(@Url url1: String?   ,@Body body: EditEmailRequestSchema)
     : Response<SendEmailVerifyLinkSuccess>
     
     
@@ -213,15 +218,5 @@ interface UserApiList {
     @GET 
     suspend fun logout(@Url url1: String?   )
     : Response<LogoutSuccess>
-    
-    
-    @GET 
-    suspend fun getUserAttributes(@Url url1: String?    ,  @Query("slug") slug: String?)
-    : Response<UserAttributes>
-    
-    
-    @PATCH 
-    suspend fun updateUserAttributes(@Url url1: String?   ,@Body body: UpdateUserAttributesRequest)
-    : Response<UserAttributes>
     
 }

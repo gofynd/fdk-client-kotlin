@@ -20,8 +20,28 @@ interface CommunicationApiList {
     : Response<CommunicationConsentRes>
     
     
+    @GET 
+    suspend fun getCurrentCommunicationConsent(@Url url1: String?   )
+    : Response<CommunicationConsent>
+    
+    
+    @POST 
+    suspend fun upsertCurrentCommunicationConsent(@Url url1: String?   ,@Body body: CommunicationConsentReq)
+    : Response<CommunicationConsentRes>
+    
+    
     @POST 
     suspend fun upsertAppPushtoken(@Url url1: String?   ,@Body body: PushtokenReq)
+    : Response<PushtokenRes>
+    
+    
+    @GET 
+    suspend fun getOtpConfiguration(@Url url1: String?   )
+    : Response<OtpConfiguration>
+    
+    
+    @POST 
+    suspend fun createAppPushtoken(@Url url1: String?   ,@Body body: PushtokenReq)
     : Response<PushtokenRes>
     
 }

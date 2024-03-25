@@ -44,7 +44,7 @@ class LeadDataManagerClass(val config: PlatformConfig, val unauthorizedAction: (
     }
     
     
-    suspend fun getPlatformTickets(items: Boolean?=null, filters: Boolean?=null, q: String?=null, status: String?=null, priority: PriorityEnum?=null, category: String?=null, pageNo: Int?=null, pageSize: Int?=null)
+    suspend fun getPlatformTickets(items: Boolean?=null, filters: Boolean?=null, q: String?=null, status: String?=null, priority: String?=null, category: String?=null, pageNo: Int?=null, pageSize: Int?=null)
     : Response<TicketList>? {
         
         return if (config.oauthClient.isAccessTokenValid()) {
@@ -119,30 +119,6 @@ class LeadDataManagerClass(val config: PlatformConfig, val unauthorizedAction: (
     }
     
     
-    suspend fun getFeedbacks(id: String)
-    : Response<TicketFeedbackList>? {
-        
-        return if (config.oauthClient.isAccessTokenValid()) {
-            leadApiList?.getFeedbacks(
-        companyId = config.companyId, id = id )
-        } else {
-            null
-        } 
-    }
-    
-    
-    suspend fun submitFeedback(id: String,body: TicketFeedbackPayload)
-    : Response<TicketFeedback>? {
-        
-        return if (config.oauthClient.isAccessTokenValid()) {
-            leadApiList?.submitFeedback(
-        companyId = config.companyId, id = id, body = body)
-        } else {
-            null
-        } 
-    }
-    
-    
     
     
     
@@ -179,7 +155,7 @@ class LeadDataManagerClass(val config: PlatformConfig, val unauthorizedAction: (
     
     
     suspend fun getGeneralConfig()
-    : Response<CloseVideoRoomResponse>? {
+    : Response<GeneralConfigResponse>? {
         
         return if (config.oauthClient.isAccessTokenValid()) {
             leadApiList?.getGeneralConfig(
@@ -196,7 +172,7 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     
     
     
-    suspend fun getNewTickets(items: Boolean?=null, filters: Boolean?=null, q: String?=null, status: String?=null, priority: PriorityEnum?=null, category: String?=null)
+    suspend fun getNewTickets(items: Boolean?=null, filters: Boolean?=null, q: String?=null, status: String?=null, priority: String?=null, category: String?=null)
     : Response<TicketList>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 leadApiList?.getNewTickets(companyId = config.companyId , applicationId = applicationId , items = items, filters = filters, q = q, status = status, priority = priority, category = category )
@@ -226,8 +202,6 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
             null
         }
     }
-    
-    
     
     
     

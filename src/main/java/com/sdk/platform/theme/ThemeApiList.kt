@@ -32,37 +32,13 @@ interface ThemeApiList {
     suspend fun deletePage(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Path("theme_id") themeId: String, @Path("page_value") pageValue: String)
     : Response<AvailablePageSchema>
     
-    @GET ("/service/platform/theme/v1.0/company/{company_id}/application/{application_id}/library")
-    suspend fun getThemeLibrary(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Query("page_size") pageSize: Int?, @Query("page_no") pageNo: Int?)
-    : Response<DummyResponse>
-    
-    @POST ("/service/platform/theme/v1.0/company/{company_id}/application/{application_id}/library")
-    suspend fun addToThemeLibrary(@Path("company_id") companyId: String, @Path("application_id") applicationId: String,@Body body: AddThemeRequestSchema)
-    : Response<DummyResponse>
-    
-    @GET ("/service/platform/theme/v1.0/company/{company_id}/application/{application_id}/list/public")
-    suspend fun getPublicThemes(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Query("page_size") pageSize: Int?, @Query("page_no") pageNo: Int?)
-    : Response<DummyResponse>
-    
     @GET ("/service/platform/theme/v1.0/company/{company_id}/application/{application_id}/fonts")
     suspend fun getFonts(@Path("company_id") companyId: String, @Path("application_id") applicationId: String)
     : Response<FontsSchema>
     
-    @PUT ("/service/platform/theme/v1.0/company/{company_id}/application/{application_id}/{theme_id}/publish")
-    suspend fun publishTheme(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Path("theme_id") themeId: String)
-    : Response<DummyResponse>
-    
-    @PUT ("/service/platform/theme/v1.0/company/{company_id}/application/{application_id}/{theme_id}/unpublish")
-    suspend fun unpublishTheme(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Path("theme_id") themeId: String)
-    : Response<DummyResponse>
-    
-    @PUT ("/service/platform/theme/v1.0/company/{company_id}/application/{application_id}/{theme_id}/archive")
-    suspend fun archiveTheme(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Path("theme_id") themeId: String)
-    : Response<DummyResponse>
-    
-    @PUT ("/service/platform/theme/v1.0/company/{company_id}/application/{application_id}/{theme_id}/unarchive")
-    suspend fun unarchiveTheme(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Path("theme_id") themeId: String)
-    : Response<DummyResponse>
+    @GET ("/service/platform/theme/v2.0/company/{company_id}/application/{application_id}/fonts")
+    suspend fun getFontsV2(@Path("company_id") companyId: String, @Path("application_id") applicationId: String)
+    : Response<FontsSchema>
     
     @GET ("/service/platform/theme/v2.0/company/{company_id}/themes")
     suspend fun getCompanyLevelThemes(@Path("company_id") companyId: String, @Query("search_text") searchText: String?)
@@ -70,15 +46,15 @@ interface ThemeApiList {
     
     @GET ("/service/platform/theme/v2.0/company/{company_id}/private_themes")
     suspend fun getCompanyLevelPrivateThemes(@Path("company_id") companyId: String, @Query("search_text") searchText: String?)
-    : Response<ArrayList<CompanyPrivateTheme>>
+    : Response<ArrayList<CompanyThemeResponse>>
     
     @POST ("/service/platform/theme/v2.0/company/{company_id}")
-    suspend fun addMarketplaceThemeToCompany(@Path("company_id") companyId: String,@Body body: ThemeReq)
-    : Response<CompanyThemeSchema>
+    suspend fun addMarketplaceThemeToCompany(@Path("company_id") companyId: String,@Body body: CompanyThemeReqSchema)
+    : Response<CompanyThemeResponse>
     
     @DELETE ("/service/platform/theme/v2.0/company/{company_id}/{theme_id}")
     suspend fun deleteCompanyTheme(@Path("company_id") companyId: String, @Path("theme_id") themeId: String)
-    : Response<CompanyThemeSchema>
+    : Response<CompanyThemeResponse>
     
     @GET ("/service/platform/theme/v2.0/company/{company_id}/application/{application_id}/themes")
     suspend fun getApplicationThemes(@Path("company_id") companyId: String, @Path("application_id") applicationId: String)
@@ -93,15 +69,11 @@ interface ThemeApiList {
     : Response<ThemesSchema>
     
     @PUT ("/service/platform/theme/v2.0/company/{company_id}/application/{application_id}/{theme_id}")
-    suspend fun updateTheme(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Path("theme_id") themeId: String,@Body body: UpdateThemeRequestBody)
+    suspend fun updateTheme(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Path("theme_id") themeId: String,@Body body: ThemesSchema)
     : Response<ThemesSchema>
     
     @DELETE ("/service/platform/theme/v2.0/company/{company_id}/application/{application_id}/{theme_id}")
     suspend fun deleteTheme(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Path("theme_id") themeId: String)
-    : Response<ThemesSchema>
-    
-    @POST ("/service/platform/theme/v2.0/company/{company_id}/application/{application_id}/")
-    suspend fun addThemeToApplication(@Path("company_id") companyId: String, @Path("application_id") applicationId: String,@Body body: ThemeReq)
     : Response<ThemesSchema>
     
     @PATCH ("/service/platform/theme/v2.0/company/{company_id}/application/{application_id}/{theme_id}/name")
@@ -120,6 +92,10 @@ interface ThemeApiList {
     suspend fun getAppliedTheme(@Path("company_id") companyId: String, @Path("application_id") applicationId: String)
     : Response<ThemesSchema>
     
+    @POST ("/service/platform/theme/v2.0/company/{company_id}/application/{application_id}")
+    suspend fun addThemeToApplication(@Path("company_id") companyId: String, @Path("application_id") applicationId: String,@Body body: ThemesSchema)
+    : Response<ThemesSchema>
+    
     @GET ("/service/platform/theme/v2.0/company/{company_id}/application/{application_id}/{theme_id}/preview")
     suspend fun getThemeForPreview(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Path("theme_id") themeId: String)
     : Response<ThemesSchema>
@@ -135,5 +111,13 @@ interface ThemeApiList {
     @PUT ("/service/platform/theme/v2.0/company/{company_id}/application/{application_id}/{theme_id}/upgrade")
     suspend fun upgradeTheme(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Path("theme_id") themeId: String)
     : Response<ThemesSchema>
+    
+    @GET ("/service/platform/theme/v2.0/company/{company_id}/application/{application_id}/slug/{slug_name}/latest")
+    suspend fun getLatestVersionOfThemeBySlug(@Path("application_id") applicationId: String, @Path("company_id") companyId: String, @Path("slug_name") slugName: String)
+    : Response<ArrayList<MarketplaceTheme>>
+    
+    @GET ("/service/platform/theme/v2.0/company/{company_id}/default")
+    suspend fun getDefaultMarketplaceTheme(@Path("company_id") companyId: String)
+    : Response<MarketplaceTheme>
     
 }

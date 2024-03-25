@@ -71,6 +71,66 @@ class PaymentDataManagerClass(val config: PlatformConfig, val unauthorizedAction
     }
     
     
+    suspend fun updatePayouts(body: PayoutRequest)
+    : Response<UpdatePayoutResponse>? {
+        
+        return if (config.oauthClient.isAccessTokenValid()) {
+            paymentApiList?.updatePayouts(
+        companyId = config.companyId, body = body)
+        } else {
+            null
+        } 
+    }
+    
+    
+    suspend fun activateAndDectivatePayouts(body: UpdatePayoutRequest)
+    : Response<UpdatePayoutResponse>? {
+        
+        return if (config.oauthClient.isAccessTokenValid()) {
+            paymentApiList?.activateAndDectivatePayouts(
+        companyId = config.companyId, body = body)
+        } else {
+            null
+        } 
+    }
+    
+    
+    suspend fun deletePayouts(uniqueTransferNo: String)
+    : Response<DeletePayoutResponse>? {
+        
+        return if (config.oauthClient.isAccessTokenValid()) {
+            paymentApiList?.deletePayouts(
+        companyId = config.companyId, uniqueTransferNo = uniqueTransferNo )
+        } else {
+            null
+        } 
+    }
+    
+    
+    suspend fun getAllPayout(uniqueTransferNo: String, uniqueExternalId: String?=null)
+    : Response<PayoutsResponse>? {
+        
+        return if (config.oauthClient.isAccessTokenValid()) {
+            paymentApiList?.getAllPayout(
+        companyId = config.companyId, uniqueTransferNo = uniqueTransferNo, uniqueExternalId = uniqueExternalId )
+        } else {
+            null
+        } 
+    }
+    
+    
+    suspend fun savePayouts(uniqueTransferNo: String,body: PayoutRequest)
+    : Response<PayoutResponse>? {
+        
+        return if (config.oauthClient.isAccessTokenValid()) {
+            paymentApiList?.savePayouts(
+        companyId = config.companyId, uniqueTransferNo = uniqueTransferNo, body = body)
+        } else {
+            null
+        } 
+    }
+    
+    
     suspend fun updatePayout(uniqueTransferNo: String,body: PayoutRequest)
     : Response<UpdatePayoutResponse>? {
         
@@ -101,54 +161,6 @@ class PaymentDataManagerClass(val config: PlatformConfig, val unauthorizedAction
         return if (config.oauthClient.isAccessTokenValid()) {
             paymentApiList?.deletePayout(
         companyId = config.companyId, uniqueTransferNo = uniqueTransferNo )
-        } else {
-            null
-        } 
-    }
-    
-    
-    suspend fun getSubscriptionPaymentMethod(uniqueExternalId: String?=null)
-    : Response<SubscriptionPaymentMethodResponse>? {
-        
-        return if (config.oauthClient.isAccessTokenValid()) {
-            paymentApiList?.getSubscriptionPaymentMethod(
-        companyId = config.companyId, uniqueExternalId = uniqueExternalId )
-        } else {
-            null
-        } 
-    }
-    
-    
-    suspend fun deleteSubscriptionPaymentMethod(uniqueExternalId: String, paymentMethodId: String)
-    : Response<DeleteSubscriptionPaymentMethodResponse>? {
-        
-        return if (config.oauthClient.isAccessTokenValid()) {
-            paymentApiList?.deleteSubscriptionPaymentMethod(
-        companyId = config.companyId, uniqueExternalId = uniqueExternalId, paymentMethodId = paymentMethodId )
-        } else {
-            null
-        } 
-    }
-    
-    
-    suspend fun getSubscriptionConfig()
-    : Response<SubscriptionConfigResponse>? {
-        
-        return if (config.oauthClient.isAccessTokenValid()) {
-            paymentApiList?.getSubscriptionConfig(
-        companyId = config.companyId )
-        } else {
-            null
-        } 
-    }
-    
-    
-    suspend fun saveSubscriptionSetupIntent(body: SaveSubscriptionSetupIntentRequest)
-    : Response<SaveSubscriptionSetupIntentResponse>? {
-        
-        return if (config.oauthClient.isAccessTokenValid()) {
-            paymentApiList?.saveSubscriptionSetupIntent(
-        companyId = config.companyId, body = body)
         } else {
             null
         } 
@@ -202,6 +214,37 @@ class PaymentDataManagerClass(val config: PlatformConfig, val unauthorizedAction
     
     
     
+    suspend fun getPaymentMethodConfig()
+    : Response<PaymentMethodConfigResponse>? {
+        
+        return if (config.oauthClient.isAccessTokenValid()) {
+            paymentApiList?.getPaymentMethodConfig(
+        companyId = config.companyId )
+        } else {
+            null
+        } 
+    }
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     
     
     
@@ -218,7 +261,7 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
 
     
     
-    suspend fun getBrandPaymentGatewayConfig(aggregator: String?=null, configType: String?=null)
+    suspend fun getBrandPaymentGatewayConfig(aggregator: String, configType: String?=null)
     : Response<PaymentGatewayConfigResponse>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 paymentApiList?.getBrandPaymentGatewayConfig(companyId = config.companyId , applicationId = applicationId , aggregator = aggregator, configType = configType )
@@ -238,10 +281,10 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     }
     
     
-    suspend fun getPaymentModeRoutes(refresh: Boolean, requestType: String, orderId: String?=null, shipmentId: String?=null)
+    suspend fun getPaymentModeRoutes(refresh: Boolean, amount: Int, requestType: String, orderId: String?=null, shipmentId: String?=null)
     : Response<PaymentOptionsResponse>? {
         return if (config.oauthClient.isAccessTokenValid()) {
-                paymentApiList?.getPaymentModeRoutes(companyId = config.companyId , applicationId = applicationId , refresh = refresh, requestType = requestType, orderId = orderId, shipmentId = shipmentId )
+                paymentApiList?.getPaymentModeRoutes(companyId = config.companyId , applicationId = applicationId , refresh = refresh, amount = amount, requestType = requestType, orderId = orderId, shipmentId = shipmentId )
         } else {
             null
         }
@@ -257,8 +300,9 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     
     
     
+    
     suspend fun getBankAccountDetailsOpenAPI(orderId: String, requestHash: String?=null)
-    : Response<RefundAccountResponse>? {
+    : Response<GetRefundAccountResponse>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 paymentApiList?.getBankAccountDetailsOpenAPI(orderId = orderId, requestHash = requestHash, companyId = config.companyId , applicationId = applicationId  )
         } else {
@@ -319,7 +363,7 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     
     
     suspend fun setUserCODlimitRoutes(body: SetCODForUserRequest)
-    : Response<SetCODOptionResponse>? {
+    : Response<GetUserCODLimitResponse>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 paymentApiList?.setUserCODlimitRoutes(companyId = config.companyId , applicationId = applicationId , body = body)
         } else {
@@ -488,7 +532,7 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     }
     
     
-    suspend fun getPaymentLink(paymentLinkId: String?=null)
+    suspend fun getPaymentLink(paymentLinkId: String)
     : Response<GetPaymentLinkResponse>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 paymentApiList?.getPaymentLink(companyId = config.companyId , applicationId = applicationId , paymentLinkId = paymentLinkId )
@@ -502,6 +546,16 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     : Response<CreatePaymentLinkResponse>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 paymentApiList?.createPaymentLink(companyId = config.companyId , applicationId = applicationId , body = body)
+        } else {
+            null
+        }
+    }
+    
+    
+    suspend fun getPaymentLinkId(id: String, paymentLinkId: String)
+    : Response<GetPaymentLinkResponse>? {
+        return if (config.oauthClient.isAccessTokenValid()) {
+                paymentApiList?.getPaymentLinkId(companyId = config.companyId , applicationId = applicationId , id = id, paymentLinkId = paymentLinkId )
         } else {
             null
         }
@@ -538,8 +592,28 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     }
     
     
+    suspend fun getPaymentModeSequencing(businessUnit: String, device: String)
+    : Response<PaymentModeResponse>? {
+        return if (config.oauthClient.isAccessTokenValid()) {
+                paymentApiList?.getPaymentModeSequencing(companyId = config.companyId , applicationId = applicationId , businessUnit = businessUnit, device = device )
+        } else {
+            null
+        }
+    }
+    
+    
+    suspend fun patchPaymentModeSequencing(body: PlatformPaymentModeRequest)
+    : Response<AggregatorConfigResponse>? {
+        return if (config.oauthClient.isAccessTokenValid()) {
+                paymentApiList?.patchPaymentModeSequencing(companyId = config.companyId , applicationId = applicationId , body = body)
+        } else {
+            null
+        }
+    }
+    
+    
     suspend fun getPaymentModeControlRoutes(mode: String)
-    : Response<PlatformPaymentModeResponse>? {
+    : Response<PlatformOfflineAdvanceResponse>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 paymentApiList?.getPaymentModeControlRoutes(companyId = config.companyId , applicationId = applicationId , mode = mode )
         } else {
@@ -548,8 +622,8 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     }
     
     
-    suspend fun setMerchantModeControlRoutes(mode: String,body: MerchantPaymentModeRequest)
-    : Response<PlatformPaymentModeResponse>? {
+    suspend fun setMerchantModeControlRoutes(mode: String,body: PlatformOfflineAdvanceRequest)
+    : Response<PlatformOfflineAdvanceResponse>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 paymentApiList?.setMerchantModeControlRoutes(companyId = config.companyId , applicationId = applicationId , mode = mode, body = body)
         } else {
@@ -578,6 +652,7 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     }
     
     
+    
     suspend fun getPaymentCodeOption()
     : Response<GetPaymentCodeResponse>? {
         return if (config.oauthClient.isAccessTokenValid()) {
@@ -588,10 +663,10 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     }
     
     
-    suspend fun getPaymentSession(gid: String, lineItem: Boolean?=null)
-    : Response<PaymentSessionSerializer>? {
+    suspend fun getPaymentSession(gid: String)
+    : Response<GetPaymentSessionResponse>? {
         return if (config.oauthClient.isAccessTokenValid()) {
-                paymentApiList?.getPaymentSession(companyId = config.companyId , applicationId = applicationId , gid = gid, lineItem = lineItem )
+                paymentApiList?.getPaymentSession(companyId = config.companyId , applicationId = applicationId , gid = gid )
         } else {
             null
         }
@@ -618,18 +693,18 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     }
     
     
-    suspend fun getMerchantPaymentOption()
-    : Response<PlatformPaymentModeResponse>? {
+    suspend fun getMerchantPaymentOption(paymentOptionType: String?=null)
+    : Response<PlatformOnlineOfflinePaymentResponse>? {
         return if (config.oauthClient.isAccessTokenValid()) {
-                paymentApiList?.getMerchantPaymentOption(companyId = config.companyId , applicationId = applicationId  )
+                paymentApiList?.getMerchantPaymentOption(companyId = config.companyId , applicationId = applicationId , paymentOptionType = paymentOptionType )
         } else {
             null
         }
     }
     
     
-    suspend fun patchMerchantPaymentOption(body: MerchnatPaymentModeRequest)
-    : Response<PlatformPaymentModeResponse>? {
+    suspend fun patchMerchantPaymentOption(body: MerchantPaymentModeRequest)
+    : Response<PatchPlatformOnlineOfflinePaymentResponse>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 paymentApiList?.patchMerchantPaymentOption(companyId = config.companyId , applicationId = applicationId , body = body)
         } else {
@@ -638,8 +713,18 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     }
     
     
+    suspend fun getDevices()
+    : Response<GetDeviceResponse>? {
+        return if (config.oauthClient.isAccessTokenValid()) {
+                paymentApiList?.getDevices(companyId = config.companyId , applicationId = applicationId  )
+        } else {
+            null
+        }
+    }
+    
+    
     suspend fun getMerchantAggregatorPaymentModeDetails(aggregatorId: String, businessUnit: String, device: String)
-    : Response<PlatformPaymentModeResponse>? {
+    : Response<AggregatorPlatformPaymentModeResponse>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 paymentApiList?.getMerchantAggregatorPaymentModeDetails(companyId = config.companyId , applicationId = applicationId , aggregatorId = aggregatorId, businessUnit = businessUnit, device = device )
         } else {
@@ -648,7 +733,7 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     }
     
     
-    suspend fun patchMerchantAggregatorPaymentModeDetails(aggregatorId: String,body: PlatformPaymentModeResponse)
+    suspend fun patchMerchantAggregatorPaymentModeDetails(aggregatorId: String,body: PlatformPaymentModeRequest)
     : Response<PlatformPaymentModeResponse>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 paymentApiList?.patchMerchantAggregatorPaymentModeDetails(companyId = config.companyId , applicationId = applicationId , aggregatorId = aggregatorId, body = body)
@@ -659,9 +744,39 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     
     
     suspend fun getPGConfigAggregators()
-    : Response<PlatformPaymentModeResponse>? {
+    : Response<AggregatorConfigResponse>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 paymentApiList?.getPGConfigAggregators(companyId = config.companyId , applicationId = applicationId  )
+        } else {
+            null
+        }
+    }
+    
+    
+    suspend fun getAggregatorCredentialHistory(aggregator: String, configType: String)
+    : Response<AggregatorHistoryResponse>? {
+        return if (config.oauthClient.isAccessTokenValid()) {
+                paymentApiList?.getAggregatorCredentialHistory(companyId = config.companyId , applicationId = applicationId , aggregator = aggregator, configType = configType )
+        } else {
+            null
+        }
+    }
+    
+    
+    suspend fun getAggregatorCredential(aggregator: String, configType: String)
+    : Response<AggregatorCredentialResponse>? {
+        return if (config.oauthClient.isAccessTokenValid()) {
+                paymentApiList?.getAggregatorCredential(companyId = config.companyId , applicationId = applicationId , aggregator = aggregator, configType = configType )
+        } else {
+            null
+        }
+    }
+    
+    
+    suspend fun updateAggregatorCredential(body: AggregatorCredentialRequest)
+    : Response<PatchAggregatorCredentialResponse>? {
+        return if (config.oauthClient.isAccessTokenValid()) {
+                paymentApiList?.updateAggregatorCredential(companyId = config.companyId , applicationId = applicationId , body = body)
         } else {
             null
         }
@@ -708,6 +823,26 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     }
     
     
+    suspend fun copyConfigPaymentModes(body: PlatformPaymentModeCopyConfigRequest)
+    : Response<AggregatorConfigResponse>? {
+        return if (config.oauthClient.isAccessTokenValid()) {
+                paymentApiList?.copyConfigPaymentModes(companyId = config.companyId , applicationId = applicationId , body = body)
+        } else {
+            null
+        }
+    }
+    
+    
+    suspend fun copyConfigAggPaymentModes(aggregatorId: String,body: PlatformPaymentModeCopyConfigRequest)
+    : Response<AggregatorConfigResponse>? {
+        return if (config.oauthClient.isAccessTokenValid()) {
+                paymentApiList?.copyConfigAggPaymentModes(companyId = config.companyId , applicationId = applicationId , aggregatorId = aggregatorId, body = body)
+        } else {
+            null
+        }
+    }
+    
+    
     suspend fun getMerchantAggregatorAppVersion(aggregatorId: String, businessUnit: String, device: String, paymentModeId: Int?=null, subPaymentMode: String?=null)
     : Response<AggregatorVersionResponse>? {
         return if (config.oauthClient.isAccessTokenValid()) {
@@ -719,9 +854,109 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     
     
     suspend fun patchMerchantPaymentOptionVersion(aggregatorId: String,body: AggregatorControlRequest)
-    : Response<PlatformPaymentModeResponse>? {
+    : Response<AggregatorConfigResponse>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 paymentApiList?.patchMerchantPaymentOptionVersion(companyId = config.companyId , applicationId = applicationId , aggregatorId = aggregatorId, body = body)
+        } else {
+            null
+        }
+    }
+    
+    
+    suspend fun addRefundBankAccount(body: AddBeneficiaryDetailsOTPRequest)
+    : Response<RefundAccountResponse>? {
+        return if (config.oauthClient.isAccessTokenValid()) {
+                paymentApiList?.addRefundBankAccount(companyId = config.companyId , applicationId = applicationId , body = body)
+        } else {
+            null
+        }
+    }
+    
+    
+    suspend fun deleteBeneficiaryDetails(beneficiaryId: String)
+    : Response<DeleteRefundAccountResponse>? {
+        return if (config.oauthClient.isAccessTokenValid()) {
+                paymentApiList?.deleteBeneficiaryDetails(companyId = config.companyId , applicationId = applicationId , beneficiaryId = beneficiaryId )
+        } else {
+            null
+        }
+    }
+    
+    
+    suspend fun getRefundOptions(configuration: String, productType: String?=null, amount: Int?=null, optinAppId: String?=null, optinCompanyId: String?=null, orderType: String?=null)
+    : Response<ShipmentRefundResponse>? {
+        return if (config.oauthClient.isAccessTokenValid()) {
+                paymentApiList?.getRefundOptions(companyId = config.companyId , applicationId = applicationId , configuration = configuration, productType = productType, amount = amount, optinAppId = optinAppId, optinCompanyId = optinCompanyId, orderType = orderType )
+        } else {
+            null
+        }
+    }
+    
+    
+    suspend fun setRefundOptionforShipment(body: ShipmentRefundRequest)
+    : Response<ShipmentRefundResponse>? {
+        return if (config.oauthClient.isAccessTokenValid()) {
+                paymentApiList?.setRefundOptionforShipment(companyId = config.companyId , applicationId = applicationId , body = body)
+        } else {
+            null
+        }
+    }
+    
+    
+    suspend fun getSelectedRefundOption(shipmentId: String, orderId: String)
+    : Response<SelectedRefundOptionResponse>? {
+        return if (config.oauthClient.isAccessTokenValid()) {
+                paymentApiList?.getSelectedRefundOption(companyId = config.companyId , applicationId = applicationId , shipmentId = shipmentId, orderId = orderId )
+        } else {
+            null
+        }
+    }
+    
+    
+    suspend fun getUserBeneficiariesDetailV2(orderId: String?=null, shipmentId: String?=null, mop: String?=null)
+    : Response<OrderBeneficiaryResponseSchemaV2>? {
+        return if (config.oauthClient.isAccessTokenValid()) {
+                paymentApiList?.getUserBeneficiariesDetailV2(companyId = config.companyId , applicationId = applicationId , orderId = orderId, shipmentId = shipmentId, mop = mop )
+        } else {
+            null
+        }
+    }
+    
+    
+    suspend fun validateBeneficiaryAddress(body: ValidateValidateAddressRequest)
+    : Response<ValidateValidateAddressResponse>? {
+        return if (config.oauthClient.isAccessTokenValid()) {
+                paymentApiList?.validateBeneficiaryAddress(companyId = config.companyId , applicationId = applicationId , body = body)
+        } else {
+            null
+        }
+    }
+    
+    
+    suspend fun updateDefaultBeneficiary(body: SetDefaultBeneficiaryRequest)
+    : Response<SetDefaultBeneficiaryResponse>? {
+        return if (config.oauthClient.isAccessTokenValid()) {
+                paymentApiList?.updateDefaultBeneficiary(companyId = config.companyId , applicationId = applicationId , body = body)
+        } else {
+            null
+        }
+    }
+    
+    
+    suspend fun getPennyDropValidation()
+    : Response<PennyDropValidationResponse>? {
+        return if (config.oauthClient.isAccessTokenValid()) {
+                paymentApiList?.getPennyDropValidation(companyId = config.companyId , applicationId = applicationId  )
+        } else {
+            null
+        }
+    }
+    
+    
+    suspend fun updatePennyDropValidation(body: UpdatePennyDropValidationRequest)
+    : Response<PennyDropValidationResponse>? {
+        return if (config.oauthClient.isAccessTokenValid()) {
+                paymentApiList?.updatePennyDropValidation(companyId = config.companyId , applicationId = applicationId , body = body)
         } else {
             null
         }

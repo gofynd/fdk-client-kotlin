@@ -301,7 +301,7 @@ data class GetAddressSerializer(
     var countryCode: String?=null,
     
     @SerializedName("pincode")
-    var pincode: Int?=null,
+    var pincode: String?=null,
     
     @SerializedName("address_type")
     var addressType: String?=null,
@@ -508,19 +508,24 @@ data class ErrorResponse(
     
     
     
+    @SerializedName("code")
+    var code: Double?=null,
+    
+    @SerializedName("error")
+    var error: String?=null,
+    
     @SerializedName("message")
     var message: String?=null,
     
-    @SerializedName("code")
-    var code: String?=null,
+    @SerializedName("meta")
+    var meta: @RawValue HashMap<String,Any>?=null,
     
     @SerializedName("status")
-    var status: Int?=null,
-    
-    @SerializedName("meta")
-    var meta: @RawValue HashMap<String,Any>?=null
+    var status: Int?=null
     
 ): Parcelable {
+    
+    
     
     
     
@@ -584,7 +589,7 @@ data class CreateUpdateAddressSerializer(
     var countryCode: String?=null,
     
     @SerializedName("pincode")
-    var pincode: Int?=null,
+    var pincode: String?=null,
     
     @SerializedName("address_type")
     var addressType: String?=null,
@@ -739,6 +744,9 @@ data class ProfileSuccessResponse(
     @SerializedName("uid")
     var uid: Int?=null,
     
+    @SerializedName("data")
+    var data: @RawValue ArrayList<HashMap<String,Any>>?=null,
+    
     @SerializedName("message")
     var message: String?=null,
     
@@ -746,6 +754,8 @@ data class ProfileSuccessResponse(
     var success: Boolean?=null
     
 ): Parcelable {
+    
+    
     
     
     
@@ -1014,9 +1024,14 @@ data class CreateUpdateBrandRequestSerializer(
     var banner: BrandBannerSerializer?=null,
     
     @SerializedName("name")
-    var name: String?=null
+    var name: String?=null,
+    
+    @SerializedName("slug")
+    var slug: String?=null
     
 ): Parcelable {
+    
+    
     
     
     
@@ -1291,26 +1306,26 @@ data class Page(
     
     
     
+    @SerializedName("has_previous")
+    var hasPrevious: Boolean?=null,
+    
     @SerializedName("item_total")
     var itemTotal: Int?=null,
     
     @SerializedName("next_id")
     var nextId: String?=null,
     
-    @SerializedName("has_previous")
-    var hasPrevious: Boolean?=null,
-    
-    @SerializedName("has_next")
-    var hasNext: Boolean?=null,
-    
-    @SerializedName("current")
-    var current: Int?=null,
+    @SerializedName("size")
+    var size: Int?=null,
     
     @SerializedName("type")
     var type: String?=null,
     
-    @SerializedName("size")
-    var size: Int?=null
+    @SerializedName("current")
+    var current: Int?=null,
+    
+    @SerializedName("has_next")
+    var hasNext: Boolean?=null
     
 ): Parcelable {
     
@@ -1941,7 +1956,7 @@ data class AddressSerializer(
     var countryCode: String?=null,
     
     @SerializedName("pincode")
-    var pincode: Int?=null,
+    var pincode: String?=null,
     
     @SerializedName("address_type")
     var addressType: String?=null,

@@ -233,9 +233,14 @@ data class AppliedPromotion(
     var currency: CartCurrency?=null,
     
     @SerializedName("promotion_group")
-    var promotionGroup: String?=null
+    var promotionGroup: String?=null,
+    
+    @SerializedName("meta")
+    var meta: @RawValue HashMap<String,Any>?=null
     
 ): Parcelable {
+    
+    
     
     
     

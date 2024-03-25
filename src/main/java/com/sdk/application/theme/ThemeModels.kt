@@ -70,10 +70,20 @@ data class AvailablePageSchema(
     @SerializedName("props")
     var props: @RawValue ArrayList<HashMap<String,Any>>?=null,
     
+    @SerializedName("updated_at")
+    var updatedAt: String?=null,
+    
+    @SerializedName("created_at")
+    var createdAt: String?=null,
+    
     @SerializedName("_id")
     var id: String?=null
     
 ): Parcelable {
+    
+    
+    
+    
     
     
     
@@ -282,7 +292,7 @@ data class ActionPage(
     var url: String?=null,
     
     @SerializedName("type")
-    var type: PageType?=null
+    var type: String?=null
     
 ): Parcelable {
     
@@ -324,8 +334,8 @@ data class AvailablePageSeo(
     @SerializedName("sitemap")
     var sitemap: SEOSitemap?=null,
     
-    @SerializedName("breadcrumb")
-    var breadcrumb: ArrayList<SEObreadcrumb>?=null,
+    @SerializedName("breadcrumbs")
+    var breadcrumbs: ArrayList<SEObreadcrumb>?=null,
     
     @SerializedName("_id")
     var id: String?=null
@@ -376,10 +386,15 @@ data class AvailablePageSchemaSections(
     @SerializedName("preset")
     var preset: @RawValue HashMap<String,Any>?=null,
     
+    @SerializedName("source")
+    var source: String?=null,
+    
     @SerializedName("predicate")
     var predicate: AvailablePagePredicate?=null
     
 ): Parcelable {
+    
+    
     
     
     
@@ -633,9 +648,19 @@ data class ThemesSchema(
     var themeType: String?=null,
     
     @SerializedName("company_id")
-    var companyId: Double?=null
+    var companyId: Double?=null,
+    
+    @SerializedName("src")
+    var src: String?=null,
+    
+    @SerializedName("global_sections")
+    var globalSections: @RawValue ArrayList<HashMap<String,Any>>?=null
     
 ): Parcelable {
+    
+    
+    
+    
     
     
     
@@ -796,7 +821,7 @@ data class Config(
     var globalSchema: GlobalSchema?=null,
     
     @SerializedName("preset")
-    var preset: Preset?=null
+    var preset: @RawValue HashMap<String,Any>?=null
     
 ): Parcelable {
     
@@ -1044,15 +1069,10 @@ data class GlobalConfig(
     
     
     
-    @SerializedName("statics")
-    var statics: StaticConfig?=null,
-    
     @SerializedName("custom")
     var custom: CustomConfig?=null
     
 ): Parcelable {
-    
-    
     
     
     
@@ -1487,9 +1507,19 @@ data class StaticProps(
     var auth: AuthConfig?=null,
     
     @SerializedName("palette")
-    var palette: PaletteConfig?=null
+    var palette: PaletteConfig?=null,
+    
+    @SerializedName("order_tracking")
+    var orderTracking: @RawValue HashMap<String,Any>?=null,
+    
+    @SerializedName("manifest")
+    var manifest: @RawValue HashMap<String,Any>?=null
     
 ): Parcelable {
+    
+    
+    
+    
     
     
     
@@ -1845,10 +1875,10 @@ data class SectionItem(
     
     
     @SerializedName("props")
-    var props: @RawValue ArrayList<Any>?=null,
+    var props: @RawValue ArrayList<HashMap<String,Any>>?=null,
     
     @SerializedName("blocks")
-    var blocks: @RawValue ArrayList<Any>?=null,
+    var blocks: @RawValue ArrayList<HashMap<String,Any>>?=null,
     
     @SerializedName("name")
     var name: String?=null,
@@ -1967,38 +1997,13 @@ data class Page(
     
     
     
-    @SerializedName("item_total")
-    var itemTotal: Int?=null,
+    @SerializedName("sections")
+    var sections: ArrayList<Section>?=null,
     
-    @SerializedName("next_id")
-    var nextId: String?=null,
-    
-    @SerializedName("has_previous")
-    var hasPrevious: Boolean?=null,
-    
-    @SerializedName("has_next")
-    var hasNext: Boolean?=null,
-    
-    @SerializedName("current")
-    var current: Int?=null,
-    
-    @SerializedName("type")
-    var type: String?=null,
-    
-    @SerializedName("size")
-    var size: Int?=null
+    @SerializedName("value")
+    var value: String?=null
     
 ): Parcelable {
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
     
     
     
@@ -2496,8 +2501,6 @@ data class BlitzkriegApiErrorSchema(
     
     
 }
-
-
 
 
 

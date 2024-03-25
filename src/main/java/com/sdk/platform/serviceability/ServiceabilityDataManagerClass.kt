@@ -44,52 +44,9 @@ class ServiceabilityDataManagerClass(val config: PlatformConfig, val unauthorize
     }
     
     
-    suspend fun getZones(pageNo: Int?=null, pageSize: Int?=null, isActive: Boolean?=null, channelId: String?=null, q: String?=null, country: String?=null, state: String?=null, city: String?=null, pincode: String?=null, sector: String?=null)
-    : Response<ListViewResponse>? {
-        
-        return if (config.oauthClient.isAccessTokenValid()) {
-            serviceabilityApiList?.getZones(
-        companyId = config.companyId, pageNo = pageNo, pageSize = pageSize, isActive = isActive, channelId = channelId, q = q, country = country, state = state, city = city, pincode = pincode, sector = sector )
-        } else {
-            null
-        } 
-    }
     
     
-    suspend fun createZone(body: CreateZoneData)
-    : Response<ZoneResponse>? {
-        
-        return if (config.oauthClient.isAccessTokenValid()) {
-            serviceabilityApiList?.createZone(
-        companyId = config.companyId, body = body)
-        } else {
-            null
-        } 
-    }
     
-    
-    suspend fun updateZoneById(zoneId: String,body: UpdateZoneData)
-    : Response<ZoneSuccessResponse>? {
-        
-        return if (config.oauthClient.isAccessTokenValid()) {
-            serviceabilityApiList?.updateZoneById(
-        companyId = config.companyId, zoneId = zoneId, body = body)
-        } else {
-            null
-        } 
-    }
-    
-    
-    suspend fun getZoneById(zoneId: String)
-    : Response<GetZoneByIdSchema>? {
-        
-        return if (config.oauthClient.isAccessTokenValid()) {
-            serviceabilityApiList?.getZoneById(
-        companyId = config.companyId, zoneId = zoneId )
-        } else {
-            null
-        } 
-    }
     
     
     suspend fun getAllStores()
@@ -102,6 +59,22 @@ class ServiceabilityDataManagerClass(val config: PlatformConfig, val unauthorize
             null
         } 
     }
+    
+    
+    suspend fun getOptimalLocations(body: ReAssignStoreRequest)
+    : Response<ReAssignStoreResponse>? {
+        
+        return if (config.oauthClient.isAccessTokenValid()) {
+            serviceabilityApiList?.getOptimalLocations(
+        companyId = config.companyId, body = body)
+        } else {
+            null
+        } 
+    }
+    
+    
+    
+    
     
     
     
@@ -120,12 +93,12 @@ class ServiceabilityDataManagerClass(val config: PlatformConfig, val unauthorize
     }
     
     
-    suspend fun getCourierPartnerAccounts(pageNo: Int?=null, pageSize: Int?=null, stage: String?=null, paymentMode: String?=null, transportType: String?=null)
+    suspend fun getCourierPartnerAccounts(pageNo: Int?=null, pageSize: Int?=null, stage: String?=null, paymentMode: String?=null, transportType: String?=null, accountIds: ArrayList<String>?=null)
     : Response<CompanyCourierPartnerAccountListResponse>? {
         
         return if (config.oauthClient.isAccessTokenValid()) {
             serviceabilityApiList?.getCourierPartnerAccounts(
-        companyId = config.companyId, pageNo = pageNo, pageSize = pageSize, stage = stage, paymentMode = paymentMode, transportType = transportType )
+        companyId = config.companyId, pageNo = pageNo, pageSize = pageSize, stage = stage, paymentMode = paymentMode, transportType = transportType, accountIds = accountIds )
         } else {
             null
         } 
@@ -182,6 +155,7 @@ class ServiceabilityDataManagerClass(val config: PlatformConfig, val unauthorize
             null
         } 
     }
+    
     
     
     
@@ -363,24 +337,59 @@ class ServiceabilityDataManagerClass(val config: PlatformConfig, val unauthorize
     }
     
     
-    
-    suspend fun getOptimalLocations(body: OptimlLocationsRequestSchema)
-    : Response<OptimalLocationsResponse>? {
-        
-        return if (config.oauthClient.isAccessTokenValid()) {
-            serviceabilityApiList?.getOptimalLocations(
-        companyId = config.companyId, body = body)
-        } else {
-            null
-        } 
-    }
-    
 
 inner class ApplicationClient(val applicationId:String,val config: PlatformConfig){
 
     
     
+    suspend fun createZone(body: CreateZoneV2Data)
+    : Response<ZoneResponseV2>? {
+        return if (config.oauthClient.isAccessTokenValid()) {
+                serviceabilityApiList?.createZone(companyId = config.companyId , applicationId = applicationId , body = body)
+        } else {
+            null
+        }
+    }
     
+    
+    suspend fun getZones(stage: String?=null, pageSize: Int?=null, zoneIds: String?=null, isActive: Boolean?=null, q: String?=null, country: String?=null, countryIsoCode: String?=null, pincode: String?=null, state: String?=null, city: String?=null, sector: String?=null)
+    : Response<ListViewResponseV2>? {
+        return if (config.oauthClient.isAccessTokenValid()) {
+                serviceabilityApiList?.getZones(companyId = config.companyId , applicationId = applicationId , stage = stage, pageSize = pageSize, zoneIds = zoneIds, isActive = isActive, q = q, country = country, countryIsoCode = countryIsoCode, pincode = pincode, state = state, city = city, sector = sector )
+        } else {
+            null
+        }
+    }
+    
+    
+    suspend fun getZone(zoneId: String)
+    : Response<GetZoneByIdSchema>? {
+        return if (config.oauthClient.isAccessTokenValid()) {
+                serviceabilityApiList?.getZone(companyId = config.companyId , zoneId = zoneId, applicationId = applicationId  )
+        } else {
+            null
+        }
+    }
+    
+    
+    suspend fun updateZone(zoneId: String,body: UpdateZoneDataV2)
+    : Response<ZoneUpdateSuccessResponse>? {
+        return if (config.oauthClient.isAccessTokenValid()) {
+                serviceabilityApiList?.updateZone(companyId = config.companyId , zoneId = zoneId, applicationId = applicationId , body = body)
+        } else {
+            null
+        }
+    }
+    
+    
+    suspend fun deleteZone(zoneId: String)
+    : Response<ZoneDeleteSuccessResponse>? {
+        return if (config.oauthClient.isAccessTokenValid()) {
+                serviceabilityApiList?.deleteZone(companyId = config.companyId , zoneId = zoneId, applicationId = applicationId  )
+        } else {
+            null
+        }
+    }
     
     
     
@@ -419,6 +428,46 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     : Response<PincodeMopUpdateAuditHistoryResponseData>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 serviceabilityApiList?.updatePincodeAuditHistory(companyId = config.companyId , applicationId = applicationId , body = body)
+        } else {
+            null
+        }
+    }
+    
+    
+    suspend fun createGeoArea(body: GeoAreaRequestBody)
+    : Response<GeoAreaResponseBody>? {
+        return if (config.oauthClient.isAccessTokenValid()) {
+                serviceabilityApiList?.createGeoArea(companyId = config.companyId , applicationId = applicationId , body = body)
+        } else {
+            null
+        }
+    }
+    
+    
+    suspend fun getGeoAreas(pageSize: Int?=null, isActive: Boolean?=null, q: String?=null, countryIsoCode: String?=null, state: String?=null, city: String?=null, pincode: String?=null, sector: String?=null)
+    : Response<GeoAreaGetResponseBody>? {
+        return if (config.oauthClient.isAccessTokenValid()) {
+                serviceabilityApiList?.getGeoAreas(applicationId = applicationId , companyId = config.companyId , pageSize = pageSize, isActive = isActive, q = q, countryIsoCode = countryIsoCode, state = state, city = city, pincode = pincode, sector = sector )
+        } else {
+            null
+        }
+    }
+    
+    
+    suspend fun getGeoArea(geoareaId: String)
+    : Response<GeoAreaResponse>? {
+        return if (config.oauthClient.isAccessTokenValid()) {
+                serviceabilityApiList?.getGeoArea(companyId = config.companyId , geoareaId = geoareaId, applicationId = applicationId  )
+        } else {
+            null
+        }
+    }
+    
+    
+    suspend fun updateGeoArea(geoareaId: String,body: GeoAreaRequestBody)
+    : Response<GeoAreaPutResponseBody>? {
+        return if (config.oauthClient.isAccessTokenValid()) {
+                serviceabilityApiList?.updateGeoArea(companyId = config.companyId , geoareaId = geoareaId, applicationId = applicationId , body = body)
         } else {
             null
         }
@@ -485,6 +534,16 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     : Response<ApplicationConfig>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 serviceabilityApiList?.getApplicationConfiguration(companyId = config.companyId , applicationId = applicationId  )
+        } else {
+            null
+        }
+    }
+    
+    
+    suspend fun patchApplicationConfiguration(body: ApplicationConfigPatchRequest)
+    : Response<ApplicationConfigPatchResponse>? {
+        return if (config.oauthClient.isAccessTokenValid()) {
+                serviceabilityApiList?.patchApplicationConfiguration(companyId = config.companyId , applicationId = applicationId , body = body)
         } else {
             null
         }
@@ -603,7 +662,6 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
             null
         }
     }
-    
     
 }
 }

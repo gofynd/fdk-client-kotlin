@@ -1,4 +1,4 @@
-package com.sdk.platform.share
+package com.sdk.platform.analytics
 
 import kotlinx.coroutines.Deferred
 import okhttp3.Interceptor
@@ -11,13 +11,13 @@ import com.sdk.platform.*
 
 
 
-class ShareDataManagerClass(val config: PlatformConfig, val unauthorizedAction: ((url: String, responseCode: Int) -> Unit)? = null) : BaseRepository() {        
+class AnalyticsDataManagerClass(val config: PlatformConfig, val unauthorizedAction: ((url: String, responseCode: Int) -> Unit)? = null) : BaseRepository() {        
        
-    private val shareApiList by lazy {
-        generateshareApiList()
+    private val analyticsApiList by lazy {
+        generateanalyticsApiList()
     }
     
-    private fun generateshareApiList(): ShareApiList? {
+    private fun generateanalyticsApiList(): AnalyticsApiList? {
         val interceptorMap = HashMap<String, List<Interceptor>>()
         val headerInterceptor = AccessTokenInterceptor(platformConfig = config)
         val requestSignerInterceptor = RequestSignerInterceptor()
@@ -36,13 +36,12 @@ class ShareDataManagerClass(val config: PlatformConfig, val unauthorizedAction: 
         val retrofitHttpClient = HttpClient.initialize(
             baseUrl = config.domain,
             interceptorList = interceptorMap,
-            namespace = "PlatformShare",
+            namespace = "PlatformAnalytics",
             persistentCookieStore = config.persistentCookieStore,
             certPublicKey = config.certPublicKey
         )
-        return retrofitHttpClient?.initializeRestClient(ShareApiList::class.java) as? ShareApiList
+        return retrofitHttpClient?.initializeRestClient(AnalyticsApiList::class.java) as? AnalyticsApiList
     }
-    
     
     
     
@@ -52,40 +51,30 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
 
     
     
-    suspend fun createShortLink(body: ShortLinkReq)
-    : Response<ShortLinkRes>? {
+    suspend fun executeJobForProvidedParametersV2(provider: String, datasource: String, exportType: String,body: JobExecute)
+    : Response<HashMap<String,Any>>? {
         return if (config.oauthClient.isAccessTokenValid()) {
-                shareApiList?.createShortLink(companyId = config.companyId , applicationId = applicationId , body = body)
+                analyticsApiList?.executeJobForProvidedParametersV2(companyId = config.companyId , applicationId = applicationId , provider = provider, datasource = datasource, exportType = exportType, body = body)
         } else {
             null
         }
     }
     
     
-    suspend fun getShortLinks(pageNo: Int?=null, pageSize: Int?=null, createdBy: String?=null, active: String?=null, shortUrl: String?=null, originalUrl: String?=null, title: String?=null)
-    : Response<ShortLinkList>? {
+    suspend fun startDownloadForQueryV2(provider: String, datasource: String, exportType: String,body: JobExecute)
+    : Response<String>? {
         return if (config.oauthClient.isAccessTokenValid()) {
-                shareApiList?.getShortLinks(companyId = config.companyId , applicationId = applicationId , pageNo = pageNo, pageSize = pageSize, createdBy = createdBy, active = active, shortUrl = shortUrl, originalUrl = originalUrl, title = title )
+                analyticsApiList?.startDownloadForQueryV2(companyId = config.companyId , applicationId = applicationId , provider = provider, datasource = datasource, exportType = exportType, body = body)
         } else {
             null
         }
     }
     
     
-    suspend fun getShortLinkByHash(hash: String)
-    : Response<ShortLinkRes>? {
+    suspend fun checkJobStatusByNameV2(provider: String, exportType: String, fileName: String)
+    : Response<HashMap<String,Any>>? {
         return if (config.oauthClient.isAccessTokenValid()) {
-                shareApiList?.getShortLinkByHash(companyId = config.companyId , applicationId = applicationId , hash = hash )
-        } else {
-            null
-        }
-    }
-    
-    
-    suspend fun updateShortLinkById(id: String,body: ShortLinkReq)
-    : Response<ShortLinkRes>? {
-        return if (config.oauthClient.isAccessTokenValid()) {
-                shareApiList?.updateShortLinkById(companyId = config.companyId , applicationId = applicationId , id = id, body = body)
+                analyticsApiList?.checkJobStatusByNameV2(companyId = config.companyId , applicationId = applicationId , provider = provider, exportType = exportType, fileName = fileName )
         } else {
             null
         }

@@ -81,16 +81,6 @@ interface ContentApiList {
     
     
     @GET 
-    suspend fun getSlideshows(@Url url1: String?    ,   @Query("page_no") pageNo: Int?, @Query("page_size") pageSize: Int?)
-    : Response<SlideshowGetResponse>
-    
-    
-    @GET 
-    suspend fun getSlideshow(@Url url1: String?    )
-    : Response<SlideshowSchema>
-    
-    
-    @GET 
     suspend fun getSupportInformation(@Url url1: String?   )
     : Response<Support>
     
@@ -98,6 +88,16 @@ interface ContentApiList {
     @GET 
     suspend fun getTags(@Url url1: String?   )
     : Response<TagsSchema>
+    
+    
+    @GET 
+    suspend fun getPageV1(@Url url1: String?     ,  @Query("root_id") rootId: String?)
+    : Response<PageSchema>
+    
+    
+    @GET 
+    suspend fun getPagesV1(@Url url1: String?    ,   @Query("page_no") pageNo: Int?, @Query("page_size") pageSize: Int?)
+    : Response<PageGetResponse>
     
     
     @GET 
@@ -116,7 +116,17 @@ interface ContentApiList {
     
     
     @GET 
-    suspend fun getCustomFields(@Url url1: String?     )
+    suspend fun getCustomFieldDefinitions(@Url url1: String?   )
+    : Response<CustomFieldDefinitionsSchema>
+    
+    
+    @GET 
+    suspend fun getCustomFieldDefinition(@Url url1: String?    )
+    : Response<CustomFieldDefinitionDetailResSchema>
+    
+    
+    @GET 
+    suspend fun getCustomFields(@Url url1: String?     ,  @Query("resource_ids") resourceIds: String)
     : Response<CustomFieldsResponseByResourceIdSchema>
     
 }

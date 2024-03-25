@@ -32,11 +32,11 @@ interface ContentApiList {
     suspend fun deleteAnnouncement(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Path("announcement_id") announcementId: String)
     : Response<CreateAnnouncementSchema>
     
-    @POST ("/service/platform/content/v1.0/company/{company_id}/application/{application_id}/blogs/")
+    @POST ("/service/platform/content/v1.0/company/{company_id}/application/{application_id}/blogs")
     suspend fun createBlog(@Path("company_id") companyId: String, @Path("application_id") applicationId: String,@Body body: BlogRequest)
     : Response<BlogSchema>
     
-    @GET ("/service/platform/content/v1.0/company/{company_id}/application/{application_id}/blogs/")
+    @GET ("/service/platform/content/v1.0/company/{company_id}/application/{application_id}/blogs")
     suspend fun getBlogs(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Query("page_no") pageNo: Int?, @Query("page_size") pageSize: Int?)
     : Response<BlogGetResponse>
     
@@ -60,6 +60,10 @@ interface ContentApiList {
     suspend fun getDataLoaders(@Path("company_id") companyId: String, @Path("application_id") applicationId: String)
     : Response<DataLoadersSchema>
     
+    @GET ("/service/platform/content/v1.0/company/{company_id}/application/{application_id}/data-loader/api-spec")
+    suspend fun getDataLoaderApiSpecs(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Query("data_loader") dataLoader: String)
+    : Response<DataLoadersApiSpecSchema>
+    
     @DELETE ("/service/platform/content/v1.0/company/{company_id}/application/{application_id}/data-loader/{data_loader_id}")
     suspend fun deleteDataLoader(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Path("data_loader_id") dataLoaderId: String)
     : Response<DataLoaderResponseSchema>
@@ -70,7 +74,7 @@ interface ContentApiList {
     
     @GET ("/service/platform/content/v1.0/company/{company_id}/application/{application_id}/data-loader/service/{service_name}")
     suspend fun getDataLoadersByService(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Path("service_name") serviceName: String)
-    : Response<DataLoaderResponseSchema>
+    : Response<DataLoaderItemsResponseSchema>
     
     @PUT ("/service/platform/content/v1.0/company/{company_id}/application/{application_id}/data-loader/{data_loader_id}/select")
     suspend fun selectDataLoader(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Path("data_loader_id") dataLoaderId: String)
@@ -98,7 +102,7 @@ interface ContentApiList {
     
     @DELETE ("/service/platform/content/v1.0/company/{company_id}/application/{application_id}/faq/category/{id}")
     suspend fun deleteFaqCategory(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Path("id") id: String)
-    : Response<FaqSchema>
+    : Response<CreateFaqCategorySchema>
     
     @GET ("/service/platform/content/v1.0/company/{company_id}/application/{application_id}/faq/category/{id_or_slug}/faqs")
     suspend fun getFaqsByCategoryIdOrSlug(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Path("id_or_slug") idOrSlug: String)
@@ -124,11 +128,11 @@ interface ContentApiList {
     suspend fun generateSEOTitle(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Path("type") type: String,@Body body: GenerateSEOContent)
     : Response<GeneratedSEOContent>
     
-    @GET ("/service/platform/content/v1.0/company/{company_id}/application/{application_id}/landing-page/")
+    @GET ("/service/platform/content/v1.0/company/{company_id}/application/{application_id}/landing-page")
     suspend fun getLandingPages(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Query("page_no") pageNo: Int?, @Query("page_size") pageSize: Int?)
     : Response<LandingPageGetResponse>
     
-    @POST ("/service/platform/content/v1.0/company/{company_id}/application/{application_id}/landing-page/")
+    @POST ("/service/platform/content/v1.0/company/{company_id}/application/{application_id}/landing-page")
     suspend fun createLandingPage(@Path("company_id") companyId: String, @Path("application_id") applicationId: String,@Body body: LandingPageSchema)
     : Response<LandingPageSchema>
     
@@ -148,11 +152,11 @@ interface ContentApiList {
     suspend fun updateLegalInformation(@Path("company_id") companyId: String, @Path("application_id") applicationId: String,@Body body: ApplicationLegal)
     : Response<ApplicationLegal>
     
-    @GET ("/service/platform/content/v1.0/company/{company_id}/application/{application_id}/navigations/")
+    @GET ("/service/platform/content/v1.0/company/{company_id}/application/{application_id}/navigations")
     suspend fun getNavigations(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Query("device_platform") devicePlatform: String, @Query("page_no") pageNo: Int?, @Query("page_size") pageSize: Int?)
     : Response<NavigationGetResponse>
     
-    @POST ("/service/platform/content/v1.0/company/{company_id}/application/{application_id}/navigations/")
+    @POST ("/service/platform/content/v1.0/company/{company_id}/application/{application_id}/navigations")
     suspend fun createNavigation(@Path("company_id") companyId: String, @Path("application_id") applicationId: String,@Body body: NavigationRequest)
     : Response<NavigationSchema>
     
@@ -180,12 +184,16 @@ interface ContentApiList {
     suspend fun getPageSpec(@Path("company_id") companyId: String, @Path("application_id") applicationId: String)
     : Response<PageSpec>
     
-    @POST ("/service/platform/content/v1.0/company/{company_id}/application/{application_id}/pages/preview/")
+    @POST ("/service/platform/content/v1.0/company/{company_id}/application/{application_id}/pages/preview")
     suspend fun createPagePreview(@Path("company_id") companyId: String, @Path("application_id") applicationId: String,@Body body: PageRequest)
     : Response<PageSchema>
     
     @PUT ("/service/platform/content/v1.0/company/{company_id}/application/{application_id}/pages/publish/{slug}")
     suspend fun updatePagePreview(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Path("slug") slug: String,@Body body: PagePublishRequest)
+    : Response<PageSchema>
+    
+    @PUT ("/service/platform/content/v1.0/company/{company_id}/application/{application_id}/pages/{id}")
+    suspend fun updatePageV1(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Path("id") id: String,@Body body: PageSchema)
     : Response<PageSchema>
     
     @DELETE ("/service/platform/content/v1.0/company/{company_id}/application/{application_id}/pages/{id}")
@@ -194,23 +202,23 @@ interface ContentApiList {
     
     @POST ("/service/platform/content/v1.0/company/{company_id}/application/{application_id}/path-mappings")
     suspend fun addPathRedirectionRules(@Path("company_id") companyId: String, @Path("application_id") applicationId: String,@Body body: PathMappingSchema)
-    : Response<PathMappingSchema>
+    : Response<CreatePathMappingSchema>
     
     @GET ("/service/platform/content/v1.0/company/{company_id}/application/{application_id}/path-mappings")
     suspend fun getPathRedirectionRules(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Query("page_size") pageSize: Int?, @Query("page_no") pageNo: Int?)
-    : Response<PathMappingSchema>
+    : Response<GetAllPathMappingSchema>
     
     @GET ("/service/platform/content/v1.0/company/{company_id}/application/{application_id}/path-mappings/{path_id}")
     suspend fun getPathRedirectionRule(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Path("path_id") pathId: String)
-    : Response<PathMappingSchema>
+    : Response<DeletPathMappingSchema>
     
     @PUT ("/service/platform/content/v1.0/company/{company_id}/application/{application_id}/path-mappings/{path_id}")
     suspend fun updatePathRedirectionRules(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Path("path_id") pathId: String,@Body body: PathMappingSchema)
-    : Response<PathMappingSchema>
+    : Response<CreatePathMappingSchema>
     
     @DELETE ("/service/platform/content/v1.0/company/{company_id}/application/{application_id}/path-mappings/{path_id}")
     suspend fun deletePathRedirectionRules(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Path("path_id") pathId: String)
-    : Response<HashMap<String,Any>>
+    : Response<DeletPathMappingSchema>
     
     @GET ("/service/platform/content/v1.0/company/{company_id}/application/{application_id}/seo")
     suspend fun getSEOConfiguration(@Path("company_id") companyId: String, @Path("application_id") applicationId: String)
@@ -232,37 +240,17 @@ interface ContentApiList {
     suspend fun createSEOMarkupSchema(@Path("company_id") companyId: String, @Path("application_id") applicationId: String,@Body body: SEOSchemaMarkupTemplateRequestBody)
     : Response<SEOSchemaMarkupTemplate>
     
-    @GET ("/service/platform/content/v1.0/company/{company_id}/application/{application_id}/seo/schema/{id}")
-    suspend fun getSEOMarkupSchema(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Path("id") id: String)
+    @GET ("/service/platform/content/v1.0/company/{company_id}/application/{application_id}/seo/schema/{schema_id}")
+    suspend fun getSEOMarkupSchema(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Path("schema_id") schemaId: String)
     : Response<SEOSchemaMarkupTemplate>
     
-    @PUT ("/service/platform/content/v1.0/company/{company_id}/application/{application_id}/seo/schema/{id}")
-    suspend fun editSEOMarkupSchema(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Path("id") id: String,@Body body: SEOSchemaMarkupTemplateRequestBody)
+    @PUT ("/service/platform/content/v1.0/company/{company_id}/application/{application_id}/seo/schema/{schema_id}")
+    suspend fun editSEOMarkupSchema(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Path("schema_id") schemaId: String,@Body body: SEOSchemaMarkupTemplateRequestBody)
     : Response<SEOSchemaMarkupTemplate>
     
-    @DELETE ("/service/platform/content/v1.0/company/{company_id}/application/{application_id}/seo/schema/{id}")
-    suspend fun deleteSEOMarkupSchema(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Path("id") id: String)
+    @DELETE ("/service/platform/content/v1.0/company/{company_id}/application/{application_id}/seo/schema/{schema_id}")
+    suspend fun deleteSEOMarkupSchema(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Path("schema_id") schemaId: String)
     : Response<SEOSchemaMarkupTemplate>
-    
-    @GET ("/service/platform/content/v1.0/company/{company_id}/application/{application_id}/slideshows")
-    suspend fun getSlideshows(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Query("device_platform") devicePlatform: String, @Query("page_no") pageNo: Int?, @Query("page_size") pageSize: Int?)
-    : Response<SlideshowGetResponse>
-    
-    @POST ("/service/platform/content/v1.0/company/{company_id}/application/{application_id}/slideshows")
-    suspend fun createSlideshow(@Path("company_id") companyId: String, @Path("application_id") applicationId: String,@Body body: SlideshowRequest)
-    : Response<SlideshowSchema>
-    
-    @GET ("/service/platform/content/v1.0/company/{company_id}/application/{application_id}/slideshows/{slug}")
-    suspend fun getSlideshowBySlug(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Path("slug") slug: String, @Query("device_platform") devicePlatform: String)
-    : Response<SlideshowSchema>
-    
-    @PUT ("/service/platform/content/v1.0/company/{company_id}/application/{application_id}/slideshows/{id}")
-    suspend fun updateSlideshow(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Path("id") id: String,@Body body: SlideshowRequest)
-    : Response<SlideshowSchema>
-    
-    @DELETE ("/service/platform/content/v1.0/company/{company_id}/application/{application_id}/slideshows/{id}")
-    suspend fun deleteSlideshow(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Path("id") id: String)
-    : Response<SlideshowSchema>
     
     @GET ("/service/platform/content/v1.0/company/{company_id}/application/{application_id}/support")
     suspend fun getSupportInformation(@Path("company_id") companyId: String, @Path("application_id") applicationId: String)
@@ -271,14 +259,6 @@ interface ContentApiList {
     @POST ("/service/platform/content/v1.0/company/{company_id}/application/{application_id}/support")
     suspend fun updateSupportInformation(@Path("company_id") companyId: String, @Path("application_id") applicationId: String,@Body body: Support)
     : Response<Support>
-    
-    @PUT ("/service/platform/content/v1.0/company/{company_id}/application/{application_id}/tags")
-    suspend fun updateInjectableTag(@Path("company_id") companyId: String, @Path("application_id") applicationId: String,@Body body: CreateTagRequestSchema)
-    : Response<TagsSchema>
-    
-    @GET ("/service/platform/content/v1.0/company/{company_id}/application/{application_id}/tags")
-    suspend fun getInjectableTags(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Query("all") all: Boolean?)
-    : Response<TagsSchema>
     
     @PUT ("/service/platform/content/v1.0/company/{company_id}/application/{application_id}/tags/add")
     suspend fun addInjectableTag(@Path("company_id") companyId: String, @Path("application_id") applicationId: String,@Body body: CreateTagRequestSchema)
@@ -292,20 +272,48 @@ interface ContentApiList {
     suspend fun editInjectableTag(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Path("tag_id") tagId: String,@Body body: UpdateHandpickedSchema)
     : Response<TagsSchema>
     
+    @POST ("/service/platform/content/v1.0/company/{company_id}/application/{application_id}/tags")
+    suspend fun createInjectableTag(@Path("company_id") companyId: String, @Path("application_id") applicationId: String,@Body body: CreateTagRequestSchema)
+    : Response<TagsSchema>
+    
+    @PUT ("/service/platform/content/v1.0/company/{company_id}/application/{application_id}/tags")
+    suspend fun updateInjectableTag(@Path("company_id") companyId: String, @Path("application_id") applicationId: String,@Body body: CreateTagRequestSchema)
+    : Response<TagsSchema>
+    
+    @DELETE ("/service/platform/content/v1.0/company/{company_id}/application/{application_id}/tags")
+    suspend fun deleteAllInjectableTags(@Path("company_id") companyId: String, @Path("application_id") applicationId: String)
+    : Response<TagsSchema>
+    
+    @GET ("/service/platform/content/v1.0/company/{company_id}/application/{application_id}/tags")
+    suspend fun getInjectableTags(@Path("company_id") companyId: String, @Path("application_id") applicationId: String)
+    : Response<TagsSchema>
+    
     @GET ("/service/platform/content/v2.0/company/{company_id}/application/{application_id}/blogs/{slug}")
     suspend fun getBlogBySlug(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Path("slug") slug: String)
     : Response<BlogSchema>
     
-    @POST ("/service/platform/content/v2.0/company/{company_id}/application/{application_id}/pages/")
+    @POST ("/service/platform/content/v1.0/company/{company_id}/application/{application_id}/pages")
+    suspend fun createPageV1(@Path("company_id") companyId: String, @Path("application_id") applicationId: String,@Body body: PageRequest)
+    : Response<PageSchema>
+    
+    @GET ("/service/platform/content/v1.0/company/{company_id}/application/{application_id}/pages")
+    suspend fun getPagesV1(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Query("page_no") pageNo: Int?, @Query("page_size") pageSize: Int?)
+    : Response<PageGetResponse>
+    
+    @POST ("/service/platform/content/v2.0/company/{company_id}/application/{application_id}/pages")
     suspend fun createPage(@Path("company_id") companyId: String, @Path("application_id") applicationId: String,@Body body: PageRequest)
     : Response<PageSchema>
     
-    @GET ("/service/platform/content/v2.0/company/{company_id}/application/{application_id}/pages/")
+    @GET ("/service/platform/content/v2.0/company/{company_id}/application/{application_id}/pages")
     suspend fun getPages(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Query("page_no") pageNo: Int?, @Query("page_size") pageSize: Int?)
     : Response<PageGetResponse>
     
     @PUT ("/service/platform/content/v2.0/company/{company_id}/application/{application_id}/pages/{id}")
     suspend fun updatePage(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Path("id") id: String,@Body body: PageSchema)
+    : Response<PageSchema>
+    
+    @GET ("/service/platform/content/v1.0/company/{company_id}/application/{application_id}/pages/{slug}")
+    suspend fun getPageBySlugV1(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Path("slug") slug: String)
     : Response<PageSchema>
     
     @GET ("/service/platform/content/v2.0/company/{company_id}/application/{application_id}/pages/{slug}")
@@ -314,7 +322,7 @@ interface ContentApiList {
     
     @GET ("/service/platform/content/v1.0/company/{company_id}/metafields/types")
     suspend fun getCustomFieldTypes(@Path("company_id") companyId: String)
-    : Response<CustomObjectByIdSchema>
+    : Response<MetafieldTypesSchema>
     
     @GET ("/service/platform/content/v1.0/company/{company_id}/metafields/resources")
     suspend fun getResources(@Path("company_id") companyId: String)
@@ -328,16 +336,16 @@ interface ContentApiList {
     suspend fun createCustomFieldDefinition(@Path("company_id") companyId: String,@Body body: CustomFieldDefinitionRequestSchema)
     : Response<CustomFieldDefinitionDetailResSchema>
     
-    @GET ("/service/platform/content/v1.0/company/{company_id}/metafields/definitions/{definition_id}")
-    suspend fun getCustomFieldDefinition(@Path("company_id") companyId: String, @Path("definition_id") definitionId: String)
+    @GET ("/service/platform/content/v1.0/company/{company_id}/metafields/definitions/{id}")
+    suspend fun getCustomFieldDefinition(@Path("company_id") companyId: String, @Path("id") id: String)
     : Response<CustomFieldDefinitionDetailResSchema>
     
-    @PUT ("/service/platform/content/v1.0/company/{company_id}/metafields/definitions/{definition_id}")
-    suspend fun updateCustomFieldDefinition(@Path("company_id") companyId: String, @Path("definition_id") definitionId: String,@Body body: CustomFieldDefinitionRequestSchema)
+    @PUT ("/service/platform/content/v1.0/company/{company_id}/metafields/definitions/{id}")
+    suspend fun updateCustomFieldDefinition(@Path("company_id") companyId: String, @Path("id") id: String,@Body body: CustomFieldDefinitionRequestSchema)
     : Response<CustomFieldDefinitionDetailResSchema>
     
-    @DELETE ("/service/platform/content/v1.0/company/{company_id}/metafields/definitions/{definition_id}")
-    suspend fun deleteCustomFieldDefinition(@Path("company_id") companyId: String, @Path("definition_id") definitionId: String)
+    @DELETE ("/service/platform/content/v1.0/company/{company_id}/metafields/definitions/{id}")
+    suspend fun deleteCustomFieldDefinition(@Path("company_id") companyId: String, @Path("id") id: String)
     : Response<CustomDataDeleteSchema>
     
     @GET ("/service/platform/content/v1.0/company/{company_id}/metafields/{resource}")
@@ -348,9 +356,21 @@ interface ContentApiList {
     suspend fun getCustomFieldsByResourceId(@Path("company_id") companyId: String, @Path("resource") resource: String, @Path("resource_id") resourceId: String)
     : Response<CustomFieldsResponseByResourceIdSchema>
     
-    @PUT ("/service/platform/content/v1.0/company/{company_id}/metafields/{resource}/{resource_id}")
+    @POST ("/service/platform/content/v1.0/company/{company_id}/metafields/{resource}/{resource_id}")
     suspend fun createCustomFieldByResourceId(@Path("company_id") companyId: String, @Path("resource") resource: String, @Path("resource_id") resourceId: String,@Body body: CustomFieldRequestSchema)
     : Response<CustomFieldsResponseByResourceIdSchema>
+    
+    @PUT ("/service/platform/content/v1.0/company/{company_id}/metafields/{resource}/{resource_id}")
+    suspend fun updateCustomFieldByResourceId(@Path("company_id") companyId: String, @Path("resource") resource: String, @Path("resource_id") resourceId: String,@Body body: CustomFieldRequestSchema)
+    : Response<CustomFieldsResponseByResourceIdSchema>
+    
+    @DELETE ("/service/platform/content/v1.0/company/{company_id}/metafields/{resource}/{resource_id}")
+    suspend fun deleteCustomFieldsByResourceId(@Path("company_id") companyId: String, @Path("resource") resource: String, @Path("resource_id") resourceId: String, @Query("ids") ids: String)
+    : Response<CustomFieldsDeleteSchema>
+    
+    @GET ("/service/platform/content/v1.0/company/{company_id}/metafields/jobs")
+    suspend fun getCustomFieldJobs(@Path("company_id") companyId: String, @Query("page") page: String, @Query("page_size") pageSize: String, @Query("action_type") actionType: String)
+    : Response<CustomFieldBulkEntry>
     
     @POST ("/service/platform/content/v1.0/company/{company_id}/metaobjects/definitions")
     suspend fun createCustomObjectDefinition(@Path("company_id") companyId: String,@Body body: CustomObjectDefinitionRequestSchema)
@@ -360,16 +380,16 @@ interface ContentApiList {
     suspend fun getCustomObjectDefinitions(@Path("company_id") companyId: String, @Query("page_no") pageNo: String, @Query("page_size") pageSize: String, @Query("search") search: String?)
     : Response<CustomObjectDefinitionsSchema>
     
-    @GET ("/service/platform/content/v1.0/company/{company_id}/metaobjects/definitions/{definition_id}")
-    suspend fun getCustomObjectDefinition(@Path("company_id") companyId: String, @Path("definition_id") definitionId: String)
+    @GET ("/service/platform/content/v1.0/company/{company_id}/metaobjects/definitions/{id}")
+    suspend fun getCustomObjectDefinition(@Path("company_id") companyId: String, @Path("id") id: String)
     : Response<CustomObjectDefinitionSchema>
     
-    @PUT ("/service/platform/content/v1.0/company/{company_id}/metaobjects/definitions/{definition_id}")
-    suspend fun updateCustomObjectDefinition(@Path("company_id") companyId: String, @Path("definition_id") definitionId: String,@Body body: CustomObjectDefinitionUpdateRequestSchema)
+    @PUT ("/service/platform/content/v1.0/company/{company_id}/metaobjects/definitions/{id}")
+    suspend fun updateCustomObjectDefinition(@Path("company_id") companyId: String, @Path("id") id: String,@Body body: CustomObjectDefinitionUpdateRequestSchema)
     : Response<CustomObjectDefinitionSchema>
     
-    @DELETE ("/service/platform/content/v1.0/company/{company_id}/metaobjects/definitions/{definition_id}")
-    suspend fun deleteCustomObjectDefinition(@Path("company_id") companyId: String, @Path("definition_id") definitionId: String)
+    @DELETE ("/service/platform/content/v1.0/company/{company_id}/metaobjects/definitions/{id}")
+    suspend fun deleteCustomObjectDefinition(@Path("company_id") companyId: String, @Path("id") id: String)
     : Response<CustomObjectDefinitionDeleteResponseSchema>
     
     @GET ("/service/platform/content/v1.0/company/{company_id}/metaobjects")
@@ -380,17 +400,17 @@ interface ContentApiList {
     suspend fun createCustomObject(@Path("company_id") companyId: String,@Body body: CustomObjectRequestSchema)
     : Response<CustomObjectSchema>
     
-    @GET ("/service/platform/content/v1.0/company/{company_id}/metaobjects/{metaobject_id}")
-    suspend fun getCustomObject(@Path("company_id") companyId: String, @Path("metaobject_id") metaobjectId: String)
+    @GET ("/service/platform/content/v1.0/company/{company_id}/metaobjects/{id}")
+    suspend fun getCustomObject(@Path("company_id") companyId: String, @Path("id") id: String)
     : Response<CustomObjectByIdSchema>
     
-    @DELETE ("/service/platform/content/v1.0/company/{company_id}/metaobjects/{metaobject_id}")
-    suspend fun deleteCustomObject(@Path("company_id") companyId: String, @Path("metaobject_id") metaobjectId: String)
+    @PUT ("/service/platform/content/v1.0/company/{company_id}/metaobjects/{id}")
+    suspend fun updateCustomObject(@Path("company_id") companyId: String, @Path("id") id: String,@Body body: CustomObjectRequestSchema)
+    : Response<CustomObjectSchema>
+    
+    @DELETE ("/service/platform/content/v1.0/company/{company_id}/metaobjects/{id}")
+    suspend fun deleteCustomObject(@Path("company_id") companyId: String, @Path("id") id: String)
     : Response<CustomDataDeleteSchema>
-    
-    @PUT ("/service/platform/content/v1.0/company/{company_id}/metaobjects/{metaobject_id}")
-    suspend fun updateCustomObject(@Path("company_id") companyId: String, @Path("metaobject_id") metaobjectId: String,@Body body: CustomObjectRequestSchema)
-    : Response<CustomObjectByIdSchema>
     
     @GET ("/service/platform/content/v1.0/company/{company_id}/metaobjects/jobs")
     suspend fun getJobs(@Path("company_id") companyId: String, @Query("page") page: String, @Query("page_size") pageSize: String, @Query("action_type") actionType: String)
@@ -406,11 +426,11 @@ interface ContentApiList {
     
     @GET ("/service/platform/content/v1.0/company/{company_id}/metaobjects/bulk/{definition_id}/sample")
     suspend fun sampleCustomObjectBulkEntry(@Path("company_id") companyId: String, @Path("definition_id") definitionId: String)
-    : Response<String>
+    : Response<ResponseBody>
     
     @GET ("/service/platform/content/v1.0/company/{company_id}/application/{application_id}/metafields/types")
     suspend fun getAppCustomFieldTypes(@Path("company_id") companyId: String, @Path("application_id") applicationId: String)
-    : Response<CustomObjectByIdSchema>
+    : Response<MetafieldTypesSchema>
     
     @GET ("/service/platform/content/v1.0/company/{company_id}/application/{application_id}/metafields/resources")
     suspend fun getAppResources(@Path("company_id") companyId: String, @Path("application_id") applicationId: String)
@@ -418,22 +438,22 @@ interface ContentApiList {
     
     @GET ("/service/platform/content/v1.0/company/{company_id}/application/{application_id}/metafields/definitions")
     suspend fun getAppCustomFieldDefinitions(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Query("page_no") pageNo: String, @Query("page_size") pageSize: String, @Query("resources") resources: String?, @Query("types") types: String?, @Query("search") search: String?)
-    : Response<CustomFieldDefinitionsSchema>
+    : Response<ApplicationCustomFieldDefinitionsSchema>
     
     @POST ("/service/platform/content/v1.0/company/{company_id}/application/{application_id}/metafields/definitions")
     suspend fun createAppCustomFieldDefinition(@Path("company_id") companyId: String, @Path("application_id") applicationId: String,@Body body: CustomFieldDefinitionRequestSchema)
     : Response<CustomFieldDefinitionDetailResSchema>
     
-    @GET ("/service/platform/content/v1.0/company/{company_id}/application/{application_id}/metafields/definitions/{definition_id}")
-    suspend fun getAppCustomFieldDefinition(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Path("definition_id") definitionId: String)
+    @GET ("/service/platform/content/v1.0/company/{company_id}/application/{application_id}/metafields/definitions/{id}")
+    suspend fun getAppCustomFieldDefinition(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Path("id") id: String)
     : Response<CustomFieldDefinitionDetailResSchema>
     
-    @PUT ("/service/platform/content/v1.0/company/{company_id}/application/{application_id}/metafields/definitions/{definition_id}")
-    suspend fun updateAppCustomFieldDefinition(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Path("definition_id") definitionId: String,@Body body: CustomFieldDefinitionRequestSchema)
+    @PUT ("/service/platform/content/v1.0/company/{company_id}/application/{application_id}/metafields/definitions/{id}")
+    suspend fun updateAppCustomFieldDefinition(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Path("id") id: String,@Body body: CustomFieldDefinitionRequestSchema)
     : Response<CustomFieldDefinitionDetailResSchema>
     
-    @DELETE ("/service/platform/content/v1.0/company/{company_id}/application/{application_id}/metafields/definitions/{definition_id}")
-    suspend fun deleteAppCustomFieldDefinition(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Path("definition_id") definitionId: String)
+    @DELETE ("/service/platform/content/v1.0/company/{company_id}/application/{application_id}/metafields/definitions/{id}")
+    suspend fun deleteAppCustomFieldDefinition(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Path("id") id: String)
     : Response<CustomDataDeleteSchema>
     
     @GET ("/service/platform/content/v1.0/company/{company_id}/application/{application_id}/metafields/{resource}")
@@ -444,9 +464,21 @@ interface ContentApiList {
     suspend fun getAppCustomFieldsByResourceId(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Path("resource") resource: String, @Path("resource_id") resourceId: String)
     : Response<CustomFieldsResponseByResourceIdSchema>
     
-    @PUT ("/service/platform/content/v1.0/company/{company_id}/application/{application_id}/metafields/{resource}/{resource_id}")
+    @POST ("/service/platform/content/v1.0/company/{company_id}/application/{application_id}/metafields/{resource}/{resource_id}")
     suspend fun createAppCustomFieldByResourceId(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Path("resource") resource: String, @Path("resource_id") resourceId: String,@Body body: CustomFieldRequestSchema)
     : Response<CustomFieldsResponseByResourceIdSchema>
+    
+    @PUT ("/service/platform/content/v1.0/company/{company_id}/application/{application_id}/metafields/{resource}/{resource_id}")
+    suspend fun updateAppCustomFieldByResourceId(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Path("resource") resource: String, @Path("resource_id") resourceId: String,@Body body: CustomFieldRequestSchema)
+    : Response<CustomFieldsResponseByResourceIdSchema>
+    
+    @DELETE ("/service/platform/content/v1.0/company/{company_id}/application/{application_id}/metafields/{resource}/{resource_id}")
+    suspend fun deleteAppCustomFieldsByResourceId(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Path("resource") resource: String, @Path("resource_id") resourceId: String, @Query("ids") ids: String)
+    : Response<CustomFieldsDeleteSchema>
+    
+    @GET ("/service/platform/content/v1.0/company/{company_id}/application/{application_id}/metafields/jobs")
+    suspend fun getAppCustomFieldJobs(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Query("page") page: String, @Query("page_size") pageSize: String, @Query("action_type") actionType: String)
+    : Response<CustomFieldBulkEntry>
     
     @POST ("/service/platform/content/v1.0/company/{company_id}/application/{application_id}/metaobjects/definitions")
     suspend fun createAppCustomObjectDefinition(@Path("company_id") companyId: String, @Path("application_id") applicationId: String,@Body body: CustomObjectDefinitionRequestSchema)
@@ -456,16 +488,16 @@ interface ContentApiList {
     suspend fun getAppCustomObjectDefinitions(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Query("page_no") pageNo: String, @Query("page_size") pageSize: String, @Query("search") search: String?)
     : Response<CustomObjectDefinitionsSchema>
     
-    @GET ("/service/platform/content/v1.0/company/{company_id}/application/{application_id}/metaobjects/definitions/{definition_id}")
-    suspend fun getAppCustomObjectDefinition(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Path("definition_id") definitionId: String)
+    @GET ("/service/platform/content/v1.0/company/{company_id}/application/{application_id}/metaobjects/definitions/{id}")
+    suspend fun getAppCustomObjectDefinition(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Path("id") id: String)
     : Response<CustomObjectDefinitionSchema>
     
-    @PUT ("/service/platform/content/v1.0/company/{company_id}/application/{application_id}/metaobjects/definitions/{definition_id}")
-    suspend fun updateAppCustomObjectDefinition(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Path("definition_id") definitionId: String,@Body body: CustomObjectDefinitionUpdateRequestSchema)
+    @PUT ("/service/platform/content/v1.0/company/{company_id}/application/{application_id}/metaobjects/definitions/{id}")
+    suspend fun updateAppCustomObjectDefinition(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Path("id") id: String,@Body body: CustomObjectDefinitionUpdateRequestSchema)
     : Response<CustomObjectDefinitionSchema>
     
-    @DELETE ("/service/platform/content/v1.0/company/{company_id}/application/{application_id}/metaobjects/definitions/{definition_id}")
-    suspend fun deleteAppCustomObjectDefinition(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Path("definition_id") definitionId: String)
+    @DELETE ("/service/platform/content/v1.0/company/{company_id}/application/{application_id}/metaobjects/definitions/{id}")
+    suspend fun deleteAppCustomObjectDefinition(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Path("id") id: String)
     : Response<CustomObjectDefinitionDeleteResponseSchema>
     
     @GET ("/service/platform/content/v1.0/company/{company_id}/application/{application_id}/metaobjects")
@@ -476,17 +508,17 @@ interface ContentApiList {
     suspend fun createAppCustomObject(@Path("company_id") companyId: String, @Path("application_id") applicationId: String,@Body body: CustomObjectRequestSchema)
     : Response<CustomObjectSchema>
     
-    @GET ("/service/platform/content/v1.0/company/{company_id}/application/{application_id}/metaobjects/{metaobject_id}")
-    suspend fun getAppCustomObject(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Path("metaobject_id") metaobjectId: String)
+    @GET ("/service/platform/content/v1.0/company/{company_id}/application/{application_id}/metaobjects/{id}")
+    suspend fun getAppCustomObject(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Path("id") id: String)
     : Response<CustomObjectByIdSchema>
     
-    @DELETE ("/service/platform/content/v1.0/company/{company_id}/application/{application_id}/metaobjects/{metaobject_id}")
-    suspend fun deleteAppCustomObject(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Path("metaobject_id") metaobjectId: String)
+    @PUT ("/service/platform/content/v1.0/company/{company_id}/application/{application_id}/metaobjects/{id}")
+    suspend fun updateAppCustomObject(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Path("id") id: String,@Body body: CustomObjectRequestSchema)
+    : Response<CustomObjectSchema>
+    
+    @DELETE ("/service/platform/content/v1.0/company/{company_id}/application/{application_id}/metaobjects/{id}")
+    suspend fun deleteAppCustomObject(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Path("id") id: String)
     : Response<CustomDataDeleteSchema>
-    
-    @PUT ("/service/platform/content/v1.0/company/{company_id}/application/{application_id}/metaobjects/{metaobject_id}")
-    suspend fun updateAppCustomObject(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Path("metaobject_id") metaobjectId: String,@Body body: CustomObjectRequestSchema)
-    : Response<CustomObjectByIdSchema>
     
     @GET ("/service/platform/content/v1.0/company/{company_id}/application/{application_id}/metaobjects/jobs")
     suspend fun getAppJobs(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Query("page") page: String, @Query("page_size") pageSize: String, @Query("action_type") actionType: String)
@@ -502,6 +534,6 @@ interface ContentApiList {
     
     @GET ("/service/platform/content/v1.0/company/{company_id}/application/{application_id}/metaobjects/bulk/{definition_id}/sample")
     suspend fun sampleAppCustomObjectBulkEntry(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Path("definition_id") definitionId: String)
-    : Response<String>
+    : Response<ResponseBody>
     
 }

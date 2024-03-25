@@ -14,6 +14,340 @@ import com.google.gson.annotations.SerializedName
 
              
 /*
+    Model: SendInstantResponse
+*/
+@Parcelize
+data class SendInstantResponse(
+    
+    
+    
+    @SerializedName("success")
+    var success: Boolean?=null,
+    
+    @SerializedName("provider")
+    var provider: String?=null,
+    
+    @SerializedName("response")
+    var response: Boolean?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: MetaStructure
+*/
+@Parcelize
+data class MetaStructure(
+    
+    
+    
+    @SerializedName("job_type")
+    var jobType: String?=null,
+    
+    @SerializedName("action")
+    var action: String?=null,
+    
+    @SerializedName("trace")
+    var trace: String?=null,
+    
+    @SerializedName("timestamp")
+    var timestamp: String?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: PayloadSmsTemplateStructure
+*/
+@Parcelize
+data class PayloadSmsTemplateStructure(
+    
+    
+    
+    @SerializedName("key")
+    var key: String?=null,
+    
+    @SerializedName("value")
+    var value: @RawValue HashMap<String,Any>?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: PayloadSmsProviderStructure
+*/
+@Parcelize
+data class PayloadSmsProviderStructure(
+    
+    
+    
+    @SerializedName("slug")
+    var slug: String?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: PayloadEmailTemplateStructure
+*/
+@Parcelize
+data class PayloadEmailTemplateStructure(
+    
+    
+    
+    @SerializedName("key")
+    var key: String?=null,
+    
+    @SerializedName("value")
+    var value: @RawValue HashMap<String,Any>?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: PayloadEmailProviderStructure
+*/
+@Parcelize
+data class PayloadEmailProviderStructure(
+    
+    
+    
+    @SerializedName("_id")
+    var id: String?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: PayloadEmailStructure
+*/
+@Parcelize
+data class PayloadEmailStructure(
+    
+    
+    
+    @SerializedName("template")
+    var template: PayloadEmailTemplateStructure?=null,
+    
+    @SerializedName("provider")
+    var provider: PayloadEmailProviderStructure?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: PayloadSmsStructure
+*/
+@Parcelize
+data class PayloadSmsStructure(
+    
+    
+    
+    @SerializedName("template")
+    var template: PayloadSmsTemplateStructure?=null,
+    
+    @SerializedName("provider")
+    var provider: PayloadSmsProviderStructure?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: SendSyncData
+*/
+@Parcelize
+data class SendSyncData(
+    
+    
+    
+    @SerializedName("phone_number")
+    var phoneNumber: String?=null,
+    
+    @SerializedName("country_code")
+    var countryCode: String?=null,
+    
+    @SerializedName("to")
+    var to: String?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: SendSyncRequest
+*/
+@Parcelize
+data class SendSyncRequest(
+    
+    
+    
+    @SerializedName("data")
+    var data: ArrayList<SendSyncData>?=null,
+    
+    @SerializedName("email")
+    var email: PayloadEmailStructure?=null,
+    
+    @SerializedName("sms")
+    var sms: PayloadSmsStructure?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: EngineRequest
+*/
+@Parcelize
+data class EngineRequest(
+    
+    
+    
+    @SerializedName("payload")
+    var payload: SendSyncRequest?=null,
+    
+    @SerializedName("meta")
+    var meta: MetaStructure?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: EngineResponse
+*/
+@Parcelize
+data class EngineResponse(
+    
+    
+    
+    @SerializedName("success")
+    var success: Boolean?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
     Model: EventSubscriptionsBulkUpdateRequest
 */
 @Parcelize
@@ -98,6 +432,38 @@ data class EventSubscriptionsBulkUpdateResponse(
 
              
 /*
+    Model: SubscriptionsObjectRequest
+*/
+@Parcelize
+data class SubscriptionsObjectRequest(
+    
+    
+    
+    @SerializedName("event")
+    var event: String?=null,
+    
+    @SerializedName("slug")
+    var slug: String?=null,
+    
+    @SerializedName("template")
+    var template: TemplateObject?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
     Model: SubscriptionsObject
 */
 @Parcelize
@@ -108,10 +474,20 @@ data class SubscriptionsObject(
     @SerializedName("_id")
     var id: String?=null,
     
+    @SerializedName("event")
+    var event: String?=null,
+    
+    @SerializedName("slug")
+    var slug: String?=null,
+    
     @SerializedName("template")
     var template: TemplateObject?=null
     
 ): Parcelable {
+    
+    
+    
+    
     
     
     
@@ -587,6 +963,15 @@ data class CampaignReq(
     
     
     
+    @SerializedName("recipient_headers")
+    var recipientHeaders: RecipientHeaders?=null,
+    
+    @SerializedName("email")
+    var email: CampaignEmail?=null,
+    
+    @SerializedName("datasource")
+    var datasource: String?=null,
+    
     @SerializedName("description")
     var description: String?=null,
     
@@ -615,6 +1000,12 @@ data class CampaignReq(
     var application: String?=null
     
 ): Parcelable {
+    
+    
+    
+    
+    
+    
     
     
     
@@ -767,7 +1158,7 @@ data class Campaign(
     var description: String?=null,
     
     @SerializedName("tags")
-    var tags: @RawValue ArrayList<Any>?=null,
+    var tags: ArrayList<String>?=null,
     
     @SerializedName("is_active")
     var isActive: Boolean?=null,
@@ -1632,6 +2023,38 @@ data class TemplateAndType(
 
              
 /*
+    Model: TemplateKeys
+*/
+@Parcelize
+data class TemplateKeys(
+    
+    
+    
+    @SerializedName("to")
+    var to: String?=null,
+    
+    @SerializedName("cc")
+    var cc: String?=null,
+    
+    @SerializedName("bcc")
+    var bcc: String?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
     Model: EmailTemplate
 */
 @Parcelize
@@ -1677,6 +2100,9 @@ data class EmailTemplate(
     
     @SerializedName("subject")
     var subject: TemplateAndType?=null,
+    
+    @SerializedName("keys")
+    var keys: TemplateKeys?=null,
     
     @SerializedName("html")
     var html: TemplateAndType?=null,
@@ -1724,6 +2150,8 @@ data class EmailTemplate(
     var text: TemplateAndType?=null
     
 ): Parcelable {
+    
+    
     
     
     
@@ -1948,15 +2376,15 @@ data class EmailTemplates(
 
              
 /*
-    Model: SystemEmailTemplates
+    Model: SubscribedSmsTemplates
 */
 @Parcelize
-data class SystemEmailTemplates(
+data class SubscribedSmsTemplates(
     
     
     
     @SerializedName("items")
-    var items: ArrayList<SystemEmailTemplate>?=null
+    var items: ArrayList<SmsTemplates>?=null
     
 ): Parcelable {
     
@@ -1970,147 +2398,17 @@ data class SystemEmailTemplates(
 
              
 /*
-    Model: PayloadEmailTemplateStructure
+    Model: SubscribedEmailTemplates
 */
 @Parcelize
-data class PayloadEmailTemplateStructure(
+data class SubscribedEmailTemplates(
     
     
     
-    @SerializedName("key")
-    var key: String?=null,
-    
-    @SerializedName("value")
-    var value: @RawValue Any?=null
+    @SerializedName("items")
+    var items: ArrayList<EmailTemplate>?=null
     
 ): Parcelable {
-    
-    
-    
-    
-    
-    
-    
-}
-
-
-
-             
-/*
-    Model: PayloadEmailProviderStructure
-*/
-@Parcelize
-data class PayloadEmailProviderStructure(
-    
-    
-    
-    @SerializedName("_id")
-    var id: String?=null
-    
-): Parcelable {
-    
-    
-    
-    
-    
-}
-
-
-
-             
-/*
-    Model: PayloadEmailStructure
-*/
-@Parcelize
-data class PayloadEmailStructure(
-    
-    
-    
-    @SerializedName("template")
-    var template: PayloadEmailTemplateStructure?=null,
-    
-    @SerializedName("provider")
-    var provider: PayloadEmailProviderStructure?=null
-    
-): Parcelable {
-    
-    
-    
-    
-    
-    
-    
-}
-
-
-
-             
-/*
-    Model: PayloadSmsTemplateStructure
-*/
-@Parcelize
-data class PayloadSmsTemplateStructure(
-    
-    
-    
-    @SerializedName("key")
-    var key: String?=null,
-    
-    @SerializedName("value")
-    var value: @RawValue Any?=null
-    
-): Parcelable {
-    
-    
-    
-    
-    
-    
-    
-}
-
-
-
-             
-/*
-    Model: PayloadSmsProviderStructure
-*/
-@Parcelize
-data class PayloadSmsProviderStructure(
-    
-    
-    
-    @SerializedName("_id")
-    var id: String?=null
-    
-): Parcelable {
-    
-    
-    
-    
-    
-}
-
-
-
-             
-/*
-    Model: PayloadSmsStructure
-*/
-@Parcelize
-data class PayloadSmsStructure(
-    
-    
-    
-    @SerializedName("template")
-    var template: PayloadSmsTemplateStructure?=null,
-    
-    @SerializedName("provider")
-    var provider: PayloadSmsProviderStructure?=null
-    
-): Parcelable {
-    
-    
     
     
     
@@ -2159,92 +2457,6 @@ data class PayloadStructure(
 
              
 /*
-    Model: MetaStructure
-*/
-@Parcelize
-data class MetaStructure(
-    
-    
-    
-    @SerializedName("job_type")
-    var jobType: String?=null,
-    
-    @SerializedName("action")
-    var action: String?=null,
-    
-    @SerializedName("trace")
-    var trace: String?=null,
-    
-    @SerializedName("timestamp")
-    var timestamp: String?=null
-    
-): Parcelable {
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-}
-
-
-
-             
-/*
-    Model: EngineRequest
-*/
-@Parcelize
-data class EngineRequest(
-    
-    
-    
-    @SerializedName("payload")
-    var payload: PayloadStructure?=null,
-    
-    @SerializedName("meta")
-    var meta: MetaStructure?=null
-    
-): Parcelable {
-    
-    
-    
-    
-    
-    
-    
-}
-
-
-
-             
-/*
-    Model: EngineResponse
-*/
-@Parcelize
-data class EngineResponse(
-    
-    
-    
-    @SerializedName("success")
-    var success: Boolean?=null
-    
-): Parcelable {
-    
-    
-    
-    
-    
-}
-
-
-
-             
-/*
     Model: EventSubscriptionTemplateSms
 */
 @Parcelize
@@ -2256,7 +2468,7 @@ data class EventSubscriptionTemplateSms(
     var subscribed: Boolean?=null,
     
     @SerializedName("template")
-    var template: String?=null
+    var template: @RawValue Any?=null
     
 ): Parcelable {
     
@@ -2283,11 +2495,33 @@ data class EventSubscriptionTemplateEmail(
     var subscribed: Boolean?=null,
     
     @SerializedName("template")
-    var template: String?=null
+    var template: @RawValue Any?=null
     
 ): Parcelable {
     
     
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: EventSubscriptionTemplatePushnotification
+*/
+@Parcelize
+data class EventSubscriptionTemplatePushnotification(
+    
+    
+    
+    @SerializedName("subscribed")
+    var subscribed: Boolean?=null
+    
+): Parcelable {
     
     
     
@@ -2310,9 +2544,14 @@ data class EventSubscriptionTemplate(
     var sms: EventSubscriptionTemplateSms?=null,
     
     @SerializedName("email")
-    var email: EventSubscriptionTemplateEmail?=null
+    var email: EventSubscriptionTemplateEmail?=null,
+    
+    @SerializedName("pushnotification")
+    var pushnotification: EventSubscriptionTemplatePushnotification?=null
     
 ): Parcelable {
+    
+    
     
     
     
@@ -2345,8 +2584,11 @@ data class EventSubscription(
     @SerializedName("application")
     var application: String?=null,
     
+    @SerializedName("category")
+    var category: String?=null,
+    
     @SerializedName("event")
-    var event: String?=null,
+    var event: @RawValue Any?=null,
     
     @SerializedName("slug")
     var slug: String?=null,
@@ -2361,6 +2603,8 @@ data class EventSubscription(
     var v: Int?=null
     
 ): Parcelable {
+    
+    
     
     
     
@@ -2805,9 +3049,56 @@ data class LogEmail(
     
     
     @SerializedName("template")
-    var template: String?=null
+    var template: String?=null,
+    
+    @SerializedName("provider")
+    var provider: String?=null,
+    
+    @SerializedName("to")
+    var to: String?=null
     
 ): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: LogSms
+*/
+@Parcelize
+data class LogSms(
+    
+    
+    
+    @SerializedName("template")
+    var template: String?=null,
+    
+    @SerializedName("provider")
+    var provider: String?=null,
+    
+    @SerializedName("phone_number")
+    var phoneNumber: String?=null,
+    
+    @SerializedName("country_code")
+    var countryCode: String?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
     
     
     
@@ -2848,11 +3139,17 @@ data class LogMeta(
     
     
     
+    @SerializedName("identifier")
+    var identifier: String?=null,
+    
     @SerializedName("type")
     var type: String?=null,
     
-    @SerializedName("identifier")
-    var identifier: String?=null,
+    @SerializedName("job")
+    var job: String?=null,
+    
+    @SerializedName("campaign")
+    var campaign: String?=null,
     
     @SerializedName("key")
     var key: String?=null,
@@ -2867,6 +3164,10 @@ data class LogMeta(
     var topic: String?=null
     
 ): Parcelable {
+    
+    
+    
+    
     
     
     
@@ -2898,17 +3199,17 @@ data class Log(
     @SerializedName("email")
     var email: LogEmail?=null,
     
+    @SerializedName("sms")
+    var sms: LogSms?=null,
+    
     @SerializedName("pushnotification")
     var pushnotification: LogPushnotification?=null,
-    
-    @SerializedName("meta")
-    var meta: LogMeta?=null,
     
     @SerializedName("_id")
     var id: String?=null,
     
-    @SerializedName("application")
-    var application: String?=null,
+    @SerializedName("pod")
+    var pod: String?=null,
     
     @SerializedName("service")
     var service: String?=null,
@@ -2916,19 +3217,29 @@ data class Log(
     @SerializedName("step")
     var step: String?=null,
     
+    @SerializedName("source")
+    var source: String?=null,
+    
     @SerializedName("status")
     var status: String?=null,
-    
-    @SerializedName("data")
-    var data: @RawValue Any?=null,
     
     @SerializedName("expire_at")
     var expireAt: String?=null,
     
     @SerializedName("created_at")
-    var createdAt: String?=null
+    var createdAt: String?=null,
+    
+    @SerializedName("meta")
+    var meta: LogMeta?=null,
+    
+    @SerializedName("application")
+    var application: String?=null
     
 ): Parcelable {
+    
+    
+    
+    
     
     
     
@@ -2998,7 +3309,7 @@ data class SendOtpSmsCommsTemplate(
     var key: String?=null,
     
     @SerializedName("value")
-    var value: @RawValue Any?=null
+    var value: String?=null
     
 ): Parcelable {
     
@@ -3079,7 +3390,7 @@ data class SendOtpEmailCommsTemplate(
     var key: String?=null,
     
     @SerializedName("value")
-    var value: @RawValue Any?=null
+    var value: String?=null
     
 ): Parcelable {
     
@@ -3398,9 +3709,14 @@ data class VerifyOtpCommsSuccessRes(
     var countryCode: String?=null,
     
     @SerializedName("message")
-    var message: String?=null
+    var message: String?=null,
+    
+    @SerializedName("email")
+    var email: String?=null
     
 ): Parcelable {
+    
+    
     
     
     
@@ -3591,6 +3907,9 @@ data class SmsProvider(
     @SerializedName("authkey")
     var authkey: String?=null,
     
+    @SerializedName("entity_id")
+    var entityId: String?=null,
+    
     @SerializedName("application")
     var application: String?=null,
     
@@ -3607,6 +3926,8 @@ data class SmsProvider(
     var v: Int?=null
     
 ): Parcelable {
+    
+    
     
     
     
@@ -4220,6 +4541,18 @@ data class Page(
     
     
     
+    @SerializedName("type")
+    var type: String?=null,
+    
+    @SerializedName("size")
+    var size: Int?=null,
+    
+    @SerializedName("current")
+    var current: Int?=null,
+    
+    @SerializedName("has_next")
+    var hasNext: Boolean?=null,
+    
     @SerializedName("item_total")
     var itemTotal: Int?=null,
     
@@ -4227,19 +4560,7 @@ data class Page(
     var nextId: String?=null,
     
     @SerializedName("has_previous")
-    var hasPrevious: Boolean?=null,
-    
-    @SerializedName("has_next")
-    var hasNext: Boolean?=null,
-    
-    @SerializedName("current")
-    var current: Int?=null,
-    
-    @SerializedName("type")
-    var type: String?=null,
-    
-    @SerializedName("size")
-    var size: Int?=null
+    var hasPrevious: Boolean?=null
     
 ): Parcelable {
     
@@ -4252,6 +4573,33 @@ data class Page(
     
     
     
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: BasicDelete
+*/
+@Parcelize
+data class BasicDelete(
+    
+    
+    
+    @SerializedName("acknowledged")
+    var acknowledged: Boolean?=null,
+    
+    @SerializedName("deleted_count")
+    var deletedCount: Int?=null
+    
+): Parcelable {
     
     
     
@@ -4442,6 +4790,33 @@ data class OtpConfigurationExpiry(
 
              
 /*
+    Model: OtpConfigRateLimit
+*/
+@Parcelize
+data class OtpConfigRateLimit(
+    
+    
+    
+    @SerializedName("duration")
+    var duration: Double?=null,
+    
+    @SerializedName("limit")
+    var limit: Double?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
     Model: OtpConfiguration
 */
 @Parcelize
@@ -4458,6 +4833,9 @@ data class OtpConfiguration(
     @SerializedName("expiry")
     var expiry: OtpConfigurationExpiry?=null,
     
+    @SerializedName("rate_limit")
+    var rateLimit: OtpConfigRateLimit?=null,
+    
     @SerializedName("application_id")
     var applicationId: String?=null,
     
@@ -4465,6 +4843,8 @@ data class OtpConfiguration(
     var companyId: String?=null
     
 ): Parcelable {
+    
+    
     
     
     

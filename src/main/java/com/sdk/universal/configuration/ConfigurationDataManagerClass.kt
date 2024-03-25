@@ -19,9 +19,9 @@ class ConfigurationDataManagerClass(val config: PublicConfig, val unauthorizedAc
 
     init{
             
-                    _relativeUrls["searchApplication"] = "/service/common/configuration/v1.0/application/search-application".substring(1)
+                    _relativeUrls["searchApplication"] = "/service/public/configuration/v1.0/application/search-application".substring(1)
             
-                    _relativeUrls["getLocations"] = "/service/common/configuration/v1.0/location".substring(1)
+                    _relativeUrls["getLocations"] = "/service/public/configuration/v1.0/location".substring(1)
             
     }
 

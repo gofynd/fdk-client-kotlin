@@ -55,7 +55,7 @@ class ContentDataManagerClass(val config: PublicConfig, val unauthorizedAction: 
         return retrofitHttpClient?.initializeRestClient(ContentApiList::class.java) as? ContentApiList
     }
     
-    suspend fun getCredentialsByEntity(entity: String?=null): Response<CredentialsSchema>? {
+    suspend fun getCredentialsByEntity(entity: String): Response<CredentialsSchema>? {
         var fullUrl : String? = _relativeUrls["getCredentialsByEntity"] 
         
         fullUrl = fullUrl?.replace("{" + "entity" +"}",entity.toString())

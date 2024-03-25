@@ -25,7 +25,11 @@ class PaymentDataManagerClass(val config: ApplicationConfig, val unauthorizedAct
             
                     _relativeUrls["getActiveCardAggregator"] = "/service/application/payment/v1.0/card/aggregator".substring(1)
             
+                    _relativeUrls["updateUserCard"] = "/service/application/payment/v1.0/card/aggregator".substring(1)
+            
                     _relativeUrls["getActiveUserCards"] = "/service/application/payment/v1.0/cards".substring(1)
+            
+                    _relativeUrls["updateActiveCards"] = "/service/application/payment/v1.0/cards".substring(1)
             
                     _relativeUrls["deleteUserCard"] = "/service/application/payment/v1.0/card/remove".substring(1)
             
@@ -53,7 +57,7 @@ class PaymentDataManagerClass(val config: ApplicationConfig, val unauthorizedAct
             
                     _relativeUrls["resendOrCancelPayment"] = "/service/application/payment/v1.0/payment/resend_or_cancel".substring(1)
             
-                    _relativeUrls["renderHTML"] = "/service/application/payment/v1.0/payment/html/render/".substring(1)
+                    _relativeUrls["renderHTML"] = "/service/application/payment/v1.0/payment/html/render".substring(1)
             
                     _relativeUrls["validateVPA"] = "/service/application/payment/v1.0/validate-vpa".substring(1)
             
@@ -69,47 +73,67 @@ class PaymentDataManagerClass(val config: ApplicationConfig, val unauthorizedAct
             
                     _relativeUrls["getOrderBeneficiariesDetail"] = "/service/application/payment/v1.0/refund/order/beneficiaries".substring(1)
             
-                    _relativeUrls["verifyOtpAndAddBeneficiaryForBank"] = "/service/application/payment/v1.0/refund/verification/bank".substring(1)
-            
                     _relativeUrls["addBeneficiaryDetails"] = "/service/application/payment/v1.0/refund/account".substring(1)
             
+                    _relativeUrls["verifyOtpAndAddBeneficiaryForBank"] = "/service/application/payment/v1.0/refund/verification/bank".substring(1)
+            
                     _relativeUrls["addRefundBankAccountUsingOTP"] = "/service/application/payment/v1.0/refund/account/otp".substring(1)
+            
+                    _relativeUrls["getotpOrderBeneficiariesDetail"] = "/service/application/payment/v1.0/refund/account/otp".substring(1)
             
                     _relativeUrls["verifyOtpAndAddBeneficiaryForWallet"] = "/service/application/payment/v1.0/refund/verification/wallet".substring(1)
             
                     _relativeUrls["updateDefaultBeneficiary"] = "/service/application/payment/v1.0/refund/beneficiary/default".substring(1)
             
-                    _relativeUrls["getPaymentLink"] = "/service/application/payment/v1.0/create-payment-link/".substring(1)
+                    _relativeUrls["getBenficiaryOrder"] = "/service/application/payment/v1.0/refund/beneficiaries/orders".substring(1)
             
-                    _relativeUrls["createPaymentLink"] = "/service/application/payment/v1.0/create-payment-link/".substring(1)
+                    _relativeUrls["getPaymentLink"] = "/service/application/payment/v1.0/create-payment-link".substring(1)
             
-                    _relativeUrls["resendPaymentLink"] = "/service/application/payment/v1.0/resend-payment-link/".substring(1)
+                    _relativeUrls["createPaymentLink"] = "/service/application/payment/v1.0/create-payment-link".substring(1)
             
-                    _relativeUrls["cancelPaymentLink"] = "/service/application/payment/v1.0/cancel-payment-link/".substring(1)
+                    _relativeUrls["getPaymentLinkId"] = "/service/application/payment/v1.0/create-payment-link/{id}".substring(1)
             
-                    _relativeUrls["getPaymentModeRoutesPaymentLink"] = "/service/application/payment/v1.0/payment/options/link/".substring(1)
+                    _relativeUrls["resendPaymentLink"] = "/service/application/payment/v1.0/resend-payment-link".substring(1)
             
-                    _relativeUrls["pollingPaymentLink"] = "/service/application/payment/v1.0/polling-payment-link/".substring(1)
+                    _relativeUrls["getPaymentModeRoutesPaymentLink"] = "/service/application/payment/v1.0/payment/options/link".substring(1)
             
-                    _relativeUrls["createOrderHandlerPaymentLink"] = "/service/application/payment/v1.0/create-order/link/".substring(1)
+                    _relativeUrls["pollingPaymentLink"] = "/service/application/payment/v1.0/polling-payment-link".substring(1)
             
-                    _relativeUrls["initialisePaymentPaymentLink"] = "/service/application/payment/v1.0/payment/request/link/".substring(1)
+                    _relativeUrls["createOrderHandlerPaymentLink"] = "/service/application/payment/v1.0/create-order/link".substring(1)
             
-                    _relativeUrls["checkAndUpdatePaymentStatusPaymentLink"] = "/service/application/payment/v1.0/payment/confirm/polling/link/".substring(1)
+                    _relativeUrls["initialisePaymentPaymentLink"] = "/service/application/payment/v1.0/payment/request/link".substring(1)
             
-                    _relativeUrls["customerCreditSummary"] = "/service/application/payment/v1.0/payment/credit-summary/".substring(1)
+                    _relativeUrls["checkAndUpdatePaymentStatusPaymentLink"] = "/service/application/payment/v1.0/payment/confirm/polling/link".substring(1)
             
-                    _relativeUrls["redirectToAggregator"] = "/service/application/payment/v1.0/payment/redirect-to-aggregator/".substring(1)
+                    _relativeUrls["customerCreditSummary"] = "/service/application/payment/v1.0/payment/credit-summary".substring(1)
             
-                    _relativeUrls["checkCredit"] = "/service/application/payment/v1.0/check-credits/".substring(1)
+                    _relativeUrls["redirectToAggregator"] = "/service/application/payment/v1.0/payment/redirect-to-aggregator".substring(1)
             
-                    _relativeUrls["customerOnboard"] = "/service/application/payment/v1.0/credit-onboard/".substring(1)
+                    _relativeUrls["checkCredit"] = "/service/application/payment/v1.0/check-credits".substring(1)
             
-                    _relativeUrls["outstandingOrderDetails"] = "/service/application/payment/v1.0/payment/outstanding-orders/".substring(1)
+                    _relativeUrls["customerOnboard"] = "/service/application/payment/v1.0/credit-onboard".substring(1)
             
-                    _relativeUrls["paidOrderDetails"] = "/service/application/payment/v1.0/payment/paid-orders/".substring(1)
+                    _relativeUrls["outstandingOrderDetails"] = "/service/application/payment/v1.0/payment/outstanding-orders".substring(1)
             
-                    _relativeUrls["createPaymentOrder"] = "/service/application/payment/v1.0/payment-orders/".substring(1)
+                    _relativeUrls["cancelPaymentLink"] = "/service/application/payment/v1.0/cancel-payment-link".substring(1)
+            
+                    _relativeUrls["paidOrderDetails"] = "/service/application/payment/v1.0/payment/paid-orders".substring(1)
+            
+                    _relativeUrls["createPaymentOrder"] = "/service/application/payment/v1.0/payment-orders".substring(1)
+            
+                    _relativeUrls["deleteBeneficiaryDetails"] = "/service/application/payment/v1.0/refund/account/{beneficiary_id}".substring(1)
+            
+                    _relativeUrls["getRefundOptions"] = "/service/application/payment/v1.0/payment/refundoptions".substring(1)
+            
+                    _relativeUrls["setRefundOptionforShipment"] = "/service/application/payment/v1.0/payment/refundoptions".substring(1)
+            
+                    _relativeUrls["getSelectedRefundOption"] = "/service/application/payment/v1.0/payment/selected_refund_options".substring(1)
+            
+                    _relativeUrls["getUserBeneficiariesDetailV2"] = "/service/application/payment/v2.0/refund/user/beneficiary".substring(1)
+            
+                    _relativeUrls["validateBeneficiaryAddress"] = "/service/application/payment/v1.0/validate/beneficiary-address".substring(1)
+            
+                    _relativeUrls["confirmPayment"] = "/service/application/payment/v1.0/payment/confirm".substring(1)
             
     }
 
@@ -167,10 +191,24 @@ class PaymentDataManagerClass(val config: ApplicationConfig, val unauthorizedAct
 
     
     
+    suspend fun updateUserCard(body: UpdateAggregatorCardRequest): Response<UpdateAggregatorCardResponse>? {
+        var fullUrl : String? = _relativeUrls["updateUserCard"] 
+        
+        return paymentApiList?.updateUserCard(fullUrl  ,body = body)}
+
+    
+    
     suspend fun getActiveUserCards(forceRefresh: Boolean?=null): Response<ListCardsResponse>? {
         var fullUrl : String? = _relativeUrls["getActiveUserCards"] 
         
         return paymentApiList?.getActiveUserCards(fullUrl    ,  forceRefresh = forceRefresh)}
+
+    
+    
+    suspend fun updateActiveCards(body: UpdateAggregatorCardRequest): Response<UpdateCardResponse>? {
+        var fullUrl : String? = _relativeUrls["updateActiveCards"] 
+        
+        return paymentApiList?.updateActiveCards(fullUrl  ,body = body)}
 
     
     
@@ -323,13 +361,6 @@ class PaymentDataManagerClass(val config: ApplicationConfig, val unauthorizedAct
 
     
     
-    suspend fun verifyOtpAndAddBeneficiaryForBank(body: AddBeneficiaryViaOtpVerificationRequest): Response<AddBeneficiaryViaOtpVerificationResponse>? {
-        var fullUrl : String? = _relativeUrls["verifyOtpAndAddBeneficiaryForBank"] 
-        
-        return paymentApiList?.verifyOtpAndAddBeneficiaryForBank(fullUrl  ,body = body)}
-
-    
-    
     suspend fun addBeneficiaryDetails(body: AddBeneficiaryDetailsRequest): Response<RefundAccountResponse>? {
         var fullUrl : String? = _relativeUrls["addBeneficiaryDetails"] 
         
@@ -337,10 +368,24 @@ class PaymentDataManagerClass(val config: ApplicationConfig, val unauthorizedAct
 
     
     
-    suspend fun addRefundBankAccountUsingOTP(body: AddBeneficiaryDetailsOTPRequest): Response<RefundAccountResponse>? {
+    suspend fun verifyOtpAndAddBeneficiaryForBank(body: AddBeneficiaryViaOtpVerificationRequest): Response<AddBeneficiaryViaOtpVerificationResponse>? {
+        var fullUrl : String? = _relativeUrls["verifyOtpAndAddBeneficiaryForBank"] 
+        
+        return paymentApiList?.verifyOtpAndAddBeneficiaryForBank(fullUrl  ,body = body)}
+
+    
+    
+    suspend fun addRefundBankAccountUsingOTP(body: AddBeneficiaryDetailsOTPRequest): Response<PostAddBeneficiaryDetailsOTPResponse>? {
         var fullUrl : String? = _relativeUrls["addRefundBankAccountUsingOTP"] 
         
         return paymentApiList?.addRefundBankAccountUsingOTP(fullUrl  ,body = body)}
+
+    
+    
+    suspend fun getotpOrderBeneficiariesDetail(orderId: String, requestHash: String): Response<AddBeneficiaryDetailsOTPResponse>? {
+        var fullUrl : String? = _relativeUrls["getotpOrderBeneficiariesDetail"] 
+        
+        return paymentApiList?.getotpOrderBeneficiariesDetail(fullUrl    ,  orderId = orderId,    requestHash = requestHash)}
 
     
     
@@ -358,6 +403,13 @@ class PaymentDataManagerClass(val config: ApplicationConfig, val unauthorizedAct
 
     
     
+    suspend fun getBenficiaryOrder(body: RefundOrderBenRequest): Response<RefundOrderBenResponse>? {
+        var fullUrl : String? = _relativeUrls["getBenficiaryOrder"] 
+        
+        return paymentApiList?.getBenficiaryOrder(fullUrl  ,body = body)}
+
+    
+    
     suspend fun getPaymentLink(paymentLinkId: String?=null): Response<GetPaymentLinkResponse>? {
         var fullUrl : String? = _relativeUrls["getPaymentLink"] 
         
@@ -372,17 +424,19 @@ class PaymentDataManagerClass(val config: ApplicationConfig, val unauthorizedAct
 
     
     
+    suspend fun getPaymentLinkId(id: String, paymentLinkId: String): Response<GetPaymentLinkResponse>? {
+        var fullUrl : String? = _relativeUrls["getPaymentLinkId"] 
+        
+        fullUrl = fullUrl?.replace("{" + "id" +"}",id.toString())
+        
+        return paymentApiList?.getPaymentLinkId(fullUrl     ,  paymentLinkId = paymentLinkId)}
+
+    
+    
     suspend fun resendPaymentLink(body: CancelOrResendPaymentLinkRequest): Response<ResendPaymentLinkResponse>? {
         var fullUrl : String? = _relativeUrls["resendPaymentLink"] 
         
         return paymentApiList?.resendPaymentLink(fullUrl  ,body = body)}
-
-    
-    
-    suspend fun cancelPaymentLink(body: CancelOrResendPaymentLinkRequest): Response<CancelPaymentLinkResponse>? {
-        var fullUrl : String? = _relativeUrls["cancelPaymentLink"] 
-        
-        return paymentApiList?.cancelPaymentLink(fullUrl  ,body = body)}
 
     
     
@@ -393,7 +447,7 @@ class PaymentDataManagerClass(val config: ApplicationConfig, val unauthorizedAct
 
     
     
-    suspend fun pollingPaymentLink(paymentLinkId: String?=null): Response<PollingPaymentLinkResponse>? {
+    suspend fun pollingPaymentLink(paymentLinkId: String): Response<PollingPaymentLinkResponse>? {
         var fullUrl : String? = _relativeUrls["pollingPaymentLink"] 
         
         return paymentApiList?.pollingPaymentLink(fullUrl    ,  paymentLinkId = paymentLinkId)}
@@ -456,6 +510,13 @@ class PaymentDataManagerClass(val config: ApplicationConfig, val unauthorizedAct
 
     
     
+    suspend fun cancelPaymentLink(body: CancelOrResendPaymentLinkRequest): Response<CancelPaymentLinkResponse>? {
+        var fullUrl : String? = _relativeUrls["cancelPaymentLink"] 
+        
+        return paymentApiList?.cancelPaymentLink(fullUrl  ,body = body)}
+
+    
+    
     suspend fun paidOrderDetails(aggregator: String?=null): Response<PaidOrderDetailsResponse>? {
         var fullUrl : String? = _relativeUrls["paidOrderDetails"] 
         
@@ -467,6 +528,57 @@ class PaymentDataManagerClass(val config: ApplicationConfig, val unauthorizedAct
         var fullUrl : String? = _relativeUrls["createPaymentOrder"] 
         
         return paymentApiList?.createPaymentOrder(fullUrl  ,body = body)}
+
+    
+    
+    suspend fun deleteBeneficiaryDetails(beneficiaryId: String): Response<DeleteRefundAccountResponse>? {
+        var fullUrl : String? = _relativeUrls["deleteBeneficiaryDetails"] 
+        
+        fullUrl = fullUrl?.replace("{" + "beneficiary_id" +"}",beneficiaryId.toString())
+        
+        return paymentApiList?.deleteBeneficiaryDetails(fullUrl   )}
+
+    
+    
+    suspend fun getRefundOptions(configuration: String, productType: String?=null, amount: String?=null, orderType: String?=null): Response<ShipmentRefundResponse>? {
+        var fullUrl : String? = _relativeUrls["getRefundOptions"] 
+        
+        return paymentApiList?.getRefundOptions(fullUrl    ,  configuration = configuration,    productType = productType,    amount = amount,    orderType = orderType)}
+
+    
+    
+    suspend fun setRefundOptionforShipment(body: ShipmentRefundRequest): Response<ShipmentRefundResponse>? {
+        var fullUrl : String? = _relativeUrls["setRefundOptionforShipment"] 
+        
+        return paymentApiList?.setRefundOptionforShipment(fullUrl  ,body = body)}
+
+    
+    
+    suspend fun getSelectedRefundOption(shipmentId: String, orderId: String): Response<SelectedRefundOptionResponse>? {
+        var fullUrl : String? = _relativeUrls["getSelectedRefundOption"] 
+        
+        return paymentApiList?.getSelectedRefundOption(fullUrl    ,  shipmentId = shipmentId,    orderId = orderId)}
+
+    
+    
+    suspend fun getUserBeneficiariesDetailV2(orderId: String?=null, shipmentId: String?=null, mop: String?=null): Response<OrderBeneficiaryResponseSchemaV2>? {
+        var fullUrl : String? = _relativeUrls["getUserBeneficiariesDetailV2"] 
+        
+        return paymentApiList?.getUserBeneficiariesDetailV2(fullUrl    ,  orderId = orderId,    shipmentId = shipmentId,    mop = mop)}
+
+    
+    
+    suspend fun validateBeneficiaryAddress(body: ValidateValidateAddressRequest): Response<ValidateValidateAddressResponse>? {
+        var fullUrl : String? = _relativeUrls["validateBeneficiaryAddress"] 
+        
+        return paymentApiList?.validateBeneficiaryAddress(fullUrl  ,body = body)}
+
+    
+    
+    suspend fun confirmPayment(body: PaymentConfirmationRequest): Response<PaymentConfirmationResponse>? {
+        var fullUrl : String? = _relativeUrls["confirmPayment"] 
+        
+        return paymentApiList?.confirmPayment(fullUrl  ,body = body)}
 
     
     

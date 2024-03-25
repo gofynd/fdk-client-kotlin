@@ -14,28 +14,6 @@ import com.google.gson.annotations.SerializedName
 
              
 /*
-    Model: ClickStatsResponse
-*/
-@Parcelize
-data class ClickStatsResponse(
-    
-    
-    
-    @SerializedName("click_stats")
-    var clickStats: ArrayList<ClickStatsItem>?=null
-    
-): Parcelable {
-    
-    
-    
-    
-    
-}
-
-
-
-             
-/*
     Model: ClickStatsItem
 */
 @Parcelize
