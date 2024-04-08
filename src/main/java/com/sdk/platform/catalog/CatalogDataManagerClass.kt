@@ -838,7 +838,7 @@ class CatalogDataManagerClass(val config: PlatformConfig, val unauthorizedAction
     }
     
     
-    suspend fun getSizeGuide(id: String)
+    suspend fun getSizeGuide(id: String, )
     : Response<SizeGuideResponse>? {
         
         return if (config.oauthClient.isAccessTokenValid()) {
@@ -873,7 +873,7 @@ class CatalogDataManagerClass(val config: PlatformConfig, val unauthorizedAction
     
     
     
-    suspend fun getAllProductHsnCodes(pageNo: Int?=null, pageSize: Int?=null, q: String?=null, type: String?=null)
+    suspend fun getAllProductHsnCodes(pageNo: Int?=null, pageSize: Int?=null, q: String?=null, type: String?=null, )
     : Response<HsnCodesListingResponseSchemaV2>? {
         
         return if (config.oauthClient.isAccessTokenValid()) {
@@ -885,7 +885,7 @@ class CatalogDataManagerClass(val config: PlatformConfig, val unauthorizedAction
     }
     
     
-    suspend fun getSingleProductHSNCode(reportingHsn: String)
+    suspend fun getSingleProductHSNCode(reportingHsn: String, )
     : Response<HSNDataInsertV2>? {
         
         return if (config.oauthClient.isAccessTokenValid()) {

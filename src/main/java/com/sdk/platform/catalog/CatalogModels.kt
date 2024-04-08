@@ -1676,72 +1676,18 @@ data class Action(
     
     
     
+    @SerializedName("type")
+    var type: String?=null,
+    
     @SerializedName("page")
     var page: ActionPage?=null,
     
-    @SerializedName("type")
-    var type: String?=null
+    @SerializedName("popup")
+    var popup: ActionPage?=null
     
 ): Parcelable {
     
     
-    
-    
-    
-    
-    
-}
-
-
-
-             
-/*
-    Model: ActionProperties
-*/
-@Parcelize
-data class ActionProperties(
-    
-    
-    
-    @SerializedName("category")
-    var category: ArrayList<String>?=null,
-    
-    @SerializedName("department")
-    var department: ArrayList<String>?=null,
-    
-    @SerializedName("collection")
-    var collection: ArrayList<String>?=null
-    
-): Parcelable {
-    
-    
-    
-    
-    
-    
-    
-    
-    
-}
-
-
-
-             
-/*
-    Model: ActionPage
-*/
-@Parcelize
-data class ActionPage(
-    
-    
-    
-    @SerializedName("query")
-    var query: ActionProperties?=null,
-    
-    @SerializedName("type")
-    var type: String?=null
-    
-): Parcelable {
     
     
     
@@ -8765,9 +8711,14 @@ data class RawProduct(
     var verifiedBy: VerifiedBy?=null,
     
     @SerializedName("verified_on")
-    var verifiedOn: String?=null
+    var verifiedOn: String?=null,
+    
+    @SerializedName("store_id_list")
+    var storeIdList: ArrayList<String>?=null
     
 ): Parcelable {
+    
+    
     
     
     
@@ -15948,9 +15899,19 @@ data class OwnerAppItemResponse(
     var moq: @RawValue HashMap<String,Any>?=null,
     
     @SerializedName("seo")
-    var seo: @RawValue HashMap<String,Any>?=null
+    var seo: @RawValue HashMap<String,Any>?=null,
+    
+    @SerializedName("_custom_json")
+    var customJson: @RawValue HashMap<String,Any>?=null,
+    
+    @SerializedName("_custom_meta")
+    var customMeta: ArrayList<MetaFields>?=null
     
 ): Parcelable {
+    
+    
+    
+    
     
     
     
@@ -16021,26 +15982,26 @@ data class Page(
     
     
     
-    @SerializedName("current")
-    var current: Int?=null,
-    
-    @SerializedName("has_next")
-    var hasNext: Boolean?=null,
-    
-    @SerializedName("has_previous")
-    var hasPrevious: Boolean?=null,
-    
     @SerializedName("item_total")
     var itemTotal: Int?=null,
     
     @SerializedName("next_id")
     var nextId: String?=null,
     
-    @SerializedName("size")
-    var size: Int?=null,
+    @SerializedName("has_previous")
+    var hasPrevious: Boolean?=null,
+    
+    @SerializedName("has_next")
+    var hasNext: Boolean?=null,
+    
+    @SerializedName("current")
+    var current: Int?=null,
     
     @SerializedName("type")
-    var type: String?=null
+    var type: String?=null,
+    
+    @SerializedName("size")
+    var size: Int?=null
     
 ): Parcelable {
     
@@ -25569,6 +25530,45 @@ data class PriceFactoryCreateErrorSchema(
     
     
 }
+
+
+
+             
+/*
+    Model: ActionPage
+*/
+@Parcelize
+data class ActionPage(
+    
+    
+    
+    @SerializedName("params")
+    var params: HashMap<String,ArrayList<String>>?=null,
+    
+    @SerializedName("query")
+    var query: HashMap<String,ArrayList<String>>?=null,
+    
+    @SerializedName("url")
+    var url: String?=null,
+    
+    @SerializedName("type")
+    var type: PageType?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+}
+
+
 
 
 

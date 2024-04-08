@@ -21,15 +21,9 @@ class LogisticDataManagerClass(val config: ApplicationConfig, val unauthorizedAc
             
                     _relativeUrls["getAllCountries"] = "/service/application/logistics/v1.0/country-list".substring(1)
             
-                    _relativeUrls["getPincodeZones"] = "/service/application/logistics/v1.0/pincode/zones".substring(1)
-            
                     _relativeUrls["getZones"] = "/service/application/logistics/v2.0/company/{company_id}/application/{application_id}/zones".substring(1)
             
                     _relativeUrls["getGeoAreas"] = "/service/application/logistics/v1.0/company/{company_id}/application/{application_id}/geoareas".substring(1)
-            
-                    _relativeUrls["getOptimalLocations"] = "/service/application/logistics/v1.0/reassign_stores".substring(1)
-            
-                    _relativeUrls["getLocations"] = "/service/application/logistics/v1.0/locations".substring(1)
             
                     _relativeUrls["getCountries"] = "/service/application/logistics/v1.0/countries".substring(1)
             
@@ -40,6 +34,8 @@ class LogisticDataManagerClass(val config: ApplicationConfig, val unauthorizedAc
                     _relativeUrls["getLocality"] = "/service/application/logistics/v1.0/localities/{locality_type}/{locality_value}".substring(1)
             
                     _relativeUrls["validateAddress"] = "/service/application/logistics/v1.0/country/{country_iso_code}/address/templates/{template_name}/validate".substring(1)
+            
+                    _relativeUrls["createShipments"] = "/service/application/logistics/v1.0/company/{company_id}/application/{application_id}/shipments".substring(1)
             
     }
 
@@ -83,21 +79,14 @@ class LogisticDataManagerClass(val config: ApplicationConfig, val unauthorizedAc
 
     
     
-    suspend fun getPincodeZones(body: GetZoneFromPincodeViewRequest): Response<GetZoneFromPincodeViewResponse>? {
-        var fullUrl : String? = _relativeUrls["getPincodeZones"] 
-        
-        return logisticApiList?.getPincodeZones(fullUrl  ,body = body)}
-
-    
-    
-    suspend fun getZones(companyId: Int, applicationId: String, stage: String?=null, pageSize: Int?=null, zoneIds: String?=null, isActive: Boolean?=null, q: String?=null, country: String?=null, countryIsoCode: String?=null, pincode: String?=null, state: String?=null, city: String?=null, sector: String?=null): Response<ListViewResponseV2>? {
+    suspend fun getZones(companyId: Int, applicationId: String, stage: String?=null, pageSize: Int?=null, isActive: Boolean?=null, q: String?=null, countryIsoCode: String?=null, pincode: String?=null, state: String?=null, city: String?=null, sector: String?=null): Response<ListViewResponseV2>? {
         var fullUrl : String? = _relativeUrls["getZones"] 
         
         fullUrl = fullUrl?.replace("{" + "company_id" +"}",companyId.toString())
         
         fullUrl = fullUrl?.replace("{" + "application_id" +"}",applicationId.toString())
         
-        return logisticApiList?.getZones(fullUrl      ,  stage = stage,    pageSize = pageSize,    zoneIds = zoneIds,    isActive = isActive,    q = q,    country = country,    countryIsoCode = countryIsoCode,    pincode = pincode,    state = state,    city = city,    sector = sector)}
+        return logisticApiList?.getZones(fullUrl      ,  stage = stage,    pageSize = pageSize,    isActive = isActive,    q = q,    countryIsoCode = countryIsoCode,    pincode = pincode,    state = state,    city = city,    sector = sector)}
 
     
     
@@ -112,24 +101,10 @@ class LogisticDataManagerClass(val config: ApplicationConfig, val unauthorizedAc
 
     
     
-    suspend fun getOptimalLocations(body: ReAssignStoreRequest): Response<ReAssignStoreResponse>? {
-        var fullUrl : String? = _relativeUrls["getOptimalLocations"] 
-        
-        return logisticApiList?.getOptimalLocations(fullUrl  ,body = body)}
-
-    
-    
-    suspend fun getLocations(xApplicationId: String, xApplicationData: String, country: String?=null, state: String?=null, city: String?=null, pincode: Int?=null, sector: String?=null, pageNo: Int?=null, pageSize: Int?=null): Response<GetStoreResponse>? {
-        var fullUrl : String? = _relativeUrls["getLocations"] 
-        
-        return logisticApiList?.getLocations(fullUrl    ,  xApplicationId = xApplicationId,    xApplicationData = xApplicationData,    country = country,    state = state,    city = city,    pincode = pincode,    sector = sector,    pageNo = pageNo,    pageSize = pageSize)}
-
-    
-    
-    suspend fun getCountries(onboarding: Boolean?=null, pageNo: Int?=null, pageSize: Int?=null, q: String?=null, hierarchy: String?=null): Response<GetCountries>? {
+    suspend fun getCountries(onboard: Boolean?=null, pageNo: Int?=null, pageSize: Int?=null, q: String?=null, hierarchy: String?=null): Response<GetCountries>? {
         var fullUrl : String? = _relativeUrls["getCountries"] 
         
-        return logisticApiList?.getCountries(fullUrl    ,  onboarding = onboarding,    pageNo = pageNo,    pageSize = pageSize,    q = q,    hierarchy = hierarchy)}
+        return logisticApiList?.getCountries(fullUrl    ,  onboard = onboard,    pageNo = pageNo,    pageSize = pageSize,    q = q,    hierarchy = hierarchy)}
 
     
     
@@ -162,7 +137,7 @@ class LogisticDataManagerClass(val config: ApplicationConfig, val unauthorizedAc
     *
     * Summary: Paginator for getCountries
     **/
-    fun getCountriesPaginator(onboarding: Boolean?=null, pageSize: Int?=null, q: String?=null, hierarchy: String?=null) : Paginator<GetCountries>{
+    fun getCountriesPaginator(onboard: Boolean?=null, pageSize: Int?=null, q: String?=null, hierarchy: String?=null) : Paginator<GetCountries>{
 
     val paginator = Paginator<GetCountries>()
 
@@ -175,7 +150,7 @@ class LogisticDataManagerClass(val config: ApplicationConfig, val unauthorizedAc
                 val pageType = "number"
                 var fullUrl : String? = _relativeUrls["getCountries"] 
                 
-                logisticApiList?.getCountries(fullUrl , onboarding = onboarding, pageNo = pageNo, pageSize = pageSize, q = q, hierarchy = hierarchy)?.safeAwait{ response, error ->
+                logisticApiList?.getCountries(fullUrl , onboard = onboard, pageNo = pageNo, pageSize = pageSize, q = q, hierarchy = hierarchy)?.safeAwait{ response, error ->
                     response?.let {
                         val page = response.peekContent()?.page
                         paginator.setPaginator(hasNext=page?.hasNext?:false,pageNo=if (page?.hasNext == true) ((pageNo ?: 0) + 1) else pageNo)
@@ -202,12 +177,12 @@ class LogisticDataManagerClass(val config: ApplicationConfig, val unauthorizedAc
 
     
     
-    suspend fun getLocalities(localityType: String, country: String?=null, state: String?=null, city: String?=null, pageNo: Int?=null, pageSize: Int?=null, q: String?=null, name: String?=null, namesList: String?=null): Response<GetLocalities>? {
+    suspend fun getLocalities(localityType: String, country: String?=null, state: String?=null, city: String?=null, pageNo: Int?=null, pageSize: Int?=null, q: String?=null, name: String?=null): Response<GetLocalities>? {
         var fullUrl : String? = _relativeUrls["getLocalities"] 
         
         fullUrl = fullUrl?.replace("{" + "locality_type" +"}",localityType.toString())
         
-        return logisticApiList?.getLocalities(fullUrl     ,  country = country,    state = state,    city = city,    pageNo = pageNo,    pageSize = pageSize,    q = q,    name = name,    namesList = namesList)}
+        return logisticApiList?.getLocalities(fullUrl     ,  country = country,    state = state,    city = city,    pageNo = pageNo,    pageSize = pageSize,    q = q,    name = name)}
 
     
     
@@ -233,11 +208,6 @@ class LogisticDataManagerClass(val config: ApplicationConfig, val unauthorizedAc
             
             
         
-            
-            
-        
-            
-                
             
             
         
@@ -260,7 +230,7 @@ class LogisticDataManagerClass(val config: ApplicationConfig, val unauthorizedAc
     *
     * Summary: Paginator for getLocalities
     **/
-    fun getLocalitiesPaginator(localityType: String, country: String?=null, state: String?=null, city: String?=null, pageSize: Int?=null, q: String?=null, name: String?=null, namesList: String?=null) : Paginator<GetLocalities>{
+    fun getLocalitiesPaginator(localityType: String, country: String?=null, state: String?=null, city: String?=null, pageSize: Int?=null, q: String?=null, name: String?=null) : Paginator<GetLocalities>{
 
     val paginator = Paginator<GetLocalities>()
 
@@ -275,7 +245,7 @@ class LogisticDataManagerClass(val config: ApplicationConfig, val unauthorizedAc
                 
                 fullUrl = fullUrl?.replace("{" + "locality_type" +"}",localityType.toString())
                 
-                logisticApiList?.getLocalities(fullUrl , country = country, state = state, city = city, pageNo = pageNo, pageSize = pageSize, q = q, name = name, namesList = namesList)?.safeAwait{ response, error ->
+                logisticApiList?.getLocalities(fullUrl , country = country, state = state, city = city, pageNo = pageNo, pageSize = pageSize, q = q, name = name)?.safeAwait{ response, error ->
                     response?.let {
                         val page = response.peekContent()?.page
                         paginator.setPaginator(hasNext=page?.hasNext?:false,pageNo=if (page?.hasNext == true) ((pageNo ?: 0) + 1) else pageNo)
@@ -312,6 +282,17 @@ class LogisticDataManagerClass(val config: ApplicationConfig, val unauthorizedAc
         fullUrl = fullUrl?.replace("{" + "template_name" +"}",templateName.toString())
         
         return logisticApiList?.validateAddress(fullUrl    ,body = body)}
+
+    
+    
+    suspend fun createShipments(companyId: Int, applicationId: String, body: GenerateShipmentsRequest): Response<GenerateShipmentsAndCourierPartnerResponse>? {
+        var fullUrl : String? = _relativeUrls["createShipments"] 
+        
+        fullUrl = fullUrl?.replace("{" + "company_id" +"}",companyId.toString())
+        
+        fullUrl = fullUrl?.replace("{" + "application_id" +"}",applicationId.toString())
+        
+        return logisticApiList?.createShipments(fullUrl    ,body = body)}
 
     
     

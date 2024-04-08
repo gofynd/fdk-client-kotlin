@@ -937,9 +937,34 @@ data class ValidateCustomerData(
     var amount: Int?=null,
     
     @SerializedName("user_id")
-    var userId: String?=null
+    var userId: String?=null,
+    
+    @SerializedName("customer_mobile_number")
+    var customerMobileNumber: String?=null,
+    
+    @SerializedName("total_credited_balance")
+    var totalCreditedBalance: Double?=null,
+    
+    @SerializedName("is_cn_locked")
+    var isCnLocked: Boolean?=null,
+    
+    @SerializedName("total_locked_amount")
+    var totalLockedAmount: Double?=null,
+    
+    @SerializedName("allowed_redemption_amount")
+    var allowedRedemptionAmount: Double?=null
     
 ): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     
     
     
@@ -6645,9 +6670,14 @@ data class ShipmentRefundRequestMeta(
     var utr: String?=null,
     
     @SerializedName("notes")
-    var notes: String?=null
+    var notes: String?=null,
+    
+    @SerializedName("billing_employee_code")
+    var billingEmployeeCode: String?=null
     
 ): Parcelable {
+    
+    
     
     
     
@@ -6802,9 +6832,19 @@ data class RefundOptionsPriority(
     var paymentModes: ArrayList<String>?=null,
     
     @SerializedName("items")
-    var items: ArrayList<RefundItem>?=null
+    var items: ArrayList<RefundItem>?=null,
+    
+    @SerializedName("payment_gateways")
+    var paymentGateways: ArrayList<String>?=null,
+    
+    @SerializedName("offline_refund_collect_type")
+    var offlineRefundCollectType: ArrayList<String>?=null
     
 ): Parcelable {
+    
+    
+    
+    
     
     
     

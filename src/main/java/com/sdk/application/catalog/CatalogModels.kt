@@ -1220,9 +1220,14 @@ data class ProductSize(
     var value: String?=null,
     
     @SerializedName("display")
-    var display: String?=null
+    var display: String?=null,
+    
+    @SerializedName("set")
+    var set: ProductSetV3?=null
     
 ): Parcelable {
+    
+    
     
     
     
@@ -2127,33 +2132,28 @@ data class Page(
     
     
     
+    @SerializedName("item_total")
+    var itemTotal: Int?=null,
+    
     @SerializedName("next_id")
     var nextId: String?=null,
-    
-    @SerializedName("size")
-    var size: Int?=null,
-    
-    @SerializedName("current")
-    var current: Int?=null,
-    
-    @SerializedName("has_next")
-    var hasNext: Boolean?=null,
     
     @SerializedName("has_previous")
     var hasPrevious: Boolean?=null,
     
-    @SerializedName("total")
-    var total: Int?=null,
+    @SerializedName("has_next")
+    var hasNext: Boolean?=null,
+    
+    @SerializedName("current")
+    var current: Int?=null,
     
     @SerializedName("type")
     var type: String?=null,
     
-    @SerializedName("item_total")
-    var itemTotal: Int?=null
+    @SerializedName("size")
+    var size: Int?=null
     
 ): Parcelable {
-    
-    
     
     
     
@@ -3543,6 +3543,9 @@ data class GetCollectionDetailNest(
     @SerializedName("uid")
     var uid: String?=null,
     
+    @SerializedName("_id")
+    var id: String?=null,
+    
     @SerializedName("sort_on")
     var sortOn: String?=null,
     
@@ -3616,6 +3619,8 @@ data class GetCollectionDetailNest(
     var schedule: Schedule?=null
     
 ): Parcelable {
+    
+    
     
     
     
@@ -3883,9 +3888,14 @@ data class CollectionDetailResponse(
     var tag: ArrayList<String>?=null,
     
     @SerializedName("app_id")
-    var appId: String?=null
+    var appId: String?=null,
+    
+    @SerializedName("_id")
+    var id: String?=null
     
 ): Parcelable {
+    
+    
     
     
     

@@ -2784,12 +2784,6 @@ data class UserSchema(
     @SerializedName("user_id")
     var userId: String?=null,
     
-    @SerializedName("password_last_modified")
-    var passwordLastModified: String?=null,
-    
-    @SerializedName("password_history")
-    var passwordHistory: ArrayList<UserPasswordHistory>?=null,
-    
     @SerializedName("first_name")
     var firstName: String?=null,
     
@@ -2830,7 +2824,13 @@ data class UserSchema(
     var createdAt: String?=null,
     
     @SerializedName("updated_at")
-    var updatedAt: String?=null
+    var updatedAt: String?=null,
+    
+    @SerializedName("external_id")
+    var externalId: String?=null,
+    
+    @SerializedName("rr_id")
+    var rrId: String?=null
     
 ): Parcelable {
     
@@ -2885,6 +2885,12 @@ data class PhoneNumber(
     
     
     
+    @SerializedName("phone")
+    var phone: String?=null,
+    
+    @SerializedName("country_code")
+    var countryCode: Int?=null,
+    
     @SerializedName("active")
     var active: Boolean?=null,
     
@@ -2892,13 +2898,7 @@ data class PhoneNumber(
     var primary: Boolean?=null,
     
     @SerializedName("verified")
-    var verified: Boolean?=null,
-    
-    @SerializedName("phone")
-    var phone: String?=null,
-    
-    @SerializedName("country_code")
-    var countryCode: Int?=null
+    var verified: Boolean?=null
     
 ): Parcelable {
     
@@ -2927,17 +2927,17 @@ data class Email(
     
     
     
-    @SerializedName("primary")
-    var primary: Boolean?=null,
-    
-    @SerializedName("verified")
-    var verified: Boolean?=null,
-    
     @SerializedName("email")
     var email: String?=null,
     
     @SerializedName("active")
-    var active: Boolean?=null
+    var active: Boolean?=null,
+    
+    @SerializedName("primary")
+    var primary: Boolean?=null,
+    
+    @SerializedName("verified")
+    var verified: Boolean?=null
     
 ): Parcelable {
     

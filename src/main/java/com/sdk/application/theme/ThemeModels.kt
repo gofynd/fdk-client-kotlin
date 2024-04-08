@@ -250,53 +250,16 @@ data class Action(
     
     
     
+    @SerializedName("type")
+    var type: String?=null,
+    
     @SerializedName("page")
     var page: ActionPage?=null,
     
     @SerializedName("popup")
-    var popup: ActionPage?=null,
-    
-    @SerializedName("type")
-    var type: String?=null
+    var popup: ActionPage?=null
     
 ): Parcelable {
-    
-    
-    
-    
-    
-    
-    
-    
-    
-}
-
-
-
-             
-/*
-    Model: ActionPage
-*/
-@Parcelize
-data class ActionPage(
-    
-    
-    
-    @SerializedName("params")
-    var params: HashMap<String,ArrayList<String>>?=null,
-    
-    @SerializedName("query")
-    var query: HashMap<String,ArrayList<String>>?=null,
-    
-    @SerializedName("url")
-    var url: String?=null,
-    
-    @SerializedName("type")
-    var type: String?=null
-    
-): Parcelable {
-    
-    
     
     
     
@@ -1513,13 +1476,171 @@ data class StaticProps(
     var orderTracking: @RawValue HashMap<String,Any>?=null,
     
     @SerializedName("manifest")
-    var manifest: @RawValue HashMap<String,Any>?=null
+    var manifest: ManifestConfig?=null
     
 ): Parcelable {
     
     
     
     
+    
+    
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: ManifestConfig
+*/
+@Parcelize
+data class ManifestConfig(
+    
+    
+    
+    @SerializedName("active")
+    var active: Boolean?=null,
+    
+    @SerializedName("name")
+    var name: String?=null,
+    
+    @SerializedName("description")
+    var description: String?=null,
+    
+    @SerializedName("install_desktop")
+    var installDesktop: Boolean?=null,
+    
+    @SerializedName("install_mobile")
+    var installMobile: Boolean?=null,
+    
+    @SerializedName("button_text")
+    var buttonText: String?=null,
+    
+    @SerializedName("icons")
+    var icons: ArrayList<IconManifest>?=null,
+    
+    @SerializedName("screenshots")
+    var screenshots: ArrayList<ScreenshotManifest>?=null,
+    
+    @SerializedName("shortcuts")
+    var shortcuts: ArrayList<ShortcutManifest>?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: IconManifest
+*/
+@Parcelize
+data class IconManifest(
+    
+    
+    
+    @SerializedName("src")
+    var src: String?=null,
+    
+    @SerializedName("type")
+    var type: String?=null,
+    
+    @SerializedName("sizes")
+    var sizes: String?=null,
+    
+    @SerializedName("icon_opacity")
+    var iconOpacity: String?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: ScreenshotManifest
+*/
+@Parcelize
+data class ScreenshotManifest(
+    
+    
+    
+    @SerializedName("src")
+    var src: String?=null,
+    
+    @SerializedName("type")
+    var type: String?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: ShortcutManifest
+*/
+@Parcelize
+data class ShortcutManifest(
+    
+    
+    
+    @SerializedName("name")
+    var name: String?=null,
+    
+    @SerializedName("url")
+    var url: String?=null,
+    
+    @SerializedName("icons")
+    var icons: ArrayList<IconManifest>?=null
+    
+): Parcelable {
     
     
     
@@ -2501,6 +2622,45 @@ data class BlitzkriegApiErrorSchema(
     
     
 }
+
+
+
+             
+/*
+    Model: ActionPage
+*/
+@Parcelize
+data class ActionPage(
+    
+    
+    
+    @SerializedName("params")
+    var params: HashMap<String,ArrayList<String>>?=null,
+    
+    @SerializedName("query")
+    var query: HashMap<String,ArrayList<String>>?=null,
+    
+    @SerializedName("url")
+    var url: String?=null,
+    
+    @SerializedName("type")
+    var type: PageType?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+}
+
+
 
 
 

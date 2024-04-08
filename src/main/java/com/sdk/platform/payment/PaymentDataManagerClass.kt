@@ -783,30 +783,30 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     }
     
     
-    suspend fun getMerchantRefundPriority(configType: String)
+    suspend fun getMerchantRefundPriority(configType: String, businessUnit: String)
     : Response<RefundPriorityResponseSerializer>? {
         return if (config.oauthClient.isAccessTokenValid()) {
-                paymentApiList?.getMerchantRefundPriority(companyId = config.companyId , applicationId = applicationId , configType = configType )
+                paymentApiList?.getMerchantRefundPriority(companyId = config.companyId , applicationId = applicationId , configType = configType, businessUnit = businessUnit )
         } else {
             null
         }
     }
     
     
-    suspend fun createMerchantRefundPriority(configType: String,body: RefundPriorityRequestSerializer)
+    suspend fun createMerchantRefundPriority(configType: String, businessUnit: String,body: RefundPriorityRequestSerializer)
     : Response<RefundPriorityResponseSerializer>? {
         return if (config.oauthClient.isAccessTokenValid()) {
-                paymentApiList?.createMerchantRefundPriority(companyId = config.companyId , applicationId = applicationId , configType = configType, body = body)
+                paymentApiList?.createMerchantRefundPriority(companyId = config.companyId , applicationId = applicationId , configType = configType, businessUnit = businessUnit, body = body)
         } else {
             null
         }
     }
     
     
-    suspend fun updateMerchantRefundPriority(configType: String,body: RefundPriorityRequestSerializer)
+    suspend fun updateMerchantRefundPriority(configType: String, businessUnit: String,body: RefundPriorityRequestSerializer)
     : Response<RefundPriorityResponseSerializer>? {
         return if (config.oauthClient.isAccessTokenValid()) {
-                paymentApiList?.updateMerchantRefundPriority(companyId = config.companyId , applicationId = applicationId , configType = configType, body = body)
+                paymentApiList?.updateMerchantRefundPriority(companyId = config.companyId , applicationId = applicationId , configType = configType, businessUnit = businessUnit, body = body)
         } else {
             null
         }

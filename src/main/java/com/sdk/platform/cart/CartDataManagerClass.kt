@@ -110,6 +110,16 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
 
     
     
+    suspend fun createCoupon(body: CouponAdd)
+    : Response<CouponDetailResponse>? {
+        return if (config.oauthClient.isAccessTokenValid()) {
+                cartApiList?.createCoupon(companyId = config.companyId , applicationId = applicationId , body = body)
+        } else {
+            null
+        }
+    }
+    
+    
     suspend fun getCoupons(pageNo: Int?=null, pageSize: Int?=null, isArchived: Boolean?=null, title: String?=null, isPublic: Boolean?=null, isDisplay: Boolean?=null, typeSlug: String?=null, code: String?=null)
     : Response<CouponsResponse>? {
         return if (config.oauthClient.isAccessTokenValid()) {
@@ -208,16 +218,6 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     })
     return paginator
     }
-    
-    suspend fun createCoupon(body: CouponAdd)
-    : Response<CouponDetailResponse>? {
-        return if (config.oauthClient.isAccessTokenValid()) {
-                cartApiList?.createCoupon(companyId = config.companyId , applicationId = applicationId , body = body)
-        } else {
-            null
-        }
-    }
-    
     
     suspend fun getCouponTags()
     : Response<TagsViewResponse>? {

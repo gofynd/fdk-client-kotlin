@@ -4176,8 +4176,14 @@ data class Page(
     
     
     
-    @SerializedName("size")
-    var size: Int?=null,
+    @SerializedName("item_total")
+    var itemTotal: Int?=null,
+    
+    @SerializedName("next_id")
+    var nextId: String?=null,
+    
+    @SerializedName("has_previous")
+    var hasPrevious: Boolean?=null,
     
     @SerializedName("has_next")
     var hasNext: Boolean?=null,
@@ -4188,10 +4194,14 @@ data class Page(
     @SerializedName("type")
     var type: String?=null,
     
-    @SerializedName("item_total")
-    var itemTotal: Int?=null
+    @SerializedName("size")
+    var size: Int?=null
     
 ): Parcelable {
+    
+    
+    
+    
     
     
     
@@ -5334,9 +5344,34 @@ data class ValidateCustomerData(
     var amount: Int?=null,
     
     @SerializedName("user_id")
-    var userId: String?=null
+    var userId: String?=null,
+    
+    @SerializedName("customer_mobile_number")
+    var customerMobileNumber: String?=null,
+    
+    @SerializedName("total_credited_balance")
+    var totalCreditedBalance: Double?=null,
+    
+    @SerializedName("is_cn_locked")
+    var isCnLocked: Boolean?=null,
+    
+    @SerializedName("total_locked_amount")
+    var totalLockedAmount: Double?=null,
+    
+    @SerializedName("allowed_redemption_amount")
+    var allowedRedemptionAmount: Double?=null
     
 ): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     
     
     
@@ -7731,6 +7766,9 @@ data class RefundSourcesPriority(
     
     
     
+    @SerializedName("enabled")
+    var enabled: Boolean?=null,
+    
     @SerializedName("description")
     var description: String?=null,
     
@@ -7741,6 +7779,8 @@ data class RefundSourcesPriority(
     var source: String?=null
     
 ): Parcelable {
+    
+    
     
     
     
@@ -7772,6 +7812,9 @@ data class RefundPriorityResponseSerializer(
     @SerializedName("apportion")
     var apportion: Boolean?=null,
     
+    @SerializedName("business_unit")
+    var businessUnit: String?=null,
+    
     @SerializedName("refund_sources_priority")
     var refundSourcesPriority: ArrayList<RefundSourcesPriority>?=null,
     
@@ -7779,6 +7822,8 @@ data class RefundPriorityResponseSerializer(
     var message: String?=null
     
 ): Parcelable {
+    
+    
     
     
     
@@ -9281,9 +9326,14 @@ data class ShipmentRefundRequestMeta(
     var utr: String?=null,
     
     @SerializedName("notes")
-    var notes: String?=null
+    var notes: String?=null,
+    
+    @SerializedName("billing_employee_code")
+    var billingEmployeeCode: String?=null
     
 ): Parcelable {
+    
+    
     
     
     
@@ -9438,9 +9488,19 @@ data class RefundOptionsPriority(
     var paymentModes: ArrayList<String>?=null,
     
     @SerializedName("items")
-    var items: ArrayList<RefundItem>?=null
+    var items: ArrayList<RefundItem>?=null,
+    
+    @SerializedName("payment_gateways")
+    var paymentGateways: ArrayList<String>?=null,
+    
+    @SerializedName("offline_refund_collect_type")
+    var offlineRefundCollectType: ArrayList<String>?=null
     
 ): Parcelable {
+    
+    
+    
+    
     
     
     

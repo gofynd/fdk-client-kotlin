@@ -44,7 +44,7 @@ class FileStorageDataManagerClass(val config: PlatformConfig, val unauthorizedAc
     }
     
     
-    suspend fun startUpload(namespace: String,body: StartRequest)
+    suspend fun startUpload(namespace: String, body: StartRequest)
     : Response<StartResponse>? {
         
         return if (config.oauthClient.isAccessTokenValid()) {
@@ -56,7 +56,7 @@ class FileStorageDataManagerClass(val config: PlatformConfig, val unauthorizedAc
     }
     
     
-    suspend fun completeUpload(namespace: String,body: StartResponse)
+    suspend fun completeUpload(namespace: String, body: StartResponse)
     : Response<CompleteResponse>? {
         
         return if (config.oauthClient.isAccessTokenValid()) {
@@ -82,7 +82,7 @@ class FileStorageDataManagerClass(val config: PlatformConfig, val unauthorizedAc
     }
     
     
-    suspend fun copyFiles(sync: Boolean?=null,body: CopyFiles)
+    suspend fun copyFiles(sync: Boolean?=null, body: CopyFiles)
     : Response<HashMap<String,Any>>? {
         
         return if (config.oauthClient.isAccessTokenValid()) {

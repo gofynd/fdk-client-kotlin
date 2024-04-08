@@ -1726,48 +1726,16 @@ data class Action(
     
     
     
+    @SerializedName("type")
+    var type: String?=null,
+    
     @SerializedName("page")
     var page: ActionPage?=null,
     
-    @SerializedName("type")
-    var type: String?=null
+    @SerializedName("popup")
+    var popup: ActionPage?=null
     
 ): Parcelable {
-    
-    
-    
-    
-    
-    
-    
-}
-
-
-
-             
-/*
-    Model: ActionPage
-*/
-@Parcelize
-data class ActionPage(
-    
-    
-    
-    @SerializedName("params")
-    var params: HashMap<String,ArrayList<String>>?=null,
-    
-    @SerializedName("query")
-    var query: HashMap<String,ArrayList<String>>?=null,
-    
-    @SerializedName("url")
-    var url: String?=null,
-    
-    @SerializedName("type")
-    var type: String?=null
-    
-): Parcelable {
-    
-    
     
     
     
@@ -1805,9 +1773,6 @@ data class NavigationReference(
     @SerializedName("type")
     var type: String?=null,
     
-    @SerializedName("action")
-    var action: Action?=null,
-    
     @SerializedName("active")
     var active: Boolean?=null,
     
@@ -1824,8 +1789,6 @@ data class NavigationReference(
     var subNavigation: ArrayList<NavigationReference>?=null
     
 ): Parcelable {
-    
-    
     
     
     
@@ -2969,9 +2932,6 @@ data class LandingPageSchema(
     @SerializedName("slug")
     var slug: String?=null,
     
-    @SerializedName("action")
-    var action: Action?=null,
-    
     @SerializedName("platform")
     var platform: ArrayList<String>?=null,
     
@@ -2997,8 +2957,6 @@ data class LandingPageSchema(
     var v: Double?=null
     
 ): Parcelable {
-    
-    
     
     
     
@@ -6918,6 +6876,45 @@ data class CustomObjectBulkSchema(
     
     
 }
+
+
+
+             
+/*
+    Model: ActionPage
+*/
+@Parcelize
+data class ActionPage(
+    
+    
+    
+    @SerializedName("params")
+    var params: HashMap<String,ArrayList<String>>?=null,
+    
+    @SerializedName("query")
+    var query: HashMap<String,ArrayList<String>>?=null,
+    
+    @SerializedName("url")
+    var url: String?=null,
+    
+    @SerializedName("type")
+    var type: PageType?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+}
+
+
 
 
 

@@ -260,16 +260,16 @@ interface PaymentApiList {
     suspend fun updateAggregatorCredential(@Path("company_id") companyId: String, @Path("application_id") applicationId: String,@Body body: AggregatorCredentialRequest)
     : Response<PatchAggregatorCredentialResponse>
     
-    @GET ("/service/platform/payment/v1.0/company/{company_id}/application/{application_id}/refund_priority/config/{config_type}")
-    suspend fun getMerchantRefundPriority(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Path("config_type") configType: String)
+    @GET ("/service/platform/payment/v1.0/company/{company_id}/application/{application_id}/refund_priority/config/{config_type}/{business_unit}")
+    suspend fun getMerchantRefundPriority(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Path("config_type") configType: String, @Path("business_unit") businessUnit: String)
     : Response<RefundPriorityResponseSerializer>
     
-    @POST ("/service/platform/payment/v1.0/company/{company_id}/application/{application_id}/refund_priority/config/{config_type}")
-    suspend fun createMerchantRefundPriority(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Path("config_type") configType: String,@Body body: RefundPriorityRequestSerializer)
+    @POST ("/service/platform/payment/v1.0/company/{company_id}/application/{application_id}/refund_priority/config/{config_type}/{business_unit}")
+    suspend fun createMerchantRefundPriority(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Path("config_type") configType: String, @Path("business_unit") businessUnit: String,@Body body: RefundPriorityRequestSerializer)
     : Response<RefundPriorityResponseSerializer>
     
-    @PUT ("/service/platform/payment/v1.0/company/{company_id}/application/{application_id}/refund_priority/config/{config_type}")
-    suspend fun updateMerchantRefundPriority(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Path("config_type") configType: String,@Body body: RefundPriorityRequestSerializer)
+    @PUT ("/service/platform/payment/v1.0/company/{company_id}/application/{application_id}/refund_priority/config/{config_type}/{business_unit}")
+    suspend fun updateMerchantRefundPriority(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Path("config_type") configType: String, @Path("business_unit") businessUnit: String,@Body body: RefundPriorityRequestSerializer)
     : Response<RefundPriorityResponseSerializer>
     
     @POST ("/service/platform/payment/v1.0/company/{company_id}/application/{application_id}/payment-orders")

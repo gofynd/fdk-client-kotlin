@@ -15,13 +15,8 @@ interface LogisticApiList {
     : Response<CountryListResponse>
     
     
-    @POST 
-    suspend fun getPincodeZones(@Url url1: String?   ,@Body body: GetZoneFromPincodeViewRequest)
-    : Response<GetZoneFromPincodeViewResponse>
-    
-    
     @GET 
-    suspend fun getZones(@Url url1: String?      ,            @Query("stage") stage: String?, @Query("page_size") pageSize: Int?, @Query("zone_ids") zoneIds: String?, @Query("is_active") isActive: Boolean?, @Query("q") q: String?, @Query("country") country: String?, @Query("country_iso_code") countryIsoCode: String?, @Query("pincode") pincode: String?, @Query("state") state: String?, @Query("city") city: String?, @Query("sector") sector: String?)
+    suspend fun getZones(@Url url1: String?      ,          @Query("stage") stage: String?, @Query("page_size") pageSize: Int?, @Query("is_active") isActive: Boolean?, @Query("q") q: String?, @Query("country_iso_code") countryIsoCode: String?, @Query("pincode") pincode: String?, @Query("state") state: String?, @Query("city") city: String?, @Query("sector") sector: String?)
     : Response<ListViewResponseV2>
     
     
@@ -30,18 +25,8 @@ interface LogisticApiList {
     : Response<GeoAreaGetResponseBody>
     
     
-    @POST 
-    suspend fun getOptimalLocations(@Url url1: String?   ,@Body body: ReAssignStoreRequest)
-    : Response<ReAssignStoreResponse>
-    
-    
     @GET 
-    suspend fun getLocations(@Url url1: String?    ,          @Query("x-application-id") xApplicationId: String, @Query("x-application-data") xApplicationData: String, @Query("country") country: String?, @Query("state") state: String?, @Query("city") city: String?, @Query("pincode") pincode: Int?, @Query("sector") sector: String?, @Query("page_no") pageNo: Int?, @Query("page_size") pageSize: Int?)
-    : Response<GetStoreResponse>
-    
-    
-    @GET 
-    suspend fun getCountries(@Url url1: String?    ,      @Query("onboarding") onboarding: Boolean?, @Query("page_no") pageNo: Int?, @Query("page_size") pageSize: Int?, @Query("q") q: String?, @Query("hierarchy") hierarchy: String?)
+    suspend fun getCountries(@Url url1: String?    ,      @Query("onboard") onboard: Boolean?, @Query("page_no") pageNo: Int?, @Query("page_size") pageSize: Int?, @Query("q") q: String?, @Query("hierarchy") hierarchy: String?)
     : Response<GetCountries>
     
     
@@ -51,7 +36,7 @@ interface LogisticApiList {
     
     
     @GET 
-    suspend fun getLocalities(@Url url1: String?     ,         @Query("country") country: String?, @Query("state") state: String?, @Query("city") city: String?, @Query("page_no") pageNo: Int?, @Query("page_size") pageSize: Int?, @Query("q") q: String?, @Query("name") name: String?, @Query("names_list") namesList: String?)
+    suspend fun getLocalities(@Url url1: String?     ,        @Query("country") country: String?, @Query("state") state: String?, @Query("city") city: String?, @Query("page_no") pageNo: Int?, @Query("page_size") pageSize: Int?, @Query("q") q: String?, @Query("name") name: String?)
     : Response<GetLocalities>
     
     
@@ -63,5 +48,10 @@ interface LogisticApiList {
     @POST 
     suspend fun validateAddress(@Url url1: String?     ,@Body body: ValidateAddressRequest)
     : Response<ValidateAddressRequest>
+    
+    
+    @POST 
+    suspend fun createShipments(@Url url1: String?     ,@Body body: GenerateShipmentsRequest)
+    : Response<GenerateShipmentsAndCourierPartnerResponse>
     
 }

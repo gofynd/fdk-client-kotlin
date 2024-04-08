@@ -8,13 +8,13 @@ import com.sdk.platform.*
 
 interface CartApiList {
     
-    @GET ("/service/platform/cart/v1.0/company/{company_id}/application/{application_id}/coupon")
-    suspend fun getCoupons(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Query("page_no") pageNo: Int?, @Query("page_size") pageSize: Int?, @Query("is_archived") isArchived: Boolean?, @Query("title") title: String?, @Query("is_public") isPublic: Boolean?, @Query("is_display") isDisplay: Boolean?, @Query("type_slug") typeSlug: String?, @Query("code") code: String?)
-    : Response<CouponsResponse>
-    
     @POST ("/service/platform/cart/v1.0/company/{company_id}/application/{application_id}/coupon")
     suspend fun createCoupon(@Path("company_id") companyId: String, @Path("application_id") applicationId: String,@Body body: CouponAdd)
     : Response<CouponDetailResponse>
+    
+    @GET ("/service/platform/cart/v1.0/company/{company_id}/application/{application_id}/coupon")
+    suspend fun getCoupons(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Query("page_no") pageNo: Int?, @Query("page_size") pageSize: Int?, @Query("is_archived") isArchived: Boolean?, @Query("title") title: String?, @Query("is_public") isPublic: Boolean?, @Query("is_display") isDisplay: Boolean?, @Query("type_slug") typeSlug: String?, @Query("code") code: String?)
+    : Response<CouponsResponse>
     
     @GET ("/service/platform/cart/v1.0/company/{company_id}/application/{application_id}/coupon-tags")
     suspend fun getCouponTags(@Path("company_id") companyId: String, @Path("application_id") applicationId: String)

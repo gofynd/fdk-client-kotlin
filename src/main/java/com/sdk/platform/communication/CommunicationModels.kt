@@ -14,6 +14,329 @@ import com.google.gson.annotations.SerializedName
 
              
 /*
+    Model: AppProvidersGlobalProviderRequestObjProvider
+*/
+@Parcelize
+data class AppProvidersGlobalProviderRequestObjProvider(
+    
+    
+    
+    @SerializedName("provider")
+    var provider: String?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: AppProvidersGlobalProviderRequestObj
+*/
+@Parcelize
+data class AppProvidersGlobalProviderRequestObj(
+    
+    
+    
+    @SerializedName("transaction")
+    var transaction: AppProvidersGlobalProviderRequestObjProvider?=null,
+    
+    @SerializedName("otp")
+    var otp: AppProvidersGlobalProviderRequestObjProvider?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: AppProvidersGlobalProviderRequest
+*/
+@Parcelize
+data class AppProvidersGlobalProviderRequest(
+    
+    
+    
+    @SerializedName("email")
+    var email: AppProvidersGlobalProviderRequestObj?=null,
+    
+    @SerializedName("sms")
+    var sms: AppProvidersGlobalProviderRequestObj?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: UpdateAppProvidersGlobalProviderResponseEmailSmsObj
+*/
+@Parcelize
+data class UpdateAppProvidersGlobalProviderResponseEmailSmsObj(
+    
+    
+    
+    @SerializedName("default_provider")
+    var defaultProvider: String?=null,
+    
+    @SerializedName("otp_provider")
+    var otpProvider: String?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: UpdateAppProvidersGlobalProviderResponse
+*/
+@Parcelize
+data class UpdateAppProvidersGlobalProviderResponse(
+    
+    
+    
+    @SerializedName("email")
+    var email: UpdateAppProvidersGlobalProviderResponseEmailSmsObj?=null,
+    
+    @SerializedName("sms")
+    var sms: UpdateAppProvidersGlobalProviderResponseEmailSmsObj?=null,
+    
+    @SerializedName("_id")
+    var id: String?=null,
+    
+    @SerializedName("slug")
+    var slug: String?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: DefaultEmailProvidersFromAddresses
+*/
+@Parcelize
+data class DefaultEmailProvidersFromAddresses(
+    
+    
+    
+    @SerializedName("name")
+    var name: String?=null,
+    
+    @SerializedName("email")
+    var email: String?=null,
+    
+    @SerializedName("is_default")
+    var isDefault: Boolean?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: DefaultEmailProviders
+*/
+@Parcelize
+data class DefaultEmailProviders(
+    
+    
+    
+    @SerializedName("_id")
+    var id: String?=null,
+    
+    @SerializedName("from_address")
+    var fromAddress: ArrayList<DefaultEmailProvidersFromAddresses>?=null,
+    
+    @SerializedName("name")
+    var name: String?=null,
+    
+    @SerializedName("is_default")
+    var isDefault: Boolean?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: PushtokenReq
+*/
+@Parcelize
+data class PushtokenReq(
+    
+    
+    
+    @SerializedName("action")
+    var action: String?=null,
+    
+    @SerializedName("bundle_identifier")
+    var bundleIdentifier: String?=null,
+    
+    @SerializedName("push_token")
+    var pushToken: String?=null,
+    
+    @SerializedName("unique_device_id")
+    var uniqueDeviceId: String?=null,
+    
+    @SerializedName("type")
+    var type: String?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: PushtokenRes
+*/
+@Parcelize
+data class PushtokenRes(
+    
+    
+    
+    @SerializedName("_id")
+    var id: String?=null,
+    
+    @SerializedName("bundle_identifier")
+    var bundleIdentifier: String?=null,
+    
+    @SerializedName("push_token")
+    var pushToken: String?=null,
+    
+    @SerializedName("unique_device_id")
+    var uniqueDeviceId: String?=null,
+    
+    @SerializedName("type")
+    var type: String?=null,
+    
+    @SerializedName("platform")
+    var platform: String?=null,
+    
+    @SerializedName("application_id")
+    var applicationId: String?=null,
+    
+    @SerializedName("user_id")
+    var userId: String?=null,
+    
+    @SerializedName("created_at")
+    var createdAt: String?=null,
+    
+    @SerializedName("updated_at")
+    var updatedAt: String?=null,
+    
+    @SerializedName("expired_at")
+    var expiredAt: String?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
     Model: SendInstantResponse
 */
 @Parcelize
@@ -1255,55 +1578,6 @@ data class Campaigns(
 
              
 /*
-    Model: BadRequestSchema
-*/
-@Parcelize
-data class BadRequestSchema(
-    
-    
-    
-    @SerializedName("status")
-    var status: String?=null,
-    
-    @SerializedName("message")
-    var message: String?=null
-    
-): Parcelable {
-    
-    
-    
-    
-    
-    
-    
-}
-
-
-
-             
-/*
-    Model: NotFound
-*/
-@Parcelize
-data class NotFound(
-    
-    
-    
-    @SerializedName("message")
-    var message: String?=null
-    
-): Parcelable {
-    
-    
-    
-    
-    
-}
-
-
-
-             
-/*
     Model: AudienceReq
 */
 @Parcelize
@@ -2420,43 +2694,6 @@ data class SubscribedEmailTemplates(
 
              
 /*
-    Model: PayloadStructure
-*/
-@Parcelize
-data class PayloadStructure(
-    
-    
-    
-    @SerializedName("data")
-    var data: @RawValue ArrayList<HashMap<String,Any>>?=null,
-    
-    @SerializedName("email")
-    var email: PayloadEmailStructure?=null,
-    
-    @SerializedName("sms")
-    var sms: PayloadSmsStructure?=null,
-    
-    @SerializedName("application")
-    var application: String?=null
-    
-): Parcelable {
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-}
-
-
-
-             
-/*
     Model: EventSubscriptionTemplateSms
 */
 @Parcelize
@@ -3309,7 +3546,7 @@ data class SendOtpSmsCommsTemplate(
     var key: String?=null,
     
     @SerializedName("value")
-    var value: String?=null
+    var value: @RawValue Any?=null
     
 ): Parcelable {
     
@@ -3390,7 +3627,7 @@ data class SendOtpEmailCommsTemplate(
     var key: String?=null,
     
     @SerializedName("value")
-    var value: String?=null
+    var value: @RawValue Any?=null
     
 ): Parcelable {
     
@@ -3721,33 +3958,6 @@ data class VerifyOtpCommsSuccessRes(
     
     
     
-    
-    
-    
-    
-    
-    
-    
-}
-
-
-
-             
-/*
-    Model: VerifyOtpCommsErrorRes
-*/
-@Parcelize
-data class VerifyOtpCommsErrorRes(
-    
-    
-    
-    @SerializedName("success")
-    var success: Boolean?=null,
-    
-    @SerializedName("message")
-    var message: String?=null
-    
-): Parcelable {
     
     
     
@@ -4541,18 +4751,6 @@ data class Page(
     
     
     
-    @SerializedName("type")
-    var type: String?=null,
-    
-    @SerializedName("size")
-    var size: Int?=null,
-    
-    @SerializedName("current")
-    var current: Int?=null,
-    
-    @SerializedName("has_next")
-    var hasNext: Boolean?=null,
-    
     @SerializedName("item_total")
     var itemTotal: Int?=null,
     
@@ -4560,7 +4758,19 @@ data class Page(
     var nextId: String?=null,
     
     @SerializedName("has_previous")
-    var hasPrevious: Boolean?=null
+    var hasPrevious: Boolean?=null,
+    
+    @SerializedName("has_next")
+    var hasNext: Boolean?=null,
+    
+    @SerializedName("current")
+    var current: Int?=null,
+    
+    @SerializedName("type")
+    var type: String?=null,
+    
+    @SerializedName("size")
+    var size: Int?=null
     
 ): Parcelable {
     
@@ -4600,107 +4810,6 @@ data class BasicDelete(
     var deletedCount: Int?=null
     
 ): Parcelable {
-    
-    
-    
-    
-    
-    
-    
-}
-
-
-
-             
-/*
-    Model: GenericError
-*/
-@Parcelize
-data class GenericError(
-    
-    
-    
-    @SerializedName("message")
-    var message: Message?=null,
-    
-    @SerializedName("sentry")
-    var sentry: String?=null
-    
-): Parcelable {
-    
-    
-    
-    
-    
-    
-    
-}
-
-
-
-             
-/*
-    Model: GenericDelete
-*/
-@Parcelize
-data class GenericDelete(
-    
-    
-    
-    @SerializedName("message")
-    var message: String?=null,
-    
-    @SerializedName("acknowledged")
-    var acknowledged: Boolean?=null,
-    
-    @SerializedName("affected")
-    var affected: Int?=null,
-    
-    @SerializedName("operation")
-    var operation: String?=null
-    
-): Parcelable {
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-}
-
-
-
-             
-/*
-    Model: Message
-*/
-@Parcelize
-data class Message(
-    
-    
-    
-    @SerializedName("message")
-    var message: String?=null,
-    
-    @SerializedName("success")
-    var success: Boolean?=null,
-    
-    @SerializedName("info")
-    var info: String?=null,
-    
-    @SerializedName("operation")
-    var operation: String?=null
-    
-): Parcelable {
-    
-    
-    
-    
     
     
     

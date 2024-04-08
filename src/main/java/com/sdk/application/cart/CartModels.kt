@@ -483,6 +483,9 @@ data class AppliedPromotion(
     
     
     
+    @SerializedName("id")
+    var id: String?=null,
+    
     @SerializedName("article_quantity")
     var articleQuantity: Int?=null,
     
@@ -550,6 +553,8 @@ data class AppliedPromotion(
     var offerDescription: String?=null
     
 ): Parcelable {
+    
+    
     
     
     
