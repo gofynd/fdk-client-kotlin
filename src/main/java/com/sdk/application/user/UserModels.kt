@@ -198,6 +198,9 @@ data class EditProfileRequestSchema(
     
     
     
+    @SerializedName("encrypt_otp")
+    var encryptOtp: Boolean?=null,
+    
     @SerializedName("first_name")
     var firstName: String?=null,
     
@@ -232,6 +235,8 @@ data class EditProfileRequestSchema(
     var registerToken: String?=null
     
 ): Parcelable {
+    
+    
     
     
     
@@ -489,6 +494,9 @@ data class SendMobileOtpRequestSchema(
     
     
     
+    @SerializedName("encrypt_otp")
+    var encryptOtp: Boolean?=null,
+    
     @SerializedName("mobile")
     var mobile: String?=null,
     
@@ -508,6 +516,8 @@ data class SendMobileOtpRequestSchema(
     var force: String?=null
     
 ): Parcelable {
+    
+    
     
     
     
@@ -804,6 +814,9 @@ data class SendOtpRequestSchema(
     
     
     
+    @SerializedName("encrypt_otp")
+    var encryptOtp: Boolean?=null,
+    
     @SerializedName("country_code")
     var countryCode: String?=null,
     
@@ -814,6 +827,8 @@ data class SendOtpRequestSchema(
     var androidHash: String?=null
     
 ): Parcelable {
+    
+    
     
     
     
@@ -1390,7 +1405,7 @@ data class HasPasswordSuccess(
     
     
     @SerializedName("result")
-    var result: Boolean?=null
+    var result: Int?=null
     
 ): Parcelable {
     
@@ -1513,9 +1528,14 @@ data class EmailOtpSuccess(
     
     
     @SerializedName("success")
-    var success: Boolean?=null
+    var success: Boolean?=null,
+    
+    @SerializedName("resend_email_token")
+    var resendEmailToken: String?=null
     
 ): Parcelable {
+    
+    
     
     
     
@@ -1647,50 +1667,6 @@ data class SendEmailVerifyLinkSuccess(
 
              
 /*
-    Model: AuthenticationInternalServerErrorSchema
-*/
-@Parcelize
-data class AuthenticationInternalServerErrorSchema(
-    
-    
-    
-    @SerializedName("message")
-    var message: String?=null
-    
-): Parcelable {
-    
-    
-    
-    
-    
-}
-
-
-
-             
-/*
-    Model: AuthenticationApiErrorSchema
-*/
-@Parcelize
-data class AuthenticationApiErrorSchema(
-    
-    
-    
-    @SerializedName("message")
-    var message: String?=null
-    
-): Parcelable {
-    
-    
-    
-    
-    
-}
-
-
-
-             
-/*
     Model: APIError
 */
 @Parcelize
@@ -1710,10 +1686,20 @@ data class APIError(
     @SerializedName("request_id")
     var requestId: String?=null,
     
+    @SerializedName("error")
+    var error: String?=null,
+    
     @SerializedName("meta")
-    var meta: @RawValue HashMap<String,Any>?=null
+    var meta: @RawValue HashMap<String,Any>?=null,
+    
+    @SerializedName("authenticated")
+    var authenticated: Boolean?=null
     
 ): Parcelable {
+    
+    
+    
+    
     
     
     
@@ -1970,12 +1956,17 @@ data class PlatformSchema(
     var deleteAccountReasons: ArrayList<DeleteAccountReasons>?=null,
     
     @SerializedName("delete_account_consent")
-    var deleteAccountConsent: @RawValue HashMap<String,Any>?=null,
+    var deleteAccountConsent: DeleteAccountConsent?=null,
     
     @SerializedName("session_config")
-    var sessionConfig: @RawValue HashMap<String,Any>?=null
+    var sessionConfig: SessionExpiry?=null,
+    
+    @SerializedName("__v")
+    var v: Int?=null
     
 ): Parcelable {
+    
+    
     
     
     
@@ -2352,8 +2343,8 @@ data class SocialTokens(
     @SerializedName("facebook")
     var facebook: Facebook?=null,
     
-    @SerializedName("account_kit")
-    var accountKit: Accountkit?=null,
+    @SerializedName("accountkit")
+    var accountkit: Accountkit?=null,
     
     @SerializedName("google")
     var google: Google?=null
@@ -2579,9 +2570,19 @@ data class UserSchema(
     var createdAt: String?=null,
     
     @SerializedName("updated_at")
-    var updatedAt: String?=null
+    var updatedAt: String?=null,
+    
+    @SerializedName("external_id")
+    var externalId: String?=null,
+    
+    @SerializedName("rr_id")
+    var rrId: String?=null
     
 ): Parcelable {
+    
+    
+    
+    
     
     
     
@@ -2630,6 +2631,12 @@ data class PhoneNumber(
     
     
     
+    @SerializedName("phone")
+    var phone: String?=null,
+    
+    @SerializedName("country_code")
+    var countryCode: Int?=null,
+    
     @SerializedName("active")
     var active: Boolean?=null,
     
@@ -2637,13 +2644,7 @@ data class PhoneNumber(
     var primary: Boolean?=null,
     
     @SerializedName("verified")
-    var verified: Boolean?=null,
-    
-    @SerializedName("phone")
-    var phone: String?=null,
-    
-    @SerializedName("country_code")
-    var countryCode: Int?=null
+    var verified: Boolean?=null
     
 ): Parcelable {
     
@@ -2672,17 +2673,17 @@ data class Email(
     
     
     
-    @SerializedName("primary")
-    var primary: Boolean?=null,
-    
-    @SerializedName("verified")
-    var verified: Boolean?=null,
-    
     @SerializedName("email")
     var email: String?=null,
     
     @SerializedName("active")
-    var active: Boolean?=null
+    var active: Boolean?=null,
+    
+    @SerializedName("primary")
+    var primary: Boolean?=null,
+    
+    @SerializedName("verified")
+    var verified: Boolean?=null
     
 ): Parcelable {
     

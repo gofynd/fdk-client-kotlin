@@ -11,7 +11,7 @@ interface BillingApiList {
     
     
     @GET 
-    suspend fun getStandardPlans(@Url url1: String?    ,  @Query("platform_type") platformType: String)
+    suspend fun getStandardPlans(@Url url1: String?    ,  @Query("platform") platform: String)
     : Response<DetailList>
     
 }

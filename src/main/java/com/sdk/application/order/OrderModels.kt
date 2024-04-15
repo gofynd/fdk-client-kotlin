@@ -591,9 +591,14 @@ data class Prices(
     var currencyCode: String?=null,
     
     @SerializedName("fynd_credits")
-    var fyndCredits: Double?=null
+    var fyndCredits: Double?=null,
+    
+    @SerializedName("amount_to_be_collected")
+    var amountToBeCollected: Double?=null
     
 ): Parcelable {
+    
+    
     
     
     
@@ -953,9 +958,14 @@ data class FinancialBreakup(
     var refundAmount: Double?=null,
     
     @SerializedName("fynd_credits")
-    var fyndCredits: Double?=null
+    var fyndCredits: Double?=null,
+    
+    @SerializedName("amount_to_be_collected")
+    var amountToBeCollected: Double?=null
     
 ): Parcelable {
+    
+    
     
     
     
@@ -1112,9 +1122,14 @@ data class Bags(
     var sellerIdentifier: String?=null,
     
     @SerializedName("current_status")
-    var currentStatus: CurrentStatus?=null
+    var currentStatus: CurrentStatus?=null,
+    
+    @SerializedName("article")
+    var article: Article?=null
     
 ): Parcelable {
+    
+    
     
     
     
@@ -1174,6 +1189,28 @@ data class FulfillingCompany(
 ): Parcelable {
     
     
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: Article
+*/
+@Parcelize
+data class Article(
+    
+    
+    
+    @SerializedName("tags")
+    var tags: ArrayList<String>?=null
+    
+): Parcelable {
     
     
     
@@ -1327,6 +1364,9 @@ data class Shipments(
     @SerializedName("payment")
     var payment: ShipmentPayment?=null,
     
+    @SerializedName("payment_info")
+    var paymentInfo: ArrayList<ShipmentPayment>?=null,
+    
     @SerializedName("order_type")
     var orderType: String?=null,
     
@@ -1433,9 +1473,16 @@ data class Shipments(
     var returnMeta: @RawValue HashMap<String,Any>?=null,
     
     @SerializedName("delivery_date")
-    var deliveryDate: String?=null
+    var deliveryDate: String?=null,
+    
+    @SerializedName("order")
+    var order: OrderRequest?=null
     
 ): Parcelable {
+    
+    
+    
+    
     
     
     
@@ -2608,6 +2655,28 @@ data class StatuesRequest(
     
     
     
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: OrderRequest
+*/
+@Parcelize
+data class OrderRequest(
+    
+    
+    
+    @SerializedName("meta")
+    var meta: @RawValue HashMap<String,Any>?=null
+    
+): Parcelable {
     
     
     

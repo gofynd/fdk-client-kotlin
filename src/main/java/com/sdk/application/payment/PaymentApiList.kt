@@ -66,7 +66,7 @@ interface PaymentApiList {
     
     
     @POST 
-    suspend fun walletLinkInitate(@Url url1: String?   ,@Body body: WalletLinkRequestSchema)
+    suspend fun walletLinkInitiate(@Url url1: String?   ,@Body body: WalletLinkRequestSchema)
     : Response<WalletResponseSchema>
     
     

@@ -1536,53 +1536,16 @@ data class Action(
     
     
     
+    @SerializedName("type")
+    var type: String?=null,
+    
     @SerializedName("page")
     var page: ActionPage?=null,
     
     @SerializedName("popup")
-    var popup: ActionPage?=null,
-    
-    @SerializedName("type")
-    var type: String?=null
+    var popup: ActionPage?=null
     
 ): Parcelable {
-    
-    
-    
-    
-    
-    
-    
-    
-    
-}
-
-
-
-             
-/*
-    Model: ActionPage
-*/
-@Parcelize
-data class ActionPage(
-    
-    
-    
-    @SerializedName("params")
-    var params: HashMap<String,ArrayList<String>>?=null,
-    
-    @SerializedName("query")
-    var query: HashMap<String,ArrayList<String>>?=null,
-    
-    @SerializedName("url")
-    var url: String?=null,
-    
-    @SerializedName("type")
-    var type: PageType?=null
-    
-): Parcelable {
-    
-    
     
     
     
@@ -1632,6 +1595,9 @@ data class NavigationReference(
     @SerializedName("sort_order")
     var sortOrder: Int?=null,
     
+    @SerializedName("schedule")
+    var schedule: CronBasedScheduleSchema?=null,
+    
     @SerializedName("sub_navigation")
     var subNavigation: ArrayList<NavigationReference>?=null
     
@@ -1648,6 +1614,45 @@ data class NavigationReference(
     
     
     
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: CronBasedScheduleSchema
+*/
+@Parcelize
+data class CronBasedScheduleSchema(
+    
+    
+    
+    @SerializedName("enabled")
+    var enabled: Boolean?=null,
+    
+    @SerializedName("cron")
+    var cron: String?=null,
+    
+    @SerializedName("start")
+    var start: String?=null,
+    
+    @SerializedName("end")
+    var end: String?=null
+    
+): Parcelable {
     
     
     
@@ -6147,6 +6152,43 @@ data class CustomObjectBulkSchema(
     var totalRecords: Int?=null
     
 ): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: ActionPage
+*/
+@Parcelize
+data class ActionPage(
+    
+    
+    
+    @SerializedName("params")
+    var params: HashMap<String,ArrayList<String>>?=null,
+    
+    @SerializedName("query")
+    var query: HashMap<String,ArrayList<String>>?=null,
+    
+    @SerializedName("url")
+    var url: String?=null,
+    
+    @SerializedName("type")
+    var type: PageType?=null
+    
+): Parcelable {
+    
+    
+    
+    
     
     
     

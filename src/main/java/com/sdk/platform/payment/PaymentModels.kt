@@ -711,6 +711,38 @@ data class AggregatorRoute(
 
              
 /*
+    Model: PaymentDefaultSelection
+*/
+@Parcelize
+data class PaymentDefaultSelection(
+    
+    
+    
+    @SerializedName("mode")
+    var mode: String?=null,
+    
+    @SerializedName("identifier")
+    var identifier: String?=null,
+    
+    @SerializedName("skip")
+    var skip: Boolean?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
     Model: PaymentFlow
 */
 @Parcelize
@@ -804,9 +836,14 @@ data class PaymentOptionAndFlow(
     var paymentOption: ArrayList<RootPaymentMode>?=null,
     
     @SerializedName("payment_flows")
-    var paymentFlows: PaymentFlow?=null
+    var paymentFlows: PaymentFlow?=null,
+    
+    @SerializedName("payment_default_selection")
+    var paymentDefaultSelection: PaymentDefaultSelection?=null
     
 ): Parcelable {
+    
+    
     
     
     
@@ -4555,9 +4592,14 @@ data class PaymentSessionRequestSerializer(
     var paymentDetails: ArrayList<PaymentSessionDetail>?=null,
     
     @SerializedName("total_amount")
-    var totalAmount: Int?=null
+    var totalAmount: Int?=null,
+    
+    @SerializedName("checksum")
+    var checksum: String?=null
     
 ): Parcelable {
+    
+    
     
     
     
@@ -4732,9 +4774,14 @@ data class RefundSessionRequestSerializer(
     var error: ErrorDescription?=null,
     
     @SerializedName("message")
-    var message: String?=null
+    var message: String?=null,
+    
+    @SerializedName("checksum")
+    var checksum: String?=null
     
 ): Parcelable {
+    
+    
     
     
     

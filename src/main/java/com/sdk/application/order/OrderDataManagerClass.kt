@@ -78,10 +78,10 @@ class OrderDataManagerClass(val config: ApplicationConfig, val unauthorizedActio
         return retrofitHttpClient?.initializeRestClient(OrderApiList::class.java) as? OrderApiList
     }
     
-    suspend fun getOrders(status: Int?=null, pageNo: Int?=null, pageSize: Int?=null, fromDate: String?=null, toDate: String?=null, startDate: String?=null, endDate: String?=null, customMeta: String?=null): Response<OrderList>? {
+    suspend fun getOrders(status: Int?=null, pageNo: Int?=null, pageSize: Int?=null, fromDate: String?=null, toDate: String?=null, startDate: String?=null, endDate: String?=null, customMeta: String?=null, allowInactive: Boolean?=null): Response<OrderList>? {
         var fullUrl : String? = _relativeUrls["getOrders"] 
         
-        return orderApiList?.getOrders(fullUrl    ,  status = status,    pageNo = pageNo,    pageSize = pageSize,    fromDate = fromDate,    toDate = toDate,    startDate = startDate,    endDate = endDate,    customMeta = customMeta)}
+        return orderApiList?.getOrders(fullUrl    ,  status = status,    pageNo = pageNo,    pageSize = pageSize,    fromDate = fromDate,    toDate = toDate,    startDate = startDate,    endDate = endDate,    customMeta = customMeta,    allowInactive = allowInactive)}
 
     
     

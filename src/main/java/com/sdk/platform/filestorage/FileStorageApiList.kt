@@ -50,7 +50,7 @@ interface FileStorageApiList {
     
     @GET ("/service/platform/assets/v1.0/company/{company_id}/proxy")
     suspend fun proxy(@Path("company_id") companyId: String, @Query("url") url: String)
-    : Response<String>
+    : Response<ProxyResponse>
     
     @GET ("/service/platform/assets/v1.0/company/{company_id}/application/{application_id}/pdf/types")
     suspend fun getPdfTypes(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Query("country_code") countryCode: String?)

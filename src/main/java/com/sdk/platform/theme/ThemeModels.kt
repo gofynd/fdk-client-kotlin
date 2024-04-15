@@ -445,53 +445,16 @@ data class Action(
     
     
     
+    @SerializedName("type")
+    var type: String?=null,
+    
     @SerializedName("page")
     var page: ActionPage?=null,
     
     @SerializedName("popup")
-    var popup: ActionPage?=null,
-    
-    @SerializedName("type")
-    var type: String?=null
+    var popup: ActionPage?=null
     
 ): Parcelable {
-    
-    
-    
-    
-    
-    
-    
-    
-    
-}
-
-
-
-             
-/*
-    Model: ActionPage
-*/
-@Parcelize
-data class ActionPage(
-    
-    
-    
-    @SerializedName("params")
-    var params: HashMap<String,ArrayList<String>>?=null,
-    
-    @SerializedName("query")
-    var query: HashMap<String,ArrayList<String>>?=null,
-    
-    @SerializedName("url")
-    var url: String?=null,
-    
-    @SerializedName("type")
-    var type: PageType?=null
-    
-): Parcelable {
-    
-    
     
     
     
@@ -2090,38 +2053,13 @@ data class Page(
     
     
     
-    @SerializedName("item_total")
-    var itemTotal: Int?=null,
+    @SerializedName("sections")
+    var sections: ArrayList<Section>?=null,
     
-    @SerializedName("next_id")
-    var nextId: String?=null,
-    
-    @SerializedName("has_previous")
-    var hasPrevious: Boolean?=null,
-    
-    @SerializedName("has_next")
-    var hasNext: Boolean?=null,
-    
-    @SerializedName("current")
-    var current: Int?=null,
-    
-    @SerializedName("type")
-    var type: String?=null,
-    
-    @SerializedName("size")
-    var size: Int?=null
+    @SerializedName("value")
+    var value: String?=null
     
 ): Parcelable {
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
     
     
     
@@ -2674,6 +2612,43 @@ data class CompanyPrivateTheme(
     
     
     
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: ActionPage
+*/
+@Parcelize
+data class ActionPage(
+    
+    
+    
+    @SerializedName("params")
+    var params: HashMap<String,ArrayList<String>>?=null,
+    
+    @SerializedName("query")
+    var query: HashMap<String,ArrayList<String>>?=null,
+    
+    @SerializedName("url")
+    var url: String?=null,
+    
+    @SerializedName("type")
+    var type: PageType?=null
+    
+): Parcelable {
     
     
     

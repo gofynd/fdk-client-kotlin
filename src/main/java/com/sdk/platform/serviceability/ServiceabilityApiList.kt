@@ -28,10 +28,6 @@ interface ServiceabilityApiList {
     suspend fun getAllStores(@Path("company_id") companyId: String)
     : Response<GetStoresViewResponse>
     
-    @POST ("/service/platform/logistics/v1.0/company/{company_id}/reassign")
-    suspend fun getOptimalLocations(@Path("company_id") companyId: String,@Body body: ReAssignStoreRequest)
-    : Response<ReAssignStoreResponse>
-    
     @POST ("/service/platform/logistics/v1.0/company/{company_id}/application/{application_id}/pincode-mop-update")
     suspend fun updatePincodeMopView(@Path("company_id") companyId: String, @Path("application_id") applicationId: String,@Body body: PincodeMopData)
     : Response<PincodeMOPresponse>
@@ -191,5 +187,9 @@ interface ServiceabilityApiList {
     @PUT ("/service/platform/logistics/v1.0/company/{company_id}/application/{application_id}/courier-partner/rules/priority")
     suspend fun updateCourierPartnerRulePriority(@Path("company_id") companyId: String, @Path("application_id") applicationId: String,@Body body: RulePriorityRequest)
     : Response<RulePriorityResponse>
+    
+    @POST ("/service/platform/logistics/v1.0/company/{company_id}/optimal-locations")
+    suspend fun getOptimalLocations(@Path("company_id") companyId: String,@Body body: OptimlLocationsRequestSchema)
+    : Response<OptimalLocationsResponse>
     
 }

@@ -92,7 +92,7 @@ class OrderDataManagerClass(val config: PlatformConfig, val unauthorizedAction: 
     }
     
     
-    suspend fun updateAddress(shipmentId: String, name: String?=null, address: String?=null, addressType: String?=null, pincode: String?=null, phone: String?=null, email: String?=null, landmark: String?=null, addressCategory: String, city: String?=null, state: String?=null, country: String?=null)
+    suspend fun updateAddress(shipmentId: String, name: String?=null, address: String?=null, addressType: String?=null, pincode: String?=null, phone: String?=null, email: String?=null, landmark: String?=null, addressCategory: String, city: String?=null, state: String?=null, country: String?=null, )
     : Response<BaseResponse>? {
         
         return if (config.oauthClient.isAccessTokenValid()) {
@@ -104,7 +104,7 @@ class OrderDataManagerClass(val config: PlatformConfig, val unauthorizedAction: 
     }
     
     
-    suspend fun click2Call(caller: String, receiver: String, bagId: String, callerId: String?=null, method: String?=null)
+    suspend fun click2Call(caller: String, receiver: String, bagId: String, callerId: String?=null, method: String?=null, )
     : Response<Click2CallResponse>? {
         
         return if (config.oauthClient.isAccessTokenValid()) {
@@ -561,12 +561,12 @@ class OrderDataManagerClass(val config: PlatformConfig, val unauthorizedAction: 
     }
     
     
-    suspend fun getShipmentById(channelShipmentId: String?=null, shipmentId: String?=null, fetchActiveShipment: Boolean?=null)
+    suspend fun getShipmentById(channelShipmentId: String?=null, shipmentId: String?=null, fetchActiveShipment: Boolean?=null, allowInactive: Boolean?=null)
     : Response<ShipmentInfoResponse>? {
         
         return if (config.oauthClient.isAccessTokenValid()) {
             orderApiList?.getShipmentById(
-        companyId = config.companyId, channelShipmentId = channelShipmentId, shipmentId = shipmentId, fetchActiveShipment = fetchActiveShipment )
+        companyId = config.companyId, channelShipmentId = channelShipmentId, shipmentId = shipmentId, fetchActiveShipment = fetchActiveShipment, allowInactive = allowInactive )
         } else {
             null
         } 
@@ -597,12 +597,12 @@ class OrderDataManagerClass(val config: PlatformConfig, val unauthorizedAction: 
     }
     
     
-    suspend fun getOrders(lane: String?=null, searchType: String?=null, bagStatus: String?=null, timeToDispatch: Int?=null, paymentMethods: String?=null, tags: String?=null, searchValue: String?=null, fromDate: String?=null, toDate: String?=null, startDate: String?=null, endDate: String?=null, dpIds: String?=null, stores: String?=null, salesChannels: String?=null, pageNo: Int?=null, pageSize: Int?=null, isPrioritySort: Boolean?=null, customMeta: String?=null, myOrders: Boolean?=null, showCrossCompanyData: Boolean?=null, customerId: String?=null, orderType: String?=null)
+    suspend fun getOrders(lane: String?=null, searchType: String?=null, bagStatus: String?=null, timeToDispatch: Int?=null, paymentMethods: String?=null, tags: String?=null, searchValue: String?=null, fromDate: String?=null, toDate: String?=null, startDate: String?=null, endDate: String?=null, dpIds: String?=null, stores: String?=null, salesChannels: String?=null, pageNo: Int?=null, pageSize: Int?=null, isPrioritySort: Boolean?=null, customMeta: String?=null, myOrders: Boolean?=null, showCrossCompanyData: Boolean?=null, customerId: String?=null, orderType: String?=null, allowInactive: Boolean?=null)
     : Response<OrderListingResponse>? {
         
         return if (config.oauthClient.isAccessTokenValid()) {
             orderApiList?.getOrders(
-        companyId = config.companyId, lane = lane, searchType = searchType, bagStatus = bagStatus, timeToDispatch = timeToDispatch, paymentMethods = paymentMethods, tags = tags, searchValue = searchValue, fromDate = fromDate, toDate = toDate, startDate = startDate, endDate = endDate, dpIds = dpIds, stores = stores, salesChannels = salesChannels, pageNo = pageNo, pageSize = pageSize, isPrioritySort = isPrioritySort, customMeta = customMeta, myOrders = myOrders, showCrossCompanyData = showCrossCompanyData, customerId = customerId, orderType = orderType )
+        companyId = config.companyId, lane = lane, searchType = searchType, bagStatus = bagStatus, timeToDispatch = timeToDispatch, paymentMethods = paymentMethods, tags = tags, searchValue = searchValue, fromDate = fromDate, toDate = toDate, startDate = startDate, endDate = endDate, dpIds = dpIds, stores = stores, salesChannels = salesChannels, pageNo = pageNo, pageSize = pageSize, isPrioritySort = isPrioritySort, customMeta = customMeta, myOrders = myOrders, showCrossCompanyData = showCrossCompanyData, customerId = customerId, orderType = orderType, allowInactive = allowInactive )
         } else {
             null
         } 

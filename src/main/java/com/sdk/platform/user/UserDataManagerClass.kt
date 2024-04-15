@@ -116,16 +116,6 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     }
     
     
-    suspend fun archiveUser(body: ArchiveUserRequestSchema)
-    : Response<ArchiveUserSuccess>? {
-        return if (config.oauthClient.isAccessTokenValid()) {
-                userApiList?.archiveUser(companyId = config.companyId , applicationId = applicationId , body = body)
-        } else {
-            null
-        }
-    }
-    
-    
     suspend fun unDeleteUser(body: UnDeleteUserRequestSchema)
     : Response<UnDeleteUserSuccess>? {
         return if (config.oauthClient.isAccessTokenValid()) {
@@ -180,6 +170,16 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     : Response<SessionsDeleteResponseSchema>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 userApiList?.deleteActiveSessions(companyId = config.companyId , applicationId = applicationId , id = id, reason = reason )
+        } else {
+            null
+        }
+    }
+    
+    
+    suspend fun archiveUser(body: ArchiveUserRequestSchema)
+    : Response<ArchiveUserSuccess>? {
+        return if (config.oauthClient.isAccessTokenValid()) {
+                userApiList?.archiveUser(companyId = config.companyId , applicationId = applicationId , body = body)
         } else {
             null
         }

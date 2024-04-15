@@ -578,7 +578,7 @@ data class UserSearchResponseSchema(
     
     
     @SerializedName("users")
-    var users: ArrayList<UserSchema>?=null
+    var users: ArrayList<UserSearchSchema>?=null
     
 ): Parcelable {
     
@@ -600,7 +600,7 @@ data class CustomerListResponseSchema(
     
     
     @SerializedName("items")
-    var items: ArrayList<UserSchema>?=null,
+    var items: ArrayList<UserSearchSchema>?=null,
     
     @SerializedName("page")
     var page: PaginationSchema?=null
@@ -737,17 +737,47 @@ data class SessionsDeleteResponseSchema(
 
              
 /*
-    Model: AuthenticationApiErrorSchema
+    Model: APIError
 */
 @Parcelize
-data class AuthenticationApiErrorSchema(
+data class APIError(
     
     
+    
+    @SerializedName("code")
+    var code: String?=null,
     
     @SerializedName("message")
-    var message: String?=null
+    var message: String?=null,
+    
+    @SerializedName("info")
+    var info: String?=null,
+    
+    @SerializedName("request_id")
+    var requestId: String?=null,
+    
+    @SerializedName("error")
+    var error: String?=null,
+    
+    @SerializedName("meta")
+    var meta: @RawValue HashMap<String,Any>?=null,
+    
+    @SerializedName("authenticated")
+    var authenticated: Boolean?=null
     
 ): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     
     
     
@@ -779,9 +809,14 @@ data class SessionListResponseInfo(
     var domain: String?=null,
     
     @SerializedName("expire_in")
-    var expireIn: String?=null
+    var expireIn: String?=null,
+    
+    @SerializedName("location")
+    var location: String?=null
     
 ): Parcelable {
+    
+    
     
     
     
@@ -1082,9 +1117,14 @@ data class CreateUserRequestSchema(
     var meta: @RawValue HashMap<String,Any>?=null,
     
     @SerializedName("external_id")
-    var externalId: String?=null
+    var externalId: String?=null,
+    
+    @SerializedName("rr_id")
+    var rrId: String?=null
     
 ): Parcelable {
+    
+    
     
     
     
@@ -1283,12 +1323,17 @@ data class PlatformSchema(
     var deleteAccountReasons: ArrayList<DeleteAccountReasons>?=null,
     
     @SerializedName("delete_account_consent")
-    var deleteAccountConsent: @RawValue HashMap<String,Any>?=null,
+    var deleteAccountConsent: DeleteAccountConsent?=null,
     
     @SerializedName("session_config")
-    var sessionConfig: @RawValue HashMap<String,Any>?=null
+    var sessionConfig: SessionExpiry?=null,
+    
+    @SerializedName("__v")
+    var v: Int?=null
     
 ): Parcelable {
+    
+    
     
     
     
@@ -1749,9 +1794,14 @@ data class Facebook(
     
     
     @SerializedName("app_id")
-    var appId: String?=null
+    var appId: String?=null,
+    
+    @SerializedName("app_secret")
+    var appSecret: String?=null
     
 ): Parcelable {
+    
+    
     
     
     
@@ -1771,9 +1821,14 @@ data class Accountkit(
     
     
     @SerializedName("app_id")
-    var appId: String?=null
+    var appId: String?=null,
+    
+    @SerializedName("app_secret")
+    var appSecret: String?=null
     
 ): Parcelable {
+    
+    
     
     
     
@@ -1793,9 +1848,14 @@ data class Google(
     
     
     @SerializedName("app_id")
-    var appId: String?=null
+    var appId: String?=null,
+    
+    @SerializedName("app_secret")
+    var appSecret: String?=null
     
 ): Parcelable {
+    
+    
     
     
     
@@ -1979,6 +2039,9 @@ data class UpdateUserRequestSchema(
     @SerializedName("external_id")
     var externalId: String?=null,
     
+    @SerializedName("rr_id")
+    var rrId: String?=null,
+    
     @SerializedName("meta")
     var meta: @RawValue HashMap<String,Any>?=null,
     
@@ -1989,6 +2052,8 @@ data class UpdateUserRequestSchema(
     var emails: ArrayList<UserEmails>?=null
     
 ): Parcelable {
+    
+    
     
     
     
@@ -2147,9 +2212,131 @@ data class UserSchema(
     var updatedAt: String?=null,
     
     @SerializedName("external_id")
-    var externalId: String?=null
+    var externalId: String?=null,
+    
+    @SerializedName("rr_id")
+    var rrId: String?=null
     
 ): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: UserSearchSchema
+*/
+@Parcelize
+data class UserSearchSchema(
+    
+    
+    
+    @SerializedName("application_id")
+    var applicationId: String?=null,
+    
+    @SerializedName("user_id")
+    var userId: String?=null,
+    
+    @SerializedName("first_name")
+    var firstName: String?=null,
+    
+    @SerializedName("meta")
+    var meta: @RawValue HashMap<String,Any>?=null,
+    
+    @SerializedName("last_name")
+    var lastName: String?=null,
+    
+    @SerializedName("phone_numbers")
+    var phoneNumbers: ArrayList<PhoneNumber>?=null,
+    
+    @SerializedName("emails")
+    var emails: ArrayList<Email>?=null,
+    
+    @SerializedName("gender")
+    var gender: String?=null,
+    
+    @SerializedName("dob")
+    var dob: String?=null,
+    
+    @SerializedName("active")
+    var active: Boolean?=null,
+    
+    @SerializedName("profile_pic_url")
+    var profilePicUrl: String?=null,
+    
+    @SerializedName("username")
+    var username: String?=null,
+    
+    @SerializedName("account_type")
+    var accountType: String?=null,
+    
+    @SerializedName("_id")
+    var id: String?=null,
+    
+    @SerializedName("created_at")
+    var createdAt: String?=null,
+    
+    @SerializedName("updated_at")
+    var updatedAt: String?=null,
+    
+    @SerializedName("external_id")
+    var externalId: String?=null,
+    
+    @SerializedName("rr_id")
+    var rrId: String?=null,
+    
+    @SerializedName("archive")
+    var archive: Boolean?=null,
+    
+    @SerializedName("status")
+    var status: String?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
     
     
     
@@ -2200,6 +2387,12 @@ data class PhoneNumber(
     
     
     
+    @SerializedName("phone")
+    var phone: String?=null,
+    
+    @SerializedName("country_code")
+    var countryCode: Int?=null,
+    
     @SerializedName("active")
     var active: Boolean?=null,
     
@@ -2207,13 +2400,7 @@ data class PhoneNumber(
     var primary: Boolean?=null,
     
     @SerializedName("verified")
-    var verified: Boolean?=null,
-    
-    @SerializedName("phone")
-    var phone: String?=null,
-    
-    @SerializedName("country_code")
-    var countryCode: Int?=null
+    var verified: Boolean?=null
     
 ): Parcelable {
     
@@ -2242,17 +2429,17 @@ data class Email(
     
     
     
-    @SerializedName("primary")
-    var primary: Boolean?=null,
-    
-    @SerializedName("verified")
-    var verified: Boolean?=null,
-    
     @SerializedName("email")
     var email: String?=null,
     
     @SerializedName("active")
-    var active: Boolean?=null
+    var active: Boolean?=null,
+    
+    @SerializedName("primary")
+    var primary: Boolean?=null,
+    
+    @SerializedName("verified")
+    var verified: Boolean?=null
     
 ): Parcelable {
     

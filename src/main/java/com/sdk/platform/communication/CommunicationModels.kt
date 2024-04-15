@@ -3398,9 +3398,14 @@ data class VerifyOtpCommsSuccessRes(
     var countryCode: String?=null,
     
     @SerializedName("message")
-    var message: String?=null
+    var message: String?=null,
+    
+    @SerializedName("email")
+    var email: String?=null
     
 ): Parcelable {
+    
+    
     
     
     
@@ -3454,6 +3459,9 @@ data class SmsProviderReq(
     
     @SerializedName("name")
     var name: String?=null,
+    
+    @SerializedName("token")
+    var token: String?=null,
     
     @SerializedName("description")
     var description: String?=null,
@@ -3551,6 +3559,8 @@ data class SmsProviderReq(
     
     
     
+    
+    
 }
 
 
@@ -3563,6 +3573,18 @@ data class SmsProviderReq(
 data class SmsProvider(
     
     
+    
+    @SerializedName("token")
+    var token: String?=null,
+    
+    @SerializedName("sender_id")
+    var senderId: String?=null,
+    
+    @SerializedName("api_key")
+    var apiKey: String?=null,
+    
+    @SerializedName("expiry_date")
+    var expiryDate: Int?=null,
     
     @SerializedName("rpt")
     var rpt: Int?=null,
@@ -3607,6 +3629,14 @@ data class SmsProvider(
     var v: Int?=null
     
 ): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+    
     
     
     

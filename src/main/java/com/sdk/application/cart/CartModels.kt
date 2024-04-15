@@ -3545,9 +3545,29 @@ data class CartCheckoutDetailRequest(
     var meta: @RawValue HashMap<String,Any>?=null,
     
     @SerializedName("payment_extra_identifiers")
-    var paymentExtraIdentifiers: @RawValue HashMap<String,Any>?=null
+    var paymentExtraIdentifiers: @RawValue HashMap<String,Any>?=null,
+    
+    @SerializedName("iin")
+    var iin: String?=null,
+    
+    @SerializedName("network")
+    var network: String?=null,
+    
+    @SerializedName("type")
+    var type: String?=null,
+    
+    @SerializedName("card_id")
+    var cardId: String?=null
     
 ): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+    
     
     
     
@@ -4706,9 +4726,29 @@ data class CartCheckoutDetailV2Request(
     var billingAddressId: String?=null,
     
     @SerializedName("meta")
-    var meta: @RawValue HashMap<String,Any>?=null
+    var meta: @RawValue HashMap<String,Any>?=null,
+    
+    @SerializedName("iin")
+    var iin: String?=null,
+    
+    @SerializedName("network")
+    var network: String?=null,
+    
+    @SerializedName("type")
+    var type: String?=null,
+    
+    @SerializedName("card_id")
+    var cardId: String?=null
     
 ): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+    
     
     
     

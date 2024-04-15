@@ -121,51 +121,6 @@ class ContentDataManagerClass(val config: ApplicationConfig, val unauthorizedAct
 
     
     
-    
-        
-            
-            
-        
-            
-                
-            
-            
-        
-    /**
-    *
-    * Summary: Paginator for getBlogs
-    **/
-    fun getBlogsPaginator(pageSize: Int?=null) : Paginator<BlogGetResponse>{
-
-    val paginator = Paginator<BlogGetResponse>()
-
-    paginator.setCallBack(object : PaginatorCallback<BlogGetResponse> {
-
-            override suspend fun onNext(
-                onResponse: (Event<BlogGetResponse>?,FdkError?) -> Unit) {
-                val pageId = paginator.nextId
-                val pageNo = paginator.pageNo
-                val pageType = "number"
-                var fullUrl : String? = _relativeUrls["getBlogs"] 
-                
-                contentApiList?.getBlogs(fullUrl , pageNo = pageNo, pageSize = pageSize)?.safeAwait{ response, error ->
-                    response?.let {
-                        val page = response.peekContent()?.page
-                        paginator.setPaginator(hasNext=page?.hasNext?:false,pageNo=if (page?.hasNext == true) ((pageNo ?: 0) + 1) else pageNo)
-                        onResponse.invoke(response, null)
-                    }
-
-                    error?.let {
-                        onResponse.invoke(null,error)
-                    }
-            }
-        }
-
-    })
-    
-    return paginator
-    }
-    
     suspend fun getDataLoaders(): Response<DataLoadersSchema>? {
         var fullUrl : String? = _relativeUrls["getDataLoaders"] 
         
@@ -234,51 +189,6 @@ class ContentDataManagerClass(val config: ApplicationConfig, val unauthorizedAct
         return contentApiList?.getNavigations(fullUrl    ,  pageNo = pageNo,    pageSize = pageSize)}
 
     
-    
-    
-        
-            
-            
-        
-            
-                
-            
-            
-        
-    /**
-    *
-    * Summary: Paginator for getNavigations
-    **/
-    fun getNavigationsPaginator(pageSize: Int?=null) : Paginator<NavigationGetResponse>{
-
-    val paginator = Paginator<NavigationGetResponse>()
-
-    paginator.setCallBack(object : PaginatorCallback<NavigationGetResponse> {
-
-            override suspend fun onNext(
-                onResponse: (Event<NavigationGetResponse>?,FdkError?) -> Unit) {
-                val pageId = paginator.nextId
-                val pageNo = paginator.pageNo
-                val pageType = "number"
-                var fullUrl : String? = _relativeUrls["getNavigations"] 
-                
-                contentApiList?.getNavigations(fullUrl , pageNo = pageNo, pageSize = pageSize)?.safeAwait{ response, error ->
-                    response?.let {
-                        val page = response.peekContent()?.page
-                        paginator.setPaginator(hasNext=page?.hasNext?:false,pageNo=if (page?.hasNext == true) ((pageNo ?: 0) + 1) else pageNo)
-                        onResponse.invoke(response, null)
-                    }
-
-                    error?.let {
-                        onResponse.invoke(null,error)
-                    }
-            }
-        }
-
-    })
-    
-    return paginator
-    }
     
     suspend fun getSEOConfiguration(): Response<SeoComponent>? {
         var fullUrl : String? = _relativeUrls["getSEOConfiguration"] 
@@ -384,51 +294,6 @@ class ContentDataManagerClass(val config: ApplicationConfig, val unauthorizedAct
         return contentApiList?.getPages(fullUrl    ,  pageNo = pageNo,    pageSize = pageSize)}
 
     
-    
-    
-        
-            
-            
-        
-            
-                
-            
-            
-        
-    /**
-    *
-    * Summary: Paginator for getPages
-    **/
-    fun getPagesPaginator(pageSize: Int?=null) : Paginator<PageGetResponse>{
-
-    val paginator = Paginator<PageGetResponse>()
-
-    paginator.setCallBack(object : PaginatorCallback<PageGetResponse> {
-
-            override suspend fun onNext(
-                onResponse: (Event<PageGetResponse>?,FdkError?) -> Unit) {
-                val pageId = paginator.nextId
-                val pageNo = paginator.pageNo
-                val pageType = "number"
-                var fullUrl : String? = _relativeUrls["getPages"] 
-                
-                contentApiList?.getPages(fullUrl , pageNo = pageNo, pageSize = pageSize)?.safeAwait{ response, error ->
-                    response?.let {
-                        val page = response.peekContent()?.page
-                        paginator.setPaginator(hasNext=page?.hasNext?:false,pageNo=if (page?.hasNext == true) ((pageNo ?: 0) + 1) else pageNo)
-                        onResponse.invoke(response, null)
-                    }
-
-                    error?.let {
-                        onResponse.invoke(null,error)
-                    }
-            }
-        }
-
-    })
-    
-    return paginator
-    }
     
     suspend fun getCustomObject(metaobjectId: String): Response<CustomObjectByIdSchema>? {
         var fullUrl : String? = _relativeUrls["getCustomObject"] 

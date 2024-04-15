@@ -400,13 +400,13 @@ data class EventProcessReportObject(
     var responseMessage: String?=null,
     
     @SerializedName("data")
-    var data: @RawValue HashMap<String,Any>?=null,
+    var data: String?=null,
     
     @SerializedName("attempt")
     var attempt: Int?=null,
     
     @SerializedName("last_attempted_on")
-    var lastAttemptedOn: Int?=null,
+    var lastAttemptedOn: Double?=null,
     
     @SerializedName("status")
     var status: String?=null,
@@ -595,6 +595,9 @@ data class EventConfig(
     @SerializedName("event_category")
     var eventCategory: String?=null,
     
+    @SerializedName("subscriber_event_mapping")
+    var subscriberEventMapping: SubscriberEventMapping?=null,
+    
     @SerializedName("event_schema")
     var eventSchema: @RawValue HashMap<String,Any>?=null,
     
@@ -614,6 +617,8 @@ data class EventConfig(
     var updatedOn: String?=null
     
 ): Parcelable {
+    
+    
     
     
     
@@ -1053,6 +1058,43 @@ data class AuthMeta(
     var secret: String?=null
     
 ): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: SubscriberEventMapping
+*/
+@Parcelize
+data class SubscriberEventMapping(
+    
+    
+    
+    @SerializedName("id")
+    var id: Int?=null,
+    
+    @SerializedName("event_id")
+    var eventId: Int?=null,
+    
+    @SerializedName("subscriber_id")
+    var subscriberId: Int?=null,
+    
+    @SerializedName("created_on")
+    var createdOn: String?=null
+    
+): Parcelable {
+    
+    
+    
+    
     
     
     

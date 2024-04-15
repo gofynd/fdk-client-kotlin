@@ -21,53 +21,16 @@ data class Action(
     
     
     
+    @SerializedName("type")
+    var type: String?=null,
+    
     @SerializedName("page")
     var page: ActionPage?=null,
     
     @SerializedName("popup")
-    var popup: ActionPage?=null,
-    
-    @SerializedName("type")
-    var type: String?=null
+    var popup: ActionPage?=null
     
 ): Parcelable {
-    
-    
-    
-    
-    
-    
-    
-    
-    
-}
-
-
-
-             
-/*
-    Model: ActionPage
-*/
-@Parcelize
-data class ActionPage(
-    
-    
-    
-    @SerializedName("params")
-    var params: HashMap<String,ArrayList<String>>?=null,
-    
-    @SerializedName("query")
-    var query: HashMap<String,ArrayList<String>>?=null,
-    
-    @SerializedName("url")
-    var url: String?=null,
-    
-    @SerializedName("type")
-    var type: PageType?=null
-    
-): Parcelable {
-    
-    
     
     
     
@@ -718,6 +681,33 @@ data class ApplicationItemMeta(
 
              
 /*
+    Model: ApplicationItemSeoSitemap
+*/
+@Parcelize
+data class ApplicationItemSeoSitemap(
+    
+    
+    
+    @SerializedName("priority")
+    var priority: Double?=null,
+    
+    @SerializedName("frequency")
+    var frequency: String?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
     Model: ApplicationItemSEO
 */
 @Parcelize
@@ -729,9 +719,29 @@ data class ApplicationItemSEO(
     var description: String?=null,
     
     @SerializedName("title")
-    var title: String?=null
+    var title: String?=null,
+    
+    @SerializedName("sitemap")
+    var sitemap: ApplicationItemSeoSitemap?=null,
+    
+    @SerializedName("breadcrumbs")
+    var breadcrumbs: ArrayList<ApplicationItemSeoBreadcrumbs>?=null,
+    
+    @SerializedName("meta_tags")
+    var metaTags: ArrayList<ApplicationItemSeoMetaTags>?=null,
+    
+    @SerializedName("canonical_url")
+    var canonicalUrl: String?=null
     
 ): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+    
     
     
     
@@ -5405,9 +5415,14 @@ data class RawProduct(
     var verifiedBy: VerifiedBy?=null,
     
     @SerializedName("verified_on")
-    var verifiedOn: String?=null
+    var verifiedOn: String?=null,
+    
+    @SerializedName("store_id_list")
+    var storeIdList: ArrayList<String>?=null
     
 ): Parcelable {
+    
+    
     
     
     
@@ -7216,6 +7231,38 @@ data class CommonResponseSchemaCollection(
 
              
 /*
+    Model: GetQueryFiltersKeysResponse
+*/
+@Parcelize
+data class GetQueryFiltersKeysResponse(
+    
+    
+    
+    @SerializedName("filters")
+    var filters: ArrayList<ProductFiltersKeysOnly>?=null,
+    
+    @SerializedName("operators")
+    var operators: HashMap<String,String>?=null,
+    
+    @SerializedName("sort_on")
+    var sortOn: ArrayList<ProductSortOn>?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
     Model: GetQueryFiltersResponse
 */
 @Parcelize
@@ -7369,10 +7416,10 @@ data class CollectionItemSchemaV2(
 
              
 /*
-    Model: CollectionItemUpdateSchemaV2
+    Model: CollectionItemUpdateSchema
 */
 @Parcelize
-data class CollectionItemUpdateSchemaV2(
+data class CollectionItemUpdateSchema(
     
     
     
@@ -10674,9 +10721,19 @@ data class OwnerAppItemResponse(
     var moq: MOQData?=null,
     
     @SerializedName("seo")
-    var seo: SEOData?=null
+    var seo: SEOData?=null,
+    
+    @SerializedName("_custom_json")
+    var customJson: @RawValue HashMap<String,Any>?=null,
+    
+    @SerializedName("_custom_meta")
+    var customMeta: ArrayList<MetaFields>?=null
     
 ): Parcelable {
+    
+    
+    
+    
     
     
     
@@ -12352,6 +12409,55 @@ data class ProductFilters(
 ): Parcelable {
     
     
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: GetQueryFiltersValuesResponse
+*/
+@Parcelize
+data class GetQueryFiltersValuesResponse(
+    
+    
+    
+    @SerializedName("values")
+    var values: ArrayList<ProductFiltersValue>?=null,
+    
+    @SerializedName("page")
+    var page: Page?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: ProductFiltersKeysOnly
+*/
+@Parcelize
+data class ProductFiltersKeysOnly(
+    
+    
+    
+    @SerializedName("key")
+    var key: ProductFiltersKey?=null
+    
+): Parcelable {
     
     
     
@@ -14188,7 +14294,7 @@ data class Metatags(
     var title: String?=null,
     
     @SerializedName("items")
-    var items: ArrayList<ApplicationItemSeoMetaTags>?=null
+    var items: ArrayList<ApplicationItemSeoMetaTagItem>?=null
     
 ): Parcelable {
     
@@ -16348,6 +16454,43 @@ data class UpdateMarketplaceOptinResponse(
     
     
     
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: ActionPage
+*/
+@Parcelize
+data class ActionPage(
+    
+    
+    
+    @SerializedName("params")
+    var params: HashMap<String,ArrayList<String>>?=null,
+    
+    @SerializedName("query")
+    var query: HashMap<String,ArrayList<String>>?=null,
+    
+    @SerializedName("url")
+    var url: String?=null,
+    
+    @SerializedName("type")
+    var type: PageType?=null
+    
+): Parcelable {
     
     
     

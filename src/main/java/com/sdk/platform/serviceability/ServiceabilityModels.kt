@@ -521,9 +521,6 @@ data class ListViewItems(
     @SerializedName("is_active")
     var isActive: Boolean?=null,
     
-    @SerializedName("product")
-    var product: ListViewProduct?=null,
-    
     @SerializedName("regions_count")
     var regionsCount: Int?=null,
     
@@ -531,11 +528,9 @@ data class ListViewItems(
     var companyId: Int?=null,
     
     @SerializedName("channels")
-    var channels: ListViewChannels?=null
+    var channels: ArrayList<ListViewChannels>?=null
     
 ): Parcelable {
-    
-    
     
     
     
@@ -569,7 +564,7 @@ data class ListViewResponse(
     
     
     @SerializedName("page")
-    var page: ArrayList<ZoneDataItem>?=null,
+    var page: ZoneDataItem?=null,
     
     @SerializedName("items")
     var items: ArrayList<ListViewItems>?=null
@@ -2029,85 +2024,6 @@ data class GetStoresViewResponse(
     var items: ArrayList<ItemResponse>?=null
     
 ): Parcelable {
-    
-    
-    
-    
-    
-    
-    
-}
-
-
-
-             
-/*
-    Model: ReAssignStoreRequest
-*/
-@Parcelize
-data class ReAssignStoreRequest(
-    
-    
-    
-    @SerializedName("to_pincode")
-    var toPincode: String?=null,
-    
-    @SerializedName("identifier")
-    var identifier: String?=null,
-    
-    @SerializedName("configuration")
-    var configuration: @RawValue HashMap<String,Any>?=null,
-    
-    @SerializedName("ignored_locations")
-    var ignoredLocations: ArrayList<String>?=null,
-    
-    @SerializedName("articles")
-    var articles: @RawValue ArrayList<HashMap<String,Any>>?=null
-    
-): Parcelable {
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-}
-
-
-
-             
-/*
-    Model: ReAssignStoreResponse
-*/
-@Parcelize
-data class ReAssignStoreResponse(
-    
-    
-    
-    @SerializedName("to_pincode")
-    var toPincode: String?=null,
-    
-    @SerializedName("success")
-    var success: Boolean?=null,
-    
-    @SerializedName("error")
-    var error: @RawValue HashMap<String,Any>?=null,
-    
-    @SerializedName("articles")
-    var articles: @RawValue ArrayList<HashMap<String,Any>>?=null
-    
-): Parcelable {
-    
-    
-    
-    
     
     
     
@@ -4946,6 +4862,362 @@ data class RulePriorityResponse(
     var success: Boolean?=null
     
 ): Parcelable {
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: ArticleAssignment
+*/
+@Parcelize
+data class ArticleAssignment(
+    
+    
+    
+    @SerializedName("level")
+    var level: String?=null,
+    
+    @SerializedName("strategy")
+    var strategy: String?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: ServiceabilityLocation
+*/
+@Parcelize
+data class ServiceabilityLocation(
+    
+    
+    
+    @SerializedName("longitude")
+    var longitude: String?=null,
+    
+    @SerializedName("latitude")
+    var latitude: String?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: LocationDetailsServiceability
+*/
+@Parcelize
+data class LocationDetailsServiceability(
+    
+    
+    
+    @SerializedName("pincode")
+    var pincode: String?=null,
+    
+    @SerializedName("sector")
+    var sector: String?=null,
+    
+    @SerializedName("state")
+    var state: String?=null,
+    
+    @SerializedName("country")
+    var country: String?=null,
+    
+    @SerializedName("city")
+    var city: String?=null,
+    
+    @SerializedName("country_iso_code")
+    var countryIsoCode: String?=null,
+    
+    @SerializedName("location")
+    var location: ServiceabilityLocation?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: OptimalLocationsArticles
+*/
+@Parcelize
+data class OptimalLocationsArticles(
+    
+    
+    
+    @SerializedName("item_id")
+    var itemId: Int?=null,
+    
+    @SerializedName("size")
+    var size: String?=null,
+    
+    @SerializedName("quantity")
+    var quantity: String?=null,
+    
+    @SerializedName("group_id")
+    var groupId: String?=null,
+    
+    @SerializedName("is_primary_item")
+    var isPrimaryItem: Boolean?=null,
+    
+    @SerializedName("meta")
+    var meta: @RawValue HashMap<String,Any>?=null,
+    
+    @SerializedName("article_assignment")
+    var articleAssignment: ArticleAssignment?=null,
+    
+    @SerializedName("ignore_locations")
+    var ignoreLocations: ArrayList<Int>?=null,
+    
+    @SerializedName("assign_locations")
+    var assignLocations: ArrayList<Int>?=null,
+    
+    @SerializedName("seller_id")
+    var sellerId: Int?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: OptimlLocationsRequestSchema
+*/
+@Parcelize
+data class OptimlLocationsRequestSchema(
+    
+    
+    
+    @SerializedName("channel_id")
+    var channelId: String?=null,
+    
+    @SerializedName("channel_type")
+    var channelType: String?=null,
+    
+    @SerializedName("channel_identifier")
+    var channelIdentifier: String?=null,
+    
+    @SerializedName("to_serviceability")
+    var toServiceability: LocationDetailsServiceability?=null,
+    
+    @SerializedName("article")
+    var article: OptimalLocationsArticles?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: OptimalLocationArticlesResponse
+*/
+@Parcelize
+data class OptimalLocationArticlesResponse(
+    
+    
+    
+    @SerializedName("item_id")
+    var itemId: Int?=null,
+    
+    @SerializedName("size")
+    var size: String?=null,
+    
+    @SerializedName("quantity")
+    var quantity: Int?=null,
+    
+    @SerializedName("group_id")
+    var groupId: String?=null,
+    
+    @SerializedName("is_primary_item")
+    var isPrimaryItem: Boolean?=null,
+    
+    @SerializedName("meta")
+    var meta: @RawValue HashMap<String,Any>?=null,
+    
+    @SerializedName("article_assignment")
+    var articleAssignment: ArticleAssignment?=null,
+    
+    @SerializedName("seller_id")
+    var sellerId: Int?=null,
+    
+    @SerializedName("ignore_locations")
+    var ignoreLocations: ArrayList<Int>?=null,
+    
+    @SerializedName("assign_locations")
+    var assignLocations: ArrayList<Int>?=null,
+    
+    @SerializedName("price_effective")
+    var priceEffective: Double?=null,
+    
+    @SerializedName("mto_quantity")
+    var mtoQuantity: Int?=null,
+    
+    @SerializedName("_id")
+    var id: String?=null,
+    
+    @SerializedName("uid")
+    var uid: String?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: OptimalLocationAssignedStoresResponse
+*/
+@Parcelize
+data class OptimalLocationAssignedStoresResponse(
+    
+    
+    
+    @SerializedName("store_id")
+    var storeId: Int?=null,
+    
+    @SerializedName("articles")
+    var articles: ArrayList<OptimalLocationArticlesResponse>?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: OptimalLocationsResponse
+*/
+@Parcelize
+data class OptimalLocationsResponse(
+    
+    
+    
+    @SerializedName("assigned_stores")
+    var assignedStores: ArrayList<OptimalLocationAssignedStoresResponse>?=null,
+    
+    @SerializedName("faulty_articles")
+    var faultyArticles: ArrayList<ErrorResponse>?=null
+    
+): Parcelable {
+    
+    
     
     
     

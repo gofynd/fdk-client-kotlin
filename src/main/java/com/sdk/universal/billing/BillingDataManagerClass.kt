@@ -55,10 +55,10 @@ class BillingDataManagerClass(val config: PublicConfig, val unauthorizedAction: 
         return retrofitHttpClient?.initializeRestClient(BillingApiList::class.java) as? BillingApiList
     }
     
-    suspend fun getStandardPlans(platformType: String): Response<DetailList>? {
+    suspend fun getStandardPlans(platform: String): Response<DetailList>? {
         var fullUrl : String? = _relativeUrls["getStandardPlans"] 
         
-        return billingApiList?.getStandardPlans(fullUrl    ,  platformType = platformType)}
+        return billingApiList?.getStandardPlans(fullUrl    ,  platform = platform)}
 
     
     
