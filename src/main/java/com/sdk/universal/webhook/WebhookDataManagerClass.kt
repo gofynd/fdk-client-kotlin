@@ -23,12 +23,6 @@ class WebhookDataManagerClass(val config: PublicConfig, val unauthorizedAction: 
             
                     _relativeUrls["queryWebhookEventDetails"] = "/service/common/webhook/v1.0/events/query-event-details".substring(1)
             
-                    _relativeUrls["notifyDepricatedEvent"] = "/service/common/webhook/v1.0/events/depricated-event-notifier".substring(1)
-            
-                    _relativeUrls["testHandlerTransformation"] = "/service/common/webhook/v1.0/events/transform-event".substring(1)
-            
-                    _relativeUrls["validateSchema"] = "/service/common/webhook/v1.0/events/validate-event-schema".substring(1)
-            
     }
 
     public fun update(updatedUrlMap : HashMap<String,String>){
@@ -74,27 +68,6 @@ class WebhookDataManagerClass(val config: PublicConfig, val unauthorizedAction: 
         var fullUrl : String? = _relativeUrls["queryWebhookEventDetails"] 
         
         return webhookApiList?.queryWebhookEventDetails(fullUrl  ,body = body)}
-
-    
-    
-    suspend fun notifyDepricatedEvent(): Response<EventNotifier>? {
-        var fullUrl : String? = _relativeUrls["notifyDepricatedEvent"] 
-        
-        return webhookApiList?.notifyDepricatedEvent(fullUrl  )}
-
-    
-    
-    suspend fun testHandlerTransformation(body: TransformEventRequest): Response<TransformEventResponse>? {
-        var fullUrl : String? = _relativeUrls["testHandlerTransformation"] 
-        
-        return webhookApiList?.testHandlerTransformation(fullUrl  ,body = body)}
-
-    
-    
-    suspend fun validateSchema(body: ValidateSchemaRequest): Response<ValidateSchemaResponse>? {
-        var fullUrl : String? = _relativeUrls["validateSchema"] 
-        
-        return webhookApiList?.validateSchema(fullUrl  ,body = body)}
 
     
     

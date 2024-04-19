@@ -44,7 +44,7 @@ class LeadDataManagerClass(val config: PlatformConfig, val unauthorizedAction: (
     }
     
     
-    suspend fun getPlatformTickets(items: Boolean?=null, filters: Boolean?=null, q: String?=null, status: String?=null, priority: String?=null, category: String?=null, pageNo: Int?=null, pageSize: Int?=null)
+    suspend fun getPlatformTickets(items: Boolean?=null, filters: Boolean?=null, q: String?=null, status: String?=null, priority: PriorityEnum?=null, category: String?=null, pageNo: Int?=null, pageSize: Int?=null)
     : Response<TicketList>? {
         
         return if (config.oauthClient.isAccessTokenValid()) {
@@ -55,90 +55,6 @@ class LeadDataManagerClass(val config: PlatformConfig, val unauthorizedAction: (
         } 
     }
     
-    
-    
-        
-            
-                
-            
-            
-        
-            
-                
-            
-            
-        
-            
-                
-            
-            
-        
-            
-                
-            
-            
-        
-            
-                
-            
-            
-        
-            
-                
-            
-            
-        
-            
-                
-            
-            
-        
-            
-            
-        
-            
-                
-            
-            
-        
-    /**
-    *
-    * Summary: Paginator for getPlatformTickets
-    **/
-    fun getPlatformTicketsPaginator(companyId: String, items: Boolean?=null, filters: Boolean?=null, q: String?=null, status: String?=null, priority: String?=null, category: String?=null, pageSize: Int?=null) : Paginator<TicketList>{
-        val paginator = Paginator<TicketList>()
-        paginator.setCallBack(object : PaginatorCallback<TicketList> {
-           
-            override suspend fun onNext(
-                onResponse: (Event<TicketList>?,FdkError?) -> Unit){
-
-                if (config.oauthClient.isAccessTokenValid()) {
-                    val pageId = paginator.nextId
-                    val pageNo = paginator.pageNo
-                    val pageType = "number"
-                    leadApiList?.getPlatformTickets(
-                    companyId = config.companyId, items = items, filters = filters, q = q, status = status, priority = priority, category = category, pageNo = pageNo, pageSize = pageSize
-                    )?.safeAwait{ response, error ->
-                        response?.let {
-                            val page = response.peekContent()?.page
-                            paginator.setPaginator(hasNext=page?.hasNext?:false,pageNo=if (page?.hasNext == true) ((pageNo ?: 0) + 1) else pageNo)
-                            onResponse.invoke(response,null)
-                        }
-                        
-                        error?.let {
-                            onResponse.invoke(null,error)
-                        }
-                    }
-
-                } else {
-                    null
-                }
-            }
-        
-
-    })
-        return paginator
-    }
     
     suspend fun createTicket(body: AddTicketPayload)
     : Response<Ticket>? {
@@ -203,6 +119,29 @@ class LeadDataManagerClass(val config: PlatformConfig, val unauthorizedAction: (
     }
     
     
+    suspend fun getFeedbacks(id: String)
+    : Response<TicketFeedbackList>? {
+        
+        return if (config.oauthClient.isAccessTokenValid()) {
+            leadApiList?.getFeedbacks(
+        companyId = config.companyId, id = id )
+        } else {
+            null
+        } 
+    }
+    
+    
+    suspend fun submitFeedback(id: String,body: TicketFeedbackPayload)
+    : Response<TicketFeedback>? {
+        
+        return if (config.oauthClient.isAccessTokenValid()) {
+            leadApiList?.submitFeedback(
+        companyId = config.companyId, id = id, body = body)
+        } else {
+            null
+        } 
+    }
+    
     
     
     
@@ -239,7 +178,7 @@ class LeadDataManagerClass(val config: PlatformConfig, val unauthorizedAction: (
     
     
     suspend fun getGeneralConfig()
-    : Response<GeneralConfigResponse>? {
+    : Response<CloseVideoRoomResponse>? {
         
         return if (config.oauthClient.isAccessTokenValid()) {
             leadApiList?.getGeneralConfig(
@@ -256,10 +195,10 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     
     
     
-    suspend fun getNewTickets(items: Boolean?=null, filters: Boolean?=null, q: String?=null, status: String?=null, priority: String?=null, category: String?=null)
+    suspend fun getTickets(items: Boolean?=null, filters: Boolean?=null, q: String?=null, status: String?=null, priority: PriorityEnum?=null, category: String?=null)
     : Response<TicketList>? {
         return if (config.oauthClient.isAccessTokenValid()) {
-                leadApiList?.getNewTickets(companyId = config.companyId , applicationId = applicationId , items = items, filters = filters, q = q, status = status, priority = priority, category = category )
+                leadApiList?.getTickets(companyId = config.companyId , applicationId = applicationId , items = items, filters = filters, q = q, status = status, priority = priority, category = category )
         } else {
             null
         }
@@ -268,20 +207,20 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     
     
     
-    suspend fun getNewTicket(id: String)
+    suspend fun getTicket(id: String)
     : Response<Ticket>? {
         return if (config.oauthClient.isAccessTokenValid()) {
-                leadApiList?.getNewTicket(companyId = config.companyId , applicationId = applicationId , id = id )
+                leadApiList?.getTicket(companyId = config.companyId , applicationId = applicationId , id = id )
         } else {
             null
         }
     }
     
     
-    suspend fun editNewTicket(id: String,body: EditTicketPayload)
+    suspend fun editTicket(id: String,body: EditTicketPayload)
     : Response<Ticket>? {
         return if (config.oauthClient.isAccessTokenValid()) {
-                leadApiList?.editNewTicket(companyId = config.companyId , applicationId = applicationId , id = id, body = body)
+                leadApiList?.editTicket(companyId = config.companyId , applicationId = applicationId , id = id, body = body)
         } else {
             null
         }
@@ -290,20 +229,22 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     
     
     
-    suspend fun createNewHistory(id: String,body: TicketHistoryPayload)
+    
+    
+    suspend fun createHistory(id: String,body: TicketHistoryPayload)
     : Response<TicketHistory>? {
         return if (config.oauthClient.isAccessTokenValid()) {
-                leadApiList?.createNewHistory(companyId = config.companyId , applicationId = applicationId , id = id, body = body)
+                leadApiList?.createHistory(companyId = config.companyId , applicationId = applicationId , id = id, body = body)
         } else {
             null
         }
     }
     
     
-    suspend fun getNewTicketHistory(id: String)
+    suspend fun getTicketHistory(id: String)
     : Response<TicketHistoryList>? {
         return if (config.oauthClient.isAccessTokenValid()) {
-                leadApiList?.getNewTicketHistory(companyId = config.companyId , applicationId = applicationId , id = id )
+                leadApiList?.getTicketHistory(companyId = config.companyId , applicationId = applicationId , id = id )
         } else {
             null
         }
@@ -324,16 +265,6 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     : Response<CustomForm>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 leadApiList?.editCustomForm(companyId = config.companyId , applicationId = applicationId , slug = slug, body = body)
-        } else {
-            null
-        }
-    }
-    
-    
-    suspend fun deleteCustomForm(slug: String)
-    : Response<CustomForm>? {
-        return if (config.oauthClient.isAccessTokenValid()) {
-                leadApiList?.deleteCustomForm(companyId = config.companyId , applicationId = applicationId , slug = slug )
         } else {
             null
         }
@@ -361,10 +292,10 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     
     
     
-    suspend fun getNewTokenForVideoRoom(uniqueName: String)
+    suspend fun getTokenForVideoRoom(uniqueName: String)
     : Response<GetTokenForVideoRoomResponse>? {
         return if (config.oauthClient.isAccessTokenValid()) {
-                leadApiList?.getNewTokenForVideoRoom(companyId = config.companyId , applicationId = applicationId , uniqueName = uniqueName )
+                leadApiList?.getTokenForVideoRoom(companyId = config.companyId , applicationId = applicationId , uniqueName = uniqueName )
         } else {
             null
         }
@@ -372,10 +303,10 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     
     
     
-    suspend fun getNewVideoParticipants(uniqueName: String)
+    suspend fun getVideoParticipants(uniqueName: String)
     : Response<GetParticipantsInsideVideoRoomResponse>? {
         return if (config.oauthClient.isAccessTokenValid()) {
-                leadApiList?.getNewVideoParticipants(companyId = config.companyId , applicationId = applicationId , uniqueName = uniqueName )
+                leadApiList?.getVideoParticipants(companyId = config.companyId , applicationId = applicationId , uniqueName = uniqueName )
         } else {
             null
         }

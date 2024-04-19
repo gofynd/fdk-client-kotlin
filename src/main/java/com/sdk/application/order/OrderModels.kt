@@ -404,15 +404,10 @@ data class TrackingDetails(
     @SerializedName("time")
     var time: String?=null,
     
-    @SerializedName("created_ts")
-    var createdTs: String?=null,
-    
     @SerializedName("tracking_details")
     var trackingDetails: ArrayList<NestedTrackingDetails>?=null
     
 ): Parcelable {
-    
-    
     
     
     
@@ -530,9 +525,6 @@ data class Prices(
     @SerializedName("delivery_charge")
     var deliveryCharge: Double?=null,
     
-    @SerializedName("tcs_charge")
-    var tcsCharge: Double?=null,
-    
     @SerializedName("coupon_value")
     var couponValue: Double?=null,
     
@@ -594,16 +586,9 @@ data class Prices(
     var currencyCode: String?=null,
     
     @SerializedName("fynd_credits")
-    var fyndCredits: Double?=null,
-    
-    @SerializedName("amount_to_be_collected")
-    var amountToBeCollected: Double?=null
+    var fyndCredits: Double?=null
     
 ): Parcelable {
-    
-    
-    
-    
     
     
     
@@ -890,9 +875,6 @@ data class FinancialBreakup(
     @SerializedName("delivery_charge")
     var deliveryCharge: Double?=null,
     
-    @SerializedName("tcs_charge")
-    var tcsCharge: Double?=null,
-    
     @SerializedName("brand_calculated_amount")
     var brandCalculatedAmount: Double?=null,
     
@@ -966,16 +948,9 @@ data class FinancialBreakup(
     var refundAmount: Double?=null,
     
     @SerializedName("fynd_credits")
-    var fyndCredits: Double?=null,
-    
-    @SerializedName("amount_to_be_collected")
-    var amountToBeCollected: Double?=null
+    var fyndCredits: Double?=null
     
 ): Parcelable {
-    
-    
-    
-    
     
     
     
@@ -1132,14 +1107,9 @@ data class Bags(
     var sellerIdentifier: String?=null,
     
     @SerializedName("current_status")
-    var currentStatus: CurrentStatus?=null,
-    
-    @SerializedName("article")
-    var article: Article?=null
+    var currentStatus: CurrentStatus?=null
     
 ): Parcelable {
-    
-    
     
     
     
@@ -1210,28 +1180,6 @@ data class FulfillingCompany(
 
              
 /*
-    Model: Article
-*/
-@Parcelize
-data class Article(
-    
-    
-    
-    @SerializedName("tags")
-    var tags: ArrayList<String>?=null
-    
-): Parcelable {
-    
-    
-    
-    
-    
-}
-
-
-
-             
-/*
     Model: DeliveryAddress
 */
 @Parcelize
@@ -1280,9 +1228,6 @@ data class DeliveryAddress(
     
     @SerializedName("address1")
     var address1: String?=null,
-    
-    @SerializedName("display_address")
-    var displayAddress: String?=null,
     
     @SerializedName("name")
     var name: String?=null,
@@ -1356,8 +1301,6 @@ data class DeliveryAddress(
     
     
     
-    
-    
 }
 
 
@@ -1373,9 +1316,6 @@ data class Shipments(
     
     @SerializedName("payment")
     var payment: ShipmentPayment?=null,
-    
-    @SerializedName("payment_info")
-    var paymentInfo: ArrayList<ShipmentPayment>?=null,
     
     @SerializedName("order_type")
     var orderType: String?=null,
@@ -1443,9 +1383,6 @@ data class Shipments(
     @SerializedName("shipment_created_at")
     var shipmentCreatedAt: String?=null,
     
-    @SerializedName("shipment_created_ts")
-    var shipmentCreatedTs: String?=null,
-    
     @SerializedName("size_info")
     var sizeInfo: @RawValue HashMap<String,Any>?=null,
     
@@ -1483,28 +1420,9 @@ data class Shipments(
     var returnMeta: @RawValue HashMap<String,Any>?=null,
     
     @SerializedName("delivery_date")
-    var deliveryDate: String?=null,
-    
-    @SerializedName("order")
-    var order: OrderRequest?=null,
-    
-    @SerializedName("meta")
-    var meta: @RawValue HashMap<String,Any>?=null,
-    
-    @SerializedName("can_pay_remaining_amount")
-    var canPayRemainingAmount: Boolean?=null
+    var deliveryDate: String?=null
     
 ): Parcelable {
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
     
     
     
@@ -1679,9 +1597,6 @@ data class OrderSchema(
     @SerializedName("order_created_time")
     var orderCreatedTime: String?=null,
     
-    @SerializedName("order_created_ts")
-    var orderCreatedTs: String?=null,
-    
     @SerializedName("order_id")
     var orderId: String?=null,
     
@@ -1692,8 +1607,6 @@ data class OrderSchema(
     var bagsForReorder: ArrayList<BagsForReorder>?=null
     
 ): Parcelable {
-    
-    
     
     
     
@@ -2675,28 +2588,6 @@ data class StatuesRequest(
     
     
     
-    
-    
-    
-    
-    
-}
-
-
-
-             
-/*
-    Model: OrderRequest
-*/
-@Parcelize
-data class OrderRequest(
-    
-    
-    
-    @SerializedName("meta")
-    var meta: @RawValue HashMap<String,Any>?=null
-    
-): Parcelable {
     
     
     

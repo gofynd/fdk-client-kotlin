@@ -289,8 +289,8 @@ data class Application(
     @SerializedName("created_at")
     var createdAt: String?=null,
     
-    @SerializedName("modified_at")
-    var modifiedAt: String?=null,
+    @SerializedName("updated_at")
+    var updatedAt: String?=null,
     
     @SerializedName("__v")
     var v: Int?=null,
@@ -317,24 +317,9 @@ data class Application(
     var domain: Domain?=null,
     
     @SerializedName("slug")
-    var slug: String?=null,
-    
-    @SerializedName("mode")
-    var mode: String?=null,
-    
-    @SerializedName("status")
-    var status: String?=null,
-    
-    @SerializedName("tokens")
-    var tokens: ArrayList<TokenSchema>?=null
+    var slug: String?=null
     
 ): Parcelable {
-    
-    
-    
-    
-    
-    
     
     
     
@@ -396,27 +381,39 @@ data class Application(
 
              
 /*
-    Model: TokenSchema
+    Model: NotFound
 */
 @Parcelize
-data class TokenSchema(
+data class NotFound(
     
     
     
-    @SerializedName("token")
-    var token: String?=null,
-    
-    @SerializedName("created_by")
-    var createdBy: @RawValue HashMap<String,Any>?=null,
-    
-    @SerializedName("created_at")
-    var createdAt: String?=null
+    @SerializedName("message")
+    var message: String?=null
     
 ): Parcelable {
     
     
     
     
+    
+}
+
+
+
+             
+/*
+    Model: BadRequest
+*/
+@Parcelize
+data class BadRequest(
+    
+    
+    
+    @SerializedName("message")
+    var message: String?=null
+    
+): Parcelable {
     
     
     

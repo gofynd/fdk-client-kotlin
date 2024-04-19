@@ -75,7 +75,6 @@ class ConfigurationDataManagerClass(val config: PlatformConfig, val unauthorized
     
     
     
-    
     suspend fun createApplication(body: CreateApplicationRequest)
     : Response<CreateAppResponse>? {
         
@@ -99,65 +98,6 @@ class ConfigurationDataManagerClass(val config: PlatformConfig, val unauthorized
         } 
     }
     
-    
-    
-        
-            
-                
-            
-            
-        
-            
-            
-        
-            
-                
-            
-            
-        
-            
-                
-            
-            
-        
-    /**
-    *
-    * Summary: Paginator for getApplications
-    **/
-    fun getApplicationsPaginator(companyId: String, pageSize: Int?=null, q: String?=null) : Paginator<ApplicationsResponse>{
-        val paginator = Paginator<ApplicationsResponse>()
-        paginator.setCallBack(object : PaginatorCallback<ApplicationsResponse> {
-           
-            override suspend fun onNext(
-                onResponse: (Event<ApplicationsResponse>?,FdkError?) -> Unit){
-
-                if (config.oauthClient.isAccessTokenValid()) {
-                    val pageId = paginator.nextId
-                    val pageNo = paginator.pageNo
-                    val pageType = "number"
-                    configurationApiList?.getApplications(
-                    companyId = config.companyId, pageNo = pageNo, pageSize = pageSize, q = q
-                    )?.safeAwait{ response, error ->
-                        response?.let {
-                            val page = response.peekContent()?.page
-                            paginator.setPaginator(hasNext=page?.hasNext?:false,pageNo=if (page?.hasNext == true) ((pageNo ?: 0) + 1) else pageNo)
-                            onResponse.invoke(response,null)
-                        }
-                        
-                        error?.let {
-                            onResponse.invoke(null,error)
-                        }
-                    }
-
-                } else {
-                    null
-                }
-            }
-        
-
-    })
-        return paginator
-    }
     
     
     suspend fun getCurrencies()
@@ -208,60 +148,6 @@ class ConfigurationDataManagerClass(val config: PlatformConfig, val unauthorized
     }
     
     
-    
-        
-            
-                
-            
-            
-        
-            
-            
-        
-            
-                
-            
-            
-        
-    /**
-    *
-    * Summary: Paginator for getAvailableOptIns
-    **/
-    fun getAvailableOptInsPaginator(companyId: String, pageSize: Int?=null) : Paginator<GetIntegrationsOptInsResponse>{
-        val paginator = Paginator<GetIntegrationsOptInsResponse>()
-        paginator.setCallBack(object : PaginatorCallback<GetIntegrationsOptInsResponse> {
-           
-            override suspend fun onNext(
-                onResponse: (Event<GetIntegrationsOptInsResponse>?,FdkError?) -> Unit){
-
-                if (config.oauthClient.isAccessTokenValid()) {
-                    val pageId = paginator.nextId
-                    val pageNo = paginator.pageNo
-                    val pageType = "number"
-                    configurationApiList?.getAvailableOptIns(
-                    companyId = config.companyId, pageNo = pageNo, pageSize = pageSize
-                    )?.safeAwait{ response, error ->
-                        response?.let {
-                            val page = response.peekContent()?.page
-                            paginator.setPaginator(hasNext=page?.hasNext?:false,pageNo=if (page?.hasNext == true) ((pageNo ?: 0) + 1) else pageNo)
-                            onResponse.invoke(response,null)
-                        }
-                        
-                        error?.let {
-                            onResponse.invoke(null,error)
-                        }
-                    }
-
-                } else {
-                    null
-                }
-            }
-        
-
-    })
-        return paginator
-    }
-    
     suspend fun getSelectedOptIns(level: String, uid: String, pageNo: Int?=null, pageSize: Int?=null)
     : Response<GetIntegrationsOptInsResponse>? {
         
@@ -273,70 +159,6 @@ class ConfigurationDataManagerClass(val config: PlatformConfig, val unauthorized
         } 
     }
     
-    
-    
-        
-            
-                
-            
-            
-        
-            
-                
-            
-            
-        
-            
-                
-            
-            
-        
-            
-            
-        
-            
-                
-            
-            
-        
-    /**
-    *
-    * Summary: Paginator for getSelectedOptIns
-    **/
-    fun getSelectedOptInsPaginator(companyId: String, level: String, uid: String, pageSize: Int?=null) : Paginator<GetIntegrationsOptInsResponse>{
-        val paginator = Paginator<GetIntegrationsOptInsResponse>()
-        paginator.setCallBack(object : PaginatorCallback<GetIntegrationsOptInsResponse> {
-           
-            override suspend fun onNext(
-                onResponse: (Event<GetIntegrationsOptInsResponse>?,FdkError?) -> Unit){
-
-                if (config.oauthClient.isAccessTokenValid()) {
-                    val pageId = paginator.nextId
-                    val pageNo = paginator.pageNo
-                    val pageType = "number"
-                    configurationApiList?.getSelectedOptIns(
-                    companyId = config.companyId, level = level, uid = uid, pageNo = pageNo, pageSize = pageSize
-                    )?.safeAwait{ response, error ->
-                        response?.let {
-                            val page = response.peekContent()?.page
-                            paginator.setPaginator(hasNext=page?.hasNext?:false,pageNo=if (page?.hasNext == true) ((pageNo ?: 0) + 1) else pageNo)
-                            onResponse.invoke(response,null)
-                        }
-                        
-                        error?.let {
-                            onResponse.invoke(null,error)
-                        }
-                    }
-
-                } else {
-                    null
-                }
-            }
-        
-
-    })
-        return paginator
-    }
     
     suspend fun getIntegrationLevelConfig(id: String, level: String, opted: Boolean?=null, checkPermission: Boolean?=null)
     : Response<IntegrationConfigResponse>? {
@@ -422,60 +244,6 @@ class ConfigurationDataManagerClass(val config: PlatformConfig, val unauthorized
     }
     
     
-    
-        
-            
-                
-            
-            
-        
-            
-            
-        
-            
-                
-            
-            
-        
-    /**
-    *
-    * Summary: Paginator for getCompanyByBrands
-    **/
-    fun getCompanyByBrandsPaginator(companyId: String, pageSize: Int?=null,body: CompanyByBrandsRequest) : Paginator<CompanyByBrandsResponse>{
-        val paginator = Paginator<CompanyByBrandsResponse>()
-        paginator.setCallBack(object : PaginatorCallback<CompanyByBrandsResponse> {
-           
-            override suspend fun onNext(
-                onResponse: (Event<CompanyByBrandsResponse>?,FdkError?) -> Unit){
-
-                if (config.oauthClient.isAccessTokenValid()) {
-                    val pageId = paginator.nextId
-                    val pageNo = paginator.pageNo
-                    val pageType = "number"
-                    configurationApiList?.getCompanyByBrands(
-                    companyId = config.companyId, pageNo = pageNo, pageSize = pageSize,
-                    body = body )?.safeAwait{ response, error ->
-                        response?.let {
-                            val page = response.peekContent()?.page
-                            paginator.setPaginator(hasNext=page?.hasNext?:false,pageNo=if (page?.hasNext == true) ((pageNo ?: 0) + 1) else pageNo)
-                            onResponse.invoke(response,null)
-                        }
-                        
-                        error?.let {
-                            onResponse.invoke(null,error)
-                        }
-                    }
-
-                } else {
-                    null
-                }
-            }
-        
-
-    })
-        return paginator
-    }
-    
     suspend fun getStoreByBrands(pageNo: Int?=null, pageSize: Int?=null,body: StoreByBrandsRequest)
     : Response<StoreByBrandsResponse>? {
         
@@ -488,60 +256,6 @@ class ConfigurationDataManagerClass(val config: PlatformConfig, val unauthorized
     }
     
     
-    
-        
-            
-                
-            
-            
-        
-            
-            
-        
-            
-                
-            
-            
-        
-    /**
-    *
-    * Summary: Paginator for getStoreByBrands
-    **/
-    fun getStoreByBrandsPaginator(companyId: String, pageSize: Int?=null,body: StoreByBrandsRequest) : Paginator<StoreByBrandsResponse>{
-        val paginator = Paginator<StoreByBrandsResponse>()
-        paginator.setCallBack(object : PaginatorCallback<StoreByBrandsResponse> {
-           
-            override suspend fun onNext(
-                onResponse: (Event<StoreByBrandsResponse>?,FdkError?) -> Unit){
-
-                if (config.oauthClient.isAccessTokenValid()) {
-                    val pageId = paginator.nextId
-                    val pageNo = paginator.pageNo
-                    val pageType = "number"
-                    configurationApiList?.getStoreByBrands(
-                    companyId = config.companyId, pageNo = pageNo, pageSize = pageSize,
-                    body = body )?.safeAwait{ response, error ->
-                        response?.let {
-                            val page = response.peekContent()?.page
-                            paginator.setPaginator(hasNext=page?.hasNext?:false,pageNo=if (page?.hasNext == true) ((pageNo ?: 0) + 1) else pageNo)
-                            onResponse.invoke(response,null)
-                        }
-                        
-                        error?.let {
-                            onResponse.invoke(null,error)
-                        }
-                    }
-
-                } else {
-                    null
-                }
-            }
-        
-
-    })
-        return paginator
-    }
-    
     suspend fun getOtherSellerApplications(pageNo: Int?=null, pageSize: Int?=null)
     : Response<OtherSellerApplications>? {
         
@@ -553,60 +267,6 @@ class ConfigurationDataManagerClass(val config: PlatformConfig, val unauthorized
         } 
     }
     
-    
-    
-        
-            
-                
-            
-            
-        
-            
-            
-        
-            
-                
-            
-            
-        
-    /**
-    *
-    * Summary: Paginator for getOtherSellerApplications
-    **/
-    fun getOtherSellerApplicationsPaginator(companyId: String, pageSize: Int?=null) : Paginator<OtherSellerApplications>{
-        val paginator = Paginator<OtherSellerApplications>()
-        paginator.setCallBack(object : PaginatorCallback<OtherSellerApplications> {
-           
-            override suspend fun onNext(
-                onResponse: (Event<OtherSellerApplications>?,FdkError?) -> Unit){
-
-                if (config.oauthClient.isAccessTokenValid()) {
-                    val pageId = paginator.nextId
-                    val pageNo = paginator.pageNo
-                    val pageType = "number"
-                    configurationApiList?.getOtherSellerApplications(
-                    companyId = config.companyId, pageNo = pageNo, pageSize = pageSize
-                    )?.safeAwait{ response, error ->
-                        response?.let {
-                            val page = response.peekContent()?.page
-                            paginator.setPaginator(hasNext=page?.hasNext?:false,pageNo=if (page?.hasNext == true) ((pageNo ?: 0) + 1) else pageNo)
-                            onResponse.invoke(response,null)
-                        }
-                        
-                        error?.let {
-                            onResponse.invoke(null,error)
-                        }
-                    }
-
-                } else {
-                    null
-                }
-            }
-        
-
-    })
-        return paginator
-    }
     
     suspend fun getOtherSellerApplicationById(id: String)
     : Response<OptedApplicationResponse>? {
@@ -923,16 +583,6 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     : Response<ApplicationInventory>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 configurationApiList?.partiallyUpdateInventoryConfig(companyId = config.companyId , applicationId = applicationId , body = body)
-        } else {
-            null
-        }
-    }
-    
-    
-    suspend fun getApplicationConfiguration()
-    : Response<OwnerAppConfig>? {
-        return if (config.oauthClient.isAccessTokenValid()) {
-                configurationApiList?.getApplicationConfiguration(companyId = config.companyId , applicationId = applicationId  )
         } else {
             null
         }

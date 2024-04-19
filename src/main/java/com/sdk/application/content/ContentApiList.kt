@@ -76,8 +76,13 @@ interface ContentApiList {
     
     
     @GET 
-    suspend fun getSEOMarkupSchemas(@Url url1: String?    ,   @Query("page_type") pageType: String?, @Query("active") active: Boolean?)
-    : Response<SeoSchemaComponent>
+    suspend fun getSlideshows(@Url url1: String?    ,   @Query("page_no") pageNo: Int?, @Query("page_size") pageSize: Int?)
+    : Response<SlideshowGetResponse>
+    
+    
+    @GET 
+    suspend fun getSlideshow(@Url url1: String?    )
+    : Response<SlideshowSchema>
     
     
     @GET 
@@ -91,16 +96,6 @@ interface ContentApiList {
     
     
     @GET 
-    suspend fun getPageV1(@Url url1: String?     ,  @Query("root_id") rootId: String?)
-    : Response<PageSchema>
-    
-    
-    @GET 
-    suspend fun getPagesV1(@Url url1: String?    ,   @Query("page_no") pageNo: Int?, @Query("page_size") pageSize: Int?)
-    : Response<PageGetResponse>
-    
-    
-    @GET 
     suspend fun getPage(@Url url1: String?     ,  @Query("root_id") rootId: String?)
     : Response<PageSchema>
     
@@ -108,25 +103,5 @@ interface ContentApiList {
     @GET 
     suspend fun getPages(@Url url1: String?    ,   @Query("page_no") pageNo: Int?, @Query("page_size") pageSize: Int?)
     : Response<PageGetResponse>
-    
-    
-    @GET 
-    suspend fun getCustomObject(@Url url1: String?    )
-    : Response<CustomObjectByIdSchema>
-    
-    
-    @GET 
-    suspend fun getCustomFieldDefinitions(@Url url1: String?   )
-    : Response<CustomFieldDefinitionsSchema>
-    
-    
-    @GET 
-    suspend fun getCustomFieldDefinition(@Url url1: String?    )
-    : Response<CustomFieldDefinitionDetailResSchema>
-    
-    
-    @GET 
-    suspend fun getCustomFields(@Url url1: String?     ,  @Query("resource_ids") resourceIds: String)
-    : Response<CustomFieldsResponseByResourceIdSchema>
     
 }

@@ -14,50 +14,6 @@ import com.google.gson.annotations.SerializedName
 
              
 /*
-    Model: UpdateUserAttributesRequest
-*/
-@Parcelize
-data class UpdateUserAttributesRequest(
-    
-    
-    
-    @SerializedName("attributes")
-    var attributes: @RawValue HashMap<String,Any>?=null
-    
-): Parcelable {
-    
-    
-    
-    
-    
-}
-
-
-
-             
-/*
-    Model: UserAttributes
-*/
-@Parcelize
-data class UserAttributes(
-    
-    
-    
-    @SerializedName("attributes")
-    var attributes: @RawValue HashMap<String,Any>?=null
-    
-): Parcelable {
-    
-    
-    
-    
-    
-}
-
-
-
-             
-/*
     Model: DeleteApplicationUserRequestSchema
 */
 @Parcelize
@@ -198,9 +154,6 @@ data class EditProfileRequestSchema(
     
     
     
-    @SerializedName("ci")
-    var ci: Boolean?=null,
-    
     @SerializedName("first_name")
     var firstName: String?=null,
     
@@ -235,8 +188,6 @@ data class EditProfileRequestSchema(
     var registerToken: String?=null
     
 ): Parcelable {
-    
-    
     
     
     
@@ -312,9 +263,14 @@ data class SendEmailOtpRequestSchema(
     var token: String?=null,
     
     @SerializedName("register_token")
-    var registerToken: String?=null
+    var registerToken: String?=null,
+    
+    @SerializedName("captcha_code")
+    var captchaCode: String?=null
     
 ): Parcelable {
+    
+    
     
     
     
@@ -374,9 +330,6 @@ data class VerifyEmailOtpRequestSchema(
     @SerializedName("email")
     var email: String?=null,
     
-    @SerializedName("request_id")
-    var requestId: String?=null,
-    
     @SerializedName("action")
     var action: String?=null,
     
@@ -387,8 +340,6 @@ data class VerifyEmailOtpRequestSchema(
     var otp: String?=null
     
 ): Parcelable {
-    
-    
     
     
     
@@ -417,14 +368,9 @@ data class VerifyEmailForgotOtpRequestSchema(
     var email: String?=null,
     
     @SerializedName("otp")
-    var otp: String?=null,
-    
-    @SerializedName("request_id")
-    var requestId: String?=null
+    var otp: String?=null
     
 ): Parcelable {
-    
-    
     
     
     
@@ -504,9 +450,6 @@ data class SendMobileOtpRequestSchema(
     
     
     
-    @SerializedName("ci")
-    var ci: Boolean?=null,
-    
     @SerializedName("mobile")
     var mobile: String?=null,
     
@@ -523,7 +466,10 @@ data class SendMobileOtpRequestSchema(
     var androidHash: String?=null,
     
     @SerializedName("force")
-    var force: String?=null
+    var force: String?=null,
+    
+    @SerializedName("captcha_code")
+    var captchaCode: String?=null
     
 ): Parcelable {
     
@@ -749,9 +695,46 @@ data class SendResetPasswordEmailRequestSchema(
     
     
     @SerializedName("email")
-    var email: String?=null
+    var email: String?=null,
+    
+    @SerializedName("captcha_code")
+    var captchaCode: String?=null
     
 ): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: SendResetPasswordMobileRequestSchema
+*/
+@Parcelize
+data class SendResetPasswordMobileRequestSchema(
+    
+    
+    
+    @SerializedName("country_code")
+    var countryCode: String?=null,
+    
+    @SerializedName("mobile")
+    var mobile: String?=null,
+    
+    @SerializedName("captcha_code")
+    var captchaCode: String?=null
+    
+): Parcelable {
+    
+    
+    
+    
     
     
     
@@ -770,6 +753,9 @@ data class PasswordLoginRequestSchema(
     
     
     
+    @SerializedName("captcha_code")
+    var captchaCode: String?=null,
+    
     @SerializedName("password")
     var password: String?=null,
     
@@ -777,6 +763,8 @@ data class PasswordLoginRequestSchema(
     var username: String?=null
     
 ): Parcelable {
+    
+    
     
     
     
@@ -797,11 +785,11 @@ data class SendOtpRequestSchema(
     
     
     
-    @SerializedName("ci")
-    var ci: Boolean?=null,
-    
     @SerializedName("country_code")
     var countryCode: String?=null,
+    
+    @SerializedName("captcha_code")
+    var captchaCode: String?=null,
     
     @SerializedName("mobile")
     var mobile: String?=null,
@@ -945,28 +933,6 @@ data class AuthSuccess(
 
              
 /*
-    Model: UserExistsResponse
-*/
-@Parcelize
-data class UserExistsResponse(
-    
-    
-    
-    @SerializedName("user_exists")
-    var userExists: Boolean?=null
-    
-): Parcelable {
-    
-    
-    
-    
-    
-}
-
-
-
-             
-/*
     Model: SendOtpResponse
 */
 @Parcelize
@@ -1049,33 +1015,6 @@ data class SendOtpResponse(
 
              
 /*
-    Model: EmailOtp
-*/
-@Parcelize
-data class EmailOtp(
-    
-    
-    
-    @SerializedName("request_id")
-    var requestId: String?=null,
-    
-    @SerializedName("resend_timer")
-    var resendTimer: Int?=null
-    
-): Parcelable {
-    
-    
-    
-    
-    
-    
-    
-}
-
-
-
-             
-/*
     Model: ProfileEditSuccess
 */
 @Parcelize
@@ -1107,9 +1046,6 @@ data class ProfileEditSuccess(
     @SerializedName("email")
     var email: String?=null,
     
-    @SerializedName("email_otp")
-    var emailOtp: EmailOtp?=null,
-    
     @SerializedName("request_id")
     var requestId: String?=null,
     
@@ -1132,8 +1068,6 @@ data class ProfileEditSuccess(
     var resendToken: String?=null
     
 ): Parcelable {
-    
-    
     
     
     
@@ -1318,9 +1252,6 @@ data class RegisterFormSuccess(
     @SerializedName("email")
     var email: String?=null,
     
-    @SerializedName("email_otp")
-    var emailOtp: EmailOtp?=null,
-    
     @SerializedName("resend_timer")
     var resendTimer: Int?=null,
     
@@ -1387,8 +1318,6 @@ data class RegisterFormSuccess(
     
     
     
-    
-    
 }
 
 
@@ -1425,7 +1354,7 @@ data class HasPasswordSuccess(
     
     
     @SerializedName("result")
-    var result: Int?=null
+    var result: Boolean?=null
     
 ): Parcelable {
     
@@ -1548,19 +1477,9 @@ data class EmailOtpSuccess(
     
     
     @SerializedName("success")
-    var success: Boolean?=null,
-    
-    @SerializedName("resend_email_token")
-    var resendEmailToken: String?=null,
-    
-    @SerializedName("email_otp")
-    var emailOtp: EmailOtp?=null
+    var success: Boolean?=null
     
 ): Parcelable {
-    
-    
-    
-    
     
     
     
@@ -1692,6 +1611,50 @@ data class SendEmailVerifyLinkSuccess(
 
              
 /*
+    Model: AuthenticationInternalServerErrorSchema
+*/
+@Parcelize
+data class AuthenticationInternalServerErrorSchema(
+    
+    
+    
+    @SerializedName("message")
+    var message: String?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: AuthenticationApiErrorSchema
+*/
+@Parcelize
+data class AuthenticationApiErrorSchema(
+    
+    
+    
+    @SerializedName("message")
+    var message: String?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
     Model: APIError
 */
 @Parcelize
@@ -1711,20 +1674,10 @@ data class APIError(
     @SerializedName("request_id")
     var requestId: String?=null,
     
-    @SerializedName("error")
-    var error: String?=null,
-    
     @SerializedName("meta")
-    var meta: @RawValue HashMap<String,Any>?=null,
-    
-    @SerializedName("authenticated")
-    var authenticated: Boolean?=null
+    var meta: @RawValue HashMap<String,Any>?=null
     
 ): Parcelable {
-    
-    
-    
-    
     
     
     
@@ -1929,12 +1882,6 @@ data class PlatformSchema(
     @SerializedName("login")
     var login: Login?=null,
     
-    @SerializedName("account_lockout")
-    var accountLockout: AccountLockout?=null,
-    
-    @SerializedName("password_settings")
-    var passwordSettings: PasswordSettings?=null,
-    
     @SerializedName("skip_captcha")
     var skipCaptcha: Boolean?=null,
     
@@ -1987,21 +1934,12 @@ data class PlatformSchema(
     var deleteAccountReasons: ArrayList<DeleteAccountReasons>?=null,
     
     @SerializedName("delete_account_consent")
-    var deleteAccountConsent: DeleteAccountConsent?=null,
+    var deleteAccountConsent: @RawValue HashMap<String,Any>?=null,
     
     @SerializedName("session_config")
-    var sessionConfig: SessionExpiry?=null,
-    
-    @SerializedName("__v")
-    var v: Int?=null
+    var sessionConfig: @RawValue HashMap<String,Any>?=null
     
 ): Parcelable {
-    
-    
-    
-    
-    
-    
     
     
     
@@ -2088,161 +2026,6 @@ data class LookAndFeel(
 
              
 /*
-    Model: PasswordConfigs
-*/
-@Parcelize
-data class PasswordConfigs(
-    
-    
-    
-    @SerializedName("length")
-    var length: Double?=null,
-    
-    @SerializedName("require_special_character")
-    var requireSpecialCharacter: Boolean?=null,
-    
-    @SerializedName("require_number")
-    var requireNumber: Boolean?=null,
-    
-    @SerializedName("require_capital_character")
-    var requireCapitalCharacter: Boolean?=null
-    
-): Parcelable {
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-}
-
-
-
-             
-/*
-    Model: PasswordHistory
-*/
-@Parcelize
-data class PasswordHistory(
-    
-    
-    
-    @SerializedName("required")
-    var required: Boolean?=null,
-    
-    @SerializedName("count")
-    var count: Double?=null
-    
-): Parcelable {
-    
-    
-    
-    
-    
-    
-    
-}
-
-
-
-             
-/*
-    Model: PasswordExpiry
-*/
-@Parcelize
-data class PasswordExpiry(
-    
-    
-    
-    @SerializedName("required")
-    var required: Boolean?=null,
-    
-    @SerializedName("duration")
-    var duration: Double?=null
-    
-): Parcelable {
-    
-    
-    
-    
-    
-    
-    
-}
-
-
-
-             
-/*
-    Model: PasswordSettings
-*/
-@Parcelize
-data class PasswordSettings(
-    
-    
-    
-    @SerializedName("configs")
-    var configs: PasswordConfigs?=null,
-    
-    @SerializedName("history")
-    var history: PasswordHistory?=null,
-    
-    @SerializedName("expiry")
-    var expiry: PasswordExpiry?=null
-    
-): Parcelable {
-    
-    
-    
-    
-    
-    
-    
-    
-    
-}
-
-
-
-             
-/*
-    Model: AccountLockout
-*/
-@Parcelize
-data class AccountLockout(
-    
-    
-    
-    @SerializedName("enable")
-    var enable: Boolean?=null,
-    
-    @SerializedName("attempts")
-    var attempts: Double?=null,
-    
-    @SerializedName("duration")
-    var duration: Double?=null
-    
-): Parcelable {
-    
-    
-    
-    
-    
-    
-    
-    
-    
-}
-
-
-
-             
-/*
     Model: Login
 */
 @Parcelize
@@ -2254,14 +2037,9 @@ data class Login(
     var password: Boolean?=null,
     
     @SerializedName("otp")
-    var otp: Boolean?=null,
-    
-    @SerializedName("via")
-    var via: String?=null
+    var otp: Boolean?=null
     
 ): Parcelable {
-    
-    
     
     
     
@@ -2345,14 +2123,9 @@ data class RequiredFields(
     var email: PlatformEmail?=null,
     
     @SerializedName("mobile")
-    var mobile: PlatformMobile?=null,
-    
-    @SerializedName("password")
-    var password: PlatformPassword?=null
+    var mobile: PlatformMobile?=null
     
 ): Parcelable {
-    
-    
     
     
     
@@ -2420,28 +2193,6 @@ data class PlatformMobile(
 
              
 /*
-    Model: PlatformPassword
-*/
-@Parcelize
-data class PlatformPassword(
-    
-    
-    
-    @SerializedName("is_required")
-    var isRequired: Boolean?=null
-    
-): Parcelable {
-    
-    
-    
-    
-    
-}
-
-
-
-             
-/*
     Model: RegisterRequiredFields
 */
 @Parcelize
@@ -2453,14 +2204,9 @@ data class RegisterRequiredFields(
     var email: RegisterRequiredFieldsEmail?=null,
     
     @SerializedName("mobile")
-    var mobile: RegisterRequiredFieldsMobile?=null,
-    
-    @SerializedName("password")
-    var password: PlatformPassword?=null
+    var mobile: RegisterRequiredFieldsMobile?=null
     
 ): Parcelable {
-    
-    
     
     
     
@@ -2570,8 +2316,8 @@ data class SocialTokens(
     @SerializedName("facebook")
     var facebook: Facebook?=null,
     
-    @SerializedName("accountkit")
-    var accountkit: Accountkit?=null,
+    @SerializedName("account_kit")
+    var accountKit: Accountkit?=null,
     
     @SerializedName("google")
     var google: Google?=null
@@ -2744,33 +2490,6 @@ data class SessionExpiry(
 
              
 /*
-    Model: UserPasswordHistory
-*/
-@Parcelize
-data class UserPasswordHistory(
-    
-    
-    
-    @SerializedName("salt")
-    var salt: String?=null,
-    
-    @SerializedName("hash")
-    var hash: String?=null
-    
-): Parcelable {
-    
-    
-    
-    
-    
-    
-    
-}
-
-
-
-             
-/*
     Model: UserSchema
 */
 @Parcelize
@@ -2824,19 +2543,9 @@ data class UserSchema(
     var createdAt: String?=null,
     
     @SerializedName("updated_at")
-    var updatedAt: String?=null,
-    
-    @SerializedName("external_id")
-    var externalId: String?=null,
-    
-    @SerializedName("rr_id")
-    var rrId: String?=null
+    var updatedAt: String?=null
     
 ): Parcelable {
-    
-    
-    
-    
     
     
     
@@ -2885,12 +2594,6 @@ data class PhoneNumber(
     
     
     
-    @SerializedName("phone")
-    var phone: String?=null,
-    
-    @SerializedName("country_code")
-    var countryCode: Int?=null,
-    
     @SerializedName("active")
     var active: Boolean?=null,
     
@@ -2898,7 +2601,13 @@ data class PhoneNumber(
     var primary: Boolean?=null,
     
     @SerializedName("verified")
-    var verified: Boolean?=null
+    var verified: Boolean?=null,
+    
+    @SerializedName("phone")
+    var phone: String?=null,
+    
+    @SerializedName("country_code")
+    var countryCode: Int?=null
     
 ): Parcelable {
     
@@ -2927,17 +2636,17 @@ data class Email(
     
     
     
-    @SerializedName("email")
-    var email: String?=null,
-    
-    @SerializedName("active")
-    var active: Boolean?=null,
-    
     @SerializedName("primary")
     var primary: Boolean?=null,
     
     @SerializedName("verified")
-    var verified: Boolean?=null
+    var verified: Boolean?=null,
+    
+    @SerializedName("email")
+    var email: String?=null,
+    
+    @SerializedName("active")
+    var active: Boolean?=null
     
 ): Parcelable {
     

@@ -76,10 +76,6 @@ interface ConfigurationApiList {
     suspend fun partiallyUpdateInventoryConfig(@Path("company_id") companyId: String, @Path("application_id") applicationId: String,@Body body: AppInventoryPartialUpdate)
     : Response<ApplicationInventory>
     
-    @GET ("/service/platform/configuration/v1.0/company/{company_id}/owner-application/{application_id}/configuration")
-    suspend fun getApplicationConfiguration(@Path("company_id") companyId: String, @Path("application_id") applicationId: String)
-    : Response<OwnerAppConfig>
-    
     @GET ("/service/platform/configuration/v1.0/company/{company_id}/application/{application_id}/currency")
     suspend fun getAppCurrencyConfig(@Path("company_id") companyId: String, @Path("application_id") applicationId: String)
     : Response<AppSupportedCurrency>
@@ -92,7 +88,7 @@ interface ConfigurationApiList {
     suspend fun getAppSupportedCurrency(@Path("company_id") companyId: String, @Path("application_id") applicationId: String)
     : Response<AppCurrencyResponse>
     
-    @POST ("/service/platform/configuration/v2.0/company/{company_id}/application/{application_id}/ordering-store/stores/filter")
+    @POST ("/service/platform/configuration/v1.0/company/{company_id}/application/{application_id}/ordering-store/stores/filter")
     suspend fun getOrderingStoresByFilter(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Query("page_no") pageNo: Int?, @Query("page_size") pageSize: Int?,@Body body: FilterOrderingStoreRequest)
     : Response<OrderingStores>
     
@@ -104,7 +100,7 @@ interface ConfigurationApiList {
     suspend fun getOrderingStoreConfig(@Path("company_id") companyId: String, @Path("application_id") applicationId: String)
     : Response<OrderingStoreConfig>
     
-    @GET ("/service/platform/configuration/v2.0/company/{company_id}/application/{application_id}/ordering-store/staff-stores")
+    @GET ("/service/platform/configuration/v1.0/company/{company_id}/application/{application_id}/ordering-store/staff-stores")
     suspend fun getStaffOrderingStores(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Query("page_no") pageNo: Int?, @Query("page_size") pageSize: Int?, @Query("q") q: String?)
     : Response<OrderingStoresResponse>
     
@@ -196,7 +192,7 @@ interface ConfigurationApiList {
     suspend fun getCompanyByBrands(@Path("company_id") companyId: String, @Query("page_no") pageNo: Int?, @Query("page_size") pageSize: Int?,@Body body: CompanyByBrandsRequest)
     : Response<CompanyByBrandsResponse>
     
-    @POST ("/service/platform/configuration/v2.0/company/{company_id}/inventory/stores-by-brands")
+    @POST ("/service/platform/configuration/v1.0/company/{company_id}/inventory/stores-by-brands")
     suspend fun getStoreByBrands(@Path("company_id") companyId: String, @Query("page_no") pageNo: Int?, @Query("page_size") pageSize: Int?,@Body body: StoreByBrandsRequest)
     : Response<StoreByBrandsResponse>
     

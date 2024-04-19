@@ -14,6 +14,28 @@ import com.google.gson.annotations.SerializedName
 
              
 /*
+    Model: ClickStatsResponse
+*/
+@Parcelize
+data class ClickStatsResponse(
+    
+    
+    
+    @SerializedName("click_stats")
+    var clickStats: ArrayList<ClickStatsItem>?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
     Model: ClickStatsItem
 */
 @Parcelize
@@ -297,10 +319,20 @@ data class UrlInfo(
     
     
     
+    @SerializedName("original")
+    var original: String?=null,
+    
+    @SerializedName("short")
+    var short: String?=null,
+    
     @SerializedName("hash")
     var hash: String?=null
     
 ): Parcelable {
+    
+    
+    
+    
     
     
     

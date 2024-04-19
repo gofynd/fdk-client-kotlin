@@ -61,23 +61,12 @@ class UserDataManagerClass(val config: PlatformConfig, val unauthorizedAction: (
     
     
     
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
 
 inner class ApplicationClient(val applicationId:String,val config: PlatformConfig){
 
     
     
-    suspend fun getCustomers(q: String?=null, pageSize: Int?=null, pageNo: Int?=null)
+    suspend fun getCustomers(q: HashMap<String,Any>?=null, pageSize: Int?=null, pageNo: Int?=null)
     : Response<CustomerListResponseSchema>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 userApiList?.getCustomers(companyId = config.companyId , applicationId = applicationId , q = q, pageSize = pageSize, pageNo = pageNo )
@@ -111,6 +100,16 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     : Response<BlockUserSuccess>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 userApiList?.blockOrUnblockUsers(companyId = config.companyId , applicationId = applicationId , body = body)
+        } else {
+            null
+        }
+    }
+    
+    
+    suspend fun archiveUser(body: ArchiveUserRequestSchema)
+    : Response<ArchiveUserSuccess>? {
+        return if (config.oauthClient.isAccessTokenValid()) {
+                userApiList?.archiveUser(companyId = config.companyId , applicationId = applicationId , body = body)
         } else {
             null
         }
@@ -177,16 +176,6 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     }
     
     
-    suspend fun archiveUser(body: ArchiveUserRequestSchema)
-    : Response<ArchiveUserSuccess>? {
-        return if (config.oauthClient.isAccessTokenValid()) {
-                userApiList?.archiveUser(companyId = config.companyId , applicationId = applicationId , body = body)
-        } else {
-            null
-        }
-    }
-    
-    
     suspend fun getPlatformConfig()
     : Response<PlatformSchema>? {
         return if (config.oauthClient.isAccessTokenValid()) {
@@ -207,7 +196,7 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     }
     
     
-    suspend fun createUserGroup(body: CreateUserGroup)
+    suspend fun createUserGroup(body: CreateUserGroupSchema)
     : Response<UserGroupResponseSchema>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 userApiList?.createUserGroup(companyId = config.companyId , applicationId = applicationId , body = body)
@@ -217,10 +206,10 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     }
     
     
-    suspend fun getUserGroups(pageNo: String?=null, pageSize: String?=null, name: String?=null, type: String?=null, status: String?=null, groupUid: Int?=null)
+    suspend fun getUserGroups(pageNo: String?=null, pageSize: String?=null, name: String?=null, status: String?=null, groupUid: Int?=null)
     : Response<UserGroupListResponseSchema>? {
         return if (config.oauthClient.isAccessTokenValid()) {
-                userApiList?.getUserGroups(companyId = config.companyId , applicationId = applicationId , pageNo = pageNo, pageSize = pageSize, name = name, type = type, status = status, groupUid = groupUid )
+                userApiList?.getUserGroups(companyId = config.companyId , applicationId = applicationId , pageNo = pageNo, pageSize = pageSize, name = name, status = status, groupUid = groupUid )
         } else {
             null
         }
@@ -251,116 +240,6 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     : Response<UserGroupResponseSchema>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 userApiList?.updateUserGroupPartially(companyId = config.companyId , applicationId = applicationId , groupId = groupId, body = body)
-        } else {
-            null
-        }
-    }
-    
-    
-    suspend fun getUsersByByGroupId(groupId: String)
-    : Response<CustomerListResponseSchema>? {
-        return if (config.oauthClient.isAccessTokenValid()) {
-                userApiList?.getUsersByByGroupId(companyId = config.companyId , applicationId = applicationId , groupId = groupId )
-        } else {
-            null
-        }
-    }
-    
-    
-    suspend fun createUserAttributeDefinition(body: CreateUserAttributeDefinition)
-    : Response<UserAttributeDefinitionResponse>? {
-        return if (config.oauthClient.isAccessTokenValid()) {
-                userApiList?.createUserAttributeDefinition(companyId = config.companyId , applicationId = applicationId , body = body)
-        } else {
-            null
-        }
-    }
-    
-    
-    suspend fun getUserAttributeDefinitions(excludingIds: String?=null, slug: String?=null, type: String?=null, customerEditable: Boolean?=null, encrypted: Boolean?=null, pinned: Boolean?=null, pinOrder: Int?=null, isLocked: Boolean?=null, name: String?=null, pageSize: Int?=null, pageNo: Int?=null)
-    : Response<HashMap<String,Any>>? {
-        return if (config.oauthClient.isAccessTokenValid()) {
-                userApiList?.getUserAttributeDefinitions(excludingIds = excludingIds, slug = slug, type = type, customerEditable = customerEditable, encrypted = encrypted, pinned = pinned, pinOrder = pinOrder, isLocked = isLocked, name = name, companyId = config.companyId , applicationId = applicationId , pageSize = pageSize, pageNo = pageNo )
-        } else {
-            null
-        }
-    }
-    
-    
-    suspend fun updateUserAttributeDefinition(attributeDefId: String,body: CreateUserAttributeDefinition)
-    : Response<UserAttributeDefinition>? {
-        return if (config.oauthClient.isAccessTokenValid()) {
-                userApiList?.updateUserAttributeDefinition(attributeDefId = attributeDefId, applicationId = applicationId , companyId = config.companyId , body = body)
-        } else {
-            null
-        }
-    }
-    
-    
-    suspend fun deleteUserAttributeDefinitionById(attributeDefId: String)
-    : Response<SuccessMessageResponse>? {
-        return if (config.oauthClient.isAccessTokenValid()) {
-                userApiList?.deleteUserAttributeDefinitionById(attributeDefId = attributeDefId, companyId = config.companyId , applicationId = applicationId  )
-        } else {
-            null
-        }
-    }
-    
-    
-    suspend fun getUserAttributeDefinitionById(attributeDefId: String)
-    : Response<UserAttributeDefinition>? {
-        return if (config.oauthClient.isAccessTokenValid()) {
-                userApiList?.getUserAttributeDefinitionById(attributeDefId = attributeDefId, companyId = config.companyId , applicationId = applicationId  )
-        } else {
-            null
-        }
-    }
-    
-    
-    suspend fun updateUserAttribute(attributeDefId: String, userId: String,body: CreateUserAttributeRequest)
-    : Response<UserAttributeResponse>? {
-        return if (config.oauthClient.isAccessTokenValid()) {
-                userApiList?.updateUserAttribute(attributeDefId = attributeDefId, userId = userId, applicationId = applicationId , companyId = config.companyId , body = body)
-        } else {
-            null
-        }
-    }
-    
-    
-    suspend fun getUserAttribute(attributeDefId: String, userId: String)
-    : Response<UserAttributeResponse>? {
-        return if (config.oauthClient.isAccessTokenValid()) {
-                userApiList?.getUserAttribute(attributeDefId = attributeDefId, userId = userId, applicationId = applicationId , companyId = config.companyId  )
-        } else {
-            null
-        }
-    }
-    
-    
-    suspend fun deleteUserAttribute(attributeDefId: String, userId: String)
-    : Response<SuccessMessageResponse>? {
-        return if (config.oauthClient.isAccessTokenValid()) {
-                userApiList?.deleteUserAttribute(attributeDefId = attributeDefId, userId = userId, applicationId = applicationId , companyId = config.companyId  )
-        } else {
-            null
-        }
-    }
-    
-    
-    suspend fun getUserAttributesForUser(userId: String, pageSize: Int?=null, pageNo: Int?=null)
-    : Response<HashMap<String,Any>>? {
-        return if (config.oauthClient.isAccessTokenValid()) {
-                userApiList?.getUserAttributesForUser(userId = userId, applicationId = applicationId , companyId = config.companyId , pageSize = pageSize, pageNo = pageNo )
-        } else {
-            null
-        }
-    }
-    
-    
-    suspend fun getUserAttributeById(attributeId: String)
-    : Response<UserAttributeResponse>? {
-        return if (config.oauthClient.isAccessTokenValid()) {
-                userApiList?.getUserAttributeById(attributeId = attributeId, applicationId = applicationId , companyId = config.companyId  )
         } else {
             null
         }

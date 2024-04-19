@@ -23,7 +23,7 @@ class ContentDataManagerClass(val config: ApplicationConfig, val unauthorizedAct
             
                     _relativeUrls["getBlog"] = "/service/application/content/v1.0/blogs/{slug}".substring(1)
             
-                    _relativeUrls["getBlogs"] = "/service/application/content/v1.0/blogs".substring(1)
+                    _relativeUrls["getBlogs"] = "/service/application/content/v1.0/blogs/".substring(1)
             
                     _relativeUrls["getDataLoaders"] = "/service/application/content/v1.0/data-loader".substring(1)
             
@@ -41,31 +41,21 @@ class ContentDataManagerClass(val config: ApplicationConfig, val unauthorizedAct
             
                     _relativeUrls["getLegalInformation"] = "/service/application/content/v1.0/legal".substring(1)
             
-                    _relativeUrls["getNavigations"] = "/service/application/content/v1.0/navigations".substring(1)
+                    _relativeUrls["getNavigations"] = "/service/application/content/v1.0/navigations/".substring(1)
             
                     _relativeUrls["getSEOConfiguration"] = "/service/application/content/v1.0/seo".substring(1)
             
-                    _relativeUrls["getSEOMarkupSchemas"] = "/service/application/content/v1.0/seo/schema".substring(1)
+                    _relativeUrls["getSlideshows"] = "/service/application/content/v1.0/slideshow/".substring(1)
+            
+                    _relativeUrls["getSlideshow"] = "/service/application/content/v1.0/slideshow/{slug}".substring(1)
             
                     _relativeUrls["getSupportInformation"] = "/service/application/content/v1.0/support".substring(1)
             
                     _relativeUrls["getTags"] = "/service/application/content/v1.0/tags".substring(1)
             
-                    _relativeUrls["getPageV1"] = "/service/application/content/v1.0/pages/{slug}".substring(1)
-            
-                    _relativeUrls["getPagesV1"] = "/service/application/content/v1.0/pages".substring(1)
-            
                     _relativeUrls["getPage"] = "/service/application/content/v2.0/pages/{slug}".substring(1)
             
-                    _relativeUrls["getPages"] = "/service/application/content/v2.0/pages".substring(1)
-            
-                    _relativeUrls["getCustomObject"] = "/service/application/content/v1.0/metaobjects/{id}".substring(1)
-            
-                    _relativeUrls["getCustomFieldDefinitions"] = "/service/application/content/v1.0/metafields/definitions".substring(1)
-            
-                    _relativeUrls["getCustomFieldDefinition"] = "/service/application/content/v1.0/metafields/definitions/{id}".substring(1)
-            
-                    _relativeUrls["getCustomFields"] = "/service/application/content/v1.0/metafields/{resource}".substring(1)
+                    _relativeUrls["getPages"] = "/service/application/content/v2.0/pages/".substring(1)
             
     }
 
@@ -291,40 +281,10 @@ class ContentDataManagerClass(val config: ApplicationConfig, val unauthorizedAct
 
     
     
-    suspend fun getSEOMarkupSchemas(pageType: String?=null, active: Boolean?=null): Response<SeoSchemaComponent>? {
-        var fullUrl : String? = _relativeUrls["getSEOMarkupSchemas"] 
+    suspend fun getSlideshows(pageNo: Int?=null, pageSize: Int?=null): Response<SlideshowGetResponse>? {
+        var fullUrl : String? = _relativeUrls["getSlideshows"] 
         
-        return contentApiList?.getSEOMarkupSchemas(fullUrl    ,  pageType = pageType,    active = active)}
-
-    
-    
-    suspend fun getSupportInformation(): Response<Support>? {
-        var fullUrl : String? = _relativeUrls["getSupportInformation"] 
-        
-        return contentApiList?.getSupportInformation(fullUrl  )}
-
-    
-    
-    suspend fun getTags(): Response<TagsSchema>? {
-        var fullUrl : String? = _relativeUrls["getTags"] 
-        
-        return contentApiList?.getTags(fullUrl  )}
-
-    
-    
-    suspend fun getPageV1(slug: String, rootId: String?=null): Response<PageSchema>? {
-        var fullUrl : String? = _relativeUrls["getPageV1"] 
-        
-        fullUrl = fullUrl?.replace("{" + "slug" +"}",slug.toString())
-        
-        return contentApiList?.getPageV1(fullUrl     ,  rootId = rootId)}
-
-    
-    
-    suspend fun getPagesV1(pageNo: Int?=null, pageSize: Int?=null): Response<PageGetResponse>? {
-        var fullUrl : String? = _relativeUrls["getPagesV1"] 
-        
-        return contentApiList?.getPagesV1(fullUrl    ,  pageNo = pageNo,    pageSize = pageSize)}
+        return contentApiList?.getSlideshows(fullUrl    ,  pageNo = pageNo,    pageSize = pageSize)}
 
     
     
@@ -340,22 +300,22 @@ class ContentDataManagerClass(val config: ApplicationConfig, val unauthorizedAct
         
     /**
     *
-    * Summary: Paginator for getPagesV1
+    * Summary: Paginator for getSlideshows
     **/
-    fun getPagesV1Paginator(pageSize: Int?=null) : Paginator<PageGetResponse>{
+    fun getSlideshowsPaginator(pageSize: Int?=null) : Paginator<SlideshowGetResponse>{
 
-    val paginator = Paginator<PageGetResponse>()
+    val paginator = Paginator<SlideshowGetResponse>()
 
-    paginator.setCallBack(object : PaginatorCallback<PageGetResponse> {
+    paginator.setCallBack(object : PaginatorCallback<SlideshowGetResponse> {
 
             override suspend fun onNext(
-                onResponse: (Event<PageGetResponse>?,FdkError?) -> Unit) {
+                onResponse: (Event<SlideshowGetResponse>?,FdkError?) -> Unit) {
                 val pageId = paginator.nextId
                 val pageNo = paginator.pageNo
                 val pageType = "number"
-                var fullUrl : String? = _relativeUrls["getPagesV1"] 
+                var fullUrl : String? = _relativeUrls["getSlideshows"] 
                 
-                contentApiList?.getPagesV1(fullUrl , pageNo = pageNo, pageSize = pageSize)?.safeAwait{ response, error ->
+                contentApiList?.getSlideshows(fullUrl , pageNo = pageNo, pageSize = pageSize)?.safeAwait{ response, error ->
                     response?.let {
                         val page = response.peekContent()?.page
                         paginator.setPaginator(hasNext=page?.hasNext?:false,pageNo=if (page?.hasNext == true) ((pageNo ?: 0) + 1) else pageNo)
@@ -372,6 +332,29 @@ class ContentDataManagerClass(val config: ApplicationConfig, val unauthorizedAct
     
     return paginator
     }
+    
+    suspend fun getSlideshow(slug: String): Response<SlideshowSchema>? {
+        var fullUrl : String? = _relativeUrls["getSlideshow"] 
+        
+        fullUrl = fullUrl?.replace("{" + "slug" +"}",slug.toString())
+        
+        return contentApiList?.getSlideshow(fullUrl   )}
+
+    
+    
+    suspend fun getSupportInformation(): Response<Support>? {
+        var fullUrl : String? = _relativeUrls["getSupportInformation"] 
+        
+        return contentApiList?.getSupportInformation(fullUrl  )}
+
+    
+    
+    suspend fun getTags(): Response<TagsSchema>? {
+        var fullUrl : String? = _relativeUrls["getTags"] 
+        
+        return contentApiList?.getTags(fullUrl  )}
+
+    
     
     suspend fun getPage(slug: String, rootId: String?=null): Response<PageSchema>? {
         var fullUrl : String? = _relativeUrls["getPage"] 
@@ -433,39 +416,5 @@ class ContentDataManagerClass(val config: ApplicationConfig, val unauthorizedAct
     
     return paginator
     }
-    
-    suspend fun getCustomObject(id: String): Response<CustomObjectByIdSchema>? {
-        var fullUrl : String? = _relativeUrls["getCustomObject"] 
-        
-        fullUrl = fullUrl?.replace("{" + "id" +"}",id.toString())
-        
-        return contentApiList?.getCustomObject(fullUrl   )}
-
-    
-    
-    suspend fun getCustomFieldDefinitions(): Response<CustomFieldDefinitionsSchema>? {
-        var fullUrl : String? = _relativeUrls["getCustomFieldDefinitions"] 
-        
-        return contentApiList?.getCustomFieldDefinitions(fullUrl  )}
-
-    
-    
-    suspend fun getCustomFieldDefinition(id: String): Response<CustomFieldDefinitionDetailResSchema>? {
-        var fullUrl : String? = _relativeUrls["getCustomFieldDefinition"] 
-        
-        fullUrl = fullUrl?.replace("{" + "id" +"}",id.toString())
-        
-        return contentApiList?.getCustomFieldDefinition(fullUrl   )}
-
-    
-    
-    suspend fun getCustomFields(resource: String, resourceIds: String): Response<CustomFieldsResponseByResourceIdSchema>? {
-        var fullUrl : String? = _relativeUrls["getCustomFields"] 
-        
-        fullUrl = fullUrl?.replace("{" + "resource" +"}",resource.toString())
-        
-        return contentApiList?.getCustomFields(fullUrl     ,  resourceIds = resourceIds)}
-
-    
     
 }

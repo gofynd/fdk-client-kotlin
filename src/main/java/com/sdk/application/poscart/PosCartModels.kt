@@ -229,20 +229,10 @@ data class AppliedPromotion(
     @SerializedName("ownership")
     var ownership: Ownership?=null,
     
-    @SerializedName("currency")
-    var currency: CartCurrency?=null,
-    
     @SerializedName("promotion_group")
-    var promotionGroup: String?=null,
-    
-    @SerializedName("meta")
-    var meta: @RawValue HashMap<String,Any>?=null
+    var promotionGroup: String?=null
     
 ): Parcelable {
-    
-    
-    
-    
     
     
     
@@ -647,33 +637,6 @@ data class PromiseFormatted(
 
              
 /*
-    Model: PromiseISOFormat
-*/
-@Parcelize
-data class PromiseISOFormat(
-    
-    
-    
-    @SerializedName("max")
-    var max: String?=null,
-    
-    @SerializedName("min")
-    var min: String?=null
-    
-): Parcelable {
-    
-    
-    
-    
-    
-    
-    
-}
-
-
-
-             
-/*
     Model: ShipmentPromise
 */
 @Parcelize
@@ -685,14 +648,9 @@ data class ShipmentPromise(
     var timestamp: PromiseTimestamp?=null,
     
     @SerializedName("formatted")
-    var formatted: PromiseFormatted?=null,
-    
-    @SerializedName("iso")
-    var iso: PromiseISOFormat?=null
+    var formatted: PromiseFormatted?=null
     
 ): Parcelable {
-    
-    
     
     
     
@@ -888,14 +846,9 @@ data class ProductArticle(
     var productGroupTags: ArrayList<String>?=null,
     
     @SerializedName("is_gift_visible")
-    var isGiftVisible: Boolean?=null,
-    
-    @SerializedName("tags")
-    var tags: ArrayList<String>?=null
+    var isGiftVisible: Boolean?=null
     
 ): Parcelable {
-    
-    
     
     
     
@@ -2361,12 +2314,6 @@ data class Address(
     @SerializedName("city")
     var city: String?=null,
     
-    @SerializedName("sector")
-    var sector: String?=null,
-    
-    @SerializedName("state_code")
-    var stateCode: String?=null,
-    
     @SerializedName("address_type")
     var addressType: String?=null,
     
@@ -2416,10 +2363,6 @@ data class Address(
     var phone: String?=null
     
 ): Parcelable {
-    
-    
-    
-    
     
     
     
@@ -3261,7 +3204,7 @@ data class CheckCart(
     var comment: String?=null,
     
     @SerializedName("delivery_charges")
-    var deliveryCharges: Double?=null,
+    var deliveryCharges: Int?=null,
     
     @SerializedName("coupon_text")
     var couponText: String?=null,
@@ -3318,7 +3261,7 @@ data class CheckCart(
     var orderId: String?=null,
     
     @SerializedName("cod_charges")
-    var codCharges: Double?=null,
+    var codCharges: Int?=null,
     
     @SerializedName("delivery_charge_info")
     var deliveryChargeInfo: String?=null,

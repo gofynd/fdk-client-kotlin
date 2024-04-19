@@ -101,23 +101,9 @@ class CartDataManagerClass(val config: PlatformConfig, val unauthorizedAction: (
     
     
     
-    
-    
-    
-    
 
 inner class ApplicationClient(val applicationId:String,val config: PlatformConfig){
 
-    
-    
-    suspend fun createCoupon(body: CouponAdd)
-    : Response<CouponDetailResponse>? {
-        return if (config.oauthClient.isAccessTokenValid()) {
-                cartApiList?.createCoupon(companyId = config.companyId , applicationId = applicationId , body = body)
-        } else {
-            null
-        }
-    }
     
     
     suspend fun getCoupons(pageNo: Int?=null, pageSize: Int?=null, isArchived: Boolean?=null, title: String?=null, isPublic: Boolean?=null, isDisplay: Boolean?=null, typeSlug: String?=null, code: String?=null)
@@ -219,20 +205,10 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     return paginator
     }
     
-    suspend fun getCouponTags()
-    : Response<TagsViewResponse>? {
+    suspend fun createCoupon(body: CouponAdd)
+    : Response<SuccessMessage>? {
         return if (config.oauthClient.isAccessTokenValid()) {
-                cartApiList?.getCouponTags(companyId = config.companyId , applicationId = applicationId  )
-        } else {
-            null
-        }
-    }
-    
-    
-    suspend fun getPromotionTags()
-    : Response<TagsViewResponse>? {
-        return if (config.oauthClient.isAccessTokenValid()) {
-                cartApiList?.getPromotionTags(companyId = config.companyId , applicationId = applicationId  )
+                cartApiList?.createCoupon(companyId = config.companyId , applicationId = applicationId , body = body)
         } else {
             null
         }
@@ -250,7 +226,7 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     
     
     suspend fun updateCoupon(id: String,body: CouponUpdate)
-    : Response<CouponDetailResponse>? {
+    : Response<SuccessMessage>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 cartApiList?.updateCoupon(companyId = config.companyId , applicationId = applicationId , id = id, body = body)
         } else {
@@ -418,16 +394,6 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     }
     
     
-    suspend fun getCartMetaConfig(cartMetaId: String)
-    : Response<CartMetaConfigDetailResponse>? {
-        return if (config.oauthClient.isAccessTokenValid()) {
-                cartApiList?.getCartMetaConfig(companyId = config.companyId , applicationId = applicationId , cartMetaId = cartMetaId )
-        } else {
-            null
-        }
-    }
-    
-    
     suspend fun updateCartMetaConfig(cartMetaId: String,body: CartMetaConfigUpdate)
     : Response<CartMetaConfigUpdate>? {
         return if (config.oauthClient.isAccessTokenValid()) {
@@ -438,20 +404,10 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     }
     
     
-    suspend fun deleteCartMetaConfig(cartMetaId: String)
-    : Response<SuccessMessage>? {
+    suspend fun fetchCartMetaConfig()
+    : Response<CartMetaConfigAdd>? {
         return if (config.oauthClient.isAccessTokenValid()) {
-                cartApiList?.deleteCartMetaConfig(companyId = config.companyId , applicationId = applicationId , cartMetaId = cartMetaId )
-        } else {
-            null
-        }
-    }
-    
-    
-    suspend fun getCartMetaConfigs()
-    : Response<CartMetaConfigListResponse>? {
-        return if (config.oauthClient.isAccessTokenValid()) {
-                cartApiList?.getCartMetaConfigs(companyId = config.companyId , applicationId = applicationId  )
+                cartApiList?.fetchCartMetaConfig(companyId = config.companyId , applicationId = applicationId  )
         } else {
             null
         }
@@ -459,7 +415,7 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     
     
     suspend fun createCartMetaConfig(body: CartMetaConfigAdd)
-    : Response<CartMetaConfigAddResponse>? {
+    : Response<CartMetaConfigAdd>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 cartApiList?.createCartMetaConfig(companyId = config.companyId , applicationId = applicationId , body = body)
         } else {
@@ -468,28 +424,8 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     }
     
     
-    suspend fun addPriceAdjustment(body: PriceAdjustmentAdd)
-    : Response<AddPriceAdjustmentResponse>? {
-        return if (config.oauthClient.isAccessTokenValid()) {
-                cartApiList?.addPriceAdjustment(companyId = config.companyId , applicationId = applicationId , body = body)
-        } else {
-            null
-        }
-    }
-    
-    
-    suspend fun getPriceAdjustments(cartId: String)
-    : Response<PriceAdjustmentResponse>? {
-        return if (config.oauthClient.isAccessTokenValid()) {
-                cartApiList?.getPriceAdjustments(companyId = config.companyId , applicationId = applicationId , cartId = cartId )
-        } else {
-            null
-        }
-    }
-    
-    
     suspend fun updatePriceAdjustment(id: String,body: PriceAdjustmentUpdate)
-    : Response<UpdatePriceAdjustmentResponse>? {
+    : Response<PriceAdjustmentResponse>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 cartApiList?.updatePriceAdjustment(companyId = config.companyId , applicationId = applicationId , id = id, body = body)
         } else {
@@ -502,6 +438,26 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     : Response<SuccessMessage>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 cartApiList?.removePriceAdjustment(companyId = config.companyId , applicationId = applicationId , id = id )
+        } else {
+            null
+        }
+    }
+    
+    
+    suspend fun addPriceAdjustment(body: PriceAdjustmentAdd)
+    : Response<PriceAdjustmentResponse>? {
+        return if (config.oauthClient.isAccessTokenValid()) {
+                cartApiList?.addPriceAdjustment(companyId = config.companyId , applicationId = applicationId , body = body)
+        } else {
+            null
+        }
+    }
+    
+    
+    suspend fun getPriceAdjustments(cartId: String)
+    : Response<PriceAdjustmentResponse>? {
+        return if (config.oauthClient.isAccessTokenValid()) {
+                cartApiList?.getPriceAdjustments(companyId = config.companyId , applicationId = applicationId , cartId = cartId )
         } else {
             null
         }
@@ -663,7 +619,7 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     
     
     suspend fun getCouponOptionValues()
-    : Response<CouponOptions>? {
+    : Response<HashMap<String,Any>>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 cartApiList?.getCouponOptionValues(companyId = config.companyId , applicationId = applicationId  )
         } else {
@@ -752,60 +708,60 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     }
     
     
-    suspend fun getItemCount(id: String?=null, buyNow: Boolean?=null, cartType: String?=null)
-    : Response<CartItemCountResponse>? {
-        return if (config.oauthClient.isAccessTokenValid()) {
-                cartApiList?.getItemCount(companyId = config.companyId , applicationId = applicationId , id = id, buyNow = buyNow, cartType = cartType )
-        } else {
-            null
-        }
-    }
-    
-    
-    suspend fun platformAddItems(i: Boolean?=null, b: Boolean?=null, buyNow: Boolean?=null, id: String?=null, cartType: String?=null,body: PlatformAddCartRequest)
-    : Response<AddCartDetailResponse>? {
-        return if (config.oauthClient.isAccessTokenValid()) {
-                cartApiList?.platformAddItems(companyId = config.companyId , applicationId = applicationId , i = i, b = b, buyNow = buyNow, id = id, cartType = cartType, body = body)
-        } else {
-            null
-        }
-    }
-    
-    
-    suspend fun getCart(id: String?=null, userId: String?=null, i: Boolean?=null, b: Boolean?=null, assignCardId: Double?=null, buyNow: Boolean?=null, cartType: String?=null)
+    suspend fun getCart(id: String?=null, userId: String?=null, i: Boolean?=null, b: Boolean?=null, assignCardId: Int?=null, buyNow: Boolean?=null)
     : Response<CartDetailResponse>? {
         return if (config.oauthClient.isAccessTokenValid()) {
-                cartApiList?.getCart(companyId = config.companyId , applicationId = applicationId , id = id, userId = userId, i = i, b = b, assignCardId = assignCardId, buyNow = buyNow, cartType = cartType )
+                cartApiList?.getCart(companyId = config.companyId , applicationId = applicationId , id = id, userId = userId, i = i, b = b, assignCardId = assignCardId, buyNow = buyNow )
         } else {
             null
         }
     }
     
     
-    suspend fun platformUpdateCart(id: String?=null, i: Boolean?=null, b: Boolean?=null, buyNow: Boolean?=null, cartType: String?=null,body: PlatformUpdateCartRequest)
+    suspend fun platformAddItems(i: Boolean?=null, b: Boolean?=null, buyNow: Boolean?=null, id: String?=null,body: PlatformAddCartRequest)
+    : Response<AddCartDetailResponse>? {
+        return if (config.oauthClient.isAccessTokenValid()) {
+                cartApiList?.platformAddItems(companyId = config.companyId , applicationId = applicationId , i = i, b = b, buyNow = buyNow, id = id, body = body)
+        } else {
+            null
+        }
+    }
+    
+    
+    suspend fun platformUpdateCart(id: String?=null, i: Boolean?=null, b: Boolean?=null, buyNow: Boolean?=null,body: PlatformUpdateCartRequest)
     : Response<UpdateCartDetailResponse>? {
         return if (config.oauthClient.isAccessTokenValid()) {
-                cartApiList?.platformUpdateCart(companyId = config.companyId , applicationId = applicationId , id = id, i = i, b = b, buyNow = buyNow, cartType = cartType, body = body)
+                cartApiList?.platformUpdateCart(companyId = config.companyId , applicationId = applicationId , id = id, i = i, b = b, buyNow = buyNow, body = body)
         } else {
             null
         }
     }
     
     
-    suspend fun deleteCart(id: String?=null, cartType: String?=null,body: DeleteCartRequest)
+    suspend fun deleteCart(id: String?=null,body: DeleteCartRequest)
     : Response<DeleteCartDetailResponse>? {
         return if (config.oauthClient.isAccessTokenValid()) {
-                cartApiList?.deleteCart(companyId = config.companyId , applicationId = applicationId , id = id, cartType = cartType, body = body)
+                cartApiList?.deleteCart(companyId = config.companyId , applicationId = applicationId , id = id, body = body)
         } else {
             null
         }
     }
     
     
-    suspend fun getAppCoupons(id: String?=null, buyNow: Boolean?=null, slug: String?=null, storeId: String?=null)
+    suspend fun getItemCount(id: String?=null, buyNow: Boolean?=null)
+    : Response<CartItemCountResponse>? {
+        return if (config.oauthClient.isAccessTokenValid()) {
+                cartApiList?.getItemCount(companyId = config.companyId , applicationId = applicationId , id = id, buyNow = buyNow )
+        } else {
+            null
+        }
+    }
+    
+    
+    suspend fun getAppCoupons(id: String?=null, buyNow: Boolean?=null)
     : Response<GetCouponResponse>? {
         return if (config.oauthClient.isAccessTokenValid()) {
-                cartApiList?.getAppCoupons(companyId = config.companyId , applicationId = applicationId , id = id, buyNow = buyNow, slug = slug, storeId = storeId )
+                cartApiList?.getAppCoupons(companyId = config.companyId , applicationId = applicationId , id = id, buyNow = buyNow )
         } else {
             null
         }
@@ -822,20 +778,10 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     }
     
     
-    suspend fun removeCoupon(uid: String?=null, buyNow: Boolean?=null, cartType: String?=null)
+    suspend fun removeCoupon(uid: String?=null, buyNow: Boolean?=null)
     : Response<CartDetailResponse>? {
         return if (config.oauthClient.isAccessTokenValid()) {
-                cartApiList?.removeCoupon(companyId = config.companyId , applicationId = applicationId , uid = uid, buyNow = buyNow, cartType = cartType )
-        } else {
-            null
-        }
-    }
-    
-    
-    suspend fun addAddress(body: PlatformAddress)
-    : Response<SaveAddressResponse>? {
-        return if (config.oauthClient.isAccessTokenValid()) {
-                cartApiList?.addAddress(companyId = config.companyId , applicationId = applicationId , body = body)
+                cartApiList?.removeCoupon(companyId = config.companyId , applicationId = applicationId , uid = uid, buyNow = buyNow )
         } else {
             null
         }
@@ -846,6 +792,16 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     : Response<PlatformGetAddressesResponse>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 cartApiList?.getAddresses(companyId = config.companyId , applicationId = applicationId , cartId = cartId, buyNow = buyNow, mobileNo = mobileNo, checkoutMode = checkoutMode, tags = tags, isDefault = isDefault, userId = userId )
+        } else {
+            null
+        }
+    }
+    
+    
+    suspend fun addAddress(body: PlatformAddress)
+    : Response<SaveAddressResponse>? {
+        return if (config.oauthClient.isAccessTokenValid()) {
+                cartApiList?.addAddress(companyId = config.companyId , applicationId = applicationId , body = body)
         } else {
             null
         }
@@ -922,10 +878,10 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     }
     
     
-    suspend fun platformCheckoutCart(id: String?=null, cartType: String?=null,body: PlatformCartCheckoutDetailRequest)
+    suspend fun platformCheckoutCart(id: String?=null,body: PlatformCartCheckoutDetailRequest)
     : Response<CartCheckoutResponse>? {
         return if (config.oauthClient.isAccessTokenValid()) {
-                cartApiList?.platformCheckoutCart(companyId = config.companyId , applicationId = applicationId , id = id, cartType = cartType, body = body)
+                cartApiList?.platformCheckoutCart(companyId = config.companyId , applicationId = applicationId , id = id, body = body)
         } else {
             null
         }
@@ -962,20 +918,20 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     }
     
     
-    suspend fun validateCouponForPayment(id: String?=null, buyNow: Boolean?=null, addressId: String?=null, paymentMode: String?=null, paymentIdentifier: String?=null, aggregatorName: String?=null, merchantCode: String?=null, iin: String?=null, network: String?=null, type: String?=null, cardId: String?=null, cartType: String?=null)
+    suspend fun validateCouponForPayment(id: String?=null, buyNow: Boolean?=null, addressId: String?=null, paymentMode: String?=null, paymentIdentifier: String?=null, aggregatorName: String?=null, merchantCode: String?=null)
     : Response<PaymentCouponValidate>? {
         return if (config.oauthClient.isAccessTokenValid()) {
-                cartApiList?.validateCouponForPayment(companyId = config.companyId , applicationId = applicationId , id = id, buyNow = buyNow, addressId = addressId, paymentMode = paymentMode, paymentIdentifier = paymentIdentifier, aggregatorName = aggregatorName, merchantCode = merchantCode, iin = iin, network = network, type = type, cardId = cardId, cartType = cartType )
+                cartApiList?.validateCouponForPayment(companyId = config.companyId , applicationId = applicationId , id = id, buyNow = buyNow, addressId = addressId, paymentMode = paymentMode, paymentIdentifier = paymentIdentifier, aggregatorName = aggregatorName, merchantCode = merchantCode )
         } else {
             null
         }
     }
     
     
-    suspend fun platformCheckoutCartV2(id: String?=null, cartType: String?=null,body: PlatformCartCheckoutDetailV2Request)
+    suspend fun platformCheckoutCartV2(id: String?=null,body: PlatformCartCheckoutDetailV2Request)
     : Response<CartCheckoutResponse>? {
         return if (config.oauthClient.isAccessTokenValid()) {
-                cartApiList?.platformCheckoutCartV2(companyId = config.companyId , applicationId = applicationId , id = id, cartType = cartType, body = body)
+                cartApiList?.platformCheckoutCartV2(companyId = config.companyId , applicationId = applicationId , id = id, body = body)
         } else {
             null
         }

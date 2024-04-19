@@ -47,6 +47,7 @@ class ShareDataManagerClass(val config: PlatformConfig, val unauthorizedAction: 
     
     
     
+    
 
 inner class ApplicationClient(val applicationId:String,val config: PlatformConfig){
 
@@ -62,10 +63,10 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     }
     
     
-    suspend fun getShortLinks(pageNo: Int?=null, pageSize: Int?=null, createdBy: String?=null, active: String?=null, shortUrl: String?=null, originalUrl: String?=null, title: String?=null)
+    suspend fun getShortLinks(pageNo: Int?=null, pageSize: Int?=null, createdBy: String?=null, active: String?=null, q: String?=null)
     : Response<ShortLinkList>? {
         return if (config.oauthClient.isAccessTokenValid()) {
-                shareApiList?.getShortLinks(companyId = config.companyId , applicationId = applicationId , pageNo = pageNo, pageSize = pageSize, createdBy = createdBy, active = active, shortUrl = shortUrl, originalUrl = originalUrl, title = title )
+                shareApiList?.getShortLinks(companyId = config.companyId , applicationId = applicationId , pageNo = pageNo, pageSize = pageSize, createdBy = createdBy, active = active, q = q )
         } else {
             null
         }
@@ -86,6 +87,16 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     : Response<ShortLinkRes>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 shareApiList?.updateShortLinkById(companyId = config.companyId , applicationId = applicationId , id = id, body = body)
+        } else {
+            null
+        }
+    }
+    
+    
+    suspend fun getShortLinkClickStats(surlId: String)
+    : Response<ClickStatsResponse>? {
+        return if (config.oauthClient.isAccessTokenValid()) {
+                shareApiList?.getShortLinkClickStats(surlId = surlId, companyId = config.companyId , applicationId = applicationId  )
         } else {
             null
         }

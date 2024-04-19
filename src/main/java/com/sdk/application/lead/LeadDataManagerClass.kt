@@ -23,7 +23,7 @@ class LeadDataManagerClass(val config: ApplicationConfig, val unauthorizedAction
             
                     _relativeUrls["createHistory"] = "/service/application/lead/v1.0/ticket/{id}/history".substring(1)
             
-                    _relativeUrls["createTicket"] = "/service/application/lead/v1.0/ticket".substring(1)
+                    _relativeUrls["createTicket"] = "/service/application/lead/v1.0/ticket/".substring(1)
             
                     _relativeUrls["getCustomForm"] = "/service/application/lead/v1.0/form/{slug}".substring(1)
             

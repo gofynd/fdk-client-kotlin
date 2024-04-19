@@ -21,15 +21,15 @@ class ConfigurationDataManagerClass(val config: ApplicationConfig, val unauthori
             
                     _relativeUrls["getApplication"] = "/service/application/configuration/v1.0/application".substring(1)
             
-                    _relativeUrls["getOwnerInfo"] = "/service/application/configuration/v2.0/about".substring(1)
+                    _relativeUrls["getOwnerInfo"] = "/service/application/configuration/v1.0/about".substring(1)
             
                     _relativeUrls["getBasicDetails"] = "/service/application/configuration/v1.0/detail".substring(1)
             
                     _relativeUrls["getIntegrationTokens"] = "/service/application/configuration/v1.0/token".substring(1)
             
-                    _relativeUrls["getOrderingStores"] = "/service/application/configuration/v2.0/ordering-store/stores".substring(1)
+                    _relativeUrls["getOrderingStores"] = "/service/application/configuration/v1.0/ordering-store/stores".substring(1)
             
-                    _relativeUrls["getStoreDetailById"] = "/service/application/configuration/v2.0/ordering-store/stores/{store_id}".substring(1)
+                    _relativeUrls["getStoreDetailById"] = "/service/application/configuration/v1.0/ordering-store/stores/{store_id}".substring(1)
             
                     _relativeUrls["getFeatures"] = "/service/application/configuration/v1.0/feature".substring(1)
             

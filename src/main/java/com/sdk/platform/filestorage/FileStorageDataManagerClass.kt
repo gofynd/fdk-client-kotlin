@@ -44,7 +44,7 @@ class FileStorageDataManagerClass(val config: PlatformConfig, val unauthorizedAc
     }
     
     
-    suspend fun startUpload(namespace: String, body: StartRequest)
+    suspend fun startUpload(namespace: String,body: StartRequest)
     : Response<StartResponse>? {
         
         return if (config.oauthClient.isAccessTokenValid()) {
@@ -56,7 +56,7 @@ class FileStorageDataManagerClass(val config: PlatformConfig, val unauthorizedAc
     }
     
     
-    suspend fun completeUpload(namespace: String, body: StartResponse)
+    suspend fun completeUpload(namespace: String,body: StartResponse)
     : Response<CompleteResponse>? {
         
         return if (config.oauthClient.isAccessTokenValid()) {
@@ -82,7 +82,7 @@ class FileStorageDataManagerClass(val config: PlatformConfig, val unauthorizedAc
     }
     
     
-    suspend fun copyFiles(sync: Boolean?=null, body: CopyFiles)
+    suspend fun copyFiles(sync: Boolean?=null,body: CopyFiles)
     : Response<HashMap<String,Any>>? {
         
         return if (config.oauthClient.isAccessTokenValid()) {
@@ -108,30 +108,8 @@ class FileStorageDataManagerClass(val config: PlatformConfig, val unauthorizedAc
     
     
     
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
     suspend fun proxy(url: String)
-    : Response<ProxyResponse>? {
+    : Response<String>? {
         
         return if (config.oauthClient.isAccessTokenValid()) {
             fileStorageApiList?.proxy(
@@ -140,6 +118,13 @@ class FileStorageDataManagerClass(val config: PlatformConfig, val unauthorizedAc
             null
         } 
     }
+    
+    
+    
+    
+    
+    
+    
     
 
 inner class ApplicationClient(val applicationId:String,val config: PlatformConfig){
@@ -181,130 +166,31 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     
     
     
-    suspend fun appbrowse(namespace: String, page: Int?=null, limit: Int?=null, search: String?=null)
+    suspend fun appbrowse(namespace: String, page: Int?=null, limit: Int?=null)
     : Response<HashMap<String,Any>>? {
         return if (config.oauthClient.isAccessTokenValid()) {
-                fileStorageApiList?.appbrowse(namespace = namespace, companyId = config.companyId , applicationId = applicationId , page = page, limit = limit, search = search )
+                fileStorageApiList?.appbrowse(namespace = namespace, companyId = config.companyId , applicationId = applicationId , page = page, limit = limit )
         } else {
             null
         }
     }
     
     
-    suspend fun browsefiles(namespace: String, page: Int?=null, limit: Int?=null, search: String?=null,body: ExtensionSlug)
-    : Response<HashMap<String,Any>>? {
-        return if (config.oauthClient.isAccessTokenValid()) {
-                fileStorageApiList?.browsefiles(namespace = namespace, companyId = config.companyId , applicationId = applicationId , page = page, limit = limit, search = search, body = body)
-        } else {
-            null
-        }
-    }
     
-    
-    suspend fun getPdfTypes(countryCode: String?=null, storeOs: Boolean)
+    suspend fun getPdfTypes()
     : Response<InvoiceTypesResponse>? {
         return if (config.oauthClient.isAccessTokenValid()) {
-                fileStorageApiList?.getPdfTypes(companyId = config.companyId , applicationId = applicationId , countryCode = countryCode, storeOs = storeOs )
+                fileStorageApiList?.getPdfTypes(companyId = config.companyId , applicationId = applicationId  )
         } else {
             null
         }
     }
     
     
-    suspend fun savePdfTypes(body: UpdatePdfTypeRequest)
-    : Response<PdfTypeIdResponse>? {
-        return if (config.oauthClient.isAccessTokenValid()) {
-                fileStorageApiList?.savePdfTypes(companyId = config.companyId , applicationId = applicationId , body = body)
-        } else {
-            null
-        }
-    }
-    
-    
-    suspend fun fetchPdfTypeById(id: String)
-    : Response<PdfTypeIdResponse>? {
-        return if (config.oauthClient.isAccessTokenValid()) {
-                fileStorageApiList?.fetchPdfTypeById(companyId = config.companyId , applicationId = applicationId , id = id )
-        } else {
-            null
-        }
-    }
-    
-    
-    suspend fun updatePdfTypeById(id: String,body: UpdatePdfTypeRequest)
-    : Response<PdfTypeIdResponse>? {
-        return if (config.oauthClient.isAccessTokenValid()) {
-                fileStorageApiList?.updatePdfTypeById(companyId = config.companyId , applicationId = applicationId , id = id, body = body)
-        } else {
-            null
-        }
-    }
-    
-    
-    suspend fun deletePdfType(id: String)
-    : Response<HashMap<String,Any>>? {
-        return if (config.oauthClient.isAccessTokenValid()) {
-                fileStorageApiList?.deletePdfType(companyId = config.companyId , applicationId = applicationId , id = id )
-        } else {
-            null
-        }
-    }
-    
-    
-    suspend fun getDefaultPdfData(pdfTypeId: Int, countryCode: String?=null)
+    suspend fun getDefaultPdfData(pdfTypeId: Int)
     : Response<DummyTemplateDataItems>? {
         return if (config.oauthClient.isAccessTokenValid()) {
-                fileStorageApiList?.getDefaultPdfData(companyId = config.companyId , applicationId = applicationId , pdfTypeId = pdfTypeId, countryCode = countryCode )
-        } else {
-            null
-        }
-    }
-    
-    
-    suspend fun savePdfPayloadData(body: savePdfPayload)
-    : Response<DummyPayloadById>? {
-        return if (config.oauthClient.isAccessTokenValid()) {
-                fileStorageApiList?.savePdfPayloadData(companyId = config.companyId , applicationId = applicationId , body = body)
-        } else {
-            null
-        }
-    }
-    
-    
-    suspend fun getPdfPayloadById(id: String)
-    : Response<DummyPayloadById>? {
-        return if (config.oauthClient.isAccessTokenValid()) {
-                fileStorageApiList?.getPdfPayloadById(companyId = config.companyId , applicationId = applicationId , id = id )
-        } else {
-            null
-        }
-    }
-    
-    
-    suspend fun updatePdfPayloadDataById(id: String,body: DummyPayloadById)
-    : Response<DummyPayloadById>? {
-        return if (config.oauthClient.isAccessTokenValid()) {
-                fileStorageApiList?.updatePdfPayloadDataById(companyId = config.companyId , applicationId = applicationId , id = id, body = body)
-        } else {
-            null
-        }
-    }
-    
-    
-    suspend fun deletePdfPayloadById(id: String)
-    : Response<DummyPayloadById>? {
-        return if (config.oauthClient.isAccessTokenValid()) {
-                fileStorageApiList?.deletePdfPayloadById(companyId = config.companyId , applicationId = applicationId , id = id )
-        } else {
-            null
-        }
-    }
-    
-    
-    suspend fun getConfigHtmlTemplateById(id: String)
-    : Response<HashMap<String,Any>>? {
-        return if (config.oauthClient.isAccessTokenValid()) {
-                fileStorageApiList?.getConfigHtmlTemplateById(companyId = config.companyId , applicationId = applicationId , id = id )
+                fileStorageApiList?.getDefaultPdfData(companyId = config.companyId , applicationId = applicationId , pdfTypeId = pdfTypeId )
         } else {
             null
         }
@@ -321,20 +207,10 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     }
     
     
-    suspend fun deletePdfConfigTemplate(id: String)
-    : Response<HashMap<String,Any>>? {
-        return if (config.oauthClient.isAccessTokenValid()) {
-                fileStorageApiList?.deletePdfConfigTemplate(companyId = config.companyId , applicationId = applicationId , id = id )
-        } else {
-            null
-        }
-    }
-    
-    
-    suspend fun getDefaultHtmlTemplate(pdfTypeId: Int, format: String, countryCode: String?=null)
+    suspend fun getDefaultHtmlTemplate(pdfTypeId: Int, format: String)
     : Response<PdfConfigSuccess>? {
         return if (config.oauthClient.isAccessTokenValid()) {
-                fileStorageApiList?.getDefaultHtmlTemplate(companyId = config.companyId , applicationId = applicationId , pdfTypeId = pdfTypeId, format = format, countryCode = countryCode )
+                fileStorageApiList?.getDefaultHtmlTemplate(companyId = config.companyId , applicationId = applicationId , pdfTypeId = pdfTypeId, format = format )
         } else {
             null
         }
@@ -351,20 +227,10 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     }
     
     
-    suspend fun getDefaultPdfTemplate(pdfTypeId: Int, format: String, countryCode: String?=null)
+    suspend fun getDefaultPdfTemplate(pdfTypeId: Int, format: String)
     : Response<PdfDefaultTemplateSuccess>? {
         return if (config.oauthClient.isAccessTokenValid()) {
-                fileStorageApiList?.getDefaultPdfTemplate(companyId = config.companyId , applicationId = applicationId , pdfTypeId = pdfTypeId, format = format, countryCode = countryCode )
-        } else {
-            null
-        }
-    }
-    
-    
-    suspend fun createTemplate(body: CreateTemplate)
-    : Response<PdfTemplateCreateSuccess>? {
-        return if (config.oauthClient.isAccessTokenValid()) {
-                fileStorageApiList?.createTemplate(companyId = config.companyId , applicationId = applicationId , body = body)
+                fileStorageApiList?.getDefaultPdfTemplate(companyId = config.companyId , applicationId = applicationId , pdfTypeId = pdfTypeId, format = format )
         } else {
             null
         }
@@ -379,37 +245,6 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
             null
         }
     }
-    
-    
-    suspend fun fetchPdfDefaultTemplateById(id: String)
-    : Response<PdfDefaultTemplateResponse>? {
-        return if (config.oauthClient.isAccessTokenValid()) {
-                fileStorageApiList?.fetchPdfDefaultTemplateById(companyId = config.companyId , applicationId = applicationId , id = id )
-        } else {
-            null
-        }
-    }
-    
-    
-    suspend fun updateTemplate(id: String,body: UpdateTemplate)
-    : Response<PdfConfigurationResponse>? {
-        return if (config.oauthClient.isAccessTokenValid()) {
-                fileStorageApiList?.updateTemplate(companyId = config.companyId , applicationId = applicationId , id = id, body = body)
-        } else {
-            null
-        }
-    }
-    
-    
-    suspend fun deletePdfTemplate(id: String)
-    : Response<HashMap<String,Any>>? {
-        return if (config.oauthClient.isAccessTokenValid()) {
-                fileStorageApiList?.deletePdfTemplate(companyId = config.companyId , applicationId = applicationId , id = id )
-        } else {
-            null
-        }
-    }
-    
     
 }
 }

@@ -4,7 +4,6 @@ import com.sdk.platform.*
 import com.sdk.common.HttpClient
 import com.sdk.common.LocationHeader
  
-import com.sdk.platform.analytics.* 
 import com.sdk.platform.audittrail.* 
 import com.sdk.platform.billing.* 
 import com.sdk.platform.cart.* 
@@ -19,11 +18,11 @@ import com.sdk.platform.filestorage.*
 import com.sdk.platform.finance.* 
 import com.sdk.platform.inventory.* 
 import com.sdk.platform.lead.* 
-import com.sdk.platform.serviceability.* 
 import com.sdk.platform.order.* 
 import com.sdk.platform.partner.* 
 import com.sdk.platform.payment.* 
 import com.sdk.platform.rewards.* 
+import com.sdk.platform.serviceability.* 
 import com.sdk.platform.share.* 
 import com.sdk.platform.theme.* 
 import com.sdk.platform.user.* 
@@ -44,8 +43,6 @@ class PlatformClient(val config:PlatformConfig, val unauthorizedAction: ((url: S
         config.currencyCode = currencyCode
     }
 
-    
-    val analytics by lazy { AnalyticsDataManagerClass(config, unauthorizedAction)}
     
     val auditTrail by lazy { AuditTrailDataManagerClass(config, unauthorizedAction)}
     
@@ -75,8 +72,6 @@ class PlatformClient(val config:PlatformConfig, val unauthorizedAction: ((url: S
     
     val lead by lazy { LeadDataManagerClass(config, unauthorizedAction)}
     
-    val serviceability by lazy { ServiceabilityDataManagerClass(config, unauthorizedAction)}
-    
     val order by lazy { OrderDataManagerClass(config, unauthorizedAction)}
     
     val partner by lazy { PartnerDataManagerClass(config, unauthorizedAction)}
@@ -84,6 +79,8 @@ class PlatformClient(val config:PlatformConfig, val unauthorizedAction: ((url: S
     val payment by lazy { PaymentDataManagerClass(config, unauthorizedAction)}
     
     val rewards by lazy { RewardsDataManagerClass(config, unauthorizedAction)}
+    
+    val serviceability by lazy { ServiceabilityDataManagerClass(config, unauthorizedAction)}
     
     val share by lazy { ShareDataManagerClass(config, unauthorizedAction)}
     
@@ -98,8 +95,6 @@ class PlatformClient(val config:PlatformConfig, val unauthorizedAction: ((url: S
     }
 
     inner class ApplicationClient(val applicationId:String,val config: PlatformConfig) {     
-    
-    val analytics by lazy { this@PlatformClient.analytics.ApplicationClient(applicationId,config)}
     
     val auditTrail by lazy { this@PlatformClient.auditTrail.ApplicationClient(applicationId,config)}
     
@@ -129,8 +124,6 @@ class PlatformClient(val config:PlatformConfig, val unauthorizedAction: ((url: S
     
     val lead by lazy { this@PlatformClient.lead.ApplicationClient(applicationId,config)}
     
-    val serviceability by lazy { this@PlatformClient.serviceability.ApplicationClient(applicationId,config)}
-    
     val order by lazy { this@PlatformClient.order.ApplicationClient(applicationId,config)}
     
     val partner by lazy { this@PlatformClient.partner.ApplicationClient(applicationId,config)}
@@ -138,6 +131,8 @@ class PlatformClient(val config:PlatformConfig, val unauthorizedAction: ((url: S
     val payment by lazy { this@PlatformClient.payment.ApplicationClient(applicationId,config)}
     
     val rewards by lazy { this@PlatformClient.rewards.ApplicationClient(applicationId,config)}
+    
+    val serviceability by lazy { this@PlatformClient.serviceability.ApplicationClient(applicationId,config)}
     
     val share by lazy { this@PlatformClient.share.ApplicationClient(applicationId,config)}
     

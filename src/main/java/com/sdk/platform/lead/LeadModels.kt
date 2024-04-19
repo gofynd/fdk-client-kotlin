@@ -14,179 +14,6 @@ import com.google.gson.annotations.SerializedName
 
              
 /*
-    Model: GeneralConfigResponse
-*/
-@Parcelize
-data class GeneralConfigResponse(
-    
-    
-    
-    @SerializedName("_id")
-    var id: String?=null,
-    
-    @SerializedName("support_communication")
-    var supportCommunication: ArrayList<SupportCommunicationSchema>?=null,
-    
-    @SerializedName("show_communication_info")
-    var showCommunicationInfo: Boolean?=null,
-    
-    @SerializedName("show_support_dris")
-    var showSupportDris: Boolean?=null,
-    
-    @SerializedName("type")
-    var type: String?=null,
-    
-    @SerializedName("integration")
-    var integration: GeneralConfigIntegrationSchema?=null,
-    
-    @SerializedName("allow_ticket_creation")
-    var allowTicketCreation: Boolean?=null,
-    
-    @SerializedName("show_listing")
-    var showListing: Boolean?=null,
-    
-    @SerializedName("available_integration")
-    var availableIntegration: ArrayList<String>?=null,
-    
-    @SerializedName("enable_dris")
-    var enableDris: Boolean?=null,
-    
-    @SerializedName("support_email")
-    var supportEmail: SupportSchema?=null,
-    
-    @SerializedName("support_phone")
-    var supportPhone: SupportSchema?=null,
-    
-    @SerializedName("support_faq")
-    var supportFaq: SupportSchema?=null
-    
-): Parcelable {
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-}
-
-
-
-             
-/*
-    Model: SupportSchema
-*/
-@Parcelize
-data class SupportSchema(
-    
-    
-    
-    @SerializedName("value")
-    var value: String?=null,
-    
-    @SerializedName("description")
-    var description: String?=null,
-    
-    @SerializedName("enabled")
-    var enabled: Boolean?=null
-    
-): Parcelable {
-    
-    
-    
-    
-    
-    
-    
-    
-    
-}
-
-
-
-             
-/*
-    Model: SupportCommunicationSchema
-*/
-@Parcelize
-data class SupportCommunicationSchema(
-    
-    
-    
-    @SerializedName("type")
-    var type: String?=null,
-    
-    @SerializedName("title")
-    var title: String?=null,
-    
-    @SerializedName("description")
-    var description: String?=null,
-    
-    @SerializedName("enabled")
-    var enabled: Boolean?=null
-    
-): Parcelable {
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-}
-
-
-
-             
-/*
-    Model: GeneralConfigIntegrationSchema
-*/
-@Parcelize
-data class GeneralConfigIntegrationSchema(
-    
-    
-    
-    @SerializedName("type")
-    var type: String?=null
-    
-): Parcelable {
-    
-    
-    
-    
-    
-}
-
-
-
-             
-/*
     Model: TicketList
 */
 @Parcelize
@@ -348,7 +175,7 @@ data class CreateCustomFormPayload(
     var headerImage: String?=null,
     
     @SerializedName("priority")
-    var priority: String?=null,
+    var priority: PriorityEnum?=null,
     
     @SerializedName("should_notify")
     var shouldNotify: Boolean?=null,
@@ -404,7 +231,10 @@ data class EditCustomFormPayload(
     var description: String?=null,
     
     @SerializedName("priority")
-    var priority: String?=null,
+    var priority: PriorityEnum?=null,
+    
+    @SerializedName("header_image")
+    var headerImage: String?=null,
     
     @SerializedName("should_notify")
     var shouldNotify: Boolean?=null,
@@ -419,6 +249,8 @@ data class EditCustomFormPayload(
     var pollForAssignment: PollForAssignment?=null
     
 ): Parcelable {
+    
+    
     
     
     
@@ -467,7 +299,7 @@ data class EditTicketPayload(
     var status: String?=null,
     
     @SerializedName("priority")
-    var priority: String?=null,
+    var priority: PriorityEnum?=null,
     
     @SerializedName("assigned_to")
     var assignedTo: AgentChangePayload?=null,
@@ -638,14 +470,9 @@ data class Filter(
     var statuses: ArrayList<Status>?=null,
     
     @SerializedName("assignees")
-    var assignees: @RawValue ArrayList<HashMap<String,Any>>?=null,
-    
-    @SerializedName("all_categories")
-    var allCategories: @RawValue HashMap<String,Any>?=null
+    var assignees: @RawValue ArrayList<HashMap<String,Any>>?=null
     
 ): Parcelable {
-    
-    
     
     
     
@@ -674,7 +501,7 @@ data class TicketHistoryPayload(
     var value: @RawValue HashMap<String,Any>?=null,
     
     @SerializedName("type")
-    var type: String?=null
+    var type: HistoryTypeEnum?=null
     
 ): Parcelable {
     
@@ -720,14 +547,9 @@ data class GetParticipantsInsideVideoRoomResponse(
     
     
     @SerializedName("participants")
-    var participants: ArrayList<Participant>?=null,
-    
-    @SerializedName("room")
-    var room: @RawValue HashMap<String,Any>?=null
+    var participants: ArrayList<Participant>?=null
     
 ): Parcelable {
-    
-    
     
     
     
@@ -827,10 +649,7 @@ data class UserSchema(
     var updatedAt: String?=null,
     
     @SerializedName("external_id")
-    var externalId: String?=null,
-    
-    @SerializedName("rr_id")
-    var rrId: String?=null
+    var externalId: String?=null
     
 ): Parcelable {
     
@@ -865,6 +684,110 @@ data class UserSchema(
     
     
     
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: PhoneNumber
+*/
+@Parcelize
+data class PhoneNumber(
+    
+    
+    
+    @SerializedName("active")
+    var active: Boolean?=null,
+    
+    @SerializedName("primary")
+    var primary: Boolean?=null,
+    
+    @SerializedName("verified")
+    var verified: Boolean?=null,
+    
+    @SerializedName("phone")
+    var phone: String?=null,
+    
+    @SerializedName("country_code")
+    var countryCode: Int?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: Email
+*/
+@Parcelize
+data class Email(
+    
+    
+    
+    @SerializedName("primary")
+    var primary: Boolean?=null,
+    
+    @SerializedName("verified")
+    var verified: Boolean?=null,
+    
+    @SerializedName("email")
+    var email: String?=null,
+    
+    @SerializedName("active")
+    var active: Boolean?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: Debug
+*/
+@Parcelize
+data class Debug(
+    
+    
+    
+    @SerializedName("source")
+    var source: String?=null,
+    
+    @SerializedName("platform")
+    var platform: String?=null
+    
+): Parcelable {
     
     
     
@@ -913,14 +836,9 @@ data class CreatedOn(
     
     
     @SerializedName("user_agent")
-    var userAgent: String?=null,
-    
-    @SerializedName("platform")
-    var platform: String?=null
+    var userAgent: String?=null
     
 ): Parcelable {
-    
-    
     
     
     
@@ -1023,7 +941,7 @@ data class AddTicketPayload(
     var status: String?=null,
     
     @SerializedName("priority")
-    var priority: String?=null,
+    var priority: PriorityEnum?=null,
     
     @SerializedName("category")
     var category: String?=null,
@@ -1032,14 +950,9 @@ data class AddTicketPayload(
     var content: TicketContent?=null,
     
     @SerializedName("_custom_json")
-    var customJson: @RawValue HashMap<String,Any>?=null,
-    
-    @SerializedName("subscribers")
-    var subscribers: ArrayList<String>?=null
+    var customJson: @RawValue HashMap<String,Any>?=null
     
 ): Parcelable {
-    
-    
     
     
     
@@ -1069,7 +982,7 @@ data class Priority(
     
     
     @SerializedName("key")
-    var key: String?=null,
+    var key: PriorityEnum?=null,
     
     @SerializedName("display")
     var display: String?=null,
@@ -1260,6 +1173,9 @@ data class CustomForm(
     @SerializedName("description")
     var description: String?=null,
     
+    @SerializedName("priority")
+    var priority: Priority?=null,
+    
     @SerializedName("login_required")
     var loginRequired: Boolean?=null,
     
@@ -1281,33 +1197,10 @@ data class CustomForm(
     @SerializedName("poll_for_assignment")
     var pollForAssignment: PollForAssignment?=null,
     
-    @SerializedName("available_assignees")
-    var availableAssignees: ArrayList<String>?=null,
-    
     @SerializedName("_id")
-    var id: String?=null,
-    
-    @SerializedName("created_at")
-    var createdAt: String?=null,
-    
-    @SerializedName("updated_at")
-    var updatedAt: String?=null,
-    
-    @SerializedName("__v")
-    var v: Double?=null,
-    
-    @SerializedName("created_by")
-    var createdBy: String?=null
+    var id: String?=null
     
 ): Parcelable {
-    
-    
-    
-    
-    
-    
-    
-    
     
     
     
@@ -1391,7 +1284,7 @@ data class TicketCategory(
     var key: String?=null,
     
     @SerializedName("sub_categories")
-    var subCategories: ArrayList<TicketCategory>?=null,
+    var subCategories: TicketCategory?=null,
     
     @SerializedName("group_id")
     var groupId: Double?=null,
@@ -1430,9 +1323,14 @@ data class FeedbackResponseItem(
     var display: String?=null,
     
     @SerializedName("key")
-    var key: String?=null
+    var key: String?=null,
+    
+    @SerializedName("value")
+    var value: String?=null
     
 ): Parcelable {
+    
+    
     
     
     
@@ -1475,14 +1373,9 @@ data class TicketFeedback(
     var updatedAt: String?=null,
     
     @SerializedName("created_at")
-    var createdAt: String?=null,
-    
-    @SerializedName("__v")
-    var v: Double?=null
+    var createdAt: String?=null
     
 ): Parcelable {
-    
-    
     
     
     
@@ -1537,14 +1430,9 @@ data class TicketHistory(
     var updatedAt: String?=null,
     
     @SerializedName("created_at")
-    var createdAt: String?=null,
-    
-    @SerializedName("__v")
-    var v: Double?=null
+    var createdAt: String?=null
     
 ): Parcelable {
-    
-    
     
     
     
@@ -1629,34 +1517,9 @@ data class Ticket(
     var updatedAt: String?=null,
     
     @SerializedName("created_at")
-    var createdAt: String?=null,
-    
-    @SerializedName("video_room_id")
-    var videoRoomId: String?=null,
-    
-    @SerializedName("subscribers")
-    var subscribers: ArrayList<String>?=null,
-    
-    @SerializedName("additional_info")
-    var additionalInfo: @RawValue ArrayList<HashMap<String,Any>>?=null,
-    
-    @SerializedName("__v")
-    var v: Double?=null,
-    
-    @SerializedName("attachments")
-    var attachments: ArrayList<TicketAsset>?=null
+    var createdAt: String?=null
     
 ): Parcelable {
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
     
     
     
@@ -1700,140 +1563,64 @@ data class Ticket(
 
 
 
-             
-/*
-    Model: Error4XX
-*/
-@Parcelize
-data class Error4XX(
-    
-    
-    
-    @SerializedName("message")
-    var message: @RawValue HashMap<String,Any>?=null,
-    
-    @SerializedName("stack")
-    var stack: String?=null,
-    
-    @SerializedName("sentry")
-    var sentry: String?=null
-    
-): Parcelable {
-    
-    
-    
-    
-    
-    
-    
-    
-    
-}
-
-
-
-             
-/*
-    Model: NotFoundError
-*/
-@Parcelize
-data class NotFoundError(
-    
-    
-    
-    @SerializedName("message")
-    var message: String?=null
-    
-): Parcelable {
-    
-    
-    
-    
-    
-}
-
-
-
-             
-/*
-    Model: PhoneNumber
-*/
-@Parcelize
-data class PhoneNumber(
-    
-    
-    
-    @SerializedName("phone")
-    var phone: String?=null,
-    
-    @SerializedName("country_code")
-    var countryCode: Int?=null,
-    
-    @SerializedName("active")
-    var active: Boolean?=null,
-    
-    @SerializedName("primary")
-    var primary: Boolean?=null,
-    
-    @SerializedName("verified")
-    var verified: Boolean?=null
-    
-): Parcelable {
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-}
-
-
-
-             
-/*
-    Model: Email
-*/
-@Parcelize
-data class Email(
-    
-    
-    
-    @SerializedName("email")
-    var email: String?=null,
-    
-    @SerializedName("active")
-    var active: Boolean?=null,
-    
-    @SerializedName("primary")
-    var primary: Boolean?=null,
-    
-    @SerializedName("verified")
-    var verified: Boolean?=null
-    
-): Parcelable {
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-}
 
 
 
 
+    /*
+        Enum: PriorityEnum
+        Used By: Lead
+    */
+    enum class PriorityEnum(val value:String){
+        
+        @SerializedName("low")
+        low("low"), 
+        
+        @SerializedName("medium")
+        medium("medium"), 
+        
+        @SerializedName("high")
+        high("high"), 
+        
+        @SerializedName("urgent")
+        urgent("urgent");
+        
+
+        companion object {
+            fun valueOfPriorityEnum(value : String): PriorityEnum? {
+                return PriorityEnum.values().find {
+                    it.value == value
+                }
+            }
+        }
+    }
+
+
+
+    /*
+        Enum: HistoryTypeEnum
+        Used By: Lead
+    */
+    enum class HistoryTypeEnum(val value:String){
+        
+        @SerializedName("rating")
+        rating("rating"), 
+        
+        @SerializedName("log")
+        log("log"), 
+        
+        @SerializedName("comment")
+        comment("comment");
+        
+
+        companion object {
+            fun valueOfHistoryTypeEnum(value : String): HistoryTypeEnum? {
+                return HistoryTypeEnum.values().find {
+                    it.value == value
+                }
+            }
+        }
+    }
 
 
 
@@ -1892,10 +1679,7 @@ data class Email(
         platformPanel("platform_panel"), 
         
         @SerializedName("sales_channel")
-        salesChannel("sales_channel"), 
-        
-        @SerializedName("partner_panel")
-        partnerPanel("partner_panel");
+        salesChannel("sales_channel");
         
 
         companion object {

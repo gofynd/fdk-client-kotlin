@@ -70,20 +70,10 @@ data class AvailablePageSchema(
     @SerializedName("props")
     var props: @RawValue ArrayList<HashMap<String,Any>>?=null,
     
-    @SerializedName("updated_at")
-    var updatedAt: String?=null,
-    
-    @SerializedName("created_at")
-    var createdAt: String?=null,
-    
     @SerializedName("_id")
     var id: String?=null
     
 ): Parcelable {
-    
-    
-    
-    
     
     
     
@@ -135,146 +125,6 @@ data class AvailablePageSectionMetaAttributes(
 
              
 /*
-    Model: SEOMetaItem
-*/
-@Parcelize
-data class SEOMetaItem(
-    
-    
-    
-    @SerializedName("title")
-    var title: String?=null,
-    
-    @SerializedName("items")
-    var items: ArrayList<SEOMetaItems>?=null
-    
-): Parcelable {
-    
-    
-    
-    
-    
-    
-    
-}
-
-
-
-             
-/*
-    Model: SEOMetaItems
-*/
-@Parcelize
-data class SEOMetaItems(
-    
-    
-    
-    @SerializedName("key")
-    var key: String?=null,
-    
-    @SerializedName("value")
-    var value: String?=null
-    
-): Parcelable {
-    
-    
-    
-    
-    
-    
-    
-}
-
-
-
-             
-/*
-    Model: SEOSitemap
-*/
-@Parcelize
-data class SEOSitemap(
-    
-    
-    
-    @SerializedName("priority")
-    var priority: Double?=null,
-    
-    @SerializedName("frequency")
-    var frequency: String?=null
-    
-): Parcelable {
-    
-    
-    
-    
-    
-    
-    
-}
-
-
-
-             
-/*
-    Model: SEObreadcrumb
-*/
-@Parcelize
-data class SEObreadcrumb(
-    
-    
-    
-    @SerializedName("url")
-    var url: String?=null,
-    
-    @SerializedName("action")
-    var action: Action?=null
-    
-): Parcelable {
-    
-    
-    
-    
-    
-    
-    
-}
-
-
-
-             
-/*
-    Model: Action
-*/
-@Parcelize
-data class Action(
-    
-    
-    
-    @SerializedName("type")
-    var type: String?=null,
-    
-    @SerializedName("page")
-    var page: ActionPage?=null,
-    
-    @SerializedName("popup")
-    var popup: ActionPage?=null
-    
-): Parcelable {
-    
-    
-    
-    
-    
-    
-    
-    
-    
-}
-
-
-
-             
-/*
     Model: AvailablePageSeo
 */
 @Parcelize
@@ -288,30 +138,10 @@ data class AvailablePageSeo(
     @SerializedName("description")
     var description: String?=null,
     
-    @SerializedName("canonical_url")
-    var canonicalUrl: String?=null,
-    
-    @SerializedName("meta_tags")
-    var metaTags: ArrayList<SEOMetaItem>?=null,
-    
-    @SerializedName("sitemap")
-    var sitemap: SEOSitemap?=null,
-    
-    @SerializedName("breadcrumbs")
-    var breadcrumbs: ArrayList<SEObreadcrumb>?=null,
-    
     @SerializedName("_id")
     var id: String?=null
     
 ): Parcelable {
-    
-    
-    
-    
-    
-    
-    
-    
     
     
     
@@ -349,15 +179,10 @@ data class AvailablePageSchemaSections(
     @SerializedName("preset")
     var preset: @RawValue HashMap<String,Any>?=null,
     
-    @SerializedName("source")
-    var source: String?=null,
-    
     @SerializedName("predicate")
     var predicate: AvailablePagePredicate?=null
     
 ): Parcelable {
-    
-    
     
     
     
@@ -393,24 +218,9 @@ data class AvailablePagePredicate(
     var user: AvailablePageUserPredicate?=null,
     
     @SerializedName("route")
-    var route: AvailablePageRoutePredicate?=null,
-    
-    @SerializedName("schedule")
-    var schedule: AvailablePageSchedulePredicate?=null,
-    
-    @SerializedName("platform")
-    var platform: AvailablePagePlatformPredicate?=null,
-    
-    @SerializedName("zones")
-    var zones: ArrayList<String>?=null
+    var route: AvailablePageRoutePredicate?=null
     
 ): Parcelable {
-    
-    
-    
-    
-    
-    
     
     
     
@@ -517,38 +327,6 @@ data class AvailablePageRoutePredicate(
 
              
 /*
-    Model: AvailablePageSchedulePredicate
-*/
-@Parcelize
-data class AvailablePageSchedulePredicate(
-    
-    
-    
-    @SerializedName("cron")
-    var cron: String?=null,
-    
-    @SerializedName("start")
-    var start: String?=null,
-    
-    @SerializedName("end")
-    var end: String?=null
-    
-): Parcelable {
-    
-    
-    
-    
-    
-    
-    
-    
-    
-}
-
-
-
-             
-/*
     Model: ThemesSchema
 */
 @Parcelize
@@ -581,7 +359,7 @@ data class ThemesSchema(
     var marketplaceThemeId: String?=null,
     
     @SerializedName("meta")
-    var meta: ThemeMeta?=null,
+    var meta: Meta?=null,
     
     @SerializedName("name")
     var name: String?=null,
@@ -605,29 +383,9 @@ data class ThemesSchema(
     var assets: Assets?=null,
     
     @SerializedName("available_sections")
-    var availableSections: ArrayList<SectionItem>?=null,
-    
-    @SerializedName("theme_type")
-    var themeType: String?=null,
-    
-    @SerializedName("company_id")
-    var companyId: Double?=null,
-    
-    @SerializedName("src")
-    var src: String?=null,
-    
-    @SerializedName("global_sections")
-    var globalSections: @RawValue ArrayList<HashMap<String,Any>>?=null
+    var availableSections: ArrayList<SectionItem>?=null
     
 ): Parcelable {
-    
-    
-    
-    
-    
-    
-    
-    
     
     
     
@@ -784,7 +542,7 @@ data class Config(
     var globalSchema: GlobalSchema?=null,
     
     @SerializedName("preset")
-    var preset: @RawValue HashMap<String,Any>?=null
+    var preset: Preset?=null
     
 ): Parcelable {
     
@@ -1032,10 +790,15 @@ data class GlobalConfig(
     
     
     
+    @SerializedName("statics")
+    var statics: StaticConfig?=null,
+    
     @SerializedName("custom")
     var custom: CustomConfig?=null
     
 ): Parcelable {
+    
+    
     
     
     
@@ -1470,19 +1233,9 @@ data class StaticProps(
     var auth: AuthConfig?=null,
     
     @SerializedName("palette")
-    var palette: PaletteConfig?=null,
-    
-    @SerializedName("order_tracking")
-    var orderTracking: @RawValue HashMap<String,Any>?=null,
-    
-    @SerializedName("manifest")
-    var manifest: @RawValue HashMap<String,Any>?=null
+    var palette: PaletteConfig?=null
     
 ): Parcelable {
-    
-    
-    
-    
     
     
     
@@ -1599,10 +1352,10 @@ data class PaletteConfig(
 
              
 /*
-    Model: ThemeMeta
+    Model: Meta
 */
 @Parcelize
-data class ThemeMeta(
+data class Meta(
     
     
     
@@ -1838,10 +1591,10 @@ data class SectionItem(
     
     
     @SerializedName("props")
-    var props: @RawValue ArrayList<HashMap<String,Any>>?=null,
+    var props: @RawValue ArrayList<Any>?=null,
     
     @SerializedName("blocks")
-    var blocks: @RawValue ArrayList<HashMap<String,Any>>?=null,
+    var blocks: @RawValue ArrayList<Any>?=null,
     
     @SerializedName("name")
     var name: String?=null,
@@ -1960,13 +1713,38 @@ data class Page(
     
     
     
-    @SerializedName("sections")
-    var sections: ArrayList<Section>?=null,
+    @SerializedName("item_total")
+    var itemTotal: Int?=null,
     
-    @SerializedName("value")
-    var value: String?=null
+    @SerializedName("next_id")
+    var nextId: String?=null,
+    
+    @SerializedName("has_previous")
+    var hasPrevious: Boolean?=null,
+    
+    @SerializedName("has_next")
+    var hasNext: Boolean?=null,
+    
+    @SerializedName("current")
+    var current: Int?=null,
+    
+    @SerializedName("type")
+    var type: String?=null,
+    
+    @SerializedName("size")
+    var size: Int?=null
     
 ): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     
     
     
@@ -2393,38 +2171,6 @@ data class Route(
 
              
 /*
-    Model: AvailablePagePlatformPredicate
-*/
-@Parcelize
-data class AvailablePagePlatformPredicate(
-    
-    
-    
-    @SerializedName("ios")
-    var ios: Boolean?=null,
-    
-    @SerializedName("android")
-    var android: Boolean?=null,
-    
-    @SerializedName("web")
-    var web: Boolean?=null
-    
-): Parcelable {
-    
-    
-    
-    
-    
-    
-    
-    
-    
-}
-
-
-
-             
-/*
     Model: BlitzkriegInternalServerErrorSchema
 */
 @Parcelize
@@ -2464,45 +2210,6 @@ data class BlitzkriegApiErrorSchema(
     
     
 }
-
-
-
-             
-/*
-    Model: ActionPage
-*/
-@Parcelize
-data class ActionPage(
-    
-    
-    
-    @SerializedName("params")
-    var params: HashMap<String,ArrayList<String>>?=null,
-    
-    @SerializedName("query")
-    var query: HashMap<String,ArrayList<String>>?=null,
-    
-    @SerializedName("url")
-    var url: String?=null,
-    
-    @SerializedName("type")
-    var type: PageType?=null
-    
-): Parcelable {
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-}
-
-
 
 
 
