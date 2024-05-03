@@ -32,37 +32,9 @@ interface ThemeApiList {
     suspend fun deletePage(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Path("theme_id") themeId: String, @Path("page_value") pageValue: String)
     : Response<AvailablePageSchema>
     
-    @GET ("/service/platform/theme/v1.0/company/{company_id}/application/{application_id}/library")
-    suspend fun getThemeLibrary(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Query("page_size") pageSize: Int?, @Query("page_no") pageNo: Int?)
-    : Response<DummyResponse>
-    
-    @POST ("/service/platform/theme/v1.0/company/{company_id}/application/{application_id}/library")
-    suspend fun addToThemeLibrary(@Path("company_id") companyId: String, @Path("application_id") applicationId: String,@Body body: AddThemeRequestSchema)
-    : Response<DummyResponse>
-    
-    @GET ("/service/platform/theme/v1.0/company/{company_id}/application/{application_id}/list/public")
-    suspend fun getPublicThemes(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Query("page_size") pageSize: Int?, @Query("page_no") pageNo: Int?)
-    : Response<DummyResponse>
-    
     @GET ("/service/platform/theme/v1.0/company/{company_id}/application/{application_id}/fonts")
     suspend fun getFonts(@Path("company_id") companyId: String, @Path("application_id") applicationId: String)
     : Response<FontsSchema>
-    
-    @PUT ("/service/platform/theme/v1.0/company/{company_id}/application/{application_id}/{theme_id}/publish")
-    suspend fun publishTheme(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Path("theme_id") themeId: String)
-    : Response<DummyResponse>
-    
-    @PUT ("/service/platform/theme/v1.0/company/{company_id}/application/{application_id}/{theme_id}/unpublish")
-    suspend fun unpublishTheme(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Path("theme_id") themeId: String)
-    : Response<DummyResponse>
-    
-    @PUT ("/service/platform/theme/v1.0/company/{company_id}/application/{application_id}/{theme_id}/archive")
-    suspend fun archiveTheme(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Path("theme_id") themeId: String)
-    : Response<DummyResponse>
-    
-    @PUT ("/service/platform/theme/v1.0/company/{company_id}/application/{application_id}/{theme_id}/unarchive")
-    suspend fun unarchiveTheme(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Path("theme_id") themeId: String)
-    : Response<DummyResponse>
     
     @GET ("/service/platform/theme/v2.0/company/{company_id}/themes")
     suspend fun getCompanyLevelThemes(@Path("company_id") companyId: String, @Query("search_text") searchText: String?)

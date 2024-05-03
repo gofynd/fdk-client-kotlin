@@ -104,18 +104,6 @@ class OrderDataManagerClass(val config: PlatformConfig, val unauthorizedAction: 
     }
     
     
-    suspend fun click2Call(caller: String, receiver: String, bagId: String, callerId: String?=null, method: String?=null, )
-    : Response<Click2CallResponse>? {
-        
-        return if (config.oauthClient.isAccessTokenValid()) {
-            orderApiList?.click2Call(
-        caller = caller, receiver = receiver, bagId = bagId, callerId = callerId, method = method, companyId = config.companyId )
-        } else {
-            null
-        } 
-    }
-    
-    
     suspend fun updateShipmentStatus(body: UpdateShipmentStatusRequest)
     : Response<UpdateShipmentStatusResponseBody>? {
         
@@ -734,7 +722,6 @@ class OrderDataManagerClass(val config: PlatformConfig, val unauthorizedAction: 
 
 inner class ApplicationClient(val applicationId:String,val config: PlatformConfig){
 
-    
     
     
     

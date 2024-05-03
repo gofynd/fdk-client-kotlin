@@ -21,11 +21,6 @@ interface OrderApiList {
     
     
     @GET 
-    suspend fun getPosOrderById(@Url url1: String?    )
-    : Response<OrderById>
-    
-    
-    @GET 
     suspend fun getShipmentById(@Url url1: String?     ,  @Query("allow_inactive") allowInactive: Boolean?)
     : Response<ShipmentById>
     

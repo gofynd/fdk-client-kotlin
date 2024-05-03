@@ -51,13 +51,6 @@ class ThemeDataManagerClass(val config: PlatformConfig, val unauthorizedAction: 
     
     
     
-    
-    
-    
-    
-    
-    
-    
     suspend fun getCompanyLevelThemes(searchText: String?=null)
     : Response<ArrayList<CompanyThemeSchema>>? {
         
@@ -184,80 +177,10 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     }
     
     
-    suspend fun getThemeLibrary(pageSize: Int?=null, pageNo: Int?=null)
-    : Response<DummyResponse>? {
-        return if (config.oauthClient.isAccessTokenValid()) {
-                themeApiList?.getThemeLibrary(companyId = config.companyId , applicationId = applicationId , pageSize = pageSize, pageNo = pageNo )
-        } else {
-            null
-        }
-    }
-    
-    
-    suspend fun addToThemeLibrary(body: AddThemeRequestSchema)
-    : Response<DummyResponse>? {
-        return if (config.oauthClient.isAccessTokenValid()) {
-                themeApiList?.addToThemeLibrary(companyId = config.companyId , applicationId = applicationId , body = body)
-        } else {
-            null
-        }
-    }
-    
-    
-    suspend fun getPublicThemes(pageSize: Int?=null, pageNo: Int?=null)
-    : Response<DummyResponse>? {
-        return if (config.oauthClient.isAccessTokenValid()) {
-                themeApiList?.getPublicThemes(companyId = config.companyId , applicationId = applicationId , pageSize = pageSize, pageNo = pageNo )
-        } else {
-            null
-        }
-    }
-    
-    
     suspend fun getFonts()
     : Response<FontsSchema>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 themeApiList?.getFonts(companyId = config.companyId , applicationId = applicationId  )
-        } else {
-            null
-        }
-    }
-    
-    
-    suspend fun publishTheme(themeId: String)
-    : Response<DummyResponse>? {
-        return if (config.oauthClient.isAccessTokenValid()) {
-                themeApiList?.publishTheme(companyId = config.companyId , applicationId = applicationId , themeId = themeId )
-        } else {
-            null
-        }
-    }
-    
-    
-    suspend fun unpublishTheme(themeId: String)
-    : Response<DummyResponse>? {
-        return if (config.oauthClient.isAccessTokenValid()) {
-                themeApiList?.unpublishTheme(companyId = config.companyId , applicationId = applicationId , themeId = themeId )
-        } else {
-            null
-        }
-    }
-    
-    
-    suspend fun archiveTheme(themeId: String)
-    : Response<DummyResponse>? {
-        return if (config.oauthClient.isAccessTokenValid()) {
-                themeApiList?.archiveTheme(companyId = config.companyId , applicationId = applicationId , themeId = themeId )
-        } else {
-            null
-        }
-    }
-    
-    
-    suspend fun unarchiveTheme(themeId: String)
-    : Response<DummyResponse>? {
-        return if (config.oauthClient.isAccessTokenValid()) {
-                themeApiList?.unarchiveTheme(companyId = config.companyId , applicationId = applicationId , themeId = themeId )
         } else {
             null
         }

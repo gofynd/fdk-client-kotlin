@@ -23,8 +23,6 @@ class OrderDataManagerClass(val config: ApplicationConfig, val unauthorizedActio
             
                     _relativeUrls["getOrderById"] = "/service/application/order/v1.0/orders/{order_id}".substring(1)
             
-                    _relativeUrls["getPosOrderById"] = "/service/application/order/v1.0/orders/pos-order/{order_id}".substring(1)
-            
                     _relativeUrls["getShipmentById"] = "/service/application/order/v1.0/orders/shipments/{shipment_id}".substring(1)
             
                     _relativeUrls["getInvoiceByShipmentId"] = "/service/application/order/v1.0/orders/shipments/{shipment_id}/invoice".substring(1)
@@ -91,15 +89,6 @@ class OrderDataManagerClass(val config: ApplicationConfig, val unauthorizedActio
         fullUrl = fullUrl?.replace("{" + "order_id" +"}",orderId.toString())
         
         return orderApiList?.getOrderById(fullUrl     ,  allowInactive = allowInactive)}
-
-    
-    
-    suspend fun getPosOrderById(orderId: String): Response<OrderById>? {
-        var fullUrl : String? = _relativeUrls["getPosOrderById"] 
-        
-        fullUrl = fullUrl?.replace("{" + "order_id" +"}",orderId.toString())
-        
-        return orderApiList?.getPosOrderById(fullUrl   )}
 
     
     

@@ -28,10 +28,6 @@ interface OrderApiList {
     suspend fun updateAddress(@Query("shipment_id") shipmentId: String, @Query("name") name: String?, @Query("address") address: String?, @Query("address_type") addressType: String?, @Query("pincode") pincode: String?, @Query("phone") phone: String?, @Query("email") email: String?, @Query("landmark") landmark: String?, @Query("address_category") addressCategory: String, @Query("city") city: String?, @Query("state") state: String?, @Query("country") country: String?, @Path("company_id") companyId: String)
     : Response<BaseResponse>
     
-    @GET ("/service/platform/order-manage/v1.0/company/{company_id}/ninja/click2call")
-    suspend fun click2Call(@Query("caller") caller: String, @Query("receiver") receiver: String, @Query("bag_id") bagId: String, @Query("caller_id") callerId: String?, @Query("method") method: String?, @Path("company_id") companyId: String)
-    : Response<Click2CallResponse>
-    
     @PUT ("/service/platform/order-manage/v1.0/company/{company_id}/shipment/status-internal")
     suspend fun updateShipmentStatus(@Path("company_id") companyId: String,@Body body: UpdateShipmentStatusRequest)
     : Response<UpdateShipmentStatusResponseBody>

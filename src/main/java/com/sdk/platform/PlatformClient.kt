@@ -16,7 +16,6 @@ import com.sdk.platform.content.*
 import com.sdk.platform.discount.* 
 import com.sdk.platform.filestorage.* 
 import com.sdk.platform.finance.* 
-import com.sdk.platform.inventory.* 
 import com.sdk.platform.lead.* 
 import com.sdk.platform.serviceability.* 
 import com.sdk.platform.order.* 
@@ -68,8 +67,6 @@ class PlatformClient(val config:PlatformConfig, val unauthorizedAction: ((url: S
     
     val finance by lazy { FinanceDataManagerClass(config, unauthorizedAction)}
     
-    val inventory by lazy { InventoryDataManagerClass(config, unauthorizedAction)}
-    
     val lead by lazy { LeadDataManagerClass(config, unauthorizedAction)}
     
     val serviceability by lazy { ServiceabilityDataManagerClass(config, unauthorizedAction)}
@@ -119,8 +116,6 @@ class PlatformClient(val config:PlatformConfig, val unauthorizedAction: ((url: S
     val fileStorage by lazy { this@PlatformClient.fileStorage.ApplicationClient(applicationId,config)}
     
     val finance by lazy { this@PlatformClient.finance.ApplicationClient(applicationId,config)}
-    
-    val inventory by lazy { this@PlatformClient.inventory.ApplicationClient(applicationId,config)}
     
     val lead by lazy { this@PlatformClient.lead.ApplicationClient(applicationId,config)}
     

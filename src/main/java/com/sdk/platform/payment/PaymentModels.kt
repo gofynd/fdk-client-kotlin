@@ -4699,6 +4699,9 @@ data class RefundSessionDetail(
     @SerializedName("receipt_number")
     var receiptNumber: String?=null,
     
+    @SerializedName("pg_refund_id")
+    var pgRefundId: String?=null,
+    
     @SerializedName("currency")
     var currency: String?=null,
     
@@ -4709,6 +4712,8 @@ data class RefundSessionDetail(
     var balanceTransaction: String?=null
     
 ): Parcelable {
+    
+    
     
     
     

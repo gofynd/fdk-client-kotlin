@@ -323,9 +323,14 @@ data class UrlInfo(
     var original: String?=null,
     
     @SerializedName("hash")
-    var hash: String?=null
+    var hash: String?=null,
+    
+    @SerializedName("short_url")
+    var shortUrl: String?=null
     
 ): Parcelable {
+    
+    
     
     
     

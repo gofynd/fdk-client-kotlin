@@ -308,9 +308,19 @@ data class UpdateShipmentLockPayload(
     var entities: ArrayList<Entities>?=null,
     
     @SerializedName("resume_tasks_after_unlock")
-    var resumeTasksAfterUnlock: Boolean?=null
+    var resumeTasksAfterUnlock: Boolean?=null,
+    
+    @SerializedName("lock_after_transition")
+    var lockAfterTransition: Boolean?=null,
+    
+    @SerializedName("unlock_before_transition")
+    var unlockBeforeTransition: Boolean?=null
     
 ): Parcelable {
+    
+    
+    
+    
     
     
     
