@@ -92,7 +92,7 @@ class CompanyProfileDataManagerClass(val config: PlatformConfig, val unauthorize
     }
     
     
-    suspend fun editBrand(brandId: String,body: CreateUpdateBrandRequestSerializer)
+    suspend fun editBrand(brandId: String,body: UpdateBrandRequestSerializer)
     : Response<ProfileSuccessResponse>? {
         
         return if (config.oauthClient.isAccessTokenValid()) {
@@ -104,7 +104,7 @@ class CompanyProfileDataManagerClass(val config: PlatformConfig, val unauthorize
     }
     
     
-    suspend fun createBrand(body: CreateUpdateBrandRequestSerializer)
+    suspend fun createBrand(body: CreateBrandRequestSerializer)
     : Response<ProfileSuccessResponse>? {
         
         return if (config.oauthClient.isAccessTokenValid()) {

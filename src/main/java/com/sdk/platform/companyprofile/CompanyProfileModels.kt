@@ -979,10 +979,10 @@ data class GetBrandResponseSerializer(
 
              
 /*
-    Model: CreateUpdateBrandRequestSerializer
+    Model: CreateBrandRequestSerializer
 */
 @Parcelize
-data class CreateUpdateBrandRequestSerializer(
+data class CreateBrandRequestSerializer(
     
     
     
@@ -1016,12 +1016,79 @@ data class CreateUpdateBrandRequestSerializer(
     @SerializedName("name")
     var name: String?=null,
     
-    @SerializedName("slug")
-    var slug: String?=null
+    @SerializedName("slug_key")
+    var slugKey: String?=null
     
 ): Parcelable {
     
     
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: UpdateBrandRequestSerializer
+*/
+@Parcelize
+data class UpdateBrandRequestSerializer(
+    
+    
+    
+    @SerializedName("_custom_json")
+    var customJson: @RawValue HashMap<String,Any>?=null,
+    
+    @SerializedName("_locale_language")
+    var localeLanguage: @RawValue HashMap<String,Any>?=null,
+    
+    @SerializedName("synonyms")
+    var synonyms: ArrayList<String>?=null,
+    
+    @SerializedName("company_id")
+    var companyId: Int?=null,
+    
+    @SerializedName("description")
+    var description: String?=null,
+    
+    @SerializedName("logo")
+    var logo: String?=null,
+    
+    @SerializedName("brand_tier")
+    var brandTier: String?=null,
+    
+    @SerializedName("uid")
+    var uid: Int?=null,
+    
+    @SerializedName("banner")
+    var banner: BrandBannerSerializer?=null,
+    
+    @SerializedName("name")
+    var name: String?=null
+    
+): Parcelable {
     
     
     
