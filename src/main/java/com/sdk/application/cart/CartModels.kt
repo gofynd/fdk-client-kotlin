@@ -230,19 +230,9 @@ data class AppliedPromotion(
     var appliedFreeArticles: ArrayList<AppliedFreeArticles>?=null,
     
     @SerializedName("promotion_type")
-    var promotionType: String?=null,
-    
-    @SerializedName("meta")
-    var meta: @RawValue HashMap<String,Any>?=null,
-    
-    @SerializedName("code")
-    var code: String?=null
+    var promotionType: String?=null
     
 ): Parcelable {
-    
-    
-    
-    
     
     
     
@@ -4101,6 +4091,12 @@ data class PromotionOffer(
     @SerializedName("promotion_group")
     var promotionGroup: String?=null,
     
+    @SerializedName("promotion_name")
+    var promotionName: String?=null,
+    
+    @SerializedName("promotion_type")
+    var promotionType: String?=null,
+    
     @SerializedName("valid_till")
     var validTill: String?=null,
     
@@ -4114,6 +4110,10 @@ data class PromotionOffer(
     var description: String?=null
     
 ): Parcelable {
+    
+    
+    
+    
     
     
     

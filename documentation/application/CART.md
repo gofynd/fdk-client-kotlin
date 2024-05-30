@@ -8886,8 +8886,6 @@ Success. Returns the status of cart checkout. Refer `CartCheckoutResponseSchema`
  | articleQuantity | Int? |  yes  | Quantity of article on which promotion is applicable |
  | appliedFreeArticles | ArrayList<[AppliedFreeArticles](#AppliedFreeArticles)>? |  yes  | Applied free article for free gift item promotions |
  | promotionType | String? |  yes  | Promotion type of current promotion |
- | meta | HashMap<String,Any>? |  yes  | Meta object for extra data |
- | code | String? |  yes  | Promotion code |
 
 ---
 
@@ -10211,6 +10209,8 @@ Success. Returns the status of cart checkout. Refer `CartCheckoutResponseSchema`
  | buyRules | HashMap<String,Any>? |  yes  | Buy rules of promotions |
  | offerText | String? |  yes  | Offer title |
  | promotionGroup | String? |  yes  | Group of promotion belongs to |
+ | promotionName | String? |  yes  | Name of promotion |
+ | promotionType | String? |  yes  | Promotion type |
  | validTill | String? |  yes  | Datetime ISOString for promotion end date |
  | discountRules | ArrayList<HashMap<String,Any>>? |  yes  | Discount rules of promotions |
  | freeGiftItems | ArrayList<[FreeGiftItems](#FreeGiftItems)>? |  yes  | Details of free gift items |
