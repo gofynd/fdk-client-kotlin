@@ -285,7 +285,7 @@ interface CatalogApiList {
     : Response<GetInventoriesResponse>
     
     @GET ("/service/platform/catalog/v1.0/company/{company_id}/inventory/bulk/")
-    suspend fun getInventoryBulkUploadHistory(@Path("company_id") companyId: String, @Query("page_no") pageNo: Int?, @Query("page_size") pageSize: Int?)
+    suspend fun getInventoryBulkUploadHistory(@Path("company_id") companyId: String, @Query("page_no") pageNo: Int?, @Query("page_size") pageSize: Int?, @Query("search") search: String?)
     : Response<BulkInventoryGet>
     
     @POST ("/service/platform/catalog/v1.0/company/{company_id}/inventory/bulk/")
@@ -343,10 +343,6 @@ interface CatalogApiList {
     @GET ("/service/platform/catalog/v1.0/company/{company_id}/marketplaces/location-details/")
     suspend fun getStoreDetail(@Path("company_id") companyId: String, @Query("q") q: String?, @Query("page_no") pageNo: Int?, @Query("page_size") pageSize: Int?)
     : Response<OptinStoreDetails>
-    
-    @POST ("/service/platform/catalog/v1.0/company/{company_id}/marketplaces/{marketplace}/optin/")
-    suspend fun createMarketplaceOptin(@Path("company_id") companyId: String, @Path("marketplace") marketplace: String,@Body body: OptInPostRequest)
-    : Response<UpdatedResponse>
     
     @GET ("/service/platform/catalog/v1.0/company/{company_id}/product-attributes/")
     suspend fun getProductAttributes(@Path("company_id") companyId: String, @Query("category") category: String, @Query("filter") filter: Boolean?)
@@ -541,7 +537,7 @@ interface CatalogApiList {
     : Response<SuccessResponse1>
     
     @POST ("/service/platform/catalog/v2.0/company/{company_id}/products/bulk")
-    suspend fun uploadBulkProducts(@Path("company_id") companyId: String, @Query("department") department: String, @Query("product_type") productType: String,@Body body: BulkJob)
+    suspend fun uploadBulkProducts(@Path("company_id") companyId: String, @Query("department") department: String, @Query("product_type") productType: String,@Body body: BulkProductJob)
     : Response<BulkResponse>
     
     @GET ("/service/platform/catalog/v2.0/company/{company_id}/products/downloads/")
@@ -583,5 +579,9 @@ interface CatalogApiList {
     @PUT ("/service/platform/catalog/v1.0/company/{company_id}/channel/{marketplace_slug}/opt-in")
     suspend fun updateMarketplaceOptin(@Path("company_id") companyId: String, @Path("marketplace_slug") marketplaceSlug: String,@Body body: UpdateMarketplaceOptinRequest)
     : Response<UpdateMarketplaceOptinResponse>
+    
+    @POST ("/service/platform/catalog/v1.0/company/{company_id}/channel/{marketplace_slug}/opt-in")
+    suspend fun createMarketplaceOptin(@Path("company_id") companyId: String, @Path("marketplace_slug") marketplaceSlug: String,@Body body: OptInPostRequest)
+    : Response<CreateMarketplaceOptinResponse>
     
 }

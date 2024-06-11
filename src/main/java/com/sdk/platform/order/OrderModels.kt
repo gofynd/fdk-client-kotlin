@@ -6036,7 +6036,7 @@ data class Filters(
     var dpName: String?=null,
     
     @SerializedName("dp_ids")
-    var dpIds: Int?=null,
+    var dpIds: String?=null,
     
     @SerializedName("lane")
     var lane: String?=null,
@@ -6045,9 +6045,14 @@ data class Filters(
     var selectedShipments: String?=null,
     
     @SerializedName("store_name")
-    var storeName: String?=null
+    var storeName: String?=null,
+    
+    @SerializedName("deselected_shipments")
+    var deselectedShipments: String?=null
     
 ): Parcelable {
+    
+    
     
     
     
@@ -7459,6 +7464,154 @@ data class GenerateInvoiceIDErrorResponse(
     var items: ArrayList<GenerateInvoiceIDErrorResponseData>?=null
     
 ): Parcelable {
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: ManifestResponse
+*/
+@Parcelize
+data class ManifestResponse(
+    
+    
+    
+    @SerializedName("items")
+    var items: ManifestItems?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: ProcessManifestRequest
+*/
+@Parcelize
+data class ProcessManifestRequest(
+    
+    
+    
+    @SerializedName("action")
+    var action: String?=null,
+    
+    @SerializedName("manifest_id")
+    var manifestId: String?=null,
+    
+    @SerializedName("filters")
+    var filters: Filters?=null,
+    
+    @SerializedName("unique_id")
+    var uniqueId: String?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: ManifestItems
+*/
+@Parcelize
+data class ManifestItems(
+    
+    
+    
+    @SerializedName("filters")
+    var filters: Filters?=null,
+    
+    @SerializedName("manifest_id")
+    var manifestId: String?=null,
+    
+    @SerializedName("unique_id")
+    var uniqueId: String?=null,
+    
+    @SerializedName("company_id")
+    var companyId: Int?=null,
+    
+    @SerializedName("dp_id")
+    var dpId: String?=null,
+    
+    @SerializedName("courier_partner_slug")
+    var courierPartnerSlug: String?=null,
+    
+    @SerializedName("action")
+    var action: String?=null,
+    
+    @SerializedName("created_by")
+    var createdBy: String?=null,
+    
+    @SerializedName("user_id")
+    var userId: String?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: ManifestErrorResponse
+*/
+@Parcelize
+data class ManifestErrorResponse(
+    
+    
+    
+    @SerializedName("success")
+    var success: Boolean?=null,
+    
+    @SerializedName("error")
+    var error: String?=null
+    
+): Parcelable {
+    
+    
     
     
     

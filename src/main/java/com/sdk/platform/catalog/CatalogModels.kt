@@ -1931,6 +1931,33 @@ data class BulkInventoryGet(
 
              
 /*
+    Model: FailedRecord
+*/
+@Parcelize
+data class FailedRecord(
+    
+    
+    
+    @SerializedName("identifiers")
+    var identifiers: String?=null,
+    
+    @SerializedName("message")
+    var message: String?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
     Model: BulkInventoryGetItems
 */
 @Parcelize
@@ -1957,7 +1984,7 @@ data class BulkInventoryGetItems(
     var failed: Int?=null,
     
     @SerializedName("failed_records")
-    var failedRecords: ArrayList<String>?=null,
+    var failedRecords: ArrayList<FailedRecord>?=null,
     
     @SerializedName("file_path")
     var filePath: String?=null,
@@ -2004,6 +2031,48 @@ data class BulkInventoryGetItems(
     
     
     
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: BulkProductJob
+*/
+@Parcelize
+data class BulkProductJob(
+    
+    
+    
+    @SerializedName("company_id")
+    var companyId: Int?=null,
+    
+    @SerializedName("template_tag")
+    var templateTag: String?=null,
+    
+    @SerializedName("product_type")
+    var productType: String?=null,
+    
+    @SerializedName("department")
+    var department: String?=null,
+    
+    @SerializedName("file_path")
+    var filePath: String?=null
+    
+): Parcelable {
     
     
     
@@ -6300,6 +6369,124 @@ data class GetCompanySerializer(
 
              
 /*
+    Model: ConditionItem
+*/
+@Parcelize
+data class ConditionItem(
+    
+    
+    
+    @SerializedName("key")
+    var key: String?=null,
+    
+    @SerializedName("display")
+    var display: String?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: DataItem
+*/
+@Parcelize
+data class DataItem(
+    
+    
+    
+    @SerializedName("key")
+    var key: String?=null,
+    
+    @SerializedName("display")
+    var display: String?=null,
+    
+    @SerializedName("filter_types")
+    var filterTypes: ArrayList<String>?=null,
+    
+    @SerializedName("compatible_units")
+    var compatibleUnits: ArrayList<String>?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: ValueTypeItem
+*/
+@Parcelize
+data class ValueTypeItem(
+    
+    
+    
+    @SerializedName("key")
+    var key: String?=null,
+    
+    @SerializedName("display")
+    var display: String?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: SortTypeItem
+*/
+@Parcelize
+data class SortTypeItem(
+    
+    
+    
+    @SerializedName("key")
+    var key: String?=null,
+    
+    @SerializedName("display")
+    var display: String?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
     Model: GetConfigMetadataResponse
 */
 @Parcelize
@@ -6308,22 +6495,49 @@ data class GetConfigMetadataResponse(
     
     
     @SerializedName("condition")
-    var condition: @RawValue ArrayList<HashMap<String,Any>>?=null,
+    var condition: ArrayList<ConditionItem>?=null,
     
     @SerializedName("data")
-    var data: @RawValue ArrayList<HashMap<String,Any>>?=null,
+    var data: ArrayList<DataItem>?=null,
     
     @SerializedName("page")
     var page: Page?=null,
     
     @SerializedName("values")
-    var values: @RawValue ArrayList<HashMap<String,Any>>?=null
+    var values: GetConfigMetadataValues?=null
     
 ): Parcelable {
     
     
     
     
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: GetConfigMetadataValues
+*/
+@Parcelize
+data class GetConfigMetadataValues(
+    
+    
+    
+    @SerializedName("type")
+    var type: ArrayList<ValueTypeItem>?=null,
+    
+    @SerializedName("sort")
+    var sort: ArrayList<SortTypeItem>?=null
+    
+): Parcelable {
     
     
     
@@ -15664,20 +15878,55 @@ data class UpdateSearchConfigurationResponse(
 
              
 /*
-    Model: UpdatedResponse
+    Model: CreateMarketplaceOptinResponse
 */
 @Parcelize
-data class UpdatedResponse(
+data class CreateMarketplaceOptinResponse(
     
     
     
-    @SerializedName("items_not_updated")
-    var itemsNotUpdated: ArrayList<Int>?=null,
+    @SerializedName("store_ids")
+    var storeIds: ArrayList<Int>?=null,
     
-    @SerializedName("message")
-    var message: String?=null
+    @SerializedName("brand_ids")
+    var brandIds: ArrayList<Int>?=null,
+    
+    @SerializedName("company_id")
+    var companyId: Int?=null,
+    
+    @SerializedName("opt_level")
+    var optLevel: String?=null,
+    
+    @SerializedName("platform")
+    var platform: String?=null,
+    
+    @SerializedName("enabled")
+    var enabled: Boolean?=null,
+    
+    @SerializedName("created_by")
+    var createdBy: CreatedBy?=null,
+    
+    @SerializedName("modified_by")
+    var modifiedBy: CreatedBy?=null,
+    
+    @SerializedName("app_id")
+    var appId: String?=null
     
 ): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     
     
     

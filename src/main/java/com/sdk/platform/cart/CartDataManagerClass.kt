@@ -100,6 +100,7 @@ class CartDataManagerClass(val config: PlatformConfig, val unauthorizedAction: (
     
     
     
+    
 
 inner class ApplicationClient(val applicationId:String,val config: PlatformConfig){
 
@@ -269,6 +270,16 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     : Response<PriceAdjustmentResponse>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 cartApiList?.addPriceAdjustment(companyId = config.companyId , applicationId = applicationId , body = body)
+        } else {
+            null
+        }
+    }
+    
+    
+    suspend fun getPriceAdjustments(cartId: String)
+    : Response<PriceAdjustmentResponse>? {
+        return if (config.oauthClient.isAccessTokenValid()) {
+                cartApiList?.getPriceAdjustments(companyId = config.companyId , applicationId = applicationId , cartId = cartId )
         } else {
             null
         }

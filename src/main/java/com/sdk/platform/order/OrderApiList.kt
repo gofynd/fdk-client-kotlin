@@ -120,8 +120,8 @@ interface OrderApiList {
     suspend fun getFileByStatus(@Path("company_id") companyId: String, @Path("batch_id") batchId: String, @Query("status") status: String, @Query("file_type") fileType: String, @Query("report_type") reportType: String?)
     : Response<JobFailedResponse>
     
-    @GET ("/service/platform/order-manage/v1.0/company/{company_id}/manifests/shipments")
-    suspend fun getManifestShipments(@Path("company_id") companyId: String, @Query("dp_ids") dpIds: Int, @Query("stores") stores: String, @Query("to_date") toDate: String, @Query("from_date") fromDate: String, @Query("dp_name") dpName: String?, @Query("sales_channels") salesChannels: String?, @Query("search_type") searchType: String?, @Query("search_value") searchValue: String?, @Query("page_no") pageNo: String?, @Query("page_size") pageSize: String?)
+    @GET ("/service/platform/order-manage/v1.0/company/{company_id}/manifest/shipments-listing")
+    suspend fun getManifestShipments(@Path("company_id") companyId: String, @Query("dp_ids") dpIds: String, @Query("stores") stores: Int, @Query("to_date") toDate: String, @Query("from_date") fromDate: String, @Query("dp_name") dpName: String?, @Query("sales_channels") salesChannels: String?, @Query("search_type") searchType: String?, @Query("search_value") searchValue: String?, @Query("page_no") pageNo: Int?, @Query("page_size") pageSize: Int?)
     : Response<ManifestShipmentListing>
     
     @GET ("/service/platform/order-manage/v1.0/company/{company_id}/manifests")
@@ -136,8 +136,8 @@ interface OrderApiList {
     suspend fun getManifestDetails(@Path("company_id") companyId: String, @Path("manifest_id") manifestId: String)
     : Response<ManifestDetails>
     
-    @POST ("/service/platform/order-manage/v1.0/company/{company_id}/manifest/{manifest_id}/dispatch")
-    suspend fun dispatchManifests(@Path("company_id") companyId: String, @Path("manifest_id") manifestId: String,@Body body: DispatchManifest)
+    @POST ("/service/platform/order-manage/v1.0/company/{company_id}/manifest/dispatch")
+    suspend fun dispatchManifests(@Path("company_id") companyId: String,@Body body: DispatchManifest)
     : Response<SuccessResponse>
     
     @POST ("/service/platform/order-manage/v1.0/company/{company_id}/manifest/{manifest_id}/upload-consent")
@@ -171,6 +171,10 @@ interface OrderApiList {
     @GET ("/service/platform/order-manage/v1.0/company/{company_id}/orders/failed/logs/{log_id}")
     suspend fun failedOrderLogDetails(@Path("company_id") companyId: String, @Path("log_id") logId: String)
     : Response<FailedOrderLogDetails>
+    
+    @POST ("/service/platform/order-manage/v1.0/company/{company_id}/process-manifest")
+    suspend fun generateProcessManifest(@Path("company_id") companyId: String,@Body body: ProcessManifestRequest)
+    : Response<ManifestResponse>
     
     @GET ("/service/platform/order/v1.0/company/{company_id}/application/{application_id}/orders/shipments/{shipment_id}/line_number/{line_number}/reasons")
     suspend fun getShipmentBagReasons(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Path("shipment_id") shipmentId: String, @Path("line_number") lineNumber: String)

@@ -552,12 +552,12 @@ class CatalogDataManagerClass(val config: PlatformConfig, val unauthorizedAction
         return paginator
     }
     
-    suspend fun getInventoryBulkUploadHistory(pageNo: Int?=null, pageSize: Int?=null)
+    suspend fun getInventoryBulkUploadHistory(pageNo: Int?=null, pageSize: Int?=null, search: String?=null)
     : Response<BulkInventoryGet>? {
         
         return if (config.oauthClient.isAccessTokenValid()) {
             catalogApiList?.getInventoryBulkUploadHistory(
-        companyId = config.companyId, pageNo = pageNo, pageSize = pageSize )
+        companyId = config.companyId, pageNo = pageNo, pageSize = pageSize, search = search )
         } else {
             null
         } 
@@ -579,11 +579,16 @@ class CatalogDataManagerClass(val config: PlatformConfig, val unauthorizedAction
             
             
         
+            
+                
+            
+            
+        
     /**
     *
     * Summary: Paginator for getInventoryBulkUploadHistory
     **/
-    fun getInventoryBulkUploadHistoryPaginator(companyId: String, pageSize: Int?=null) : Paginator<BulkInventoryGet>{
+    fun getInventoryBulkUploadHistoryPaginator(companyId: String, pageSize: Int?=null, search: String?=null) : Paginator<BulkInventoryGet>{
         val paginator = Paginator<BulkInventoryGet>()
         paginator.setCallBack(object : PaginatorCallback<BulkInventoryGet> {
            
@@ -595,7 +600,7 @@ class CatalogDataManagerClass(val config: PlatformConfig, val unauthorizedAction
                     val pageNo = paginator.pageNo
                     val pageType = "number"
                     catalogApiList?.getInventoryBulkUploadHistory(
-                    companyId = config.companyId, pageNo = pageNo, pageSize = pageSize
+                    companyId = config.companyId, pageNo = pageNo, pageSize = pageSize, search = search
                     )?.safeAwait{ response, error ->
                         response?.let {
                             val page = response.peekContent()?.page
@@ -844,18 +849,6 @@ class CatalogDataManagerClass(val config: PlatformConfig, val unauthorizedAction
     })
         return paginator
     }
-    
-    suspend fun createMarketplaceOptin(marketplace: String,body: OptInPostRequest)
-    : Response<UpdatedResponse>? {
-        
-        return if (config.oauthClient.isAccessTokenValid()) {
-            catalogApiList?.createMarketplaceOptin(
-        companyId = config.companyId, marketplace = marketplace, body = body)
-        } else {
-            null
-        } 
-    }
-    
     
     suspend fun getProductAttributes(category: String, filter: Boolean?=null)
     : Response<ProductAttributesResponse>? {
@@ -1726,7 +1719,7 @@ class CatalogDataManagerClass(val config: PlatformConfig, val unauthorizedAction
     }
     
     
-    suspend fun uploadBulkProducts(department: String, productType: String,body: BulkJob)
+    suspend fun uploadBulkProducts(department: String, productType: String,body: BulkProductJob)
     : Response<BulkResponse>? {
         
         return if (config.oauthClient.isAccessTokenValid()) {
@@ -1851,6 +1844,18 @@ class CatalogDataManagerClass(val config: PlatformConfig, val unauthorizedAction
         
         return if (config.oauthClient.isAccessTokenValid()) {
             catalogApiList?.updateMarketplaceOptin(
+        companyId = config.companyId, marketplaceSlug = marketplaceSlug, body = body)
+        } else {
+            null
+        } 
+    }
+    
+    
+    suspend fun createMarketplaceOptin(marketplaceSlug: String,body: OptInPostRequest)
+    : Response<CreateMarketplaceOptinResponse>? {
+        
+        return if (config.oauthClient.isAccessTokenValid()) {
+            catalogApiList?.createMarketplaceOptin(
         companyId = config.companyId, marketplaceSlug = marketplaceSlug, body = body)
         } else {
             null
@@ -3185,7 +3190,6 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     
     
     
-    
     suspend fun updateAllowSingle(body: AllowSingleRequest)
     : Response<ConfigSuccessResponse>? {
         return if (config.oauthClient.isAccessTokenValid()) {
@@ -3294,6 +3298,7 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
             null
         }
     }
+    
     
     
     

@@ -192,6 +192,58 @@ data class ShipmentPayment(
 
              
 /*
+    Model: ShipmentPaymentInfo
+*/
+@Parcelize
+data class ShipmentPaymentInfo(
+    
+    
+    
+    @SerializedName("mop")
+    var mop: String?=null,
+    
+    @SerializedName("payment_mode")
+    var paymentMode: String?=null,
+    
+    @SerializedName("status")
+    var status: String?=null,
+    
+    @SerializedName("mode")
+    var mode: String?=null,
+    
+    @SerializedName("logo")
+    var logo: String?=null,
+    
+    @SerializedName("display_name")
+    var displayName: String?=null,
+    
+    @SerializedName("amount")
+    var amount: Double?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
     Model: ShipmentUserInfo
 */
 @Parcelize
@@ -1222,10 +1274,10 @@ data class Article(
 
              
 /*
-    Model: DeliveryAddress
+    Model: Address
 */
 @Parcelize
-data class DeliveryAddress(
+data class Address(
     
     
     
@@ -1365,7 +1417,7 @@ data class Shipments(
     var payment: ShipmentPayment?=null,
     
     @SerializedName("payment_info")
-    var paymentInfo: ArrayList<ShipmentPayment>?=null,
+    var paymentInfo: ArrayList<ShipmentPaymentInfo>?=null,
     
     @SerializedName("order_type")
     var orderType: String?=null,
@@ -1458,7 +1510,10 @@ data class Shipments(
     var canReturn: Boolean?=null,
     
     @SerializedName("delivery_address")
-    var deliveryAddress: DeliveryAddress?=null,
+    var deliveryAddress: Address?=null,
+    
+    @SerializedName("billing_address")
+    var billingAddress: Address?=null,
     
     @SerializedName("track_url")
     var trackUrl: String?=null,
@@ -1479,6 +1534,8 @@ data class Shipments(
     var order: OrderRequest?=null
     
 ): Parcelable {
+    
+    
     
     
     
@@ -1650,6 +1707,9 @@ data class OrderSchema(
     @SerializedName("total_shipments_in_order")
     var totalShipmentsInOrder: Int?=null,
     
+    @SerializedName("gstin_code")
+    var gstinCode: String?=null,
+    
     @SerializedName("user_info")
     var userInfo: UserInfo?=null,
     
@@ -1672,6 +1732,8 @@ data class OrderSchema(
     var bagsForReorder: ArrayList<BagsForReorder>?=null
     
 ): Parcelable {
+    
+    
     
     
     

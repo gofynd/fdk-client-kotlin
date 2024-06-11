@@ -6111,6 +6111,9 @@ data class OverrideCheckoutReq(
     @SerializedName("order_type")
     var orderType: String?=null,
     
+    @SerializedName("callback_url")
+    var callbackUrl: String?=null,
+    
     @SerializedName("cart_items")
     var cartItems: ArrayList<OverrideCartItem>?=null,
     
@@ -6121,6 +6124,8 @@ data class OverrideCheckoutReq(
     var shippingAddress: @RawValue HashMap<String,Any>?=null
     
 ): Parcelable {
+    
+    
     
     
     

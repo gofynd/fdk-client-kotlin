@@ -685,7 +685,7 @@ data class AggregatorRoute(
     var data: @RawValue HashMap<String,Any>?=null,
     
     @SerializedName("payment_flow_data")
-    var paymentFlowData: String?=null,
+    var paymentFlowData: @RawValue HashMap<String,Any>?=null,
     
     @SerializedName("payment_flow")
     var paymentFlow: String?=null,

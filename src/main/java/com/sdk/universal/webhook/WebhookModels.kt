@@ -48,9 +48,14 @@ data class EventConfig(
     var createdOn: String?=null,
     
     @SerializedName("updated_on")
-    var updatedOn: String?=null
+    var updatedOn: String?=null,
+    
+    @SerializedName("group")
+    var group: String?=null
     
 ): Parcelable {
+    
+    
     
     
     

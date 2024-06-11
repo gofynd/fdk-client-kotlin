@@ -16,7 +16,8 @@ import com.sdk.application.payment.*
 import com.sdk.application.rewards.* 
 import com.sdk.application.share.* 
 import com.sdk.application.theme.* 
-import com.sdk.application.user.*
+import com.sdk.application.user.* 
+import com.sdk.application.webhook.*
 import com.sdk.common.LocationHeader
 
 class ApplicationClient(val config:ApplicationConfig, val unauthorizedAction: ((url: String, responseCode: Int) -> Unit)? = null) {
@@ -59,5 +60,7 @@ class ApplicationClient(val config:ApplicationConfig, val unauthorizedAction: ((
     val theme by lazy { ThemeDataManagerClass(config, unauthorizedAction)}
     
     val user by lazy { UserDataManagerClass(config, unauthorizedAction)}
+    
+    val webhook by lazy { WebhookDataManagerClass(config, unauthorizedAction)}
     
 }

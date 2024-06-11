@@ -621,6 +621,9 @@ data class BlogSchema(
     @SerializedName("tags")
     var tags: ArrayList<String>?=null,
     
+    @SerializedName("publish_date")
+    var publishDate: String?=null,
+    
     @SerializedName("seo")
     var seo: SEO?=null,
     
@@ -634,6 +637,8 @@ data class BlogSchema(
     var dateMeta: DateMeta?=null
     
 ): Parcelable {
+    
+    
     
     
     

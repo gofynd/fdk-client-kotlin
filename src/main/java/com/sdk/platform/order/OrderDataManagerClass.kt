@@ -380,7 +380,7 @@ class OrderDataManagerClass(val config: PlatformConfig, val unauthorizedAction: 
     }
     
     
-    suspend fun getManifestShipments(dpIds: Int, stores: String, toDate: String, fromDate: String, dpName: String?=null, salesChannels: String?=null, searchType: String?=null, searchValue: String?=null, pageNo: String?=null, pageSize: String?=null)
+    suspend fun getManifestShipments(dpIds: String, stores: Int, toDate: String, fromDate: String, dpName: String?=null, salesChannels: String?=null, searchType: String?=null, searchValue: String?=null, pageNo: Int?=null, pageSize: Int?=null)
     : Response<ManifestShipmentListing>? {
         
         return if (config.oauthClient.isAccessTokenValid()) {
@@ -428,12 +428,12 @@ class OrderDataManagerClass(val config: PlatformConfig, val unauthorizedAction: 
     }
     
     
-    suspend fun dispatchManifests(manifestId: String,body: DispatchManifest)
+    suspend fun dispatchManifests(body: DispatchManifest)
     : Response<SuccessResponse>? {
         
         return if (config.oauthClient.isAccessTokenValid()) {
             orderApiList?.dispatchManifests(
-        companyId = config.companyId, manifestId = manifestId, body = body)
+        companyId = config.companyId, body = body)
         } else {
             null
         } 
@@ -530,6 +530,18 @@ class OrderDataManagerClass(val config: PlatformConfig, val unauthorizedAction: 
         return if (config.oauthClient.isAccessTokenValid()) {
             orderApiList?.failedOrderLogDetails(
         companyId = config.companyId, logId = logId )
+        } else {
+            null
+        } 
+    }
+    
+    
+    suspend fun generateProcessManifest(body: ProcessManifestRequest)
+    : Response<ManifestResponse>? {
+        
+        return if (config.oauthClient.isAccessTokenValid()) {
+            orderApiList?.generateProcessManifest(
+        companyId = config.companyId, body = body)
         } else {
             null
         } 
@@ -722,6 +734,7 @@ class OrderDataManagerClass(val config: PlatformConfig, val unauthorizedAction: 
 
 inner class ApplicationClient(val applicationId:String,val config: PlatformConfig){
 
+    
     
     
     
