@@ -44,7 +44,7 @@ class FinanceDataManagerClass(val config: PlatformConfig, val unauthorizedAction
     }
     
     
-    suspend fun generateReport(body: GenerateReportRequest)
+    suspend fun generateReport(body: GenerateReportReq)
     : Response<GenerateReportJson>? {
         
         return if (config.oauthClient.isAccessTokenValid()) {
@@ -68,7 +68,7 @@ class FinanceDataManagerClass(val config: PlatformConfig, val unauthorizedAction
     }
     
     
-    suspend fun getData(body: GetEngineRequest)
+    suspend fun getData(body: GetEngineReq)
     : Response<GetEngineResponse>? {
         
         return if (config.oauthClient.isAccessTokenValid()) {
@@ -80,7 +80,7 @@ class FinanceDataManagerClass(val config: PlatformConfig, val unauthorizedAction
     }
     
     
-    suspend fun getReason(body: GetReasonRequest)
+    suspend fun getReason(body: GetReasonReq)
     : Response<GetReasonResponse>? {
         
         return if (config.oauthClient.isAccessTokenValid()) {
@@ -92,7 +92,7 @@ class FinanceDataManagerClass(val config: PlatformConfig, val unauthorizedAction
     }
     
     
-    suspend fun getReportList(body: GetReportListRequest)
+    suspend fun getReportList(body: GetReportListReq)
     : Response<GetReportListResponse>? {
         
         return if (config.oauthClient.isAccessTokenValid()) {
@@ -116,7 +116,7 @@ class FinanceDataManagerClass(val config: PlatformConfig, val unauthorizedAction
     }
     
     
-    suspend fun downloadCreditDebitNote(body: DownloadCreditDebitNoteRequest)
+    suspend fun downloadCreditDebitNote(body: DownloadCreditDebitNoteReq)
     : Response<DownloadCreditDebitNoteResponse>? {
         
         return if (config.oauthClient.isAccessTokenValid()) {
@@ -128,7 +128,7 @@ class FinanceDataManagerClass(val config: PlatformConfig, val unauthorizedAction
     }
     
     
-    suspend fun paymentProcess(body: PaymentProcessRequest)
+    suspend fun paymentProcess(body: PaymentProcessReq)
     : Response<PaymentProcessResponse>? {
         
         return if (config.oauthClient.isAccessTokenValid()) {
@@ -140,7 +140,7 @@ class FinanceDataManagerClass(val config: PlatformConfig, val unauthorizedAction
     }
     
     
-    suspend fun creditlineDataplatform(body: CreditlineDataPlatformRequest)
+    suspend fun creditlineDataplatform(body: CreditlineDataPlatformReq)
     : Response<CreditlineDataPlatformResponse>? {
         
         return if (config.oauthClient.isAccessTokenValid()) {
@@ -152,7 +152,7 @@ class FinanceDataManagerClass(val config: PlatformConfig, val unauthorizedAction
     }
     
     
-    suspend fun isCreditlinePlatform(body: IsCreditlinePlatformRequest)
+    suspend fun isCreditlinePlatform(body: IsCreditlinePlatformReq)
     : Response<IsCreditlinePlatformResponse>? {
         
         return if (config.oauthClient.isAccessTokenValid()) {
@@ -164,7 +164,7 @@ class FinanceDataManagerClass(val config: PlatformConfig, val unauthorizedAction
     }
     
     
-    suspend fun invoiceType(body: InvoiceTypeRequest)
+    suspend fun invoiceType(body: InvoiceTypeReq)
     : Response<InvoiceTypeResponse>? {
         
         return if (config.oauthClient.isAccessTokenValid()) {
@@ -176,7 +176,7 @@ class FinanceDataManagerClass(val config: PlatformConfig, val unauthorizedAction
     }
     
     
-    suspend fun invoiceListing(body: InvoiceListingRequest)
+    suspend fun invoiceListing(body: InvoiceListingReq)
     : Response<InvoiceListingResponse>? {
         
         return if (config.oauthClient.isAccessTokenValid()) {
@@ -188,7 +188,7 @@ class FinanceDataManagerClass(val config: PlatformConfig, val unauthorizedAction
     }
     
     
-    suspend fun invoicePDF(body: InvoicePdfRequest)
+    suspend fun invoicePDF(body: InvoicePdfReq)
     : Response<InvoicePdfResponse>? {
         
         return if (config.oauthClient.isAccessTokenValid()) {
@@ -200,7 +200,7 @@ class FinanceDataManagerClass(val config: PlatformConfig, val unauthorizedAction
     }
     
     
-    suspend fun isCnRefundMethod(body: IsCnRefundMethodRequest)
+    suspend fun isCnRefundMethod(body: IsCnRefundMethodReq)
     : Response<IsCnRefundMethodResponse>? {
         
         return if (config.oauthClient.isAccessTokenValid()) {
@@ -212,7 +212,7 @@ class FinanceDataManagerClass(val config: PlatformConfig, val unauthorizedAction
     }
     
     
-    suspend fun createSellerCreditNoteConfig(body: CreateSellerCreditNoteConfigRequest)
+    suspend fun createSellerCreditNoteConfig(body: CreateSellerCreditNoteConfigReq)
     : Response<CreateSellerCreditNoteConfigResponse>? {
         
         return if (config.oauthClient.isAccessTokenValid()) {
@@ -224,7 +224,7 @@ class FinanceDataManagerClass(val config: PlatformConfig, val unauthorizedAction
     }
     
     
-    suspend fun deleteConfig(body: DeleteConfigRequest)
+    suspend fun deleteConfig(body: DeleteConfigReq)
     : Response<DeleteConfigResponse>? {
         
         return if (config.oauthClient.isAccessTokenValid()) {
@@ -248,7 +248,7 @@ class FinanceDataManagerClass(val config: PlatformConfig, val unauthorizedAction
     }
     
     
-    suspend fun getPdfUrlView(body: GetPdfUrlViewRequest)
+    suspend fun getPdfUrlView(body: GetPdfUrlViewReq)
     : Response<GetPdfUrlViewResponse>? {
         
         return if (config.oauthClient.isAccessTokenValid()) {
@@ -260,7 +260,7 @@ class FinanceDataManagerClass(val config: PlatformConfig, val unauthorizedAction
     }
     
     
-    suspend fun creditNoteDetails(body: CreditNoteDetailsRequest)
+    suspend fun creditNoteDetails(body: CreditNoteDetailsReq)
     : Response<CreditNoteDetailsResponse>? {
         
         return if (config.oauthClient.isAccessTokenValid()) {
@@ -272,7 +272,7 @@ class FinanceDataManagerClass(val config: PlatformConfig, val unauthorizedAction
     }
     
     
-    suspend fun getCustomerCreditBalance(body: GetCustomerCreditBalanceRequest)
+    suspend fun getCustomerCreditBalance(body: GetCustomerCreditBalanceReq)
     : Response<GetCustomerCreditBalanceResponse>? {
         
         return if (config.oauthClient.isAccessTokenValid()) {
@@ -284,7 +284,7 @@ class FinanceDataManagerClass(val config: PlatformConfig, val unauthorizedAction
     }
     
     
-    suspend fun getCnConfig(body: GetCnConfigRequest)
+    suspend fun getCnConfig(body: GetCnConfigReq)
     : Response<GetCnConfigResponse>? {
         
         return if (config.oauthClient.isAccessTokenValid()) {
@@ -296,7 +296,7 @@ class FinanceDataManagerClass(val config: PlatformConfig, val unauthorizedAction
     }
     
     
-    suspend fun generateReportCustomerCn(body: GenerateReportCustomerCnRequest)
+    suspend fun generateReportCustomerCn(body: GenerateReportCustomerCnReq)
     : Response<GenerateReportCustomerCnResponse>? {
         
         return if (config.oauthClient.isAccessTokenValid()) {
@@ -308,7 +308,7 @@ class FinanceDataManagerClass(val config: PlatformConfig, val unauthorizedAction
     }
     
     
-    suspend fun downloadReportCustomerCn(body: DownloadReportCustomerCnRequest)
+    suspend fun downloadReportCustomerCn(body: DownloadReportCustomerCnReq)
     : Response<DownloadReportCustomerCnResponse>? {
         
         return if (config.oauthClient.isAccessTokenValid()) {
@@ -331,9 +331,74 @@ class FinanceDataManagerClass(val config: PlatformConfig, val unauthorizedAction
         } 
     }
     
+    
+    suspend fun invoicePaymentOptions(body: InvoicePaymentOptionsReq)
+    : Response<InvoicePaymentOptionsResponse>? {
+        
+        return if (config.oauthClient.isAccessTokenValid()) {
+            financeApiList?.invoicePaymentOptions(
+        companyId = config.companyId, body = body)
+        } else {
+            null
+        } 
+    }
+    
+    
+    suspend fun invoicePaymentDetails(invoiceNumber: String)
+    : Response<InvoicePaymentDetailsResponse>? {
+        
+        return if (config.oauthClient.isAccessTokenValid()) {
+            financeApiList?.invoicePaymentDetails(
+        companyId = config.companyId, invoiceNumber = invoiceNumber )
+        } else {
+            null
+        } 
+    }
+    
+    
+    suspend fun invoiceActivityLogs(invoiceNumber: String)
+    : Response<InvoiceActivityLogsResponse>? {
+        
+        return if (config.oauthClient.isAccessTokenValid()) {
+            financeApiList?.invoiceActivityLogs(
+        companyId = config.companyId, invoiceNumber = invoiceNumber )
+        } else {
+            null
+        } 
+    }
+    
+    
+    suspend fun unlockCreditNote(body: UnlockCreditNoteReq)
+    : Response<UnlockCreditNoteResponse>? {
+        
+        return if (config.oauthClient.isAccessTokenValid()) {
+            financeApiList?.unlockCreditNote(
+        companyId = config.companyId, body = body)
+        } else {
+            null
+        } 
+    }
+    
+    
+    suspend fun orderFreeze()
+    : Response<OrederFreezeResponse>? {
+        
+        return if (config.oauthClient.isAccessTokenValid()) {
+            financeApiList?.orderFreeze(
+        companyId = config.companyId )
+        } else {
+            null
+        } 
+    }
+    
 
 inner class ApplicationClient(val applicationId:String,val config: PlatformConfig){
 
+    
+    
+    
+    
+    
     
     
     

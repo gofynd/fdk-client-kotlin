@@ -10,7 +10,7 @@ Get started with the Kotlin Development SDK for Fynd Platform
 
 # Usage
 
-1. Add the dependency in your app build.gradle `implementation 'com.github.gofynd:fdk-client-kotlin:1.4.2-beta.10'` in your app build.gradle 
+1. Add the dependency in your app build.gradle `implementation 'com.github.gofynd:fdk-client-kotlin:1.4.6-beta.1'` in your app build.gradle 
 2. Add it in your root build.gradle at the end of repositories:
    allprojects {
 		repositories {
@@ -75,11 +75,4 @@ Get started with the Kotlin Development SDK for Fynd Platform
         }
   }
 ```
-
-
-### Documentation
-
-- [Application Front](documentation/application/README.md)
-- [Platform Front](documentation/platform/README.md)
-- [Public Front](documentation/public/README.md)
 

@@ -29,10 +29,6 @@ class LeadDataManagerClass(val config: ApplicationConfig, val unauthorizedAction
             
                     _relativeUrls["submitCustomForm"] = "/service/application/lead/v1.0/form/{slug}/submit".substring(1)
             
-                    _relativeUrls["getParticipantsInsideVideoRoom"] = "/service/application/lead/v1.0/video/room/{unique_name}/participants".substring(1)
-            
-                    _relativeUrls["getTokenForVideoRoom"] = "/service/application/lead/v1.0/video/room/{unique_name}/token".substring(1)
-            
     }
 
     public fun update(updatedUrlMap : HashMap<String,String>){
@@ -108,24 +104,6 @@ class LeadDataManagerClass(val config: ApplicationConfig, val unauthorizedAction
         fullUrl = fullUrl?.replace("{" + "slug" +"}",slug.toString())
         
         return leadApiList?.submitCustomForm(fullUrl   ,body = body)}
-
-    
-    
-    suspend fun getParticipantsInsideVideoRoom(uniqueName: String): Response<GetParticipantsInsideVideoRoomResponse>? {
-        var fullUrl : String? = _relativeUrls["getParticipantsInsideVideoRoom"] 
-        
-        fullUrl = fullUrl?.replace("{" + "unique_name" +"}",uniqueName.toString())
-        
-        return leadApiList?.getParticipantsInsideVideoRoom(fullUrl   )}
-
-    
-    
-    suspend fun getTokenForVideoRoom(uniqueName: String): Response<GetTokenForVideoRoomResponse>? {
-        var fullUrl : String? = _relativeUrls["getTokenForVideoRoom"] 
-        
-        fullUrl = fullUrl?.replace("{" + "unique_name" +"}",uniqueName.toString())
-        
-        return leadApiList?.getTokenForVideoRoom(fullUrl   )}
 
     
     

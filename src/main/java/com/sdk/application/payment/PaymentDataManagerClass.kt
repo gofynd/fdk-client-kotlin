@@ -41,6 +41,12 @@ class PaymentDataManagerClass(val config: ApplicationConfig, val unauthorizedAct
             
                     _relativeUrls["getPosPaymentModeRoutes"] = "/service/application/payment/v1.0/payment/options/pos".substring(1)
             
+                    _relativeUrls["walletLinkInitiate"] = "/service/application/payment/v1.0/payment/options/wallet/link".substring(1)
+            
+                    _relativeUrls["linkWallet"] = "/service/application/payment/v1.0/payment/options/wallet/verify".substring(1)
+            
+                    _relativeUrls["delinkWallet"] = "/service/application/payment/v1.0/payment/options/wallet/delink".substring(1)
+            
                     _relativeUrls["getRupifiBannerDetails"] = "/service/application/payment/v1.0/rupifi/banner".substring(1)
             
                     _relativeUrls["getEpaylaterBannerDetails"] = "/service/application/payment/v1.0/epaylater/banner".substring(1)
@@ -102,6 +108,8 @@ class PaymentDataManagerClass(val config: ApplicationConfig, val unauthorizedAct
                     _relativeUrls["outstandingOrderDetails"] = "/service/application/payment/v1.0/payment/outstanding-orders/".substring(1)
             
                     _relativeUrls["paidOrderDetails"] = "/service/application/payment/v1.0/payment/paid-orders/".substring(1)
+            
+                    _relativeUrls["createPaymentOrder"] = "/service/application/payment/v1.0/payment-orders/".substring(1)
             
     }
 
@@ -201,17 +209,38 @@ class PaymentDataManagerClass(val config: ApplicationConfig, val unauthorizedAct
 
     
     
-    suspend fun getPaymentModeRoutes(amount: Int, cartId: String, pincode: String, checkoutMode: String, refresh: Boolean?=null, cardReference: String?=null, userDetails: String?=null): Response<PaymentModeRouteResponse>? {
+    suspend fun getPaymentModeRoutes(amount: Int, cartId: String?=null, checkoutMode: String?=null, refresh: Boolean?=null, orderId: String?=null, cardReference: String?=null, userDetails: String?=null, displaySplit: Boolean?=null, advancePayment: Boolean?=null, shipmentId: String?=null): Response<PaymentModeRouteResponse>? {
         var fullUrl : String? = _relativeUrls["getPaymentModeRoutes"] 
         
-        return paymentApiList?.getPaymentModeRoutes(fullUrl    ,  amount = amount,    cartId = cartId,    pincode = pincode,    checkoutMode = checkoutMode,    refresh = refresh,    cardReference = cardReference,    userDetails = userDetails)}
+        return paymentApiList?.getPaymentModeRoutes(fullUrl    ,  amount = amount,    cartId = cartId,    checkoutMode = checkoutMode,    refresh = refresh,    orderId = orderId,    cardReference = cardReference,    userDetails = userDetails,    displaySplit = displaySplit,    advancePayment = advancePayment,    shipmentId = shipmentId)}
 
     
     
-    suspend fun getPosPaymentModeRoutes(amount: Int, cartId: String, pincode: String, checkoutMode: String, refresh: Boolean?=null, cardReference: String?=null, orderType: String, userDetails: String?=null): Response<PaymentModeRouteResponse>? {
+    suspend fun getPosPaymentModeRoutes(amount: Int, cartId: String?=null, pincode: String, checkoutMode: String?=null, refresh: Boolean?=null, cardReference: String?=null, orderType: String, userDetails: String?=null): Response<PaymentModeRouteResponse>? {
         var fullUrl : String? = _relativeUrls["getPosPaymentModeRoutes"] 
         
         return paymentApiList?.getPosPaymentModeRoutes(fullUrl    ,  amount = amount,    cartId = cartId,    pincode = pincode,    checkoutMode = checkoutMode,    refresh = refresh,    cardReference = cardReference,    orderType = orderType,    userDetails = userDetails)}
+
+    
+    
+    suspend fun walletLinkInitiate(body: WalletLinkRequestSchema): Response<WalletResponseSchema>? {
+        var fullUrl : String? = _relativeUrls["walletLinkInitiate"] 
+        
+        return paymentApiList?.walletLinkInitiate(fullUrl  ,body = body)}
+
+    
+    
+    suspend fun linkWallet(body: WalletVerifyRequestSchema): Response<WalletResponseSchema>? {
+        var fullUrl : String? = _relativeUrls["linkWallet"] 
+        
+        return paymentApiList?.linkWallet(fullUrl  ,body = body)}
+
+    
+    
+    suspend fun delinkWallet(body: WalletDelinkRequestSchema): Response<WalletResponseSchema>? {
+        var fullUrl : String? = _relativeUrls["delinkWallet"] 
+        
+        return paymentApiList?.delinkWallet(fullUrl  ,body = body)}
 
     
     
@@ -431,6 +460,13 @@ class PaymentDataManagerClass(val config: ApplicationConfig, val unauthorizedAct
         var fullUrl : String? = _relativeUrls["paidOrderDetails"] 
         
         return paymentApiList?.paidOrderDetails(fullUrl    ,  aggregator = aggregator)}
+
+    
+    
+    suspend fun createPaymentOrder(body: PaymentOrderRequest): Response<PaymentOrderResponse>? {
+        var fullUrl : String? = _relativeUrls["createPaymentOrder"] 
+        
+        return paymentApiList?.createPaymentOrder(fullUrl  ,body = body)}
 
     
     

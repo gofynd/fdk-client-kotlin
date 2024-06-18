@@ -34,14 +34,4 @@ interface LeadApiList {
     suspend fun submitCustomForm(@Url url1: String?    ,@Body body: CustomFormSubmissionPayload)
     : Response<SubmitCustomFormResponse>
     
-    
-    @GET 
-    suspend fun getParticipantsInsideVideoRoom(@Url url1: String?    )
-    : Response<GetParticipantsInsideVideoRoomResponse>
-    
-    
-    @GET 
-    suspend fun getTokenForVideoRoom(@Url url1: String?    )
-    : Response<GetTokenForVideoRoomResponse>
-    
 }

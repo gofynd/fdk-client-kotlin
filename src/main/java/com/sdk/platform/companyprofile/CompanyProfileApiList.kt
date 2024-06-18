@@ -25,11 +25,11 @@ interface CompanyProfileApiList {
     : Response<GetBrandResponseSerializer>
     
     @PUT ("/service/platform/company-profile/v1.0/company/{company_id}/brand/{brand_id}")
-    suspend fun editBrand(@Path("company_id") companyId: String, @Path("brand_id") brandId: String,@Body body: CreateUpdateBrandRequestSerializer)
+    suspend fun editBrand(@Path("company_id") companyId: String, @Path("brand_id") brandId: String,@Body body: UpdateBrandRequestSerializer)
     : Response<ProfileSuccessResponse>
     
     @POST ("/service/platform/company-profile/v1.0/company/{company_id}/brand/")
-    suspend fun createBrand(@Path("company_id") companyId: String,@Body body: CreateUpdateBrandRequestSerializer)
+    suspend fun createBrand(@Path("company_id") companyId: String,@Body body: CreateBrandRequestSerializer)
     : Response<ProfileSuccessResponse>
     
     @GET ("/service/platform/company-profile/v1.0/company/{company_id}/company-brand")
@@ -41,7 +41,7 @@ interface CompanyProfileApiList {
     : Response<ProfileSuccessResponse>
     
     @GET ("/service/platform/company-profile/v1.0/company/{company_id}/location")
-    suspend fun getLocations(@Path("company_id") companyId: String, @Query("store_type") storeType: String?, @Query("q") q: String?, @Query("stage") stage: String?, @Query("page_no") pageNo: Int?, @Query("page_size") pageSize: Int?, @Query("location_ids") locationIds: ArrayList<Int>?)
+    suspend fun getLocations(@Path("company_id") companyId: String, @Query("store_type") storeType: String?, @Query("q") q: String?, @Query("stage") stage: String?, @Query("page_no") pageNo: Int?, @Query("page_size") pageSize: Int?, @Query("location_ids") locationIds: ArrayList<Int>?, @Query("types") types: ArrayList<String>?, @Query("tags") tags: ArrayList<String>?)
     : Response<LocationListSerializer>
     
     @POST ("/service/platform/company-profile/v1.0/company/{company_id}/location")

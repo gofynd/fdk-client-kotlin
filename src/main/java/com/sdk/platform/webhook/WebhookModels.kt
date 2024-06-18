@@ -14,70 +14,6 @@ import com.google.gson.annotations.SerializedName
 
              
 /*
-    Model: CancelResponse
-*/
-@Parcelize
-data class CancelResponse(
-    
-    
-    
-    @SerializedName("code")
-    var code: Int?=null
-    
-): Parcelable {
-    
-    
-    
-    
-    
-}
-
-
-
-             
-/*
-    Model: EventProcessRequest
-*/
-@Parcelize
-data class EventProcessRequest(
-    
-    
-    
-    @SerializedName("search_text")
-    var searchText: String?=null,
-    
-    @SerializedName("end_date")
-    var endDate: String?=null,
-    
-    @SerializedName("start_date")
-    var startDate: String?=null,
-    
-    @SerializedName("subscriber_ids")
-    var subscriberIds: ArrayList<Int>?=null,
-    
-    @SerializedName("event")
-    var event: ArrayList<Event>?=null
-    
-): Parcelable {
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-}
-
-
-
-             
-/*
     Model: Event
 */
 @Parcelize
@@ -115,117 +51,36 @@ data class Event(
 
              
 /*
-    Model: ManualRetryFailedResponse
+    Model: EventProcessRequest
 */
 @Parcelize
-data class ManualRetryFailedResponse(
+data class EventProcessRequest(
     
     
     
-    @SerializedName("success")
-    var success: Boolean?=null,
+    @SerializedName("search_text")
+    var searchText: String?=null,
     
-    @SerializedName("message")
-    var message: String?=null,
+    @SerializedName("end_date")
+    var endDate: String?=null,
     
-    @SerializedName("request_id")
-    var requestId: String?=null,
+    @SerializedName("start_date")
+    var startDate: String?=null,
     
-    @SerializedName("meta")
-    var meta: @RawValue HashMap<String,Any>?=null,
-    
-    @SerializedName("stack_trace")
-    var stackTrace: String?=null
-    
-): Parcelable {
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-}
-
-
-
-             
-/*
-    Model: FailedEventsCountSuccessResponse
-*/
-@Parcelize
-data class FailedEventsCountSuccessResponse(
-    
-    
-    
-    @SerializedName("items")
-    var items: ArrayList<EventCountItem>?=null
-    
-): Parcelable {
-    
-    
-    
-    
-    
-}
-
-
-
-             
-/*
-    Model: EventCountItem
-*/
-@Parcelize
-data class EventCountItem(
-    
-    
+    @SerializedName("subscriber_ids")
+    var subscriberIds: ArrayList<Int>?=null,
     
     @SerializedName("status")
     var status: String?=null,
     
-    @SerializedName("count")
-    var count: Int?=null
+    @SerializedName("event")
+    var event: ArrayList<Event>?=null
     
 ): Parcelable {
     
     
     
     
-    
-    
-    
-}
-
-
-
-             
-/*
-    Model: RetryStatusResponse
-*/
-@Parcelize
-data class RetryStatusResponse(
-    
-    
-    
-    @SerializedName("total_event")
-    var totalEvent: Int?=null,
-    
-    @SerializedName("success_count")
-    var successCount: Int?=null,
-    
-    @SerializedName("failure_count")
-    var failureCount: Int?=null,
-    
-    @SerializedName("status")
-    var status: String?=null
-    
-): Parcelable {
     
     
     
@@ -243,22 +98,17 @@ data class RetryStatusResponse(
 
              
 /*
-    Model: EventSuccessResponse
+    Model: DownloadReportResponse
 */
 @Parcelize
-data class EventSuccessResponse(
+data class DownloadReportResponse(
     
     
     
-    @SerializedName("success")
-    var success: Boolean?=null,
-    
-    @SerializedName("message")
-    var message: String?=null
+    @SerializedName("file_name")
+    var fileName: String?=null
     
 ): Parcelable {
-    
-    
     
     
     
@@ -270,44 +120,22 @@ data class EventSuccessResponse(
 
              
 /*
-    Model: EventProcessedSuccessResponse
+    Model: EventProcessReports
 */
 @Parcelize
-data class EventProcessedSuccessResponse(
+data class EventProcessReports(
     
     
     
-    @SerializedName("success")
-    var success: Boolean?=null,
+    @SerializedName("rows")
+    var rows: ArrayList<EventProcessReportObject>?=null,
     
-    @SerializedName("message")
-    var message: String?=null
+    @SerializedName("page")
+    var page: Page?=null
     
 ): Parcelable {
     
     
-    
-    
-    
-    
-    
-}
-
-
-
-             
-/*
-    Model: Error
-*/
-@Parcelize
-data class Error(
-    
-    
-    
-    @SerializedName("error")
-    var error: String?=null
-    
-): Parcelable {
     
     
     
@@ -342,7 +170,7 @@ data class EventProcessReportObject(
     var attempt: Int?=null,
     
     @SerializedName("last_attempted_on")
-    var lastAttemptedOn: Int?=null,
+    var lastAttemptedOn: Double?=null,
     
     @SerializedName("status")
     var status: String?=null,
@@ -354,9 +182,19 @@ data class EventProcessReportObject(
     var webhookUrl: String?=null,
     
     @SerializedName("response_time")
-    var responseTime: Int?=null
+    var responseTime: Int?=null,
+    
+    @SerializedName("message_id")
+    var messageId: String?=null,
+    
+    @SerializedName("event_trace_id")
+    var eventTraceId: String?=null
     
 ): Parcelable {
+    
+    
+    
+    
     
     
     
@@ -386,20 +224,45 @@ data class EventProcessReportObject(
 
              
 /*
-    Model: EventProcessReports
+    Model: Page
 */
 @Parcelize
-data class EventProcessReports(
+data class Page(
     
     
     
-    @SerializedName("rows")
-    var rows: ArrayList<EventProcessReportObject>?=null,
+    @SerializedName("item_total")
+    var itemTotal: Int?=null,
     
-    @SerializedName("page")
-    var page: Page?=null
+    @SerializedName("next_id")
+    var nextId: String?=null,
+    
+    @SerializedName("has_previous")
+    var hasPrevious: Boolean?=null,
+    
+    @SerializedName("has_next")
+    var hasNext: Boolean?=null,
+    
+    @SerializedName("current")
+    var current: Int?=null,
+    
+    @SerializedName("type")
+    var type: String?=null,
+    
+    @SerializedName("size")
+    var size: Int?=null
     
 ): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     
     
     
@@ -477,15 +340,27 @@ data class PingWebhookResponse(
 
              
 /*
-    Model: ReportFiltersPayload
+    Model: SubscriberEventMapping
 */
 @Parcelize
-data class ReportFiltersPayload(
+data class SubscriberEventMapping(
     
     
     
-    @SerializedName("subscriber_ids")
-    var subscriberIds: ArrayList<Int>?=null
+    @SerializedName("id")
+    var id: Double?=null,
+    
+    @SerializedName("event_id")
+    var eventId: Double?=null,
+    
+    @SerializedName("subscriber_id")
+    var subscriberId: Double?=null,
+    
+    @SerializedName("topic")
+    var topic: String?=null,
+    
+    @SerializedName("created_on")
+    var createdOn: String?=null
     
 ): Parcelable {
     
@@ -493,26 +368,7 @@ data class ReportFiltersPayload(
     
     
     
-}
-
-
-
-             
-/*
-    Model: FilterValues
-*/
-@Parcelize
-data class FilterValues(
     
-    
-    
-    @SerializedName("text")
-    var text: String?=null,
-    
-    @SerializedName("value")
-    var value: @RawValue HashMap<String,Any>?=null
-    
-): Parcelable {
     
     
     
@@ -526,20 +382,70 @@ data class FilterValues(
 
              
 /*
-    Model: FilterResponseObject
+    Model: EventConfig
 */
 @Parcelize
-data class FilterResponseObject(
+data class EventConfig(
     
     
     
-    @SerializedName("filter_name")
-    var filterName: String?=null,
+    @SerializedName("id")
+    var id: Int?=null,
     
-    @SerializedName("values")
-    var values: ArrayList<FilterValues>?=null
+    @SerializedName("event_name")
+    var eventName: String?=null,
+    
+    @SerializedName("event_type")
+    var eventType: String?=null,
+    
+    @SerializedName("event_category")
+    var eventCategory: String?=null,
+    
+    @SerializedName("subscriber_event_mapping")
+    var subscriberEventMapping: SubscriberEventMapping?=null,
+    
+    @SerializedName("event_schema")
+    var eventSchema: @RawValue HashMap<String,Any>?=null,
+    
+    @SerializedName("group")
+    var group: String?=null,
+    
+    @SerializedName("version")
+    var version: String?=null,
+    
+    @SerializedName("display_name")
+    var displayName: String?=null,
+    
+    @SerializedName("description")
+    var description: String?=null,
+    
+    @SerializedName("created_on")
+    var createdOn: String?=null,
+    
+    @SerializedName("updated_on")
+    var updatedOn: String?=null
     
 ): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     
     
     
@@ -575,52 +481,17 @@ data class EventConfigResponse(
 
              
 /*
-    Model: EventConfig
+    Model: ReportFiltersPayload
 */
 @Parcelize
-data class EventConfig(
+data class ReportFiltersPayload(
     
     
     
-    @SerializedName("id")
-    var id: Int?=null,
-    
-    @SerializedName("event_name")
-    var eventName: String?=null,
-    
-    @SerializedName("event_type")
-    var eventType: String?=null,
-    
-    @SerializedName("event_category")
-    var eventCategory: String?=null,
-    
-    @SerializedName("version")
-    var version: String?=null,
-    
-    @SerializedName("display_name")
-    var displayName: String?=null,
-    
-    @SerializedName("description")
-    var description: String?=null,
-    
-    @SerializedName("created_on")
-    var createdOn: String?=null
+    @SerializedName("subscriber_ids")
+    var subscriberIds: ArrayList<Int>?=null
     
 ): Parcelable {
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
     
     
     
@@ -639,10 +510,15 @@ data class ReportFilterResponse(
     
     
     
-    @SerializedName("items")
-    var items: ArrayList<FilterResponseObject>?=null
+    @SerializedName("filter_name")
+    var filterName: String?=null,
+    
+    @SerializedName("values")
+    var values: @RawValue ArrayList<HashMap<String,Any>>?=null
     
 ): Parcelable {
+    
+    
     
     
     
@@ -693,6 +569,12 @@ data class HistoryFilters(
     
     
     
+    @SerializedName("events")
+    var events: ArrayList<String>?=null,
+    
+    @SerializedName("search_text")
+    var searchText: String?=null,
+    
     @SerializedName("status")
     var status: String?=null,
     
@@ -703,9 +585,18 @@ data class HistoryFilters(
     var startDate: String?=null,
     
     @SerializedName("subscribers")
-    var subscribers: ArrayList<Int>?=null
+    var subscribers: ArrayList<Int>?=null,
+    
+    @SerializedName("webhook_type")
+    var webhookType: ArrayList<String>?=null
     
 ): Parcelable {
+    
+    
+    
+    
+    
+    
     
     
     
@@ -794,10 +685,37 @@ data class UploadServiceObject(
 
              
 /*
-    Model: HistoryResponseObject
+    Model: HistoryAssociation
 */
 @Parcelize
-data class HistoryResponseObject(
+data class HistoryAssociation(
+    
+    
+    
+    @SerializedName("company_id")
+    var companyId: Int?=null,
+    
+    @SerializedName("subscriber_ids")
+    var subscriberIds: ArrayList<Int>?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: HistoryItems
+*/
+@Parcelize
+data class HistoryItems(
     
     
     
@@ -805,7 +723,7 @@ data class HistoryResponseObject(
     var id: Int?=null,
     
     @SerializedName("association")
-    var association: AssociationDetails?=null,
+    var association: HistoryAssociation?=null,
     
     @SerializedName("filters")
     var filters: HistoryFilters?=null,
@@ -864,59 +782,12 @@ data class HistoryResponse(
     
     
     @SerializedName("items")
-    var items: ArrayList<HistoryResponseObject>?=null
+    var items: ArrayList<HistoryItems>?=null,
+    
+    @SerializedName("page")
+    var page: Page?=null
     
 ): Parcelable {
-    
-    
-    
-    
-    
-}
-
-
-
-             
-/*
-    Model: Page
-*/
-@Parcelize
-data class Page(
-    
-    
-    
-    @SerializedName("item_total")
-    var itemTotal: Int?=null,
-    
-    @SerializedName("next_id")
-    var nextId: String?=null,
-    
-    @SerializedName("has_previous")
-    var hasPrevious: Boolean?=null,
-    
-    @SerializedName("has_next")
-    var hasNext: Boolean?=null,
-    
-    @SerializedName("current")
-    var current: Int?=null,
-    
-    @SerializedName("type")
-    var type: String?=null,
-    
-    @SerializedName("size")
-    var size: Int?=null
-    
-): Parcelable {
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
     
     
     
@@ -930,83 +801,80 @@ data class Page(
 
              
 /*
-    Model: AssociationDetails
+    Model: CancelResponse
 */
 @Parcelize
-data class AssociationDetails(
+data class CancelResponse(
+    
+    
+    
+    @SerializedName("message")
+    var message: String?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: Association
+*/
+@Parcelize
+data class Association(
+    
+    
+    
+    @SerializedName("application_id")
+    var applicationId: ArrayList<String>?=null,
+    
+    @SerializedName("extension_id")
+    var extensionId: String?=null,
+    
+    @SerializedName("criteria")
+    var criteria: String?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: AssociationResp
+*/
+@Parcelize
+data class AssociationResp(
     
     
     
     @SerializedName("company_id")
-    var companyId: Int?=null
+    var companyId: Int?=null,
+    
+    @SerializedName("application_id")
+    var applicationId: ArrayList<String>?=null,
+    
+    @SerializedName("extension_id")
+    var extensionId: String?=null,
+    
+    @SerializedName("criteria")
+    var criteria: String?=null
     
 ): Parcelable {
-    
-    
-    
-    
-    
-}
-
-
-
-             
-/*
-    Model: SubscriberResponse
-*/
-@Parcelize
-data class SubscriberResponse(
-    
-    
-    
-    @SerializedName("id")
-    var id: Int?=null,
-    
-    @SerializedName("name")
-    var name: String?=null,
-    
-    @SerializedName("webhook_url")
-    var webhookUrl: String?=null,
-    
-    @SerializedName("association")
-    var association: Association?=null,
-    
-    @SerializedName("custom_headers")
-    var customHeaders: @RawValue HashMap<String,Any>?=null,
-    
-    @SerializedName("email_id")
-    var emailId: String?=null,
-    
-    @SerializedName("status")
-    var status: SubscriberStatus?=null,
-    
-    @SerializedName("auth_meta")
-    var authMeta: AuthMeta?=null,
-    
-    @SerializedName("created_on")
-    var createdOn: String?=null,
-    
-    @SerializedName("updated_on")
-    var updatedOn: String?=null,
-    
-    @SerializedName("event_configs")
-    var eventConfigs: ArrayList<EventConfig>?=null
-    
-): Parcelable {
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
     
     
     
@@ -1051,26 +919,76 @@ data class AuthMeta(
 
              
 /*
-    Model: Association
+    Model: SubscriberResponse
 */
 @Parcelize
-data class Association(
+data class SubscriberResponse(
     
     
     
-    @SerializedName("company_id")
-    var companyId: Int?=null,
+    @SerializedName("id")
+    var id: Int?=null,
     
-    @SerializedName("application_id")
-    var applicationId: ArrayList<String>?=null,
+    @SerializedName("modified_by")
+    var modifiedBy: String?=null,
     
-    @SerializedName("extension_id")
-    var extensionId: String?=null,
+    @SerializedName("name")
+    var name: String?=null,
     
-    @SerializedName("criteria")
-    var criteria: String?=null
+    @SerializedName("provider")
+    var provider: String?=null,
+    
+    @SerializedName("webhook_url")
+    var webhookUrl: String?=null,
+    
+    @SerializedName("association")
+    var association: AssociationResp?=null,
+    
+    @SerializedName("custom_headers")
+    var customHeaders: @RawValue HashMap<String,Any>?=null,
+    
+    @SerializedName("status")
+    var status: SubscriberStatus?=null,
+    
+    @SerializedName("email_id")
+    var emailId: String?=null,
+    
+    @SerializedName("updated_on")
+    var updatedOn: String?=null,
+    
+    @SerializedName("created_on")
+    var createdOn: String?=null,
+    
+    @SerializedName("type")
+    var type: String?=null,
+    
+    @SerializedName("auth_meta")
+    var authMeta: AuthMeta?=null,
+    
+    @SerializedName("event_configs")
+    var eventConfigs: ArrayList<EventConfig>?=null
     
 ): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     
     
     
@@ -1088,10 +1006,223 @@ data class Association(
 
              
 /*
-    Model: SubscriberConfig
+    Model: Events
 */
 @Parcelize
-data class SubscriberConfig(
+data class Events(
+    
+    
+    
+    @SerializedName("slug")
+    var slug: String?=null,
+    
+    @SerializedName("topic")
+    var topic: String?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: SubscriberConfigPostRequestV2
+*/
+@Parcelize
+data class SubscriberConfigPostRequestV2(
+    
+    
+    
+    @SerializedName("name")
+    var name: String?=null,
+    
+    @SerializedName("webhook_url")
+    var webhookUrl: String?=null,
+    
+    @SerializedName("provider")
+    var provider: String?=null,
+    
+    @SerializedName("association")
+    var association: Association?=null,
+    
+    @SerializedName("custom_headers")
+    var customHeaders: @RawValue HashMap<String,Any>?=null,
+    
+    @SerializedName("status")
+    var status: SubscriberStatus?=null,
+    
+    @SerializedName("email_id")
+    var emailId: String?=null,
+    
+    @SerializedName("auth_meta")
+    var authMeta: AuthMeta?=null,
+    
+    @SerializedName("events")
+    var events: ArrayList<Events>?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: SubscriberConfigUpdateRequestV2
+*/
+@Parcelize
+data class SubscriberConfigUpdateRequestV2(
+    
+    
+    
+    @SerializedName("id")
+    var id: Int?=null,
+    
+    @SerializedName("name")
+    var name: String?=null,
+    
+    @SerializedName("webhook_url")
+    var webhookUrl: String?=null,
+    
+    @SerializedName("provider")
+    var provider: String?=null,
+    
+    @SerializedName("association")
+    var association: Association?=null,
+    
+    @SerializedName("custom_headers")
+    var customHeaders: @RawValue HashMap<String,Any>?=null,
+    
+    @SerializedName("status")
+    var status: SubscriberStatus?=null,
+    
+    @SerializedName("email_id")
+    var emailId: String?=null,
+    
+    @SerializedName("auth_meta")
+    var authMeta: AuthMeta?=null,
+    
+    @SerializedName("events")
+    var events: ArrayList<Events>?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: SubscriberConfigPost
+*/
+@Parcelize
+data class SubscriberConfigPost(
+    
+    
+    
+    @SerializedName("name")
+    var name: String?=null,
+    
+    @SerializedName("webhook_url")
+    var webhookUrl: String?=null,
+    
+    @SerializedName("association")
+    var association: Association?=null,
+    
+    @SerializedName("custom_headers")
+    var customHeaders: @RawValue HashMap<String,Any>?=null,
+    
+    @SerializedName("status")
+    var status: SubscriberStatus?=null,
+    
+    @SerializedName("email_id")
+    var emailId: String?=null,
+    
+    @SerializedName("auth_meta")
+    var authMeta: AuthMeta?=null,
+    
+    @SerializedName("event_id")
+    var eventId: ArrayList<Int>?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: SubscriberConfigUpdate
+*/
+@Parcelize
+data class SubscriberConfigUpdate(
     
     
     
@@ -1123,6 +1254,93 @@ data class SubscriberConfig(
     var eventId: ArrayList<Int>?=null
     
 ): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: SubscriberConfigResponse
+*/
+@Parcelize
+data class SubscriberConfigResponse(
+    
+    
+    
+    @SerializedName("id")
+    var id: Int?=null,
+    
+    @SerializedName("modified_by")
+    var modifiedBy: String?=null,
+    
+    @SerializedName("name")
+    var name: String?=null,
+    
+    @SerializedName("webhook_url")
+    var webhookUrl: String?=null,
+    
+    @SerializedName("provider")
+    var provider: String?=null,
+    
+    @SerializedName("association")
+    var association: AssociationResp?=null,
+    
+    @SerializedName("custom_headers")
+    var customHeaders: @RawValue HashMap<String,Any>?=null,
+    
+    @SerializedName("status")
+    var status: SubscriberStatus?=null,
+    
+    @SerializedName("email_id")
+    var emailId: String?=null,
+    
+    @SerializedName("updated_on")
+    var updatedOn: String?=null,
+    
+    @SerializedName("created_on")
+    var createdOn: String?=null,
+    
+    @SerializedName("type")
+    var type: String?=null,
+    
+    @SerializedName("auth_meta")
+    var authMeta: AuthMeta?=null,
+    
+    @SerializedName("event_id")
+    var eventId: ArrayList<Int>?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     
     
     
@@ -1189,10 +1407,7 @@ data class SubscriberConfigList(
         active("active"), 
         
         @SerializedName("inactive")
-        inactive("inactive"), 
-        
-        @SerializedName("blocked")
-        blocked("blocked");
+        inactive("inactive");
         
 
         companion object {

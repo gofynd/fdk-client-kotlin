@@ -149,36 +149,9 @@ class LeadDataManagerClass(val config: PlatformConfig, val unauthorizedAction: (
     
     
     
-    suspend fun getTokenForPlatformVideoRoom(uniqueName: String)
-    : Response<GetTokenForVideoRoomResponse>? {
-        
-        return if (config.oauthClient.isAccessTokenValid()) {
-            leadApiList?.getTokenForPlatformVideoRoom(
-        companyId = config.companyId, uniqueName = uniqueName )
-        } else {
-            null
-        } 
-    }
-    
-    
-    
-    suspend fun getPlatformVideoParticipants(uniqueName: String)
-    : Response<GetParticipantsInsideVideoRoomResponse>? {
-        
-        return if (config.oauthClient.isAccessTokenValid()) {
-            leadApiList?.getPlatformVideoParticipants(
-        companyId = config.companyId, uniqueName = uniqueName )
-        } else {
-            null
-        } 
-    }
-    
-    
-    
-    
     
     suspend fun getGeneralConfig()
-    : Response<CloseVideoRoomResponse>? {
+    : Response<GeneralConfigResponse>? {
         
         return if (config.oauthClient.isAccessTokenValid()) {
             leadApiList?.getGeneralConfig(
@@ -195,10 +168,10 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     
     
     
-    suspend fun getTickets(items: Boolean?=null, filters: Boolean?=null, q: String?=null, status: String?=null, priority: PriorityEnum?=null, category: String?=null)
+    suspend fun getNewTickets(items: Boolean?=null, filters: Boolean?=null, q: String?=null, status: String?=null, priority: PriorityEnum?=null, category: String?=null)
     : Response<TicketList>? {
         return if (config.oauthClient.isAccessTokenValid()) {
-                leadApiList?.getTickets(companyId = config.companyId , applicationId = applicationId , items = items, filters = filters, q = q, status = status, priority = priority, category = category )
+                leadApiList?.getNewTickets(companyId = config.companyId , applicationId = applicationId , items = items, filters = filters, q = q, status = status, priority = priority, category = category )
         } else {
             null
         }
@@ -207,20 +180,20 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     
     
     
-    suspend fun getTicket(id: String)
+    suspend fun getNewTicket(id: String)
     : Response<Ticket>? {
         return if (config.oauthClient.isAccessTokenValid()) {
-                leadApiList?.getTicket(companyId = config.companyId , applicationId = applicationId , id = id )
+                leadApiList?.getNewTicket(companyId = config.companyId , applicationId = applicationId , id = id )
         } else {
             null
         }
     }
     
     
-    suspend fun editTicket(id: String,body: EditTicketPayload)
+    suspend fun editNewTicket(id: String,body: EditTicketPayload)
     : Response<Ticket>? {
         return if (config.oauthClient.isAccessTokenValid()) {
-                leadApiList?.editTicket(companyId = config.companyId , applicationId = applicationId , id = id, body = body)
+                leadApiList?.editNewTicket(companyId = config.companyId , applicationId = applicationId , id = id, body = body)
         } else {
             null
         }
@@ -231,20 +204,20 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     
     
     
-    suspend fun createHistory(id: String,body: TicketHistoryPayload)
+    suspend fun createNewHistory(id: String,body: TicketHistoryPayload)
     : Response<TicketHistory>? {
         return if (config.oauthClient.isAccessTokenValid()) {
-                leadApiList?.createHistory(companyId = config.companyId , applicationId = applicationId , id = id, body = body)
+                leadApiList?.createNewHistory(companyId = config.companyId , applicationId = applicationId , id = id, body = body)
         } else {
             null
         }
     }
     
     
-    suspend fun getTicketHistory(id: String)
+    suspend fun getNewTicketHistory(id: String)
     : Response<TicketHistoryList>? {
         return if (config.oauthClient.isAccessTokenValid()) {
-                leadApiList?.getTicketHistory(companyId = config.companyId , applicationId = applicationId , id = id )
+                leadApiList?.getNewTicketHistory(companyId = config.companyId , applicationId = applicationId , id = id )
         } else {
             null
         }
@@ -271,6 +244,16 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     }
     
     
+    suspend fun deleteCustomForm(slug: String)
+    : Response<CustomForm>? {
+        return if (config.oauthClient.isAccessTokenValid()) {
+                leadApiList?.deleteCustomForm(companyId = config.companyId , applicationId = applicationId , slug = slug )
+        } else {
+            null
+        }
+    }
+    
+    
     suspend fun getCustomForms()
     : Response<CustomFormList>? {
         return if (config.oauthClient.isAccessTokenValid()) {
@@ -285,48 +268,6 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     : Response<CustomForm>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 leadApiList?.createCustomForm(companyId = config.companyId , applicationId = applicationId , body = body)
-        } else {
-            null
-        }
-    }
-    
-    
-    
-    suspend fun getTokenForVideoRoom(uniqueName: String)
-    : Response<GetTokenForVideoRoomResponse>? {
-        return if (config.oauthClient.isAccessTokenValid()) {
-                leadApiList?.getTokenForVideoRoom(companyId = config.companyId , applicationId = applicationId , uniqueName = uniqueName )
-        } else {
-            null
-        }
-    }
-    
-    
-    
-    suspend fun getVideoParticipants(uniqueName: String)
-    : Response<GetParticipantsInsideVideoRoomResponse>? {
-        return if (config.oauthClient.isAccessTokenValid()) {
-                leadApiList?.getVideoParticipants(companyId = config.companyId , applicationId = applicationId , uniqueName = uniqueName )
-        } else {
-            null
-        }
-    }
-    
-    
-    suspend fun openVideoRoom(body: CreateVideoRoomPayload)
-    : Response<CreateVideoRoomResponse>? {
-        return if (config.oauthClient.isAccessTokenValid()) {
-                leadApiList?.openVideoRoom(companyId = config.companyId , applicationId = applicationId , body = body)
-        } else {
-            null
-        }
-    }
-    
-    
-    suspend fun closeVideoRoom(uniqueName: String)
-    : Response<CloseVideoRoomResponse>? {
-        return if (config.oauthClient.isAccessTokenValid()) {
-                leadApiList?.closeVideoRoom(companyId = config.companyId , applicationId = applicationId , uniqueName = uniqueName )
         } else {
             null
         }

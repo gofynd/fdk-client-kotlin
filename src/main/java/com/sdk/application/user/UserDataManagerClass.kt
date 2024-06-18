@@ -37,11 +37,11 @@ class UserDataManagerClass(val config: ApplicationConfig, val unauthorizedAction
             
                     _relativeUrls["sendResetPasswordMobile"] = "/service/application/user/authentication/v1.0/login/password/mobile/reset".substring(1)
             
+                    _relativeUrls["sendResetToken"] = "/service/application/user/authentication/v1.0/login/password/reset/token".substring(1)
+            
                     _relativeUrls["forgotPassword"] = "/service/application/user/authentication/v1.0/login/password/reset/forgot".substring(1)
             
                     _relativeUrls["resetForgotPassword"] = "/service/application/user/authentication/v1.0/login/password/forgot".substring(1)
-            
-                    _relativeUrls["sendResetToken"] = "/service/application/user/authentication/v1.0/login/password/reset/token".substring(1)
             
                     _relativeUrls["loginWithToken"] = "/service/application/user/authentication/v1.0/login/token".substring(1)
             
@@ -54,10 +54,6 @@ class UserDataManagerClass(val config: ApplicationConfig, val unauthorizedAction
                     _relativeUrls["hasPassword"] = "/service/application/user/authentication/v1.0/has-password".substring(1)
             
                     _relativeUrls["updatePassword"] = "/service/application/user/authentication/v1.0/password".substring(1)
-            
-                    _relativeUrls["deleteUser"] = "/service/application/user/authentication/v1.0/delete".substring(1)
-            
-                    _relativeUrls["logout"] = "/service/application/user/authentication/v1.0/logout".substring(1)
             
                     _relativeUrls["sendOTPOnMobile"] = "/service/application/user/authentication/v1.0/otp/mobile/send".substring(1)
             
@@ -98,6 +94,16 @@ class UserDataManagerClass(val config: ApplicationConfig, val unauthorizedAction
                     _relativeUrls["setEmailAsPrimary"] = "/service/application/user/profile/v1.0/email/primary".substring(1)
             
                     _relativeUrls["sendVerificationLinkToEmail"] = "/service/application/user/profile/v1.0/email/link/send".substring(1)
+            
+                    _relativeUrls["userExists"] = "/service/application/user/authentication/v1.0/user-exists".substring(1)
+            
+                    _relativeUrls["deleteUser"] = "/service/application/user/authentication/v1.0/delete".substring(1)
+            
+                    _relativeUrls["logout"] = "/service/application/user/authentication/v1.0/logout".substring(1)
+            
+                    _relativeUrls["getUserAttributes"] = "/service/application/user/profile/v1.0/user-attributes".substring(1)
+            
+                    _relativeUrls["updateUserAttributes"] = "/service/application/user/profile/v1.0/user-attributes".substring(1)
             
     }
 
@@ -190,10 +196,17 @@ class UserDataManagerClass(val config: ApplicationConfig, val unauthorizedAction
 
     
     
-    suspend fun sendResetPasswordMobile(platform: String?=null, body: SendResetPasswordMobileRequestSchema): Response<ResetPasswordSuccess>? {
+    suspend fun sendResetPasswordMobile(platform: String?=null, body: SendResetPasswordMobileRequestSchema): Response<Any>? {
         var fullUrl : String? = _relativeUrls["sendResetPasswordMobile"] 
         
         return userApiList?.sendResetPasswordMobile(fullUrl    ,  platform = platform, body = body)}
+
+    
+    
+    suspend fun sendResetToken(body: CodeRequestBodySchema): Response<ResetPasswordSuccess>? {
+        var fullUrl : String? = _relativeUrls["sendResetToken"] 
+        
+        return userApiList?.sendResetToken(fullUrl  ,body = body)}
 
     
     
@@ -208,13 +221,6 @@ class UserDataManagerClass(val config: ApplicationConfig, val unauthorizedAction
         var fullUrl : String? = _relativeUrls["resetForgotPassword"] 
         
         return userApiList?.resetForgotPassword(fullUrl  ,body = body)}
-
-    
-    
-    suspend fun sendResetToken(body: CodeRequestBodySchema): Response<ResetPasswordSuccess>? {
-        var fullUrl : String? = _relativeUrls["sendResetToken"] 
-        
-        return userApiList?.sendResetToken(fullUrl  ,body = body)}
 
     
     
@@ -257,20 +263,6 @@ class UserDataManagerClass(val config: ApplicationConfig, val unauthorizedAction
         var fullUrl : String? = _relativeUrls["updatePassword"] 
         
         return userApiList?.updatePassword(fullUrl  ,body = body)}
-
-    
-    
-    suspend fun deleteUser(body: DeleteApplicationUserRequestSchema): Response<DeleteUserSuccess>? {
-        var fullUrl : String? = _relativeUrls["deleteUser"] 
-        
-        return userApiList?.deleteUser(fullUrl  ,body = body)}
-
-    
-    
-    suspend fun logout(): Response<LogoutSuccess>? {
-        var fullUrl : String? = _relativeUrls["logout"] 
-        
-        return userApiList?.logout(fullUrl  )}
 
     
     
@@ -411,6 +403,41 @@ class UserDataManagerClass(val config: ApplicationConfig, val unauthorizedAction
         var fullUrl : String? = _relativeUrls["sendVerificationLinkToEmail"] 
         
         return userApiList?.sendVerificationLinkToEmail(fullUrl    ,  platform = platform, body = body)}
+
+    
+    
+    suspend fun userExists(q: String): Response<UserExistsResponse>? {
+        var fullUrl : String? = _relativeUrls["userExists"] 
+        
+        return userApiList?.userExists(fullUrl    ,  q = q)}
+
+    
+    
+    suspend fun deleteUser(body: DeleteApplicationUserRequestSchema): Response<DeleteUserSuccess>? {
+        var fullUrl : String? = _relativeUrls["deleteUser"] 
+        
+        return userApiList?.deleteUser(fullUrl  ,body = body)}
+
+    
+    
+    suspend fun logout(): Response<LogoutSuccess>? {
+        var fullUrl : String? = _relativeUrls["logout"] 
+        
+        return userApiList?.logout(fullUrl  )}
+
+    
+    
+    suspend fun getUserAttributes(slug: String?=null): Response<UserAttributes>? {
+        var fullUrl : String? = _relativeUrls["getUserAttributes"] 
+        
+        return userApiList?.getUserAttributes(fullUrl    ,  slug = slug)}
+
+    
+    
+    suspend fun updateUserAttributes(body: UpdateUserAttributesRequest): Response<UserAttributes>? {
+        var fullUrl : String? = _relativeUrls["updateUserAttributes"] 
+        
+        return userApiList?.updateUserAttributes(fullUrl  ,body = body)}
 
     
     

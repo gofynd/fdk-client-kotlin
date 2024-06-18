@@ -23,8 +23,6 @@ class OrderDataManagerClass(val config: ApplicationConfig, val unauthorizedActio
             
                     _relativeUrls["getOrderById"] = "/service/application/order/v1.0/orders/{order_id}".substring(1)
             
-                    _relativeUrls["getPosOrderById"] = "/service/application/order/v1.0/orders/pos-order/{order_id}".substring(1)
-            
                     _relativeUrls["getShipmentById"] = "/service/application/order/v1.0/orders/shipments/{shipment_id}".substring(1)
             
                     _relativeUrls["getInvoiceByShipmentId"] = "/service/application/order/v1.0/orders/shipments/{shipment_id}/invoice".substring(1)
@@ -78,37 +76,28 @@ class OrderDataManagerClass(val config: ApplicationConfig, val unauthorizedActio
         return retrofitHttpClient?.initializeRestClient(OrderApiList::class.java) as? OrderApiList
     }
     
-    suspend fun getOrders(status: Int?=null, pageNo: Int?=null, pageSize: Int?=null, fromDate: String?=null, toDate: String?=null, customMeta: String?=null): Response<OrderList>? {
+    suspend fun getOrders(status: Int?=null, pageNo: Int?=null, pageSize: Int?=null, fromDate: String?=null, toDate: String?=null, startDate: String?=null, endDate: String?=null, customMeta: String?=null, allowInactive: Boolean?=null): Response<OrderList>? {
         var fullUrl : String? = _relativeUrls["getOrders"] 
         
-        return orderApiList?.getOrders(fullUrl    ,  status = status,    pageNo = pageNo,    pageSize = pageSize,    fromDate = fromDate,    toDate = toDate,    customMeta = customMeta)}
+        return orderApiList?.getOrders(fullUrl    ,  status = status,    pageNo = pageNo,    pageSize = pageSize,    fromDate = fromDate,    toDate = toDate,    startDate = startDate,    endDate = endDate,    customMeta = customMeta,    allowInactive = allowInactive)}
 
     
     
-    suspend fun getOrderById(orderId: String): Response<OrderById>? {
+    suspend fun getOrderById(orderId: String, allowInactive: Boolean?=null): Response<OrderById>? {
         var fullUrl : String? = _relativeUrls["getOrderById"] 
         
         fullUrl = fullUrl?.replace("{" + "order_id" +"}",orderId.toString())
         
-        return orderApiList?.getOrderById(fullUrl   )}
+        return orderApiList?.getOrderById(fullUrl     ,  allowInactive = allowInactive)}
 
     
     
-    suspend fun getPosOrderById(orderId: String): Response<OrderById>? {
-        var fullUrl : String? = _relativeUrls["getPosOrderById"] 
-        
-        fullUrl = fullUrl?.replace("{" + "order_id" +"}",orderId.toString())
-        
-        return orderApiList?.getPosOrderById(fullUrl   )}
-
-    
-    
-    suspend fun getShipmentById(shipmentId: String): Response<ShipmentById>? {
+    suspend fun getShipmentById(shipmentId: String, allowInactive: Boolean?=null): Response<ShipmentById>? {
         var fullUrl : String? = _relativeUrls["getShipmentById"] 
         
         fullUrl = fullUrl?.replace("{" + "shipment_id" +"}",shipmentId.toString())
         
-        return orderApiList?.getShipmentById(fullUrl   )}
+        return orderApiList?.getShipmentById(fullUrl     ,  allowInactive = allowInactive)}
 
     
     

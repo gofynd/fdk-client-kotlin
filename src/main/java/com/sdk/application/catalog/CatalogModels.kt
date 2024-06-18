@@ -1138,6 +1138,9 @@ data class ProductSizes(
     @SerializedName("price")
     var price: ProductSizesPrice?=null,
     
+    @SerializedName("price_per_piece")
+    var pricePerPiece: ProductSizesPrice?=null,
+    
     @SerializedName("size_chart")
     var sizeChart: SizeChart?=null,
     
@@ -1157,6 +1160,8 @@ data class ProductSizes(
     var discountMeta: DiscountMeta?=null
     
 ): Parcelable {
+    
+    
     
     
     
@@ -1366,10 +1371,15 @@ data class ProductVariantItemResponse(
     @SerializedName("slug")
     var slug: String?=null,
     
+    @SerializedName("_custom_json")
+    var customJson: @RawValue HashMap<String,Any>?=null,
+    
     @SerializedName("action")
     var action: ProductListingAction?=null
     
 ): Parcelable {
+    
+    
     
     
     
@@ -1412,13 +1422,23 @@ data class ProductVariantResponse(
     @SerializedName("header")
     var header: String?=null,
     
+    @SerializedName("group_id")
+    var groupId: String?=null,
+    
     @SerializedName("items")
     var items: ArrayList<ProductVariantItemResponse>?=null,
     
     @SerializedName("key")
-    var key: String?=null
+    var key: String?=null,
+    
+    @SerializedName("logo")
+    var logo: String?=null
     
 ): Parcelable {
+    
+    
+    
+    
     
     
     
@@ -3003,8 +3023,8 @@ data class GetCollectionDetailNest(
     @SerializedName("priority")
     var priority: Int?=null,
     
-    @SerializedName("tag")
-    var tag: ArrayList<String>?=null,
+    @SerializedName("tags")
+    var tags: ArrayList<String>?=null,
     
     @SerializedName("app_id")
     var appId: String?=null

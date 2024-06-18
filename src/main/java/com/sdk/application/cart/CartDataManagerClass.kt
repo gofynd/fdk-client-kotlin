@@ -73,6 +73,8 @@ class CartDataManagerClass(val config: ApplicationConfig, val unauthorizedAction
             
                     _relativeUrls["getLadderOffers"] = "/service/application/cart/v1.0/available-ladder-prices".substring(1)
             
+                    _relativeUrls["getPromotionPaymentOffers"] = "/service/application/cart/v1.0/available-payment-offers".substring(1)
+            
                     _relativeUrls["checkoutCartV2"] = "/service/application/cart/v2.0/checkout".substring(1)
             
     }
@@ -110,10 +112,10 @@ class CartDataManagerClass(val config: ApplicationConfig, val unauthorizedAction
         return retrofitHttpClient?.initializeRestClient(CartApiList::class.java) as? CartApiList
     }
     
-    suspend fun getCart(id: String?=null, i: Boolean?=null, b: Boolean?=null, c: Boolean?=null, assignCardId: Int?=null, areaCode: String?=null, buyNow: Boolean?=null): Response<CartDetailResponse>? {
+    suspend fun getCart(id: String?=null, i: Boolean?=null, b: Boolean?=null, c: Boolean?=null, assignCardId: Int?=null, areaCode: String?=null, buyNow: Boolean?=null, orderType: String?=null): Response<CartDetailResponse>? {
         var fullUrl : String? = _relativeUrls["getCart"] 
         
-        return cartApiList?.getCart(fullUrl    ,  id = id,    i = i,    b = b,    c = c,    assignCardId = assignCardId,    areaCode = areaCode,    buyNow = buyNow)}
+        return cartApiList?.getCart(fullUrl    ,  id = id,    i = i,    b = b,    c = c,    assignCardId = assignCardId,    areaCode = areaCode,    buyNow = buyNow,    orderType = orderType)}
 
     
     
@@ -124,17 +126,17 @@ class CartDataManagerClass(val config: ApplicationConfig, val unauthorizedAction
 
     
     
-    suspend fun addItems(i: Boolean?=null, b: Boolean?=null, areaCode: String?=null, buyNow: Boolean?=null, id: String?=null, body: AddCartRequest): Response<AddCartDetailResponse>? {
+    suspend fun addItems(i: Boolean?=null, b: Boolean?=null, areaCode: String?=null, buyNow: Boolean?=null, id: String?=null, orderType: String?=null, body: AddCartRequest): Response<AddCartDetailResponse>? {
         var fullUrl : String? = _relativeUrls["addItems"] 
         
-        return cartApiList?.addItems(fullUrl    ,  i = i,    b = b,    areaCode = areaCode,    buyNow = buyNow,    id = id, body = body)}
+        return cartApiList?.addItems(fullUrl    ,  i = i,    b = b,    areaCode = areaCode,    buyNow = buyNow,    id = id,    orderType = orderType, body = body)}
 
     
     
-    suspend fun updateCart(id: String?=null, i: Boolean?=null, b: Boolean?=null, areaCode: String?=null, buyNow: Boolean?=null, body: UpdateCartRequest): Response<UpdateCartDetailResponse>? {
+    suspend fun updateCart(id: String?=null, i: Boolean?=null, b: Boolean?=null, areaCode: String?=null, buyNow: Boolean?=null, cartType: String?=null, orderType: String?=null, body: UpdateCartRequest): Response<UpdateCartDetailResponse>? {
         var fullUrl : String? = _relativeUrls["updateCart"] 
         
-        return cartApiList?.updateCart(fullUrl    ,  id = id,    i = i,    b = b,    areaCode = areaCode,    buyNow = buyNow, body = body)}
+        return cartApiList?.updateCart(fullUrl    ,  id = id,    i = i,    b = b,    areaCode = areaCode,    buyNow = buyNow,    cartType = cartType,    orderType = orderType, body = body)}
 
     
     
@@ -152,17 +154,17 @@ class CartDataManagerClass(val config: ApplicationConfig, val unauthorizedAction
 
     
     
-    suspend fun getCoupons(id: String?=null, buyNow: Boolean?=null): Response<GetCouponResponse>? {
+    suspend fun getCoupons(id: String?=null, buyNow: Boolean?=null, slug: String?=null, storeId: String?=null): Response<GetCouponResponse>? {
         var fullUrl : String? = _relativeUrls["getCoupons"] 
         
-        return cartApiList?.getCoupons(fullUrl    ,  id = id,    buyNow = buyNow)}
+        return cartApiList?.getCoupons(fullUrl    ,  id = id,    buyNow = buyNow,    slug = slug,    storeId = storeId)}
 
     
     
-    suspend fun applyCoupon(i: Boolean?=null, b: Boolean?=null, p: Boolean?=null, id: String?=null, buyNow: Boolean?=null, body: ApplyCouponRequest): Response<CartDetailResponse>? {
+    suspend fun applyCoupon(i: Boolean?=null, b: Boolean?=null, p: Boolean?=null, id: String?=null, buyNow: Boolean?=null, cartType: String?=null, body: ApplyCouponRequest): Response<CartDetailResponse>? {
         var fullUrl : String? = _relativeUrls["applyCoupon"] 
         
-        return cartApiList?.applyCoupon(fullUrl    ,  i = i,    b = b,    p = p,    id = id,    buyNow = buyNow, body = body)}
+        return cartApiList?.applyCoupon(fullUrl    ,  i = i,    b = b,    p = p,    id = id,    buyNow = buyNow,    cartType = cartType, body = body)}
 
     
     
@@ -242,10 +244,10 @@ class CartDataManagerClass(val config: ApplicationConfig, val unauthorizedAction
 
     
     
-    suspend fun validateCouponForPayment(id: String?=null, buyNow: Boolean?=null, addressId: String?=null, paymentMode: String?=null, paymentIdentifier: String?=null, aggregatorName: String?=null, merchantCode: String?=null, iin: String?=null, network: String?=null, type: String?=null, cardId: String?=null): Response<PaymentCouponValidate>? {
+    suspend fun validateCouponForPayment(id: String?=null, buyNow: Boolean?=null, addressId: String?=null, paymentMode: String?=null, paymentIdentifier: String?=null, aggregatorName: String?=null, merchantCode: String?=null, iin: String?=null, network: String?=null, type: String?=null, cardId: String?=null, cartType: String?=null): Response<PaymentCouponValidate>? {
         var fullUrl : String? = _relativeUrls["validateCouponForPayment"] 
         
-        return cartApiList?.validateCouponForPayment(fullUrl    ,  id = id,    buyNow = buyNow,    addressId = addressId,    paymentMode = paymentMode,    paymentIdentifier = paymentIdentifier,    aggregatorName = aggregatorName,    merchantCode = merchantCode,    iin = iin,    network = network,    type = type,    cardId = cardId)}
+        return cartApiList?.validateCouponForPayment(fullUrl    ,  id = id,    buyNow = buyNow,    addressId = addressId,    paymentMode = paymentMode,    paymentIdentifier = paymentIdentifier,    aggregatorName = aggregatorName,    merchantCode = merchantCode,    iin = iin,    network = network,    type = type,    cardId = cardId,    cartType = cartType)}
 
     
     
@@ -256,10 +258,10 @@ class CartDataManagerClass(val config: ApplicationConfig, val unauthorizedAction
 
     
     
-    suspend fun checkoutCart(buyNow: Boolean?=null, body: CartCheckoutDetailRequest): Response<CartCheckoutResponse>? {
+    suspend fun checkoutCart(buyNow: Boolean?=null, cartType: String?=null, body: CartCheckoutDetailRequest): Response<CartCheckoutResponse>? {
         var fullUrl : String? = _relativeUrls["checkoutCart"] 
         
-        return cartApiList?.checkoutCart(fullUrl    ,  buyNow = buyNow, body = body)}
+        return cartApiList?.checkoutCart(fullUrl    ,  buyNow = buyNow,    cartType = cartType, body = body)}
 
     
     
@@ -297,10 +299,10 @@ class CartDataManagerClass(val config: ApplicationConfig, val unauthorizedAction
 
     
     
-    suspend fun getPromotionOffers(slug: String?=null, pageSize: Int?=null, promotionGroup: String?=null, storeId: Int?=null): Response<PromotionOffersResponse>? {
+    suspend fun getPromotionOffers(slug: String?=null, pageSize: Int?=null, promotionGroup: String?=null, storeId: Int?=null, cartType: String?=null): Response<PromotionOffersResponse>? {
         var fullUrl : String? = _relativeUrls["getPromotionOffers"] 
         
-        return cartApiList?.getPromotionOffers(fullUrl    ,  slug = slug,    pageSize = pageSize,    promotionGroup = promotionGroup,    storeId = storeId)}
+        return cartApiList?.getPromotionOffers(fullUrl    ,  slug = slug,    pageSize = pageSize,    promotionGroup = promotionGroup,    storeId = storeId,    cartType = cartType)}
 
     
     
@@ -311,10 +313,17 @@ class CartDataManagerClass(val config: ApplicationConfig, val unauthorizedAction
 
     
     
-    suspend fun checkoutCartV2(buyNow: Boolean?=null, body: CartCheckoutDetailV2Request): Response<CartCheckoutResponse>? {
+    suspend fun getPromotionPaymentOffers(id: String?=null, uid: Int?=null): Response<PromotionPaymentOffersResponse>? {
+        var fullUrl : String? = _relativeUrls["getPromotionPaymentOffers"] 
+        
+        return cartApiList?.getPromotionPaymentOffers(fullUrl    ,  id = id,    uid = uid)}
+
+    
+    
+    suspend fun checkoutCartV2(buyNow: Boolean?=null, cartType: String?=null, body: CartCheckoutDetailV2Request): Response<CartCheckoutResponse>? {
         var fullUrl : String? = _relativeUrls["checkoutCartV2"] 
         
-        return cartApiList?.checkoutCartV2(fullUrl    ,  buyNow = buyNow, body = body)}
+        return cartApiList?.checkoutCartV2(fullUrl    ,  buyNow = buyNow,    cartType = cartType, body = body)}
 
     
     

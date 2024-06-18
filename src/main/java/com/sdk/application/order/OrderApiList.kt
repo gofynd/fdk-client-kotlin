@@ -11,22 +11,17 @@ interface OrderApiList {
     
     
     @GET 
-    suspend fun getOrders(@Url url1: String?    ,       @Query("status") status: Int?, @Query("page_no") pageNo: Int?, @Query("page_size") pageSize: Int?, @Query("from_date") fromDate: String?, @Query("to_date") toDate: String?, @Query("custom_meta") customMeta: String?)
+    suspend fun getOrders(@Url url1: String?    ,          @Query("status") status: Int?, @Query("page_no") pageNo: Int?, @Query("page_size") pageSize: Int?, @Query("from_date") fromDate: String?, @Query("to_date") toDate: String?, @Query("start_date") startDate: String?, @Query("end_date") endDate: String?, @Query("custom_meta") customMeta: String?, @Query("allow_inactive") allowInactive: Boolean?)
     : Response<OrderList>
     
     
     @GET 
-    suspend fun getOrderById(@Url url1: String?    )
+    suspend fun getOrderById(@Url url1: String?     ,  @Query("allow_inactive") allowInactive: Boolean?)
     : Response<OrderById>
     
     
     @GET 
-    suspend fun getPosOrderById(@Url url1: String?    )
-    : Response<OrderById>
-    
-    
-    @GET 
-    suspend fun getShipmentById(@Url url1: String?    )
+    suspend fun getShipmentById(@Url url1: String?     ,  @Query("allow_inactive") allowInactive: Boolean?)
     : Response<ShipmentById>
     
     

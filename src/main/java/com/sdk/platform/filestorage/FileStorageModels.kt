@@ -14,6 +14,33 @@ import com.google.gson.annotations.SerializedName
 
              
 /*
+    Model: ProxyResponse
+*/
+@Parcelize
+data class ProxyResponse(
+    
+    
+    
+    @SerializedName("data")
+    var data: @RawValue HashMap<String,Any>?=null,
+    
+    @SerializedName("support")
+    var support: @RawValue HashMap<String,Any>?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
     Model: FailedResponse
 */
 @Parcelize
@@ -204,7 +231,7 @@ data class StartRequest(
     var tags: ArrayList<String>?=null,
     
     @SerializedName("params")
-    var params: Params?=null
+    var params: @RawValue HashMap<String,Any>?=null
     
 ): Parcelable {
     
@@ -554,107 +581,6 @@ data class InvoiceTypesResponse(
 
              
 /*
-    Model: Inr
-*/
-@Parcelize
-data class Inr(
-    
-    
-    
-    @SerializedName("name")
-    var name: String?=null,
-    
-    @SerializedName("value")
-    var value: Double?=null,
-    
-    @SerializedName("symbol")
-    var symbol: String?=null,
-    
-    @SerializedName("sub_unit")
-    var subUnit: String?=null
-    
-): Parcelable {
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-}
-
-
-
-             
-/*
-    Model: Usd
-*/
-@Parcelize
-data class Usd(
-    
-    
-    
-    @SerializedName("name")
-    var name: String?=null,
-    
-    @SerializedName("value")
-    var value: Double?=null,
-    
-    @SerializedName("symbol")
-    var symbol: String?=null,
-    
-    @SerializedName("sub_unit")
-    var subUnit: String?=null
-    
-): Parcelable {
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-}
-
-
-
-             
-/*
-    Model: Rates
-*/
-@Parcelize
-data class Rates(
-    
-    
-    
-    @SerializedName("inr")
-    var inr: Inr?=null,
-    
-    @SerializedName("usd")
-    var usd: Usd?=null
-    
-): Parcelable {
-    
-    
-    
-    
-    
-    
-    
-}
-
-
-
-             
-/*
     Model: ConversionRate
 */
 @Parcelize
@@ -666,7 +592,7 @@ data class ConversionRate(
     var base: String?=null,
     
     @SerializedName("rates")
-    var rates: Rates?=null,
+    var rates: @RawValue HashMap<String,Any>?=null,
     
     @SerializedName("timestamp")
     var timestamp: Double?=null
@@ -703,10 +629,20 @@ data class DeliveryPartnerDetail(
     @SerializedName("awb_number")
     var awbNumber: String?=null,
     
+    @SerializedName("origin")
+    var origin: String?=null,
+    
+    @SerializedName("destination")
+    var destination: String?=null,
+    
     @SerializedName("eway_bill_number")
     var ewayBillNumber: String?=null
     
 ): Parcelable {
+    
+    
+    
+    
     
     
     
@@ -763,9 +699,29 @@ data class PaymentData(
     var date: String?=null,
     
     @SerializedName("transaction_id")
-    var transactionId: String?=null
+    var transactionId: String?=null,
+    
+    @SerializedName("time")
+    var time: String?=null,
+    
+    @SerializedName("mode")
+    var mode: String?=null,
+    
+    @SerializedName("name")
+    var name: String?=null,
+    
+    @SerializedName("meta")
+    var meta: @RawValue HashMap<String,Any>?=null
     
 ): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+    
     
     
     
@@ -809,9 +765,29 @@ data class InvoiceDetail(
     var signedQrcode: String?=null,
     
     @SerializedName("upi_qrcode")
-    var upiQrcode: String?=null
+    var upiQrcode: String?=null,
+    
+    @SerializedName("device_id")
+    var deviceId: String?=null,
+    
+    @SerializedName("marketplace_invoice_id")
+    var marketplaceInvoiceId: String?=null,
+    
+    @SerializedName("marketplace_shipment_id")
+    var marketplaceShipmentId: String?=null,
+    
+    @SerializedName("channel_order_id")
+    var channelOrderId: String?=null
     
 ): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+    
     
     
     
@@ -882,9 +858,44 @@ data class CompanyDetail(
     var websiteUrl: String?=null,
     
     @SerializedName("email")
-    var email: String?=null
+    var email: String?=null,
+    
+    @SerializedName("display_address")
+    var displayAddress: String?=null,
+    
+    @SerializedName("sector")
+    var sector: String?=null,
+    
+    @SerializedName("phone")
+    var phone: @RawValue HashMap<String,Any>?=null,
+    
+    @SerializedName("trn")
+    var trn: String?=null,
+    
+    @SerializedName("vat")
+    var vat: String?=null,
+    
+    @SerializedName("business_country_timezone")
+    var businessCountryTimezone: String?=null,
+    
+    @SerializedName("business_country_currency")
+    var businessCountryCurrency: @RawValue HashMap<String,Any>?=null
     
 ): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     
     
     
@@ -954,9 +965,24 @@ data class StoreDetail(
     var stateCode: String?=null,
     
     @SerializedName("gstin")
-    var gstin: String?=null
+    var gstin: String?=null,
+    
+    @SerializedName("display_address")
+    var displayAddress: String?=null,
+    
+    @SerializedName("sector")
+    var sector: String?=null,
+    
+    @SerializedName("store_id")
+    var storeId: String?=null
     
 ): Parcelable {
+    
+    
+    
+    
+    
+    
     
     
     
@@ -1019,9 +1045,24 @@ data class CustomerBillingDetail(
     var stateCode: String?=null,
     
     @SerializedName("gstin")
-    var gstin: String?=null
+    var gstin: String?=null,
+    
+    @SerializedName("display_address")
+    var displayAddress: String?=null,
+    
+    @SerializedName("sector")
+    var sector: String?=null,
+    
+    @SerializedName("email")
+    var email: String?=null
     
 ): Parcelable {
+    
+    
+    
+    
+    
+    
     
     
     
@@ -1086,9 +1127,19 @@ data class CustomerShippingDetail(
     var stateCode: String?=null,
     
     @SerializedName("gstin")
-    var gstin: String?=null
+    var gstin: String?=null,
+    
+    @SerializedName("display_address")
+    var displayAddress: String?=null,
+    
+    @SerializedName("sector")
+    var sector: String?=null
     
 ): Parcelable {
+    
+    
+    
+    
     
     
     
@@ -1147,9 +1198,19 @@ data class ReturnDetail(
     var stateCode: String?=null,
     
     @SerializedName("gstin")
-    var gstin: String?=null
+    var gstin: String?=null,
+    
+    @SerializedName("display_address")
+    var displayAddress: String?=null,
+    
+    @SerializedName("sector")
+    var sector: String?=null
     
 ): Parcelable {
+    
+    
+    
+    
     
     
     
@@ -1359,9 +1420,19 @@ data class ItemsProductTable(
     var totalTaxableAmount: Double?=null,
     
     @SerializedName("tax")
-    var tax: Tax?=null
+    var tax: Tax?=null,
+    
+    @SerializedName("meta")
+    var meta: @RawValue HashMap<String,Any>?=null,
+    
+    @SerializedName("country_of_origin")
+    var countryOfOrigin: String?=null
     
 ): Parcelable {
+    
+    
+    
+    
     
     
     
@@ -1426,9 +1497,54 @@ data class ProductTable(
     var fyndDiscounts: Double?=null,
     
     @SerializedName("total_in_words")
-    var totalInWords: String?=null
+    var totalInWords: String?=null,
+    
+    @SerializedName("gift_price")
+    var giftPrice: Double?=null,
+    
+    @SerializedName("total_quantity")
+    var totalQuantity: Double?=null,
+    
+    @SerializedName("sub_total")
+    var subTotal: Double?=null,
+    
+    @SerializedName("discount")
+    var discount: Double?=null,
+    
+    @SerializedName("promotion")
+    var promotion: Double?=null,
+    
+    @SerializedName("coupon")
+    var coupon: Double?=null,
+    
+    @SerializedName("reward")
+    var reward: Double?=null,
+    
+    @SerializedName("round_off")
+    var roundOff: Double?=null,
+    
+    @SerializedName("total_value_of_goods")
+    var totalValueOfGoods: Double?=null
     
 ): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     
     
     
@@ -1544,9 +1660,19 @@ data class RegisteredCompanyDetail(
     var zipCode: Double?=null,
     
     @SerializedName("state_code")
-    var stateCode: String?=null
+    var stateCode: String?=null,
+    
+    @SerializedName("display_address")
+    var displayAddress: String?=null,
+    
+    @SerializedName("sector")
+    var sector: String?=null
     
 ): Parcelable {
+    
+    
+    
+    
     
     
     
@@ -1776,6 +1902,33 @@ data class AwbNumberLabelBarcodeGenerator(
 
              
 /*
+    Model: AwbNumberBarcodeGenerator
+*/
+@Parcelize
+data class AwbNumberBarcodeGenerator(
+    
+    
+    
+    @SerializedName("method")
+    var method: String?=null,
+    
+    @SerializedName("kwargs")
+    var kwargs: Kwargs?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
     Model: MetaProperty
 */
 @Parcelize
@@ -1796,9 +1949,14 @@ data class MetaProperty(
     var digitalsignatureGenerator: DigitalsignatureGenerator?=null,
     
     @SerializedName("awb_number_label_barcode_generator")
-    var awbNumberLabelBarcodeGenerator: AwbNumberLabelBarcodeGenerator?=null
+    var awbNumberLabelBarcodeGenerator: AwbNumberLabelBarcodeGenerator?=null,
+    
+    @SerializedName("awb_number_barcode_generator")
+    var awbNumberBarcodeGenerator: AwbNumberBarcodeGenerator?=null
     
 ): Parcelable {
+    
+    
     
     
     
@@ -1847,11 +2005,41 @@ data class DummyTemplateDataPayload(
     
     
     
-    @SerializedName("is_international")
-    var isInternational: Boolean?=null,
+    @SerializedName("is_export")
+    var isExport: Boolean?=null,
+    
+    @SerializedName("is_export_shipment")
+    var isExportShipment: Boolean?=null,
     
     @SerializedName("app_domain_name")
     var appDomainName: String?=null,
+    
+    @SerializedName("txn_id")
+    var txnId: String?=null,
+    
+    @SerializedName("utr")
+    var utr: String?=null,
+    
+    @SerializedName("po_number")
+    var poNumber: String?=null,
+    
+    @SerializedName("credit_note_id")
+    var creditNoteId: String?=null,
+    
+    @SerializedName("current_date")
+    var currentDate: String?=null,
+    
+    @SerializedName("total_value_of_goods")
+    var totalValueOfGoods: Double?=null,
+    
+    @SerializedName("b2b_buyer_details")
+    var b2BBuyerDetails: @RawValue HashMap<String,Any>?=null,
+    
+    @SerializedName("is_qwik")
+    var isQwik: @RawValue HashMap<String,Any>?=null,
+    
+    @SerializedName("order_type")
+    var orderType: String?=null,
     
     @SerializedName("conversion_rate")
     var conversionRate: ConversionRate?=null,
@@ -2026,6 +2214,26 @@ data class DummyTemplateDataPayload(
     
     
     
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
 }
 
 
@@ -2048,10 +2256,15 @@ data class DummyTemplateData(
     @SerializedName("payload")
     var payload: DummyTemplateDataPayload?=null,
     
+    @SerializedName("country_code")
+    var countryCode: String?=null,
+    
     @SerializedName("__v")
     var v: Int?=null
     
 ): Parcelable {
+    
+    
     
     
     
@@ -2697,6 +2910,28 @@ data class PaymentReceiptMeta(
     
     
     
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: ExtensionSlug
+*/
+@Parcelize
+data class ExtensionSlug(
+    
+    
+    
+    @SerializedName("extension_slug")
+    var extensionSlug: String?=null
+    
+): Parcelable {
     
     
     

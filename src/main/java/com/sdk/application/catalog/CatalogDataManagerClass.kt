@@ -905,34 +905,29 @@ class CatalogDataManagerClass(val config: ApplicationConfig, val unauthorizedAct
 
     
     
-    suspend fun getProductPriceBySlug(slug: String, size: String, storeId: Int?=null, pincode: String?=null, moq: Int?=null): Response<ProductSizePriceResponseV3>? {
+    suspend fun getProductPriceBySlug(slug: String, size: String, storeId: Int?=null, moq: Int?=null): Response<ProductSizePriceResponseV3>? {
         var fullUrl : String? = _relativeUrls["getProductPriceBySlug"] 
         
         fullUrl = fullUrl?.replace("{" + "slug" +"}",slug.toString())
         
         fullUrl = fullUrl?.replace("{" + "size" +"}",size.toString())
         
-        return catalogApiList?.getProductPriceBySlug(fullUrl      ,  storeId = storeId,    pincode = pincode,    moq = moq)}
+        return catalogApiList?.getProductPriceBySlug(fullUrl      ,  storeId = storeId,    moq = moq)}
 
     
     
-    suspend fun getProductSellersBySlug(slug: String, size: String, pincode: String?=null, strategy: String?=null, pageNo: Int?=null, pageSize: Int?=null): Response<ProductSizeSellersResponseV3>? {
+    suspend fun getProductSellersBySlug(slug: String, size: String, strategy: String?=null, pageNo: Int?=null, pageSize: Int?=null): Response<ProductSizeSellersResponseV3>? {
         var fullUrl : String? = _relativeUrls["getProductSellersBySlug"] 
         
         fullUrl = fullUrl?.replace("{" + "slug" +"}",slug.toString())
         
         fullUrl = fullUrl?.replace("{" + "size" +"}",size.toString())
         
-        return catalogApiList?.getProductSellersBySlug(fullUrl      ,  pincode = pincode,    strategy = strategy,    pageNo = pageNo,    pageSize = pageSize)}
+        return catalogApiList?.getProductSellersBySlug(fullUrl      ,  strategy = strategy,    pageNo = pageNo,    pageSize = pageSize)}
 
     
     
     
-        
-            
-                
-            
-            
         
             
                 
@@ -961,7 +956,7 @@ class CatalogDataManagerClass(val config: ApplicationConfig, val unauthorizedAct
     *
     * Summary: Paginator for getProductSellersBySlug
     **/
-    fun getProductSellersBySlugPaginator(slug: String, size: String, pincode: String?=null, strategy: String?=null, pageSize: Int?=null) : Paginator<ProductSizeSellersResponseV3>{
+    fun getProductSellersBySlugPaginator(slug: String, size: String, strategy: String?=null, pageSize: Int?=null) : Paginator<ProductSizeSellersResponseV3>{
 
     val paginator = Paginator<ProductSizeSellersResponseV3>()
 
@@ -978,7 +973,7 @@ class CatalogDataManagerClass(val config: ApplicationConfig, val unauthorizedAct
                 
                 fullUrl = fullUrl?.replace("{" + "size" +"}",size.toString())
                 
-                catalogApiList?.getProductSellersBySlug(fullUrl , pincode = pincode, strategy = strategy, pageNo = pageNo, pageSize = pageSize)?.safeAwait{ response, error ->
+                catalogApiList?.getProductSellersBySlug(fullUrl , strategy = strategy, pageNo = pageNo, pageSize = pageSize)?.safeAwait{ response, error ->
                     response?.let {
                         val page = response.peekContent()?.page
                         paginator.setPaginator(hasNext=page?.hasNext?:false,pageNo=if (page?.hasNext == true) ((pageNo ?: 0) + 1) else pageNo)

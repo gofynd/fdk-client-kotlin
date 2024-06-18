@@ -176,6 +176,38 @@ data class ContactDetails(
 
              
 /*
+    Model: CountryCurrencyInfo
+*/
+@Parcelize
+data class CountryCurrencyInfo(
+    
+    
+    
+    @SerializedName("code")
+    var code: String?=null,
+    
+    @SerializedName("symbol")
+    var symbol: String?=null,
+    
+    @SerializedName("name")
+    var name: String?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
     Model: BusinessCountryInfo
 */
 @Parcelize
@@ -187,9 +219,19 @@ data class BusinessCountryInfo(
     var countryCode: String?=null,
     
     @SerializedName("country")
-    var country: String?=null
+    var country: String?=null,
+    
+    @SerializedName("currency")
+    var currency: CountryCurrencyInfo?=null,
+    
+    @SerializedName("timezone")
+    var timezone: String?=null
     
 ): Parcelable {
+    
+    
+    
+    
     
     
     
@@ -276,6 +318,12 @@ data class GetAddressSerializer(
     @SerializedName("state")
     var state: String?=null,
     
+    @SerializedName("state_code")
+    var stateCode: String?=null,
+    
+    @SerializedName("sector")
+    var sector: String?=null,
+    
     @SerializedName("address1")
     var address1: String?=null,
     
@@ -286,6 +334,10 @@ data class GetAddressSerializer(
     var latitude: Double?=null
     
 ): Parcelable {
+    
+    
+    
+    
     
     
     
@@ -927,10 +979,82 @@ data class GetBrandResponseSerializer(
 
              
 /*
-    Model: CreateUpdateBrandRequestSerializer
+    Model: CreateBrandRequestSerializer
 */
 @Parcelize
-data class CreateUpdateBrandRequestSerializer(
+data class CreateBrandRequestSerializer(
+    
+    
+    
+    @SerializedName("_custom_json")
+    var customJson: @RawValue HashMap<String,Any>?=null,
+    
+    @SerializedName("_locale_language")
+    var localeLanguage: @RawValue HashMap<String,Any>?=null,
+    
+    @SerializedName("synonyms")
+    var synonyms: ArrayList<String>?=null,
+    
+    @SerializedName("company_id")
+    var companyId: Int?=null,
+    
+    @SerializedName("description")
+    var description: String?=null,
+    
+    @SerializedName("logo")
+    var logo: String?=null,
+    
+    @SerializedName("brand_tier")
+    var brandTier: String?=null,
+    
+    @SerializedName("uid")
+    var uid: Int?=null,
+    
+    @SerializedName("banner")
+    var banner: BrandBannerSerializer?=null,
+    
+    @SerializedName("name")
+    var name: String?=null,
+    
+    @SerializedName("slug_key")
+    var slugKey: String?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: UpdateBrandRequestSerializer
+*/
+@Parcelize
+data class UpdateBrandRequestSerializer(
     
     
     
@@ -1767,9 +1891,14 @@ data class GetLocationSerializer(
     var avgOrderProcessingTime: AverageOrderProcessingTime?=null,
     
     @SerializedName("bulk_shipment")
-    var bulkShipment: Boolean?=null
+    var bulkShipment: Boolean?=null,
+    
+    @SerializedName("auto_assign_courier_partner")
+    var autoAssignCourierPartner: Boolean?=null
     
 ): Parcelable {
+    
+    
     
     
     
@@ -1901,6 +2030,12 @@ data class AddressSerializer(
     @SerializedName("state")
     var state: String?=null,
     
+    @SerializedName("sector")
+    var sector: String?=null,
+    
+    @SerializedName("state_code")
+    var stateCode: String?=null,
+    
     @SerializedName("address1")
     var address1: String?=null,
     
@@ -1911,6 +2046,10 @@ data class AddressSerializer(
     var latitude: Double?=null
     
 ): Parcelable {
+    
+    
+    
+    
     
     
     
@@ -2022,9 +2161,14 @@ data class LocationSerializer(
     var avgOrderProcessingTime: AverageOrderProcessingTime?=null,
     
     @SerializedName("bulk_shipment")
-    var bulkShipment: Boolean?=null
+    var bulkShipment: Boolean?=null,
+    
+    @SerializedName("auto_assign_courier_partner")
+    var autoAssignCourierPartner: Boolean?=null
     
 ): Parcelable {
+    
+    
     
     
     
