@@ -109,7 +109,7 @@ interface ThemeApiList {
     : Response<ThemesSchema>
     
     @GET ("/service/platform/theme/v1.0/company/{company_id}/application/{application_id}/extension-section")
-    suspend fun getExtensionSections(@Path("company_id") companyId: String, @Path("application_id") applicationId: String)
+    suspend fun getExtensionSections(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Query("type") type: String?, @Query("company_mode") companyMode: String?)
     : Response<ArrayList<GetExtensionSectionRes>>
     
 }

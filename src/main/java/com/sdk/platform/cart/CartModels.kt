@@ -2848,6 +2848,28 @@ data class PriceAdjustmentResponse(
 
              
 /*
+    Model: GetPriceAdjustmentResponse
+*/
+@Parcelize
+data class GetPriceAdjustmentResponse(
+    
+    
+    
+    @SerializedName("data")
+    var data: ArrayList<PriceAdjustment>?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
     Model: PriceAdjustmentAdd
 */
 @Parcelize

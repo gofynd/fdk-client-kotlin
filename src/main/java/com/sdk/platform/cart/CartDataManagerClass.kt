@@ -299,7 +299,7 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     
     
     suspend fun getPriceAdjustments(cartId: String)
-    : Response<PriceAdjustmentResponse>? {
+    : Response<GetPriceAdjustmentResponse>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 cartApiList?.getPriceAdjustments(companyId = config.companyId , applicationId = applicationId , cartId = cartId )
         } else {

@@ -86,7 +86,7 @@ interface CartApiList {
     
     @GET ("/service/platform/cart/v1.0/company/{company_id}/application/{application_id}/price-adjustment")
     suspend fun getPriceAdjustments(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Query("cart_id") cartId: String)
-    : Response<PriceAdjustmentResponse>
+    : Response<GetPriceAdjustmentResponse>
     
     @POST ("/service/platform/cart/v1.0/company/{company_id}/application/{application_id}/cart/validate")
     suspend fun fetchAndvalidateCartItems(@Path("company_id") companyId: String, @Path("application_id") applicationId: String,@Body body: OpenapiCartDetailsRequest)

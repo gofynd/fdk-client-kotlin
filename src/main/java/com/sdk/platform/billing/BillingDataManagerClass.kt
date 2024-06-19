@@ -152,12 +152,12 @@ class BillingDataManagerClass(val config: PlatformConfig, val unauthorizedAction
     }
     
     
-    suspend fun creditTransaction(uniqueId: Int, productSuite: String, type: String, pageSize: Int?=null, pageNo: Int?=null, sort: HashMap<String,Any>?=null, query: HashMap<String,Any>?=null)
+    suspend fun creditTransaction(uniqueId: Int, productSuite: String, type: String, pageSize: Int?=null, pageNo: Int?=null, startDate: String?=null, endDate: String?=null, searchType: String?=null, searchValue: String?=null)
     : Response<CreditTransactionResponse>? {
         
         return if (config.oauthClient.isAccessTokenValid()) {
             billingApiList?.creditTransaction(
-        companyId = config.companyId, uniqueId = uniqueId, productSuite = productSuite, type = type, pageSize = pageSize, pageNo = pageNo, sort = sort, query = query )
+        companyId = config.companyId, uniqueId = uniqueId, productSuite = productSuite, type = type, pageSize = pageSize, pageNo = pageNo, startDate = startDate, endDate = endDate, searchType = searchType, searchValue = searchValue )
         } else {
             null
         } 

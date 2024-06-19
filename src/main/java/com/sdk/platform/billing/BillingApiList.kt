@@ -45,7 +45,7 @@ interface BillingApiList {
     : Response<PaymentStatusResponse>
     
     @GET ("/service/platform/billing/v1.0/company/{company_id}/credit-transaction")
-    suspend fun creditTransaction(@Path("company_id") companyId: String, @Query("unique_id") uniqueId: Int, @Query("product_suite") productSuite: String, @Query("type") type: String, @Query("page_size") pageSize: Int?, @Query("page_no") pageNo: Int?, @Query("sort") sort: HashMap<String,Any>?, @Query("query") query: HashMap<String,Any>?)
+    suspend fun creditTransaction(@Path("company_id") companyId: String, @Query("unique_id") uniqueId: Int, @Query("product_suite") productSuite: String, @Query("type") type: String, @Query("page_size") pageSize: Int?, @Query("page_no") pageNo: Int?, @Query("start_date") startDate: String?, @Query("end_date") endDate: String?, @Query("search_type") searchType: String?, @Query("search_value") searchValue: String?)
     : Response<CreditTransactionResponse>
     
     @PUT ("/service/platform/billing/v1.0/company/{company_id}/subscription/consent")

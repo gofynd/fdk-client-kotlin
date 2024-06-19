@@ -332,10 +332,10 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     }
     
     
-    suspend fun getExtensionSections()
+    suspend fun getExtensionSections(type: String?=null, companyMode: String?=null)
     : Response<ArrayList<GetExtensionSectionRes>>? {
         return if (config.oauthClient.isAccessTokenValid()) {
-                themeApiList?.getExtensionSections(companyId = config.companyId , applicationId = applicationId  )
+                themeApiList?.getExtensionSections(companyId = config.companyId , applicationId = applicationId , type = type, companyMode = companyMode )
         } else {
             null
         }
