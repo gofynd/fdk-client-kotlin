@@ -3643,6 +3643,48 @@ data class Shipment(
 
              
 /*
+    Model: ShipmentRequestData
+*/
+@Parcelize
+data class ShipmentRequestData(
+    
+    
+    
+    @SerializedName("line_items")
+    var lineItems: ArrayList<LineItem>?=null,
+    
+    @SerializedName("processing_dates")
+    var processingDates: ProcessingDates?=null,
+    
+    @SerializedName("meta")
+    var meta: @RawValue HashMap<String,Any>?=null,
+    
+    @SerializedName("priority")
+    var priority: Int?=null,
+    
+    @SerializedName("order_type")
+    var orderType: String?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
     Model: ShippingInfo
 */
 @Parcelize
@@ -4120,6 +4162,9 @@ data class CreateOrderAPI(
     @SerializedName("shipments")
     var shipments: ArrayList<Shipment>?=null,
     
+    @SerializedName("shipment_request_data")
+    var shipmentRequestData: ShipmentRequestData?=null,
+    
     @SerializedName("shipping_info")
     var shippingInfo: ShippingInfo?=null,
     
@@ -4160,6 +4205,8 @@ data class CreateOrderAPI(
     var orderPlatform: String?=null
     
 ): Parcelable {
+    
+    
     
     
     
