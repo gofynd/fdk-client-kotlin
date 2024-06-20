@@ -21,7 +21,7 @@ interface ContentApiList {
     
     
     @GET 
-    suspend fun getBlogs(@Url url1: String?    ,   @Query("page_no") pageNo: Int?, @Query("page_size") pageSize: Int?)
+    suspend fun getBlogs(@Url url1: String?    ,     @Query("page_no") pageNo: Int?, @Query("page_size") pageSize: Int?, @Query("tags") tags: String?, @Query("search") search: String?)
     : Response<BlogGetResponse>
     
     

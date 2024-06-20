@@ -37,7 +37,7 @@ interface ContentApiList {
     : Response<BlogSchema>
     
     @GET ("/service/platform/content/v1.0/company/{company_id}/application/{application_id}/blogs/")
-    suspend fun getBlogs(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Query("page_no") pageNo: Int?, @Query("page_size") pageSize: Int?)
+    suspend fun getBlogs(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Query("page_no") pageNo: Int?, @Query("page_size") pageSize: Int?, @Query("tags") tags: String?, @Query("q") q: String?, @Query("slug") slug: String?, @Query("title") title: String?, @Query("status") status: String?)
     : Response<BlogGetResponse>
     
     @PUT ("/service/platform/content/v1.0/company/{company_id}/application/{application_id}/blogs/{id}")

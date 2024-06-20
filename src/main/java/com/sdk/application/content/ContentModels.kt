@@ -474,9 +474,14 @@ data class BlogGetResponse(
     var items: ArrayList<BlogSchema>?=null,
     
     @SerializedName("page")
-    var page: Page?=null
+    var page: Page?=null,
+    
+    @SerializedName("filters")
+    var filters: ArrayList<String>?=null
     
 ): Parcelable {
+    
+    
     
     
     
@@ -627,14 +632,14 @@ data class BlogSchema(
     @SerializedName("seo")
     var seo: SEO?=null,
     
-    @SerializedName("_schedule")
-    var schedule: CronSchedule?=null,
-    
     @SerializedName("title")
     var title: String?=null,
     
     @SerializedName("date_meta")
-    var dateMeta: DateMeta?=null
+    var dateMeta: DateMeta?=null,
+    
+    @SerializedName("summary")
+    var summary: String?=null
     
 ): Parcelable {
     
@@ -2047,43 +2052,6 @@ data class CreatedBySchema(
     var id: String?=null
     
 ): Parcelable {
-    
-    
-    
-    
-    
-}
-
-
-
-             
-/*
-    Model: CronSchedule
-*/
-@Parcelize
-data class CronSchedule(
-    
-    
-    
-    @SerializedName("cron")
-    var cron: String?=null,
-    
-    @SerializedName("start")
-    var start: String?=null,
-    
-    @SerializedName("end")
-    var end: String?=null,
-    
-    @SerializedName("duration")
-    var duration: Double?=null
-    
-): Parcelable {
-    
-    
-    
-    
-    
-    
     
     
     

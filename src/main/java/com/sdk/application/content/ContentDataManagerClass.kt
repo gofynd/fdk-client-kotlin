@@ -114,10 +114,10 @@ class ContentDataManagerClass(val config: ApplicationConfig, val unauthorizedAct
 
     
     
-    suspend fun getBlogs(pageNo: Int?=null, pageSize: Int?=null): Response<BlogGetResponse>? {
+    suspend fun getBlogs(pageNo: Int?=null, pageSize: Int?=null, tags: String?=null, search: String?=null): Response<BlogGetResponse>? {
         var fullUrl : String? = _relativeUrls["getBlogs"] 
         
-        return contentApiList?.getBlogs(fullUrl    ,  pageNo = pageNo,    pageSize = pageSize)}
+        return contentApiList?.getBlogs(fullUrl    ,  pageNo = pageNo,    pageSize = pageSize,    tags = tags,    search = search)}
 
     
     

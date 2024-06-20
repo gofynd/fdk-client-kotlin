@@ -506,10 +506,10 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     }
     
     
-    suspend fun getBlogs(pageNo: Int?=null, pageSize: Int?=null)
+    suspend fun getBlogs(pageNo: Int?=null, pageSize: Int?=null, tags: String?=null, q: String?=null, slug: String?=null, title: String?=null, status: String?=null)
     : Response<BlogGetResponse>? {
         return if (config.oauthClient.isAccessTokenValid()) {
-                contentApiList?.getBlogs(companyId = config.companyId , applicationId = applicationId , pageNo = pageNo, pageSize = pageSize )
+                contentApiList?.getBlogs(companyId = config.companyId , applicationId = applicationId , pageNo = pageNo, pageSize = pageSize, tags = tags, q = q, slug = slug, title = title, status = status )
         } else {
             null
         }
