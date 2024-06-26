@@ -1422,6 +1422,9 @@ data class Shipments(
     @SerializedName("order_type")
     var orderType: String?=null,
     
+    @SerializedName("gstin_code")
+    var gstinCode: String?=null,
+    
     @SerializedName("show_download_invoice")
     var showDownloadInvoice: Boolean?=null,
     
@@ -1534,6 +1537,8 @@ data class Shipments(
     var order: OrderRequest?=null
     
 ): Parcelable {
+    
+    
     
     
     

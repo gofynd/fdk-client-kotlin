@@ -1120,6 +1120,33 @@ data class DownloadCreditDebitNoteResponse(
 
              
 /*
+    Model: InvoiceBillingItem
+*/
+@Parcelize
+data class InvoiceBillingItem(
+    
+    
+    
+    @SerializedName("invoice_number")
+    var invoiceNumber: String?=null,
+    
+    @SerializedName("amount")
+    var amount: Double?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
     Model: PaymentProcessPayload
 */
 @Parcelize
@@ -1154,8 +1181,8 @@ data class PaymentProcessPayload(
     @SerializedName("mode_of_payment")
     var modeOfPayment: String?=null,
     
-    @SerializedName("invoice_number")
-    var invoiceNumber: String?=null
+    @SerializedName("invoice_billing_items")
+    var invoiceBillingItems: ArrayList<InvoiceBillingItem>?=null
     
 ): Parcelable {
     
@@ -3516,8 +3543,8 @@ data class InvoicePaymentOptionsPayloadData(
     
     
     
-    @SerializedName("invoice_number")
-    var invoiceNumber: String?=null
+    @SerializedName("invoice_numbers")
+    var invoiceNumbers: ArrayList<String>?=null
     
 ): Parcelable {
     
@@ -3634,8 +3661,8 @@ data class InvoicePaymentOptionsResponseData(
     
     
     
-    @SerializedName("currency")
-    var currency: Currency?=null,
+    @SerializedName("invoice_number")
+    var invoiceNumber: String?=null,
     
     @SerializedName("invoice_type")
     var invoiceType: String?=null,
@@ -3650,9 +3677,14 @@ data class InvoicePaymentOptionsResponseData(
     var deductedAmounts: @RawValue Any?=null,
     
     @SerializedName("payable_amounts")
-    var payableAmounts: ArrayList<InvoicePaymentOptionsResponsePayableAmounts>?=null
+    var payableAmounts: ArrayList<InvoicePaymentOptionsResponsePayableAmounts>?=null,
+    
+    @SerializedName("currency")
+    var currency: Currency?=null
     
 ): Parcelable {
+    
+    
     
     
     
@@ -3685,12 +3717,22 @@ data class InvoicePaymentOptionsResponse(
     var reason: String?=null,
     
     @SerializedName("data")
-    var data: InvoicePaymentOptionsResponseData?=null,
+    var data: ArrayList<InvoicePaymentOptionsResponseData>?=null,
+    
+    @SerializedName("total_payable_amount")
+    var totalPayableAmount: Double?=null,
+    
+    @SerializedName("invoice_count")
+    var invoiceCount: Int?=null,
     
     @SerializedName("success")
     var success: Boolean?=null
     
 ): Parcelable {
+    
+    
+    
+    
     
     
     

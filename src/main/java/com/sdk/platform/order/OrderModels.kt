@@ -9812,9 +9812,14 @@ data class ShipmentItem(
     var currency: Currency?=null,
     
     @SerializedName("currency_info")
-    var currencyInfo: CurrencyInfo?=null
+    var currencyInfo: CurrencyInfo?=null,
+    
+    @SerializedName("is_lapa_enabled")
+    var isLapaEnabled: Boolean?=null
     
 ): Parcelable {
+    
+    
     
     
     
@@ -12044,9 +12049,14 @@ data class PlatformShipment(
     var isSelfShip: Boolean?=null,
     
     @SerializedName("mode_of_payment")
-    var modeOfPayment: String?=null
+    var modeOfPayment: String?=null,
+    
+    @SerializedName("is_lapa_enabled")
+    var isLapaEnabled: Boolean?=null
     
 ): Parcelable {
+    
+    
     
     
     

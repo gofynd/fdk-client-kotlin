@@ -2422,10 +2422,10 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     }
     
     
-    suspend fun getAppInventory(itemIds: ArrayList<Int>?=null, storeIds: ArrayList<Int>?=null, brandIds: ArrayList<Int>?=null, sellerIdentifiers: ArrayList<String>?=null, timestamp: String?=null, pageSize: Int?=null, pageId: String?=null)
+    suspend fun getAppInventory(itemIds: ArrayList<Int>?=null, storeIds: ArrayList<Int>?=null, brandIds: ArrayList<Int>?=null, sellerIdentifiers: ArrayList<String>?=null, timestamp: String?=null, pageSize: Int?=null, pageId: String?=null, qtyGt: Int?=null, qtyLt: Int?=null, qtyType: String?=null, fromDate: String?=null, toDate: String?=null)
     : Response<InventoryStockResponse>? {
         return if (config.oauthClient.isAccessTokenValid()) {
-                catalogApiList?.getAppInventory(companyId = config.companyId , applicationId = applicationId , itemIds = itemIds, storeIds = storeIds, brandIds = brandIds, sellerIdentifiers = sellerIdentifiers, timestamp = timestamp, pageSize = pageSize, pageId = pageId )
+                catalogApiList?.getAppInventory(companyId = config.companyId , applicationId = applicationId , itemIds = itemIds, storeIds = storeIds, brandIds = brandIds, sellerIdentifiers = sellerIdentifiers, timestamp = timestamp, pageSize = pageSize, pageId = pageId, qtyGt = qtyGt, qtyLt = qtyLt, qtyType = qtyType, fromDate = fromDate, toDate = toDate )
         } else {
             null
         }

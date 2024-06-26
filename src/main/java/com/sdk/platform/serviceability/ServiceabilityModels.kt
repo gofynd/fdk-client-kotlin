@@ -2770,6 +2770,53 @@ data class CourierAccount(
 
              
 /*
+    Model: CourierAccountRequestBody
+*/
+@Parcelize
+data class CourierAccountRequestBody(
+    
+    
+    
+    @SerializedName("extension_id")
+    var extensionId: String?=null,
+    
+    @SerializedName("account_id")
+    var accountId: String?=null,
+    
+    @SerializedName("scheme_id")
+    var schemeId: String?=null,
+    
+    @SerializedName("is_self_ship")
+    var isSelfShip: Boolean?=null,
+    
+    @SerializedName("stage")
+    var stage: String?=null,
+    
+    @SerializedName("is_own_account")
+    var isOwnAccount: Boolean?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
     Model: ErrorResponse
 */
 @Parcelize

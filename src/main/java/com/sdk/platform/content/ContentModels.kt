@@ -3567,9 +3567,14 @@ data class PhoneProperties(
     var code: String?=null,
     
     @SerializedName("number")
-    var number: String?=null
+    var number: String?=null,
+    
+    @SerializedName("phone_type")
+    var phoneType: String?=null
     
 ): Parcelable {
+    
+    
     
     
     

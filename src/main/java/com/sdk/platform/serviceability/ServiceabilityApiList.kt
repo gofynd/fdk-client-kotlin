@@ -9,7 +9,7 @@ import com.sdk.platform.*
 interface ServiceabilityApiList {
     
     @GET ("/service/platform/logistics/v2.0/company/{company_id}/zones")
-    suspend fun getZones(@Path("company_id") companyId: String, @Query("page_no") pageNo: Int?, @Query("page_size") pageSize: Int?, @Query("is_active") isActive: Boolean?, @Query("channel_id") channelId: String?, @Query("q") q: String?, @Query("country") country: String?, @Query("state") state: String?, @Query("city") city: String?, @Query("pincode") pincode: String?, @Query("sector") sector: String?)
+    suspend fun getZones(@Path("company_id") companyId: String, @Query("page_no") pageNo: Int?, @Query("page_size") pageSize: Int?, @Query("is_active") isActive: Boolean?, @Query("channel_id") channelId: String?, @Query("q") q: String?, @Query("country_iso_code") countryIsoCode: String?, @Query("state") state: String?, @Query("city") city: String?, @Query("pincode") pincode: String?, @Query("sector") sector: String?)
     : Response<ListViewResponse>
     
     @POST ("/service/platform/logistics/v2.0/company/{company_id}/zones")
@@ -45,7 +45,7 @@ interface ServiceabilityApiList {
     : Response<PincodeMopUpdateAuditHistoryResponseData>
     
     @POST ("/service/platform/logistics/v1.0/company/{company_id}/courier-partner/account")
-    suspend fun createCourierPartnerAccount(@Path("company_id") companyId: String,@Body body: CourierAccount)
+    suspend fun createCourierPartnerAccount(@Path("company_id") companyId: String,@Body body: CourierAccountRequestBody)
     : Response<CourierAccount>
     
     @GET ("/service/platform/logistics/v1.0/company/{company_id}/courier-partner/account")

@@ -44,12 +44,12 @@ class ServiceabilityDataManagerClass(val config: PlatformConfig, val unauthorize
     }
     
     
-    suspend fun getZones(pageNo: Int?=null, pageSize: Int?=null, isActive: Boolean?=null, channelId: String?=null, q: String?=null, country: String?=null, state: String?=null, city: String?=null, pincode: String?=null, sector: String?=null)
+    suspend fun getZones(pageNo: Int?=null, pageSize: Int?=null, isActive: Boolean?=null, channelId: String?=null, q: String?=null, countryIsoCode: String?=null, state: String?=null, city: String?=null, pincode: String?=null, sector: String?=null)
     : Response<ListViewResponse>? {
         
         return if (config.oauthClient.isAccessTokenValid()) {
             serviceabilityApiList?.getZones(
-        companyId = config.companyId, pageNo = pageNo, pageSize = pageSize, isActive = isActive, channelId = channelId, q = q, country = country, state = state, city = city, pincode = pincode, sector = sector )
+        companyId = config.companyId, pageNo = pageNo, pageSize = pageSize, isActive = isActive, channelId = channelId, q = q, countryIsoCode = countryIsoCode, state = state, city = city, pincode = pincode, sector = sector )
         } else {
             null
         } 
@@ -108,7 +108,7 @@ class ServiceabilityDataManagerClass(val config: PlatformConfig, val unauthorize
     
     
     
-    suspend fun createCourierPartnerAccount(body: CourierAccount)
+    suspend fun createCourierPartnerAccount(body: CourierAccountRequestBody)
     : Response<CourierAccount>? {
         
         return if (config.oauthClient.isAccessTokenValid()) {

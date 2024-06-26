@@ -89,7 +89,7 @@ interface CatalogApiList {
     : Response<DepartmentResponse>
     
     @GET ("/service/platform/catalog/v1.0/company/{company_id}/application/{application_id}/inventory/")
-    suspend fun getAppInventory(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Query("item_ids") itemIds: ArrayList<Int>?, @Query("store_ids") storeIds: ArrayList<Int>?, @Query("brand_ids") brandIds: ArrayList<Int>?, @Query("seller_identifiers") sellerIdentifiers: ArrayList<String>?, @Query("timestamp") timestamp: String?, @Query("page_size") pageSize: Int?, @Query("page_id") pageId: String?)
+    suspend fun getAppInventory(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Query("item_ids") itemIds: ArrayList<Int>?, @Query("store_ids") storeIds: ArrayList<Int>?, @Query("brand_ids") brandIds: ArrayList<Int>?, @Query("seller_identifiers") sellerIdentifiers: ArrayList<String>?, @Query("timestamp") timestamp: String?, @Query("page_size") pageSize: Int?, @Query("page_id") pageId: String?, @Query("qty_gt") qtyGt: Int?, @Query("qty_lt") qtyLt: Int?, @Query("qty_type") qtyType: String?, @Query("from_date") fromDate: String?, @Query("to_date") toDate: String?)
     : Response<InventoryStockResponse>
     
     @GET ("/service/platform/catalog/v1.0/company/{company_id}/application/{application_id}/locations")
