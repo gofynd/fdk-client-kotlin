@@ -879,9 +879,14 @@ data class CompanyDetail(
     var businessCountryTimezone: String?=null,
     
     @SerializedName("business_country_currency")
-    var businessCountryCurrency: @RawValue HashMap<String,Any>?=null
+    var businessCountryCurrency: @RawValue HashMap<String,Any>?=null,
+    
+    @SerializedName("meta")
+    var meta: @RawValue HashMap<String,Any>?=null
     
 ): Parcelable {
+    
+    
     
     
     
@@ -2104,6 +2109,12 @@ data class DummyTemplateDataPayload(
     @SerializedName("is_self_pickup")
     var isSelfPickup: Boolean?=null,
     
+    @SerializedName("shipment_meta")
+    var shipmentMeta: @RawValue HashMap<String,Any>?=null,
+    
+    @SerializedName("order_meta")
+    var orderMeta: @RawValue HashMap<String,Any>?=null,
+    
     @SerializedName("platform_name")
     var platformName: String?=null,
     
@@ -2141,6 +2152,10 @@ data class DummyTemplateDataPayload(
     var uid: String?=null
     
 ): Parcelable {
+    
+    
+    
+    
     
     
     

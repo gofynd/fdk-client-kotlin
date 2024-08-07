@@ -10,7 +10,7 @@ import retrofit2.Response
 
 
 class WebhookDataManagerClass(val config: ApplicationConfig, val unauthorizedAction: ((url: String, responseCode: Int) -> Unit)? = null) : BaseRepository() {
-    
+
     private val webhookApiList by lazy {
         generatewebhookApiList()
     }
@@ -28,7 +28,7 @@ class WebhookDataManagerClass(val config: ApplicationConfig, val unauthorizedAct
                 _relativeUrls[key] = value
             }
     }
-    
+
 
     private fun generatewebhookApiList(): WebhookApiList? {
         val interceptorMap = HashMap<String, List<Interceptor>>()
@@ -56,10 +56,10 @@ class WebhookDataManagerClass(val config: ApplicationConfig, val unauthorizedAct
         return retrofitHttpClient?.initializeRestClient(WebhookApiList::class.java) as? WebhookApiList
     }
     
-    suspend fun saveClickEvent(body: ClickEventRequest): Response<ClickEventResponse>? {
-        var fullUrl : String? = _relativeUrls["saveClickEvent"] 
+    suspend fun saveClickEvent(body: ClickEventRequest, headers: Map<String, String> = emptyMap()): Response<ClickEventResponse>? {
+        var fullUrl : String? = _relativeUrls["saveClickEvent"]
         
-        return webhookApiList?.saveClickEvent(fullUrl  ,body = body)}
+        return webhookApiList?.saveClickEvent(fullUrl, body = body,headers = headers)}
 
     
     

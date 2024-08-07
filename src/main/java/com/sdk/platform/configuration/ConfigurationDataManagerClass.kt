@@ -11,12 +11,12 @@ import com.sdk.platform.*
 
 
 
-class ConfigurationDataManagerClass(val config: PlatformConfig, val unauthorizedAction: ((url: String, responseCode: Int) -> Unit)? = null) : BaseRepository() {        
-       
+class ConfigurationDataManagerClass(val config: PlatformConfig, val unauthorizedAction: ((url: String, responseCode: Int) -> Unit)? = null) : BaseRepository() {
+
     private val configurationApiList by lazy {
         generateconfigurationApiList()
     }
-    
+
     private fun generateconfigurationApiList(): ConfigurationApiList? {
         val interceptorMap = HashMap<String, List<Interceptor>>()
         val headerInterceptor = AccessTokenInterceptor(platformConfig = config)
@@ -75,220 +75,124 @@ class ConfigurationDataManagerClass(val config: PlatformConfig, val unauthorized
     
     
     
-    suspend fun createApplication(body: CreateApplicationRequest)
+    suspend fun createApplication(body: CreateApplicationRequest, headers: Map<String, String> = emptyMap())
     : Response<CreateAppResponse>? {
-        
+
         return if (config.oauthClient.isAccessTokenValid()) {
             configurationApiList?.createApplication(
-        companyId = config.companyId, body = body)
+        companyId = config.companyId, body = body,headers = headers)
         } else {
             null
-        } 
+        }
     }
     
     
-    suspend fun getApplications(pageNo: Int?=null, pageSize: Int?=null, q: String?=null)
+    suspend fun getApplications(pageNo: Int?=null,pageSize: Int?=null,q: String?=null, headers: Map<String, String> = emptyMap())
     : Response<ApplicationsResponse>? {
-        
+
         return if (config.oauthClient.isAccessTokenValid()) {
             configurationApiList?.getApplications(
-        companyId = config.companyId, pageNo = pageNo, pageSize = pageSize, q = q )
+        companyId = config.companyId,pageNo = pageNo,pageSize = pageSize,q = q, headers = headers)
         } else {
             null
-        } 
+        }
     }
     
     
     
-    suspend fun getCurrencies()
+    suspend fun getCurrencies( headers: Map<String, String> = emptyMap())
     : Response<CurrenciesResponse>? {
-        
+
         return if (config.oauthClient.isAccessTokenValid()) {
             configurationApiList?.getCurrencies(
-        companyId = config.companyId )
+        companyId = config.companyId, headers = headers)
         } else {
             null
-        } 
+        }
     }
     
     
-    suspend fun getDomainAvailibility(body: DomainSuggestionsRequest)
+    suspend fun getDomainAvailibility(body: DomainSuggestionsRequest, headers: Map<String, String> = emptyMap())
     : Response<DomainSuggestionsResponse>? {
-        
+
         return if (config.oauthClient.isAccessTokenValid()) {
             configurationApiList?.getDomainAvailibility(
-        companyId = config.companyId, body = body)
+        companyId = config.companyId, body = body,headers = headers)
         } else {
             null
-        } 
+        }
     }
     
     
-    suspend fun getIntegrationById(id: String)
-    : Response<Integration>? {
-        
-        return if (config.oauthClient.isAccessTokenValid()) {
-            configurationApiList?.getIntegrationById(
-        companyId = config.companyId, id = id )
-        } else {
-            null
-        } 
-    }
-    
-    
-    suspend fun getAvailableOptIns(pageNo: Int?=null, pageSize: Int?=null)
-    : Response<GetIntegrationsOptInsResponse>? {
-        
-        return if (config.oauthClient.isAccessTokenValid()) {
-            configurationApiList?.getAvailableOptIns(
-        companyId = config.companyId, pageNo = pageNo, pageSize = pageSize )
-        } else {
-            null
-        } 
-    }
-    
-    
-    suspend fun getSelectedOptIns(level: String, uid: String, pageNo: Int?=null, pageSize: Int?=null)
-    : Response<GetIntegrationsOptInsResponse>? {
-        
-        return if (config.oauthClient.isAccessTokenValid()) {
-            configurationApiList?.getSelectedOptIns(
-        companyId = config.companyId, level = level, uid = uid, pageNo = pageNo, pageSize = pageSize )
-        } else {
-            null
-        } 
-    }
-    
-    
-    suspend fun getIntegrationLevelConfig(id: String, level: String, opted: Boolean?=null, checkPermission: Boolean?=null)
-    : Response<IntegrationConfigResponse>? {
-        
-        return if (config.oauthClient.isAccessTokenValid()) {
-            configurationApiList?.getIntegrationLevelConfig(
-        companyId = config.companyId, id = id, level = level, opted = opted, checkPermission = checkPermission )
-        } else {
-            null
-        } 
-    }
-    
-    
-    suspend fun updateLevelIntegration(id: String, level: String,body: UpdateIntegrationLevelRequest)
-    : Response<IntegrationLevel>? {
-        
-        return if (config.oauthClient.isAccessTokenValid()) {
-            configurationApiList?.updateLevelIntegration(
-        companyId = config.companyId, id = id, level = level, body = body)
-        } else {
-            null
-        } 
-    }
-    
-    
-    suspend fun getIntegrationByLevelId(id: String, level: String, uid: String)
-    : Response<IntegrationLevel>? {
-        
-        return if (config.oauthClient.isAccessTokenValid()) {
-            configurationApiList?.getIntegrationByLevelId(
-        companyId = config.companyId, id = id, level = level, uid = uid )
-        } else {
-            null
-        } 
-    }
-    
-    
-    suspend fun updateLevelUidIntegration(id: String, level: String, uid: String,body: IntegrationLevel)
-    : Response<IntegrationLevel>? {
-        
-        return if (config.oauthClient.isAccessTokenValid()) {
-            configurationApiList?.updateLevelUidIntegration(
-        companyId = config.companyId, id = id, level = level, uid = uid, body = body)
-        } else {
-            null
-        } 
-    }
-    
-    
-    suspend fun getLevelActiveIntegrations(id: String, level: String, uid: String)
-    : Response<OptedStoreIntegration>? {
-        
-        return if (config.oauthClient.isAccessTokenValid()) {
-            configurationApiList?.getLevelActiveIntegrations(
-        companyId = config.companyId, id = id, level = level, uid = uid )
-        } else {
-            null
-        } 
-    }
-    
-    
-    suspend fun getBrandsByCompany(q: String?=null)
+    suspend fun getBrandsByCompany(q: String?=null, headers: Map<String, String> = emptyMap())
     : Response<BrandsByCompanyResponse>? {
-        
+
         return if (config.oauthClient.isAccessTokenValid()) {
             configurationApiList?.getBrandsByCompany(
-        companyId = config.companyId, q = q )
+        companyId = config.companyId,q = q, headers = headers)
         } else {
             null
-        } 
+        }
     }
     
     
-    suspend fun getCompanyByBrands(pageNo: Int?=null, pageSize: Int?=null,body: CompanyByBrandsRequest)
+    suspend fun getCompanyByBrands(pageNo: Int?=null,pageSize: Int?=null,body: CompanyByBrandsRequest, headers: Map<String, String> = emptyMap())
     : Response<CompanyByBrandsResponse>? {
-        
+
         return if (config.oauthClient.isAccessTokenValid()) {
             configurationApiList?.getCompanyByBrands(
-        companyId = config.companyId, pageNo = pageNo, pageSize = pageSize, body = body)
+        companyId = config.companyId,pageNo = pageNo,pageSize = pageSize, body = body,headers = headers)
         } else {
             null
-        } 
+        }
     }
     
     
-    suspend fun getStoreByBrands(pageNo: Int?=null, pageSize: Int?=null,body: StoreByBrandsRequest)
+    suspend fun getStoreByBrands(pageNo: Int?=null,pageSize: Int?=null,body: StoreByBrandsRequest, headers: Map<String, String> = emptyMap())
     : Response<StoreByBrandsResponse>? {
-        
+
         return if (config.oauthClient.isAccessTokenValid()) {
             configurationApiList?.getStoreByBrands(
-        companyId = config.companyId, pageNo = pageNo, pageSize = pageSize, body = body)
+        companyId = config.companyId,pageNo = pageNo,pageSize = pageSize, body = body,headers = headers)
         } else {
             null
-        } 
+        }
     }
     
     
-    suspend fun getOtherSellerApplications(pageNo: Int?=null, pageSize: Int?=null)
+    suspend fun getOtherSellerApplications(pageNo: Int?=null,pageSize: Int?=null, headers: Map<String, String> = emptyMap())
     : Response<OtherSellerApplications>? {
-        
+
         return if (config.oauthClient.isAccessTokenValid()) {
             configurationApiList?.getOtherSellerApplications(
-        companyId = config.companyId, pageNo = pageNo, pageSize = pageSize )
+        companyId = config.companyId,pageNo = pageNo,pageSize = pageSize, headers = headers)
         } else {
             null
-        } 
+        }
     }
     
     
-    suspend fun getOtherSellerApplicationById(id: String)
+    suspend fun getOtherSellerApplicationById(id: String, headers: Map<String, String> = emptyMap())
     : Response<OptedApplicationResponse>? {
-        
+
         return if (config.oauthClient.isAccessTokenValid()) {
             configurationApiList?.getOtherSellerApplicationById(
-        companyId = config.companyId, id = id )
+        companyId = config.companyId,id = id, headers = headers)
         } else {
             null
-        } 
+        }
     }
     
     
-    suspend fun optOutFromApplication(id: String,body: OptOutInventory)
+    suspend fun optOutFromApplication(id: String,body: OptOutInventory, headers: Map<String, String> = emptyMap())
     : Response<SuccessMessageResponse>? {
-        
+
         return if (config.oauthClient.isAccessTokenValid()) {
             configurationApiList?.optOutFromApplication(
-        companyId = config.companyId, id = id, body = body)
+        companyId = config.companyId,id = id, body = body,headers = headers)
         } else {
             null
-        } 
+        }
     }
     
 
@@ -296,310 +200,310 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
 
     
     
-    suspend fun getBuildConfig(platformType: String)
+    suspend fun getBuildConfig(platformType: String, headers: Map<String, String> = emptyMap())
     : Response<MobileAppConfiguration>? {
         return if (config.oauthClient.isAccessTokenValid()) {
-                configurationApiList?.getBuildConfig(companyId = config.companyId , applicationId = applicationId , platformType = platformType )
+                configurationApiList?.getBuildConfig(companyId = config.companyId ,applicationId = applicationId ,platformType = platformType, headers = headers)
         } else {
             null
         }
     }
     
     
-    suspend fun updateBuildConfig(platformType: String,body: MobileAppConfigRequest)
+    suspend fun updateBuildConfig(platformType: String,body: MobileAppConfigRequest, headers: Map<String, String> = emptyMap())
     : Response<MobileAppConfiguration>? {
         return if (config.oauthClient.isAccessTokenValid()) {
-                configurationApiList?.updateBuildConfig(companyId = config.companyId , applicationId = applicationId , platformType = platformType, body = body)
+                configurationApiList?.updateBuildConfig(companyId = config.companyId ,applicationId = applicationId ,platformType = platformType, body = body,headers = headers)
         } else {
             null
         }
     }
     
     
-    suspend fun getPreviousVersions(platformType: String)
+    suspend fun getPreviousVersions(platformType: String, headers: Map<String, String> = emptyMap())
     : Response<BuildVersionHistory>? {
         return if (config.oauthClient.isAccessTokenValid()) {
-                configurationApiList?.getPreviousVersions(companyId = config.companyId , applicationId = applicationId , platformType = platformType )
+                configurationApiList?.getPreviousVersions(companyId = config.companyId ,applicationId = applicationId ,platformType = platformType, headers = headers)
         } else {
             null
         }
     }
     
     
-    suspend fun getAppFeatures()
+    suspend fun getAppFeatures( headers: Map<String, String> = emptyMap())
     : Response<AppFeatureResponse>? {
         return if (config.oauthClient.isAccessTokenValid()) {
-                configurationApiList?.getAppFeatures(companyId = config.companyId , applicationId = applicationId  )
+                configurationApiList?.getAppFeatures(companyId = config.companyId ,applicationId = applicationId , headers = headers)
         } else {
             null
         }
     }
     
     
-    suspend fun updateAppFeatures(body: AppFeatureRequest)
+    suspend fun updateAppFeatures(body: AppFeatureRequest, headers: Map<String, String> = emptyMap())
     : Response<AppFeature>? {
         return if (config.oauthClient.isAccessTokenValid()) {
-                configurationApiList?.updateAppFeatures(companyId = config.companyId , applicationId = applicationId , body = body)
+                configurationApiList?.updateAppFeatures(companyId = config.companyId ,applicationId = applicationId , body = body,headers = headers)
         } else {
             null
         }
     }
     
     
-    suspend fun modifyAppFeatures(body: AppFeatureRequest)
+    suspend fun modifyAppFeatures(body: AppFeatureRequest, headers: Map<String, String> = emptyMap())
     : Response<AppFeature>? {
         return if (config.oauthClient.isAccessTokenValid()) {
-                configurationApiList?.modifyAppFeatures(companyId = config.companyId , applicationId = applicationId , body = body)
+                configurationApiList?.modifyAppFeatures(companyId = config.companyId ,applicationId = applicationId , body = body,headers = headers)
         } else {
             null
         }
     }
     
     
-    suspend fun getAppBasicDetails()
+    suspend fun getAppBasicDetails( headers: Map<String, String> = emptyMap())
     : Response<ApplicationDetail>? {
         return if (config.oauthClient.isAccessTokenValid()) {
-                configurationApiList?.getAppBasicDetails(companyId = config.companyId , applicationId = applicationId  )
+                configurationApiList?.getAppBasicDetails(companyId = config.companyId ,applicationId = applicationId , headers = headers)
         } else {
             null
         }
     }
     
     
-    suspend fun updateAppBasicDetails(body: ApplicationDetail)
+    suspend fun updateAppBasicDetails(body: ApplicationDetail, headers: Map<String, String> = emptyMap())
     : Response<ApplicationDetail>? {
         return if (config.oauthClient.isAccessTokenValid()) {
-                configurationApiList?.updateAppBasicDetails(companyId = config.companyId , applicationId = applicationId , body = body)
+                configurationApiList?.updateAppBasicDetails(companyId = config.companyId ,applicationId = applicationId , body = body,headers = headers)
         } else {
             null
         }
     }
     
     
-    suspend fun getAppContactInfo()
+    suspend fun getAppContactInfo( headers: Map<String, String> = emptyMap())
     : Response<ApplicationInformation>? {
         return if (config.oauthClient.isAccessTokenValid()) {
-                configurationApiList?.getAppContactInfo(companyId = config.companyId , applicationId = applicationId  )
+                configurationApiList?.getAppContactInfo(companyId = config.companyId ,applicationId = applicationId , headers = headers)
         } else {
             null
         }
     }
     
     
-    suspend fun updateAppContactInfo(body: ApplicationInformation)
+    suspend fun updateAppContactInfo(body: ApplicationInformation, headers: Map<String, String> = emptyMap())
     : Response<ApplicationInformation>? {
         return if (config.oauthClient.isAccessTokenValid()) {
-                configurationApiList?.updateAppContactInfo(companyId = config.companyId , applicationId = applicationId , body = body)
+                configurationApiList?.updateAppContactInfo(companyId = config.companyId ,applicationId = applicationId , body = body,headers = headers)
         } else {
             null
         }
     }
     
     
-    suspend fun getAppApiTokens()
+    suspend fun getAppApiTokens( headers: Map<String, String> = emptyMap())
     : Response<TokenResponse>? {
         return if (config.oauthClient.isAccessTokenValid()) {
-                configurationApiList?.getAppApiTokens(companyId = config.companyId , applicationId = applicationId  )
+                configurationApiList?.getAppApiTokens(companyId = config.companyId ,applicationId = applicationId , headers = headers)
         } else {
             null
         }
     }
     
     
-    suspend fun updateAppApiTokens(body: TokenResponse)
+    suspend fun updateAppApiTokens(body: TokenResponse, headers: Map<String, String> = emptyMap())
     : Response<TokenResponse>? {
         return if (config.oauthClient.isAccessTokenValid()) {
-                configurationApiList?.updateAppApiTokens(companyId = config.companyId , applicationId = applicationId , body = body)
+                configurationApiList?.updateAppApiTokens(companyId = config.companyId ,applicationId = applicationId , body = body,headers = headers)
         } else {
             null
         }
     }
     
     
-    suspend fun getAppCompanies(uid: Int?=null, pageNo: Int?=null, pageSize: Int?=null)
+    suspend fun getAppCompanies(uid: Int?=null,pageNo: Int?=null,pageSize: Int?=null, headers: Map<String, String> = emptyMap())
     : Response<CompaniesResponse>? {
         return if (config.oauthClient.isAccessTokenValid()) {
-                configurationApiList?.getAppCompanies(companyId = config.companyId , applicationId = applicationId , uid = uid, pageNo = pageNo, pageSize = pageSize )
+                configurationApiList?.getAppCompanies(companyId = config.companyId ,applicationId = applicationId ,uid = uid,pageNo = pageNo,pageSize = pageSize, headers = headers)
         } else {
             null
         }
     }
     
     
-    suspend fun getAppStores(pageNo: Int?=null, pageSize: Int?=null)
+    suspend fun getAppStores(pageNo: Int?=null,pageSize: Int?=null, headers: Map<String, String> = emptyMap())
     : Response<StoresResponse>? {
         return if (config.oauthClient.isAccessTokenValid()) {
-                configurationApiList?.getAppStores(companyId = config.companyId , applicationId = applicationId , pageNo = pageNo, pageSize = pageSize )
+                configurationApiList?.getAppStores(companyId = config.companyId ,applicationId = applicationId ,pageNo = pageNo,pageSize = pageSize, headers = headers)
         } else {
             null
         }
     }
     
     
-    suspend fun getInventoryConfig()
+    suspend fun getInventoryConfig( headers: Map<String, String> = emptyMap())
     : Response<ApplicationInventory>? {
         return if (config.oauthClient.isAccessTokenValid()) {
-                configurationApiList?.getInventoryConfig(companyId = config.companyId , applicationId = applicationId  )
+                configurationApiList?.getInventoryConfig(companyId = config.companyId ,applicationId = applicationId , headers = headers)
         } else {
             null
         }
     }
     
     
-    suspend fun updateInventoryConfig(body: ApplicationInventory)
+    suspend fun updateInventoryConfig(body: ApplicationInventory, headers: Map<String, String> = emptyMap())
     : Response<ApplicationInventory>? {
         return if (config.oauthClient.isAccessTokenValid()) {
-                configurationApiList?.updateInventoryConfig(companyId = config.companyId , applicationId = applicationId , body = body)
+                configurationApiList?.updateInventoryConfig(companyId = config.companyId ,applicationId = applicationId , body = body,headers = headers)
         } else {
             null
         }
     }
     
     
-    suspend fun partiallyUpdateInventoryConfig(body: AppInventoryPartialUpdate)
+    suspend fun partiallyUpdateInventoryConfig(body: AppInventoryPartialUpdate, headers: Map<String, String> = emptyMap())
     : Response<ApplicationInventory>? {
         return if (config.oauthClient.isAccessTokenValid()) {
-                configurationApiList?.partiallyUpdateInventoryConfig(companyId = config.companyId , applicationId = applicationId , body = body)
+                configurationApiList?.partiallyUpdateInventoryConfig(companyId = config.companyId ,applicationId = applicationId , body = body,headers = headers)
         } else {
             null
         }
     }
     
     
-    suspend fun getAppCurrencyConfig()
+    suspend fun getAppCurrencyConfig( headers: Map<String, String> = emptyMap())
     : Response<AppSupportedCurrency>? {
         return if (config.oauthClient.isAccessTokenValid()) {
-                configurationApiList?.getAppCurrencyConfig(companyId = config.companyId , applicationId = applicationId  )
+                configurationApiList?.getAppCurrencyConfig(companyId = config.companyId ,applicationId = applicationId , headers = headers)
         } else {
             null
         }
     }
     
     
-    suspend fun updateAppCurrencyConfig(body: AppSupportedCurrency)
+    suspend fun updateAppCurrencyConfig(body: AppSupportedCurrency, headers: Map<String, String> = emptyMap())
     : Response<AppSupportedCurrency>? {
         return if (config.oauthClient.isAccessTokenValid()) {
-                configurationApiList?.updateAppCurrencyConfig(companyId = config.companyId , applicationId = applicationId , body = body)
+                configurationApiList?.updateAppCurrencyConfig(companyId = config.companyId ,applicationId = applicationId , body = body,headers = headers)
         } else {
             null
         }
     }
     
     
-    suspend fun getAppSupportedCurrency()
+    suspend fun getAppSupportedCurrency( headers: Map<String, String> = emptyMap())
     : Response<AppCurrencyResponse>? {
         return if (config.oauthClient.isAccessTokenValid()) {
-                configurationApiList?.getAppSupportedCurrency(companyId = config.companyId , applicationId = applicationId  )
+                configurationApiList?.getAppSupportedCurrency(companyId = config.companyId ,applicationId = applicationId , headers = headers)
         } else {
             null
         }
     }
     
     
-    suspend fun getOrderingStoresByFilter(pageNo: Int?=null, pageSize: Int?=null,body: FilterOrderingStoreRequest)
+    suspend fun getOrderingStoresByFilter(pageNo: Int?=null,pageSize: Int?=null,body: FilterOrderingStoreRequest, headers: Map<String, String> = emptyMap())
     : Response<OrderingStores>? {
         return if (config.oauthClient.isAccessTokenValid()) {
-                configurationApiList?.getOrderingStoresByFilter(companyId = config.companyId , applicationId = applicationId , pageNo = pageNo, pageSize = pageSize, body = body)
+                configurationApiList?.getOrderingStoresByFilter(companyId = config.companyId ,applicationId = applicationId ,pageNo = pageNo,pageSize = pageSize, body = body,headers = headers)
         } else {
             null
         }
     }
     
     
-    suspend fun updateOrderingStoreConfig(body: OrderingStoreConfig)
+    suspend fun updateOrderingStoreConfig(body: OrderingStoreConfig, headers: Map<String, String> = emptyMap())
     : Response<DeploymentMeta>? {
         return if (config.oauthClient.isAccessTokenValid()) {
-                configurationApiList?.updateOrderingStoreConfig(companyId = config.companyId , applicationId = applicationId , body = body)
+                configurationApiList?.updateOrderingStoreConfig(companyId = config.companyId ,applicationId = applicationId , body = body,headers = headers)
         } else {
             null
         }
     }
     
     
-    suspend fun getOrderingStoreConfig()
+    suspend fun getOrderingStoreConfig( headers: Map<String, String> = emptyMap())
     : Response<OrderingStoreConfig>? {
         return if (config.oauthClient.isAccessTokenValid()) {
-                configurationApiList?.getOrderingStoreConfig(companyId = config.companyId , applicationId = applicationId  )
+                configurationApiList?.getOrderingStoreConfig(companyId = config.companyId ,applicationId = applicationId , headers = headers)
         } else {
             null
         }
     }
     
     
-    suspend fun getStaffOrderingStores(pageNo: Int?=null, pageSize: Int?=null, q: String?=null)
+    suspend fun getStaffOrderingStores(pageNo: Int?=null,pageSize: Int?=null,q: String?=null, headers: Map<String, String> = emptyMap())
     : Response<OrderingStoresResponse>? {
         return if (config.oauthClient.isAccessTokenValid()) {
-                configurationApiList?.getStaffOrderingStores(companyId = config.companyId , applicationId = applicationId , pageNo = pageNo, pageSize = pageSize, q = q )
+                configurationApiList?.getStaffOrderingStores(companyId = config.companyId ,applicationId = applicationId ,pageNo = pageNo,pageSize = pageSize,q = q, headers = headers)
         } else {
             null
         }
     }
     
     
-    suspend fun getOrderingStoreCookie(body: OrderingStoreSelectRequest)
+    suspend fun getOrderingStoreCookie(body: OrderingStoreSelectRequest, headers: Map<String, String> = emptyMap())
     : Response<SuccessMessageResponse>? {
         return if (config.oauthClient.isAccessTokenValid()) {
-                configurationApiList?.getOrderingStoreCookie(companyId = config.companyId , applicationId = applicationId , body = body)
+                configurationApiList?.getOrderingStoreCookie(companyId = config.companyId ,applicationId = applicationId , body = body,headers = headers)
         } else {
             null
         }
     }
     
     
-    suspend fun removeOrderingStoreCookie()
+    suspend fun removeOrderingStoreCookie( headers: Map<String, String> = emptyMap())
     : Response<SuccessMessageResponse>? {
         return if (config.oauthClient.isAccessTokenValid()) {
-                configurationApiList?.removeOrderingStoreCookie(companyId = config.companyId , applicationId = applicationId  )
+                configurationApiList?.removeOrderingStoreCookie(companyId = config.companyId ,applicationId = applicationId , headers = headers)
         } else {
             null
         }
     }
     
     
-    suspend fun getDomains()
+    suspend fun getDomains( headers: Map<String, String> = emptyMap())
     : Response<DomainsResponse>? {
         return if (config.oauthClient.isAccessTokenValid()) {
-                configurationApiList?.getDomains(companyId = config.companyId , applicationId = applicationId  )
+                configurationApiList?.getDomains(companyId = config.companyId ,applicationId = applicationId , headers = headers)
         } else {
             null
         }
     }
     
     
-    suspend fun addDomain(body: DomainAddRequest)
+    suspend fun addDomain(body: DomainAddRequest, headers: Map<String, String> = emptyMap())
     : Response<Domain>? {
         return if (config.oauthClient.isAccessTokenValid()) {
-                configurationApiList?.addDomain(companyId = config.companyId , applicationId = applicationId , body = body)
+                configurationApiList?.addDomain(companyId = config.companyId ,applicationId = applicationId , body = body,headers = headers)
         } else {
             null
         }
     }
     
     
-    suspend fun removeDomainById(id: String)
+    suspend fun removeDomainById(id: String, headers: Map<String, String> = emptyMap())
     : Response<SuccessMessageResponse>? {
         return if (config.oauthClient.isAccessTokenValid()) {
-                configurationApiList?.removeDomainById(companyId = config.companyId , applicationId = applicationId , id = id )
+                configurationApiList?.removeDomainById(companyId = config.companyId ,applicationId = applicationId ,id = id, headers = headers)
         } else {
             null
         }
     }
     
     
-    suspend fun changeDomainType(body: UpdateDomainTypeRequest)
+    suspend fun changeDomainType(body: UpdateDomainTypeRequest, headers: Map<String, String> = emptyMap())
     : Response<DomainsResponse>? {
         return if (config.oauthClient.isAccessTokenValid()) {
-                configurationApiList?.changeDomainType(companyId = config.companyId , applicationId = applicationId , body = body)
+                configurationApiList?.changeDomainType(companyId = config.companyId ,applicationId = applicationId , body = body,headers = headers)
         } else {
             null
         }
     }
     
     
-    suspend fun getDomainStatus(body: DomainStatusRequest)
+    suspend fun getDomainStatus(body: DomainStatusRequest, headers: Map<String, String> = emptyMap())
     : Response<DomainStatusResponse>? {
         return if (config.oauthClient.isAccessTokenValid()) {
-                configurationApiList?.getDomainStatus(companyId = config.companyId , applicationId = applicationId , body = body)
+                configurationApiList?.getDomainStatus(companyId = config.companyId ,applicationId = applicationId , body = body,headers = headers)
         } else {
             null
         }
@@ -608,22 +512,14 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     
     
     
-    suspend fun getApplicationById()
+    suspend fun getApplicationById( headers: Map<String, String> = emptyMap())
     : Response<ApplicationById>? {
         return if (config.oauthClient.isAccessTokenValid()) {
-                configurationApiList?.getApplicationById(companyId = config.companyId , applicationId = applicationId  )
+                configurationApiList?.getApplicationById(companyId = config.companyId ,applicationId = applicationId , headers = headers)
         } else {
             null
         }
     }
-    
-    
-    
-    
-    
-    
-    
-    
     
     
     

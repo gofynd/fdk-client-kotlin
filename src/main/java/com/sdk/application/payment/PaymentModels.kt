@@ -2001,12 +2001,17 @@ data class LinkStatus(
     
     
     @SerializedName("status")
-    var status: Boolean?=null,
+    var status: String?=null,
     
     @SerializedName("message")
-    var message: String?=null
+    var message: String?=null,
+    
+    @SerializedName("is_payment_done")
+    var isPaymentDone: Boolean?=null
     
 ): Parcelable {
+    
+    
     
     
     

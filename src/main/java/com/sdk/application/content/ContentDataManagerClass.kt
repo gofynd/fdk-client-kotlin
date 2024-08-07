@@ -10,7 +10,7 @@ import retrofit2.Response
 
 
 class ContentDataManagerClass(val config: ApplicationConfig, val unauthorizedAction: ((url: String, responseCode: Int) -> Unit)? = null) : BaseRepository() {
-    
+
     private val contentApiList by lazy {
         generatecontentApiList()
     }
@@ -70,7 +70,7 @@ class ContentDataManagerClass(val config: ApplicationConfig, val unauthorizedAct
                 _relativeUrls[key] = value
             }
     }
-    
+
 
     private fun generatecontentApiList(): ContentApiList? {
         val interceptorMap = HashMap<String, List<Interceptor>>()
@@ -98,116 +98,116 @@ class ContentDataManagerClass(val config: ApplicationConfig, val unauthorizedAct
         return retrofitHttpClient?.initializeRestClient(ContentApiList::class.java) as? ContentApiList
     }
     
-    suspend fun getAnnouncements(): Response<AnnouncementsResponseSchema>? {
-        var fullUrl : String? = _relativeUrls["getAnnouncements"] 
+    suspend fun getAnnouncements( headers: Map<String, String> = emptyMap()): Response<AnnouncementsResponseSchema>? {
+        var fullUrl : String? = _relativeUrls["getAnnouncements"]
         
-        return contentApiList?.getAnnouncements(fullUrl  )}
+        return contentApiList?.getAnnouncements(fullUrl, headers = headers)}
 
     
     
-    suspend fun getBlog(slug: String, rootId: String?=null): Response<BlogSchema>? {
-        var fullUrl : String? = _relativeUrls["getBlog"] 
+    suspend fun getBlog(slug: String,rootId: String?=null, headers: Map<String, String> = emptyMap()): Response<BlogSchema>? {
+        var fullUrl : String? = _relativeUrls["getBlog"]
         
         fullUrl = fullUrl?.replace("{" + "slug" +"}",slug.toString())
         
-        return contentApiList?.getBlog(fullUrl     ,  rootId = rootId)}
+        return contentApiList?.getBlog(fullUrl,    rootId = rootId,headers = headers)}
 
     
     
-    suspend fun getBlogs(pageNo: Int?=null, pageSize: Int?=null): Response<BlogGetResponse>? {
-        var fullUrl : String? = _relativeUrls["getBlogs"] 
+    suspend fun getBlogs(pageNo: Int?=null,pageSize: Int?=null,tags: String?=null,search: String?=null, headers: Map<String, String> = emptyMap()): Response<BlogGetResponse>? {
+        var fullUrl : String? = _relativeUrls["getBlogs"]
         
-        return contentApiList?.getBlogs(fullUrl    ,  pageNo = pageNo,    pageSize = pageSize)}
+        return contentApiList?.getBlogs(fullUrl,   pageNo = pageNo,  pageSize = pageSize,  tags = tags,  search = search,headers = headers)}
 
     
     
-    suspend fun getDataLoaders(): Response<DataLoadersSchema>? {
-        var fullUrl : String? = _relativeUrls["getDataLoaders"] 
+    suspend fun getDataLoaders( headers: Map<String, String> = emptyMap()): Response<DataLoadersSchema>? {
+        var fullUrl : String? = _relativeUrls["getDataLoaders"]
         
-        return contentApiList?.getDataLoaders(fullUrl  )}
+        return contentApiList?.getDataLoaders(fullUrl, headers = headers)}
 
     
     
-    suspend fun getFaqs(): Response<FaqResponseSchema>? {
-        var fullUrl : String? = _relativeUrls["getFaqs"] 
+    suspend fun getFaqs( headers: Map<String, String> = emptyMap()): Response<FaqResponseSchema>? {
+        var fullUrl : String? = _relativeUrls["getFaqs"]
         
-        return contentApiList?.getFaqs(fullUrl  )}
+        return contentApiList?.getFaqs(fullUrl, headers = headers)}
 
     
     
-    suspend fun getFaqCategories(): Response<GetFaqCategoriesSchema>? {
-        var fullUrl : String? = _relativeUrls["getFaqCategories"] 
+    suspend fun getFaqCategories( headers: Map<String, String> = emptyMap()): Response<GetFaqCategoriesSchema>? {
+        var fullUrl : String? = _relativeUrls["getFaqCategories"]
         
-        return contentApiList?.getFaqCategories(fullUrl  )}
+        return contentApiList?.getFaqCategories(fullUrl, headers = headers)}
 
     
     
-    suspend fun getFaqBySlug(slug: String): Response<FaqSchema>? {
-        var fullUrl : String? = _relativeUrls["getFaqBySlug"] 
+    suspend fun getFaqBySlug(slug: String, headers: Map<String, String> = emptyMap()): Response<FaqSchema>? {
+        var fullUrl : String? = _relativeUrls["getFaqBySlug"]
         
         fullUrl = fullUrl?.replace("{" + "slug" +"}",slug.toString())
         
-        return contentApiList?.getFaqBySlug(fullUrl   )}
+        return contentApiList?.getFaqBySlug(fullUrl,  headers = headers)}
 
     
     
-    suspend fun getFaqCategoryBySlug(slug: String): Response<GetFaqCategoryBySlugSchema>? {
-        var fullUrl : String? = _relativeUrls["getFaqCategoryBySlug"] 
+    suspend fun getFaqCategoryBySlug(slug: String, headers: Map<String, String> = emptyMap()): Response<GetFaqCategoryBySlugSchema>? {
+        var fullUrl : String? = _relativeUrls["getFaqCategoryBySlug"]
         
         fullUrl = fullUrl?.replace("{" + "slug" +"}",slug.toString())
         
-        return contentApiList?.getFaqCategoryBySlug(fullUrl   )}
+        return contentApiList?.getFaqCategoryBySlug(fullUrl,  headers = headers)}
 
     
     
-    suspend fun getFaqsByCategorySlug(slug: String): Response<GetFaqSchema>? {
-        var fullUrl : String? = _relativeUrls["getFaqsByCategorySlug"] 
+    suspend fun getFaqsByCategorySlug(slug: String, headers: Map<String, String> = emptyMap()): Response<GetFaqSchema>? {
+        var fullUrl : String? = _relativeUrls["getFaqsByCategorySlug"]
         
         fullUrl = fullUrl?.replace("{" + "slug" +"}",slug.toString())
         
-        return contentApiList?.getFaqsByCategorySlug(fullUrl   )}
+        return contentApiList?.getFaqsByCategorySlug(fullUrl,  headers = headers)}
 
     
     
-    suspend fun getLandingPage(): Response<LandingPageSchema>? {
-        var fullUrl : String? = _relativeUrls["getLandingPage"] 
+    suspend fun getLandingPage( headers: Map<String, String> = emptyMap()): Response<LandingPageSchema>? {
+        var fullUrl : String? = _relativeUrls["getLandingPage"]
         
-        return contentApiList?.getLandingPage(fullUrl  )}
+        return contentApiList?.getLandingPage(fullUrl, headers = headers)}
 
     
     
-    suspend fun getLegalInformation(): Response<ApplicationLegal>? {
-        var fullUrl : String? = _relativeUrls["getLegalInformation"] 
+    suspend fun getLegalInformation( headers: Map<String, String> = emptyMap()): Response<ApplicationLegal>? {
+        var fullUrl : String? = _relativeUrls["getLegalInformation"]
         
-        return contentApiList?.getLegalInformation(fullUrl  )}
+        return contentApiList?.getLegalInformation(fullUrl, headers = headers)}
 
     
     
-    suspend fun getNavigations(pageNo: Int?=null, pageSize: Int?=null): Response<NavigationGetResponse>? {
-        var fullUrl : String? = _relativeUrls["getNavigations"] 
+    suspend fun getNavigations(pageNo: Int?=null,pageSize: Int?=null, headers: Map<String, String> = emptyMap()): Response<NavigationGetResponse>? {
+        var fullUrl : String? = _relativeUrls["getNavigations"]
         
-        return contentApiList?.getNavigations(fullUrl    ,  pageNo = pageNo,    pageSize = pageSize)}
+        return contentApiList?.getNavigations(fullUrl,   pageNo = pageNo,  pageSize = pageSize,headers = headers)}
 
     
     
-    suspend fun getSEOConfiguration(): Response<SeoComponent>? {
-        var fullUrl : String? = _relativeUrls["getSEOConfiguration"] 
+    suspend fun getSEOConfiguration( headers: Map<String, String> = emptyMap()): Response<SeoComponent>? {
+        var fullUrl : String? = _relativeUrls["getSEOConfiguration"]
         
-        return contentApiList?.getSEOConfiguration(fullUrl  )}
+        return contentApiList?.getSEOConfiguration(fullUrl, headers = headers)}
 
     
     
-    suspend fun getSEOMarkupSchemas(pageType: String?=null, active: Boolean?=null): Response<SeoSchemaComponent>? {
-        var fullUrl : String? = _relativeUrls["getSEOMarkupSchemas"] 
+    suspend fun getSEOMarkupSchemas(pageType: String?=null,active: Boolean?=null, headers: Map<String, String> = emptyMap()): Response<SeoSchemaComponent>? {
+        var fullUrl : String? = _relativeUrls["getSEOMarkupSchemas"]
         
-        return contentApiList?.getSEOMarkupSchemas(fullUrl    ,  pageType = pageType,    active = active)}
+        return contentApiList?.getSEOMarkupSchemas(fullUrl,   pageType = pageType,  active = active,headers = headers)}
 
     
     
-    suspend fun getSlideshows(pageNo: Int?=null, pageSize: Int?=null): Response<SlideshowGetResponse>? {
-        var fullUrl : String? = _relativeUrls["getSlideshows"] 
+    suspend fun getSlideshows(pageNo: Int?=null,pageSize: Int?=null, headers: Map<String, String> = emptyMap()): Response<SlideshowGetResponse>? {
+        var fullUrl : String? = _relativeUrls["getSlideshows"]
         
-        return contentApiList?.getSlideshows(fullUrl    ,  pageNo = pageNo,    pageSize = pageSize)}
+        return contentApiList?.getSlideshows(fullUrl,   pageNo = pageNo,  pageSize = pageSize,headers = headers)}
 
     
     
@@ -236,7 +236,7 @@ class ContentDataManagerClass(val config: ApplicationConfig, val unauthorizedAct
                 val pageId = paginator.nextId
                 val pageNo = paginator.pageNo
                 val pageType = "number"
-                var fullUrl : String? = _relativeUrls["getSlideshows"] 
+                var fullUrl : String? = _relativeUrls["getSlideshows"]
                 
                 contentApiList?.getSlideshows(fullUrl , pageNo = pageNo, pageSize = pageSize)?.safeAwait{ response, error ->
                     response?.let {
@@ -252,66 +252,66 @@ class ContentDataManagerClass(val config: ApplicationConfig, val unauthorizedAct
         }
 
     })
-    
+
     return paginator
     }
     
-    suspend fun getSlideshow(slug: String): Response<SlideshowSchema>? {
-        var fullUrl : String? = _relativeUrls["getSlideshow"] 
+    suspend fun getSlideshow(slug: String, headers: Map<String, String> = emptyMap()): Response<SlideshowSchema>? {
+        var fullUrl : String? = _relativeUrls["getSlideshow"]
         
         fullUrl = fullUrl?.replace("{" + "slug" +"}",slug.toString())
         
-        return contentApiList?.getSlideshow(fullUrl   )}
+        return contentApiList?.getSlideshow(fullUrl,  headers = headers)}
 
     
     
-    suspend fun getSupportInformation(): Response<Support>? {
-        var fullUrl : String? = _relativeUrls["getSupportInformation"] 
+    suspend fun getSupportInformation( headers: Map<String, String> = emptyMap()): Response<Support>? {
+        var fullUrl : String? = _relativeUrls["getSupportInformation"]
         
-        return contentApiList?.getSupportInformation(fullUrl  )}
+        return contentApiList?.getSupportInformation(fullUrl, headers = headers)}
 
     
     
-    suspend fun getTags(): Response<TagsSchema>? {
-        var fullUrl : String? = _relativeUrls["getTags"] 
+    suspend fun getTags( headers: Map<String, String> = emptyMap()): Response<TagsSchema>? {
+        var fullUrl : String? = _relativeUrls["getTags"]
         
-        return contentApiList?.getTags(fullUrl  )}
+        return contentApiList?.getTags(fullUrl, headers = headers)}
 
     
     
-    suspend fun getPage(slug: String, rootId: String?=null): Response<PageSchema>? {
-        var fullUrl : String? = _relativeUrls["getPage"] 
+    suspend fun getPage(slug: String,rootId: String?=null, headers: Map<String, String> = emptyMap()): Response<PageSchema>? {
+        var fullUrl : String? = _relativeUrls["getPage"]
         
         fullUrl = fullUrl?.replace("{" + "slug" +"}",slug.toString())
         
-        return contentApiList?.getPage(fullUrl     ,  rootId = rootId)}
+        return contentApiList?.getPage(fullUrl,    rootId = rootId,headers = headers)}
 
     
     
-    suspend fun getPages(pageNo: Int?=null, pageSize: Int?=null): Response<PageGetResponse>? {
-        var fullUrl : String? = _relativeUrls["getPages"] 
+    suspend fun getPages(pageNo: Int?=null,pageSize: Int?=null, headers: Map<String, String> = emptyMap()): Response<PageGetResponse>? {
+        var fullUrl : String? = _relativeUrls["getPages"]
         
-        return contentApiList?.getPages(fullUrl    ,  pageNo = pageNo,    pageSize = pageSize)}
+        return contentApiList?.getPages(fullUrl,   pageNo = pageNo,  pageSize = pageSize,headers = headers)}
 
     
     
-    suspend fun getCustomObject(metaobjectId: String): Response<CustomObjectByIdSchema>? {
-        var fullUrl : String? = _relativeUrls["getCustomObject"] 
+    suspend fun getCustomObject(metaobjectId: String, headers: Map<String, String> = emptyMap()): Response<CustomObjectByIdSchema>? {
+        var fullUrl : String? = _relativeUrls["getCustomObject"]
         
         fullUrl = fullUrl?.replace("{" + "metaobject_id" +"}",metaobjectId.toString())
         
-        return contentApiList?.getCustomObject(fullUrl   )}
+        return contentApiList?.getCustomObject(fullUrl,  headers = headers)}
 
     
     
-    suspend fun getCustomFields(resource: String, resourceId: String): Response<CustomFieldsResponseByResourceIdSchema>? {
-        var fullUrl : String? = _relativeUrls["getCustomFields"] 
+    suspend fun getCustomFields(resource: String,resourceId: String, headers: Map<String, String> = emptyMap()): Response<CustomFieldsResponseByResourceIdSchema>? {
+        var fullUrl : String? = _relativeUrls["getCustomFields"]
         
         fullUrl = fullUrl?.replace("{" + "resource" +"}",resource.toString())
         
         fullUrl = fullUrl?.replace("{" + "resource_id" +"}",resourceId.toString())
         
-        return contentApiList?.getCustomFields(fullUrl    )}
+        return contentApiList?.getCustomFields(fullUrl,   headers = headers)}
 
     
     

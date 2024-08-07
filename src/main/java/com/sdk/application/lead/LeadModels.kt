@@ -68,189 +68,6 @@ data class CustomFormSubmissionPayload(
 
              
 /*
-    Model: GetTokenForVideoRoomResponse
-*/
-@Parcelize
-data class GetTokenForVideoRoomResponse(
-    
-    
-    
-    @SerializedName("access_token")
-    var accessToken: String?=null
-    
-): Parcelable {
-    
-    
-    
-    
-    
-}
-
-
-
-             
-/*
-    Model: GetParticipantsInsideVideoRoomResponse
-*/
-@Parcelize
-data class GetParticipantsInsideVideoRoomResponse(
-    
-    
-    
-    @SerializedName("participants")
-    var participants: ArrayList<Participant>?=null
-    
-): Parcelable {
-    
-    
-    
-    
-    
-}
-
-
-
-             
-/*
-    Model: Participant
-*/
-@Parcelize
-data class Participant(
-    
-    
-    
-    @SerializedName("user")
-    var user: UserSchema?=null,
-    
-    @SerializedName("identity")
-    var identity: String?=null,
-    
-    @SerializedName("status")
-    var status: String?=null
-    
-): Parcelable {
-    
-    
-    
-    
-    
-    
-    
-    
-    
-}
-
-
-
-             
-/*
-    Model: UserSchema
-*/
-@Parcelize
-data class UserSchema(
-    
-    
-    
-    @SerializedName("application_id")
-    var applicationId: String?=null,
-    
-    @SerializedName("user_id")
-    var userId: String?=null,
-    
-    @SerializedName("first_name")
-    var firstName: String?=null,
-    
-    @SerializedName("meta")
-    var meta: @RawValue HashMap<String,Any>?=null,
-    
-    @SerializedName("last_name")
-    var lastName: String?=null,
-    
-    @SerializedName("phone_numbers")
-    var phoneNumbers: ArrayList<PhoneNumber>?=null,
-    
-    @SerializedName("emails")
-    var emails: ArrayList<Email>?=null,
-    
-    @SerializedName("gender")
-    var gender: String?=null,
-    
-    @SerializedName("dob")
-    var dob: String?=null,
-    
-    @SerializedName("active")
-    var active: Boolean?=null,
-    
-    @SerializedName("profile_pic_url")
-    var profilePicUrl: String?=null,
-    
-    @SerializedName("username")
-    var username: String?=null,
-    
-    @SerializedName("account_type")
-    var accountType: String?=null,
-    
-    @SerializedName("_id")
-    var id: String?=null,
-    
-    @SerializedName("created_at")
-    var createdAt: String?=null,
-    
-    @SerializedName("updated_at")
-    var updatedAt: String?=null,
-    
-    @SerializedName("external_id")
-    var externalId: String?=null,
-    
-    @SerializedName("rr_id")
-    var rrId: String?=null
-    
-): Parcelable {
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-}
-
-
-
-             
-/*
     Model: SubmitCustomFormResponse
 */
 @Parcelize
@@ -262,11 +79,85 @@ data class SubmitCustomFormResponse(
     var message: String?=null,
     
     @SerializedName("ticket")
-    var ticket: Ticket?=null
+    var ticket: Ticket?=null,
+    
+    @SerializedName("response")
+    var response: FormFieldResponse?=null
     
 ): Parcelable {
     
     
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: FormFieldResponse
+*/
+@Parcelize
+data class FormFieldResponse(
+    
+    
+    
+    @SerializedName("_id")
+    var id: String?=null,
+    
+    @SerializedName("__v")
+    var v: Double?=null,
+    
+    @SerializedName("application_id")
+    var applicationId: String?=null,
+    
+    @SerializedName("form_slug")
+    var formSlug: String?=null,
+    
+    @SerializedName("created_on")
+    var createdOn: CreatedOn?=null,
+    
+    @SerializedName("response")
+    var response: ArrayList<FormFieldResponseValues>?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: FormFieldResponseValues
+*/
+@Parcelize
+data class FormFieldResponseValues(
+    
+    
+    
+    @SerializedName("key")
+    var key: String?=null
+    
+): Parcelable {
     
     
     
@@ -897,85 +788,6 @@ data class Ticket(
     
     
     
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-}
-
-
-
-             
-/*
-    Model: PhoneNumber
-*/
-@Parcelize
-data class PhoneNumber(
-    
-    
-    
-    @SerializedName("phone")
-    var phone: String?=null,
-    
-    @SerializedName("country_code")
-    var countryCode: Int?=null,
-    
-    @SerializedName("active")
-    var active: Boolean?=null,
-    
-    @SerializedName("primary")
-    var primary: Boolean?=null,
-    
-    @SerializedName("verified")
-    var verified: Boolean?=null
-    
-): Parcelable {
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-}
-
-
-
-             
-/*
-    Model: Email
-*/
-@Parcelize
-data class Email(
-    
-    
-    
-    @SerializedName("email")
-    var email: String?=null,
-    
-    @SerializedName("active")
-    var active: Boolean?=null,
-    
-    @SerializedName("primary")
-    var primary: Boolean?=null,
-    
-    @SerializedName("verified")
-    var verified: Boolean?=null
-    
-): Parcelable {
     
     
     

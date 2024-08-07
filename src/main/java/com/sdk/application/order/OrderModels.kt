@@ -1422,6 +1422,9 @@ data class Shipments(
     @SerializedName("order_type")
     var orderType: String?=null,
     
+    @SerializedName("gstin_code")
+    var gstinCode: String?=null,
+    
     @SerializedName("show_download_invoice")
     var showDownloadInvoice: Boolean?=null,
     
@@ -1617,6 +1620,8 @@ data class Shipments(
     
     
     
+    
+    
 }
 
 
@@ -1729,9 +1734,14 @@ data class OrderSchema(
     var shipments: ArrayList<Shipments>?=null,
     
     @SerializedName("bags_for_reorder")
-    var bagsForReorder: ArrayList<BagsForReorder>?=null
+    var bagsForReorder: ArrayList<BagsForReorder>?=null,
+    
+    @SerializedName("meta")
+    var meta: @RawValue HashMap<String,Any>?=null
     
 ): Parcelable {
+    
+    
     
     
     

@@ -11,12 +11,12 @@ import com.sdk.platform.*
 
 
 
-class DiscountDataManagerClass(val config: PlatformConfig, val unauthorizedAction: ((url: String, responseCode: Int) -> Unit)? = null) : BaseRepository() {        
-       
+class DiscountDataManagerClass(val config: PlatformConfig, val unauthorizedAction: ((url: String, responseCode: Int) -> Unit)? = null) : BaseRepository() {
+
     private val discountApiList by lazy {
         generatediscountApiList()
     }
-    
+
     private fun generatediscountApiList(): DiscountApiList? {
         val interceptorMap = HashMap<String, List<Interceptor>>()
         val headerInterceptor = AccessTokenInterceptor(platformConfig = config)
@@ -44,135 +44,135 @@ class DiscountDataManagerClass(val config: PlatformConfig, val unauthorizedActio
     }
     
     
-    suspend fun getDiscounts(view: String?=null, q: String?=null, pageNo: Int?=null, pageSize: Int?=null, archived: Boolean?=null, month: Int?=null, year: Int?=null, type: String?=null, appIds: ArrayList<String>?=null)
+    suspend fun getDiscounts(view: String?=null,q: String?=null,pageNo: Int?=null,pageSize: Int?=null,archived: Boolean?=null,month: Int?=null,year: Int?=null,type: String?=null,appIds: ArrayList<String>?=null, headers: Map<String, String> = emptyMap())
     : Response<ListOrCalender>? {
-        
+
         return if (config.oauthClient.isAccessTokenValid()) {
             discountApiList?.getDiscounts(
-        companyId = config.companyId, view = view, q = q, pageNo = pageNo, pageSize = pageSize, archived = archived, month = month, year = year, type = type, appIds = appIds )
+        companyId = config.companyId,view = view,q = q,pageNo = pageNo,pageSize = pageSize,archived = archived,month = month,year = year,type = type,appIds = appIds, headers = headers)
         } else {
             null
-        } 
+        }
     }
     
     
-    suspend fun createDiscount(body: CreateUpdateDiscount)
+    suspend fun createDiscount(body: CreateUpdateDiscount, headers: Map<String, String> = emptyMap())
     : Response<DiscountJob>? {
-        
+
         return if (config.oauthClient.isAccessTokenValid()) {
             discountApiList?.createDiscount(
-        companyId = config.companyId, body = body)
+        companyId = config.companyId, body = body,headers = headers)
         } else {
             null
-        } 
+        }
     }
     
     
-    suspend fun getDiscount(id: String)
+    suspend fun getDiscount(id: String, headers: Map<String, String> = emptyMap())
     : Response<DiscountJob>? {
-        
+
         return if (config.oauthClient.isAccessTokenValid()) {
             discountApiList?.getDiscount(
-        companyId = config.companyId, id = id )
+        companyId = config.companyId,id = id, headers = headers)
         } else {
             null
-        } 
+        }
     }
     
     
-    suspend fun updateDiscount(id: String,body: CreateUpdateDiscount)
+    suspend fun updateDiscount(id: String,body: CreateUpdateDiscount, headers: Map<String, String> = emptyMap())
     : Response<DiscountJob>? {
-        
+
         return if (config.oauthClient.isAccessTokenValid()) {
             discountApiList?.updateDiscount(
-        companyId = config.companyId, id = id, body = body)
+        companyId = config.companyId,id = id, body = body,headers = headers)
         } else {
             null
-        } 
+        }
     }
     
     
-    suspend fun upsertDiscountItems(id: String,body: BulkDiscount)
+    suspend fun upsertDiscountItems(id: String,body: BulkDiscount, headers: Map<String, String> = emptyMap())
     : Response<HashMap<String,Any>>? {
-        
+
         return if (config.oauthClient.isAccessTokenValid()) {
             discountApiList?.upsertDiscountItems(
-        companyId = config.companyId, id = id, body = body)
+        companyId = config.companyId,id = id, body = body,headers = headers)
         } else {
             null
-        } 
+        }
     }
     
     
-    suspend fun validateDiscountFile(discount: String?=null,body: FileJobRequest)
+    suspend fun validateDiscountFile(discount: String?=null,body: FileJobRequest, headers: Map<String, String> = emptyMap())
     : Response<FileJobResponse>? {
-        
+
         return if (config.oauthClient.isAccessTokenValid()) {
             discountApiList?.validateDiscountFile(
-        companyId = config.companyId, discount = discount, body = body)
+        companyId = config.companyId,discount = discount, body = body,headers = headers)
         } else {
             null
-        } 
+        }
     }
     
     
-    suspend fun downloadDiscountFile(type: String,body: DownloadFileJob)
+    suspend fun downloadDiscountFile(type: String,body: DownloadFileJob, headers: Map<String, String> = emptyMap())
     : Response<FileJobResponse>? {
-        
+
         return if (config.oauthClient.isAccessTokenValid()) {
             discountApiList?.downloadDiscountFile(
-        companyId = config.companyId, type = type, body = body)
+        companyId = config.companyId,type = type, body = body,headers = headers)
         } else {
             null
-        } 
+        }
     }
     
     
-    suspend fun getValidationJob(id: String)
+    suspend fun getValidationJob(id: String, headers: Map<String, String> = emptyMap())
     : Response<FileJobResponse>? {
-        
+
         return if (config.oauthClient.isAccessTokenValid()) {
             discountApiList?.getValidationJob(
-        companyId = config.companyId, id = id )
+        companyId = config.companyId,id = id, headers = headers)
         } else {
             null
-        } 
+        }
     }
     
     
-    suspend fun cancelValidationJob(id: String)
+    suspend fun cancelValidationJob(id: String, headers: Map<String, String> = emptyMap())
     : Response<CancelJobResponse>? {
-        
+
         return if (config.oauthClient.isAccessTokenValid()) {
             discountApiList?.cancelValidationJob(
-        companyId = config.companyId, id = id )
+        companyId = config.companyId,id = id, headers = headers)
         } else {
             null
-        } 
+        }
     }
     
     
-    suspend fun getDownloadJob(id: String)
+    suspend fun getDownloadJob(id: String, headers: Map<String, String> = emptyMap())
     : Response<FileJobResponse>? {
-        
+
         return if (config.oauthClient.isAccessTokenValid()) {
             discountApiList?.getDownloadJob(
-        companyId = config.companyId, id = id )
+        companyId = config.companyId,id = id, headers = headers)
         } else {
             null
-        } 
+        }
     }
     
     
-    suspend fun cancelDownloadJob(id: String)
+    suspend fun cancelDownloadJob(id: String, headers: Map<String, String> = emptyMap())
     : Response<CancelJobResponse>? {
-        
+
         return if (config.oauthClient.isAccessTokenValid()) {
             discountApiList?.cancelDownloadJob(
-        companyId = config.companyId, id = id )
+        companyId = config.companyId,id = id, headers = headers)
         } else {
             null
-        } 
+        }
     }
     
 

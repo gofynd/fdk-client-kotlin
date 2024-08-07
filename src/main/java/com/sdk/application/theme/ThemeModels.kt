@@ -330,6 +330,9 @@ data class AvailablePageSchemaSections(
     @SerializedName("label")
     var label: String?=null,
     
+    @SerializedName("source")
+    var source: String?=null,
+    
     @SerializedName("props")
     var props: @RawValue HashMap<String,Any>?=null,
     
@@ -343,6 +346,8 @@ data class AvailablePageSchemaSections(
     var predicate: AvailablePagePredicate?=null
     
 ): Parcelable {
+    
+    
     
     
     
@@ -1808,10 +1813,10 @@ data class SectionItem(
     
     
     @SerializedName("props")
-    var props: @RawValue ArrayList<Any>?=null,
+    var props: @RawValue ArrayList<HashMap<String,Any>>?=null,
     
     @SerializedName("blocks")
-    var blocks: @RawValue ArrayList<Any>?=null,
+    var blocks: @RawValue ArrayList<HashMap<String,Any>>?=null,
     
     @SerializedName("name")
     var name: String?=null,

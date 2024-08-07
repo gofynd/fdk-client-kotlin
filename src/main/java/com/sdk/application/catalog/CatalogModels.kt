@@ -1422,6 +1422,9 @@ data class ProductVariantResponse(
     @SerializedName("header")
     var header: String?=null,
     
+    @SerializedName("group_id")
+    var groupId: String?=null,
+    
     @SerializedName("items")
     var items: ArrayList<ProductVariantItemResponse>?=null,
     
@@ -1432,6 +1435,8 @@ data class ProductVariantResponse(
     var logo: String?=null
     
 ): Parcelable {
+    
+    
     
     
     

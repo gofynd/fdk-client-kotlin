@@ -43,6 +43,9 @@ import android.net.Uri
         @SerializedName("collections")
         collections("collections"), 
         
+        @SerializedName("custom")
+        custom("custom"), 
+        
         @SerializedName("contact-us")
         contactUs("contact-us"), 
         

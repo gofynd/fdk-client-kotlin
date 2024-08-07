@@ -10,7 +10,7 @@ import retrofit2.Response
 
 
 class WebhookDataManagerClass(val config: PublicConfig, val unauthorizedAction: ((url: String, responseCode: Int) -> Unit)? = null) : BaseRepository() {
-    
+
     private val webhookApiList by lazy {
         generatewebhookApiList()
     }
@@ -36,7 +36,7 @@ class WebhookDataManagerClass(val config: PublicConfig, val unauthorizedAction: 
                 _relativeUrls[key] = value
             }
     }
-    
+
 
     private fun generatewebhookApiList(): WebhookApiList? {
         val interceptorMap = HashMap<String, List<Interceptor>>()
@@ -63,38 +63,38 @@ class WebhookDataManagerClass(val config: PublicConfig, val unauthorizedAction: 
         return retrofitHttpClient?.initializeRestClient(WebhookApiList::class.java) as? WebhookApiList
     }
     
-    suspend fun fetchAllWebhookEvents(): Response<EventConfigResponse>? {
-        var fullUrl : String? = _relativeUrls["fetchAllWebhookEvents"] 
+    suspend fun fetchAllWebhookEvents( headers: Map<String, String> = emptyMap()): Response<EventConfigResponse>? {
+        var fullUrl : String? = _relativeUrls["fetchAllWebhookEvents"]
         
-        return webhookApiList?.fetchAllWebhookEvents(fullUrl  )}
+        return webhookApiList?.fetchAllWebhookEvents(fullUrl, headers = headers)}
 
     
     
-    suspend fun queryWebhookEventDetails(body: ArrayList<EventConfigBase>): Response<EventConfigResponse>? {
-        var fullUrl : String? = _relativeUrls["queryWebhookEventDetails"] 
+    suspend fun queryWebhookEventDetails(body: ArrayList<EventConfigBase>, headers: Map<String, String> = emptyMap()): Response<EventConfigResponse>? {
+        var fullUrl : String? = _relativeUrls["queryWebhookEventDetails"]
         
-        return webhookApiList?.queryWebhookEventDetails(fullUrl  ,body = body)}
+        return webhookApiList?.queryWebhookEventDetails(fullUrl, body = body,headers = headers)}
 
     
     
-    suspend fun notifyDepricatedEvent(): Response<EventNotifier>? {
-        var fullUrl : String? = _relativeUrls["notifyDepricatedEvent"] 
+    suspend fun notifyDepricatedEvent( headers: Map<String, String> = emptyMap()): Response<EventNotifier>? {
+        var fullUrl : String? = _relativeUrls["notifyDepricatedEvent"]
         
-        return webhookApiList?.notifyDepricatedEvent(fullUrl  )}
+        return webhookApiList?.notifyDepricatedEvent(fullUrl, headers = headers)}
 
     
     
-    suspend fun testHandlerTransformation(body: TransformEventRequest): Response<TransformEventResponse>? {
-        var fullUrl : String? = _relativeUrls["testHandlerTransformation"] 
+    suspend fun testHandlerTransformation(body: TransformEventRequest, headers: Map<String, String> = emptyMap()): Response<TransformEventResponse>? {
+        var fullUrl : String? = _relativeUrls["testHandlerTransformation"]
         
-        return webhookApiList?.testHandlerTransformation(fullUrl  ,body = body)}
+        return webhookApiList?.testHandlerTransformation(fullUrl, body = body,headers = headers)}
 
     
     
-    suspend fun validateSchema(body: ValidateSchemaRequest): Response<ValidateSchemaResponse>? {
-        var fullUrl : String? = _relativeUrls["validateSchema"] 
+    suspend fun validateSchema(body: ValidateSchemaRequest, headers: Map<String, String> = emptyMap()): Response<ValidateSchemaResponse>? {
+        var fullUrl : String? = _relativeUrls["validateSchema"]
         
-        return webhookApiList?.validateSchema(fullUrl  ,body = body)}
+        return webhookApiList?.validateSchema(fullUrl, body = body,headers = headers)}
 
     
     

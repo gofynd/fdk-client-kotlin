@@ -10,7 +10,7 @@ import retrofit2.Response
 
 
 class LeadDataManagerClass(val config: ApplicationConfig, val unauthorizedAction: ((url: String, responseCode: Int) -> Unit)? = null) : BaseRepository() {
-    
+
     private val leadApiList by lazy {
         generateleadApiList()
     }
@@ -29,10 +29,6 @@ class LeadDataManagerClass(val config: ApplicationConfig, val unauthorizedAction
             
                     _relativeUrls["submitCustomForm"] = "/service/application/lead/v1.0/form/{slug}/submit".substring(1)
             
-                    _relativeUrls["getParticipantsInsideVideoRoom"] = "/service/application/lead/v1.0/video/room/{unique_name}/participants".substring(1)
-            
-                    _relativeUrls["getTokenForVideoRoom"] = "/service/application/lead/v1.0/video/room/{unique_name}/token".substring(1)
-            
     }
 
     public fun update(updatedUrlMap : HashMap<String,String>){
@@ -40,7 +36,7 @@ class LeadDataManagerClass(val config: ApplicationConfig, val unauthorizedAction
                 _relativeUrls[key] = value
             }
     }
-    
+
 
     private fun generateleadApiList(): LeadApiList? {
         val interceptorMap = HashMap<String, List<Interceptor>>()
@@ -68,64 +64,46 @@ class LeadDataManagerClass(val config: ApplicationConfig, val unauthorizedAction
         return retrofitHttpClient?.initializeRestClient(LeadApiList::class.java) as? LeadApiList
     }
     
-    suspend fun getTicket(id: String): Response<Ticket>? {
-        var fullUrl : String? = _relativeUrls["getTicket"] 
+    suspend fun getTicket(id: String, headers: Map<String, String> = emptyMap()): Response<Ticket>? {
+        var fullUrl : String? = _relativeUrls["getTicket"]
         
         fullUrl = fullUrl?.replace("{" + "id" +"}",id.toString())
         
-        return leadApiList?.getTicket(fullUrl   )}
+        return leadApiList?.getTicket(fullUrl,  headers = headers)}
 
     
     
-    suspend fun createHistory(id: String, body: TicketHistoryPayload): Response<TicketHistory>? {
-        var fullUrl : String? = _relativeUrls["createHistory"] 
+    suspend fun createHistory(id: String,body: TicketHistoryPayload, headers: Map<String, String> = emptyMap()): Response<TicketHistory>? {
+        var fullUrl : String? = _relativeUrls["createHistory"]
         
         fullUrl = fullUrl?.replace("{" + "id" +"}",id.toString())
         
-        return leadApiList?.createHistory(fullUrl   ,body = body)}
+        return leadApiList?.createHistory(fullUrl,  body = body,headers = headers)}
 
     
     
-    suspend fun createTicket(body: AddTicketPayload): Response<Ticket>? {
-        var fullUrl : String? = _relativeUrls["createTicket"] 
+    suspend fun createTicket(body: AddTicketPayload, headers: Map<String, String> = emptyMap()): Response<Ticket>? {
+        var fullUrl : String? = _relativeUrls["createTicket"]
         
-        return leadApiList?.createTicket(fullUrl  ,body = body)}
+        return leadApiList?.createTicket(fullUrl, body = body,headers = headers)}
 
     
     
-    suspend fun getCustomForm(slug: String): Response<CustomForm>? {
-        var fullUrl : String? = _relativeUrls["getCustomForm"] 
+    suspend fun getCustomForm(slug: String, headers: Map<String, String> = emptyMap()): Response<CustomForm>? {
+        var fullUrl : String? = _relativeUrls["getCustomForm"]
         
         fullUrl = fullUrl?.replace("{" + "slug" +"}",slug.toString())
         
-        return leadApiList?.getCustomForm(fullUrl   )}
+        return leadApiList?.getCustomForm(fullUrl,  headers = headers)}
 
     
     
-    suspend fun submitCustomForm(slug: String, body: CustomFormSubmissionPayload): Response<SubmitCustomFormResponse>? {
-        var fullUrl : String? = _relativeUrls["submitCustomForm"] 
+    suspend fun submitCustomForm(slug: String,body: CustomFormSubmissionPayload, headers: Map<String, String> = emptyMap()): Response<SubmitCustomFormResponse>? {
+        var fullUrl : String? = _relativeUrls["submitCustomForm"]
         
         fullUrl = fullUrl?.replace("{" + "slug" +"}",slug.toString())
         
-        return leadApiList?.submitCustomForm(fullUrl   ,body = body)}
-
-    
-    
-    suspend fun getParticipantsInsideVideoRoom(uniqueName: String): Response<GetParticipantsInsideVideoRoomResponse>? {
-        var fullUrl : String? = _relativeUrls["getParticipantsInsideVideoRoom"] 
-        
-        fullUrl = fullUrl?.replace("{" + "unique_name" +"}",uniqueName.toString())
-        
-        return leadApiList?.getParticipantsInsideVideoRoom(fullUrl   )}
-
-    
-    
-    suspend fun getTokenForVideoRoom(uniqueName: String): Response<GetTokenForVideoRoomResponse>? {
-        var fullUrl : String? = _relativeUrls["getTokenForVideoRoom"] 
-        
-        fullUrl = fullUrl?.replace("{" + "unique_name" +"}",uniqueName.toString())
-        
-        return leadApiList?.getTokenForVideoRoom(fullUrl   )}
+        return leadApiList?.submitCustomForm(fullUrl,  body = body,headers = headers)}
 
     
     

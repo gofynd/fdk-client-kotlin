@@ -11,12 +11,12 @@ import com.sdk.platform.*
 
 
 
-class AuditTrailDataManagerClass(val config: PlatformConfig, val unauthorizedAction: ((url: String, responseCode: Int) -> Unit)? = null) : BaseRepository() {        
-       
+class AuditTrailDataManagerClass(val config: PlatformConfig, val unauthorizedAction: ((url: String, responseCode: Int) -> Unit)? = null) : BaseRepository() {
+
     private val auditTrailApiList by lazy {
         generateauditTrailApiList()
     }
-    
+
     private fun generateauditTrailApiList(): AuditTrailApiList? {
         val interceptorMap = HashMap<String, List<Interceptor>>()
         val headerInterceptor = AccessTokenInterceptor(platformConfig = config)
@@ -44,51 +44,51 @@ class AuditTrailDataManagerClass(val config: PlatformConfig, val unauthorizedAct
     }
     
     
-    suspend fun getAuditLogs(qs: String, limit: Int?=null, sort: HashMap<String,Any>?=null)
+    suspend fun getAuditLogs(qs: String,limit: Int?=null,sort: HashMap<String,Any>?=null, headers: Map<String, String> = emptyMap())
     : Response<LogSchemaResponse>? {
-        
+
         return if (config.oauthClient.isAccessTokenValid()) {
             auditTrailApiList?.getAuditLogs(
-        companyId = config.companyId, qs = qs, limit = limit, sort = sort )
+        companyId = config.companyId,qs = qs,limit = limit,sort = sort, headers = headers)
         } else {
             null
-        } 
+        }
     }
     
     
-    suspend fun createAuditLog(body: RequestBodyAuditLog)
+    suspend fun createAuditLog(body: RequestBodyAuditLog, headers: Map<String, String> = emptyMap())
     : Response<CreateLogResponse>? {
-        
+
         return if (config.oauthClient.isAccessTokenValid()) {
             auditTrailApiList?.createAuditLog(
-        companyId = config.companyId, body = body)
+        companyId = config.companyId, body = body,headers = headers)
         } else {
             null
-        } 
+        }
     }
     
     
-    suspend fun getAuditLog(id: String)
+    suspend fun getAuditLog(id: String, headers: Map<String, String> = emptyMap())
     : Response<LogSchemaResponse>? {
-        
+
         return if (config.oauthClient.isAccessTokenValid()) {
             auditTrailApiList?.getAuditLog(
-        companyId = config.companyId, id = id )
+        companyId = config.companyId,id = id, headers = headers)
         } else {
             null
-        } 
+        }
     }
     
     
-    suspend fun getEntityTypes()
+    suspend fun getEntityTypes( headers: Map<String, String> = emptyMap())
     : Response<EntityTypesResponse>? {
-        
+
         return if (config.oauthClient.isAccessTokenValid()) {
             auditTrailApiList?.getEntityTypes(
-        companyId = config.companyId )
+        companyId = config.companyId, headers = headers)
         } else {
             null
-        } 
+        }
     }
     
 

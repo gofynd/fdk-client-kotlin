@@ -10,7 +10,7 @@ import retrofit2.Response
 
 
 class PartnerDataManagerClass(val config: PublicConfig, val unauthorizedAction: ((url: String, responseCode: Int) -> Unit)? = null) : BaseRepository() {
-    
+
     private val partnerApiList by lazy {
         generatepartnerApiList()
     }
@@ -28,7 +28,7 @@ class PartnerDataManagerClass(val config: PublicConfig, val unauthorizedAction: 
                 _relativeUrls[key] = value
             }
     }
-    
+
 
     private fun generatepartnerApiList(): PartnerApiList? {
         val interceptorMap = HashMap<String, List<Interceptor>>()
@@ -55,12 +55,12 @@ class PartnerDataManagerClass(val config: PublicConfig, val unauthorizedAction: 
         return retrofitHttpClient?.initializeRestClient(PartnerApiList::class.java) as? PartnerApiList
     }
     
-    suspend fun getPanelExtensionDetails(slug: String): Response<ExtensionUsingSlug>? {
-        var fullUrl : String? = _relativeUrls["getPanelExtensionDetails"] 
+    suspend fun getPanelExtensionDetails(slug: String, headers: Map<String, String> = emptyMap()): Response<ExtensionUsingSlug>? {
+        var fullUrl : String? = _relativeUrls["getPanelExtensionDetails"]
         
         fullUrl = fullUrl?.replace("{" + "slug" +"}",slug.toString())
         
-        return partnerApiList?.getPanelExtensionDetails(fullUrl   )}
+        return partnerApiList?.getPanelExtensionDetails(fullUrl,  headers = headers)}
 
     
     

@@ -527,10 +527,15 @@ data class ListViewItems(
     @SerializedName("company_id")
     var companyId: Int?=null,
     
+    @SerializedName("store_ids")
+    var storeIds: ArrayList<Int>?=null,
+    
     @SerializedName("channels")
     var channels: ArrayList<ListViewChannels>?=null
     
 ): Parcelable {
+    
+    
     
     
     
@@ -2770,6 +2775,53 @@ data class CourierAccount(
 
              
 /*
+    Model: CourierAccountRequestBody
+*/
+@Parcelize
+data class CourierAccountRequestBody(
+    
+    
+    
+    @SerializedName("extension_id")
+    var extensionId: String?=null,
+    
+    @SerializedName("account_id")
+    var accountId: String?=null,
+    
+    @SerializedName("scheme_id")
+    var schemeId: String?=null,
+    
+    @SerializedName("is_self_ship")
+    var isSelfShip: Boolean?=null,
+    
+    @SerializedName("stage")
+    var stage: String?=null,
+    
+    @SerializedName("is_own_account")
+    var isOwnAccount: Boolean?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
     Model: ErrorResponse
 */
 @Parcelize
@@ -2881,6 +2933,120 @@ data class Page(
 
              
 /*
+    Model: CourierPartnerRuleCPListResponse
+*/
+@Parcelize
+data class CourierPartnerRuleCPListResponse(
+    
+    
+    
+    @SerializedName("account_id")
+    var accountId: String?=null,
+    
+    @SerializedName("extension_id")
+    var extensionId: String?=null,
+    
+    @SerializedName("is_self_ship")
+    var isSelfShip: Boolean?=null,
+    
+    @SerializedName("scheme_rules")
+    var schemeRules: @RawValue HashMap<String,Any>?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: CourierPartnerRuleResponse
+*/
+@Parcelize
+data class CourierPartnerRuleResponse(
+    
+    
+    
+    @SerializedName("is_active")
+    var isActive: Boolean?=null,
+    
+    @SerializedName("application_id")
+    var applicationId: String?=null,
+    
+    @SerializedName("company_id")
+    var companyId: Int?=null,
+    
+    @SerializedName("conditions")
+    var conditions: CourierPartnerRuleConditions?=null,
+    
+    @SerializedName("sort")
+    var sort: ArrayList<String>?=null,
+    
+    @SerializedName("created_by")
+    var createdBy: @RawValue HashMap<String,Any>?=null,
+    
+    @SerializedName("id")
+    var id: String?=null,
+    
+    @SerializedName("modified_by")
+    var modifiedBy: @RawValue HashMap<String,Any>?=null,
+    
+    @SerializedName("modified_on")
+    var modifiedOn: String?=null,
+    
+    @SerializedName("name")
+    var name: String?=null,
+    
+    @SerializedName("type")
+    var type: String?=null,
+    
+    @SerializedName("cp_list")
+    var cpList: ArrayList<CourierPartnerRuleCPListResponse>?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
     Model: CourierPartnerList
 */
 @Parcelize
@@ -2892,19 +3058,9 @@ data class CourierPartnerList(
     var extensionId: String?=null,
     
     @SerializedName("account_id")
-    var accountId: String?=null,
-    
-    @SerializedName("name")
-    var name: String?=null,
-    
-    @SerializedName("is_self_ship")
-    var isSelfShip: Boolean?=null
+    var accountId: String?=null
     
 ): Parcelable {
-    
-    
-    
-    
     
     
     
@@ -3210,7 +3366,7 @@ data class CourierPartnerRulesListResponse(
     
     
     @SerializedName("items")
-    var items: ArrayList<CourierPartnerRule>?=null,
+    var items: ArrayList<CourierPartnerRuleResponse>?=null,
     
     @SerializedName("page")
     var page: Page?=null

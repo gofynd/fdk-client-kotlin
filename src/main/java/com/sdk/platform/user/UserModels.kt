@@ -1182,15 +1182,10 @@ data class CreateUserSessionRequestSchema(
     @SerializedName("domain")
     var domain: String?=null,
     
-    @SerializedName("max_age")
-    var maxAge: Double?=null,
-    
     @SerializedName("user_id")
     var userId: String?=null
     
 ): Parcelable {
-    
-    
     
     
     

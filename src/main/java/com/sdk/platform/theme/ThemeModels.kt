@@ -14,6 +14,169 @@ import com.google.gson.annotations.SerializedName
 
              
 /*
+    Model: GetExtensionSectionRes
+*/
+@Parcelize
+data class GetExtensionSectionRes(
+    
+    
+    
+    @SerializedName("extension_id")
+    var extensionId: String?=null,
+    
+    @SerializedName("bundle_name")
+    var bundleName: String?=null,
+    
+    @SerializedName("organization_id")
+    var organizationId: String?=null,
+    
+    @SerializedName("sections")
+    var sections: ArrayList<ExtensionSection>?=null,
+    
+    @SerializedName("assets")
+    var assets: AssetsExtension?=null,
+    
+    @SerializedName("status")
+    var status: String?=null,
+    
+    @SerializedName("type")
+    var type: String?=null,
+    
+    @SerializedName("created_at")
+    var createdAt: String?=null,
+    
+    @SerializedName("updated_at")
+    var updatedAt: String?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: ExtensionSection
+*/
+@Parcelize
+data class ExtensionSection(
+    
+    
+    
+    @SerializedName("label")
+    var label: String?=null,
+    
+    @SerializedName("name")
+    var name: String?=null,
+    
+    @SerializedName("props")
+    var props: ArrayList<PropExtension>?=null,
+    
+    @SerializedName("blocks")
+    var blocks: @RawValue ArrayList<HashMap<String,Any>>?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: PropExtension
+*/
+@Parcelize
+data class PropExtension(
+    
+    
+    
+    @SerializedName("id")
+    var id: String?=null,
+    
+    @SerializedName("label")
+    var label: String?=null,
+    
+    @SerializedName("type")
+    var type: String?=null,
+    
+    @SerializedName("info")
+    var info: String?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: AssetsExtension
+*/
+@Parcelize
+data class AssetsExtension(
+    
+    
+    
+    @SerializedName("js")
+    var js: String?=null,
+    
+    @SerializedName("css")
+    var css: String?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
     Model: ThemeReq
 */
 @Parcelize

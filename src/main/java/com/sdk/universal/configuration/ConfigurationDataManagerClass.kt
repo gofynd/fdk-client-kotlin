@@ -10,7 +10,7 @@ import retrofit2.Response
 
 
 class ConfigurationDataManagerClass(val config: PublicConfig, val unauthorizedAction: ((url: String, responseCode: Int) -> Unit)? = null) : BaseRepository() {
-    
+
     private val configurationApiList by lazy {
         generateconfigurationApiList()
     }
@@ -30,7 +30,7 @@ class ConfigurationDataManagerClass(val config: PublicConfig, val unauthorizedAc
                 _relativeUrls[key] = value
             }
     }
-    
+
 
     private fun generateconfigurationApiList(): ConfigurationApiList? {
         val interceptorMap = HashMap<String, List<Interceptor>>()
@@ -57,17 +57,17 @@ class ConfigurationDataManagerClass(val config: PublicConfig, val unauthorizedAc
         return retrofitHttpClient?.initializeRestClient(ConfigurationApiList::class.java) as? ConfigurationApiList
     }
     
-    suspend fun searchApplication(authorization: String?=null, query: String?=null): Response<ApplicationResponse>? {
-        var fullUrl : String? = _relativeUrls["searchApplication"] 
+    suspend fun searchApplication(authorization: String?=null,query: String?=null, headers: Map<String, String> = emptyMap()): Response<ApplicationResponse>? {
+        var fullUrl : String? = _relativeUrls["searchApplication"]
         
-        return configurationApiList?.searchApplication(fullUrl    ,  authorization = authorization,    query = query)}
+        return configurationApiList?.searchApplication(fullUrl,   authorization = authorization,  query = query,headers = headers)}
 
     
     
-    suspend fun getLocations(locationType: String?=null, id: String?=null): Response<Locations>? {
-        var fullUrl : String? = _relativeUrls["getLocations"] 
+    suspend fun getLocations(locationType: String?=null,id: String?=null, headers: Map<String, String> = emptyMap()): Response<Locations>? {
+        var fullUrl : String? = _relativeUrls["getLocations"]
         
-        return configurationApiList?.getLocations(fullUrl    ,  locationType = locationType,    id = id)}
+        return configurationApiList?.getLocations(fullUrl,   locationType = locationType,  id = id,headers = headers)}
 
     
     

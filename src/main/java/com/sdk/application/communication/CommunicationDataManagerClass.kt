@@ -10,7 +10,7 @@ import retrofit2.Response
 
 
 class CommunicationDataManagerClass(val config: ApplicationConfig, val unauthorizedAction: ((url: String, responseCode: Int) -> Unit)? = null) : BaseRepository() {
-    
+
     private val communicationApiList by lazy {
         generatecommunicationApiList()
     }
@@ -32,7 +32,7 @@ class CommunicationDataManagerClass(val config: ApplicationConfig, val unauthori
                 _relativeUrls[key] = value
             }
     }
-    
+
 
     private fun generatecommunicationApiList(): CommunicationApiList? {
         val interceptorMap = HashMap<String, List<Interceptor>>()
@@ -60,24 +60,24 @@ class CommunicationDataManagerClass(val config: ApplicationConfig, val unauthori
         return retrofitHttpClient?.initializeRestClient(CommunicationApiList::class.java) as? CommunicationApiList
     }
     
-    suspend fun getCommunicationConsent(): Response<CommunicationConsent>? {
-        var fullUrl : String? = _relativeUrls["getCommunicationConsent"] 
+    suspend fun getCommunicationConsent( headers: Map<String, String> = emptyMap()): Response<CommunicationConsent>? {
+        var fullUrl : String? = _relativeUrls["getCommunicationConsent"]
         
-        return communicationApiList?.getCommunicationConsent(fullUrl  )}
+        return communicationApiList?.getCommunicationConsent(fullUrl, headers = headers)}
 
     
     
-    suspend fun upsertCommunicationConsent(body: CommunicationConsentReq): Response<CommunicationConsentRes>? {
-        var fullUrl : String? = _relativeUrls["upsertCommunicationConsent"] 
+    suspend fun upsertCommunicationConsent(body: CommunicationConsentReq, headers: Map<String, String> = emptyMap()): Response<CommunicationConsentRes>? {
+        var fullUrl : String? = _relativeUrls["upsertCommunicationConsent"]
         
-        return communicationApiList?.upsertCommunicationConsent(fullUrl  ,body = body)}
+        return communicationApiList?.upsertCommunicationConsent(fullUrl, body = body,headers = headers)}
 
     
     
-    suspend fun upsertAppPushtoken(body: PushtokenReq): Response<PushtokenRes>? {
-        var fullUrl : String? = _relativeUrls["upsertAppPushtoken"] 
+    suspend fun upsertAppPushtoken(body: PushtokenReq, headers: Map<String, String> = emptyMap()): Response<PushtokenRes>? {
+        var fullUrl : String? = _relativeUrls["upsertAppPushtoken"]
         
-        return communicationApiList?.upsertAppPushtoken(fullUrl  ,body = body)}
+        return communicationApiList?.upsertAppPushtoken(fullUrl, body = body,headers = headers)}
 
     
     

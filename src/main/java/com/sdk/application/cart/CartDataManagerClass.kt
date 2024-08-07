@@ -10,7 +10,7 @@ import retrofit2.Response
 
 
 class CartDataManagerClass(val config: ApplicationConfig, val unauthorizedAction: ((url: String, responseCode: Int) -> Unit)? = null) : BaseRepository() {
-    
+
     private val cartApiList by lazy {
         generatecartApiList()
     }
@@ -73,6 +73,8 @@ class CartDataManagerClass(val config: ApplicationConfig, val unauthorizedAction
             
                     _relativeUrls["getLadderOffers"] = "/service/application/cart/v1.0/available-ladder-prices".substring(1)
             
+                    _relativeUrls["getPromotionPaymentOffers"] = "/service/application/cart/v1.0/available-payment-offers".substring(1)
+            
                     _relativeUrls["checkoutCartV2"] = "/service/application/cart/v2.0/checkout".substring(1)
             
     }
@@ -82,7 +84,7 @@ class CartDataManagerClass(val config: ApplicationConfig, val unauthorizedAction
                 _relativeUrls[key] = value
             }
     }
-    
+
 
     private fun generatecartApiList(): CartApiList? {
         val interceptorMap = HashMap<String, List<Interceptor>>()
@@ -110,211 +112,218 @@ class CartDataManagerClass(val config: ApplicationConfig, val unauthorizedAction
         return retrofitHttpClient?.initializeRestClient(CartApiList::class.java) as? CartApiList
     }
     
-    suspend fun getCart(id: String?=null, i: Boolean?=null, b: Boolean?=null, c: Boolean?=null, assignCardId: Int?=null, areaCode: String?=null, buyNow: Boolean?=null): Response<CartDetailResponse>? {
-        var fullUrl : String? = _relativeUrls["getCart"] 
+    suspend fun getCart(id: String?=null,i: Boolean?=null,b: Boolean?=null,c: Boolean?=null,assignCardId: Int?=null,areaCode: String?=null,buyNow: Boolean?=null,orderType: String?=null, headers: Map<String, String> = emptyMap()): Response<CartDetailResponse>? {
+        var fullUrl : String? = _relativeUrls["getCart"]
         
-        return cartApiList?.getCart(fullUrl    ,  id = id,    i = i,    b = b,    c = c,    assignCardId = assignCardId,    areaCode = areaCode,    buyNow = buyNow)}
+        return cartApiList?.getCart(fullUrl,   id = id,  i = i,  b = b,  c = c,  assignCardId = assignCardId,  areaCode = areaCode,  buyNow = buyNow,  orderType = orderType,headers = headers)}
 
     
     
-    suspend fun getCartLastModified(id: String?=null): Response<Void>? {
-        var fullUrl : String? = _relativeUrls["getCartLastModified"] 
+    suspend fun getCartLastModified(id: String?=null, headers: Map<String, String> = emptyMap()): Response<Void>? {
+        var fullUrl : String? = _relativeUrls["getCartLastModified"]
         
-        return cartApiList?.getCartLastModified(fullUrl    ,  id = id)}
+        return cartApiList?.getCartLastModified(fullUrl,   id = id,headers = headers)}
 
     
     
-    suspend fun addItems(i: Boolean?=null, b: Boolean?=null, areaCode: String?=null, buyNow: Boolean?=null, id: String?=null, body: AddCartRequest): Response<AddCartDetailResponse>? {
-        var fullUrl : String? = _relativeUrls["addItems"] 
+    suspend fun addItems(i: Boolean?=null,b: Boolean?=null,areaCode: String?=null,buyNow: Boolean?=null,id: String?=null,orderType: String?=null,body: AddCartRequest, headers: Map<String, String> = emptyMap()): Response<AddCartDetailResponse>? {
+        var fullUrl : String? = _relativeUrls["addItems"]
         
-        return cartApiList?.addItems(fullUrl    ,  i = i,    b = b,    areaCode = areaCode,    buyNow = buyNow,    id = id, body = body)}
+        return cartApiList?.addItems(fullUrl,   i = i,  b = b,  areaCode = areaCode,  buyNow = buyNow,  id = id,  orderType = orderType,body = body,headers = headers)}
 
     
     
-    suspend fun updateCart(id: String?=null, i: Boolean?=null, b: Boolean?=null, areaCode: String?=null, buyNow: Boolean?=null, cartType: String?=null, body: UpdateCartRequest): Response<UpdateCartDetailResponse>? {
-        var fullUrl : String? = _relativeUrls["updateCart"] 
+    suspend fun updateCart(id: String?=null,i: Boolean?=null,b: Boolean?=null,areaCode: String?=null,buyNow: Boolean?=null,cartType: String?=null,orderType: String?=null,body: UpdateCartRequest, headers: Map<String, String> = emptyMap()): Response<UpdateCartDetailResponse>? {
+        var fullUrl : String? = _relativeUrls["updateCart"]
         
-        return cartApiList?.updateCart(fullUrl    ,  id = id,    i = i,    b = b,    areaCode = areaCode,    buyNow = buyNow,    cartType = cartType, body = body)}
+        return cartApiList?.updateCart(fullUrl,   id = id,  i = i,  b = b,  areaCode = areaCode,  buyNow = buyNow,  cartType = cartType,  orderType = orderType,body = body,headers = headers)}
 
     
     
-    suspend fun deleteCart(id: String?=null): Response<DeleteCartDetailResponse>? {
-        var fullUrl : String? = _relativeUrls["deleteCart"] 
+    suspend fun deleteCart(id: String?=null, headers: Map<String, String> = emptyMap()): Response<DeleteCartDetailResponse>? {
+        var fullUrl : String? = _relativeUrls["deleteCart"]
         
-        return cartApiList?.deleteCart(fullUrl    ,  id = id)}
+        return cartApiList?.deleteCart(fullUrl,   id = id,headers = headers)}
 
     
     
-    suspend fun getItemCount(id: String?=null, buyNow: Boolean?=null): Response<CartItemCountResponse>? {
-        var fullUrl : String? = _relativeUrls["getItemCount"] 
+    suspend fun getItemCount(id: String?=null,buyNow: Boolean?=null, headers: Map<String, String> = emptyMap()): Response<CartItemCountResponse>? {
+        var fullUrl : String? = _relativeUrls["getItemCount"]
         
-        return cartApiList?.getItemCount(fullUrl    ,  id = id,    buyNow = buyNow)}
+        return cartApiList?.getItemCount(fullUrl,   id = id,  buyNow = buyNow,headers = headers)}
 
     
     
-    suspend fun getCoupons(id: String?=null, buyNow: Boolean?=null, slug: String?=null, storeId: String?=null): Response<GetCouponResponse>? {
-        var fullUrl : String? = _relativeUrls["getCoupons"] 
+    suspend fun getCoupons(id: String?=null,buyNow: Boolean?=null,slug: String?=null,storeId: String?=null, headers: Map<String, String> = emptyMap()): Response<GetCouponResponse>? {
+        var fullUrl : String? = _relativeUrls["getCoupons"]
         
-        return cartApiList?.getCoupons(fullUrl    ,  id = id,    buyNow = buyNow,    slug = slug,    storeId = storeId)}
+        return cartApiList?.getCoupons(fullUrl,   id = id,  buyNow = buyNow,  slug = slug,  storeId = storeId,headers = headers)}
 
     
     
-    suspend fun applyCoupon(i: Boolean?=null, b: Boolean?=null, p: Boolean?=null, id: String?=null, buyNow: Boolean?=null, cartType: String?=null, body: ApplyCouponRequest): Response<CartDetailResponse>? {
-        var fullUrl : String? = _relativeUrls["applyCoupon"] 
+    suspend fun applyCoupon(i: Boolean?=null,b: Boolean?=null,p: Boolean?=null,id: String?=null,buyNow: Boolean?=null,cartType: String?=null,body: ApplyCouponRequest, headers: Map<String, String> = emptyMap()): Response<CartDetailResponse>? {
+        var fullUrl : String? = _relativeUrls["applyCoupon"]
         
-        return cartApiList?.applyCoupon(fullUrl    ,  i = i,    b = b,    p = p,    id = id,    buyNow = buyNow,    cartType = cartType, body = body)}
+        return cartApiList?.applyCoupon(fullUrl,   i = i,  b = b,  p = p,  id = id,  buyNow = buyNow,  cartType = cartType,body = body,headers = headers)}
 
     
     
-    suspend fun removeCoupon(id: String?=null, buyNow: Boolean?=null): Response<CartDetailResponse>? {
-        var fullUrl : String? = _relativeUrls["removeCoupon"] 
+    suspend fun removeCoupon(id: String?=null,buyNow: Boolean?=null, headers: Map<String, String> = emptyMap()): Response<CartDetailResponse>? {
+        var fullUrl : String? = _relativeUrls["removeCoupon"]
         
-        return cartApiList?.removeCoupon(fullUrl    ,  id = id,    buyNow = buyNow)}
+        return cartApiList?.removeCoupon(fullUrl,   id = id,  buyNow = buyNow,headers = headers)}
 
     
     
-    suspend fun getBulkDiscountOffers(itemId: Int?=null, articleId: String?=null, uid: Int?=null, slug: String?=null): Response<BulkPriceResponse>? {
-        var fullUrl : String? = _relativeUrls["getBulkDiscountOffers"] 
+    suspend fun getBulkDiscountOffers(itemId: Int?=null,articleId: String?=null,uid: Int?=null,slug: String?=null, headers: Map<String, String> = emptyMap()): Response<BulkPriceResponse>? {
+        var fullUrl : String? = _relativeUrls["getBulkDiscountOffers"]
         
-        return cartApiList?.getBulkDiscountOffers(fullUrl    ,  itemId = itemId,    articleId = articleId,    uid = uid,    slug = slug)}
+        return cartApiList?.getBulkDiscountOffers(fullUrl,   itemId = itemId,  articleId = articleId,  uid = uid,  slug = slug,headers = headers)}
 
     
     
-    suspend fun applyRewardPoints(id: String?=null, i: Boolean?=null, b: Boolean?=null, buyNow: Boolean?=null, body: RewardPointRequest): Response<CartDetailResponse>? {
-        var fullUrl : String? = _relativeUrls["applyRewardPoints"] 
+    suspend fun applyRewardPoints(id: String?=null,i: Boolean?=null,b: Boolean?=null,buyNow: Boolean?=null,body: RewardPointRequest, headers: Map<String, String> = emptyMap()): Response<CartDetailResponse>? {
+        var fullUrl : String? = _relativeUrls["applyRewardPoints"]
         
-        return cartApiList?.applyRewardPoints(fullUrl    ,  id = id,    i = i,    b = b,    buyNow = buyNow, body = body)}
+        return cartApiList?.applyRewardPoints(fullUrl,   id = id,  i = i,  b = b,  buyNow = buyNow,body = body,headers = headers)}
 
     
     
-    suspend fun getAddresses(cartId: String?=null, buyNow: Boolean?=null, mobileNo: String?=null, checkoutMode: String?=null, tags: String?=null, isDefault: Boolean?=null): Response<GetAddressesResponse>? {
-        var fullUrl : String? = _relativeUrls["getAddresses"] 
+    suspend fun getAddresses(cartId: String?=null,buyNow: Boolean?=null,mobileNo: String?=null,checkoutMode: String?=null,tags: String?=null,isDefault: Boolean?=null, headers: Map<String, String> = emptyMap()): Response<GetAddressesResponse>? {
+        var fullUrl : String? = _relativeUrls["getAddresses"]
         
-        return cartApiList?.getAddresses(fullUrl    ,  cartId = cartId,    buyNow = buyNow,    mobileNo = mobileNo,    checkoutMode = checkoutMode,    tags = tags,    isDefault = isDefault)}
+        return cartApiList?.getAddresses(fullUrl,   cartId = cartId,  buyNow = buyNow,  mobileNo = mobileNo,  checkoutMode = checkoutMode,  tags = tags,  isDefault = isDefault,headers = headers)}
 
     
     
-    suspend fun addAddress(body: Address): Response<SaveAddressResponse>? {
-        var fullUrl : String? = _relativeUrls["addAddress"] 
+    suspend fun addAddress(body: Address, headers: Map<String, String> = emptyMap()): Response<SaveAddressResponse>? {
+        var fullUrl : String? = _relativeUrls["addAddress"]
         
-        return cartApiList?.addAddress(fullUrl  ,body = body)}
+        return cartApiList?.addAddress(fullUrl, body = body,headers = headers)}
 
     
     
-    suspend fun getAddressById(id: String, cartId: String?=null, buyNow: Boolean?=null, mobileNo: String?=null, checkoutMode: String?=null, tags: String?=null, isDefault: Boolean?=null): Response<Address>? {
-        var fullUrl : String? = _relativeUrls["getAddressById"] 
+    suspend fun getAddressById(id: String,cartId: String?=null,buyNow: Boolean?=null,mobileNo: String?=null,checkoutMode: String?=null,tags: String?=null,isDefault: Boolean?=null, headers: Map<String, String> = emptyMap()): Response<Address>? {
+        var fullUrl : String? = _relativeUrls["getAddressById"]
         
         fullUrl = fullUrl?.replace("{" + "id" +"}",id.toString())
         
-        return cartApiList?.getAddressById(fullUrl     ,  cartId = cartId,    buyNow = buyNow,    mobileNo = mobileNo,    checkoutMode = checkoutMode,    tags = tags,    isDefault = isDefault)}
+        return cartApiList?.getAddressById(fullUrl,    cartId = cartId,  buyNow = buyNow,  mobileNo = mobileNo,  checkoutMode = checkoutMode,  tags = tags,  isDefault = isDefault,headers = headers)}
 
     
     
-    suspend fun updateAddress(id: String, body: Address): Response<UpdateAddressResponse>? {
-        var fullUrl : String? = _relativeUrls["updateAddress"] 
+    suspend fun updateAddress(id: String,body: Address, headers: Map<String, String> = emptyMap()): Response<UpdateAddressResponse>? {
+        var fullUrl : String? = _relativeUrls["updateAddress"]
         
         fullUrl = fullUrl?.replace("{" + "id" +"}",id.toString())
         
-        return cartApiList?.updateAddress(fullUrl   ,body = body)}
+        return cartApiList?.updateAddress(fullUrl,  body = body,headers = headers)}
 
     
     
-    suspend fun removeAddress(id: String): Response<DeleteAddressResponse>? {
-        var fullUrl : String? = _relativeUrls["removeAddress"] 
+    suspend fun removeAddress(id: String, headers: Map<String, String> = emptyMap()): Response<DeleteAddressResponse>? {
+        var fullUrl : String? = _relativeUrls["removeAddress"]
         
         fullUrl = fullUrl?.replace("{" + "id" +"}",id.toString())
         
-        return cartApiList?.removeAddress(fullUrl   )}
+        return cartApiList?.removeAddress(fullUrl,  headers = headers)}
 
     
     
-    suspend fun selectAddress(cartId: String?=null, buyNow: Boolean?=null, i: Boolean?=null, b: Boolean?=null, body: SelectCartAddressRequest): Response<CartDetailResponse>? {
-        var fullUrl : String? = _relativeUrls["selectAddress"] 
+    suspend fun selectAddress(cartId: String?=null,buyNow: Boolean?=null,i: Boolean?=null,b: Boolean?=null,body: SelectCartAddressRequest, headers: Map<String, String> = emptyMap()): Response<CartDetailResponse>? {
+        var fullUrl : String? = _relativeUrls["selectAddress"]
         
-        return cartApiList?.selectAddress(fullUrl    ,  cartId = cartId,    buyNow = buyNow,    i = i,    b = b, body = body)}
+        return cartApiList?.selectAddress(fullUrl,   cartId = cartId,  buyNow = buyNow,  i = i,  b = b,body = body,headers = headers)}
 
     
     
-    suspend fun selectPaymentMode(id: String?=null, buyNow: Boolean?=null, body: UpdateCartPaymentRequest): Response<CartDetailResponse>? {
-        var fullUrl : String? = _relativeUrls["selectPaymentMode"] 
+    suspend fun selectPaymentMode(id: String?=null,buyNow: Boolean?=null,body: UpdateCartPaymentRequest, headers: Map<String, String> = emptyMap()): Response<CartDetailResponse>? {
+        var fullUrl : String? = _relativeUrls["selectPaymentMode"]
         
-        return cartApiList?.selectPaymentMode(fullUrl    ,  id = id,    buyNow = buyNow, body = body)}
+        return cartApiList?.selectPaymentMode(fullUrl,   id = id,  buyNow = buyNow,body = body,headers = headers)}
 
     
     
-    suspend fun validateCouponForPayment(id: String?=null, buyNow: Boolean?=null, addressId: String?=null, paymentMode: String?=null, paymentIdentifier: String?=null, aggregatorName: String?=null, merchantCode: String?=null, iin: String?=null, network: String?=null, type: String?=null, cardId: String?=null, cartType: String?=null): Response<PaymentCouponValidate>? {
-        var fullUrl : String? = _relativeUrls["validateCouponForPayment"] 
+    suspend fun validateCouponForPayment(id: String?=null,buyNow: Boolean?=null,addressId: String?=null,paymentMode: String?=null,paymentIdentifier: String?=null,aggregatorName: String?=null,merchantCode: String?=null,iin: String?=null,network: String?=null,type: String?=null,cardId: String?=null,cartType: String?=null, headers: Map<String, String> = emptyMap()): Response<PaymentCouponValidate>? {
+        var fullUrl : String? = _relativeUrls["validateCouponForPayment"]
         
-        return cartApiList?.validateCouponForPayment(fullUrl    ,  id = id,    buyNow = buyNow,    addressId = addressId,    paymentMode = paymentMode,    paymentIdentifier = paymentIdentifier,    aggregatorName = aggregatorName,    merchantCode = merchantCode,    iin = iin,    network = network,    type = type,    cardId = cardId,    cartType = cartType)}
+        return cartApiList?.validateCouponForPayment(fullUrl,   id = id,  buyNow = buyNow,  addressId = addressId,  paymentMode = paymentMode,  paymentIdentifier = paymentIdentifier,  aggregatorName = aggregatorName,  merchantCode = merchantCode,  iin = iin,  network = network,  type = type,  cardId = cardId,  cartType = cartType,headers = headers)}
 
     
     
-    suspend fun getShipments(p: Boolean?=null, id: String?=null, buyNow: Boolean?=null, addressId: String?=null, areaCode: String?=null, orderType: String?=null): Response<CartShipmentsResponse>? {
-        var fullUrl : String? = _relativeUrls["getShipments"] 
+    suspend fun getShipments(p: Boolean?=null,id: String?=null,buyNow: Boolean?=null,addressId: String?=null,areaCode: String?=null,orderType: String?=null, headers: Map<String, String> = emptyMap()): Response<CartShipmentsResponse>? {
+        var fullUrl : String? = _relativeUrls["getShipments"]
         
-        return cartApiList?.getShipments(fullUrl    ,  p = p,    id = id,    buyNow = buyNow,    addressId = addressId,    areaCode = areaCode,    orderType = orderType)}
+        return cartApiList?.getShipments(fullUrl,   p = p,  id = id,  buyNow = buyNow,  addressId = addressId,  areaCode = areaCode,  orderType = orderType,headers = headers)}
 
     
     
-    suspend fun checkoutCart(buyNow: Boolean?=null, cartType: String?=null, body: CartCheckoutDetailRequest): Response<CartCheckoutResponse>? {
-        var fullUrl : String? = _relativeUrls["checkoutCart"] 
+    suspend fun checkoutCart(buyNow: Boolean?=null,cartType: String?=null,body: CartCheckoutDetailRequest, headers: Map<String, String> = emptyMap()): Response<CartCheckoutResponse>? {
+        var fullUrl : String? = _relativeUrls["checkoutCart"]
         
-        return cartApiList?.checkoutCart(fullUrl    ,  buyNow = buyNow,    cartType = cartType, body = body)}
+        return cartApiList?.checkoutCart(fullUrl,   buyNow = buyNow,  cartType = cartType,body = body,headers = headers)}
 
     
     
-    suspend fun updateCartMeta(id: String?=null, buyNow: Boolean?=null, body: CartMetaRequest): Response<CartMetaResponse>? {
-        var fullUrl : String? = _relativeUrls["updateCartMeta"] 
+    suspend fun updateCartMeta(id: String?=null,buyNow: Boolean?=null,body: CartMetaRequest, headers: Map<String, String> = emptyMap()): Response<CartMetaResponse>? {
+        var fullUrl : String? = _relativeUrls["updateCartMeta"]
         
-        return cartApiList?.updateCartMeta(fullUrl    ,  id = id,    buyNow = buyNow, body = body)}
+        return cartApiList?.updateCartMeta(fullUrl,   id = id,  buyNow = buyNow,body = body,headers = headers)}
 
     
     
-    suspend fun getCartShareLink(body: GetShareCartLinkRequest): Response<GetShareCartLinkResponse>? {
-        var fullUrl : String? = _relativeUrls["getCartShareLink"] 
+    suspend fun getCartShareLink(body: GetShareCartLinkRequest, headers: Map<String, String> = emptyMap()): Response<GetShareCartLinkResponse>? {
+        var fullUrl : String? = _relativeUrls["getCartShareLink"]
         
-        return cartApiList?.getCartShareLink(fullUrl  ,body = body)}
+        return cartApiList?.getCartShareLink(fullUrl, body = body,headers = headers)}
 
     
     
-    suspend fun getCartSharedItems(token: String): Response<SharedCartResponse>? {
-        var fullUrl : String? = _relativeUrls["getCartSharedItems"] 
+    suspend fun getCartSharedItems(token: String, headers: Map<String, String> = emptyMap()): Response<SharedCartResponse>? {
+        var fullUrl : String? = _relativeUrls["getCartSharedItems"]
         
         fullUrl = fullUrl?.replace("{" + "token" +"}",token.toString())
         
-        return cartApiList?.getCartSharedItems(fullUrl   )}
+        return cartApiList?.getCartSharedItems(fullUrl,  headers = headers)}
 
     
     
-    suspend fun updateCartWithSharedItems(token: String, action: String): Response<SharedCartResponse>? {
-        var fullUrl : String? = _relativeUrls["updateCartWithSharedItems"] 
+    suspend fun updateCartWithSharedItems(token: String,action: String, headers: Map<String, String> = emptyMap()): Response<SharedCartResponse>? {
+        var fullUrl : String? = _relativeUrls["updateCartWithSharedItems"]
         
         fullUrl = fullUrl?.replace("{" + "token" +"}",token.toString())
         
         fullUrl = fullUrl?.replace("{" + "action" +"}",action.toString())
         
-        return cartApiList?.updateCartWithSharedItems(fullUrl    )}
+        return cartApiList?.updateCartWithSharedItems(fullUrl,   headers = headers)}
 
     
     
-    suspend fun getPromotionOffers(slug: String?=null, pageSize: Int?=null, promotionGroup: String?=null, storeId: Int?=null, cartType: String?=null): Response<PromotionOffersResponse>? {
-        var fullUrl : String? = _relativeUrls["getPromotionOffers"] 
+    suspend fun getPromotionOffers(slug: String?=null,pageSize: Int?=null,promotionGroup: String?=null,storeId: Int?=null,cartType: String?=null, headers: Map<String, String> = emptyMap()): Response<PromotionOffersResponse>? {
+        var fullUrl : String? = _relativeUrls["getPromotionOffers"]
         
-        return cartApiList?.getPromotionOffers(fullUrl    ,  slug = slug,    pageSize = pageSize,    promotionGroup = promotionGroup,    storeId = storeId,    cartType = cartType)}
+        return cartApiList?.getPromotionOffers(fullUrl,   slug = slug,  pageSize = pageSize,  promotionGroup = promotionGroup,  storeId = storeId,  cartType = cartType,headers = headers)}
 
     
     
-    suspend fun getLadderOffers(slug: String, storeId: String?=null, promotionId: String?=null, pageSize: Int?=null): Response<LadderPriceOffers>? {
-        var fullUrl : String? = _relativeUrls["getLadderOffers"] 
+    suspend fun getLadderOffers(slug: String,storeId: String?=null,promotionId: String?=null,pageSize: Int?=null, headers: Map<String, String> = emptyMap()): Response<LadderPriceOffers>? {
+        var fullUrl : String? = _relativeUrls["getLadderOffers"]
         
-        return cartApiList?.getLadderOffers(fullUrl    ,  slug = slug,    storeId = storeId,    promotionId = promotionId,    pageSize = pageSize)}
+        return cartApiList?.getLadderOffers(fullUrl,   slug = slug,  storeId = storeId,  promotionId = promotionId,  pageSize = pageSize,headers = headers)}
 
     
     
-    suspend fun checkoutCartV2(buyNow: Boolean?=null, cartType: String?=null, body: CartCheckoutDetailV2Request): Response<CartCheckoutResponse>? {
-        var fullUrl : String? = _relativeUrls["checkoutCartV2"] 
+    suspend fun getPromotionPaymentOffers(id: String?=null,uid: Int?=null, headers: Map<String, String> = emptyMap()): Response<PromotionPaymentOffersResponse>? {
+        var fullUrl : String? = _relativeUrls["getPromotionPaymentOffers"]
         
-        return cartApiList?.checkoutCartV2(fullUrl    ,  buyNow = buyNow,    cartType = cartType, body = body)}
+        return cartApiList?.getPromotionPaymentOffers(fullUrl,   id = id,  uid = uid,headers = headers)}
+
+    
+    
+    suspend fun checkoutCartV2(buyNow: Boolean?=null,cartType: String?=null,body: CartCheckoutDetailV2Request, headers: Map<String, String> = emptyMap()): Response<CartCheckoutResponse>? {
+        var fullUrl : String? = _relativeUrls["checkoutCartV2"]
+        
+        return cartApiList?.checkoutCartV2(fullUrl,   buyNow = buyNow,  cartType = cartType,body = body,headers = headers)}
 
     
     

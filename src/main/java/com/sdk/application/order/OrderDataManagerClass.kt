@@ -10,7 +10,7 @@ import retrofit2.Response
 
 
 class OrderDataManagerClass(val config: ApplicationConfig, val unauthorizedAction: ((url: String, responseCode: Int) -> Unit)? = null) : BaseRepository() {
-    
+
     private val orderApiList by lazy {
         generateorderApiList()
     }
@@ -48,7 +48,7 @@ class OrderDataManagerClass(val config: ApplicationConfig, val unauthorizedActio
                 _relativeUrls[key] = value
             }
     }
-    
+
 
     private fun generateorderApiList(): OrderApiList? {
         val interceptorMap = HashMap<String, List<Interceptor>>()
@@ -76,108 +76,108 @@ class OrderDataManagerClass(val config: ApplicationConfig, val unauthorizedActio
         return retrofitHttpClient?.initializeRestClient(OrderApiList::class.java) as? OrderApiList
     }
     
-    suspend fun getOrders(status: Int?=null, pageNo: Int?=null, pageSize: Int?=null, fromDate: String?=null, toDate: String?=null, startDate: String?=null, endDate: String?=null, customMeta: String?=null, allowInactive: Boolean?=null): Response<OrderList>? {
-        var fullUrl : String? = _relativeUrls["getOrders"] 
+    suspend fun getOrders(status: Int?=null,pageNo: Int?=null,pageSize: Int?=null,fromDate: String?=null,toDate: String?=null,startDate: String?=null,endDate: String?=null,customMeta: String?=null,allowInactive: Boolean?=null, headers: Map<String, String> = emptyMap()): Response<OrderList>? {
+        var fullUrl : String? = _relativeUrls["getOrders"]
         
-        return orderApiList?.getOrders(fullUrl    ,  status = status,    pageNo = pageNo,    pageSize = pageSize,    fromDate = fromDate,    toDate = toDate,    startDate = startDate,    endDate = endDate,    customMeta = customMeta,    allowInactive = allowInactive)}
+        return orderApiList?.getOrders(fullUrl,   status = status,  pageNo = pageNo,  pageSize = pageSize,  fromDate = fromDate,  toDate = toDate,  startDate = startDate,  endDate = endDate,  customMeta = customMeta,  allowInactive = allowInactive,headers = headers)}
 
     
     
-    suspend fun getOrderById(orderId: String, allowInactive: Boolean?=null): Response<OrderById>? {
-        var fullUrl : String? = _relativeUrls["getOrderById"] 
+    suspend fun getOrderById(orderId: String,allowInactive: Boolean?=null, headers: Map<String, String> = emptyMap()): Response<OrderById>? {
+        var fullUrl : String? = _relativeUrls["getOrderById"]
         
         fullUrl = fullUrl?.replace("{" + "order_id" +"}",orderId.toString())
         
-        return orderApiList?.getOrderById(fullUrl     ,  allowInactive = allowInactive)}
+        return orderApiList?.getOrderById(fullUrl,    allowInactive = allowInactive,headers = headers)}
 
     
     
-    suspend fun getShipmentById(shipmentId: String, allowInactive: Boolean?=null): Response<ShipmentById>? {
-        var fullUrl : String? = _relativeUrls["getShipmentById"] 
+    suspend fun getShipmentById(shipmentId: String,allowInactive: Boolean?=null, headers: Map<String, String> = emptyMap()): Response<ShipmentById>? {
+        var fullUrl : String? = _relativeUrls["getShipmentById"]
         
         fullUrl = fullUrl?.replace("{" + "shipment_id" +"}",shipmentId.toString())
         
-        return orderApiList?.getShipmentById(fullUrl     ,  allowInactive = allowInactive)}
+        return orderApiList?.getShipmentById(fullUrl,    allowInactive = allowInactive,headers = headers)}
 
     
     
-    suspend fun getInvoiceByShipmentId(shipmentId: String): Response<ResponseGetInvoiceShipment>? {
-        var fullUrl : String? = _relativeUrls["getInvoiceByShipmentId"] 
+    suspend fun getInvoiceByShipmentId(shipmentId: String, headers: Map<String, String> = emptyMap()): Response<ResponseGetInvoiceShipment>? {
+        var fullUrl : String? = _relativeUrls["getInvoiceByShipmentId"]
         
         fullUrl = fullUrl?.replace("{" + "shipment_id" +"}",shipmentId.toString())
         
-        return orderApiList?.getInvoiceByShipmentId(fullUrl   )}
+        return orderApiList?.getInvoiceByShipmentId(fullUrl,  headers = headers)}
 
     
     
-    suspend fun trackShipment(shipmentId: String): Response<ShipmentTrack>? {
-        var fullUrl : String? = _relativeUrls["trackShipment"] 
+    suspend fun trackShipment(shipmentId: String, headers: Map<String, String> = emptyMap()): Response<ShipmentTrack>? {
+        var fullUrl : String? = _relativeUrls["trackShipment"]
         
         fullUrl = fullUrl?.replace("{" + "shipment_id" +"}",shipmentId.toString())
         
-        return orderApiList?.trackShipment(fullUrl   )}
+        return orderApiList?.trackShipment(fullUrl,  headers = headers)}
 
     
     
-    suspend fun getCustomerDetailsByShipmentId(orderId: String, shipmentId: String): Response<CustomerDetailsResponse>? {
-        var fullUrl : String? = _relativeUrls["getCustomerDetailsByShipmentId"] 
-        
-        fullUrl = fullUrl?.replace("{" + "order_id" +"}",orderId.toString())
-        
-        fullUrl = fullUrl?.replace("{" + "shipment_id" +"}",shipmentId.toString())
-        
-        return orderApiList?.getCustomerDetailsByShipmentId(fullUrl    )}
-
-    
-    
-    suspend fun sendOtpToShipmentCustomer(orderId: String, shipmentId: String): Response<SendOtpToCustomerResponse>? {
-        var fullUrl : String? = _relativeUrls["sendOtpToShipmentCustomer"] 
+    suspend fun getCustomerDetailsByShipmentId(orderId: String,shipmentId: String, headers: Map<String, String> = emptyMap()): Response<CustomerDetailsResponse>? {
+        var fullUrl : String? = _relativeUrls["getCustomerDetailsByShipmentId"]
         
         fullUrl = fullUrl?.replace("{" + "order_id" +"}",orderId.toString())
         
         fullUrl = fullUrl?.replace("{" + "shipment_id" +"}",shipmentId.toString())
         
-        return orderApiList?.sendOtpToShipmentCustomer(fullUrl    )}
+        return orderApiList?.getCustomerDetailsByShipmentId(fullUrl,   headers = headers)}
 
     
     
-    suspend fun verifyOtpShipmentCustomer(orderId: String, shipmentId: String, body: VerifyOtp): Response<VerifyOtpResponse>? {
-        var fullUrl : String? = _relativeUrls["verifyOtpShipmentCustomer"] 
+    suspend fun sendOtpToShipmentCustomer(orderId: String,shipmentId: String, headers: Map<String, String> = emptyMap()): Response<SendOtpToCustomerResponse>? {
+        var fullUrl : String? = _relativeUrls["sendOtpToShipmentCustomer"]
         
         fullUrl = fullUrl?.replace("{" + "order_id" +"}",orderId.toString())
         
         fullUrl = fullUrl?.replace("{" + "shipment_id" +"}",shipmentId.toString())
         
-        return orderApiList?.verifyOtpShipmentCustomer(fullUrl    ,body = body)}
+        return orderApiList?.sendOtpToShipmentCustomer(fullUrl,   headers = headers)}
 
     
     
-    suspend fun getShipmentBagReasons(shipmentId: String, bagId: String): Response<ShipmentBagReasons>? {
-        var fullUrl : String? = _relativeUrls["getShipmentBagReasons"] 
+    suspend fun verifyOtpShipmentCustomer(orderId: String,shipmentId: String,body: VerifyOtp, headers: Map<String, String> = emptyMap()): Response<VerifyOtpResponse>? {
+        var fullUrl : String? = _relativeUrls["verifyOtpShipmentCustomer"]
+        
+        fullUrl = fullUrl?.replace("{" + "order_id" +"}",orderId.toString())
+        
+        fullUrl = fullUrl?.replace("{" + "shipment_id" +"}",shipmentId.toString())
+        
+        return orderApiList?.verifyOtpShipmentCustomer(fullUrl,   body = body,headers = headers)}
+
+    
+    
+    suspend fun getShipmentBagReasons(shipmentId: String,bagId: String, headers: Map<String, String> = emptyMap()): Response<ShipmentBagReasons>? {
+        var fullUrl : String? = _relativeUrls["getShipmentBagReasons"]
         
         fullUrl = fullUrl?.replace("{" + "shipment_id" +"}",shipmentId.toString())
         
         fullUrl = fullUrl?.replace("{" + "bag_id" +"}",bagId.toString())
         
-        return orderApiList?.getShipmentBagReasons(fullUrl    )}
+        return orderApiList?.getShipmentBagReasons(fullUrl,   headers = headers)}
 
     
     
-    suspend fun getShipmentReasons(shipmentId: String): Response<ShipmentReasons>? {
-        var fullUrl : String? = _relativeUrls["getShipmentReasons"] 
+    suspend fun getShipmentReasons(shipmentId: String, headers: Map<String, String> = emptyMap()): Response<ShipmentReasons>? {
+        var fullUrl : String? = _relativeUrls["getShipmentReasons"]
         
         fullUrl = fullUrl?.replace("{" + "shipment_id" +"}",shipmentId.toString())
         
-        return orderApiList?.getShipmentReasons(fullUrl   )}
+        return orderApiList?.getShipmentReasons(fullUrl,  headers = headers)}
 
     
     
-    suspend fun updateShipmentStatus(shipmentId: String, body: UpdateShipmentStatusRequest): Response<ShipmentApplicationStatusResponse>? {
-        var fullUrl : String? = _relativeUrls["updateShipmentStatus"] 
+    suspend fun updateShipmentStatus(shipmentId: String,body: UpdateShipmentStatusRequest, headers: Map<String, String> = emptyMap()): Response<ShipmentApplicationStatusResponse>? {
+        var fullUrl : String? = _relativeUrls["updateShipmentStatus"]
         
         fullUrl = fullUrl?.replace("{" + "shipment_id" +"}",shipmentId.toString())
         
-        return orderApiList?.updateShipmentStatus(fullUrl   ,body = body)}
+        return orderApiList?.updateShipmentStatus(fullUrl,  body = body,headers = headers)}
 
     
     

@@ -48,9 +48,8 @@ suspend fun FileStorageDataManagerClass.uploadMedia(
         startUpload(namespace, startRequest)?.safeAwait { response, error ->
             response?.let {
                 val startResponse = it.peekContent()
-                val cdnUrl = startResponse?.cdn?.url
                 val uploadUrl = startResponse?.upload?.url
-                if (!cdnUrl.isNullOrEmpty() && file != null && !uploadUrl.isNullOrEmpty()) {
+                if (file != null && !uploadUrl.isNullOrEmpty()) {
                     val contentTypeFromResponse = startResponse.contentType ?: ""
                     apiList?.updateAWSMedia(
                         contentTypeFromResponse,

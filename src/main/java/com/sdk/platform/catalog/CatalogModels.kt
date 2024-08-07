@@ -8780,9 +8780,14 @@ data class InventoryExportJobListResponse(
     
     
     @SerializedName("items")
-    var items: InventoryJobDetailResponse?=null
+    var items: InventoryJobDetailResponse?=null,
+    
+    @SerializedName("page")
+    var page: Page?=null
     
 ): Parcelable {
+    
+    
     
     
     
@@ -12593,9 +12598,14 @@ data class ProductDownloadsResponse(
     
     
     @SerializedName("items")
-    var items: ArrayList<ProductTemplateExportResponse>?=null
+    var items: ArrayList<ProductTemplateExportResponse>?=null,
+    
+    @SerializedName("page")
+    var page: Page?=null
     
 ): Parcelable {
+    
+    
     
     
     

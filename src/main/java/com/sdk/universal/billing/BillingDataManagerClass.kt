@@ -10,7 +10,7 @@ import retrofit2.Response
 
 
 class BillingDataManagerClass(val config: PublicConfig, val unauthorizedAction: ((url: String, responseCode: Int) -> Unit)? = null) : BaseRepository() {
-    
+
     private val billingApiList by lazy {
         generatebillingApiList()
     }
@@ -19,7 +19,13 @@ class BillingDataManagerClass(val config: PublicConfig, val unauthorizedAction: 
 
     init{
             
-                    _relativeUrls["getStandardPlans"] = "/service/public/billing/v1.0/plan/detailed-list".substring(1)
+                    _relativeUrls["getStandardPlans"] = "/service/public/billing/v1.0/plan/detailed-list/".substring(1)
+            
+                    _relativeUrls["getPlanDetails"] = "/service/public/billing/v1.0/plan/details/{plan_id}".substring(1)
+            
+                    _relativeUrls["planList"] = "/service/public/billing/v1.0/plan/list".substring(1)
+            
+                    _relativeUrls["getTenureConfig"] = "/service/public/billing/v1.0/tenure-config/{country_code}".substring(1)
             
     }
 
@@ -28,7 +34,7 @@ class BillingDataManagerClass(val config: PublicConfig, val unauthorizedAction: 
                 _relativeUrls[key] = value
             }
     }
-    
+
 
     private fun generatebillingApiList(): BillingApiList? {
         val interceptorMap = HashMap<String, List<Interceptor>>()
@@ -55,10 +61,35 @@ class BillingDataManagerClass(val config: PublicConfig, val unauthorizedAction: 
         return retrofitHttpClient?.initializeRestClient(BillingApiList::class.java) as? BillingApiList
     }
     
-    suspend fun getStandardPlans(platform: String): Response<DetailList>? {
-        var fullUrl : String? = _relativeUrls["getStandardPlans"] 
+    suspend fun getStandardPlans(platform: String?=null, headers: Map<String, String> = emptyMap()): Response<DetailList>? {
+        var fullUrl : String? = _relativeUrls["getStandardPlans"]
         
-        return billingApiList?.getStandardPlans(fullUrl    ,  platform = platform)}
+        return billingApiList?.getStandardPlans(fullUrl,   platform = platform,headers = headers)}
+
+    
+    
+    suspend fun getPlanDetails(planId: String, headers: Map<String, String> = emptyMap()): Response<PlanDetails>? {
+        var fullUrl : String? = _relativeUrls["getPlanDetails"]
+        
+        fullUrl = fullUrl?.replace("{" + "plan_id" +"}",planId.toString())
+        
+        return billingApiList?.getPlanDetails(fullUrl,  headers = headers)}
+
+    
+    
+    suspend fun planList( headers: Map<String, String> = emptyMap()): Response<ArrayList<PlanList>>? {
+        var fullUrl : String? = _relativeUrls["planList"]
+        
+        return billingApiList?.planList(fullUrl, headers = headers)}
+
+    
+    
+    suspend fun getTenureConfig(countryCode: String, headers: Map<String, String> = emptyMap()): Response<TenureConfigResponse>? {
+        var fullUrl : String? = _relativeUrls["getTenureConfig"]
+        
+        fullUrl = fullUrl?.replace("{" + "country_code" +"}",countryCode.toString())
+        
+        return billingApiList?.getTenureConfig(fullUrl,  headers = headers)}
 
     
     

@@ -10,7 +10,7 @@ import retrofit2.Response
 
 
 class FileStorageDataManagerClass(val config: ApplicationConfig, val unauthorizedAction: ((url: String, responseCode: Int) -> Unit)? = null) : BaseRepository() {
-    
+
     private val fileStorageApiList by lazy {
         generatefileStorageApiList()
     }
@@ -32,7 +32,7 @@ class FileStorageDataManagerClass(val config: ApplicationConfig, val unauthorize
                 _relativeUrls[key] = value
             }
     }
-    
+
 
     private fun generatefileStorageApiList(): FileStorageApiList? {
         val interceptorMap = HashMap<String, List<Interceptor>>()
@@ -60,28 +60,28 @@ class FileStorageDataManagerClass(val config: ApplicationConfig, val unauthorize
         return retrofitHttpClient?.initializeRestClient(FileStorageApiList::class.java) as? FileStorageApiList
     }
     
-    suspend fun startUpload(namespace: String, body: StartRequest): Response<StartResponse>? {
-        var fullUrl : String? = _relativeUrls["startUpload"] 
+    suspend fun startUpload(namespace: String,body: StartRequest, headers: Map<String, String> = emptyMap()): Response<StartResponse>? {
+        var fullUrl : String? = _relativeUrls["startUpload"]
         
         fullUrl = fullUrl?.replace("{" + "namespace" +"}",namespace.toString())
         
-        return fileStorageApiList?.startUpload(fullUrl   ,body = body)}
+        return fileStorageApiList?.startUpload(fullUrl,  body = body,headers = headers)}
 
     
     
-    suspend fun completeUpload(namespace: String, body: StartResponse): Response<CompleteResponse>? {
-        var fullUrl : String? = _relativeUrls["completeUpload"] 
+    suspend fun completeUpload(namespace: String,body: StartResponse, headers: Map<String, String> = emptyMap()): Response<CompleteResponse>? {
+        var fullUrl : String? = _relativeUrls["completeUpload"]
         
         fullUrl = fullUrl?.replace("{" + "namespace" +"}",namespace.toString())
         
-        return fileStorageApiList?.completeUpload(fullUrl   ,body = body)}
+        return fileStorageApiList?.completeUpload(fullUrl,  body = body,headers = headers)}
 
     
     
-    suspend fun signUrls(body: SignUrlRequest): Response<SignUrlResponse>? {
-        var fullUrl : String? = _relativeUrls["signUrls"] 
+    suspend fun signUrls(body: SignUrlRequest, headers: Map<String, String> = emptyMap()): Response<SignUrlResponse>? {
+        var fullUrl : String? = _relativeUrls["signUrls"]
         
-        return fileStorageApiList?.signUrls(fullUrl  ,body = body)}
+        return fileStorageApiList?.signUrls(fullUrl, body = body,headers = headers)}
 
     
     

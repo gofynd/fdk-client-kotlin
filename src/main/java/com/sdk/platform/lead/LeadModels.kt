@@ -14,6 +14,179 @@ import com.google.gson.annotations.SerializedName
 
              
 /*
+    Model: GeneralConfigResponse
+*/
+@Parcelize
+data class GeneralConfigResponse(
+    
+    
+    
+    @SerializedName("_id")
+    var id: String?=null,
+    
+    @SerializedName("support_communication")
+    var supportCommunication: ArrayList<SupportCommunicationSchema>?=null,
+    
+    @SerializedName("show_communication_info")
+    var showCommunicationInfo: Boolean?=null,
+    
+    @SerializedName("show_support_dris")
+    var showSupportDris: Boolean?=null,
+    
+    @SerializedName("type")
+    var type: String?=null,
+    
+    @SerializedName("integration")
+    var integration: GeneralConfigIntegrationSchema?=null,
+    
+    @SerializedName("allow_ticket_creation")
+    var allowTicketCreation: Boolean?=null,
+    
+    @SerializedName("show_listing")
+    var showListing: Boolean?=null,
+    
+    @SerializedName("available_integration")
+    var availableIntegration: ArrayList<String>?=null,
+    
+    @SerializedName("enable_dris")
+    var enableDris: Boolean?=null,
+    
+    @SerializedName("support_email")
+    var supportEmail: SupportSchema?=null,
+    
+    @SerializedName("support_phone")
+    var supportPhone: SupportSchema?=null,
+    
+    @SerializedName("support_faq")
+    var supportFaq: SupportSchema?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: SupportCommunicationSchema
+*/
+@Parcelize
+data class SupportCommunicationSchema(
+    
+    
+    
+    @SerializedName("type")
+    var type: String?=null,
+    
+    @SerializedName("title")
+    var title: String?=null,
+    
+    @SerializedName("description")
+    var description: String?=null,
+    
+    @SerializedName("enabled")
+    var enabled: Boolean?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: SupportSchema
+*/
+@Parcelize
+data class SupportSchema(
+    
+    
+    
+    @SerializedName("value")
+    var value: String?=null,
+    
+    @SerializedName("description")
+    var description: String?=null,
+    
+    @SerializedName("enabled")
+    var enabled: Boolean?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: GeneralConfigIntegrationSchema
+*/
+@Parcelize
+data class GeneralConfigIntegrationSchema(
+    
+    
+    
+    @SerializedName("type")
+    var type: String?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
     Model: TicketList
 */
 @Parcelize
@@ -355,104 +528,6 @@ data class AgentChangePayload(
 
              
 /*
-    Model: CreateVideoRoomResponse
-*/
-@Parcelize
-data class CreateVideoRoomResponse(
-    
-    
-    
-    @SerializedName("unique_name")
-    var uniqueName: String?=null
-    
-): Parcelable {
-    
-    
-    
-    
-    
-}
-
-
-
-             
-/*
-    Model: CloseVideoRoomResponse
-*/
-@Parcelize
-data class CloseVideoRoomResponse(
-    
-    
-    
-    @SerializedName("success")
-    var success: Boolean?=null
-    
-): Parcelable {
-    
-    
-    
-    
-    
-}
-
-
-
-             
-/*
-    Model: CreateVideoRoomPayload
-*/
-@Parcelize
-data class CreateVideoRoomPayload(
-    
-    
-    
-    @SerializedName("unique_name")
-    var uniqueName: String?=null,
-    
-    @SerializedName("notify")
-    var notify: ArrayList<NotifyUser>?=null
-    
-): Parcelable {
-    
-    
-    
-    
-    
-    
-    
-}
-
-
-
-             
-/*
-    Model: NotifyUser
-*/
-@Parcelize
-data class NotifyUser(
-    
-    
-    
-    @SerializedName("country_code")
-    var countryCode: String?=null,
-    
-    @SerializedName("phone_number")
-    var phoneNumber: String?=null
-    
-): Parcelable {
-    
-    
-    
-    
-    
-    
-    
-}
-
-
-
-             
-/*
     Model: Filter
 */
 @Parcelize
@@ -504,189 +579,6 @@ data class TicketHistoryPayload(
     var type: HistoryTypeEnum?=null
     
 ): Parcelable {
-    
-    
-    
-    
-    
-    
-    
-}
-
-
-
-             
-/*
-    Model: GetTokenForVideoRoomResponse
-*/
-@Parcelize
-data class GetTokenForVideoRoomResponse(
-    
-    
-    
-    @SerializedName("access_token")
-    var accessToken: String?=null
-    
-): Parcelable {
-    
-    
-    
-    
-    
-}
-
-
-
-             
-/*
-    Model: GetParticipantsInsideVideoRoomResponse
-*/
-@Parcelize
-data class GetParticipantsInsideVideoRoomResponse(
-    
-    
-    
-    @SerializedName("participants")
-    var participants: ArrayList<Participant>?=null
-    
-): Parcelable {
-    
-    
-    
-    
-    
-}
-
-
-
-             
-/*
-    Model: Participant
-*/
-@Parcelize
-data class Participant(
-    
-    
-    
-    @SerializedName("user")
-    var user: UserSchema?=null,
-    
-    @SerializedName("identity")
-    var identity: String?=null,
-    
-    @SerializedName("status")
-    var status: String?=null
-    
-): Parcelable {
-    
-    
-    
-    
-    
-    
-    
-    
-    
-}
-
-
-
-             
-/*
-    Model: UserSchema
-*/
-@Parcelize
-data class UserSchema(
-    
-    
-    
-    @SerializedName("application_id")
-    var applicationId: String?=null,
-    
-    @SerializedName("user_id")
-    var userId: String?=null,
-    
-    @SerializedName("first_name")
-    var firstName: String?=null,
-    
-    @SerializedName("meta")
-    var meta: @RawValue HashMap<String,Any>?=null,
-    
-    @SerializedName("last_name")
-    var lastName: String?=null,
-    
-    @SerializedName("phone_numbers")
-    var phoneNumbers: ArrayList<PhoneNumber>?=null,
-    
-    @SerializedName("emails")
-    var emails: ArrayList<Email>?=null,
-    
-    @SerializedName("gender")
-    var gender: String?=null,
-    
-    @SerializedName("dob")
-    var dob: String?=null,
-    
-    @SerializedName("active")
-    var active: Boolean?=null,
-    
-    @SerializedName("profile_pic_url")
-    var profilePicUrl: String?=null,
-    
-    @SerializedName("username")
-    var username: String?=null,
-    
-    @SerializedName("account_type")
-    var accountType: String?=null,
-    
-    @SerializedName("_id")
-    var id: String?=null,
-    
-    @SerializedName("created_at")
-    var createdAt: String?=null,
-    
-    @SerializedName("updated_at")
-    var updatedAt: String?=null,
-    
-    @SerializedName("external_id")
-    var externalId: String?=null,
-    
-    @SerializedName("rr_id")
-    var rrId: String?=null
-    
-): Parcelable {
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
     
     
     
@@ -894,6 +786,28 @@ data class Priority(
     
     
     
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: SLA
+*/
+@Parcelize
+data class SLA(
+    
+    
+    
+    @SerializedName("resolution_time")
+    var resolutionTime: String?=null
+    
+): Parcelable {
     
     
     
@@ -1391,6 +1305,9 @@ data class Ticket(
     @SerializedName("priority")
     var priority: Priority?=null,
     
+    @SerializedName("sla")
+    var sla: SLA?=null,
+    
     @SerializedName("created_by")
     var createdBy: @RawValue HashMap<String,Any>?=null,
     
@@ -1458,6 +1375,8 @@ data class Ticket(
     
     
     
+    
+    
 }
 
 
@@ -1475,85 +1394,6 @@ data class ErrorMessage(
     var message: String?=null
     
 ): Parcelable {
-    
-    
-    
-    
-    
-}
-
-
-
-             
-/*
-    Model: PhoneNumber
-*/
-@Parcelize
-data class PhoneNumber(
-    
-    
-    
-    @SerializedName("phone")
-    var phone: String?=null,
-    
-    @SerializedName("country_code")
-    var countryCode: Int?=null,
-    
-    @SerializedName("active")
-    var active: Boolean?=null,
-    
-    @SerializedName("primary")
-    var primary: Boolean?=null,
-    
-    @SerializedName("verified")
-    var verified: Boolean?=null
-    
-): Parcelable {
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-}
-
-
-
-             
-/*
-    Model: Email
-*/
-@Parcelize
-data class Email(
-    
-    
-    
-    @SerializedName("email")
-    var email: String?=null,
-    
-    @SerializedName("active")
-    var active: Boolean?=null,
-    
-    @SerializedName("primary")
-    var primary: Boolean?=null,
-    
-    @SerializedName("verified")
-    var verified: Boolean?=null
-    
-): Parcelable {
-    
-    
-    
-    
-    
-    
     
     
     

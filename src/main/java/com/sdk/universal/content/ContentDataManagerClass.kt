@@ -10,7 +10,7 @@ import retrofit2.Response
 
 
 class ContentDataManagerClass(val config: PublicConfig, val unauthorizedAction: ((url: String, responseCode: Int) -> Unit)? = null) : BaseRepository() {
-    
+
     private val contentApiList by lazy {
         generatecontentApiList()
     }
@@ -28,7 +28,7 @@ class ContentDataManagerClass(val config: PublicConfig, val unauthorizedAction: 
                 _relativeUrls[key] = value
             }
     }
-    
+
 
     private fun generatecontentApiList(): ContentApiList? {
         val interceptorMap = HashMap<String, List<Interceptor>>()
@@ -55,12 +55,12 @@ class ContentDataManagerClass(val config: PublicConfig, val unauthorizedAction: 
         return retrofitHttpClient?.initializeRestClient(ContentApiList::class.java) as? ContentApiList
     }
     
-    suspend fun getCredentialsByEntity(entity: String): Response<CredentialsSchema>? {
-        var fullUrl : String? = _relativeUrls["getCredentialsByEntity"] 
+    suspend fun getCredentialsByEntity(entity: String, headers: Map<String, String> = emptyMap()): Response<CredentialsSchema>? {
+        var fullUrl : String? = _relativeUrls["getCredentialsByEntity"]
         
         fullUrl = fullUrl?.replace("{" + "entity" +"}",entity.toString())
         
-        return contentApiList?.getCredentialsByEntity(fullUrl   )}
+        return contentApiList?.getCredentialsByEntity(fullUrl,  headers = headers)}
 
     
     

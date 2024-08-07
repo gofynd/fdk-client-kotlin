@@ -2217,6 +2217,9 @@ data class SetCODForUserRequest(
     
     
     
+    @SerializedName("business_unit")
+    var businessUnit: String?=null,
+    
     @SerializedName("mobileno")
     var mobileno: String?=null,
     
@@ -2227,6 +2230,8 @@ data class SetCODForUserRequest(
     var merchantUserId: String?=null
     
 ): Parcelable {
+    
+    
     
     
     
@@ -3064,9 +3069,14 @@ data class LinkStatus(
     var status: String?=null,
     
     @SerializedName("message")
-    var message: String?=null
+    var message: String?=null,
+    
+    @SerializedName("is_payment_done")
+    var isPaymentDone: Boolean?=null
     
 ): Parcelable {
+    
+    
     
     
     

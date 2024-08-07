@@ -10,7 +10,7 @@ import retrofit2.Response
 
 
 class ThemeDataManagerClass(val config: ApplicationConfig, val unauthorizedAction: ((url: String, responseCode: Int) -> Unit)? = null) : BaseRepository() {
-    
+
     private val themeApiList by lazy {
         generatethemeApiList()
     }
@@ -34,7 +34,7 @@ class ThemeDataManagerClass(val config: ApplicationConfig, val unauthorizedActio
                 _relativeUrls[key] = value
             }
     }
-    
+
 
     private fun generatethemeApiList(): ThemeApiList? {
         val interceptorMap = HashMap<String, List<Interceptor>>()
@@ -62,39 +62,39 @@ class ThemeDataManagerClass(val config: ApplicationConfig, val unauthorizedActio
         return retrofitHttpClient?.initializeRestClient(ThemeApiList::class.java) as? ThemeApiList
     }
     
-    suspend fun getAllPages(themeId: String): Response<AllAvailablePageSchema>? {
-        var fullUrl : String? = _relativeUrls["getAllPages"] 
+    suspend fun getAllPages(themeId: String, headers: Map<String, String> = emptyMap()): Response<AllAvailablePageSchema>? {
+        var fullUrl : String? = _relativeUrls["getAllPages"]
         
         fullUrl = fullUrl?.replace("{" + "theme_id" +"}",themeId.toString())
         
-        return themeApiList?.getAllPages(fullUrl   )}
+        return themeApiList?.getAllPages(fullUrl,  headers = headers)}
 
     
     
-    suspend fun getPage(themeId: String, pageValue: String, filters: String?=null, company: Int?=null): Response<AvailablePageSchema>? {
-        var fullUrl : String? = _relativeUrls["getPage"] 
+    suspend fun getPage(themeId: String,pageValue: String,filters: String?=null,sectionPreviewHash: String?=null,company: Int?=null, headers: Map<String, String> = emptyMap()): Response<AvailablePageSchema>? {
+        var fullUrl : String? = _relativeUrls["getPage"]
         
         fullUrl = fullUrl?.replace("{" + "theme_id" +"}",themeId.toString())
         
         fullUrl = fullUrl?.replace("{" + "page_value" +"}",pageValue.toString())
         
-        return themeApiList?.getPage(fullUrl      ,  filters = filters,    company = company)}
+        return themeApiList?.getPage(fullUrl,     filters = filters,  sectionPreviewHash = sectionPreviewHash,  company = company,headers = headers)}
 
     
     
-    suspend fun getAppliedTheme(): Response<ThemesSchema>? {
-        var fullUrl : String? = _relativeUrls["getAppliedTheme"] 
+    suspend fun getAppliedTheme( headers: Map<String, String> = emptyMap()): Response<ThemesSchema>? {
+        var fullUrl : String? = _relativeUrls["getAppliedTheme"]
         
-        return themeApiList?.getAppliedTheme(fullUrl  )}
+        return themeApiList?.getAppliedTheme(fullUrl, headers = headers)}
 
     
     
-    suspend fun getThemeForPreview(themeId: String): Response<ThemesSchema>? {
-        var fullUrl : String? = _relativeUrls["getThemeForPreview"] 
+    suspend fun getThemeForPreview(themeId: String, headers: Map<String, String> = emptyMap()): Response<ThemesSchema>? {
+        var fullUrl : String? = _relativeUrls["getThemeForPreview"]
         
         fullUrl = fullUrl?.replace("{" + "theme_id" +"}",themeId.toString())
         
-        return themeApiList?.getThemeForPreview(fullUrl   )}
+        return themeApiList?.getThemeForPreview(fullUrl,  headers = headers)}
 
     
     

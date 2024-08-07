@@ -847,11 +847,38 @@ data class BlogGetResponse(
     var items: ArrayList<BlogSchema>?=null,
     
     @SerializedName("page")
-    var page: Page?=null
+    var page: Page?=null,
+    
+    @SerializedName("filters")
+    var filters: BlogFilters?=null
     
 ): Parcelable {
     
     
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: BlogFilters
+*/
+@Parcelize
+data class BlogFilters(
+    
+    
+    
+    @SerializedName("tags")
+    var tags: ArrayList<String>?=null
+    
+): Parcelable {
     
     
     
@@ -1000,14 +1027,14 @@ data class BlogSchema(
     @SerializedName("seo")
     var seo: SEO?=null,
     
-    @SerializedName("_schedule")
-    var schedule: CronSchedule?=null,
-    
     @SerializedName("title")
     var title: String?=null,
     
     @SerializedName("date_meta")
-    var dateMeta: DateMeta?=null
+    var dateMeta: DateMeta?=null,
+    
+    @SerializedName("summary")
+    var summary: String?=null
     
 ): Parcelable {
     
@@ -1300,8 +1327,8 @@ data class BlogRequest(
     @SerializedName("seo")
     var seo: SEO?=null,
     
-    @SerializedName("_schedule")
-    var schedule: CronSchedule?=null
+    @SerializedName("summary")
+    var summary: String?=null
     
 ): Parcelable {
     
@@ -3509,9 +3536,6 @@ data class Support(
     @SerializedName("_id")
     var id: String?=null,
     
-    @SerializedName("config_type")
-    var configType: String?=null,
-    
     @SerializedName("application")
     var application: String?=null,
     
@@ -3525,8 +3549,6 @@ data class Support(
     var contact: ContactSchema?=null
     
 ): Parcelable {
-    
-    
     
     
     
@@ -3562,9 +3584,14 @@ data class PhoneProperties(
     var code: String?=null,
     
     @SerializedName("number")
-    var number: String?=null
+    var number: String?=null,
+    
+    @SerializedName("phone_type")
+    var phoneType: String?=null
     
 ): Parcelable {
+    
+    
     
     
     
