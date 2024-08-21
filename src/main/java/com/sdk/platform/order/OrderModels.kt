@@ -7675,6 +7675,463 @@ data class ManifestErrorResponse(
 
              
 /*
+    Model: ConfigData
+*/
+@Parcelize
+data class ConfigData(
+    
+    
+    
+    @SerializedName("acknowledged")
+    var acknowledged: Boolean?=null,
+    
+    @SerializedName("is_upserted")
+    var isUpserted: Boolean?=null,
+    
+    @SerializedName("is_inserted")
+    var isInserted: Boolean?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: ConfigUpdatedResponse
+*/
+@Parcelize
+data class ConfigUpdatedResponse(
+    
+    
+    
+    @SerializedName("data")
+    var data: ArrayList<ConfigData>?=null,
+    
+    @SerializedName("success")
+    var success: Boolean?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: FlagData
+*/
+@Parcelize
+data class FlagData(
+    
+    
+    
+    @SerializedName("value")
+    var value: @RawValue Any?=null,
+    
+    @SerializedName("filter")
+    var filter: @RawValue HashMap<String,Any>?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: Flags
+*/
+@Parcelize
+data class Flags(
+    
+    
+    
+    @SerializedName("allow_partial_transition")
+    var allowPartialTransition: ArrayList<FlagData>?=null,
+    
+    @SerializedName("can_break_entity")
+    var canBreakEntity: ArrayList<FlagData>?=null,
+    
+    @SerializedName("allowed_bag_updates")
+    var allowedBagUpdates: ArrayList<FlagData>?=null,
+    
+    @SerializedName("allowed_bag_status_updates")
+    var allowedBagStatusUpdates: ArrayList<FlagData>?=null,
+    
+    @SerializedName("allowed_entity_updates")
+    var allowedEntityUpdates: ArrayList<FlagData>?=null,
+    
+    @SerializedName("allowed_entity_status_updates")
+    var allowedEntityStatusUpdates: ArrayList<FlagData>?=null,
+    
+    @SerializedName("status_update_type")
+    var statusUpdateType: ArrayList<FlagData>?=null,
+    
+    @SerializedName("is_bag_status_reason_allowed")
+    var isBagStatusReasonAllowed: ArrayList<FlagData>?=null,
+    
+    @SerializedName("is_entity_status_reason_allowed")
+    var isEntityStatusReasonAllowed: ArrayList<FlagData>?=null,
+    
+    @SerializedName("transition_strategy")
+    var transitionStrategy: ArrayList<FlagData>?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: Filter
+*/
+@Parcelize
+data class Filter(
+    
+    
+    
+    @SerializedName("order_type")
+    var orderType: String?=null,
+    
+    @SerializedName("is_partial_transition")
+    var isPartialTransition: Boolean?=null,
+    
+    @SerializedName("auto_trigger_dp_assignment_acf")
+    var autoTriggerDpAssignmentAcf: Boolean?=null,
+    
+    @SerializedName("lock_status")
+    var lockStatus: String?=null,
+    
+    @SerializedName("lock_after_transition")
+    var lockAfterTransition: Boolean?=null,
+    
+    @SerializedName("resume_tasks_after_unlock")
+    var resumeTasksAfterUnlock: Boolean?=null,
+    
+    @SerializedName("is_invoice_id_present")
+    var isInvoiceIdPresent: Boolean?=null,
+    
+    @SerializedName("is_credit_note_generated")
+    var isCreditNoteGenerated: Boolean?=null,
+    
+    @SerializedName("fulfill_virtual_invoice")
+    var fulfillVirtualInvoice: Boolean?=null,
+    
+    @SerializedName("next_status")
+    var nextStatus: String?=null,
+    
+    @SerializedName("is_hook_enabled")
+    var isHookEnabled: Boolean?=null,
+    
+    @SerializedName("pos_credit_note_check")
+    var posCreditNoteCheck: Boolean?=null,
+    
+    @SerializedName("order_platform")
+    var orderPlatform: String?=null,
+    
+    @SerializedName("refund_type")
+    var refundType: String?=null,
+    
+    @SerializedName("is_non_pos_platform")
+    var isNonPosPlatform: Boolean?=null,
+    
+    @SerializedName("is_self_ship")
+    var isSelfShip: Boolean?=null,
+    
+    @SerializedName("seller_country_code")
+    var sellerCountryCode: String?=null,
+    
+    @SerializedName("customer_country_code")
+    var customerCountryCode: String?=null,
+    
+    @SerializedName("is_test_order")
+    var isTestOrder: Boolean?=null,
+    
+    @SerializedName("task_trigger_condition")
+    var taskTriggerCondition: ArrayList<String>?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: PostHook
+*/
+@Parcelize
+data class PostHook(
+    
+    
+    
+    @SerializedName("task")
+    var task: String?=null,
+    
+    @SerializedName("kwargs")
+    var kwargs: @RawValue HashMap<String,Any>?=null,
+    
+    @SerializedName("filters")
+    var filters: Filter?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: PreHook
+*/
+@Parcelize
+data class PreHook(
+    
+    
+    
+    @SerializedName("task")
+    var task: String?=null,
+    
+    @SerializedName("kwargs")
+    var kwargs: @RawValue HashMap<String,Any>?=null,
+    
+    @SerializedName("filters")
+    var filters: Filter?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: Config
+*/
+@Parcelize
+data class Config(
+    
+    
+    
+    @SerializedName("from_state")
+    var fromState: String?=null,
+    
+    @SerializedName("to_state")
+    var toState: String?=null,
+    
+    @SerializedName("pre_hooks")
+    var preHooks: ArrayList<PreHook>?=null,
+    
+    @SerializedName("post_hooks")
+    var postHooks: ArrayList<PostHook>?=null,
+    
+    @SerializedName("flags")
+    var flags: Flags?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: TransitionConfigCondition
+*/
+@Parcelize
+data class TransitionConfigCondition(
+    
+    
+    
+    @SerializedName("app_id")
+    var appId: String?=null,
+    
+    @SerializedName("ordering_channel")
+    var orderingChannel: String?=null,
+    
+    @SerializedName("entity")
+    var entity: String?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: TransitionConfigData
+*/
+@Parcelize
+data class TransitionConfigData(
+    
+    
+    
+    @SerializedName("conditions")
+    var conditions: TransitionConfigCondition?=null,
+    
+    @SerializedName("configs")
+    var configs: ArrayList<Config>?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: TransitionConfigPayload
+*/
+@Parcelize
+data class TransitionConfigPayload(
+    
+    
+    
+    @SerializedName("data")
+    var data: TransitionConfigData?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
     Model: Page
 */
 @Parcelize
@@ -13733,68 +14190,6 @@ data class Brand(
 
              
 /*
-    Model: Attributes
-*/
-@Parcelize
-data class Attributes(
-    
-    
-    
-    @SerializedName("primary_material")
-    var primaryMaterial: String?=null,
-    
-    @SerializedName("essential")
-    var essential: String?=null,
-    
-    @SerializedName("marketer_name")
-    var marketerName: String?=null,
-    
-    @SerializedName("primary_color")
-    var primaryColor: String?=null,
-    
-    @SerializedName("marketer_address")
-    var marketerAddress: String?=null,
-    
-    @SerializedName("primary_color_hex")
-    var primaryColorHex: String?=null,
-    
-    @SerializedName("brand_name")
-    var brandName: String?=null,
-    
-    @SerializedName("name")
-    var name: String?=null,
-    
-    @SerializedName("gender")
-    var gender: ArrayList<String>?=null
-    
-): Parcelable {
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-}
-
-
-
-             
-/*
     Model: Item
 */
 @Parcelize
@@ -13803,7 +14198,7 @@ data class Item(
     
     
     @SerializedName("attributes")
-    var attributes: Attributes?=null,
+    var attributes: @RawValue HashMap<String,Any>?=null,
     
     @SerializedName("brand_id")
     var brandId: Int?=null,

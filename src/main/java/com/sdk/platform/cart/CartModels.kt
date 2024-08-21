@@ -1652,7 +1652,7 @@ data class Restrictions1(
     
     
     @SerializedName("payments")
-    var payments: @RawValue HashMap<String,Any>?=null,
+    var payments: HashMap<String,PaymentModes>?=null,
     
     @SerializedName("user_registered")
     var userRegistered: UserRegistered?=null,

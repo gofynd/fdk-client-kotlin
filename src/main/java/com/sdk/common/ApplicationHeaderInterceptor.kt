@@ -12,7 +12,10 @@ class ApplicationHeaderInterceptor(
         val original = chain.request()
         val builder = original.newBuilder()
         builder.apply {
-            header("User-Agent", applicationConfig?.userAgent ?: "")
+            if (!original.headers.names().contains("User-Agent")) {
+                header("User-Agent", applicationConfig?.userAgent ?: "")
+            }
+
             val applicationId = applicationConfig?.applicationId ?: ""
             val applicationToken = applicationConfig?.applicationToken ?: ""
             val languageCode = applicationConfig?.languageCode ?: "en-IN"
@@ -20,20 +23,29 @@ class ApplicationHeaderInterceptor(
             applicationConfig?.extraHeaders?.let {
                 for ((key, value) in it) {
                     header(key,value)
-            	}
+                }
             }
-            header("Accept-Language", languageCode)
+            if (!original.headers.names().contains("Accept-Language")) {
+                header("Accept-Language", languageCode)
+            }
             applicationConfig?.locationDetail?.let {
                 header("x-location-detail", HttpClient.gson.toJson(it))
             }
-            header("x-currency-code", currencyCode)
-            header("x-fp-sdk-version", "1.4.8-beta.3")
+            if (!original.headers.names().contains("x-currency-code")) {
+                header("x-currency-code", currencyCode)
+            }
+            if (!original.headers.names().contains("x-fp-sdk-version")) {
+                header("x-fp-sdk-version", "1.4.10-beta.1")
+            }
             val bearerToken =
                 Base64.encodeToString(
                     "$applicationId:$applicationToken".toByteArray(),
                     Base64.NO_WRAP
                 )
-            header("Authorization", "Bearer $bearerToken")
+
+            if (!original.headers.names().contains("Authorization")) {
+                header("Authorization", "Bearer $bearerToken")
+            }
         }
         val request = builder.build()
         return chain.proceed(request)

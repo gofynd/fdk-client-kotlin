@@ -10,7 +10,7 @@ import retrofit2.Response
 
 
 class CommonDataManagerClass(val config: ApplicationConfig, val unauthorizedAction: ((url: String, responseCode: Int) -> Unit)? = null) : BaseRepository() {
-    
+
     private val commonApiList by lazy {
         generatecommonApiList()
     }
@@ -30,7 +30,7 @@ class CommonDataManagerClass(val config: ApplicationConfig, val unauthorizedActi
                 _relativeUrls[key] = value
             }
     }
-    
+
 
     private fun generatecommonApiList(): CommonApiList? {
         val interceptorMap = HashMap<String, List<Interceptor>>()
@@ -58,17 +58,17 @@ class CommonDataManagerClass(val config: ApplicationConfig, val unauthorizedActi
         return retrofitHttpClient?.initializeRestClient(CommonApiList::class.java) as? CommonApiList
     }
     
-    suspend fun searchApplication(authorization: String?=null, query: String?=null): Response<ApplicationResponse>? {
-        var fullUrl : String? = _relativeUrls["searchApplication"] 
+    suspend fun searchApplication(authorization: String?=null,query: String?=null, headers: Map<String, String> = emptyMap()): Response<ApplicationResponse>? {
+        var fullUrl : String? = _relativeUrls["searchApplication"]
         
-        return commonApiList?.searchApplication(fullUrl    ,  authorization = authorization,    query = query)}
+        return commonApiList?.searchApplication(fullUrl,   authorization = authorization,  query = query,headers = headers)}
 
     
     
-    suspend fun getLocations(locationType: String?=null, id: String?=null): Response<Locations>? {
-        var fullUrl : String? = _relativeUrls["getLocations"] 
+    suspend fun getLocations(locationType: String?=null,id: String?=null, headers: Map<String, String> = emptyMap()): Response<Locations>? {
+        var fullUrl : String? = _relativeUrls["getLocations"]
         
-        return commonApiList?.getLocations(fullUrl    ,  locationType = locationType,    id = id)}
+        return commonApiList?.getLocations(fullUrl,   locationType = locationType,  id = id,headers = headers)}
 
     
     

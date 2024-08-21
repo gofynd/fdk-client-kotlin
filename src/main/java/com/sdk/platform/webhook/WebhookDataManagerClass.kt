@@ -11,12 +11,12 @@ import com.sdk.platform.*
 
 
 
-class WebhookDataManagerClass(val config: PlatformConfig, val unauthorizedAction: ((url: String, responseCode: Int) -> Unit)? = null) : BaseRepository() {        
-       
+class WebhookDataManagerClass(val config: PlatformConfig, val unauthorizedAction: ((url: String, responseCode: Int) -> Unit)? = null) : BaseRepository() {
+
     private val webhookApiList by lazy {
         generatewebhookApiList()
     }
-    
+
     private fun generatewebhookApiList(): WebhookApiList? {
         val interceptorMap = HashMap<String, List<Interceptor>>()
         val headerInterceptor = AccessTokenInterceptor(platformConfig = config)
@@ -44,171 +44,171 @@ class WebhookDataManagerClass(val config: PlatformConfig, val unauthorizedAction
     }
     
     
-    suspend fun downloadDeliveryReport(body: EventProcessRequest)
+    suspend fun downloadDeliveryReport(body: EventProcessRequest, headers: Map<String, String> = emptyMap())
     : Response<DownloadReportResponse>? {
-        
+
         return if (config.oauthClient.isAccessTokenValid()) {
             webhookApiList?.downloadDeliveryReport(
-        companyId = config.companyId, body = body)
+        companyId = config.companyId, body = body,headers = headers)
         } else {
             null
-        } 
+        }
     }
     
     
-    suspend fun pingWebhook(body: PingWebhook)
+    suspend fun pingWebhook(body: PingWebhook, headers: Map<String, String> = emptyMap())
     : Response<PingWebhookResponse>? {
-        
+
         return if (config.oauthClient.isAccessTokenValid()) {
             webhookApiList?.pingWebhook(
-        companyId = config.companyId, body = body)
+        companyId = config.companyId, body = body,headers = headers)
         } else {
             null
-        } 
+        }
     }
     
     
-    suspend fun getReportFilters(body: ReportFiltersPayload)
+    suspend fun getReportFilters(body: ReportFiltersPayload, headers: Map<String, String> = emptyMap())
     : Response<ArrayList<ReportFilterResponse>>? {
-        
+
         return if (config.oauthClient.isAccessTokenValid()) {
             webhookApiList?.getReportFilters(
-        companyId = config.companyId, body = body)
+        companyId = config.companyId, body = body,headers = headers)
         } else {
             null
-        } 
+        }
     }
     
     
-    suspend fun getHistoricalReports(body: HistoryPayload)
+    suspend fun getHistoricalReports(body: HistoryPayload, headers: Map<String, String> = emptyMap())
     : Response<HistoryResponse>? {
-        
+
         return if (config.oauthClient.isAccessTokenValid()) {
             webhookApiList?.getHistoricalReports(
-        companyId = config.companyId, body = body)
+        companyId = config.companyId, body = body,headers = headers)
         } else {
             null
-        } 
+        }
     }
     
     
-    suspend fun cancelJobByName(filename: String)
+    suspend fun cancelJobByName(filename: String, headers: Map<String, String> = emptyMap())
     : Response<CancelResponse>? {
-        
+
         return if (config.oauthClient.isAccessTokenValid()) {
             webhookApiList?.cancelJobByName(
-        companyId = config.companyId, filename = filename )
+        companyId = config.companyId,filename = filename, headers = headers)
         } else {
             null
-        } 
+        }
     }
     
     
-    suspend fun getDeliveryReports(body: EventProcessRequest)
+    suspend fun getDeliveryReports(body: EventProcessRequest, headers: Map<String, String> = emptyMap())
     : Response<EventProcessReports>? {
-        
+
         return if (config.oauthClient.isAccessTokenValid()) {
             webhookApiList?.getDeliveryReports(
-        companyId = config.companyId, body = body)
+        companyId = config.companyId, body = body,headers = headers)
         } else {
             null
-        } 
+        }
     }
     
     
-    suspend fun fetchAllEventConfigurations()
+    suspend fun fetchAllEventConfigurations( headers: Map<String, String> = emptyMap())
     : Response<EventConfigResponse>? {
-        
+
         return if (config.oauthClient.isAccessTokenValid()) {
             webhookApiList?.fetchAllEventConfigurations(
-        companyId = config.companyId )
+        companyId = config.companyId, headers = headers)
         } else {
             null
-        } 
+        }
     }
     
     
-    suspend fun registerSubscriberToEventV2(body: SubscriberConfigPostRequestV2)
+    suspend fun registerSubscriberToEventV2(body: SubscriberConfigPostRequestV2, headers: Map<String, String> = emptyMap())
     : Response<SubscriberConfigResponse>? {
-        
+
         return if (config.oauthClient.isAccessTokenValid()) {
             webhookApiList?.registerSubscriberToEventV2(
-        companyId = config.companyId, body = body)
+        companyId = config.companyId, body = body,headers = headers)
         } else {
             null
-        } 
+        }
     }
     
     
-    suspend fun updateSubscriberV2(body: SubscriberConfigUpdateRequestV2)
+    suspend fun updateSubscriberV2(body: SubscriberConfigUpdateRequestV2, headers: Map<String, String> = emptyMap())
     : Response<SubscriberConfigResponse>? {
-        
+
         return if (config.oauthClient.isAccessTokenValid()) {
             webhookApiList?.updateSubscriberV2(
-        companyId = config.companyId, body = body)
+        companyId = config.companyId, body = body,headers = headers)
         } else {
             null
-        } 
+        }
     }
     
     
-    suspend fun registerSubscriberToEvent(body: SubscriberConfigPost)
+    suspend fun registerSubscriberToEvent(body: SubscriberConfigPost, headers: Map<String, String> = emptyMap())
     : Response<SubscriberConfigResponse>? {
-        
+
         return if (config.oauthClient.isAccessTokenValid()) {
             webhookApiList?.registerSubscriberToEvent(
-        companyId = config.companyId, body = body)
+        companyId = config.companyId, body = body,headers = headers)
         } else {
             null
-        } 
+        }
     }
     
     
-    suspend fun getSubscribersByCompany(pageNo: Int?=null, pageSize: Int?=null, extensionId: String?=null)
+    suspend fun getSubscribersByCompany(pageNo: Int?=null,pageSize: Int?=null,extensionId: String?=null, headers: Map<String, String> = emptyMap())
     : Response<SubscriberConfigList>? {
-        
+
         return if (config.oauthClient.isAccessTokenValid()) {
             webhookApiList?.getSubscribersByCompany(
-        companyId = config.companyId, pageNo = pageNo, pageSize = pageSize, extensionId = extensionId )
+        companyId = config.companyId,pageNo = pageNo,pageSize = pageSize,extensionId = extensionId, headers = headers)
         } else {
             null
-        } 
+        }
     }
     
     
-    suspend fun updateSubscriberConfig(body: SubscriberConfigUpdate)
+    suspend fun updateSubscriberConfig(body: SubscriberConfigUpdate, headers: Map<String, String> = emptyMap())
     : Response<SubscriberConfigResponse>? {
-        
+
         return if (config.oauthClient.isAccessTokenValid()) {
             webhookApiList?.updateSubscriberConfig(
-        companyId = config.companyId, body = body)
+        companyId = config.companyId, body = body,headers = headers)
         } else {
             null
-        } 
+        }
     }
     
     
-    suspend fun getSubscriberById(subscriberId: String)
+    suspend fun getSubscriberById(subscriberId: String, headers: Map<String, String> = emptyMap())
     : Response<SubscriberResponse>? {
-        
+
         return if (config.oauthClient.isAccessTokenValid()) {
             webhookApiList?.getSubscriberById(
-        companyId = config.companyId, subscriberId = subscriberId )
+        companyId = config.companyId,subscriberId = subscriberId, headers = headers)
         } else {
             null
-        } 
+        }
     }
     
     
-    suspend fun getSubscribersByExtensionId(pageNo: Int?=null, pageSize: Int?=null, extensionId: String)
+    suspend fun getSubscribersByExtensionId(pageNo: Int?=null,pageSize: Int?=null,extensionId: String, headers: Map<String, String> = emptyMap())
     : Response<SubscriberConfigList>? {
-        
+
         return if (config.oauthClient.isAccessTokenValid()) {
             webhookApiList?.getSubscribersByExtensionId(
-        pageNo = pageNo, pageSize = pageSize, companyId = config.companyId, extensionId = extensionId )
+        pageNo = pageNo,pageSize = pageSize,companyId = config.companyId,extensionId = extensionId, headers = headers)
         } else {
             null
-        } 
+        }
     }
     
 

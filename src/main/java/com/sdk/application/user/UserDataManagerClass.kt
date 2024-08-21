@@ -10,7 +10,7 @@ import retrofit2.Response
 
 
 class UserDataManagerClass(val config: ApplicationConfig, val unauthorizedAction: ((url: String, responseCode: Int) -> Unit)? = null) : BaseRepository() {
-    
+
     private val userApiList by lazy {
         generateuserApiList()
     }
@@ -112,7 +112,7 @@ class UserDataManagerClass(val config: ApplicationConfig, val unauthorizedAction
                 _relativeUrls[key] = value
             }
     }
-    
+
 
     private fun generateuserApiList(): UserApiList? {
         val interceptorMap = HashMap<String, List<Interceptor>>()
@@ -140,304 +140,304 @@ class UserDataManagerClass(val config: ApplicationConfig, val unauthorizedAction
         return retrofitHttpClient?.initializeRestClient(UserApiList::class.java) as? UserApiList
     }
     
-    suspend fun loginWithFacebook(platform: String?=null, body: OAuthRequestSchema): Response<AuthSuccess>? {
-        var fullUrl : String? = _relativeUrls["loginWithFacebook"] 
+    suspend fun loginWithFacebook(platform: String?=null,body: OAuthRequestSchema, headers: Map<String, String> = emptyMap()): Response<AuthSuccess>? {
+        var fullUrl : String? = _relativeUrls["loginWithFacebook"]
         
-        return userApiList?.loginWithFacebook(fullUrl    ,  platform = platform, body = body)}
+        return userApiList?.loginWithFacebook(fullUrl,   platform = platform,body = body,headers = headers)}
 
     
     
-    suspend fun loginWithGoogle(platform: String?=null, body: OAuthRequestSchema): Response<AuthSuccess>? {
-        var fullUrl : String? = _relativeUrls["loginWithGoogle"] 
+    suspend fun loginWithGoogle(platform: String?=null,body: OAuthRequestSchema, headers: Map<String, String> = emptyMap()): Response<AuthSuccess>? {
+        var fullUrl : String? = _relativeUrls["loginWithGoogle"]
         
-        return userApiList?.loginWithGoogle(fullUrl    ,  platform = platform, body = body)}
+        return userApiList?.loginWithGoogle(fullUrl,   platform = platform,body = body,headers = headers)}
 
     
     
-    suspend fun loginWithGoogleAndroid(platform: String?=null, body: OAuthRequestSchema): Response<AuthSuccess>? {
-        var fullUrl : String? = _relativeUrls["loginWithGoogleAndroid"] 
+    suspend fun loginWithGoogleAndroid(platform: String?=null,body: OAuthRequestSchema, headers: Map<String, String> = emptyMap()): Response<AuthSuccess>? {
+        var fullUrl : String? = _relativeUrls["loginWithGoogleAndroid"]
         
-        return userApiList?.loginWithGoogleAndroid(fullUrl    ,  platform = platform, body = body)}
+        return userApiList?.loginWithGoogleAndroid(fullUrl,   platform = platform,body = body,headers = headers)}
 
     
     
-    suspend fun loginWithGoogleIOS(platform: String?=null, body: OAuthRequestSchema): Response<AuthSuccess>? {
-        var fullUrl : String? = _relativeUrls["loginWithGoogleIOS"] 
+    suspend fun loginWithGoogleIOS(platform: String?=null,body: OAuthRequestSchema, headers: Map<String, String> = emptyMap()): Response<AuthSuccess>? {
+        var fullUrl : String? = _relativeUrls["loginWithGoogleIOS"]
         
-        return userApiList?.loginWithGoogleIOS(fullUrl    ,  platform = platform, body = body)}
+        return userApiList?.loginWithGoogleIOS(fullUrl,   platform = platform,body = body,headers = headers)}
 
     
     
-    suspend fun loginWithAppleIOS(platform: String?=null, body: OAuthRequestAppleSchema): Response<AuthSuccess>? {
-        var fullUrl : String? = _relativeUrls["loginWithAppleIOS"] 
+    suspend fun loginWithAppleIOS(platform: String?=null,body: OAuthRequestAppleSchema, headers: Map<String, String> = emptyMap()): Response<AuthSuccess>? {
+        var fullUrl : String? = _relativeUrls["loginWithAppleIOS"]
         
-        return userApiList?.loginWithAppleIOS(fullUrl    ,  platform = platform, body = body)}
+        return userApiList?.loginWithAppleIOS(fullUrl,   platform = platform,body = body,headers = headers)}
 
     
     
-    suspend fun loginWithOTP(platform: String?=null, body: SendOtpRequestSchema): Response<SendOtpResponse>? {
-        var fullUrl : String? = _relativeUrls["loginWithOTP"] 
+    suspend fun loginWithOTP(platform: String?=null,body: SendOtpRequestSchema, headers: Map<String, String> = emptyMap()): Response<SendOtpResponse>? {
+        var fullUrl : String? = _relativeUrls["loginWithOTP"]
         
-        return userApiList?.loginWithOTP(fullUrl    ,  platform = platform, body = body)}
+        return userApiList?.loginWithOTP(fullUrl,   platform = platform,body = body,headers = headers)}
 
     
     
-    suspend fun loginWithEmailAndPassword(body: PasswordLoginRequestSchema): Response<LoginSuccess>? {
-        var fullUrl : String? = _relativeUrls["loginWithEmailAndPassword"] 
+    suspend fun loginWithEmailAndPassword(body: PasswordLoginRequestSchema, headers: Map<String, String> = emptyMap()): Response<LoginSuccess>? {
+        var fullUrl : String? = _relativeUrls["loginWithEmailAndPassword"]
         
-        return userApiList?.loginWithEmailAndPassword(fullUrl  ,body = body)}
+        return userApiList?.loginWithEmailAndPassword(fullUrl, body = body,headers = headers)}
 
     
     
-    suspend fun sendResetPasswordEmail(platform: String?=null, body: SendResetPasswordEmailRequestSchema): Response<ResetPasswordSuccess>? {
-        var fullUrl : String? = _relativeUrls["sendResetPasswordEmail"] 
+    suspend fun sendResetPasswordEmail(platform: String?=null,body: SendResetPasswordEmailRequestSchema, headers: Map<String, String> = emptyMap()): Response<ResetPasswordSuccess>? {
+        var fullUrl : String? = _relativeUrls["sendResetPasswordEmail"]
         
-        return userApiList?.sendResetPasswordEmail(fullUrl    ,  platform = platform, body = body)}
+        return userApiList?.sendResetPasswordEmail(fullUrl,   platform = platform,body = body,headers = headers)}
 
     
     
-    suspend fun sendResetPasswordMobile(platform: String?=null, body: SendResetPasswordMobileRequestSchema): Response<Any>? {
-        var fullUrl : String? = _relativeUrls["sendResetPasswordMobile"] 
+    suspend fun sendResetPasswordMobile(platform: String?=null,body: SendResetPasswordMobileRequestSchema, headers: Map<String, String> = emptyMap()): Response<Any>? {
+        var fullUrl : String? = _relativeUrls["sendResetPasswordMobile"]
         
-        return userApiList?.sendResetPasswordMobile(fullUrl    ,  platform = platform, body = body)}
+        return userApiList?.sendResetPasswordMobile(fullUrl,   platform = platform,body = body,headers = headers)}
 
     
     
-    suspend fun sendResetToken(body: CodeRequestBodySchema): Response<ResetPasswordSuccess>? {
-        var fullUrl : String? = _relativeUrls["sendResetToken"] 
+    suspend fun sendResetToken(body: CodeRequestBodySchema, headers: Map<String, String> = emptyMap()): Response<ResetPasswordSuccess>? {
+        var fullUrl : String? = _relativeUrls["sendResetToken"]
         
-        return userApiList?.sendResetToken(fullUrl  ,body = body)}
+        return userApiList?.sendResetToken(fullUrl, body = body,headers = headers)}
 
     
     
-    suspend fun forgotPassword(body: ForgotPasswordRequestSchema): Response<LoginSuccess>? {
-        var fullUrl : String? = _relativeUrls["forgotPassword"] 
+    suspend fun forgotPassword(body: ForgotPasswordRequestSchema, headers: Map<String, String> = emptyMap()): Response<LoginSuccess>? {
+        var fullUrl : String? = _relativeUrls["forgotPassword"]
         
-        return userApiList?.forgotPassword(fullUrl  ,body = body)}
+        return userApiList?.forgotPassword(fullUrl, body = body,headers = headers)}
 
     
     
-    suspend fun resetForgotPassword(body: ForgotPasswordRequestSchema): Response<ResetForgotPasswordSuccess>? {
-        var fullUrl : String? = _relativeUrls["resetForgotPassword"] 
+    suspend fun resetForgotPassword(body: ForgotPasswordRequestSchema, headers: Map<String, String> = emptyMap()): Response<ResetForgotPasswordSuccess>? {
+        var fullUrl : String? = _relativeUrls["resetForgotPassword"]
         
-        return userApiList?.resetForgotPassword(fullUrl  ,body = body)}
+        return userApiList?.resetForgotPassword(fullUrl, body = body,headers = headers)}
 
     
     
-    suspend fun loginWithToken(body: TokenRequestBodySchema): Response<LoginSuccess>? {
-        var fullUrl : String? = _relativeUrls["loginWithToken"] 
+    suspend fun loginWithToken(body: TokenRequestBodySchema, headers: Map<String, String> = emptyMap()): Response<LoginSuccess>? {
+        var fullUrl : String? = _relativeUrls["loginWithToken"]
         
-        return userApiList?.loginWithToken(fullUrl  ,body = body)}
+        return userApiList?.loginWithToken(fullUrl, body = body,headers = headers)}
 
     
     
-    suspend fun registerWithForm(platform: String?=null, body: FormRegisterRequestSchema): Response<RegisterFormSuccess>? {
-        var fullUrl : String? = _relativeUrls["registerWithForm"] 
+    suspend fun registerWithForm(platform: String?=null,body: FormRegisterRequestSchema, headers: Map<String, String> = emptyMap()): Response<RegisterFormSuccess>? {
+        var fullUrl : String? = _relativeUrls["registerWithForm"]
         
-        return userApiList?.registerWithForm(fullUrl    ,  platform = platform, body = body)}
+        return userApiList?.registerWithForm(fullUrl,   platform = platform,body = body,headers = headers)}
 
     
     
-    suspend fun verifyEmail(body: CodeRequestBodySchema): Response<VerifyEmailSuccess>? {
-        var fullUrl : String? = _relativeUrls["verifyEmail"] 
+    suspend fun verifyEmail(body: CodeRequestBodySchema, headers: Map<String, String> = emptyMap()): Response<VerifyEmailSuccess>? {
+        var fullUrl : String? = _relativeUrls["verifyEmail"]
         
-        return userApiList?.verifyEmail(fullUrl  ,body = body)}
+        return userApiList?.verifyEmail(fullUrl, body = body,headers = headers)}
 
     
     
-    suspend fun verifyMobile(body: CodeRequestBodySchema): Response<VerifyEmailSuccess>? {
-        var fullUrl : String? = _relativeUrls["verifyMobile"] 
+    suspend fun verifyMobile(body: CodeRequestBodySchema, headers: Map<String, String> = emptyMap()): Response<VerifyEmailSuccess>? {
+        var fullUrl : String? = _relativeUrls["verifyMobile"]
         
-        return userApiList?.verifyMobile(fullUrl  ,body = body)}
+        return userApiList?.verifyMobile(fullUrl, body = body,headers = headers)}
 
     
     
-    suspend fun hasPassword(): Response<HasPasswordSuccess>? {
-        var fullUrl : String? = _relativeUrls["hasPassword"] 
+    suspend fun hasPassword( headers: Map<String, String> = emptyMap()): Response<HasPasswordSuccess>? {
+        var fullUrl : String? = _relativeUrls["hasPassword"]
         
-        return userApiList?.hasPassword(fullUrl  )}
+        return userApiList?.hasPassword(fullUrl, headers = headers)}
 
     
     
-    suspend fun updatePassword(body: UpdatePasswordRequestSchema): Response<VerifyEmailSuccess>? {
-        var fullUrl : String? = _relativeUrls["updatePassword"] 
+    suspend fun updatePassword(body: UpdatePasswordRequestSchema, headers: Map<String, String> = emptyMap()): Response<VerifyEmailSuccess>? {
+        var fullUrl : String? = _relativeUrls["updatePassword"]
         
-        return userApiList?.updatePassword(fullUrl  ,body = body)}
+        return userApiList?.updatePassword(fullUrl, body = body,headers = headers)}
 
     
     
-    suspend fun sendOTPOnMobile(platform: String?=null, body: SendMobileOtpRequestSchema): Response<OtpSuccess>? {
-        var fullUrl : String? = _relativeUrls["sendOTPOnMobile"] 
+    suspend fun sendOTPOnMobile(platform: String?=null,body: SendMobileOtpRequestSchema, headers: Map<String, String> = emptyMap()): Response<OtpSuccess>? {
+        var fullUrl : String? = _relativeUrls["sendOTPOnMobile"]
         
-        return userApiList?.sendOTPOnMobile(fullUrl    ,  platform = platform, body = body)}
+        return userApiList?.sendOTPOnMobile(fullUrl,   platform = platform,body = body,headers = headers)}
 
     
     
-    suspend fun sendForgotOTPOnMobile(platform: String?=null, body: SendMobileForgotOtpRequestSchema): Response<OtpSuccess>? {
-        var fullUrl : String? = _relativeUrls["sendForgotOTPOnMobile"] 
+    suspend fun sendForgotOTPOnMobile(platform: String?=null,body: SendMobileForgotOtpRequestSchema, headers: Map<String, String> = emptyMap()): Response<OtpSuccess>? {
+        var fullUrl : String? = _relativeUrls["sendForgotOTPOnMobile"]
         
-        return userApiList?.sendForgotOTPOnMobile(fullUrl    ,  platform = platform, body = body)}
+        return userApiList?.sendForgotOTPOnMobile(fullUrl,   platform = platform,body = body,headers = headers)}
 
     
     
-    suspend fun verifyMobileOTP(platform: String?=null, body: VerifyOtpRequestSchema): Response<VerifyOtpSuccess>? {
-        var fullUrl : String? = _relativeUrls["verifyMobileOTP"] 
+    suspend fun verifyMobileOTP(platform: String?=null,body: VerifyOtpRequestSchema, headers: Map<String, String> = emptyMap()): Response<VerifyOtpSuccess>? {
+        var fullUrl : String? = _relativeUrls["verifyMobileOTP"]
         
-        return userApiList?.verifyMobileOTP(fullUrl    ,  platform = platform, body = body)}
+        return userApiList?.verifyMobileOTP(fullUrl,   platform = platform,body = body,headers = headers)}
 
     
     
-    suspend fun verifyMobileForgotOTP(platform: String?=null, body: VerifyMobileForgotOtpRequestSchema): Response<VerifyForgotOtpSuccess>? {
-        var fullUrl : String? = _relativeUrls["verifyMobileForgotOTP"] 
+    suspend fun verifyMobileForgotOTP(platform: String?=null,body: VerifyMobileForgotOtpRequestSchema, headers: Map<String, String> = emptyMap()): Response<VerifyForgotOtpSuccess>? {
+        var fullUrl : String? = _relativeUrls["verifyMobileForgotOTP"]
         
-        return userApiList?.verifyMobileForgotOTP(fullUrl    ,  platform = platform, body = body)}
+        return userApiList?.verifyMobileForgotOTP(fullUrl,   platform = platform,body = body,headers = headers)}
 
     
     
-    suspend fun sendOTPOnEmail(platform: String?=null, body: SendEmailOtpRequestSchema): Response<EmailOtpSuccess>? {
-        var fullUrl : String? = _relativeUrls["sendOTPOnEmail"] 
+    suspend fun sendOTPOnEmail(platform: String?=null,body: SendEmailOtpRequestSchema, headers: Map<String, String> = emptyMap()): Response<EmailOtpSuccess>? {
+        var fullUrl : String? = _relativeUrls["sendOTPOnEmail"]
         
-        return userApiList?.sendOTPOnEmail(fullUrl    ,  platform = platform, body = body)}
+        return userApiList?.sendOTPOnEmail(fullUrl,   platform = platform,body = body,headers = headers)}
 
     
     
-    suspend fun sendForgotOTPOnEmail(platform: String?=null, body: SendEmailForgotOtpRequestSchema): Response<EmailOtpSuccess>? {
-        var fullUrl : String? = _relativeUrls["sendForgotOTPOnEmail"] 
+    suspend fun sendForgotOTPOnEmail(platform: String?=null,body: SendEmailForgotOtpRequestSchema, headers: Map<String, String> = emptyMap()): Response<EmailOtpSuccess>? {
+        var fullUrl : String? = _relativeUrls["sendForgotOTPOnEmail"]
         
-        return userApiList?.sendForgotOTPOnEmail(fullUrl    ,  platform = platform, body = body)}
+        return userApiList?.sendForgotOTPOnEmail(fullUrl,   platform = platform,body = body,headers = headers)}
 
     
     
-    suspend fun verifyEmailOTP(platform: String?=null, body: VerifyEmailOtpRequestSchema): Response<VerifyOtpSuccess>? {
-        var fullUrl : String? = _relativeUrls["verifyEmailOTP"] 
+    suspend fun verifyEmailOTP(platform: String?=null,body: VerifyEmailOtpRequestSchema, headers: Map<String, String> = emptyMap()): Response<VerifyOtpSuccess>? {
+        var fullUrl : String? = _relativeUrls["verifyEmailOTP"]
         
-        return userApiList?.verifyEmailOTP(fullUrl    ,  platform = platform, body = body)}
+        return userApiList?.verifyEmailOTP(fullUrl,   platform = platform,body = body,headers = headers)}
 
     
     
-    suspend fun verifyEmailForgotOTP(platform: String?=null, body: VerifyEmailForgotOtpRequestSchema): Response<VerifyForgotOtpSuccess>? {
-        var fullUrl : String? = _relativeUrls["verifyEmailForgotOTP"] 
+    suspend fun verifyEmailForgotOTP(platform: String?=null,body: VerifyEmailForgotOtpRequestSchema, headers: Map<String, String> = emptyMap()): Response<VerifyForgotOtpSuccess>? {
+        var fullUrl : String? = _relativeUrls["verifyEmailForgotOTP"]
         
-        return userApiList?.verifyEmailForgotOTP(fullUrl    ,  platform = platform, body = body)}
+        return userApiList?.verifyEmailForgotOTP(fullUrl,   platform = platform,body = body,headers = headers)}
 
     
     
-    suspend fun getLoggedInUser(): Response<UserObjectSchema>? {
-        var fullUrl : String? = _relativeUrls["getLoggedInUser"] 
+    suspend fun getLoggedInUser( headers: Map<String, String> = emptyMap()): Response<UserObjectSchema>? {
+        var fullUrl : String? = _relativeUrls["getLoggedInUser"]
         
-        return userApiList?.getLoggedInUser(fullUrl  )}
+        return userApiList?.getLoggedInUser(fullUrl, headers = headers)}
 
     
     
-    suspend fun getListOfActiveSessions(): Response<SessionListSuccess>? {
-        var fullUrl : String? = _relativeUrls["getListOfActiveSessions"] 
+    suspend fun getListOfActiveSessions( headers: Map<String, String> = emptyMap()): Response<SessionListSuccess>? {
+        var fullUrl : String? = _relativeUrls["getListOfActiveSessions"]
         
-        return userApiList?.getListOfActiveSessions(fullUrl  )}
+        return userApiList?.getListOfActiveSessions(fullUrl, headers = headers)}
 
     
     
-    suspend fun getPlatformConfig(name: String?=null): Response<PlatformSchema>? {
-        var fullUrl : String? = _relativeUrls["getPlatformConfig"] 
+    suspend fun getPlatformConfig(name: String?=null, headers: Map<String, String> = emptyMap()): Response<PlatformSchema>? {
+        var fullUrl : String? = _relativeUrls["getPlatformConfig"]
         
-        return userApiList?.getPlatformConfig(fullUrl    ,  name = name)}
+        return userApiList?.getPlatformConfig(fullUrl,   name = name,headers = headers)}
 
     
     
-    suspend fun updateProfile(platform: String?=null, body: EditProfileRequestSchema): Response<ProfileEditSuccess>? {
-        var fullUrl : String? = _relativeUrls["updateProfile"] 
+    suspend fun updateProfile(platform: String?=null,body: EditProfileRequestSchema, headers: Map<String, String> = emptyMap()): Response<ProfileEditSuccess>? {
+        var fullUrl : String? = _relativeUrls["updateProfile"]
         
-        return userApiList?.updateProfile(fullUrl    ,  platform = platform, body = body)}
+        return userApiList?.updateProfile(fullUrl,   platform = platform,body = body,headers = headers)}
 
     
     
-    suspend fun addMobileNumber(platform: String?=null, body: EditMobileRequestSchema): Response<VerifyMobileOTPSuccess>? {
-        var fullUrl : String? = _relativeUrls["addMobileNumber"] 
+    suspend fun addMobileNumber(platform: String?=null,body: EditMobileRequestSchema, headers: Map<String, String> = emptyMap()): Response<VerifyMobileOTPSuccess>? {
+        var fullUrl : String? = _relativeUrls["addMobileNumber"]
         
-        return userApiList?.addMobileNumber(fullUrl    ,  platform = platform, body = body)}
+        return userApiList?.addMobileNumber(fullUrl,   platform = platform,body = body,headers = headers)}
 
     
     
-    suspend fun deleteMobileNumber(platform: String?=null, active: Boolean, primary: Boolean, verified: Boolean, countryCode: String, phone: String): Response<LoginSuccess>? {
-        var fullUrl : String? = _relativeUrls["deleteMobileNumber"] 
+    suspend fun deleteMobileNumber(platform: String?=null,active: Boolean,primary: Boolean,verified: Boolean,countryCode: String,phone: String, headers: Map<String, String> = emptyMap()): Response<LoginSuccess>? {
+        var fullUrl : String? = _relativeUrls["deleteMobileNumber"]
         
-        return userApiList?.deleteMobileNumber(fullUrl    ,  platform = platform,    active = active,    primary = primary,    verified = verified,    countryCode = countryCode,    phone = phone)}
+        return userApiList?.deleteMobileNumber(fullUrl,   platform = platform,  active = active,  primary = primary,  verified = verified,  countryCode = countryCode,  phone = phone,headers = headers)}
 
     
     
-    suspend fun setMobileNumberAsPrimary(body: SendVerificationLinkMobileRequestSchema): Response<LoginSuccess>? {
-        var fullUrl : String? = _relativeUrls["setMobileNumberAsPrimary"] 
+    suspend fun setMobileNumberAsPrimary(body: SendVerificationLinkMobileRequestSchema, headers: Map<String, String> = emptyMap()): Response<LoginSuccess>? {
+        var fullUrl : String? = _relativeUrls["setMobileNumberAsPrimary"]
         
-        return userApiList?.setMobileNumberAsPrimary(fullUrl  ,body = body)}
+        return userApiList?.setMobileNumberAsPrimary(fullUrl, body = body,headers = headers)}
 
     
     
-    suspend fun sendVerificationLinkToMobile(platform: String?=null, body: SendVerificationLinkMobileRequestSchema): Response<SendMobileVerifyLinkSuccess>? {
-        var fullUrl : String? = _relativeUrls["sendVerificationLinkToMobile"] 
+    suspend fun sendVerificationLinkToMobile(platform: String?=null,body: SendVerificationLinkMobileRequestSchema, headers: Map<String, String> = emptyMap()): Response<SendMobileVerifyLinkSuccess>? {
+        var fullUrl : String? = _relativeUrls["sendVerificationLinkToMobile"]
         
-        return userApiList?.sendVerificationLinkToMobile(fullUrl    ,  platform = platform, body = body)}
+        return userApiList?.sendVerificationLinkToMobile(fullUrl,   platform = platform,body = body,headers = headers)}
 
     
     
-    suspend fun addEmail(platform: String?=null, body: EditEmailRequestSchema): Response<VerifyEmailOTPSuccess>? {
-        var fullUrl : String? = _relativeUrls["addEmail"] 
+    suspend fun addEmail(platform: String?=null,body: EditEmailRequestSchema, headers: Map<String, String> = emptyMap()): Response<VerifyEmailOTPSuccess>? {
+        var fullUrl : String? = _relativeUrls["addEmail"]
         
-        return userApiList?.addEmail(fullUrl    ,  platform = platform, body = body)}
+        return userApiList?.addEmail(fullUrl,   platform = platform,body = body,headers = headers)}
 
     
     
-    suspend fun deleteEmail(platform: String?=null, active: Boolean, primary: Boolean, verified: Boolean, email: String): Response<LoginSuccess>? {
-        var fullUrl : String? = _relativeUrls["deleteEmail"] 
+    suspend fun deleteEmail(platform: String?=null,active: Boolean,primary: Boolean,verified: Boolean,email: String, headers: Map<String, String> = emptyMap()): Response<LoginSuccess>? {
+        var fullUrl : String? = _relativeUrls["deleteEmail"]
         
-        return userApiList?.deleteEmail(fullUrl    ,  platform = platform,    active = active,    primary = primary,    verified = verified,    email = email)}
+        return userApiList?.deleteEmail(fullUrl,   platform = platform,  active = active,  primary = primary,  verified = verified,  email = email,headers = headers)}
 
     
     
-    suspend fun setEmailAsPrimary(body: EditEmailRequestSchema): Response<LoginSuccess>? {
-        var fullUrl : String? = _relativeUrls["setEmailAsPrimary"] 
+    suspend fun setEmailAsPrimary(body: EditEmailRequestSchema, headers: Map<String, String> = emptyMap()): Response<LoginSuccess>? {
+        var fullUrl : String? = _relativeUrls["setEmailAsPrimary"]
         
-        return userApiList?.setEmailAsPrimary(fullUrl  ,body = body)}
+        return userApiList?.setEmailAsPrimary(fullUrl, body = body,headers = headers)}
 
     
     
-    suspend fun sendVerificationLinkToEmail(platform: String?=null, body: EditEmailRequestSchema): Response<SendEmailVerifyLinkSuccess>? {
-        var fullUrl : String? = _relativeUrls["sendVerificationLinkToEmail"] 
+    suspend fun sendVerificationLinkToEmail(platform: String?=null,body: EditEmailRequestSchema, headers: Map<String, String> = emptyMap()): Response<SendEmailVerifyLinkSuccess>? {
+        var fullUrl : String? = _relativeUrls["sendVerificationLinkToEmail"]
         
-        return userApiList?.sendVerificationLinkToEmail(fullUrl    ,  platform = platform, body = body)}
+        return userApiList?.sendVerificationLinkToEmail(fullUrl,   platform = platform,body = body,headers = headers)}
 
     
     
-    suspend fun userExists(q: String): Response<UserExistsResponse>? {
-        var fullUrl : String? = _relativeUrls["userExists"] 
+    suspend fun userExists(q: String, headers: Map<String, String> = emptyMap()): Response<UserExistsResponse>? {
+        var fullUrl : String? = _relativeUrls["userExists"]
         
-        return userApiList?.userExists(fullUrl    ,  q = q)}
+        return userApiList?.userExists(fullUrl,   q = q,headers = headers)}
 
     
     
-    suspend fun deleteUser(body: DeleteApplicationUserRequestSchema): Response<DeleteUserSuccess>? {
-        var fullUrl : String? = _relativeUrls["deleteUser"] 
+    suspend fun deleteUser(body: DeleteApplicationUserRequestSchema, headers: Map<String, String> = emptyMap()): Response<DeleteUserSuccess>? {
+        var fullUrl : String? = _relativeUrls["deleteUser"]
         
-        return userApiList?.deleteUser(fullUrl  ,body = body)}
+        return userApiList?.deleteUser(fullUrl, body = body,headers = headers)}
 
     
     
-    suspend fun logout(): Response<LogoutSuccess>? {
-        var fullUrl : String? = _relativeUrls["logout"] 
+    suspend fun logout( headers: Map<String, String> = emptyMap()): Response<LogoutSuccess>? {
+        var fullUrl : String? = _relativeUrls["logout"]
         
-        return userApiList?.logout(fullUrl  )}
+        return userApiList?.logout(fullUrl, headers = headers)}
 
     
     
-    suspend fun getUserAttributes(slug: String?=null): Response<UserAttributes>? {
-        var fullUrl : String? = _relativeUrls["getUserAttributes"] 
+    suspend fun getUserAttributes(slug: String?=null, headers: Map<String, String> = emptyMap()): Response<UserAttributes>? {
+        var fullUrl : String? = _relativeUrls["getUserAttributes"]
         
-        return userApiList?.getUserAttributes(fullUrl    ,  slug = slug)}
+        return userApiList?.getUserAttributes(fullUrl,   slug = slug,headers = headers)}
 
     
     
-    suspend fun updateUserAttributes(body: UpdateUserAttributesRequest): Response<UserAttributes>? {
-        var fullUrl : String? = _relativeUrls["updateUserAttributes"] 
+    suspend fun updateUserAttributes(body: UpdateUserAttributesRequest, headers: Map<String, String> = emptyMap()): Response<UserAttributes>? {
+        var fullUrl : String? = _relativeUrls["updateUserAttributes"]
         
-        return userApiList?.updateUserAttributes(fullUrl  ,body = body)}
+        return userApiList?.updateUserAttributes(fullUrl, body = body,headers = headers)}
 
     
     

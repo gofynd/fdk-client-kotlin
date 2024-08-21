@@ -850,13 +850,35 @@ data class BlogGetResponse(
     var page: Page?=null,
     
     @SerializedName("filters")
-    var filters: ArrayList<String>?=null
+    var filters: BlogFilters?=null
     
 ): Parcelable {
     
     
     
     
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: BlogFilters
+*/
+@Parcelize
+data class BlogFilters(
+    
+    
+    
+    @SerializedName("tags")
+    var tags: ArrayList<String>?=null
+    
+): Parcelable {
     
     
     
@@ -3514,9 +3536,6 @@ data class Support(
     @SerializedName("_id")
     var id: String?=null,
     
-    @SerializedName("config_type")
-    var configType: String?=null,
-    
     @SerializedName("application")
     var application: String?=null,
     
@@ -3530,8 +3549,6 @@ data class Support(
     var contact: ContactSchema?=null
     
 ): Parcelable {
-    
-    
     
     
     

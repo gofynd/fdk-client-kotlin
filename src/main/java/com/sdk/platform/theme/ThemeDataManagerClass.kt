@@ -11,12 +11,12 @@ import com.sdk.platform.*
 
 
 
-class ThemeDataManagerClass(val config: PlatformConfig, val unauthorizedAction: ((url: String, responseCode: Int) -> Unit)? = null) : BaseRepository() {        
-       
+class ThemeDataManagerClass(val config: PlatformConfig, val unauthorizedAction: ((url: String, responseCode: Int) -> Unit)? = null) : BaseRepository() {
+
     private val themeApiList by lazy {
         generatethemeApiList()
     }
-    
+
     private fun generatethemeApiList(): ThemeApiList? {
         val interceptorMap = HashMap<String, List<Interceptor>>()
         val headerInterceptor = AccessTokenInterceptor(platformConfig = config)
@@ -51,51 +51,51 @@ class ThemeDataManagerClass(val config: PlatformConfig, val unauthorizedAction: 
     
     
     
-    suspend fun getCompanyLevelThemes(searchText: String?=null)
+    suspend fun getCompanyLevelThemes(searchText: String?=null, headers: Map<String, String> = emptyMap())
     : Response<ArrayList<CompanyThemeSchema>>? {
-        
+
         return if (config.oauthClient.isAccessTokenValid()) {
             themeApiList?.getCompanyLevelThemes(
-        companyId = config.companyId, searchText = searchText )
+        companyId = config.companyId,searchText = searchText, headers = headers)
         } else {
             null
-        } 
+        }
     }
     
     
-    suspend fun getCompanyLevelPrivateThemes(searchText: String?=null)
+    suspend fun getCompanyLevelPrivateThemes(searchText: String?=null, headers: Map<String, String> = emptyMap())
     : Response<ArrayList<CompanyPrivateTheme>>? {
-        
+
         return if (config.oauthClient.isAccessTokenValid()) {
             themeApiList?.getCompanyLevelPrivateThemes(
-        companyId = config.companyId, searchText = searchText )
+        companyId = config.companyId,searchText = searchText, headers = headers)
         } else {
             null
-        } 
+        }
     }
     
     
-    suspend fun addMarketplaceThemeToCompany(body: ThemeReq)
+    suspend fun addMarketplaceThemeToCompany(body: ThemeReq, headers: Map<String, String> = emptyMap())
     : Response<CompanyThemeSchema>? {
-        
+
         return if (config.oauthClient.isAccessTokenValid()) {
             themeApiList?.addMarketplaceThemeToCompany(
-        companyId = config.companyId, body = body)
+        companyId = config.companyId, body = body,headers = headers)
         } else {
             null
-        } 
+        }
     }
     
     
-    suspend fun deleteCompanyTheme(themeId: String)
+    suspend fun deleteCompanyTheme(themeId: String, headers: Map<String, String> = emptyMap())
     : Response<CompanyThemeSchema>? {
-        
+
         return if (config.oauthClient.isAccessTokenValid()) {
             themeApiList?.deleteCompanyTheme(
-        companyId = config.companyId, themeId = themeId )
+        companyId = config.companyId,themeId = themeId, headers = headers)
         } else {
             null
-        } 
+        }
     }
     
     
@@ -118,70 +118,70 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
 
     
     
-    suspend fun getAllPages(themeId: String)
+    suspend fun getAllPages(themeId: String, headers: Map<String, String> = emptyMap())
     : Response<AllAvailablePageSchema>? {
         return if (config.oauthClient.isAccessTokenValid()) {
-                themeApiList?.getAllPages(companyId = config.companyId , applicationId = applicationId , themeId = themeId )
+                themeApiList?.getAllPages(companyId = config.companyId ,applicationId = applicationId ,themeId = themeId, headers = headers)
         } else {
             null
         }
     }
     
     
-    suspend fun createPage(themeId: String,body: AvailablePageSchema)
+    suspend fun createPage(themeId: String,body: AvailablePageSchema, headers: Map<String, String> = emptyMap())
     : Response<AvailablePageSchema>? {
         return if (config.oauthClient.isAccessTokenValid()) {
-                themeApiList?.createPage(companyId = config.companyId , applicationId = applicationId , themeId = themeId, body = body)
+                themeApiList?.createPage(companyId = config.companyId ,applicationId = applicationId ,themeId = themeId, body = body,headers = headers)
         } else {
             null
         }
     }
     
     
-    suspend fun updateMultiplePages(themeId: String,body: AllAvailablePageSchema)
+    suspend fun updateMultiplePages(themeId: String,body: AllAvailablePageSchema, headers: Map<String, String> = emptyMap())
     : Response<AllAvailablePageSchema>? {
         return if (config.oauthClient.isAccessTokenValid()) {
-                themeApiList?.updateMultiplePages(companyId = config.companyId , applicationId = applicationId , themeId = themeId, body = body)
+                themeApiList?.updateMultiplePages(companyId = config.companyId ,applicationId = applicationId ,themeId = themeId, body = body,headers = headers)
         } else {
             null
         }
     }
     
     
-    suspend fun getPage(themeId: String, pageValue: String)
+    suspend fun getPage(themeId: String,pageValue: String, headers: Map<String, String> = emptyMap())
     : Response<AvailablePageSchema>? {
         return if (config.oauthClient.isAccessTokenValid()) {
-                themeApiList?.getPage(companyId = config.companyId , applicationId = applicationId , themeId = themeId, pageValue = pageValue )
+                themeApiList?.getPage(companyId = config.companyId ,applicationId = applicationId ,themeId = themeId,pageValue = pageValue, headers = headers)
         } else {
             null
         }
     }
     
     
-    suspend fun updatePage(themeId: String, pageValue: String,body: AvailablePageSchema)
+    suspend fun updatePage(themeId: String,pageValue: String,body: AvailablePageSchema, headers: Map<String, String> = emptyMap())
     : Response<AvailablePageSchema>? {
         return if (config.oauthClient.isAccessTokenValid()) {
-                themeApiList?.updatePage(companyId = config.companyId , applicationId = applicationId , themeId = themeId, pageValue = pageValue, body = body)
+                themeApiList?.updatePage(companyId = config.companyId ,applicationId = applicationId ,themeId = themeId,pageValue = pageValue, body = body,headers = headers)
         } else {
             null
         }
     }
     
     
-    suspend fun deletePage(themeId: String, pageValue: String)
+    suspend fun deletePage(themeId: String,pageValue: String, headers: Map<String, String> = emptyMap())
     : Response<AvailablePageSchema>? {
         return if (config.oauthClient.isAccessTokenValid()) {
-                themeApiList?.deletePage(companyId = config.companyId , applicationId = applicationId , themeId = themeId, pageValue = pageValue )
+                themeApiList?.deletePage(companyId = config.companyId ,applicationId = applicationId ,themeId = themeId,pageValue = pageValue, headers = headers)
         } else {
             null
         }
     }
     
     
-    suspend fun getFonts()
+    suspend fun getFonts( headers: Map<String, String> = emptyMap())
     : Response<FontsSchema>? {
         return if (config.oauthClient.isAccessTokenValid()) {
-                themeApiList?.getFonts(companyId = config.companyId , applicationId = applicationId  )
+                themeApiList?.getFonts(companyId = config.companyId ,applicationId = applicationId , headers = headers)
         } else {
             null
         }
@@ -192,150 +192,150 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     
     
     
-    suspend fun getApplicationThemes()
+    suspend fun getApplicationThemes( headers: Map<String, String> = emptyMap())
     : Response<ArrayList<ThemesSchema>>? {
         return if (config.oauthClient.isAccessTokenValid()) {
-                themeApiList?.getApplicationThemes(companyId = config.companyId , applicationId = applicationId  )
+                themeApiList?.getApplicationThemes(companyId = config.companyId ,applicationId = applicationId , headers = headers)
         } else {
             null
         }
     }
     
     
-    suspend fun getApplicationThemesCount()
+    suspend fun getApplicationThemesCount( headers: Map<String, String> = emptyMap())
     : Response<HashMap<String,Any>>? {
         return if (config.oauthClient.isAccessTokenValid()) {
-                themeApiList?.getApplicationThemesCount(companyId = config.companyId , applicationId = applicationId  )
+                themeApiList?.getApplicationThemesCount(companyId = config.companyId ,applicationId = applicationId , headers = headers)
         } else {
             null
         }
     }
     
     
-    suspend fun getThemeById(themeId: String)
+    suspend fun getThemeById(themeId: String, headers: Map<String, String> = emptyMap())
     : Response<ThemesSchema>? {
         return if (config.oauthClient.isAccessTokenValid()) {
-                themeApiList?.getThemeById(companyId = config.companyId , applicationId = applicationId , themeId = themeId )
+                themeApiList?.getThemeById(companyId = config.companyId ,applicationId = applicationId ,themeId = themeId, headers = headers)
         } else {
             null
         }
     }
     
     
-    suspend fun updateTheme(themeId: String,body: UpdateThemeRequestBody)
+    suspend fun updateTheme(themeId: String,body: UpdateThemeRequestBody, headers: Map<String, String> = emptyMap())
     : Response<ThemesSchema>? {
         return if (config.oauthClient.isAccessTokenValid()) {
-                themeApiList?.updateTheme(companyId = config.companyId , applicationId = applicationId , themeId = themeId, body = body)
+                themeApiList?.updateTheme(companyId = config.companyId ,applicationId = applicationId ,themeId = themeId, body = body,headers = headers)
         } else {
             null
         }
     }
     
     
-    suspend fun deleteTheme(themeId: String)
+    suspend fun deleteTheme(themeId: String, headers: Map<String, String> = emptyMap())
     : Response<ThemesSchema>? {
         return if (config.oauthClient.isAccessTokenValid()) {
-                themeApiList?.deleteTheme(companyId = config.companyId , applicationId = applicationId , themeId = themeId )
+                themeApiList?.deleteTheme(companyId = config.companyId ,applicationId = applicationId ,themeId = themeId, headers = headers)
         } else {
             null
         }
     }
     
     
-    suspend fun addThemeToApplication(body: ThemeReq)
+    suspend fun addThemeToApplication(body: ThemeReq, headers: Map<String, String> = emptyMap())
     : Response<ThemesSchema>? {
         return if (config.oauthClient.isAccessTokenValid()) {
-                themeApiList?.addThemeToApplication(companyId = config.companyId , applicationId = applicationId , body = body)
+                themeApiList?.addThemeToApplication(companyId = config.companyId ,applicationId = applicationId , body = body,headers = headers)
         } else {
             null
         }
     }
     
     
-    suspend fun updateThemeName(themeId: String,body: UpdateThemeNameRequestBody)
+    suspend fun updateThemeName(themeId: String,body: UpdateThemeNameRequestBody, headers: Map<String, String> = emptyMap())
     : Response<ThemesSchema>? {
         return if (config.oauthClient.isAccessTokenValid()) {
-                themeApiList?.updateThemeName(companyId = config.companyId , applicationId = applicationId , themeId = themeId, body = body)
+                themeApiList?.updateThemeName(companyId = config.companyId ,applicationId = applicationId ,themeId = themeId, body = body,headers = headers)
         } else {
             null
         }
     }
     
     
-    suspend fun applyTheme(themeId: String)
+    suspend fun applyTheme(themeId: String, headers: Map<String, String> = emptyMap())
     : Response<ThemesSchema>? {
         return if (config.oauthClient.isAccessTokenValid()) {
-                themeApiList?.applyTheme(companyId = config.companyId , applicationId = applicationId , themeId = themeId )
+                themeApiList?.applyTheme(companyId = config.companyId ,applicationId = applicationId ,themeId = themeId, headers = headers)
         } else {
             null
         }
     }
     
     
-    suspend fun duplicateTheme(themeId: String)
+    suspend fun duplicateTheme(themeId: String, headers: Map<String, String> = emptyMap())
     : Response<ThemesSchema>? {
         return if (config.oauthClient.isAccessTokenValid()) {
-                themeApiList?.duplicateTheme(companyId = config.companyId , applicationId = applicationId , themeId = themeId )
+                themeApiList?.duplicateTheme(companyId = config.companyId ,applicationId = applicationId ,themeId = themeId, headers = headers)
         } else {
             null
         }
     }
     
     
-    suspend fun getAppliedTheme()
+    suspend fun getAppliedTheme( headers: Map<String, String> = emptyMap())
     : Response<ThemesSchema>? {
         return if (config.oauthClient.isAccessTokenValid()) {
-                themeApiList?.getAppliedTheme(companyId = config.companyId , applicationId = applicationId  )
+                themeApiList?.getAppliedTheme(companyId = config.companyId ,applicationId = applicationId , headers = headers)
         } else {
             null
         }
     }
     
     
-    suspend fun getThemeForPreview(themeId: String)
+    suspend fun getThemeForPreview(themeId: String, headers: Map<String, String> = emptyMap())
     : Response<ThemesSchema>? {
         return if (config.oauthClient.isAccessTokenValid()) {
-                themeApiList?.getThemeForPreview(companyId = config.companyId , applicationId = applicationId , themeId = themeId )
+                themeApiList?.getThemeForPreview(companyId = config.companyId ,applicationId = applicationId ,themeId = themeId, headers = headers)
         } else {
             null
         }
     }
     
     
-    suspend fun getThemeLastModified(themeId: String)
+    suspend fun getThemeLastModified(themeId: String, headers: Map<String, String> = emptyMap())
     : Response<Void>? {
         return if (config.oauthClient.isAccessTokenValid()) {
-                themeApiList?.getThemeLastModified(companyId = config.companyId , applicationId = applicationId , themeId = themeId )
+                themeApiList?.getThemeLastModified(companyId = config.companyId ,applicationId = applicationId ,themeId = themeId, headers = headers)
         } else {
             null
         }
     }
     
     
-    suspend fun isUpgradable(themeId: String)
+    suspend fun isUpgradable(themeId: String, headers: Map<String, String> = emptyMap())
     : Response<ThemeUpgradableResponse>? {
         return if (config.oauthClient.isAccessTokenValid()) {
-                themeApiList?.isUpgradable(companyId = config.companyId , applicationId = applicationId , themeId = themeId )
+                themeApiList?.isUpgradable(companyId = config.companyId ,applicationId = applicationId ,themeId = themeId, headers = headers)
         } else {
             null
         }
     }
     
     
-    suspend fun upgradeTheme(themeId: String)
+    suspend fun upgradeTheme(themeId: String, headers: Map<String, String> = emptyMap())
     : Response<ThemesSchema>? {
         return if (config.oauthClient.isAccessTokenValid()) {
-                themeApiList?.upgradeTheme(companyId = config.companyId , applicationId = applicationId , themeId = themeId )
+                themeApiList?.upgradeTheme(companyId = config.companyId ,applicationId = applicationId ,themeId = themeId, headers = headers)
         } else {
             null
         }
     }
     
     
-    suspend fun getExtensionSections(type: String?=null, companyMode: String?=null)
+    suspend fun getExtensionSections(type: String?=null,companyMode: String?=null, headers: Map<String, String> = emptyMap())
     : Response<ArrayList<GetExtensionSectionRes>>? {
         return if (config.oauthClient.isAccessTokenValid()) {
-                themeApiList?.getExtensionSections(companyId = config.companyId , applicationId = applicationId , type = type, companyMode = companyMode )
+                themeApiList?.getExtensionSections(companyId = config.companyId ,applicationId = applicationId ,type = type,companyMode = companyMode, headers = headers)
         } else {
             null
         }

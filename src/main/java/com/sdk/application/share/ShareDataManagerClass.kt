@@ -10,7 +10,7 @@ import retrofit2.Response
 
 
 class ShareDataManagerClass(val config: ApplicationConfig, val unauthorizedAction: ((url: String, responseCode: Int) -> Unit)? = null) : BaseRepository() {
-    
+
     private val shareApiList by lazy {
         generateshareApiList()
     }
@@ -40,7 +40,7 @@ class ShareDataManagerClass(val config: ApplicationConfig, val unauthorizedActio
                 _relativeUrls[key] = value
             }
     }
-    
+
 
     private fun generateshareApiList(): ShareApiList? {
         val interceptorMap = HashMap<String, List<Interceptor>>()
@@ -68,60 +68,60 @@ class ShareDataManagerClass(val config: ApplicationConfig, val unauthorizedActio
         return retrofitHttpClient?.initializeRestClient(ShareApiList::class.java) as? ShareApiList
     }
     
-    suspend fun getApplicationQRCode(): Response<QRCodeResp>? {
-        var fullUrl : String? = _relativeUrls["getApplicationQRCode"] 
+    suspend fun getApplicationQRCode( headers: Map<String, String> = emptyMap()): Response<QRCodeResp>? {
+        var fullUrl : String? = _relativeUrls["getApplicationQRCode"]
         
-        return shareApiList?.getApplicationQRCode(fullUrl  )}
+        return shareApiList?.getApplicationQRCode(fullUrl, headers = headers)}
 
     
     
-    suspend fun getProductQRCodeBySlug(slug: String): Response<QRCodeResp>? {
-        var fullUrl : String? = _relativeUrls["getProductQRCodeBySlug"] 
+    suspend fun getProductQRCodeBySlug(slug: String, headers: Map<String, String> = emptyMap()): Response<QRCodeResp>? {
+        var fullUrl : String? = _relativeUrls["getProductQRCodeBySlug"]
         
         fullUrl = fullUrl?.replace("{" + "slug" +"}",slug.toString())
         
-        return shareApiList?.getProductQRCodeBySlug(fullUrl   )}
+        return shareApiList?.getProductQRCodeBySlug(fullUrl,  headers = headers)}
 
     
     
-    suspend fun getCollectionQRCodeBySlug(slug: String): Response<QRCodeResp>? {
-        var fullUrl : String? = _relativeUrls["getCollectionQRCodeBySlug"] 
+    suspend fun getCollectionQRCodeBySlug(slug: String, headers: Map<String, String> = emptyMap()): Response<QRCodeResp>? {
+        var fullUrl : String? = _relativeUrls["getCollectionQRCodeBySlug"]
         
         fullUrl = fullUrl?.replace("{" + "slug" +"}",slug.toString())
         
-        return shareApiList?.getCollectionQRCodeBySlug(fullUrl   )}
+        return shareApiList?.getCollectionQRCodeBySlug(fullUrl,  headers = headers)}
 
     
     
-    suspend fun getUrlQRCode(url: String): Response<QRCodeResp>? {
-        var fullUrl : String? = _relativeUrls["getUrlQRCode"] 
+    suspend fun getUrlQRCode(url: String, headers: Map<String, String> = emptyMap()): Response<QRCodeResp>? {
+        var fullUrl : String? = _relativeUrls["getUrlQRCode"]
         
-        return shareApiList?.getUrlQRCode(fullUrl    ,  url = url)}
+        return shareApiList?.getUrlQRCode(fullUrl,   url = url,headers = headers)}
 
     
     
-    suspend fun createShortLink(body: ShortLinkReq): Response<ShortLinkRes>? {
-        var fullUrl : String? = _relativeUrls["createShortLink"] 
+    suspend fun createShortLink(body: ShortLinkReq, headers: Map<String, String> = emptyMap()): Response<ShortLinkRes>? {
+        var fullUrl : String? = _relativeUrls["createShortLink"]
         
-        return shareApiList?.createShortLink(fullUrl  ,body = body)}
+        return shareApiList?.createShortLink(fullUrl, body = body,headers = headers)}
 
     
     
-    suspend fun getShortLinkByHash(hash: String): Response<ShortLinkRes>? {
-        var fullUrl : String? = _relativeUrls["getShortLinkByHash"] 
+    suspend fun getShortLinkByHash(hash: String, headers: Map<String, String> = emptyMap()): Response<ShortLinkRes>? {
+        var fullUrl : String? = _relativeUrls["getShortLinkByHash"]
         
         fullUrl = fullUrl?.replace("{" + "hash" +"}",hash.toString())
         
-        return shareApiList?.getShortLinkByHash(fullUrl   )}
+        return shareApiList?.getShortLinkByHash(fullUrl,  headers = headers)}
 
     
     
-    suspend fun getOriginalShortLinkByHash(hash: String): Response<ShortLinkRes>? {
-        var fullUrl : String? = _relativeUrls["getOriginalShortLinkByHash"] 
+    suspend fun getOriginalShortLinkByHash(hash: String, headers: Map<String, String> = emptyMap()): Response<ShortLinkRes>? {
+        var fullUrl : String? = _relativeUrls["getOriginalShortLinkByHash"]
         
         fullUrl = fullUrl?.replace("{" + "hash" +"}",hash.toString())
         
-        return shareApiList?.getOriginalShortLinkByHash(fullUrl   )}
+        return shareApiList?.getOriginalShortLinkByHash(fullUrl,  headers = headers)}
 
     
     

@@ -1811,9 +1811,14 @@ data class Localities(
     var parentIds: ArrayList<String>?=null,
     
     @SerializedName("type")
-    var type: String?=null
+    var type: String?=null,
+    
+    @SerializedName("localities")
+    var localities: ArrayList<LocalityParent>?=null
     
 ): Parcelable {
+    
+    
     
     
     

@@ -10,7 +10,7 @@ import retrofit2.Response
 
 
 class LogisticDataManagerClass(val config: ApplicationConfig, val unauthorizedAction: ((url: String, responseCode: Int) -> Unit)? = null) : BaseRepository() {
-    
+
     private val logisticApiList by lazy {
         generatelogisticApiList()
     }
@@ -48,7 +48,7 @@ class LogisticDataManagerClass(val config: ApplicationConfig, val unauthorizedAc
                 _relativeUrls[key] = value
             }
     }
-    
+
 
     private fun generatelogisticApiList(): LogisticApiList? {
         val interceptorMap = HashMap<String, List<Interceptor>>()
@@ -76,94 +76,94 @@ class LogisticDataManagerClass(val config: ApplicationConfig, val unauthorizedAc
         return retrofitHttpClient?.initializeRestClient(LogisticApiList::class.java) as? LogisticApiList
     }
     
-    suspend fun getPincodeCity(pincode: String): Response<PincodeApiResponse>? {
-        var fullUrl : String? = _relativeUrls["getPincodeCity"] 
+    suspend fun getPincodeCity(pincode: String, headers: Map<String, String> = emptyMap()): Response<PincodeApiResponse>? {
+        var fullUrl : String? = _relativeUrls["getPincodeCity"]
         
         fullUrl = fullUrl?.replace("{" + "pincode" +"}",pincode.toString())
         
-        return logisticApiList?.getPincodeCity(fullUrl   )}
+        return logisticApiList?.getPincodeCity(fullUrl,  headers = headers)}
 
     
     
-    suspend fun getTatProduct(body: TATViewRequest): Response<TATViewResponse>? {
-        var fullUrl : String? = _relativeUrls["getTatProduct"] 
+    suspend fun getTatProduct(body: TATViewRequest, headers: Map<String, String> = emptyMap()): Response<TATViewResponse>? {
+        var fullUrl : String? = _relativeUrls["getTatProduct"]
         
-        return logisticApiList?.getTatProduct(fullUrl  ,body = body)}
+        return logisticApiList?.getTatProduct(fullUrl, body = body,headers = headers)}
 
     
     
-    suspend fun getAllCountries(): Response<CountryListResponse>? {
-        var fullUrl : String? = _relativeUrls["getAllCountries"] 
+    suspend fun getAllCountries( headers: Map<String, String> = emptyMap()): Response<CountryListResponse>? {
+        var fullUrl : String? = _relativeUrls["getAllCountries"]
         
-        return logisticApiList?.getAllCountries(fullUrl  )}
+        return logisticApiList?.getAllCountries(fullUrl, headers = headers)}
 
     
     
-    suspend fun getPincodeZones(body: GetZoneFromPincodeViewRequest): Response<GetZoneFromPincodeViewResponse>? {
-        var fullUrl : String? = _relativeUrls["getPincodeZones"] 
+    suspend fun getPincodeZones(body: GetZoneFromPincodeViewRequest, headers: Map<String, String> = emptyMap()): Response<GetZoneFromPincodeViewResponse>? {
+        var fullUrl : String? = _relativeUrls["getPincodeZones"]
         
-        return logisticApiList?.getPincodeZones(fullUrl  ,body = body)}
+        return logisticApiList?.getPincodeZones(fullUrl, body = body,headers = headers)}
 
     
     
-    suspend fun getOptimalLocations(body: ReAssignStoreRequest): Response<ReAssignStoreResponse>? {
-        var fullUrl : String? = _relativeUrls["getOptimalLocations"] 
+    suspend fun getOptimalLocations(body: ReAssignStoreRequest, headers: Map<String, String> = emptyMap()): Response<ReAssignStoreResponse>? {
+        var fullUrl : String? = _relativeUrls["getOptimalLocations"]
         
-        return logisticApiList?.getOptimalLocations(fullUrl  ,body = body)}
+        return logisticApiList?.getOptimalLocations(fullUrl, body = body,headers = headers)}
 
     
     
-    suspend fun getLocations(xApplicationId: String, xApplicationData: String, country: String?=null, state: String?=null, city: String?=null, pincode: Int?=null, sector: String?=null, pageNo: Int?=null, pageSize: Int?=null): Response<GetStoreResponse>? {
-        var fullUrl : String? = _relativeUrls["getLocations"] 
+    suspend fun getLocations(xApplicationId: String,xApplicationData: String,country: String?=null,state: String?=null,city: String?=null,pincode: Int?=null,sector: String?=null,pageNo: Int?=null,pageSize: Int?=null, headers: Map<String, String> = emptyMap()): Response<GetStoreResponse>? {
+        var fullUrl : String? = _relativeUrls["getLocations"]
         
-        return logisticApiList?.getLocations(fullUrl    ,  xApplicationId = xApplicationId,    xApplicationData = xApplicationData,    country = country,    state = state,    city = city,    pincode = pincode,    sector = sector,    pageNo = pageNo,    pageSize = pageSize)}
+        return logisticApiList?.getLocations(fullUrl,   xApplicationId = xApplicationId,  xApplicationData = xApplicationData,  country = country,  state = state,  city = city,  pincode = pincode,  sector = sector,  pageNo = pageNo,  pageSize = pageSize,headers = headers)}
 
     
     
-    suspend fun getCountries(onboarding: Boolean?=null, pageNo: Int?=null, pageSize: Int?=null, q: String?=null): Response<GetCountries>? {
-        var fullUrl : String? = _relativeUrls["getCountries"] 
+    suspend fun getCountries(onboarding: Boolean?=null,pageNo: Int?=null,pageSize: Int?=null,q: String?=null, headers: Map<String, String> = emptyMap()): Response<GetCountries>? {
+        var fullUrl : String? = _relativeUrls["getCountries"]
         
-        return logisticApiList?.getCountries(fullUrl    ,  onboarding = onboarding,    pageNo = pageNo,    pageSize = pageSize,    q = q)}
+        return logisticApiList?.getCountries(fullUrl,   onboarding = onboarding,  pageNo = pageNo,  pageSize = pageSize,  q = q,headers = headers)}
 
     
     
-    suspend fun getCountry(countryIsoCode: String): Response<GetCountry>? {
-        var fullUrl : String? = _relativeUrls["getCountry"] 
+    suspend fun getCountry(countryIsoCode: String, headers: Map<String, String> = emptyMap()): Response<GetCountry>? {
+        var fullUrl : String? = _relativeUrls["getCountry"]
         
         fullUrl = fullUrl?.replace("{" + "country_iso_code" +"}",countryIsoCode.toString())
         
-        return logisticApiList?.getCountry(fullUrl   )}
+        return logisticApiList?.getCountry(fullUrl,  headers = headers)}
 
     
     
-    suspend fun getLocalities(localityType: String, country: String?=null, state: String?=null, city: String?=null, pageNo: Int?=null, pageSize: Int?=null, q: String?=null): Response<GetLocalities>? {
-        var fullUrl : String? = _relativeUrls["getLocalities"] 
+    suspend fun getLocalities(localityType: String,country: String?=null,state: String?=null,city: String?=null,pageNo: Int?=null,pageSize: Int?=null,q: String?=null, headers: Map<String, String> = emptyMap()): Response<GetLocalities>? {
+        var fullUrl : String? = _relativeUrls["getLocalities"]
         
         fullUrl = fullUrl?.replace("{" + "locality_type" +"}",localityType.toString())
         
-        return logisticApiList?.getLocalities(fullUrl     ,  country = country,    state = state,    city = city,    pageNo = pageNo,    pageSize = pageSize,    q = q)}
+        return logisticApiList?.getLocalities(fullUrl,    country = country,  state = state,  city = city,  pageNo = pageNo,  pageSize = pageSize,  q = q,headers = headers)}
 
     
     
-    suspend fun getLocality(localityType: String, localityValue: String, country: String?=null, state: String?=null, city: String?=null): Response<GetLocality>? {
-        var fullUrl : String? = _relativeUrls["getLocality"] 
+    suspend fun getLocality(localityType: String,localityValue: String,country: String?=null,state: String?=null,city: String?=null, headers: Map<String, String> = emptyMap()): Response<GetLocality>? {
+        var fullUrl : String? = _relativeUrls["getLocality"]
         
         fullUrl = fullUrl?.replace("{" + "locality_type" +"}",localityType.toString())
         
         fullUrl = fullUrl?.replace("{" + "locality_value" +"}",localityValue.toString())
         
-        return logisticApiList?.getLocality(fullUrl      ,  country = country,    state = state,    city = city)}
+        return logisticApiList?.getLocality(fullUrl,     country = country,  state = state,  city = city,headers = headers)}
 
     
     
-    suspend fun validateAddress(countryIsoCode: String, templateName: String, body: ValidateAddressRequest): Response<ValidateAddressRequest>? {
-        var fullUrl : String? = _relativeUrls["validateAddress"] 
+    suspend fun validateAddress(countryIsoCode: String,templateName: String,body: ValidateAddressRequest, headers: Map<String, String> = emptyMap()): Response<ValidateAddressRequest>? {
+        var fullUrl : String? = _relativeUrls["validateAddress"]
         
         fullUrl = fullUrl?.replace("{" + "country_iso_code" +"}",countryIsoCode.toString())
         
         fullUrl = fullUrl?.replace("{" + "template_name" +"}",templateName.toString())
         
-        return logisticApiList?.validateAddress(fullUrl    ,body = body)}
+        return logisticApiList?.validateAddress(fullUrl,   body = body,headers = headers)}
 
     
     

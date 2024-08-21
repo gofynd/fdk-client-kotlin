@@ -9,12 +9,24 @@ class AccessTokenInterceptor(
 ) : Interceptor {
     override fun intercept(chain: Interceptor.Chain): Response {
         val original = chain.request()
-        
+
         val builder = original.newBuilder().apply {
-            header("User-Agent", platformConfig?.userAgent ?: "")
-            header("Authorization", "Bearer ${platformConfig?.oauthClient?.token?.token}")
-            header("x-fp-sdk-version", "1.4.8-beta.3")
-            header("x-currency-code", platformConfig?.currencyCode ?: "INR")
+            if (!original.headers.names().contains("User-Agent")) {
+                header("User-Agent", platformConfig?.userAgent ?: "")
+            }
+
+            if (!original.headers.names().contains("Authorization")) {
+                header("Authorization", "Bearer ${platformConfig?.oauthClient?.token?.token}")
+            }
+
+            if (!original.headers.names().contains("x-fp-sdk-version")) {
+                header("x-fp-sdk-version", "1.4.10-beta.1")
+            }
+
+            if (!original.headers.names().contains("x-currency-code")) {
+                header("x-currency-code", platformConfig?.currencyCode ?: "INR")
+            }
+
             platformConfig?.locationDetail?.let {
                 header("x-location-detail", HttpClient.gson.toJson(it))
             }

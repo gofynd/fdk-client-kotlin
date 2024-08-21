@@ -114,6 +114,15 @@ enum class Navigator(
         )
     ),
    
+    CUSTOM(
+        pageType = PageType.custom,
+        navName = "Custom theme link",
+        link = "/c/",
+        query = arrayListOf(
+            NavQuery(key = "url", required = true)
+        )
+    ),
+   
     FAQ(
         pageType = PageType.faq,
         navName = "FAQ",

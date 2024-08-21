@@ -10,7 +10,7 @@ import retrofit2.Response
 
 
 class ConfigurationDataManagerClass(val config: ApplicationConfig, val unauthorizedAction: ((url: String, responseCode: Int) -> Unit)? = null) : BaseRepository() {
-    
+
     private val configurationApiList by lazy {
         generateconfigurationApiList()
     }
@@ -58,7 +58,7 @@ class ConfigurationDataManagerClass(val config: ApplicationConfig, val unauthori
                 _relativeUrls[key] = value
             }
     }
-    
+
 
     private fun generateconfigurationApiList(): ConfigurationApiList? {
         val interceptorMap = HashMap<String, List<Interceptor>>()
@@ -86,119 +86,119 @@ class ConfigurationDataManagerClass(val config: ApplicationConfig, val unauthori
         return retrofitHttpClient?.initializeRestClient(ConfigurationApiList::class.java) as? ConfigurationApiList
     }
     
-    suspend fun getApplication(): Response<Application>? {
-        var fullUrl : String? = _relativeUrls["getApplication"] 
+    suspend fun getApplication( headers: Map<String, String> = emptyMap()): Response<Application>? {
+        var fullUrl : String? = _relativeUrls["getApplication"]
         
-        return configurationApiList?.getApplication(fullUrl  )}
+        return configurationApiList?.getApplication(fullUrl, headers = headers)}
 
     
     
-    suspend fun getOwnerInfo(): Response<ApplicationAboutResponse>? {
-        var fullUrl : String? = _relativeUrls["getOwnerInfo"] 
+    suspend fun getOwnerInfo( headers: Map<String, String> = emptyMap()): Response<ApplicationAboutResponse>? {
+        var fullUrl : String? = _relativeUrls["getOwnerInfo"]
         
-        return configurationApiList?.getOwnerInfo(fullUrl  )}
+        return configurationApiList?.getOwnerInfo(fullUrl, headers = headers)}
 
     
     
-    suspend fun getBasicDetails(): Response<ApplicationDetail>? {
-        var fullUrl : String? = _relativeUrls["getBasicDetails"] 
+    suspend fun getBasicDetails( headers: Map<String, String> = emptyMap()): Response<ApplicationDetail>? {
+        var fullUrl : String? = _relativeUrls["getBasicDetails"]
         
-        return configurationApiList?.getBasicDetails(fullUrl  )}
+        return configurationApiList?.getBasicDetails(fullUrl, headers = headers)}
 
     
     
-    suspend fun getIntegrationTokens(): Response<AppTokenResponse>? {
-        var fullUrl : String? = _relativeUrls["getIntegrationTokens"] 
+    suspend fun getIntegrationTokens( headers: Map<String, String> = emptyMap()): Response<AppTokenResponse>? {
+        var fullUrl : String? = _relativeUrls["getIntegrationTokens"]
         
-        return configurationApiList?.getIntegrationTokens(fullUrl  )}
+        return configurationApiList?.getIntegrationTokens(fullUrl, headers = headers)}
 
     
     
-    suspend fun getOrderingStores(pageNo: Int?=null, pageSize: Int?=null, q: String?=null): Response<OrderingStores>? {
-        var fullUrl : String? = _relativeUrls["getOrderingStores"] 
+    suspend fun getOrderingStores(pageNo: Int?=null,pageSize: Int?=null,q: String?=null, headers: Map<String, String> = emptyMap()): Response<OrderingStores>? {
+        var fullUrl : String? = _relativeUrls["getOrderingStores"]
         
-        return configurationApiList?.getOrderingStores(fullUrl    ,  pageNo = pageNo,    pageSize = pageSize,    q = q)}
+        return configurationApiList?.getOrderingStores(fullUrl,   pageNo = pageNo,  pageSize = pageSize,  q = q,headers = headers)}
 
     
     
-    suspend fun getStoreDetailById(storeId: Int): Response<OrderingStore>? {
-        var fullUrl : String? = _relativeUrls["getStoreDetailById"] 
+    suspend fun getStoreDetailById(storeId: Int, headers: Map<String, String> = emptyMap()): Response<OrderingStore>? {
+        var fullUrl : String? = _relativeUrls["getStoreDetailById"]
         
         fullUrl = fullUrl?.replace("{" + "store_id" +"}",storeId.toString())
         
-        return configurationApiList?.getStoreDetailById(fullUrl   )}
+        return configurationApiList?.getStoreDetailById(fullUrl,  headers = headers)}
 
     
     
-    suspend fun getFeatures(): Response<AppFeatureResponse>? {
-        var fullUrl : String? = _relativeUrls["getFeatures"] 
+    suspend fun getFeatures( headers: Map<String, String> = emptyMap()): Response<AppFeatureResponse>? {
+        var fullUrl : String? = _relativeUrls["getFeatures"]
         
-        return configurationApiList?.getFeatures(fullUrl  )}
+        return configurationApiList?.getFeatures(fullUrl, headers = headers)}
 
     
     
-    suspend fun getContactInfo(): Response<ApplicationInformation>? {
-        var fullUrl : String? = _relativeUrls["getContactInfo"] 
+    suspend fun getContactInfo( headers: Map<String, String> = emptyMap()): Response<ApplicationInformation>? {
+        var fullUrl : String? = _relativeUrls["getContactInfo"]
         
-        return configurationApiList?.getContactInfo(fullUrl  )}
+        return configurationApiList?.getContactInfo(fullUrl, headers = headers)}
 
     
     
-    suspend fun getCurrencies(): Response<CurrenciesResponse>? {
-        var fullUrl : String? = _relativeUrls["getCurrencies"] 
+    suspend fun getCurrencies( headers: Map<String, String> = emptyMap()): Response<CurrenciesResponse>? {
+        var fullUrl : String? = _relativeUrls["getCurrencies"]
         
-        return configurationApiList?.getCurrencies(fullUrl  )}
+        return configurationApiList?.getCurrencies(fullUrl, headers = headers)}
 
     
     
-    suspend fun getCurrencyById(id: String): Response<Currency>? {
-        var fullUrl : String? = _relativeUrls["getCurrencyById"] 
+    suspend fun getCurrencyById(id: String, headers: Map<String, String> = emptyMap()): Response<Currency>? {
+        var fullUrl : String? = _relativeUrls["getCurrencyById"]
         
         fullUrl = fullUrl?.replace("{" + "id" +"}",id.toString())
         
-        return configurationApiList?.getCurrencyById(fullUrl   )}
+        return configurationApiList?.getCurrencyById(fullUrl,  headers = headers)}
 
     
     
-    suspend fun getAppCurrencies(): Response<AppCurrencyResponse>? {
-        var fullUrl : String? = _relativeUrls["getAppCurrencies"] 
+    suspend fun getAppCurrencies( headers: Map<String, String> = emptyMap()): Response<AppCurrencyResponse>? {
+        var fullUrl : String? = _relativeUrls["getAppCurrencies"]
         
-        return configurationApiList?.getAppCurrencies(fullUrl  )}
+        return configurationApiList?.getAppCurrencies(fullUrl, headers = headers)}
 
     
     
-    suspend fun getLanguages(): Response<LanguageResponse>? {
-        var fullUrl : String? = _relativeUrls["getLanguages"] 
+    suspend fun getLanguages( headers: Map<String, String> = emptyMap()): Response<LanguageResponse>? {
+        var fullUrl : String? = _relativeUrls["getLanguages"]
         
-        return configurationApiList?.getLanguages(fullUrl  )}
+        return configurationApiList?.getLanguages(fullUrl, headers = headers)}
 
     
     
-    suspend fun getOrderingStoreCookie(body: OrderingStoreSelectRequest): Response<SuccessMessageResponse>? {
-        var fullUrl : String? = _relativeUrls["getOrderingStoreCookie"] 
+    suspend fun getOrderingStoreCookie(body: OrderingStoreSelectRequest, headers: Map<String, String> = emptyMap()): Response<SuccessMessageResponse>? {
+        var fullUrl : String? = _relativeUrls["getOrderingStoreCookie"]
         
-        return configurationApiList?.getOrderingStoreCookie(fullUrl  ,body = body)}
+        return configurationApiList?.getOrderingStoreCookie(fullUrl, body = body,headers = headers)}
 
     
     
-    suspend fun removeOrderingStoreCookie(): Response<SuccessMessageResponse>? {
-        var fullUrl : String? = _relativeUrls["removeOrderingStoreCookie"] 
+    suspend fun removeOrderingStoreCookie( headers: Map<String, String> = emptyMap()): Response<SuccessMessageResponse>? {
+        var fullUrl : String? = _relativeUrls["removeOrderingStoreCookie"]
         
-        return configurationApiList?.removeOrderingStoreCookie(fullUrl  )}
+        return configurationApiList?.removeOrderingStoreCookie(fullUrl, headers = headers)}
 
     
     
-    suspend fun getAppStaffList(pageNo: Int?=null, pageSize: Int?=null, orderIncent: Boolean?=null, orderingStore: Int?=null, user: String?=null, userName: String?=null): Response<AppStaffListResponse>? {
-        var fullUrl : String? = _relativeUrls["getAppStaffList"] 
+    suspend fun getAppStaffList(pageNo: Int?=null,pageSize: Int?=null,orderIncent: Boolean?=null,orderingStore: Int?=null,user: String?=null,userName: String?=null, headers: Map<String, String> = emptyMap()): Response<AppStaffListResponse>? {
+        var fullUrl : String? = _relativeUrls["getAppStaffList"]
         
-        return configurationApiList?.getAppStaffList(fullUrl    ,  pageNo = pageNo,    pageSize = pageSize,    orderIncent = orderIncent,    orderingStore = orderingStore,    user = user,    userName = userName)}
+        return configurationApiList?.getAppStaffList(fullUrl,   pageNo = pageNo,  pageSize = pageSize,  orderIncent = orderIncent,  orderingStore = orderingStore,  user = user,  userName = userName,headers = headers)}
 
     
     
-    suspend fun getAppStaffs(orderIncent: Boolean?=null, orderingStore: Int?=null, user: String?=null): Response<AppStaffResponse>? {
-        var fullUrl : String? = _relativeUrls["getAppStaffs"] 
+    suspend fun getAppStaffs(orderIncent: Boolean?=null,orderingStore: Int?=null,user: String?=null, headers: Map<String, String> = emptyMap()): Response<AppStaffResponse>? {
+        var fullUrl : String? = _relativeUrls["getAppStaffs"]
         
-        return configurationApiList?.getAppStaffs(fullUrl    ,  orderIncent = orderIncent,    orderingStore = orderingStore,    user = user)}
+        return configurationApiList?.getAppStaffs(fullUrl,   orderIncent = orderIncent,  orderingStore = orderingStore,  user = user,headers = headers)}
 
     
     

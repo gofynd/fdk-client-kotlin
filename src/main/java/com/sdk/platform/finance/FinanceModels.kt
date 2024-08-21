@@ -505,14 +505,9 @@ data class DownloadReportItems(
     var reportId: String?=null,
     
     @SerializedName("filters")
-    var filters: GenerateReportFilters?=null,
-    
-    @SerializedName("type_of_request")
-    var typeOfRequest: String?=null
+    var filters: GenerateReportFilters?=null
     
 ): Parcelable {
-    
-    
     
     
     
@@ -879,28 +874,6 @@ data class GetReportListReq(
 
              
 /*
-    Model: GetAffiliate
-*/
-@Parcelize
-data class GetAffiliate(
-    
-    
-    
-    @SerializedName("company_id")
-    var companyId: Int?=null
-    
-): Parcelable {
-    
-    
-    
-    
-    
-}
-
-
-
-             
-/*
     Model: GetReportListResponse
 */
 @Parcelize
@@ -979,6 +952,28 @@ data class ReportItem(
     
     
     
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: GetAffiliate
+*/
+@Parcelize
+data class GetAffiliate(
+    
+    
+    
+    @SerializedName("company_id")
+    var companyId: Int?=null
+    
+): Parcelable {
     
     
     
@@ -3319,9 +3314,6 @@ data class DownloadReportCustomerCnResponse(
     @SerializedName("items")
     var items: ArrayList<DownloadReportResponseData>?=null,
     
-    @SerializedName("data")
-    var data: ArrayList<DownloadReportResponseData>?=null,
-    
     @SerializedName("item_count")
     var itemCount: Int?=null,
     
@@ -3329,8 +3321,6 @@ data class DownloadReportCustomerCnResponse(
     var page: Page?=null
     
 ): Parcelable {
-    
-    
     
     
     

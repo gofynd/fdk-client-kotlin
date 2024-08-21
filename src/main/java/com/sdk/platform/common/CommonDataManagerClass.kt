@@ -11,12 +11,12 @@ import com.sdk.platform.*
 
 
 
-class CommonDataManagerClass(val config: PlatformConfig, val unauthorizedAction: ((url: String, responseCode: Int) -> Unit)? = null) : BaseRepository() {        
-       
+class CommonDataManagerClass(val config: PlatformConfig, val unauthorizedAction: ((url: String, responseCode: Int) -> Unit)? = null) : BaseRepository() {
+
     private val commonApiList by lazy {
         generatecommonApiList()
     }
-    
+
     private fun generatecommonApiList(): CommonApiList? {
         val interceptorMap = HashMap<String, List<Interceptor>>()
         val headerInterceptor = AccessTokenInterceptor(platformConfig = config)
@@ -44,27 +44,27 @@ class CommonDataManagerClass(val config: PlatformConfig, val unauthorizedAction:
     }
     
     
-    suspend fun searchApplication(authorization: String?=null, query: String?=null)
+    suspend fun searchApplication(authorization: String?=null,query: String?=null, headers: Map<String, String> = emptyMap())
     : Response<ApplicationResponse>? {
-        
+
         return if (config.oauthClient.isAccessTokenValid()) {
             commonApiList?.searchApplication(
-        authorization = authorization, query = query )
+        authorization = authorization,query = query, headers = headers)
         } else {
             null
-        } 
+        }
     }
     
     
-    suspend fun getLocations(locationType: String?=null, id: String?=null)
+    suspend fun getLocations(locationType: String?=null,id: String?=null, headers: Map<String, String> = emptyMap())
     : Response<Locations>? {
-        
+
         return if (config.oauthClient.isAccessTokenValid()) {
             commonApiList?.getLocations(
-        locationType = locationType, id = id )
+        locationType = locationType,id = id, headers = headers)
         } else {
             null
-        } 
+        }
     }
     
 

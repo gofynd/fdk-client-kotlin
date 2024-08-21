@@ -11,12 +11,12 @@ import com.sdk.platform.*
 
 
 
-class AnalyticsDataManagerClass(val config: PlatformConfig, val unauthorizedAction: ((url: String, responseCode: Int) -> Unit)? = null) : BaseRepository() {        
-       
+class AnalyticsDataManagerClass(val config: PlatformConfig, val unauthorizedAction: ((url: String, responseCode: Int) -> Unit)? = null) : BaseRepository() {
+
     private val analyticsApiList by lazy {
         generateanalyticsApiList()
     }
-    
+
     private fun generateanalyticsApiList(): AnalyticsApiList? {
         val interceptorMap = HashMap<String, List<Interceptor>>()
         val headerInterceptor = AccessTokenInterceptor(platformConfig = config)
@@ -51,30 +51,30 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
 
     
     
-    suspend fun executeJobForProvidedParametersV2(body: JobExecute)
+    suspend fun executeJobForProvidedParametersV2(body: JobExecute, headers: Map<String, String> = emptyMap())
     : Response<HashMap<String,Any>>? {
         return if (config.oauthClient.isAccessTokenValid()) {
-                analyticsApiList?.executeJobForProvidedParametersV2(companyId = config.companyId , applicationId = applicationId , body = body)
+                analyticsApiList?.executeJobForProvidedParametersV2(companyId = config.companyId ,applicationId = applicationId , body = body,headers = headers)
         } else {
             null
         }
     }
     
     
-    suspend fun startDownloadForQueryV2(exportType: String,body: FileDownloadRequestBody)
+    suspend fun startDownloadForQueryV2(exportType: String,body: FileDownloadRequestBody, headers: Map<String, String> = emptyMap())
     : Response<HashMap<String,Any>>? {
         return if (config.oauthClient.isAccessTokenValid()) {
-                analyticsApiList?.startDownloadForQueryV2(companyId = config.companyId , applicationId = applicationId , exportType = exportType, body = body)
+                analyticsApiList?.startDownloadForQueryV2(companyId = config.companyId ,applicationId = applicationId ,exportType = exportType, body = body,headers = headers)
         } else {
             null
         }
     }
     
     
-    suspend fun checkJobStatusByNameV2(fileName: String)
+    suspend fun checkJobStatusByNameV2(fileName: String, headers: Map<String, String> = emptyMap())
     : Response<HashMap<String,Any>>? {
         return if (config.oauthClient.isAccessTokenValid()) {
-                analyticsApiList?.checkJobStatusByNameV2(companyId = config.companyId , applicationId = applicationId , fileName = fileName )
+                analyticsApiList?.checkJobStatusByNameV2(companyId = config.companyId ,applicationId = applicationId ,fileName = fileName, headers = headers)
         } else {
             null
         }

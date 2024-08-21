@@ -79,11 +79,85 @@ data class SubmitCustomFormResponse(
     var message: String?=null,
     
     @SerializedName("ticket")
-    var ticket: Ticket?=null
+    var ticket: Ticket?=null,
+    
+    @SerializedName("response")
+    var response: FormFieldResponse?=null
     
 ): Parcelable {
     
     
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: FormFieldResponse
+*/
+@Parcelize
+data class FormFieldResponse(
+    
+    
+    
+    @SerializedName("_id")
+    var id: String?=null,
+    
+    @SerializedName("__v")
+    var v: Double?=null,
+    
+    @SerializedName("application_id")
+    var applicationId: String?=null,
+    
+    @SerializedName("form_slug")
+    var formSlug: String?=null,
+    
+    @SerializedName("created_on")
+    var createdOn: CreatedOn?=null,
+    
+    @SerializedName("response")
+    var response: ArrayList<FormFieldResponseValues>?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: FormFieldResponseValues
+*/
+@Parcelize
+data class FormFieldResponseValues(
+    
+    
+    
+    @SerializedName("key")
+    var key: String?=null
+    
+): Parcelable {
     
     
     

@@ -11,12 +11,12 @@ import com.sdk.platform.*
 
 
 
-class ShareDataManagerClass(val config: PlatformConfig, val unauthorizedAction: ((url: String, responseCode: Int) -> Unit)? = null) : BaseRepository() {        
-       
+class ShareDataManagerClass(val config: PlatformConfig, val unauthorizedAction: ((url: String, responseCode: Int) -> Unit)? = null) : BaseRepository() {
+
     private val shareApiList by lazy {
         generateshareApiList()
     }
-    
+
     private fun generateshareApiList(): ShareApiList? {
         val interceptorMap = HashMap<String, List<Interceptor>>()
         val headerInterceptor = AccessTokenInterceptor(platformConfig = config)
@@ -53,50 +53,50 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
 
     
     
-    suspend fun createShortLink(body: ShortLinkReq)
+    suspend fun createShortLink(body: ShortLinkReq, headers: Map<String, String> = emptyMap())
     : Response<ShortLinkRes>? {
         return if (config.oauthClient.isAccessTokenValid()) {
-                shareApiList?.createShortLink(companyId = config.companyId , applicationId = applicationId , body = body)
+                shareApiList?.createShortLink(companyId = config.companyId ,applicationId = applicationId , body = body,headers = headers)
         } else {
             null
         }
     }
     
     
-    suspend fun getShortLinks(pageNo: Int?=null, pageSize: Int?=null, createdBy: String?=null, active: String?=null, shortUrl: String?=null, originalUrl: String?=null, title: String?=null)
+    suspend fun getShortLinks(pageNo: Int?=null,pageSize: Int?=null,createdBy: String?=null,active: String?=null,shortUrl: String?=null,originalUrl: String?=null,title: String?=null, headers: Map<String, String> = emptyMap())
     : Response<ShortLinkList>? {
         return if (config.oauthClient.isAccessTokenValid()) {
-                shareApiList?.getShortLinks(companyId = config.companyId , applicationId = applicationId , pageNo = pageNo, pageSize = pageSize, createdBy = createdBy, active = active, shortUrl = shortUrl, originalUrl = originalUrl, title = title )
+                shareApiList?.getShortLinks(companyId = config.companyId ,applicationId = applicationId ,pageNo = pageNo,pageSize = pageSize,createdBy = createdBy,active = active,shortUrl = shortUrl,originalUrl = originalUrl,title = title, headers = headers)
         } else {
             null
         }
     }
     
     
-    suspend fun getShortLinkByHash(hash: String)
+    suspend fun getShortLinkByHash(hash: String, headers: Map<String, String> = emptyMap())
     : Response<ShortLinkRes>? {
         return if (config.oauthClient.isAccessTokenValid()) {
-                shareApiList?.getShortLinkByHash(companyId = config.companyId , applicationId = applicationId , hash = hash )
+                shareApiList?.getShortLinkByHash(companyId = config.companyId ,applicationId = applicationId ,hash = hash, headers = headers)
         } else {
             null
         }
     }
     
     
-    suspend fun updateShortLinkById(id: String,body: ShortLinkReq)
+    suspend fun updateShortLinkById(id: String,body: ShortLinkReq, headers: Map<String, String> = emptyMap())
     : Response<ShortLinkRes>? {
         return if (config.oauthClient.isAccessTokenValid()) {
-                shareApiList?.updateShortLinkById(companyId = config.companyId , applicationId = applicationId , id = id, body = body)
+                shareApiList?.updateShortLinkById(companyId = config.companyId ,applicationId = applicationId ,id = id, body = body,headers = headers)
         } else {
             null
         }
     }
     
     
-    suspend fun getShortLinkClickStats(surlId: String)
+    suspend fun getShortLinkClickStats(surlId: String, headers: Map<String, String> = emptyMap())
     : Response<ClickStatsResponse>? {
         return if (config.oauthClient.isAccessTokenValid()) {
-                shareApiList?.getShortLinkClickStats(surlId = surlId, companyId = config.companyId , applicationId = applicationId  )
+                shareApiList?.getShortLinkClickStats(surlId = surlId,companyId = config.companyId ,applicationId = applicationId , headers = headers)
         } else {
             null
         }

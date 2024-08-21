@@ -10,7 +10,7 @@ import retrofit2.Response
 
 
 class LeadDataManagerClass(val config: ApplicationConfig, val unauthorizedAction: ((url: String, responseCode: Int) -> Unit)? = null) : BaseRepository() {
-    
+
     private val leadApiList by lazy {
         generateleadApiList()
     }
@@ -36,7 +36,7 @@ class LeadDataManagerClass(val config: ApplicationConfig, val unauthorizedAction
                 _relativeUrls[key] = value
             }
     }
-    
+
 
     private fun generateleadApiList(): LeadApiList? {
         val interceptorMap = HashMap<String, List<Interceptor>>()
@@ -64,46 +64,46 @@ class LeadDataManagerClass(val config: ApplicationConfig, val unauthorizedAction
         return retrofitHttpClient?.initializeRestClient(LeadApiList::class.java) as? LeadApiList
     }
     
-    suspend fun getTicket(id: String): Response<Ticket>? {
-        var fullUrl : String? = _relativeUrls["getTicket"] 
+    suspend fun getTicket(id: String, headers: Map<String, String> = emptyMap()): Response<Ticket>? {
+        var fullUrl : String? = _relativeUrls["getTicket"]
         
         fullUrl = fullUrl?.replace("{" + "id" +"}",id.toString())
         
-        return leadApiList?.getTicket(fullUrl   )}
+        return leadApiList?.getTicket(fullUrl,  headers = headers)}
 
     
     
-    suspend fun createHistory(id: String, body: TicketHistoryPayload): Response<TicketHistory>? {
-        var fullUrl : String? = _relativeUrls["createHistory"] 
+    suspend fun createHistory(id: String,body: TicketHistoryPayload, headers: Map<String, String> = emptyMap()): Response<TicketHistory>? {
+        var fullUrl : String? = _relativeUrls["createHistory"]
         
         fullUrl = fullUrl?.replace("{" + "id" +"}",id.toString())
         
-        return leadApiList?.createHistory(fullUrl   ,body = body)}
+        return leadApiList?.createHistory(fullUrl,  body = body,headers = headers)}
 
     
     
-    suspend fun createTicket(body: AddTicketPayload): Response<Ticket>? {
-        var fullUrl : String? = _relativeUrls["createTicket"] 
+    suspend fun createTicket(body: AddTicketPayload, headers: Map<String, String> = emptyMap()): Response<Ticket>? {
+        var fullUrl : String? = _relativeUrls["createTicket"]
         
-        return leadApiList?.createTicket(fullUrl  ,body = body)}
+        return leadApiList?.createTicket(fullUrl, body = body,headers = headers)}
 
     
     
-    suspend fun getCustomForm(slug: String): Response<CustomForm>? {
-        var fullUrl : String? = _relativeUrls["getCustomForm"] 
+    suspend fun getCustomForm(slug: String, headers: Map<String, String> = emptyMap()): Response<CustomForm>? {
+        var fullUrl : String? = _relativeUrls["getCustomForm"]
         
         fullUrl = fullUrl?.replace("{" + "slug" +"}",slug.toString())
         
-        return leadApiList?.getCustomForm(fullUrl   )}
+        return leadApiList?.getCustomForm(fullUrl,  headers = headers)}
 
     
     
-    suspend fun submitCustomForm(slug: String, body: CustomFormSubmissionPayload): Response<SubmitCustomFormResponse>? {
-        var fullUrl : String? = _relativeUrls["submitCustomForm"] 
+    suspend fun submitCustomForm(slug: String,body: CustomFormSubmissionPayload, headers: Map<String, String> = emptyMap()): Response<SubmitCustomFormResponse>? {
+        var fullUrl : String? = _relativeUrls["submitCustomForm"]
         
         fullUrl = fullUrl?.replace("{" + "slug" +"}",slug.toString())
         
-        return leadApiList?.submitCustomForm(fullUrl   ,body = body)}
+        return leadApiList?.submitCustomForm(fullUrl,  body = body,headers = headers)}
 
     
     

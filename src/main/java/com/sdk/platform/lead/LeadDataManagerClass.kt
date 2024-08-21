@@ -11,12 +11,12 @@ import com.sdk.platform.*
 
 
 
-class LeadDataManagerClass(val config: PlatformConfig, val unauthorizedAction: ((url: String, responseCode: Int) -> Unit)? = null) : BaseRepository() {        
-       
+class LeadDataManagerClass(val config: PlatformConfig, val unauthorizedAction: ((url: String, responseCode: Int) -> Unit)? = null) : BaseRepository() {
+
     private val leadApiList by lazy {
         generateleadApiList()
     }
-    
+
     private fun generateleadApiList(): LeadApiList? {
         val interceptorMap = HashMap<String, List<Interceptor>>()
         val headerInterceptor = AccessTokenInterceptor(platformConfig = config)
@@ -44,102 +44,102 @@ class LeadDataManagerClass(val config: PlatformConfig, val unauthorizedAction: (
     }
     
     
-    suspend fun getPlatformTickets(items: Boolean?=null, filters: Boolean?=null, q: String?=null, status: String?=null, priority: PriorityEnum?=null, category: String?=null, pageNo: Int?=null, pageSize: Int?=null)
+    suspend fun getPlatformTickets(items: Boolean?=null,filters: Boolean?=null,q: String?=null,status: String?=null,priority: PriorityEnum?=null,category: String?=null,pageNo: Int?=null,pageSize: Int?=null, headers: Map<String, String> = emptyMap())
     : Response<TicketList>? {
-        
+
         return if (config.oauthClient.isAccessTokenValid()) {
             leadApiList?.getPlatformTickets(
-        companyId = config.companyId, items = items, filters = filters, q = q, status = status, priority = priority, category = category, pageNo = pageNo, pageSize = pageSize )
+        companyId = config.companyId,items = items,filters = filters,q = q,status = status,priority = priority,category = category,pageNo = pageNo,pageSize = pageSize, headers = headers)
         } else {
             null
-        } 
+        }
     }
     
     
-    suspend fun createTicket(body: AddTicketPayload)
+    suspend fun createTicket(body: AddTicketPayload, headers: Map<String, String> = emptyMap())
     : Response<Ticket>? {
-        
+
         return if (config.oauthClient.isAccessTokenValid()) {
             leadApiList?.createTicket(
-        companyId = config.companyId, body = body)
+        companyId = config.companyId, body = body,headers = headers)
         } else {
             null
-        } 
+        }
     }
     
     
     
-    suspend fun getPlatformTicket(id: String)
+    suspend fun getPlatformTicket(id: String, headers: Map<String, String> = emptyMap())
     : Response<Ticket>? {
-        
+
         return if (config.oauthClient.isAccessTokenValid()) {
             leadApiList?.getPlatformTicket(
-        companyId = config.companyId, id = id )
+        companyId = config.companyId,id = id, headers = headers)
         } else {
             null
-        } 
+        }
     }
     
     
-    suspend fun editPlatformTicket(id: String,body: EditTicketPayload)
+    suspend fun editPlatformTicket(id: String,body: EditTicketPayload, headers: Map<String, String> = emptyMap())
     : Response<Ticket>? {
-        
+
         return if (config.oauthClient.isAccessTokenValid()) {
             leadApiList?.editPlatformTicket(
-        companyId = config.companyId, id = id, body = body)
+        companyId = config.companyId,id = id, body = body,headers = headers)
         } else {
             null
-        } 
+        }
     }
     
     
     
     
-    suspend fun createPlatformTicketHistory(id: String,body: TicketHistoryPayload)
+    suspend fun createPlatformTicketHistory(id: String,body: TicketHistoryPayload, headers: Map<String, String> = emptyMap())
     : Response<TicketHistory>? {
-        
+
         return if (config.oauthClient.isAccessTokenValid()) {
             leadApiList?.createPlatformTicketHistory(
-        companyId = config.companyId, id = id, body = body)
+        companyId = config.companyId,id = id, body = body,headers = headers)
         } else {
             null
-        } 
+        }
     }
     
     
-    suspend fun getPlatformTicketHistory(id: String)
+    suspend fun getPlatformTicketHistory(id: String, headers: Map<String, String> = emptyMap())
     : Response<TicketHistoryList>? {
-        
+
         return if (config.oauthClient.isAccessTokenValid()) {
             leadApiList?.getPlatformTicketHistory(
-        companyId = config.companyId, id = id )
+        companyId = config.companyId,id = id, headers = headers)
         } else {
             null
-        } 
+        }
     }
     
     
-    suspend fun getFeedbacks(id: String)
+    suspend fun getFeedbacks(id: String, headers: Map<String, String> = emptyMap())
     : Response<TicketFeedbackList>? {
-        
+
         return if (config.oauthClient.isAccessTokenValid()) {
             leadApiList?.getFeedbacks(
-        companyId = config.companyId, id = id )
+        companyId = config.companyId,id = id, headers = headers)
         } else {
             null
-        } 
+        }
     }
     
     
-    suspend fun submitFeedback(id: String,body: TicketFeedbackPayload)
+    suspend fun submitFeedback(id: String,body: TicketFeedbackPayload, headers: Map<String, String> = emptyMap())
     : Response<TicketFeedback>? {
-        
+
         return if (config.oauthClient.isAccessTokenValid()) {
             leadApiList?.submitFeedback(
-        companyId = config.companyId, id = id, body = body)
+        companyId = config.companyId,id = id, body = body,headers = headers)
         } else {
             null
-        } 
+        }
     }
     
     
@@ -150,15 +150,15 @@ class LeadDataManagerClass(val config: PlatformConfig, val unauthorizedAction: (
     
     
     
-    suspend fun getGeneralConfig()
+    suspend fun getGeneralConfig( headers: Map<String, String> = emptyMap())
     : Response<GeneralConfigResponse>? {
-        
+
         return if (config.oauthClient.isAccessTokenValid()) {
             leadApiList?.getGeneralConfig(
-        companyId = config.companyId )
+        companyId = config.companyId, headers = headers)
         } else {
             null
-        } 
+        }
     }
     
 
@@ -168,10 +168,10 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     
     
     
-    suspend fun getNewTickets(items: Boolean?=null, filters: Boolean?=null, q: String?=null, status: String?=null, priority: PriorityEnum?=null, category: String?=null)
+    suspend fun getNewTickets(items: Boolean?=null,filters: Boolean?=null,q: String?=null,status: String?=null,priority: PriorityEnum?=null,category: String?=null, headers: Map<String, String> = emptyMap())
     : Response<TicketList>? {
         return if (config.oauthClient.isAccessTokenValid()) {
-                leadApiList?.getNewTickets(companyId = config.companyId , applicationId = applicationId , items = items, filters = filters, q = q, status = status, priority = priority, category = category )
+                leadApiList?.getNewTickets(companyId = config.companyId ,applicationId = applicationId ,items = items,filters = filters,q = q,status = status,priority = priority,category = category, headers = headers)
         } else {
             null
         }
@@ -180,20 +180,20 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     
     
     
-    suspend fun getNewTicket(id: String)
+    suspend fun getNewTicket(id: String, headers: Map<String, String> = emptyMap())
     : Response<Ticket>? {
         return if (config.oauthClient.isAccessTokenValid()) {
-                leadApiList?.getNewTicket(companyId = config.companyId , applicationId = applicationId , id = id )
+                leadApiList?.getNewTicket(companyId = config.companyId ,applicationId = applicationId ,id = id, headers = headers)
         } else {
             null
         }
     }
     
     
-    suspend fun editNewTicket(id: String,body: EditTicketPayload)
+    suspend fun editNewTicket(id: String,body: EditTicketPayload, headers: Map<String, String> = emptyMap())
     : Response<Ticket>? {
         return if (config.oauthClient.isAccessTokenValid()) {
-                leadApiList?.editNewTicket(companyId = config.companyId , applicationId = applicationId , id = id, body = body)
+                leadApiList?.editNewTicket(companyId = config.companyId ,applicationId = applicationId ,id = id, body = body,headers = headers)
         } else {
             null
         }
@@ -204,70 +204,70 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     
     
     
-    suspend fun createNewHistory(id: String,body: TicketHistoryPayload)
+    suspend fun createNewHistory(id: String,body: TicketHistoryPayload, headers: Map<String, String> = emptyMap())
     : Response<TicketHistory>? {
         return if (config.oauthClient.isAccessTokenValid()) {
-                leadApiList?.createNewHistory(companyId = config.companyId , applicationId = applicationId , id = id, body = body)
+                leadApiList?.createNewHistory(companyId = config.companyId ,applicationId = applicationId ,id = id, body = body,headers = headers)
         } else {
             null
         }
     }
     
     
-    suspend fun getNewTicketHistory(id: String)
+    suspend fun getNewTicketHistory(id: String, headers: Map<String, String> = emptyMap())
     : Response<TicketHistoryList>? {
         return if (config.oauthClient.isAccessTokenValid()) {
-                leadApiList?.getNewTicketHistory(companyId = config.companyId , applicationId = applicationId , id = id )
+                leadApiList?.getNewTicketHistory(companyId = config.companyId ,applicationId = applicationId ,id = id, headers = headers)
         } else {
             null
         }
     }
     
     
-    suspend fun getCustomForm(slug: String)
+    suspend fun getCustomForm(slug: String, headers: Map<String, String> = emptyMap())
     : Response<CustomForm>? {
         return if (config.oauthClient.isAccessTokenValid()) {
-                leadApiList?.getCustomForm(companyId = config.companyId , applicationId = applicationId , slug = slug )
+                leadApiList?.getCustomForm(companyId = config.companyId ,applicationId = applicationId ,slug = slug, headers = headers)
         } else {
             null
         }
     }
     
     
-    suspend fun editCustomForm(slug: String,body: EditCustomFormPayload)
+    suspend fun editCustomForm(slug: String,body: EditCustomFormPayload, headers: Map<String, String> = emptyMap())
     : Response<CustomForm>? {
         return if (config.oauthClient.isAccessTokenValid()) {
-                leadApiList?.editCustomForm(companyId = config.companyId , applicationId = applicationId , slug = slug, body = body)
+                leadApiList?.editCustomForm(companyId = config.companyId ,applicationId = applicationId ,slug = slug, body = body,headers = headers)
         } else {
             null
         }
     }
     
     
-    suspend fun deleteCustomForm(slug: String)
+    suspend fun deleteCustomForm(slug: String, headers: Map<String, String> = emptyMap())
     : Response<CustomForm>? {
         return if (config.oauthClient.isAccessTokenValid()) {
-                leadApiList?.deleteCustomForm(companyId = config.companyId , applicationId = applicationId , slug = slug )
+                leadApiList?.deleteCustomForm(companyId = config.companyId ,applicationId = applicationId ,slug = slug, headers = headers)
         } else {
             null
         }
     }
     
     
-    suspend fun getCustomForms()
+    suspend fun getCustomForms( headers: Map<String, String> = emptyMap())
     : Response<CustomFormList>? {
         return if (config.oauthClient.isAccessTokenValid()) {
-                leadApiList?.getCustomForms(companyId = config.companyId , applicationId = applicationId  )
+                leadApiList?.getCustomForms(companyId = config.companyId ,applicationId = applicationId , headers = headers)
         } else {
             null
         }
     }
     
     
-    suspend fun createCustomForm(body: CreateCustomFormPayload)
+    suspend fun createCustomForm(body: CreateCustomFormPayload, headers: Map<String, String> = emptyMap())
     : Response<CustomForm>? {
         return if (config.oauthClient.isAccessTokenValid()) {
-                leadApiList?.createCustomForm(companyId = config.companyId , applicationId = applicationId , body = body)
+                leadApiList?.createCustomForm(companyId = config.companyId ,applicationId = applicationId , body = body,headers = headers)
         } else {
             null
         }

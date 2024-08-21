@@ -11,12 +11,12 @@ import com.sdk.platform.*
 
 
 
-class PartnerDataManagerClass(val config: PlatformConfig, val unauthorizedAction: ((url: String, responseCode: Int) -> Unit)? = null) : BaseRepository() {        
-       
+class PartnerDataManagerClass(val config: PlatformConfig, val unauthorizedAction: ((url: String, responseCode: Int) -> Unit)? = null) : BaseRepository() {
+
     private val partnerApiList by lazy {
         generatepartnerApiList()
     }
-    
+
     private fun generatepartnerApiList(): PartnerApiList? {
         val interceptorMap = HashMap<String, List<Interceptor>>()
         val headerInterceptor = AccessTokenInterceptor(platformConfig = config)
@@ -50,20 +50,20 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
 
     
     
-    suspend fun addProxyPath(extensionId: String,body: AddProxyReq)
+    suspend fun addProxyPath(extensionId: String,body: AddProxyReq, headers: Map<String, String> = emptyMap())
     : Response<AddProxyResponse>? {
         return if (config.oauthClient.isAccessTokenValid()) {
-                partnerApiList?.addProxyPath(companyId = config.companyId , applicationId = applicationId , extensionId = extensionId, body = body)
+                partnerApiList?.addProxyPath(companyId = config.companyId ,applicationId = applicationId ,extensionId = extensionId, body = body,headers = headers)
         } else {
             null
         }
     }
     
     
-    suspend fun removeProxyPath(extensionId: String, attachedPath: String)
+    suspend fun removeProxyPath(extensionId: String,attachedPath: String, headers: Map<String, String> = emptyMap())
     : Response<RemoveProxyResponse>? {
         return if (config.oauthClient.isAccessTokenValid()) {
-                partnerApiList?.removeProxyPath(companyId = config.companyId , applicationId = applicationId , extensionId = extensionId, attachedPath = attachedPath )
+                partnerApiList?.removeProxyPath(companyId = config.companyId ,applicationId = applicationId ,extensionId = extensionId,attachedPath = attachedPath, headers = headers)
         } else {
             null
         }

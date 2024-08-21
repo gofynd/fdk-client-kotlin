@@ -10,7 +10,7 @@ import retrofit2.Response
 
 
 class CatalogDataManagerClass(val config: ApplicationConfig, val unauthorizedAction: ((url: String, responseCode: Int) -> Unit)? = null) : BaseRepository() {
-    
+
     private val catalogApiList by lazy {
         generatecatalogApiList()
     }
@@ -86,7 +86,7 @@ class CatalogDataManagerClass(val config: ApplicationConfig, val unauthorizedAct
                 _relativeUrls[key] = value
             }
     }
-    
+
 
     private fun generatecatalogApiList(): CatalogApiList? {
         val interceptorMap = HashMap<String, List<Interceptor>>()
@@ -114,69 +114,69 @@ class CatalogDataManagerClass(val config: ApplicationConfig, val unauthorizedAct
         return retrofitHttpClient?.initializeRestClient(CatalogApiList::class.java) as? CatalogApiList
     }
     
-    suspend fun getProductDetailBySlug(slug: String): Response<ProductDetail>? {
-        var fullUrl : String? = _relativeUrls["getProductDetailBySlug"] 
+    suspend fun getProductDetailBySlug(slug: String, headers: Map<String, String> = emptyMap()): Response<ProductDetail>? {
+        var fullUrl : String? = _relativeUrls["getProductDetailBySlug"]
         
         fullUrl = fullUrl?.replace("{" + "slug" +"}",slug.toString())
         
-        return catalogApiList?.getProductDetailBySlug(fullUrl   )}
+        return catalogApiList?.getProductDetailBySlug(fullUrl,  headers = headers)}
 
     
     
-    suspend fun getProductSizesBySlug(slug: String, storeId: Int?=null): Response<ProductSizes>? {
-        var fullUrl : String? = _relativeUrls["getProductSizesBySlug"] 
+    suspend fun getProductSizesBySlug(slug: String,storeId: Int?=null, headers: Map<String, String> = emptyMap()): Response<ProductSizes>? {
+        var fullUrl : String? = _relativeUrls["getProductSizesBySlug"]
         
         fullUrl = fullUrl?.replace("{" + "slug" +"}",slug.toString())
         
-        return catalogApiList?.getProductSizesBySlug(fullUrl     ,  storeId = storeId)}
+        return catalogApiList?.getProductSizesBySlug(fullUrl,    storeId = storeId,headers = headers)}
 
     
     
-    suspend fun getProductComparisonBySlugs(slug: ArrayList<String>): Response<ProductsComparisonResponse>? {
-        var fullUrl : String? = _relativeUrls["getProductComparisonBySlugs"] 
+    suspend fun getProductComparisonBySlugs(slug: ArrayList<String>, headers: Map<String, String> = emptyMap()): Response<ProductsComparisonResponse>? {
+        var fullUrl : String? = _relativeUrls["getProductComparisonBySlugs"]
         
-        return catalogApiList?.getProductComparisonBySlugs(fullUrl    ,  slug = slug)}
+        return catalogApiList?.getProductComparisonBySlugs(fullUrl,   slug = slug,headers = headers)}
 
     
     
-    suspend fun getSimilarComparisonProductBySlug(slug: String): Response<ProductCompareResponse>? {
-        var fullUrl : String? = _relativeUrls["getSimilarComparisonProductBySlug"] 
+    suspend fun getSimilarComparisonProductBySlug(slug: String, headers: Map<String, String> = emptyMap()): Response<ProductCompareResponse>? {
+        var fullUrl : String? = _relativeUrls["getSimilarComparisonProductBySlug"]
         
         fullUrl = fullUrl?.replace("{" + "slug" +"}",slug.toString())
         
-        return catalogApiList?.getSimilarComparisonProductBySlug(fullUrl   )}
+        return catalogApiList?.getSimilarComparisonProductBySlug(fullUrl,  headers = headers)}
 
     
     
-    suspend fun getComparedFrequentlyProductBySlug(slug: String): Response<ProductFrequentlyComparedSimilarResponse>? {
-        var fullUrl : String? = _relativeUrls["getComparedFrequentlyProductBySlug"] 
+    suspend fun getComparedFrequentlyProductBySlug(slug: String, headers: Map<String, String> = emptyMap()): Response<ProductFrequentlyComparedSimilarResponse>? {
+        var fullUrl : String? = _relativeUrls["getComparedFrequentlyProductBySlug"]
         
         fullUrl = fullUrl?.replace("{" + "slug" +"}",slug.toString())
         
-        return catalogApiList?.getComparedFrequentlyProductBySlug(fullUrl   )}
+        return catalogApiList?.getComparedFrequentlyProductBySlug(fullUrl,  headers = headers)}
 
     
     
-    suspend fun getProductVariantsBySlug(slug: String): Response<ProductVariantsResponse>? {
-        var fullUrl : String? = _relativeUrls["getProductVariantsBySlug"] 
+    suspend fun getProductVariantsBySlug(slug: String, headers: Map<String, String> = emptyMap()): Response<ProductVariantsResponse>? {
+        var fullUrl : String? = _relativeUrls["getProductVariantsBySlug"]
         
         fullUrl = fullUrl?.replace("{" + "slug" +"}",slug.toString())
         
-        return catalogApiList?.getProductVariantsBySlug(fullUrl   )}
+        return catalogApiList?.getProductVariantsBySlug(fullUrl,  headers = headers)}
 
     
     
-    suspend fun getProductStockByIds(itemId: String?=null, alu: String?=null, skuCode: String?=null, ean: String?=null, upc: String?=null): Response<ProductStockStatusResponse>? {
-        var fullUrl : String? = _relativeUrls["getProductStockByIds"] 
+    suspend fun getProductStockByIds(itemId: String?=null,alu: String?=null,skuCode: String?=null,ean: String?=null,upc: String?=null, headers: Map<String, String> = emptyMap()): Response<ProductStockStatusResponse>? {
+        var fullUrl : String? = _relativeUrls["getProductStockByIds"]
         
-        return catalogApiList?.getProductStockByIds(fullUrl    ,  itemId = itemId,    alu = alu,    skuCode = skuCode,    ean = ean,    upc = upc)}
+        return catalogApiList?.getProductStockByIds(fullUrl,   itemId = itemId,  alu = alu,  skuCode = skuCode,  ean = ean,  upc = upc,headers = headers)}
 
     
     
-    suspend fun getProductStockForTimeByIds(timestamp: String, pageSize: Int?=null, pageId: String?=null): Response<ProductStockPolling>? {
-        var fullUrl : String? = _relativeUrls["getProductStockForTimeByIds"] 
+    suspend fun getProductStockForTimeByIds(timestamp: String,pageSize: Int?=null,pageId: String?=null, headers: Map<String, String> = emptyMap()): Response<ProductStockPolling>? {
+        var fullUrl : String? = _relativeUrls["getProductStockForTimeByIds"]
         
-        return catalogApiList?.getProductStockForTimeByIds(fullUrl    ,  timestamp = timestamp,    pageSize = pageSize,    pageId = pageId)}
+        return catalogApiList?.getProductStockForTimeByIds(fullUrl,   timestamp = timestamp,  pageSize = pageSize,  pageId = pageId,headers = headers)}
 
     
     
@@ -212,7 +212,7 @@ class CatalogDataManagerClass(val config: ApplicationConfig, val unauthorizedAct
                 val pageId = paginator.nextId
                 val pageNo = paginator.pageNo
                 val pageType = "cursor"
-                var fullUrl : String? = _relativeUrls["getProductStockForTimeByIds"] 
+                var fullUrl : String? = _relativeUrls["getProductStockForTimeByIds"]
                 
                 catalogApiList?.getProductStockForTimeByIds(fullUrl , timestamp = timestamp, pageSize = pageSize, pageId = pageId)?.safeAwait{ response, error ->
                     response?.let {
@@ -228,14 +228,14 @@ class CatalogDataManagerClass(val config: ApplicationConfig, val unauthorizedAct
         }
 
     })
-    
+
     return paginator
     }
     
-    suspend fun getProducts(q: String?=null, f: String?=null, filters: Boolean?=null, sortOn: String?=null, pageId: String?=null, pageSize: Int?=null, pageNo: Int?=null, pageType: String?=null): Response<ProductListingResponse>? {
-        var fullUrl : String? = _relativeUrls["getProducts"] 
+    suspend fun getProducts(q: String?=null,f: String?=null,filters: Boolean?=null,sortOn: String?=null,pageId: String?=null,pageSize: Int?=null,pageNo: Int?=null,pageType: String?=null, headers: Map<String, String> = emptyMap()): Response<ProductListingResponse>? {
+        var fullUrl : String? = _relativeUrls["getProducts"]
         
-        return catalogApiList?.getProducts(fullUrl    ,  q = q,    f = f,    filters = filters,    sortOn = sortOn,    pageId = pageId,    pageSize = pageSize,    pageNo = pageNo,    pageType = pageType)}
+        return catalogApiList?.getProducts(fullUrl,   q = q,  f = f,  filters = filters,  sortOn = sortOn,  pageId = pageId,  pageSize = pageSize,  pageNo = pageNo,  pageType = pageType,headers = headers)}
 
     
     
@@ -292,7 +292,7 @@ class CatalogDataManagerClass(val config: ApplicationConfig, val unauthorizedAct
                 val pageId = paginator.nextId
                 val pageNo = paginator.pageNo
                 val pageType = "cursor"
-                var fullUrl : String? = _relativeUrls["getProducts"] 
+                var fullUrl : String? = _relativeUrls["getProducts"]
                 
                 catalogApiList?.getProducts(fullUrl , q = q, f = f, filters = filters, sortOn = sortOn, pageId = pageId, pageSize = pageSize, pageNo = pageNo, pageType = pageType)?.safeAwait{ response, error ->
                     response?.let {
@@ -308,14 +308,14 @@ class CatalogDataManagerClass(val config: ApplicationConfig, val unauthorizedAct
         }
 
     })
-    
+
     return paginator
     }
     
-    suspend fun getBrands(department: String?=null, pageNo: Int?=null, pageSize: Int?=null): Response<BrandListingResponse>? {
-        var fullUrl : String? = _relativeUrls["getBrands"] 
+    suspend fun getBrands(department: String?=null,pageNo: Int?=null,pageSize: Int?=null, headers: Map<String, String> = emptyMap()): Response<BrandListingResponse>? {
+        var fullUrl : String? = _relativeUrls["getBrands"]
         
-        return catalogApiList?.getBrands(fullUrl    ,  department = department,    pageNo = pageNo,    pageSize = pageSize)}
+        return catalogApiList?.getBrands(fullUrl,   department = department,  pageNo = pageNo,  pageSize = pageSize,headers = headers)}
 
     
     
@@ -349,7 +349,7 @@ class CatalogDataManagerClass(val config: ApplicationConfig, val unauthorizedAct
                 val pageId = paginator.nextId
                 val pageNo = paginator.pageNo
                 val pageType = "number"
-                var fullUrl : String? = _relativeUrls["getBrands"] 
+                var fullUrl : String? = _relativeUrls["getBrands"]
                 
                 catalogApiList?.getBrands(fullUrl , department = department, pageNo = pageNo, pageSize = pageSize)?.safeAwait{ response, error ->
                     response?.let {
@@ -365,39 +365,39 @@ class CatalogDataManagerClass(val config: ApplicationConfig, val unauthorizedAct
         }
 
     })
-    
+
     return paginator
     }
     
-    suspend fun getBrandDetailBySlug(slug: String): Response<BrandDetailResponse>? {
-        var fullUrl : String? = _relativeUrls["getBrandDetailBySlug"] 
+    suspend fun getBrandDetailBySlug(slug: String, headers: Map<String, String> = emptyMap()): Response<BrandDetailResponse>? {
+        var fullUrl : String? = _relativeUrls["getBrandDetailBySlug"]
         
         fullUrl = fullUrl?.replace("{" + "slug" +"}",slug.toString())
         
-        return catalogApiList?.getBrandDetailBySlug(fullUrl   )}
+        return catalogApiList?.getBrandDetailBySlug(fullUrl,  headers = headers)}
 
     
     
-    suspend fun getCategories(department: String?=null): Response<CategoryListingResponse>? {
-        var fullUrl : String? = _relativeUrls["getCategories"] 
+    suspend fun getCategories(department: String?=null, headers: Map<String, String> = emptyMap()): Response<CategoryListingResponse>? {
+        var fullUrl : String? = _relativeUrls["getCategories"]
         
-        return catalogApiList?.getCategories(fullUrl    ,  department = department)}
+        return catalogApiList?.getCategories(fullUrl,   department = department,headers = headers)}
 
     
     
-    suspend fun getCategoryDetailBySlug(slug: String): Response<CategoryMetaResponse>? {
-        var fullUrl : String? = _relativeUrls["getCategoryDetailBySlug"] 
+    suspend fun getCategoryDetailBySlug(slug: String, headers: Map<String, String> = emptyMap()): Response<CategoryMetaResponse>? {
+        var fullUrl : String? = _relativeUrls["getCategoryDetailBySlug"]
         
         fullUrl = fullUrl?.replace("{" + "slug" +"}",slug.toString())
         
-        return catalogApiList?.getCategoryDetailBySlug(fullUrl   )}
+        return catalogApiList?.getCategoryDetailBySlug(fullUrl,  headers = headers)}
 
     
     
-    suspend fun getHomeProducts(sortOn: String?=null, pageId: String?=null, pageSize: Int?=null): Response<HomeListingResponse>? {
-        var fullUrl : String? = _relativeUrls["getHomeProducts"] 
+    suspend fun getHomeProducts(sortOn: String?=null,pageId: String?=null,pageSize: Int?=null, headers: Map<String, String> = emptyMap()): Response<HomeListingResponse>? {
+        var fullUrl : String? = _relativeUrls["getHomeProducts"]
         
-        return catalogApiList?.getHomeProducts(fullUrl    ,  sortOn = sortOn,    pageId = pageId,    pageSize = pageSize)}
+        return catalogApiList?.getHomeProducts(fullUrl,   sortOn = sortOn,  pageId = pageId,  pageSize = pageSize,headers = headers)}
 
     
     
@@ -433,7 +433,7 @@ class CatalogDataManagerClass(val config: ApplicationConfig, val unauthorizedAct
                 val pageId = paginator.nextId
                 val pageNo = paginator.pageNo
                 val pageType = "cursor"
-                var fullUrl : String? = _relativeUrls["getHomeProducts"] 
+                var fullUrl : String? = _relativeUrls["getHomeProducts"]
                 
                 catalogApiList?.getHomeProducts(fullUrl , sortOn = sortOn, pageId = pageId, pageSize = pageSize)?.safeAwait{ response, error ->
                     response?.let {
@@ -449,28 +449,28 @@ class CatalogDataManagerClass(val config: ApplicationConfig, val unauthorizedAct
         }
 
     })
-    
+
     return paginator
     }
     
-    suspend fun getDepartments(): Response<DepartmentResponse>? {
-        var fullUrl : String? = _relativeUrls["getDepartments"] 
+    suspend fun getDepartments( headers: Map<String, String> = emptyMap()): Response<DepartmentResponse>? {
+        var fullUrl : String? = _relativeUrls["getDepartments"]
         
-        return catalogApiList?.getDepartments(fullUrl  )}
+        return catalogApiList?.getDepartments(fullUrl, headers = headers)}
 
     
     
-    suspend fun getSearchResults(q: String): Response<AutoCompleteResponse>? {
-        var fullUrl : String? = _relativeUrls["getSearchResults"] 
+    suspend fun getSearchResults(q: String, headers: Map<String, String> = emptyMap()): Response<AutoCompleteResponse>? {
+        var fullUrl : String? = _relativeUrls["getSearchResults"]
         
-        return catalogApiList?.getSearchResults(fullUrl    ,  q = q)}
+        return catalogApiList?.getSearchResults(fullUrl,   q = q,headers = headers)}
 
     
     
-    suspend fun getCollections(pageNo: Int?=null, pageSize: Int?=null, tag: ArrayList<String>?=null, q: String?=null): Response<GetCollectionListingResponse>? {
-        var fullUrl : String? = _relativeUrls["getCollections"] 
+    suspend fun getCollections(pageNo: Int?=null,pageSize: Int?=null,tag: ArrayList<String>?=null,q: String?=null, headers: Map<String, String> = emptyMap()): Response<GetCollectionListingResponse>? {
+        var fullUrl : String? = _relativeUrls["getCollections"]
         
-        return catalogApiList?.getCollections(fullUrl    ,  pageNo = pageNo,    pageSize = pageSize,    tag = tag,    q = q)}
+        return catalogApiList?.getCollections(fullUrl,   pageNo = pageNo,  pageSize = pageSize,  tag = tag,  q = q,headers = headers)}
 
     
     
@@ -509,7 +509,7 @@ class CatalogDataManagerClass(val config: ApplicationConfig, val unauthorizedAct
                 val pageId = paginator.nextId
                 val pageNo = paginator.pageNo
                 val pageType = "number"
-                var fullUrl : String? = _relativeUrls["getCollections"] 
+                var fullUrl : String? = _relativeUrls["getCollections"]
                 
                 catalogApiList?.getCollections(fullUrl , pageNo = pageNo, pageSize = pageSize, tag = tag, q = q)?.safeAwait{ response, error ->
                     response?.let {
@@ -525,16 +525,16 @@ class CatalogDataManagerClass(val config: ApplicationConfig, val unauthorizedAct
         }
 
     })
-    
+
     return paginator
     }
     
-    suspend fun getCollectionItemsBySlug(slug: String, f: String?=null, q: String?=null, filters: Boolean?=null, sortOn: String?=null, pageId: String?=null, pageSize: Int?=null, pageNo: Int?=null, pageType: String?=null): Response<ProductListingResponse>? {
-        var fullUrl : String? = _relativeUrls["getCollectionItemsBySlug"] 
+    suspend fun getCollectionItemsBySlug(slug: String,f: String?=null,q: String?=null,filters: Boolean?=null,sortOn: String?=null,pageId: String?=null,pageSize: Int?=null,pageNo: Int?=null,pageType: String?=null, headers: Map<String, String> = emptyMap()): Response<ProductListingResponse>? {
+        var fullUrl : String? = _relativeUrls["getCollectionItemsBySlug"]
         
         fullUrl = fullUrl?.replace("{" + "slug" +"}",slug.toString())
         
-        return catalogApiList?.getCollectionItemsBySlug(fullUrl     ,  f = f,    q = q,    filters = filters,    sortOn = sortOn,    pageId = pageId,    pageSize = pageSize,    pageNo = pageNo,    pageType = pageType)}
+        return catalogApiList?.getCollectionItemsBySlug(fullUrl,    f = f,  q = q,  filters = filters,  sortOn = sortOn,  pageId = pageId,  pageSize = pageSize,  pageNo = pageNo,  pageType = pageType,headers = headers)}
 
     
     
@@ -596,7 +596,7 @@ class CatalogDataManagerClass(val config: ApplicationConfig, val unauthorizedAct
                 val pageId = paginator.nextId
                 val pageNo = paginator.pageNo
                 val pageType = "cursor"
-                var fullUrl : String? = _relativeUrls["getCollectionItemsBySlug"] 
+                var fullUrl : String? = _relativeUrls["getCollectionItemsBySlug"]
                 
                 fullUrl = fullUrl?.replace("{" + "slug" +"}",slug.toString())
                 
@@ -614,25 +614,25 @@ class CatalogDataManagerClass(val config: ApplicationConfig, val unauthorizedAct
         }
 
     })
-    
+
     return paginator
     }
     
-    suspend fun getCollectionDetailBySlug(slug: String): Response<CollectionDetailResponse>? {
-        var fullUrl : String? = _relativeUrls["getCollectionDetailBySlug"] 
+    suspend fun getCollectionDetailBySlug(slug: String, headers: Map<String, String> = emptyMap()): Response<CollectionDetailResponse>? {
+        var fullUrl : String? = _relativeUrls["getCollectionDetailBySlug"]
         
         fullUrl = fullUrl?.replace("{" + "slug" +"}",slug.toString())
         
-        return catalogApiList?.getCollectionDetailBySlug(fullUrl   )}
+        return catalogApiList?.getCollectionDetailBySlug(fullUrl,  headers = headers)}
 
     
     
-    suspend fun getFollowedListing(collectionType: String, pageId: String?=null, pageSize: Int?=null): Response<GetFollowListingResponse>? {
-        var fullUrl : String? = _relativeUrls["getFollowedListing"] 
+    suspend fun getFollowedListing(collectionType: String,pageId: String?=null,pageSize: Int?=null, headers: Map<String, String> = emptyMap()): Response<GetFollowListingResponse>? {
+        var fullUrl : String? = _relativeUrls["getFollowedListing"]
         
         fullUrl = fullUrl?.replace("{" + "collection_type" +"}",collectionType.toString())
         
-        return catalogApiList?.getFollowedListing(fullUrl     ,  pageId = pageId,    pageSize = pageSize)}
+        return catalogApiList?.getFollowedListing(fullUrl,    pageId = pageId,  pageSize = pageSize,headers = headers)}
 
     
     
@@ -668,7 +668,7 @@ class CatalogDataManagerClass(val config: ApplicationConfig, val unauthorizedAct
                 val pageId = paginator.nextId
                 val pageNo = paginator.pageNo
                 val pageType = "cursor"
-                var fullUrl : String? = _relativeUrls["getFollowedListing"] 
+                var fullUrl : String? = _relativeUrls["getFollowedListing"]
                 
                 fullUrl = fullUrl?.replace("{" + "collection_type" +"}",collectionType.toString())
                 
@@ -686,54 +686,54 @@ class CatalogDataManagerClass(val config: ApplicationConfig, val unauthorizedAct
         }
 
     })
-    
+
     return paginator
     }
     
-    suspend fun unfollowById(collectionType: String, collectionId: String): Response<FollowPostResponse>? {
-        var fullUrl : String? = _relativeUrls["unfollowById"] 
+    suspend fun unfollowById(collectionType: String,collectionId: String, headers: Map<String, String> = emptyMap()): Response<FollowPostResponse>? {
+        var fullUrl : String? = _relativeUrls["unfollowById"]
         
         fullUrl = fullUrl?.replace("{" + "collection_type" +"}",collectionType.toString())
         
         fullUrl = fullUrl?.replace("{" + "collection_id" +"}",collectionId.toString())
         
-        return catalogApiList?.unfollowById(fullUrl    )}
+        return catalogApiList?.unfollowById(fullUrl,   headers = headers)}
 
     
     
-    suspend fun followById(collectionType: String, collectionId: String): Response<FollowPostResponse>? {
-        var fullUrl : String? = _relativeUrls["followById"] 
+    suspend fun followById(collectionType: String,collectionId: String, headers: Map<String, String> = emptyMap()): Response<FollowPostResponse>? {
+        var fullUrl : String? = _relativeUrls["followById"]
         
         fullUrl = fullUrl?.replace("{" + "collection_type" +"}",collectionType.toString())
         
         fullUrl = fullUrl?.replace("{" + "collection_id" +"}",collectionId.toString())
         
-        return catalogApiList?.followById(fullUrl    )}
+        return catalogApiList?.followById(fullUrl,   headers = headers)}
 
     
     
-    suspend fun getFollowerCountById(collectionType: String, collectionId: String): Response<FollowerCountResponse>? {
-        var fullUrl : String? = _relativeUrls["getFollowerCountById"] 
+    suspend fun getFollowerCountById(collectionType: String,collectionId: String, headers: Map<String, String> = emptyMap()): Response<FollowerCountResponse>? {
+        var fullUrl : String? = _relativeUrls["getFollowerCountById"]
         
         fullUrl = fullUrl?.replace("{" + "collection_type" +"}",collectionType.toString())
         
         fullUrl = fullUrl?.replace("{" + "collection_id" +"}",collectionId.toString())
         
-        return catalogApiList?.getFollowerCountById(fullUrl    )}
+        return catalogApiList?.getFollowerCountById(fullUrl,   headers = headers)}
 
     
     
-    suspend fun getFollowIds(collectionType: String?=null): Response<FollowIdsResponse>? {
-        var fullUrl : String? = _relativeUrls["getFollowIds"] 
+    suspend fun getFollowIds(collectionType: String?=null, headers: Map<String, String> = emptyMap()): Response<FollowIdsResponse>? {
+        var fullUrl : String? = _relativeUrls["getFollowIds"]
         
-        return catalogApiList?.getFollowIds(fullUrl    ,  collectionType = collectionType)}
+        return catalogApiList?.getFollowIds(fullUrl,   collectionType = collectionType,headers = headers)}
 
     
     
-    suspend fun getStores(pageNo: Int?=null, pageSize: Int?=null, q: String?=null, city: String?=null, range: Int?=null, latitude: Double?=null, longitude: Double?=null, tags: String?=null): Response<StoreListingResponse>? {
-        var fullUrl : String? = _relativeUrls["getStores"] 
+    suspend fun getStores(pageNo: Int?=null,pageSize: Int?=null,q: String?=null,city: String?=null,range: Int?=null,latitude: Double?=null,longitude: Double?=null,tags: String?=null, headers: Map<String, String> = emptyMap()): Response<StoreListingResponse>? {
+        var fullUrl : String? = _relativeUrls["getStores"]
         
-        return catalogApiList?.getStores(fullUrl    ,  pageNo = pageNo,    pageSize = pageSize,    q = q,    city = city,    range = range,    latitude = latitude,    longitude = longitude,    tags = tags)}
+        return catalogApiList?.getStores(fullUrl,   pageNo = pageNo,  pageSize = pageSize,  q = q,  city = city,  range = range,  latitude = latitude,  longitude = longitude,  tags = tags,headers = headers)}
 
     
     
@@ -792,7 +792,7 @@ class CatalogDataManagerClass(val config: ApplicationConfig, val unauthorizedAct
                 val pageId = paginator.nextId
                 val pageNo = paginator.pageNo
                 val pageType = "number"
-                var fullUrl : String? = _relativeUrls["getStores"] 
+                var fullUrl : String? = _relativeUrls["getStores"]
                 
                 catalogApiList?.getStores(fullUrl , pageNo = pageNo, pageSize = pageSize, q = q, city = city, range = range, latitude = latitude, longitude = longitude, tags = tags)?.safeAwait{ response, error ->
                     response?.let {
@@ -808,14 +808,14 @@ class CatalogDataManagerClass(val config: ApplicationConfig, val unauthorizedAct
         }
 
     })
-    
+
     return paginator
     }
     
-    suspend fun getInStockLocations(pageNo: Int?=null, pageSize: Int?=null, q: String?=null, city: String?=null, range: Int?=null, latitude: Double?=null, longitude: Double?=null): Response<ApplicationStoreListing>? {
-        var fullUrl : String? = _relativeUrls["getInStockLocations"] 
+    suspend fun getInStockLocations(pageNo: Int?=null,pageSize: Int?=null,q: String?=null,city: String?=null,range: Int?=null,latitude: Double?=null,longitude: Double?=null, headers: Map<String, String> = emptyMap()): Response<ApplicationStoreListing>? {
+        var fullUrl : String? = _relativeUrls["getInStockLocations"]
         
-        return catalogApiList?.getInStockLocations(fullUrl    ,  pageNo = pageNo,    pageSize = pageSize,    q = q,    city = city,    range = range,    latitude = latitude,    longitude = longitude)}
+        return catalogApiList?.getInStockLocations(fullUrl,   pageNo = pageNo,  pageSize = pageSize,  q = q,  city = city,  range = range,  latitude = latitude,  longitude = longitude,headers = headers)}
 
     
     
@@ -869,7 +869,7 @@ class CatalogDataManagerClass(val config: ApplicationConfig, val unauthorizedAct
                 val pageId = paginator.nextId
                 val pageNo = paginator.pageNo
                 val pageType = "number"
-                var fullUrl : String? = _relativeUrls["getInStockLocations"] 
+                var fullUrl : String? = _relativeUrls["getInStockLocations"]
                 
                 catalogApiList?.getInStockLocations(fullUrl , pageNo = pageNo, pageSize = pageSize, q = q, city = city, range = range, latitude = latitude, longitude = longitude)?.safeAwait{ response, error ->
                     response?.let {
@@ -885,45 +885,45 @@ class CatalogDataManagerClass(val config: ApplicationConfig, val unauthorizedAct
         }
 
     })
-    
+
     return paginator
     }
     
-    suspend fun getLocationDetailsById(locationId: Int): Response<StoreDetails>? {
-        var fullUrl : String? = _relativeUrls["getLocationDetailsById"] 
+    suspend fun getLocationDetailsById(locationId: Int, headers: Map<String, String> = emptyMap()): Response<StoreDetails>? {
+        var fullUrl : String? = _relativeUrls["getLocationDetailsById"]
         
         fullUrl = fullUrl?.replace("{" + "location_id" +"}",locationId.toString())
         
-        return catalogApiList?.getLocationDetailsById(fullUrl   )}
+        return catalogApiList?.getLocationDetailsById(fullUrl,  headers = headers)}
 
     
     
-    suspend fun getProductBundlesBySlug(slug: String?=null, id: String?=null): Response<ProductBundle>? {
-        var fullUrl : String? = _relativeUrls["getProductBundlesBySlug"] 
+    suspend fun getProductBundlesBySlug(slug: String?=null,id: String?=null, headers: Map<String, String> = emptyMap()): Response<ProductBundle>? {
+        var fullUrl : String? = _relativeUrls["getProductBundlesBySlug"]
         
-        return catalogApiList?.getProductBundlesBySlug(fullUrl    ,  slug = slug,    id = id)}
+        return catalogApiList?.getProductBundlesBySlug(fullUrl,   slug = slug,  id = id,headers = headers)}
 
     
     
-    suspend fun getProductPriceBySlug(slug: String, size: String, storeId: Int?=null, moq: Int?=null): Response<ProductSizePriceResponseV3>? {
-        var fullUrl : String? = _relativeUrls["getProductPriceBySlug"] 
+    suspend fun getProductPriceBySlug(slug: String,size: String,storeId: Int?=null,moq: Int?=null, headers: Map<String, String> = emptyMap()): Response<ProductSizePriceResponseV3>? {
+        var fullUrl : String? = _relativeUrls["getProductPriceBySlug"]
         
         fullUrl = fullUrl?.replace("{" + "slug" +"}",slug.toString())
         
         fullUrl = fullUrl?.replace("{" + "size" +"}",size.toString())
         
-        return catalogApiList?.getProductPriceBySlug(fullUrl      ,  storeId = storeId,    moq = moq)}
+        return catalogApiList?.getProductPriceBySlug(fullUrl,     storeId = storeId,  moq = moq,headers = headers)}
 
     
     
-    suspend fun getProductSellersBySlug(slug: String, size: String, strategy: String?=null, pageNo: Int?=null, pageSize: Int?=null): Response<ProductSizeSellersResponseV3>? {
-        var fullUrl : String? = _relativeUrls["getProductSellersBySlug"] 
+    suspend fun getProductSellersBySlug(slug: String,size: String,strategy: String?=null,pageNo: Int?=null,pageSize: Int?=null, headers: Map<String, String> = emptyMap()): Response<ProductSizeSellersResponseV3>? {
+        var fullUrl : String? = _relativeUrls["getProductSellersBySlug"]
         
         fullUrl = fullUrl?.replace("{" + "slug" +"}",slug.toString())
         
         fullUrl = fullUrl?.replace("{" + "size" +"}",size.toString())
         
-        return catalogApiList?.getProductSellersBySlug(fullUrl      ,  strategy = strategy,    pageNo = pageNo,    pageSize = pageSize)}
+        return catalogApiList?.getProductSellersBySlug(fullUrl,     strategy = strategy,  pageNo = pageNo,  pageSize = pageSize,headers = headers)}
 
     
     
@@ -967,7 +967,7 @@ class CatalogDataManagerClass(val config: ApplicationConfig, val unauthorizedAct
                 val pageId = paginator.nextId
                 val pageNo = paginator.pageNo
                 val pageType = "number"
-                var fullUrl : String? = _relativeUrls["getProductSellersBySlug"] 
+                var fullUrl : String? = _relativeUrls["getProductSellersBySlug"]
                 
                 fullUrl = fullUrl?.replace("{" + "slug" +"}",slug.toString())
                 
@@ -987,7 +987,7 @@ class CatalogDataManagerClass(val config: ApplicationConfig, val unauthorizedAct
         }
 
     })
-    
+
     return paginator
     }
     
