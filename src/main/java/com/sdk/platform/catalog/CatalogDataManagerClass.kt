@@ -2979,10 +2979,10 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     }
     
     
-    suspend fun getAppCategoryReturnConfig( headers: Map<String, String> = emptyMap())
+    suspend fun getAppCategoryReturnConfig(q: String?=null,pageNo: Int?=null,pageSize: Int?=null, headers: Map<String, String> = emptyMap())
     : Response<BaseAppCategoryReturnConfigResponse>? {
         return if (config.oauthClient.isAccessTokenValid()) {
-                catalogApiList?.getAppCategoryReturnConfig(companyId = config.companyId ,applicationId = applicationId , headers = headers)
+                catalogApiList?.getAppCategoryReturnConfig(companyId = config.companyId ,applicationId = applicationId ,q = q,pageNo = pageNo,pageSize = pageSize, headers = headers)
         } else {
             null
         }

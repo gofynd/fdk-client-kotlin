@@ -1212,10 +1212,15 @@ data class GoogleMap(
     
     
     
+    @SerializedName("enabled")
+    var enabled: Boolean?=null,
+    
     @SerializedName("credentials")
     var credentials: GoogleMapCredentials?=null
     
 ): Parcelable {
+    
+    
     
     
     

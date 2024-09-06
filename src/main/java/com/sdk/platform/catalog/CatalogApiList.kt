@@ -158,7 +158,7 @@ interface CatalogApiList {
     : Response<SuccessResponse>
     
     @GET ("/service/platform/catalog/v1.0/company/{company_id}/application/{application_id}/return-config/categories")
-    suspend fun getAppCategoryReturnConfig(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @HeaderMap headers: Map<String, String>? = null)
+    suspend fun getAppCategoryReturnConfig(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Query("q") q: String?, @Query("page_no") pageNo: Int?, @Query("page_size") pageSize: Int?, @HeaderMap headers: Map<String, String>? = null)
     : Response<BaseAppCategoryReturnConfigResponse>
     
     @POST ("/service/platform/catalog/v1.0/company/{company_id}/application/{application_id}/return-config/categories")
