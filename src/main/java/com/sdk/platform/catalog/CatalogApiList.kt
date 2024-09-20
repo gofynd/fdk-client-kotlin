@@ -233,17 +233,9 @@ interface CatalogApiList {
     suspend fun listCategories(@Path("company_id") companyId: String, @Query("level") level: String?, @Query("department") department: Int?, @Query("q") q: String?, @Query("page_no") pageNo: Int?, @Query("page_size") pageSize: Int?, @Query("uids") uids: ArrayList<Int>?, @Query("slug") slug: String?, @HeaderMap headers: Map<String, String>? = null)
     : Response<CategoryResponse>
     
-    @POST ("/service/platform/catalog/v1.0/company/{company_id}/category/")
-    suspend fun createCategories(@Path("company_id") companyId: String,@Body body: CategoryRequestBody, @HeaderMap headers: Map<String, String>? = null)
-    : Response<CategoryCreateResponse>
-    
     @GET ("/service/platform/catalog/v1.0/company/{company_id}/category/{uid}/")
     suspend fun getCategoryData(@Path("company_id") companyId: String, @Path("uid") uid: String, @HeaderMap headers: Map<String, String>? = null)
     : Response<SingleCategoryResponse>
-    
-    @PUT ("/service/platform/catalog/v1.0/company/{company_id}/category/{uid}/")
-    suspend fun updateCategory(@Path("company_id") companyId: String, @Path("uid") uid: String,@Body body: CategoryRequestBody, @HeaderMap headers: Map<String, String>? = null)
-    : Response<CategoryUpdateResponse>
     
     @GET ("/service/platform/catalog/v1.0/company/{company_id}/cross-selling/{seller_app_id}/analytics/insights/")
     suspend fun getSellerInsights(@Path("company_id") companyId: String, @Path("seller_app_id") sellerAppId: String, @HeaderMap headers: Map<String, String>? = null)
@@ -253,17 +245,9 @@ interface CatalogApiList {
     suspend fun listDepartmentsData(@Path("company_id") companyId: String, @Query("page_no") pageNo: Int?, @Query("item_type") itemType: String?, @Query("page_size") pageSize: Int?, @Query("name") name: String?, @Query("search") search: String?, @Query("is_active") isActive: Boolean?, @Query("slug") slug: String?, @HeaderMap headers: Map<String, String>? = null)
     : Response<DepartmentsResponse>
     
-    @POST ("/service/platform/catalog/v1.0/company/{company_id}/departments/")
-    suspend fun createDepartments(@Path("company_id") companyId: String,@Body body: DepartmentCreateUpdate, @HeaderMap headers: Map<String, String>? = null)
-    : Response<DepartmentCreateResponse>
-    
     @GET ("/service/platform/catalog/v1.0/company/{company_id}/departments/{uid}/")
     suspend fun getDepartmentData(@Path("company_id") companyId: String, @Path("uid") uid: String, @HeaderMap headers: Map<String, String>? = null)
     : Response<DepartmentsResponse>
-    
-    @PUT ("/service/platform/catalog/v1.0/company/{company_id}/departments/{uid}/")
-    suspend fun updateDepartment(@Path("company_id") companyId: String, @Path("uid") uid: String,@Body body: DepartmentCreateUpdate, @HeaderMap headers: Map<String, String>? = null)
-    : Response<DepartmentModel>
     
     @GET ("/service/platform/catalog/v1.0/company/{company_id}/downloads/configuration/")
     suspend fun listTemplateBrandTypeValues(@Path("company_id") companyId: String, @Query("filter") filter: String, @Query("template_tag") templateTag: String?, @Query("item_type") itemType: String?, @HeaderMap headers: Map<String, String>? = null)
@@ -350,8 +334,8 @@ interface CatalogApiList {
     : Response<ProductAttributesResponse>
     
     @GET ("/service/platform/catalog/v1.0/company/{company_id}/product-attributes/{attribute_slug}")
-    suspend fun getGenderAttribute(@Path("company_id") companyId: String, @Path("attribute_slug") attributeSlug: String, @HeaderMap headers: Map<String, String>? = null)
-    : Response<GenderDetail>
+    suspend fun getAttribute(@Path("company_id") companyId: String, @Path("attribute_slug") attributeSlug: String, @HeaderMap headers: Map<String, String>? = null)
+    : Response<AttributeDetail>
     
     @GET ("/service/platform/catalog/v1.0/company/{company_id}/product-bundle/")
     suspend fun getProductBundle(@Path("company_id") companyId: String, @Query("q") q: String?, @Query("slug") slug: ArrayList<String>?, @HeaderMap headers: Map<String, String>? = null)

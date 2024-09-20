@@ -111,11 +111,6 @@ interface CartApiList {
     : Response<CartShipmentsResponse>
     
     
-    @POST
-    suspend fun checkoutCart(@Url url1: String?    ,   @Query("buy_now") buyNow: Boolean?, @Query("cart_type") cartType: String?, @Body body: CartCheckoutDetailRequest, @HeaderMap headers: Map<String, String>? = null)
-    : Response<CartCheckoutResponse>
-    
-    
     @PUT
     suspend fun updateCartMeta(@Url url1: String?    ,   @Query("id") id: String?, @Query("buy_now") buyNow: Boolean?, @Body body: CartMetaRequest, @HeaderMap headers: Map<String, String>? = null)
     : Response<CartMetaResponse>

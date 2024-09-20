@@ -2023,9 +2023,14 @@ data class MultiTenderPaymentMeta(
     var currentStatus: String?=null,
     
     @SerializedName("payment_gateway")
-    var paymentGateway: String?=null
+    var paymentGateway: String?=null,
+    
+    @SerializedName("payment_gateway_slug")
+    var paymentGatewaySlug: String?=null
     
 ): Parcelable {
+    
+    
     
     
     
@@ -5000,9 +5005,14 @@ data class CartDetailsSerializer(
     var cartValue: Double?=null,
     
     @SerializedName("total_quantity")
-    var totalQuantity: Int?=null
+    var totalQuantity: Int?=null,
+    
+    @SerializedName("custom_cart_meta")
+    var customCartMeta: @RawValue HashMap<String,Any>?=null
     
 ): Parcelable {
+    
+    
     
     
     

@@ -59,8 +59,6 @@ class CartDataManagerClass(val config: ApplicationConfig, val unauthorizedAction
             
                     _relativeUrls["getShipments"] = "/service/application/cart/v1.0/shipment".substring(1)
             
-                    _relativeUrls["checkoutCart"] = "/service/application/cart/v1.0/checkout".substring(1)
-            
                     _relativeUrls["updateCartMeta"] = "/service/application/cart/v1.0/meta".substring(1)
             
                     _relativeUrls["getCartShareLink"] = "/service/application/cart/v1.0/share-cart".substring(1)
@@ -255,13 +253,6 @@ class CartDataManagerClass(val config: ApplicationConfig, val unauthorizedAction
         var fullUrl : String? = _relativeUrls["getShipments"]
         
         return cartApiList?.getShipments(fullUrl,   p = p,  id = id,  buyNow = buyNow,  addressId = addressId,  areaCode = areaCode,  orderType = orderType,headers = headers)}
-
-    
-    
-    suspend fun checkoutCart(buyNow: Boolean?=null,cartType: String?=null,body: CartCheckoutDetailRequest, headers: Map<String, String> = emptyMap()): Response<CartCheckoutResponse>? {
-        var fullUrl : String? = _relativeUrls["checkoutCart"]
-        
-        return cartApiList?.checkoutCart(fullUrl,   buyNow = buyNow,  cartType = cartType,body = body,headers = headers)}
 
     
     

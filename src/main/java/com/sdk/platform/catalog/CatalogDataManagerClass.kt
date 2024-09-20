@@ -190,36 +190,12 @@ class CatalogDataManagerClass(val config: PlatformConfig, val unauthorizedAction
         return paginator
     }
     
-    suspend fun createCategories(body: CategoryRequestBody, headers: Map<String, String> = emptyMap())
-    : Response<CategoryCreateResponse>? {
-
-        return if (config.oauthClient.isAccessTokenValid()) {
-            catalogApiList?.createCategories(
-        companyId = config.companyId, body = body,headers = headers)
-        } else {
-            null
-        }
-    }
-    
-    
     suspend fun getCategoryData(uid: String, headers: Map<String, String> = emptyMap())
     : Response<SingleCategoryResponse>? {
 
         return if (config.oauthClient.isAccessTokenValid()) {
             catalogApiList?.getCategoryData(
         companyId = config.companyId,uid = uid, headers = headers)
-        } else {
-            null
-        }
-    }
-    
-    
-    suspend fun updateCategory(uid: String,body: CategoryRequestBody, headers: Map<String, String> = emptyMap())
-    : Response<CategoryUpdateResponse>? {
-
-        return if (config.oauthClient.isAccessTokenValid()) {
-            catalogApiList?.updateCategory(
-        companyId = config.companyId,uid = uid, body = body,headers = headers)
         } else {
             null
         }
@@ -329,36 +305,12 @@ class CatalogDataManagerClass(val config: PlatformConfig, val unauthorizedAction
         return paginator
     }
     
-    suspend fun createDepartments(body: DepartmentCreateUpdate, headers: Map<String, String> = emptyMap())
-    : Response<DepartmentCreateResponse>? {
-
-        return if (config.oauthClient.isAccessTokenValid()) {
-            catalogApiList?.createDepartments(
-        companyId = config.companyId, body = body,headers = headers)
-        } else {
-            null
-        }
-    }
-    
-    
     suspend fun getDepartmentData(uid: String, headers: Map<String, String> = emptyMap())
     : Response<DepartmentsResponse>? {
 
         return if (config.oauthClient.isAccessTokenValid()) {
             catalogApiList?.getDepartmentData(
         companyId = config.companyId,uid = uid, headers = headers)
-        } else {
-            null
-        }
-    }
-    
-    
-    suspend fun updateDepartment(uid: String,body: DepartmentCreateUpdate, headers: Map<String, String> = emptyMap())
-    : Response<DepartmentModel>? {
-
-        return if (config.oauthClient.isAccessTokenValid()) {
-            catalogApiList?.updateDepartment(
-        companyId = config.companyId,uid = uid, body = body,headers = headers)
         } else {
             null
         }
@@ -862,11 +814,11 @@ class CatalogDataManagerClass(val config: PlatformConfig, val unauthorizedAction
     }
     
     
-    suspend fun getGenderAttribute(attributeSlug: String, headers: Map<String, String> = emptyMap())
-    : Response<GenderDetail>? {
+    suspend fun getAttribute(attributeSlug: String, headers: Map<String, String> = emptyMap())
+    : Response<AttributeDetail>? {
 
         return if (config.oauthClient.isAccessTokenValid()) {
-            catalogApiList?.getGenderAttribute(
+            catalogApiList?.getAttribute(
         companyId = config.companyId,attributeSlug = attributeSlug, headers = headers)
         } else {
             null
@@ -3157,10 +3109,6 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
             null
         }
     }
-    
-    
-    
-    
     
     
     
