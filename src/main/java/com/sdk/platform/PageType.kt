@@ -149,7 +149,10 @@ import android.net.Uri
         returnPolicy("return-policy"), 
         
         @SerializedName("order-status")
-        orderStatus("order-status");
+        orderStatus("order-status"), 
+        
+        @SerializedName("locate-us")
+        locateUs("locate-us");
         
 
         companion object {

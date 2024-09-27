@@ -2230,6 +2230,97 @@ data class OrderConfig(
 
              
 /*
+    Model: DPConfiguration
+*/
+@Parcelize
+data class DPConfiguration(
+    
+    
+    
+    @SerializedName("shipping_by")
+    var shippingBy: String?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: PaymentConfig
+*/
+@Parcelize
+data class PaymentConfig(
+    
+    
+    
+    @SerializedName("mode_of_payment")
+    var modeOfPayment: String?=null,
+    
+    @SerializedName("source")
+    var source: String?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: CreateOrderConfig
+*/
+@Parcelize
+data class CreateOrderConfig(
+    
+    
+    
+    @SerializedName("dp_configuration")
+    var dpConfiguration: DPConfiguration?=null,
+    
+    @SerializedName("integration_type")
+    var integrationType: String?=null,
+    
+    @SerializedName("location_reassignment")
+    var locationReassignment: Boolean?=null,
+    
+    @SerializedName("payment")
+    var payment: PaymentConfig?=null,
+    
+    @SerializedName("optimal_shipment_creation")
+    var optimalShipmentCreation: Boolean?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
     Model: CreateOrderPayload
 */
 @Parcelize
@@ -3142,9 +3233,29 @@ data class OrderStatusData(
     var errors: ArrayList<String>?=null,
     
     @SerializedName("shipment_details")
-    var shipmentDetails: ArrayList<ShipmentDetail>?=null
+    var shipmentDetails: ArrayList<ShipmentDetail>?=null,
+    
+    @SerializedName("text")
+    var text: String?=null,
+    
+    @SerializedName("value")
+    var value: String?=null,
+    
+    @SerializedName("color_code")
+    var colorCode: String?=null,
+    
+    @SerializedName("expected_delivery_date")
+    var expectedDeliveryDate: String?=null
     
 ): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+    
     
     
     
@@ -3643,48 +3754,6 @@ data class Shipment(
 
              
 /*
-    Model: ShipmentRequestData
-*/
-@Parcelize
-data class ShipmentRequestData(
-    
-    
-    
-    @SerializedName("line_items")
-    var lineItems: ArrayList<LineItem>?=null,
-    
-    @SerializedName("processing_dates")
-    var processingDates: ProcessingDates?=null,
-    
-    @SerializedName("meta")
-    var meta: @RawValue HashMap<String,Any>?=null,
-    
-    @SerializedName("priority")
-    var priority: Int?=null,
-    
-    @SerializedName("order_type")
-    var orderType: String?=null
-    
-): Parcelable {
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-}
-
-
-
-             
-/*
     Model: ShippingInfo
 */
 @Parcelize
@@ -4162,9 +4231,6 @@ data class CreateOrderAPI(
     @SerializedName("shipments")
     var shipments: ArrayList<Shipment>?=null,
     
-    @SerializedName("shipment_request_data")
-    var shipmentRequestData: ShipmentRequestData?=null,
-    
     @SerializedName("shipping_info")
     var shippingInfo: ShippingInfo?=null,
     
@@ -4190,7 +4256,7 @@ data class CreateOrderAPI(
     var taxInfo: TaxInfo?=null,
     
     @SerializedName("config")
-    var config: @RawValue HashMap<String,Any>?=null,
+    var config: CreateOrderConfig?=null,
     
     @SerializedName("payment_info")
     var paymentInfo: PaymentInfo?=null,
@@ -4205,8 +4271,6 @@ data class CreateOrderAPI(
     var orderPlatform: String?=null
     
 ): Parcelable {
-    
-    
     
     
     
@@ -12337,6 +12401,9 @@ data class PlatformShipment(
     @SerializedName("gst_details")
     var gstDetails: GSTDetailsData?=null,
     
+    @SerializedName("order_status")
+    var orderStatus: OrderStatusData?=null,
+    
     @SerializedName("delivery_slot")
     var deliverySlot: @RawValue HashMap<String,Any>?=null,
     
@@ -12512,6 +12579,8 @@ data class PlatformShipment(
     var isLapaEnabled: Boolean?=null
     
 ): Parcelable {
+    
+    
     
     
     
