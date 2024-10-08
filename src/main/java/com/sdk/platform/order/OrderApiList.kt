@@ -30,7 +30,7 @@ interface OrderApiList {
     : Response<BaseResponse>
     
     @PUT ("/service/platform/order-manage/v1.0/company/{company_id}/shipment/status-internal")
-    suspend fun updateShipmentStatus(@Path("company_id") companyId: String,@Body body: UpdateShipmentStatusRequest, @HeaderMap headers: Map<String, String>? = null)
+    suspend fun updateShipmentStatus(@Path("company_id") companyId: String,@Body body: UpdateShipmentStatusRequestSchema, @HeaderMap headers: Map<String, String>? = null)
     : Response<UpdateShipmentStatusResponseBody>
     
     @GET ("/service/platform/order-manage/v1.0/company/{company_id}/roles")
@@ -47,7 +47,7 @@ interface OrderApiList {
     
     @POST ("/service/platform/order-manage/v1.0/company/{company_id}/ninja/send-sms")
     suspend fun sendSmsNinja(@Path("company_id") companyId: String,@Body body: SendSmsPayload, @HeaderMap headers: Map<String, String>? = null)
-    : Response<OrderStatusResult>
+    : Response<BaseResponse>
     
     @POST ("/service/platform/order-manage/v1.0/company/{company_id}/update-packaging-dimension")
     suspend fun updatePackagingDimensions(@Path("company_id") companyId: String,@Body body: UpdatePackagingDimensionsPayload, @HeaderMap headers: Map<String, String>? = null)
@@ -56,14 +56,6 @@ interface OrderApiList {
     @POST ("/service/platform/order-manage/v1.0/company/{company_id}/create-order")
     suspend fun createOrder(@Path("company_id") companyId: String,@Body body: CreateOrderAPI, @HeaderMap headers: Map<String, String>? = null)
     : Response<CreateOrderResponse>
-    
-    @GET ("/service/platform/order-manage/v1.0/company/{company_id}/order-config")
-    suspend fun getChannelConfig(@Path("company_id") companyId: String, @HeaderMap headers: Map<String, String>? = null)
-    : Response<CreateChannelConfigData>
-    
-    @POST ("/service/platform/order-manage/v1.0/company/{company_id}/order-config")
-    suspend fun createChannelConfig(@Path("company_id") companyId: String,@Body body: CreateChannelConfigData, @HeaderMap headers: Map<String, String>? = null)
-    : Response<CreateChannelConfigResponse>
     
     @PUT ("/service/platform/order-manage/v1.0/company/{company_id}/order/validation")
     suspend fun orderUpdate(@Path("company_id") companyId: String,@Body body: PlatformOrderUpdate, @HeaderMap headers: Map<String, String>? = null)
@@ -80,10 +72,6 @@ interface OrderApiList {
     @GET ("/service/platform/order-manage/v1.0/company/{company_id}/allowed/state/transition")
     suspend fun getAllowedStateTransition(@Path("company_id") companyId: String, @Query("ordering_channel") orderingChannel: String, @Query("status") status: String, @HeaderMap headers: Map<String, String>? = null)
     : Response<RoleBaseStateTransitionMapping>
-    
-    @POST ("/service/platform/order-manage/v1.0/company/{company_id}/customer-credit-balance")
-    suspend fun fetchCreditBalanceDetail(@Path("company_id") companyId: String,@Body body: FetchCreditBalanceRequestPayload, @HeaderMap headers: Map<String, String>? = null)
-    : Response<FetchCreditBalanceResponsePayload>
     
     @POST ("/service/platform/order-manage/v1.0/company/{company_id}/refund-mode-config")
     suspend fun fetchRefundModeConfig(@Path("company_id") companyId: String,@Body body: RefundModeConfigRequestPayload, @HeaderMap headers: Map<String, String>? = null)
@@ -106,7 +94,7 @@ interface OrderApiList {
     : Response<BulkReportsDownloadResponse>
     
     @POST ("/service/platform/order-manage/v1.0/company/{company_id}/jobs/state-transition")
-    suspend fun bulkStateTransistion(@Path("company_id") companyId: String,@Body body: BulkStateTransistionRequest, @HeaderMap headers: Map<String, String>? = null)
+    suspend fun bulkStateTransistion(@Path("company_id") companyId: String,@Body body: BulkStateTransistionRequestSchema, @HeaderMap headers: Map<String, String>? = null)
     : Response<BulkStateTransistionResponse>
     
     @GET ("/service/platform/order-manage/v1.0/company/{company_id}/jobs")
@@ -125,24 +113,24 @@ interface OrderApiList {
     suspend fun getManifestShipments(@Path("company_id") companyId: String, @Query("dp_ids") dpIds: String, @Query("stores") stores: Int, @Query("to_date") toDate: String, @Query("from_date") fromDate: String, @Query("dp_name") dpName: String?, @Query("sales_channels") salesChannels: String?, @Query("search_type") searchType: String?, @Query("search_value") searchValue: String?, @Query("page_no") pageNo: Int?, @Query("page_size") pageSize: Int?, @HeaderMap headers: Map<String, String>? = null)
     : Response<ManifestShipmentListing>
     
-    @GET ("/service/platform/order-manage/v1.0/company/{company_id}/manifests")
+    @GET ("/service/platform/order-manage/v1.0/company/{company_id}/manifest/listing")
     suspend fun getManifests(@Path("company_id") companyId: String, @Query("status") status: String?, @Query("start_date") startDate: String?, @Query("end_date") endDate: String?, @Query("search_type") searchType: String?, @Query("store_id") storeId: Int?, @Query("search_value") searchValue: String?, @Query("dp_ids") dpIds: String?, @Query("page_no") pageNo: Int?, @Query("page_size") pageSize: Int?, @HeaderMap headers: Map<String, String>? = null)
     : Response<ManifestList>
     
-    @POST ("/service/platform/order-manage/v1.0/company/{company_id}/manifests")
-    suspend fun processManifests(@Path("company_id") companyId: String,@Body body: ProcessManifest, @HeaderMap headers: Map<String, String>? = null)
-    : Response<ProcessManifestItemResponse>
+    @POST ("/service/platform/order-manage/v1.0/company/{company_id}/process-manifest")
+    suspend fun generateProcessManifest(@Path("company_id") companyId: String,@Body body: ProcessManifestRequest, @HeaderMap headers: Map<String, String>? = null)
+    : Response<ManifestResponse>
     
-    @GET ("/service/platform/order-manage/v1.0/company/{company_id}/manifests/{manifest_id}")
-    suspend fun getManifestDetails(@Path("company_id") companyId: String, @Path("manifest_id") manifestId: String, @HeaderMap headers: Map<String, String>? = null)
+    @GET ("/service/platform/order-manage/v1.0/company/{company_id}/manifest/details")
+    suspend fun getManifestDetails(@Path("company_id") companyId: String, @Query("manifest_id") manifestId: String, @Query("dp_ids") dpIds: String?, @Query("end_date") endDate: String?, @Query("start_date") startDate: String?, @Query("page_no") pageNo: Int?, @Query("page_size") pageSize: Int?, @HeaderMap headers: Map<String, String>? = null)
     : Response<ManifestDetails>
     
     @POST ("/service/platform/order-manage/v1.0/company/{company_id}/manifest/dispatch")
     suspend fun dispatchManifests(@Path("company_id") companyId: String,@Body body: DispatchManifest, @HeaderMap headers: Map<String, String>? = null)
     : Response<SuccessResponse>
     
-    @POST ("/service/platform/order-manage/v1.0/company/{company_id}/manifest/{manifest_id}/upload-consent")
-    suspend fun uploadConsents(@Path("company_id") companyId: String, @Path("manifest_id") manifestId: String,@Body body: UploadConsent, @HeaderMap headers: Map<String, String>? = null)
+    @POST ("/service/platform/order-manage/v1.0/company/{company_id}/manifest/uploadConsent")
+    suspend fun uploadConsents(@Path("company_id") companyId: String,@Body body: UploadManifestConsent, @HeaderMap headers: Map<String, String>? = null)
     : Response<SuccessResponse>
     
     @GET ("/service/platform/order-manage/v1.0/company/{company_id}/filter/listing")
@@ -166,16 +154,12 @@ interface OrderApiList {
     : Response<FailedOrderLogs>
     
     @POST ("/service/platform/order-manage/v1.0/company/{company_id}/{invoice_type}/id/generate")
-    suspend fun generateInvoiceID(@Path("company_id") companyId: String, @Path("invoice_type") invoiceType: String,@Body body: GenerateInvoiceIDRequest, @HeaderMap headers: Map<String, String>? = null)
+    suspend fun generateInvoiceID(@Path("company_id") companyId: String, @Path("invoice_type") invoiceType: String,@Body body: GenerateInvoiceIDRequestSchema, @HeaderMap headers: Map<String, String>? = null)
     : Response<GenerateInvoiceIDResponse>
     
     @GET ("/service/platform/order-manage/v1.0/company/{company_id}/orders/failed/logs/{log_id}")
     suspend fun failedOrderLogDetails(@Path("company_id") companyId: String, @Path("log_id") logId: String, @HeaderMap headers: Map<String, String>? = null)
     : Response<FailedOrderLogDetails>
-    
-    @POST ("/service/platform/order-manage/v1.0/company/{company_id}/process-manifest")
-    suspend fun generateProcessManifest(@Path("company_id") companyId: String,@Body body: ProcessManifestRequest, @HeaderMap headers: Map<String, String>? = null)
-    : Response<ManifestResponse>
     
     @POST ("/service/platform/order-manage/v1.0/company/{company_id}/state/manager/config")
     suspend fun addStateManagerConfig(@Path("company_id") companyId: String,@Body body: TransitionConfigPayload, @HeaderMap headers: Map<String, String>? = null)

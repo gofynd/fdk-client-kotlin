@@ -104,7 +104,7 @@ class OrderDataManagerClass(val config: PlatformConfig, val unauthorizedAction: 
     }
     
     
-    suspend fun updateShipmentStatus(body: UpdateShipmentStatusRequest, headers: Map<String, String> = emptyMap())
+    suspend fun updateShipmentStatus(body: UpdateShipmentStatusRequestSchema, headers: Map<String, String> = emptyMap())
     : Response<UpdateShipmentStatusResponseBody>? {
 
         return if (config.oauthClient.isAccessTokenValid()) {
@@ -153,7 +153,7 @@ class OrderDataManagerClass(val config: PlatformConfig, val unauthorizedAction: 
     
     
     suspend fun sendSmsNinja(body: SendSmsPayload, headers: Map<String, String> = emptyMap())
-    : Response<OrderStatusResult>? {
+    : Response<BaseResponse>? {
 
         return if (config.oauthClient.isAccessTokenValid()) {
             orderApiList?.sendSmsNinja(
@@ -181,30 +181,6 @@ class OrderDataManagerClass(val config: PlatformConfig, val unauthorizedAction: 
 
         return if (config.oauthClient.isAccessTokenValid()) {
             orderApiList?.createOrder(
-        companyId = config.companyId, body = body,headers = headers)
-        } else {
-            null
-        }
-    }
-    
-    
-    suspend fun getChannelConfig( headers: Map<String, String> = emptyMap())
-    : Response<CreateChannelConfigData>? {
-
-        return if (config.oauthClient.isAccessTokenValid()) {
-            orderApiList?.getChannelConfig(
-        companyId = config.companyId, headers = headers)
-        } else {
-            null
-        }
-    }
-    
-    
-    suspend fun createChannelConfig(body: CreateChannelConfigData, headers: Map<String, String> = emptyMap())
-    : Response<CreateChannelConfigResponse>? {
-
-        return if (config.oauthClient.isAccessTokenValid()) {
-            orderApiList?.createChannelConfig(
         companyId = config.companyId, body = body,headers = headers)
         } else {
             null
@@ -254,18 +230,6 @@ class OrderDataManagerClass(val config: PlatformConfig, val unauthorizedAction: 
         return if (config.oauthClient.isAccessTokenValid()) {
             orderApiList?.getAllowedStateTransition(
         companyId = config.companyId,orderingChannel = orderingChannel,status = status, headers = headers)
-        } else {
-            null
-        }
-    }
-    
-    
-    suspend fun fetchCreditBalanceDetail(body: FetchCreditBalanceRequestPayload, headers: Map<String, String> = emptyMap())
-    : Response<FetchCreditBalanceResponsePayload>? {
-
-        return if (config.oauthClient.isAccessTokenValid()) {
-            orderApiList?.fetchCreditBalanceDetail(
-        companyId = config.companyId, body = body,headers = headers)
         } else {
             null
         }
@@ -332,7 +296,7 @@ class OrderDataManagerClass(val config: PlatformConfig, val unauthorizedAction: 
     }
     
     
-    suspend fun bulkStateTransistion(body: BulkStateTransistionRequest, headers: Map<String, String> = emptyMap())
+    suspend fun bulkStateTransistion(body: BulkStateTransistionRequestSchema, headers: Map<String, String> = emptyMap())
     : Response<BulkStateTransistionResponse>? {
 
         return if (config.oauthClient.isAccessTokenValid()) {
@@ -404,11 +368,11 @@ class OrderDataManagerClass(val config: PlatformConfig, val unauthorizedAction: 
     }
     
     
-    suspend fun processManifests(body: ProcessManifest, headers: Map<String, String> = emptyMap())
-    : Response<ProcessManifestItemResponse>? {
+    suspend fun generateProcessManifest(body: ProcessManifestRequest, headers: Map<String, String> = emptyMap())
+    : Response<ManifestResponse>? {
 
         return if (config.oauthClient.isAccessTokenValid()) {
-            orderApiList?.processManifests(
+            orderApiList?.generateProcessManifest(
         companyId = config.companyId, body = body,headers = headers)
         } else {
             null
@@ -416,12 +380,12 @@ class OrderDataManagerClass(val config: PlatformConfig, val unauthorizedAction: 
     }
     
     
-    suspend fun getManifestDetails(manifestId: String, headers: Map<String, String> = emptyMap())
+    suspend fun getManifestDetails(manifestId: String,dpIds: String?=null,endDate: String?=null,startDate: String?=null,pageNo: Int?=null,pageSize: Int?=null, headers: Map<String, String> = emptyMap())
     : Response<ManifestDetails>? {
 
         return if (config.oauthClient.isAccessTokenValid()) {
             orderApiList?.getManifestDetails(
-        companyId = config.companyId,manifestId = manifestId, headers = headers)
+        companyId = config.companyId,manifestId = manifestId,dpIds = dpIds,endDate = endDate,startDate = startDate,pageNo = pageNo,pageSize = pageSize, headers = headers)
         } else {
             null
         }
@@ -440,12 +404,12 @@ class OrderDataManagerClass(val config: PlatformConfig, val unauthorizedAction: 
     }
     
     
-    suspend fun uploadConsents(manifestId: String,body: UploadConsent, headers: Map<String, String> = emptyMap())
+    suspend fun uploadConsents(body: UploadManifestConsent, headers: Map<String, String> = emptyMap())
     : Response<SuccessResponse>? {
 
         return if (config.oauthClient.isAccessTokenValid()) {
             orderApiList?.uploadConsents(
-        companyId = config.companyId,manifestId = manifestId, body = body,headers = headers)
+        companyId = config.companyId, body = body,headers = headers)
         } else {
             null
         }
@@ -512,7 +476,7 @@ class OrderDataManagerClass(val config: PlatformConfig, val unauthorizedAction: 
     }
     
     
-    suspend fun generateInvoiceID(invoiceType: String,body: GenerateInvoiceIDRequest, headers: Map<String, String> = emptyMap())
+    suspend fun generateInvoiceID(invoiceType: String,body: GenerateInvoiceIDRequestSchema, headers: Map<String, String> = emptyMap())
     : Response<GenerateInvoiceIDResponse>? {
 
         return if (config.oauthClient.isAccessTokenValid()) {
@@ -530,18 +494,6 @@ class OrderDataManagerClass(val config: PlatformConfig, val unauthorizedAction: 
         return if (config.oauthClient.isAccessTokenValid()) {
             orderApiList?.failedOrderLogDetails(
         companyId = config.companyId,logId = logId, headers = headers)
-        } else {
-            null
-        }
-    }
-    
-    
-    suspend fun generateProcessManifest(body: ProcessManifestRequest, headers: Map<String, String> = emptyMap())
-    : Response<ManifestResponse>? {
-
-        return if (config.oauthClient.isAccessTokenValid()) {
-            orderApiList?.generateProcessManifest(
-        companyId = config.companyId, body = body,headers = headers)
         } else {
             null
         }
@@ -758,10 +710,6 @@ class OrderDataManagerClass(val config: PlatformConfig, val unauthorizedAction: 
 
 inner class ApplicationClient(val applicationId:String,val config: PlatformConfig){
 
-    
-    
-    
-    
     
     
     

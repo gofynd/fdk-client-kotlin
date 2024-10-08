@@ -340,6 +340,12 @@ enum class Navigator(
         pageType = PageType.orderStatus,
         navName = "Order status",
         link = "/cart/order-status"
+    ),
+   
+    LOCATE_US(
+        pageType = PageType.locateUs,
+        navName = "Locate us",
+        link = "/locate-us"
     )
    
 }
