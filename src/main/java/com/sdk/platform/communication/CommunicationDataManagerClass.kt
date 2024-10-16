@@ -607,8 +607,8 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     }
     
     
-    suspend fun sendCommunicationSynchronously(body: EngineRequest, headers: Map<String, String> = emptyMap())
-    : Response<EngineResponse>? {
+    suspend fun sendCommunicationSynchronously(body: EnginePayload, headers: Map<String, String> = emptyMap())
+    : Response<EngineResult>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 communicationApiList?.sendCommunicationSynchronously(companyId = config.companyId ,applicationId = applicationId , body = body,headers = headers)
         } else {
@@ -617,8 +617,8 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     }
     
     
-    suspend fun sendCommunicationAsynchronously(body: EngineRequest, headers: Map<String, String> = emptyMap())
-    : Response<EngineResponse>? {
+    suspend fun sendCommunicationAsynchronously(body: EnginePayload, headers: Map<String, String> = emptyMap())
+    : Response<EngineResult>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 communicationApiList?.sendCommunicationAsynchronously(companyId = config.companyId ,applicationId = applicationId , body = body,headers = headers)
         } else {
@@ -638,7 +638,7 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     
     
     suspend fun createEventSubscriptions(body: SubscriptionsObject, headers: Map<String, String> = emptyMap())
-    : Response<EventSubscriptionsBulkUpdateResponse>? {
+    : Response<EventSubscriptionsBulkUpdateResult>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 communicationApiList?.createEventSubscriptions(companyId = config.companyId ,applicationId = applicationId , body = body,headers = headers)
         } else {
@@ -658,7 +658,7 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     
     
     suspend fun editEventSubscriptions(id: String,body: SubscriptionsObject, headers: Map<String, String> = emptyMap())
-    : Response<EventSubscriptionsBulkUpdateResponse>? {
+    : Response<EventSubscriptionsBulkUpdateResult>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 communicationApiList?.editEventSubscriptions(companyId = config.companyId ,applicationId = applicationId ,id = id, body = body,headers = headers)
         } else {
@@ -677,8 +677,8 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     }
     
     
-    suspend fun createEventSubscriptionsByBulk(body: EventSubscriptionsBulkUpdateRequest, headers: Map<String, String> = emptyMap())
-    : Response<ArrayList<EventSubscriptionsBulkUpdateResponse>>? {
+    suspend fun createEventSubscriptionsByBulk(body: EventSubscriptionsBulkUpdatePayload, headers: Map<String, String> = emptyMap())
+    : Response<ArrayList<EventSubscriptionsBulkUpdateResult>>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 communicationApiList?.createEventSubscriptionsByBulk(companyId = config.companyId ,applicationId = applicationId , body = body,headers = headers)
         } else {
@@ -688,7 +688,7 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     
     
     suspend fun getGlobalVariables( headers: Map<String, String> = emptyMap())
-    : Response<GlobalVariablesGetResponse>? {
+    : Response<GetGlobalVariablesResult>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 communicationApiList?.getGlobalVariables(companyId = config.companyId ,applicationId = applicationId , headers = headers)
         } else {
@@ -698,7 +698,7 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     
     
     suspend fun postGlobalVariables(body: GlobalVariablesReq, headers: Map<String, String> = emptyMap())
-    : Response<GlobalVariablesPostResponse>? {
+    : Response<CreateGlobalVariablesResult>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 communicationApiList?.postGlobalVariables(companyId = config.companyId ,applicationId = applicationId , body = body,headers = headers)
         } else {
@@ -727,8 +727,8 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     }
     
     
-    suspend fun triggerCampaignJob(body: TriggerJobRequest, headers: Map<String, String> = emptyMap())
-    : Response<TriggerJobResponse>? {
+    suspend fun triggerCampaignJob(body: TriggerJobPayload, headers: Map<String, String> = emptyMap())
+    : Response<TriggerJobResult>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 communicationApiList?.triggerCampaignJob(companyId = config.companyId ,applicationId = applicationId , body = body,headers = headers)
         } else {

@@ -1,4 +1,4 @@
-package com.sdk.application.webhook
+package com.sdk.application.finance
 
 import com.sdk.common.*
 import com.sdk.application.*
@@ -9,17 +9,19 @@ import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Response
 
 
-class WebhookDataManagerClass(val config: ApplicationConfig, val unauthorizedAction: ((url: String, responseCode: Int) -> Unit)? = null) : BaseRepository() {
+class FinanceDataManagerClass(val config: ApplicationConfig, val unauthorizedAction: ((url: String, responseCode: Int) -> Unit)? = null) : BaseRepository() {
 
-    private val webhookApiList by lazy {
-        generatewebhookApiList()
+    private val financeApiList by lazy {
+        generatefinanceApiList()
     }
 
     private var _relativeUrls : HashMap<String,String> = HashMap<String,String>()
 
     init{
             
-                    _relativeUrls["saveClickEvent"] = "/service/application/webhook/v1.0/click-analytics/events".substring(1)
+                    _relativeUrls["customerCreditBalance"] = "/service/application/finance/v1.0/customer-credit-balance".substring(1)
+            
+                    _relativeUrls["lockUnlockCreditNote"] = "/service/application/finance/v1.0/lock-unlock-credit-note".substring(1)
             
     }
 
@@ -30,7 +32,7 @@ class WebhookDataManagerClass(val config: ApplicationConfig, val unauthorizedAct
     }
 
 
-    private fun generatewebhookApiList(): WebhookApiList? {
+    private fun generatefinanceApiList(): FinanceApiList? {
         val interceptorMap = HashMap<String, List<Interceptor>>()
         val headerInterceptor = ApplicationHeaderInterceptor(config)
         val requestSignerInterceptor = RequestSignerInterceptor()
@@ -49,17 +51,24 @@ class WebhookDataManagerClass(val config: ApplicationConfig, val unauthorizedAct
         val retrofitHttpClient = HttpClient.initialize(
             baseUrl = config.domain,
             interceptorList = interceptorMap,
-            namespace = "ApplicationWebhook",
+            namespace = "ApplicationFinance",
             persistentCookieStore = config.persistentCookieStore,
             certPublicKey = config.certPublicKey
         )
-        return retrofitHttpClient?.initializeRestClient(WebhookApiList::class.java) as? WebhookApiList
+        return retrofitHttpClient?.initializeRestClient(FinanceApiList::class.java) as? FinanceApiList
     }
     
-    suspend fun saveClickEvent(body: ClickEventPayload, headers: Map<String, String> = emptyMap()): Response<ClickEventDetails>? {
-        var fullUrl : String? = _relativeUrls["saveClickEvent"]
+    suspend fun customerCreditBalance(body: CustomerCreditBalanceRequestSchema, headers: Map<String, String> = emptyMap()): Response<CustomerCreditBalanceResponseSchema>? {
+        var fullUrl : String? = _relativeUrls["customerCreditBalance"]
         
-        return webhookApiList?.saveClickEvent(fullUrl, body = body,headers = headers)}
+        return financeApiList?.customerCreditBalance(fullUrl, body = body,headers = headers)}
+
+    
+    
+    suspend fun lockUnlockCreditNote(body: LockUnlockRequestSchema, headers: Map<String, String> = emptyMap()): Response<LockUnlockResponseSchema>? {
+        var fullUrl : String? = _relativeUrls["lockUnlockCreditNote"]
+        
+        return financeApiList?.lockUnlockCreditNote(fullUrl, body = body,headers = headers)}
 
     
     

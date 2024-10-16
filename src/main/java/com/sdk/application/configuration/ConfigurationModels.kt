@@ -14,10 +14,10 @@ import com.google.gson.annotations.SerializedName
 
              
 /*
-    Model: ApplicationAboutResponse
+    Model: ApplicationAboutResponseSchema
 */
 @Parcelize
-data class ApplicationAboutResponse(
+data class ApplicationAboutResponseSchema(
     
     
     
@@ -284,10 +284,10 @@ data class SupportedLanguage(
 
              
 /*
-    Model: LanguageResponse
+    Model: LanguageResponseSchema
 */
 @Parcelize
-data class LanguageResponse(
+data class LanguageResponseSchema(
     
     
     
@@ -306,10 +306,10 @@ data class LanguageResponse(
 
              
 /*
-    Model: AppStaffResponse
+    Model: AppStaffResponseSchema
 */
 @Parcelize
-data class AppStaffResponse(
+data class AppStaffResponseSchema(
     
     
     
@@ -328,10 +328,10 @@ data class AppStaffResponse(
 
              
 /*
-    Model: AppStaffListResponse
+    Model: AppStaffListResponseSchema
 */
 @Parcelize
-data class AppStaffListResponse(
+data class AppStaffListResponseSchema(
     
     
     
@@ -355,10 +355,10 @@ data class AppStaffListResponse(
 
              
 /*
-    Model: OrderingStoreSelectRequest
+    Model: OrderingStoreSelectRequestSchema
 */
 @Parcelize
-data class OrderingStoreSelectRequest(
+data class OrderingStoreSelectRequestSchema(
     
     
     
@@ -466,10 +466,10 @@ data class AppStaff(
 
              
 /*
-    Model: AppTokenResponse
+    Model: AppTokenResponseSchema
 */
 @Parcelize
-data class AppTokenResponse(
+data class AppTokenResponseSchema(
     
     
     
@@ -1993,10 +1993,10 @@ data class OrderFeature(
 
              
 /*
-    Model: AppFeatureResponse
+    Model: AppFeatureResponseSchema
 */
 @Parcelize
-data class AppFeatureResponse(
+data class AppFeatureResponseSchema(
     
     
     
@@ -2497,10 +2497,10 @@ data class NotFound(
 
              
 /*
-    Model: InvalidPayloadRequest
+    Model: InvalidPayloadRequestSchema
 */
 @Parcelize
-data class InvalidPayloadRequest(
+data class InvalidPayloadRequestSchema(
     
     
     
@@ -2519,32 +2519,10 @@ data class InvalidPayloadRequest(
 
              
 /*
-    Model: UnhandledError
+    Model: SuccessMessageResponseSchema
 */
 @Parcelize
-data class UnhandledError(
-    
-    
-    
-    @SerializedName("message")
-    var message: String?=null
-    
-): Parcelable {
-    
-    
-    
-    
-    
-}
-
-
-
-             
-/*
-    Model: SuccessMessageResponse
-*/
-@Parcelize
-data class SuccessMessageResponse(
+data class SuccessMessageResponseSchema(
     
     
     
@@ -3496,10 +3474,10 @@ data class ApplicationDetail(
 
              
 /*
-    Model: CurrenciesResponse
+    Model: CurrenciesResponseSchema
 */
 @Parcelize
-data class CurrenciesResponse(
+data class CurrenciesResponseSchema(
     
     
     
@@ -3545,10 +3523,10 @@ data class DefaultCurrency(
 
              
 /*
-    Model: AppCurrencyResponse
+    Model: AppCurrencyResponseSchema
 */
 @Parcelize
-data class AppCurrencyResponse(
+data class AppCurrencyResponseSchema(
     
     
     

@@ -14,10 +14,10 @@ import com.google.gson.annotations.SerializedName
 
              
 /*
-    Model: PaymentGatewayConfigResponse
+    Model: PaymentGatewayConfigDetails
 */
 @Parcelize
-data class PaymentGatewayConfigResponse(
+data class PaymentGatewayConfigDetails(
     
     
     
@@ -135,10 +135,10 @@ data class PaymentGatewayConfig(
 
              
 /*
-    Model: PaymentGatewayConfigRequest
+    Model: PaymentGatewayConfigCreation
 */
 @Parcelize
-data class PaymentGatewayConfigRequest(
+data class PaymentGatewayConfigCreation(
     
     
     
@@ -221,10 +221,10 @@ data class ErrorCodeAndDescription(
 
              
 /*
-    Model: HttpErrorCodeAndResponse
+    Model: HttpErrorDetails
 */
 @Parcelize
-data class HttpErrorCodeAndResponse(
+data class HttpErrorDetails(
     
     
     
@@ -286,7 +286,7 @@ data class ProductCODData(
     var items: @RawValue HashMap<String,Any>?=null,
     
     @SerializedName("cod_charges")
-    var codCharges: CODChargesLimitsResponse?=null
+    var codCharges: CODChargesLimitsDetails?=null
     
 ): Parcelable {
     
@@ -302,10 +302,10 @@ data class ProductCODData(
 
              
 /*
-    Model: CODChargesLimitsResponse
+    Model: CODChargesLimitsDetails
 */
 @Parcelize
-data class CODChargesLimitsResponse(
+data class CODChargesLimitsDetails(
     
     
     
@@ -1013,10 +1013,10 @@ data class AdvancePaymentObject(
 
              
 /*
-    Model: PaymentModeRouteResponse
+    Model: PaymentModeRouteDetails
 */
 @Parcelize
-data class PaymentModeRouteResponse(
+data class PaymentModeRouteDetails(
     
     
     
@@ -1050,10 +1050,10 @@ data class PaymentModeRouteResponse(
 
              
 /*
-    Model: PaymentOptionsResponse
+    Model: PaymentOptionsDetails
 */
 @Parcelize
-data class PaymentOptionsResponse(
+data class PaymentOptionsDetails(
     
     
     
@@ -1270,10 +1270,10 @@ data class Payout(
 
              
 /*
-    Model: PayoutsResponse
+    Model: PayoutsDetails
 */
 @Parcelize
-data class PayoutsResponse(
+data class PayoutsDetails(
     
     
     
@@ -1364,10 +1364,10 @@ data class PayoutBankDetails(
 
              
 /*
-    Model: PayoutRequest
+    Model: PayoutCreation
 */
 @Parcelize
-data class PayoutRequest(
+data class PayoutCreation(
     
     
     
@@ -1411,10 +1411,10 @@ data class PayoutRequest(
 
              
 /*
-    Model: PayoutResponse
+    Model: PayoutDetails
 */
 @Parcelize
-data class PayoutResponse(
+data class PayoutDetails(
     
     
     
@@ -1478,10 +1478,10 @@ data class PayoutResponse(
 
              
 /*
-    Model: UpdatePayoutResponse
+    Model: UpdatePayoutDetails
 */
 @Parcelize
-data class UpdatePayoutResponse(
+data class UpdatePayoutDetails(
     
     
     
@@ -1510,10 +1510,10 @@ data class UpdatePayoutResponse(
 
              
 /*
-    Model: UpdatePayoutRequest
+    Model: UpdatePayoutCreation
 */
 @Parcelize
-data class UpdatePayoutRequest(
+data class UpdatePayoutCreation(
     
     
     
@@ -1542,10 +1542,10 @@ data class UpdatePayoutRequest(
 
              
 /*
-    Model: DeletePayoutResponse
+    Model: DeletePayoutDetails
 */
 @Parcelize
-data class DeletePayoutResponse(
+data class DeletePayoutDetails(
     
     
     
@@ -1564,10 +1564,10 @@ data class DeletePayoutResponse(
 
              
 /*
-    Model: SubscriptionPaymentMethodResponse
+    Model: SubscriptionPaymentMethodDetails
 */
 @Parcelize
-data class SubscriptionPaymentMethodResponse(
+data class SubscriptionPaymentMethodDetails(
     
     
     
@@ -1591,10 +1591,10 @@ data class SubscriptionPaymentMethodResponse(
 
              
 /*
-    Model: DeleteSubscriptionPaymentMethodResponse
+    Model: DeleteSubscriptionPaymentMethodDetails
 */
 @Parcelize
-data class DeleteSubscriptionPaymentMethodResponse(
+data class DeleteSubscriptionPaymentMethodDetails(
     
     
     
@@ -1613,10 +1613,10 @@ data class DeleteSubscriptionPaymentMethodResponse(
 
              
 /*
-    Model: SubscriptionConfigResponse
+    Model: SubscriptionConfigDetails
 */
 @Parcelize
-data class SubscriptionConfigResponse(
+data class SubscriptionConfigDetails(
     
     
     
@@ -1645,10 +1645,10 @@ data class SubscriptionConfigResponse(
 
              
 /*
-    Model: SaveSubscriptionSetupIntentRequest
+    Model: SaveSubscriptionSetupIntentCreation
 */
 @Parcelize
-data class SaveSubscriptionSetupIntentRequest(
+data class SaveSubscriptionSetupIntentCreation(
     
     
     
@@ -1667,10 +1667,10 @@ data class SaveSubscriptionSetupIntentRequest(
 
              
 /*
-    Model: SaveSubscriptionSetupIntentResponse
+    Model: SaveSubscriptionSetupIntentDetails
 */
 @Parcelize
-data class SaveSubscriptionSetupIntentResponse(
+data class SaveSubscriptionSetupIntentDetails(
     
     
     
@@ -1694,10 +1694,10 @@ data class SaveSubscriptionSetupIntentResponse(
 
              
 /*
-    Model: RefundAccountResponse
+    Model: RefundAccountDetails
 */
 @Parcelize
-data class RefundAccountResponse(
+data class RefundAccountDetails(
     
     
     
@@ -1805,10 +1805,10 @@ data class BankDetailsForOTP(
 
              
 /*
-    Model: AddBeneficiaryDetailsOTPRequest
+    Model: AddBeneficiaryDetailsOTPCreation
 */
 @Parcelize
-data class AddBeneficiaryDetailsOTPRequest(
+data class AddBeneficiaryDetailsOTPCreation(
     
     
     
@@ -1832,10 +1832,10 @@ data class AddBeneficiaryDetailsOTPRequest(
 
              
 /*
-    Model: IfscCodeResponse
+    Model: IfscCodeDetails
 */
 @Parcelize
-data class IfscCodeResponse(
+data class IfscCodeDetails(
     
     
     
@@ -1976,10 +1976,10 @@ data class OrderBeneficiaryDetails(
 
              
 /*
-    Model: OrderBeneficiaryResponse
+    Model: OrderBeneficiaryFetchResults
 */
 @Parcelize
-data class OrderBeneficiaryResponse(
+data class OrderBeneficiaryFetchResults(
     
     
     
@@ -2087,10 +2087,10 @@ data class MultiTenderPaymentMethod(
 
              
 /*
-    Model: PaymentConfirmationRequest
+    Model: PaymentConfirmationCreation
 */
 @Parcelize
-data class PaymentConfirmationRequest(
+data class PaymentConfirmationCreation(
     
     
     
@@ -2114,10 +2114,10 @@ data class PaymentConfirmationRequest(
 
              
 /*
-    Model: PaymentConfirmationResponse
+    Model: PaymentConfirmationDetails
 */
 @Parcelize
-data class PaymentConfirmationResponse(
+data class PaymentConfirmationDetails(
     
     
     
@@ -2188,10 +2188,10 @@ data class CODdata(
 
              
 /*
-    Model: GetUserCODLimitResponse
+    Model: GetUserCODLimitDetails
 */
 @Parcelize
-data class GetUserCODLimitResponse(
+data class GetUserCODLimitDetails(
     
     
     
@@ -2215,10 +2215,10 @@ data class GetUserCODLimitResponse(
 
              
 /*
-    Model: SetCODForUserRequest
+    Model: SetCODForUserCreation
 */
 @Parcelize
-data class SetCODForUserRequest(
+data class SetCODForUserCreation(
     
     
     
@@ -2252,10 +2252,10 @@ data class SetCODForUserRequest(
 
              
 /*
-    Model: SetCODOptionResponse
+    Model: SetCODOptionDetails
 */
 @Parcelize
-data class SetCODOptionResponse(
+data class SetCODOptionDetails(
     
     
     
@@ -2311,10 +2311,10 @@ data class EdcModelData(
 
              
 /*
-    Model: EdcAggregatorAndModelListResponse
+    Model: EdcAggregatorAndModelListDetails
 */
 @Parcelize
-data class EdcAggregatorAndModelListResponse(
+data class EdcAggregatorAndModelListDetails(
     
     
     
@@ -2365,10 +2365,10 @@ data class StatisticsData(
 
              
 /*
-    Model: EdcDeviceStatsResponse
+    Model: EdcDeviceStatsDetails
 */
 @Parcelize
-data class EdcDeviceStatsResponse(
+data class EdcDeviceStatsDetails(
     
     
     
@@ -2392,10 +2392,10 @@ data class EdcDeviceStatsResponse(
 
              
 /*
-    Model: EdcAddRequest
+    Model: EdcAddCreation
 */
 @Parcelize
-data class EdcAddRequest(
+data class EdcAddCreation(
     
     
     
@@ -2511,10 +2511,10 @@ data class EdcDevice(
 
              
 /*
-    Model: EdcDeviceAddResponse
+    Model: EdcDeviceAddDetails
 */
 @Parcelize
-data class EdcDeviceAddResponse(
+data class EdcDeviceAddDetails(
     
     
     
@@ -2538,10 +2538,10 @@ data class EdcDeviceAddResponse(
 
              
 /*
-    Model: EdcDeviceDetailsResponse
+    Model: EdcDeviceDetails
 */
 @Parcelize
-data class EdcDeviceDetailsResponse(
+data class EdcDeviceDetails(
     
     
     
@@ -2565,10 +2565,10 @@ data class EdcDeviceDetailsResponse(
 
              
 /*
-    Model: EdcUpdateRequest
+    Model: EdcUpdate
 */
 @Parcelize
-data class EdcUpdateRequest(
+data class EdcUpdate(
     
     
     
@@ -2617,10 +2617,10 @@ data class EdcUpdateRequest(
 
              
 /*
-    Model: EdcDeviceUpdateResponse
+    Model: EdcDeviceUpdateDetails
 */
 @Parcelize
-data class EdcDeviceUpdateResponse(
+data class EdcDeviceUpdateDetails(
     
     
     
@@ -2691,10 +2691,10 @@ data class Page(
 
              
 /*
-    Model: EdcDeviceListResponse
+    Model: EdcDeviceListDetails
 */
 @Parcelize
-data class EdcDeviceListResponse(
+data class EdcDeviceListDetails(
     
     
     
@@ -2723,10 +2723,10 @@ data class EdcDeviceListResponse(
 
              
 /*
-    Model: PaymentInitializationRequest
+    Model: PaymentInitializationCreation
 */
 @Parcelize
-data class PaymentInitializationRequest(
+data class PaymentInitializationCreation(
     
     
     
@@ -2805,10 +2805,10 @@ data class PaymentInitializationRequest(
 
              
 /*
-    Model: PaymentInitializationResponse
+    Model: PaymentInitializationDetails
 */
 @Parcelize
-data class PaymentInitializationResponse(
+data class PaymentInitializationDetails(
     
     
     
@@ -2907,10 +2907,10 @@ data class PaymentInitializationResponse(
 
              
 /*
-    Model: PaymentStatusUpdateRequest
+    Model: PaymentStatusUpdateCreation
 */
 @Parcelize
-data class PaymentStatusUpdateRequest(
+data class PaymentStatusUpdateCreation(
     
     
     
@@ -2989,10 +2989,10 @@ data class PaymentStatusUpdateRequest(
 
              
 /*
-    Model: PaymentStatusUpdateResponse
+    Model: PaymentStatusUpdateDetails
 */
 @Parcelize
-data class PaymentStatusUpdateResponse(
+data class PaymentStatusUpdateDetails(
     
     
     
@@ -3031,10 +3031,10 @@ data class PaymentStatusUpdateResponse(
 
              
 /*
-    Model: ResendOrCancelPaymentRequest
+    Model: ResendOrCancelPaymentCreation
 */
 @Parcelize
-data class ResendOrCancelPaymentRequest(
+data class ResendOrCancelPaymentCreation(
     
     
     
@@ -3095,10 +3095,10 @@ data class LinkStatus(
 
              
 /*
-    Model: ResendOrCancelPaymentResponse
+    Model: ResendOrCancelPaymentDetails
 */
 @Parcelize
-data class ResendOrCancelPaymentResponse(
+data class ResendOrCancelPaymentDetails(
     
     
     
@@ -3122,10 +3122,10 @@ data class ResendOrCancelPaymentResponse(
 
              
 /*
-    Model: PaymentStatusBulkHandlerRequest
+    Model: PaymentStatusBulkHandlerCreation
 */
 @Parcelize
-data class PaymentStatusBulkHandlerRequest(
+data class PaymentStatusBulkHandlerCreation(
     
     
     
@@ -3144,10 +3144,10 @@ data class PaymentStatusBulkHandlerRequest(
 
              
 /*
-    Model: PaymentObjectListSerializer
+    Model: PaymentObjectList
 */
 @Parcelize
-data class PaymentObjectListSerializer(
+data class PaymentObjectList(
     
     
     
@@ -3262,7 +3262,7 @@ data class PaymentStatusObject(
     var merchantOrderId: String?=null,
     
     @SerializedName("payment_object_list")
-    var paymentObjectList: ArrayList<PaymentObjectListSerializer>?=null
+    var paymentObjectList: ArrayList<PaymentObjectList>?=null
     
 ): Parcelable {
     
@@ -3278,10 +3278,10 @@ data class PaymentStatusObject(
 
              
 /*
-    Model: PaymentStatusBulkHandlerResponse
+    Model: PaymentStatusBulkHandlerDetails
 */
 @Parcelize
-data class PaymentStatusBulkHandlerResponse(
+data class PaymentStatusBulkHandlerDetails(
     
     
     
@@ -3320,10 +3320,10 @@ data class PaymentStatusBulkHandlerResponse(
 
              
 /*
-    Model: GetOauthUrlResponse
+    Model: GetOauthUrlDetails
 */
 @Parcelize
-data class GetOauthUrlResponse(
+data class GetOauthUrlDetails(
     
     
     
@@ -3483,10 +3483,10 @@ data class RepaymentDetailsSerialiserPayAll(
 
              
 /*
-    Model: RepaymentResponse
+    Model: RepaymentDetails
 */
 @Parcelize
-data class RepaymentResponse(
+data class RepaymentDetails(
     
     
     
@@ -3510,10 +3510,10 @@ data class RepaymentResponse(
 
              
 /*
-    Model: MerchantOnBoardingRequest
+    Model: MerchantOnBoardingCreation
 */
 @Parcelize
-data class MerchantOnBoardingRequest(
+data class MerchantOnBoardingCreation(
     
     
     
@@ -3552,10 +3552,10 @@ data class MerchantOnBoardingRequest(
 
              
 /*
-    Model: MerchantOnBoardingResponse
+    Model: MerchantOnBoardingDetails
 */
 @Parcelize
-data class MerchantOnBoardingResponse(
+data class MerchantOnBoardingDetails(
     
     
     
@@ -3579,10 +3579,10 @@ data class MerchantOnBoardingResponse(
 
              
 /*
-    Model: ValidateCustomerRequest
+    Model: ValidateCustomerCreation
 */
 @Parcelize
-data class ValidateCustomerRequest(
+data class ValidateCustomerCreation(
     
     
     
@@ -3636,10 +3636,10 @@ data class ValidateCustomerRequest(
 
              
 /*
-    Model: ValidateCustomerResponse
+    Model: ValidateCustomerDetails
 */
 @Parcelize
-data class ValidateCustomerResponse(
+data class ValidateCustomerDetails(
     
     
     
@@ -3668,10 +3668,10 @@ data class ValidateCustomerResponse(
 
              
 /*
-    Model: GetPaymentLinkResponse
+    Model: GetPaymentLinkDetails
 */
 @Parcelize
-data class GetPaymentLinkResponse(
+data class GetPaymentLinkDetails(
     
     
     
@@ -3787,10 +3787,10 @@ data class ErrorDescription(
 
              
 /*
-    Model: ErrorResponse
+    Model: ErrorDetails
 */
 @Parcelize
-data class ErrorResponse(
+data class ErrorDetails(
     
     
     
@@ -3861,10 +3861,10 @@ data class CreatePaymentLinkMeta(
 
              
 /*
-    Model: CreatePaymentLinkRequest
+    Model: CreatePaymentLinkCreation
 */
 @Parcelize
-data class CreatePaymentLinkRequest(
+data class CreatePaymentLinkCreation(
     
     
     
@@ -3887,9 +3887,19 @@ data class CreatePaymentLinkRequest(
     var meta: CreatePaymentLinkMeta?=null,
     
     @SerializedName("external_order_id")
-    var externalOrderId: String?=null
+    var externalOrderId: String?=null,
+    
+    @SerializedName("success_redirection_url")
+    var successRedirectionUrl: String?=null,
+    
+    @SerializedName("failure_redirection_url")
+    var failureRedirectionUrl: String?=null
     
 ): Parcelable {
+    
+    
+    
+    
     
     
     
@@ -3913,10 +3923,10 @@ data class CreatePaymentLinkRequest(
 
              
 /*
-    Model: CreatePaymentLinkResponse
+    Model: CreatePaymentLinkDetails
 */
 @Parcelize
-data class CreatePaymentLinkResponse(
+data class CreatePaymentLinkDetails(
     
     
     
@@ -3960,10 +3970,10 @@ data class CreatePaymentLinkResponse(
 
              
 /*
-    Model: PollingPaymentLinkResponse
+    Model: PollingPaymentLinkDetails
 */
 @Parcelize
-data class PollingPaymentLinkResponse(
+data class PollingPaymentLinkDetails(
     
     
     
@@ -4027,10 +4037,10 @@ data class PollingPaymentLinkResponse(
 
              
 /*
-    Model: CancelOrResendPaymentLinkRequest
+    Model: CancelOrResendPaymentLinkCreation
 */
 @Parcelize
-data class CancelOrResendPaymentLinkRequest(
+data class CancelOrResendPaymentLinkCreation(
     
     
     
@@ -4049,10 +4059,10 @@ data class CancelOrResendPaymentLinkRequest(
 
              
 /*
-    Model: ResendPaymentLinkResponse
+    Model: ResendPaymentLinkDetails
 */
 @Parcelize
-data class ResendPaymentLinkResponse(
+data class ResendPaymentLinkDetails(
     
     
     
@@ -4086,10 +4096,10 @@ data class ResendPaymentLinkResponse(
 
              
 /*
-    Model: CancelPaymentLinkResponse
+    Model: CancelPaymentLinkDetails
 */
 @Parcelize
-data class CancelPaymentLinkResponse(
+data class CancelPaymentLinkDetails(
     
     
     
@@ -4209,10 +4219,10 @@ data class GetPaymentCode(
 
              
 /*
-    Model: GetPaymentCodeResponse
+    Model: GetPaymentCodeDetails
 */
 @Parcelize
-data class GetPaymentCodeResponse(
+data class GetPaymentCodeDetails(
     
     
     
@@ -4236,10 +4246,10 @@ data class GetPaymentCodeResponse(
 
              
 /*
-    Model: PlatformPaymentModeResponse
+    Model: PlatformPaymentModeDetails
 */
 @Parcelize
-data class PlatformPaymentModeResponse(
+data class PlatformPaymentModeDetails(
     
     
     
@@ -4268,10 +4278,10 @@ data class PlatformPaymentModeResponse(
 
              
 /*
-    Model: MerchnatPaymentModeRequest
+    Model: MerchnatPaymentModeCreation
 */
 @Parcelize
-data class MerchnatPaymentModeRequest(
+data class MerchnatPaymentModeCreation(
     
     
     
@@ -4581,10 +4591,10 @@ data class PaymentSessionDetail(
 
              
 /*
-    Model: PaymentSessionRequestSerializer
+    Model: PaymentSessionCreation
 */
 @Parcelize
-data class PaymentSessionRequestSerializer(
+data class PaymentSessionCreation(
     
     
     
@@ -4638,10 +4648,10 @@ data class PaymentSessionRequestSerializer(
 
              
 /*
-    Model: PaymentSessionResponseSerializer
+    Model: PaymentSessionPutDetails
 */
 @Parcelize
-data class PaymentSessionResponseSerializer(
+data class PaymentSessionPutDetails(
     
     
     
@@ -4762,10 +4772,10 @@ data class RefundSessionDetail(
 
              
 /*
-    Model: RefundSessionRequestSerializer
+    Model: RefundSessionCreation
 */
 @Parcelize
-data class RefundSessionRequestSerializer(
+data class RefundSessionCreation(
     
     
     
@@ -4829,10 +4839,10 @@ data class RefundSessionRequestSerializer(
 
              
 /*
-    Model: RefundSessionResponseSerializer
+    Model: RefundSessionDetails
 */
 @Parcelize
-data class RefundSessionResponseSerializer(
+data class RefundSessionDetails(
     
     
     
@@ -4871,10 +4881,10 @@ data class RefundSessionResponseSerializer(
 
              
 /*
-    Model: PaymentDetailsSerializer
+    Model: PaymentDetails
 */
 @Parcelize
-data class PaymentDetailsSerializer(
+data class PaymentDetails(
     
     
     
@@ -4988,10 +4998,10 @@ data class PaymentDetailsSerializer(
 
              
 /*
-    Model: CartDetailsSerializer
+    Model: CartDetails
 */
 @Parcelize
-data class CartDetailsSerializer(
+data class CartDetails(
     
     
     
@@ -5030,10 +5040,10 @@ data class CartDetailsSerializer(
 
              
 /*
-    Model: RefundDetailsSerializer
+    Model: RefundDetails
 */
 @Parcelize
-data class RefundDetailsSerializer(
+data class RefundDetails(
     
     
     
@@ -5077,10 +5087,10 @@ data class RefundDetailsSerializer(
 
              
 /*
-    Model: PaymentSessionSerializer
+    Model: PaymentSessionFetchDetails
 */
 @Parcelize
-data class PaymentSessionSerializer(
+data class PaymentSessionFetchDetails(
     
     
     
@@ -5100,10 +5110,10 @@ data class PaymentSessionSerializer(
     var gid: String?=null,
     
     @SerializedName("cart_details")
-    var cartDetails: CartDetailsSerializer?=null,
+    var cartDetails: CartDetails?=null,
     
     @SerializedName("refund_details")
-    var refundDetails: ArrayList<RefundDetailsSerializer>?=null
+    var refundDetails: ArrayList<RefundDetails>?=null
     
 ): Parcelable {
     
@@ -5161,10 +5171,10 @@ data class RefundSourcesPriority(
 
              
 /*
-    Model: RefundPriorityResponseSerializer
+    Model: RefundPriorityDetails
 */
 @Parcelize
-data class RefundPriorityResponseSerializer(
+data class RefundPriorityDetails(
     
     
     
@@ -5203,10 +5213,10 @@ data class RefundPriorityResponseSerializer(
 
              
 /*
-    Model: RefundPriorityRequestSerializer
+    Model: RefundPriorityCreation
 */
 @Parcelize
-data class RefundPriorityRequestSerializer(
+data class RefundPriorityCreation(
     
     
     
@@ -5230,10 +5240,10 @@ data class RefundPriorityRequestSerializer(
 
              
 /*
-    Model: MerchantPaymentModeRequest
+    Model: MerchantPaymentModeCreation
 */
 @Parcelize
-data class MerchantPaymentModeRequest(
+data class MerchantPaymentModeCreation(
     
     
     
@@ -5316,10 +5326,10 @@ data class ToConfig(
 
              
 /*
-    Model: PlatformPaymentModeCopyConfigRequest
+    Model: PlatformPaymentModeCopyConfigCreation
 */
 @Parcelize
-data class PlatformPaymentModeCopyConfigRequest(
+data class PlatformPaymentModeCopyConfigCreation(
     
     
     
@@ -5417,10 +5427,10 @@ data class PaymentOrderMethods(
 
              
 /*
-    Model: PaymentOrderRequest
+    Model: PaymentOrderCreation
 */
 @Parcelize
-data class PaymentOrderRequest(
+data class PaymentOrderCreation(
     
     
     
@@ -5516,10 +5526,10 @@ data class PaymentOrderData(
 
              
 /*
-    Model: PaymentOrderResponse
+    Model: PaymentOrderDetails
 */
 @Parcelize
-data class PaymentOrderResponse(
+data class PaymentOrderDetails(
     
     
     
@@ -5600,10 +5610,10 @@ data class AggregatorVersionItemSchema(
 
              
 /*
-    Model: AggregatorVersionResponse
+    Model: AggregatorVersionDetails
 */
 @Parcelize
-data class AggregatorVersionResponse(
+data class AggregatorVersionDetails(
     
     
     
@@ -5664,10 +5674,10 @@ data class AggregatorVersionRequestSchema(
 
              
 /*
-    Model: AggregatorControlRequest
+    Model: PatchAggregatorControl
 */
 @Parcelize
-data class AggregatorControlRequest(
+data class PatchAggregatorControl(
     
     
     

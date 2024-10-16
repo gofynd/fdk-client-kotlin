@@ -705,8 +705,8 @@ data class AvailablePageSchemaSections(
     @SerializedName("predicate")
     var predicate: AvailablePagePredicate?=null,
     
-    @SerializedName("source")
-    var source: String?=null
+    @SerializedName("__source")
+    var source: SectionSource?=null
     
 ): Parcelable {
     
@@ -717,6 +717,38 @@ data class AvailablePageSchemaSections(
     
     
     
+    
+    
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: SectionSource
+*/
+@Parcelize
+data class SectionSource(
+    
+    
+    
+    @SerializedName("id")
+    var id: String?=null,
+    
+    @SerializedName("bundle_name")
+    var bundleName: String?=null,
+    
+    @SerializedName("type")
+    var type: String?=null
+    
+): Parcelable {
     
     
     
@@ -1255,10 +1287,10 @@ data class ThemesSchema(
 
              
 /*
-    Model: ThemeUpgradableResponse
+    Model: ThemeUpgradable
 */
 @Parcelize
-data class ThemeUpgradableResponse(
+data class ThemeUpgradable(
     
     
     
@@ -2676,10 +2708,10 @@ data class ThemeVersions(
 
              
 /*
-    Model: DummyResponse
+    Model: DummyTheme
 */
 @Parcelize
-data class DummyResponse(
+data class DummyTheme(
     
     
     
