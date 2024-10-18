@@ -1688,7 +1688,7 @@ class CatalogDataManagerClass(val config: PlatformConfig, val unauthorizedAction
     }
     
     suspend fun createProduct(body: ProductCreateUpdateSchemaV2, headers: Map<String, String> = emptyMap())
-    : Response<SuccessResponse1>? {
+    : Response<SuccessResponseObject>? {
 
         return if (config.oauthClient.isAccessTokenValid()) {
             catalogApiList?.createProduct(
@@ -1858,7 +1858,7 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     
     
     suspend fun getApplicationBrandListing(pageNo: Int?=null,pageSize: Int?=null,q: String?=null, headers: Map<String, String> = emptyMap())
-    : Response<BrandListingResponse>? {
+    : Response<ApplicationBrandListingSchema>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 catalogApiList?.getApplicationBrandListing(companyId = config.companyId ,applicationId = applicationId ,pageNo = pageNo,pageSize = pageSize,q = q, headers = headers)
         } else {
@@ -1899,12 +1899,12 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     fun getApplicationBrandListingPaginator(
     pageSize: Int?=null, q: String?=null
     
-    ) : Paginator<BrandListingResponse>{
-        val paginator = Paginator<BrandListingResponse>()
-        paginator.setCallBack(object : PaginatorCallback<BrandListingResponse> {
+    ) : Paginator<ApplicationBrandListingSchema>{
+        val paginator = Paginator<ApplicationBrandListingSchema>()
+        paginator.setCallBack(object : PaginatorCallback<ApplicationBrandListingSchema> {
 
             override suspend fun onNext(
-                onResponse: (Event<BrandListingResponse>?,FdkError?) -> Unit){
+                onResponse: (Event<ApplicationBrandListingSchema>?,FdkError?) -> Unit){
 
                 if (config.oauthClient.isAccessTokenValid()) {
                     val pageId = paginator.nextId
@@ -1932,7 +1932,7 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     }
     
     suspend fun updateAppBrand(brandUid: String,body: ApplicationBrandJson, headers: Map<String, String> = emptyMap())
-    : Response<SuccessResponse1>? {
+    : Response<SuccessResponseObject>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 catalogApiList?.updateAppBrand(companyId = config.companyId ,applicationId = applicationId ,brandUid = brandUid, body = body,headers = headers)
         } else {
@@ -2036,7 +2036,7 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     
     
     suspend fun getApplicationCategoryListing(departmentId: Int?=null,pageNo: Int?=null,pageSize: Int?=null,q: String?=null, headers: Map<String, String> = emptyMap())
-    : Response<BrandListingResponse>? {
+    : Response<ApplicationCategoryListingSchema>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 catalogApiList?.getApplicationCategoryListing(companyId = config.companyId ,applicationId = applicationId ,departmentId = departmentId,pageNo = pageNo,pageSize = pageSize,q = q, headers = headers)
         } else {
@@ -2082,12 +2082,12 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     fun getApplicationCategoryListingPaginator(
     departmentId: Int?=null, pageSize: Int?=null, q: String?=null
     
-    ) : Paginator<BrandListingResponse>{
-        val paginator = Paginator<BrandListingResponse>()
-        paginator.setCallBack(object : PaginatorCallback<BrandListingResponse> {
+    ) : Paginator<ApplicationCategoryListingSchema>{
+        val paginator = Paginator<ApplicationCategoryListingSchema>()
+        paginator.setCallBack(object : PaginatorCallback<ApplicationCategoryListingSchema> {
 
             override suspend fun onNext(
-                onResponse: (Event<BrandListingResponse>?,FdkError?) -> Unit){
+                onResponse: (Event<ApplicationCategoryListingSchema>?,FdkError?) -> Unit){
 
                 if (config.oauthClient.isAccessTokenValid()) {
                     val pageId = paginator.nextId
@@ -2115,7 +2115,7 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     }
     
     suspend fun updateAppCategory(categoryUid: String,body: ApplicationCategoryJson, headers: Map<String, String> = emptyMap())
-    : Response<SuccessResponse1>? {
+    : Response<SuccessResponseObject>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 catalogApiList?.updateAppCategory(companyId = config.companyId ,applicationId = applicationId ,categoryUid = categoryUid, body = body,headers = headers)
         } else {
@@ -2383,7 +2383,7 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     }
     
     suspend fun updateAppDepartment(departmentUid: String,body: ApplicationDepartmentJson, headers: Map<String, String> = emptyMap())
-    : Response<SuccessResponse1>? {
+    : Response<SuccessResponseObject>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 catalogApiList?.updateAppDepartment(companyId = config.companyId ,applicationId = applicationId ,departmentUid = departmentUid, body = body,headers = headers)
         } else {
@@ -2572,7 +2572,7 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     
     
     suspend fun updateAppProduct(itemId: String,body: ApplicationItemMeta, headers: Map<String, String> = emptyMap())
-    : Response<SuccessResponse1>? {
+    : Response<SuccessResponseObject>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 catalogApiList?.updateAppProduct(companyId = config.companyId ,applicationId = applicationId ,itemId = itemId, body = body,headers = headers)
         } else {
@@ -2902,7 +2902,7 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     
     
     suspend fun createAppReturnConfiguration(body: CreateUpdateAppReturnConfig, headers: Map<String, String> = emptyMap())
-    : Response<SuccessResponse1>? {
+    : Response<SuccessResponseObject>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 catalogApiList?.createAppReturnConfiguration(companyId = config.companyId ,applicationId = applicationId , body = body,headers = headers)
         } else {
@@ -2912,7 +2912,7 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     
     
     suspend fun updateAppReturnConfiguration(body: CreateUpdateAppReturnConfig, headers: Map<String, String> = emptyMap())
-    : Response<SuccessResponse1>? {
+    : Response<SuccessResponseObject>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 catalogApiList?.updateAppReturnConfiguration(companyId = config.companyId ,applicationId = applicationId , body = body,headers = headers)
         } else {
@@ -2942,7 +2942,7 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     
     
     suspend fun createAppCategoryReturnConfiguration(body: BaseAppCategoryReturnConfig, headers: Map<String, String> = emptyMap())
-    : Response<SuccessResponse1>? {
+    : Response<SuccessResponseObject>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 catalogApiList?.createAppCategoryReturnConfiguration(companyId = config.companyId ,applicationId = applicationId , body = body,headers = headers)
         } else {
@@ -3102,7 +3102,7 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     
     
     suspend fun updateAppLocation(storeUid: String,body: ApplicationStoreJson, headers: Map<String, String> = emptyMap())
-    : Response<SuccessResponse1>? {
+    : Response<SuccessResponseObject>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 catalogApiList?.updateAppLocation(companyId = config.companyId ,applicationId = applicationId ,storeUid = storeUid, body = body,headers = headers)
         } else {

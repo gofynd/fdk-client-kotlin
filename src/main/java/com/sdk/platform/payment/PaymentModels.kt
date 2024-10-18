@@ -2188,6 +2188,112 @@ data class CODdata(
 
              
 /*
+    Model: CODLimitConfig
+*/
+@Parcelize
+data class CODLimitConfig(
+    
+    
+    
+    @SerializedName("storefront")
+    var storefront: Double?=null,
+    
+    @SerializedName("pos")
+    var pos: Double?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: CODPaymentLimitConfig
+*/
+@Parcelize
+data class CODPaymentLimitConfig(
+    
+    
+    
+    @SerializedName("is_active")
+    var isActive: Boolean?=null,
+    
+    @SerializedName("usages")
+    var usages: Double?=null,
+    
+    @SerializedName("user_id")
+    var userId: Int?=null,
+    
+    @SerializedName("merchant_user_id")
+    var merchantUserId: String?=null,
+    
+    @SerializedName("remaining_limit")
+    var remainingLimit: Int?=null,
+    
+    @SerializedName("limit")
+    var limit: CODLimitConfig?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: GetUserBULimitResponse
+*/
+@Parcelize
+data class GetUserBULimitResponse(
+    
+    
+    
+    @SerializedName("business_unit")
+    var businessUnit: String?=null,
+    
+    @SerializedName("display_name")
+    var displayName: String?=null,
+    
+    @SerializedName("config")
+    var config: CODPaymentLimitConfig?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
     Model: GetUserCODLimitResponse
 */
 @Parcelize
@@ -2195,13 +2301,18 @@ data class GetUserCODLimitResponse(
     
     
     
-    @SerializedName("user_cod_data")
-    var userCodData: CODdata?=null,
+    @SerializedName("items")
+    var items: ArrayList<GetUserBULimitResponse>?=null,
     
     @SerializedName("success")
-    var success: Boolean?=null
+    var success: Boolean?=null,
+    
+    @SerializedName("message")
+    var message: String?=null
     
 ): Parcelable {
+    
+    
     
     
     
@@ -4610,9 +4721,14 @@ data class PaymentSessionRequestSerializer(
     var totalAmount: Int?=null,
     
     @SerializedName("checksum")
-    var checksum: String?=null
+    var checksum: String?=null,
+    
+    @SerializedName("source")
+    var source: String?=null
     
 ): Parcelable {
+    
+    
     
     
     

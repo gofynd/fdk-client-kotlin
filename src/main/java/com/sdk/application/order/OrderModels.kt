@@ -744,6 +744,12 @@ data class Item(
     @SerializedName("l1_categories")
     var l1Categories: ArrayList<String>?=null,
     
+    @SerializedName("l2_category")
+    var l2Category: ArrayList<String>?=null,
+    
+    @SerializedName("l2_category_id")
+    var l2CategoryId: Double?=null,
+    
     @SerializedName("brand")
     var brand: ItemBrand?=null,
     
@@ -775,6 +781,10 @@ data class Item(
     var attributes: @RawValue HashMap<String,Any>?=null
     
 ): Parcelable {
+    
+    
+    
+    
     
     
     
