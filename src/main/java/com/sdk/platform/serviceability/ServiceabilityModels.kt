@@ -711,6 +711,33 @@ data class ZoneProductTypes(
 
              
 /*
+    Model: ZoneMappingDetailType
+*/
+@Parcelize
+data class ZoneMappingDetailType(
+    
+    
+    
+    @SerializedName("country")
+    var country: String?=null,
+    
+    @SerializedName("regions")
+    var regions: ArrayList<ZoneMappingRegions>?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
     Model: ZoneMappingType
 */
 @Parcelize
@@ -721,13 +748,50 @@ data class ZoneMappingType(
     @SerializedName("country")
     var country: String?=null,
     
-    @SerializedName("pincode")
-    var pincode: ArrayList<String>?=null,
-    
-    @SerializedName("state")
-    var state: ArrayList<String>?=null
+    @SerializedName("regions")
+    var regions: ArrayList<String>?=null
     
 ): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: ZoneMappingRegions
+*/
+@Parcelize
+data class ZoneMappingRegions(
+    
+    
+    
+    @SerializedName("display_name")
+    var displayName: String?=null,
+    
+    @SerializedName("parent_id")
+    var parentId: ArrayList<String>?=null,
+    
+    @SerializedName("parent_uid")
+    var parentUid: String?=null,
+    
+    @SerializedName("sub_type")
+    var subType: String?=null,
+    
+    @SerializedName("uid")
+    var uid: String?=null
+    
+): Parcelable {
+    
+    
+    
+    
     
     
     
@@ -778,14 +842,9 @@ data class UpdateZoneData(
     var regionType: String?=null,
     
     @SerializedName("mapping")
-    var mapping: ArrayList<ZoneMappingType>?=null,
-    
-    @SerializedName("assignment_preference")
-    var assignmentPreference: String?=null
+    var mapping: ArrayList<ZoneMappingType>?=null
     
 ): Parcelable {
-    
-    
     
     
     
@@ -906,15 +965,10 @@ data class GetZoneDataViewItems(
     @SerializedName("mapping")
     var mapping: ArrayList<ZoneMappingType>?=null,
     
-    @SerializedName("assignment_preference")
-    var assignmentPreference: String?=null,
-    
     @SerializedName("stores_count")
     var storesCount: Int?=null
     
 ): Parcelable {
-    
-    
     
     
     
@@ -1003,19 +1057,9 @@ data class GetZoneByIdSchema(
     var regionType: String?=null,
     
     @SerializedName("mapping")
-    var mapping: ArrayList<ZoneMappingType>?=null,
-    
-    @SerializedName("assignment_preference")
-    var assignmentPreference: String?=null,
-    
-    @SerializedName("stores_count")
-    var storesCount: Int?=null
+    var mapping: ArrayList<ZoneMappingDetailType>?=null
     
 ): Parcelable {
-    
-    
-    
-    
     
     
     
@@ -1070,14 +1114,14 @@ data class CreateZoneData(
     @SerializedName("store_ids")
     var storeIds: ArrayList<Int>?=null,
     
+    @SerializedName("product")
+    var product: ZoneProductTypes?=null,
+    
     @SerializedName("region_type")
     var regionType: String?=null,
     
     @SerializedName("mapping")
-    var mapping: ArrayList<ZoneMappingType>?=null,
-    
-    @SerializedName("assignment_preference")
-    var assignmentPreference: String?=null
+    var mapping: ArrayList<ZoneMappingType>?=null
     
 ): Parcelable {
     
@@ -1192,14 +1236,9 @@ data class Zone(
     var isActive: Boolean?=null,
     
     @SerializedName("store_ids")
-    var storeIds: ArrayList<Int>?=null,
-    
-    @SerializedName("assignment_preference")
-    var assignmentPreference: String?=null
+    var storeIds: ArrayList<Int>?=null
     
 ): Parcelable {
-    
-    
     
     
     

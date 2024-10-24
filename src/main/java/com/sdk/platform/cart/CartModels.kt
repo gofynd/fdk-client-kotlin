@@ -2702,6 +2702,9 @@ data class PriceAdjustmentUpdate(
     @SerializedName("article_ids")
     var articleIds: ArrayList<Article>?=null,
     
+    @SerializedName("auto_remove")
+    var autoRemove: Boolean?=null,
+    
     @SerializedName("meta")
     var meta: @RawValue HashMap<String,Any>?=null,
     
@@ -2709,6 +2712,8 @@ data class PriceAdjustmentUpdate(
     var cartId: String?=null
     
 ): Parcelable {
+    
+    
     
     
     
@@ -2784,6 +2789,9 @@ data class PriceAdjustment(
     @SerializedName("article_ids")
     var articleIds: ArrayList<Article>?=null,
     
+    @SerializedName("auto_remove")
+    var autoRemove: Boolean?=null,
+    
     @SerializedName("meta")
     var meta: @RawValue HashMap<String,Any>?=null,
     
@@ -2791,6 +2799,8 @@ data class PriceAdjustment(
     var cartId: String?=null
     
 ): Parcelable {
+    
+    
     
     
     
@@ -2914,9 +2924,14 @@ data class PriceAdjustmentAdd(
     var meta: @RawValue HashMap<String,Any>?=null,
     
     @SerializedName("cart_id")
-    var cartId: String?=null
+    var cartId: String?=null,
+    
+    @SerializedName("auto_remove")
+    var autoRemove: Boolean?=null
     
 ): Parcelable {
+    
+    
     
     
     
