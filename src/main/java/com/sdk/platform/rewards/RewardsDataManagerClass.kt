@@ -61,7 +61,7 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     
     
     suspend fun showGiveaways(pageId: String,pageSize: Int, headers: Map<String, String> = emptyMap())
-    : Response<GiveawayResponse>? {
+    : Response<ListGiveaway>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 rewardsApiList?.showGiveaways(companyId = config.companyId ,applicationId = applicationId ,pageId = pageId,pageSize = pageSize, headers = headers)
         } else {
@@ -170,7 +170,7 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     }
     
     
-    suspend fun setRewardsConfiguration(body: ConfigurationRequest, headers: Map<String, String> = emptyMap())
+    suspend fun setRewardsConfiguration(body: SetConfiguration, headers: Map<String, String> = emptyMap())
     : Response<SetConfigurationRes>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 rewardsApiList?.setRewardsConfiguration(companyId = config.companyId ,applicationId = applicationId , body = body,headers = headers)

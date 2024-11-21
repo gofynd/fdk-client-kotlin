@@ -20,7 +20,7 @@ class AccessTokenInterceptor(
             }
 
             if (!original.headers.names().contains("x-fp-sdk-version")) {
-                header("x-fp-sdk-version", "1.4.15-beta.2")
+                header("x-fp-sdk-version", "1.4.15-beta.3")
             }
 
             if (!original.headers.names().contains("x-currency-code")) {
@@ -28,11 +28,15 @@ class AccessTokenInterceptor(
             }
 
             platformConfig?.locationDetail?.let {
-                header("x-location-detail", HttpClient.gson.toJson(it))
+                if (!original.headers.names().contains("x-location-detail")) {
+                    header("x-location-detail", HttpClient.gson.toJson(it))
+                }
             }
             platformConfig?.extraHeaders?.let {
                 for ((key, value) in it) {
-                    header(key, value)
+                    if (!original.headers.names().contains(key)) {
+                        header(key, value)
+                    }
                 }
             }
         }

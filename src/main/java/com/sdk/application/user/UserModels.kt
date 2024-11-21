@@ -14,10 +14,10 @@ import com.google.gson.annotations.SerializedName
 
              
 /*
-    Model: UpdateUserAttributesRequest
+    Model: UpdateUserAttributes
 */
 @Parcelize
-data class UpdateUserAttributesRequest(
+data class UpdateUserAttributes(
     
     
     
@@ -962,10 +962,10 @@ data class AuthSuccess(
 
              
 /*
-    Model: UserExistsResponse
+    Model: UserExistsDetails
 */
 @Parcelize
-data class UserExistsResponse(
+data class UserExistsDetails(
     
     
     
@@ -984,10 +984,10 @@ data class UserExistsResponse(
 
              
 /*
-    Model: SendOtpResponse
+    Model: SendOtp
 */
 @Parcelize
-data class SendOtpResponse(
+data class SendOtp(
     
     
     
@@ -1463,10 +1463,10 @@ data class DeleteUserSuccess(
 
              
 /*
-    Model: OtpSuccess
+    Model: SendOtpSuccess
 */
 @Parcelize
-data class OtpSuccess(
+data class SendOtpSuccess(
     
     
     

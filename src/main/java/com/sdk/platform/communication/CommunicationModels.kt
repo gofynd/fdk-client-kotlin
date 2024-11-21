@@ -14,10 +14,10 @@ import com.google.gson.annotations.SerializedName
 
              
 /*
-    Model: EventSubscriptionsBulkUpdateRequest
+    Model: EventSubscriptionsBulkUpdatePayload
 */
 @Parcelize
-data class EventSubscriptionsBulkUpdateRequest(
+data class EventSubscriptionsBulkUpdatePayload(
     
     
     
@@ -36,10 +36,10 @@ data class EventSubscriptionsBulkUpdateRequest(
 
              
 /*
-    Model: EventSubscriptionsBulkUpdateResponse
+    Model: EventSubscriptionsBulkUpdateResult
 */
 @Parcelize
-data class EventSubscriptionsBulkUpdateResponse(
+data class EventSubscriptionsBulkUpdateResult(
     
     
     
@@ -2196,10 +2196,10 @@ data class MetaStructure(
 
              
 /*
-    Model: EngineRequest
+    Model: EnginePayload
 */
 @Parcelize
-data class EngineRequest(
+data class EnginePayload(
     
     
     
@@ -2223,10 +2223,10 @@ data class EngineRequest(
 
              
 /*
-    Model: EngineResponse
+    Model: EngineResult
 */
 @Parcelize
-data class EngineResponse(
+data class EngineResult(
     
     
     
@@ -2415,10 +2415,10 @@ data class EventSubscriptions(
 
              
 /*
-    Model: TriggerJobResponse
+    Model: TriggerJobResult
 */
 @Parcelize
-data class TriggerJobResponse(
+data class TriggerJobResult(
     
     
     
@@ -2437,10 +2437,10 @@ data class TriggerJobResponse(
 
              
 /*
-    Model: TriggerJobRequest
+    Model: TriggerJobPayload
 */
 @Parcelize
-data class TriggerJobRequest(
+data class TriggerJobPayload(
     
     
     
@@ -2459,10 +2459,10 @@ data class TriggerJobRequest(
 
              
 /*
-    Model: GlobalVariablesGetResponse
+    Model: GetGlobalVariablesResult
 */
 @Parcelize
-data class GlobalVariablesGetResponse(
+data class GetGlobalVariablesResult(
     
     
     
@@ -2486,10 +2486,10 @@ data class GlobalVariablesGetResponse(
 
              
 /*
-    Model: GlobalVariablesPostResponse
+    Model: CreateGlobalVariablesResult
 */
 @Parcelize
-data class GlobalVariablesPostResponse(
+data class CreateGlobalVariablesResult(
     
     
     
@@ -3515,9 +3515,19 @@ data class SmsProviderReq(
     var senderId: String?=null,
     
     @SerializedName("api_key")
-    var apiKey: String?=null
+    var apiKey: String?=null,
+    
+    @SerializedName("tenant_name_1")
+    var tenantName1: String?=null,
+    
+    @SerializedName("tenant_name_2")
+    var tenantName2: String?=null
     
 ): Parcelable {
+    
+    
+    
+    
     
     
     

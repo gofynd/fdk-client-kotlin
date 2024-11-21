@@ -14,10 +14,10 @@ import com.google.gson.annotations.SerializedName
 
              
 /*
-    Model: ClickStatsResponse
+    Model: ClickStatsResult
 */
 @Parcelize
-data class ClickStatsResponse(
+data class ClickStatsResult(
     
     
     
@@ -276,9 +276,14 @@ data class ShortLinkReq(
     var socialMediaTags: SocialMediaTags?=null,
     
     @SerializedName("count")
-    var count: Int?=null
+    var count: Int?=null,
+    
+    @SerializedName("meta")
+    var meta: shortLinkReqMeta?=null
     
 ): Parcelable {
+    
+    
     
     
     
@@ -312,6 +317,33 @@ data class ShortLinkReq(
 
              
 /*
+    Model: shortLinkReqMeta
+*/
+@Parcelize
+data class shortLinkReqMeta(
+    
+    
+    
+    @SerializedName("for_sms")
+    var forSms: Boolean?=null,
+    
+    @SerializedName("sms_header")
+    var smsHeader: String?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
     Model: UrlInfo
 */
 @Parcelize
@@ -326,9 +358,14 @@ data class UrlInfo(
     var hash: String?=null,
     
     @SerializedName("short_url")
-    var shortUrl: String?=null
+    var shortUrl: String?=null,
+    
+    @SerializedName("alias")
+    var alias: String?=null
     
 ): Parcelable {
+    
+    
     
     
     

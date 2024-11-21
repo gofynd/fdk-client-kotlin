@@ -63,14 +63,14 @@ class WebhookDataManagerClass(val config: PublicConfig, val unauthorizedAction: 
         return retrofitHttpClient?.initializeRestClient(WebhookApiList::class.java) as? WebhookApiList
     }
     
-    suspend fun fetchAllWebhookEvents( headers: Map<String, String> = emptyMap()): Response<EventConfigResponse>? {
+    suspend fun fetchAllWebhookEvents( headers: Map<String, String> = emptyMap()): Response<EventDetails>? {
         var fullUrl : String? = _relativeUrls["fetchAllWebhookEvents"]
         
         return webhookApiList?.fetchAllWebhookEvents(fullUrl, headers = headers)}
 
     
     
-    suspend fun queryWebhookEventDetails(body: ArrayList<EventConfigBase>, headers: Map<String, String> = emptyMap()): Response<EventConfigResponse>? {
+    suspend fun queryWebhookEventDetails(body: ArrayList<EventConfigBase>, headers: Map<String, String> = emptyMap()): Response<EventDetails>? {
         var fullUrl : String? = _relativeUrls["queryWebhookEventDetails"]
         
         return webhookApiList?.queryWebhookEventDetails(fullUrl, body = body,headers = headers)}
@@ -84,14 +84,14 @@ class WebhookDataManagerClass(val config: PublicConfig, val unauthorizedAction: 
 
     
     
-    suspend fun testHandlerTransformation(body: TransformEventRequest, headers: Map<String, String> = emptyMap()): Response<TransformEventResponse>? {
+    suspend fun testHandlerTransformation(body: TransformEventPayload, headers: Map<String, String> = emptyMap()): Response<TransformEventResult>? {
         var fullUrl : String? = _relativeUrls["testHandlerTransformation"]
         
         return webhookApiList?.testHandlerTransformation(fullUrl, body = body,headers = headers)}
 
     
     
-    suspend fun validateSchema(body: ValidateSchemaRequest, headers: Map<String, String> = emptyMap()): Response<ValidateSchemaResponse>? {
+    suspend fun validateSchema(body: ValidateSchemaPayload, headers: Map<String, String> = emptyMap()): Response<ValidateSchemaResult>? {
         var fullUrl : String? = _relativeUrls["validateSchema"]
         
         return webhookApiList?.validateSchema(fullUrl, body = body,headers = headers)}
