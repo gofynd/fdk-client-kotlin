@@ -240,10 +240,10 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     }
     
     
-    suspend fun getPromotionOffers(slug: String?=null,pageSize: Int?=null,promotionGroup: String?=null,storeId: Int?=null,cartType: String?=null, headers: Map<String, String> = emptyMap())
+    suspend fun getPromotionOffers(slug: String?=null,pageSize: Int?=null,promotionGroup: String?=null,storeId: Int?=null,cartType: String?=null,sortBy: String?=null, headers: Map<String, String> = emptyMap())
     : Response<PromotionOffersDetails>? {
         return if (config.oauthClient.isAccessTokenValid()) {
-                cartApiList?.getPromotionOffers(companyId = config.companyId ,applicationId = applicationId ,slug = slug,pageSize = pageSize,promotionGroup = promotionGroup,storeId = storeId,cartType = cartType, headers = headers)
+                cartApiList?.getPromotionOffers(companyId = config.companyId ,applicationId = applicationId ,slug = slug,pageSize = pageSize,promotionGroup = promotionGroup,storeId = storeId,cartType = cartType,sortBy = sortBy, headers = headers)
         } else {
             null
         }

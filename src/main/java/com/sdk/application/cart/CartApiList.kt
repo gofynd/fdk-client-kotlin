@@ -137,7 +137,7 @@ interface CartApiList {
     
     
     @GET
-    suspend fun getPromotionOffers(@Url url1: String?    ,      @Query("slug") slug: String?, @Query("page_size") pageSize: Int?, @Query("promotion_group") promotionGroup: String?, @Query("store_id") storeId: Int?, @Query("cart_type") cartType: String?, @HeaderMap headers: Map<String, String>? = null)
+    suspend fun getPromotionOffers(@Url url1: String?    ,       @Query("slug") slug: String?, @Query("page_size") pageSize: Int?, @Query("promotion_group") promotionGroup: String?, @Query("store_id") storeId: Int?, @Query("cart_type") cartType: String?, @Query("sort_by") sortBy: String?, @HeaderMap headers: Map<String, String>? = null)
     : Response<PromotionOffersResult>
     
     

@@ -62,7 +62,7 @@ interface CartApiList {
     : Response<ActivePromosResult>
     
     @GET ("/service/platform/cart/v1.0/company/{company_id}/application/{application_id}/available-promotions")
-    suspend fun getPromotionOffers(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Query("slug") slug: String?, @Query("page_size") pageSize: Int?, @Query("promotion_group") promotionGroup: String?, @Query("store_id") storeId: Int?, @Query("cart_type") cartType: String?, @HeaderMap headers: Map<String, String>? = null)
+    suspend fun getPromotionOffers(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Query("slug") slug: String?, @Query("page_size") pageSize: Int?, @Query("promotion_group") promotionGroup: String?, @Query("store_id") storeId: Int?, @Query("cart_type") cartType: String?, @Query("sort_by") sortBy: String?, @HeaderMap headers: Map<String, String>? = null)
     : Response<PromotionOffersDetails>
     
     @GET ("/service/platform/cart/v1.0/company/{company_id}/application/{application_id}/available-payment-offers")
