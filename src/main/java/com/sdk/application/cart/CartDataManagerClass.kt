@@ -77,6 +77,8 @@ class CartDataManagerClass(val config: ApplicationConfig, val unauthorizedAction
             
                     _relativeUrls["checkoutCartV2"] = "/service/application/cart/v2.0/checkout".substring(1)
             
+                    _relativeUrls["getPromotions"] = "/service/application/cart/v1.0/promotion".substring(1)
+            
     }
 
     public fun update(updatedUrlMap : HashMap<String,String>){
@@ -324,6 +326,13 @@ class CartDataManagerClass(val config: ApplicationConfig, val unauthorizedAction
         var fullUrl : String? = _relativeUrls["checkoutCartV2"]
         
         return cartApiList?.checkoutCartV2(fullUrl,   buyNow = buyNow,  cartType = cartType,body = body,headers = headers)}
+
+    
+    
+    suspend fun getPromotions(pageSize: Int?=null,pageNo: Int?=null, headers: Map<String, String> = emptyMap()): Response<Promotions>? {
+        var fullUrl : String? = _relativeUrls["getPromotions"]
+        
+        return cartApiList?.getPromotions(fullUrl,   pageSize = pageSize,  pageNo = pageNo,headers = headers)}
 
     
     

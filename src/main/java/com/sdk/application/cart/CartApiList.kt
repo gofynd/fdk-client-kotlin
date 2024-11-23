@@ -155,4 +155,9 @@ interface CartApiList {
     suspend fun checkoutCartV2(@Url url1: String?    ,   @Query("buy_now") buyNow: Boolean?, @Query("cart_type") cartType: String?, @Body body: CartCheckoutDetailV2Creation, @HeaderMap headers: Map<String, String>? = null)
     : Response<CartCheckoutResult>
     
+    
+    @GET
+    suspend fun getPromotions(@Url url1: String?    ,   @Query("page_size") pageSize: Int?, @Query("page_no") pageNo: Int?, @HeaderMap headers: Map<String, String>? = null)
+    : Response<Promotions>
+    
 }
