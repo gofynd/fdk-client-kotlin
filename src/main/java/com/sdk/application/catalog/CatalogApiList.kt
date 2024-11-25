@@ -42,7 +42,7 @@ interface CatalogApiList {
     
     
     @GET
-    suspend fun getProductStockByIds(@Url url1: String?    ,      @Query("item_id") itemId: String?, @Query("alu") alu: String?, @Query("sku_code") skuCode: String?, @Query("ean") ean: String?, @Query("upc") upc: String?, @HeaderMap headers: Map<String, String>? = null)
+    suspend fun getProductStockByIds(@Url url1: String?    ,      @Query("item_id") itemId: Int?, @Query("alu") alu: String?, @Query("sku_code") skuCode: String?, @Query("ean") ean: String?, @Query("upc") upc: String?, @HeaderMap headers: Map<String, String>? = null)
     : Response<ProductStockStatusResponseSchema>
     
     
@@ -147,7 +147,7 @@ interface CatalogApiList {
     
     
     @GET
-    suspend fun getProductBundlesBySlug(@Url url1: String?    ,   @Query("slug") slug: String?, @Query("id") id: String?, @HeaderMap headers: Map<String, String>? = null)
+    suspend fun getProductBundlesBySlug(@Url url1: String?    ,   @Query("slug") slug: String?, @Query("id") id: Int?, @HeaderMap headers: Map<String, String>? = null)
     : Response<ProductBundle>
     
     

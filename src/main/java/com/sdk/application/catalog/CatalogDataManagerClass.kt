@@ -166,7 +166,7 @@ class CatalogDataManagerClass(val config: ApplicationConfig, val unauthorizedAct
 
     
     
-    suspend fun getProductStockByIds(itemId: String?=null,alu: String?=null,skuCode: String?=null,ean: String?=null,upc: String?=null, headers: Map<String, String> = emptyMap()): Response<ProductStockStatusResponseSchema>? {
+    suspend fun getProductStockByIds(itemId: Int?=null,alu: String?=null,skuCode: String?=null,ean: String?=null,upc: String?=null, headers: Map<String, String> = emptyMap()): Response<ProductStockStatusResponseSchema>? {
         var fullUrl : String? = _relativeUrls["getProductStockByIds"]
         
         return catalogApiList?.getProductStockByIds(fullUrl,   itemId = itemId,  alu = alu,  skuCode = skuCode,  ean = ean,  upc = upc,headers = headers)}
@@ -712,7 +712,7 @@ class CatalogDataManagerClass(val config: ApplicationConfig, val unauthorizedAct
 
     
     
-    suspend fun getFollowerCountById(collectionType: String,collectionId: String, headers: Map<String, String> = emptyMap()): Response<FollowerCountResponseSchema>? {
+    suspend fun getFollowerCountById(collectionType: String,collectionId: Int, headers: Map<String, String> = emptyMap()): Response<FollowerCountResponseSchema>? {
         var fullUrl : String? = _relativeUrls["getFollowerCountById"]
         
         fullUrl = fullUrl?.replace("{" + "collection_type" +"}",collectionType.toString())
@@ -898,7 +898,7 @@ class CatalogDataManagerClass(val config: ApplicationConfig, val unauthorizedAct
 
     
     
-    suspend fun getProductBundlesBySlug(slug: String?=null,id: String?=null, headers: Map<String, String> = emptyMap()): Response<ProductBundle>? {
+    suspend fun getProductBundlesBySlug(slug: String?=null,id: Int?=null, headers: Map<String, String> = emptyMap()): Response<ProductBundle>? {
         var fullUrl : String? = _relativeUrls["getProductBundlesBySlug"]
         
         return catalogApiList?.getProductBundlesBySlug(fullUrl,   slug = slug,  id = id,headers = headers)}

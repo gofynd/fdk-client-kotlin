@@ -47,10 +47,6 @@ class ContentDataManagerClass(val config: ApplicationConfig, val unauthorizedAct
             
                     _relativeUrls["getSEOMarkupSchemas"] = "/service/application/content/v1.0/seo/schema".substring(1)
             
-                    _relativeUrls["getSlideshows"] = "/service/application/content/v1.0/slideshow".substring(1)
-            
-                    _relativeUrls["getSlideshow"] = "/service/application/content/v1.0/slideshow/{slug}".substring(1)
-            
                     _relativeUrls["getSupportInformation"] = "/service/application/content/v1.0/support".substring(1)
             
                     _relativeUrls["getTags"] = "/service/application/content/v1.0/tags".substring(1)
@@ -201,22 +197,6 @@ class ContentDataManagerClass(val config: ApplicationConfig, val unauthorizedAct
         var fullUrl : String? = _relativeUrls["getSEOMarkupSchemas"]
         
         return contentApiList?.getSEOMarkupSchemas(fullUrl,   pageType = pageType,  active = active,headers = headers)}
-
-    
-    
-    suspend fun getSlideshows(pageNo: Int?=null,pageSize: Int?=null, headers: Map<String, String> = emptyMap()): Response<SlideshowGetDetails>? {
-        var fullUrl : String? = _relativeUrls["getSlideshows"]
-        
-        return contentApiList?.getSlideshows(fullUrl,   pageNo = pageNo,  pageSize = pageSize,headers = headers)}
-
-    
-    
-    suspend fun getSlideshow(slug: String, headers: Map<String, String> = emptyMap()): Response<SlideshowSchema>? {
-        var fullUrl : String? = _relativeUrls["getSlideshow"]
-        
-        fullUrl = fullUrl?.replace("{" + "slug" +"}",slug.toString())
-        
-        return contentApiList?.getSlideshow(fullUrl,  headers = headers)}
 
     
     

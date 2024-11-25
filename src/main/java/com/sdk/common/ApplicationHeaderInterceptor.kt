@@ -22,20 +22,24 @@ class ApplicationHeaderInterceptor(
             val currencyCode = applicationConfig?.currencyCode ?: "INR"
             applicationConfig?.extraHeaders?.let {
                 for ((key, value) in it) {
-                    header(key,value)
+                    if (!original.headers.names().contains(key)) {
+                        header(key,value)
+                    }
                 }
             }
             if (!original.headers.names().contains("Accept-Language")) {
                 header("Accept-Language", languageCode)
             }
             applicationConfig?.locationDetail?.let {
-                header("x-location-detail", HttpClient.gson.toJson(it))
+                if (!original.headers.names().contains("x-location-detail")) {
+                    header("x-location-detail", HttpClient.gson.toJson(it))
+                }
             }
             if (!original.headers.names().contains("x-currency-code")) {
                 header("x-currency-code", currencyCode)
             }
             if (!original.headers.names().contains("x-fp-sdk-version")) {
-                header("x-fp-sdk-version", "1.4.14")
+                header("x-fp-sdk-version", "1.4.15")
             }
             val bearerToken =
                 Base64.encodeToString(

@@ -62,7 +62,7 @@ interface LogisticApiList {
     
     
     @GET
-    suspend fun getLocalities(@Url url1: String?     ,       @Query("country") country: String?, @Query("state") state: String?, @Query("city") city: String?, @Query("page_no") pageNo: Int?, @Query("page_size") pageSize: Int?, @Query("q") q: String?, @HeaderMap headers: Map<String, String>? = null)
+    suspend fun getLocalities(@Url url1: String?     ,        @Query("country") country: String?, @Query("state") state: String?, @Query("city") city: String?, @Query("page_no") pageNo: Int?, @Query("page_size") pageSize: Int?, @Query("q") q: String?, @Query("sector") sector: String?, @HeaderMap headers: Map<String, String>? = null)
     : Response<GetLocalities>
     
     

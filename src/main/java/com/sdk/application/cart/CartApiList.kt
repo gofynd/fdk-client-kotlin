@@ -31,6 +31,11 @@ interface CartApiList {
     : Response<UpdateCartDetailResult>
     
     
+    @PATCH
+    suspend fun updateCartBreakup(@Url url1: String?    ,      @Query("id") id: String?, @Query("i") i: Boolean?, @Query("b") b: Boolean?, @Query("buy_now") buyNow: Boolean?, @Query("cart_type") cartType: String?, @Body body: UpdateCartBreakup, @HeaderMap headers: Map<String, String>? = null)
+    : Response<UpdateCartDetailResult>
+    
+    
     @PUT
     suspend fun deleteCart(@Url url1: String?    ,  @Query("id") id: String?, @HeaderMap headers: Map<String, String>? = null)
     : Response<DeleteCartDetailResult>

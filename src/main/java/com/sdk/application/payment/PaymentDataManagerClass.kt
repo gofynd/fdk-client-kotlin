@@ -111,6 +111,8 @@ class PaymentDataManagerClass(val config: ApplicationConfig, val unauthorizedAct
             
                     _relativeUrls["createPaymentOrder"] = "/service/application/payment/v1.0/payment-orders/".substring(1)
             
+                    _relativeUrls["validateCustomerAndCreditSummary"] = "/service/application/payment/v1.0/payment/validate/customer-credits-v2".substring(1)
+            
     }
 
     public fun update(updatedUrlMap : HashMap<String,String>){
@@ -209,14 +211,14 @@ class PaymentDataManagerClass(val config: ApplicationConfig, val unauthorizedAct
 
     
     
-    suspend fun getPaymentModeRoutes(amount: Int,cartId: String?=null,checkoutMode: String?=null,refresh: Boolean?=null,orderId: String?=null,cardReference: String?=null,userDetails: String?=null,displaySplit: Boolean?=null,advancePayment: Boolean?=null,shipmentId: String?=null, headers: Map<String, String> = emptyMap()): Response<PaymentModeRouteDetails>? {
+    suspend fun getPaymentModeRoutes(amount: Int,cartId: String,checkoutMode: String?=null,refresh: Boolean?=null,orderId: String?=null,cardReference: String?=null,userDetails: String?=null,displaySplit: Boolean?=null,advancePayment: Boolean?=null,shipmentId: String?=null, headers: Map<String, String> = emptyMap()): Response<PaymentModeRouteDetails>? {
         var fullUrl : String? = _relativeUrls["getPaymentModeRoutes"]
         
         return paymentApiList?.getPaymentModeRoutes(fullUrl,   amount = amount,  cartId = cartId,  checkoutMode = checkoutMode,  refresh = refresh,  orderId = orderId,  cardReference = cardReference,  userDetails = userDetails,  displaySplit = displaySplit,  advancePayment = advancePayment,  shipmentId = shipmentId,headers = headers)}
 
     
     
-    suspend fun getPosPaymentModeRoutes(amount: Int,cartId: String?=null,pincode: String,checkoutMode: String?=null,refresh: Boolean?=null,cardReference: String?=null,orderType: String,userDetails: String?=null, headers: Map<String, String> = emptyMap()): Response<PaymentModeRouteDetails>? {
+    suspend fun getPosPaymentModeRoutes(amount: Int,cartId: String,pincode: String,checkoutMode: String?=null,refresh: Boolean?=null,cardReference: String?=null,orderType: String,userDetails: String?=null, headers: Map<String, String> = emptyMap()): Response<PaymentModeRouteDetails>? {
         var fullUrl : String? = _relativeUrls["getPosPaymentModeRoutes"]
         
         return paymentApiList?.getPosPaymentModeRoutes(fullUrl,   amount = amount,  cartId = cartId,  pincode = pincode,  checkoutMode = checkoutMode,  refresh = refresh,  cardReference = cardReference,  orderType = orderType,  userDetails = userDetails,headers = headers)}
@@ -428,7 +430,7 @@ class PaymentDataManagerClass(val config: ApplicationConfig, val unauthorizedAct
 
     
     
-    suspend fun redirectToAggregator(source: String?=null,aggregator: String?=null, headers: Map<String, String> = emptyMap()): Response<RedirectToAggregatorDetails>? {
+    suspend fun redirectToAggregator(source: String?=null,aggregator: String, headers: Map<String, String> = emptyMap()): Response<RedirectToAggregatorDetails>? {
         var fullUrl : String? = _relativeUrls["redirectToAggregator"]
         
         return paymentApiList?.redirectToAggregator(fullUrl,   source = source,  aggregator = aggregator,headers = headers)}
@@ -467,6 +469,13 @@ class PaymentDataManagerClass(val config: ApplicationConfig, val unauthorizedAct
         var fullUrl : String? = _relativeUrls["createPaymentOrder"]
         
         return paymentApiList?.createPaymentOrder(fullUrl, body = body,headers = headers)}
+
+    
+    
+    suspend fun validateCustomerAndCreditSummary(body: CustomerValidationSchema, headers: Map<String, String> = emptyMap()): Response<ValidateCustomerCreditSchema>? {
+        var fullUrl : String? = _relativeUrls["validateCustomerAndCreditSummary"]
+        
+        return paymentApiList?.validateCustomerAndCreditSummary(fullUrl, body = body,headers = headers)}
 
     
     

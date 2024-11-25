@@ -19,7 +19,7 @@ interface CatalogApiList {
     
     @PATCH ("/service/platform/catalog/v1.0/company/{company_id}/application/{application_id}/brand/{brand_uid}")
     suspend fun updateAppBrand(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Path("brand_uid") brandUid: String,@Body body: ApplicationBrandJson, @HeaderMap headers: Map<String, String>? = null)
-    : Response<SuccessResponse1>
+    : Response<SuccessResponseObject>
     
     @GET ("/service/platform/catalog/v1.0/company/{company_id}/application/{application_id}/brands")
     suspend fun getApplicationBrands(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Query("department") department: String?, @Query("page_no") pageNo: Int?, @Query("page_size") pageSize: Int?, @Query("q") q: String?, @Query("brand_id") brandId: ArrayList<Int>?, @HeaderMap headers: Map<String, String>? = null)
@@ -35,14 +35,14 @@ interface CatalogApiList {
     
     @PATCH ("/service/platform/catalog/v1.0/company/{company_id}/application/{application_id}/category/{category_uid}")
     suspend fun updateAppCategory(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Path("category_uid") categoryUid: String,@Body body: ApplicationCategoryJson, @HeaderMap headers: Map<String, String>? = null)
-    : Response<SuccessResponse1>
+    : Response<SuccessResponseObject>
     
     @GET ("/service/platform/catalog/v1.0/company/{company_id}/application/{application_id}/collections/")
     suspend fun getAllCollections(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Query("q") q: String?, @Query("schedule_status") scheduleStatus: String?, @Query("type") type: String?, @Query("tags") tags: ArrayList<String>?, @Query("is_active") isActive: Boolean?, @Query("page_no") pageNo: Int?, @Query("page_size") pageSize: Int?, @HeaderMap headers: Map<String, String>? = null)
     : Response<GetCollectionListingResponseSchema>
     
     @POST ("/service/platform/catalog/v1.0/company/{company_id}/application/{application_id}/collections/")
-    suspend fun createCollection(@Path("company_id") companyId: String, @Path("application_id") applicationId: String,@Body body: CreateCollection, @HeaderMap headers: Map<String, String>? = null)
+    suspend fun createCollection(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Query("q") q: String?, @Query("schedule_status") scheduleStatus: String?, @Query("type") type: String?, @Query("tags") tags: ArrayList<String>?, @Query("is_active") isActive: Boolean?, @Query("page_no") pageNo: Int?, @Query("page_size") pageSize: Int?,@Body body: CreateCollection, @HeaderMap headers: Map<String, String>? = null)
     : Response<CollectionCreateResponseSchema>
     
     @GET ("/service/platform/catalog/v1.0/company/{company_id}/application/{application_id}/filter-options/{filter_key}/values")
@@ -66,7 +66,7 @@ interface CatalogApiList {
     : Response<UpdateCollection>
     
     @GET ("/service/platform/catalog/v1.0/company/{company_id}/application/{application_id}/collections/{id}/items/")
-    suspend fun getCollectionItems(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Path("id") id: String, @Query("sort_on") sortOn: String?, @Query("page_id") pageId: String?, @Query("page_size") pageSize: Int?, @HeaderMap headers: Map<String, String>? = null)
+    suspend fun getCollectionItems(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Path("id") id: String, @Query("sort_on") sortOn: String?, @Query("page_id") pageId: String?, @Query("page_size") pageSize: Int?, @Query("page_no") pageNo: Int?, @HeaderMap headers: Map<String, String>? = null)
     : Response<GetCollectionItemsResponseSchema>
     
     @POST ("/service/platform/catalog/v1.0/company/{company_id}/application/{application_id}/collections/{id}/items/")
@@ -83,7 +83,7 @@ interface CatalogApiList {
     
     @PATCH ("/service/platform/catalog/v1.0/company/{company_id}/application/{application_id}/department/{department_uid}")
     suspend fun updateAppDepartment(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Path("department_uid") departmentUid: String,@Body body: ApplicationDepartmentJson, @HeaderMap headers: Map<String, String>? = null)
-    : Response<SuccessResponse1>
+    : Response<SuccessResponseObject>
     
     @GET ("/service/platform/catalog/v1.0/company/{company_id}/application/{application_id}/departments")
     suspend fun getDepartments(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @HeaderMap headers: Map<String, String>? = null)
@@ -123,15 +123,15 @@ interface CatalogApiList {
     
     @PATCH ("/service/platform/catalog/v1.0/company/{company_id}/application/{application_id}/product/{item_id}/")
     suspend fun updateAppProduct(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Path("item_id") itemId: String,@Body body: ApplicationItemMeta, @HeaderMap headers: Map<String, String>? = null)
-    : Response<SuccessResponse1>
+    : Response<SuccessResponseObject>
     
     @GET ("/service/platform/catalog/v1.0/company/{company_id}/application/{application_id}/products")
-    suspend fun getApplicationProducts(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Query("q") q: String?, @Query("f") f: String?, @Query("c") c: String?, @Query("filters") filters: Boolean?, @Query("is_dependent") isDependent: Boolean?, @Query("sort_on") sortOn: String?, @Query("page_id") pageId: String?, @Query("page_size") pageSize: Int?, @Query("page_no") pageNo: Int?, @Query("page_type") pageType: String?, @Query("item_ids") itemIds: ArrayList<Int>?, @HeaderMap headers: Map<String, String>? = null)
+    suspend fun getApplicationProducts(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Query("q") q: String?, @Query("f") f: String?, @Query("c") c: String?, @Query("filters") filters: Boolean?, @Query("is_dependent") isDependent: Boolean?, @Query("sort_on") sortOn: String?, @Query("page_id") pageId: String?, @Query("page_size") pageSize: Int?, @Query("page_no") pageNo: Int?, @Query("page_type") pageType: String?, @Query("item_ids") itemIds: ArrayList<String>?, @HeaderMap headers: Map<String, String>? = null)
     : Response<ApplicationProductListingResponseSchema>
     
     @GET ("/service/platform/catalog/v1.0/company/{company_id}/application/{application_id}/products/{item_id}/inventory/{size_identifier}")
-    suspend fun getDiscountedInventoryBySizeIdentifier(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Path("item_id") itemId: String, @Path("size_identifier") sizeIdentifier: String, @Query("page_no") pageNo: Int?, @Query("page_size") pageSize: Int?, @Query("q") q: String?, @Query("location_ids") locationIds: ArrayList<Int>?, @HeaderMap headers: Map<String, String>? = null)
-    : Response<InventorySellerIdentifierResponsePaginated>
+    suspend fun getDiscountedInventoryBySizeIdentifier(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Path("item_id") itemId: String, @Path("size_identifier") sizeIdentifier: String, @Query("page_no") pageNo: Int?, @Query("page_size") pageSize: Int?, @Query("location_ids") locationIds: ArrayList<Int>?, @HeaderMap headers: Map<String, String>? = null)
+    : Response<ApplicationInventorySellerIdentifierResponsePaginated>
     
     @GET ("/service/platform/catalog/v1.0/company/{company_id}/application/{application_id}/products/{slug}")
     suspend fun getProductDetailBySlug(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Path("slug") slug: String, @HeaderMap headers: Map<String, String>? = null)
@@ -147,11 +147,11 @@ interface CatalogApiList {
     
     @POST ("/service/platform/catalog/v1.0/company/{company_id}/application/{application_id}/return-config")
     suspend fun createAppReturnConfiguration(@Path("company_id") companyId: String, @Path("application_id") applicationId: String,@Body body: CreateUpdateAppReturnConfig, @HeaderMap headers: Map<String, String>? = null)
-    : Response<SuccessResponse1>
+    : Response<SuccessResponseObject>
     
     @PUT ("/service/platform/catalog/v1.0/company/{company_id}/application/{application_id}/return-config")
     suspend fun updateAppReturnConfiguration(@Path("company_id") companyId: String, @Path("application_id") applicationId: String,@Body body: CreateUpdateAppReturnConfig, @HeaderMap headers: Map<String, String>? = null)
-    : Response<SuccessResponse1>
+    : Response<SuccessResponseObject>
     
     @DELETE ("/service/platform/catalog/v1.0/company/{company_id}/application/{application_id}/return-config/categories")
     suspend fun deleteAppCategoryReturnConfiguration(@Path("company_id") companyId: String, @Path("application_id") applicationId: String,@Body body: DeleteAppCategoryReturnConfig, @HeaderMap headers: Map<String, String>? = null)
@@ -163,7 +163,7 @@ interface CatalogApiList {
     
     @POST ("/service/platform/catalog/v1.0/company/{company_id}/application/{application_id}/return-config/categories")
     suspend fun createAppCategoryReturnConfiguration(@Path("company_id") companyId: String, @Path("application_id") applicationId: String,@Body body: BaseAppCategoryReturnConfig, @HeaderMap headers: Map<String, String>? = null)
-    : Response<SuccessResponse1>
+    : Response<SuccessResponseObject>
     
     @PUT ("/service/platform/catalog/v1.0/company/{company_id}/application/{application_id}/return-config/categories")
     suspend fun updateAppCategoryReturnConfiguration(@Path("company_id") companyId: String, @Path("application_id") applicationId: String,@Body body: BaseAppCategoryReturnConfig, @HeaderMap headers: Map<String, String>? = null)
@@ -227,7 +227,7 @@ interface CatalogApiList {
     
     @PATCH ("/service/platform/catalog/v1.0/company/{company_id}/application/{application_id}/store/{store_uid}")
     suspend fun updateAppLocation(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Path("store_uid") storeUid: String,@Body body: ApplicationStoreJson, @HeaderMap headers: Map<String, String>? = null)
-    : Response<SuccessResponse1>
+    : Response<SuccessResponseObject>
     
     @GET ("/service/platform/catalog/v1.0/company/{company_id}/category/")
     suspend fun listCategories(@Path("company_id") companyId: String, @Query("level") level: String?, @Query("department") department: Int?, @Query("q") q: String?, @Query("page_no") pageNo: Int?, @Query("page_size") pageSize: Int?, @Query("uids") uids: ArrayList<Int>?, @Query("slug") slug: String?, @HeaderMap headers: Map<String, String>? = null)
@@ -338,7 +338,7 @@ interface CatalogApiList {
     : Response<AttributeDetail>
     
     @GET ("/service/platform/catalog/v1.0/company/{company_id}/product-bundle/")
-    suspend fun getProductBundle(@Path("company_id") companyId: String, @Query("q") q: String?, @Query("slug") slug: ArrayList<String>?, @HeaderMap headers: Map<String, String>? = null)
+    suspend fun getProductBundle(@Path("company_id") companyId: String, @Query("q") q: String?, @Query("slug") slug: ArrayList<String>?, @Query("page_no") pageNo: Int?, @Query("page_size") pageSize: Int?, @HeaderMap headers: Map<String, String>? = null)
     : Response<GetProductBundleListingResponseSchema>
     
     @POST ("/service/platform/catalog/v1.0/company/{company_id}/product-bundle/")
@@ -404,6 +404,10 @@ interface CatalogApiList {
     @GET ("/service/platform/catalog/v1.0/company/{company_id}/products/templates/{slug}/validation/schema/")
     suspend fun validateProductTemplate(@Path("company_id") companyId: String, @Path("slug") slug: String, @Query("item_type") itemType: String?, @Query("bulk") bulk: Boolean?, @HeaderMap headers: Map<String, String>? = null)
     : Response<TemplatesValidationResponseSchema>
+    
+    @GET ("/service/platform/catalog/v1.0/company/{company_id}/products/templates/validation/schema/")
+    suspend fun validateProductGlobalTemplate(@Path("company_id") companyId: String, @Query("item_type") itemType: String?, @Query("bulk") bulk: Boolean?, @HeaderMap headers: Map<String, String>? = null)
+    : Response<TemplatesGlobalValidationResponseSchema>
     
     @GET ("/service/platform/catalog/v1.0/company/{company_id}/products/validation/")
     suspend fun getProductValidation(@Path("company_id") companyId: String, @HeaderMap headers: Map<String, String>? = null)
@@ -519,7 +523,7 @@ interface CatalogApiList {
     
     @POST ("/service/platform/catalog/v2.0/company/{company_id}/products/")
     suspend fun createProduct(@Path("company_id") companyId: String,@Body body: ProductCreateUpdateSchemaV2, @HeaderMap headers: Map<String, String>? = null)
-    : Response<SuccessResponse1>
+    : Response<SuccessResponseObject>
     
     @POST ("/service/platform/catalog/v2.0/company/{company_id}/products/bulk")
     suspend fun uploadBulkProducts(@Path("company_id") companyId: String, @Query("department") department: String, @Query("product_type") productType: String,@Body body: BulkProductJob, @HeaderMap headers: Map<String, String>? = null)
@@ -534,7 +538,7 @@ interface CatalogApiList {
     : Response<ProductDownloadsResponseSchema>
     
     @DELETE ("/service/platform/catalog/v2.0/company/{company_id}/products/{item_id}/")
-    suspend fun deleteProduct(@Path("company_id") companyId: String, @Path("item_id") itemId: String, @HeaderMap headers: Map<String, String>? = null)
+    suspend fun deleteProduct(@Path("company_id") companyId: String, @Path("item_id") itemId: String,@Body body: DeleteProductRequestBody, @HeaderMap headers: Map<String, String>? = null)
     : Response<SuccessResponseSchema>
     
     @GET ("/service/platform/catalog/v2.0/company/{company_id}/products/{item_id}/")
@@ -556,6 +560,14 @@ interface CatalogApiList {
     @POST ("/service/platform/catalog/v2.0/company/{company_id}/products/{item_id}/inventory/{seller_identifier}")
     suspend fun updateRealtimeInventory(@Path("company_id") companyId: String, @Path("item_id") itemId: String, @Path("seller_identifier") sellerIdentifier: String,@Body body: InventoryRequestSchemaV2, @HeaderMap headers: Map<String, String>? = null)
     : Response<InventoryUpdateResponseSchema>
+    
+    @POST ("/service/platform/catalog/v1.0/company/{company_id}/store/{store_id}/identifier/{seller_identifier}/price")
+    suspend fun updateLocationPrice(@Path("company_id") companyId: String, @Path("store_id") storeId: String, @Path("seller_identifier") sellerIdentifier: String,@Body body: LocationPriceRequestSchema, @HeaderMap headers: Map<String, String>? = null)
+    : Response<LocationPriceQuantitySuccessResponseSchema>
+    
+    @POST ("/service/platform/catalog/v1.0/company/{company_id}/store/{store_id}/identifier/{seller_identifier}/quantity")
+    suspend fun updateLocationQuantity(@Path("company_id") companyId: String, @Path("store_id") storeId: String, @Path("seller_identifier") sellerIdentifier: String,@Body body: LocationQuantityRequestSchema, @HeaderMap headers: Map<String, String>? = null)
+    : Response<LocationPriceQuantitySuccessResponseSchema>
     
     @GET ("/service/platform/catalog/v1.0/company/{company_id}/channel")
     suspend fun getMarketplaces(@Path("company_id") companyId: String, @HeaderMap headers: Map<String, String>? = null)

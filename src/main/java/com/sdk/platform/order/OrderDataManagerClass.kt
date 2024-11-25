@@ -153,7 +153,7 @@ class OrderDataManagerClass(val config: PlatformConfig, val unauthorizedAction: 
     
     
     suspend fun sendSmsNinja(body: SendSmsPayload, headers: Map<String, String> = emptyMap())
-    : Response<SendSmsResponseSchema>? {
+    : Response<BaseResponseSchema>? {
 
         return if (config.oauthClient.isAccessTokenValid()) {
             orderApiList?.sendSmsNinja(
@@ -254,18 +254,6 @@ class OrderDataManagerClass(val config: PlatformConfig, val unauthorizedAction: 
         return if (config.oauthClient.isAccessTokenValid()) {
             orderApiList?.getAllowedStateTransition(
         companyId = config.companyId,orderingChannel = orderingChannel,status = status, headers = headers)
-        } else {
-            null
-        }
-    }
-    
-    
-    suspend fun fetchCreditBalanceDetail(body: FetchCreditBalanceRequestPayload, headers: Map<String, String> = emptyMap())
-    : Response<FetchCreditBalanceResponsePayload>? {
-
-        return if (config.oauthClient.isAccessTokenValid()) {
-            orderApiList?.fetchCreditBalanceDetail(
-        companyId = config.companyId, body = body,headers = headers)
         } else {
             null
         }
@@ -404,11 +392,11 @@ class OrderDataManagerClass(val config: PlatformConfig, val unauthorizedAction: 
     }
     
     
-    suspend fun processManifests(body: ProcessManifest, headers: Map<String, String> = emptyMap())
-    : Response<ProcessManifestItemResponseSchema>? {
+    suspend fun generateProcessManifest(body: ProcessManifestRequestSchema, headers: Map<String, String> = emptyMap())
+    : Response<ManifestResponseSchema>? {
 
         return if (config.oauthClient.isAccessTokenValid()) {
-            orderApiList?.processManifests(
+            orderApiList?.generateProcessManifest(
         companyId = config.companyId, body = body,headers = headers)
         } else {
             null
@@ -416,12 +404,12 @@ class OrderDataManagerClass(val config: PlatformConfig, val unauthorizedAction: 
     }
     
     
-    suspend fun getManifestDetails(manifestId: String, headers: Map<String, String> = emptyMap())
+    suspend fun getManifestDetails(manifestId: String,dpIds: String?=null,endDate: String?=null,startDate: String?=null,pageNo: Int?=null,pageSize: Int?=null, headers: Map<String, String> = emptyMap())
     : Response<ManifestDetails>? {
 
         return if (config.oauthClient.isAccessTokenValid()) {
             orderApiList?.getManifestDetails(
-        companyId = config.companyId,manifestId = manifestId, headers = headers)
+        companyId = config.companyId,manifestId = manifestId,dpIds = dpIds,endDate = endDate,startDate = startDate,pageNo = pageNo,pageSize = pageSize, headers = headers)
         } else {
             null
         }
@@ -440,12 +428,12 @@ class OrderDataManagerClass(val config: PlatformConfig, val unauthorizedAction: 
     }
     
     
-    suspend fun uploadConsents(manifestId: String,body: UploadConsent, headers: Map<String, String> = emptyMap())
+    suspend fun uploadConsents(body: UploadManifestConsent, headers: Map<String, String> = emptyMap())
     : Response<SuccessResponseSchema>? {
 
         return if (config.oauthClient.isAccessTokenValid()) {
             orderApiList?.uploadConsents(
-        companyId = config.companyId,manifestId = manifestId, body = body,headers = headers)
+        companyId = config.companyId, body = body,headers = headers)
         } else {
             null
         }
@@ -536,18 +524,6 @@ class OrderDataManagerClass(val config: PlatformConfig, val unauthorizedAction: 
     }
     
     
-    suspend fun generateProcessManifest(body: ProcessManifestRequestSchema, headers: Map<String, String> = emptyMap())
-    : Response<ManifestResponseSchema>? {
-
-        return if (config.oauthClient.isAccessTokenValid()) {
-            orderApiList?.generateProcessManifest(
-        companyId = config.companyId, body = body,headers = headers)
-        } else {
-            null
-        }
-    }
-    
-    
     suspend fun addStateManagerConfig(body: TransitionConfigPayload, headers: Map<String, String> = emptyMap())
     : Response<ConfigUpdatedResponseSchema>? {
 
@@ -586,12 +562,12 @@ class OrderDataManagerClass(val config: PlatformConfig, val unauthorizedAction: 
     
     
     
-    suspend fun getShipments(lane: String?=null,bagStatus: String?=null,statusOverrideLane: Boolean?=null,timeToDispatch: Int?=null,searchType: String?=null,searchValue: String?=null,fromDate: String?=null,toDate: String?=null,startDate: String?=null,endDate: String?=null,dpIds: String?=null,stores: String?=null,salesChannels: String?=null,pageNo: Int?=null,pageSize: Int?=null,fetchActiveShipment: Boolean?=null,allowInactive: Boolean?=null,excludeLockedShipments: Boolean?=null,paymentMethods: String?=null,channelShipmentId: String?=null,channelOrderId: String?=null,customMeta: String?=null,orderingChannel: String?=null,companyAffiliateTag: String?=null,myOrders: Boolean?=null,platformUserId: String?=null,sortType: String?=null,showCrossCompanyData: Boolean?=null,tags: String?=null,customerId: String?=null,orderType: String?=null,groupEntity: String?=null, headers: Map<String, String> = emptyMap())
+    suspend fun getShipments(lane: String?=null,bagStatus: String?=null,statusOverrideLane: Boolean?=null,timeToDispatch: Int?=null,searchType: String?=null,searchValue: String?=null,fromDate: String?=null,toDate: String?=null,startDate: String?=null,endDate: String?=null,dpIds: String?=null,stores: String?=null,salesChannels: String?=null,pageNo: Int?=null,pageSize: Int?=null,fetchActiveShipment: Boolean?=null,allowInactive: Boolean?=null,excludeLockedShipments: Boolean?=null,paymentMethods: String?=null,channelShipmentId: String?=null,channelOrderId: String?=null,customMeta: String?=null,orderingChannel: String?=null,companyAffiliateTag: String?=null,myOrders: Boolean?=null,platformUserId: String?=null,sortType: String?=null,showCrossCompanyData: Boolean?=null,tags: String?=null,customerId: String?=null,orderType: String?=null,groupEntity: String?=null,enforceDateFilter: Boolean?=null,fulfillmentType: String?=null, headers: Map<String, String> = emptyMap())
     : Response<ShipmentInternalPlatformViewResponseSchema>? {
 
         return if (config.oauthClient.isAccessTokenValid()) {
             orderApiList?.getShipments(
-        companyId = config.companyId,lane = lane,bagStatus = bagStatus,statusOverrideLane = statusOverrideLane,timeToDispatch = timeToDispatch,searchType = searchType,searchValue = searchValue,fromDate = fromDate,toDate = toDate,startDate = startDate,endDate = endDate,dpIds = dpIds,stores = stores,salesChannels = salesChannels,pageNo = pageNo,pageSize = pageSize,fetchActiveShipment = fetchActiveShipment,allowInactive = allowInactive,excludeLockedShipments = excludeLockedShipments,paymentMethods = paymentMethods,channelShipmentId = channelShipmentId,channelOrderId = channelOrderId,customMeta = customMeta,orderingChannel = orderingChannel,companyAffiliateTag = companyAffiliateTag,myOrders = myOrders,platformUserId = platformUserId,sortType = sortType,showCrossCompanyData = showCrossCompanyData,tags = tags,customerId = customerId,orderType = orderType,groupEntity = groupEntity, headers = headers)
+        companyId = config.companyId,lane = lane,bagStatus = bagStatus,statusOverrideLane = statusOverrideLane,timeToDispatch = timeToDispatch,searchType = searchType,searchValue = searchValue,fromDate = fromDate,toDate = toDate,startDate = startDate,endDate = endDate,dpIds = dpIds,stores = stores,salesChannels = salesChannels,pageNo = pageNo,pageSize = pageSize,fetchActiveShipment = fetchActiveShipment,allowInactive = allowInactive,excludeLockedShipments = excludeLockedShipments,paymentMethods = paymentMethods,channelShipmentId = channelShipmentId,channelOrderId = channelOrderId,customMeta = customMeta,orderingChannel = orderingChannel,companyAffiliateTag = companyAffiliateTag,myOrders = myOrders,platformUserId = platformUserId,sortType = sortType,showCrossCompanyData = showCrossCompanyData,tags = tags,customerId = customerId,orderType = orderType,groupEntity = groupEntity,enforceDateFilter = enforceDateFilter,fulfillmentType = fulfillmentType, headers = headers)
         } else {
             null
         }
@@ -634,12 +610,12 @@ class OrderDataManagerClass(val config: PlatformConfig, val unauthorizedAction: 
     }
     
     
-    suspend fun getOrders(lane: String?=null,searchType: String?=null,bagStatus: String?=null,timeToDispatch: Int?=null,paymentMethods: String?=null,tags: String?=null,searchValue: String?=null,fromDate: String?=null,toDate: String?=null,startDate: String?=null,endDate: String?=null,dpIds: String?=null,stores: String?=null,salesChannels: String?=null,pageNo: Int?=null,pageSize: Int?=null,isPrioritySort: Boolean?=null,customMeta: String?=null,myOrders: Boolean?=null,showCrossCompanyData: Boolean?=null,customerId: String?=null,orderType: String?=null,allowInactive: Boolean?=null,groupEntity: String?=null, headers: Map<String, String> = emptyMap())
+    suspend fun getOrders(lane: String?=null,searchType: String?=null,bagStatus: String?=null,timeToDispatch: Int?=null,paymentMethods: String?=null,tags: String?=null,searchValue: String?=null,fromDate: String?=null,toDate: String?=null,startDate: String?=null,endDate: String?=null,dpIds: String?=null,stores: String?=null,salesChannels: String?=null,pageNo: Int?=null,pageSize: Int?=null,isPrioritySort: Boolean?=null,customMeta: String?=null,myOrders: Boolean?=null,showCrossCompanyData: Boolean?=null,customerId: String?=null,orderType: String?=null,allowInactive: Boolean?=null,groupEntity: String?=null,enforceDateFilter: Boolean?=null,fulfillmentType: String?=null, headers: Map<String, String> = emptyMap())
     : Response<OrderListingResponseSchema>? {
 
         return if (config.oauthClient.isAccessTokenValid()) {
             orderApiList?.getOrders(
-        companyId = config.companyId,lane = lane,searchType = searchType,bagStatus = bagStatus,timeToDispatch = timeToDispatch,paymentMethods = paymentMethods,tags = tags,searchValue = searchValue,fromDate = fromDate,toDate = toDate,startDate = startDate,endDate = endDate,dpIds = dpIds,stores = stores,salesChannels = salesChannels,pageNo = pageNo,pageSize = pageSize,isPrioritySort = isPrioritySort,customMeta = customMeta,myOrders = myOrders,showCrossCompanyData = showCrossCompanyData,customerId = customerId,orderType = orderType,allowInactive = allowInactive,groupEntity = groupEntity, headers = headers)
+        companyId = config.companyId,lane = lane,searchType = searchType,bagStatus = bagStatus,timeToDispatch = timeToDispatch,paymentMethods = paymentMethods,tags = tags,searchValue = searchValue,fromDate = fromDate,toDate = toDate,startDate = startDate,endDate = endDate,dpIds = dpIds,stores = stores,salesChannels = salesChannels,pageNo = pageNo,pageSize = pageSize,isPrioritySort = isPrioritySort,customMeta = customMeta,myOrders = myOrders,showCrossCompanyData = showCrossCompanyData,customerId = customerId,orderType = orderType,allowInactive = allowInactive,groupEntity = groupEntity,enforceDateFilter = enforceDateFilter,fulfillmentType = fulfillmentType, headers = headers)
         } else {
             null
         }
@@ -771,8 +747,6 @@ class OrderDataManagerClass(val config: PlatformConfig, val unauthorizedAction: 
 
 inner class ApplicationClient(val applicationId:String,val config: PlatformConfig){
 
-    
-    
     
     
     

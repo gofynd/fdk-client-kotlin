@@ -158,12 +158,12 @@ class LogisticDataManagerClass(val config: ApplicationConfig, val unauthorizedAc
 
     
     
-    suspend fun getLocalities(localityType: String,country: String?=null,state: String?=null,city: String?=null,pageNo: Int?=null,pageSize: Int?=null,q: String?=null, headers: Map<String, String> = emptyMap()): Response<GetLocalities>? {
+    suspend fun getLocalities(localityType: String,country: String?=null,state: String?=null,city: String?=null,pageNo: Int?=null,pageSize: Int?=null,q: String?=null,sector: String?=null, headers: Map<String, String> = emptyMap()): Response<GetLocalities>? {
         var fullUrl : String? = _relativeUrls["getLocalities"]
         
         fullUrl = fullUrl?.replace("{" + "locality_type" +"}",localityType.toString())
         
-        return logisticApiList?.getLocalities(fullUrl,    country = country,  state = state,  city = city,  pageNo = pageNo,  pageSize = pageSize,  q = q,headers = headers)}
+        return logisticApiList?.getLocalities(fullUrl,    country = country,  state = state,  city = city,  pageNo = pageNo,  pageSize = pageSize,  q = q,  sector = sector,headers = headers)}
 
     
     

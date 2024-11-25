@@ -105,6 +105,33 @@ data class InvalidateShipmentCacheResponseSchema(
 
              
 /*
+    Model: UpdatePackingErrorResponseSchema
+*/
+@Parcelize
+data class UpdatePackingErrorResponseSchema(
+    
+    
+    
+    @SerializedName("status")
+    var status: Int?=null,
+    
+    @SerializedName("error")
+    var error: String?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
     Model: ErrorResponseSchema
 */
 @Parcelize
@@ -241,10 +268,10 @@ data class StoreReassignResponseSchema(
 
              
 /*
-    Model: Entities
+    Model: LockManagerEntities
 */
 @Parcelize
-data class Entities(
+data class LockManagerEntities(
     
     
     
@@ -305,7 +332,7 @@ data class UpdateShipmentLockPayload(
     var actionType: String?=null,
     
     @SerializedName("entities")
-    var entities: ArrayList<Entities>?=null,
+    var entities: ArrayList<LockManagerEntities>?=null,
     
     @SerializedName("resume_tasks_after_unlock")
     var resumeTasksAfterUnlock: Boolean?=null,
@@ -578,10 +605,15 @@ data class AnnouncementsResponseSchema(
     @SerializedName("success")
     var success: Boolean?=null,
     
+    @SerializedName("status")
+    var status: Int?=null,
+    
     @SerializedName("message")
     var message: String?=null
     
 ): Parcelable {
+    
+    
     
     
     
@@ -609,33 +641,6 @@ data class BaseResponseSchema(
     
     @SerializedName("message")
     var message: String?=null
-    
-): Parcelable {
-    
-    
-    
-    
-    
-    
-    
-}
-
-
-
-             
-/*
-    Model: Click2CallResponseSchema
-*/
-@Parcelize
-data class Click2CallResponseSchema(
-    
-    
-    
-    @SerializedName("call_id")
-    var callId: String?=null,
-    
-    @SerializedName("success")
-    var success: Boolean?=null
     
 ): Parcelable {
     
@@ -1432,9 +1437,14 @@ data class CreateOrderConfig(
     var optimalShipmentCreation: Boolean?=null,
     
     @SerializedName("lock_state_messages")
-    var lockStateMessages: ArrayList<LockStateMessage>?=null
+    var lockStateMessages: ArrayList<LockStateMessage>?=null,
+    
+    @SerializedName("integration_type")
+    var integrationType: String?=null
     
 ): Parcelable {
+    
+    
     
     
     
@@ -2887,6 +2897,9 @@ data class HistoryDict(
     @SerializedName("createdat")
     var createdat: String?=null,
     
+    @SerializedName("created_ts")
+    var createdTs: String?=null,
+    
     @SerializedName("ticket_id")
     var ticketId: String?=null,
     
@@ -2912,6 +2925,8 @@ data class HistoryDict(
     var user: String?=null
     
 ): Parcelable {
+    
+    
     
     
     
@@ -3096,7 +3111,7 @@ data class SmsDataPayload(
     var phoneNumber: String?=null,
     
     @SerializedName("amount_paid")
-    var amountPaid: Double?=null,
+    var amountPaid: Int?=null,
     
     @SerializedName("order_id")
     var orderId: String?=null,
@@ -3152,7 +3167,7 @@ data class SendSmsPayload(
     
     
     @SerializedName("bag_id")
-    var bagId: String?=null,
+    var bagId: Int?=null,
     
     @SerializedName("data")
     var data: SmsDataPayload?=null,
@@ -3544,10 +3559,10 @@ data class Dimension(
     var packagingType: String?=null,
     
     @SerializedName("weight")
-    var weight: String?=null,
+    var weight: Double?=null,
     
     @SerializedName("height")
-    var height: String?=null,
+    var height: Double?=null,
     
     @SerializedName("length")
     var length: Double?=null,
@@ -3666,6 +3681,33 @@ data class Tax(
 
              
 /*
+    Model: AmountSchema
+*/
+@Parcelize
+data class AmountSchema(
+    
+    
+    
+    @SerializedName("currency")
+    var currency: String?=null,
+    
+    @SerializedName("value")
+    var value: Double?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
     Model: Charge
 */
 @Parcelize
@@ -3677,7 +3719,7 @@ data class Charge(
     var name: String?=null,
     
     @SerializedName("amount")
-    var amount: @RawValue HashMap<String,Any>?=null,
+    var amount: AmountSchema?=null,
     
     @SerializedName("tax")
     var tax: Tax?=null,
@@ -4090,6 +4132,33 @@ data class Shipment(
 
              
 /*
+    Model: GeoLocationSchema
+*/
+@Parcelize
+data class GeoLocationSchema(
+    
+    
+    
+    @SerializedName("latitude")
+    var latitude: Double?=null,
+    
+    @SerializedName("longitude")
+    var longitude: Double?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
     Model: ShippingInfo
 */
 @Parcelize
@@ -4119,7 +4188,7 @@ data class ShippingInfo(
     var lastName: String?=null,
     
     @SerializedName("geo_location")
-    var geoLocation: @RawValue HashMap<String,Any>?=null,
+    var geoLocation: GeoLocationSchema?=null,
     
     @SerializedName("gender")
     var gender: String?=null,
@@ -4325,9 +4394,6 @@ data class BillingInfo(
     @SerializedName("address2")
     var address2: String?=null,
     
-    @SerializedName("landmark")
-    var landmark: String?=null,
-    
     @SerializedName("country_code")
     var countryCode: String?=null,
     
@@ -4335,8 +4401,6 @@ data class BillingInfo(
     var countryIsoCode: String?=null
     
 ): Parcelable {
-    
-    
     
     
     
@@ -4540,10 +4604,15 @@ data class PaymentInfo(
     @SerializedName("primary_mode")
     var primaryMode: String?=null,
     
+    @SerializedName("payment_mode")
+    var paymentMode: String?=null,
+    
     @SerializedName("payment_methods")
     var paymentMethods: ArrayList<PaymentMethod>?=null
     
 ): Parcelable {
+    
+    
     
     
     
@@ -4571,7 +4640,7 @@ data class CreateOrderAPI(
     var shippingInfo: ShippingInfo?=null,
     
     @SerializedName("billing_info")
-    var billingInfo: BillingInfo?=null,
+    var billingInfo: ShippingInfo?=null,
     
     @SerializedName("currency_info")
     var currencyInfo: @RawValue HashMap<String,Any>?=null,
@@ -4610,9 +4679,29 @@ data class CreateOrderAPI(
     var status: String?=null,
     
     @SerializedName("system_messages")
-    var systemMessages: ArrayList<SystemMessages>?=null
+    var systemMessages: ArrayList<SystemMessages>?=null,
+    
+    @SerializedName("order_type")
+    var orderType: String?=null,
+    
+    @SerializedName("fynd_order_id")
+    var fyndOrderId: String?=null,
+    
+    @SerializedName("application_id")
+    var applicationId: String?=null,
+    
+    @SerializedName("external_shipment_id")
+    var externalShipmentId: String?=null
     
 ): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+    
     
     
     
@@ -4661,39 +4750,19 @@ data class CreateOrderErrorReponse(
     
     
     
-    @SerializedName("request_id")
-    var requestId: String?=null,
+    @SerializedName("success")
+    var success: Boolean?=null,
     
-    @SerializedName("status")
-    var status: Int?=null,
+    @SerializedName("errors")
+    var errors: String?=null,
     
-    @SerializedName("info")
-    var info: @RawValue Any?=null,
+    @SerializedName("status_code")
+    var statusCode: Double?=null,
     
-    @SerializedName("stack_trace")
-    var stackTrace: String?=null,
-    
-    @SerializedName("code")
-    var code: String?=null,
-    
-    @SerializedName("meta")
-    var meta: String?=null,
-    
-    @SerializedName("message")
-    var message: String?=null,
-    
-    @SerializedName("exception")
-    var exception: String?=null
+    @SerializedName("fynd_order_id")
+    var fyndOrderId: String?=null
     
 ): Parcelable {
-    
-    
-    
-    
-    
-    
-    
-    
     
     
     
@@ -4852,9 +4921,76 @@ data class CreateChannelConifgErrorResponseSchema(
     
     
     @SerializedName("error")
-    var error: String?=null
+    var error: String?=null,
+    
+    @SerializedName("request_id")
+    var requestId: String?=null,
+    
+    @SerializedName("status")
+    var status: Int?=null,
+    
+    @SerializedName("info")
+    var info: @RawValue Any?=null,
+    
+    @SerializedName("stack_trace")
+    var stackTrace: String?=null,
+    
+    @SerializedName("code")
+    var code: String?=null,
+    
+    @SerializedName("meta")
+    var meta: String?=null,
+    
+    @SerializedName("message")
+    var message: String?=null,
+    
+    @SerializedName("exception")
+    var exception: String?=null
     
 ): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: UploadManifestConsent
+*/
+@Parcelize
+data class UploadManifestConsent(
+    
+    
+    
+    @SerializedName("consent_url")
+    var consentUrl: String?=null,
+    
+    @SerializedName("manifest_id")
+    var manifestId: String?=null
+    
+): Parcelable {
+    
+    
     
     
     
@@ -4885,33 +5021,6 @@ data class CreateChannelConfigResponseSchema(
 ): Parcelable {
     
     
-    
-    
-    
-    
-    
-    
-    
-}
-
-
-
-             
-/*
-    Model: UploadConsent
-*/
-@Parcelize
-data class UploadConsent(
-    
-    
-    
-    @SerializedName("consent_url")
-    var consentUrl: String?=null,
-    
-    @SerializedName("manifest_id")
-    var manifestId: String?=null
-    
-): Parcelable {
     
     
     
@@ -4958,9 +5067,14 @@ data class ResponseDetail(
     var success: Boolean?=null,
     
     @SerializedName("message")
-    var message: ArrayList<String>?=null
+    var message: String?=null,
+    
+    @SerializedName("status")
+    var status: Int?=null
     
 ): Parcelable {
+    
+    
     
     
     
@@ -4982,9 +5096,24 @@ data class FyndOrderIdList(
     
     
     @SerializedName("fynd_order_id")
-    var fyndOrderId: ArrayList<String>?=null
+    var fyndOrderId: ArrayList<String>?=null,
+    
+    @SerializedName("start_date")
+    var startDate: String?=null,
+    
+    @SerializedName("end_date")
+    var endDate: String?=null,
+    
+    @SerializedName("mobile")
+    var mobile: Int?=null
     
 ): Parcelable {
+    
+    
+    
+    
+    
+    
     
     
     
@@ -5195,7 +5324,7 @@ data class RefundModeConfigRequestPayload(
     var affiliateId: String?=null,
     
     @SerializedName("customer_mobile_number")
-    var customerMobileNumber: String?=null
+    var customerMobileNumber: Double?=null
     
 ): Parcelable {
     
@@ -5252,6 +5381,28 @@ data class RefundOption(
 
              
 /*
+    Model: RefundModeFormat
+*/
+@Parcelize
+data class RefundModeFormat(
+    
+    
+    
+    @SerializedName("refund_to")
+    var refundTo: String?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
     Model: RefundModeInfo
 */
 @Parcelize
@@ -5269,9 +5420,14 @@ data class RefundModeInfo(
     var options: ArrayList<RefundOption>?=null,
     
     @SerializedName("display_name")
-    var displayName: String?=null
+    var displayName: String?=null,
+    
+    @SerializedName("format")
+    var format: RefundModeFormat?=null
     
 ): Parcelable {
+    
+    
     
     
     
@@ -5300,9 +5456,19 @@ data class RefundModeConfigResponsePayload(
     var success: Boolean?=null,
     
     @SerializedName("data")
-    var data: ArrayList<RefundModeInfo>?=null
+    var data: ArrayList<RefundModeInfo>?=null,
+    
+    @SerializedName("status")
+    var status: Int?=null,
+    
+    @SerializedName("message")
+    var message: String?=null
     
 ): Parcelable {
+    
+    
+    
+    
     
     
     
@@ -5442,7 +5608,7 @@ data class SendUserMobileOTP(
     
     
     @SerializedName("mobile")
-    var mobile: String?=null,
+    var mobile: Double?=null,
     
     @SerializedName("country_code")
     var countryCode: String?=null
@@ -5508,6 +5674,9 @@ data class SendUserMobileOtpResponseSchema(
     @SerializedName("success")
     var success: Boolean?=null,
     
+    @SerializedName("status")
+    var status: Int?=null,
+    
     @SerializedName("message")
     var message: String?=null,
     
@@ -5515,6 +5684,8 @@ data class SendUserMobileOtpResponseSchema(
     var data: PointBlankOtpData?=null
     
 ): Parcelable {
+    
+    
     
     
     
@@ -5663,6 +5834,68 @@ data class VerifyOtpResponseSchema(
 
              
 /*
+    Model: BulkReportsFiltersSchema
+*/
+@Parcelize
+data class BulkReportsFiltersSchema(
+    
+    
+    
+    @SerializedName("bag_status")
+    var bagStatus: String?=null,
+    
+    @SerializedName("operational_status")
+    var operationalStatus: String?=null,
+    
+    @SerializedName("stores")
+    var stores: String?=null,
+    
+    @SerializedName("time_to_dispatch")
+    var timeToDispatch: String?=null,
+    
+    @SerializedName("payment_methods")
+    var paymentMethods: String?=null,
+    
+    @SerializedName("dp_ids")
+    var dpIds: String?=null,
+    
+    @SerializedName("sales_channels")
+    var salesChannels: String?=null,
+    
+    @SerializedName("tags")
+    var tags: String?=null,
+    
+    @SerializedName("lock_status")
+    var lockStatus: String?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
     Model: BulkReportsDownloadRequestSchema
 */
 @Parcelize
@@ -5677,7 +5910,7 @@ data class BulkReportsDownloadRequestSchema(
     var laneType: String?=null,
     
     @SerializedName("custom_headers")
-    var customHeaders: String?=null,
+    var customHeaders: ArrayList<String>?=null,
     
     @SerializedName("report_type")
     var reportType: String?=null,
@@ -5698,9 +5931,14 @@ data class BulkReportsDownloadRequestSchema(
     var isCrossCompanyEnabled: Boolean?=null,
     
     @SerializedName("custom_filters_for_lane")
-    var customFiltersForLane: @RawValue HashMap<String,Any>?=null
+    var customFiltersForLane: @RawValue HashMap<String,Any>?=null,
+    
+    @SerializedName("filters")
+    var filters: BulkReportsFiltersSchema?=null
     
 ): Parcelable {
+    
+    
     
     
     
@@ -5757,10 +5995,10 @@ data class BulkReportsDownloadResponseSchema(
 
              
 /*
-    Model: BulkFailedResponseSchema
+    Model: APIFailedResponseSchema
 */
 @Parcelize
-data class BulkFailedResponseSchema(
+data class APIFailedResponseSchema(
     
     
     
@@ -5952,7 +6190,7 @@ data class BulkActionListingData(
     var updatedTs: Int?=null,
     
     @SerializedName("status")
-    var status: Boolean?=null,
+    var status: String?=null,
     
     @SerializedName("store_code")
     var storeCode: String?=null,
@@ -5982,9 +6220,49 @@ data class BulkActionListingData(
     var batchId: String?=null,
     
     @SerializedName("uploaded_by")
-    var uploadedBy: String?=null
+    var uploadedBy: String?=null,
+    
+    @SerializedName("invoicelabel_document_type")
+    var invoicelabelDocumentType: String?=null,
+    
+    @SerializedName("failed_sh_count")
+    var failedShCount: Int?=null,
+    
+    @SerializedName("successful_sh_count")
+    var successfulShCount: Int?=null,
+    
+    @SerializedName("total_count")
+    var totalCount: Int?=null,
+    
+    @SerializedName("failed_shipments")
+    var failedShipments: ArrayList<String>?=null,
+    
+    @SerializedName("successful_invoiced_count")
+    var successfulInvoicedCount: Int?=null,
+    
+    @SerializedName("failed_invoiced_count")
+    var failedInvoicedCount: Int?=null,
+    
+    @SerializedName("total_invoiced_count")
+    var totalInvoicedCount: Int?=null
     
 ): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     
     
     
@@ -8036,6 +8314,33 @@ data class ManifestItems(
 
              
 /*
+    Model: ManifestErrorResponseSchema
+*/
+@Parcelize
+data class ManifestErrorResponseSchema(
+    
+    
+    
+    @SerializedName("success")
+    var success: Boolean?=null,
+    
+    @SerializedName("error")
+    var error: String?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
     Model: ConfigData
 */
 @Parcelize
@@ -8905,6 +9210,65 @@ data class UpdateShipmentPaymentMode(
 
              
 /*
+    Model: CommonErrorResponseSchema
+*/
+@Parcelize
+data class CommonErrorResponseSchema(
+    
+    
+    
+    @SerializedName("status")
+    var status: Int?=null,
+    
+    @SerializedName("message")
+    var message: String?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: ExceptionErrorResponseSchema
+*/
+@Parcelize
+data class ExceptionErrorResponseSchema(
+    
+    
+    
+    @SerializedName("message")
+    var message: String?=null,
+    
+    @SerializedName("exception")
+    var exception: String?=null,
+    
+    @SerializedName("stack_trace")
+    var stackTrace: String?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
     Model: ProductSchema
 */
 @Parcelize
@@ -9315,14 +9679,17 @@ data class ShipmentStatus(
     @SerializedName("meta")
     var meta: @RawValue HashMap<String,Any>?=null,
     
-    @SerializedName("shipment_status_id")
-    var shipmentStatusId: Int?=null,
+    @SerializedName("id")
+    var id: Int?=null,
     
     @SerializedName("bag_list")
     var bagList: ArrayList<String>?=null,
     
     @SerializedName("title")
     var title: String?=null,
+    
+    @SerializedName("display_name")
+    var displayName: String?=null,
     
     @SerializedName("created_at")
     var createdAt: String?=null,
@@ -9336,13 +9703,15 @@ data class ShipmentStatus(
     @SerializedName("status_created_at")
     var statusCreatedAt: String?=null,
     
-    @SerializedName("status_created_ts")
-    var statusCreatedTs: String?=null,
+    @SerializedName("updated_ts")
+    var updatedTs: String?=null,
     
     @SerializedName("status")
     var status: String?=null
     
 ): Parcelable {
+    
+    
     
     
     
@@ -9381,11 +9750,14 @@ data class UserDataInfo(
     
     
     
-    @SerializedName("uid")
-    var uid: Int?=null,
+    @SerializedName("id")
+    var id: Int?=null,
     
     @SerializedName("user_oid")
     var userOid: String?=null,
+    
+    @SerializedName("mongo_user_id")
+    var mongoUserId: String?=null,
     
     @SerializedName("external_customer_id")
     var externalCustomerId: String?=null,
@@ -9402,19 +9774,26 @@ data class UserDataInfo(
     @SerializedName("email")
     var email: String?=null,
     
+    @SerializedName("meta")
+    var meta: String?=null,
+    
     @SerializedName("is_anonymous_user")
     var isAnonymousUser: Boolean?=null,
-    
-    @SerializedName("avis_user_id")
-    var avisUserId: String?=null,
     
     @SerializedName("name")
     var name: String?=null,
     
     @SerializedName("gender")
-    var gender: String?=null
+    var gender: String?=null,
+    
+    @SerializedName("country_phone_code")
+    var countryPhoneCode: String?=null
     
 ): Parcelable {
+    
+    
+    
+    
     
     
     
@@ -9458,6 +9837,9 @@ data class Address(
     
     @SerializedName("address2")
     var address2: String?=null,
+    
+    @SerializedName("address")
+    var address: String?=null,
     
     @SerializedName("longitude")
     var longitude: Int?=null,
@@ -9508,9 +9890,66 @@ data class Address(
     var state: String?=null,
     
     @SerializedName("city")
-    var city: String?=null
+    var city: String?=null,
+    
+    @SerializedName("area_code_slug")
+    var areaCodeSlug: String?=null,
+    
+    @SerializedName("country_code")
+    var countryCode: String?=null,
+    
+    @SerializedName("country_iso_code")
+    var countryIsoCode: String?=null,
+    
+    @SerializedName("country_phone_code")
+    var countryPhoneCode: String?=null,
+    
+    @SerializedName("delivery_address_id")
+    var deliveryAddressId: String?=null,
+    
+    @SerializedName("geo_location")
+    var geoLocation: @RawValue HashMap<String,Any>?=null,
+    
+    @SerializedName("name")
+    var name: String?=null,
+    
+    @SerializedName("sector")
+    var sector: String?=null,
+    
+    @SerializedName("state_code")
+    var stateCode: String?=null,
+    
+    @SerializedName("uid")
+    var uid: String?=null,
+    
+    @SerializedName("user_id")
+    var userId: String?=null
     
 ): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     
     
     
@@ -10588,7 +11027,7 @@ data class Article(
     
     
     @SerializedName("child_details")
-    var childDetails: @RawValue HashMap<String,Any>?=null,
+    var childDetails: @RawValue ArrayList<HashMap<String,Any>>?=null,
     
     @SerializedName("seller_identifier")
     var sellerIdentifier: String?=null,
@@ -12802,8 +13241,8 @@ data class AffiliateDetails(
     @SerializedName("affiliate_bag_id")
     var affiliateBagId: String?=null,
     
-    @SerializedName("ad_id")
-    var adId: String?=null
+    @SerializedName("id")
+    var id: String?=null
     
 ): Parcelable {
     
@@ -14258,12 +14697,42 @@ data class PaymentInfoData(
 
              
 /*
+    Model: CurrencySchema
+*/
+@Parcelize
+data class CurrencySchema(
+    
+    
+    
+    @SerializedName("currency_code")
+    var currencyCode: String?=null,
+    
+    @SerializedName("currency_symbol")
+    var currencySymbol: String?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
     Model: OrderData
 */
 @Parcelize
 data class OrderData(
     
     
+    
+    @SerializedName("ordering_channel")
+    var orderingChannel: String?=null,
     
     @SerializedName("order_date")
     var orderDate: String?=null,
@@ -14293,9 +14762,31 @@ data class OrderData(
     var paymentMethods: @RawValue HashMap<String,Any>?=null,
     
     @SerializedName("payment_info")
-    var paymentInfo: ArrayList<PaymentInfoData>?=null
+    var paymentInfo: ArrayList<PaymentInfoData>?=null,
+    
+    @SerializedName("affiliate_order_id")
+    var affiliateOrderId: String?=null,
+    
+    @SerializedName("affiliate_id")
+    var affiliateId: String?=null,
+    
+    @SerializedName("source")
+    var source: String?=null,
+    
+    @SerializedName("currency")
+    var currency: CurrencySchema?=null
     
 ): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     
     
     
@@ -14809,6 +15300,12 @@ data class FiltersResponseSchema(
     
     
     
+    @SerializedName("advance")
+    var advance: AdvanceFilterInfo?=null,
+    
+    @SerializedName("global_1")
+    var global1: FiltersInfo?=null,
+    
     @SerializedName("advance_filter")
     var advanceFilter: AdvanceFilterInfo?=null,
     
@@ -14816,6 +15313,10 @@ data class FiltersResponseSchema(
     var globalFilter: ArrayList<FiltersInfo>?=null
     
 ): Parcelable {
+    
+    
+    
+    
     
     
     
@@ -16749,6 +17250,33 @@ data class Error(
     
     @SerializedName("success")
     var success: Boolean?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: BulkFailedResponseSchema
+*/
+@Parcelize
+data class BulkFailedResponseSchema(
+    
+    
+    
+    @SerializedName("status")
+    var status: Boolean?=null,
+    
+    @SerializedName("error")
+    var error: String?=null
     
 ): Parcelable {
     

@@ -894,6 +894,12 @@ data class Item(
     @SerializedName("l1_categories")
     var l1Categories: ArrayList<String>?=null,
     
+    @SerializedName("l2_category")
+    var l2Category: ArrayList<String>?=null,
+    
+    @SerializedName("l2_category_id")
+    var l2CategoryId: Double?=null,
+    
     @SerializedName("brand")
     var brand: ItemBrand?=null,
     
@@ -925,6 +931,10 @@ data class Item(
     var attributes: @RawValue HashMap<String,Any>?=null
     
 ): Parcelable {
+    
+    
+    
+    
     
     
     
@@ -1862,6 +1872,33 @@ data class BagsForReorder(
 
              
 /*
+    Model: CurrencySchema
+*/
+@Parcelize
+data class CurrencySchema(
+    
+    
+    
+    @SerializedName("currency_code")
+    var currencyCode: String?=null,
+    
+    @SerializedName("currency_symbol")
+    var currencySymbol: String?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
     Model: OrderSchema
 */
 @Parcelize
@@ -1900,9 +1937,14 @@ data class OrderSchema(
     var charges: ArrayList<PriceAdjustmentCharge>?=null,
     
     @SerializedName("meta")
-    var meta: @RawValue HashMap<String,Any>?=null
+    var meta: @RawValue HashMap<String,Any>?=null,
+    
+    @SerializedName("currency")
+    var currency: CurrencySchema?=null
     
 ): Parcelable {
+    
+    
     
     
     
@@ -1949,6 +1991,70 @@ data class OrderStatuses(
     
     @SerializedName("display")
     var display: String?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: OrderGlobalFilterOption
+*/
+@Parcelize
+data class OrderGlobalFilterOption(
+    
+    
+    
+    @SerializedName("display_text")
+    var displayText: String?=null,
+    
+    @SerializedName("value")
+    var value: String?=null,
+    
+    @SerializedName("is_selected")
+    var isSelected: Boolean?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: OrderGlobalFilter
+*/
+@Parcelize
+data class OrderGlobalFilter(
+    
+    
+    
+    @SerializedName("display_test")
+    var displayTest: String?=null,
+    
+    @SerializedName("value")
+    var value: String?=null,
+    
+    @SerializedName("options")
+    var options: ArrayList<OrderGlobalFilterOption>?=null
     
 ): Parcelable {
     
@@ -2157,9 +2263,14 @@ data class Track(
     var reason: String?=null,
     
     @SerializedName("awb")
-    var awb: String?=null
+    var awb: String?=null,
+    
+    @SerializedName("meta")
+    var meta: @RawValue HashMap<String,Any>?=null
     
 ): Parcelable {
+    
+    
     
     
     
@@ -2321,9 +2432,14 @@ data class VerifyOtpResponseSchema(
     
     
     @SerializedName("success")
-    var success: Boolean?=null
+    var success: Boolean?=null,
+    
+    @SerializedName("message")
+    var message: String?=null
     
 ): Parcelable {
+    
+    
     
     
     

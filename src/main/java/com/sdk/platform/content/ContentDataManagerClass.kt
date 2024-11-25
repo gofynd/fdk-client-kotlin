@@ -114,11 +114,6 @@ class ContentDataManagerClass(val config: PlatformConfig, val unauthorizedAction
     
     
     
-    
-    
-    
-    
-    
     suspend fun getCustomFieldTypes( headers: Map<String, String> = emptyMap())
     : Response<MetafieldTypesSchema>? {
 
@@ -1021,56 +1016,6 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     : Response<SEOSchemaMarkupTemplate>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 contentApiList?.deleteSEOMarkupSchema(companyId = config.companyId ,applicationId = applicationId ,id = id, headers = headers)
-        } else {
-            null
-        }
-    }
-    
-    
-    suspend fun getSlideshows(devicePlatform: String,pageNo: Int?=null,pageSize: Int?=null, headers: Map<String, String> = emptyMap())
-    : Response<SlideshowGetDetails>? {
-        return if (config.oauthClient.isAccessTokenValid()) {
-                contentApiList?.getSlideshows(companyId = config.companyId ,applicationId = applicationId ,devicePlatform = devicePlatform,pageNo = pageNo,pageSize = pageSize, headers = headers)
-        } else {
-            null
-        }
-    }
-    
-    
-    suspend fun createSlideshow(body: SlideshowPayload, headers: Map<String, String> = emptyMap())
-    : Response<SlideshowSchema>? {
-        return if (config.oauthClient.isAccessTokenValid()) {
-                contentApiList?.createSlideshow(companyId = config.companyId ,applicationId = applicationId , body = body,headers = headers)
-        } else {
-            null
-        }
-    }
-    
-    
-    suspend fun getSlideshowBySlug(slug: String,devicePlatform: String, headers: Map<String, String> = emptyMap())
-    : Response<SlideshowSchema>? {
-        return if (config.oauthClient.isAccessTokenValid()) {
-                contentApiList?.getSlideshowBySlug(companyId = config.companyId ,applicationId = applicationId ,slug = slug,devicePlatform = devicePlatform, headers = headers)
-        } else {
-            null
-        }
-    }
-    
-    
-    suspend fun updateSlideshow(id: String,body: SlideshowPayload, headers: Map<String, String> = emptyMap())
-    : Response<SlideshowSchema>? {
-        return if (config.oauthClient.isAccessTokenValid()) {
-                contentApiList?.updateSlideshow(companyId = config.companyId ,applicationId = applicationId ,id = id, body = body,headers = headers)
-        } else {
-            null
-        }
-    }
-    
-    
-    suspend fun deleteSlideshow(id: String, headers: Map<String, String> = emptyMap())
-    : Response<SlideshowSchema>? {
-        return if (config.oauthClient.isAccessTokenValid()) {
-                contentApiList?.deleteSlideshow(companyId = config.companyId ,applicationId = applicationId ,id = id, headers = headers)
         } else {
             null
         }

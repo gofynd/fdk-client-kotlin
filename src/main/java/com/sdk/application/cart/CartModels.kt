@@ -2370,6 +2370,28 @@ data class UpdateCartCreation(
 
              
 /*
+    Model: UpdateCartBreakup
+*/
+@Parcelize
+data class UpdateCartBreakup(
+    
+    
+    
+    @SerializedName("store_credit")
+    var storeCredit: Boolean?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
     Model: UpdateCartDetailResult
 */
 @Parcelize
@@ -3705,9 +3727,19 @@ data class CartCheckoutDetailCreation(
     var type: String?=null,
     
     @SerializedName("card_id")
-    var cardId: String?=null
+    var cardId: String?=null,
+    
+    @SerializedName("success_callback_url")
+    var successCallbackUrl: String?=null,
+    
+    @SerializedName("failure_callback_url")
+    var failureCallbackUrl: String?=null
     
 ): Parcelable {
+    
+    
+    
+    
     
     
     
@@ -5106,9 +5138,19 @@ data class CartCheckoutDetailV2Creation(
     var type: String?=null,
     
     @SerializedName("card_id")
-    var cardId: String?=null
+    var cardId: String?=null,
+    
+    @SerializedName("success_callback_url")
+    var successCallbackUrl: String?=null,
+    
+    @SerializedName("failure_callback_url")
+    var failureCallbackUrl: String?=null
     
 ): Parcelable {
+    
+    
+    
+    
     
     
     

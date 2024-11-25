@@ -157,7 +157,7 @@ class PaymentDataManagerClass(val config: PlatformConfig, val unauthorizedAction
     
     
     
-    suspend fun verifyIfscCode(ifscCode: String?=null, headers: Map<String, String> = emptyMap())
+    suspend fun verifyIfscCode(ifscCode: String, headers: Map<String, String> = emptyMap())
     : Response<IfscCodeDetails>? {
 
         return if (config.oauthClient.isAccessTokenValid()) {
@@ -218,7 +218,7 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
 
     
     
-    suspend fun getBrandPaymentGatewayConfig(aggregator: String?=null,configType: String?=null, headers: Map<String, String> = emptyMap())
+    suspend fun getBrandPaymentGatewayConfig(aggregator: String,configType: String?=null, headers: Map<String, String> = emptyMap())
     : Response<PaymentGatewayConfigDetails>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 paymentApiList?.getBrandPaymentGatewayConfig(companyId = config.companyId ,applicationId = applicationId ,aggregator = aggregator,configType = configType, headers = headers)
@@ -238,10 +238,10 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     }
     
     
-    suspend fun getPaymentModeRoutes(refresh: Boolean,requestType: String,orderId: String?=null,shipmentId: String?=null, headers: Map<String, String> = emptyMap())
+    suspend fun getPaymentModeRoutes(refresh: Boolean?=null,requestType: String?=null,orderId: String?=null,shipmentId: String?=null,amount: Int?=null, headers: Map<String, String> = emptyMap())
     : Response<PaymentOptionsDetails>? {
         return if (config.oauthClient.isAccessTokenValid()) {
-                paymentApiList?.getPaymentModeRoutes(companyId = config.companyId ,applicationId = applicationId ,refresh = refresh,requestType = requestType,orderId = orderId,shipmentId = shipmentId, headers = headers)
+                paymentApiList?.getPaymentModeRoutes(companyId = config.companyId ,applicationId = applicationId ,refresh = refresh,requestType = requestType,orderId = orderId,shipmentId = shipmentId,amount = amount, headers = headers)
         } else {
             null
         }
@@ -488,7 +488,7 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     }
     
     
-    suspend fun getPaymentLink(paymentLinkId: String?=null, headers: Map<String, String> = emptyMap())
+    suspend fun getPaymentLink(paymentLinkId: String, headers: Map<String, String> = emptyMap())
     : Response<GetPaymentLinkDetails>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 paymentApiList?.getPaymentLink(companyId = config.companyId ,applicationId = applicationId ,paymentLinkId = paymentLinkId, headers = headers)
@@ -508,7 +508,7 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     }
     
     
-    suspend fun pollingPaymentLink(paymentLinkId: String?=null, headers: Map<String, String> = emptyMap())
+    suspend fun pollingPaymentLink(paymentLinkId: String, headers: Map<String, String> = emptyMap())
     : Response<PollingPaymentLinkDetails>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 paymentApiList?.pollingPaymentLink(companyId = config.companyId ,applicationId = applicationId ,paymentLinkId = paymentLinkId, headers = headers)

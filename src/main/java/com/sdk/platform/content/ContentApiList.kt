@@ -241,26 +241,6 @@ interface ContentApiList {
     suspend fun deleteSEOMarkupSchema(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Path("id") id: String, @HeaderMap headers: Map<String, String>? = null)
     : Response<SEOSchemaMarkupTemplate>
     
-    @GET ("/service/platform/content/v1.0/company/{company_id}/application/{application_id}/slideshows")
-    suspend fun getSlideshows(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Query("device_platform") devicePlatform: String, @Query("page_no") pageNo: Int?, @Query("page_size") pageSize: Int?, @HeaderMap headers: Map<String, String>? = null)
-    : Response<SlideshowGetDetails>
-    
-    @POST ("/service/platform/content/v1.0/company/{company_id}/application/{application_id}/slideshows")
-    suspend fun createSlideshow(@Path("company_id") companyId: String, @Path("application_id") applicationId: String,@Body body: SlideshowPayload, @HeaderMap headers: Map<String, String>? = null)
-    : Response<SlideshowSchema>
-    
-    @GET ("/service/platform/content/v1.0/company/{company_id}/application/{application_id}/slideshows/{slug}")
-    suspend fun getSlideshowBySlug(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Path("slug") slug: String, @Query("device_platform") devicePlatform: String, @HeaderMap headers: Map<String, String>? = null)
-    : Response<SlideshowSchema>
-    
-    @PUT ("/service/platform/content/v1.0/company/{company_id}/application/{application_id}/slideshows/{id}")
-    suspend fun updateSlideshow(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Path("id") id: String,@Body body: SlideshowPayload, @HeaderMap headers: Map<String, String>? = null)
-    : Response<SlideshowSchema>
-    
-    @DELETE ("/service/platform/content/v1.0/company/{company_id}/application/{application_id}/slideshows/{id}")
-    suspend fun deleteSlideshow(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Path("id") id: String, @HeaderMap headers: Map<String, String>? = null)
-    : Response<SlideshowSchema>
-    
     @GET ("/service/platform/content/v1.0/company/{company_id}/application/{application_id}/support")
     suspend fun getSupportInformation(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @HeaderMap headers: Map<String, String>? = null)
     : Response<Support>

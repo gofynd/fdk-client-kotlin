@@ -82,16 +82,6 @@ interface ContentApiList {
     
     
     @GET
-    suspend fun getSlideshows(@Url url1: String?    ,   @Query("page_no") pageNo: Int?, @Query("page_size") pageSize: Int?, @HeaderMap headers: Map<String, String>? = null)
-    : Response<SlideshowGetDetails>
-    
-    
-    @GET
-    suspend fun getSlideshow(@Url url1: String?    , @HeaderMap headers: Map<String, String>? = null)
-    : Response<SlideshowSchema>
-    
-    
-    @GET
     suspend fun getSupportInformation(@Url url1: String?   , @HeaderMap headers: Map<String, String>? = null)
     : Response<Support>
     

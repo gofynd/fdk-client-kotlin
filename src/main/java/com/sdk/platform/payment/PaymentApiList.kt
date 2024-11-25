@@ -10,7 +10,7 @@ import com.sdk.platform.*
 interface PaymentApiList {
     
     @GET ("/service/platform/payment/v1.0/company/{company_id}/application/{application_id}/aggregator/request")
-    suspend fun getBrandPaymentGatewayConfig(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Query("aggregator") aggregator: String?, @Query("config_type") configType: String?, @HeaderMap headers: Map<String, String>? = null)
+    suspend fun getBrandPaymentGatewayConfig(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Query("aggregator") aggregator: String, @Query("config_type") configType: String?, @HeaderMap headers: Map<String, String>? = null)
     : Response<PaymentGatewayConfigDetails>
     
     @POST ("/service/platform/payment/v1.0/company/{company_id}/application/{application_id}/aggregator/request")
@@ -18,7 +18,7 @@ interface PaymentApiList {
     : Response<PaymentGatewayToBeReviewed>
     
     @GET ("/service/platform/payment/v1.0/company/{company_id}/application/{application_id}/payment/options")
-    suspend fun getPaymentModeRoutes(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Query("refresh") refresh: Boolean, @Query("request_type") requestType: String, @Query("order_id") orderId: String?, @Query("shipment_id") shipmentId: String?, @HeaderMap headers: Map<String, String>? = null)
+    suspend fun getPaymentModeRoutes(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Query("refresh") refresh: Boolean?, @Query("request_type") requestType: String?, @Query("order_id") orderId: String?, @Query("shipment_id") shipmentId: String?, @Query("amount") amount: Int?, @HeaderMap headers: Map<String, String>? = null)
     : Response<PaymentOptionsDetails>
     
     @GET ("/service/platform/payment/v1.0/company/{company_id}/payouts")
@@ -66,7 +66,7 @@ interface PaymentApiList {
     : Response<RefundAccountDetails>
     
     @GET ("/service/platform/payment/v1.0/company/{company_id}/ifsc-code/verify")
-    suspend fun verifyIfscCode(@Path("company_id") companyId: String, @Query("ifsc_code") ifscCode: String?, @HeaderMap headers: Map<String, String>? = null)
+    suspend fun verifyIfscCode(@Path("company_id") companyId: String, @Query("ifsc_code") ifscCode: String, @HeaderMap headers: Map<String, String>? = null)
     : Response<IfscCodeDetails>
     
     @GET ("/service/platform/payment/v1.0/company/{company_id}/application/{application_id}/refund/accounts/order")
@@ -154,7 +154,7 @@ interface PaymentApiList {
     : Response<ValidateCustomerDetails>
     
     @GET ("/service/platform/payment/v1.0/company/{company_id}/application/{application_id}/create-payment-link/")
-    suspend fun getPaymentLink(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Query("payment_link_id") paymentLinkId: String?, @HeaderMap headers: Map<String, String>? = null)
+    suspend fun getPaymentLink(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Query("payment_link_id") paymentLinkId: String, @HeaderMap headers: Map<String, String>? = null)
     : Response<GetPaymentLinkDetails>
     
     @POST ("/service/platform/payment/v1.0/company/{company_id}/application/{application_id}/create-payment-link/")
@@ -162,7 +162,7 @@ interface PaymentApiList {
     : Response<CreatePaymentLinkDetails>
     
     @GET ("/service/platform/payment/v1.0/company/{company_id}/application/{application_id}/polling-payment-link/")
-    suspend fun pollingPaymentLink(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Query("payment_link_id") paymentLinkId: String?, @HeaderMap headers: Map<String, String>? = null)
+    suspend fun pollingPaymentLink(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Query("payment_link_id") paymentLinkId: String, @HeaderMap headers: Map<String, String>? = null)
     : Response<PollingPaymentLinkDetails>
     
     @POST ("/service/platform/payment/v1.0/company/{company_id}/application/{application_id}/resend-payment-link/")

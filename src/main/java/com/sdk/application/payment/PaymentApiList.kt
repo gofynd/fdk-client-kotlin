@@ -57,12 +57,12 @@ interface PaymentApiList {
     
     
     @GET
-    suspend fun getPaymentModeRoutes(@Url url1: String?    ,           @Query("amount") amount: Int, @Query("cart_id") cartId: String?, @Query("checkout_mode") checkoutMode: String?, @Query("refresh") refresh: Boolean?, @Query("order_id") orderId: String?, @Query("card_reference") cardReference: String?, @Query("user_details") userDetails: String?, @Query("display_split") displaySplit: Boolean?, @Query("advance_payment") advancePayment: Boolean?, @Query("shipment_id") shipmentId: String?, @HeaderMap headers: Map<String, String>? = null)
+    suspend fun getPaymentModeRoutes(@Url url1: String?    ,           @Query("amount") amount: Int, @Query("cart_id") cartId: String, @Query("checkout_mode") checkoutMode: String?, @Query("refresh") refresh: Boolean?, @Query("order_id") orderId: String?, @Query("card_reference") cardReference: String?, @Query("user_details") userDetails: String?, @Query("display_split") displaySplit: Boolean?, @Query("advance_payment") advancePayment: Boolean?, @Query("shipment_id") shipmentId: String?, @HeaderMap headers: Map<String, String>? = null)
     : Response<PaymentModeRouteDetails>
     
     
     @GET
-    suspend fun getPosPaymentModeRoutes(@Url url1: String?    ,         @Query("amount") amount: Int, @Query("cart_id") cartId: String?, @Query("pincode") pincode: String, @Query("checkout_mode") checkoutMode: String?, @Query("refresh") refresh: Boolean?, @Query("card_reference") cardReference: String?, @Query("order_type") orderType: String, @Query("user_details") userDetails: String?, @HeaderMap headers: Map<String, String>? = null)
+    suspend fun getPosPaymentModeRoutes(@Url url1: String?    ,         @Query("amount") amount: Int, @Query("cart_id") cartId: String, @Query("pincode") pincode: String, @Query("checkout_mode") checkoutMode: String?, @Query("refresh") refresh: Boolean?, @Query("card_reference") cardReference: String?, @Query("order_type") orderType: String, @Query("user_details") userDetails: String?, @HeaderMap headers: Map<String, String>? = null)
     : Response<PaymentModeRouteDetails>
     
     
@@ -212,7 +212,7 @@ interface PaymentApiList {
     
     
     @GET
-    suspend fun redirectToAggregator(@Url url1: String?    ,   @Query("source") source: String?, @Query("aggregator") aggregator: String?, @HeaderMap headers: Map<String, String>? = null)
+    suspend fun redirectToAggregator(@Url url1: String?    ,   @Query("source") source: String?, @Query("aggregator") aggregator: String, @HeaderMap headers: Map<String, String>? = null)
     : Response<RedirectToAggregatorDetails>
     
     
@@ -239,5 +239,10 @@ interface PaymentApiList {
     @POST
     suspend fun createPaymentOrder(@Url url1: String?   ,@Body body: PaymentOrder, @HeaderMap headers: Map<String, String>? = null)
     : Response<PaymentOrderDetails>
+    
+    
+    @POST
+    suspend fun validateCustomerAndCreditSummary(@Url url1: String?   ,@Body body: CustomerValidationSchema, @HeaderMap headers: Map<String, String>? = null)
+    : Response<ValidateCustomerCreditSchema>
     
 }

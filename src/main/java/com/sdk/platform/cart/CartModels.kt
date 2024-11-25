@@ -3155,13 +3155,23 @@ data class PriceAdjustmentUpdate(
     @SerializedName("article_ids")
     var articleIds: ArrayList<Article>?=null,
     
+    @SerializedName("auto_remove")
+    var autoRemove: Boolean?=null,
+    
     @SerializedName("meta")
     var meta: @RawValue HashMap<String,Any>?=null,
     
     @SerializedName("cart_id")
-    var cartId: String?=null
+    var cartId: String?=null,
+    
+    @SerializedName("distribution_logic")
+    var distributionLogic: DistributionLogic?=null
     
 ): Parcelable {
+    
+    
+    
+    
     
     
     
@@ -3237,13 +3247,23 @@ data class PriceAdjustment(
     @SerializedName("article_ids")
     var articleIds: ArrayList<Article>?=null,
     
+    @SerializedName("auto_remove")
+    var autoRemove: Boolean?=null,
+    
     @SerializedName("meta")
     var meta: @RawValue HashMap<String,Any>?=null,
     
     @SerializedName("cart_id")
-    var cartId: String?=null
+    var cartId: String?=null,
+    
+    @SerializedName("distribution_logic")
+    var distributionLogic: DistributionLogic?=null
     
 ): Parcelable {
+    
+    
+    
+    
     
     
     
@@ -3367,7 +3387,13 @@ data class PriceAdjustmentAdd(
     var meta: @RawValue HashMap<String,Any>?=null,
     
     @SerializedName("cart_id")
-    var cartId: String?=null
+    var cartId: String?=null,
+    
+    @SerializedName("auto_remove")
+    var autoRemove: Boolean?=null,
+    
+    @SerializedName("distribution_logic")
+    var distributionLogic: DistributionLogic?=null
     
 ): Parcelable {
     
@@ -3392,6 +3418,91 @@ data class PriceAdjustmentAdd(
     
     
     
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: DistributionRule
+*/
+@Parcelize
+data class DistributionRule(
+    
+    
+    
+    @SerializedName("conditions")
+    var conditions: @RawValue HashMap<String,Any>?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: Distribution
+*/
+@Parcelize
+data class Distribution(
+    
+    
+    
+    @SerializedName("type")
+    var type: String?=null,
+    
+    @SerializedName("logic")
+    var logic: String?=null,
+    
+    @SerializedName("rule")
+    var rule: DistributionRule?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: DistributionLogic
+*/
+@Parcelize
+data class DistributionLogic(
+    
+    
+    
+    @SerializedName("distribution_level")
+    var distributionLevel: String?=null,
+    
+    @SerializedName("distribution")
+    var distribution: Distribution?=null
+    
+): Parcelable {
     
     
     
@@ -8569,9 +8680,19 @@ data class PlatformCartCheckoutDetailCreation(
     var type: String?=null,
     
     @SerializedName("card_id")
-    var cardId: String?=null
+    var cardId: String?=null,
+    
+    @SerializedName("success_callback_url")
+    var successCallbackUrl: String?=null,
+    
+    @SerializedName("failure_callback_url")
+    var failureCallbackUrl: String?=null
     
 ): Parcelable {
+    
+    
+    
+    
     
     
     
@@ -9388,9 +9509,19 @@ data class PlatformCartCheckoutDetailV2Creation(
     var type: String?=null,
     
     @SerializedName("card_id")
-    var cardId: String?=null
+    var cardId: String?=null,
+    
+    @SerializedName("success_callback_url")
+    var successCallbackUrl: String?=null,
+    
+    @SerializedName("failure_callback_url")
+    var failureCallbackUrl: String?=null
     
 ): Parcelable {
+    
+    
+    
+    
     
     
     

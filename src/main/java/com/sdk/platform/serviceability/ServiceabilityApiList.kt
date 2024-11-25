@@ -38,11 +38,11 @@ interface ServiceabilityApiList {
     : Response<PincodeBulkViewResult>
     
     @POST ("/service/platform/logistics/v1.0/company/{company_id}/application/{application_id}/pincode-mop-data")
-    suspend fun updatePincodeCoDListing(@Path("company_id") companyId: String, @Path("application_id") applicationId: String,@Body body: PincodeCodStatusListingDetails, @HeaderMap headers: Map<String, String>? = null)
+    suspend fun updatePincodeCoDListing(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Query("page_number") pageNumber: Int?, @Query("page_size") pageSize: Int?,@Body body: PincodeCodStatusListingDetails, @HeaderMap headers: Map<String, String>? = null)
     : Response<PincodeCodStatusListingResult>
     
     @POST ("/service/platform/logistics/v1.0/company/{company_id}/application/{application_id}/history")
-    suspend fun updatePincodeAuditHistory(@Path("company_id") companyId: String, @Path("application_id") applicationId: String,@Body body: PincodeMopUpdateAuditHistoryDetails, @HeaderMap headers: Map<String, String>? = null)
+    suspend fun updatePincodeAuditHistory(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Query("page_number") pageNumber: Int?, @Query("page_size") pageSize: Int?,@Body body: PincodeMopUpdateAuditHistoryDetails, @HeaderMap headers: Map<String, String>? = null)
     : Response<PincodeMopUpdateAuditHistoryResultData>
     
     @POST ("/service/platform/logistics/v1.0/company/{company_id}/courier-partner/account")
@@ -54,7 +54,7 @@ interface ServiceabilityApiList {
     : Response<CompanyCourierPartnerAccountListResult>
     
     @PUT ("/service/platform/logistics/v1.0/company/{company_id}/courier-partner/account/{account_id}")
-    suspend fun updateCourierPartnerAccount(@Path("company_id") companyId: String, @Path("account_id") accountId: String,@Body body: CourierAccount, @HeaderMap headers: Map<String, String>? = null)
+    suspend fun updateCourierPartnerAccount(@Path("company_id") companyId: String, @Path("account_id") accountId: String,@Body body: CourierAccountUpdateDetails, @HeaderMap headers: Map<String, String>? = null)
     : Response<CourierAccountResult>
     
     @GET ("/service/platform/logistics/v1.0/company/{company_id}/courier-partner/account/{account_id}")
@@ -196,5 +196,33 @@ interface ServiceabilityApiList {
     @POST ("/service/platform/logistics/v1.0/company/{company_id}/optimal-locations")
     suspend fun getOptimalLocations(@Path("company_id") companyId: String,@Body body: OptimlLocationsDetailsSchema, @HeaderMap headers: Map<String, String>? = null)
     : Response<OptimalLocationsResult>
+    
+    @POST ("/service/platform/logistics/v2.0/company/{company_id}/courier-partner/scheme")
+    suspend fun createCourierPartnerScheme(@Path("company_id") companyId: String,@Body body: CourierPartnerSchemeV2DetailsModel, @HeaderMap headers: Map<String, String>? = null)
+    : Response<CourierPartnerV2SchemeModel>
+    
+    @GET ("/service/platform/logistics/v2.0/company/{company_id}/courier-partner/scheme")
+    suspend fun getCourierPartnerSchemes(@Path("company_id") companyId: String, @Query("scheme_type") schemeType: String?, @Query("payment_mode") paymentMode: String?, @Query("capabilities") capabilities: ArrayList<String>?, @Query("scheme_ids") schemeIds: ArrayList<String>?, @HeaderMap headers: Map<String, String>? = null)
+    : Response<courierPartnerSchemeV2List>
+    
+    @PUT ("/service/platform/logistics/v2.0/company/{company_id}/courier-partner/scheme/{scheme_id}")
+    suspend fun updateCourierPartnerScheme(@Path("scheme_id") schemeId: String, @Path("company_id") companyId: String,@Body body: CourierPartnerSchemeV2UpdateDetails, @HeaderMap headers: Map<String, String>? = null)
+    : Response<CourierPartnerV2SchemeModel>
+    
+    @GET ("/service/platform/logistics/v2.0/company/{company_id}/courier-partner/scheme/{scheme_id}")
+    suspend fun getCourierPartnerScheme(@Path("scheme_id") schemeId: String, @Path("company_id") companyId: String, @HeaderMap headers: Map<String, String>? = null)
+    : Response<CourierPartnerV2SchemeModel>
+    
+    @POST ("/service/platform/logistics/v1.0/company/{company_id}/localities/bulk-sample")
+    suspend fun sampleFileServiceability(@Path("company_id") companyId: String,@Body body: BulkRegionServiceabilityTatDetails, @HeaderMap headers: Map<String, String>? = null)
+    : Response<BulkRegionServiceabilityTatResultItemData>
+    
+    @GET ("/service/platform/logistics/v1.0/company/{company_id}/localities/bulk-sample")
+    suspend fun getSampleFileServiceabilityStatus(@Query("page_no") pageNo: Int?, @Query("page_size") pageSize: Int?, @Query("batch_id") batchId: String?, @Path("company_id") companyId: String, @HeaderMap headers: Map<String, String>? = null)
+    : Response<BulkRegionServiceabilityTatResult>
+    
+    @GET ("/service/platform/logistics/v2.0/company/{company_id}/countries")
+    suspend fun getCountries(@Query("onboarding") onboarding: Boolean?, @Query("page_no") pageNo: Int?, @Query("page_size") pageSize: Int?, @Query("q") q: String?, @Query("hierarchy") hierarchy: String?, @Path("company_id") companyId: String, @HeaderMap headers: Map<String, String>? = null)
+    : Response<GetCountries>
     
 }

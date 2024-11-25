@@ -27,6 +27,8 @@ class CartDataManagerClass(val config: ApplicationConfig, val unauthorizedAction
             
                     _relativeUrls["updateCart"] = "/service/application/cart/v1.0/detail".substring(1)
             
+                    _relativeUrls["updateCartBreakup"] = "/service/application/cart/v1.0/detail".substring(1)
+            
                     _relativeUrls["deleteCart"] = "/service/application/cart/v1.0/cart_archive".substring(1)
             
                     _relativeUrls["getItemCount"] = "/service/application/cart/v1.0/basic".substring(1)
@@ -137,6 +139,13 @@ class CartDataManagerClass(val config: ApplicationConfig, val unauthorizedAction
         var fullUrl : String? = _relativeUrls["updateCart"]
         
         return cartApiList?.updateCart(fullUrl,   id = id,  i = i,  b = b,  areaCode = areaCode,  buyNow = buyNow,  cartType = cartType,  orderType = orderType,body = body,headers = headers)}
+
+    
+    
+    suspend fun updateCartBreakup(id: String?=null,i: Boolean?=null,b: Boolean?=null,buyNow: Boolean?=null,cartType: String?=null,body: UpdateCartBreakup, headers: Map<String, String> = emptyMap()): Response<UpdateCartDetailResult>? {
+        var fullUrl : String? = _relativeUrls["updateCartBreakup"]
+        
+        return cartApiList?.updateCartBreakup(fullUrl,   id = id,  i = i,  b = b,  buyNow = buyNow,  cartType = cartType,body = body,headers = headers)}
 
     
     
