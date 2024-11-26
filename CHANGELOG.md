@@ -1,4 +1,4 @@
-# CHANGE LOG (1.4.15) - 2.0.0
+# CHANGE LOG (1.5.0) - 2.0.0
 
 ## Application Client
 
@@ -485,10 +485,6 @@
 - ##### What's New
 	- [Added] <code>query</code> parameter <code>fulfillmentType</code> (type: <code>string</code>)
 
-	- [Added] property <code>items[].bags[].article.childDetails[]</code> of schema <code>Article</code> in response with status code 200
-
-- ##### What's Changed
-	- [Breaking] [Changed] Type from <code>object</code> to <code>array</code> of property <code>items[].bags[].article.childDetails</code> of schema <code>Article</code> in response with status code 200
 
 
 #### getOrders
@@ -496,33 +492,6 @@
 - ##### What's New
 	- [Added] <code>query</code> parameter <code>fulfillmentType</code> (type: <code>string</code>)
 
-
-
-#### getApplicationShipments
-
-- ##### What's New
-	- [Added] property <code>items[].bags[].article.childDetails[]</code> of schema <code>Article</code> in response with status code 200
-
-- ##### What's Changed
-	- [Breaking] [Changed] Type from <code>object</code> to <code>array</code> of property <code>items[].bags[].article.childDetails</code> of schema <code>Article</code> in response with status code 200
-
-
-#### getBagById
-
-- ##### What's New
-	- [Added] property <code>data.article.childDetails[]</code> of schema <code>Article</code> in response with status code 200
-
-- ##### What's Changed
-	- [Breaking] [Changed] Type from <code>object</code> to <code>array</code> of property <code>data.article.childDetails</code> of schema <code>Article</code> in response with status code 200
-
-
-#### getBags
-
-- ##### What's New
-	- [Added] property <code>data.items[].article.childDetails[]</code> of schema <code>Article</code> in response with status code 200
-
-- ##### What's Changed
-	- [Breaking] [Changed] Type from <code>object</code> to <code>array</code> of property <code>data.items[].article.childDetails</code> of schema <code>Article</code> in response with status code 200
 
 
 # CHANGE LOG (1.4.14) - 1.9.5

@@ -11027,7 +11027,7 @@ data class Article(
     
     
     @SerializedName("child_details")
-    var childDetails: @RawValue ArrayList<HashMap<String,Any>>?=null,
+    var childDetails: @RawValue HashMap<String,Any>?=null,
     
     @SerializedName("seller_identifier")
     var sellerIdentifier: String?=null,
