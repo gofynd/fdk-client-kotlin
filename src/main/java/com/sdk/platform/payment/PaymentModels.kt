@@ -4575,6 +4575,33 @@ data class AddressDetail(
 
              
 /*
+    Model: ReasonDetail
+*/
+@Parcelize
+data class ReasonDetail(
+    
+    
+    
+    @SerializedName("code")
+    var code: String?=null,
+    
+    @SerializedName("description")
+    var description: String?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
     Model: PaymentSessionDetail
 */
 @Parcelize
@@ -4646,9 +4673,14 @@ data class PaymentSessionDetail(
     var meta: @RawValue HashMap<String,Any>?=null,
     
     @SerializedName("status")
-    var status: String?=null
+    var status: String?=null,
+    
+    @SerializedName("reason")
+    var reason: ReasonDetail?=null
     
 ): Parcelable {
+    
+    
     
     
     
