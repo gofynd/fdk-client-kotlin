@@ -13,6 +13,9 @@ data class LocationHeader(
         @SerializedName("country_iso_code")
         val countryIsoCode: String? = null,
 
+        @SerializedName("state")
+        val state: String? = null,
+
         @SerializedName("city")
         val city: String? = null,
 

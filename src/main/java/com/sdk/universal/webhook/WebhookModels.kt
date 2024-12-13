@@ -85,10 +85,10 @@ data class EventConfig(
 
              
 /*
-    Model: EventDetails
+    Model: EventConfigResponse
 */
 @Parcelize
-data class EventDetails(
+data class EventConfigResponse(
     
     
     
@@ -321,10 +321,10 @@ data class TransformEventAssociation(
 
              
 /*
-    Model: TransformEventPayload
+    Model: TransformEventRequest
 */
 @Parcelize
-data class TransformEventPayload(
+data class TransformEventRequest(
     
     
     
@@ -363,10 +363,10 @@ data class TransformEventPayload(
 
              
 /*
-    Model: ValidateSchemaPayload
+    Model: ValidateSchemaRequest
 */
 @Parcelize
-data class ValidateSchemaPayload(
+data class ValidateSchemaRequest(
     
     
     
@@ -410,10 +410,10 @@ data class ValidateSchemaPayload(
 
              
 /*
-    Model: ValidateSchemaResult
+    Model: ValidateSchemaResponse
 */
 @Parcelize
-data class ValidateSchemaResult(
+data class ValidateSchemaResponse(
     
     
     
@@ -437,10 +437,10 @@ data class ValidateSchemaResult(
 
              
 /*
-    Model: TransformEventResult
+    Model: TransformEventResponse
 */
 @Parcelize
-data class TransformEventResult(
+data class TransformEventResponse(
     
     
     

@@ -68,10 +68,10 @@ data class CustomFormSubmissionPayload(
 
              
 /*
-    Model: SubmitCustomFormDetails
+    Model: SubmitCustomFormResponse
 */
 @Parcelize
-data class SubmitCustomFormDetails(
+data class SubmitCustomFormResponse(
     
     
     
@@ -82,7 +82,7 @@ data class SubmitCustomFormDetails(
     var ticket: Ticket?=null,
     
     @SerializedName("response")
-    var response: FormFieldDetails?=null
+    var response: FormFieldResponse?=null
     
 ): Parcelable {
     
@@ -100,10 +100,10 @@ data class SubmitCustomFormDetails(
 
              
 /*
-    Model: FormFieldDetails
+    Model: FormFieldResponse
 */
 @Parcelize
-data class FormFieldDetails(
+data class FormFieldResponse(
     
     
     
