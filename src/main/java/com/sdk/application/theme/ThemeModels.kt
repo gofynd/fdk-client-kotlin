@@ -1850,51 +1850,9 @@ data class GlobalSchema(
     
     
     @SerializedName("props")
-    var props: ArrayList<Prop>?=null
+    var props: @RawValue ArrayList<HashMap<String,Any>>?=null
     
 ): Parcelable {
-    
-    
-    
-    
-    
-}
-
-
-
-             
-/*
-    Model: Prop
-*/
-@Parcelize
-data class Prop(
-    
-    
-    
-    @SerializedName("type")
-    var type: String?=null,
-    
-    @SerializedName("category")
-    var category: String?=null,
-    
-    @SerializedName("id")
-    var id: String?=null,
-    
-    @SerializedName("label")
-    var label: String?=null,
-    
-    @SerializedName("info")
-    var info: String?=null
-    
-): Parcelable {
-    
-    
-    
-    
-    
-    
-    
-    
     
     
     
