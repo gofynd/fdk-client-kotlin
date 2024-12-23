@@ -249,4 +249,8 @@ interface PaymentApiList {
     suspend fun patchMerchantPaymentOptionVersion(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Path("aggregator_id") aggregatorId: String,@Body body: PatchAggregatorControl, @HeaderMap headers: Map<String, String>? = null)
     : Response<PlatformPaymentModeDetails>
     
+    @POST ("/service/platform/payment/v1.0/company/{company_id}/application/{application_id}/payment/validate/customer-credits")
+    suspend fun validateCustomerAndCreditSummary(@Path("company_id") companyId: String, @Path("application_id") applicationId: String,@Body body: CustomerValidationSchema, @HeaderMap headers: Map<String, String>? = null)
+    : Response<ValidateCustomerCreditSchema>
+    
 }

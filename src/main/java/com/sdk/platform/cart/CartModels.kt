@@ -6418,9 +6418,61 @@ data class AddCartDetailResult(
     var partial: Boolean?=null,
     
     @SerializedName("message")
+    var message: String?=null,
+    
+    @SerializedName("result")
+    var result: @RawValue HashMap<String,Any>?=null,
+    
+    @SerializedName("items")
+    var items: ArrayList<CartItemInfo>?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: CartItemInfo
+*/
+@Parcelize
+data class CartItemInfo(
+    
+    
+    
+    @SerializedName("item_id")
+    var itemId: Int?=null,
+    
+    @SerializedName("size")
+    var size: String?=null,
+    
+    @SerializedName("store_id")
+    var storeId: Int?=null,
+    
+    @SerializedName("success")
+    var success: Boolean?=null,
+    
+    @SerializedName("message")
     var message: String?=null
     
 ): Parcelable {
+    
+    
     
     
     
@@ -6582,10 +6634,20 @@ data class UpdateCartDetailResult(
     @SerializedName("cart")
     var cart: CartDetailResult?=null,
     
+    @SerializedName("result")
+    var result: @RawValue HashMap<String,Any>?=null,
+    
+    @SerializedName("items")
+    var items: ArrayList<CartItemInfo>?=null,
+    
     @SerializedName("message")
     var message: String?=null
     
 ): Parcelable {
+    
+    
+    
+    
     
     
     

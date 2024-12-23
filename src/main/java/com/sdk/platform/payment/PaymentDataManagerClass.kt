@@ -213,6 +213,7 @@ class PaymentDataManagerClass(val config: PlatformConfig, val unauthorizedAction
     
     
     
+    
 
 inner class ApplicationClient(val applicationId:String,val config: PlatformConfig){
 
@@ -722,6 +723,16 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     : Response<PlatformPaymentModeDetails>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 paymentApiList?.patchMerchantPaymentOptionVersion(companyId = config.companyId ,applicationId = applicationId ,aggregatorId = aggregatorId, body = body,headers = headers)
+        } else {
+            null
+        }
+    }
+    
+    
+    suspend fun validateCustomerAndCreditSummary(body: CustomerValidationSchema, headers: Map<String, String> = emptyMap())
+    : Response<ValidateCustomerCreditSchema>? {
+        return if (config.oauthClient.isAccessTokenValid()) {
+                paymentApiList?.validateCustomerAndCreditSummary(companyId = config.companyId ,applicationId = applicationId , body = body,headers = headers)
         } else {
             null
         }

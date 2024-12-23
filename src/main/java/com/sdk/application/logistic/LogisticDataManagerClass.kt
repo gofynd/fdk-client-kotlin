@@ -135,10 +135,10 @@ class LogisticDataManagerClass(val config: ApplicationConfig, val unauthorizedAc
 
     
     
-    suspend fun getCountries(onboarding: Boolean?=null,pageNo: Int?=null,pageSize: Int?=null,q: String?=null,hierarchy: String?=null, headers: Map<String, String> = emptyMap()): Response<GetCountries>? {
+    suspend fun getCountries(onboarding: Boolean?=null,pageNo: Int?=null,pageSize: Int?=null,q: String?=null,hierarchy: String?=null,phoneCode: String?=null, headers: Map<String, String> = emptyMap()): Response<GetCountries>? {
         var fullUrl : String? = _relativeUrls["getCountries"]
         
-        return logisticApiList?.getCountries(fullUrl,   onboarding = onboarding,  pageNo = pageNo,  pageSize = pageSize,  q = q,  hierarchy = hierarchy,headers = headers)}
+        return logisticApiList?.getCountries(fullUrl,   onboarding = onboarding,  pageNo = pageNo,  pageSize = pageSize,  q = q,  hierarchy = hierarchy,  phoneCode = phoneCode,headers = headers)}
 
     
     

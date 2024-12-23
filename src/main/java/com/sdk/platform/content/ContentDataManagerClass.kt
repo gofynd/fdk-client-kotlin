@@ -113,7 +113,6 @@ class ContentDataManagerClass(val config: PlatformConfig, val unauthorizedAction
     
     
     
-    
     suspend fun getCustomFieldTypes( headers: Map<String, String> = emptyMap())
     : Response<MetafieldTypesSchema>? {
 
@@ -856,16 +855,6 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     : Response<PageSpec>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 contentApiList?.getPageSpec(companyId = config.companyId ,applicationId = applicationId , headers = headers)
-        } else {
-            null
-        }
-    }
-    
-    
-    suspend fun createPagePreview(body: PagePayload, headers: Map<String, String> = emptyMap())
-    : Response<PageSchema>? {
-        return if (config.oauthClient.isAccessTokenValid()) {
-                contentApiList?.createPagePreview(companyId = config.companyId ,applicationId = applicationId , body = body,headers = headers)
         } else {
             null
         }

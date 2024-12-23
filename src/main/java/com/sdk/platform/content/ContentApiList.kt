@@ -177,10 +177,6 @@ interface ContentApiList {
     suspend fun getPageSpec(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @HeaderMap headers: Map<String, String>? = null)
     : Response<PageSpec>
     
-    @POST ("/service/platform/content/v1.0/company/{company_id}/application/{application_id}/pages/preview/")
-    suspend fun createPagePreview(@Path("company_id") companyId: String, @Path("application_id") applicationId: String,@Body body: PagePayload, @HeaderMap headers: Map<String, String>? = null)
-    : Response<PageSchema>
-    
     @PUT ("/service/platform/content/v1.0/company/{company_id}/application/{application_id}/pages/publish/{slug}")
     suspend fun updatePagePreview(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Path("slug") slug: String,@Body body: PagePublishPayload, @HeaderMap headers: Map<String, String>? = null)
     : Response<PageSchema>
