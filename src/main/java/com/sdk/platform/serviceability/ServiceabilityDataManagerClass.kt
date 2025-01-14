@@ -44,12 +44,12 @@ class ServiceabilityDataManagerClass(val config: PlatformConfig, val unauthorize
     }
     
     
-    suspend fun getZones(pageNo: Int?=null,pageSize: Int?=null,isActive: Boolean?=null,channelId: String?=null,q: String?=null,countryIsoCode: String?=null,state: String?=null,city: String?=null,pincode: String?=null,sector: String?=null, headers: Map<String, String> = emptyMap())
+    suspend fun getZones(pageNo: Int?=null,pageSize: Int?=null,isActive: Boolean?=null,applicationId: String?=null,q: String?=null,countryIsoCode: String?=null,state: String?=null,city: String?=null,pincode: String?=null,sector: String?=null, headers: Map<String, String> = emptyMap())
     : Response<ListViewResponse>? {
 
         return if (config.oauthClient.isAccessTokenValid()) {
             serviceabilityApiList?.getZones(
-        companyId = config.companyId,pageNo = pageNo,pageSize = pageSize,isActive = isActive,channelId = channelId,q = q,countryIsoCode = countryIsoCode,state = state,city = city,pincode = pincode,sector = sector, headers = headers)
+        companyId = config.companyId,pageNo = pageNo,pageSize = pageSize,isActive = isActive,applicationId = applicationId,q = q,countryIsoCode = countryIsoCode,state = state,city = city,pincode = pincode,sector = sector, headers = headers)
         } else {
             null
         }
