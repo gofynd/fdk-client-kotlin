@@ -3712,6 +3712,33 @@ data class StaffCheckout(
 
              
 /*
+    Model: OrderTag
+*/
+@Parcelize
+data class OrderTag(
+    
+    
+    
+    @SerializedName("display_text")
+    var displayText: String?=null,
+    
+    @SerializedName("slug")
+    var slug: String?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
     Model: CartCheckoutDetailCreation
 */
 @Parcelize
@@ -3795,9 +3822,14 @@ data class CartCheckoutDetailCreation(
     var successCallbackUrl: String?=null,
     
     @SerializedName("failure_callback_url")
-    var failureCallbackUrl: String?=null
+    var failureCallbackUrl: String?=null,
+    
+    @SerializedName("order_tags")
+    var orderTags: ArrayList<OrderTag>?=null
     
 ): Parcelable {
+    
+    
     
     
     
@@ -5206,9 +5238,14 @@ data class CartCheckoutDetailV2Creation(
     var successCallbackUrl: String?=null,
     
     @SerializedName("failure_callback_url")
-    var failureCallbackUrl: String?=null
+    var failureCallbackUrl: String?=null,
+    
+    @SerializedName("order_tags")
+    var orderTags: ArrayList<OrderTag>?=null
     
 ): Parcelable {
+    
+    
     
     
     

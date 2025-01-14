@@ -8644,6 +8644,33 @@ data class CartCheckoutCustomMeta(
 
              
 /*
+    Model: OrderTag
+*/
+@Parcelize
+data class OrderTag(
+    
+    
+    
+    @SerializedName("display_text")
+    var displayText: String?=null,
+    
+    @SerializedName("slug")
+    var slug: String?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
     Model: PlatformCartCheckoutDetailCreation
 */
 @Parcelize
@@ -8748,9 +8775,14 @@ data class PlatformCartCheckoutDetailCreation(
     var successCallbackUrl: String?=null,
     
     @SerializedName("failure_callback_url")
-    var failureCallbackUrl: String?=null
+    var failureCallbackUrl: String?=null,
+    
+    @SerializedName("order_tags")
+    var orderTags: ArrayList<OrderTag>?=null
     
 ): Parcelable {
+    
+    
     
     
     
@@ -9577,9 +9609,14 @@ data class PlatformCartCheckoutDetailV2Creation(
     var successCallbackUrl: String?=null,
     
     @SerializedName("failure_callback_url")
-    var failureCallbackUrl: String?=null
+    var failureCallbackUrl: String?=null,
+    
+    @SerializedName("order_tags")
+    var orderTags: ArrayList<OrderTag>?=null
     
 ): Parcelable {
+    
+    
     
     
     

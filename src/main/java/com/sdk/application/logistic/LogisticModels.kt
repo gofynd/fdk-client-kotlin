@@ -1688,6 +1688,9 @@ data class GetCountryFieldsAddress(
     @SerializedName("display_name")
     var displayName: String?=null,
     
+    @SerializedName("next")
+    var next: String?=null,
+    
     @SerializedName("slug")
     var slug: String?=null,
     
@@ -1710,6 +1713,8 @@ data class GetCountryFieldsAddress(
     var errorText: String?=null
     
 ): Parcelable {
+    
+    
     
     
     
