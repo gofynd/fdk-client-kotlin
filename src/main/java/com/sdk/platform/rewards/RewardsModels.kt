@@ -51,10 +51,10 @@ data class E(
 
              
 /*
-    Model: GiveawayResponse
+    Model: ListGiveaway
 */
 @Parcelize
-data class GiveawayResponse(
+data class ListGiveaway(
     
     
     
@@ -832,10 +832,10 @@ data class SetConfigurationRes(
 
              
 /*
-    Model: ConfigurationRequest
+    Model: SetConfiguration
 */
 @Parcelize
-data class ConfigurationRequest(
+data class SetConfiguration(
     
     
     

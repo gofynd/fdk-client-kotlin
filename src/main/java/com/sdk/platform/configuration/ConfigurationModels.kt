@@ -14,12 +14,114 @@ import com.google.gson.annotations.SerializedName
 
              
 /*
+    Model: CurrencyExchangeResponseV2
+*/
+@Parcelize
+data class CurrencyExchangeResponseV2(
+    
+    
+    
+    @SerializedName("base")
+    var base: String?=null,
+    
+    @SerializedName("base_currency_name")
+    var baseCurrencyName: String?=null,
+    
+    @SerializedName("ttl_seconds")
+    var ttlSeconds: Int?=null,
+    
+    @SerializedName("items")
+    var items: ArrayList<CurrencyExchangeItem>?=null,
+    
+    @SerializedName("total")
+    var total: Int?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: CurrencyExchangeItem
+*/
+@Parcelize
+data class CurrencyExchangeItem(
+    
+    
+    
+    @SerializedName("currency_code")
+    var currencyCode: String?=null,
+    
+    @SerializedName("name")
+    var name: String?=null,
+    
+    @SerializedName("rate")
+    var rate: Double?=null,
+    
+    @SerializedName("country_code")
+    var countryCode: String?=null,
+    
+    @SerializedName("country_name")
+    var countryName: String?=null,
+    
+    @SerializedName("subunit")
+    var subunit: String?=null,
+    
+    @SerializedName("decimal_digits")
+    var decimalDigits: Int?=null,
+    
+    @SerializedName("symbol")
+    var symbol: String?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
     Model: ApplicationInventory
 */
 @Parcelize
 data class ApplicationInventory(
     
     
+    
+    @SerializedName("search")
+    var search: SearchConfig?=null,
     
     @SerializedName("inventory")
     var inventory: AppInventoryConfig?=null,
@@ -130,6 +232,8 @@ data class ApplicationInventory(
     
     
     
+    
+    
 }
 
 
@@ -147,6 +251,82 @@ data class PiiMasking(
     var enabled: Boolean?=null
     
 ): Parcelable {
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: FstIdentification
+*/
+@Parcelize
+data class FstIdentification(
+    
+    
+    
+    @SerializedName("enabled")
+    var enabled: Boolean?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: QuerySuggestions
+*/
+@Parcelize
+data class QuerySuggestions(
+    
+    
+    
+    @SerializedName("enabled")
+    var enabled: Boolean?=null,
+    
+    @SerializedName("max_limit")
+    var maxLimit: Int?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: SearchConfig
+*/
+@Parcelize
+data class SearchConfig(
+    
+    
+    
+    @SerializedName("fst_identification")
+    var fstIdentification: FstIdentification?=null,
+    
+    @SerializedName("query_suggestions")
+    var querySuggestions: QuerySuggestions?=null
+    
+): Parcelable {
+    
+    
     
     
     
@@ -190,7 +370,7 @@ data class AppInventoryConfig(
     var franchiseEnabled: Boolean?=null,
     
     @SerializedName("exclude_category")
-    var excludeCategory: @RawValue ArrayList<Any>?=null,
+    var excludeCategory: @RawValue ArrayList<HashMap<String,Any>>?=null,
     
     @SerializedName("image")
     var image: ArrayList<String>?=null,
@@ -1016,6 +1196,9 @@ data class AppInventoryPartialUpdate(
     
     
     
+    @SerializedName("search")
+    var search: SearchConfig?=null,
+    
     @SerializedName("reward_points")
     var rewardPoints: RewardPointsConfig?=null,
     
@@ -1035,6 +1218,8 @@ data class AppInventoryPartialUpdate(
     var communication: CommunicationConfig?=null
     
 ): Parcelable {
+    
+    
     
     
     
@@ -1083,10 +1268,10 @@ data class BrandCompanyInfo(
 
              
 /*
-    Model: CompanyByBrandsRequest
+    Model: CompanyByBrandsRequestSchema
 */
 @Parcelize
-data class CompanyByBrandsRequest(
+data class CompanyByBrandsRequestSchema(
     
     
     
@@ -1110,10 +1295,10 @@ data class CompanyByBrandsRequest(
 
              
 /*
-    Model: CompanyByBrandsResponse
+    Model: CompanyByBrandsResponseSchema
 */
 @Parcelize
-data class CompanyByBrandsResponse(
+data class CompanyByBrandsResponseSchema(
     
     
     
@@ -1137,10 +1322,10 @@ data class CompanyByBrandsResponse(
 
              
 /*
-    Model: StoreByBrandsRequest
+    Model: StoreByBrandsRequestSchema
 */
 @Parcelize
-data class StoreByBrandsRequest(
+data class StoreByBrandsRequestSchema(
     
     
     
@@ -1169,10 +1354,10 @@ data class StoreByBrandsRequest(
 
              
 /*
-    Model: StoreByBrandsResponse
+    Model: StoreByBrandsResponseSchema
 */
 @Parcelize
-data class StoreByBrandsResponse(
+data class StoreByBrandsResponseSchema(
     
     
     
@@ -1285,10 +1470,10 @@ data class CompanyBrandInfo(
 
              
 /*
-    Model: BrandsByCompanyResponse
+    Model: BrandsByCompanyResponseSchema
 */
 @Parcelize
-data class BrandsByCompanyResponse(
+data class BrandsByCompanyResponseSchema(
     
     
     
@@ -1307,10 +1492,10 @@ data class BrandsByCompanyResponse(
 
              
 /*
-    Model: ValidationFailedResponse
+    Model: ValidationFailedResponseSchema
 */
 @Parcelize
-data class ValidationFailedResponse(
+data class ValidationFailedResponseSchema(
     
     
     
@@ -1442,10 +1627,10 @@ data class PanCardConfig(
 
              
 /*
-    Model: CreateApplicationRequest
+    Model: CreateApplicationRequestSchema
 */
 @Parcelize
-data class CreateApplicationRequest(
+data class CreateApplicationRequestSchema(
     
     
     
@@ -1474,10 +1659,10 @@ data class CreateApplicationRequest(
 
              
 /*
-    Model: CreateAppResponse
+    Model: CreateAppResponseSchema
 */
 @Parcelize
-data class CreateAppResponse(
+data class CreateAppResponseSchema(
     
     
     
@@ -1501,10 +1686,10 @@ data class CreateAppResponse(
 
              
 /*
-    Model: ApplicationsResponse
+    Model: ApplicationsResponseSchema
 */
 @Parcelize
-data class ApplicationsResponse(
+data class ApplicationsResponseSchema(
     
     
     
@@ -1654,10 +1839,10 @@ data class SplashImage(
 
              
 /*
-    Model: MobileAppConfigRequest
+    Model: MobileAppConfigRequestSchema
 */
 @Parcelize
-data class MobileAppConfigRequest(
+data class MobileAppConfigRequestSchema(
     
     
     
@@ -1911,10 +2096,10 @@ data class DomainAdd(
 
              
 /*
-    Model: DomainAddRequest
+    Model: DomainAddRequestSchema
 */
 @Parcelize
-data class DomainAddRequest(
+data class DomainAddRequestSchema(
     
     
     
@@ -1985,10 +2170,10 @@ data class Domain(
 
              
 /*
-    Model: DomainsResponse
+    Model: DomainsResponseSchema
 */
 @Parcelize
-data class DomainsResponse(
+data class DomainsResponseSchema(
     
     
     
@@ -2049,10 +2234,10 @@ data class UpdateDomain(
 
              
 /*
-    Model: UpdateDomainTypeRequest
+    Model: UpdateDomainTypeRequestSchema
 */
 @Parcelize
-data class UpdateDomainTypeRequest(
+data class UpdateDomainTypeRequestSchema(
     
     
     
@@ -2076,10 +2261,10 @@ data class UpdateDomainTypeRequest(
 
              
 /*
-    Model: DomainStatusRequest
+    Model: DomainStatusRequestSchema
 */
 @Parcelize
-data class DomainStatusRequest(
+data class DomainStatusRequestSchema(
     
     
     
@@ -2125,10 +2310,10 @@ data class DomainStatus(
 
              
 /*
-    Model: DomainStatusResponse
+    Model: DomainStatusResponseSchema
 */
 @Parcelize
-data class DomainStatusResponse(
+data class DomainStatusResponseSchema(
     
     
     
@@ -2152,18 +2337,18 @@ data class DomainStatusResponse(
 
              
 /*
-    Model: DomainSuggestionsRequest
+    Model: DomainSuggestionsRequestSchema
 */
 @Parcelize
-data class DomainSuggestionsRequest(
+data class DomainSuggestionsRequestSchema(
     
     
     
     @SerializedName("domain_url")
     var domainUrl: String?=null,
     
-    @SerializedName("custom")
-    var custom: Boolean?=null
+    @SerializedName("custom_domain")
+    var customDomain: Boolean?=null
     
 ): Parcelable {
     
@@ -2221,10 +2406,10 @@ data class DomainSuggestion(
 
              
 /*
-    Model: DomainSuggestionsResponse
+    Model: DomainSuggestionsResponseSchema
 */
 @Parcelize
-data class DomainSuggestionsResponse(
+data class DomainSuggestionsResponseSchema(
     
     
     
@@ -2243,10 +2428,10 @@ data class DomainSuggestionsResponse(
 
              
 /*
-    Model: SuccessMessageResponse
+    Model: SuccessMessageResponseSchema
 */
 @Parcelize
-data class SuccessMessageResponse(
+data class SuccessMessageResponseSchema(
     
     
     
@@ -2334,10 +2519,10 @@ data class AppDomain(
 
              
 /*
-    Model: CompaniesResponse
+    Model: CompaniesResponseSchema
 */
 @Parcelize
-data class CompaniesResponse(
+data class CompaniesResponseSchema(
     
     
     
@@ -2393,10 +2578,10 @@ data class AppInventoryCompanies(
 
              
 /*
-    Model: StoresResponse
+    Model: StoresResponseSchema
 */
 @Parcelize
-data class StoresResponse(
+data class StoresResponseSchema(
     
     
     
@@ -2487,10 +2672,10 @@ data class AppInventoryStores(
 
              
 /*
-    Model: FilterOrderingStoreRequest
+    Model: FilterOrderingStoreRequestSchema
 */
 @Parcelize
-data class FilterOrderingStoreRequest(
+data class FilterOrderingStoreRequestSchema(
     
     
     
@@ -2593,10 +2778,10 @@ data class OrderingStoreConfig(
 
              
 /*
-    Model: OrderingStoreSelectRequest
+    Model: OrderingStoreSelectRequestSchema
 */
 @Parcelize
-data class OrderingStoreSelectRequest(
+data class OrderingStoreSelectRequestSchema(
     
     
     
@@ -2738,10 +2923,10 @@ data class OtherSellerApplications(
 
              
 /*
-    Model: OptedApplicationResponse
+    Model: OptedApplicationResponseSchema
 */
 @Parcelize
-data class OptedApplicationResponse(
+data class OptedApplicationResponseSchema(
     
     
     
@@ -2965,10 +3150,10 @@ data class OptOutInventory(
 
              
 /*
-    Model: TokenResponse
+    Model: TokenResponseSchema
 */
 @Parcelize
-data class TokenResponse(
+data class TokenResponseSchema(
     
     
     
@@ -4497,10 +4682,10 @@ data class OrderFeature(
 
              
 /*
-    Model: AppFeatureRequest
+    Model: AppFeatureRequestSchema
 */
 @Parcelize
-data class AppFeatureRequest(
+data class AppFeatureRequestSchema(
     
     
     
@@ -4519,10 +4704,10 @@ data class AppFeatureRequest(
 
              
 /*
-    Model: AppFeatureResponse
+    Model: AppFeatureResponseSchema
 */
 @Parcelize
-data class AppFeatureResponse(
+data class AppFeatureResponseSchema(
     
     
     
@@ -5158,10 +5343,10 @@ data class TokenSchema(
 
              
 /*
-    Model: InvalidPayloadRequest
+    Model: InvalidPayloadRequestSchema
 */
 @Parcelize
-data class InvalidPayloadRequest(
+data class InvalidPayloadRequestSchema(
     
     
     
@@ -5987,10 +6172,10 @@ data class ApplicationDetail(
 
              
 /*
-    Model: CurrenciesResponse
+    Model: CurrenciesResponseSchema
 */
 @Parcelize
-data class CurrenciesResponse(
+data class CurrenciesResponseSchema(
     
     
     
@@ -6009,10 +6194,10 @@ data class CurrenciesResponse(
 
              
 /*
-    Model: AppCurrencyResponse
+    Model: AppCurrencyResponseSchema
 */
 @Parcelize
-data class AppCurrencyResponse(
+data class AppCurrencyResponseSchema(
     
     
     
@@ -6274,10 +6459,10 @@ data class OrderingStores(
 
              
 /*
-    Model: OrderingStoresResponse
+    Model: OrderingStoresResponseSchema
 */
 @Parcelize
-data class OrderingStoresResponse(
+data class OrderingStoresResponseSchema(
     
     
     
@@ -6286,6 +6471,55 @@ data class OrderingStoresResponse(
     
     @SerializedName("items")
     var items: ArrayList<OrderingStore>?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: ValidationErrors
+*/
+@Parcelize
+data class ValidationErrors(
+    
+    
+    
+    @SerializedName("errors")
+    var errors: ArrayList<ValidationError>?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: ValidationError
+*/
+@Parcelize
+data class ValidationError(
+    
+    
+    
+    @SerializedName("message")
+    var message: String?=null,
+    
+    @SerializedName("field")
+    var field: String?=null
     
 ): Parcelable {
     

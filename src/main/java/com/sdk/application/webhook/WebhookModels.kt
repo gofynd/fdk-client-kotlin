@@ -36,17 +36,22 @@ data class ClickEventBatch(
 
              
 /*
-    Model: ClickEventRequest
+    Model: ClickEventPayload
 */
 @Parcelize
-data class ClickEventRequest(
+data class ClickEventPayload(
     
     
     
     @SerializedName("batch")
-    var batch: ArrayList<ClickEventBatch>?=null
+    var batch: ArrayList<ClickEventBatch>?=null,
+    
+    @SerializedName("sent_at")
+    var sentAt: String?=null
     
 ): Parcelable {
+    
+    
     
     
     
@@ -58,10 +63,10 @@ data class ClickEventRequest(
 
              
 /*
-    Model: ClickEventResponse
+    Model: ClickEventDetails
 */
 @Parcelize
-data class ClickEventResponse(
+data class ClickEventDetails(
     
     
     
