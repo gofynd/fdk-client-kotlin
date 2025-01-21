@@ -9775,7 +9775,7 @@ data class UserDataInfo(
     var email: String?=null,
     
     @SerializedName("meta")
-    var meta: String?=null,
+    var meta: @RawValue HashMap<String,Any>?=null,
     
     @SerializedName("is_anonymous_user")
     var isAnonymousUser: Boolean?=null,
