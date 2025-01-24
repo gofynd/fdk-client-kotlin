@@ -58,7 +58,7 @@ class CommonDataManagerClass(val config: ApplicationConfig, val unauthorizedActi
         return retrofitHttpClient?.initializeRestClient(CommonApiList::class.java) as? CommonApiList
     }
     
-    suspend fun searchApplication(authorization: String?=null,query: String?=null, headers: Map<String, String> = emptyMap()): Response<ApplicationResponseSchema>? {
+    suspend fun searchApplication(authorization: String?=null,query: String?=null, headers: Map<String, String> = emptyMap()): Response<ApplicationResponse>? {
         var fullUrl : String? = _relativeUrls["searchApplication"]
         
         return commonApiList?.searchApplication(fullUrl,   authorization = authorization,  query = query,headers = headers)}

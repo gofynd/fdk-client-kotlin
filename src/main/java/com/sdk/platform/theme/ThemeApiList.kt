@@ -25,12 +25,12 @@ interface ThemeApiList {
     suspend fun getPage(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Path("theme_id") themeId: String, @Path("page_value") pageValue: String, @HeaderMap headers: Map<String, String>? = null)
     : Response<AvailablePageSchema>
     
-    @DELETE ("/service/platform/theme/v1.0/company/{company_id}/application/{application_id}/{theme_id}/{page_value}")
-    suspend fun deletePage(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Path("theme_id") themeId: String, @Path("page_value") pageValue: String, @HeaderMap headers: Map<String, String>? = null)
+    @PUT ("/service/platform/theme/v1.0/company/{company_id}/application/{application_id}/{theme_id}/{page_value}")
+    suspend fun updatePage(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Path("theme_id") themeId: String, @Path("page_value") pageValue: String,@Body body: AvailablePageSchema, @HeaderMap headers: Map<String, String>? = null)
     : Response<AvailablePageSchema>
     
-    @PUT ("/service/platform/theme/v1.0/company/{company_id}/application/{application_id}/{theme_id}/{page_value}/{socket_id}")
-    suspend fun updatePage(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Path("theme_id") themeId: String, @Path("page_value") pageValue: String, @Path("socket_id") socketId: String,@Body body: AvailablePageSchema, @HeaderMap headers: Map<String, String>? = null)
+    @DELETE ("/service/platform/theme/v1.0/company/{company_id}/application/{application_id}/{theme_id}/{page_value}")
+    suspend fun deletePage(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Path("theme_id") themeId: String, @Path("page_value") pageValue: String, @HeaderMap headers: Map<String, String>? = null)
     : Response<AvailablePageSchema>
     
     @GET ("/service/platform/theme/v1.0/company/{company_id}/application/{application_id}/fonts")
@@ -103,7 +103,7 @@ interface ThemeApiList {
     
     @GET ("/service/platform/theme/v2.0/company/{company_id}/application/{application_id}/{theme_id}/upgradable")
     suspend fun isUpgradable(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Path("theme_id") themeId: String, @HeaderMap headers: Map<String, String>? = null)
-    : Response<ThemeUpgradable>
+    : Response<ThemeUpgradableResponse>
     
     @PUT ("/service/platform/theme/v2.0/company/{company_id}/application/{application_id}/{theme_id}/upgrade")
     suspend fun upgradeTheme(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Path("theme_id") themeId: String, @HeaderMap headers: Map<String, String>? = null)

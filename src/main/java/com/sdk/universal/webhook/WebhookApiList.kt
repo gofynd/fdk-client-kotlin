@@ -13,12 +13,12 @@ interface WebhookApiList {
     
     @GET
     suspend fun fetchAllWebhookEvents(@Url url1: String?   , @HeaderMap headers: Map<String, String>? = null)
-    : Response<EventDetails>
+    : Response<EventConfigResponse>
     
     
     @POST
     suspend fun queryWebhookEventDetails(@Url url1: String?   ,@Body body: ArrayList<EventConfigBase>, @HeaderMap headers: Map<String, String>? = null)
-    : Response<EventDetails>
+    : Response<EventConfigResponse>
     
     
     @GET
@@ -27,12 +27,12 @@ interface WebhookApiList {
     
     
     @POST
-    suspend fun testHandlerTransformation(@Url url1: String?   ,@Body body: TransformEventPayload, @HeaderMap headers: Map<String, String>? = null)
-    : Response<TransformEventResult>
+    suspend fun testHandlerTransformation(@Url url1: String?   ,@Body body: TransformEventRequest, @HeaderMap headers: Map<String, String>? = null)
+    : Response<TransformEventResponse>
     
     
     @POST
-    suspend fun validateSchema(@Url url1: String?   ,@Body body: ValidateSchemaPayload, @HeaderMap headers: Map<String, String>? = null)
-    : Response<ValidateSchemaResult>
+    suspend fun validateSchema(@Url url1: String?   ,@Body body: ValidateSchemaRequest, @HeaderMap headers: Map<String, String>? = null)
+    : Response<ValidateSchemaResponse>
     
 }

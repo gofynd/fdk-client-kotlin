@@ -330,6 +330,9 @@ data class AvailablePageSchemaSections(
     @SerializedName("label")
     var label: String?=null,
     
+    @SerializedName("source")
+    var source: String?=null,
+    
     @SerializedName("props")
     var props: @RawValue HashMap<String,Any>?=null,
     
@@ -340,13 +343,7 @@ data class AvailablePageSchemaSections(
     var preset: @RawValue HashMap<String,Any>?=null,
     
     @SerializedName("predicate")
-    var predicate: AvailablePagePredicate?=null,
-    
-    @SerializedName("__source")
-    var source: SectionSource?=null,
-    
-    @SerializedName("assets")
-    var assets: SectionAssets?=null
+    var predicate: AvailablePagePredicate?=null
     
 ): Parcelable {
     
@@ -357,67 +354,6 @@ data class AvailablePageSchemaSections(
     
     
     
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-}
-
-
-
-             
-/*
-    Model: SectionAssets
-*/
-@Parcelize
-data class SectionAssets(
-    
-    
-    
-    @SerializedName("js")
-    var js: String?=null,
-    
-    @SerializedName("css")
-    var css: String?=null
-    
-): Parcelable {
-    
-    
-    
-    
-    
-    
-    
-}
-
-
-
-             
-/*
-    Model: SectionSource
-*/
-@Parcelize
-data class SectionSource(
-    
-    
-    
-    @SerializedName("id")
-    var id: String?=null,
-    
-    @SerializedName("bundle_name")
-    var bundleName: String?=null,
-    
-    @SerializedName("type")
-    var type: String?=null
-    
-): Parcelable {
     
     
     
@@ -1056,6 +992,33 @@ data class CustomProps(
     
     
     
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: GlobalConfig
+*/
+@Parcelize
+data class GlobalConfig(
+    
+    
+    
+    @SerializedName("statics")
+    var statics: StaticConfig?=null,
+    
+    @SerializedName("custom")
+    var custom: CustomConfig?=null
+    
+): Parcelable {
     
     
     

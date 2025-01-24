@@ -14,15 +14,15 @@ import com.google.gson.annotations.SerializedName
 
              
 /*
-    Model: GetStoreResult
+    Model: GetStoreResponse
 */
 @Parcelize
-data class GetStoreResult(
+data class GetStoreResponse(
     
     
     
     @SerializedName("items")
-    var items: ArrayList<StoreItemResult>?=null,
+    var items: ArrayList<StoreItemResponse>?=null,
     
     @SerializedName("page")
     var page: Page?=null
@@ -41,10 +41,10 @@ data class GetStoreResult(
 
              
 /*
-    Model: StoreItemResult
+    Model: StoreItemResponse
 */
 @Parcelize
-data class StoreItemResult(
+data class StoreItemResponse(
     
     
     
@@ -98,10 +98,10 @@ data class StoreItemResult(
 
              
 /*
-    Model: ValidateAddressDetails
+    Model: ValidateAddressRequest
 */
 @Parcelize
-data class ValidateAddressDetails(
+data class ValidateAddressRequest(
     
     
     
@@ -175,10 +175,10 @@ data class ValidateAddressDetails(
 
              
 /*
-    Model: PincodeParentsResult
+    Model: PincodeParentsResponse
 */
 @Parcelize
-data class PincodeParentsResult(
+data class PincodeParentsResponse(
     
     
     
@@ -212,10 +212,10 @@ data class PincodeParentsResult(
 
              
 /*
-    Model: PincodeMetaResult
+    Model: PincodeMetaResponse
 */
 @Parcelize
-data class PincodeMetaResult(
+data class PincodeMetaResponse(
     
     
     
@@ -223,14 +223,9 @@ data class PincodeMetaResult(
     var zone: String?=null,
     
     @SerializedName("internal_zone_id")
-    var internalZoneId: Int?=null,
-    
-    @SerializedName("deliverables")
-    var deliverables: ArrayList<String>?=null
+    var internalZoneId: Int?=null
     
 ): Parcelable {
-    
-    
     
     
     
@@ -244,10 +239,10 @@ data class PincodeMetaResult(
 
              
 /*
-    Model: PincodeErrorSchemaResult
+    Model: PincodeErrorSchemaResponse
 */
 @Parcelize
-data class PincodeErrorSchemaResult(
+data class PincodeErrorSchemaResponse(
     
     
     
@@ -276,42 +271,12 @@ data class PincodeErrorSchemaResult(
 
              
 /*
-    Model: CountryMetaResult
+    Model: CountryMetaResponse
 */
 @Parcelize
-data class CountryMetaResult(
+data class CountryMetaResponse(
     
     
-    
-    @SerializedName("iso2")
-    var iso2: String?=null,
-    
-    @SerializedName("iso3")
-    var iso3: String?=null,
-    
-    @SerializedName("currency")
-    var currency: CurrencyObject?=null,
-    
-    @SerializedName("phone_code")
-    var phoneCode: String?=null,
-    
-    @SerializedName("parent_id")
-    var parentId: String?=null,
-    
-    @SerializedName("zone")
-    var zone: String?=null,
-    
-    @SerializedName("deliverables")
-    var deliverables: ArrayList<String>?=null,
-    
-    @SerializedName("hierarchy")
-    var hierarchy: ArrayList<CountryHierarchy>?=null,
-    
-    @SerializedName("latitude")
-    var latitude: String?=null,
-    
-    @SerializedName("longitude")
-    var longitude: String?=null,
     
     @SerializedName("country_code")
     var countryCode: String?=null,
@@ -320,26 +285,6 @@ data class CountryMetaResult(
     var isdCode: String?=null
     
 ): Parcelable {
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
     
     
     
@@ -380,27 +325,27 @@ data class PincodeLatLongData(
 
              
 /*
-    Model: PincodeDataResult
+    Model: PincodeDataResponse
 */
 @Parcelize
-data class PincodeDataResult(
+data class PincodeDataResponse(
     
     
     
     @SerializedName("parents")
-    var parents: ArrayList<PincodeParentsResult>?=null,
+    var parents: ArrayList<PincodeParentsResponse>?=null,
     
     @SerializedName("meta")
-    var meta: PincodeMetaResult?=null,
+    var meta: PincodeMetaResponse?=null,
     
     @SerializedName("display_name")
     var displayName: String?=null,
     
     @SerializedName("error")
-    var error: PincodeErrorSchemaResult?=null,
+    var error: PincodeErrorSchemaResponse?=null,
     
     @SerializedName("meta_code")
-    var metaCode: CountryMetaResult?=null,
+    var metaCode: CountryMetaResponse?=null,
     
     @SerializedName("lat_long")
     var latLong: PincodeLatLongData?=null,
@@ -442,10 +387,10 @@ data class PincodeDataResult(
 
              
 /*
-    Model: PincodeDetails
+    Model: PincodeApiResponse
 */
 @Parcelize
-data class PincodeDetails(
+data class PincodeApiResponse(
     
     
     
@@ -453,22 +398,12 @@ data class PincodeDetails(
     var success: Boolean?=null,
     
     @SerializedName("data")
-    var data: ArrayList<PincodeDataResult>?=null,
+    var data: ArrayList<PincodeDataResponse>?=null,
     
     @SerializedName("error")
-    var error: PincodeErrorSchemaResult?=null,
-    
-    @SerializedName("request_uuid")
-    var requestUuid: String?=null,
-    
-    @SerializedName("stormbreaker_uuid")
-    var stormbreakerUuid: String?=null
+    var error: PincodeErrorSchemaResponse?=null
     
 ): Parcelable {
-    
-    
-    
-    
     
     
     
@@ -484,10 +419,10 @@ data class PincodeDetails(
 
              
 /*
-    Model: TATCategoryDetails
+    Model: TATCategoryRequest
 */
 @Parcelize
-data class TATCategoryDetails(
+data class TATCategoryRequest(
     
     
     
@@ -511,15 +446,15 @@ data class TATCategoryDetails(
 
              
 /*
-    Model: TATArticlesDetails
+    Model: TATArticlesRequest
 */
 @Parcelize
-data class TATArticlesDetails(
+data class TATArticlesRequest(
     
     
     
     @SerializedName("category")
-    var category: TATCategoryDetails?=null,
+    var category: TATCategoryRequest?=null,
     
     @SerializedName("manufacturing_time_unit")
     var manufacturingTimeUnit: String?=null,
@@ -543,10 +478,10 @@ data class TATArticlesDetails(
 
              
 /*
-    Model: TATLocationDetailsDetails
+    Model: TATLocationDetailsRequest
 */
 @Parcelize
-data class TATLocationDetailsDetails(
+data class TATLocationDetailsRequest(
     
     
     
@@ -557,7 +492,7 @@ data class TATLocationDetailsDetails(
     var fromPincode: String?=null,
     
     @SerializedName("articles")
-    var articles: ArrayList<TATArticlesDetails>?=null
+    var articles: ArrayList<TATArticlesRequest>?=null
     
 ): Parcelable {
     
@@ -575,10 +510,10 @@ data class TATLocationDetailsDetails(
 
              
 /*
-    Model: TATViewDetails
+    Model: TATViewRequest
 */
 @Parcelize
-data class TATViewDetails(
+data class TATViewRequest(
     
     
     
@@ -595,7 +530,7 @@ data class TATViewDetails(
     var identifier: String?=null,
     
     @SerializedName("location_details")
-    var locationDetails: ArrayList<TATLocationDetailsDetails>?=null,
+    var locationDetails: ArrayList<TATLocationDetailsRequest>?=null,
     
     @SerializedName("journey")
     var journey: String?=null
@@ -622,10 +557,10 @@ data class TATViewDetails(
 
              
 /*
-    Model: TATErrorSchemaResult
+    Model: TATErrorSchemaResponse
 */
 @Parcelize
-data class TATErrorSchemaResult(
+data class TATErrorSchemaResponse(
     
     
     
@@ -654,10 +589,10 @@ data class TATErrorSchemaResult(
 
              
 /*
-    Model: TATTimestampResult
+    Model: TATTimestampResponse
 */
 @Parcelize
-data class TATTimestampResult(
+data class TATTimestampResponse(
     
     
     
@@ -681,10 +616,10 @@ data class TATTimestampResult(
 
              
 /*
-    Model: TATFormattedResult
+    Model: TATFormattedResponse
 */
 @Parcelize
-data class TATFormattedResult(
+data class TATFormattedResponse(
     
     
     
@@ -708,18 +643,18 @@ data class TATFormattedResult(
 
              
 /*
-    Model: TATPromiseResult
+    Model: TATPromiseResponse
 */
 @Parcelize
-data class TATPromiseResult(
+data class TATPromiseResponse(
     
     
     
     @SerializedName("timestamp")
-    var timestamp: TATTimestampResult?=null,
+    var timestamp: TATTimestampResponse?=null,
     
     @SerializedName("formatted")
-    var formatted: TATFormattedResult?=null
+    var formatted: TATFormattedResponse?=null
     
 ): Parcelable {
     
@@ -735,10 +670,10 @@ data class TATPromiseResult(
 
              
 /*
-    Model: TATArticlesResult
+    Model: TATArticlesResponse
 */
 @Parcelize
-data class TATArticlesResult(
+data class TATArticlesResponse(
     
     
     
@@ -746,19 +681,19 @@ data class TATArticlesResult(
     var manufacturingTimeUnit: String?=null,
     
     @SerializedName("error")
-    var error: TATErrorSchemaResult?=null,
+    var error: TATErrorSchemaResponse?=null,
     
     @SerializedName("is_cod_available")
     var isCodAvailable: Boolean?=null,
     
     @SerializedName("promise")
-    var promise: TATPromiseResult?=null,
+    var promise: TATPromiseResponse?=null,
     
     @SerializedName("manufacturing_time")
     var manufacturingTime: Int?=null,
     
     @SerializedName("category")
-    var category: TATCategoryDetails?=null,
+    var category: TATCategoryRequest?=null,
     
     @SerializedName("_manufacturing_time_seconds")
     var manufacturingTimeSeconds: Int?=null
@@ -787,10 +722,10 @@ data class TATArticlesResult(
 
              
 /*
-    Model: TATLocationDetailsResult
+    Model: TATLocationDetailsResponse
 */
 @Parcelize
-data class TATLocationDetailsResult(
+data class TATLocationDetailsResponse(
     
     
     
@@ -801,7 +736,7 @@ data class TATLocationDetailsResult(
     var fromPincode: String?=null,
     
     @SerializedName("articles")
-    var articles: ArrayList<TATArticlesResult>?=null
+    var articles: ArrayList<TATArticlesResponse>?=null
     
 ): Parcelable {
     
@@ -819,10 +754,10 @@ data class TATLocationDetailsResult(
 
              
 /*
-    Model: TATViewResult
+    Model: TATViewResponse
 */
 @Parcelize
-data class TATViewResult(
+data class TATViewResponse(
     
     
     
@@ -839,7 +774,7 @@ data class TATViewResult(
     var success: Boolean?=null,
     
     @SerializedName("error")
-    var error: TATErrorSchemaResult?=null,
+    var error: TATErrorSchemaResponse?=null,
     
     @SerializedName("is_cod_available")
     var isCodAvailable: Boolean?=null,
@@ -860,7 +795,7 @@ data class TATViewResult(
     var identifier: String?=null,
     
     @SerializedName("location_details")
-    var locationDetails: ArrayList<TATLocationDetailsResult>?=null,
+    var locationDetails: ArrayList<TATLocationDetailsResponse>?=null,
     
     @SerializedName("journey")
     var journey: String?=null
@@ -968,15 +903,15 @@ data class DP(
 
              
 /*
-    Model: LogisticsResult
+    Model: LogisticsResponse
 */
 @Parcelize
-data class LogisticsResult(
+data class LogisticsResponse(
     
     
     
     @SerializedName("dp")
-    var dp: DP?=null
+    var dp: HashMap<String,DP>?=null
     
 ): Parcelable {
     
@@ -990,18 +925,18 @@ data class LogisticsResult(
 
              
 /*
-    Model: CountryEntityResult
+    Model: CountryEntityResponse
 */
 @Parcelize
-data class CountryEntityResult(
+data class CountryEntityResponse(
     
     
     
     @SerializedName("meta")
-    var meta: CountryMetaResult?=null,
+    var meta: CountryMetaResponse?=null,
     
     @SerializedName("logistics")
-    var logistics: LogisticsResult?=null,
+    var logistics: LogisticsResponse?=null,
     
     @SerializedName("display_name")
     var displayName: String?=null,
@@ -1013,7 +948,7 @@ data class CountryEntityResult(
     var isActive: Boolean?=null,
     
     @SerializedName("parent_id")
-    var parentId: ArrayList<String>?=null,
+    var parentId: String?=null,
     
     @SerializedName("sub_type")
     var subType: String?=null,
@@ -1022,24 +957,9 @@ data class CountryEntityResult(
     var name: String?=null,
     
     @SerializedName("uid")
-    var uid: String?=null,
-    
-    @SerializedName("onboarding_allowed")
-    var onboardingAllowed: Boolean?=null,
-    
-    @SerializedName("serviceability")
-    var serviceability: @RawValue Any?=null,
-    
-    @SerializedName("lat_long")
-    var latLong: PincodeLatLongData?=null
+    var uid: String?=null
     
 ): Parcelable {
-    
-    
-    
-    
-    
-    
     
     
     
@@ -1067,72 +987,15 @@ data class CountryEntityResult(
 
              
 /*
-    Model: ServiceabilityModel
+    Model: CountryListResponse
 */
 @Parcelize
-data class ServiceabilityModel(
-    
-    
-    
-    @SerializedName("lm_cod_limit")
-    var lmCodLimit: Int?=null,
-    
-    @SerializedName("is_qc")
-    var isQc: Boolean?=null,
-    
-    @SerializedName("pickup_cutoff")
-    var pickupCutoff: String?=null,
-    
-    @SerializedName("route_code")
-    var routeCode: String?=null,
-    
-    @SerializedName("is_first_mile")
-    var isFirstMile: Boolean?=null,
-    
-    @SerializedName("is_return")
-    var isReturn: Boolean?=null,
-    
-    @SerializedName("is_installation")
-    var isInstallation: Boolean?=null,
-    
-    @SerializedName("is_last_mile")
-    var isLastMile: Boolean?=null
-    
-): Parcelable {
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-}
-
-
-
-             
-/*
-    Model: CountryListResult
-*/
-@Parcelize
-data class CountryListResult(
+data class CountryListResponse(
     
     
     
     @SerializedName("results")
-    var results: ArrayList<CountryEntityResult>?=null
+    var results: ArrayList<CountryEntityResponse>?=null
     
 ): Parcelable {
     
@@ -1146,10 +1009,10 @@ data class CountryListResult(
 
              
 /*
-    Model: GetZoneFromPincodeViewDetails
+    Model: GetZoneFromPincodeViewRequest
 */
 @Parcelize
-data class GetZoneFromPincodeViewDetails(
+data class GetZoneFromPincodeViewRequest(
     
     
     
@@ -1173,10 +1036,10 @@ data class GetZoneFromPincodeViewDetails(
 
              
 /*
-    Model: GetZoneFromPincodeViewResult
+    Model: GetZoneFromPincodeViewResponse
 */
 @Parcelize
-data class GetZoneFromPincodeViewResult(
+data class GetZoneFromPincodeViewResponse(
     
     
     
@@ -1200,10 +1063,10 @@ data class GetZoneFromPincodeViewResult(
 
              
 /*
-    Model: ReAssignStoreDetails
+    Model: ReAssignStoreRequest
 */
 @Parcelize
-data class ReAssignStoreDetails(
+data class ReAssignStoreRequest(
     
     
     
@@ -1242,10 +1105,10 @@ data class ReAssignStoreDetails(
 
              
 /*
-    Model: ReAssignStoreResult
+    Model: ReAssignStoreResponse
 */
 @Parcelize
-data class ReAssignStoreResult(
+data class ReAssignStoreResponse(
     
     
     
@@ -1291,8 +1154,8 @@ data class CountryHierarchy(
     
     
     
-    @SerializedName("display_name")
-    var displayName: String?=null,
+    @SerializedName("name")
+    var name: String?=null,
     
     @SerializedName("slug")
     var slug: String?=null
@@ -1941,23 +1804,8 @@ data class Localities(
     @SerializedName("name")
     var name: String?=null,
     
-    @SerializedName("meta")
-    var meta: @RawValue HashMap<String,Any>?=null,
-    
-    @SerializedName("lat_long")
-    var latLong: PincodeLatLongData?=null,
-    
-    @SerializedName("parent_uid")
-    var parentUid: String?=null,
-    
-    @SerializedName("custom_meta")
-    var customMeta: @RawValue HashMap<String,Any>?=null,
-    
     @SerializedName("display_name")
     var displayName: String?=null,
-    
-    @SerializedName("serviceability")
-    var serviceability: @RawValue Any?=null,
     
     @SerializedName("parent_ids")
     var parentIds: ArrayList<String>?=null,
@@ -1969,16 +1817,6 @@ data class Localities(
     var localities: ArrayList<LocalityParent>?=null
     
 ): Parcelable {
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
     
     
     
@@ -2016,21 +1854,6 @@ data class LocalityParent(
     @SerializedName("display_name")
     var displayName: String?=null,
     
-    @SerializedName("meta")
-    var meta: @RawValue HashMap<String,Any>?=null,
-    
-    @SerializedName("parent_uid")
-    var parentUid: String?=null,
-    
-    @SerializedName("serviceability")
-    var serviceability: @RawValue Any?=null,
-    
-    @SerializedName("code")
-    var code: String?=null,
-    
-    @SerializedName("custom_meta")
-    var customMeta: @RawValue HashMap<String,Any>?=null,
-    
     @SerializedName("parent_ids")
     var parentIds: ArrayList<String>?=null,
     
@@ -2038,16 +1861,6 @@ data class LocalityParent(
     var type: String?=null
     
 ): Parcelable {
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
     
     
     
@@ -2110,21 +1923,6 @@ data class GetLocality(
     @SerializedName("display_name")
     var displayName: String?=null,
     
-    @SerializedName("meta")
-    var meta: @RawValue HashMap<String,Any>?=null,
-    
-    @SerializedName("parent_uid")
-    var parentUid: String?=null,
-    
-    @SerializedName("serviceability")
-    var serviceability: @RawValue Any?=null,
-    
-    @SerializedName("code")
-    var code: String?=null,
-    
-    @SerializedName("custom_meta")
-    var customMeta: @RawValue HashMap<String,Any>?=null,
-    
     @SerializedName("parent_ids")
     var parentIds: ArrayList<String>?=null,
     
@@ -2150,546 +1948,16 @@ data class GetLocality(
     
     
     
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
 }
 
 
 
              
 /*
-    Model: Error
+    Model: ErrorResponse
 */
 @Parcelize
-data class Error(
-    
-    
-    
-    @SerializedName("type")
-    var type: String?=null,
-    
-    @SerializedName("value")
-    var value: String?=null,
-    
-    @SerializedName("message")
-    var message: String?=null
-    
-): Parcelable {
-    
-    
-    
-    
-    
-    
-    
-    
-    
-}
-
-
-
-             
-/*
-    Model: ErrorSchema
-*/
-@Parcelize
-data class ErrorSchema(
-    
-    
-    
-    @SerializedName("success")
-    var success: Boolean?=null,
-    
-    @SerializedName("error")
-    var error: Error?=null
-    
-): Parcelable {
-    
-    
-    
-    
-    
-    
-    
-}
-
-
-
-             
-/*
-    Model: ShipmentsArticles
-*/
-@Parcelize
-data class ShipmentsArticles(
-    
-    
-    
-    @SerializedName("item_id")
-    var itemId: Int?=null,
-    
-    @SerializedName("category_id")
-    var categoryId: Int?=null,
-    
-    @SerializedName("brand_id")
-    var brandId: Int?=null,
-    
-    @SerializedName("department_id")
-    var departmentId: Int?=null,
-    
-    @SerializedName("tags")
-    var tags: ArrayList<String>?=null
-    
-): Parcelable {
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-}
-
-
-
-             
-/*
-    Model: ShipmentDimension
-*/
-@Parcelize
-data class ShipmentDimension(
-    
-    
-    
-    @SerializedName("height")
-    var height: Double?=null,
-    
-    @SerializedName("length")
-    var length: Double?=null,
-    
-    @SerializedName("width")
-    var width: Double?=null
-    
-): Parcelable {
-    
-    
-    
-    
-    
-    
-    
-    
-    
-}
-
-
-
-             
-/*
-    Model: Shipments
-*/
-@Parcelize
-data class Shipments(
-    
-    
-    
-    @SerializedName("id")
-    var id: String?=null,
-    
-    @SerializedName("location_id")
-    var locationId: Double?=null,
-    
-    @SerializedName("location_tags")
-    var locationTags: ArrayList<String>?=null,
-    
-    @SerializedName("shipment_weight")
-    var shipmentWeight: Double?=null,
-    
-    @SerializedName("shipment_volumetric_weight")
-    var shipmentVolumetricWeight: Double?=null,
-    
-    @SerializedName("shipment_cost")
-    var shipmentCost: Double?=null,
-    
-    @SerializedName("shipment_dimension")
-    var shipmentDimension: ShipmentDimension?=null,
-    
-    @SerializedName("courier_partner_schemes")
-    var courierPartnerSchemes: ArrayList<String>?=null,
-    
-    @SerializedName("articles")
-    var articles: ArrayList<ShipmentsArticles>?=null
-    
-): Parcelable {
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-}
-
-
-
-             
-/*
-    Model: ShipmentCourierPartnerDetails
-*/
-@Parcelize
-data class ShipmentCourierPartnerDetails(
-    
-    
-    
-    @SerializedName("from_location")
-    var fromLocation: ShipmentsCourierPartnersServiceability?=null,
-    
-    @SerializedName("to_location")
-    var toLocation: ShipmentsCourierPartnersServiceability?=null,
-    
-    @SerializedName("shipments")
-    var shipments: ArrayList<Shipments>?=null,
-    
-    @SerializedName("journey")
-    var journey: String?=null,
-    
-    @SerializedName("payment_mode")
-    var paymentMode: String?=null
-    
-): Parcelable {
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-}
-
-
-
-             
-/*
-    Model: CourierPartnerPromise
-*/
-@Parcelize
-data class CourierPartnerPromise(
-    
-    
-    
-    @SerializedName("min")
-    var min: String?=null,
-    
-    @SerializedName("max")
-    var max: String?=null
-    
-): Parcelable {
-    
-    
-    
-    
-    
-    
-    
-}
-
-
-
-             
-/*
-    Model: CourierPartners
-*/
-@Parcelize
-data class CourierPartners(
-    
-    
-    
-    @SerializedName("extension_id")
-    var extensionId: String?=null,
-    
-    @SerializedName("scheme_id")
-    var schemeId: String?=null,
-    
-    @SerializedName("name")
-    var name: String?=null,
-    
-    @SerializedName("delivery_promise")
-    var deliveryPromise: CourierPartnerPromise?=null
-    
-): Parcelable {
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-}
-
-
-
-             
-/*
-    Model: ShipmentCourierPartners
-*/
-@Parcelize
-data class ShipmentCourierPartners(
-    
-    
-    
-    @SerializedName("id")
-    var id: String?=null,
-    
-    @SerializedName("courier_partners")
-    var courierPartners: ArrayList<CourierPartners>?=null
-    
-): Parcelable {
-    
-    
-    
-    
-    
-    
-    
-}
-
-
-
-             
-/*
-    Model: ShipmentCourierPartnerResult
-*/
-@Parcelize
-data class ShipmentCourierPartnerResult(
-    
-    
-    
-    @SerializedName("courier_partners")
-    var courierPartners: ArrayList<CourierPartners>?=null,
-    
-    @SerializedName("shipments")
-    var shipments: ArrayList<ShipmentCourierPartners>?=null
-    
-): Parcelable {
-    
-    
-    
-    
-    
-    
-    
-}
-
-
-
-             
-/*
-    Model: ShipmentsCourierPartnersServiceability
-*/
-@Parcelize
-data class ShipmentsCourierPartnersServiceability(
-    
-    
-    
-    @SerializedName("pincode")
-    var pincode: String?=null,
-    
-    @SerializedName("sector_code")
-    var sectorCode: String?=null,
-    
-    @SerializedName("state_code")
-    var stateCode: String?=null,
-    
-    @SerializedName("city_code")
-    var cityCode: String?=null,
-    
-    @SerializedName("country_code")
-    var countryCode: String?=null
-    
-): Parcelable {
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-}
-
-
-
-             
-/*
-    Model: ServiceabilityLocation
-*/
-@Parcelize
-data class ServiceabilityLocation(
-    
-    
-    
-    @SerializedName("longitude")
-    var longitude: String?=null,
-    
-    @SerializedName("latitude")
-    var latitude: String?=null
-    
-): Parcelable {
-    
-    
-    
-    
-    
-    
-    
-}
-
-
-
-             
-/*
-    Model: GetPromiseDetails
-*/
-@Parcelize
-data class GetPromiseDetails(
-    
-    
-    
-    @SerializedName("items")
-    var items: ArrayList<StorePromise>?=null,
-    
-    @SerializedName("delivery_promise")
-    var deliveryPromise: Promise?=null,
-    
-    @SerializedName("page")
-    var page: Page?=null
-    
-): Parcelable {
-    
-    
-    
-    
-    
-    
-    
-    
-    
-}
-
-
-
-             
-/*
-    Model: StorePromise
-*/
-@Parcelize
-data class StorePromise(
-    
-    
-    
-    @SerializedName("uid")
-    var uid: Int?=null,
-    
-    @SerializedName("code")
-    var code: String?=null,
-    
-    @SerializedName("name")
-    var name: String?=null,
-    
-    @SerializedName("delivery_promise")
-    var deliveryPromise: Promise?=null
-    
-): Parcelable {
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-}
-
-
-
-             
-/*
-    Model: Promise
-*/
-@Parcelize
-data class Promise(
-    
-    
-    
-    @SerializedName("min")
-    var min: String?=null,
-    
-    @SerializedName("max")
-    var max: String?=null
-    
-): Parcelable {
-    
-    
-    
-    
-    
-    
-    
-}
-
-
-
-             
-/*
-    Model: ErrorResult
-*/
-@Parcelize
-data class ErrorResult(
+data class ErrorResponse(
     
     
     
@@ -2702,55 +1970,6 @@ data class ErrorResult(
 ): Parcelable {
     
     
-    
-    
-    
-    
-    
-}
-
-
-
-             
-/*
-    Model: ValidationError
-*/
-@Parcelize
-data class ValidationError(
-    
-    
-    
-    @SerializedName("message")
-    var message: String?=null,
-    
-    @SerializedName("field")
-    var field: String?=null
-    
-): Parcelable {
-    
-    
-    
-    
-    
-    
-    
-}
-
-
-
-             
-/*
-    Model: StandardError
-*/
-@Parcelize
-data class StandardError(
-    
-    
-    
-    @SerializedName("message")
-    var message: String?=null
-    
-): Parcelable {
     
     
     

@@ -41,10 +41,10 @@ data class AddProxyReq(
 
              
 /*
-    Model: ExtensionProxyPathCreation
+    Model: AddProxyResponse
 */
 @Parcelize
-data class ExtensionProxyPathCreation(
+data class AddProxyResponse(
     
     
     
@@ -98,10 +98,10 @@ data class ExtensionProxyPathCreation(
 
              
 /*
-    Model: ExtensionProxyPathDelete
+    Model: RemoveProxyResponse
 */
 @Parcelize
-data class ExtensionProxyPathDelete(
+data class RemoveProxyResponse(
     
     
     
