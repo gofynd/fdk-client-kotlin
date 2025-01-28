@@ -418,6 +418,250 @@ data class CreateUserAttributeDefinition(
 
              
 /*
+    Model: CreateStoreFrontUsersPayload
+*/
+@Parcelize
+data class CreateStoreFrontUsersPayload(
+    
+    
+    
+    @SerializedName("absolute_url")
+    var absoluteUrl: String?=null,
+    
+    @SerializedName("file_format")
+    var fileFormat: String?=null,
+    
+    @SerializedName("relative_url")
+    var relativeUrl: String?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: BulkUserExportSchema
+*/
+@Parcelize
+data class BulkUserExportSchema(
+    
+    
+    
+    @SerializedName("file_format")
+    var fileFormat: String?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: BulkActionModel
+*/
+@Parcelize
+data class BulkActionModel(
+    
+    
+    
+    @SerializedName("_id")
+    var id: String?=null,
+    
+    @SerializedName("file_name")
+    var fileName: String?=null,
+    
+    @SerializedName("file_format")
+    var fileFormat: String?=null,
+    
+    @SerializedName("action_type")
+    var actionType: String?=null,
+    
+    @SerializedName("created_by")
+    var createdBy: CreatedBySchema?=null,
+    
+    @SerializedName("count")
+    var count: BulkActionCountSchema?=null,
+    
+    @SerializedName("status")
+    var status: String?=null,
+    
+    @SerializedName("links")
+    var links: BulkActionLinkSchema?=null,
+    
+    @SerializedName("application_id")
+    var applicationId: String?=null,
+    
+    @SerializedName("company_id")
+    var companyId: String?=null,
+    
+    @SerializedName("created_at")
+    var createdAt: String?=null,
+    
+    @SerializedName("updated_at")
+    var updatedAt: String?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: CreatedBySchema
+*/
+@Parcelize
+data class CreatedBySchema(
+    
+    
+    
+    @SerializedName("name")
+    var name: String?=null,
+    
+    @SerializedName("user_id")
+    var userId: String?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: BulkActionLinkSchema
+*/
+@Parcelize
+data class BulkActionLinkSchema(
+    
+    
+    
+    @SerializedName("file")
+    var file: FileLinks?=null,
+    
+    @SerializedName("error")
+    var error: FileLinks?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: FileLinks
+*/
+@Parcelize
+data class FileLinks(
+    
+    
+    
+    @SerializedName("absolute_url")
+    var absoluteUrl: String?=null,
+    
+    @SerializedName("relative_url")
+    var relativeUrl: String?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: BulkActionCountSchema
+*/
+@Parcelize
+data class BulkActionCountSchema(
+    
+    
+    
+    @SerializedName("total")
+    var total: Int?=null,
+    
+    @SerializedName("success")
+    var success: Int?=null,
+    
+    @SerializedName("error")
+    var error: Int?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
     Model: BlockUserRequestSchema
 */
 @Parcelize
@@ -601,6 +845,33 @@ data class CustomerListResponseSchema(
     
     @SerializedName("items")
     var items: ArrayList<UserSearchSchema>?=null,
+    
+    @SerializedName("page")
+    var page: PaginationSchema?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: BulkActionPaginationSchema
+*/
+@Parcelize
+data class BulkActionPaginationSchema(
+    
+    
+    
+    @SerializedName("items")
+    var items: ArrayList<BulkActionModel>?=null,
     
     @SerializedName("page")
     var page: PaginationSchema?=null

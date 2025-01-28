@@ -1049,6 +1049,33 @@ data class DataUpdates(
 
              
 /*
+    Model: TransitionComments
+*/
+@Parcelize
+data class TransitionComments(
+    
+    
+    
+    @SerializedName("title")
+    var title: String?=null,
+    
+    @SerializedName("message")
+    var message: String?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
     Model: ShipmentsRequestSchema
 */
 @Parcelize
@@ -1066,9 +1093,14 @@ data class ShipmentsRequestSchema(
     var products: ArrayList<Products>?=null,
     
     @SerializedName("data_updates")
-    var dataUpdates: DataUpdates?=null
+    var dataUpdates: DataUpdates?=null,
+    
+    @SerializedName("transition_comments")
+    var transitionComments: ArrayList<TransitionComments>?=null
     
 ): Parcelable {
+    
+    
     
     
     

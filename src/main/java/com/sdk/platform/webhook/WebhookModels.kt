@@ -129,6 +129,12 @@ data class SubscriberEventMapping(
     @SerializedName("subscriber_id")
     var subscriberId: Double?=null,
     
+    @SerializedName("filters")
+    var filters: FilterSchema?=null,
+    
+    @SerializedName("reducer")
+    var reducer: @RawValue HashMap<String,Any>?=null,
+    
     @SerializedName("broadcaster_config")
     var broadcasterConfig: BroadcasterConfig?=null,
     
@@ -138,6 +144,47 @@ data class SubscriberEventMapping(
 ): Parcelable {
     
     
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: FilterSchema
+*/
+@Parcelize
+data class FilterSchema(
+    
+    
+    
+    @SerializedName("query")
+    var query: String?=null,
+    
+    @SerializedName("condition")
+    var condition: String?=null,
+    
+    @SerializedName("logic")
+    var logic: String?=null,
+    
+    @SerializedName("conditions")
+    var conditions: @RawValue ArrayList<HashMap<String,Any>>?=null
+    
+): Parcelable {
     
     
     
