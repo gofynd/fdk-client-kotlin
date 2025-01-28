@@ -19,9 +19,11 @@ class ConfigurationDataManagerClass(val config: PublicConfig, val unauthorizedAc
 
     init{
             
-                    _relativeUrls["searchApplication"] = "/service/common/configuration/v1.0/application/search-application".substring(1)
+                    _relativeUrls["searchApplication"] = "/service/public/configuration/v1.0/application/search-application".substring(1)
             
-                    _relativeUrls["getLocations"] = "/service/common/configuration/v1.0/location".substring(1)
+                    _relativeUrls["getLocations"] = "/service/public/configuration/v1.0/location".substring(1)
+            
+                    _relativeUrls["checkVersionIsUpToDate"] = "/service/public/configuration/v1.0/version".substring(1)
             
     }
 
@@ -68,6 +70,13 @@ class ConfigurationDataManagerClass(val config: PublicConfig, val unauthorizedAc
         var fullUrl : String? = _relativeUrls["getLocations"]
         
         return configurationApiList?.getLocations(fullUrl,   locationType = locationType,  id = id,headers = headers)}
+
+    
+    
+    suspend fun checkVersionIsUpToDate(body: VersionRequest, headers: Map<String, String> = emptyMap()): Response<VersionResponse>? {
+        var fullUrl : String? = _relativeUrls["checkVersionIsUpToDate"]
+        
+        return configurationApiList?.checkVersionIsUpToDate(fullUrl, body = body,headers = headers)}
 
     
     

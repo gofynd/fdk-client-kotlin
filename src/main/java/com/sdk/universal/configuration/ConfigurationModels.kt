@@ -289,8 +289,8 @@ data class Application(
     @SerializedName("created_at")
     var createdAt: String?=null,
     
-    @SerializedName("updated_at")
-    var updatedAt: String?=null,
+    @SerializedName("modified_at")
+    var modifiedAt: String?=null,
     
     @SerializedName("__v")
     var v: Int?=null,
@@ -317,9 +317,24 @@ data class Application(
     var domain: Domain?=null,
     
     @SerializedName("slug")
-    var slug: String?=null
+    var slug: String?=null,
+    
+    @SerializedName("mode")
+    var mode: String?=null,
+    
+    @SerializedName("status")
+    var status: String?=null,
+    
+    @SerializedName("tokens")
+    var tokens: ArrayList<TokenSchema>?=null
     
 ): Parcelable {
+    
+    
+    
+    
+    
+    
     
     
     
@@ -381,39 +396,27 @@ data class Application(
 
              
 /*
-    Model: NotFound
+    Model: TokenSchema
 */
 @Parcelize
-data class NotFound(
+data class TokenSchema(
     
     
     
-    @SerializedName("message")
-    var message: String?=null
+    @SerializedName("token")
+    var token: String?=null,
+    
+    @SerializedName("created_by")
+    var createdBy: @RawValue HashMap<String,Any>?=null,
+    
+    @SerializedName("created_at")
+    var createdAt: String?=null
     
 ): Parcelable {
     
     
     
     
-    
-}
-
-
-
-             
-/*
-    Model: BadRequest
-*/
-@Parcelize
-data class BadRequest(
-    
-    
-    
-    @SerializedName("message")
-    var message: String?=null
-    
-): Parcelable {
     
     
     
@@ -597,6 +600,173 @@ data class Locations(
     var items: ArrayList<LocationCountry>?=null
     
 ): Parcelable {
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: VersionApplication
+*/
+@Parcelize
+data class VersionApplication(
+    
+    
+    
+    @SerializedName("name")
+    var name: String?=null,
+    
+    @SerializedName("version")
+    var version: String?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: VersionDeviceOS
+*/
+@Parcelize
+data class VersionDeviceOS(
+    
+    
+    
+    @SerializedName("name")
+    var name: String?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: VersionDevice
+*/
+@Parcelize
+data class VersionDevice(
+    
+    
+    
+    @SerializedName("os")
+    var os: VersionDeviceOS?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: VersionRequest
+*/
+@Parcelize
+data class VersionRequest(
+    
+    
+    
+    @SerializedName("application")
+    var application: VersionApplication?=null,
+    
+    @SerializedName("device")
+    var device: VersionDevice?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: VersionUpdateDialogue
+*/
+@Parcelize
+data class VersionUpdateDialogue(
+    
+    
+    
+    @SerializedName("type")
+    var type: String?=null,
+    
+    @SerializedName("interval")
+    var interval: Int?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: VersionResponse
+*/
+@Parcelize
+data class VersionResponse(
+    
+    
+    
+    @SerializedName("type")
+    var type: String?=null,
+    
+    @SerializedName("title")
+    var title: String?=null,
+    
+    @SerializedName("description")
+    var description: String?=null,
+    
+    @SerializedName("update_dialog")
+    var updateDialog: VersionUpdateDialogue?=null,
+    
+    @SerializedName("is_app_blocked")
+    var isAppBlocked: Boolean?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+    
     
     
     

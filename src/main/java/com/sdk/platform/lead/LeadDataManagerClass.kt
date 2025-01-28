@@ -44,7 +44,7 @@ class LeadDataManagerClass(val config: PlatformConfig, val unauthorizedAction: (
     }
     
     
-    suspend fun getPlatformTickets(items: Boolean?=null,filters: Boolean?=null,q: String?=null,status: String?=null,priority: PriorityEnum?=null,category: String?=null,pageNo: Int?=null,pageSize: Int?=null, headers: Map<String, String> = emptyMap())
+    suspend fun getPlatformTickets(items: Boolean?=null,filters: Boolean?=null,q: String?=null,status: String?=null,priority: String?=null,category: String?=null,pageNo: Int?=null,pageSize: Int?=null, headers: Map<String, String> = emptyMap())
     : Response<TicketList>? {
 
         return if (config.oauthClient.isAccessTokenValid()) {
@@ -119,30 +119,6 @@ class LeadDataManagerClass(val config: PlatformConfig, val unauthorizedAction: (
     }
     
     
-    suspend fun getFeedbacks(id: String, headers: Map<String, String> = emptyMap())
-    : Response<TicketFeedbackList>? {
-
-        return if (config.oauthClient.isAccessTokenValid()) {
-            leadApiList?.getFeedbacks(
-        companyId = config.companyId,id = id, headers = headers)
-        } else {
-            null
-        }
-    }
-    
-    
-    suspend fun submitFeedback(id: String,body: TicketFeedbackPayload, headers: Map<String, String> = emptyMap())
-    : Response<TicketFeedback>? {
-
-        return if (config.oauthClient.isAccessTokenValid()) {
-            leadApiList?.submitFeedback(
-        companyId = config.companyId,id = id, body = body,headers = headers)
-        } else {
-            null
-        }
-    }
-    
-    
     
     
     
@@ -168,10 +144,10 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     
     
     
-    suspend fun getNewTickets(items: Boolean?=null,filters: Boolean?=null,q: String?=null,status: String?=null,priority: PriorityEnum?=null,category: String?=null, headers: Map<String, String> = emptyMap())
+    suspend fun getTickets(items: Boolean?=null,filters: Boolean?=null,q: String?=null,status: String?=null,priority: String?=null,category: String?=null, headers: Map<String, String> = emptyMap())
     : Response<TicketList>? {
         return if (config.oauthClient.isAccessTokenValid()) {
-                leadApiList?.getNewTickets(companyId = config.companyId ,applicationId = applicationId ,items = items,filters = filters,q = q,status = status,priority = priority,category = category, headers = headers)
+                leadApiList?.getTickets(companyId = config.companyId ,applicationId = applicationId ,items = items,filters = filters,q = q,status = status,priority = priority,category = category, headers = headers)
         } else {
             null
         }
@@ -180,26 +156,24 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     
     
     
-    suspend fun getNewTicket(id: String, headers: Map<String, String> = emptyMap())
+    suspend fun getTicket(id: String, headers: Map<String, String> = emptyMap())
     : Response<Ticket>? {
         return if (config.oauthClient.isAccessTokenValid()) {
-                leadApiList?.getNewTicket(companyId = config.companyId ,applicationId = applicationId ,id = id, headers = headers)
+                leadApiList?.getTicket(companyId = config.companyId ,applicationId = applicationId ,id = id, headers = headers)
         } else {
             null
         }
     }
     
     
-    suspend fun editNewTicket(id: String,body: EditTicketPayload, headers: Map<String, String> = emptyMap())
+    suspend fun editTicket(id: String,body: EditTicketPayload, headers: Map<String, String> = emptyMap())
     : Response<Ticket>? {
         return if (config.oauthClient.isAccessTokenValid()) {
-                leadApiList?.editNewTicket(companyId = config.companyId ,applicationId = applicationId ,id = id, body = body,headers = headers)
+                leadApiList?.editTicket(companyId = config.companyId ,applicationId = applicationId ,id = id, body = body,headers = headers)
         } else {
             null
         }
     }
-    
-    
     
     
     
@@ -214,10 +188,10 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     }
     
     
-    suspend fun getNewTicketHistory(id: String, headers: Map<String, String> = emptyMap())
+    suspend fun getTicketHistory(id: String, headers: Map<String, String> = emptyMap())
     : Response<TicketHistoryList>? {
         return if (config.oauthClient.isAccessTokenValid()) {
-                leadApiList?.getNewTicketHistory(companyId = config.companyId ,applicationId = applicationId ,id = id, headers = headers)
+                leadApiList?.getTicketHistory(companyId = config.companyId ,applicationId = applicationId ,id = id, headers = headers)
         } else {
             null
         }

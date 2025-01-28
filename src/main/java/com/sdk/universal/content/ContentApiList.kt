@@ -12,7 +12,67 @@ interface ContentApiList {
     
     
     @GET
+    suspend fun getBasicDetails(@Url url1: String?   , @HeaderMap headers: Map<String, String>? = null)
+    : Response<BasicDetailsPayloadSchema>
+    
+    
+    @GET
+    suspend fun getMenuContent(@Url url1: String?   , @HeaderMap headers: Map<String, String>? = null)
+    : Response<MenusSchema>
+    
+    
+    @GET
+    suspend fun getMenuContentByType(@Url url1: String?    , @HeaderMap headers: Map<String, String>? = null)
+    : Response<MenuTypeSchema>
+    
+    
+    @GET
+    suspend fun getAnalyticsTags(@Url url1: String?   , @HeaderMap headers: Map<String, String>? = null)
+    : Response<AnalyticsTagsSchema>
+    
+    
+    @GET
+    suspend fun getCustomPage(@Url url1: String?    , @HeaderMap headers: Map<String, String>? = null)
+    : Response<CustomPageBySlugSchema>
+    
+    
+    @GET
+    suspend fun getFooterContent(@Url url1: String?   , @HeaderMap headers: Map<String, String>? = null)
+    : Response<FooterSchema>
+    
+    
+    @GET
+    suspend fun getHomePageContent(@Url url1: String?    ,  @Query("page_type") pageType: String, @HeaderMap headers: Map<String, String>? = null)
+    : Response<HomePageContentSchema>
+    
+    
+    @GET
+    suspend fun getNavbar(@Url url1: String?   , @HeaderMap headers: Map<String, String>? = null)
+    : Response<NavbarSchema>
+    
+    
+    @GET
+    suspend fun getPricingBanner(@Url url1: String?   , @HeaderMap headers: Map<String, String>? = null)
+    : Response<PricingBannerSchema>
+    
+    
+    @GET
+    suspend fun getAllTags(@Url url1: String?   , @HeaderMap headers: Map<String, String>? = null)
+    : Response<TagsSchema>
+    
+    
+    @GET
     suspend fun getCredentialsByEntity(@Url url1: String?    , @HeaderMap headers: Map<String, String>? = null)
     : Response<CredentialsSchema>
+    
+    
+    @GET
+    suspend fun getSDKDocumentation(@Url url1: String?   , @HeaderMap headers: Map<String, String>? = null)
+    : Response<SDKLinksResponseSchema>
+    
+    
+    @GET
+    suspend fun getSDKDocumentationByType(@Url url1: String?    , @HeaderMap headers: Map<String, String>? = null)
+    : Response<SDKbyTypeResponseSchema>
     
 }

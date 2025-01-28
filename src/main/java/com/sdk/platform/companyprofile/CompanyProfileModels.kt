@@ -301,7 +301,7 @@ data class GetAddressSerializer(
     var countryCode: String?=null,
     
     @SerializedName("pincode")
-    var pincode: Int?=null,
+    var pincode: String?=null,
     
     @SerializedName("address_type")
     var addressType: String?=null,
@@ -508,19 +508,24 @@ data class ErrorResponse(
     
     
     
+    @SerializedName("code")
+    var code: Double?=null,
+    
+    @SerializedName("error")
+    var error: String?=null,
+    
     @SerializedName("message")
     var message: String?=null,
     
-    @SerializedName("code")
-    var code: String?=null,
+    @SerializedName("meta")
+    var meta: @RawValue HashMap<String,Any>?=null,
     
     @SerializedName("status")
-    var status: Int?=null,
-    
-    @SerializedName("meta")
-    var meta: @RawValue HashMap<String,Any>?=null
+    var status: Int?=null
     
 ): Parcelable {
+    
+    
     
     
     
@@ -584,7 +589,7 @@ data class CreateUpdateAddressSerializer(
     var countryCode: String?=null,
     
     @SerializedName("pincode")
-    var pincode: Int?=null,
+    var pincode: String?=null,
     
     @SerializedName("address_type")
     var addressType: String?=null,
@@ -739,6 +744,9 @@ data class ProfileSuccessResponse(
     @SerializedName("uid")
     var uid: Int?=null,
     
+    @SerializedName("data")
+    var data: @RawValue ArrayList<HashMap<String,Any>>?=null,
+    
     @SerializedName("message")
     var message: String?=null,
     
@@ -746,6 +754,8 @@ data class ProfileSuccessResponse(
     var success: Boolean?=null
     
 ): Parcelable {
+    
+    
     
     
     
@@ -979,10 +989,10 @@ data class GetBrandResponseSerializer(
 
              
 /*
-    Model: CreateBrandRequestSerializer
+    Model: CreateUpdateBrandRequestSerializer
 */
 @Parcelize
-data class CreateBrandRequestSerializer(
+data class CreateUpdateBrandRequestSerializer(
     
     
     
@@ -1022,73 +1032,6 @@ data class CreateBrandRequestSerializer(
 ): Parcelable {
     
     
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-}
-
-
-
-             
-/*
-    Model: UpdateBrandRequestSerializer
-*/
-@Parcelize
-data class UpdateBrandRequestSerializer(
-    
-    
-    
-    @SerializedName("_custom_json")
-    var customJson: @RawValue HashMap<String,Any>?=null,
-    
-    @SerializedName("_locale_language")
-    var localeLanguage: @RawValue HashMap<String,Any>?=null,
-    
-    @SerializedName("synonyms")
-    var synonyms: ArrayList<String>?=null,
-    
-    @SerializedName("company_id")
-    var companyId: Int?=null,
-    
-    @SerializedName("description")
-    var description: String?=null,
-    
-    @SerializedName("logo")
-    var logo: String?=null,
-    
-    @SerializedName("brand_tier")
-    var brandTier: String?=null,
-    
-    @SerializedName("uid")
-    var uid: Int?=null,
-    
-    @SerializedName("banner")
-    var banner: BrandBannerSerializer?=null,
-    
-    @SerializedName("name")
-    var name: String?=null
-    
-): Parcelable {
     
     
     
@@ -1382,9 +1325,14 @@ data class Page(
     var type: String?=null,
     
     @SerializedName("size")
-    var size: Int?=null
+    var size: Int?=null,
+    
+    @SerializedName("total")
+    var total: Int?=null
     
 ): Parcelable {
+    
+    
     
     
     
@@ -2013,7 +1961,7 @@ data class AddressSerializer(
     var countryCode: String?=null,
     
     @SerializedName("pincode")
-    var pincode: Int?=null,
+    var pincode: String?=null,
     
     @SerializedName("address_type")
     var addressType: String?=null,

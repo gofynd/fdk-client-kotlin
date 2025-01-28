@@ -104,15 +104,10 @@ data class StartResponse(
     @SerializedName("upload")
     var upload: Upload?=null,
     
-    @SerializedName("cdn")
-    var cdn: CDN?=null,
-    
     @SerializedName("tags")
     var tags: ArrayList<String>?=null
     
 ): Parcelable {
-    
-    
     
     
     

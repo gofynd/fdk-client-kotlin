@@ -71,6 +71,7 @@ class UserDataManagerClass(val config: PlatformConfig, val unauthorizedAction: (
     
     
     
+    
 
 inner class ApplicationClient(val applicationId:String,val config: PlatformConfig){
 
@@ -250,6 +251,16 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     : Response<UserGroupResponseSchema>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 userApiList?.updateUserGroupPartially(companyId = config.companyId ,applicationId = applicationId ,groupId = groupId, body = body,headers = headers)
+        } else {
+            null
+        }
+    }
+    
+    
+    suspend fun getUsersByByGroupId(groupId: String, headers: Map<String, String> = emptyMap())
+    : Response<CustomerListResponseSchema>? {
+        return if (config.oauthClient.isAccessTokenValid()) {
+                userApiList?.getUsersByByGroupId(companyId = config.companyId ,applicationId = applicationId ,groupId = groupId, headers = headers)
         } else {
             null
         }

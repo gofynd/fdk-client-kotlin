@@ -19,9 +19,9 @@ class FileStorageDataManagerClass(val config: ApplicationConfig, val unauthorize
 
     init{
             
-                    _relativeUrls["startUpload"] = "/service/application/assets/v1.0/namespaces/{namespace}/upload/start".substring(1)
+                    _relativeUrls["startUpload"] = "/service/application/assets/v2.0/namespaces/{namespace}/upload/start".substring(1)
             
-                    _relativeUrls["completeUpload"] = "/service/application/assets/v1.0/namespaces/{namespace}/upload/complete".substring(1)
+                    _relativeUrls["completeUpload"] = "/service/application/assets/v2.0/namespaces/{namespace}/upload/complete".substring(1)
             
                     _relativeUrls["signUrls"] = "/service/application/assets/v1.0/sign-urls".substring(1)
             

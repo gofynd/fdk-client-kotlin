@@ -297,14 +297,14 @@ data class UrlInfo(
     
     
     
-    @SerializedName("original")
-    var original: String?=null,
-    
     @SerializedName("hash")
     var hash: String?=null,
     
-    @SerializedName("short_url")
-    var shortUrl: String?=null
+    @SerializedName("url_hash")
+    var urlHash: String?=null,
+    
+    @SerializedName("alias")
+    var alias: String?=null
     
 ): Parcelable {
     

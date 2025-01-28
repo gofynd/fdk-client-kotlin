@@ -37,21 +37,25 @@ interface ThemeApiList {
     suspend fun getFonts(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @HeaderMap headers: Map<String, String>? = null)
     : Response<FontsSchema>
     
+    @GET ("/service/platform/theme/v2.0/company/{company_id}/application/{application_id}/fonts")
+    suspend fun getFontsV2(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @HeaderMap headers: Map<String, String>? = null)
+    : Response<FontsSchema>
+    
     @GET ("/service/platform/theme/v2.0/company/{company_id}/themes")
     suspend fun getCompanyLevelThemes(@Path("company_id") companyId: String, @Query("search_text") searchText: String?, @HeaderMap headers: Map<String, String>? = null)
-    : Response<ArrayList<CompanyThemeSchema>>
+    : Response<ArrayList<ThemesSchema>>
     
     @GET ("/service/platform/theme/v2.0/company/{company_id}/private_themes")
     suspend fun getCompanyLevelPrivateThemes(@Path("company_id") companyId: String, @Query("search_text") searchText: String?, @HeaderMap headers: Map<String, String>? = null)
-    : Response<ArrayList<CompanyPrivateTheme>>
+    : Response<ArrayList<ThemesSchema>>
     
     @POST ("/service/platform/theme/v2.0/company/{company_id}")
-    suspend fun addMarketplaceThemeToCompany(@Path("company_id") companyId: String,@Body body: ThemeReq, @HeaderMap headers: Map<String, String>? = null)
-    : Response<CompanyThemeSchema>
+    suspend fun addMarketplaceThemeToCompany(@Path("company_id") companyId: String,@Body body: CompanyThemeReqSchema, @HeaderMap headers: Map<String, String>? = null)
+    : Response<ThemesSchema>
     
     @DELETE ("/service/platform/theme/v2.0/company/{company_id}/{theme_id}")
     suspend fun deleteCompanyTheme(@Path("company_id") companyId: String, @Path("theme_id") themeId: String, @HeaderMap headers: Map<String, String>? = null)
-    : Response<CompanyThemeSchema>
+    : Response<ThemesSchema>
     
     @GET ("/service/platform/theme/v2.0/company/{company_id}/application/{application_id}/themes")
     suspend fun getApplicationThemes(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @HeaderMap headers: Map<String, String>? = null)
@@ -66,15 +70,11 @@ interface ThemeApiList {
     : Response<ThemesSchema>
     
     @PUT ("/service/platform/theme/v2.0/company/{company_id}/application/{application_id}/{theme_id}")
-    suspend fun updateTheme(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Path("theme_id") themeId: String,@Body body: UpdateThemeRequestBody, @HeaderMap headers: Map<String, String>? = null)
+    suspend fun updateTheme(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Path("theme_id") themeId: String,@Body body: ThemesSchema, @HeaderMap headers: Map<String, String>? = null)
     : Response<ThemesSchema>
     
     @DELETE ("/service/platform/theme/v2.0/company/{company_id}/application/{application_id}/{theme_id}")
     suspend fun deleteTheme(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Path("theme_id") themeId: String, @HeaderMap headers: Map<String, String>? = null)
-    : Response<ThemesSchema>
-    
-    @POST ("/service/platform/theme/v2.0/company/{company_id}/application/{application_id}/")
-    suspend fun addThemeToApplication(@Path("company_id") companyId: String, @Path("application_id") applicationId: String,@Body body: ThemeReq, @HeaderMap headers: Map<String, String>? = null)
     : Response<ThemesSchema>
     
     @PATCH ("/service/platform/theme/v2.0/company/{company_id}/application/{application_id}/{theme_id}/name")
@@ -93,6 +93,10 @@ interface ThemeApiList {
     suspend fun getAppliedTheme(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @HeaderMap headers: Map<String, String>? = null)
     : Response<ThemesSchema>
     
+    @POST ("/service/platform/theme/v2.0/company/{company_id}/application/{application_id}")
+    suspend fun addThemeToApplication(@Path("company_id") companyId: String, @Path("application_id") applicationId: String,@Body body: ThemesSchema, @HeaderMap headers: Map<String, String>? = null)
+    : Response<ThemesSchema>
+    
     @GET ("/service/platform/theme/v2.0/company/{company_id}/application/{application_id}/{theme_id}/preview")
     suspend fun getThemeForPreview(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Path("theme_id") themeId: String, @HeaderMap headers: Map<String, String>? = null)
     : Response<ThemesSchema>
@@ -109,8 +113,16 @@ interface ThemeApiList {
     suspend fun upgradeTheme(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Path("theme_id") themeId: String, @HeaderMap headers: Map<String, String>? = null)
     : Response<ThemesSchema>
     
+    @GET ("/service/platform/theme/v2.0/company/{company_id}/application/{application_id}/slug/{slug_name}/latest")
+    suspend fun getLatestVersionOfThemeBySlug(@Path("application_id") applicationId: String, @Path("company_id") companyId: String, @Path("slug_name") slugName: String, @HeaderMap headers: Map<String, String>? = null)
+    : Response<ArrayList<MarketplaceTheme>>
+    
     @GET ("/service/platform/theme/v1.0/company/{company_id}/application/{application_id}/extension-section")
     suspend fun getExtensionSections(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Query("type") type: String?, @Query("company_mode") companyMode: String?, @HeaderMap headers: Map<String, String>? = null)
     : Response<ArrayList<GetExtensionSectionRes>>
+    
+    @GET ("/service/platform/theme/v2.0/company/{company_id}/default")
+    suspend fun getDefaultMarketplaceTheme(@Path("company_id") companyId: String, @HeaderMap headers: Map<String, String>? = null)
+    : Response<MarketplaceTheme>
     
 }

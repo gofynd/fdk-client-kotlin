@@ -92,7 +92,7 @@ class CompanyProfileDataManagerClass(val config: PlatformConfig, val unauthorize
     }
     
     
-    suspend fun editBrand(brandId: String,body: UpdateBrandRequestSerializer, headers: Map<String, String> = emptyMap())
+    suspend fun editBrand(brandId: String,body: CreateUpdateBrandRequestSerializer, headers: Map<String, String> = emptyMap())
     : Response<ProfileSuccessResponse>? {
 
         return if (config.oauthClient.isAccessTokenValid()) {
@@ -104,7 +104,7 @@ class CompanyProfileDataManagerClass(val config: PlatformConfig, val unauthorize
     }
     
     
-    suspend fun createBrand(body: CreateBrandRequestSerializer, headers: Map<String, String> = emptyMap())
+    suspend fun createBrand(body: CreateUpdateBrandRequestSerializer, headers: Map<String, String> = emptyMap())
     : Response<ProfileSuccessResponse>? {
 
         return if (config.oauthClient.isAccessTokenValid()) {
@@ -210,90 +210,6 @@ class CompanyProfileDataManagerClass(val config: PlatformConfig, val unauthorize
         }
     }
     
-    
-    
-        
-            
-                
-            
-            
-        
-            
-                
-            
-            
-        
-            
-                
-            
-            
-        
-            
-                
-            
-            
-        
-            
-            
-        
-            
-                
-            
-            
-        
-            
-                
-            
-            
-        
-            
-                
-            
-            
-        
-            
-                
-            
-            
-        
-    /**
-    *
-    * Summary: Paginator for getLocations
-    **/
-    fun getLocationsPaginator(companyId: String, storeType: String?=null, q: String?=null, stage: String?=null, pageSize: Int?=null, locationIds: ArrayList<Int>?=null, types: ArrayList<String>?=null, tags: ArrayList<String>?=null) : Paginator<LocationListSerializer>{
-        val paginator = Paginator<LocationListSerializer>()
-        paginator.setCallBack(object : PaginatorCallback<LocationListSerializer> {
-
-            override suspend fun onNext(
-                onResponse: (Event<LocationListSerializer>?,FdkError?) -> Unit){
-
-                if (config.oauthClient.isAccessTokenValid()) {
-                    val pageId = paginator.nextId
-                    val pageNo = paginator.pageNo
-                    val pageType = "number"
-                    companyProfileApiList?.getLocations(
-                    companyId = config.companyId, storeType = storeType, q = q, stage = stage, pageNo = pageNo, pageSize = pageSize, locationIds = locationIds, types = types, tags = tags
-                    )?.safeAwait{ response, error ->
-                        response?.let {
-                            val page = response.peekContent()?.page
-                            paginator.setPaginator(hasNext=page?.hasNext?:false,pageNo=if (page?.hasNext == true) ((pageNo ?: 0) + 1) else pageNo)
-                            onResponse.invoke(response,null)
-                        }
-
-                        error?.let {
-                            onResponse.invoke(null,error)
-                        }
-                    }
-
-                } else {
-                    null
-                }
-            }
-
-
-    })
-        return paginator
-    }
     
     suspend fun createLocation(body: LocationSerializer, headers: Map<String, String> = emptyMap())
     : Response<ProfileSuccessResponse>? {

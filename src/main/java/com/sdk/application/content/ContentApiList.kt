@@ -82,16 +82,6 @@ interface ContentApiList {
     
     
     @GET
-    suspend fun getSlideshows(@Url url1: String?    ,   @Query("page_no") pageNo: Int?, @Query("page_size") pageSize: Int?, @HeaderMap headers: Map<String, String>? = null)
-    : Response<SlideshowGetResponse>
-    
-    
-    @GET
-    suspend fun getSlideshow(@Url url1: String?    , @HeaderMap headers: Map<String, String>? = null)
-    : Response<SlideshowSchema>
-    
-    
-    @GET
     suspend fun getSupportInformation(@Url url1: String?   , @HeaderMap headers: Map<String, String>? = null)
     : Response<Support>
     
@@ -102,13 +92,13 @@ interface ContentApiList {
     
     
     @GET
-    suspend fun getPage(@Url url1: String?     ,  @Query("root_id") rootId: String?, @HeaderMap headers: Map<String, String>? = null)
-    : Response<PageSchema>
+    suspend fun getPages(@Url url1: String?    ,   @Query("page_no") pageNo: Int?, @Query("page_size") pageSize: Int?, @HeaderMap headers: Map<String, String>? = null)
+    : Response<PageGetResponse>
     
     
     @GET
-    suspend fun getPages(@Url url1: String?    ,   @Query("page_no") pageNo: Int?, @Query("page_size") pageSize: Int?, @HeaderMap headers: Map<String, String>? = null)
-    : Response<PageGetResponse>
+    suspend fun getPage(@Url url1: String?     ,  @Query("root_id") rootId: String?, @HeaderMap headers: Map<String, String>? = null)
+    : Response<PageSchema>
     
     
     @GET
@@ -117,7 +107,22 @@ interface ContentApiList {
     
     
     @GET
-    suspend fun getCustomFields(@Url url1: String?     , @HeaderMap headers: Map<String, String>? = null)
+    suspend fun getCustomObjects(@Url url1: String?    ,       @Query("definition_id") definitionId: String?, @Query("page_no") pageNo: String, @Query("page_size") pageSize: String, @Query("type") type: String?, @Query("ids") ids: String?, @Query("search") search: String?, @HeaderMap headers: Map<String, String>? = null)
+    : Response<CustomObjectsSchema>
+    
+    
+    @GET
+    suspend fun getCustomFieldDefinitions(@Url url1: String?   , @HeaderMap headers: Map<String, String>? = null)
+    : Response<CustomFieldDefinitionsSchema>
+    
+    
+    @GET
+    suspend fun getCustomFieldDefinition(@Url url1: String?    , @HeaderMap headers: Map<String, String>? = null)
+    : Response<CustomFieldDefinitionDetailResSchema>
+    
+    
+    @GET
+    suspend fun getCustomFields(@Url url1: String?     ,  @Query("resource_ids") resourceIds: String, @HeaderMap headers: Map<String, String>? = null)
     : Response<CustomFieldsResponseByResourceIdSchema>
     
 }

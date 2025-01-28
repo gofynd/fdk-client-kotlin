@@ -96,6 +96,38 @@ data class GeneralConfigResponse(
 
              
 /*
+    Model: SupportSchema
+*/
+@Parcelize
+data class SupportSchema(
+    
+    
+    
+    @SerializedName("value")
+    var value: String?=null,
+    
+    @SerializedName("description")
+    var description: String?=null,
+    
+    @SerializedName("enabled")
+    var enabled: Boolean?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
     Model: SupportCommunicationSchema
 */
 @Parcelize
@@ -118,38 +150,6 @@ data class SupportCommunicationSchema(
 ): Parcelable {
     
     
-    
-    
-    
-    
-    
-    
-    
-    
-    
-}
-
-
-
-             
-/*
-    Model: SupportSchema
-*/
-@Parcelize
-data class SupportSchema(
-    
-    
-    
-    @SerializedName("value")
-    var value: String?=null,
-    
-    @SerializedName("description")
-    var description: String?=null,
-    
-    @SerializedName("enabled")
-    var enabled: Boolean?=null
-    
-): Parcelable {
     
     
     
@@ -245,9 +245,14 @@ data class Page(
     var type: String?=null,
     
     @SerializedName("size")
-    var size: Int?=null
+    var size: Int?=null,
+    
+    @SerializedName("total")
+    var total: Int?=null
     
 ): Parcelable {
+    
+    
     
     
     
@@ -348,7 +353,7 @@ data class CreateCustomFormPayload(
     var headerImage: String?=null,
     
     @SerializedName("priority")
-    var priority: PriorityEnum?=null,
+    var priority: String?=null,
     
     @SerializedName("should_notify")
     var shouldNotify: Boolean?=null,
@@ -404,10 +409,7 @@ data class EditCustomFormPayload(
     var description: String?=null,
     
     @SerializedName("priority")
-    var priority: PriorityEnum?=null,
-    
-    @SerializedName("header_image")
-    var headerImage: String?=null,
+    var priority: String?=null,
     
     @SerializedName("should_notify")
     var shouldNotify: Boolean?=null,
@@ -422,8 +424,6 @@ data class EditCustomFormPayload(
     var pollForAssignment: PollForAssignment?=null
     
 ): Parcelable {
-    
-    
     
     
     
@@ -528,6 +528,33 @@ data class AgentChangePayload(
 
              
 /*
+    Model: NotifyUser
+*/
+@Parcelize
+data class NotifyUser(
+    
+    
+    
+    @SerializedName("country_code")
+    var countryCode: String?=null,
+    
+    @SerializedName("phone_number")
+    var phoneNumber: String?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
     Model: Filter
 */
 @Parcelize
@@ -545,9 +572,14 @@ data class Filter(
     var statuses: ArrayList<Status>?=null,
     
     @SerializedName("assignees")
-    var assignees: @RawValue ArrayList<HashMap<String,Any>>?=null
+    var assignees: @RawValue ArrayList<HashMap<String,Any>>?=null,
+    
+    @SerializedName("all_categories")
+    var allCategories: @RawValue HashMap<String,Any>?=null
     
 ): Parcelable {
+    
+    
     
     
     
@@ -627,9 +659,14 @@ data class CreatedOn(
     
     
     @SerializedName("user_agent")
-    var userAgent: String?=null
+    var userAgent: String?=null,
+    
+    @SerializedName("platform")
+    var platform: String?=null
     
 ): Parcelable {
+    
+    
     
     
     
@@ -718,6 +755,38 @@ data class TicketContent(
 
              
 /*
+    Model: AdditionalInfoSchema
+*/
+@Parcelize
+data class AdditionalInfoSchema(
+    
+    
+    
+    @SerializedName("display_name")
+    var displayName: String?=null,
+    
+    @SerializedName("display_value")
+    var displayValue: String?=null,
+    
+    @SerializedName("priority")
+    var priority: Double?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
     Model: AddTicketPayload
 */
 @Parcelize
@@ -737,13 +806,23 @@ data class AddTicketPayload(
     @SerializedName("category")
     var category: String?=null,
     
+    @SerializedName("additional_info")
+    var additionalInfo: ArrayList<AdditionalInfoSchema>?=null,
+    
     @SerializedName("content")
     var content: TicketContent?=null,
     
     @SerializedName("_custom_json")
-    var customJson: @RawValue HashMap<String,Any>?=null
+    var customJson: @RawValue HashMap<String,Any>?=null,
+    
+    @SerializedName("subscribers")
+    var subscribers: ArrayList<String>?=null
     
 ): Parcelable {
+    
+    
+    
+    
     
     
     
@@ -773,7 +852,7 @@ data class Priority(
     
     
     @SerializedName("key")
-    var key: PriorityEnum?=null,
+    var key: String?=null,
     
     @SerializedName("display")
     var display: String?=null,
@@ -986,9 +1065,6 @@ data class CustomForm(
     @SerializedName("description")
     var description: String?=null,
     
-    @SerializedName("priority")
-    var priority: Priority?=null,
-    
     @SerializedName("login_required")
     var loginRequired: Boolean?=null,
     
@@ -1010,10 +1086,33 @@ data class CustomForm(
     @SerializedName("poll_for_assignment")
     var pollForAssignment: PollForAssignment?=null,
     
+    @SerializedName("available_assignees")
+    var availableAssignees: ArrayList<String>?=null,
+    
     @SerializedName("_id")
-    var id: String?=null
+    var id: String?=null,
+    
+    @SerializedName("created_at")
+    var createdAt: String?=null,
+    
+    @SerializedName("updated_at")
+    var updatedAt: String?=null,
+    
+    @SerializedName("__v")
+    var v: Double?=null,
+    
+    @SerializedName("created_by")
+    var createdBy: String?=null
     
 ): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+    
     
     
     
@@ -1097,7 +1196,7 @@ data class TicketCategory(
     var key: String?=null,
     
     @SerializedName("sub_categories")
-    var subCategories: TicketCategory?=null,
+    var subCategories: ArrayList<TicketCategory>?=null,
     
     @SerializedName("group_id")
     var groupId: Double?=null,
@@ -1136,14 +1235,9 @@ data class FeedbackResponseItem(
     var display: String?=null,
     
     @SerializedName("key")
-    var key: String?=null,
-    
-    @SerializedName("value")
-    var value: String?=null
+    var key: String?=null
     
 ): Parcelable {
-    
-    
     
     
     
@@ -1186,9 +1280,14 @@ data class TicketFeedback(
     var updatedAt: String?=null,
     
     @SerializedName("created_at")
-    var createdAt: String?=null
+    var createdAt: String?=null,
+    
+    @SerializedName("__v")
+    var v: Double?=null
     
 ): Parcelable {
+    
+    
     
     
     
@@ -1243,9 +1342,14 @@ data class TicketHistory(
     var updatedAt: String?=null,
     
     @SerializedName("created_at")
-    var createdAt: String?=null
+    var createdAt: String?=null,
+    
+    @SerializedName("__v")
+    var v: Double?=null
     
 ): Parcelable {
+    
+    
     
     
     
@@ -1333,9 +1437,34 @@ data class Ticket(
     var updatedAt: String?=null,
     
     @SerializedName("created_at")
-    var createdAt: String?=null
+    var createdAt: String?=null,
+    
+    @SerializedName("video_room_id")
+    var videoRoomId: String?=null,
+    
+    @SerializedName("subscribers")
+    var subscribers: ArrayList<String>?=null,
+    
+    @SerializedName("additional_info")
+    var additionalInfo: ArrayList<AdditionalInfoSchema>?=null,
+    
+    @SerializedName("__v")
+    var v: Double?=null,
+    
+    @SerializedName("attachments")
+    var attachments: ArrayList<TicketAsset>?=null
     
 ): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     
     
     
@@ -1383,10 +1512,42 @@ data class Ticket(
 
              
 /*
-    Model: ErrorMessage
+    Model: Error4XX
 */
 @Parcelize
-data class ErrorMessage(
+data class Error4XX(
+    
+    
+    
+    @SerializedName("message")
+    var message: @RawValue HashMap<String,Any>?=null,
+    
+    @SerializedName("stack")
+    var stack: String?=null,
+    
+    @SerializedName("sentry")
+    var sentry: String?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: NotFoundError
+*/
+@Parcelize
+data class NotFoundError(
     
     
     
@@ -1404,66 +1565,6 @@ data class ErrorMessage(
 
 
 
-
-
-
-    /*
-        Enum: PriorityEnum
-        Used By: Lead
-    */
-    enum class PriorityEnum(val value:String){
-        
-        @SerializedName("low")
-        low("low"), 
-        
-        @SerializedName("medium")
-        medium("medium"), 
-        
-        @SerializedName("high")
-        high("high"), 
-        
-        @SerializedName("urgent")
-        urgent("urgent");
-        
-
-        companion object {
-            fun valueOfPriorityEnum(value : String): PriorityEnum? {
-                return PriorityEnum.values().find {
-                    it.value == value
-                }
-            }
-        }
-    }
-
-
-
-    /*
-        Enum: HistoryTypeEnum
-        Used By: Lead
-    */
-    enum class HistoryTypeEnum(val value:String){
-        
-        @SerializedName("rating")
-        rating("rating"), 
-        
-        @SerializedName("log")
-        log("log"), 
-        
-        @SerializedName("comment")
-        comment("comment"), 
-        
-        @SerializedName("thread")
-        thread("thread");
-        
-
-        companion object {
-            fun valueOfHistoryTypeEnum(value : String): HistoryTypeEnum? {
-                return HistoryTypeEnum.values().find {
-                    it.value == value
-                }
-            }
-        }
-    }
 
 
 
@@ -1513,6 +1614,69 @@ data class ErrorMessage(
 
 
     /*
+        Enum: PriorityEnum
+        Used By: Lead
+    */
+    enum class PriorityEnum(val value:String){
+        
+        @SerializedName("high")
+        high("high"), 
+        
+        @SerializedName("low")
+        low("low"), 
+        
+        @SerializedName("medium")
+        medium("medium"), 
+        
+        @SerializedName("urgent")
+        urgent("urgent");
+        
+
+        companion object {
+            fun valueOfPriorityEnum(value : String): PriorityEnum? {
+                return PriorityEnum.values().find {
+                    it.value == value
+                }
+            }
+        }
+    }
+
+
+
+    /*
+        Enum: HistoryTypeEnum
+        Used By: Lead
+    */
+    enum class HistoryTypeEnum(val value:String){
+        
+        @SerializedName("rating")
+        rating("rating"), 
+        
+        @SerializedName("log")
+        log("log"), 
+        
+        @SerializedName("comment")
+        comment("comment"), 
+        
+        @SerializedName("diff")
+        diff("diff"), 
+        
+        @SerializedName("thread")
+        thread("thread");
+        
+
+        companion object {
+            fun valueOfHistoryTypeEnum(value : String): HistoryTypeEnum? {
+                return HistoryTypeEnum.values().find {
+                    it.value == value
+                }
+            }
+        }
+    }
+
+
+
+    /*
         Enum: TicketSourceEnum
         Used By: Lead
     */
@@ -1522,7 +1686,10 @@ data class ErrorMessage(
         platformPanel("platform_panel"), 
         
         @SerializedName("sales_channel")
-        salesChannel("sales_channel");
+        salesChannel("sales_channel"), 
+        
+        @SerializedName("partner_panel")
+        partnerPanel("partner_panel");
         
 
         companion object {

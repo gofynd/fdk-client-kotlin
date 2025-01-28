@@ -16,33 +16,23 @@ interface LogisticApiList {
     : Response<PincodeApiResponse>
     
     
-    @POST
-    suspend fun getTatProduct(@Url url1: String?   ,@Body body: TATViewRequest, @HeaderMap headers: Map<String, String>? = null)
-    : Response<TATViewResponse>
-    
-    
     @GET
     suspend fun getAllCountries(@Url url1: String?   , @HeaderMap headers: Map<String, String>? = null)
     : Response<CountryListResponse>
     
     
-    @POST
-    suspend fun getPincodeZones(@Url url1: String?   ,@Body body: GetZoneFromPincodeViewRequest, @HeaderMap headers: Map<String, String>? = null)
-    : Response<GetZoneFromPincodeViewResponse>
-    
-    
-    @POST
-    suspend fun getOptimalLocations(@Url url1: String?   ,@Body body: ReAssignStoreRequest, @HeaderMap headers: Map<String, String>? = null)
-    : Response<ReAssignStoreResponse>
+    @GET
+    suspend fun getZones(@Url url1: String?      ,            @Query("stage") stage: String?, @Query("type") type: String?, @Query("page_size") pageSize: Int?, @Query("page_no") pageNo: Int?, @Query("is_active") isActive: Boolean?, @Query("q") q: String?, @Query("country_iso_code") countryIsoCode: String?, @Query("pincode") pincode: String?, @Query("state") state: String?, @Query("city") city: String?, @Query("sector") sector: String?, @HeaderMap headers: Map<String, String>? = null)
+    : Response<ListViewResponseV2>
     
     
     @GET
-    suspend fun getLocations(@Url url1: String?    ,          @Query("x-application-id") xApplicationId: String, @Query("x-application-data") xApplicationData: String, @Query("country") country: String?, @Query("state") state: String?, @Query("city") city: String?, @Query("pincode") pincode: Int?, @Query("sector") sector: String?, @Query("page_no") pageNo: Int?, @Query("page_size") pageSize: Int?, @HeaderMap headers: Map<String, String>? = null)
-    : Response<GetStoreResponse>
+    suspend fun getGeoAreas(@Url url1: String?      ,           @Query("page_size") pageSize: Int?, @Query("page_no") pageNo: Int?, @Query("type") type: String?, @Query("is_active") isActive: Boolean?, @Query("q") q: String?, @Query("country_iso_code") countryIsoCode: String?, @Query("state") state: String?, @Query("city") city: String?, @Query("pincode") pincode: String?, @Query("sector") sector: String?, @HeaderMap headers: Map<String, String>? = null)
+    : Response<GeoAreaGetResponseBody>
     
     
     @GET
-    suspend fun getCountries(@Url url1: String?    ,     @Query("onboarding") onboarding: Boolean?, @Query("page_no") pageNo: Int?, @Query("page_size") pageSize: Int?, @Query("q") q: String?, @HeaderMap headers: Map<String, String>? = null)
+    suspend fun getCountries(@Url url1: String?    ,      @Query("onboard") onboard: Boolean?, @Query("page_no") pageNo: Int?, @Query("page_size") pageSize: Int?, @Query("q") q: String?, @Query("hierarchy") hierarchy: String?, @HeaderMap headers: Map<String, String>? = null)
     : Response<GetCountries>
     
     
@@ -52,7 +42,7 @@ interface LogisticApiList {
     
     
     @GET
-    suspend fun getLocalities(@Url url1: String?     ,       @Query("country") country: String?, @Query("state") state: String?, @Query("city") city: String?, @Query("page_no") pageNo: Int?, @Query("page_size") pageSize: Int?, @Query("q") q: String?, @HeaderMap headers: Map<String, String>? = null)
+    suspend fun getLocalities(@Url url1: String?     ,        @Query("country") country: String?, @Query("state") state: String?, @Query("city") city: String?, @Query("page_no") pageNo: Int?, @Query("page_size") pageSize: Int?, @Query("q") q: String?, @Query("name") name: String?, @HeaderMap headers: Map<String, String>? = null)
     : Response<GetLocalities>
     
     
@@ -64,5 +54,10 @@ interface LogisticApiList {
     @POST
     suspend fun validateAddress(@Url url1: String?     ,@Body body: ValidateAddressRequest, @HeaderMap headers: Map<String, String>? = null)
     : Response<ValidateAddressRequest>
+    
+    
+    @POST
+    suspend fun createShipments(@Url url1: String?     ,@Body body: GenerateShipmentsRequest, @HeaderMap headers: Map<String, String>? = null)
+    : Response<GenerateShipmentsAndCourierPartnerResponse>
     
 }

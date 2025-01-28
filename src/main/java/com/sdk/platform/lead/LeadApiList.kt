@@ -10,7 +10,7 @@ import com.sdk.platform.*
 interface LeadApiList {
     
     @GET ("/service/platform/lead/v1.0/company/{company_id}/ticket")
-    suspend fun getPlatformTickets(@Path("company_id") companyId: String, @Query("items") items: Boolean?, @Query("filters") filters: Boolean?, @Query("q") q: String?, @Query("status") status: String?, @Query("priority") priority: PriorityEnum?, @Query("category") category: String?, @Query("page_no") pageNo: Int?, @Query("page_size") pageSize: Int?, @HeaderMap headers: Map<String, String>? = null)
+    suspend fun getPlatformTickets(@Path("company_id") companyId: String, @Query("items") items: Boolean?, @Query("filters") filters: Boolean?, @Query("q") q: String?, @Query("status") status: String?, @Query("priority") priority: String?, @Query("category") category: String?, @Query("page_no") pageNo: Int?, @Query("page_size") pageSize: Int?, @HeaderMap headers: Map<String, String>? = null)
     : Response<TicketList>
     
     @POST ("/service/platform/lead/v1.0/company/{company_id}/ticket")
@@ -18,7 +18,7 @@ interface LeadApiList {
     : Response<Ticket>
     
     @GET ("/service/platform/lead/v1.0/company/{company_id}/application/{application_id}/ticket")
-    suspend fun getNewTickets(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Query("items") items: Boolean?, @Query("filters") filters: Boolean?, @Query("q") q: String?, @Query("status") status: String?, @Query("priority") priority: PriorityEnum?, @Query("category") category: String?, @HeaderMap headers: Map<String, String>? = null)
+    suspend fun getTickets(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Query("items") items: Boolean?, @Query("filters") filters: Boolean?, @Query("q") q: String?, @Query("status") status: String?, @Query("priority") priority: String?, @Query("category") category: String?, @HeaderMap headers: Map<String, String>? = null)
     : Response<TicketList>
     
     @GET ("/service/platform/lead/v1.0/company/{company_id}/ticket/{id}")
@@ -30,11 +30,11 @@ interface LeadApiList {
     : Response<Ticket>
     
     @GET ("/service/platform/lead/v1.0/company/{company_id}/application/{application_id}/ticket/{id}")
-    suspend fun getNewTicket(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Path("id") id: String, @HeaderMap headers: Map<String, String>? = null)
+    suspend fun getTicket(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Path("id") id: String, @HeaderMap headers: Map<String, String>? = null)
     : Response<Ticket>
     
     @PUT ("/service/platform/lead/v1.0/company/{company_id}/application/{application_id}/ticket/{id}")
-    suspend fun editNewTicket(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Path("id") id: String,@Body body: EditTicketPayload, @HeaderMap headers: Map<String, String>? = null)
+    suspend fun editTicket(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Path("id") id: String,@Body body: EditTicketPayload, @HeaderMap headers: Map<String, String>? = null)
     : Response<Ticket>
     
     @POST ("/service/platform/lead/v1.0/company/{company_id}/ticket/{id}/history")
@@ -45,20 +45,12 @@ interface LeadApiList {
     suspend fun getPlatformTicketHistory(@Path("company_id") companyId: String, @Path("id") id: String, @HeaderMap headers: Map<String, String>? = null)
     : Response<TicketHistoryList>
     
-    @GET ("/service/platform/lead/v1.0/company/{company_id}/ticket/{id}/feedback")
-    suspend fun getFeedbacks(@Path("company_id") companyId: String, @Path("id") id: String, @HeaderMap headers: Map<String, String>? = null)
-    : Response<TicketFeedbackList>
-    
-    @POST ("/service/platform/lead/v1.0/company/{company_id}/ticket/{id}/feedback")
-    suspend fun submitFeedback(@Path("company_id") companyId: String, @Path("id") id: String,@Body body: TicketFeedbackPayload, @HeaderMap headers: Map<String, String>? = null)
-    : Response<TicketFeedback>
-    
     @POST ("/service/platform/lead/v1.0/company/{company_id}/application/{application_id}/ticket/{id}/history")
     suspend fun createNewHistory(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Path("id") id: String,@Body body: TicketHistoryPayload, @HeaderMap headers: Map<String, String>? = null)
     : Response<TicketHistory>
     
     @GET ("/service/platform/lead/v1.0/company/{company_id}/application/{application_id}/ticket/{id}/history")
-    suspend fun getNewTicketHistory(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Path("id") id: String, @HeaderMap headers: Map<String, String>? = null)
+    suspend fun getTicketHistory(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Path("id") id: String, @HeaderMap headers: Map<String, String>? = null)
     : Response<TicketHistoryList>
     
     @GET ("/service/platform/lead/v1.0/company/{company_id}/application/{application_id}/form/{slug}")
