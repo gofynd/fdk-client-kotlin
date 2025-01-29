@@ -4667,10 +4667,15 @@ data class GoogleMap(
     
     
     
+    @SerializedName("enabled")
+    var enabled: Boolean?=null,
+    
     @SerializedName("credentials")
     var credentials: GoogleMapCredentials?=null
     
 ): Parcelable {
+    
+    
     
     
     
@@ -7128,9 +7133,14 @@ data class OptedStoreAddress(
     var countryCode: String?=null,
     
     @SerializedName("state_code")
-    var stateCode: String?=null
+    var stateCode: String?=null,
+    
+    @SerializedName("landmark")
+    var landmark: String?=null
     
 ): Parcelable {
+    
+    
     
     
     

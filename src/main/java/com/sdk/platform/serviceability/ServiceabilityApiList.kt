@@ -14,7 +14,7 @@ interface ServiceabilityApiList {
     : Response<ZoneResponseV2>
     
     @GET ("/service/platform/logistics/v2.0/company/{company_id}/application/{application_id}/zones")
-    suspend fun getZones(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Query("stage") stage: String?, @Query("type") type: String?, @Query("page_size") pageSize: Int?, @Query("page_no") pageNo: Int?, @Query("is_active") isActive: Boolean?, @Query("q") q: String?, @Query("country_iso_code") countryIsoCode: String?, @Query("pincode") pincode: String?, @Query("state") state: String?, @Query("city") city: String?, @Query("sector") sector: String?, @HeaderMap headers: Map<String, String>? = null)
+    suspend fun getZones(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Query("stage") stage: String?, @Query("type") type: String?, @Query("access_level") accessLevel: String?, @Query("status") status: String?, @Query("page_size") pageSize: Int?, @Query("page_no") pageNo: Int?, @Query("is_active") isActive: Boolean?, @Query("q") q: String?, @Query("country_iso_code") countryIsoCode: String?, @Query("pincode") pincode: String?, @Query("state") state: String?, @Query("city") city: String?, @Query("sector") sector: String?, @HeaderMap headers: Map<String, String>? = null)
     : Response<ListViewResponseV2>
     
     @GET ("/service/platform/logistics/v2.0/company/{company_id}/application/{application_id}/zones/{zone_id}")
@@ -236,6 +236,10 @@ interface ServiceabilityApiList {
     @GET ("/service/platform/logistics/v1.0/company/{company_id}/courier-partner/list")
     suspend fun getInstalledCourierPartnerExtensions(@Path("company_id") companyId: String, @Query("page_no") pageNo: Int?, @Query("page_size") pageSize: Int?, @Query("is_installed") isInstalled: String?, @HeaderMap headers: Map<String, String>? = null)
     : Response<InstallCourierPartnerResponseSchema>
+    
+    @GET ("/service/platform/logistics/v1.0/company/{company_id}/localities")
+    suspend fun getLocalitiesByPrefix(@Path("company_id") companyId: String, @Query("page_no") pageNo: Int?, @Query("page_size") pageSize: Int?, @Query("q") q: String?, @HeaderMap headers: Map<String, String>? = null)
+    : Response<GetLocalities>
     
     @GET ("/service/platform/logistics/v1.0/company/{company_id}/localities/{locality_type}/{locality_value}")
     suspend fun getLocality(@Path("company_id") companyId: String, @Path("locality_type") localityType: String, @Path("locality_value") localityValue: String, @Query("country") country: String?, @Query("state") state: String?, @Query("city") city: String?, @HeaderMap headers: Map<String, String>? = null)

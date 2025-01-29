@@ -89,12 +89,12 @@ interface ThemeApiList {
     suspend fun duplicateTheme(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Path("theme_id") themeId: String, @HeaderMap headers: Map<String, String>? = null)
     : Response<ThemesSchema>
     
-    @GET ("/service/platform/theme/v2.0/company/{company_id}/application/{application_id}")
-    suspend fun getAppliedTheme(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @HeaderMap headers: Map<String, String>? = null)
+    @POST ("/service/platform/theme/v2.0/company/{company_id}/application/{application_id}")
+    suspend fun createTheme(@Path("company_id") companyId: String, @Path("application_id") applicationId: String,@Body body: CompanyThemeReqSchema, @HeaderMap headers: Map<String, String>? = null)
     : Response<ThemesSchema>
     
-    @POST ("/service/platform/theme/v2.0/company/{company_id}/application/{application_id}")
-    suspend fun addThemeToApplication(@Path("company_id") companyId: String, @Path("application_id") applicationId: String,@Body body: ThemesSchema, @HeaderMap headers: Map<String, String>? = null)
+    @GET ("/service/platform/theme/v2.0/company/{company_id}/application/{application_id}")
+    suspend fun getAppliedTheme(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @HeaderMap headers: Map<String, String>? = null)
     : Response<ThemesSchema>
     
     @GET ("/service/platform/theme/v2.0/company/{company_id}/application/{application_id}/{theme_id}/preview")

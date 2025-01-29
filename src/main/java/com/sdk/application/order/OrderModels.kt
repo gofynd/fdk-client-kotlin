@@ -434,9 +434,14 @@ data class UserInfo(
     var mobile: String?=null,
     
     @SerializedName("email")
-    var email: String?=null
+    var email: String?=null,
+    
+    @SerializedName("user_id")
+    var userId: String?=null
     
 ): Parcelable {
+    
+    
     
     
     
@@ -547,10 +552,10 @@ data class ShipmentPayment(
 
              
 /*
-    Model: ShipmentPaymentInfo
+    Model: PaymentInfo
 */
 @Parcelize
-data class ShipmentPaymentInfo(
+data class PaymentInfo(
     
     
     
@@ -622,9 +627,14 @@ data class ShipmentUserInfo(
     var mobile: String?=null,
     
     @SerializedName("email")
-    var email: String?=null
+    var email: String?=null,
+    
+    @SerializedName("user_id")
+    var userId: String?=null
     
 ): Parcelable {
+    
+    
     
     
     
@@ -1681,7 +1691,7 @@ data class Bags(
     var appliedPromos: ArrayList<AppliedPromos>?=null,
     
     @SerializedName("quantity")
-    var quantity: Int?=null,
+    var quantity: Double?=null,
     
     @SerializedName("prices")
     var prices: Prices?=null,
@@ -1988,7 +1998,7 @@ data class Shipments(
     var payment: ShipmentPayment?=null,
     
     @SerializedName("payment_info")
-    var paymentInfo: ArrayList<ShipmentPaymentInfo>?=null,
+    var paymentInfo: ArrayList<PaymentInfo>?=null,
     
     @SerializedName("order_type")
     var orderType: String?=null,
@@ -2454,9 +2464,14 @@ data class OrderSchema(
     var meta: @RawValue HashMap<String,Any>?=null,
     
     @SerializedName("external_order_id")
-    var externalOrderId: String?=null
+    var externalOrderId: String?=null,
+    
+    @SerializedName("payment_info")
+    var paymentInfo: ArrayList<PaymentInfo>?=null
     
 ): Parcelable {
+    
+    
     
     
     

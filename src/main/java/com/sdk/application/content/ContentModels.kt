@@ -3105,6 +3105,58 @@ data class CustomObjectsSchema(
 
              
 /*
+    Model: WellKnownResponse
+*/
+@Parcelize
+data class WellKnownResponse(
+    
+    
+    
+    @SerializedName("_id")
+    var id: String?=null,
+    
+    @SerializedName("slug")
+    var slug: String?=null,
+    
+    @SerializedName("application_id")
+    var applicationId: String?=null,
+    
+    @SerializedName("content")
+    var content: String?=null,
+    
+    @SerializedName("content_type")
+    var contentType: String?=null,
+    
+    @SerializedName("created_at")
+    var createdAt: String?=null,
+    
+    @SerializedName("updated_at")
+    var updatedAt: String?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
     Model: ActionPage
 */
 @Parcelize

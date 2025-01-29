@@ -43,15 +43,15 @@ interface CartApiList {
     
     @POST ("/service/platform/cart/v1.0/company/{company_id}/application/{application_id}/promotion")
     suspend fun createPromotion(@Path("company_id") companyId: String, @Path("application_id") applicationId: String,@Body body: PromotionAdd, @HeaderMap headers: Map<String, String>? = null)
-    : Response<PromotionAdd>
+    : Response<PromotionAddResult>
     
     @GET ("/service/platform/cart/v1.0/company/{company_id}/application/{application_id}/promotion/{id}")
     suspend fun getPromotionById(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Path("id") id: String, @HeaderMap headers: Map<String, String>? = null)
-    : Response<PromotionUpdate>
+    : Response<PromotionUpdateResult>
     
     @PUT ("/service/platform/cart/v1.0/company/{company_id}/application/{application_id}/promotion/{id}")
     suspend fun updatePromotion(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Path("id") id: String,@Body body: PromotionUpdate, @HeaderMap headers: Map<String, String>? = null)
-    : Response<PromotionUpdate>
+    : Response<PromotionUpdateResult>
     
     @PATCH ("/service/platform/cart/v1.0/company/{company_id}/application/{application_id}/promotion/{id}")
     suspend fun updatePromotionPartially(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Path("id") id: String,@Body body: PromotionPartialUpdate, @HeaderMap headers: Map<String, String>? = null)

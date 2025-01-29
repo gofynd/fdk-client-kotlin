@@ -39,7 +39,7 @@ interface CommunicationApiList {
     
     @POST ("/service/platform/communication/v1.0/company/{company_id}/application/{application_id}/event/event-subscriptions")
     suspend fun createEventSubscriptions(@Path("company_id") companyId: String, @Path("application_id") applicationId: String,@Body body: SubscriptionsObject, @HeaderMap headers: Map<String, String>? = null)
-    : Response<EventSubscriptionsBulkUpdateResponse>
+    : Response<EventSubscription>
     
     @POST ("/service/platform/communication/v1.0/company/{company_id}/application/{application_id}/event/event-subscriptions/bulkUpdate")
     suspend fun createEventSubscriptionsByBulk(@Path("company_id") companyId: String, @Path("application_id") applicationId: String,@Body body: EventSubscriptionsBulkUpdateRequest, @HeaderMap headers: Map<String, String>? = null)
@@ -51,7 +51,7 @@ interface CommunicationApiList {
     
     @PUT ("/service/platform/communication/v1.0/company/{company_id}/application/{application_id}/event/event-subscriptions/{id}")
     suspend fun editEventSubscriptions(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Path("id") id: String,@Body body: SubscriptionsObjectRequest, @HeaderMap headers: Map<String, String>? = null)
-    : Response<EventSubscriptionsBulkUpdateResponse>
+    : Response<EventSubscription>
     
     @DELETE ("/service/platform/communication/v1.0/company/{company_id}/application/{application_id}/event/event-subscriptions/{id}")
     suspend fun deleteEventSubscriptionsById(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Path("id") id: String, @HeaderMap headers: Map<String, String>? = null)

@@ -42,6 +42,11 @@ interface LogisticApiList {
     
     
     @GET
+    suspend fun getLocalitiesByPrefix(@Url url1: String?     ,    @Query("page_no") pageNo: Int?, @Query("page_size") pageSize: Int?, @Query("q") q: String?, @HeaderMap headers: Map<String, String>? = null)
+    : Response<GetLocalities>
+    
+    
+    @GET
     suspend fun getLocalities(@Url url1: String?     ,        @Query("country") country: String?, @Query("state") state: String?, @Query("city") city: String?, @Query("page_no") pageNo: Int?, @Query("page_size") pageSize: Int?, @Query("q") q: String?, @Query("name") name: String?, @HeaderMap headers: Map<String, String>? = null)
     : Response<GetLocalities>
     
@@ -59,5 +64,10 @@ interface LogisticApiList {
     @POST
     suspend fun createShipments(@Url url1: String?     ,@Body body: GenerateShipmentsRequest, @HeaderMap headers: Map<String, String>? = null)
     : Response<GenerateShipmentsAndCourierPartnerResponse>
+    
+    
+    @GET
+    suspend fun getDeliveryPromise(@Url url1: String?    ,   @Query("page_no") pageNo: Int?, @Query("page_size") pageSize: Int?, @HeaderMap headers: Map<String, String>? = null)
+    : Response<GetPromiseDetails>
     
 }
