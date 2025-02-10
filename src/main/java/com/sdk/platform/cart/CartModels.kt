@@ -4836,9 +4836,29 @@ data class CartProduct(
     var categories: ArrayList<CategoryInfo>?=null,
     
     @SerializedName("attributes")
-    var attributes: @RawValue HashMap<String,Any>?=null
+    var attributes: @RawValue HashMap<String,Any>?=null,
+    
+    @SerializedName("l1_categories")
+    var l1Categories: ArrayList<Double>?=null,
+    
+    @SerializedName("l2_categories")
+    var l2Categories: ArrayList<Double>?=null,
+    
+    @SerializedName("l3_categories")
+    var l3Categories: ArrayList<Double>?=null,
+    
+    @SerializedName("departments")
+    var departments: ArrayList<Double>?=null
     
 ): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+    
     
     
     
