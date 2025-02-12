@@ -55,8 +55,6 @@ class ContentDataManagerClass(val config: ApplicationConfig, val unauthorizedAct
             
                     _relativeUrls["getPage"] = "/service/application/content/v2.0/pages/{slug}".substring(1)
             
-                    _relativeUrls["getWellKnownUrl"] = "/service/application/content/v1.0/well-known/{slug}".substring(1)
-            
                     _relativeUrls["getCustomObject"] = "/service/application/content/v1.0/metaobjects/{id}".substring(1)
             
                     _relativeUrls["getCustomObjects"] = "/service/application/content/v1.0/metaobjects".substring(1)
@@ -235,15 +233,6 @@ class ContentDataManagerClass(val config: ApplicationConfig, val unauthorizedAct
         fullUrl = fullUrl?.replace("{" + "slug" +"}",slug.toString())
         
         return contentApiList?.getPage(fullUrl,    rootId = rootId,headers = headers)}
-
-    
-    
-    suspend fun getWellKnownUrl(slug: String, headers: Map<String, String> = emptyMap()): Response<WellKnownResponse>? {
-        var fullUrl : String? = _relativeUrls["getWellKnownUrl"]
-        
-        fullUrl = fullUrl?.replace("{" + "slug" +"}",slug.toString())
-        
-        return contentApiList?.getWellKnownUrl(fullUrl,  headers = headers)}
 
     
     

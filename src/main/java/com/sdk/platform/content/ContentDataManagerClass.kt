@@ -1490,7 +1490,7 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     
     
     suspend fun createAppCustomObject(body: CustomObjectRequestSchema, headers: Map<String, String> = emptyMap())
-    : Response<CustomObjectApplicationSchema>? {
+    : Response<CustomObjectSchema>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 contentApiList?.createAppCustomObject(companyId = config.companyId ,applicationId = applicationId , body = body,headers = headers)
         } else {
@@ -1510,7 +1510,7 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     
     
     suspend fun updateAppCustomObject(id: String,body: CustomObjectRequestSchema, headers: Map<String, String> = emptyMap())
-    : Response<CustomObjectApplicationSchema>? {
+    : Response<CustomObjectSchema>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 contentApiList?.updateAppCustomObject(companyId = config.companyId ,applicationId = applicationId ,id = id, body = body,headers = headers)
         } else {

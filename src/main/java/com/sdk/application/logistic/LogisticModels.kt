@@ -1327,9 +1327,6 @@ data class ListViewItemsV2(
     @SerializedName("type")
     var type: String?=null,
     
-    @SerializedName("access_level")
-    var accessLevel: String?=null,
-    
     @SerializedName("geo_areas")
     var geoAreas: ArrayList<GeoArea>?=null,
     
@@ -1341,12 +1338,6 @@ data class ListViewItemsV2(
     
     @SerializedName("is_active")
     var isActive: Boolean?=null,
-    
-    @SerializedName("is_opted")
-    var isOpted: Boolean?=null,
-    
-    @SerializedName("is_public_opted")
-    var isPublicOpted: Boolean?=null,
     
     @SerializedName("product")
     var product: ListViewProductV2?=null,
@@ -1376,12 +1367,6 @@ data class ListViewItemsV2(
     var summary: Summary?=null
     
 ): Parcelable {
-    
-    
-    
-    
-    
-    
     
     
     
@@ -3794,50 +3779,10 @@ data class Localities(
     @SerializedName("parent_uid")
     var parentUid: String?=null,
     
-    @SerializedName("code")
-    var code: String?=null,
-    
     @SerializedName("localities")
-    var localities: ArrayList<LocalityParent>?=null,
-    
-    @SerializedName("iso2")
-    var iso2: String?=null,
-    
-    @SerializedName("iso3")
-    var iso3: String?=null,
-    
-    @SerializedName("currency")
-    var currency: @RawValue HashMap<String,Any>?=null,
-    
-    @SerializedName("phone_code")
-    var phoneCode: String?=null,
-    
-    @SerializedName("hierarchy")
-    var hierarchy: @RawValue HashMap<String,Any>?=null,
-    
-    @SerializedName("latitude")
-    var latitude: String?=null,
-    
-    @SerializedName("longitude")
-    var longitude: String?=null
+    var localities: ArrayList<LocalityParent>?=null
     
 ): Parcelable {
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
     
     
     
@@ -3894,49 +3839,9 @@ data class LocalityParent(
     var serviceability: @RawValue HashMap<String,Any>?=null,
     
     @SerializedName("parent_uid")
-    var parentUid: String?=null,
-    
-    @SerializedName("code")
-    var code: String?=null,
-    
-    @SerializedName("iso2")
-    var iso2: String?=null,
-    
-    @SerializedName("iso3")
-    var iso3: String?=null,
-    
-    @SerializedName("currency")
-    var currency: @RawValue HashMap<String,Any>?=null,
-    
-    @SerializedName("phone_code")
-    var phoneCode: String?=null,
-    
-    @SerializedName("hierarchy")
-    var hierarchy: @RawValue HashMap<String,Any>?=null,
-    
-    @SerializedName("latitude")
-    var latitude: String?=null,
-    
-    @SerializedName("longitude")
-    var longitude: String?=null
+    var parentUid: String?=null
     
 ): Parcelable {
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
     
     
     
@@ -4049,15 +3954,10 @@ data class GetLocality(
     @SerializedName("type")
     var type: String?=null,
     
-    @SerializedName("code")
-    var code: String?=null,
-    
     @SerializedName("localities")
     var localities: ArrayList<LocalityParent>?=null
     
 ): Parcelable {
-    
-    
     
     
     
@@ -4148,28 +4048,6 @@ data class ErrorResponseV3(
 ): Parcelable {
     
     
-    
-    
-    
-    
-    
-}
-
-
-
-             
-/*
-    Model: StandardError
-*/
-@Parcelize
-data class StandardError(
-    
-    
-    
-    @SerializedName("message")
-    var message: String?=null
-    
-): Parcelable {
     
     
     
@@ -4965,75 +4843,6 @@ data class Packaging(
     
     @SerializedName("dimension")
     var dimension: PackagingDimension?=null
-    
-): Parcelable {
-    
-    
-    
-    
-    
-    
-    
-    
-    
-}
-
-
-
-             
-/*
-    Model: StorePromise
-*/
-@Parcelize
-data class StorePromise(
-    
-    
-    
-    @SerializedName("uid")
-    var uid: Int?=null,
-    
-    @SerializedName("code")
-    var code: String?=null,
-    
-    @SerializedName("name")
-    var name: String?=null,
-    
-    @SerializedName("promise")
-    var promise: PromiseDetails?=null
-    
-): Parcelable {
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-}
-
-
-
-             
-/*
-    Model: GetPromiseDetails
-*/
-@Parcelize
-data class GetPromiseDetails(
-    
-    
-    
-    @SerializedName("items")
-    var items: ArrayList<StorePromise>?=null,
-    
-    @SerializedName("promise")
-    var promise: PromiseDetails?=null,
-    
-    @SerializedName("page")
-    var page: Page?=null
     
 ): Parcelable {
     

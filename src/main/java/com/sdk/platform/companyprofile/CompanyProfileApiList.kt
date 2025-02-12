@@ -42,7 +42,7 @@ interface CompanyProfileApiList {
     : Response<ProfileSuccessResponse>
     
     @GET ("/service/platform/catalog/v2.0/company/{company_id}/location")
-    suspend fun getLocations(@Path("company_id") companyId: String, @Query("store_type") storeType: String?, @Query("store_codes") storeCodes: ArrayList<String>?, @Query("q") q: String?, @Query("stage") stage: String?, @Query("page_no") pageNo: Int?, @Query("page_size") pageSize: Int?, @Query("location_ids") locationIds: ArrayList<Int>?, @Query("types") types: ArrayList<String>?, @Query("tags") tags: ArrayList<String>?, @HeaderMap headers: Map<String, String>? = null)
+    suspend fun getLocations(@Path("company_id") companyId: String, @Query("store_type") storeType: String?, @Query("q") q: String?, @Query("stage") stage: String?, @Query("page_no") pageNo: Int?, @Query("page_size") pageSize: Int?, @Query("location_ids") locationIds: ArrayList<Int>?, @Query("types") types: ArrayList<String>?, @Query("tags") tags: ArrayList<String>?, @HeaderMap headers: Map<String, String>? = null)
     : Response<LocationListSerializer>
     
     @POST ("/service/platform/catalog/v2.0/company/{company_id}/location")

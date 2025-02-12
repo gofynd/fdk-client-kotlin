@@ -369,7 +369,7 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     }
     
     suspend fun createPromotion(body: PromotionAdd, headers: Map<String, String> = emptyMap())
-    : Response<PromotionAddResult>? {
+    : Response<PromotionAdd>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 cartApiList?.createPromotion(companyId = config.companyId ,applicationId = applicationId , body = body,headers = headers)
         } else {
@@ -379,7 +379,7 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     
     
     suspend fun getPromotionById(id: String, headers: Map<String, String> = emptyMap())
-    : Response<PromotionUpdateResult>? {
+    : Response<PromotionUpdate>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 cartApiList?.getPromotionById(companyId = config.companyId ,applicationId = applicationId ,id = id, headers = headers)
         } else {
@@ -389,7 +389,7 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     
     
     suspend fun updatePromotion(id: String,body: PromotionUpdate, headers: Map<String, String> = emptyMap())
-    : Response<PromotionUpdateResult>? {
+    : Response<PromotionUpdate>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 cartApiList?.updatePromotion(companyId = config.companyId ,applicationId = applicationId ,id = id, body = body,headers = headers)
         } else {

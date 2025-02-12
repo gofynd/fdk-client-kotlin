@@ -1671,50 +1671,10 @@ data class Localities(
     @SerializedName("parent_uid")
     var parentUid: String?=null,
     
-    @SerializedName("code")
-    var code: String?=null,
-    
     @SerializedName("localities")
-    var localities: ArrayList<LocalityParent>?=null,
-    
-    @SerializedName("iso2")
-    var iso2: String?=null,
-    
-    @SerializedName("iso3")
-    var iso3: String?=null,
-    
-    @SerializedName("currency")
-    var currency: @RawValue HashMap<String,Any>?=null,
-    
-    @SerializedName("phone_code")
-    var phoneCode: String?=null,
-    
-    @SerializedName("hierarchy")
-    var hierarchy: @RawValue HashMap<String,Any>?=null,
-    
-    @SerializedName("latitude")
-    var latitude: String?=null,
-    
-    @SerializedName("longitude")
-    var longitude: String?=null
+    var localities: ArrayList<LocalityParent>?=null
     
 ): Parcelable {
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
     
     
     
@@ -1797,50 +1757,10 @@ data class LocalityParent(
     @SerializedName("serviceability")
     var serviceability: @RawValue HashMap<String,Any>?=null,
     
-    @SerializedName("code")
-    var code: String?=null,
-    
     @SerializedName("parent_uid")
-    var parentUid: String?=null,
-    
-    @SerializedName("iso2")
-    var iso2: String?=null,
-    
-    @SerializedName("iso3")
-    var iso3: String?=null,
-    
-    @SerializedName("currency")
-    var currency: @RawValue HashMap<String,Any>?=null,
-    
-    @SerializedName("phone_code")
-    var phoneCode: String?=null,
-    
-    @SerializedName("hierarchy")
-    var hierarchy: @RawValue HashMap<String,Any>?=null,
-    
-    @SerializedName("latitude")
-    var latitude: String?=null,
-    
-    @SerializedName("longitude")
-    var longitude: String?=null
+    var parentUid: String?=null
     
 ): Parcelable {
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
     
     
     
@@ -1894,15 +1814,10 @@ data class GetLocality(
     @SerializedName("type")
     var type: String?=null,
     
-    @SerializedName("code")
-    var code: String?=null,
-    
     @SerializedName("localities")
     var localities: ArrayList<LocalityParent>?=null
     
 ): Parcelable {
-    
-    
     
     
     
@@ -3006,9 +2921,6 @@ data class ListViewItemsV2(
     @SerializedName("type")
     var type: String?=null,
     
-    @SerializedName("access_level")
-    var accessLevel: String?=null,
-    
     @SerializedName("geo_areas")
     var geoAreas: ArrayList<GeoArea>?=null,
     
@@ -3020,12 +2932,6 @@ data class ListViewItemsV2(
     
     @SerializedName("is_active")
     var isActive: Boolean?=null,
-    
-    @SerializedName("is_opted")
-    var isOpted: Boolean?=null,
-    
-    @SerializedName("is_public_opted")
-    var isPublicOpted: Boolean?=null,
     
     @SerializedName("product")
     var product: ListViewProductV2?=null,
@@ -3085,34 +2991,6 @@ data class ListViewItemsV2(
     
     
     
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-}
-
-
-
-             
-/*
-    Model: SummaryRegions
-*/
-@Parcelize
-data class SummaryRegions(
-    
-    
-    
-    @SerializedName("regions")
-    var regions: ArrayList<RegionSchema>?=null
-    
-): Parcelable {
     
     
     
@@ -3566,9 +3444,6 @@ data class UpdateZoneDataV2(
     @SerializedName("type")
     var type: String?=null,
     
-    @SerializedName("access_level")
-    var accessLevel: String?=null,
-    
     @SerializedName("slug")
     var slug: String?=null,
     
@@ -3584,9 +3459,6 @@ data class UpdateZoneDataV2(
     @SerializedName("is_active")
     var isActive: Boolean?=null,
     
-    @SerializedName("is_opted")
-    var isOpted: Boolean?=null,
-    
     @SerializedName("product")
     var product: ProductSchema?=null,
     
@@ -3594,10 +3466,6 @@ data class UpdateZoneDataV2(
     var stores: StoresSchema?=null
     
 ): Parcelable {
-    
-    
-    
-    
     
     
     
@@ -3646,17 +3514,11 @@ data class ZoneUpdateSuccessResponse(
     @SerializedName("type")
     var type: String?=null,
     
-    @SerializedName("access_level")
-    var accessLevel: String?=null,
-    
     @SerializedName("application_id")
     var applicationId: String?=null,
     
     @SerializedName("is_active")
     var isActive: Boolean?=null,
-    
-    @SerializedName("is_opted")
-    var isOpted: Boolean?=null,
     
     @SerializedName("geo_areas")
     var geoAreas: ArrayList<String>?=null,
@@ -3680,23 +3542,9 @@ data class ZoneUpdateSuccessResponse(
     var modifiedBy: String?=null,
     
     @SerializedName("modified_on")
-    var modifiedOn: String?=null,
-    
-    @SerializedName("stage")
-    var stage: String?=null,
-    
-    @SerializedName("summary")
-    var summary: Summary?=null
+    var modifiedOn: String?=null
     
 ): Parcelable {
-    
-    
-    
-    
-    
-    
-    
-    
     
     
     
@@ -4000,9 +3848,6 @@ data class GetZoneByIdSchema(
     @SerializedName("is_active")
     var isActive: Boolean?=null,
     
-    @SerializedName("is_opted")
-    var isOpted: Boolean?=null,
-    
     @SerializedName("product")
     var product: ProductSchema?=null,
     
@@ -4070,8 +3915,6 @@ data class GetZoneByIdSchema(
     
     
     
-    
-    
 }
 
 
@@ -4097,9 +3940,6 @@ data class GetZoneByIdDetailsSchema(
     @SerializedName("is_active")
     var isActive: Boolean?=null,
     
-    @SerializedName("is_opted")
-    var isOpted: Boolean?=null,
-    
     @SerializedName("product")
     var product: ProductDetailsSchema?=null,
     
@@ -4118,17 +3958,10 @@ data class GetZoneByIdDetailsSchema(
     @SerializedName("type")
     var type: String?=null,
     
-    @SerializedName("access_level")
-    var accessLevel: String?=null,
-    
     @SerializedName("overlapping_zone_names")
     var overlappingZoneNames: ArrayList<String>?=null
     
 ): Parcelable {
-    
-    
-    
-    
     
     
     
@@ -4203,9 +4036,6 @@ data class CreateZoneV2Data(
     @SerializedName("type")
     var type: String?=null,
     
-    @SerializedName("access_level")
-    var accessLevel: String?=null,
-    
     @SerializedName("name")
     var name: String?=null,
     
@@ -4225,8 +4055,6 @@ data class CreateZoneV2Data(
     var product: ZoneProduct?=null
     
 ): Parcelable {
-    
-    
     
     
     
@@ -4465,20 +4293,11 @@ data class ZoneResponseV2(
     @SerializedName("type")
     var type: String?=null,
     
-    @SerializedName("access_level")
-    var accessLevel: String?=null,
-    
     @SerializedName("application_id")
     var applicationId: String?=null,
     
     @SerializedName("is_active")
     var isActive: Boolean?=null,
-    
-    @SerializedName("is_public_opted")
-    var isPublicOpted: Boolean?=null,
-    
-    @SerializedName("is_opted")
-    var isOpted: Boolean?=null,
     
     @SerializedName("geo_areas")
     var geoAreas: ArrayList<String>?=null,
@@ -4505,20 +4324,9 @@ data class ZoneResponseV2(
     var stage: String?=null,
     
     @SerializedName("zone_id")
-    var zoneId: String?=null,
-    
-    @SerializedName("summary")
-    var summary: SummaryRegions?=null
+    var zoneId: String?=null
     
 ): Parcelable {
-    
-    
-    
-    
-    
-    
-    
-    
     
     
     
@@ -5776,28 +5584,6 @@ data class ServiceabilityZoneErrorResult(
     
     @SerializedName("error")
     var error: ArrayList<ServiceabilityErrorResponse>?=null
-    
-): Parcelable {
-    
-    
-    
-    
-    
-}
-
-
-
-             
-/*
-    Model: ServiceabilityZoneNonMarketplaceErrorResult
-*/
-@Parcelize
-data class ServiceabilityZoneNonMarketplaceErrorResult(
-    
-    
-    
-    @SerializedName("error")
-    var error: String?=null
     
 ): Parcelable {
     

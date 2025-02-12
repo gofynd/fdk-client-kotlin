@@ -2243,9 +2243,6 @@ data class PromotionListItem(
     @SerializedName("_id")
     var id: String?=null,
     
-    @SerializedName("is_processed")
-    var isProcessed: Boolean?=null,
-    
     @SerializedName("code")
     var code: String?=null,
     
@@ -2253,8 +2250,6 @@ data class PromotionListItem(
     var tags: ArrayList<String>?=null
     
 ): Parcelable {
-    
-    
     
     
     
@@ -2459,153 +2454,6 @@ data class PromotionAdd(
 
              
 /*
-    Model: PromotionAddResult
-*/
-@Parcelize
-data class PromotionAddResult(
-    
-    
-    
-    @SerializedName("stackable")
-    var stackable: Boolean?=null,
-    
-    @SerializedName("calculate_on")
-    var calculateOn: String?=null,
-    
-    @SerializedName("apply_exclusive")
-    var applyExclusive: String?=null,
-    
-    @SerializedName("promo_group")
-    var promoGroup: String?=null,
-    
-    @SerializedName("mode")
-    var mode: String?=null,
-    
-    @SerializedName("is_processed")
-    var isProcessed: Boolean?=null,
-    
-    @SerializedName("apply_all_discount")
-    var applyAllDiscount: Boolean?=null,
-    
-    @SerializedName("display_meta")
-    var displayMeta: DisplayMeta1?=null,
-    
-    @SerializedName("ownership")
-    var ownership: Ownership?=null,
-    
-    @SerializedName("promotion_type")
-    var promotionType: String?=null,
-    
-    @SerializedName("discount_rules")
-    var discountRules: ArrayList<DiscountRule>?=null,
-    
-    @SerializedName("restrictions")
-    var restrictions: Restrictions1?=null,
-    
-    @SerializedName("currency")
-    var currency: String?=null,
-    
-    @SerializedName("code")
-    var code: String?=null,
-    
-    @SerializedName("_schedule")
-    var schedule: PromotionSchedule?=null,
-    
-    @SerializedName("post_order_action")
-    var postOrderAction: PromotionAction?=null,
-    
-    @SerializedName("apply_priority")
-    var applyPriority: Int?=null,
-    
-    @SerializedName("author")
-    var author: PromotionAuthor?=null,
-    
-    @SerializedName("visiblility")
-    var visiblility: Visibility?=null,
-    
-    @SerializedName("application_id")
-    var applicationId: String?=null,
-    
-    @SerializedName("buy_rules")
-    var buyRules: HashMap<String,ItemCriteria>?=null,
-    
-    @SerializedName("_custom_json")
-    var customJson: @RawValue HashMap<String,Any>?=null,
-    
-    @SerializedName("date_meta")
-    var dateMeta: PromotionDateMeta?=null,
-    
-    @SerializedName("indexed_criteria")
-    var indexedCriteria: ArrayList<PromoIndexedCriteria>?=null,
-    
-    @SerializedName("tags")
-    var tags: ArrayList<String>?=null,
-    
-    @SerializedName("_id")
-    var id: String?=null
-    
-): Parcelable {
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-}
-
-
-
-             
-/*
     Model: PromotionUpdate
 */
 @Parcelize
@@ -2613,142 +2461,8 @@ data class PromotionUpdate(
     
     
     
-    @SerializedName("stackable")
-    var stackable: Boolean?=null,
-    
-    @SerializedName("calculate_on")
-    var calculateOn: String?=null,
-    
-    @SerializedName("apply_exclusive")
-    var applyExclusive: String?=null,
-    
-    @SerializedName("reason")
-    var reason: String?=null,
-    
-    @SerializedName("promo_group")
-    var promoGroup: String?=null,
-    
-    @SerializedName("mode")
-    var mode: String?=null,
-    
-    @SerializedName("apply_all_discount")
-    var applyAllDiscount: Boolean?=null,
-    
-    @SerializedName("display_meta")
-    var displayMeta: DisplayMeta1?=null,
-    
-    @SerializedName("ownership")
-    var ownership: Ownership?=null,
-    
-    @SerializedName("promotion_type")
-    var promotionType: String?=null,
-    
-    @SerializedName("discount_rules")
-    var discountRules: ArrayList<DiscountRule>?=null,
-    
-    @SerializedName("restrictions")
-    var restrictions: Restrictions1?=null,
-    
-    @SerializedName("currency")
-    var currency: String?=null,
-    
-    @SerializedName("code")
-    var code: String?=null,
-    
-    @SerializedName("_schedule")
-    var schedule: PromotionSchedule?=null,
-    
-    @SerializedName("post_order_action")
-    var postOrderAction: PromotionAction?=null,
-    
-    @SerializedName("apply_priority")
-    var applyPriority: Int?=null,
-    
-    @SerializedName("author")
-    var author: PromotionAuthor?=null,
-    
-    @SerializedName("visiblility")
-    var visiblility: Visibility?=null,
-    
-    @SerializedName("application_id")
-    var applicationId: String?=null,
-    
-    @SerializedName("buy_rules")
-    var buyRules: HashMap<String,ItemCriteria>?=null,
-    
-    @SerializedName("_custom_json")
-    var customJson: @RawValue HashMap<String,Any>?=null,
-    
-    @SerializedName("date_meta")
-    var dateMeta: PromotionDateMeta?=null,
-    
-    @SerializedName("tags")
-    var tags: ArrayList<String>?=null
-    
-): Parcelable {
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-}
-
-
-
-             
-/*
-    Model: PromotionUpdateResult
-*/
-@Parcelize
-data class PromotionUpdateResult(
-    
-    
+    @SerializedName("_id")
+    var id: String?=null,
     
     @SerializedName("stackable")
     var stackable: Boolean?=null,
@@ -2758,12 +2472,6 @@ data class PromotionUpdateResult(
     
     @SerializedName("apply_exclusive")
     var applyExclusive: String?=null,
-    
-    @SerializedName("reason")
-    var reason: String?=null,
-    
-    @SerializedName("is_processed")
-    var isProcessed: Boolean?=null,
     
     @SerializedName("promo_group")
     var promoGroup: String?=null,
@@ -2826,16 +2534,9 @@ data class PromotionUpdateResult(
     var indexedCriteria: ArrayList<PromoIndexedCriteria>?=null,
     
     @SerializedName("tags")
-    var tags: ArrayList<String>?=null,
-    
-    @SerializedName("_id")
-    var id: String?=null
+    var tags: ArrayList<String>?=null
     
 ): Parcelable {
-    
-    
-    
-    
     
     
     
@@ -4836,29 +4537,9 @@ data class CartProduct(
     var categories: ArrayList<CategoryInfo>?=null,
     
     @SerializedName("attributes")
-    var attributes: @RawValue HashMap<String,Any>?=null,
-    
-    @SerializedName("l1_categories")
-    var l1Categories: ArrayList<Double>?=null,
-    
-    @SerializedName("l2_categories")
-    var l2Categories: ArrayList<Double>?=null,
-    
-    @SerializedName("l3_categories")
-    var l3Categories: ArrayList<Double>?=null,
-    
-    @SerializedName("departments")
-    var departments: ArrayList<Double>?=null
+    var attributes: @RawValue HashMap<String,Any>?=null
     
 ): Parcelable {
-    
-    
-    
-    
-    
-    
-    
-    
     
     
     
@@ -9682,33 +9363,6 @@ data class AddressCustomJson(
 
              
 /*
-    Model: ValidationConfig
-*/
-@Parcelize
-data class ValidationConfig(
-    
-    
-    
-    @SerializedName("address_max_limit")
-    var addressMaxLimit: Int?=null,
-    
-    @SerializedName("user_address_count")
-    var userAddressCount: Int?=null
-    
-): Parcelable {
-    
-    
-    
-    
-    
-    
-    
-}
-
-
-
-             
-/*
     Model: PlatformGetAddressesResponse
 */
 @Parcelize
@@ -9720,14 +9374,9 @@ data class PlatformGetAddressesResponse(
     var address: ArrayList<PlatformAddress>?=null,
     
     @SerializedName("pii_masking")
-    var piiMasking: Boolean?=null,
-    
-    @SerializedName("validation_config")
-    var validationConfig: ValidationConfig?=null
+    var piiMasking: Boolean?=null
     
 ): Parcelable {
-    
-    
     
     
     
@@ -12593,39 +12242,7 @@ data class AllAddressForSelectAddress(
     var address: ArrayList<PlatformAddress>?=null,
     
     @SerializedName("pii_masking")
-    var piiMasking: Boolean?=null,
-    
-    @SerializedName("validation_config")
-    var validationConfig: ValidationConfig?=null
-    
-): Parcelable {
-    
-    
-    
-    
-    
-    
-    
-    
-    
-}
-
-
-
-             
-/*
-    Model: ValidationError
-*/
-@Parcelize
-data class ValidationError(
-    
-    
-    
-    @SerializedName("message")
-    var message: String?=null,
-    
-    @SerializedName("field")
-    var field: String?=null
+    var piiMasking: Boolean?=null
     
 ): Parcelable {
     

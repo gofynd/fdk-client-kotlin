@@ -296,20 +296,20 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     }
     
     
-    suspend fun createTheme(body: CompanyThemeReqSchema, headers: Map<String, String> = emptyMap())
+    suspend fun getAppliedTheme( headers: Map<String, String> = emptyMap())
     : Response<ThemesSchema>? {
         return if (config.oauthClient.isAccessTokenValid()) {
-                themeApiList?.createTheme(companyId = config.companyId ,applicationId = applicationId , body = body,headers = headers)
+                themeApiList?.getAppliedTheme(companyId = config.companyId ,applicationId = applicationId , headers = headers)
         } else {
             null
         }
     }
     
     
-    suspend fun getAppliedTheme( headers: Map<String, String> = emptyMap())
+    suspend fun addThemeToApplication(body: ThemesSchema, headers: Map<String, String> = emptyMap())
     : Response<ThemesSchema>? {
         return if (config.oauthClient.isAccessTokenValid()) {
-                themeApiList?.getAppliedTheme(companyId = config.companyId ,applicationId = applicationId , headers = headers)
+                themeApiList?.addThemeToApplication(companyId = config.companyId ,applicationId = applicationId , body = body,headers = headers)
         } else {
             null
         }

@@ -102,11 +102,6 @@ interface ContentApiList {
     
     
     @GET
-    suspend fun getWellKnownUrl(@Url url1: String?    , @HeaderMap headers: Map<String, String>? = null)
-    : Response<WellKnownResponse>
-    
-    
-    @GET
     suspend fun getCustomObject(@Url url1: String?    , @HeaderMap headers: Map<String, String>? = null)
     : Response<CustomObjectByIdSchema>
     

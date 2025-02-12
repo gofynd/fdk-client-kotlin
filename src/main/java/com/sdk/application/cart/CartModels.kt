@@ -1559,29 +1559,9 @@ data class CartProduct(
     var categories: ArrayList<CategoryInfo>?=null,
     
     @SerializedName("attributes")
-    var attributes: @RawValue HashMap<String,Any>?=null,
-    
-    @SerializedName("l1_categories")
-    var l1Categories: ArrayList<Double>?=null,
-    
-    @SerializedName("l2_categories")
-    var l2Categories: ArrayList<Double>?=null,
-    
-    @SerializedName("l3_categories")
-    var l3Categories: ArrayList<Double>?=null,
-    
-    @SerializedName("departments")
-    var departments: ArrayList<Double>?=null
+    var attributes: @RawValue HashMap<String,Any>?=null
     
 ): Parcelable {
-    
-    
-    
-    
-    
-    
-    
-    
     
     
     
@@ -3579,14 +3559,9 @@ data class BulkPriceOffer(
     var offers: ArrayList<OfferItem>?=null,
     
     @SerializedName("seller")
-    var seller: OfferSeller?=null,
-    
-    @SerializedName("article_id")
-    var articleId: String?=null
+    var seller: OfferSeller?=null
     
 ): Parcelable {
-    
-    
     
     
     
@@ -3868,33 +3843,6 @@ data class Address(
 
              
 /*
-    Model: ValidationConfig
-*/
-@Parcelize
-data class ValidationConfig(
-    
-    
-    
-    @SerializedName("address_max_limit")
-    var addressMaxLimit: Int?=null,
-    
-    @SerializedName("user_address_count")
-    var userAddressCount: Int?=null
-    
-): Parcelable {
-    
-    
-    
-    
-    
-    
-    
-}
-
-
-
-             
-/*
     Model: GetAddressesResponse
 */
 @Parcelize
@@ -3906,14 +3854,9 @@ data class GetAddressesResponse(
     var piiMasking: Boolean?=null,
     
     @SerializedName("address")
-    var address: ArrayList<Address>?=null,
-    
-    @SerializedName("validation_config")
-    var validationConfig: ValidationConfig?=null
+    var address: ArrayList<Address>?=null
     
 ): Parcelable {
-    
-    
     
     
     
@@ -6270,14 +6213,9 @@ data class LadderPriceOffer(
     var freeGiftItems: ArrayList<FreeGiftItems>?=null,
     
     @SerializedName("description")
-    var description: String?=null,
-    
-    @SerializedName("promotion_type")
-    var promotionType: String?=null
+    var description: String?=null
     
 ): Parcelable {
-    
-    
     
     
     
@@ -6967,14 +6905,9 @@ data class AllAddressForSelectAddress(
     var address: ArrayList<Address>?=null,
     
     @SerializedName("pii_masking")
-    var piiMasking: Boolean?=null,
-    
-    @SerializedName("validation_config")
-    var validationConfig: ValidationConfig?=null
+    var piiMasking: Boolean?=null
     
 ): Parcelable {
-    
-    
     
     
     
@@ -6999,33 +6932,6 @@ data class DeleteCartRequest(
     var cartIdList: ArrayList<String>?=null
     
 ): Parcelable {
-    
-    
-    
-    
-    
-}
-
-
-
-             
-/*
-    Model: ValidationError
-*/
-@Parcelize
-data class ValidationError(
-    
-    
-    
-    @SerializedName("message")
-    var message: String?=null,
-    
-    @SerializedName("field")
-    var field: String?=null
-    
-): Parcelable {
-    
-    
     
     
     

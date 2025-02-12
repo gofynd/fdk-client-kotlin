@@ -299,77 +299,6 @@ class ServiceabilityDataManagerClass(val config: PlatformConfig, val unauthorize
     }
     
     
-    suspend fun getLocalitiesByPrefix(pageNo: Int?=null,pageSize: Int?=null,q: String?=null, headers: Map<String, String> = emptyMap())
-    : Response<GetLocalities>? {
-
-        return if (config.oauthClient.isAccessTokenValid()) {
-            serviceabilityApiList?.getLocalitiesByPrefix(
-        companyId = config.companyId,pageNo = pageNo,pageSize = pageSize,q = q, headers = headers)
-        } else {
-            null
-        }
-    }
-    
-    
-    
-        
-            
-                
-            
-            
-        
-            
-            
-        
-            
-                
-            
-            
-        
-            
-                
-            
-            
-        
-    /**
-    *
-    * Summary: Paginator for getLocalitiesByPrefix
-    **/
-    fun getLocalitiesByPrefixPaginator(companyId: String, pageSize: Int?=null, q: String?=null) : Paginator<GetLocalities>{
-        val paginator = Paginator<GetLocalities>()
-        paginator.setCallBack(object : PaginatorCallback<GetLocalities> {
-
-            override suspend fun onNext(
-                onResponse: (Event<GetLocalities>?,FdkError?) -> Unit){
-
-                if (config.oauthClient.isAccessTokenValid()) {
-                    val pageId = paginator.nextId
-                    val pageNo = paginator.pageNo
-                    val pageType = "number"
-                    serviceabilityApiList?.getLocalitiesByPrefix(
-                    companyId = config.companyId, pageNo = pageNo, pageSize = pageSize, q = q
-                    )?.safeAwait{ response, error ->
-                        response?.let {
-                            val page = response.peekContent()?.page
-                            paginator.setPaginator(hasNext=page?.hasNext?:false,pageNo=if (page?.hasNext == true) ((pageNo ?: 0) + 1) else pageNo)
-                            onResponse.invoke(response,null)
-                        }
-
-                        error?.let {
-                            onResponse.invoke(null,error)
-                        }
-                    }
-
-                } else {
-                    null
-                }
-            }
-
-
-    })
-        return paginator
-    }
-    
     suspend fun getLocality(localityType: String,localityValue: String,country: String?=null,state: String?=null,city: String?=null, headers: Map<String, String> = emptyMap())
     : Response<GetLocality>? {
 
@@ -544,10 +473,10 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     }
     
     
-    suspend fun getZones(stage: String?=null,type: String?=null,accessLevel: String?=null,status: String?=null,pageSize: Int?=null,pageNo: Int?=null,isActive: Boolean?=null,q: String?=null,countryIsoCode: String?=null,pincode: String?=null,state: String?=null,city: String?=null,sector: String?=null, headers: Map<String, String> = emptyMap())
+    suspend fun getZones(stage: String?=null,type: String?=null,pageSize: Int?=null,pageNo: Int?=null,isActive: Boolean?=null,q: String?=null,countryIsoCode: String?=null,pincode: String?=null,state: String?=null,city: String?=null,sector: String?=null, headers: Map<String, String> = emptyMap())
     : Response<ListViewResponseV2>? {
         return if (config.oauthClient.isAccessTokenValid()) {
-                serviceabilityApiList?.getZones(companyId = config.companyId ,applicationId = applicationId ,stage = stage,type = type,accessLevel = accessLevel,status = status,pageSize = pageSize,pageNo = pageNo,isActive = isActive,q = q,countryIsoCode = countryIsoCode,pincode = pincode,state = state,city = city,sector = sector, headers = headers)
+                serviceabilityApiList?.getZones(companyId = config.companyId ,applicationId = applicationId ,stage = stage,type = type,pageSize = pageSize,pageNo = pageNo,isActive = isActive,q = q,countryIsoCode = countryIsoCode,pincode = pincode,state = state,city = city,sector = sector, headers = headers)
         } else {
             null
         }
@@ -939,7 +868,6 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
             null
         }
     }
-    
     
     
     

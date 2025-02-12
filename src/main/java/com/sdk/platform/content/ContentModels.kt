@@ -5111,6 +5111,28 @@ data class CustomFieldsResponseByResourceIdSchema(
 
              
 /*
+    Model: CustomField
+*/
+@Parcelize
+data class CustomField(
+    
+    
+    
+    @SerializedName("definition_id")
+    var definitionId: String?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
     Model: CustomFieldRequestSchema
 */
 @Parcelize
@@ -5119,7 +5141,7 @@ data class CustomFieldRequestSchema(
     
     
     @SerializedName("fields")
-    var fields: @RawValue ArrayList<HashMap<String,Any>>?=null
+    var fields: ArrayList<CustomField>?=null
     
 ): Parcelable {
     
@@ -5142,101 +5164,6 @@ data class CustomObjectSchema(
     
     @SerializedName("_id")
     var id: String?=null,
-    
-    @SerializedName("name")
-    var name: String?=null,
-    
-    @SerializedName("creator")
-    var creator: String?=null,
-    
-    @SerializedName("company_id")
-    var companyId: String?=null,
-    
-    @SerializedName("created_by")
-    var createdBy: String?=null,
-    
-    @SerializedName("updated_by")
-    var updatedBy: String?=null,
-    
-    @SerializedName("status")
-    var status: String?=null,
-    
-    @SerializedName("slug")
-    var slug: String?=null,
-    
-    @SerializedName("type")
-    var type: String?=null,
-    
-    @SerializedName("display_name")
-    var displayName: String?=null,
-    
-    @SerializedName("definition_id")
-    var definitionId: String?=null,
-    
-    @SerializedName("is_deleted")
-    var isDeleted: Boolean?=null,
-    
-    @SerializedName("created_at")
-    var createdAt: String?=null,
-    
-    @SerializedName("updated_at")
-    var updatedAt: String?=null,
-    
-    @SerializedName("fields")
-    var fields: ArrayList<CustomFieldSchema>?=null
-    
-): Parcelable {
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-}
-
-
-
-             
-/*
-    Model: CustomObjectApplicationSchema
-*/
-@Parcelize
-data class CustomObjectApplicationSchema(
-    
-    
-    
-    @SerializedName("_id")
-    var id: String?=null,
-    
-    @SerializedName("name")
-    var name: String?=null,
     
     @SerializedName("creator")
     var creator: String?=null,
@@ -5281,8 +5208,6 @@ data class CustomObjectApplicationSchema(
     var fields: ArrayList<CustomFieldSchema>?=null
     
 ): Parcelable {
-    
-    
     
     
     

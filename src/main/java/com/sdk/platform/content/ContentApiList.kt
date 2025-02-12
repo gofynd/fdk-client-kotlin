@@ -491,7 +491,7 @@ interface ContentApiList {
     
     @POST ("/service/platform/content/v1.0/company/{company_id}/application/{application_id}/metaobjects")
     suspend fun createAppCustomObject(@Path("company_id") companyId: String, @Path("application_id") applicationId: String,@Body body: CustomObjectRequestSchema, @HeaderMap headers: Map<String, String>? = null)
-    : Response<CustomObjectApplicationSchema>
+    : Response<CustomObjectSchema>
     
     @GET ("/service/platform/content/v1.0/company/{company_id}/application/{application_id}/metaobjects/{id}")
     suspend fun getAppCustomObject(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Path("id") id: String, @HeaderMap headers: Map<String, String>? = null)
@@ -499,7 +499,7 @@ interface ContentApiList {
     
     @PUT ("/service/platform/content/v1.0/company/{company_id}/application/{application_id}/metaobjects/{id}")
     suspend fun updateAppCustomObject(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Path("id") id: String,@Body body: CustomObjectRequestSchema, @HeaderMap headers: Map<String, String>? = null)
-    : Response<CustomObjectApplicationSchema>
+    : Response<CustomObjectSchema>
     
     @DELETE ("/service/platform/content/v1.0/company/{company_id}/application/{application_id}/metaobjects/{id}")
     suspend fun deleteAppCustomObject(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Path("id") id: String, @HeaderMap headers: Map<String, String>? = null)
