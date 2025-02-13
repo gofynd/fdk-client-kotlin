@@ -46,10 +46,10 @@ data class RewardsArticle(
 
              
 /*
-    Model: CatalogueOrderDetails
+    Model: CatalogueOrderResponse
 */
 @Parcelize
-data class CatalogueOrderDetails(
+data class CatalogueOrderResponse(
     
     
     
@@ -68,10 +68,10 @@ data class CatalogueOrderDetails(
 
              
 /*
-    Model: CatalogueOrderCreation
+    Model: CatalogueOrderRequest
 */
 @Parcelize
-data class CatalogueOrderCreation(
+data class CatalogueOrderRequest(
     
     
     
@@ -90,10 +90,10 @@ data class CatalogueOrderCreation(
 
              
 /*
-    Model: PointsDetails
+    Model: PointsResponse
 */
 @Parcelize
-data class PointsDetails(
+data class PointsResponse(
     
     
     
@@ -404,10 +404,10 @@ data class ShareMessages(
 
              
 /*
-    Model: ReferralDetails
+    Model: ReferralDetailsResponse
 */
 @Parcelize
-data class ReferralDetails(
+data class ReferralDetailsResponse(
     
     
     
@@ -446,10 +446,10 @@ data class ReferralDetails(
 
              
 /*
-    Model: RetrieveOrderDiscount
+    Model: OrderDiscountRequest
 */
 @Parcelize
-data class RetrieveOrderDiscount(
+data class OrderDiscountRequest(
     
     
     
@@ -557,10 +557,10 @@ data class DiscountProperties(
 
              
 /*
-    Model: OrderDiscountDetails
+    Model: OrderDiscountResponse
 */
 @Parcelize
-data class OrderDiscountDetails(
+data class OrderDiscountResponse(
     
     
     
@@ -599,10 +599,10 @@ data class OrderDiscountDetails(
 
              
 /*
-    Model: RedeemReferralCode
+    Model: RedeemReferralCodeRequest
 */
 @Parcelize
-data class RedeemReferralCode(
+data class RedeemReferralCodeRequest(
     
     
     
@@ -626,10 +626,10 @@ data class RedeemReferralCode(
 
              
 /*
-    Model: RedeemReferralCodeDetails
+    Model: RedeemReferralCodeResponse
 */
 @Parcelize
-data class RedeemReferralCodeDetails(
+data class RedeemReferralCodeResponse(
     
     
     
@@ -668,10 +668,10 @@ data class RedeemReferralCodeDetails(
 
              
 /*
-    Model: PointsHistoryDetails
+    Model: PointsHistoryResponse
 */
 @Parcelize
-data class PointsHistoryDetails(
+data class PointsHistoryResponse(
     
     
     
@@ -808,9 +808,14 @@ data class Page(
     var type: String?=null,
     
     @SerializedName("size")
-    var size: Int?=null
+    var size: Int?=null,
+    
+    @SerializedName("total")
+    var total: Int?=null
     
 ): Parcelable {
+    
+    
     
     
     

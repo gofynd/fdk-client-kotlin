@@ -21,15 +21,15 @@ class ConfigurationDataManagerClass(val config: ApplicationConfig, val unauthori
             
                     _relativeUrls["getApplication"] = "/service/application/configuration/v1.0/application".substring(1)
             
-                    _relativeUrls["getOwnerInfo"] = "/service/application/configuration/v1.0/about".substring(1)
+                    _relativeUrls["getOwnerInfo"] = "/service/application/configuration/v2.0/about".substring(1)
             
                     _relativeUrls["getBasicDetails"] = "/service/application/configuration/v1.0/detail".substring(1)
             
                     _relativeUrls["getIntegrationTokens"] = "/service/application/configuration/v1.0/token".substring(1)
             
-                    _relativeUrls["getOrderingStores"] = "/service/application/configuration/v1.0/ordering-store/stores".substring(1)
+                    _relativeUrls["getOrderingStores"] = "/service/application/configuration/v2.0/ordering-store/stores".substring(1)
             
-                    _relativeUrls["getStoreDetailById"] = "/service/application/configuration/v1.0/ordering-store/stores/{store_id}".substring(1)
+                    _relativeUrls["getStoreDetailById"] = "/service/application/configuration/v2.0/ordering-store/stores/{store_id}".substring(1)
             
                     _relativeUrls["getFeatures"] = "/service/application/configuration/v1.0/feature".substring(1)
             
@@ -93,7 +93,7 @@ class ConfigurationDataManagerClass(val config: ApplicationConfig, val unauthori
 
     
     
-    suspend fun getOwnerInfo( headers: Map<String, String> = emptyMap()): Response<ApplicationAboutResponseSchema>? {
+    suspend fun getOwnerInfo( headers: Map<String, String> = emptyMap()): Response<ApplicationAboutResponse>? {
         var fullUrl : String? = _relativeUrls["getOwnerInfo"]
         
         return configurationApiList?.getOwnerInfo(fullUrl, headers = headers)}
@@ -107,7 +107,7 @@ class ConfigurationDataManagerClass(val config: ApplicationConfig, val unauthori
 
     
     
-    suspend fun getIntegrationTokens( headers: Map<String, String> = emptyMap()): Response<AppTokenResponseSchema>? {
+    suspend fun getIntegrationTokens( headers: Map<String, String> = emptyMap()): Response<AppTokenResponse>? {
         var fullUrl : String? = _relativeUrls["getIntegrationTokens"]
         
         return configurationApiList?.getIntegrationTokens(fullUrl, headers = headers)}
@@ -121,6 +121,56 @@ class ConfigurationDataManagerClass(val config: ApplicationConfig, val unauthori
 
     
     
+    
+        
+            
+            
+        
+            
+                
+            
+            
+        
+            
+                
+            
+            
+        
+    /**
+    *
+    * Summary: Paginator for getOrderingStores
+    **/
+    fun getOrderingStoresPaginator(pageSize: Int?=null, q: String?=null) : Paginator<OrderingStores>{
+
+    val paginator = Paginator<OrderingStores>()
+
+    paginator.setCallBack(object : PaginatorCallback<OrderingStores> {
+
+            override suspend fun onNext(
+                onResponse: (Event<OrderingStores>?,FdkError?) -> Unit) {
+                val pageId = paginator.nextId
+                val pageNo = paginator.pageNo
+                val pageType = "number"
+                var fullUrl : String? = _relativeUrls["getOrderingStores"]
+                
+                configurationApiList?.getOrderingStores(fullUrl , pageNo = pageNo, pageSize = pageSize, q = q)?.safeAwait{ response, error ->
+                    response?.let {
+                        val page = response.peekContent()?.page
+                        paginator.setPaginator(hasNext=page?.hasNext?:false,pageNo=if (page?.hasNext == true) ((pageNo ?: 0) + 1) else pageNo)
+                        onResponse.invoke(response, null)
+                    }
+
+                    error?.let {
+                        onResponse.invoke(null,error)
+                    }
+            }
+        }
+
+    })
+
+    return paginator
+    }
+    
     suspend fun getStoreDetailById(storeId: Int, headers: Map<String, String> = emptyMap()): Response<OrderingStore>? {
         var fullUrl : String? = _relativeUrls["getStoreDetailById"]
         
@@ -130,7 +180,7 @@ class ConfigurationDataManagerClass(val config: ApplicationConfig, val unauthori
 
     
     
-    suspend fun getFeatures( headers: Map<String, String> = emptyMap()): Response<AppFeatureResponseSchema>? {
+    suspend fun getFeatures( headers: Map<String, String> = emptyMap()): Response<AppFeatureResponse>? {
         var fullUrl : String? = _relativeUrls["getFeatures"]
         
         return configurationApiList?.getFeatures(fullUrl, headers = headers)}
@@ -144,7 +194,7 @@ class ConfigurationDataManagerClass(val config: ApplicationConfig, val unauthori
 
     
     
-    suspend fun getCurrencies( headers: Map<String, String> = emptyMap()): Response<CurrenciesResponseSchema>? {
+    suspend fun getCurrencies( headers: Map<String, String> = emptyMap()): Response<CurrenciesResponse>? {
         var fullUrl : String? = _relativeUrls["getCurrencies"]
         
         return configurationApiList?.getCurrencies(fullUrl, headers = headers)}
@@ -160,42 +210,107 @@ class ConfigurationDataManagerClass(val config: ApplicationConfig, val unauthori
 
     
     
-    suspend fun getAppCurrencies( headers: Map<String, String> = emptyMap()): Response<AppCurrencyResponseSchema>? {
+    suspend fun getAppCurrencies( headers: Map<String, String> = emptyMap()): Response<AppCurrencyResponse>? {
         var fullUrl : String? = _relativeUrls["getAppCurrencies"]
         
         return configurationApiList?.getAppCurrencies(fullUrl, headers = headers)}
 
     
     
-    suspend fun getLanguages( headers: Map<String, String> = emptyMap()): Response<LanguageResponseSchema>? {
+    suspend fun getLanguages( headers: Map<String, String> = emptyMap()): Response<LanguageResponse>? {
         var fullUrl : String? = _relativeUrls["getLanguages"]
         
         return configurationApiList?.getLanguages(fullUrl, headers = headers)}
 
     
     
-    suspend fun getOrderingStoreCookie(body: OrderingStoreSelectRequestSchema, headers: Map<String, String> = emptyMap()): Response<SuccessMessageResponseSchema>? {
+    suspend fun getOrderingStoreCookie(body: OrderingStoreSelectRequest, headers: Map<String, String> = emptyMap()): Response<SuccessMessageResponse>? {
         var fullUrl : String? = _relativeUrls["getOrderingStoreCookie"]
         
         return configurationApiList?.getOrderingStoreCookie(fullUrl, body = body,headers = headers)}
 
     
     
-    suspend fun removeOrderingStoreCookie( headers: Map<String, String> = emptyMap()): Response<SuccessMessageResponseSchema>? {
+    suspend fun removeOrderingStoreCookie( headers: Map<String, String> = emptyMap()): Response<SuccessMessageResponse>? {
         var fullUrl : String? = _relativeUrls["removeOrderingStoreCookie"]
         
         return configurationApiList?.removeOrderingStoreCookie(fullUrl, headers = headers)}
 
     
     
-    suspend fun getAppStaffList(pageNo: Int?=null,pageSize: Int?=null,orderIncent: Boolean?=null,orderingStore: Int?=null,user: String?=null,userName: String?=null, headers: Map<String, String> = emptyMap()): Response<AppStaffListResponseSchema>? {
+    suspend fun getAppStaffList(pageNo: Int?=null,pageSize: Int?=null,orderIncent: Boolean?=null,orderingStore: Int?=null,user: String?=null,userName: String?=null, headers: Map<String, String> = emptyMap()): Response<AppStaffListResponse>? {
         var fullUrl : String? = _relativeUrls["getAppStaffList"]
         
         return configurationApiList?.getAppStaffList(fullUrl,   pageNo = pageNo,  pageSize = pageSize,  orderIncent = orderIncent,  orderingStore = orderingStore,  user = user,  userName = userName,headers = headers)}
 
     
     
-    suspend fun getAppStaffs(orderIncent: Boolean?=null,orderingStore: Int?=null,user: String?=null, headers: Map<String, String> = emptyMap()): Response<AppStaffResponseSchema>? {
+    
+        
+            
+            
+        
+            
+                
+            
+            
+        
+            
+                
+            
+            
+        
+            
+                
+            
+            
+        
+            
+                
+            
+            
+        
+            
+                
+            
+            
+        
+    /**
+    *
+    * Summary: Paginator for getAppStaffList
+    **/
+    fun getAppStaffListPaginator(pageSize: Int?=null, orderIncent: Boolean?=null, orderingStore: Int?=null, user: String?=null, userName: String?=null) : Paginator<AppStaffListResponse>{
+
+    val paginator = Paginator<AppStaffListResponse>()
+
+    paginator.setCallBack(object : PaginatorCallback<AppStaffListResponse> {
+
+            override suspend fun onNext(
+                onResponse: (Event<AppStaffListResponse>?,FdkError?) -> Unit) {
+                val pageId = paginator.nextId
+                val pageNo = paginator.pageNo
+                val pageType = "number"
+                var fullUrl : String? = _relativeUrls["getAppStaffList"]
+                
+                configurationApiList?.getAppStaffList(fullUrl , pageNo = pageNo, pageSize = pageSize, orderIncent = orderIncent, orderingStore = orderingStore, user = user, userName = userName)?.safeAwait{ response, error ->
+                    response?.let {
+                        val page = response.peekContent()?.page
+                        paginator.setPaginator(hasNext=page?.hasNext?:false,pageNo=if (page?.hasNext == true) ((pageNo ?: 0) + 1) else pageNo)
+                        onResponse.invoke(response, null)
+                    }
+
+                    error?.let {
+                        onResponse.invoke(null,error)
+                    }
+            }
+        }
+
+    })
+
+    return paginator
+    }
+    
+    suspend fun getAppStaffs(orderIncent: Boolean?=null,orderingStore: Int?=null,user: String?=null, headers: Map<String, String> = emptyMap()): Response<AppStaffResponse>? {
         var fullUrl : String? = _relativeUrls["getAppStaffs"]
         
         return configurationApiList?.getAppStaffs(fullUrl,   orderIncent = orderIncent,  orderingStore = orderingStore,  user = user,headers = headers)}

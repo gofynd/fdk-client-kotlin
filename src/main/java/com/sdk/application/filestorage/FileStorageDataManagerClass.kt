@@ -60,7 +60,7 @@ class FileStorageDataManagerClass(val config: ApplicationConfig, val unauthorize
         return retrofitHttpClient?.initializeRestClient(FileStorageApiList::class.java) as? FileStorageApiList
     }
     
-    suspend fun startUpload(namespace: String,body: FileUploadStart, headers: Map<String, String> = emptyMap()): Response<FileUpload>? {
+    suspend fun startUpload(namespace: String,body: StartRequest, headers: Map<String, String> = emptyMap()): Response<StartResponse>? {
         var fullUrl : String? = _relativeUrls["startUpload"]
         
         fullUrl = fullUrl?.replace("{" + "namespace" +"}",namespace.toString())
@@ -69,7 +69,7 @@ class FileStorageDataManagerClass(val config: ApplicationConfig, val unauthorize
 
     
     
-    suspend fun completeUpload(namespace: String,body: FileUpload, headers: Map<String, String> = emptyMap()): Response<FileUploadComplete>? {
+    suspend fun completeUpload(namespace: String,body: StartResponse, headers: Map<String, String> = emptyMap()): Response<CompleteResponse>? {
         var fullUrl : String? = _relativeUrls["completeUpload"]
         
         fullUrl = fullUrl?.replace("{" + "namespace" +"}",namespace.toString())
@@ -78,7 +78,7 @@ class FileStorageDataManagerClass(val config: ApplicationConfig, val unauthorize
 
     
     
-    suspend fun signUrls(body: SignUrl, headers: Map<String, String> = emptyMap()): Response<SignUrlResult>? {
+    suspend fun signUrls(body: SignUrlRequest, headers: Map<String, String> = emptyMap()): Response<SignUrlResponse>? {
         var fullUrl : String? = _relativeUrls["signUrls"]
         
         return fileStorageApiList?.signUrls(fullUrl, body = body,headers = headers)}
