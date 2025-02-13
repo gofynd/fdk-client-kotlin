@@ -57,8 +57,11 @@ data class CreateUpdateDiscount(
     @SerializedName("is_active")
     var isActive: Boolean?=null,
     
-    @SerializedName("app_id")
-    var appId: String?=null,
+    @SerializedName("app_ids")
+    var appIds: ArrayList<String>?=null,
+    
+    @SerializedName("extension_ids")
+    var extensionIds: ArrayList<String>?=null,
     
     @SerializedName("job_type")
     var jobType: String?=null,
@@ -81,8 +84,8 @@ data class CreateUpdateDiscount(
     @SerializedName("store_ids")
     var storeIds: ArrayList<Int>?=null,
     
-    @SerializedName("factory_type_ids")
-    var factoryTypeIds: ArrayList<String>?=null,
+    @SerializedName("zone_ids")
+    var zoneIds: ArrayList<String>?=null,
     
     @SerializedName("validity")
     var validity: ValidityObject?=null,
@@ -91,6 +94,8 @@ data class CreateUpdateDiscount(
     var discountMeta: DiscountMeta?=null
     
 ): Parcelable {
+    
+    
     
     
     
@@ -179,8 +184,8 @@ data class DiscountJob(
     @SerializedName("is_active")
     var isActive: Boolean?=null,
     
-    @SerializedName("app_id")
-    var appId: String?=null,
+    @SerializedName("app_ids")
+    var appIds: ArrayList<String>?=null,
     
     @SerializedName("job_type")
     var jobType: String?=null,
@@ -203,8 +208,8 @@ data class DiscountJob(
     @SerializedName("store_ids")
     var storeIds: ArrayList<Int>?=null,
     
-    @SerializedName("factory_type_ids")
-    var factoryTypeIds: ArrayList<String>?=null,
+    @SerializedName("zone_ids")
+    var zoneIds: ArrayList<String>?=null,
     
     @SerializedName("discount_meta")
     var discountMeta: DiscountMeta?=null,
@@ -293,8 +298,8 @@ data class FileJobBody(
     @SerializedName("is_active")
     var isActive: Boolean?=null,
     
-    @SerializedName("app_id")
-    var appId: String?=null,
+    @SerializedName("app_ids")
+    var appIds: ArrayList<String>?=null,
     
     @SerializedName("job_type")
     var jobType: String?=null,
@@ -317,8 +322,11 @@ data class FileJobBody(
     @SerializedName("store_ids")
     var storeIds: ArrayList<Int>?=null,
     
-    @SerializedName("factory_type_ids")
-    var factoryTypeIds: ArrayList<String>?=null,
+    @SerializedName("extension_ids")
+    var extensionIds: ArrayList<String>?=null,
+    
+    @SerializedName("zone_ids")
+    var zoneIds: ArrayList<String>?=null,
     
     @SerializedName("discount_meta")
     var discountMeta: DiscountMeta?=null,
@@ -342,6 +350,8 @@ data class FileJobBody(
     var meta: @RawValue HashMap<String,Any>?=null
     
 ): Parcelable {
+    
+    
     
     
     
@@ -432,12 +442,6 @@ data class DiscountItems(
     @SerializedName("seller_identifier")
     var sellerIdentifier: String?=null,
     
-    @SerializedName("store_code")
-    var storeCode: String?=null,
-    
-    @SerializedName("price_zone")
-    var priceZone: String?=null,
-    
     @SerializedName("discount_type")
     var discountType: String?=null,
     
@@ -448,10 +452,6 @@ data class DiscountItems(
     var discountMeta: DiscountMeta?=null
     
 ): Parcelable {
-    
-    
-    
-    
     
     
     
@@ -500,10 +500,10 @@ data class BulkDiscount(
 
              
 /*
-    Model: FileJobResponse
+    Model: FileJobResponseSchema
 */
 @Parcelize
-data class FileJobResponse(
+data class FileJobResponseSchema(
     
     
     
@@ -536,6 +536,12 @@ data class FileJobResponse(
     
     @SerializedName("progress")
     var progress: Int?=null,
+    
+    @SerializedName("extension_ids")
+    var extensionIds: ArrayList<String>?=null,
+    
+    @SerializedName("zone_ids")
+    var zoneIds: ArrayList<String>?=null,
     
     @SerializedName("created_on")
     var createdOn: String?=null,
@@ -576,16 +582,20 @@ data class FileJobResponse(
     
     
     
+    
+    
+    
+    
 }
 
 
 
              
 /*
-    Model: FileJobRequest
+    Model: FileJobRequestSchema
 */
 @Parcelize
-data class FileJobRequest(
+data class FileJobRequestSchema(
     
     
     
@@ -598,8 +608,8 @@ data class FileJobRequest(
     @SerializedName("company_id")
     var companyId: Int?=null,
     
-    @SerializedName("app_id")
-    var appId: String?=null,
+    @SerializedName("app_ids")
+    var appIds: ArrayList<String>?=null,
     
     @SerializedName("job_type")
     var jobType: String?=null,
@@ -666,10 +676,15 @@ data class DownloadFileJob(
     
     
     
-    @SerializedName("app_id")
-    var appId: String?=null
+    @SerializedName("brand_ids")
+    var brandIds: ArrayList<Int>?=null,
+    
+    @SerializedName("store_ids")
+    var storeIds: ArrayList<Int>?=null
     
 ): Parcelable {
+    
+    
     
     
     
@@ -681,10 +696,10 @@ data class DownloadFileJob(
 
              
 /*
-    Model: CancelJobResponse
+    Model: CancelJobResponseSchema
 */
 @Parcelize
-data class CancelJobResponse(
+data class CancelJobResponseSchema(
     
     
     
@@ -729,14 +744,9 @@ data class Page(
     var type: String?=null,
     
     @SerializedName("size")
-    var size: Int?=null,
-    
-    @SerializedName("total")
-    var total: Int?=null
+    var size: Int?=null
     
 ): Parcelable {
-    
-    
     
     
     
