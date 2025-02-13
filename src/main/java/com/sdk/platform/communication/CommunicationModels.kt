@@ -1236,10 +1236,10 @@ data class Stats(
     var id: String?=null,
     
     @SerializedName("imported")
-    var imported: @RawValue Any?=null,
+    var imported: StatsImported?=null,
     
     @SerializedName("processed")
-    var processed: @RawValue Any?=null
+    var processed: StatsProcessed?=null
     
 ): Parcelable {
     
@@ -2705,7 +2705,7 @@ data class EventSubscriptionTemplateSms(
     var subscribed: Boolean?=null,
     
     @SerializedName("template")
-    var template: @RawValue Any?=null
+    var template: String?=null
     
 ): Parcelable {
     
@@ -2732,7 +2732,7 @@ data class EventSubscriptionTemplateEmail(
     var subscribed: Boolean?=null,
     
     @SerializedName("template")
-    var template: @RawValue Any?=null
+    var template: String?=null
     
 ): Parcelable {
     
@@ -2869,6 +2869,159 @@ data class EventSubscription(
 
              
 /*
+    Model: EventSubscriptionTemplateSmsObj
+*/
+@Parcelize
+data class EventSubscriptionTemplateSmsObj(
+    
+    
+    
+    @SerializedName("subscribed")
+    var subscribed: Boolean?=null,
+    
+    @SerializedName("template")
+    var template: @RawValue HashMap<String,Any>?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: EventSubscriptionTemplateEmailObj
+*/
+@Parcelize
+data class EventSubscriptionTemplateEmailObj(
+    
+    
+    
+    @SerializedName("subscribed")
+    var subscribed: Boolean?=null,
+    
+    @SerializedName("template")
+    var template: String?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: EventSubscriptionTemplateObj
+*/
+@Parcelize
+data class EventSubscriptionTemplateObj(
+    
+    
+    
+    @SerializedName("sms")
+    var sms: EventSubscriptionTemplateSmsObj?=null,
+    
+    @SerializedName("email")
+    var email: EventSubscriptionTemplateEmailObj?=null,
+    
+    @SerializedName("pushnotification")
+    var pushnotification: EventSubscriptionTemplatePushnotification?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: EventSubscriptionObj
+*/
+@Parcelize
+data class EventSubscriptionObj(
+    
+    
+    
+    @SerializedName("template")
+    var template: EventSubscriptionTemplateObj?=null,
+    
+    @SerializedName("is_default")
+    var isDefault: Boolean?=null,
+    
+    @SerializedName("_id")
+    var id: String?=null,
+    
+    @SerializedName("application")
+    var application: String?=null,
+    
+    @SerializedName("category")
+    var category: String?=null,
+    
+    @SerializedName("event")
+    var event: @RawValue Any?=null,
+    
+    @SerializedName("slug")
+    var slug: String?=null,
+    
+    @SerializedName("created_at")
+    var createdAt: String?=null,
+    
+    @SerializedName("updated_at")
+    var updatedAt: String?=null,
+    
+    @SerializedName("__v")
+    var v: Int?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
     Model: EventSubscriptions
 */
 @Parcelize
@@ -2877,7 +3030,7 @@ data class EventSubscriptions(
     
     
     @SerializedName("items")
-    var items: ArrayList<EventSubscription>?=null,
+    var items: ArrayList<EventSubscriptionObj>?=null,
     
     @SerializedName("page")
     var page: Page?=null
@@ -3202,10 +3355,10 @@ data class JobLog(
     
     
     @SerializedName("imported")
-    var imported: @RawValue Any?=null,
+    var imported: StatsImported?=null,
     
     @SerializedName("processed")
-    var processed: @RawValue Any?=null,
+    var processed: StatsProcessed?=null,
     
     @SerializedName("_id")
     var id: String?=null,
@@ -3535,33 +3688,6 @@ data class Logs(
 
              
 /*
-    Model: SendOtpSmsCommsTemplate
-*/
-@Parcelize
-data class SendOtpSmsCommsTemplate(
-    
-    
-    
-    @SerializedName("key")
-    var key: String?=null,
-    
-    @SerializedName("value")
-    var value: @RawValue Any?=null
-    
-): Parcelable {
-    
-    
-    
-    
-    
-    
-    
-}
-
-
-
-             
-/*
     Model: SendOtpSmsCommsProvider
 */
 @Parcelize
@@ -3694,7 +3820,7 @@ data class SendOtpCommsReqSms(
     var expiry: Int?=null,
     
     @SerializedName("template")
-    var template: SendOtpSmsCommsTemplate?=null,
+    var template: @RawValue HashMap<String,Any>?=null,
     
     @SerializedName("provider")
     var provider: SendOtpSmsCommsProvider?=null
@@ -4638,6 +4764,38 @@ data class Notification(
 
              
 /*
+    Model: SystemNotificationSetting
+*/
+@Parcelize
+data class SystemNotificationSetting(
+    
+    
+    
+    @SerializedName("sound")
+    var sound: Boolean?=null,
+    
+    @SerializedName("priority")
+    var priority: String?=null,
+    
+    @SerializedName("time_to_live")
+    var timeToLive: String?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
     Model: SystemNotificationUser
 */
 @Parcelize
@@ -4679,7 +4837,7 @@ data class SystemNotification(
     var user: SystemNotificationUser?=null,
     
     @SerializedName("settings")
-    var settings: SystemNotificationUser?=null,
+    var settings: SystemNotificationSetting?=null,
     
     @SerializedName("_id")
     var id: String?=null,

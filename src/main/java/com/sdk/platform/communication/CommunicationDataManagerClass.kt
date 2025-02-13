@@ -334,7 +334,7 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     }
     
     suspend fun createEventSubscriptions(body: SubscriptionsObject, headers: Map<String, String> = emptyMap())
-    : Response<EventSubscriptionsBulkUpdateResponse>? {
+    : Response<EventSubscription>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 communicationApiList?.createEventSubscriptions(companyId = config.companyId ,applicationId = applicationId , body = body,headers = headers)
         } else {
@@ -364,7 +364,7 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     
     
     suspend fun editEventSubscriptions(id: String,body: SubscriptionsObjectRequest, headers: Map<String, String> = emptyMap())
-    : Response<EventSubscriptionsBulkUpdateResponse>? {
+    : Response<EventSubscription>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 communicationApiList?.editEventSubscriptions(companyId = config.companyId ,applicationId = applicationId ,id = id, body = body,headers = headers)
         } else {

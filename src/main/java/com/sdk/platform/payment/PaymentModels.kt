@@ -3307,9 +3307,14 @@ data class MultiTenderPaymentMeta(
     var paymentGateway: String?=null,
     
     @SerializedName("key")
-    var key: String?=null
+    var key: String?=null,
+    
+    @SerializedName("payment_gateway_slug")
+    var paymentGatewaySlug: String?=null
     
 ): Parcelable {
+    
+    
     
     
     

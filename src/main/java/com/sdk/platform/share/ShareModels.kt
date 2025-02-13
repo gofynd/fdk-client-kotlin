@@ -458,9 +458,14 @@ data class Page(
     var size: Int?=null,
     
     @SerializedName("total")
-    var total: Int?=null
+    var total: Int?=null,
+    
+    @SerializedName("page")
+    var page: Int?=null
     
 ): Parcelable {
+    
+    
     
     
     
