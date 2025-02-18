@@ -934,9 +934,14 @@ data class Page(
     var type: String?=null,
     
     @SerializedName("size")
-    var size: Int?=null
+    var size: Int?=null,
+    
+    @SerializedName("page_size")
+    var pageSize: Int?=null
     
 ): Parcelable {
+    
+    
     
     
     
@@ -3042,9 +3047,14 @@ data class Article(
     var quantity: Int?=null,
     
     @SerializedName("meta")
-    var meta: @RawValue HashMap<String,Any>?=null
+    var meta: @RawValue HashMap<String,Any>?=null,
+    
+    @SerializedName("allowed_refund")
+    var allowedRefund: Boolean?=null
     
 ): Parcelable {
+    
+    
     
     
     
@@ -4523,6 +4533,9 @@ data class AppliedPromotion(
     @SerializedName("amount")
     var amount: Double?=null,
     
+    @SerializedName("float_amount")
+    var floatAmount: String?=null,
+    
     @SerializedName("promotion_type")
     var promotionType: String?=null,
     
@@ -4542,6 +4555,8 @@ data class AppliedPromotion(
     var code: String?=null
     
 ): Parcelable {
+    
+    
     
     
     
@@ -4800,6 +4815,38 @@ data class ProductPriceInfo(
 
              
 /*
+    Model: ProductMaxQuantityInfo
+*/
+@Parcelize
+data class ProductMaxQuantityInfo(
+    
+    
+    
+    @SerializedName("item")
+    var item: Double?=null,
+    
+    @SerializedName("item_seller")
+    var itemSeller: Double?=null,
+    
+    @SerializedName("item_store")
+    var itemStore: Double?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
     Model: CartProductIdentifer
 */
 @Parcelize
@@ -4984,6 +5031,9 @@ data class CartProductInfo(
     @SerializedName("moq")
     var moq: @RawValue HashMap<String,Any>?=null,
     
+    @SerializedName("max_quantity")
+    var maxQuantity: ProductMaxQuantityInfo?=null,
+    
     @SerializedName("price_per_unit")
     var pricePerUnit: ProductPriceInfo?=null,
     
@@ -4994,6 +5044,8 @@ data class CartProductInfo(
     var customOrder: @RawValue HashMap<String,Any>?=null
     
 ): Parcelable {
+    
+    
     
     
     
@@ -7967,6 +8019,9 @@ data class PlatformGetAddressesDetails(
     
     
     
+    @SerializedName("pii_masking")
+    var piiMasking: Boolean?=null,
+    
     @SerializedName("address")
     var address: ArrayList<PlatformAddress>?=null,
     
@@ -7974,6 +8029,8 @@ data class PlatformGetAddressesDetails(
     var validationConfig: ValidationConfig?=null
     
 ): Parcelable {
+    
+    
     
     
     

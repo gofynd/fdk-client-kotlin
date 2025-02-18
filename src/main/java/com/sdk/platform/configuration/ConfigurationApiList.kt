@@ -89,7 +89,7 @@ interface ConfigurationApiList {
     suspend fun getAppSupportedCurrency(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @HeaderMap headers: Map<String, String>? = null)
     : Response<AppCurrencyResponseSchema>
     
-    @POST ("/service/platform/configuration/v1.0/company/{company_id}/application/{application_id}/ordering-store/stores/filter")
+    @POST ("/service/platform/configuration/v2.0/company/{company_id}/application/{application_id}/ordering-store/stores/filter")
     suspend fun getOrderingStoresByFilter(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Query("page_no") pageNo: Int?, @Query("page_size") pageSize: Int?,@Body body: FilterOrderingStoreRequestSchema, @HeaderMap headers: Map<String, String>? = null)
     : Response<OrderingStores>
     
@@ -101,7 +101,7 @@ interface ConfigurationApiList {
     suspend fun getOrderingStoreConfig(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @HeaderMap headers: Map<String, String>? = null)
     : Response<OrderingStoreConfig>
     
-    @GET ("/service/platform/configuration/v1.0/company/{company_id}/application/{application_id}/ordering-store/staff-stores")
+    @GET ("/service/platform/configuration/v2.0/company/{company_id}/application/{application_id}/ordering-store/staff-stores")
     suspend fun getStaffOrderingStores(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Query("page_no") pageNo: Int?, @Query("page_size") pageSize: Int?, @Query("q") q: String?, @HeaderMap headers: Map<String, String>? = null)
     : Response<OrderingStoresResponseSchema>
     
@@ -161,7 +161,7 @@ interface ConfigurationApiList {
     suspend fun getCompanyByBrands(@Path("company_id") companyId: String, @Query("page_no") pageNo: Int?, @Query("page_size") pageSize: Int?,@Body body: CompanyByBrandsRequestSchema, @HeaderMap headers: Map<String, String>? = null)
     : Response<CompanyByBrandsResponseSchema>
     
-    @POST ("/service/platform/configuration/v1.0/company/{company_id}/inventory/stores-by-brands")
+    @POST ("/service/platform/configuration/v2.0/company/{company_id}/inventory/stores-by-brands")
     suspend fun getStoreByBrands(@Path("company_id") companyId: String, @Query("page_no") pageNo: Int?, @Query("page_size") pageSize: Int?,@Body body: StoreByBrandsRequestSchema, @HeaderMap headers: Map<String, String>? = null)
     : Response<StoreByBrandsResponseSchema>
     

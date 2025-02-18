@@ -29,6 +29,10 @@ interface UserApiList {
     suspend fun unDeleteUser(@Path("company_id") companyId: String, @Path("application_id") applicationId: String,@Body body: UnDeleteUserRequestSchema, @HeaderMap headers: Map<String, String>? = null)
     : Response<UnDeleteUserSuccess>
     
+    @GET ("/service/platform/user/v1.0/company/{company_id}/application/{application_id}/customers/{user_id}/timeline")
+    suspend fun getUserTimeline(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Path("user_id") userId: String, @HeaderMap headers: Map<String, String>? = null)
+    : Response<GetUserTimeline>
+    
     @PUT ("/service/platform/user/v1.0/company/{company_id}/application/{application_id}/customers/{user_id}")
     suspend fun updateUser(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Path("user_id") userId: String,@Body body: UpdateUserRequestSchema, @HeaderMap headers: Map<String, String>? = null)
     : Response<CreateUserResponseSchema>

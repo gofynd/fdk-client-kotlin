@@ -558,7 +558,7 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     
     
     suspend fun getSystemSmsTemplates( headers: Map<String, String> = emptyMap())
-    : Response<ArrayList<SystemSmsTemplates>>? {
+    : Response<SystemSmsTemplates>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 communicationApiList?.getSystemSmsTemplates(companyId = config.companyId ,applicationId = applicationId , headers = headers)
         } else {

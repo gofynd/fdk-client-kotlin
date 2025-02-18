@@ -1165,6 +1165,18 @@ data class SizeChartValues(
     @SerializedName("col_6")
     var col6: String?=null,
     
+    @SerializedName("col_7")
+    var col7: String?=null,
+    
+    @SerializedName("col_8")
+    var col8: String?=null,
+    
+    @SerializedName("col_9")
+    var col9: String?=null,
+    
+    @SerializedName("col_10")
+    var col10: String?=null,
+    
     @SerializedName("col_2")
     var col2: String?=null,
     
@@ -1178,6 +1190,14 @@ data class SizeChartValues(
     var col5: String?=null
     
 ): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+    
     
     
     
@@ -1249,9 +1269,29 @@ data class ColumnHeaders(
     var col1: ColumnHeader?=null,
     
     @SerializedName("col_5")
-    var col5: ColumnHeader?=null
+    var col5: ColumnHeader?=null,
+    
+    @SerializedName("col_7")
+    var col7: ColumnHeader?=null,
+    
+    @SerializedName("col_8")
+    var col8: ColumnHeader?=null,
+    
+    @SerializedName("col_9")
+    var col9: ColumnHeader?=null,
+    
+    @SerializedName("col_10")
+    var col10: ColumnHeader?=null
     
 ): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+    
     
     
     
@@ -1299,9 +1339,14 @@ data class SizeChart(
     var title: String?=null,
     
     @SerializedName("headers")
-    var headers: ColumnHeaders?=null
+    var headers: ColumnHeaders?=null,
+    
+    @SerializedName("id")
+    var id: String?=null
     
 ): Parcelable {
+    
+    
     
     
     
@@ -2094,9 +2139,14 @@ data class Page(
     var type: String?=null,
     
     @SerializedName("size")
-    var size: Int?=null
+    var size: Int?=null,
+    
+    @SerializedName("page_size")
+    var pageSize: Int?=null
     
 ): Parcelable {
+    
+    
     
     
     
@@ -4136,7 +4186,7 @@ data class Store(
     var country: String?=null,
     
     @SerializedName("pincode")
-    var pincode: Int?=null,
+    var pincode: String?=null,
     
     @SerializedName("city")
     var city: String?=null,
@@ -4460,7 +4510,7 @@ data class StoreAddressSchema(
     var address1: String?=null,
     
     @SerializedName("pincode")
-    var pincode: Int?=null,
+    var pincode: String?=null,
     
     @SerializedName("city")
     var city: String?=null,
@@ -5592,7 +5642,7 @@ data class StrategyWiseListingSchemaV3(
     var distance: Int?=null,
     
     @SerializedName("pincode")
-    var pincode: Int?=null,
+    var pincode: String?=null,
     
     @SerializedName("tat")
     var tat: Int?=null,
@@ -5950,10 +6000,10 @@ data class PromiseSchema(
 
              
 /*
-    Model: ProductSizePriceResponseV3
+    Model: ProductSizePriceResponseV4
 */
 @Parcelize
-data class ProductSizePriceResponseV3(
+data class ProductSizePriceResponseV4(
     
     
     
@@ -6015,7 +6065,7 @@ data class ProductSizePriceResponseV3(
     var pricePerUnit: ProductStockUnitPriceV3?=null,
     
     @SerializedName("pincode")
-    var pincode: Int?=null,
+    var pincode: String?=null,
     
     @SerializedName("marketplace_attributes")
     var marketplaceAttributes: ArrayList<MarketPlaceSttributesSchemaV3>?=null,
@@ -6172,7 +6222,7 @@ data class ProductSellersPriceResponseV3(
     var pricePerUnit: ProductStockUnitPriceV3?=null,
     
     @SerializedName("pincode")
-    var pincode: Int?=null,
+    var pincode: String?=null,
     
     @SerializedName("marketplace_attributes")
     var marketplaceAttributes: ArrayList<MarketPlaceSttributesSchemaV3>?=null,
@@ -6298,10 +6348,10 @@ data class ProductSizeSellerFilterSchemaV3(
 
              
 /*
-    Model: ProductSizeSellersResponseV3
+    Model: ProductSizeSellersResponseV4
 */
 @Parcelize
-data class ProductSizeSellersResponseV3(
+data class ProductSizeSellersResponseV4(
     
     
     

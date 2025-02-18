@@ -2256,7 +2256,7 @@ data class EventSubscriptionTemplateSms(
     var subscribed: Boolean?=null,
     
     @SerializedName("template")
-    var template: String?=null
+    var template: SmsTemplate?=null
     
 ): Parcelable {
     
@@ -2283,7 +2283,7 @@ data class EventSubscriptionTemplateEmail(
     var subscribed: Boolean?=null,
     
     @SerializedName("template")
-    var template: String?=null
+    var template: EmailTemplate?=null
     
 ): Parcelable {
     
@@ -2346,7 +2346,7 @@ data class EventSubscription(
     var application: String?=null,
     
     @SerializedName("event")
-    var event: String?=null,
+    var event: EventSubscriptionEvents?=null,
     
     @SerializedName("slug")
     var slug: String?=null,
@@ -2375,6 +2375,107 @@ data class EventSubscription(
     
     
     
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: EventSubscriptionEvents
+*/
+@Parcelize
+data class EventSubscriptionEvents(
+    
+    
+    
+    @SerializedName("category")
+    var category: String?=null,
+    
+    @SerializedName("event_name")
+    var eventName: String?=null,
+    
+    @SerializedName("group")
+    var group: String?=null,
+    
+    @SerializedName("slug")
+    var slug: String?=null,
+    
+    @SerializedName("template")
+    var template: EventTemplate?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: EventTemplate
+*/
+@Parcelize
+data class EventTemplate(
+    
+    
+    
+    @SerializedName("email")
+    var email: EventProviderTemplates?=null,
+    
+    @SerializedName("pushnotification")
+    var pushnotification: EventProviderTemplates?=null,
+    
+    @SerializedName("sms")
+    var sms: EventProviderTemplates?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: EventProviderTemplates
+*/
+@Parcelize
+data class EventProviderTemplates(
+    
+    
+    
+    @SerializedName("provider_type")
+    var providerType: String?=null,
+    
+    @SerializedName("template")
+    var template: String?=null
+    
+): Parcelable {
     
     
     
@@ -3594,7 +3695,7 @@ data class SmsProvider(
     var apiKey: String?=null,
     
     @SerializedName("expiry_date")
-    var expiryDate: Int?=null,
+    var expiryDate: Long?=null,
     
     @SerializedName("rpt")
     var rpt: Int?=null,
@@ -3913,6 +4014,28 @@ data class SmsTemplate(
 */
 @Parcelize
 data class SystemSmsTemplates(
+    
+    
+    
+    @SerializedName("items")
+    var items: ArrayList<SystemSmsTemplate>?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: SystemSmsTemplate
+*/
+@Parcelize
+data class SystemSmsTemplate(
     
     
     
@@ -4279,9 +4402,14 @@ data class Page(
     var type: String?=null,
     
     @SerializedName("size")
-    var size: Int?=null
+    var size: Int?=null,
+    
+    @SerializedName("page_size")
+    var pageSize: Int?=null
     
 ): Parcelable {
+    
+    
     
     
     

@@ -13,37 +13,17 @@ interface LogisticApiList {
     
     @GET
     suspend fun getPincodeCity(@Url url1: String?    , @HeaderMap headers: Map<String, String>? = null)
-    : Response<PincodeDetails>
-    
-    
-    @POST
-    suspend fun getTatProduct(@Url url1: String?   ,@Body body: TATViewDetails, @HeaderMap headers: Map<String, String>? = null)
-    : Response<TATViewResult>
+    : Response<PincodeDetailsResult>
     
     
     @GET
     suspend fun getAllCountries(@Url url1: String?   , @HeaderMap headers: Map<String, String>? = null)
-    : Response<CountryListResult>
-    
-    
-    @POST
-    suspend fun getPincodeZones(@Url url1: String?   ,@Body body: GetZoneFromPincodeViewDetails, @HeaderMap headers: Map<String, String>? = null)
-    : Response<GetZoneFromPincodeViewResult>
-    
-    
-    @POST
-    suspend fun getOptimalLocations(@Url url1: String?   ,@Body body: ReAssignStoreDetails, @HeaderMap headers: Map<String, String>? = null)
-    : Response<ReAssignStoreResult>
+    : Response<CountryResult>
     
     
     @POST
     suspend fun getCourierPartners(@Url url1: String?     ,@Body body: ShipmentCourierPartnerDetails, @HeaderMap headers: Map<String, String>? = null)
     : Response<ShipmentCourierPartnerResult>
-    
-    
-    @GET
-    suspend fun getLocations(@Url url1: String?    ,          @Query("x-application-id") xApplicationId: String, @Query("x-application-data") xApplicationData: String, @Query("country") country: String?, @Query("state") state: String?, @Query("city") city: String?, @Query("pincode") pincode: Int?, @Query("sector") sector: String?, @Query("page_no") pageNo: Int?, @Query("page_size") pageSize: Int?, @HeaderMap headers: Map<String, String>? = null)
-    : Response<GetStoreResult>
     
     
     @GET
@@ -57,18 +37,18 @@ interface LogisticApiList {
     
     
     @GET
-    suspend fun getDeliveryPromise(@Url url1: String?    ,   @Query("page_no") pageNo: Int?, @Query("page_size") pageSize: Int?, @HeaderMap headers: Map<String, String>? = null)
+    suspend fun getDeliveryPromise(@Url url1: String?    ,  @Header("x-location-detail") xLocationDetail: String,  @Header("x-application-data") xApplicationData: String,   @Query("page_no") pageNo: Int?, @Query("page_size") pageSize: Int?, @HeaderMap headers: Map<String, String>? = null)
     : Response<GetPromiseDetails>
     
     
     @GET
     suspend fun getLocalities(@Url url1: String?     ,        @Query("country") country: String?, @Query("state") state: String?, @Query("city") city: String?, @Query("page_no") pageNo: Int?, @Query("page_size") pageSize: Int?, @Query("q") q: String?, @Query("sector") sector: String?, @HeaderMap headers: Map<String, String>? = null)
-    : Response<GetLocalities>
+    : Response<GetLocalitiesApp>
     
     
     @GET
-    suspend fun getLocality(@Url url1: String?      ,    @Query("country") country: String?, @Query("state") state: String?, @Query("city") city: String?, @HeaderMap headers: Map<String, String>? = null)
-    : Response<GetLocality>
+    suspend fun getLocality(@Url url1: String?      ,     @Query("country") country: String?, @Query("state") state: String?, @Query("city") city: String?, @Query("sector") sector: String?, @HeaderMap headers: Map<String, String>? = null)
+    : Response<GetLocalityApp>
     
     
     @POST

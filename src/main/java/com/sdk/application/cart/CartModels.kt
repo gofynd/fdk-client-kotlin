@@ -217,6 +217,9 @@ data class AppliedPromotion(
     @SerializedName("amount")
     var amount: Double?=null,
     
+    @SerializedName("float_amount")
+    var floatAmount: String?=null,
+    
     @SerializedName("discount_rules")
     var discountRules: ArrayList<DiscountRulesApp>?=null,
     
@@ -239,6 +242,8 @@ data class AppliedPromotion(
     var code: String?=null
     
 ): Parcelable {
+    
+    
     
     
     
@@ -848,6 +853,38 @@ data class ProductPriceInfo(
 
              
 /*
+    Model: ProductMaxQuantityInfo
+*/
+@Parcelize
+data class ProductMaxQuantityInfo(
+    
+    
+    
+    @SerializedName("item")
+    var item: Double?=null,
+    
+    @SerializedName("item_seller")
+    var itemSeller: Double?=null,
+    
+    @SerializedName("item_store")
+    var itemStore: Double?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
     Model: ProductPricePerUnit
 */
 @Parcelize
@@ -1317,6 +1354,9 @@ data class CartProductInfo(
     @SerializedName("moq")
     var moq: @RawValue HashMap<String,Any>?=null,
     
+    @SerializedName("max_quantity")
+    var maxQuantity: ProductMaxQuantityInfo?=null,
+    
     @SerializedName("identifiers")
     var identifiers: CartProductIdentifer?=null,
     
@@ -1378,6 +1418,8 @@ data class CartProductInfo(
     var promotionsApplied: ArrayList<AppliedPromotion>?=null
     
 ): Parcelable {
+    
+    
     
     
     

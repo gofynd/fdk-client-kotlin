@@ -93,7 +93,7 @@ interface CatalogApiList {
     suspend fun getAppInventory(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Query("item_ids") itemIds: ArrayList<Int>?, @Query("store_ids") storeIds: ArrayList<Int>?, @Query("brand_ids") brandIds: ArrayList<Int>?, @Query("seller_identifiers") sellerIdentifiers: ArrayList<String>?, @Query("timestamp") timestamp: String?, @Query("page_size") pageSize: Int?, @Query("page_id") pageId: String?, @Query("qty_gt") qtyGt: Int?, @Query("qty_lt") qtyLt: Int?, @Query("qty_type") qtyType: String?, @Query("from_date") fromDate: String?, @Query("to_date") toDate: String?, @HeaderMap headers: Map<String, String>? = null)
     : Response<InventoryStockResponseSchema>
     
-    @GET ("/service/platform/catalog/v1.0/company/{company_id}/application/{application_id}/locations")
+    @GET ("/service/platform/catalog/v2.0/company/{company_id}/application/{application_id}/locations")
     suspend fun getAppLocations(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Query("store_type") storeType: String?, @Query("uid") uid: ArrayList<Int>?, @Query("q") q: String?, @Query("stage") stage: String?, @Query("page_no") pageNo: Int?, @Query("page_size") pageSize: Int?, @Query("tags") tags: ArrayList<String>?, @Query("store_types") storeTypes: ArrayList<String>?, @HeaderMap headers: Map<String, String>? = null)
     : Response<LocationListSchema>
     
@@ -317,7 +317,7 @@ interface CatalogApiList {
     suspend fun getCompanyBrandDetail(@Path("company_id") companyId: String, @Query("is_active") isActive: Boolean?, @Query("q") q: String?, @Query("page_no") pageNo: Int?, @Query("page_size") pageSize: Int?, @Query("marketplace") marketplace: String?, @HeaderMap headers: Map<String, String>? = null)
     : Response<OptinCompanyBrandDetailsView>
     
-    @GET ("/service/platform/catalog/v1.0/company/{company_id}/marketplaces/company-details/")
+    @GET ("/service/platform/catalog/v2.0/company/{company_id}/marketplaces/company-details/")
     suspend fun getCompanyDetail(@Path("company_id") companyId: String, @HeaderMap headers: Map<String, String>? = null)
     : Response<OptinCompanyDetail>
     
@@ -325,7 +325,7 @@ interface CatalogApiList {
     suspend fun getCompanyMetrics(@Path("company_id") companyId: String, @HeaderMap headers: Map<String, String>? = null)
     : Response<OptinCompanyMetrics>
     
-    @GET ("/service/platform/catalog/v1.0/company/{company_id}/marketplaces/location-details/")
+    @GET ("/service/platform/catalog/v2.0/company/{company_id}/marketplaces/location-details/")
     suspend fun getStoreDetail(@Path("company_id") companyId: String, @Query("q") q: String?, @Query("page_no") pageNo: Int?, @Query("page_size") pageSize: Int?, @HeaderMap headers: Map<String, String>? = null)
     : Response<OptinStoreDetails>
     
@@ -425,11 +425,11 @@ interface CatalogApiList {
     suspend fun deleteSize(@Path("company_id") companyId: String, @Path("item_id") itemId: String, @Path("size") size: String, @HeaderMap headers: Map<String, String>? = null)
     : Response<ProductSizeDeleteResponseSchema>
     
-    @GET ("/service/platform/catalog/v1.0/company/{company_id}/products/{item_id}/sizes/{size}")
+    @GET ("/service/platform/catalog/v2.0/company/{company_id}/products/{item_id}/sizes/{size}")
     suspend fun getInventoryBySize(@Path("company_id") companyId: String, @Path("item_id") itemId: String, @Path("size") size: String, @Query("page_no") pageNo: Int?, @Query("page_size") pageSize: Int?, @Query("q") q: String?, @Query("sellable") sellable: Boolean?, @HeaderMap headers: Map<String, String>? = null)
     : Response<InventoryResponsePaginated>
     
-    @POST ("/service/platform/catalog/v1.0/company/{company_id}/products/{item_id}/sizes/{size}")
+    @POST ("/service/platform/catalog/v2.0/company/{company_id}/products/{item_id}/sizes/{size}")
     suspend fun addInventory(@Path("company_id") companyId: String, @Path("item_id") itemId: String, @Path("size") size: String,@Body body: InventoryRequestSchema, @HeaderMap headers: Map<String, String>? = null)
     : Response<SuccessResponseSchema>
     

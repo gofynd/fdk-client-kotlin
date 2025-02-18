@@ -12,7 +12,7 @@ interface PaymentApiList {
     
     
     @GET
-    suspend fun getAggregatorsConfig(@Url url1: String?    ,  @Header("x-api-token") xApiToken: String?,  @Query("refresh") refresh: Boolean?, @HeaderMap headers: Map<String, String>? = null)
+    suspend fun getAggregatorsConfig(@Url url1: String?    ,  @Query("refresh") refresh: Boolean?, @HeaderMap headers: Map<String, String>? = null)
     : Response<AggregatorsConfigDetail>
     
     
@@ -224,11 +224,6 @@ interface PaymentApiList {
     @POST
     suspend fun customerOnboard(@Url url1: String?   ,@Body body: CustomerOnboarding, @HeaderMap headers: Map<String, String>? = null)
     : Response<CustomerOnboardingDetails>
-    
-    
-    @GET
-    suspend fun outstandingOrderDetails(@Url url1: String?    ,  @Query("aggregator") aggregator: String?, @HeaderMap headers: Map<String, String>? = null)
-    : Response<OutstandingOrderDetails>
     
     
     @GET

@@ -65,4 +65,19 @@ interface ContentApiList {
     suspend fun getCredentialsByEntity(@Url url1: String?    , @HeaderMap headers: Map<String, String>? = null)
     : Response<CredentialsSchema>
     
+    
+    @GET
+    suspend fun getAllLanguages(@Url url1: String?   , @HeaderMap headers: Map<String, String>? = null)
+    : Response<HashMap<String,Any>>
+    
+    
+    @GET
+    suspend fun getLanguageByLocale(@Url url1: String?    , @HeaderMap headers: Map<String, String>? = null)
+    : Response<Language>
+    
+    
+    @GET
+    suspend fun getAllTranslatableResources(@Url url1: String?   , @HeaderMap headers: Map<String, String>? = null)
+    : Response<HashMap<String,Any>>
+    
 }

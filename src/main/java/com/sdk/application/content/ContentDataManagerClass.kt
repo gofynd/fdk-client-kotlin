@@ -59,6 +59,14 @@ class ContentDataManagerClass(val config: ApplicationConfig, val unauthorizedAct
             
                     _relativeUrls["getCustomFieldsByResourceId"] = "/service/application/content/v2.0/customfields/resource/{resource}/{resource_slug}".substring(1)
             
+                    _relativeUrls["getTranslateUILabels"] = "/service/application/content/v1.0/translate-ui-labels".substring(1)
+            
+                    _relativeUrls["fetchResourceTranslations"] = "/service/application/content/v1.0/resource/translations/{type}/{locale}".substring(1)
+            
+                    _relativeUrls["fetchResourceTranslationsWithPayload"] = "/service/application/content/v1.0/resource/translations/{type}/{locale}".substring(1)
+            
+                    _relativeUrls["getSupportedLanguages"] = "/service/application/content/v1.0/languages".substring(1)
+            
     }
 
     public fun update(updatedUrlMap : HashMap<String,String>){
@@ -249,6 +257,42 @@ class ContentDataManagerClass(val config: ApplicationConfig, val unauthorizedAct
         fullUrl = fullUrl?.replace("{" + "resource_slug" +"}",resourceSlug.toString())
         
         return contentApiList?.getCustomFieldsByResourceId(fullUrl,   headers = headers)}
+
+    
+    
+    suspend fun getTranslateUILabels(template: Boolean?=null,templateThemeId: String?=null,themeId: String?=null,locale: String?=null,type: String?=null, headers: Map<String, String> = emptyMap()): Response<TranslateUiLabelsPage>? {
+        var fullUrl : String? = _relativeUrls["getTranslateUILabels"]
+        
+        return contentApiList?.getTranslateUILabels(fullUrl,   template = template,  templateThemeId = templateThemeId,  themeId = themeId,  locale = locale,  type = type,headers = headers)}
+
+    
+    
+    suspend fun fetchResourceTranslations(type: String,locale: String,resourceId: String, headers: Map<String, String> = emptyMap()): Response<ResourceTranslations>? {
+        var fullUrl : String? = _relativeUrls["fetchResourceTranslations"]
+        
+        fullUrl = fullUrl?.replace("{" + "type" +"}",type.toString())
+        
+        fullUrl = fullUrl?.replace("{" + "locale" +"}",locale.toString())
+        
+        return contentApiList?.fetchResourceTranslations(fullUrl,     resourceId = resourceId,headers = headers)}
+
+    
+    
+    suspend fun fetchResourceTranslationsWithPayload(type: String,locale: String,resourceId: String,body: ResourcePayload, headers: Map<String, String> = emptyMap()): Response<ResourceTranslations>? {
+        var fullUrl : String? = _relativeUrls["fetchResourceTranslationsWithPayload"]
+        
+        fullUrl = fullUrl?.replace("{" + "type" +"}",type.toString())
+        
+        fullUrl = fullUrl?.replace("{" + "locale" +"}",locale.toString())
+        
+        return contentApiList?.fetchResourceTranslationsWithPayload(fullUrl,     resourceId = resourceId,body = body,headers = headers)}
+
+    
+    
+    suspend fun getSupportedLanguages( headers: Map<String, String> = emptyMap()): Response<HashMap<String,Any>>? {
+        var fullUrl : String? = _relativeUrls["getSupportedLanguages"]
+        
+        return contentApiList?.getSupportedLanguages(fullUrl, headers = headers)}
 
     
     

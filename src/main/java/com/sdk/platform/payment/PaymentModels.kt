@@ -2776,9 +2776,14 @@ data class Page(
     var type: String?=null,
     
     @SerializedName("size")
-    var size: Int?=null
+    var size: Int?=null,
+    
+    @SerializedName("page_size")
+    var pageSize: Int?=null
     
 ): Parcelable {
+    
+    
     
     
     
@@ -6119,9 +6124,14 @@ data class CustomerValidationSchema(
     var transactionAmount: Double?=null,
     
     @SerializedName("cart_id")
-    var cartId: String?=null
+    var cartId: String?=null,
+    
+    @SerializedName("user_id")
+    var userId: String?=null
     
 ): Parcelable {
+    
+    
     
     
     
@@ -6189,7 +6199,7 @@ data class CreditAccountSummary(
     var availableBalance: UserCreditSchema?=null,
     
     @SerializedName("amount_on_hold")
-    var amountOnHold: UserCreditSchema?=null
+    var amountOnHold: ArrayList<UserCreditSchema>?=null
     
 ): Parcelable {
     

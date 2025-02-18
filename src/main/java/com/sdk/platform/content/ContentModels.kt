@@ -1764,6 +1764,9 @@ data class HandpickedTagSchema(
     @SerializedName("attributes")
     var attributes: @RawValue HashMap<String,Any>?=null,
     
+    @SerializedName("compatible_engines")
+    var compatibleEngines: ArrayList<String>?=null,
+    
     @SerializedName("name")
     var name: String?=null,
     
@@ -1780,6 +1783,8 @@ data class HandpickedTagSchema(
     var content: String?=null
     
 ): Parcelable {
+    
+    
     
     
     
@@ -1853,6 +1858,9 @@ data class CreateTagSchema(
     @SerializedName("attributes")
     var attributes: @RawValue HashMap<String,Any>?=null,
     
+    @SerializedName("compatible_engines")
+    var compatibleEngines: ArrayList<String>?=null,
+    
     @SerializedName("pages")
     var pages: @RawValue ArrayList<HashMap<String,Any>>?=null,
     
@@ -1860,6 +1868,8 @@ data class CreateTagSchema(
     var content: String?=null
     
 ): Parcelable {
+    
+    
     
     
     
@@ -2590,9 +2600,14 @@ data class Page(
     var type: String?=null,
     
     @SerializedName("size")
-    var size: Int?=null
+    var size: Int?=null,
+    
+    @SerializedName("page_size")
+    var pageSize: Int?=null
     
 ): Parcelable {
+    
+    
     
     
     
@@ -3585,6 +3600,9 @@ data class TagSchema(
     @SerializedName("content")
     var content: String?=null,
     
+    @SerializedName("compatible_engines")
+    var compatibleEngines: ArrayList<String>?=null,
+    
     @SerializedName("pages")
     var pages: @RawValue ArrayList<HashMap<String,Any>>?=null,
     
@@ -3592,6 +3610,8 @@ data class TagSchema(
     var source: TagSourceSchema?=null
     
 ): Parcelable {
+    
+    
     
     
     
@@ -6164,6 +6184,1198 @@ data class ActionPage(
     
     
     
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: TranslateUiLabels
+*/
+@Parcelize
+data class TranslateUiLabels(
+    
+    
+    
+    @SerializedName("_id")
+    var id: String?=null,
+    
+    @SerializedName("company_id")
+    var companyId: String?=null,
+    
+    @SerializedName("application_id")
+    var applicationId: String?=null,
+    
+    @SerializedName("template_theme_id")
+    var templateThemeId: String?=null,
+    
+    @SerializedName("theme_id")
+    var themeId: String?=null,
+    
+    @SerializedName("locale")
+    var locale: String?=null,
+    
+    @SerializedName("resource")
+    var resource: @RawValue HashMap<String,Any>?=null,
+    
+    @SerializedName("type")
+    var type: String?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: TranslateUiLabelsCreate
+*/
+@Parcelize
+data class TranslateUiLabelsCreate(
+    
+    
+    
+    @SerializedName("template_theme_id")
+    var templateThemeId: String?=null,
+    
+    @SerializedName("theme_id")
+    var themeId: String?=null,
+    
+    @SerializedName("locale")
+    var locale: String?=null,
+    
+    @SerializedName("resource")
+    var resource: @RawValue HashMap<String,Any>?=null,
+    
+    @SerializedName("type")
+    var type: String?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: StaticResourceUpdate
+*/
+@Parcelize
+data class StaticResourceUpdate(
+    
+    
+    
+    @SerializedName("template_theme_id")
+    var templateThemeId: String?=null,
+    
+    @SerializedName("theme_id")
+    var themeId: String?=null,
+    
+    @SerializedName("locale")
+    var locale: String?=null,
+    
+    @SerializedName("resource")
+    var resource: @RawValue HashMap<String,Any>?=null,
+    
+    @SerializedName("type")
+    var type: String?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: TranslateUiLabelsPage
+*/
+@Parcelize
+data class TranslateUiLabelsPage(
+    
+    
+    
+    @SerializedName("items")
+    var items: ArrayList<TranslateUiLabels>?=null,
+    
+    @SerializedName("page")
+    var page: Page?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: Error
+*/
+@Parcelize
+data class Error(
+    
+    
+    
+    @SerializedName("error")
+    var error: String?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: Meta
+*/
+@Parcelize
+data class Meta(
+    
+    
+    
+    @SerializedName("created_by")
+    var createdBy: String?=null,
+    
+    @SerializedName("modified_by")
+    var modifiedBy: String?=null,
+    
+    @SerializedName("created_on")
+    var createdOn: String?=null,
+    
+    @SerializedName("modified_on")
+    var modifiedOn: String?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: CompanyLanguage
+*/
+@Parcelize
+data class CompanyLanguage(
+    
+    
+    
+    @SerializedName("_id")
+    var id: String?=null,
+    
+    @SerializedName("company_id")
+    var companyId: String?=null,
+    
+    @SerializedName("locale")
+    var locale: String?=null,
+    
+    @SerializedName("name")
+    var name: String?=null,
+    
+    @SerializedName("direction")
+    var direction: String?=null,
+    
+    @SerializedName("is_default")
+    var isDefault: Boolean?=null,
+    
+    @SerializedName("display_name")
+    var displayName: String?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: CompanyLanguageCreate
+*/
+@Parcelize
+data class CompanyLanguageCreate(
+    
+    
+    
+    @SerializedName("locales")
+    var locales: ArrayList<String>?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: CompanyLanguageUpdate
+*/
+@Parcelize
+data class CompanyLanguageUpdate(
+    
+    
+    
+    @SerializedName("is_default")
+    var isDefault: Boolean?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: ApplicationLanguage
+*/
+@Parcelize
+data class ApplicationLanguage(
+    
+    
+    
+    @SerializedName("_id")
+    var id: String?=null,
+    
+    @SerializedName("company_id")
+    var companyId: String?=null,
+    
+    @SerializedName("application_id")
+    var applicationId: String?=null,
+    
+    @SerializedName("locale")
+    var locale: String?=null,
+    
+    @SerializedName("name")
+    var name: String?=null,
+    
+    @SerializedName("direction")
+    var direction: String?=null,
+    
+    @SerializedName("is_default")
+    var isDefault: Boolean?=null,
+    
+    @SerializedName("published")
+    var published: Boolean?=null,
+    
+    @SerializedName("display_name")
+    var displayName: String?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: unPublishApplicationLanguage
+*/
+@Parcelize
+data class unPublishApplicationLanguage(
+    
+    
+    
+    @SerializedName("published")
+    var published: Boolean?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: ApplicationLanguageCreate
+*/
+@Parcelize
+data class ApplicationLanguageCreate(
+    
+    
+    
+    @SerializedName("locales")
+    var locales: ArrayList<String>?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: ApplicationLanguageUpdate
+*/
+@Parcelize
+data class ApplicationLanguageUpdate(
+    
+    
+    
+    @SerializedName("is_default")
+    var isDefault: Boolean?=null,
+    
+    @SerializedName("published")
+    var published: Boolean?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: TranslatableResource
+*/
+@Parcelize
+data class TranslatableResource(
+    
+    
+    
+    @SerializedName("_id")
+    var id: String?=null,
+    
+    @SerializedName("type")
+    var type: String?=null,
+    
+    @SerializedName("name")
+    var name: String?=null,
+    
+    @SerializedName("description")
+    var description: String?=null,
+    
+    @SerializedName("schema_type")
+    var schemaType: String?=null,
+    
+    @SerializedName("created_by")
+    var createdBy: String?=null,
+    
+    @SerializedName("modified_by")
+    var modifiedBy: String?=null,
+    
+    @SerializedName("created_on")
+    var createdOn: String?=null,
+    
+    @SerializedName("modified_on")
+    var modifiedOn: String?=null,
+    
+    @SerializedName("section_id")
+    var sectionId: TranslatableSection?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: ResourceDefinition
+*/
+@Parcelize
+data class ResourceDefinition(
+    
+    
+    
+    @SerializedName("_id")
+    var id: String?=null,
+    
+    @SerializedName("translatable_resource_id")
+    var translatableResourceId: String?=null,
+    
+    @SerializedName("json_schema")
+    var jsonSchema: ResourceJsonSchema?=null,
+    
+    @SerializedName("ui_schema")
+    var uiSchema: ResourceUISchema?=null,
+    
+    @SerializedName("bulk_details")
+    var bulkDetails: ResourceBulkDetails?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: ResourceJsonSchema
+*/
+@Parcelize
+data class ResourceJsonSchema(
+    
+    
+    
+    @SerializedName("schema")
+    var schema: String?=null,
+    
+    @SerializedName("type")
+    var type: ResourceJsonSchemaType?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: ResourceJsonSchemaType
+*/
+@Parcelize
+data class ResourceJsonSchemaType(
+    
+    
+    
+    @SerializedName("author")
+    var author: Author?=null,
+    
+    @SerializedName("title")
+    var title: Title?=null,
+    
+    @SerializedName("feature_image")
+    var featureImage: FeatureImage?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: ResourceUISchema
+*/
+@Parcelize
+data class ResourceUISchema(
+    
+    
+    
+    @SerializedName("author")
+    var author: Author?=null,
+    
+    @SerializedName("title")
+    var title: Title?=null,
+    
+    @SerializedName("feature_image")
+    var featureImage: FeatureImage?=null,
+    
+    @SerializedName("seo")
+    var seo: Seo?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: ResourceBulkDetails
+*/
+@Parcelize
+data class ResourceBulkDetails(
+    
+    
+    
+    @SerializedName("fields")
+    var fields: ArrayList<String>?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: Title
+*/
+@Parcelize
+data class Title(
+    
+    
+    
+    @SerializedName("ui_widget")
+    var uiWidget: String?=null,
+    
+    @SerializedName("ui_description")
+    var uiDescription: Boolean?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: FeatureImage
+*/
+@Parcelize
+data class FeatureImage(
+    
+    
+    
+    @SerializedName("secure_url")
+    var secureUrl: String?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: Seo
+*/
+@Parcelize
+data class Seo(
+    
+    
+    
+    @SerializedName("title")
+    var title: Title?=null,
+    
+    @SerializedName("description")
+    var description: String?=null,
+    
+    @SerializedName("canonical_url")
+    var canonicalUrl: String?=null,
+    
+    @SerializedName("meta_tags")
+    var metaTags: ArrayList<MetaTag>?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: MetaTag
+*/
+@Parcelize
+data class MetaTag(
+    
+    
+    
+    @SerializedName("title")
+    var title: String?=null,
+    
+    @SerializedName("items")
+    var items: ArrayList<MetaTagItem>?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: MetaTagItem
+*/
+@Parcelize
+data class MetaTagItem(
+    
+    
+    
+    @SerializedName("key")
+    var key: String?=null,
+    
+    @SerializedName("value")
+    var value: String?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: ResourceTranslation
+*/
+@Parcelize
+data class ResourceTranslation(
+    
+    
+    
+    @SerializedName("_id")
+    var id: String?=null,
+    
+    @SerializedName("locale")
+    var locale: String?=null,
+    
+    @SerializedName("value")
+    var value: TranslationValue?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: TranslationValue
+*/
+@Parcelize
+data class TranslationValue(
+    
+    
+    
+    @SerializedName("name")
+    var name: String?=null,
+    
+    @SerializedName("seo")
+    var seo: TranslationSeo?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: TranslationSeo
+*/
+@Parcelize
+data class TranslationSeo(
+    
+    
+    
+    @SerializedName("title")
+    var title: String?=null,
+    
+    @SerializedName("breadcrumbs")
+    var breadcrumbs: ArrayList<String>?=null,
+    
+    @SerializedName("meta_tags")
+    var metaTags: ArrayList<String>?=null,
+    
+    @SerializedName("canonical_url")
+    var canonicalUrl: String?=null,
+    
+    @SerializedName("description")
+    var description: String?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: DeletedResource
+*/
+@Parcelize
+data class DeletedResource(
+    
+    
+    
+    @SerializedName("message")
+    var message: String?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: ResourceTranslationList
+*/
+@Parcelize
+data class ResourceTranslationList(
+    
+    
+    
+    @SerializedName("items")
+    var items: ArrayList<ResourceTranslationCreate>?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: ResourceTranslationCreate
+*/
+@Parcelize
+data class ResourceTranslationCreate(
+    
+    
+    
+    @SerializedName("type")
+    var type: String?=null,
+    
+    @SerializedName("resource_id")
+    var resourceId: String?=null,
+    
+    @SerializedName("locale")
+    var locale: String?=null,
+    
+    @SerializedName("value")
+    var value: TranslationValue?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: ResourceTranslationUpdate
+*/
+@Parcelize
+data class ResourceTranslationUpdate(
+    
+    
+    
+    @SerializedName("value")
+    var value: TranslationValue?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: TranslatableSection
+*/
+@Parcelize
+data class TranslatableSection(
+    
+    
+    
+    @SerializedName("_id")
+    var id: String?=null,
+    
+    @SerializedName("name")
+    var name: String?=null,
+    
+    @SerializedName("description")
+    var description: String?=null,
+    
+    @SerializedName("created_by")
+    var createdBy: String?=null,
+    
+    @SerializedName("modified_by")
+    var modifiedBy: String?=null,
+    
+    @SerializedName("created_on")
+    var createdOn: String?=null,
+    
+    @SerializedName("modified_on")
+    var modifiedOn: String?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: Metrics
+*/
+@Parcelize
+data class Metrics(
+    
+    
+    
+    @SerializedName("total")
+    var total: Int?=null,
+    
+    @SerializedName("success")
+    var success: Int?=null,
+    
+    @SerializedName("failed")
+    var failed: Int?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: ResourceTranslationUpsertItem
+*/
+@Parcelize
+data class ResourceTranslationUpsertItem(
+    
+    
+    
+    @SerializedName("message")
+    var message: String?=null,
+    
+    @SerializedName("data")
+    var data: ResourceTranslationCreate?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: ResourceTranslationBulkUpsert
+*/
+@Parcelize
+data class ResourceTranslationBulkUpsert(
+    
+    
+    
+    @SerializedName("metrics")
+    var metrics: Metrics?=null,
+    
+    @SerializedName("failed_items")
+    var failedItems: ArrayList<ResourceTranslationUpsertItem>?=null,
+    
+    @SerializedName("updated_items")
+    var updatedItems: ArrayList<ResourceTranslationUpsertItem>?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: StandardError
+*/
+@Parcelize
+data class StandardError(
+    
+    
+    
+    @SerializedName("message")
+    var message: String?=null
+    
+): Parcelable {
     
     
     

@@ -2052,6 +2052,75 @@ data class DeleteAccountConsent(
 
              
 /*
+    Model: GetUserTimeline
+*/
+@Parcelize
+data class GetUserTimeline(
+    
+    
+    
+    @SerializedName("delete_on")
+    var deleteOn: String?=null,
+    
+    @SerializedName("timeline")
+    var timeline: ArrayList<UserTimeline>?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: UserTimeline
+*/
+@Parcelize
+data class UserTimeline(
+    
+    
+    
+    @SerializedName("date")
+    var date: String?=null,
+    
+    @SerializedName("title")
+    var title: String?=null,
+    
+    @SerializedName("type")
+    var type: String?=null,
+    
+    @SerializedName("visible")
+    var visible: Boolean?=null,
+    
+    @SerializedName("sub_title")
+    var subTitle: String?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
     Model: Facebook
 */
 @Parcelize
@@ -2594,9 +2663,14 @@ data class UserSearchSchema(
     var archive: Boolean?=null,
     
     @SerializedName("status")
-    var status: String?=null
+    var status: String?=null,
+    
+    @SerializedName("deleted_on")
+    var deletedOn: String?=null
     
 ): Parcelable {
+    
+    
     
     
     

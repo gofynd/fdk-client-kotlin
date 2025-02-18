@@ -76,6 +76,7 @@ class UserDataManagerClass(val config: PlatformConfig, val unauthorizedAction: (
     
     
     
+    
 
 inner class ApplicationClient(val applicationId:String,val config: PlatformConfig){
 
@@ -125,6 +126,16 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     : Response<UnDeleteUserSuccess>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 userApiList?.unDeleteUser(companyId = config.companyId ,applicationId = applicationId , body = body,headers = headers)
+        } else {
+            null
+        }
+    }
+    
+    
+    suspend fun getUserTimeline(userId: String, headers: Map<String, String> = emptyMap())
+    : Response<GetUserTimeline>? {
+        return if (config.oauthClient.isAccessTokenValid()) {
+                userApiList?.getUserTimeline(companyId = config.companyId ,applicationId = applicationId ,userId = userId, headers = headers)
         } else {
             null
         }

@@ -9,11 +9,11 @@ import com.sdk.platform.*
 
 interface CompanyProfileApiList {
     
-    @GET ("/service/platform/company-profile/v1.0/company/{company_id}")
+    @GET ("/service/platform/company-profile/v2.0/company/{company_id}")
     suspend fun cbsOnboardGet(@Path("company_id") companyId: String, @HeaderMap headers: Map<String, String>? = null)
     : Response<GetCompanyProfileSerializerResponseSchema>
     
-    @PATCH ("/service/platform/company-profile/v1.0/company/{company_id}")
+    @PATCH ("/service/platform/company-profile/v2.0/company/{company_id}")
     suspend fun updateCompany(@Path("company_id") companyId: String,@Body body: UpdateCompany, @HeaderMap headers: Map<String, String>? = null)
     : Response<ProfileSuccessResponseSchema>
     
@@ -33,27 +33,27 @@ interface CompanyProfileApiList {
     suspend fun createBrand(@Path("company_id") companyId: String,@Body body: CreateBrandRequestSchema, @HeaderMap headers: Map<String, String>? = null)
     : Response<ProfileSuccessResponseSchema>
     
-    @GET ("/service/platform/company-profile/v1.0/company/{company_id}/company-brand")
+    @GET ("/service/platform/company-profile/v2.0/company/{company_id}/company-brand")
     suspend fun getBrands(@Path("company_id") companyId: String, @Query("page_no") pageNo: Int?, @Query("page_size") pageSize: Int?, @Query("q") q: String?, @HeaderMap headers: Map<String, String>? = null)
     : Response<CompanyBrandListSchema>
     
-    @POST ("/service/platform/company-profile/v1.0/company/{company_id}/company-brand")
+    @POST ("/service/platform/company-profile/v2.0/company/{company_id}/company-brand")
     suspend fun createCompanyBrandMapping(@Path("company_id") companyId: String,@Body body: CompanyBrandPostRequestSchema, @HeaderMap headers: Map<String, String>? = null)
     : Response<ProfileSuccessResponseSchema>
     
-    @GET ("/service/platform/company-profile/v1.0/company/{company_id}/location")
+    @GET ("/service/platform/company-profile/v2.0/company/{company_id}/location")
     suspend fun getLocations(@Path("company_id") companyId: String, @Query("store_type") storeType: String?, @Query("q") q: String?, @Query("stage") stage: String?, @Query("page_no") pageNo: Int?, @Query("page_size") pageSize: Int?, @Query("location_ids") locationIds: ArrayList<Int>?, @Query("types") types: ArrayList<String>?, @Query("tags") tags: ArrayList<String>?, @HeaderMap headers: Map<String, String>? = null)
     : Response<LocationListSchema>
     
-    @POST ("/service/platform/company-profile/v1.0/company/{company_id}/location")
+    @POST ("/service/platform/company-profile/v2.0/company/{company_id}/location")
     suspend fun createLocation(@Path("company_id") companyId: String,@Body body: LocationSchema, @HeaderMap headers: Map<String, String>? = null)
     : Response<ProfileSuccessResponseSchema>
     
-    @GET ("/service/platform/company-profile/v1.0/company/{company_id}/location/{location_id}")
+    @GET ("/service/platform/company-profile/v2.0/company/{company_id}/location/{location_id}")
     suspend fun getLocationDetail(@Path("company_id") companyId: String, @Path("location_id") locationId: String, @HeaderMap headers: Map<String, String>? = null)
     : Response<GetLocationSchema>
     
-    @PUT ("/service/platform/company-profile/v1.0/company/{company_id}/location/{location_id}")
+    @PUT ("/service/platform/company-profile/v2.0/company/{company_id}/location/{location_id}")
     suspend fun updateLocation(@Path("company_id") companyId: String, @Path("location_id") locationId: String,@Body body: LocationSchema, @HeaderMap headers: Map<String, String>? = null)
     : Response<ProfileSuccessResponseSchema>
     

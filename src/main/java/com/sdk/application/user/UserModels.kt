@@ -1113,7 +1113,7 @@ data class ProfileEditSuccess(
     var message: String?=null,
     
     @SerializedName("resend_timer")
-    var resendTimer: Int?=null,
+    var resendTimer: Long?=null,
     
     @SerializedName("resend_token")
     var resendToken: String?=null
@@ -1304,7 +1304,7 @@ data class RegisterFormSuccess(
     var email: String?=null,
     
     @SerializedName("resend_timer")
-    var resendTimer: Int?=null,
+    var resendTimer: Long?=null,
     
     @SerializedName("resend_token")
     var resendToken: String?=null,
@@ -1471,7 +1471,7 @@ data class SendOtpSuccess(
     
     
     @SerializedName("resend_timer")
-    var resendTimer: Int?=null,
+    var resendTimer: Long?=null,
     
     @SerializedName("resend_token")
     var resendToken: String?=null,

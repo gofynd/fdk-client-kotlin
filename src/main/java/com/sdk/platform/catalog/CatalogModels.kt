@@ -869,7 +869,7 @@ data class ApplicationProductsSchema(
     var categoryUid: Int?=null,
     
     @SerializedName("verification_status")
-    var verificationStatus: Int?=null,
+    var verificationStatus: String?=null,
     
     @SerializedName("channel_identifier")
     var channelIdentifier: String?=null,
@@ -941,7 +941,7 @@ data class ApplicationProductsSchema(
     var templateTag: String?=null,
     
     @SerializedName("net_quantity")
-    var netQuantity: @RawValue HashMap<String,Any>?=null,
+    var netQuantity: NetQuantitySchema?=null,
     
     @SerializedName("custom_order")
     var customOrder: CustomOrder?=null,
@@ -962,9 +962,24 @@ data class ApplicationProductsSchema(
     var customMeta: ArrayList<CustomMeta>?=null,
     
     @SerializedName("discount_percentage")
-    var discountPercentage: Int?=null
+    var discountPercentage: Int?=null,
+    
+    @SerializedName("no_of_boxes")
+    var noOfBoxes: Int?=null,
+    
+    @SerializedName("created_on")
+    var createdOn: String?=null,
+    
+    @SerializedName("modified_on")
+    var modifiedOn: String?=null
     
 ): Parcelable {
+    
+    
+    
+    
+    
+    
     
     
     
@@ -6170,7 +6185,7 @@ data class GetAddressSchema(
     var longitude: Double?=null,
     
     @SerializedName("pincode")
-    var pincode: Int?=null,
+    var pincode: String?=null,
     
     @SerializedName("state")
     var state: String?=null
@@ -12210,9 +12225,14 @@ data class Page(
     var type: String?=null,
     
     @SerializedName("size")
-    var size: Int?=null
+    var size: Int?=null,
+    
+    @SerializedName("page_size")
+    var pageSize: Int?=null
     
 ): Parcelable {
+    
+    
     
     
     
@@ -19107,6 +19127,33 @@ data class MultiCategoriesSchema(
     
     
     
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: NetQuantitySchema
+*/
+@Parcelize
+data class NetQuantitySchema(
+    
+    
+    
+    @SerializedName("unit")
+    var unit: String?=null,
+    
+    @SerializedName("value")
+    var value: Double?=null
+    
+): Parcelable {
     
     
     
