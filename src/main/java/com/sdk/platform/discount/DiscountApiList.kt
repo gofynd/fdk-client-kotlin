@@ -30,27 +30,27 @@ interface DiscountApiList {
     : Response<HashMap<String,Any>>
     
     @POST ("/service/platform/discount/v1.0/company/{company_id}/file/validation/")
-    suspend fun validateDiscountFile(@Path("company_id") companyId: String, @Query("discount") discount: String?,@Body body: FileJobRequest, @HeaderMap headers: Map<String, String>? = null)
-    : Response<FileJobResponse>
+    suspend fun validateDiscountFile(@Path("company_id") companyId: String, @Query("discount") discount: String?,@Body body: FileJobRequestSchema, @HeaderMap headers: Map<String, String>? = null)
+    : Response<FileJobResponseSchema>
     
     @POST ("/service/platform/discount/v1.0/company/{company_id}/file/{type}/download/")
     suspend fun downloadDiscountFile(@Path("company_id") companyId: String, @Path("type") type: String,@Body body: DownloadFileJob, @HeaderMap headers: Map<String, String>? = null)
-    : Response<FileJobResponse>
+    : Response<FileJobResponseSchema>
     
     @GET ("/service/platform/discount/v1.0/company/{company_id}/file/validation/{id}/")
     suspend fun getValidationJob(@Path("company_id") companyId: String, @Path("id") id: String, @HeaderMap headers: Map<String, String>? = null)
-    : Response<FileJobResponse>
+    : Response<FileJobResponseSchema>
     
     @DELETE ("/service/platform/discount/v1.0/company/{company_id}/file/validation/{id}/")
     suspend fun cancelValidationJob(@Path("company_id") companyId: String, @Path("id") id: String, @HeaderMap headers: Map<String, String>? = null)
-    : Response<CancelJobResponse>
+    : Response<CancelJobResponseSchema>
     
     @GET ("/service/platform/discount/v1.0/company/{company_id}/file/download/{id}/")
     suspend fun getDownloadJob(@Path("company_id") companyId: String, @Path("id") id: String, @HeaderMap headers: Map<String, String>? = null)
-    : Response<FileJobResponse>
+    : Response<FileJobResponseSchema>
     
     @DELETE ("/service/platform/discount/v1.0/company/{company_id}/file/download/{id}/")
     suspend fun cancelDownloadJob(@Path("company_id") companyId: String, @Path("id") id: String, @HeaderMap headers: Map<String, String>? = null)
-    : Response<CancelJobResponse>
+    : Response<CancelJobResponseSchema>
     
 }

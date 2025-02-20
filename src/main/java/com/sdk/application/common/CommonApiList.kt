@@ -13,7 +13,7 @@ interface CommonApiList {
     
     @GET
     suspend fun searchApplication(@Url url1: String?    ,  @Header("authorization") authorization: String?,  @Query("query") query: String?, @HeaderMap headers: Map<String, String>? = null)
-    : Response<ApplicationResponse>
+    : Response<ApplicationResponseSchema>
     
     
     @GET

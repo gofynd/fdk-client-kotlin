@@ -14,10 +14,10 @@ import com.google.gson.annotations.SerializedName
 
              
 /*
-    Model: UpdatePdfTypeRequest
+    Model: UpdatePdfType
 */
 @Parcelize
-data class UpdatePdfTypeRequest(
+data class UpdatePdfType(
     
     
     
@@ -66,10 +66,10 @@ data class UpdatePdfTypeRequest(
 
              
 /*
-    Model: PdfTypeIdResponse
+    Model: PdfTypeByIdDetails
 */
 @Parcelize
-data class PdfTypeIdResponse(
+data class PdfTypeByIdDetails(
     
     
     
@@ -85,6 +85,9 @@ data class PdfTypeIdResponse(
     @SerializedName("__v")
     var v: Int?=null,
     
+    @SerializedName("_id")
+    var id: String?=null,
+    
     @SerializedName("format")
     var format: ArrayList<String>?=null,
     
@@ -95,6 +98,8 @@ data class PdfTypeIdResponse(
     var visibility: Boolean?=null
     
 ): Parcelable {
+    
+    
     
     
     
@@ -165,10 +170,10 @@ data class PdfConfigurationData(
 
              
 /*
-    Model: PdfConfigurationResponse
+    Model: UpdatedDefaultTemplateById
 */
 @Parcelize
-data class PdfConfigurationResponse(
+data class UpdatedDefaultTemplateById(
     
     
     
@@ -234,10 +239,10 @@ data class UpdateTemplate(
 
              
 /*
-    Model: PdfDefaultTemplateResponse
+    Model: PdfDefaultTemplateById
 */
 @Parcelize
-data class PdfDefaultTemplateResponse(
+data class PdfDefaultTemplateById(
     
     
     
@@ -424,10 +429,10 @@ data class PdfDefaultTemplateSuccess(
 
              
 /*
-    Model: FailedResponse
+    Model: FailedBrowseFilesResult
 */
 @Parcelize
-data class FailedResponse(
+data class FailedBrowseFilesResult(
     
     
     
@@ -505,10 +510,10 @@ data class Upload(
 
              
 /*
-    Model: StartResponse
+    Model: FileUpload
 */
 @Parcelize
-data class StartResponse(
+data class FileUpload(
     
     
     
@@ -567,10 +572,10 @@ data class StartResponse(
 
              
 /*
-    Model: StartRequest
+    Model: FileUploadStart
 */
 @Parcelize
-data class StartRequest(
+data class FileUploadStart(
     
     
     
@@ -631,10 +636,10 @@ data class CreatedBy(
 
              
 /*
-    Model: CompleteResponse
+    Model: FileUploadComplete
 */
 @Parcelize
-data class CompleteResponse(
+data class FileUploadComplete(
     
     
     
@@ -723,10 +728,10 @@ data class CompleteResponse(
 
              
 /*
-    Model: ProxyResponse
+    Model: ProxyFileAccess
 */
 @Parcelize
-data class ProxyResponse(
+data class ProxyFileAccess(
     
     
     
@@ -831,10 +836,10 @@ data class Urls(
 
              
 /*
-    Model: SignUrlResponse
+    Model: SignUrlResult
 */
 @Parcelize
-data class SignUrlResponse(
+data class SignUrlResult(
     
     
     
@@ -853,10 +858,10 @@ data class SignUrlResponse(
 
              
 /*
-    Model: SignUrlRequest
+    Model: SignUrl
 */
 @Parcelize
-data class SignUrlRequest(
+data class SignUrl(
     
     
     
@@ -880,10 +885,10 @@ data class SignUrlRequest(
 
              
 /*
-    Model: InvoiceTypesDataResponse
+    Model: InvoiceTypesData
 */
 @Parcelize
-data class InvoiceTypesDataResponse(
+data class InvoiceTypesData(
     
     
     
@@ -942,15 +947,15 @@ data class InvoiceTypesDataResponse(
 
              
 /*
-    Model: InvoiceTypesResponse
+    Model: InvoiceTypes
 */
 @Parcelize
-data class InvoiceTypesResponse(
+data class InvoiceTypes(
     
     
     
     @SerializedName("data")
-    var data: ArrayList<InvoiceTypesDataResponse>?=null,
+    var data: ArrayList<InvoiceTypesData>?=null,
     
     @SerializedName("success")
     var success: Boolean?=null
@@ -2391,10 +2396,10 @@ data class Meta(
 
              
 /*
-    Model: DummyTemplateDataPayload
+    Model: PdfPayloadDetails
 */
 @Parcelize
-data class DummyTemplateDataPayload(
+data class PdfPayloadDetails(
     
     
     
@@ -2647,7 +2652,7 @@ data class DummyTemplateData(
     var pdfTypeId: Double?=null,
     
     @SerializedName("payload")
-    var payload: DummyTemplateDataPayload?=null,
+    var payload: PdfPayloadDetails?=null,
     
     @SerializedName("country_code")
     var countryCode: String?=null,
@@ -2686,7 +2691,7 @@ data class savePdfPayload(
     var pdfTypeId: Double?=null,
     
     @SerializedName("payload")
-    var payload: DummyTemplateDataPayload?=null,
+    var payload: PdfPayloadDetails?=null,
     
     @SerializedName("country_code")
     var countryCode: String?=null
@@ -2707,10 +2712,10 @@ data class savePdfPayload(
 
              
 /*
-    Model: DummyPayloadById
+    Model: MapperDetails
 */
 @Parcelize
-data class DummyPayloadById(
+data class MapperDetails(
     
     
     
@@ -2721,7 +2726,7 @@ data class DummyPayloadById(
     var pdfTypeId: Double?=null,
     
     @SerializedName("payload")
-    var payload: DummyTemplateDataPayload?=null,
+    var payload: PdfPayloadDetails?=null,
     
     @SerializedName("country_code")
     var countryCode: String?=null,
@@ -2749,10 +2754,10 @@ data class DummyPayloadById(
 
              
 /*
-    Model: DummyTemplateDataItems
+    Model: PdfDataItemsDetails
 */
 @Parcelize
-data class DummyTemplateDataItems(
+data class PdfDataItemsDetails(
     
     
     
@@ -2847,10 +2852,7 @@ data class PdfConfigSuccessData(
     var v: Int?=null,
     
     @SerializedName("country_code")
-    var countryCode: String?=null,
-    
-    @SerializedName("default_template")
-    var defaultTemplate: Boolean?=null
+    var countryCode: String?=null
     
 ): Parcelable {
     
@@ -2867,6 +2869,31 @@ data class PdfConfigSuccessData(
     
     
     
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: DeleteMapperById
+*/
+@Parcelize
+data class DeleteMapperById(
+    
+    
+    
+    @SerializedName("message")
+    var message: String?=null,
+    
+    @SerializedName("default_template")
+    var defaultTemplate: Boolean?=null
+    
+): Parcelable {
     
     
     

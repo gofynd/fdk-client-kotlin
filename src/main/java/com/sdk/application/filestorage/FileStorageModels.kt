@@ -73,10 +73,10 @@ data class Upload(
 
              
 /*
-    Model: StartResponse
+    Model: FileUpload
 */
 @Parcelize
-data class StartResponse(
+data class FileUpload(
     
     
     
@@ -157,10 +157,10 @@ data class Params(
 
              
 /*
-    Model: StartRequest
+    Model: FileUploadStart
 */
 @Parcelize
-data class StartRequest(
+data class FileUploadStart(
     
     
     
@@ -221,10 +221,10 @@ data class CreatedBy(
 
              
 /*
-    Model: CompleteResponse
+    Model: FileUploadComplete
 */
 @Parcelize
-data class CompleteResponse(
+data class FileUploadComplete(
     
     
     
@@ -340,10 +340,10 @@ data class Urls(
 
              
 /*
-    Model: SignUrlResponse
+    Model: SignUrlResult
 */
 @Parcelize
-data class SignUrlResponse(
+data class SignUrlResult(
     
     
     
@@ -362,10 +362,10 @@ data class SignUrlResponse(
 
              
 /*
-    Model: SignUrlRequest
+    Model: SignUrl
 */
 @Parcelize
-data class SignUrlRequest(
+data class SignUrl(
     
     
     

@@ -56,95 +56,6 @@ class DiscountDataManagerClass(val config: PlatformConfig, val unauthorizedActio
     }
     
     
-    
-        
-            
-                
-            
-            
-        
-            
-                
-            
-            
-        
-            
-                
-            
-            
-        
-            
-            
-        
-            
-                
-            
-            
-        
-            
-                
-            
-            
-        
-            
-                
-            
-            
-        
-            
-                
-            
-            
-        
-            
-                
-            
-            
-        
-            
-                
-            
-            
-        
-    /**
-    *
-    * Summary: Paginator for getDiscounts
-    **/
-    fun getDiscountsPaginator(companyId: String, view: String?=null, q: String?=null, pageSize: Int?=null, archived: Boolean?=null, month: Int?=null, year: Int?=null, type: String?=null, appIds: ArrayList<String>?=null) : Paginator<ListOrCalender>{
-        val paginator = Paginator<ListOrCalender>()
-        paginator.setCallBack(object : PaginatorCallback<ListOrCalender> {
-
-            override suspend fun onNext(
-                onResponse: (Event<ListOrCalender>?,FdkError?) -> Unit){
-
-                if (config.oauthClient.isAccessTokenValid()) {
-                    val pageId = paginator.nextId
-                    val pageNo = paginator.pageNo
-                    val pageType = "number"
-                    discountApiList?.getDiscounts(
-                    companyId = config.companyId, view = view, q = q, pageNo = pageNo, pageSize = pageSize, archived = archived, month = month, year = year, type = type, appIds = appIds
-                    )?.safeAwait{ response, error ->
-                        response?.let {
-                            val page = response.peekContent()?.page
-                            paginator.setPaginator(hasNext=page?.hasNext?:false,pageNo=if (page?.hasNext == true) ((pageNo ?: 0) + 1) else pageNo)
-                            onResponse.invoke(response,null)
-                        }
-
-                        error?.let {
-                            onResponse.invoke(null,error)
-                        }
-                    }
-
-                } else {
-                    null
-                }
-            }
-
-
-    })
-        return paginator
-    }
-    
     suspend fun createDiscount(body: CreateUpdateDiscount, headers: Map<String, String> = emptyMap())
     : Response<DiscountJob>? {
 
@@ -193,8 +104,8 @@ class DiscountDataManagerClass(val config: PlatformConfig, val unauthorizedActio
     }
     
     
-    suspend fun validateDiscountFile(discount: String?=null,body: FileJobRequest, headers: Map<String, String> = emptyMap())
-    : Response<FileJobResponse>? {
+    suspend fun validateDiscountFile(discount: String?=null,body: FileJobRequestSchema, headers: Map<String, String> = emptyMap())
+    : Response<FileJobResponseSchema>? {
 
         return if (config.oauthClient.isAccessTokenValid()) {
             discountApiList?.validateDiscountFile(
@@ -206,7 +117,7 @@ class DiscountDataManagerClass(val config: PlatformConfig, val unauthorizedActio
     
     
     suspend fun downloadDiscountFile(type: String,body: DownloadFileJob, headers: Map<String, String> = emptyMap())
-    : Response<FileJobResponse>? {
+    : Response<FileJobResponseSchema>? {
 
         return if (config.oauthClient.isAccessTokenValid()) {
             discountApiList?.downloadDiscountFile(
@@ -218,7 +129,7 @@ class DiscountDataManagerClass(val config: PlatformConfig, val unauthorizedActio
     
     
     suspend fun getValidationJob(id: String, headers: Map<String, String> = emptyMap())
-    : Response<FileJobResponse>? {
+    : Response<FileJobResponseSchema>? {
 
         return if (config.oauthClient.isAccessTokenValid()) {
             discountApiList?.getValidationJob(
@@ -230,7 +141,7 @@ class DiscountDataManagerClass(val config: PlatformConfig, val unauthorizedActio
     
     
     suspend fun cancelValidationJob(id: String, headers: Map<String, String> = emptyMap())
-    : Response<CancelJobResponse>? {
+    : Response<CancelJobResponseSchema>? {
 
         return if (config.oauthClient.isAccessTokenValid()) {
             discountApiList?.cancelValidationJob(
@@ -242,7 +153,7 @@ class DiscountDataManagerClass(val config: PlatformConfig, val unauthorizedActio
     
     
     suspend fun getDownloadJob(id: String, headers: Map<String, String> = emptyMap())
-    : Response<FileJobResponse>? {
+    : Response<FileJobResponseSchema>? {
 
         return if (config.oauthClient.isAccessTokenValid()) {
             discountApiList?.getDownloadJob(
@@ -254,7 +165,7 @@ class DiscountDataManagerClass(val config: PlatformConfig, val unauthorizedActio
     
     
     suspend fun cancelDownloadJob(id: String, headers: Map<String, String> = emptyMap())
-    : Response<CancelJobResponse>? {
+    : Response<CancelJobResponseSchema>? {
 
         return if (config.oauthClient.isAccessTokenValid()) {
             discountApiList?.cancelDownloadJob(
