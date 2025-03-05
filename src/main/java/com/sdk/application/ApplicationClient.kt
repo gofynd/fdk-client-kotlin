@@ -9,7 +9,6 @@ import com.sdk.application.communication.*
 import com.sdk.application.configuration.* 
 import com.sdk.application.content.* 
 import com.sdk.application.filestorage.* 
-import com.sdk.application.finance.* 
 import com.sdk.application.lead.* 
 import com.sdk.application.logistic.* 
 import com.sdk.application.order.* 
@@ -45,8 +44,6 @@ class ApplicationClient(val config:ApplicationConfig, val unauthorizedAction: ((
     val content by lazy { ContentDataManagerClass(config, unauthorizedAction)}
     
     val fileStorage by lazy { FileStorageDataManagerClass(config, unauthorizedAction)}
-    
-    val finance by lazy { FinanceDataManagerClass(config, unauthorizedAction)}
     
     val lead by lazy { LeadDataManagerClass(config, unauthorizedAction)}
     

@@ -151,7 +151,7 @@ class LeadDataManagerClass(val config: PlatformConfig, val unauthorizedAction: (
     
     
     suspend fun getGeneralConfig( headers: Map<String, String> = emptyMap())
-    : Response<GeneralConfigDetails>? {
+    : Response<GeneralConfigResponse>? {
 
         return if (config.oauthClient.isAccessTokenValid()) {
             leadApiList?.getGeneralConfig(

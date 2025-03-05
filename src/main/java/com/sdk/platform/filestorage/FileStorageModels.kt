@@ -14,174 +14,18 @@ import com.google.gson.annotations.SerializedName
 
              
 /*
-    Model: UpdatePdfType
+    Model: ProxyResponse
 */
 @Parcelize
-data class UpdatePdfType(
-    
-    
-    
-    @SerializedName("pdf_type_id")
-    var pdfTypeId: Int?=null,
-    
-    @SerializedName("name")
-    var name: String?=null,
-    
-    @SerializedName("format")
-    var format: ArrayList<String>?=null,
-    
-    @SerializedName("visibility")
-    var visibility: Boolean?=null,
-    
-    @SerializedName("schema")
-    var schema: @RawValue HashMap<String,Any>?=null,
-    
-    @SerializedName("store_os")
-    var storeOs: Boolean?=null,
-    
-    @SerializedName("country_code")
-    var countryCode: String?=null
-    
-): Parcelable {
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-}
-
-
-
-             
-/*
-    Model: PdfTypeByIdDetails
-*/
-@Parcelize
-data class PdfTypeByIdDetails(
-    
-    
-    
-    @SerializedName("store_os")
-    var storeOs: Boolean?=null,
-    
-    @SerializedName("country_code")
-    var countryCode: String?=null,
-    
-    @SerializedName("pdf_type_id")
-    var pdfTypeId: Int?=null,
-    
-    @SerializedName("__v")
-    var v: Int?=null,
-    
-    @SerializedName("_id")
-    var id: String?=null,
-    
-    @SerializedName("format")
-    var format: ArrayList<String>?=null,
-    
-    @SerializedName("name")
-    var name: String?=null,
-    
-    @SerializedName("visibility")
-    var visibility: Boolean?=null
-    
-): Parcelable {
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-}
-
-
-
-             
-/*
-    Model: PdfConfigurationData
-*/
-@Parcelize
-data class PdfConfigurationData(
-    
-    
-    
-    @SerializedName("_id")
-    var id: String?=null,
-    
-    @SerializedName("pdf_type_id")
-    var pdfTypeId: Int?=null,
-    
-    @SerializedName("format")
-    var format: String?=null,
-    
-    @SerializedName("template")
-    var template: String?=null,
-    
-    @SerializedName("country_code")
-    var countryCode: String?=null,
-    
-    @SerializedName("__v")
-    var v: Int?=null
-    
-): Parcelable {
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-}
-
-
-
-             
-/*
-    Model: UpdatedDefaultTemplateById
-*/
-@Parcelize
-data class UpdatedDefaultTemplateById(
+data class ProxyResponse(
     
     
     
     @SerializedName("data")
-    var data: PdfConfigurationData?=null,
+    var data: @RawValue HashMap<String,Any>?=null,
     
-    @SerializedName("success")
-    var success: Boolean?=null
+    @SerializedName("support")
+    var support: @RawValue HashMap<String,Any>?=null
     
 ): Parcelable {
     
@@ -197,242 +41,10 @@ data class UpdatedDefaultTemplateById(
 
              
 /*
-    Model: UpdateTemplate
+    Model: FailedResponse
 */
 @Parcelize
-data class UpdateTemplate(
-    
-    
-    
-    @SerializedName("pdf_type_id")
-    var pdfTypeId: Int?=null,
-    
-    @SerializedName("format")
-    var format: String?=null,
-    
-    @SerializedName("country_code")
-    var countryCode: String?=null,
-    
-    @SerializedName("template")
-    var template: String?=null,
-    
-    @SerializedName("store_os")
-    var storeOs: Boolean?=null
-    
-): Parcelable {
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-}
-
-
-
-             
-/*
-    Model: PdfDefaultTemplateById
-*/
-@Parcelize
-data class PdfDefaultTemplateById(
-    
-    
-    
-    @SerializedName("_id")
-    var id: String?=null,
-    
-    @SerializedName("country_code")
-    var countryCode: String?=null,
-    
-    @SerializedName("format")
-    var format: String?=null,
-    
-    @SerializedName("pdf_type_id")
-    var pdfTypeId: Int?=null,
-    
-    @SerializedName("__v")
-    var v: Int?=null,
-    
-    @SerializedName("template")
-    var template: String?=null
-    
-): Parcelable {
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-}
-
-
-
-             
-/*
-    Model: PdfTemplateCreateSuccess
-*/
-@Parcelize
-data class PdfTemplateCreateSuccess(
-    
-    
-    
-    @SerializedName("code")
-    var code: Int?=null,
-    
-    @SerializedName("success")
-    var success: Boolean?=null,
-    
-    @SerializedName("data")
-    var data: PdfTemplateCreateSuccessData?=null
-    
-): Parcelable {
-    
-    
-    
-    
-    
-    
-    
-    
-    
-}
-
-
-
-             
-/*
-    Model: PdfTemplateCreateSuccessData
-*/
-@Parcelize
-data class PdfTemplateCreateSuccessData(
-    
-    
-    
-    @SerializedName("_id")
-    var id: String?=null,
-    
-    @SerializedName("pdf_type_id")
-    var pdfTypeId: Int?=null,
-    
-    @SerializedName("format")
-    var format: String?=null,
-    
-    @SerializedName("template")
-    var template: String?=null,
-    
-    @SerializedName("country_code")
-    var countryCode: String?=null,
-    
-    @SerializedName("__v")
-    var v: Int?=null
-    
-): Parcelable {
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-}
-
-
-
-             
-/*
-    Model: CreateTemplate
-*/
-@Parcelize
-data class CreateTemplate(
-    
-    
-    
-    @SerializedName("pdf_type_id")
-    var pdfTypeId: Int?=null,
-    
-    @SerializedName("format")
-    var format: String?=null,
-    
-    @SerializedName("country_code")
-    var countryCode: String?=null,
-    
-    @SerializedName("template")
-    var template: String?=null
-    
-): Parcelable {
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-}
-
-
-
-             
-/*
-    Model: PdfDefaultTemplateSuccess
-*/
-@Parcelize
-data class PdfDefaultTemplateSuccess(
-    
-    
-    
-    @SerializedName("data")
-    var data: ArrayList<Document>?=null,
-    
-    @SerializedName("success")
-    var success: Boolean?=null
-    
-): Parcelable {
-    
-    
-    
-    
-    
-    
-    
-}
-
-
-
-             
-/*
-    Model: FailedBrowseFilesResult
-*/
-@Parcelize
-data class FailedBrowseFilesResult(
+data class FailedResponse(
     
     
     
@@ -510,10 +122,10 @@ data class Upload(
 
              
 /*
-    Model: FileUpload
+    Model: StartResponse
 */
 @Parcelize
-data class FileUpload(
+data class StartResponse(
     
     
     
@@ -541,10 +153,15 @@ data class FileUpload(
     @SerializedName("upload")
     var upload: Upload?=null,
     
+    @SerializedName("cdn")
+    var cdn: CDN?=null,
+    
     @SerializedName("tags")
     var tags: ArrayList<String>?=null
     
 ): Parcelable {
+    
+    
     
     
     
@@ -572,10 +189,32 @@ data class FileUpload(
 
              
 /*
-    Model: FileUploadStart
+    Model: Params
 */
 @Parcelize
-data class FileUploadStart(
+data class Params(
+    
+    
+    
+    @SerializedName("subpath")
+    var subpath: String?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: StartRequest
+*/
+@Parcelize
+data class StartRequest(
     
     
     
@@ -592,9 +231,14 @@ data class FileUploadStart(
     var tags: ArrayList<String>?=null,
     
     @SerializedName("params")
-    var params: @RawValue HashMap<String,Any>?=null
+    var params: @RawValue HashMap<String,Any>?=null,
+    
+    @SerializedName("enc_key")
+    var encKey: String?=null
     
 ): Parcelable {
+    
+    
     
     
     
@@ -636,10 +280,10 @@ data class CreatedBy(
 
              
 /*
-    Model: FileUploadComplete
+    Model: CompleteResponse
 */
 @Parcelize
-data class FileUploadComplete(
+data class CompleteResponse(
     
     
     
@@ -715,33 +359,6 @@ data class FileUploadComplete(
     
     
     
-    
-    
-    
-    
-    
-    
-    
-}
-
-
-
-             
-/*
-    Model: ProxyFileAccess
-*/
-@Parcelize
-data class ProxyFileAccess(
-    
-    
-    
-    @SerializedName("data")
-    var data: @RawValue HashMap<String,Any>?=null,
-    
-    @SerializedName("support")
-    var support: @RawValue HashMap<String,Any>?=null
-    
-): Parcelable {
     
     
     
@@ -836,10 +453,10 @@ data class Urls(
 
              
 /*
-    Model: SignUrlResult
+    Model: SignUrlResponse
 */
 @Parcelize
-data class SignUrlResult(
+data class SignUrlResponse(
     
     
     
@@ -858,18 +475,18 @@ data class SignUrlResult(
 
              
 /*
-    Model: SignUrl
+    Model: EncryptionMapping
 */
 @Parcelize
-data class SignUrl(
+data class EncryptionMapping(
     
     
     
-    @SerializedName("expiry")
-    var expiry: Int?=null,
+    @SerializedName("enc_url")
+    var encUrl: String?=null,
     
-    @SerializedName("urls")
-    var urls: ArrayList<String>?=null
+    @SerializedName("value")
+    var value: String?=null
     
 ): Parcelable {
     
@@ -885,10 +502,42 @@ data class SignUrl(
 
              
 /*
-    Model: InvoiceTypesData
+    Model: SignUrlRequest
 */
 @Parcelize
-data class InvoiceTypesData(
+data class SignUrlRequest(
+    
+    
+    
+    @SerializedName("expiry")
+    var expiry: Int?=null,
+    
+    @SerializedName("urls")
+    var urls: ArrayList<String>?=null,
+    
+    @SerializedName("enc_url_mapping")
+    var encUrlMapping: ArrayList<EncryptionMapping>?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: InvoiceTypesDataResponse
+*/
+@Parcelize
+data class InvoiceTypesDataResponse(
     
     
     
@@ -913,15 +562,10 @@ data class InvoiceTypesData(
     @SerializedName("visibility")
     var visibility: Boolean?=null,
     
-    @SerializedName("store_os")
-    var storeOs: Boolean?=null,
-    
     @SerializedName("country_code")
     var countryCode: String?=null
     
 ): Parcelable {
-    
-    
     
     
     
@@ -947,15 +591,15 @@ data class InvoiceTypesData(
 
              
 /*
-    Model: InvoiceTypes
+    Model: InvoiceTypesResponse
 */
 @Parcelize
-data class InvoiceTypes(
+data class InvoiceTypesResponse(
     
     
     
     @SerializedName("data")
-    var data: ArrayList<InvoiceTypesData>?=null,
+    var data: ArrayList<InvoiceTypesDataResponse>?=null,
     
     @SerializedName("success")
     var success: Boolean?=null
@@ -2396,10 +2040,10 @@ data class Meta(
 
              
 /*
-    Model: PdfPayloadDetails
+    Model: DummyTemplateDataPayload
 */
 @Parcelize
-data class PdfPayloadDetails(
+data class DummyTemplateDataPayload(
     
     
     
@@ -2501,6 +2145,12 @@ data class PdfPayloadDetails(
     
     @SerializedName("is_self_pickup")
     var isSelfPickup: Boolean?=null,
+    
+    @SerializedName("shipment_meta")
+    var shipmentMeta: @RawValue HashMap<String,Any>?=null,
+    
+    @SerializedName("order_meta")
+    var orderMeta: @RawValue HashMap<String,Any>?=null,
     
     @SerializedName("platform_name")
     var platformName: String?=null,
@@ -2632,6 +2282,10 @@ data class PdfPayloadDetails(
     
     
     
+    
+    
+    
+    
 }
 
 
@@ -2652,7 +2306,7 @@ data class DummyTemplateData(
     var pdfTypeId: Double?=null,
     
     @SerializedName("payload")
-    var payload: PdfPayloadDetails?=null,
+    var payload: DummyTemplateDataPayload?=null,
     
     @SerializedName("country_code")
     var countryCode: String?=null,
@@ -2680,84 +2334,10 @@ data class DummyTemplateData(
 
              
 /*
-    Model: savePdfPayload
+    Model: DummyTemplateDataItems
 */
 @Parcelize
-data class savePdfPayload(
-    
-    
-    
-    @SerializedName("pdf_type_id")
-    var pdfTypeId: Double?=null,
-    
-    @SerializedName("payload")
-    var payload: PdfPayloadDetails?=null,
-    
-    @SerializedName("country_code")
-    var countryCode: String?=null
-    
-): Parcelable {
-    
-    
-    
-    
-    
-    
-    
-    
-    
-}
-
-
-
-             
-/*
-    Model: MapperDetails
-*/
-@Parcelize
-data class MapperDetails(
-    
-    
-    
-    @SerializedName("_id")
-    var id: String?=null,
-    
-    @SerializedName("pdf_type_id")
-    var pdfTypeId: Double?=null,
-    
-    @SerializedName("payload")
-    var payload: PdfPayloadDetails?=null,
-    
-    @SerializedName("country_code")
-    var countryCode: String?=null,
-    
-    @SerializedName("__v")
-    var v: Int?=null
-    
-): Parcelable {
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-}
-
-
-
-             
-/*
-    Model: PdfDataItemsDetails
-*/
-@Parcelize
-data class PdfDataItemsDetails(
+data class DummyTemplateDataItems(
     
     
     
@@ -2795,19 +2375,9 @@ data class PdfConfig(
     var template: String?=null,
     
     @SerializedName("pdf_type_id")
-    var pdfTypeId: Int?=null,
-    
-    @SerializedName("country_code")
-    var countryCode: String?=null,
-    
-    @SerializedName("default_template")
-    var defaultTemplate: Boolean?=null
+    var pdfTypeId: Int?=null
     
 ): Parcelable {
-    
-    
-    
-    
     
     
     
@@ -2867,33 +2437,6 @@ data class PdfConfigSuccessData(
     
     
     
-    
-    
-    
-    
-    
-    
-    
-}
-
-
-
-             
-/*
-    Model: DeleteMapperById
-*/
-@Parcelize
-data class DeleteMapperById(
-    
-    
-    
-    @SerializedName("message")
-    var message: String?=null,
-    
-    @SerializedName("default_template")
-    var defaultTemplate: Boolean?=null
-    
-): Parcelable {
     
     
     
@@ -2995,6 +2538,33 @@ data class PdfConfigSaveSuccess(
     
     @SerializedName("data")
     var data: PdfConfigSaveSuccessData?=null,
+    
+    @SerializedName("success")
+    var success: Boolean?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: PdfDefaultTemplateSuccess
+*/
+@Parcelize
+data class PdfDefaultTemplateSuccess(
+    
+    
+    
+    @SerializedName("data")
+    var data: ArrayList<Document>?=null,
     
     @SerializedName("success")
     var success: Boolean?=null

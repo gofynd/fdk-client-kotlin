@@ -500,10 +500,10 @@ data class BulkDiscount(
 
              
 /*
-    Model: FileJobResponseSchema
+    Model: FileJobResponse
 */
 @Parcelize
-data class FileJobResponseSchema(
+data class FileJobResponse(
     
     
     
@@ -592,10 +592,10 @@ data class FileJobResponseSchema(
 
              
 /*
-    Model: FileJobRequestSchema
+    Model: FileJobRequest
 */
 @Parcelize
-data class FileJobRequestSchema(
+data class FileJobRequest(
     
     
     
@@ -696,10 +696,10 @@ data class DownloadFileJob(
 
              
 /*
-    Model: CancelJobResponseSchema
+    Model: CancelJobResponse
 */
 @Parcelize
-data class CancelJobResponseSchema(
+data class CancelJobResponse(
     
     
     
