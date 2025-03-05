@@ -186,6 +186,9 @@ data class SEOSitemap(
     
     
     
+    @SerializedName("modified_on")
+    var modifiedOn: String?=null,
+    
     @SerializedName("priority")
     var priority: Double?=null,
     
@@ -193,6 +196,8 @@ data class SEOSitemap(
     var frequency: String?=null
     
 ): Parcelable {
+    
+    
     
     
     

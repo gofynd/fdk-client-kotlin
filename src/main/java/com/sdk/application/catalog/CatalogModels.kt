@@ -1030,9 +1030,14 @@ data class ProductDetail(
     var noOfBoxes: Int?=null,
     
     @SerializedName("country_of_origin")
-    var countryOfOrigin: String?=null
+    var countryOfOrigin: String?=null,
+    
+    @SerializedName("modified_on")
+    var modifiedOn: String?=null
     
 ): Parcelable {
+    
+    
     
     
     
@@ -2478,9 +2483,14 @@ data class ProductListingDetail(
     var isTryout: Boolean?=null,
     
     @SerializedName("channel")
-    var channel: String?=null
+    var channel: String?=null,
+    
+    @SerializedName("modified_on")
+    var modifiedOn: String?=null
     
 ): Parcelable {
+    
+    
     
     
     
@@ -2841,6 +2851,9 @@ data class BrandItem(
     @SerializedName("logo")
     var logo: Media?=null,
     
+    @SerializedName("seo")
+    var seo: ApplicationItemSEO?=null,
+    
     @SerializedName("description")
     var description: String?=null,
     
@@ -2863,6 +2876,8 @@ data class BrandItem(
     var action: ProductListingAction?=null
     
 ): Parcelable {
+    
+    
     
     
     
@@ -3719,9 +3734,14 @@ data class GetCollectionDetailNest(
     var seo: @RawValue HashMap<String,Any>?=null,
     
     @SerializedName("is_visible")
-    var isVisible: Boolean?=null
+    var isVisible: Boolean?=null,
+    
+    @SerializedName("modified_on")
+    var modifiedOn: String?=null
     
 ): Parcelable {
+    
+    
     
     
     
@@ -3933,6 +3953,9 @@ data class CollectionDetailResponseSchema(
     @SerializedName("_schedule")
     var schedule: @RawValue HashMap<String,Any>?=null,
     
+    @SerializedName("modified_on")
+    var modifiedOn: String?=null,
+    
     @SerializedName("query")
     var query: ArrayList<CollectionQuery>?=null,
     
@@ -4000,6 +4023,8 @@ data class CollectionDetailResponseSchema(
     var isVisible: Boolean?=null
     
 ): Parcelable {
+    
+    
     
     
     

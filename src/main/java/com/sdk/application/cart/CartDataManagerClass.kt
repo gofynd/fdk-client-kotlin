@@ -329,10 +329,10 @@ class CartDataManagerClass(val config: ApplicationConfig, val unauthorizedAction
 
     
     
-    suspend fun getPromotions(pageSize: Int?=null,pageNo: Int?=null,promotionType: String?=null, headers: Map<String, String> = emptyMap()): Response<Promotions>? {
+    suspend fun getPromotions(pageSize: Int?=null,pageNo: Int?=null,promotionType: String?=null,isBankOffer: Boolean?=null, headers: Map<String, String> = emptyMap()): Response<Promotions>? {
         var fullUrl : String? = _relativeUrls["getPromotions"]
         
-        return cartApiList?.getPromotions(fullUrl,   pageSize = pageSize,  pageNo = pageNo,  promotionType = promotionType,headers = headers)}
+        return cartApiList?.getPromotions(fullUrl,   pageSize = pageSize,  pageNo = pageNo,  promotionType = promotionType,  isBankOffer = isBankOffer,headers = headers)}
 
     
     
