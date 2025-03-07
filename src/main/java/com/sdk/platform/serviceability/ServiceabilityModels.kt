@@ -2134,9 +2134,19 @@ data class BulkRegionResultItemData(
     var total: Int?=null,
     
     @SerializedName("error_file_path")
-    var errorFilePath: String?=null
+    var errorFilePath: String?=null,
+    
+    @SerializedName("modified_on")
+    var modifiedOn: String?=null,
+    
+    @SerializedName("created_on")
+    var createdOn: String?=null
     
 ): Parcelable {
+    
+    
+    
+    
     
     
     

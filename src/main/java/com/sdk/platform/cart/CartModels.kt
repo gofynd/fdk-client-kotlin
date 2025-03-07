@@ -4530,6 +4530,9 @@ data class AppliedPromotion(
     @SerializedName("offer_text")
     var offerText: String?=null,
     
+    @SerializedName("offer_label")
+    var offerLabel: String?=null,
+    
     @SerializedName("amount")
     var amount: Double?=null,
     
@@ -4555,6 +4558,8 @@ data class AppliedPromotion(
     var code: String?=null
     
 ): Parcelable {
+    
+    
     
     
     
