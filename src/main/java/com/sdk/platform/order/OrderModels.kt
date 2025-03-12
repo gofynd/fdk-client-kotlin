@@ -3174,9 +3174,14 @@ data class CreateOrderAPI(
     var applicationId: String?=null,
     
     @SerializedName("external_shipment_id")
-    var externalShipmentId: String?=null
+    var externalShipmentId: String?=null,
+    
+    @SerializedName("custom_json")
+    var customJson: @RawValue HashMap<String,Any>?=null
     
 ): Parcelable {
+    
+    
     
     
     
