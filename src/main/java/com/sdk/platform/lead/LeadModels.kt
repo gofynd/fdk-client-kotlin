@@ -14,10 +14,10 @@ import com.google.gson.annotations.SerializedName
 
              
 /*
-    Model: GeneralConfigResponse
+    Model: GeneralConfigDetails
 */
 @Parcelize
-data class GeneralConfigResponse(
+data class GeneralConfigDetails(
     
     
     

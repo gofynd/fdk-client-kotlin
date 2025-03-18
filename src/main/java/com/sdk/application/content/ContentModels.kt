@@ -125,6 +125,33 @@ data class SeoComponent(
 
              
 /*
+    Model: ValidationError
+*/
+@Parcelize
+data class ValidationError(
+    
+    
+    
+    @SerializedName("message")
+    var message: String?=null,
+    
+    @SerializedName("field")
+    var field: String?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
     Model: SeoSchema
 */
 @Parcelize
@@ -140,12 +167,6 @@ data class SeoSchema(
     
     @SerializedName("robots_txt")
     var robotsTxt: String?=null,
-    
-    @SerializedName("sitemap_enabled")
-    var sitemapEnabled: Boolean?=null,
-    
-    @SerializedName("additonal_sitemap")
-    var additonalSitemap: String?=null,
     
     @SerializedName("cannonical_enabled")
     var cannonicalEnabled: Boolean?=null,
@@ -163,10 +184,6 @@ data class SeoSchema(
     var updatedAt: String?=null
     
 ): Parcelable {
-    
-    
-    
-    
     
     
     
@@ -463,10 +480,10 @@ data class ScheduleStartSchema(
 
              
 /*
-    Model: BlogGetResponse
+    Model: BlogGetDetails
 */
 @Parcelize
-data class BlogGetResponse(
+data class BlogGetDetails(
     
     
     
@@ -874,6 +891,164 @@ data class SEObreadcrumb(
     var action: Action?=null
     
 ): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: SitemapConfig
+*/
+@Parcelize
+data class SitemapConfig(
+    
+    
+    
+    @SerializedName("name")
+    var name: String?=null,
+    
+    @SerializedName("sitemap")
+    var sitemap: String?=null,
+    
+    @SerializedName("created_at")
+    var createdAt: String?=null,
+    
+    @SerializedName("updated_at")
+    var updatedAt: String?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: SitemapConfigurationList
+*/
+@Parcelize
+data class SitemapConfigurationList(
+    
+    
+    
+    @SerializedName("items")
+    var items: ArrayList<SitemapConfig>?=null,
+    
+    @SerializedName("page")
+    var page: Page?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: DefaultSitemapIndividualConfig
+*/
+@Parcelize
+data class DefaultSitemapIndividualConfig(
+    
+    
+    
+    @SerializedName("enabled")
+    var enabled: Boolean?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: DefaultSitemapConfig
+*/
+@Parcelize
+data class DefaultSitemapConfig(
+    
+    
+    
+    @SerializedName("root")
+    var root: DefaultSitemapIndividualConfig?=null,
+    
+    @SerializedName("brand")
+    var brand: DefaultSitemapIndividualConfig?=null,
+    
+    @SerializedName("collections")
+    var collections: DefaultSitemapIndividualConfig?=null,
+    
+    @SerializedName("category_l1")
+    var categoryL1: DefaultSitemapIndividualConfig?=null,
+    
+    @SerializedName("category_l2")
+    var categoryL2: DefaultSitemapIndividualConfig?=null,
+    
+    @SerializedName("category_l3")
+    var categoryL3: DefaultSitemapIndividualConfig?=null,
+    
+    @SerializedName("pages")
+    var pages: DefaultSitemapIndividualConfig?=null,
+    
+    @SerializedName("blog")
+    var blog: DefaultSitemapIndividualConfig?=null,
+    
+    @SerializedName("section")
+    var section: DefaultSitemapIndividualConfig?=null,
+    
+    @SerializedName("faq")
+    var faq: DefaultSitemapIndividualConfig?=null,
+    
+    @SerializedName("sitemap")
+    var sitemap: DefaultSitemapIndividualConfig?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     
     
     
@@ -1783,10 +1958,10 @@ data class LandingPageSchema(
 
              
 /*
-    Model: NavigationGetResponse
+    Model: NavigationGetDetails
 */
 @Parcelize
-data class NavigationGetResponse(
+data class NavigationGetDetails(
     
     
     
@@ -1909,10 +2084,10 @@ data class NavigationSchema(
 
              
 /*
-    Model: PageGetResponse
+    Model: PageGetDetails
 */
 @Parcelize
-data class PageGetResponse(
+data class PageGetDetails(
     
     
     
@@ -2085,10 +2260,10 @@ data class CreatedBySchema(
 
              
 /*
-    Model: SlideshowGetResponse
+    Model: SlideshowGetDetails
 */
 @Parcelize
-data class SlideshowGetResponse(
+data class SlideshowGetDetails(
     
     
     
@@ -2561,8 +2736,8 @@ data class CustomObjectFieldSchema(
     @SerializedName("_id")
     var id: String?=null,
     
-    @SerializedName("key")
-    var key: String?=null,
+    @SerializedName("slug")
+    var slug: String?=null,
     
     @SerializedName("value")
     var value: ArrayList<CustomObjectFieldValue>?=null,
@@ -2600,7 +2775,7 @@ data class CustomObjectByIdSchema(
     
     
     
-    @SerializedName("_id")
+    @SerializedName("id")
     var id: String?=null,
     
     @SerializedName("status")
@@ -2675,14 +2850,11 @@ data class CustomFieldSchema(
     @SerializedName("namespace")
     var namespace: String?=null,
     
-    @SerializedName("key")
-    var key: String?=null,
+    @SerializedName("slug")
+    var slug: String?=null,
     
     @SerializedName("resource")
     var resource: String?=null,
-    
-    @SerializedName("creator")
-    var creator: String?=null,
     
     @SerializedName("value")
     var value: ArrayList<CustomFieldValue>?=null,
@@ -2711,9 +2883,6 @@ data class CustomFieldSchema(
     @SerializedName("invalid_value_errors")
     var invalidValueErrors: @RawValue ArrayList<Any>?=null,
     
-    @SerializedName("created_by")
-    var createdBy: String?=null,
-    
     @SerializedName("is_deleted")
     var isDeleted: Boolean?=null,
     
@@ -2724,10 +2893,6 @@ data class CustomFieldSchema(
     var updatedAt: String?=null
     
 ): Parcelable {
-    
-    
-    
-    
     
     
     
@@ -2780,6 +2945,85 @@ data class CustomFieldsResponseByResourceIdSchema(
     var items: ArrayList<CustomFieldSchema>?=null
     
 ): Parcelable {
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: CustomObjectListItemSchema
+*/
+@Parcelize
+data class CustomObjectListItemSchema(
+    
+    
+    
+    @SerializedName("_id")
+    var id: String?=null,
+    
+    @SerializedName("definition_id")
+    var definitionId: String?=null,
+    
+    @SerializedName("status")
+    var status: String?=null,
+    
+    @SerializedName("updated_at")
+    var updatedAt: String?=null,
+    
+    @SerializedName("display_name")
+    var displayName: String?=null,
+    
+    @SerializedName("definition")
+    var definition: CustomObjectListItemDefinationSchema?=null,
+    
+    @SerializedName("references")
+    var references: Int?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: CustomObjectsSchema
+*/
+@Parcelize
+data class CustomObjectsSchema(
+    
+    
+    
+    @SerializedName("items")
+    var items: ArrayList<CustomObjectListItemSchema>?=null,
+    
+    @SerializedName("page")
+    var page: Page?=null
+    
+): Parcelable {
+    
+    
     
     
     

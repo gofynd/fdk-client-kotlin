@@ -14,10 +14,10 @@ import com.google.gson.annotations.SerializedName
 
              
 /*
-    Model: UpdateUserAttributesRequest
+    Model: UpdateUserAttributes
 */
 @Parcelize
-data class UpdateUserAttributesRequest(
+data class UpdateUserAttributes(
     
     
     
@@ -962,10 +962,10 @@ data class AuthSuccess(
 
              
 /*
-    Model: UserExistsResponse
+    Model: UserExistsDetails
 */
 @Parcelize
-data class UserExistsResponse(
+data class UserExistsDetails(
     
     
     
@@ -984,10 +984,10 @@ data class UserExistsResponse(
 
              
 /*
-    Model: SendOtpResponse
+    Model: SendOtp
 */
 @Parcelize
-data class SendOtpResponse(
+data class SendOtp(
     
     
     
@@ -1113,7 +1113,7 @@ data class ProfileEditSuccess(
     var message: String?=null,
     
     @SerializedName("resend_timer")
-    var resendTimer: Int?=null,
+    var resendTimer: Long?=null,
     
     @SerializedName("resend_token")
     var resendToken: String?=null
@@ -1304,7 +1304,7 @@ data class RegisterFormSuccess(
     var email: String?=null,
     
     @SerializedName("resend_timer")
-    var resendTimer: Int?=null,
+    var resendTimer: Long?=null,
     
     @SerializedName("resend_token")
     var resendToken: String?=null,
@@ -1463,15 +1463,15 @@ data class DeleteUserSuccess(
 
              
 /*
-    Model: OtpSuccess
+    Model: SendOtpSuccess
 */
 @Parcelize
-data class OtpSuccess(
+data class SendOtpSuccess(
     
     
     
     @SerializedName("resend_timer")
-    var resendTimer: Int?=null,
+    var resendTimer: Long?=null,
     
     @SerializedName("resend_token")
     var resendToken: String?=null,

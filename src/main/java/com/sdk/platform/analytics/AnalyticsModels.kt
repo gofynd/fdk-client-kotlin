@@ -118,5 +118,74 @@ data class JobExecute(
 
 
 
+             
+/*
+    Model: JobExecutionResult
+*/
+@Parcelize
+data class JobExecutionResult(
+    
+    
+    
+    @SerializedName("rows")
+    var rows: @RawValue ArrayList<HashMap<String,Any>>?=null,
+    
+    @SerializedName("page")
+    var page: Page?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: JobStatus
+*/
+@Parcelize
+data class JobStatus(
+    
+    
+    
+    @SerializedName("start_date")
+    var startDate: String?=null,
+    
+    @SerializedName("end_date")
+    var endDate: String?=null,
+    
+    @SerializedName("status")
+    var status: String?=null,
+    
+    @SerializedName("message")
+    var message: String?=null,
+    
+    @SerializedName("file_metadata")
+    var fileMetadata: @RawValue ArrayList<HashMap<String,Any>>?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
 
 
