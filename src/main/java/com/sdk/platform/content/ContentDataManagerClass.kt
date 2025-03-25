@@ -465,12 +465,12 @@ class ContentDataManagerClass(val config: PlatformConfig, val unauthorizedAction
     }
     
     
-    suspend fun updateCompanyLanguageDefault(body: CompanyLanguageUpdate, headers: Map<String, String> = emptyMap())
+    suspend fun updateCompanyLanguageDefault(locale: String,body: CompanyLanguageUpdate, headers: Map<String, String> = emptyMap())
     : Response<CompanyLanguage>? {
 
         return if (config.oauthClient.isAccessTokenValid()) {
             contentApiList?.updateCompanyLanguageDefault(
-        companyId = config.companyId, body = body,headers = headers)
+        companyId = config.companyId,locale = locale, body = body,headers = headers)
         } else {
             null
         }
@@ -478,7 +478,7 @@ class ContentDataManagerClass(val config: PlatformConfig, val unauthorizedAction
     
     
     suspend fun deleteCompanyLanguage(locale: String, headers: Map<String, String> = emptyMap())
-    : Response<Any>? {
+    : Response<OperationResponseSchema>? {
 
         return if (config.oauthClient.isAccessTokenValid()) {
             contentApiList?.deleteCompanyLanguage(
@@ -615,7 +615,7 @@ class ContentDataManagerClass(val config: PlatformConfig, val unauthorizedAction
     
     
     suspend fun deleteCompanyResourceTranslation(id: String, headers: Map<String, String> = emptyMap())
-    : Response<DeletedResource>? {
+    : Response<OperationResponseSchema>? {
 
         return if (config.oauthClient.isAccessTokenValid()) {
             contentApiList?.deleteCompanyResourceTranslation(
@@ -1675,7 +1675,7 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     
     
     suspend fun deleteApplicationLanguage(locale: String, headers: Map<String, String> = emptyMap())
-    : Response<Any>? {
+    : Response<OperationResponseSchema>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 contentApiList?.deleteApplicationLanguage(companyId = config.companyId ,applicationId = applicationId ,locale = locale, headers = headers)
         } else {
@@ -1736,7 +1736,7 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     
     
     suspend fun deleteApplicationResourceTranslation(id: String, headers: Map<String, String> = emptyMap())
-    : Response<DeletedResource>? {
+    : Response<OperationResponseSchema>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 contentApiList?.deleteApplicationResourceTranslation(companyId = config.companyId ,applicationId = applicationId ,id = id, headers = headers)
         } else {

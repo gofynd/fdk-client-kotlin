@@ -7119,28 +7119,6 @@ data class TranslationSeo(
 
              
 /*
-    Model: DeletedResource
-*/
-@Parcelize
-data class DeletedResource(
-    
-    
-    
-    @SerializedName("message")
-    var message: String?=null
-    
-): Parcelable {
-    
-    
-    
-    
-    
-}
-
-
-
-             
-/*
     Model: ResourceTranslationList
 */
 @Parcelize
@@ -7376,6 +7354,33 @@ data class StandardError(
     var message: String?=null
     
 ): Parcelable {
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: OperationResponseSchema
+*/
+@Parcelize
+data class OperationResponseSchema(
+    
+    
+    
+    @SerializedName("success")
+    var success: Boolean?=null,
+    
+    @SerializedName("message")
+    var message: String?=null
+    
+): Parcelable {
+    
+    
     
     
     

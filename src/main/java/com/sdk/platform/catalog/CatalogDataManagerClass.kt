@@ -1699,7 +1699,7 @@ class CatalogDataManagerClass(val config: PlatformConfig, val unauthorizedAction
         return paginator
     }
     
-    suspend fun createProduct(body: ProductCreateUpdateSchemaV2, headers: Map<String, String> = emptyMap())
+    suspend fun createProduct(body: ProductCreateSchemaV2, headers: Map<String, String> = emptyMap())
     : Response<SuccessResponseObject>? {
 
         return if (config.oauthClient.isAccessTokenValid()) {
@@ -1747,12 +1747,12 @@ class CatalogDataManagerClass(val config: PlatformConfig, val unauthorizedAction
     }
     
     
-    suspend fun deleteProduct(itemId: String,body: DeleteProductRequestBody, headers: Map<String, String> = emptyMap())
+    suspend fun deleteProduct(itemId: String, headers: Map<String, String> = emptyMap())
     : Response<SuccessResponseSchema>? {
 
         return if (config.oauthClient.isAccessTokenValid()) {
             catalogApiList?.deleteProduct(
-        companyId = config.companyId,itemId = itemId, body = body,headers = headers)
+        companyId = config.companyId,itemId = itemId, headers = headers)
         } else {
             null
         }
@@ -1771,7 +1771,7 @@ class CatalogDataManagerClass(val config: PlatformConfig, val unauthorizedAction
     }
     
     
-    suspend fun editProduct(itemId: String,body: ProductCreateUpdateSchemaV2, headers: Map<String, String> = emptyMap())
+    suspend fun editProduct(itemId: String,body: ProductUpdateSchemaV2, headers: Map<String, String> = emptyMap())
     : Response<SuccessResponseSchema>? {
 
         return if (config.oauthClient.isAccessTokenValid()) {

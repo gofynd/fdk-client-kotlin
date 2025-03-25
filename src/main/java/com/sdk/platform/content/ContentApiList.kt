@@ -505,13 +505,13 @@ interface ContentApiList {
     suspend fun addCompanyLanguage(@Path("company_id") companyId: String,@Body body: CompanyLanguageCreate, @HeaderMap headers: Map<String, String>? = null)
     : Response<HashMap<String,Any>>
     
-    @PUT ("/service/platform/content/v1.0/company/{company_id}/languages")
-    suspend fun updateCompanyLanguageDefault(@Path("company_id") companyId: String,@Body body: CompanyLanguageUpdate, @HeaderMap headers: Map<String, String>? = null)
+    @PUT ("/service/platform/content/v1.0/company/{company_id}/languages/{locale}")
+    suspend fun updateCompanyLanguageDefault(@Path("company_id") companyId: String, @Path("locale") locale: String,@Body body: CompanyLanguageUpdate, @HeaderMap headers: Map<String, String>? = null)
     : Response<CompanyLanguage>
     
     @DELETE ("/service/platform/content/v1.0/company/{company_id}/languages/{locale}")
     suspend fun deleteCompanyLanguage(@Path("company_id") companyId: String, @Path("locale") locale: String, @HeaderMap headers: Map<String, String>? = null)
-    : Response<Any>
+    : Response<OperationResponseSchema>
     
     @GET ("/service/platform/content/v1.0/company/{company_id}/application/{application_id}/languages")
     suspend fun getApplicationLanguages(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @HeaderMap headers: Map<String, String>? = null)
@@ -531,7 +531,7 @@ interface ContentApiList {
     
     @DELETE ("/service/platform/content/v1.0/company/{company_id}/application/{application_id}/languages/{locale}")
     suspend fun deleteApplicationLanguage(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Path("locale") locale: String, @HeaderMap headers: Map<String, String>? = null)
-    : Response<Any>
+    : Response<OperationResponseSchema>
     
     @GET ("/service/platform/content/v1.0/company/{company_id}/translatable/resources")
     suspend fun getAllTranslatableResources(@Path("company_id") companyId: String, @HeaderMap headers: Map<String, String>? = null)
@@ -553,7 +553,7 @@ interface ContentApiList {
     suspend fun getAllSections(@Path("company_id") companyId: String, @HeaderMap headers: Map<String, String>? = null)
     : Response<HashMap<String,Any>>
     
-    @GET ("/service/platform/content/v1.0/company/{company_id}/translatable/sections/{id}")
+    @GET ("/service/platform/content/v1.0/company/{company_id}/translatable/section/{id}")
     suspend fun getSectionById(@Path("company_id") companyId: String, @Path("id") id: String, @HeaderMap headers: Map<String, String>? = null)
     : Response<TranslatableSection>
     
@@ -575,7 +575,7 @@ interface ContentApiList {
     
     @DELETE ("/service/platform/content/v1.0/company/{company_id}/resource/translations/{id}")
     suspend fun deleteCompanyResourceTranslation(@Path("company_id") companyId: String, @Path("id") id: String, @HeaderMap headers: Map<String, String>? = null)
-    : Response<DeletedResource>
+    : Response<OperationResponseSchema>
     
     @GET ("/service/platform/content/v1.0/company/{company_id}/application/{application_id}/resource/translations")
     suspend fun getApplicationResourceTranslations(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Query("locale") locale: String, @Query("type") type: String, @Query("resource_id") resourceId: String, @HeaderMap headers: Map<String, String>? = null)
@@ -595,6 +595,6 @@ interface ContentApiList {
     
     @DELETE ("/service/platform/content/v1.0/company/{company_id}/application/{application_id}/resource/translations/{id}")
     suspend fun deleteApplicationResourceTranslation(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Path("id") id: String, @HeaderMap headers: Map<String, String>? = null)
-    : Response<DeletedResource>
+    : Response<OperationResponseSchema>
     
 }

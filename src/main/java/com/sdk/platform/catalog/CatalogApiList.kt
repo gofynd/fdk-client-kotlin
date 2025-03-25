@@ -522,7 +522,7 @@ interface CatalogApiList {
     : Response<ProductListingResponseV2>
     
     @POST ("/service/platform/catalog/v2.0/company/{company_id}/products/")
-    suspend fun createProduct(@Path("company_id") companyId: String,@Body body: ProductCreateUpdateSchemaV2, @HeaderMap headers: Map<String, String>? = null)
+    suspend fun createProduct(@Path("company_id") companyId: String,@Body body: ProductCreateSchemaV2, @HeaderMap headers: Map<String, String>? = null)
     : Response<SuccessResponseObject>
     
     @POST ("/service/platform/catalog/v2.0/company/{company_id}/products/bulk")
@@ -538,7 +538,7 @@ interface CatalogApiList {
     : Response<ProductDownloadsResponseSchema>
     
     @DELETE ("/service/platform/catalog/v2.0/company/{company_id}/products/{item_id}/")
-    suspend fun deleteProduct(@Path("company_id") companyId: String, @Path("item_id") itemId: String,@Body body: DeleteProductRequestBody, @HeaderMap headers: Map<String, String>? = null)
+    suspend fun deleteProduct(@Path("company_id") companyId: String, @Path("item_id") itemId: String, @HeaderMap headers: Map<String, String>? = null)
     : Response<SuccessResponseSchema>
     
     @GET ("/service/platform/catalog/v2.0/company/{company_id}/products/{item_id}/")
@@ -546,7 +546,7 @@ interface CatalogApiList {
     : Response<SingleProductResponseSchema>
     
     @PUT ("/service/platform/catalog/v2.0/company/{company_id}/products/{item_id}/")
-    suspend fun editProduct(@Path("company_id") companyId: String, @Path("item_id") itemId: String,@Body body: ProductCreateUpdateSchemaV2, @HeaderMap headers: Map<String, String>? = null)
+    suspend fun editProduct(@Path("company_id") companyId: String, @Path("item_id") itemId: String,@Body body: ProductUpdateSchemaV2, @HeaderMap headers: Map<String, String>? = null)
     : Response<SuccessResponseSchema>
     
     @GET ("/service/platform/catalog/v2.0/company/{company_id}/products/{item_id}/all_sizes")
