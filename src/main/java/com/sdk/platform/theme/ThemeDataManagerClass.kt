@@ -178,10 +178,10 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     }
     
     
-    suspend fun getFonts( headers: Map<String, String> = emptyMap())
+    suspend fun getFonts(capability: String?=null, headers: Map<String, String> = emptyMap())
     : Response<FontsSchema>? {
         return if (config.oauthClient.isAccessTokenValid()) {
-                themeApiList?.getFonts(companyId = config.companyId ,applicationId = applicationId , headers = headers)
+                themeApiList?.getFonts(companyId = config.companyId ,applicationId = applicationId ,capability = capability, headers = headers)
         } else {
             null
         }

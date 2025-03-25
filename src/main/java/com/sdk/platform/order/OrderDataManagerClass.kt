@@ -176,12 +176,12 @@ class OrderDataManagerClass(val config: PlatformConfig, val unauthorizedAction: 
     }
     
     
-    suspend fun createOrder(body: CreateOrderAPI, headers: Map<String, String> = emptyMap())
+    suspend fun createOrder(xOrderingSource: String?=null,body: CreateOrderAPI, headers: Map<String, String> = emptyMap())
     : Response<CreateOrderResponseSchema>? {
 
         return if (config.oauthClient.isAccessTokenValid()) {
             orderApiList?.createOrder(
-        companyId = config.companyId, body = body,headers = headers)
+        xOrderingSource = xOrderingSource,companyId = config.companyId, body = body,headers = headers)
         } else {
             null
         }
@@ -248,12 +248,12 @@ class OrderDataManagerClass(val config: PlatformConfig, val unauthorizedAction: 
     }
     
     
-    suspend fun getAllowedStateTransition(orderingChannel: String,status: String, headers: Map<String, String> = emptyMap())
+    suspend fun getAllowedStateTransition(orderingChannel: String?=null,orderingSource: String?=null,status: String, headers: Map<String, String> = emptyMap())
     : Response<RoleBaseStateTransitionMapping>? {
 
         return if (config.oauthClient.isAccessTokenValid()) {
             orderApiList?.getAllowedStateTransition(
-        companyId = config.companyId,orderingChannel = orderingChannel,status = status, headers = headers)
+        companyId = config.companyId,orderingChannel = orderingChannel,orderingSource = orderingSource,status = status, headers = headers)
         } else {
             null
         }
@@ -536,12 +536,12 @@ class OrderDataManagerClass(val config: PlatformConfig, val unauthorizedAction: 
     }
     
     
-    suspend fun getStateManagerConfig(appId: String?=null,orderingChannel: String?=null,entity: String?=null, headers: Map<String, String> = emptyMap())
+    suspend fun getStateManagerConfig(appId: String?=null,orderingChannel: String?=null,orderingSource: String?=null,entity: String?=null, headers: Map<String, String> = emptyMap())
     : Response<HashMap<String,Any>>? {
 
         return if (config.oauthClient.isAccessTokenValid()) {
             orderApiList?.getStateManagerConfig(
-        companyId = config.companyId,appId = appId,orderingChannel = orderingChannel,entity = entity, headers = headers)
+        companyId = config.companyId,appId = appId,orderingChannel = orderingChannel,orderingSource = orderingSource,entity = entity, headers = headers)
         } else {
             null
         }

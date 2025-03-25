@@ -3275,6 +3275,9 @@ data class OrderDetails(
     @SerializedName("ordering_channel")
     var orderingChannel: String?=null,
     
+    @SerializedName("ordering_source")
+    var orderingSource: String?=null,
+    
     @SerializedName("meta")
     var meta: @RawValue HashMap<String,Any>?=null,
     
@@ -3327,6 +3330,8 @@ data class OrderDetails(
     var charges: ArrayList<PriceAdjustmentCharge>?=null
     
 ): Parcelable {
+    
+    
     
     
     
@@ -8757,10 +8762,15 @@ data class TransitionConfigCondition(
     @SerializedName("ordering_channel")
     var orderingChannel: String?=null,
     
+    @SerializedName("ordering_source")
+    var orderingSource: String?=null,
+    
     @SerializedName("entity")
     var entity: String?=null
     
 ): Parcelable {
+    
+    
     
     
     
@@ -12020,6 +12030,9 @@ data class ShipmentItem(
     @SerializedName("ordering_channnel")
     var orderingChannnel: String?=null,
     
+    @SerializedName("ordering_source")
+    var orderingSource: String?=null,
+    
     @SerializedName("shipment_id")
     var shipmentId: String?=null,
     
@@ -12051,6 +12064,8 @@ data class ShipmentItem(
     var logisticsMeta: @RawValue HashMap<String,Any>?=null
     
 ): Parcelable {
+    
+    
     
     
     
@@ -12324,10 +12339,15 @@ data class OrderDetailsData(
     @SerializedName("ordering_channel")
     var orderingChannel: String?=null,
     
+    @SerializedName("ordering_source")
+    var orderingSource: String?=null,
+    
     @SerializedName("meta")
     var meta: @RawValue HashMap<String,Any>?=null
     
 ): Parcelable {
+    
+    
     
     
     
@@ -14796,6 +14816,9 @@ data class OrderData(
     @SerializedName("ordering_channel")
     var orderingChannel: String?=null,
     
+    @SerializedName("ordering_source")
+    var orderingSource: String?=null,
+    
     @SerializedName("order_date")
     var orderDate: String?=null,
     
@@ -14839,6 +14862,8 @@ data class OrderData(
     var currency: CurrencySchema?=null
     
 ): Parcelable {
+    
+    
     
     
     

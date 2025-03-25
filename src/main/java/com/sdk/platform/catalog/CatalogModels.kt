@@ -19254,7 +19254,7 @@ data class Price1(
     
     
     @SerializedName("currency_code")
-    var currencyCode: CurrencyCodeEnum?=null,
+    var currencyCode: String?=null,
     
     @SerializedName("currency_symbol")
     var currencySymbol: String?=null,
@@ -19380,31 +19380,4 @@ data class CustomMeta(
 
 
 
-
-
-
-    /*
-        Enum: CurrencyCodeEnum
-        Used By: Catalog
-    */
-    enum class CurrencyCodeEnum(val value:String){
-        
-        @SerializedName("INR")
-        inr("INR"), 
-        
-        @SerializedName("USD")
-        usd("USD"), 
-        
-        @SerializedName("EUR")
-        eur("EUR");
-        
-
-        companion object {
-            fun valueOfCurrencyCodeEnum(value : String): CurrencyCodeEnum? {
-                return CurrencyCodeEnum.values().find {
-                    it.value == value
-                }
-            }
-        }
-    }
 

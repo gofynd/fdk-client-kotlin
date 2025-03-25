@@ -54,7 +54,7 @@ interface OrderApiList {
     : Response<UpdatePackagingDimensionsResponseSchema>
     
     @POST ("/service/platform/order-manage/v1.0/company/{company_id}/create-order")
-    suspend fun createOrder(@Path("company_id") companyId: String,@Body body: CreateOrderAPI, @HeaderMap headers: Map<String, String>? = null)
+    suspend fun createOrder(@Header("x-ordering-source") xOrderingSource: String?, @Path("company_id") companyId: String,@Body body: CreateOrderAPI, @HeaderMap headers: Map<String, String>? = null)
     : Response<CreateOrderResponseSchema>
     
     @GET ("/service/platform/order-manage/v1.0/company/{company_id}/order-config")
@@ -78,7 +78,7 @@ interface OrderApiList {
     : Response<BagStateTransitionMap>
     
     @GET ("/service/platform/order-manage/v1.0/company/{company_id}/allowed/state/transition")
-    suspend fun getAllowedStateTransition(@Path("company_id") companyId: String, @Query("ordering_channel") orderingChannel: String, @Query("status") status: String, @HeaderMap headers: Map<String, String>? = null)
+    suspend fun getAllowedStateTransition(@Path("company_id") companyId: String, @Query("ordering_channel") orderingChannel: String?, @Query("ordering_source") orderingSource: String?, @Query("status") status: String, @HeaderMap headers: Map<String, String>? = null)
     : Response<RoleBaseStateTransitionMapping>
     
     @POST ("/service/platform/order-manage/v1.0/company/{company_id}/refund-mode-config")
@@ -174,7 +174,7 @@ interface OrderApiList {
     : Response<ConfigUpdatedResponseSchema>
     
     @GET ("/service/platform/order-manage/v1.0/company/{company_id}/state/manager/config")
-    suspend fun getStateManagerConfig(@Path("company_id") companyId: String, @Query("app_id") appId: String?, @Query("ordering_channel") orderingChannel: String?, @Query("entity") entity: String?, @HeaderMap headers: Map<String, String>? = null)
+    suspend fun getStateManagerConfig(@Path("company_id") companyId: String, @Query("app_id") appId: String?, @Query("ordering_channel") orderingChannel: String?, @Query("ordering_source") orderingSource: String?, @Query("entity") entity: String?, @HeaderMap headers: Map<String, String>? = null)
     : Response<HashMap<String,Any>>
     
     @POST ("/service/platform/order-manage/v1.0/company/{company_id}/application/{application_id}/rule_list")
