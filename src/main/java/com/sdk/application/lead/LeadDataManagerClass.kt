@@ -23,7 +23,7 @@ class LeadDataManagerClass(val config: ApplicationConfig, val unauthorizedAction
             
                     _relativeUrls["createHistory"] = "/service/application/lead/v1.0/ticket/{id}/history".substring(1)
             
-                    _relativeUrls["createTicket"] = "/service/application/lead/v1.0/ticket/".substring(1)
+                    _relativeUrls["createTicket"] = "/service/application/lead/v1.0/ticket".substring(1)
             
                     _relativeUrls["getCustomForm"] = "/service/application/lead/v1.0/form/{slug}".substring(1)
             
@@ -98,7 +98,7 @@ class LeadDataManagerClass(val config: ApplicationConfig, val unauthorizedAction
 
     
     
-    suspend fun submitCustomForm(slug: String,body: CustomFormSubmissionPayload, headers: Map<String, String> = emptyMap()): Response<SubmitCustomFormDetails>? {
+    suspend fun submitCustomForm(slug: String,body: CustomFormSubmissionPayload, headers: Map<String, String> = emptyMap()): Response<SubmitCustomFormResponseSchema>? {
         var fullUrl : String? = _relativeUrls["submitCustomForm"]
         
         fullUrl = fullUrl?.replace("{" + "slug" +"}",slug.toString())

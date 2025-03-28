@@ -1515,6 +1515,9 @@ data class AppFeature(
     @SerializedName("order")
     var order: OrderFeature?=null,
     
+    @SerializedName("buybox")
+    var buybox: BuyboxFeature?=null,
+    
     @SerializedName("_id")
     var id: String?=null,
     
@@ -1528,9 +1531,16 @@ data class AppFeature(
     var modifiedAt: String?=null,
     
     @SerializedName("__v")
-    var v: Int?=null
+    var v: Int?=null,
+    
+    @SerializedName("pricing_strategy")
+    var pricingStrategy: PricingStrategy?=null
     
 ): Parcelable {
+    
+    
+    
+    
     
     
     
@@ -1993,6 +2003,38 @@ data class OrderFeature(
 
              
 /*
+    Model: BuyboxFeature
+*/
+@Parcelize
+data class BuyboxFeature(
+    
+    
+    
+    @SerializedName("show_name")
+    var showName: Boolean?=null,
+    
+    @SerializedName("enable_selection")
+    var enableSelection: Boolean?=null,
+    
+    @SerializedName("is_seller_buybox_enabled")
+    var isSellerBuyboxEnabled: Boolean?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
     Model: AppFeatureResponseSchema
 */
 @Parcelize
@@ -2046,6 +2088,9 @@ data class Currency(
     @SerializedName("symbol")
     var symbol: String?=null,
     
+    @SerializedName("subunit")
+    var subunit: String?=null,
+    
     @SerializedName("country_name")
     var countryName: String?=null,
     
@@ -2053,6 +2098,8 @@ data class Currency(
     var countryCode: String?=null
     
 ): Parcelable {
+    
+    
     
     
     
@@ -2549,7 +2596,7 @@ data class CompanyAboutAddress(
     
     
     @SerializedName("pincode")
-    var pincode: Int?=null,
+    var pincode: String?=null,
     
     @SerializedName("address1")
     var address1: String?=null,
@@ -2698,9 +2745,14 @@ data class Page(
     var type: String?=null,
     
     @SerializedName("size")
-    var size: Int?=null
+    var size: Int?=null,
+    
+    @SerializedName("total")
+    var total: Int?=null
     
 ): Parcelable {
+    
+    
     
     
     
@@ -3617,7 +3669,7 @@ data class OptedStoreAddress(
     var address2: String?=null,
     
     @SerializedName("pincode")
-    var pincode: Int?=null,
+    var pincode: String?=null,
     
     @SerializedName("country")
     var country: String?=null,
@@ -3678,7 +3730,7 @@ data class OrderingStore(
     var storeCode: String?=null,
     
     @SerializedName("pincode")
-    var pincode: Int?=null,
+    var pincode: String?=null,
     
     @SerializedName("code")
     var code: String?=null
@@ -3762,6 +3814,28 @@ data class OrderingStores(
     
     
     
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: PricingStrategy
+*/
+@Parcelize
+data class PricingStrategy(
+    
+    
+    
+    @SerializedName("value")
+    var value: String?=null
+    
+): Parcelable {
     
     
     

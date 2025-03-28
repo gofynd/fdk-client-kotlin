@@ -301,7 +301,7 @@ data class GetAddressSchema(
     var countryCode: String?=null,
     
     @SerializedName("pincode")
-    var pincode: Int?=null,
+    var pincode: String?=null,
     
     @SerializedName("address_type")
     var addressType: String?=null,
@@ -508,19 +508,24 @@ data class ErrorResponseSchema(
     
     
     
+    @SerializedName("code")
+    var code: Double?=null,
+    
+    @SerializedName("error")
+    var error: String?=null,
+    
     @SerializedName("message")
     var message: String?=null,
     
-    @SerializedName("code")
-    var code: String?=null,
+    @SerializedName("meta")
+    var meta: @RawValue HashMap<String,Any>?=null,
     
     @SerializedName("status")
-    var status: Int?=null,
-    
-    @SerializedName("meta")
-    var meta: @RawValue HashMap<String,Any>?=null
+    var status: Int?=null
     
 ): Parcelable {
+    
+    
     
     
     
@@ -538,10 +543,10 @@ data class ErrorResponseSchema(
 
              
 /*
-    Model: CompanyTaxesSerializer1
+    Model: CompanyTaxesSchema1
 */
 @Parcelize
-data class CompanyTaxesSerializer1(
+data class CompanyTaxesSchema1(
     
     
     
@@ -584,7 +589,7 @@ data class CreateUpdateAddressSchema(
     var countryCode: String?=null,
     
     @SerializedName("pincode")
-    var pincode: Int?=null,
+    var pincode: String?=null,
     
     @SerializedName("address_type")
     var addressType: String?=null,
@@ -665,7 +670,7 @@ data class UpdateCompany(
     var customJson: @RawValue HashMap<String,Any>?=null,
     
     @SerializedName("taxes")
-    var taxes: ArrayList<CompanyTaxesSerializer1>?=null,
+    var taxes: ArrayList<CompanyTaxesSchema1>?=null,
     
     @SerializedName("business_details")
     var businessDetails: BusinessDetails?=null,
@@ -739,6 +744,9 @@ data class ProfileSuccessResponseSchema(
     @SerializedName("uid")
     var uid: Int?=null,
     
+    @SerializedName("data")
+    var data: @RawValue ArrayList<HashMap<String,Any>>?=null,
+    
     @SerializedName("message")
     var message: String?=null,
     
@@ -746,6 +754,8 @@ data class ProfileSuccessResponseSchema(
     var success: Boolean?=null
     
 ): Parcelable {
+    
+    
     
     
     
@@ -979,10 +989,10 @@ data class GetBrandResponseSchema(
 
              
 /*
-    Model: CreateBrandRequestSchema
+    Model: CreateUpdateBrandRequestSchema
 */
 @Parcelize
-data class CreateBrandRequestSchema(
+data class CreateUpdateBrandRequestSchema(
     
     
     
@@ -1022,73 +1032,6 @@ data class CreateBrandRequestSchema(
 ): Parcelable {
     
     
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-}
-
-
-
-             
-/*
-    Model: UpdateBrandRequestSchema
-*/
-@Parcelize
-data class UpdateBrandRequestSchema(
-    
-    
-    
-    @SerializedName("_custom_json")
-    var customJson: @RawValue HashMap<String,Any>?=null,
-    
-    @SerializedName("_locale_language")
-    var localeLanguage: @RawValue HashMap<String,Any>?=null,
-    
-    @SerializedName("synonyms")
-    var synonyms: ArrayList<String>?=null,
-    
-    @SerializedName("company_id")
-    var companyId: Int?=null,
-    
-    @SerializedName("description")
-    var description: String?=null,
-    
-    @SerializedName("logo")
-    var logo: String?=null,
-    
-    @SerializedName("brand_tier")
-    var brandTier: String?=null,
-    
-    @SerializedName("uid")
-    var uid: Int?=null,
-    
-    @SerializedName("banner")
-    var banner: BrandBannerSchema?=null,
-    
-    @SerializedName("name")
-    var name: String?=null
-    
-): Parcelable {
     
     
     
@@ -1382,9 +1325,14 @@ data class Page(
     var type: String?=null,
     
     @SerializedName("size")
-    var size: Int?=null
+    var size: Int?=null,
+    
+    @SerializedName("total")
+    var total: Int?=null
     
 ): Parcelable {
+    
+    
     
     
     
@@ -1536,6 +1484,9 @@ data class GetCompanySchema(
     @SerializedName("stage")
     var stage: String?=null,
     
+    @SerializedName("_custom_json")
+    var customJson: @RawValue HashMap<String,Any>?=null,
+    
     @SerializedName("verified_on")
     var verifiedOn: String?=null,
     
@@ -1573,6 +1524,8 @@ data class GetCompanySchema(
     var modifiedBy: UserSchema?=null
     
 ): Parcelable {
+    
+    
     
     
     
@@ -2013,7 +1966,7 @@ data class AddressSchema(
     var countryCode: String?=null,
     
     @SerializedName("pincode")
-    var pincode: Int?=null,
+    var pincode: String?=null,
     
     @SerializedName("address_type")
     var addressType: String?=null,

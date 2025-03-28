@@ -125,7 +125,6 @@ class ContentDataManagerClass(val config: PlatformConfig, val unauthorizedAction
     
     
     
-    
     suspend fun getCustomFieldTypes( headers: Map<String, String> = emptyMap())
     : Response<MetafieldTypesSchema>? {
 
@@ -240,18 +239,6 @@ class ContentDataManagerClass(val config: PlatformConfig, val unauthorizedAction
         return if (config.oauthClient.isAccessTokenValid()) {
             contentApiList?.updateCustomFieldByResourceSlug(
         companyId = config.companyId,resource = resource,resourceSlug = resourceSlug, body = body,headers = headers)
-        } else {
-            null
-        }
-    }
-    
-    
-    suspend fun deleteCustomFieldsByResourceSlug(resource: String,resourceSlug: String,ids: String, headers: Map<String, String> = emptyMap())
-    : Response<CustomFieldsDeleteSchema>? {
-
-        return if (config.oauthClient.isAccessTokenValid()) {
-            contentApiList?.deleteCustomFieldsByResourceSlug(
-        companyId = config.companyId,resource = resource,resourceSlug = resourceSlug,ids = ids, headers = headers)
         } else {
             null
         }
@@ -378,12 +365,12 @@ class ContentDataManagerClass(val config: PlatformConfig, val unauthorizedAction
     }
     
     
-    suspend fun getJobs(page: String,pageSize: String,actionType: String, headers: Map<String, String> = emptyMap())
+    suspend fun getJobs(pageNo: String,pageSize: String,actionType: String, headers: Map<String, String> = emptyMap())
     : Response<CustomObjectBulkEntry>? {
 
         return if (config.oauthClient.isAccessTokenValid()) {
             contentApiList?.getJobs(
-        companyId = config.companyId,page = page,pageSize = pageSize,actionType = actionType, headers = headers)
+        companyId = config.companyId,pageNo = pageNo,pageSize = pageSize,actionType = actionType, headers = headers)
         } else {
             null
         }
@@ -415,7 +402,7 @@ class ContentDataManagerClass(val config: PlatformConfig, val unauthorizedAction
     
     
     suspend fun sampleCustomObjectBulkEntryBySlug(slug: String, headers: Map<String, String> = emptyMap())
-    : Response<String>? {
+    : Response<ResponseBody>? {
 
         return if (config.oauthClient.isAccessTokenValid()) {
             contentApiList?.sampleCustomObjectBulkEntryBySlug(
@@ -514,7 +501,7 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     }
     
     
-    suspend fun createBlog(body: BlogPayload, headers: Map<String, String> = emptyMap())
+    suspend fun createBlog(body: BlogRequestSchema, headers: Map<String, String> = emptyMap())
     : Response<BlogSchema>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 contentApiList?.createBlog(companyId = config.companyId ,applicationId = applicationId , body = body,headers = headers)
@@ -525,7 +512,7 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     
     
     suspend fun getBlogs(pageNo: Int?=null,pageSize: Int?=null,tags: String?=null,q: String?=null,slug: String?=null,title: String?=null,status: String?=null, headers: Map<String, String> = emptyMap())
-    : Response<BlogGetDetails>? {
+    : Response<BlogGetResponseSchema>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 contentApiList?.getBlogs(companyId = config.companyId ,applicationId = applicationId ,pageNo = pageNo,pageSize = pageSize,tags = tags,q = q,slug = slug,title = title,status = status, headers = headers)
         } else {
@@ -534,7 +521,7 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     }
     
     
-    suspend fun updateBlog(id: String,body: BlogPayload, headers: Map<String, String> = emptyMap())
+    suspend fun updateBlog(id: String,body: BlogRequestSchema, headers: Map<String, String> = emptyMap())
     : Response<BlogSchema>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 contentApiList?.updateBlog(companyId = config.companyId ,applicationId = applicationId ,id = id, body = body,headers = headers)
@@ -548,6 +535,16 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     : Response<BlogSchema>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 contentApiList?.deleteBlog(companyId = config.companyId ,applicationId = applicationId ,id = id, headers = headers)
+        } else {
+            null
+        }
+    }
+    
+    
+    suspend fun getComponentById(slug: String, headers: Map<String, String> = emptyMap())
+    : Response<BlogSchema>? {
+        return if (config.oauthClient.isAccessTokenValid()) {
+                contentApiList?.getComponentById(companyId = config.companyId ,applicationId = applicationId ,slug = slug, headers = headers)
         } else {
             null
         }
@@ -568,6 +565,16 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     : Response<DataLoadersSchema>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 contentApiList?.getDataLoaders(companyId = config.companyId ,applicationId = applicationId , headers = headers)
+        } else {
+            null
+        }
+    }
+    
+    
+    suspend fun getDataLoaderApiSpecs(dataLoader: String, headers: Map<String, String> = emptyMap())
+    : Response<DataLoadersApiSpecSchema>? {
+        return if (config.oauthClient.isAccessTokenValid()) {
+                contentApiList?.getDataLoaderApiSpecs(companyId = config.companyId ,applicationId = applicationId ,dataLoader = dataLoader, headers = headers)
         } else {
             null
         }
@@ -595,7 +602,7 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     
     
     suspend fun getDataLoadersByService(serviceName: String, headers: Map<String, String> = emptyMap())
-    : Response<DataLoaderResponseSchema>? {
+    : Response<DataLoaderItemsResponseSchema>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 contentApiList?.getDataLoadersByService(companyId = config.companyId ,applicationId = applicationId ,serviceName = serviceName, headers = headers)
         } else {
@@ -665,7 +672,7 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     
     
     suspend fun deleteFaqCategory(id: String, headers: Map<String, String> = emptyMap())
-    : Response<FaqSchema>? {
+    : Response<CreateFaqCategorySchema>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 contentApiList?.deleteFaqCategory(companyId = config.companyId ,applicationId = applicationId ,id = id, headers = headers)
         } else {
@@ -735,7 +742,7 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     
     
     suspend fun getLandingPages(pageNo: Int?=null,pageSize: Int?=null, headers: Map<String, String> = emptyMap())
-    : Response<LandingPageGetDetails>? {
+    : Response<LandingPageGetResponseSchema>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 contentApiList?.getLandingPages(companyId = config.companyId ,applicationId = applicationId ,pageNo = pageNo,pageSize = pageSize, headers = headers)
         } else {
@@ -795,7 +802,7 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     
     
     suspend fun getNavigations(devicePlatform: String,pageNo: Int?=null,pageSize: Int?=null, headers: Map<String, String> = emptyMap())
-    : Response<NavigationGetDetails>? {
+    : Response<NavigationGetResponseSchema>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 contentApiList?.getNavigations(companyId = config.companyId ,applicationId = applicationId ,devicePlatform = devicePlatform,pageNo = pageNo,pageSize = pageSize, headers = headers)
         } else {
@@ -804,7 +811,7 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     }
     
     
-    suspend fun createNavigation(body: NavigationPayload, headers: Map<String, String> = emptyMap())
+    suspend fun createNavigation(body: NavigationRequestSchema, headers: Map<String, String> = emptyMap())
     : Response<NavigationSchema>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 contentApiList?.createNavigation(companyId = config.companyId ,applicationId = applicationId , body = body,headers = headers)
@@ -815,7 +822,7 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     
     
     suspend fun getDefaultNavigations( headers: Map<String, String> = emptyMap())
-    : Response<DefaultNavigationDetails>? {
+    : Response<DefaultNavigationResponseSchema>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 contentApiList?.getDefaultNavigations(companyId = config.companyId ,applicationId = applicationId , headers = headers)
         } else {
@@ -834,7 +841,7 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     }
     
     
-    suspend fun updateNavigation(id: String,body: NavigationPayload, headers: Map<String, String> = emptyMap())
+    suspend fun updateNavigation(id: String,body: NavigationRequestSchema, headers: Map<String, String> = emptyMap())
     : Response<NavigationSchema>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 contentApiList?.updateNavigation(companyId = config.companyId ,applicationId = applicationId ,id = id, body = body,headers = headers)
@@ -874,7 +881,7 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     }
     
     
-    suspend fun createPagePreview(body: PagePayload, headers: Map<String, String> = emptyMap())
+    suspend fun createPagePreview(body: PageRequestSchema, headers: Map<String, String> = emptyMap())
     : Response<PageSchema>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 contentApiList?.createPagePreview(companyId = config.companyId ,applicationId = applicationId , body = body,headers = headers)
@@ -884,7 +891,7 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     }
     
     
-    suspend fun updatePagePreview(slug: String,body: PagePublishPayload, headers: Map<String, String> = emptyMap())
+    suspend fun updatePagePreview(slug: String,body: PagePublishRequestSchema, headers: Map<String, String> = emptyMap())
     : Response<PageSchema>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 contentApiList?.updatePagePreview(companyId = config.companyId ,applicationId = applicationId ,slug = slug, body = body,headers = headers)
@@ -905,7 +912,7 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     
     
     suspend fun addPathRedirectionRules(body: PathMappingSchema, headers: Map<String, String> = emptyMap())
-    : Response<PathMappingSchema>? {
+    : Response<CreatePathMappingSchema>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 contentApiList?.addPathRedirectionRules(companyId = config.companyId ,applicationId = applicationId , body = body,headers = headers)
         } else {
@@ -915,7 +922,7 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     
     
     suspend fun getPathRedirectionRules(pageSize: Int?=null,pageNo: Int?=null, headers: Map<String, String> = emptyMap())
-    : Response<PathMappingSchema>? {
+    : Response<GetAllPathMappingSchema>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 contentApiList?.getPathRedirectionRules(companyId = config.companyId ,applicationId = applicationId ,pageSize = pageSize,pageNo = pageNo, headers = headers)
         } else {
@@ -925,7 +932,7 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     
     
     suspend fun getPathRedirectionRule(pathId: String, headers: Map<String, String> = emptyMap())
-    : Response<PathMappingSchema>? {
+    : Response<DeletPathMappingSchema>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 contentApiList?.getPathRedirectionRule(companyId = config.companyId ,applicationId = applicationId ,pathId = pathId, headers = headers)
         } else {
@@ -935,7 +942,7 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     
     
     suspend fun updatePathRedirectionRules(pathId: String,body: PathMappingSchema, headers: Map<String, String> = emptyMap())
-    : Response<PathMappingSchema>? {
+    : Response<CreatePathMappingSchema>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 contentApiList?.updatePathRedirectionRules(companyId = config.companyId ,applicationId = applicationId ,pathId = pathId, body = body,headers = headers)
         } else {
@@ -945,7 +952,7 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     
     
     suspend fun deletePathRedirectionRules(pathId: String, headers: Map<String, String> = emptyMap())
-    : Response<HashMap<String,Any>>? {
+    : Response<DeletPathMappingSchema>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 contentApiList?.deletePathRedirectionRules(companyId = config.companyId ,applicationId = applicationId ,pathId = pathId, headers = headers)
         } else {
@@ -1004,30 +1011,30 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     }
     
     
-    suspend fun getSEOMarkupSchema(id: String, headers: Map<String, String> = emptyMap())
+    suspend fun getSEOMarkupSchema(schemaId: String, headers: Map<String, String> = emptyMap())
     : Response<SEOSchemaMarkupTemplate>? {
         return if (config.oauthClient.isAccessTokenValid()) {
-                contentApiList?.getSEOMarkupSchema(companyId = config.companyId ,applicationId = applicationId ,id = id, headers = headers)
+                contentApiList?.getSEOMarkupSchema(companyId = config.companyId ,applicationId = applicationId ,schemaId = schemaId, headers = headers)
         } else {
             null
         }
     }
     
     
-    suspend fun editSEOMarkupSchema(id: String,body: SEOSchemaMarkupTemplateRequestBody, headers: Map<String, String> = emptyMap())
+    suspend fun editSEOMarkupSchema(schemaId: String,body: SEOSchemaMarkupTemplateRequestBody, headers: Map<String, String> = emptyMap())
     : Response<SEOSchemaMarkupTemplate>? {
         return if (config.oauthClient.isAccessTokenValid()) {
-                contentApiList?.editSEOMarkupSchema(companyId = config.companyId ,applicationId = applicationId ,id = id, body = body,headers = headers)
+                contentApiList?.editSEOMarkupSchema(companyId = config.companyId ,applicationId = applicationId ,schemaId = schemaId, body = body,headers = headers)
         } else {
             null
         }
     }
     
     
-    suspend fun deleteSEOMarkupSchema(id: String, headers: Map<String, String> = emptyMap())
+    suspend fun deleteSEOMarkupSchema(schemaId: String, headers: Map<String, String> = emptyMap())
     : Response<SEOSchemaMarkupTemplate>? {
         return if (config.oauthClient.isAccessTokenValid()) {
-                contentApiList?.deleteSEOMarkupSchema(companyId = config.companyId ,applicationId = applicationId ,id = id, headers = headers)
+                contentApiList?.deleteSEOMarkupSchema(companyId = config.companyId ,applicationId = applicationId ,schemaId = schemaId, headers = headers)
         } else {
             null
         }
@@ -1104,50 +1111,10 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     }
     
     
-    suspend fun getSlideshows(devicePlatform: String,pageNo: Int?=null,pageSize: Int?=null, headers: Map<String, String> = emptyMap())
-    : Response<SlideshowGetDetails>? {
+    suspend fun addInjectableTag(body: CreateTagRequestSchema, headers: Map<String, String> = emptyMap())
+    : Response<TagsSchema>? {
         return if (config.oauthClient.isAccessTokenValid()) {
-                contentApiList?.getSlideshows(companyId = config.companyId ,applicationId = applicationId ,devicePlatform = devicePlatform,pageNo = pageNo,pageSize = pageSize, headers = headers)
-        } else {
-            null
-        }
-    }
-    
-    
-    suspend fun createSlideshow(body: SlideshowPayload, headers: Map<String, String> = emptyMap())
-    : Response<SlideshowSchema>? {
-        return if (config.oauthClient.isAccessTokenValid()) {
-                contentApiList?.createSlideshow(companyId = config.companyId ,applicationId = applicationId , body = body,headers = headers)
-        } else {
-            null
-        }
-    }
-    
-    
-    suspend fun getSlideshowBySlug(slug: String,devicePlatform: String, headers: Map<String, String> = emptyMap())
-    : Response<SlideshowSchema>? {
-        return if (config.oauthClient.isAccessTokenValid()) {
-                contentApiList?.getSlideshowBySlug(companyId = config.companyId ,applicationId = applicationId ,slug = slug,devicePlatform = devicePlatform, headers = headers)
-        } else {
-            null
-        }
-    }
-    
-    
-    suspend fun updateSlideshow(id: String,body: SlideshowPayload, headers: Map<String, String> = emptyMap())
-    : Response<SlideshowSchema>? {
-        return if (config.oauthClient.isAccessTokenValid()) {
-                contentApiList?.updateSlideshow(companyId = config.companyId ,applicationId = applicationId ,id = id, body = body,headers = headers)
-        } else {
-            null
-        }
-    }
-    
-    
-    suspend fun deleteSlideshow(id: String, headers: Map<String, String> = emptyMap())
-    : Response<SlideshowSchema>? {
-        return if (config.oauthClient.isAccessTokenValid()) {
-                contentApiList?.deleteSlideshow(companyId = config.companyId ,applicationId = applicationId ,id = id, headers = headers)
+                contentApiList?.addInjectableTag(companyId = config.companyId ,applicationId = applicationId , body = body,headers = headers)
         } else {
             null
         }
@@ -1174,38 +1141,8 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     }
     
     
-    suspend fun updateInjectableTag(body: CreateTagRequestSchema, headers: Map<String, String> = emptyMap())
-    : Response<TagsSchema>? {
-        return if (config.oauthClient.isAccessTokenValid()) {
-                contentApiList?.updateInjectableTag(companyId = config.companyId ,applicationId = applicationId , body = body,headers = headers)
-        } else {
-            null
-        }
-    }
-    
-    
-    suspend fun getInjectableTags(all: Boolean?=null, headers: Map<String, String> = emptyMap())
-    : Response<TagsSchema>? {
-        return if (config.oauthClient.isAccessTokenValid()) {
-                contentApiList?.getInjectableTags(companyId = config.companyId ,applicationId = applicationId ,all = all, headers = headers)
-        } else {
-            null
-        }
-    }
-    
-    
-    suspend fun addInjectableTag(body: CreateTagRequestSchema, headers: Map<String, String> = emptyMap())
-    : Response<TagsSchema>? {
-        return if (config.oauthClient.isAccessTokenValid()) {
-                contentApiList?.addInjectableTag(companyId = config.companyId ,applicationId = applicationId , body = body,headers = headers)
-        } else {
-            null
-        }
-    }
-    
-    
     suspend fun removeInjectableTag(body: RemoveHandpickedSchema, headers: Map<String, String> = emptyMap())
-    : Response<TagDeleteSuccessDetails>? {
+    : Response<TagDeleteSuccessResponseSchema>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 contentApiList?.removeInjectableTag(companyId = config.companyId ,applicationId = applicationId , body = body,headers = headers)
         } else {
@@ -1224,6 +1161,46 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     }
     
     
+    suspend fun createInjectableTag(body: CreateTagRequestSchema, headers: Map<String, String> = emptyMap())
+    : Response<TagsSchema>? {
+        return if (config.oauthClient.isAccessTokenValid()) {
+                contentApiList?.createInjectableTag(companyId = config.companyId ,applicationId = applicationId , body = body,headers = headers)
+        } else {
+            null
+        }
+    }
+    
+    
+    suspend fun updateInjectableTag(body: CreateTagRequestSchema, headers: Map<String, String> = emptyMap())
+    : Response<TagsSchema>? {
+        return if (config.oauthClient.isAccessTokenValid()) {
+                contentApiList?.updateInjectableTag(companyId = config.companyId ,applicationId = applicationId , body = body,headers = headers)
+        } else {
+            null
+        }
+    }
+    
+    
+    suspend fun deleteAllInjectableTags( headers: Map<String, String> = emptyMap())
+    : Response<TagsSchema>? {
+        return if (config.oauthClient.isAccessTokenValid()) {
+                contentApiList?.deleteAllInjectableTags(companyId = config.companyId ,applicationId = applicationId , headers = headers)
+        } else {
+            null
+        }
+    }
+    
+    
+    suspend fun getInjectableTags( headers: Map<String, String> = emptyMap())
+    : Response<TagsSchema>? {
+        return if (config.oauthClient.isAccessTokenValid()) {
+                contentApiList?.getInjectableTags(companyId = config.companyId ,applicationId = applicationId , headers = headers)
+        } else {
+            null
+        }
+    }
+    
+    
     suspend fun getBlogBySlug(slug: String, headers: Map<String, String> = emptyMap())
     : Response<BlogSchema>? {
         return if (config.oauthClient.isAccessTokenValid()) {
@@ -1234,7 +1211,7 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     }
     
     
-    suspend fun createPage(body: PagePayload, headers: Map<String, String> = emptyMap())
+    suspend fun createPage(body: PageRequestSchema, headers: Map<String, String> = emptyMap())
     : Response<PageSchema>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 contentApiList?.createPage(companyId = config.companyId ,applicationId = applicationId , body = body,headers = headers)
@@ -1245,7 +1222,7 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     
     
     suspend fun getPages(pageNo: Int?=null,pageSize: Int?=null, headers: Map<String, String> = emptyMap())
-    : Response<PageGetDetails>? {
+    : Response<PageGetResponseSchema>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 contentApiList?.getPages(companyId = config.companyId ,applicationId = applicationId ,pageNo = pageNo,pageSize = pageSize, headers = headers)
         } else {
@@ -1253,6 +1230,65 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
         }
     }
     
+    
+    
+        
+            
+                
+            
+            
+        
+            
+                
+            
+            
+        
+            
+            
+        
+            
+                
+            
+            
+        
+    /**
+    *
+    * Summary: Paginator for getPages
+    **/
+    fun getPagesPaginator(
+    pageSize: Int?=null
+    
+    ) : Paginator<PageGetResponseSchema>{
+        val paginator = Paginator<PageGetResponseSchema>()
+        paginator.setCallBack(object : PaginatorCallback<PageGetResponseSchema> {
+
+            override suspend fun onNext(
+                onResponse: (Event<PageGetResponseSchema>?,FdkError?) -> Unit){
+
+                if (config.oauthClient.isAccessTokenValid()) {
+                    val pageId = paginator.nextId
+                    val pageNo = paginator.pageNo
+                    val pageType = "number"
+                    contentApiList?.getPages(companyId = config.companyId , applicationId = applicationId , pageNo = pageNo, pageSize = pageSize)?.safeAwait{ response, error ->
+                        response?.let {
+                            val page = response.peekContent()?.page
+                            paginator.setPaginator(hasNext=page?.hasNext?:false,pageNo=if (page?.hasNext == true) ((pageNo ?: 0) + 1) else pageNo)
+                            onResponse.invoke(response,null)
+                        }
+
+                        error?.let {
+                            onResponse.invoke(null,error)
+                        }
+                    }
+
+                } else {
+                    null
+                }
+            }
+
+    })
+    return paginator
+    }
     
     suspend fun updatePage(id: String,body: PageSchema, headers: Map<String, String> = emptyMap())
     : Response<PageSchema>? {
@@ -1272,7 +1308,6 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
             null
         }
     }
-    
     
     
     
@@ -1499,10 +1534,10 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     }
     
     
-    suspend fun getAppJobs(page: String,pageSize: String,actionType: String, headers: Map<String, String> = emptyMap())
+    suspend fun getAppJobs(pageNo: String,pageSize: String,actionType: String, headers: Map<String, String> = emptyMap())
     : Response<CustomObjectBulkEntry>? {
         return if (config.oauthClient.isAccessTokenValid()) {
-                contentApiList?.getAppJobs(companyId = config.companyId ,applicationId = applicationId ,page = page,pageSize = pageSize,actionType = actionType, headers = headers)
+                contentApiList?.getAppJobs(companyId = config.companyId ,applicationId = applicationId ,pageNo = pageNo,pageSize = pageSize,actionType = actionType, headers = headers)
         } else {
             null
         }
@@ -1530,7 +1565,7 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     
     
     suspend fun sampleAppCustomObjectBulkEntryBySlug(slug: String, headers: Map<String, String> = emptyMap())
-    : Response<String>? {
+    : Response<ResponseBody>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 contentApiList?.sampleAppCustomObjectBulkEntryBySlug(companyId = config.companyId ,applicationId = applicationId ,slug = slug, headers = headers)
         } else {

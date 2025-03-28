@@ -18,7 +18,7 @@ interface PaymentApiList {
     : Response<PaymentGatewayToBeReviewed>
     
     @GET ("/service/platform/payment/v1.0/company/{company_id}/application/{application_id}/payment/options")
-    suspend fun getPaymentModeRoutes(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Query("refresh") refresh: Boolean?, @Query("request_type") requestType: String?, @Query("order_id") orderId: String?, @Query("shipment_id") shipmentId: String?, @Query("amount") amount: Int?, @HeaderMap headers: Map<String, String>? = null)
+    suspend fun getPaymentModeRoutes(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Query("refresh") refresh: Boolean?, @Query("amount") amount: Int, @Query("request_type") requestType: String?, @Query("order_id") orderId: String?, @Query("shipment_id") shipmentId: String?, @HeaderMap headers: Map<String, String>? = null)
     : Response<PaymentOptionsDetails>
     
     @GET ("/service/platform/payment/v1.0/company/{company_id}/payouts")
@@ -27,6 +27,26 @@ interface PaymentApiList {
     
     @POST ("/service/platform/payment/v1.0/company/{company_id}/payouts")
     suspend fun savePayout(@Path("company_id") companyId: String,@Body body: PayoutCreation, @HeaderMap headers: Map<String, String>? = null)
+    : Response<PayoutDetails>
+    
+    @PUT ("/service/platform/payment/v1.0/company/{company_id}/payouts")
+    suspend fun updatePayouts(@Path("company_id") companyId: String,@Body body: PayoutCreation, @HeaderMap headers: Map<String, String>? = null)
+    : Response<UpdatePayoutDetails>
+    
+    @PATCH ("/service/platform/payment/v1.0/company/{company_id}/payouts")
+    suspend fun activateAndDectivatePayouts(@Path("company_id") companyId: String,@Body body: UpdatePayoutCreation, @HeaderMap headers: Map<String, String>? = null)
+    : Response<UpdatePayoutDetails>
+    
+    @DELETE ("/service/platform/payment/v1.0/company/{company_id}/payouts")
+    suspend fun deletePayouts(@Path("company_id") companyId: String, @Query("unique_transfer_no") uniqueTransferNo: String, @HeaderMap headers: Map<String, String>? = null)
+    : Response<DeletePayoutDetails>
+    
+    @GET ("/service/platform/payment/v1.0/company/{company_id}/payouts/{unique_transfer_no}")
+    suspend fun getAllPayout(@Path("company_id") companyId: String, @Path("unique_transfer_no") uniqueTransferNo: String, @Query("unique_external_id") uniqueExternalId: String?, @HeaderMap headers: Map<String, String>? = null)
+    : Response<PayoutsDetails>
+    
+    @POST ("/service/platform/payment/v1.0/company/{company_id}/payouts/{unique_transfer_no}")
+    suspend fun savePayouts(@Path("company_id") companyId: String, @Path("unique_transfer_no") uniqueTransferNo: String,@Body body: PayoutCreation, @HeaderMap headers: Map<String, String>? = null)
     : Response<PayoutDetails>
     
     @PUT ("/service/platform/payment/v1.0/company/{company_id}/payouts/{unique_transfer_no}")
@@ -41,25 +61,9 @@ interface PaymentApiList {
     suspend fun deletePayout(@Path("company_id") companyId: String, @Path("unique_transfer_no") uniqueTransferNo: String, @HeaderMap headers: Map<String, String>? = null)
     : Response<DeletePayoutDetails>
     
-    @GET ("/service/platform/payment/v1.0/company/{company_id}/subscription/methods")
-    suspend fun getSubscriptionPaymentMethod(@Path("company_id") companyId: String, @Query("unique_external_id") uniqueExternalId: String?, @HeaderMap headers: Map<String, String>? = null)
-    : Response<SubscriptionPaymentMethodDetails>
-    
-    @DELETE ("/service/platform/payment/v1.0/company/{company_id}/subscription/methods")
-    suspend fun deleteSubscriptionPaymentMethod(@Path("company_id") companyId: String, @Query("unique_external_id") uniqueExternalId: String, @Query("payment_method_id") paymentMethodId: String, @HeaderMap headers: Map<String, String>? = null)
-    : Response<DeleteSubscriptionPaymentMethodDetails>
-    
-    @GET ("/service/platform/payment/v1.0/company/{company_id}/subscription/configs")
-    suspend fun getSubscriptionConfig(@Path("company_id") companyId: String, @HeaderMap headers: Map<String, String>? = null)
-    : Response<SubscriptionConfigDetails>
-    
-    @POST ("/service/platform/payment/v1.0/company/{company_id}/subscription/setup/intent")
-    suspend fun saveSubscriptionSetupIntent(@Path("company_id") companyId: String,@Body body: SaveSubscriptionSetupIntentCreation, @HeaderMap headers: Map<String, String>? = null)
-    : Response<SaveSubscriptionSetupIntentDetails>
-    
     @GET ("/service/platform/payment/v1.0/company/{company_id}/application/{application_id}/refund/account")
     suspend fun getBankAccountDetailsOpenAPI(@Query("order_id") orderId: String, @Query("request_hash") requestHash: String?, @Path("company_id") companyId: String, @Path("application_id") applicationId: String, @HeaderMap headers: Map<String, String>? = null)
-    : Response<RefundAccountDetails>
+    : Response<GetRefundAccountDetails>
     
     @POST ("/service/platform/payment/v1.0/company/{company_id}/application/{application_id}/refund/account")
     suspend fun addRefundBankAccountUsingOTP(@Path("company_id") companyId: String, @Path("application_id") applicationId: String,@Body body: AddBeneficiaryDetailsOTPCreation, @HeaderMap headers: Map<String, String>? = null)
@@ -87,7 +91,7 @@ interface PaymentApiList {
     
     @PUT ("/service/platform/payment/v1.0/company/{company_id}/application/{application_id}/payment/user-cod")
     suspend fun setUserCODlimitRoutes(@Path("company_id") companyId: String, @Path("application_id") applicationId: String,@Body body: SetCODForUserCreation, @HeaderMap headers: Map<String, String>? = null)
-    : Response<SetCODOptionDetails>
+    : Response<GetUserCODLimitDetails>
     
     @GET ("/service/platform/payment/v1.0/company/{company_id}/application/{application_id}/payment/edc-aggregator-list")
     suspend fun edcAggregatorsAndModelList(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @HeaderMap headers: Map<String, String>? = null)
@@ -129,15 +133,15 @@ interface PaymentApiList {
     suspend fun resendOrCancelPayment(@Path("company_id") companyId: String, @Path("application_id") applicationId: String,@Body body: ResendOrCancelPaymentCreation, @HeaderMap headers: Map<String, String>? = null)
     : Response<ResendOrCancelPaymentDetails>
     
-    @POST ("/service/platform/payment/v1.0/company/{company_id}/application/{application_id}/payment/payment-status-bulk/")
+    @POST ("/service/platform/payment/v1.0/company/{company_id}/application/{application_id}/payment/payment-status-bulk")
     suspend fun paymentStatusBulk(@Path("company_id") companyId: String, @Path("application_id") applicationId: String,@Body body: PaymentStatusBulkHandlerCreation, @HeaderMap headers: Map<String, String>? = null)
     : Response<PaymentStatusBulkHandlerDetails>
     
-    @GET ("/service/platform/payment/v1.0/company/{company_id}/application/{application_id}/onboard/{aggregator}/")
+    @GET ("/service/platform/payment/v1.0/company/{company_id}/application/{application_id}/onboard/{aggregator}")
     suspend fun oauthGetUrl(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Path("aggregator") aggregator: String, @Query("success_redirect_url") successRedirectUrl: String?, @Query("failure_redirect_url") failureRedirectUrl: String?, @HeaderMap headers: Map<String, String>? = null)
     : Response<GetOauthUrlDetails>
     
-    @POST ("/service/platform/payment/v1.0/company/{company_id}/application/{application_id}/revoke/{aggregator}/")
+    @POST ("/service/platform/payment/v1.0/company/{company_id}/application/{application_id}/revoke/{aggregator}")
     suspend fun revokeOauthToken(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Path("aggregator") aggregator: String, @HeaderMap headers: Map<String, String>? = null)
     : Response<RevokeOAuthToken>
     
@@ -153,33 +157,45 @@ interface PaymentApiList {
     suspend fun verifyCustomerForPayment(@Path("company_id") companyId: String, @Path("application_id") applicationId: String,@Body body: ValidateCustomerCreation, @HeaderMap headers: Map<String, String>? = null)
     : Response<ValidateCustomerDetails>
     
-    @GET ("/service/platform/payment/v1.0/company/{company_id}/application/{application_id}/create-payment-link/")
+    @GET ("/service/platform/payment/v1.0/company/{company_id}/application/{application_id}/create-payment-link")
     suspend fun getPaymentLink(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Query("payment_link_id") paymentLinkId: String, @HeaderMap headers: Map<String, String>? = null)
     : Response<GetPaymentLinkDetails>
     
-    @POST ("/service/platform/payment/v1.0/company/{company_id}/application/{application_id}/create-payment-link/")
+    @POST ("/service/platform/payment/v1.0/company/{company_id}/application/{application_id}/create-payment-link")
     suspend fun createPaymentLink(@Path("company_id") companyId: String, @Path("application_id") applicationId: String,@Body body: CreatePaymentLinkCreation, @HeaderMap headers: Map<String, String>? = null)
     : Response<CreatePaymentLinkDetails>
     
-    @GET ("/service/platform/payment/v1.0/company/{company_id}/application/{application_id}/polling-payment-link/")
+    @GET ("/service/platform/payment/v1.0/company/{company_id}/application/{application_id}/create-payment-link/{id}")
+    suspend fun getPaymentLinkId(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Path("id") id: String, @Query("payment_link_id") paymentLinkId: String, @HeaderMap headers: Map<String, String>? = null)
+    : Response<GetPaymentLinkDetails>
+    
+    @GET ("/service/platform/payment/v1.0/company/{company_id}/application/{application_id}/polling-payment-link")
     suspend fun pollingPaymentLink(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Query("payment_link_id") paymentLinkId: String, @HeaderMap headers: Map<String, String>? = null)
     : Response<PollingPaymentLinkDetails>
     
-    @POST ("/service/platform/payment/v1.0/company/{company_id}/application/{application_id}/resend-payment-link/")
+    @POST ("/service/platform/payment/v1.0/company/{company_id}/application/{application_id}/resend-payment-link")
     suspend fun resendPaymentLink(@Path("company_id") companyId: String, @Path("application_id") applicationId: String,@Body body: CancelOrResendPaymentLinkCreation, @HeaderMap headers: Map<String, String>? = null)
     : Response<ResendPaymentLinkDetails>
     
-    @POST ("/service/platform/payment/v1.0/company/{company_id}/application/{application_id}/cancel-payment-link/")
+    @POST ("/service/platform/payment/v1.0/company/{company_id}/application/{application_id}/cancel-payment-link")
     suspend fun cancelPaymentLink(@Path("company_id") companyId: String, @Path("application_id") applicationId: String,@Body body: CancelOrResendPaymentLinkCreation, @HeaderMap headers: Map<String, String>? = null)
     : Response<CancelPaymentLinkDetails>
     
+    @GET ("/service/platform/payment/v1.0/company/{company_id}/application/{application_id}/payment_modes/sequencing")
+    suspend fun getPaymentModeSequencing(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Query("business_unit") businessUnit: String, @Query("device") device: String, @HeaderMap headers: Map<String, String>? = null)
+    : Response<PaymentModeDetails>
+    
+    @PATCH ("/service/platform/payment/v1.0/company/{company_id}/application/{application_id}/payment_modes/sequencing")
+    suspend fun patchPaymentModeSequencing(@Path("company_id") companyId: String, @Path("application_id") applicationId: String,@Body body: PlatformPaymentMode, @HeaderMap headers: Map<String, String>? = null)
+    : Response<AggregatorConfigDetails>
+    
     @GET ("/service/platform/payment/v1.0/company/{company_id}/application/{application_id}/payment/options/modes/{mode}")
     suspend fun getPaymentModeControlRoutes(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Path("mode") mode: String, @HeaderMap headers: Map<String, String>? = null)
-    : Response<PlatformPaymentModeDetails>
+    : Response<PlatformOfflineAdvanceDetails>
     
     @PATCH ("/service/platform/payment/v1.0/company/{company_id}/application/{application_id}/payment/options/modes/{mode}")
-    suspend fun setMerchantModeControlRoutes(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Path("mode") mode: String,@Body body: MerchantPaymentModeCreation, @HeaderMap headers: Map<String, String>? = null)
-    : Response<PlatformPaymentModeDetails>
+    suspend fun setMerchantModeControlRoutes(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Path("mode") mode: String,@Body body: PlatformOfflineAdvance, @HeaderMap headers: Map<String, String>? = null)
+    : Response<PlatformOfflineAdvanceDetails>
     
     @GET ("/service/platform/payment/v1.0/company/{company_id}/application/{application_id}/payment/options/modes/{mode}/custom-config")
     suspend fun getPaymentModeCustomConfig(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Path("mode") mode: String, @HeaderMap headers: Map<String, String>? = null)
@@ -189,13 +205,17 @@ interface PaymentApiList {
     suspend fun setPaymentModeCustomConfig(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Path("mode") mode: String,@Body body: PaymentCustomConfigRequestSchema, @HeaderMap headers: Map<String, String>? = null)
     : Response<PaymentCustomConfigResponseSchema>
     
+    @GET ("/service/platform/payment/v1.0/company/{company_id}/payment/methods/configs")
+    suspend fun getPaymentMethodConfig(@Path("company_id") companyId: String, @HeaderMap headers: Map<String, String>? = null)
+    : Response<PaymentMethodConfigDetails>
+    
     @GET ("/service/platform/payment/v1.0/company/{company_id}/application/{application_id}/payment/codes")
     suspend fun getPaymentCodeOption(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @HeaderMap headers: Map<String, String>? = null)
     : Response<GetPaymentCodeDetails>
     
     @GET ("/service/platform/payment/v1.0/company/{company_id}/application/{application_id}/payment/session/{gid}")
     suspend fun getPaymentSession(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Path("gid") gid: String, @Query("line-item") lineItem: Boolean?, @HeaderMap headers: Map<String, String>? = null)
-    : Response<PaymentSessionFetchDetails>
+    : Response<GetPaymentSessionDetails>
     
     @PUT ("/service/platform/payment/v1.0/company/{company_id}/application/{application_id}/payment/session/{gid}")
     suspend fun updatePaymentSession(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Path("gid") gid: String,@Body body: PaymentSessionCreation, @HeaderMap headers: Map<String, String>? = null)
@@ -206,40 +226,64 @@ interface PaymentApiList {
     : Response<RefundSessionDetails>
     
     @GET ("/service/platform/payment/v1.0/company/{company_id}/application/{application_id}/payment/options/configuration")
-    suspend fun getMerchantPaymentOption(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @HeaderMap headers: Map<String, String>? = null)
-    : Response<PlatformPaymentModeDetails>
+    suspend fun getMerchantPaymentOption(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Query("payment_option_type") paymentOptionType: String?, @HeaderMap headers: Map<String, String>? = null)
+    : Response<PlatformOnlineOfflinePaymentDetails>
     
     @PATCH ("/service/platform/payment/v1.0/company/{company_id}/application/{application_id}/payment/options/configuration")
     suspend fun patchMerchantPaymentOption(@Path("company_id") companyId: String, @Path("application_id") applicationId: String,@Body body: MerchnatPaymentModeCreation, @HeaderMap headers: Map<String, String>? = null)
-    : Response<PlatformPaymentModeDetails>
+    : Response<PatchPlatformOnlineOfflinePaymentDetails>
+    
+    @GET ("/service/platform/payment/v1.0/company/{company_id}/application/{application_id}/payment/options/aggregators/all-devices")
+    suspend fun getDevices(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @HeaderMap headers: Map<String, String>? = null)
+    : Response<GetDevice>
     
     @GET ("/service/platform/payment/v1.0/company/{company_id}/application/{application_id}/payment/options/aggregators/{aggregator_id}")
     suspend fun getMerchantAggregatorPaymentModeDetails(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Path("aggregator_id") aggregatorId: String, @Query("business_unit") businessUnit: String, @Query("device") device: String, @HeaderMap headers: Map<String, String>? = null)
-    : Response<PlatformPaymentModeDetails>
+    : Response<AggregatorPlatformPaymentModeDetails>
     
     @PATCH ("/service/platform/payment/v1.0/company/{company_id}/application/{application_id}/payment/options/aggregators/{aggregator_id}")
-    suspend fun patchMerchantAggregatorPaymentModeDetails(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Path("aggregator_id") aggregatorId: String,@Body body: PlatformPaymentModeDetails, @HeaderMap headers: Map<String, String>? = null)
+    suspend fun patchMerchantAggregatorPaymentModeDetails(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Path("aggregator_id") aggregatorId: String,@Body body: PlatformPaymentMode, @HeaderMap headers: Map<String, String>? = null)
     : Response<PlatformPaymentModeDetails>
     
     @GET ("/service/platform/payment/v1.0/company/{company_id}/application/{application_id}/payment/options/configuration/aggregator")
     suspend fun getPGConfigAggregators(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @HeaderMap headers: Map<String, String>? = null)
-    : Response<PlatformPaymentModeDetails>
+    : Response<AggregatorConfigDetails>
     
-    @GET ("/service/platform/payment/v1.0/company/{company_id}/application/{application_id}/refund_priority/config/{config_type}")
-    suspend fun getMerchantRefundPriority(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Path("config_type") configType: String, @HeaderMap headers: Map<String, String>? = null)
+    @GET ("/service/platform/payment/v1.0/company/{company_id}/application/{application_id}/payment/options/configuration/aggregator/credential/history")
+    suspend fun getAggregatorCredentialHistory(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Query("aggregator") aggregator: String, @Query("config_type") configType: String, @HeaderMap headers: Map<String, String>? = null)
+    : Response<AggregatorHistoryDetails>
+    
+    @GET ("/service/platform/payment/v1.0/company/{company_id}/application/{application_id}/payment/options/configuration/aggregator/credential")
+    suspend fun getAggregatorCredential(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Query("aggregator") aggregator: String, @Query("config_type") configType: String, @HeaderMap headers: Map<String, String>? = null)
+    : Response<AggregatorCredentialRes>
+    
+    @POST ("/service/platform/payment/v1.0/company/{company_id}/application/{application_id}/payment/options/configuration/aggregator/credential")
+    suspend fun updateAggregatorCredential(@Path("company_id") companyId: String, @Path("application_id") applicationId: String,@Body body: AggregatorCredentialReq, @HeaderMap headers: Map<String, String>? = null)
+    : Response<PatchAggregatorCredentialDetails>
+    
+    @GET ("/service/platform/payment/v1.0/company/{company_id}/application/{application_id}/refund_priority/config/{config_type}/{business_unit}")
+    suspend fun getMerchantRefundPriority(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Path("config_type") configType: String, @Path("business_unit") businessUnit: String, @HeaderMap headers: Map<String, String>? = null)
     : Response<RefundPriorityDetails>
     
-    @POST ("/service/platform/payment/v1.0/company/{company_id}/application/{application_id}/refund_priority/config/{config_type}")
-    suspend fun createMerchantRefundPriority(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Path("config_type") configType: String,@Body body: RefundPriorityCreation, @HeaderMap headers: Map<String, String>? = null)
+    @POST ("/service/platform/payment/v1.0/company/{company_id}/application/{application_id}/refund_priority/config/{config_type}/{business_unit}")
+    suspend fun createMerchantRefundPriority(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Path("config_type") configType: String, @Path("business_unit") businessUnit: String,@Body body: RefundPriorityCreation, @HeaderMap headers: Map<String, String>? = null)
     : Response<RefundPriorityDetails>
     
-    @PUT ("/service/platform/payment/v1.0/company/{company_id}/application/{application_id}/refund_priority/config/{config_type}")
-    suspend fun updateMerchantRefundPriority(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Path("config_type") configType: String,@Body body: RefundPriorityCreation, @HeaderMap headers: Map<String, String>? = null)
+    @PUT ("/service/platform/payment/v1.0/company/{company_id}/application/{application_id}/refund_priority/config/{config_type}/{business_unit}")
+    suspend fun updateMerchantRefundPriority(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Path("config_type") configType: String, @Path("business_unit") businessUnit: String,@Body body: RefundPriorityCreation, @HeaderMap headers: Map<String, String>? = null)
     : Response<RefundPriorityDetails>
     
-    @POST ("/service/platform/payment/v1.0/company/{company_id}/application/{application_id}/payment-orders/")
+    @POST ("/service/platform/payment/v1.0/company/{company_id}/application/{application_id}/payment-orders")
     suspend fun createPaymentOrder(@Path("company_id") companyId: String, @Path("application_id") applicationId: String,@Body body: PaymentOrderCreation, @HeaderMap headers: Map<String, String>? = null)
     : Response<PaymentOrderDetails>
+    
+    @PATCH ("/service/platform/payment/v1.0/company/{company_id}/application/{application_id}/payment_modes/sequencing/copy-config")
+    suspend fun copyConfigPaymentModes(@Path("company_id") companyId: String, @Path("application_id") applicationId: String,@Body body: PlatformPaymentModeCopyConfigCreation, @HeaderMap headers: Map<String, String>? = null)
+    : Response<AggregatorConfigDetails>
+    
+    @PATCH ("/service/platform/payment/v1.0/company/{company_id}/application/{application_id}/payment/options/aggregators/{aggregator_id}/copy-config")
+    suspend fun copyConfigAggPaymentModes(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Path("aggregator_id") aggregatorId: String,@Body body: PlatformPaymentModeCopyConfigCreation, @HeaderMap headers: Map<String, String>? = null)
+    : Response<AggregatorConfigDetails>
     
     @GET ("/service/platform/payment/v1.0/company/{company_id}/application/{application_id}/payment/options/aggregators/{aggregator_id}/version")
     suspend fun getMerchantAggregatorAppVersion(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Path("aggregator_id") aggregatorId: String, @Query("business_unit") businessUnit: String, @Query("device") device: String, @Query("payment_mode_id") paymentModeId: Int?, @Query("sub_payment_mode") subPaymentMode: String?, @HeaderMap headers: Map<String, String>? = null)
@@ -247,6 +291,46 @@ interface PaymentApiList {
     
     @PATCH ("/service/platform/payment/v1.0/company/{company_id}/application/{application_id}/payment/options/aggregators/{aggregator_id}/version")
     suspend fun patchMerchantPaymentOptionVersion(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Path("aggregator_id") aggregatorId: String,@Body body: PatchAggregatorControl, @HeaderMap headers: Map<String, String>? = null)
-    : Response<PlatformPaymentModeDetails>
+    : Response<AggregatorConfigDetails>
+    
+    @POST ("/service/platform/payment/v1.0/company/{company_id}/application/{application_id}/refund/account_create")
+    suspend fun addRefundBankAccount(@Path("company_id") companyId: String, @Path("application_id") applicationId: String,@Body body: AddBeneficiaryDetailsOTPCreation, @HeaderMap headers: Map<String, String>? = null)
+    : Response<RefundAccountDetails>
+    
+    @PATCH ("/service/platform/payment/v1.0/company/{company_id}/application/{application_id}/refund/account_create")
+    suspend fun deleteBeneficiaryDetails(@Path("company_id") companyId: String, @Path("application_id") applicationId: String,@Body body: DeleteBeneficiary, @HeaderMap headers: Map<String, String>? = null)
+    : Response<DeleteRefundAccountDetails>
+    
+    @POST ("/service/platform/payment/v1.0/company/{company_id}/application/{application_id}/payment/refundoptions")
+    suspend fun setRefundOptionforShipment(@Path("company_id") companyId: String, @Path("application_id") applicationId: String,@Body body: ShipmentRefundDetails, @HeaderMap headers: Map<String, String>? = null)
+    : Response<ShipmentRefundRes>
+    
+    @GET ("/service/platform/payment/v1.0/company/{company_id}/application/{application_id}/payment/selected_refund_options")
+    suspend fun getSelectedRefundOption(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Query("shipment_id") shipmentId: String, @Query("order_id") orderId: String, @HeaderMap headers: Map<String, String>? = null)
+    : Response<SelectedRefundOptionDetails>
+    
+    @GET ("/service/platform/payment/v2.0/company/{company_id}/application/{application_id}/refund/user/beneficiary")
+    suspend fun getUserBeneficiariesDetailV2(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Query("order_id") orderId: String?, @Query("shipment_id") shipmentId: String?, @Query("mop") mop: String?, @HeaderMap headers: Map<String, String>? = null)
+    : Response<OrderBeneficiaryResponseSchemaV2>
+    
+    @POST ("/service/platform/payment/v1.0/company/{company_id}/application/{application_id}/validate/beneficiary-address")
+    suspend fun validateBeneficiaryAddress(@Path("company_id") companyId: String, @Path("application_id") applicationId: String,@Body body: ValidateValidateAddress, @HeaderMap headers: Map<String, String>? = null)
+    : Response<ValidateValidateAddressDetails>
+    
+    @POST ("/service/platform/payment/v1.0/company/{company_id}/application/{application_id}/refund/beneficiary/default")
+    suspend fun updateDefaultBeneficiary(@Path("company_id") companyId: String, @Path("application_id") applicationId: String,@Body body: SetDefaultBeneficiary, @HeaderMap headers: Map<String, String>? = null)
+    : Response<SetDefaultBeneficiaryDetails>
+    
+    @GET ("/service/platform/payment/v1.0/company/{company_id}/application/{application_id}/pennydrop/validation")
+    suspend fun getPennyDropValidation(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @HeaderMap headers: Map<String, String>? = null)
+    : Response<PennyDropValidationDetails>
+    
+    @POST ("/service/platform/payment/v1.0/company/{company_id}/application/{application_id}/pennydrop/validation")
+    suspend fun updatePennyDropValidation(@Path("company_id") companyId: String, @Path("application_id") applicationId: String,@Body body: UpdatePennyDropValidation, @HeaderMap headers: Map<String, String>? = null)
+    : Response<PennyDropValidationDetails>
+    
+    @GET ("/service/platform/payment/v1.0/company/{company_id}/application/{application_id}/refunds/beneficiary-details/{shipment_id}")
+    suspend fun getShipmentBeneficiary(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Path("shipment_id") shipmentId: String, @HeaderMap headers: Map<String, String>? = null)
+    : Response<ShipmentBeneficiaryDetailsRes>
     
 }

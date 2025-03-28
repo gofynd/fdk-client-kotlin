@@ -41,6 +41,10 @@ class ContentDataManagerClass(val config: PublicConfig, val unauthorizedAction: 
             
                     _relativeUrls["getCredentialsByEntity"] = "/service/public/content/credentials/{entity_type}".substring(1)
             
+                    _relativeUrls["getSDKDocumentation"] = "/service/public/content/sdk-readme".substring(1)
+            
+                    _relativeUrls["getSDKDocumentationByType"] = "/service/public/content/sdk-readme/{type}".substring(1)
+            
     }
 
     public fun update(updatedUrlMap : HashMap<String,String>){
@@ -155,6 +159,22 @@ class ContentDataManagerClass(val config: PublicConfig, val unauthorizedAction: 
         fullUrl = fullUrl?.replace("{" + "entity_type" +"}",entityType.toString())
         
         return contentApiList?.getCredentialsByEntity(fullUrl,  headers = headers)}
+
+    
+    
+    suspend fun getSDKDocumentation( headers: Map<String, String> = emptyMap()): Response<SDKLinksResponseSchema>? {
+        var fullUrl : String? = _relativeUrls["getSDKDocumentation"]
+        
+        return contentApiList?.getSDKDocumentation(fullUrl, headers = headers)}
+
+    
+    
+    suspend fun getSDKDocumentationByType(type: String, headers: Map<String, String> = emptyMap()): Response<SDKbyTypeResponseSchema>? {
+        var fullUrl : String? = _relativeUrls["getSDKDocumentationByType"]
+        
+        fullUrl = fullUrl?.replace("{" + "type" +"}",type.toString())
+        
+        return contentApiList?.getSDKDocumentationByType(fullUrl,  headers = headers)}
 
     
     
