@@ -12,7 +12,17 @@ interface OrderApiList {
     
     
     @GET
-    suspend fun getOrders(@Url url1: String?    ,          @Query("status") status: Int?, @Query("page_no") pageNo: Int?, @Query("page_size") pageSize: Int?, @Query("from_date") fromDate: String?, @Query("to_date") toDate: String?, @Query("start_date") startDate: String?, @Query("end_date") endDate: String?, @Query("custom_meta") customMeta: String?, @Query("allow_inactive") allowInactive: Boolean?, @HeaderMap headers: Map<String, String>? = null)
+    suspend fun getShipmentRefundSummary(@Url url1: String?    , @HeaderMap headers: Map<String, String>? = null)
+    : Response<ShipmentRefundSummaryResponseSchema>
+    
+    
+    @GET
+    suspend fun getRefundOptions(@Url url1: String?     ,      @Query("bag_ids") bagIds: String?, @Query("state") state: String?, @Query("optin_app_id") optinAppId: String?, @Query("optin_company_id") optinCompanyId: Int?, @Query("status") status: String?, @HeaderMap headers: Map<String, String>? = null)
+    : Response<RefundOptionsSchemaResponseSchema>
+    
+    
+    @GET
+    suspend fun getOrders(@Url url1: String?    ,         @Query("status") status: Int?, @Query("page_no") pageNo: Int?, @Query("page_size") pageSize: Int?, @Query("from_date") fromDate: String?, @Query("to_date") toDate: String?, @Query("start_date") startDate: String?, @Query("end_date") endDate: String?, @Query("custom_meta") customMeta: String?, @HeaderMap headers: Map<String, String>? = null)
     : Response<OrderList>
     
     

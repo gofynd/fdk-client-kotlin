@@ -12,7 +12,7 @@ interface PaymentApiList {
     
     
     @GET
-    suspend fun getAggregatorsConfig(@Url url1: String?    ,  @Query("refresh") refresh: Boolean?, @HeaderMap headers: Map<String, String>? = null)
+    suspend fun getAggregatorsConfig(@Url url1: String?    ,  @Header("x-api-token") xApiToken: String?,  @Query("refresh") refresh: Boolean?, @HeaderMap headers: Map<String, String>? = null)
     : Response<AggregatorsConfigDetail>
     
     
@@ -26,9 +26,19 @@ interface PaymentApiList {
     : Response<ActiveCardPaymentGatewayDetails>
     
     
+    @POST
+    suspend fun updateUserCard(@Url url1: String?   ,@Body body: UpdateAggregatorCardReq, @HeaderMap headers: Map<String, String>? = null)
+    : Response<UpdateAggregatorCardDetails>
+    
+    
     @GET
     suspend fun getActiveUserCards(@Url url1: String?    ,  @Query("force_refresh") forceRefresh: Boolean?, @HeaderMap headers: Map<String, String>? = null)
     : Response<ListCardsDetails>
+    
+    
+    @POST
+    suspend fun updateActiveCards(@Url url1: String?   ,@Body body: UpdateAggregatorCardReq, @HeaderMap headers: Map<String, String>? = null)
+    : Response<UpdateCard>
     
     
     @POST
@@ -137,18 +147,28 @@ interface PaymentApiList {
     
     
     @POST
+    suspend fun addBeneficiaryDetails(@Url url1: String?   ,@Body body: AddBeneficiaryDetails, @HeaderMap headers: Map<String, String>? = null)
+    : Response<RefundAccountDetails>
+    
+    
+    @PATCH
+    suspend fun deleteBeneficiaryDetails(@Url url1: String?   ,@Body body: DeleteBeneficiary, @HeaderMap headers: Map<String, String>? = null)
+    : Response<DeleteRefundAccountDetails>
+    
+    
+    @POST
     suspend fun verifyOtpAndAddBeneficiaryForBank(@Url url1: String?   ,@Body body: AddBeneficiaryViaOtpVerification, @HeaderMap headers: Map<String, String>? = null)
     : Response<AddBeneficiaryViaOtpVerificationDetails>
     
     
     @POST
-    suspend fun addBeneficiaryDetails(@Url url1: String?   ,@Body body: AddBeneficiaryDetails, @HeaderMap headers: Map<String, String>? = null)
-    : Response<RefundAccountDetails>
-    
-    
-    @POST
     suspend fun addRefundBankAccountUsingOTP(@Url url1: String?   ,@Body body: AddBeneficiaryDetailsOTP, @HeaderMap headers: Map<String, String>? = null)
     : Response<RefundAccountDetails>
+    
+    
+    @GET
+    suspend fun getotpOrderBeneficiariesDetail(@Url url1: String?    ,   @Query("order_id") orderId: String, @Query("request_hash") requestHash: String, @HeaderMap headers: Map<String, String>? = null)
+    : Response<AddBeneficiaryDetailsOTPDetails>
     
     
     @POST
@@ -161,6 +181,11 @@ interface PaymentApiList {
     : Response<SetDefaultBeneficiaryDetails>
     
     
+    @POST
+    suspend fun getBenficiaryOrder(@Url url1: String?   ,@Body body: RefundOrderBen, @HeaderMap headers: Map<String, String>? = null)
+    : Response<RefundOrderBenDetails>
+    
+    
     @GET
     suspend fun getPaymentLink(@Url url1: String?    ,  @Query("payment_link_id") paymentLinkId: String?, @HeaderMap headers: Map<String, String>? = null)
     : Response<GetPaymentLinkDetails>
@@ -171,14 +196,14 @@ interface PaymentApiList {
     : Response<CreatePaymentLinkDetails>
     
     
+    @GET
+    suspend fun getPaymentLinkId(@Url url1: String?     ,  @Query("payment_link_id") paymentLinkId: String, @HeaderMap headers: Map<String, String>? = null)
+    : Response<GetPaymentLinkDetails>
+    
+    
     @POST
     suspend fun resendPaymentLink(@Url url1: String?   ,@Body body: CancelOrResendPaymentLink, @HeaderMap headers: Map<String, String>? = null)
     : Response<ResendPaymentLinkDetails>
-    
-    
-    @POST
-    suspend fun cancelPaymentLink(@Url url1: String?   ,@Body body: CancelOrResendPaymentLink, @HeaderMap headers: Map<String, String>? = null)
-    : Response<CancelPaymentLinkDetails>
     
     
     @GET
@@ -187,7 +212,7 @@ interface PaymentApiList {
     
     
     @GET
-    suspend fun pollingPaymentLink(@Url url1: String?    ,  @Query("payment_link_id") paymentLinkId: String?, @HeaderMap headers: Map<String, String>? = null)
+    suspend fun pollingPaymentLink(@Url url1: String?    ,  @Query("payment_link_id") paymentLinkId: String, @HeaderMap headers: Map<String, String>? = null)
     : Response<PollingPaymentLinkDetails>
     
     
@@ -227,6 +252,16 @@ interface PaymentApiList {
     
     
     @GET
+    suspend fun outstandingOrderDetails(@Url url1: String?    ,  @Query("aggregator") aggregator: String?, @HeaderMap headers: Map<String, String>? = null)
+    : Response<OutstandingOrderDetails>
+    
+    
+    @POST
+    suspend fun cancelPaymentLink(@Url url1: String?   ,@Body body: CancelOrResendPaymentLink, @HeaderMap headers: Map<String, String>? = null)
+    : Response<CancelPaymentLinkDetails>
+    
+    
+    @GET
     suspend fun paidOrderDetails(@Url url1: String?    ,  @Query("aggregator") aggregator: String?, @HeaderMap headers: Map<String, String>? = null)
     : Response<PaidOrderDetails>
     
@@ -237,7 +272,27 @@ interface PaymentApiList {
     
     
     @POST
-    suspend fun validateCustomerAndCreditSummary(@Url url1: String?   ,@Body body: CustomerValidationSchema, @HeaderMap headers: Map<String, String>? = null)
-    : Response<ValidateCustomerCreditSchema>
+    suspend fun setRefundOptionforShipment(@Url url1: String?   ,@Body body: ShipmentRefund, @HeaderMap headers: Map<String, String>? = null)
+    : Response<ShipmentRefundDetails>
+    
+    
+    @GET
+    suspend fun getSelectedRefundOption(@Url url1: String?    ,   @Query("shipment_id") shipmentId: String, @Query("order_id") orderId: String, @HeaderMap headers: Map<String, String>? = null)
+    : Response<SelectedRefundOptionDetails>
+    
+    
+    @GET
+    suspend fun getUserBeneficiariesDetailV2(@Url url1: String?    ,    @Query("order_id") orderId: String?, @Query("shipment_id") shipmentId: String?, @Query("mop") mop: String?, @HeaderMap headers: Map<String, String>? = null)
+    : Response<OrderBeneficiaryDetailsSchemaV2>
+    
+    
+    @POST
+    suspend fun validateBeneficiaryAddress(@Url url1: String?   ,@Body body: ValidateValidateAddress, @HeaderMap headers: Map<String, String>? = null)
+    : Response<ValidateValidateAddressDetails>
+    
+    
+    @POST
+    suspend fun confirmPayment(@Url url1: String?   ,@Body body: PaymentConfirmation, @HeaderMap headers: Map<String, String>? = null)
+    : Response<PaymentConfirmationDetails>
     
 }

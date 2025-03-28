@@ -121,6 +121,56 @@ class ConfigurationDataManagerClass(val config: ApplicationConfig, val unauthori
 
     
     
+    
+        
+            
+            
+        
+            
+                
+            
+            
+        
+            
+                
+            
+            
+        
+    /**
+    *
+    * Summary: Paginator for getOrderingStores
+    **/
+    fun getOrderingStoresPaginator(pageSize: Int?=null, q: String?=null) : Paginator<OrderingStores>{
+
+    val paginator = Paginator<OrderingStores>()
+
+    paginator.setCallBack(object : PaginatorCallback<OrderingStores> {
+
+            override suspend fun onNext(
+                onResponse: (Event<OrderingStores>?,FdkError?) -> Unit) {
+                val pageId = paginator.nextId
+                val pageNo = paginator.pageNo
+                val pageType = "number"
+                var fullUrl : String? = _relativeUrls["getOrderingStores"]
+                
+                configurationApiList?.getOrderingStores(fullUrl , pageNo = pageNo, pageSize = pageSize, q = q)?.safeAwait{ response, error ->
+                    response?.let {
+                        val page = response.peekContent()?.page
+                        paginator.setPaginator(hasNext=page?.hasNext?:false,pageNo=if (page?.hasNext == true) ((pageNo ?: 0) + 1) else pageNo)
+                        onResponse.invoke(response, null)
+                    }
+
+                    error?.let {
+                        onResponse.invoke(null,error)
+                    }
+            }
+        }
+
+    })
+
+    return paginator
+    }
+    
     suspend fun getStoreDetailById(storeId: Int, headers: Map<String, String> = emptyMap()): Response<OrderingStore>? {
         var fullUrl : String? = _relativeUrls["getStoreDetailById"]
         

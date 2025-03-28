@@ -19,6 +19,10 @@ class UserDataManagerClass(val config: ApplicationConfig, val unauthorizedAction
 
     init{
             
+                    _relativeUrls["getUserAttributes"] = "/service/application/user/profile/v1.0/user-attributes".substring(1)
+            
+                    _relativeUrls["updateUserAttributes"] = "/service/application/user/profile/v1.0/user-attributes".substring(1)
+            
                     _relativeUrls["loginWithFacebook"] = "/service/application/user/authentication/v1.0/login/facebook-token".substring(1)
             
                     _relativeUrls["loginWithGoogle"] = "/service/application/user/authentication/v1.0/login/google-token".substring(1)
@@ -34,8 +38,6 @@ class UserDataManagerClass(val config: ApplicationConfig, val unauthorizedAction
                     _relativeUrls["loginWithEmailAndPassword"] = "/service/application/user/authentication/v1.0/login/password".substring(1)
             
                     _relativeUrls["sendResetPasswordEmail"] = "/service/application/user/authentication/v1.0/login/password/reset".substring(1)
-            
-                    _relativeUrls["sendResetPasswordMobile"] = "/service/application/user/authentication/v1.0/login/password/mobile/reset".substring(1)
             
                     _relativeUrls["sendResetToken"] = "/service/application/user/authentication/v1.0/login/password/reset/token".substring(1)
             
@@ -101,10 +103,6 @@ class UserDataManagerClass(val config: ApplicationConfig, val unauthorizedAction
             
                     _relativeUrls["logout"] = "/service/application/user/authentication/v1.0/logout".substring(1)
             
-                    _relativeUrls["getUserAttributes"] = "/service/application/user/profile/v1.0/user-attributes".substring(1)
-            
-                    _relativeUrls["updateUserAttributes"] = "/service/application/user/profile/v1.0/user-attributes".substring(1)
-            
     }
 
     public fun update(updatedUrlMap : HashMap<String,String>){
@@ -139,6 +137,20 @@ class UserDataManagerClass(val config: ApplicationConfig, val unauthorizedAction
         )
         return retrofitHttpClient?.initializeRestClient(UserApiList::class.java) as? UserApiList
     }
+    
+    suspend fun getUserAttributes(slug: String?=null, headers: Map<String, String> = emptyMap()): Response<UserAttributes>? {
+        var fullUrl : String? = _relativeUrls["getUserAttributes"]
+        
+        return userApiList?.getUserAttributes(fullUrl,   slug = slug,headers = headers)}
+
+    
+    
+    suspend fun updateUserAttributes(body: UpdateAttributesRequestPayload, headers: Map<String, String> = emptyMap()): Response<UserAttributes>? {
+        var fullUrl : String? = _relativeUrls["updateUserAttributes"]
+        
+        return userApiList?.updateUserAttributes(fullUrl, body = body,headers = headers)}
+
+    
     
     suspend fun loginWithFacebook(platform: String?=null,body: OAuthRequestSchema, headers: Map<String, String> = emptyMap()): Response<AuthSuccess>? {
         var fullUrl : String? = _relativeUrls["loginWithFacebook"]
@@ -193,13 +205,6 @@ class UserDataManagerClass(val config: ApplicationConfig, val unauthorizedAction
         var fullUrl : String? = _relativeUrls["sendResetPasswordEmail"]
         
         return userApiList?.sendResetPasswordEmail(fullUrl,   platform = platform,body = body,headers = headers)}
-
-    
-    
-    suspend fun sendResetPasswordMobile(platform: String?=null,body: SendResetPasswordMobileRequestSchema, headers: Map<String, String> = emptyMap()): Response<Any>? {
-        var fullUrl : String? = _relativeUrls["sendResetPasswordMobile"]
-        
-        return userApiList?.sendResetPasswordMobile(fullUrl,   platform = platform,body = body,headers = headers)}
 
     
     
@@ -266,14 +271,14 @@ class UserDataManagerClass(val config: ApplicationConfig, val unauthorizedAction
 
     
     
-    suspend fun sendOTPOnMobile(platform: String?=null,body: SendMobileOtpRequestSchema, headers: Map<String, String> = emptyMap()): Response<SendOtpSuccess>? {
+    suspend fun sendOTPOnMobile(platform: String?=null,body: SendMobileOtpRequestSchema, headers: Map<String, String> = emptyMap()): Response<OtpSuccess>? {
         var fullUrl : String? = _relativeUrls["sendOTPOnMobile"]
         
         return userApiList?.sendOTPOnMobile(fullUrl,   platform = platform,body = body,headers = headers)}
 
     
     
-    suspend fun sendForgotOTPOnMobile(platform: String?=null,body: SendMobileForgotOtpRequestSchema, headers: Map<String, String> = emptyMap()): Response<SendOtpSuccess>? {
+    suspend fun sendForgotOTPOnMobile(platform: String?=null,body: SendMobileForgotOtpRequestSchema, headers: Map<String, String> = emptyMap()): Response<OtpSuccess>? {
         var fullUrl : String? = _relativeUrls["sendForgotOTPOnMobile"]
         
         return userApiList?.sendForgotOTPOnMobile(fullUrl,   platform = platform,body = body,headers = headers)}
@@ -406,7 +411,7 @@ class UserDataManagerClass(val config: ApplicationConfig, val unauthorizedAction
 
     
     
-    suspend fun userExists(q: String, headers: Map<String, String> = emptyMap()): Response<UserExistsDetails>? {
+    suspend fun userExists(q: String, headers: Map<String, String> = emptyMap()): Response<UserExists>? {
         var fullUrl : String? = _relativeUrls["userExists"]
         
         return userApiList?.userExists(fullUrl,   q = q,headers = headers)}
@@ -424,20 +429,6 @@ class UserDataManagerClass(val config: ApplicationConfig, val unauthorizedAction
         var fullUrl : String? = _relativeUrls["logout"]
         
         return userApiList?.logout(fullUrl, headers = headers)}
-
-    
-    
-    suspend fun getUserAttributes(slug: String?=null, headers: Map<String, String> = emptyMap()): Response<UserAttributes>? {
-        var fullUrl : String? = _relativeUrls["getUserAttributes"]
-        
-        return userApiList?.getUserAttributes(fullUrl,   slug = slug,headers = headers)}
-
-    
-    
-    suspend fun updateUserAttributes(body: UpdateUserAttributes, headers: Map<String, String> = emptyMap()): Response<UserAttributes>? {
-        var fullUrl : String? = _relativeUrls["updateUserAttributes"]
-        
-        return userApiList?.updateUserAttributes(fullUrl, body = body,headers = headers)}
 
     
     
