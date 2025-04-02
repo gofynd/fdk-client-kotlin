@@ -34,15 +34,15 @@ interface ContentApiList {
     : Response<CreateAnnouncementSchema>
     
     @POST ("/service/platform/content/v1.0/company/{company_id}/application/{application_id}/blogs")
-    suspend fun createBlog(@Path("company_id") companyId: String, @Path("application_id") applicationId: String,@Body body: BlogRequestSchema, @HeaderMap headers: Map<String, String>? = null)
+    suspend fun createBlog(@Path("company_id") companyId: String, @Path("application_id") applicationId: String,@Body body: BlogRequest, @HeaderMap headers: Map<String, String>? = null)
     : Response<BlogSchema>
     
     @GET ("/service/platform/content/v1.0/company/{company_id}/application/{application_id}/blogs")
     suspend fun getBlogs(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Query("page_no") pageNo: Int?, @Query("page_size") pageSize: Int?, @Query("tags") tags: String?, @Query("q") q: String?, @Query("slug") slug: String?, @Query("title") title: String?, @Query("status") status: String?, @HeaderMap headers: Map<String, String>? = null)
-    : Response<BlogGetResponseSchema>
+    : Response<BlogGetResponse>
     
     @PUT ("/service/platform/content/v1.0/company/{company_id}/application/{application_id}/blogs/{id}")
-    suspend fun updateBlog(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Path("id") id: String,@Body body: BlogRequestSchema, @HeaderMap headers: Map<String, String>? = null)
+    suspend fun updateBlog(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Path("id") id: String,@Body body: BlogRequest, @HeaderMap headers: Map<String, String>? = null)
     : Response<BlogSchema>
     
     @DELETE ("/service/platform/content/v1.0/company/{company_id}/application/{application_id}/blogs/{id}")
@@ -131,7 +131,7 @@ interface ContentApiList {
     
     @GET ("/service/platform/content/v1.0/company/{company_id}/application/{application_id}/landing-page")
     suspend fun getLandingPages(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Query("page_no") pageNo: Int?, @Query("page_size") pageSize: Int?, @HeaderMap headers: Map<String, String>? = null)
-    : Response<LandingPageGetResponseSchema>
+    : Response<LandingPageGetResponse>
     
     @POST ("/service/platform/content/v1.0/company/{company_id}/application/{application_id}/landing-page")
     suspend fun createLandingPage(@Path("company_id") companyId: String, @Path("application_id") applicationId: String,@Body body: LandingPageSchema, @HeaderMap headers: Map<String, String>? = null)
@@ -155,22 +155,22 @@ interface ContentApiList {
     
     @GET ("/service/platform/content/v1.0/company/{company_id}/application/{application_id}/navigations")
     suspend fun getNavigations(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Query("device_platform") devicePlatform: String, @Query("page_no") pageNo: Int?, @Query("page_size") pageSize: Int?, @HeaderMap headers: Map<String, String>? = null)
-    : Response<NavigationGetResponseSchema>
+    : Response<NavigationGetResponse>
     
     @POST ("/service/platform/content/v1.0/company/{company_id}/application/{application_id}/navigations")
-    suspend fun createNavigation(@Path("company_id") companyId: String, @Path("application_id") applicationId: String,@Body body: NavigationRequestSchema, @HeaderMap headers: Map<String, String>? = null)
+    suspend fun createNavigation(@Path("company_id") companyId: String, @Path("application_id") applicationId: String,@Body body: NavigationRequest, @HeaderMap headers: Map<String, String>? = null)
     : Response<NavigationSchema>
     
     @GET ("/service/platform/content/v1.0/company/{company_id}/application/{application_id}/navigations/default")
     suspend fun getDefaultNavigations(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @HeaderMap headers: Map<String, String>? = null)
-    : Response<DefaultNavigationResponseSchema>
+    : Response<DefaultNavigationResponse>
     
     @GET ("/service/platform/content/v1.0/company/{company_id}/application/{application_id}/navigations/{slug}")
     suspend fun getNavigationBySlug(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Path("slug") slug: String, @Query("device_platform") devicePlatform: String?, @HeaderMap headers: Map<String, String>? = null)
     : Response<NavigationSchema>
     
     @PUT ("/service/platform/content/v1.0/company/{company_id}/application/{application_id}/navigations/{id}")
-    suspend fun updateNavigation(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Path("id") id: String,@Body body: NavigationRequestSchema, @HeaderMap headers: Map<String, String>? = null)
+    suspend fun updateNavigation(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Path("id") id: String,@Body body: NavigationRequest, @HeaderMap headers: Map<String, String>? = null)
     : Response<NavigationSchema>
     
     @DELETE ("/service/platform/content/v1.0/company/{company_id}/application/{application_id}/navigations/{id}")
@@ -186,11 +186,11 @@ interface ContentApiList {
     : Response<PageSpec>
     
     @POST ("/service/platform/content/v1.0/company/{company_id}/application/{application_id}/pages/preview")
-    suspend fun createPagePreview(@Path("company_id") companyId: String, @Path("application_id") applicationId: String,@Body body: PageRequestSchema, @HeaderMap headers: Map<String, String>? = null)
+    suspend fun createPagePreview(@Path("company_id") companyId: String, @Path("application_id") applicationId: String,@Body body: PageRequest, @HeaderMap headers: Map<String, String>? = null)
     : Response<PageSchema>
     
     @PUT ("/service/platform/content/v1.0/company/{company_id}/application/{application_id}/pages/publish/{slug}")
-    suspend fun updatePagePreview(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Path("slug") slug: String,@Body body: PagePublishRequestSchema, @HeaderMap headers: Map<String, String>? = null)
+    suspend fun updatePagePreview(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Path("slug") slug: String,@Body body: PagePublishRequest, @HeaderMap headers: Map<String, String>? = null)
     : Response<PageSchema>
     
     @DELETE ("/service/platform/content/v1.0/company/{company_id}/application/{application_id}/pages/{id}")
@@ -249,34 +249,6 @@ interface ContentApiList {
     suspend fun deleteSEOMarkupSchema(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Path("schema_id") schemaId: String, @HeaderMap headers: Map<String, String>? = null)
     : Response<SEOSchemaMarkupTemplate>
     
-    @GET ("/service/platform/content/v1.0/company/{company_id}/application/{application_id}/seo/sitemap/default")
-    suspend fun getDefaultSitemapConfig(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @HeaderMap headers: Map<String, String>? = null)
-    : Response<DefaultSitemapConfig>
-    
-    @PUT ("/service/platform/content/v1.0/company/{company_id}/application/{application_id}/seo/sitemap/default")
-    suspend fun updateDefaultSitemapConfig(@Path("company_id") companyId: String, @Path("application_id") applicationId: String,@Body body: DefaultSitemapConfig, @HeaderMap headers: Map<String, String>? = null)
-    : Response<DefaultSitemapConfig>
-    
-    @GET ("/service/platform/content/v1.0/company/{company_id}/application/{application_id}/seo/sitemaps")
-    suspend fun getSitemaps(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Query("page_no") pageNo: String, @Query("page_size") pageSize: String, @Query("is_active") isActive: Boolean?, @Query("name") name: String?, @HeaderMap headers: Map<String, String>? = null)
-    : Response<SitemapConfigurationList>
-    
-    @POST ("/service/platform/content/v1.0/company/{company_id}/application/{application_id}/seo/sitemaps")
-    suspend fun createSitemap(@Path("company_id") companyId: String, @Path("application_id") applicationId: String,@Body body: SitemapConfigCreate, @HeaderMap headers: Map<String, String>? = null)
-    : Response<SitemapConfig>
-    
-    @GET ("/service/platform/content/v1.0/company/{company_id}/application/{application_id}/seo/sitemaps/{name}")
-    suspend fun getSitemap(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Path("name") name: String, @HeaderMap headers: Map<String, String>? = null)
-    : Response<SitemapConfig>
-    
-    @PUT ("/service/platform/content/v1.0/company/{company_id}/application/{application_id}/seo/sitemaps/{name}")
-    suspend fun updateSitemap(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Path("name") name: String,@Body body: SitemapConfigUpdate, @HeaderMap headers: Map<String, String>? = null)
-    : Response<SitemapConfig>
-    
-    @DELETE ("/service/platform/content/v1.0/company/{company_id}/application/{application_id}/seo/sitemaps/{name}")
-    suspend fun deleteSitemap(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Path("name") name: String, @HeaderMap headers: Map<String, String>? = null)
-    : Response<SitemapConfig>
-    
     @PUT ("/service/platform/content/v1.0/company/{company_id}/application/{application_id}/tags/add")
     suspend fun addInjectableTag(@Path("company_id") companyId: String, @Path("application_id") applicationId: String,@Body body: CreateTagRequestSchema, @HeaderMap headers: Map<String, String>? = null)
     : Response<TagsSchema>
@@ -291,7 +263,7 @@ interface ContentApiList {
     
     @PUT ("/service/platform/content/v1.0/company/{company_id}/application/{application_id}/tags/remove/handpicked")
     suspend fun removeInjectableTag(@Path("company_id") companyId: String, @Path("application_id") applicationId: String,@Body body: RemoveHandpickedSchema, @HeaderMap headers: Map<String, String>? = null)
-    : Response<TagDeleteSuccessResponseSchema>
+    : Response<TagDeleteSuccessResponse>
     
     @PUT ("/service/platform/content/v1.0/company/{company_id}/application/{application_id}/tags/edit/handpicked/{tag_id}")
     suspend fun editInjectableTag(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Path("tag_id") tagId: String,@Body body: UpdateHandpickedSchema, @HeaderMap headers: Map<String, String>? = null)
@@ -318,12 +290,12 @@ interface ContentApiList {
     : Response<BlogSchema>
     
     @POST ("/service/platform/content/v2.0/company/{company_id}/application/{application_id}/pages")
-    suspend fun createPage(@Path("company_id") companyId: String, @Path("application_id") applicationId: String,@Body body: PageRequestSchema, @HeaderMap headers: Map<String, String>? = null)
+    suspend fun createPage(@Path("company_id") companyId: String, @Path("application_id") applicationId: String,@Body body: PageRequest, @HeaderMap headers: Map<String, String>? = null)
     : Response<PageSchema>
     
     @GET ("/service/platform/content/v2.0/company/{company_id}/application/{application_id}/pages")
     suspend fun getPages(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Query("page_no") pageNo: Int?, @Query("page_size") pageSize: Int?, @HeaderMap headers: Map<String, String>? = null)
-    : Response<PageGetResponseSchema>
+    : Response<PageGetResponse>
     
     @PUT ("/service/platform/content/v2.0/company/{company_id}/application/{application_id}/pages/{id}")
     suspend fun updatePage(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Path("id") id: String,@Body body: PageSchema, @HeaderMap headers: Map<String, String>? = null)
@@ -341,92 +313,104 @@ interface ContentApiList {
     suspend fun getResources(@Path("company_id") companyId: String, @HeaderMap headers: Map<String, String>? = null)
     : Response<ResourcesSchema>
     
-    @GET ("/service/platform/content/v2.0/company/{company_id}/customfields/definition")
-    suspend fun getCustomFieldDefinitions(@Path("company_id") companyId: String, @Query("page_no") pageNo: String, @Query("page_size") pageSize: String, @Query("resources") resources: String?, @Query("types") types: String?, @Query("search") search: String?, @Query("slugs") slugs: String?, @Query("namespaces") namespaces: String?, @HeaderMap headers: Map<String, String>? = null)
+    @GET ("/service/platform/content/v1.0/company/{company_id}/metafields/definitions")
+    suspend fun getCustomFieldDefinitions(@Path("company_id") companyId: String, @Query("page_no") pageNo: String, @Query("page_size") pageSize: String, @Query("resources") resources: String?, @Query("types") types: String?, @Query("search") search: String?, @Query("slugs") slugs: String?, @HeaderMap headers: Map<String, String>? = null)
     : Response<CustomFieldDefinitionsSchema>
     
-    @GET ("/service/platform/content/v2.0/company/{company_id}/customfields/resource/{resource}/definition")
-    suspend fun getCustomFieldDefinitionByResource(@Path("company_id") companyId: String, @Query("page_no") pageNo: String, @Query("page_size") pageSize: String, @Path("resource") resource: String, @Query("types") types: String?, @Query("search") search: String?, @Query("slugs") slugs: String?, @Query("namespaces") namespaces: String?, @HeaderMap headers: Map<String, String>? = null)
-    : Response<CustomFieldDefinitionsSchema>
-    
-    @POST ("/service/platform/content/v2.0/company/{company_id}/customfields/resource/{resource}/definition")
-    suspend fun createCustomFieldDefinition(@Path("company_id") companyId: String, @Path("resource") resource: String,@Body body: CustomFieldDefinitionRequestSchema, @HeaderMap headers: Map<String, String>? = null)
+    @POST ("/service/platform/content/v1.0/company/{company_id}/metafields/definitions")
+    suspend fun createCustomFieldDefinition(@Path("company_id") companyId: String,@Body body: CustomFieldDefinitionRequestSchema, @HeaderMap headers: Map<String, String>? = null)
     : Response<CustomFieldDefinitionDetailResSchema>
     
-    @GET ("/service/platform/content/v2.0/company/{company_id}/customfields/resource/{resource}/namespace/{namespace}/definition/{slug}")
-    suspend fun getCustomFieldDefinitionBySlug(@Path("company_id") companyId: String, @Path("slug") slug: String, @Path("resource") resource: String, @Path("namespace") namespace: String, @HeaderMap headers: Map<String, String>? = null)
-    : Response<MetaFieldDefinitionDetailResSchema>
-    
-    @PUT ("/service/platform/content/v2.0/company/{company_id}/customfields/resource/{resource}/namespace/{namespace}/definition/{slug}")
-    suspend fun updateCustomFieldDefinitionBySlug(@Path("company_id") companyId: String, @Path("slug") slug: String, @Path("resource") resource: String, @Path("namespace") namespace: String,@Body body: CustomFieldDefinitionRequestSchema, @HeaderMap headers: Map<String, String>? = null)
+    @GET ("/service/platform/content/v1.0/company/{company_id}/metafields/definitions/{id}")
+    suspend fun getCustomFieldDefinition(@Path("company_id") companyId: String, @Path("id") id: String, @HeaderMap headers: Map<String, String>? = null)
     : Response<CustomFieldDefinitionDetailResSchema>
     
-    @DELETE ("/service/platform/content/v2.0/company/{company_id}/customfields/resource/{resource}/namespace/{namespace}/definition/{slug}")
-    suspend fun deleteCustomFieldDefinitionBySlug(@Path("company_id") companyId: String, @Path("slug") slug: String, @Path("resource") resource: String, @Path("namespace") namespace: String, @HeaderMap headers: Map<String, String>? = null)
+    @PUT ("/service/platform/content/v1.0/company/{company_id}/metafields/definitions/{id}")
+    suspend fun updateCustomFieldDefinition(@Path("company_id") companyId: String, @Path("id") id: String,@Body body: CustomFieldDefinitionRequestSchema, @HeaderMap headers: Map<String, String>? = null)
+    : Response<CustomFieldDefinitionDetailResSchema>
+    
+    @DELETE ("/service/platform/content/v1.0/company/{company_id}/metafields/definitions/{id}")
+    suspend fun deleteCustomFieldDefinition(@Path("company_id") companyId: String, @Path("id") id: String, @HeaderMap headers: Map<String, String>? = null)
     : Response<CustomDataDeleteSchema>
     
-    @GET ("/service/platform/content/v2.0/company/{company_id}/customfields/resource/{resource}/{resource_slug}")
-    suspend fun getCustomFieldsByResourceSlug(@Path("company_id") companyId: String, @Path("resource") resource: String, @Path("resource_slug") resourceSlug: String, @HeaderMap headers: Map<String, String>? = null)
+    @GET ("/service/platform/content/v1.0/company/{company_id}/metafields/{resource}")
+    suspend fun getCustomFields(@Path("company_id") companyId: String, @Path("resource") resource: String, @HeaderMap headers: Map<String, String>? = null)
+    : Response<CustomFieldsResponseSchema>
+    
+    @GET ("/service/platform/content/v1.0/company/{company_id}/metafields/{resource}/{resource_id}")
+    suspend fun getCustomFieldsByResourceId(@Path("company_id") companyId: String, @Path("resource") resource: String, @Path("resource_id") resourceId: String, @HeaderMap headers: Map<String, String>? = null)
     : Response<CustomFieldsResponseByResourceIdSchema>
     
-    @PUT ("/service/platform/content/v2.0/company/{company_id}/customfields/resource/{resource}/{resource_slug}")
-    suspend fun updateCustomFieldByResourceSlug(@Path("company_id") companyId: String, @Path("resource") resource: String, @Path("resource_slug") resourceSlug: String,@Body body: CustomFieldRequestSchema, @HeaderMap headers: Map<String, String>? = null)
+    @POST ("/service/platform/content/v1.0/company/{company_id}/metafields/{resource}/{resource_id}")
+    suspend fun createCustomFieldByResourceId(@Path("company_id") companyId: String, @Path("resource") resource: String, @Path("resource_id") resourceId: String,@Body body: CustomFieldRequestSchema, @HeaderMap headers: Map<String, String>? = null)
     : Response<CustomFieldsResponseByResourceIdSchema>
     
-    @POST ("/service/platform/content/v2.0/company/{company_id}/customobjects/definition")
+    @PUT ("/service/platform/content/v1.0/company/{company_id}/metafields/{resource}/{resource_id}")
+    suspend fun updateCustomFieldByResourceId(@Path("company_id") companyId: String, @Path("resource") resource: String, @Path("resource_id") resourceId: String,@Body body: CustomFieldRequestSchema, @HeaderMap headers: Map<String, String>? = null)
+    : Response<CustomFieldsResponseByResourceIdSchema>
+    
+    @DELETE ("/service/platform/content/v1.0/company/{company_id}/metafields/{resource}/{resource_id}")
+    suspend fun deleteCustomFieldsByResourceId(@Path("company_id") companyId: String, @Path("resource") resource: String, @Path("resource_id") resourceId: String, @Query("ids") ids: String, @HeaderMap headers: Map<String, String>? = null)
+    : Response<CustomFieldsDeleteSchema>
+    
+    @GET ("/service/platform/content/v1.0/company/{company_id}/metafields/jobs")
+    suspend fun getCustomFieldJobs(@Path("company_id") companyId: String, @Query("page") page: String, @Query("page_size") pageSize: String, @Query("action_type") actionType: String, @HeaderMap headers: Map<String, String>? = null)
+    : Response<CustomFieldBulkEntry>
+    
+    @POST ("/service/platform/content/v1.0/company/{company_id}/metaobjects/definitions")
     suspend fun createCustomObjectDefinition(@Path("company_id") companyId: String,@Body body: CustomObjectDefinitionRequestSchema, @HeaderMap headers: Map<String, String>? = null)
-    : Response<CustomObjectDefinitionSlugSchema>
+    : Response<CustomObjectDefinitionSchema>
     
-    @GET ("/service/platform/content/v2.0/company/{company_id}/customobjects/definition")
+    @GET ("/service/platform/content/v1.0/company/{company_id}/metaobjects/definitions")
     suspend fun getCustomObjectDefinitions(@Path("company_id") companyId: String, @Query("page_no") pageNo: String, @Query("page_size") pageSize: String, @Query("search") search: String?, @HeaderMap headers: Map<String, String>? = null)
     : Response<CustomObjectDefinitionsSchema>
     
-    @GET ("/service/platform/content/v2.0/company/{company_id}/customobjects/definition/{slug}")
-    suspend fun getCustomObjectDefinitionBySlug(@Path("company_id") companyId: String, @Path("slug") slug: String, @HeaderMap headers: Map<String, String>? = null)
-    : Response<CustomObjectDefinitionSlugSchema>
+    @GET ("/service/platform/content/v1.0/company/{company_id}/metaobjects/definitions/{id}")
+    suspend fun getCustomObjectDefinition(@Path("company_id") companyId: String, @Path("id") id: String, @HeaderMap headers: Map<String, String>? = null)
+    : Response<CustomObjectDefinitionSchema>
     
-    @PUT ("/service/platform/content/v2.0/company/{company_id}/customobjects/definition/{slug}")
-    suspend fun updateCustomObjectDefinitionBySlug(@Path("company_id") companyId: String, @Path("slug") slug: String,@Body body: CustomObjectDefinitionUpdateRequestSchema, @HeaderMap headers: Map<String, String>? = null)
-    : Response<CustomObjectDefinitionSlugSchema>
+    @PUT ("/service/platform/content/v1.0/company/{company_id}/metaobjects/definitions/{id}")
+    suspend fun updateCustomObjectDefinition(@Path("company_id") companyId: String, @Path("id") id: String,@Body body: CustomObjectDefinitionUpdateRequestSchema, @HeaderMap headers: Map<String, String>? = null)
+    : Response<CustomObjectDefinitionSchema>
     
-    @DELETE ("/service/platform/content/v2.0/company/{company_id}/customobjects/definition/{slug}")
-    suspend fun deleteCustomObjectDefinitionBySlug(@Path("company_id") companyId: String, @Path("slug") slug: String, @HeaderMap headers: Map<String, String>? = null)
+    @DELETE ("/service/platform/content/v1.0/company/{company_id}/metaobjects/definitions/{id}")
+    suspend fun deleteCustomObjectDefinition(@Path("company_id") companyId: String, @Path("id") id: String, @HeaderMap headers: Map<String, String>? = null)
     : Response<CustomObjectDefinitionDeleteResponseSchema>
     
-    @GET ("/service/platform/content/v2.0/company/{company_id}/customobjects/definition/{definition_slug}/entries")
-    suspend fun getCustomObjectsBySlug(@Path("company_id") companyId: String, @Query("page_no") pageNo: String, @Query("page_size") pageSize: String, @Path("definition_slug") definitionSlug: String, @HeaderMap headers: Map<String, String>? = null)
+    @GET ("/service/platform/content/v1.0/company/{company_id}/metaobjects")
+    suspend fun getCustomObjects(@Path("company_id") companyId: String, @Query("definition_id") definitionId: String?, @Query("page_no") pageNo: String, @Query("page_size") pageSize: String, @HeaderMap headers: Map<String, String>? = null)
     : Response<CustomObjectsSchema>
     
-    @POST ("/service/platform/content/v2.0/company/{company_id}/customobjects/definition/{definition_slug}/entries")
-    suspend fun createCustomObjectBySlug(@Path("company_id") companyId: String, @Path("definition_slug") definitionSlug: String,@Body body: CustomObjectRequestSchemaWithoutId, @HeaderMap headers: Map<String, String>? = null)
+    @POST ("/service/platform/content/v1.0/company/{company_id}/metaobjects")
+    suspend fun createCustomObject(@Path("company_id") companyId: String,@Body body: CustomObjectRequestSchema, @HeaderMap headers: Map<String, String>? = null)
     : Response<CustomObjectSchema>
     
-    @GET ("/service/platform/content/v2.0/company/{company_id}/customobjects/definition/{definition_slug}/entries/{slug}")
-    suspend fun getCustomObjectBySlug(@Path("company_id") companyId: String, @Path("definition_slug") definitionSlug: String, @Path("slug") slug: String, @HeaderMap headers: Map<String, String>? = null)
-    : Response<CustomObjectBySlugSchema>
+    @GET ("/service/platform/content/v1.0/company/{company_id}/metaobjects/{id}")
+    suspend fun getCustomObject(@Path("company_id") companyId: String, @Path("id") id: String, @HeaderMap headers: Map<String, String>? = null)
+    : Response<CustomObjectByIdSchema>
     
-    @DELETE ("/service/platform/content/v2.0/company/{company_id}/customobjects/definition/{definition_slug}/entries/{slug}")
-    suspend fun deleteCustomObjectBySlug(@Path("company_id") companyId: String, @Path("definition_slug") definitionSlug: String, @Path("slug") slug: String, @HeaderMap headers: Map<String, String>? = null)
+    @PUT ("/service/platform/content/v1.0/company/{company_id}/metaobjects/{id}")
+    suspend fun updateCustomObject(@Path("company_id") companyId: String, @Path("id") id: String,@Body body: CustomObjectRequestSchema, @HeaderMap headers: Map<String, String>? = null)
+    : Response<CustomObjectSchema>
+    
+    @DELETE ("/service/platform/content/v1.0/company/{company_id}/metaobjects/{id}")
+    suspend fun deleteCustomObject(@Path("company_id") companyId: String, @Path("id") id: String, @HeaderMap headers: Map<String, String>? = null)
     : Response<CustomDataDeleteSchema>
     
-    @PUT ("/service/platform/content/v2.0/company/{company_id}/customobjects/definition/{definition_slug}/entries/{slug}")
-    suspend fun updateCustomObjectBySlug(@Path("company_id") companyId: String, @Path("definition_slug") definitionSlug: String, @Path("slug") slug: String,@Body body: CustomObjectRequestSchemaWithoutId, @HeaderMap headers: Map<String, String>? = null)
-    : Response<CustomObjectBySlugSchema>
-    
     @GET ("/service/platform/content/v1.0/company/{company_id}/metaobjects/jobs")
-    suspend fun getJobs(@Path("company_id") companyId: String, @Query("page_no") pageNo: String, @Query("page_size") pageSize: String, @Query("action_type") actionType: String, @HeaderMap headers: Map<String, String>? = null)
+    suspend fun getJobs(@Path("company_id") companyId: String, @Query("page") page: String, @Query("page_size") pageSize: String, @Query("action_type") actionType: String, @HeaderMap headers: Map<String, String>? = null)
     : Response<CustomObjectBulkEntry>
     
-    @POST ("/service/platform/content/v2.0/company/{company_id}/customobjects/definition/{slug}/bulk/upload")
-    suspend fun importCustomObjectEntriesBySlug(@Path("company_id") companyId: String, @Path("slug") slug: String,@Body body: CustomObjectBulkSchema, @HeaderMap headers: Map<String, String>? = null)
-    : Response<CustomObjectEntryBulkUploadDetails>
+    @POST ("/service/platform/content/v1.0/company/{company_id}/metaobjects/bulk/{definition_id}/upload")
+    suspend fun importCustomObjectEntries(@Path("company_id") companyId: String, @Path("definition_id") definitionId: String,@Body body: CustomObjectBulkSchema, @HeaderMap headers: Map<String, String>? = null)
+    : Response<CustomObjectEntryBulkUploadResponse>
     
-    @GET ("/service/platform/content/v2.0/company/{company_id}/customobjects/definition/{slug}/bulk/download")
-    suspend fun exportCustomObjectEntriesBySlug(@Path("company_id") companyId: String, @Path("slug") slug: String, @HeaderMap headers: Map<String, String>? = null)
+    @GET ("/service/platform/content/v1.0/company/{company_id}/metaobjects/bulk/{definition_id}/download")
+    suspend fun exportCustomObjectEntries(@Path("company_id") companyId: String, @Path("definition_id") definitionId: String, @HeaderMap headers: Map<String, String>? = null)
     : Response<CustomObjectBulkEntryInitiateDownload>
     
-    @GET ("/service/platform/content/v2.0/company/{company_id}/customobjects/definition/{slug}/bulk/sample")
-    suspend fun sampleCustomObjectBulkEntryBySlug(@Path("company_id") companyId: String, @Path("slug") slug: String, @HeaderMap headers: Map<String, String>? = null)
+    @GET ("/service/platform/content/v1.0/company/{company_id}/metaobjects/bulk/{definition_id}/sample")
+    suspend fun sampleCustomObjectBulkEntry(@Path("company_id") companyId: String, @Path("definition_id") definitionId: String, @HeaderMap headers: Map<String, String>? = null)
     : Response<ResponseBody>
     
     @GET ("/service/platform/content/v1.0/company/{company_id}/application/{application_id}/metafields/types")
@@ -437,92 +421,104 @@ interface ContentApiList {
     suspend fun getAppResources(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @HeaderMap headers: Map<String, String>? = null)
     : Response<ResourcesSchema>
     
-    @GET ("/service/platform/content/v2.0/company/{company_id}/application/{application_id}/customfields/definition")
-    suspend fun getAppCustomFieldDefinitions(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Query("page_no") pageNo: String, @Query("page_size") pageSize: String, @Query("resources") resources: String?, @Query("types") types: String?, @Query("search") search: String?, @Query("slugs") slugs: String?, @Query("namespaces") namespaces: String?, @HeaderMap headers: Map<String, String>? = null)
-    : Response<CustomFieldDefinitionsSchema>
+    @GET ("/service/platform/content/v1.0/company/{company_id}/application/{application_id}/metafields/definitions")
+    suspend fun getAppCustomFieldDefinitions(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Query("page_no") pageNo: String, @Query("page_size") pageSize: String, @Query("resources") resources: String?, @Query("types") types: String?, @Query("search") search: String?, @Query("slugs") slugs: String?, @HeaderMap headers: Map<String, String>? = null)
+    : Response<ApplicationCustomFieldDefinitionsSchema>
     
-    @GET ("/service/platform/content/v2.0/company/{company_id}/application/{application_id}/customfields/resource/{resource}/definition")
-    suspend fun getAppCustomFieldDefinitionByResource(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Query("page_no") pageNo: String, @Query("page_size") pageSize: String, @Path("resource") resource: String, @Query("types") types: String?, @Query("search") search: String?, @Query("slugs") slugs: String?, @Query("namespaces") namespaces: String?, @HeaderMap headers: Map<String, String>? = null)
-    : Response<CustomFieldDefinitionsSchema>
-    
-    @POST ("/service/platform/content/v2.0/company/{company_id}/application/{application_id}/customfields/resource/{resource}/definition")
-    suspend fun createAppCustomFieldDefinition(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Path("resource") resource: String,@Body body: CustomFieldDefinitionRequestSchema, @HeaderMap headers: Map<String, String>? = null)
+    @POST ("/service/platform/content/v1.0/company/{company_id}/application/{application_id}/metafields/definitions")
+    suspend fun createAppCustomFieldDefinition(@Path("company_id") companyId: String, @Path("application_id") applicationId: String,@Body body: CustomFieldDefinitionRequestSchema, @HeaderMap headers: Map<String, String>? = null)
     : Response<CustomFieldDefinitionDetailResSchema>
     
-    @GET ("/service/platform/content/v2.0/company/{company_id}/application/{application_id}/customfields/resource/{resource}/namespace/{namespace}/definition/{slug}")
-    suspend fun getAppCustomFieldDefinitionBySlug(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Path("slug") slug: String, @Path("resource") resource: String, @Path("namespace") namespace: String, @HeaderMap headers: Map<String, String>? = null)
-    : Response<MetaFieldDefinitionDetailResSchema>
-    
-    @PUT ("/service/platform/content/v2.0/company/{company_id}/application/{application_id}/customfields/resource/{resource}/namespace/{namespace}/definition/{slug}")
-    suspend fun updateAppCustomFieldDefinitionBySlug(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Path("slug") slug: String, @Path("resource") resource: String, @Path("namespace") namespace: String,@Body body: CustomFieldDefinitionRequestSchema, @HeaderMap headers: Map<String, String>? = null)
+    @GET ("/service/platform/content/v1.0/company/{company_id}/application/{application_id}/metafields/definitions/{id}")
+    suspend fun getAppCustomFieldDefinition(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Path("id") id: String, @HeaderMap headers: Map<String, String>? = null)
     : Response<CustomFieldDefinitionDetailResSchema>
     
-    @DELETE ("/service/platform/content/v2.0/company/{company_id}/application/{application_id}/customfields/resource/{resource}/namespace/{namespace}/definition/{slug}")
-    suspend fun deleteAppCustomFieldDefinitionBySlug(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Path("slug") slug: String, @Path("resource") resource: String, @Path("namespace") namespace: String, @HeaderMap headers: Map<String, String>? = null)
+    @PUT ("/service/platform/content/v1.0/company/{company_id}/application/{application_id}/metafields/definitions/{id}")
+    suspend fun updateAppCustomFieldDefinition(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Path("id") id: String,@Body body: CustomFieldDefinitionRequestSchema, @HeaderMap headers: Map<String, String>? = null)
+    : Response<CustomFieldDefinitionDetailResSchema>
+    
+    @DELETE ("/service/platform/content/v1.0/company/{company_id}/application/{application_id}/metafields/definitions/{id}")
+    suspend fun deleteAppCustomFieldDefinition(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Path("id") id: String, @HeaderMap headers: Map<String, String>? = null)
     : Response<CustomDataDeleteSchema>
     
-    @GET ("/service/platform/content/v2.0/company/{company_id}/application/{application_id}/customfields/resource/{resource}/{resource_slug}")
-    suspend fun getAppCustomFieldsByResourceSlug(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Path("resource") resource: String, @Path("resource_slug") resourceSlug: String, @HeaderMap headers: Map<String, String>? = null)
+    @GET ("/service/platform/content/v1.0/company/{company_id}/application/{application_id}/metafields/{resource}")
+    suspend fun getAppCustomFields(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Path("resource") resource: String, @HeaderMap headers: Map<String, String>? = null)
+    : Response<CustomFieldsResponseSchema>
+    
+    @GET ("/service/platform/content/v1.0/company/{company_id}/application/{application_id}/metafields/{resource}/{resource_id}")
+    suspend fun getAppCustomFieldsByResourceId(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Path("resource") resource: String, @Path("resource_id") resourceId: String, @HeaderMap headers: Map<String, String>? = null)
     : Response<CustomFieldsResponseByResourceIdSchema>
     
-    @PUT ("/service/platform/content/v2.0/company/{company_id}/application/{application_id}/customfields/resource/{resource}/{resource_slug}")
-    suspend fun updateAppCustomFieldByResourceSlug(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Path("resource") resource: String, @Path("resource_slug") resourceSlug: String,@Body body: CustomFieldRequestSchema, @HeaderMap headers: Map<String, String>? = null)
+    @POST ("/service/platform/content/v1.0/company/{company_id}/application/{application_id}/metafields/{resource}/{resource_id}")
+    suspend fun createAppCustomFieldByResourceId(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Path("resource") resource: String, @Path("resource_id") resourceId: String,@Body body: CustomFieldRequestSchema, @HeaderMap headers: Map<String, String>? = null)
     : Response<CustomFieldsResponseByResourceIdSchema>
     
-    @POST ("/service/platform/content/v2.0/company/{company_id}/application/{application_id}/customobjects/definition")
+    @PUT ("/service/platform/content/v1.0/company/{company_id}/application/{application_id}/metafields/{resource}/{resource_id}")
+    suspend fun updateAppCustomFieldByResourceId(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Path("resource") resource: String, @Path("resource_id") resourceId: String,@Body body: CustomFieldRequestSchema, @HeaderMap headers: Map<String, String>? = null)
+    : Response<CustomFieldsResponseByResourceIdSchema>
+    
+    @DELETE ("/service/platform/content/v1.0/company/{company_id}/application/{application_id}/metafields/{resource}/{resource_id}")
+    suspend fun deleteAppCustomFieldsByResourceId(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Path("resource") resource: String, @Path("resource_id") resourceId: String, @Query("ids") ids: String, @HeaderMap headers: Map<String, String>? = null)
+    : Response<CustomFieldsDeleteSchema>
+    
+    @GET ("/service/platform/content/v1.0/company/{company_id}/application/{application_id}/metafields/jobs")
+    suspend fun getAppCustomFieldJobs(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Query("page") page: String, @Query("page_size") pageSize: String, @Query("action_type") actionType: String, @HeaderMap headers: Map<String, String>? = null)
+    : Response<CustomFieldBulkEntry>
+    
+    @POST ("/service/platform/content/v1.0/company/{company_id}/application/{application_id}/metaobjects/definitions")
     suspend fun createAppCustomObjectDefinition(@Path("company_id") companyId: String, @Path("application_id") applicationId: String,@Body body: CustomObjectDefinitionRequestSchema, @HeaderMap headers: Map<String, String>? = null)
-    : Response<CustomObjectDefinitionSlugSchema>
+    : Response<CustomObjectDefinitionSchema>
     
-    @GET ("/service/platform/content/v2.0/company/{company_id}/application/{application_id}/customobjects/definition")
+    @GET ("/service/platform/content/v1.0/company/{company_id}/application/{application_id}/metaobjects/definitions")
     suspend fun getAppCustomObjectDefinitions(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Query("page_no") pageNo: String, @Query("page_size") pageSize: String, @Query("search") search: String?, @HeaderMap headers: Map<String, String>? = null)
     : Response<CustomObjectDefinitionsSchema>
     
-    @GET ("/service/platform/content/v2.0/company/{company_id}/application/{application_id}/customobjects/definition/{slug}")
-    suspend fun getAppCustomObjectDefinitionBySlug(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Path("slug") slug: String, @HeaderMap headers: Map<String, String>? = null)
-    : Response<CustomObjectDefinitionSlugSchema>
+    @GET ("/service/platform/content/v1.0/company/{company_id}/application/{application_id}/metaobjects/definitions/{id}")
+    suspend fun getAppCustomObjectDefinition(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Path("id") id: String, @HeaderMap headers: Map<String, String>? = null)
+    : Response<CustomObjectDefinitionSchema>
     
-    @PUT ("/service/platform/content/v2.0/company/{company_id}/application/{application_id}/customobjects/definition/{slug}")
-    suspend fun updateAppCustomObjectDefinitionBySlug(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Path("slug") slug: String,@Body body: CustomObjectDefinitionUpdateRequestSchema, @HeaderMap headers: Map<String, String>? = null)
-    : Response<CustomObjectDefinitionSlugSchema>
+    @PUT ("/service/platform/content/v1.0/company/{company_id}/application/{application_id}/metaobjects/definitions/{id}")
+    suspend fun updateAppCustomObjectDefinition(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Path("id") id: String,@Body body: CustomObjectDefinitionUpdateRequestSchema, @HeaderMap headers: Map<String, String>? = null)
+    : Response<CustomObjectDefinitionSchema>
     
-    @DELETE ("/service/platform/content/v2.0/company/{company_id}/application/{application_id}/customobjects/definition/{slug}")
-    suspend fun deleteAppCustomObjectDefinitionBySlug(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Path("slug") slug: String, @HeaderMap headers: Map<String, String>? = null)
+    @DELETE ("/service/platform/content/v1.0/company/{company_id}/application/{application_id}/metaobjects/definitions/{id}")
+    suspend fun deleteAppCustomObjectDefinition(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Path("id") id: String, @HeaderMap headers: Map<String, String>? = null)
     : Response<CustomObjectDefinitionDeleteResponseSchema>
     
-    @GET ("/service/platform/content/v2.0/company/{company_id}/application/{application_id}/customobjects/definition/{definition_slug}/entries")
-    suspend fun getAppCustomObjectsBySlug(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Query("page_no") pageNo: String, @Query("page_size") pageSize: String, @Path("definition_slug") definitionSlug: String, @HeaderMap headers: Map<String, String>? = null)
+    @GET ("/service/platform/content/v1.0/company/{company_id}/application/{application_id}/metaobjects")
+    suspend fun getAppCustomObjects(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Query("definition_id") definitionId: String?, @Query("page_no") pageNo: String, @Query("page_size") pageSize: String, @HeaderMap headers: Map<String, String>? = null)
     : Response<CustomObjectsSchema>
     
-    @POST ("/service/platform/content/v2.0/company/{company_id}/application/{application_id}/customobjects/definition/{definition_slug}/entries")
-    suspend fun createAppCustomObjectBySlug(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Path("definition_slug") definitionSlug: String,@Body body: CustomObjectRequestSchemaWithoutId, @HeaderMap headers: Map<String, String>? = null)
-    : Response<CustomObjectSchema>
+    @POST ("/service/platform/content/v1.0/company/{company_id}/application/{application_id}/metaobjects")
+    suspend fun createAppCustomObject(@Path("company_id") companyId: String, @Path("application_id") applicationId: String,@Body body: CustomObjectRequestSchema, @HeaderMap headers: Map<String, String>? = null)
+    : Response<CustomObjectApplicationSchema>
     
-    @GET ("/service/platform/content/v2.0/company/{company_id}/application/{application_id}/customobjects/definition/{definition_slug}/entries/{slug}")
-    suspend fun getAppCustomObjectBySlug(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Path("definition_slug") definitionSlug: String, @Path("slug") slug: String, @HeaderMap headers: Map<String, String>? = null)
-    : Response<CustomObjectBySlugSchema>
+    @GET ("/service/platform/content/v1.0/company/{company_id}/application/{application_id}/metaobjects/{id}")
+    suspend fun getAppCustomObject(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Path("id") id: String, @HeaderMap headers: Map<String, String>? = null)
+    : Response<CustomObjectByIdSchema>
     
-    @DELETE ("/service/platform/content/v2.0/company/{company_id}/application/{application_id}/customobjects/definition/{definition_slug}/entries/{slug}")
-    suspend fun deleteAppCustomObjectBySlug(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Path("definition_slug") definitionSlug: String, @Path("slug") slug: String, @HeaderMap headers: Map<String, String>? = null)
+    @PUT ("/service/platform/content/v1.0/company/{company_id}/application/{application_id}/metaobjects/{id}")
+    suspend fun updateAppCustomObject(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Path("id") id: String,@Body body: CustomObjectRequestSchema, @HeaderMap headers: Map<String, String>? = null)
+    : Response<CustomObjectApplicationSchema>
+    
+    @DELETE ("/service/platform/content/v1.0/company/{company_id}/application/{application_id}/metaobjects/{id}")
+    suspend fun deleteAppCustomObject(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Path("id") id: String, @HeaderMap headers: Map<String, String>? = null)
     : Response<CustomDataDeleteSchema>
     
-    @PUT ("/service/platform/content/v2.0/company/{company_id}/application/{application_id}/customobjects/definition/{definition_slug}/entries/{slug}")
-    suspend fun updateAppCustomObjectBySlug(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Path("definition_slug") definitionSlug: String, @Path("slug") slug: String,@Body body: CustomObjectRequestSchemaWithoutId, @HeaderMap headers: Map<String, String>? = null)
-    : Response<CustomObjectBySlugSchema>
-    
     @GET ("/service/platform/content/v1.0/company/{company_id}/application/{application_id}/metaobjects/jobs")
-    suspend fun getAppJobs(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Query("page_no") pageNo: String, @Query("page_size") pageSize: String, @Query("action_type") actionType: String, @HeaderMap headers: Map<String, String>? = null)
+    suspend fun getAppJobs(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Query("page") page: String, @Query("page_size") pageSize: String, @Query("action_type") actionType: String, @HeaderMap headers: Map<String, String>? = null)
     : Response<CustomObjectBulkEntry>
     
-    @POST ("/service/platform/content/v2.0/company/{company_id}/application/{application_id}/customobjects/definition/{slug}/bulk/upload")
-    suspend fun importAppCustomObjectEntriesBySlug(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Path("slug") slug: String,@Body body: CustomObjectBulkSchema, @HeaderMap headers: Map<String, String>? = null)
-    : Response<CustomObjectEntryBulkUploadDetails>
+    @POST ("/service/platform/content/v1.0/company/{company_id}/application/{application_id}/metaobjects/bulk/{definition_id}/upload")
+    suspend fun importAppCustomObjectEntries(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Path("definition_id") definitionId: String,@Body body: CustomObjectBulkSchema, @HeaderMap headers: Map<String, String>? = null)
+    : Response<CustomObjectEntryBulkUploadResponse>
     
-    @GET ("/service/platform/content/v2.0/company/{company_id}/application/{application_id}/customobjects/definition/{slug}/bulk/download")
-    suspend fun exportAppCustomObjectEntriesBySlug(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Path("slug") slug: String, @HeaderMap headers: Map<String, String>? = null)
+    @GET ("/service/platform/content/v1.0/company/{company_id}/application/{application_id}/metaobjects/bulk/{definition_id}/download")
+    suspend fun exportAppCustomObjectEntries(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Path("definition_id") definitionId: String, @HeaderMap headers: Map<String, String>? = null)
     : Response<CustomObjectBulkEntryInitiateDownload>
     
-    @GET ("/service/platform/content/v2.0/company/{company_id}/application/{application_id}/customobjects/definition/{slug}/bulk/sample")
-    suspend fun sampleAppCustomObjectBulkEntryBySlug(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Path("slug") slug: String, @HeaderMap headers: Map<String, String>? = null)
+    @GET ("/service/platform/content/v1.0/company/{company_id}/application/{application_id}/metaobjects/bulk/{definition_id}/sample")
+    suspend fun sampleAppCustomObjectBulkEntry(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Path("definition_id") definitionId: String, @HeaderMap headers: Map<String, String>? = null)
     : Response<ResponseBody>
     
 }

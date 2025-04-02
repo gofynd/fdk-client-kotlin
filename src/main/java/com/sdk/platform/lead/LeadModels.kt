@@ -14,10 +14,10 @@ import com.google.gson.annotations.SerializedName
 
              
 /*
-    Model: GeneralConfigResponseSchema
+    Model: GeneralConfigResponse
 */
 @Parcelize
-data class GeneralConfigResponseSchema(
+data class GeneralConfigResponse(
     
     
     
@@ -528,6 +528,33 @@ data class AgentChangePayload(
 
              
 /*
+    Model: NotifyUser
+*/
+@Parcelize
+data class NotifyUser(
+    
+    
+    
+    @SerializedName("country_code")
+    var countryCode: String?=null,
+    
+    @SerializedName("phone_number")
+    var phoneNumber: String?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
     Model: Filter
 */
 @Parcelize
@@ -903,6 +930,50 @@ data class Status(
 
              
 /*
+    Model: TicketFeedbackList
+*/
+@Parcelize
+data class TicketFeedbackList(
+    
+    
+    
+    @SerializedName("items")
+    var items: ArrayList<TicketFeedback>?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: TicketFeedbackPayload
+*/
+@Parcelize
+data class TicketFeedbackPayload(
+    
+    
+    
+    @SerializedName("form_response")
+    var formResponse: @RawValue HashMap<String,Any>?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
     Model: SubmitButton
 */
 @Parcelize
@@ -1167,6 +1238,68 @@ data class FeedbackResponseItem(
     var key: String?=null
     
 ): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: TicketFeedback
+*/
+@Parcelize
+data class TicketFeedback(
+    
+    
+    
+    @SerializedName("_id")
+    var id: String?=null,
+    
+    @SerializedName("ticket_id")
+    var ticketId: String?=null,
+    
+    @SerializedName("company_id")
+    var companyId: String?=null,
+    
+    @SerializedName("response")
+    var response: ArrayList<FeedbackResponseItem>?=null,
+    
+    @SerializedName("category")
+    var category: String?=null,
+    
+    @SerializedName("user")
+    var user: @RawValue HashMap<String,Any>?=null,
+    
+    @SerializedName("updated_at")
+    var updatedAt: String?=null,
+    
+    @SerializedName("created_at")
+    var createdAt: String?=null,
+    
+    @SerializedName("__v")
+    var v: Double?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     
     
     

@@ -11,14 +11,14 @@ interface ConfigurationApiList {
     
     @GET ("/service/platform/configuration/v1.0/company/{company_id}/application/{application_id}/feature")
     suspend fun getAppFeatures(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @HeaderMap headers: Map<String, String>? = null)
-    : Response<AppFeatureResponseSchema>
+    : Response<AppFeatureResponse>
     
     @POST ("/service/platform/configuration/v1.0/company/{company_id}/application/{application_id}/feature")
-    suspend fun updateAppFeatures(@Path("company_id") companyId: String, @Path("application_id") applicationId: String,@Body body: AppFeatureRequestSchema, @HeaderMap headers: Map<String, String>? = null)
+    suspend fun updateAppFeatures(@Path("company_id") companyId: String, @Path("application_id") applicationId: String,@Body body: AppFeatureRequest, @HeaderMap headers: Map<String, String>? = null)
     : Response<AppFeature>
     
     @PATCH ("/service/platform/configuration/v1.0/company/{company_id}/application/{application_id}/feature")
-    suspend fun modifyAppFeatures(@Path("company_id") companyId: String, @Path("application_id") applicationId: String,@Body body: AppFeatureRequestSchema, @HeaderMap headers: Map<String, String>? = null)
+    suspend fun modifyAppFeatures(@Path("company_id") companyId: String, @Path("application_id") applicationId: String,@Body body: AppFeatureRequest, @HeaderMap headers: Map<String, String>? = null)
     : Response<AppFeature>
     
     @GET ("/service/platform/configuration/v1.0/company/{company_id}/application/{application_id}/detail")
@@ -39,19 +39,19 @@ interface ConfigurationApiList {
     
     @GET ("/service/platform/configuration/v1.0/company/{company_id}/application/{application_id}/token")
     suspend fun getAppApiTokens(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @HeaderMap headers: Map<String, String>? = null)
-    : Response<TokenResponseSchema>
+    : Response<TokenResponse>
     
     @POST ("/service/platform/configuration/v1.0/company/{company_id}/application/{application_id}/token")
-    suspend fun updateAppApiTokens(@Path("company_id") companyId: String, @Path("application_id") applicationId: String,@Body body: TokenResponseSchema, @HeaderMap headers: Map<String, String>? = null)
-    : Response<TokenResponseSchema>
+    suspend fun updateAppApiTokens(@Path("company_id") companyId: String, @Path("application_id") applicationId: String,@Body body: TokenResponse, @HeaderMap headers: Map<String, String>? = null)
+    : Response<TokenResponse>
     
     @GET ("/service/platform/configuration/v1.0/company/{company_id}/application/{application_id}/companies")
     suspend fun getAppCompanies(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Query("uid") uid: Int?, @Query("page_no") pageNo: Int?, @Query("page_size") pageSize: Int?, @HeaderMap headers: Map<String, String>? = null)
-    : Response<CompaniesResponseSchema>
+    : Response<CompaniesResponse>
     
     @GET ("/service/platform/configuration/v1.0/company/{company_id}/application/{application_id}/stores")
     suspend fun getAppStores(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Query("page_no") pageNo: Int?, @Query("page_size") pageSize: Int?, @HeaderMap headers: Map<String, String>? = null)
-    : Response<StoresResponseSchema>
+    : Response<StoresResponse>
     
     @GET ("/service/platform/configuration/v1.0/company/{company_id}/application/{application_id}/configuration")
     suspend fun getInventoryConfig(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @HeaderMap headers: Map<String, String>? = null)
@@ -83,10 +83,10 @@ interface ConfigurationApiList {
     
     @GET ("/service/platform/configuration/v1.0/company/{company_id}/application/{application_id}/currency/supported")
     suspend fun getAppSupportedCurrency(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @HeaderMap headers: Map<String, String>? = null)
-    : Response<AppCurrencyResponseSchema>
+    : Response<AppCurrencyResponse>
     
     @POST ("/service/platform/configuration/v2.0/company/{company_id}/application/{application_id}/ordering-store/stores/filter")
-    suspend fun getOrderingStoresByFilter(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Query("page_no") pageNo: Int?, @Query("page_size") pageSize: Int?,@Body body: FilterOrderingStoreRequestSchemaSchema, @HeaderMap headers: Map<String, String>? = null)
+    suspend fun getOrderingStoresByFilter(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Query("page_no") pageNo: Int?, @Query("page_size") pageSize: Int?,@Body body: FilterOrderingStoreRequest, @HeaderMap headers: Map<String, String>? = null)
     : Response<OrderingStores>
     
     @POST ("/service/platform/configuration/v1.0/company/{company_id}/application/{application_id}/ordering-store")
@@ -99,15 +99,15 @@ interface ConfigurationApiList {
     
     @GET ("/service/platform/configuration/v2.0/company/{company_id}/application/{application_id}/ordering-store/staff-stores")
     suspend fun getStaffOrderingStores(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Query("page_no") pageNo: Int?, @Query("page_size") pageSize: Int?, @Query("q") q: String?, @HeaderMap headers: Map<String, String>? = null)
-    : Response<OrderingStoresResponseSchema>
+    : Response<OrderingStoresResponse>
     
     @POST ("/service/platform/configuration/v1.0/company/{company_id}/application/{application_id}/ordering-store/select")
-    suspend fun getOrderingStoreCookie(@Path("company_id") companyId: String, @Path("application_id") applicationId: String,@Body body: OrderingStoreSelectRequestSchema, @HeaderMap headers: Map<String, String>? = null)
-    : Response<SuccessMessageResponseSchema>
+    suspend fun getOrderingStoreCookie(@Path("company_id") companyId: String, @Path("application_id") applicationId: String,@Body body: OrderingStoreSelectRequest, @HeaderMap headers: Map<String, String>? = null)
+    : Response<SuccessMessageResponse>
     
     @DELETE ("/service/platform/configuration/v1.0/company/{company_id}/application/{application_id}/ordering-store/select")
     suspend fun removeOrderingStoreCookie(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @HeaderMap headers: Map<String, String>? = null)
-    : Response<SuccessMessageResponseSchema>
+    : Response<SuccessMessageResponse>
     
     @GET ("/service/platform/configuration/v2.0/company/{company_id}/application/{application_id}/ordering-store/stores/{store_id}")
     suspend fun getStoreDetailById(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Path("store_id") storeId: String, @HeaderMap headers: Map<String, String>? = null)
@@ -119,31 +119,31 @@ interface ConfigurationApiList {
     
     @GET ("/service/platform/configuration/v1.0/company/{company_id}/application/{application_id}/domain")
     suspend fun getDomains(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @HeaderMap headers: Map<String, String>? = null)
-    : Response<DomainsResponseSchema>
+    : Response<DomainsResponse>
     
     @POST ("/service/platform/configuration/v1.0/company/{company_id}/application/{application_id}/domain")
-    suspend fun addDomain(@Path("company_id") companyId: String, @Path("application_id") applicationId: String,@Body body: DomainAddRequestSchema, @HeaderMap headers: Map<String, String>? = null)
+    suspend fun addDomain(@Path("company_id") companyId: String, @Path("application_id") applicationId: String,@Body body: DomainAddRequest, @HeaderMap headers: Map<String, String>? = null)
     : Response<Domain>
     
     @DELETE ("/service/platform/configuration/v1.0/company/{company_id}/application/{application_id}/domain/{domain_id}")
     suspend fun removeDomainById(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Path("domain_id") domainId: String, @HeaderMap headers: Map<String, String>? = null)
-    : Response<SuccessMessageResponseSchema>
+    : Response<SuccessMessageResponse>
     
     @POST ("/service/platform/configuration/v1.0/company/{company_id}/application/{application_id}/domain/set-domain")
-    suspend fun changeDomainType(@Path("company_id") companyId: String, @Path("application_id") applicationId: String,@Body body: UpdateDomainTypeRequestSchema, @HeaderMap headers: Map<String, String>? = null)
-    : Response<DomainsResponseSchema>
+    suspend fun changeDomainType(@Path("company_id") companyId: String, @Path("application_id") applicationId: String,@Body body: UpdateDomainTypeRequest, @HeaderMap headers: Map<String, String>? = null)
+    : Response<DomainsResponse>
     
     @POST ("/service/platform/configuration/v1.0/company/{company_id}/application/{application_id}/domain/domain-status")
-    suspend fun getDomainStatus(@Path("company_id") companyId: String, @Path("application_id") applicationId: String,@Body body: DomainStatusRequestSchema, @HeaderMap headers: Map<String, String>? = null)
-    : Response<DomainStatusResponseSchema>
+    suspend fun getDomainStatus(@Path("company_id") companyId: String, @Path("application_id") applicationId: String,@Body body: DomainStatusRequest, @HeaderMap headers: Map<String, String>? = null)
+    : Response<DomainStatusResponse>
     
     @POST ("/service/platform/configuration/v1.0/company/{company_id}/application")
-    suspend fun createApplication(@Path("company_id") companyId: String,@Body body: CreateApplicationRequestSchema, @HeaderMap headers: Map<String, String>? = null)
-    : Response<CreateAppResponseSchema>
+    suspend fun createApplication(@Path("company_id") companyId: String,@Body body: CreateApplicationRequest, @HeaderMap headers: Map<String, String>? = null)
+    : Response<CreateAppResponse>
     
     @GET ("/service/platform/configuration/v1.0/company/{company_id}/application")
     suspend fun getApplications(@Path("company_id") companyId: String, @Query("page_no") pageNo: Int?, @Query("page_size") pageSize: Int?, @Query("q") q: String?, @HeaderMap headers: Map<String, String>? = null)
-    : Response<ApplicationsResponseSchema>
+    : Response<ApplicationsResponse>
     
     @GET ("/service/platform/configuration/v1.0/company/{company_id}/application/{application_id}")
     suspend fun getApplicationById(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @HeaderMap headers: Map<String, String>? = null)
@@ -155,7 +155,7 @@ interface ConfigurationApiList {
     
     @GET ("/service/platform/configuration/v1.0/company/{company_id}/currencies")
     suspend fun getCurrencies(@Path("company_id") companyId: String, @HeaderMap headers: Map<String, String>? = null)
-    : Response<CurrenciesResponseSchema>
+    : Response<CurrenciesResponse>
     
     @POST ("/service/platform/configuration/v1.0/company/{company_id}/currencies")
     suspend fun createCurrency(@Path("company_id") companyId: String,@Body body: Currency, @HeaderMap headers: Map<String, String>? = null)
@@ -170,24 +170,24 @@ interface ConfigurationApiList {
     : Response<Currency>
     
     @POST ("/service/platform/configuration/v1.0/company/{company_id}/domain/suggestions")
-    suspend fun getDomainAvailibility(@Path("company_id") companyId: String,@Body body: DomainSuggestionsRequestSchema, @HeaderMap headers: Map<String, String>? = null)
-    : Response<DomainSuggestionsResponseSchema>
+    suspend fun getDomainAvailibility(@Path("company_id") companyId: String,@Body body: DomainSuggestionsRequest, @HeaderMap headers: Map<String, String>? = null)
+    : Response<DomainSuggestionsResponse>
     
     @POST ("/service/platform/configuration/v1.0/company/{company_id}/application/{application_id}/domain/suggestions")
-    suspend fun getApplicationDomainAvailibility(@Path("company_id") companyId: String, @Path("application_id") applicationId: String,@Body body: DomainSuggestionsRequestSchema, @HeaderMap headers: Map<String, String>? = null)
-    : Response<DomainSuggestionsResponseSchema>
+    suspend fun getApplicationDomainAvailibility(@Path("company_id") companyId: String, @Path("application_id") applicationId: String,@Body body: DomainSuggestionsRequest, @HeaderMap headers: Map<String, String>? = null)
+    : Response<DomainSuggestionsResponse>
     
     @GET ("/service/platform/configuration/v1.0/company/{company_id}/inventory/brands-by-companies")
     suspend fun getBrandsByCompany(@Path("company_id") companyId: String, @Query("q") q: String?, @HeaderMap headers: Map<String, String>? = null)
-    : Response<BrandsByCompanyResponseSchema>
+    : Response<BrandsByCompanyResponse>
     
     @POST ("/service/platform/configuration/v1.0/company/{company_id}/inventory/companies-by-brands")
-    suspend fun getCompanyByBrands(@Path("company_id") companyId: String, @Query("page_no") pageNo: Int?, @Query("page_size") pageSize: Int?,@Body body: CompanyByBrandsRequestSchema, @HeaderMap headers: Map<String, String>? = null)
-    : Response<CompanyByBrandsResponseSchema>
+    suspend fun getCompanyByBrands(@Path("company_id") companyId: String, @Query("page_no") pageNo: Int?, @Query("page_size") pageSize: Int?,@Body body: CompanyByBrandsRequest, @HeaderMap headers: Map<String, String>? = null)
+    : Response<CompanyByBrandsResponse>
     
     @POST ("/service/platform/configuration/v2.0/company/{company_id}/inventory/stores-by-brands")
-    suspend fun getStoreByBrands(@Path("company_id") companyId: String, @Query("page_no") pageNo: Int?, @Query("page_size") pageSize: Int?,@Body body: StoreByBrandsRequestSchema, @HeaderMap headers: Map<String, String>? = null)
-    : Response<StoreByBrandsResponseSchema>
+    suspend fun getStoreByBrands(@Path("company_id") companyId: String, @Query("page_no") pageNo: Int?, @Query("page_size") pageSize: Int?,@Body body: StoreByBrandsRequest, @HeaderMap headers: Map<String, String>? = null)
+    : Response<StoreByBrandsResponse>
     
     @GET ("/service/platform/configuration/v1.0/company/{company_id}/other-seller-applications")
     suspend fun getOtherSellerApplications(@Path("company_id") companyId: String, @Query("page_no") pageNo: Int?, @Query("page_size") pageSize: Int?, @HeaderMap headers: Map<String, String>? = null)
@@ -195,14 +195,14 @@ interface ConfigurationApiList {
     
     @GET ("/service/platform/configuration/v1.0/company/{company_id}/other-seller-applications/{app_id}")
     suspend fun getOtherSellerApplicationById(@Path("company_id") companyId: String, @Path("app_id") appId: String, @HeaderMap headers: Map<String, String>? = null)
-    : Response<OptedApplicationResponseSchema>
+    : Response<OptedApplicationResponse>
     
     @PUT ("/service/platform/configuration/v1.0/company/{company_id}/other-seller-applications/{app_id}/opt_out")
     suspend fun optOutFromApplication(@Path("company_id") companyId: String, @Path("app_id") appId: String,@Body body: OptOutInventory, @HeaderMap headers: Map<String, String>? = null)
-    : Response<SuccessMessageResponseSchema>
+    : Response<SuccessMessageResponse>
     
     @PUT ("/service/platform/configuration/v1.0/company/{company_id}/application/{application_id}/version")
-    suspend fun updateApplicationVersion(@Path("company_id") companyId: String, @Path("application_id") applicationId: String,@Body body: PlatformVersionRequestSchema, @HeaderMap headers: Map<String, String>? = null)
+    suspend fun updateApplicationVersion(@Path("company_id") companyId: String, @Path("application_id") applicationId: String,@Body body: PlatformVersionRequest, @HeaderMap headers: Map<String, String>? = null)
     : Response<PlatformVersion>
     
     @POST ("/service/platform/configuration/v1.0/company/{company_id}/application/{application_id}/tokens")
@@ -219,10 +219,10 @@ interface ConfigurationApiList {
     
     @GET ("/service/platform/configuration/v1.0/company/{company_id}/application/{application_id}/url-redirection")
     suspend fun getUrlRedirections(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @HeaderMap headers: Map<String, String>? = null)
-    : Response<UrlRedirectionResponseSchema>
+    : Response<UrlRedirectionResponse>
     
     @POST ("/service/platform/configuration/v1.0/company/{company_id}/application/{application_id}/url-redirection")
-    suspend fun createUrlRedirection(@Path("company_id") companyId: String, @Path("application_id") applicationId: String,@Body body: UrlRedirectionRequestSchema, @HeaderMap headers: Map<String, String>? = null)
+    suspend fun createUrlRedirection(@Path("company_id") companyId: String, @Path("application_id") applicationId: String,@Body body: UrlRedirectionRequest, @HeaderMap headers: Map<String, String>? = null)
     : Response<UrlRedirection>
     
     @GET ("/service/platform/configuration/v1.0/company/{company_id}/application/{application_id}/url-redirection/{redirection_domain_id}")
@@ -235,18 +235,14 @@ interface ConfigurationApiList {
     
     @DELETE ("/service/platform/configuration/v1.0/company/{company_id}/application/{application_id}/url-redirection/{redirection_domain_id}")
     suspend fun deleteUrlRedirection(@Path("redirection_domain_id") redirectionDomainId: String, @Path("company_id") companyId: String, @Path("application_id") applicationId: String, @HeaderMap headers: Map<String, String>? = null)
-    : Response<SuccessMessageResponseSchema>
+    : Response<SuccessMessageResponse>
     
     @GET ("/service/platform/configuration/v1.0/company/{company_id}/inventory/company/{company}")
     suspend fun getStoresForACompany(@Path("company_id") companyId: String, @Path("company") company: String, @HeaderMap headers: Map<String, String>? = null)
-    : Response<ListStoreResponseSchemaSchema>
+    : Response<ListStoreResponse>
     
     @GET ("/service/platform/configuration/v2.0/company/{company_id}/domain/options")
     suspend fun getDomainOptions(@Path("company_id") companyId: String, @HeaderMap headers: Map<String, String>? = null)
-    : Response<DomainOptionsResponseSchema>
-    
-    @GET ("/service/platform/configuration/v2.0/company/{company_id}/currency-exchange")
-    suspend fun getCurrencyExchangeRates(@Query("currency_code") currencyCode: String?, @Query("exchange_currency_code") exchangeCurrencyCode: String?, @Query("exchange_country_code") exchangeCountryCode: String?, @Path("company_id") companyId: String, @HeaderMap headers: Map<String, String>? = null)
-    : Response<CurrencyExchangeResponseV2>
+    : Response<DomainOptionsResponse>
     
 }

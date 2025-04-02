@@ -23,7 +23,7 @@ interface ContentApiList {
     
     @GET
     suspend fun getBlogs(@Url url1: String?    ,     @Query("page_no") pageNo: Int?, @Query("page_size") pageSize: Int?, @Query("tags") tags: String?, @Query("search") search: String?, @HeaderMap headers: Map<String, String>? = null)
-    : Response<BlogGetResponseSchema>
+    : Response<BlogGetResponse>
     
     
     @GET
@@ -68,7 +68,7 @@ interface ContentApiList {
     
     @GET
     suspend fun getNavigations(@Url url1: String?    ,   @Query("page_no") pageNo: Int?, @Query("page_size") pageSize: Int?, @HeaderMap headers: Map<String, String>? = null)
-    : Response<NavigationGetResponseSchema>
+    : Response<NavigationGetResponse>
     
     
     @GET
@@ -79,21 +79,6 @@ interface ContentApiList {
     @GET
     suspend fun getSEOMarkupSchemas(@Url url1: String?    ,   @Query("page_type") pageType: String?, @Query("active") active: Boolean?, @HeaderMap headers: Map<String, String>? = null)
     : Response<SeoSchemaComponent>
-    
-    
-    @GET
-    suspend fun getDefaultSitemapConfig(@Url url1: String?   , @HeaderMap headers: Map<String, String>? = null)
-    : Response<DefaultSitemapConfig>
-    
-    
-    @GET
-    suspend fun getSitemaps(@Url url1: String?    ,     @Query("page_no") pageNo: String, @Query("page_size") pageSize: String, @Query("is_active") isActive: Boolean?, @Query("name") name: String?, @HeaderMap headers: Map<String, String>? = null)
-    : Response<SitemapConfigurationList>
-    
-    
-    @GET
-    suspend fun getSitemap(@Url url1: String?    , @HeaderMap headers: Map<String, String>? = null)
-    : Response<SitemapConfig>
     
     
     @GET
@@ -108,7 +93,7 @@ interface ContentApiList {
     
     @GET
     suspend fun getPages(@Url url1: String?    ,   @Query("page_no") pageNo: Int?, @Query("page_size") pageSize: Int?, @HeaderMap headers: Map<String, String>? = null)
-    : Response<PageGetResponseSchema>
+    : Response<PageGetResponse>
     
     
     @GET
@@ -117,17 +102,32 @@ interface ContentApiList {
     
     
     @GET
-    suspend fun getCustomObjectBySlug(@Url url1: String?     , @HeaderMap headers: Map<String, String>? = null)
+    suspend fun getWellKnownUrl(@Url url1: String?    , @HeaderMap headers: Map<String, String>? = null)
+    : Response<WellKnownResponse>
+    
+    
+    @GET
+    suspend fun getCustomObject(@Url url1: String?    , @HeaderMap headers: Map<String, String>? = null)
     : Response<CustomObjectByIdSchema>
     
     
     @GET
-    suspend fun getCustomFieldsByResourceId(@Url url1: String?     , @HeaderMap headers: Map<String, String>? = null)
-    : Response<CustomFieldsResponseByResourceIdSchema>
+    suspend fun getCustomObjects(@Url url1: String?    ,       @Query("definition_id") definitionId: String?, @Query("page_no") pageNo: String, @Query("page_size") pageSize: String, @Query("type") type: String?, @Query("ids") ids: String?, @Query("search") search: String?, @HeaderMap headers: Map<String, String>? = null)
+    : Response<CustomObjectsSchema>
     
     
     @GET
-    suspend fun getWellKnownUrl(@Url url1: String?    , @HeaderMap headers: Map<String, String>? = null)
-    : Response<WellKnownResponseSchema>
+    suspend fun getCustomFieldDefinitions(@Url url1: String?   , @HeaderMap headers: Map<String, String>? = null)
+    : Response<CustomFieldDefinitionsSchema>
+    
+    
+    @GET
+    suspend fun getCustomFieldDefinition(@Url url1: String?    , @HeaderMap headers: Map<String, String>? = null)
+    : Response<CustomFieldDefinitionDetailResSchema>
+    
+    
+    @GET
+    suspend fun getCustomFields(@Url url1: String?     ,  @Query("resource_ids") resourceIds: String, @HeaderMap headers: Map<String, String>? = null)
+    : Response<CustomFieldsResponseByResourceIdSchema>
     
 }

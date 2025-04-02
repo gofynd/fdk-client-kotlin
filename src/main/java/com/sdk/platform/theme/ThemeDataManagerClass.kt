@@ -172,20 +172,20 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     }
     
     
-    suspend fun deletePage(themeId: String,pageValue: String, headers: Map<String, String> = emptyMap())
+    suspend fun updatePage(themeId: String,pageValue: String,body: AvailablePageSchema, headers: Map<String, String> = emptyMap())
     : Response<AvailablePageSchema>? {
         return if (config.oauthClient.isAccessTokenValid()) {
-                themeApiList?.deletePage(companyId = config.companyId ,applicationId = applicationId ,themeId = themeId,pageValue = pageValue, headers = headers)
+                themeApiList?.updatePage(companyId = config.companyId ,applicationId = applicationId ,themeId = themeId,pageValue = pageValue, body = body,headers = headers)
         } else {
             null
         }
     }
     
     
-    suspend fun updatePage(themeId: String,pageValue: String,socketId: String,body: AvailablePageSchema, headers: Map<String, String> = emptyMap())
+    suspend fun deletePage(themeId: String,pageValue: String, headers: Map<String, String> = emptyMap())
     : Response<AvailablePageSchema>? {
         return if (config.oauthClient.isAccessTokenValid()) {
-                themeApiList?.updatePage(companyId = config.companyId ,applicationId = applicationId ,themeId = themeId,pageValue = pageValue,socketId = socketId, body = body,headers = headers)
+                themeApiList?.deletePage(companyId = config.companyId ,applicationId = applicationId ,themeId = themeId,pageValue = pageValue, headers = headers)
         } else {
             null
         }
@@ -337,7 +337,7 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     
     
     suspend fun isUpgradable(themeId: String, headers: Map<String, String> = emptyMap())
-    : Response<ThemeUpgradable>? {
+    : Response<ThemeUpgradableResponse>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 themeApiList?.isUpgradable(companyId = config.companyId ,applicationId = applicationId ,themeId = themeId, headers = headers)
         } else {

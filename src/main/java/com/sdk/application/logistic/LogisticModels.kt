@@ -422,6 +422,65 @@ data class PromiseObject(
 
              
 /*
+    Model: DeliveryPromiseObject
+*/
+@Parcelize
+data class DeliveryPromiseObject(
+    
+    
+    
+    @SerializedName("min")
+    var min: String?=null,
+    
+    @SerializedName("max")
+    var max: String?=null,
+    
+    @SerializedName("message")
+    var message: String?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: JourneyPromiseObject
+*/
+@Parcelize
+data class JourneyPromiseObject(
+    
+    
+    
+    @SerializedName("journey")
+    var journey: String?=null,
+    
+    @SerializedName("delivery_promise")
+    var deliveryPromise: DeliveryPromiseObject?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
     Model: ShipmentCourierPartners
 */
 @Parcelize
@@ -855,6 +914,9 @@ data class Shipments(
     @SerializedName("promise")
     var promise: PromiseObject?=null,
     
+    @SerializedName("journey_wise_promise")
+    var journeyWisePromise: ArrayList<JourneyPromiseObject>?=null,
+    
     @SerializedName("tags")
     var tags: @RawValue ArrayList<HashMap<String,Any>>?=null,
     
@@ -892,6 +954,8 @@ data class Shipments(
     var error: ShipmentError?=null
     
 ): Parcelable {
+    
+    
     
     
     
@@ -1220,10 +1284,10 @@ data class GenerateShipmentsLocationArticles(
 
              
 /*
-    Model: GenerateShipmentsRequestSchema
+    Model: GenerateShipmentsRequest
 */
 @Parcelize
-data class GenerateShipmentsRequestSchema(
+data class GenerateShipmentsRequest(
     
     
     
@@ -1257,10 +1321,10 @@ data class GenerateShipmentsRequestSchema(
 
              
 /*
-    Model: GenerateShipmentsAndCourierPartnerResponseSchema
+    Model: GenerateShipmentsAndCourierPartnerResponse
 */
 @Parcelize
-data class GenerateShipmentsAndCourierPartnerResponseSchema(
+data class GenerateShipmentsAndCourierPartnerResponse(
     
     
     
@@ -1284,10 +1348,10 @@ data class GenerateShipmentsAndCourierPartnerResponseSchema(
 
              
 /*
-    Model: ListViewResponseSchemaV2
+    Model: ListViewResponseV2
 */
 @Parcelize
-data class ListViewResponseSchemaV2(
+data class ListViewResponseV2(
     
     
     
@@ -1633,7 +1697,7 @@ data class GeoAreaGetResponseBody(
     
     
     @SerializedName("items")
-    var items: ArrayList<GeoAreaItemResponseSchema>?=null,
+    var items: ArrayList<GeoAreaItemResponse>?=null,
     
     @SerializedName("page")
     var page: Page2?=null
@@ -1652,10 +1716,10 @@ data class GeoAreaGetResponseBody(
 
              
 /*
-    Model: GeoAreaItemResponseSchema
+    Model: GeoAreaItemResponse
 */
 @Parcelize
-data class GeoAreaItemResponseSchema(
+data class GeoAreaItemResponse(
     
     
     
@@ -1867,22 +1931,17 @@ data class Country(
 
              
 /*
-    Model: ServiceabilityZoneErrorResponseSchema
+    Model: ServiceabilityZoneErrorResponse
 */
 @Parcelize
-data class ServiceabilityZoneErrorResponseSchema(
+data class ServiceabilityZoneErrorResponse(
     
     
     
     @SerializedName("error")
-    var error: ArrayList<ServiceabilityErrorResponseSchema>?=null,
-    
-    @SerializedName("success")
-    var success: Boolean?=null
+    var error: ArrayList<ServiceabilityErrorResponse>?=null
     
 ): Parcelable {
-    
-    
     
     
     
@@ -1894,10 +1953,10 @@ data class ServiceabilityZoneErrorResponseSchema(
 
              
 /*
-    Model: ServiceabilityErrorResponseSchema
+    Model: ServiceabilityErrorResponse
 */
 @Parcelize
-data class ServiceabilityErrorResponseSchema(
+data class ServiceabilityErrorResponse(
     
     
     
@@ -1926,15 +1985,15 @@ data class ServiceabilityErrorResponseSchema(
 
              
 /*
-    Model: GetStoreResponseSchema
+    Model: GetStoreResponse
 */
 @Parcelize
-data class GetStoreResponseSchema(
+data class GetStoreResponse(
     
     
     
     @SerializedName("items")
-    var items: ArrayList<StoreItemResponseSchema>?=null,
+    var items: ArrayList<StoreItemResponse>?=null,
     
     @SerializedName("page")
     var page: Page?=null
@@ -1953,10 +2012,10 @@ data class GetStoreResponseSchema(
 
              
 /*
-    Model: StoreItemResponseSchema
+    Model: StoreItemResponse
 */
 @Parcelize
-data class StoreItemResponseSchema(
+data class StoreItemResponse(
     
     
     
@@ -2010,10 +2069,10 @@ data class StoreItemResponseSchema(
 
              
 /*
-    Model: ValidateAddressRequestSchema
+    Model: ValidateAddressRequest
 */
 @Parcelize
-data class ValidateAddressRequestSchema(
+data class ValidateAddressRequest(
     
     
     
@@ -2092,10 +2151,10 @@ data class ValidateAddressRequestSchema(
 
              
 /*
-    Model: PincodeParentsResponseSchema
+    Model: PincodeParentsResponse
 */
 @Parcelize
-data class PincodeParentsResponseSchema(
+data class PincodeParentsResponse(
     
     
     
@@ -2129,10 +2188,10 @@ data class PincodeParentsResponseSchema(
 
              
 /*
-    Model: PincodeMetaResponseSchema
+    Model: PincodeMetaResponse
 */
 @Parcelize
-data class PincodeMetaResponseSchema(
+data class PincodeMetaResponse(
     
     
     
@@ -2156,10 +2215,10 @@ data class PincodeMetaResponseSchema(
 
              
 /*
-    Model: PincodeErrorResponseSchema
+    Model: PincodeErrorSchemaResponse
 */
 @Parcelize
-data class PincodeErrorResponseSchema(
+data class PincodeErrorSchemaResponse(
     
     
     
@@ -2215,27 +2274,27 @@ data class PincodeLatLongData(
 
              
 /*
-    Model: PincodeDataResponseSchema
+    Model: PincodeDataResponse
 */
 @Parcelize
-data class PincodeDataResponseSchema(
+data class PincodeDataResponse(
     
     
     
     @SerializedName("parents")
-    var parents: ArrayList<PincodeParentsResponseSchema>?=null,
+    var parents: ArrayList<PincodeParentsResponse>?=null,
     
     @SerializedName("meta")
-    var meta: PincodeMetaResponseSchema?=null,
+    var meta: PincodeMetaResponse?=null,
     
     @SerializedName("display_name")
     var displayName: String?=null,
     
     @SerializedName("error")
-    var error: PincodeErrorResponseSchema?=null,
+    var error: PincodeErrorSchemaResponse?=null,
     
     @SerializedName("meta_code")
-    var metaCode: CountryMetaResponseSchema?=null,
+    var metaCode: CountryMetaResponse?=null,
     
     @SerializedName("lat_long")
     var latLong: PincodeLatLongData?=null,
@@ -2277,10 +2336,10 @@ data class PincodeDataResponseSchema(
 
              
 /*
-    Model: PincodeApiResponseSchema
+    Model: PincodeApiResponse
 */
 @Parcelize
-data class PincodeApiResponseSchema(
+data class PincodeApiResponse(
     
     
     
@@ -2288,10 +2347,10 @@ data class PincodeApiResponseSchema(
     var success: Boolean?=null,
     
     @SerializedName("data")
-    var data: ArrayList<PincodeDataResponseSchema>?=null,
+    var data: ArrayList<PincodeDataResponse>?=null,
     
     @SerializedName("error")
-    var error: PincodeErrorResponseSchema?=null,
+    var error: PincodeErrorSchemaResponse?=null,
     
     @SerializedName("request_uuid")
     var requestUuid: String?=null,
@@ -2319,10 +2378,10 @@ data class PincodeApiResponseSchema(
 
              
 /*
-    Model: TATCategoryRequestSchema
+    Model: TATCategoryRequest
 */
 @Parcelize
-data class TATCategoryRequestSchema(
+data class TATCategoryRequest(
     
     
     
@@ -2346,15 +2405,15 @@ data class TATCategoryRequestSchema(
 
              
 /*
-    Model: TATArticlesRequestSchema
+    Model: TATArticlesRequest
 */
 @Parcelize
-data class TATArticlesRequestSchema(
+data class TATArticlesRequest(
     
     
     
     @SerializedName("category")
-    var category: TATCategoryRequestSchema?=null,
+    var category: TATCategoryRequest?=null,
     
     @SerializedName("manufacturing_time_unit")
     var manufacturingTimeUnit: String?=null,
@@ -2378,10 +2437,10 @@ data class TATArticlesRequestSchema(
 
              
 /*
-    Model: TATLocationDetailsRequestSchema
+    Model: TATLocationDetailsRequest
 */
 @Parcelize
-data class TATLocationDetailsRequestSchema(
+data class TATLocationDetailsRequest(
     
     
     
@@ -2392,7 +2451,7 @@ data class TATLocationDetailsRequestSchema(
     var fromPincode: String?=null,
     
     @SerializedName("articles")
-    var articles: ArrayList<TATArticlesRequestSchema>?=null
+    var articles: ArrayList<TATArticlesRequest>?=null
     
 ): Parcelable {
     
@@ -2410,10 +2469,10 @@ data class TATLocationDetailsRequestSchema(
 
              
 /*
-    Model: TATViewRequestSchema
+    Model: TATViewRequest
 */
 @Parcelize
-data class TATViewRequestSchema(
+data class TATViewRequest(
     
     
     
@@ -2430,7 +2489,7 @@ data class TATViewRequestSchema(
     var identifier: String?=null,
     
     @SerializedName("location_details")
-    var locationDetails: ArrayList<TATLocationDetailsRequestSchema>?=null,
+    var locationDetails: ArrayList<TATLocationDetailsRequest>?=null,
     
     @SerializedName("journey")
     var journey: String?=null
@@ -2457,10 +2516,10 @@ data class TATViewRequestSchema(
 
              
 /*
-    Model: TATErrorResponseSchema
+    Model: TATErrorSchemaResponse
 */
 @Parcelize
-data class TATErrorResponseSchema(
+data class TATErrorSchemaResponse(
     
     
     
@@ -2489,10 +2548,10 @@ data class TATErrorResponseSchema(
 
              
 /*
-    Model: TATTimestampResponseSchema
+    Model: TATTimestampResponse
 */
 @Parcelize
-data class TATTimestampResponseSchema(
+data class TATTimestampResponse(
     
     
     
@@ -2516,10 +2575,10 @@ data class TATTimestampResponseSchema(
 
              
 /*
-    Model: TATFormattedResponseSchema
+    Model: TATFormattedResponse
 */
 @Parcelize
-data class TATFormattedResponseSchema(
+data class TATFormattedResponse(
     
     
     
@@ -2543,18 +2602,18 @@ data class TATFormattedResponseSchema(
 
              
 /*
-    Model: TATPromiseResponseSchema
+    Model: TATPromiseResponse
 */
 @Parcelize
-data class TATPromiseResponseSchema(
+data class TATPromiseResponse(
     
     
     
     @SerializedName("timestamp")
-    var timestamp: TATTimestampResponseSchema?=null,
+    var timestamp: TATTimestampResponse?=null,
     
     @SerializedName("formatted")
-    var formatted: TATFormattedResponseSchema?=null
+    var formatted: TATFormattedResponse?=null
     
 ): Parcelable {
     
@@ -2570,10 +2629,10 @@ data class TATPromiseResponseSchema(
 
              
 /*
-    Model: TATArticlesResponseSchema
+    Model: TATArticlesResponse
 */
 @Parcelize
-data class TATArticlesResponseSchema(
+data class TATArticlesResponse(
     
     
     
@@ -2581,19 +2640,19 @@ data class TATArticlesResponseSchema(
     var manufacturingTimeUnit: String?=null,
     
     @SerializedName("error")
-    var error: TATErrorResponseSchema?=null,
+    var error: TATErrorSchemaResponse?=null,
     
     @SerializedName("is_cod_available")
     var isCodAvailable: Boolean?=null,
     
     @SerializedName("promise")
-    var promise: TATPromiseResponseSchema?=null,
+    var promise: TATPromiseResponse?=null,
     
     @SerializedName("manufacturing_time")
     var manufacturingTime: Int?=null,
     
     @SerializedName("category")
-    var category: TATCategoryRequestSchema?=null,
+    var category: TATCategoryRequest?=null,
     
     @SerializedName("_manufacturing_time_seconds")
     var manufacturingTimeSeconds: Int?=null
@@ -2622,10 +2681,10 @@ data class TATArticlesResponseSchema(
 
              
 /*
-    Model: TATLocationDetailsResponseSchema
+    Model: TATLocationDetailsResponse
 */
 @Parcelize
-data class TATLocationDetailsResponseSchema(
+data class TATLocationDetailsResponse(
     
     
     
@@ -2636,7 +2695,7 @@ data class TATLocationDetailsResponseSchema(
     var fromPincode: String?=null,
     
     @SerializedName("articles")
-    var articles: ArrayList<TATArticlesResponseSchema>?=null
+    var articles: ArrayList<TATArticlesResponse>?=null
     
 ): Parcelable {
     
@@ -2654,10 +2713,10 @@ data class TATLocationDetailsResponseSchema(
 
              
 /*
-    Model: TATViewResponseSchema
+    Model: TATViewResponse
 */
 @Parcelize
-data class TATViewResponseSchema(
+data class TATViewResponse(
     
     
     
@@ -2674,7 +2733,7 @@ data class TATViewResponseSchema(
     var success: Boolean?=null,
     
     @SerializedName("error")
-    var error: TATErrorResponseSchema?=null,
+    var error: TATErrorSchemaResponse?=null,
     
     @SerializedName("is_cod_available")
     var isCodAvailable: Boolean?=null,
@@ -2695,7 +2754,7 @@ data class TATViewResponseSchema(
     var identifier: String?=null,
     
     @SerializedName("location_details")
-    var locationDetails: ArrayList<TATLocationDetailsResponseSchema>?=null,
+    var locationDetails: ArrayList<TATLocationDetailsResponse>?=null,
     
     @SerializedName("journey")
     var journey: String?=null,
@@ -2808,10 +2867,10 @@ data class DP(
 
              
 /*
-    Model: LogisticsResponseSchema
+    Model: LogisticsResponse
 */
 @Parcelize
-data class LogisticsResponseSchema(
+data class LogisticsResponse(
     
     
     
@@ -2830,10 +2889,10 @@ data class LogisticsResponseSchema(
 
              
 /*
-    Model: CountryMetaResponseSchema
+    Model: CountryMetaResponse
 */
 @Parcelize
-data class CountryMetaResponseSchema(
+data class CountryMetaResponse(
     
     
     
@@ -2862,7 +2921,7 @@ data class CountryMetaResponseSchema(
     var hierarchy: ArrayList<CountryHierarchy>?=null,
     
     @SerializedName("logistics")
-    var logistics: LogisticsResponseSchema?=null
+    var logistics: LogisticsResponse?=null
     
 ): Parcelable {
     
@@ -2892,10 +2951,10 @@ data class CountryMetaResponseSchema(
 
              
 /*
-    Model: CountryEntityResponseSchema
+    Model: CountryEntityResponse
 */
 @Parcelize
-data class CountryEntityResponseSchema(
+data class CountryEntityResponse(
     
     
     
@@ -2921,10 +2980,10 @@ data class CountryEntityResponseSchema(
     var latLong: @RawValue HashMap<String,Any>?=null,
     
     @SerializedName("meta")
-    var meta: CountryMetaResponseSchema?=null,
+    var meta: CountryMetaResponse?=null,
     
     @SerializedName("logistics")
-    var logistics: LogisticsResponseSchema?=null
+    var logistics: LogisticsResponse?=null
     
 ): Parcelable {
     
@@ -2954,15 +3013,15 @@ data class CountryEntityResponseSchema(
 
              
 /*
-    Model: CountryListResponseSchema
+    Model: CountryListResponse
 */
 @Parcelize
-data class CountryListResponseSchema(
+data class CountryListResponse(
     
     
     
     @SerializedName("results")
-    var results: ArrayList<CountryEntityResponseSchema>?=null
+    var results: ArrayList<CountryEntityResponse>?=null
     
 ): Parcelable {
     
@@ -2976,10 +3035,10 @@ data class CountryListResponseSchema(
 
              
 /*
-    Model: GetZoneFromPincodeViewRequestSchema
+    Model: GetZoneFromPincodeViewRequest
 */
 @Parcelize
-data class GetZoneFromPincodeViewRequestSchema(
+data class GetZoneFromPincodeViewRequest(
     
     
     
@@ -3003,10 +3062,10 @@ data class GetZoneFromPincodeViewRequestSchema(
 
              
 /*
-    Model: GetZoneFromPincodeViewResponseSchema
+    Model: GetZoneFromPincodeViewResponse
 */
 @Parcelize
-data class GetZoneFromPincodeViewResponseSchema(
+data class GetZoneFromPincodeViewResponse(
     
     
     
@@ -3030,10 +3089,10 @@ data class GetZoneFromPincodeViewResponseSchema(
 
              
 /*
-    Model: ReAssignStoreRequestSchema
+    Model: ReAssignStoreRequest
 */
 @Parcelize
-data class ReAssignStoreRequestSchema(
+data class ReAssignStoreRequest(
     
     
     
@@ -3072,10 +3131,10 @@ data class ReAssignStoreRequestSchema(
 
              
 /*
-    Model: ReAssignStoreResponseSchema
+    Model: ReAssignStoreResponse
 */
 @Parcelize
-data class ReAssignStoreResponseSchema(
+data class ReAssignStoreResponse(
     
     
     
@@ -4088,10 +4147,10 @@ data class GetLocality(
 
              
 /*
-    Model: ErrorResponseSchema
+    Model: ErrorResponse
 */
 @Parcelize
-data class ErrorResponseSchema(
+data class ErrorResponse(
     
     
     
@@ -4186,10 +4245,10 @@ data class StandardError(
 
              
 /*
-    Model: ShipmentRequestSchema
+    Model: ShipmentRequest
 */
 @Parcelize
-data class ShipmentRequestSchema(
+data class ShipmentRequest(
     
     
     
@@ -4626,10 +4685,10 @@ data class Location(
 
              
 /*
-    Model: ShipmentResponseSchema
+    Model: ShipmentResponse
 */
 @Parcelize
-data class ShipmentResponseSchema(
+data class ShipmentResponse(
     
     
     
@@ -5041,6 +5100,43 @@ data class GetPromiseDetails(
     var page: Page?=null
     
 ): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: GetQCPromiseDetails
+*/
+@Parcelize
+data class GetQCPromiseDetails(
+    
+    
+    
+    @SerializedName("journey")
+    var journey: String?=null,
+    
+    @SerializedName("tat_min")
+    var tatMin: String?=null,
+    
+    @SerializedName("tat_max")
+    var tatMax: String?=null,
+    
+    @SerializedName("message")
+    var message: String?=null
+    
+): Parcelable {
+    
+    
     
     
     

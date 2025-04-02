@@ -168,91 +168,91 @@ class PaymentDataManagerClass(val config: ApplicationConfig, val unauthorizedAct
         return retrofitHttpClient?.initializeRestClient(PaymentApiList::class.java) as? PaymentApiList
     }
     
-    suspend fun getAggregatorsConfig(xApiToken: String?=null,refresh: Boolean?=null, headers: Map<String, String> = emptyMap()): Response<AggregatorsConfigDetail>? {
+    suspend fun getAggregatorsConfig(xApiToken: String?=null,refresh: Boolean?=null, headers: Map<String, String> = emptyMap()): Response<AggregatorsConfigDetailResponse>? {
         var fullUrl : String? = _relativeUrls["getAggregatorsConfig"]
         
         return paymentApiList?.getAggregatorsConfig(fullUrl,   xApiToken = xApiToken,  refresh = refresh,headers = headers)}
 
     
     
-    suspend fun attachCardToCustomer(body: AttachCard, headers: Map<String, String> = emptyMap()): Response<AttachCardsDetails>? {
+    suspend fun attachCardToCustomer(body: AttachCardRequest, headers: Map<String, String> = emptyMap()): Response<AttachCardsResponse>? {
         var fullUrl : String? = _relativeUrls["attachCardToCustomer"]
         
         return paymentApiList?.attachCardToCustomer(fullUrl, body = body,headers = headers)}
 
     
     
-    suspend fun getActiveCardAggregator(refresh: Boolean?=null, headers: Map<String, String> = emptyMap()): Response<ActiveCardPaymentGatewayDetails>? {
+    suspend fun getActiveCardAggregator(refresh: Boolean?=null, headers: Map<String, String> = emptyMap()): Response<ActiveCardPaymentGatewayResponse>? {
         var fullUrl : String? = _relativeUrls["getActiveCardAggregator"]
         
         return paymentApiList?.getActiveCardAggregator(fullUrl,   refresh = refresh,headers = headers)}
 
     
     
-    suspend fun updateUserCard(body: UpdateAggregatorCardReq, headers: Map<String, String> = emptyMap()): Response<UpdateAggregatorCardDetails>? {
+    suspend fun updateUserCard(body: UpdateAggregatorCardRequest, headers: Map<String, String> = emptyMap()): Response<UpdateAggregatorCardResponse>? {
         var fullUrl : String? = _relativeUrls["updateUserCard"]
         
         return paymentApiList?.updateUserCard(fullUrl, body = body,headers = headers)}
 
     
     
-    suspend fun getActiveUserCards(forceRefresh: Boolean?=null, headers: Map<String, String> = emptyMap()): Response<ListCardsDetails>? {
+    suspend fun getActiveUserCards(forceRefresh: Boolean?=null, headers: Map<String, String> = emptyMap()): Response<ListCardsResponse>? {
         var fullUrl : String? = _relativeUrls["getActiveUserCards"]
         
         return paymentApiList?.getActiveUserCards(fullUrl,   forceRefresh = forceRefresh,headers = headers)}
 
     
     
-    suspend fun updateActiveCards(body: UpdateAggregatorCardReq, headers: Map<String, String> = emptyMap()): Response<UpdateCard>? {
+    suspend fun updateActiveCards(body: UpdateAggregatorCardRequest, headers: Map<String, String> = emptyMap()): Response<UpdateCardResponse>? {
         var fullUrl : String? = _relativeUrls["updateActiveCards"]
         
         return paymentApiList?.updateActiveCards(fullUrl, body = body,headers = headers)}
 
     
     
-    suspend fun deleteUserCard(body: DeleteCard, headers: Map<String, String> = emptyMap()): Response<DeleteCardsDetails>? {
+    suspend fun deleteUserCard(body: DeletehCardRequest, headers: Map<String, String> = emptyMap()): Response<DeleteCardsResponse>? {
         var fullUrl : String? = _relativeUrls["deleteUserCard"]
         
         return paymentApiList?.deleteUserCard(fullUrl, body = body,headers = headers)}
 
     
     
-    suspend fun verifyCustomerForPayment(body: ValidateCustomer, headers: Map<String, String> = emptyMap()): Response<ValidateCustomerDetails>? {
+    suspend fun verifyCustomerForPayment(body: ValidateCustomerRequest, headers: Map<String, String> = emptyMap()): Response<ValidateCustomerResponse>? {
         var fullUrl : String? = _relativeUrls["verifyCustomerForPayment"]
         
         return paymentApiList?.verifyCustomerForPayment(fullUrl, body = body,headers = headers)}
 
     
     
-    suspend fun verifyAndChargePayment(body: ChargeCustomer, headers: Map<String, String> = emptyMap()): Response<ChargeCustomerDetails>? {
+    suspend fun verifyAndChargePayment(body: ChargeCustomerRequest, headers: Map<String, String> = emptyMap()): Response<ChargeCustomerResponse>? {
         var fullUrl : String? = _relativeUrls["verifyAndChargePayment"]
         
         return paymentApiList?.verifyAndChargePayment(fullUrl, body = body,headers = headers)}
 
     
     
-    suspend fun initialisePayment(body: PaymentInitialization, headers: Map<String, String> = emptyMap()): Response<PaymentInitializationDetails>? {
+    suspend fun initialisePayment(body: PaymentInitializationRequest, headers: Map<String, String> = emptyMap()): Response<PaymentInitializationResponse>? {
         var fullUrl : String? = _relativeUrls["initialisePayment"]
         
         return paymentApiList?.initialisePayment(fullUrl, body = body,headers = headers)}
 
     
     
-    suspend fun checkAndUpdatePaymentStatus(body: PaymentStatusUpdate, headers: Map<String, String> = emptyMap()): Response<PaymentStatusUpdateDetails>? {
+    suspend fun checkAndUpdatePaymentStatus(body: PaymentStatusUpdateRequest, headers: Map<String, String> = emptyMap()): Response<PaymentStatusUpdateResponse>? {
         var fullUrl : String? = _relativeUrls["checkAndUpdatePaymentStatus"]
         
         return paymentApiList?.checkAndUpdatePaymentStatus(fullUrl, body = body,headers = headers)}
 
     
     
-    suspend fun getPaymentModeRoutes(amount: Int,cartId: String,checkoutMode: String?=null,refresh: Boolean?=null,orderId: String?=null,cardReference: String?=null,userDetails: String?=null,displaySplit: Boolean?=null,advancePayment: Boolean?=null,shipmentId: String?=null, headers: Map<String, String> = emptyMap()): Response<PaymentModeRouteDetails>? {
+    suspend fun getPaymentModeRoutes(amount: Int,cartId: String?=null,checkoutMode: String?=null,refresh: Boolean?=null,orderId: String?=null,cardReference: String?=null,userDetails: String?=null,displaySplit: Boolean?=null,advancePayment: Boolean?=null,shipmentId: String?=null, headers: Map<String, String> = emptyMap()): Response<PaymentModeRouteResponse>? {
         var fullUrl : String? = _relativeUrls["getPaymentModeRoutes"]
         
         return paymentApiList?.getPaymentModeRoutes(fullUrl,   amount = amount,  cartId = cartId,  checkoutMode = checkoutMode,  refresh = refresh,  orderId = orderId,  cardReference = cardReference,  userDetails = userDetails,  displaySplit = displaySplit,  advancePayment = advancePayment,  shipmentId = shipmentId,headers = headers)}
 
     
     
-    suspend fun getPosPaymentModeRoutes(amount: Int,cartId: String,pincode: String,checkoutMode: String?=null,refresh: Boolean?=null,cardReference: String?=null,orderType: String,userDetails: String?=null, headers: Map<String, String> = emptyMap()): Response<PaymentModeRouteDetails>? {
+    suspend fun getPosPaymentModeRoutes(amount: Int,cartId: String?=null,pincode: String,checkoutMode: String?=null,refresh: Boolean?=null,cardReference: String?=null,orderType: String,userDetails: String?=null, headers: Map<String, String> = emptyMap()): Response<PaymentModeRouteResponse>? {
         var fullUrl : String? = _relativeUrls["getPosPaymentModeRoutes"]
         
         return paymentApiList?.getPosPaymentModeRoutes(fullUrl,   amount = amount,  cartId = cartId,  pincode = pincode,  checkoutMode = checkoutMode,  refresh = refresh,  cardReference = cardReference,  orderType = orderType,  userDetails = userDetails,headers = headers)}
@@ -280,42 +280,42 @@ class PaymentDataManagerClass(val config: ApplicationConfig, val unauthorizedAct
 
     
     
-    suspend fun getRupifiBannerDetails( headers: Map<String, String> = emptyMap()): Response<RupifiBannerDetails>? {
+    suspend fun getRupifiBannerDetails( headers: Map<String, String> = emptyMap()): Response<RupifiBannerResponse>? {
         var fullUrl : String? = _relativeUrls["getRupifiBannerDetails"]
         
         return paymentApiList?.getRupifiBannerDetails(fullUrl, headers = headers)}
 
     
     
-    suspend fun getEpaylaterBannerDetails( headers: Map<String, String> = emptyMap()): Response<EpaylaterBannerDetails>? {
+    suspend fun getEpaylaterBannerDetails( headers: Map<String, String> = emptyMap()): Response<EpaylaterBannerResponse>? {
         var fullUrl : String? = _relativeUrls["getEpaylaterBannerDetails"]
         
         return paymentApiList?.getEpaylaterBannerDetails(fullUrl, headers = headers)}
 
     
     
-    suspend fun resendOrCancelPayment(body: ResendOrCancelPayment, headers: Map<String, String> = emptyMap()): Response<ResendOrCancelPaymentDetails>? {
+    suspend fun resendOrCancelPayment(body: ResendOrCancelPaymentRequest, headers: Map<String, String> = emptyMap()): Response<ResendOrCancelPaymentResponse>? {
         var fullUrl : String? = _relativeUrls["resendOrCancelPayment"]
         
         return paymentApiList?.resendOrCancelPayment(fullUrl, body = body,headers = headers)}
 
     
     
-    suspend fun renderHTML(body: RenderHTML, headers: Map<String, String> = emptyMap()): Response<RenderHTMLDetails>? {
+    suspend fun renderHTML(body: renderHTMLRequest, headers: Map<String, String> = emptyMap()): Response<renderHTMLResponse>? {
         var fullUrl : String? = _relativeUrls["renderHTML"]
         
         return paymentApiList?.renderHTML(fullUrl, body = body,headers = headers)}
 
     
     
-    suspend fun validateVPA(body: ValidateVPA, headers: Map<String, String> = emptyMap()): Response<ValidateVPADetails>? {
+    suspend fun validateVPA(body: ValidateVPARequest, headers: Map<String, String> = emptyMap()): Response<ValidateVPAResponse>? {
         var fullUrl : String? = _relativeUrls["validateVPA"]
         
         return paymentApiList?.validateVPA(fullUrl, body = body,headers = headers)}
 
     
     
-    suspend fun cardDetails(cardInfo: String,aggregator: String?=null, headers: Map<String, String> = emptyMap()): Response<CardDetailsFetchedDetails>? {
+    suspend fun cardDetails(cardInfo: String,aggregator: String?=null, headers: Map<String, String> = emptyMap()): Response<CardDetailsResponse>? {
         var fullUrl : String? = _relativeUrls["cardDetails"]
         
         fullUrl = fullUrl?.replace("{" + "card_info" +"}",cardInfo.toString())
@@ -324,112 +324,112 @@ class PaymentDataManagerClass(val config: ApplicationConfig, val unauthorizedAct
 
     
     
-    suspend fun getActiveRefundTransferModes( headers: Map<String, String> = emptyMap()): Response<TransferModeFetchDetails>? {
+    suspend fun getActiveRefundTransferModes( headers: Map<String, String> = emptyMap()): Response<TransferModeResponse>? {
         var fullUrl : String? = _relativeUrls["getActiveRefundTransferModes"]
         
         return paymentApiList?.getActiveRefundTransferModes(fullUrl, headers = headers)}
 
     
     
-    suspend fun enableOrDisableRefundTransferMode(body: UpdateRefundTransferMode, headers: Map<String, String> = emptyMap()): Response<RefundTransferModeUpdateDetails>? {
+    suspend fun enableOrDisableRefundTransferMode(body: UpdateRefundTransferModeRequest, headers: Map<String, String> = emptyMap()): Response<UpdateRefundTransferModeResponse>? {
         var fullUrl : String? = _relativeUrls["enableOrDisableRefundTransferMode"]
         
         return paymentApiList?.enableOrDisableRefundTransferMode(fullUrl, body = body,headers = headers)}
 
     
     
-    suspend fun getUserBeneficiariesDetail(orderId: String, headers: Map<String, String> = emptyMap()): Response<OrderBeneficiaryFetchDetails>? {
+    suspend fun getUserBeneficiariesDetail(orderId: String, headers: Map<String, String> = emptyMap()): Response<OrderBeneficiaryResponse>? {
         var fullUrl : String? = _relativeUrls["getUserBeneficiariesDetail"]
         
         return paymentApiList?.getUserBeneficiariesDetail(fullUrl,   orderId = orderId,headers = headers)}
 
     
     
-    suspend fun verifyIfscCode(ifscCode: String?=null, headers: Map<String, String> = emptyMap()): Response<IfscCodeDetails>? {
+    suspend fun verifyIfscCode(ifscCode: String?=null, headers: Map<String, String> = emptyMap()): Response<IfscCodeResponse>? {
         var fullUrl : String? = _relativeUrls["verifyIfscCode"]
         
         return paymentApiList?.verifyIfscCode(fullUrl,   ifscCode = ifscCode,headers = headers)}
 
     
     
-    suspend fun getOrderBeneficiariesDetail(orderId: String, headers: Map<String, String> = emptyMap()): Response<OrderBeneficiaryFetchDetails>? {
+    suspend fun getOrderBeneficiariesDetail(orderId: String, headers: Map<String, String> = emptyMap()): Response<OrderBeneficiaryResponse>? {
         var fullUrl : String? = _relativeUrls["getOrderBeneficiariesDetail"]
         
         return paymentApiList?.getOrderBeneficiariesDetail(fullUrl,   orderId = orderId,headers = headers)}
 
     
     
-    suspend fun addBeneficiaryDetails(body: AddBeneficiaryDetails, headers: Map<String, String> = emptyMap()): Response<RefundAccountDetails>? {
+    suspend fun addBeneficiaryDetails(body: AddBeneficiaryDetailsRequest, headers: Map<String, String> = emptyMap()): Response<RefundAccountResponse>? {
         var fullUrl : String? = _relativeUrls["addBeneficiaryDetails"]
         
         return paymentApiList?.addBeneficiaryDetails(fullUrl, body = body,headers = headers)}
 
     
     
-    suspend fun deleteBeneficiaryDetails(body: DeleteBeneficiary, headers: Map<String, String> = emptyMap()): Response<DeleteRefundAccountDetails>? {
+    suspend fun deleteBeneficiaryDetails(body: DeleteBeneficiaryRequest, headers: Map<String, String> = emptyMap()): Response<DeleteRefundAccountResponse>? {
         var fullUrl : String? = _relativeUrls["deleteBeneficiaryDetails"]
         
         return paymentApiList?.deleteBeneficiaryDetails(fullUrl, body = body,headers = headers)}
 
     
     
-    suspend fun verifyOtpAndAddBeneficiaryForBank(body: AddBeneficiaryViaOtpVerification, headers: Map<String, String> = emptyMap()): Response<AddBeneficiaryViaOtpVerificationDetails>? {
+    suspend fun verifyOtpAndAddBeneficiaryForBank(body: AddBeneficiaryViaOtpVerificationRequest, headers: Map<String, String> = emptyMap()): Response<AddBeneficiaryViaOtpVerificationResponse>? {
         var fullUrl : String? = _relativeUrls["verifyOtpAndAddBeneficiaryForBank"]
         
         return paymentApiList?.verifyOtpAndAddBeneficiaryForBank(fullUrl, body = body,headers = headers)}
 
     
     
-    suspend fun addRefundBankAccountUsingOTP(body: AddBeneficiaryDetailsOTP, headers: Map<String, String> = emptyMap()): Response<RefundAccountDetails>? {
+    suspend fun addRefundBankAccountUsingOTP(body: AddBeneficiaryDetailsOTPRequest, headers: Map<String, String> = emptyMap()): Response<PostAddBeneficiaryDetailsOTPResponse>? {
         var fullUrl : String? = _relativeUrls["addRefundBankAccountUsingOTP"]
         
         return paymentApiList?.addRefundBankAccountUsingOTP(fullUrl, body = body,headers = headers)}
 
     
     
-    suspend fun getotpOrderBeneficiariesDetail(orderId: String,requestHash: String, headers: Map<String, String> = emptyMap()): Response<AddBeneficiaryDetailsOTPDetails>? {
+    suspend fun getotpOrderBeneficiariesDetail(orderId: String,requestHash: String, headers: Map<String, String> = emptyMap()): Response<AddBeneficiaryDetailsOTPResponse>? {
         var fullUrl : String? = _relativeUrls["getotpOrderBeneficiariesDetail"]
         
         return paymentApiList?.getotpOrderBeneficiariesDetail(fullUrl,   orderId = orderId,  requestHash = requestHash,headers = headers)}
 
     
     
-    suspend fun verifyOtpAndAddBeneficiaryForWallet(body: WalletOtp, headers: Map<String, String> = emptyMap()): Response<WalletOtpDetails>? {
+    suspend fun verifyOtpAndAddBeneficiaryForWallet(body: WalletOtpRequest, headers: Map<String, String> = emptyMap()): Response<WalletOtpResponse>? {
         var fullUrl : String? = _relativeUrls["verifyOtpAndAddBeneficiaryForWallet"]
         
         return paymentApiList?.verifyOtpAndAddBeneficiaryForWallet(fullUrl, body = body,headers = headers)}
 
     
     
-    suspend fun updateDefaultBeneficiary(body: SetDefaultBeneficiary, headers: Map<String, String> = emptyMap()): Response<SetDefaultBeneficiaryDetails>? {
+    suspend fun updateDefaultBeneficiary(body: SetDefaultBeneficiaryRequest, headers: Map<String, String> = emptyMap()): Response<SetDefaultBeneficiaryResponse>? {
         var fullUrl : String? = _relativeUrls["updateDefaultBeneficiary"]
         
         return paymentApiList?.updateDefaultBeneficiary(fullUrl, body = body,headers = headers)}
 
     
     
-    suspend fun getBenficiaryOrder(body: RefundOrderBen, headers: Map<String, String> = emptyMap()): Response<RefundOrderBenDetails>? {
+    suspend fun getBenficiaryOrder(body: RefundOrderBenRequest, headers: Map<String, String> = emptyMap()): Response<RefundOrderBenResponse>? {
         var fullUrl : String? = _relativeUrls["getBenficiaryOrder"]
         
         return paymentApiList?.getBenficiaryOrder(fullUrl, body = body,headers = headers)}
 
     
     
-    suspend fun getPaymentLink(paymentLinkId: String?=null, headers: Map<String, String> = emptyMap()): Response<GetPaymentLinkDetails>? {
+    suspend fun getPaymentLink(paymentLinkId: String?=null, headers: Map<String, String> = emptyMap()): Response<GetPaymentLinkResponse>? {
         var fullUrl : String? = _relativeUrls["getPaymentLink"]
         
         return paymentApiList?.getPaymentLink(fullUrl,   paymentLinkId = paymentLinkId,headers = headers)}
 
     
     
-    suspend fun createPaymentLink(body: CreatePaymentLink, headers: Map<String, String> = emptyMap()): Response<CreatePaymentLinkDetails>? {
+    suspend fun createPaymentLink(body: CreatePaymentLinkRequest, headers: Map<String, String> = emptyMap()): Response<CreatePaymentLinkResponse>? {
         var fullUrl : String? = _relativeUrls["createPaymentLink"]
         
         return paymentApiList?.createPaymentLink(fullUrl, body = body,headers = headers)}
 
     
     
-    suspend fun getPaymentLinkId(id: String,paymentLinkId: String, headers: Map<String, String> = emptyMap()): Response<GetPaymentLinkDetails>? {
+    suspend fun getPaymentLinkId(id: String,paymentLinkId: String, headers: Map<String, String> = emptyMap()): Response<GetPaymentLinkResponse>? {
         var fullUrl : String? = _relativeUrls["getPaymentLinkId"]
         
         fullUrl = fullUrl?.replace("{" + "id" +"}",id.toString())
@@ -438,133 +438,133 @@ class PaymentDataManagerClass(val config: ApplicationConfig, val unauthorizedAct
 
     
     
-    suspend fun resendPaymentLink(body: CancelOrResendPaymentLink, headers: Map<String, String> = emptyMap()): Response<ResendPaymentLinkDetails>? {
+    suspend fun resendPaymentLink(body: CancelOrResendPaymentLinkRequest, headers: Map<String, String> = emptyMap()): Response<ResendPaymentLinkResponse>? {
         var fullUrl : String? = _relativeUrls["resendPaymentLink"]
         
         return paymentApiList?.resendPaymentLink(fullUrl, body = body,headers = headers)}
 
     
     
-    suspend fun getPaymentModeRoutesPaymentLink(paymentLinkId: String, headers: Map<String, String> = emptyMap()): Response<PaymentModeRouteDetails>? {
+    suspend fun getPaymentModeRoutesPaymentLink(paymentLinkId: String, headers: Map<String, String> = emptyMap()): Response<PaymentModeRouteResponse>? {
         var fullUrl : String? = _relativeUrls["getPaymentModeRoutesPaymentLink"]
         
         return paymentApiList?.getPaymentModeRoutesPaymentLink(fullUrl,   paymentLinkId = paymentLinkId,headers = headers)}
 
     
     
-    suspend fun pollingPaymentLink(paymentLinkId: String, headers: Map<String, String> = emptyMap()): Response<PollingPaymentLinkDetails>? {
+    suspend fun pollingPaymentLink(paymentLinkId: String, headers: Map<String, String> = emptyMap()): Response<PollingPaymentLinkResponse>? {
         var fullUrl : String? = _relativeUrls["pollingPaymentLink"]
         
         return paymentApiList?.pollingPaymentLink(fullUrl,   paymentLinkId = paymentLinkId,headers = headers)}
 
     
     
-    suspend fun createOrderHandlerPaymentLink(body: CreateOrderUser, headers: Map<String, String> = emptyMap()): Response<CreateOrderUserDetails>? {
+    suspend fun createOrderHandlerPaymentLink(body: CreateOrderUserRequest, headers: Map<String, String> = emptyMap()): Response<CreateOrderUserResponse>? {
         var fullUrl : String? = _relativeUrls["createOrderHandlerPaymentLink"]
         
         return paymentApiList?.createOrderHandlerPaymentLink(fullUrl, body = body,headers = headers)}
 
     
     
-    suspend fun initialisePaymentPaymentLink(body: PaymentInitialization, headers: Map<String, String> = emptyMap()): Response<PaymentInitializationDetails>? {
+    suspend fun initialisePaymentPaymentLink(body: PaymentInitializationRequest, headers: Map<String, String> = emptyMap()): Response<PaymentInitializationResponse>? {
         var fullUrl : String? = _relativeUrls["initialisePaymentPaymentLink"]
         
         return paymentApiList?.initialisePaymentPaymentLink(fullUrl, body = body,headers = headers)}
 
     
     
-    suspend fun checkAndUpdatePaymentStatusPaymentLink(body: PaymentStatusUpdate, headers: Map<String, String> = emptyMap()): Response<PaymentStatusUpdateDetails>? {
+    suspend fun checkAndUpdatePaymentStatusPaymentLink(body: PaymentStatusUpdateRequest, headers: Map<String, String> = emptyMap()): Response<PaymentStatusUpdateResponse>? {
         var fullUrl : String? = _relativeUrls["checkAndUpdatePaymentStatusPaymentLink"]
         
         return paymentApiList?.checkAndUpdatePaymentStatusPaymentLink(fullUrl, body = body,headers = headers)}
 
     
     
-    suspend fun customerCreditSummary(aggregator: String?=null, headers: Map<String, String> = emptyMap()): Response<CustomerCreditSummaryDetails>? {
+    suspend fun customerCreditSummary(aggregator: String?=null, headers: Map<String, String> = emptyMap()): Response<CustomerCreditSummaryResponse>? {
         var fullUrl : String? = _relativeUrls["customerCreditSummary"]
         
         return paymentApiList?.customerCreditSummary(fullUrl,   aggregator = aggregator,headers = headers)}
 
     
     
-    suspend fun redirectToAggregator(source: String?=null,aggregator: String, headers: Map<String, String> = emptyMap()): Response<RedirectToAggregatorDetails>? {
+    suspend fun redirectToAggregator(source: String?=null,aggregator: String?=null, headers: Map<String, String> = emptyMap()): Response<RedirectToAggregatorResponse>? {
         var fullUrl : String? = _relativeUrls["redirectToAggregator"]
         
         return paymentApiList?.redirectToAggregator(fullUrl,   source = source,  aggregator = aggregator,headers = headers)}
 
     
     
-    suspend fun checkCredit(aggregator: String?=null, headers: Map<String, String> = emptyMap()): Response<CheckCreditDetails>? {
+    suspend fun checkCredit(aggregator: String?=null, headers: Map<String, String> = emptyMap()): Response<CheckCreditResponse>? {
         var fullUrl : String? = _relativeUrls["checkCredit"]
         
         return paymentApiList?.checkCredit(fullUrl,   aggregator = aggregator,headers = headers)}
 
     
     
-    suspend fun customerOnboard(body: CustomerOnboarding, headers: Map<String, String> = emptyMap()): Response<CustomerOnboardingDetails>? {
+    suspend fun customerOnboard(body: CustomerOnboardingRequest, headers: Map<String, String> = emptyMap()): Response<CustomerOnboardingResponse>? {
         var fullUrl : String? = _relativeUrls["customerOnboard"]
         
         return paymentApiList?.customerOnboard(fullUrl, body = body,headers = headers)}
 
     
     
-    suspend fun outstandingOrderDetails(aggregator: String?=null, headers: Map<String, String> = emptyMap()): Response<OutstandingOrderDetails>? {
+    suspend fun outstandingOrderDetails(aggregator: String?=null, headers: Map<String, String> = emptyMap()): Response<OutstandingOrderDetailsResponse>? {
         var fullUrl : String? = _relativeUrls["outstandingOrderDetails"]
         
         return paymentApiList?.outstandingOrderDetails(fullUrl,   aggregator = aggregator,headers = headers)}
 
     
     
-    suspend fun cancelPaymentLink(body: CancelOrResendPaymentLink, headers: Map<String, String> = emptyMap()): Response<CancelPaymentLinkDetails>? {
+    suspend fun cancelPaymentLink(body: CancelOrResendPaymentLinkRequest, headers: Map<String, String> = emptyMap()): Response<CancelPaymentLinkResponse>? {
         var fullUrl : String? = _relativeUrls["cancelPaymentLink"]
         
         return paymentApiList?.cancelPaymentLink(fullUrl, body = body,headers = headers)}
 
     
     
-    suspend fun paidOrderDetails(aggregator: String?=null, headers: Map<String, String> = emptyMap()): Response<PaidOrderDetails>? {
+    suspend fun paidOrderDetails(aggregator: String?=null, headers: Map<String, String> = emptyMap()): Response<PaidOrderDetailsResponse>? {
         var fullUrl : String? = _relativeUrls["paidOrderDetails"]
         
         return paymentApiList?.paidOrderDetails(fullUrl,   aggregator = aggregator,headers = headers)}
 
     
     
-    suspend fun createPaymentOrder(body: PaymentOrder, headers: Map<String, String> = emptyMap()): Response<PaymentOrderDetails>? {
+    suspend fun createPaymentOrder(body: PaymentOrderRequest, headers: Map<String, String> = emptyMap()): Response<PaymentOrderResponse>? {
         var fullUrl : String? = _relativeUrls["createPaymentOrder"]
         
         return paymentApiList?.createPaymentOrder(fullUrl, body = body,headers = headers)}
 
     
     
-    suspend fun setRefundOptionforShipment(body: ShipmentRefund, headers: Map<String, String> = emptyMap()): Response<ShipmentRefundDetails>? {
+    suspend fun setRefundOptionforShipment(body: ShipmentRefundRequest, headers: Map<String, String> = emptyMap()): Response<ShipmentRefundResponse>? {
         var fullUrl : String? = _relativeUrls["setRefundOptionforShipment"]
         
         return paymentApiList?.setRefundOptionforShipment(fullUrl, body = body,headers = headers)}
 
     
     
-    suspend fun getSelectedRefundOption(shipmentId: String,orderId: String, headers: Map<String, String> = emptyMap()): Response<SelectedRefundOptionDetails>? {
+    suspend fun getSelectedRefundOption(shipmentId: String,orderId: String, headers: Map<String, String> = emptyMap()): Response<SelectedRefundOptionResponse>? {
         var fullUrl : String? = _relativeUrls["getSelectedRefundOption"]
         
         return paymentApiList?.getSelectedRefundOption(fullUrl,   shipmentId = shipmentId,  orderId = orderId,headers = headers)}
 
     
     
-    suspend fun getUserBeneficiariesDetailV2(orderId: String?=null,shipmentId: String?=null,mop: String?=null, headers: Map<String, String> = emptyMap()): Response<OrderBeneficiaryDetailsSchemaV2>? {
+    suspend fun getUserBeneficiariesDetailV2(orderId: String?=null,shipmentId: String?=null,mop: String?=null, headers: Map<String, String> = emptyMap()): Response<OrderBeneficiaryResponseSchemaV2>? {
         var fullUrl : String? = _relativeUrls["getUserBeneficiariesDetailV2"]
         
         return paymentApiList?.getUserBeneficiariesDetailV2(fullUrl,   orderId = orderId,  shipmentId = shipmentId,  mop = mop,headers = headers)}
 
     
     
-    suspend fun validateBeneficiaryAddress(body: ValidateValidateAddress, headers: Map<String, String> = emptyMap()): Response<ValidateValidateAddressDetails>? {
+    suspend fun validateBeneficiaryAddress(body: ValidateValidateAddressRequest, headers: Map<String, String> = emptyMap()): Response<ValidateValidateAddressResponse>? {
         var fullUrl : String? = _relativeUrls["validateBeneficiaryAddress"]
         
         return paymentApiList?.validateBeneficiaryAddress(fullUrl, body = body,headers = headers)}
 
     
     
-    suspend fun confirmPayment(body: PaymentConfirmation, headers: Map<String, String> = emptyMap()): Response<PaymentConfirmationDetails>? {
+    suspend fun confirmPayment(body: PaymentConfirmationRequest, headers: Map<String, String> = emptyMap()): Response<PaymentConfirmationResponse>? {
         var fullUrl : String? = _relativeUrls["confirmPayment"]
         
         return paymentApiList?.confirmPayment(fullUrl, body = body,headers = headers)}

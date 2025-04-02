@@ -93,7 +93,7 @@ class ConfigurationDataManagerClass(val config: ApplicationConfig, val unauthori
 
     
     
-    suspend fun getOwnerInfo( headers: Map<String, String> = emptyMap()): Response<ApplicationAboutResponseSchema>? {
+    suspend fun getOwnerInfo( headers: Map<String, String> = emptyMap()): Response<ApplicationAboutResponse>? {
         var fullUrl : String? = _relativeUrls["getOwnerInfo"]
         
         return configurationApiList?.getOwnerInfo(fullUrl, headers = headers)}
@@ -107,7 +107,7 @@ class ConfigurationDataManagerClass(val config: ApplicationConfig, val unauthori
 
     
     
-    suspend fun getIntegrationTokens( headers: Map<String, String> = emptyMap()): Response<AppTokenResponseSchema>? {
+    suspend fun getIntegrationTokens( headers: Map<String, String> = emptyMap()): Response<AppTokenResponse>? {
         var fullUrl : String? = _relativeUrls["getIntegrationTokens"]
         
         return configurationApiList?.getIntegrationTokens(fullUrl, headers = headers)}
@@ -180,7 +180,7 @@ class ConfigurationDataManagerClass(val config: ApplicationConfig, val unauthori
 
     
     
-    suspend fun getFeatures( headers: Map<String, String> = emptyMap()): Response<AppFeatureResponseSchema>? {
+    suspend fun getFeatures( headers: Map<String, String> = emptyMap()): Response<AppFeatureResponse>? {
         var fullUrl : String? = _relativeUrls["getFeatures"]
         
         return configurationApiList?.getFeatures(fullUrl, headers = headers)}
@@ -194,7 +194,7 @@ class ConfigurationDataManagerClass(val config: ApplicationConfig, val unauthori
 
     
     
-    suspend fun getCurrencies( headers: Map<String, String> = emptyMap()): Response<CurrenciesResponseSchema>? {
+    suspend fun getCurrencies( headers: Map<String, String> = emptyMap()): Response<CurrenciesResponse>? {
         var fullUrl : String? = _relativeUrls["getCurrencies"]
         
         return configurationApiList?.getCurrencies(fullUrl, headers = headers)}
@@ -210,35 +210,35 @@ class ConfigurationDataManagerClass(val config: ApplicationConfig, val unauthori
 
     
     
-    suspend fun getAppCurrencies( headers: Map<String, String> = emptyMap()): Response<AppCurrencyResponseSchema>? {
+    suspend fun getAppCurrencies( headers: Map<String, String> = emptyMap()): Response<AppCurrencyResponse>? {
         var fullUrl : String? = _relativeUrls["getAppCurrencies"]
         
         return configurationApiList?.getAppCurrencies(fullUrl, headers = headers)}
 
     
     
-    suspend fun getLanguages( headers: Map<String, String> = emptyMap()): Response<LanguageResponseSchema>? {
+    suspend fun getLanguages( headers: Map<String, String> = emptyMap()): Response<LanguageResponse>? {
         var fullUrl : String? = _relativeUrls["getLanguages"]
         
         return configurationApiList?.getLanguages(fullUrl, headers = headers)}
 
     
     
-    suspend fun getOrderingStoreCookie(body: OrderingStoreSelectRequestSchema, headers: Map<String, String> = emptyMap()): Response<SuccessMessageResponseSchema>? {
+    suspend fun getOrderingStoreCookie(body: OrderingStoreSelectRequest, headers: Map<String, String> = emptyMap()): Response<SuccessMessageResponse>? {
         var fullUrl : String? = _relativeUrls["getOrderingStoreCookie"]
         
         return configurationApiList?.getOrderingStoreCookie(fullUrl, body = body,headers = headers)}
 
     
     
-    suspend fun removeOrderingStoreCookie( headers: Map<String, String> = emptyMap()): Response<SuccessMessageResponseSchema>? {
+    suspend fun removeOrderingStoreCookie( headers: Map<String, String> = emptyMap()): Response<SuccessMessageResponse>? {
         var fullUrl : String? = _relativeUrls["removeOrderingStoreCookie"]
         
         return configurationApiList?.removeOrderingStoreCookie(fullUrl, headers = headers)}
 
     
     
-    suspend fun getAppStaffList(pageNo: Int?=null,pageSize: Int?=null,orderIncent: Boolean?=null,orderingStore: Int?=null,user: String?=null,userName: String?=null, headers: Map<String, String> = emptyMap()): Response<AppStaffListResponseSchema>? {
+    suspend fun getAppStaffList(pageNo: Int?=null,pageSize: Int?=null,orderIncent: Boolean?=null,orderingStore: Int?=null,user: String?=null,userName: String?=null, headers: Map<String, String> = emptyMap()): Response<AppStaffListResponse>? {
         var fullUrl : String? = _relativeUrls["getAppStaffList"]
         
         return configurationApiList?.getAppStaffList(fullUrl,   pageNo = pageNo,  pageSize = pageSize,  orderIncent = orderIncent,  orderingStore = orderingStore,  user = user,  userName = userName,headers = headers)}
@@ -279,14 +279,14 @@ class ConfigurationDataManagerClass(val config: ApplicationConfig, val unauthori
     *
     * Summary: Paginator for getAppStaffList
     **/
-    fun getAppStaffListPaginator(pageSize: Int?=null, orderIncent: Boolean?=null, orderingStore: Int?=null, user: String?=null, userName: String?=null) : Paginator<AppStaffListResponseSchema>{
+    fun getAppStaffListPaginator(pageSize: Int?=null, orderIncent: Boolean?=null, orderingStore: Int?=null, user: String?=null, userName: String?=null) : Paginator<AppStaffListResponse>{
 
-    val paginator = Paginator<AppStaffListResponseSchema>()
+    val paginator = Paginator<AppStaffListResponse>()
 
-    paginator.setCallBack(object : PaginatorCallback<AppStaffListResponseSchema> {
+    paginator.setCallBack(object : PaginatorCallback<AppStaffListResponse> {
 
             override suspend fun onNext(
-                onResponse: (Event<AppStaffListResponseSchema>?,FdkError?) -> Unit) {
+                onResponse: (Event<AppStaffListResponse>?,FdkError?) -> Unit) {
                 val pageId = paginator.nextId
                 val pageNo = paginator.pageNo
                 val pageType = "number"
@@ -310,7 +310,7 @@ class ConfigurationDataManagerClass(val config: ApplicationConfig, val unauthori
     return paginator
     }
     
-    suspend fun getAppStaffs(orderIncent: Boolean?=null,orderingStore: Int?=null,user: String?=null, headers: Map<String, String> = emptyMap()): Response<AppStaffResponseSchema>? {
+    suspend fun getAppStaffs(orderIncent: Boolean?=null,orderingStore: Int?=null,user: String?=null, headers: Map<String, String> = emptyMap()): Response<AppStaffResponse>? {
         var fullUrl : String? = _relativeUrls["getAppStaffs"]
         
         return configurationApiList?.getAppStaffs(fullUrl,   orderIncent = orderIncent,  orderingStore = orderingStore,  user = user,headers = headers)}

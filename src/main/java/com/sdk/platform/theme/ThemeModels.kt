@@ -779,10 +779,10 @@ data class CompanyThemeReqSchema(
 
              
 /*
-    Model: CompanyTheme
+    Model: CompanyThemeResponse
 */
 @Parcelize
-data class CompanyTheme(
+data class CompanyThemeResponse(
     
     
     
@@ -1138,14 +1138,9 @@ data class SEOSitemap(
     var priority: Double?=null,
     
     @SerializedName("frequency")
-    var frequency: String?=null,
-    
-    @SerializedName("modified_on")
-    var modifiedOn: String?=null
+    var frequency: String?=null
     
 ): Parcelable {
-    
-    
     
     
     
@@ -1838,14 +1833,9 @@ data class ThemesSchema(
     var companyId: Double?=null,
     
     @SerializedName("src")
-    var src: String?=null,
-    
-    @SerializedName("applied_themes")
-    var appliedThemes: @RawValue ArrayList<HashMap<String,Any>>?=null
+    var src: String?=null
     
 ): Parcelable {
-    
-    
     
     
     
@@ -1897,10 +1887,10 @@ data class ThemesSchema(
 
              
 /*
-    Model: ThemeUpgradable
+    Model: ThemeUpgradableResponse
 */
 @Parcelize
-data class ThemeUpgradable(
+data class ThemeUpgradableResponse(
     
     
     
@@ -3276,10 +3266,10 @@ data class ThemeVersions(
 
              
 /*
-    Model: DummyTheme
+    Model: DummyResponse
 */
 @Parcelize
-data class DummyTheme(
+data class DummyResponse(
     
     
     

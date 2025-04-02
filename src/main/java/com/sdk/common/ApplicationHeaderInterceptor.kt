@@ -39,7 +39,7 @@ class ApplicationHeaderInterceptor(
                 header("x-currency-code", currencyCode)
             }
             if (!original.headers.names().contains("x-fp-sdk-version")) {
-                header("x-fp-sdk-version", "0.0.1111-3.beta.1")
+                header("x-fp-sdk-version", "3.1.0-beta.9")
             }
             val bearerToken =
                 Base64.encodeToString(

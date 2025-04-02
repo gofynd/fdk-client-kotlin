@@ -68,10 +68,117 @@ data class CustomFormSubmissionPayload(
 
              
 /*
-    Model: SubmitCustomFormResponseSchema
+    Model: UserSchema
 */
 @Parcelize
-data class SubmitCustomFormResponseSchema(
+data class UserSchema(
+    
+    
+    
+    @SerializedName("application_id")
+    var applicationId: String?=null,
+    
+    @SerializedName("user_id")
+    var userId: String?=null,
+    
+    @SerializedName("first_name")
+    var firstName: String?=null,
+    
+    @SerializedName("meta")
+    var meta: @RawValue HashMap<String,Any>?=null,
+    
+    @SerializedName("last_name")
+    var lastName: String?=null,
+    
+    @SerializedName("phone_numbers")
+    var phoneNumbers: ArrayList<PhoneNumber>?=null,
+    
+    @SerializedName("emails")
+    var emails: ArrayList<Email>?=null,
+    
+    @SerializedName("gender")
+    var gender: String?=null,
+    
+    @SerializedName("dob")
+    var dob: String?=null,
+    
+    @SerializedName("active")
+    var active: Boolean?=null,
+    
+    @SerializedName("profile_pic_url")
+    var profilePicUrl: String?=null,
+    
+    @SerializedName("username")
+    var username: String?=null,
+    
+    @SerializedName("account_type")
+    var accountType: String?=null,
+    
+    @SerializedName("_id")
+    var id: String?=null,
+    
+    @SerializedName("created_at")
+    var createdAt: String?=null,
+    
+    @SerializedName("updated_at")
+    var updatedAt: String?=null,
+    
+    @SerializedName("external_id")
+    var externalId: String?=null,
+    
+    @SerializedName("rr_id")
+    var rrId: String?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: SubmitCustomFormResponse
+*/
+@Parcelize
+data class SubmitCustomFormResponse(
     
     
     
@@ -85,7 +192,7 @@ data class SubmitCustomFormResponseSchema(
     var notifiedTo: ArrayList<String>?=null,
     
     @SerializedName("response")
-    var response: FormResponseSchema?=null
+    var response: FormResponse?=null
     
 ): Parcelable {
     
@@ -105,10 +212,10 @@ data class SubmitCustomFormResponseSchema(
 
              
 /*
-    Model: FormResponseSchema
+    Model: FormResponse
 */
 @Parcelize
-data class FormResponseSchema(
+data class FormResponse(
     
     
     
@@ -897,6 +1004,85 @@ data class Error4XX(
     var sentry: String?=null
     
 ): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: PhoneNumber
+*/
+@Parcelize
+data class PhoneNumber(
+    
+    
+    
+    @SerializedName("phone")
+    var phone: String?=null,
+    
+    @SerializedName("country_code")
+    var countryCode: Int?=null,
+    
+    @SerializedName("active")
+    var active: Boolean?=null,
+    
+    @SerializedName("primary")
+    var primary: Boolean?=null,
+    
+    @SerializedName("verified")
+    var verified: Boolean?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: Email
+*/
+@Parcelize
+data class Email(
+    
+    
+    
+    @SerializedName("email")
+    var email: String?=null,
+    
+    @SerializedName("active")
+    var active: Boolean?=null,
+    
+    @SerializedName("primary")
+    var primary: Boolean?=null,
+    
+    @SerializedName("verified")
+    var verified: Boolean?=null
+    
+): Parcelable {
+    
+    
     
     
     

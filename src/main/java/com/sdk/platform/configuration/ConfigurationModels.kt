@@ -14,105 +14,6 @@ import com.google.gson.annotations.SerializedName
 
              
 /*
-    Model: CurrencyExchangeResponseV2
-*/
-@Parcelize
-data class CurrencyExchangeResponseV2(
-    
-    
-    
-    @SerializedName("base")
-    var base: String?=null,
-    
-    @SerializedName("base_currency_name")
-    var baseCurrencyName: String?=null,
-    
-    @SerializedName("ttl_seconds")
-    var ttlSeconds: Int?=null,
-    
-    @SerializedName("items")
-    var items: ArrayList<CurrencyExchangeItem>?=null,
-    
-    @SerializedName("total")
-    var total: Int?=null
-    
-): Parcelable {
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-}
-
-
-
-             
-/*
-    Model: CurrencyExchangeItem
-*/
-@Parcelize
-data class CurrencyExchangeItem(
-    
-    
-    
-    @SerializedName("currency_code")
-    var currencyCode: String?=null,
-    
-    @SerializedName("name")
-    var name: String?=null,
-    
-    @SerializedName("rate")
-    var rate: Double?=null,
-    
-    @SerializedName("country_code")
-    var countryCode: String?=null,
-    
-    @SerializedName("country_name")
-    var countryName: String?=null,
-    
-    @SerializedName("subunit")
-    var subunit: String?=null,
-    
-    @SerializedName("decimal_digits")
-    var decimalDigits: Int?=null,
-    
-    @SerializedName("symbol")
-    var symbol: String?=null
-    
-): Parcelable {
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-}
-
-
-
-             
-/*
     Model: ApplicationInventory
 */
 @Parcelize
@@ -345,9 +246,19 @@ data class AppInventoryConfig(
     var companyStore: ArrayList<Int>?=null,
     
     @SerializedName("company_id")
-    var companyId: Int?=null
+    var companyId: Int?=null,
+    
+    @SerializedName("enable_zone_overlapping")
+    var enableZoneOverlapping: Boolean?=null,
+    
+    @SerializedName("sort_popular_first")
+    var sortPopularFirst: Boolean?=null
     
 ): Parcelable {
+    
+    
+    
+    
     
     
     
@@ -1226,10 +1137,10 @@ data class BrandCompanyInfo(
 
              
 /*
-    Model: CompanyByBrandsRequestSchema
+    Model: CompanyByBrandsRequest
 */
 @Parcelize
-data class CompanyByBrandsRequestSchema(
+data class CompanyByBrandsRequest(
     
     
     
@@ -1253,10 +1164,10 @@ data class CompanyByBrandsRequestSchema(
 
              
 /*
-    Model: CompanyByBrandsResponseSchema
+    Model: CompanyByBrandsResponse
 */
 @Parcelize
-data class CompanyByBrandsResponseSchema(
+data class CompanyByBrandsResponse(
     
     
     
@@ -1280,10 +1191,10 @@ data class CompanyByBrandsResponseSchema(
 
              
 /*
-    Model: StoreByBrandsRequestSchema
+    Model: StoreByBrandsRequest
 */
 @Parcelize
-data class StoreByBrandsRequestSchema(
+data class StoreByBrandsRequest(
     
     
     
@@ -1312,10 +1223,10 @@ data class StoreByBrandsRequestSchema(
 
              
 /*
-    Model: StoreByBrandsResponseSchema
+    Model: StoreByBrandsResponse
 */
 @Parcelize
-data class StoreByBrandsResponseSchema(
+data class StoreByBrandsResponse(
     
     
     
@@ -1428,10 +1339,10 @@ data class CompanyBrandInfo(
 
              
 /*
-    Model: BrandsByCompanyResponseSchema
+    Model: BrandsByCompanyResponse
 */
 @Parcelize
-data class BrandsByCompanyResponseSchema(
+data class BrandsByCompanyResponse(
     
     
     
@@ -1450,10 +1361,10 @@ data class BrandsByCompanyResponseSchema(
 
              
 /*
-    Model: ValidationFailedResponseSchema
+    Model: ValidationFailedResponse
 */
 @Parcelize
-data class ValidationFailedResponseSchema(
+data class ValidationFailedResponse(
     
     
     
@@ -1600,10 +1511,10 @@ data class PanCardConfig(
 
              
 /*
-    Model: CreateApplicationRequestSchema
+    Model: CreateApplicationRequest
 */
 @Parcelize
-data class CreateApplicationRequestSchema(
+data class CreateApplicationRequest(
     
     
     
@@ -1632,10 +1543,10 @@ data class CreateApplicationRequestSchema(
 
              
 /*
-    Model: CreateAppResponseSchema
+    Model: CreateAppResponse
 */
 @Parcelize
-data class CreateAppResponseSchema(
+data class CreateAppResponse(
     
     
     
@@ -1659,10 +1570,10 @@ data class CreateAppResponseSchema(
 
              
 /*
-    Model: ApplicationsResponseSchema
+    Model: ApplicationsResponse
 */
 @Parcelize
-data class ApplicationsResponseSchema(
+data class ApplicationsResponse(
     
     
     
@@ -1673,6 +1584,263 @@ data class ApplicationsResponseSchema(
     var page: Page?=null
     
 ): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: MobileAppConfiguration
+*/
+@Parcelize
+data class MobileAppConfiguration(
+    
+    
+    
+    @SerializedName("is_active")
+    var isActive: Boolean?=null,
+    
+    @SerializedName("_id")
+    var id: String?=null,
+    
+    @SerializedName("app_name")
+    var appName: String?=null,
+    
+    @SerializedName("landing_image")
+    var landingImage: LandingImage?=null,
+    
+    @SerializedName("splash_image")
+    var splashImage: SplashImage?=null,
+    
+    @SerializedName("application")
+    var application: String?=null,
+    
+    @SerializedName("platform_type")
+    var platformType: String?=null,
+    
+    @SerializedName("created_at")
+    var createdAt: String?=null,
+    
+    @SerializedName("modified_at")
+    var modifiedAt: String?=null,
+    
+    @SerializedName("__v")
+    var v: Int?=null,
+    
+    @SerializedName("package_name")
+    var packageName: String?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: LandingImage
+*/
+@Parcelize
+data class LandingImage(
+    
+    
+    
+    @SerializedName("aspect_ratio")
+    var aspectRatio: String?=null,
+    
+    @SerializedName("secure_url")
+    var secureUrl: String?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: SplashImage
+*/
+@Parcelize
+data class SplashImage(
+    
+    
+    
+    @SerializedName("aspect_ratio")
+    var aspectRatio: String?=null,
+    
+    @SerializedName("secure_url")
+    var secureUrl: String?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: MobileAppConfigRequest
+*/
+@Parcelize
+data class MobileAppConfigRequest(
+    
+    
+    
+    @SerializedName("app_name")
+    var appName: String?=null,
+    
+    @SerializedName("landing_image")
+    var landingImage: LandingImage?=null,
+    
+    @SerializedName("splash_image")
+    var splashImage: SplashImage?=null,
+    
+    @SerializedName("is_active")
+    var isActive: Boolean?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: BuildVersionHistory
+*/
+@Parcelize
+data class BuildVersionHistory(
+    
+    
+    
+    @SerializedName("versions")
+    var versions: ArrayList<BuildVersion>?=null,
+    
+    @SerializedName("latest_available_version_name")
+    var latestAvailableVersionName: String?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: BuildVersion
+*/
+@Parcelize
+data class BuildVersion(
+    
+    
+    
+    @SerializedName("_id")
+    var id: String?=null,
+    
+    @SerializedName("application")
+    var application: String?=null,
+    
+    @SerializedName("platform_type")
+    var platformType: String?=null,
+    
+    @SerializedName("build_status")
+    var buildStatus: String?=null,
+    
+    @SerializedName("version_name")
+    var versionName: String?=null,
+    
+    @SerializedName("version_code")
+    var versionCode: Int?=null,
+    
+    @SerializedName("download_url")
+    var downloadUrl: LandingImage?=null,
+    
+    @SerializedName("created_at")
+    var createdAt: String?=null,
+    
+    @SerializedName("modified_at")
+    var modifiedAt: String?=null,
+    
+    @SerializedName("__v")
+    var v: Int?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     
     
     
@@ -1812,10 +1980,10 @@ data class DomainAdd(
 
              
 /*
-    Model: DomainAddRequestSchema
+    Model: DomainAddRequest
 */
 @Parcelize
-data class DomainAddRequestSchema(
+data class DomainAddRequest(
     
     
     
@@ -1886,10 +2054,10 @@ data class Domain(
 
              
 /*
-    Model: DomainsResponseSchema
+    Model: DomainsResponse
 */
 @Parcelize
-data class DomainsResponseSchema(
+data class DomainsResponse(
     
     
     
@@ -1950,10 +2118,10 @@ data class UpdateDomain(
 
              
 /*
-    Model: UpdateDomainTypeRequestSchema
+    Model: UpdateDomainTypeRequest
 */
 @Parcelize
-data class UpdateDomainTypeRequestSchema(
+data class UpdateDomainTypeRequest(
     
     
     
@@ -1977,10 +2145,10 @@ data class UpdateDomainTypeRequestSchema(
 
              
 /*
-    Model: DomainStatusRequestSchema
+    Model: DomainStatusRequest
 */
 @Parcelize
-data class DomainStatusRequestSchema(
+data class DomainStatusRequest(
     
     
     
@@ -2026,10 +2194,10 @@ data class DomainStatus(
 
              
 /*
-    Model: DomainStatusResponseSchema
+    Model: DomainStatusResponse
 */
 @Parcelize
-data class DomainStatusResponseSchema(
+data class DomainStatusResponse(
     
     
     
@@ -2053,22 +2221,17 @@ data class DomainStatusResponseSchema(
 
              
 /*
-    Model: DomainSuggestionsRequestSchema
+    Model: DomainSuggestionsRequest
 */
 @Parcelize
-data class DomainSuggestionsRequestSchema(
+data class DomainSuggestionsRequest(
     
     
     
     @SerializedName("domain_url")
-    var domainUrl: String?=null,
-    
-    @SerializedName("is_custom_domain")
-    var isCustomDomain: Boolean?=null
+    var domainUrl: String?=null
     
 ): Parcelable {
-    
-    
     
     
     
@@ -2122,10 +2285,10 @@ data class DomainSuggestion(
 
              
 /*
-    Model: DomainSuggestionsResponseSchema
+    Model: DomainSuggestionsResponse
 */
 @Parcelize
-data class DomainSuggestionsResponseSchema(
+data class DomainSuggestionsResponse(
     
     
     
@@ -2144,10 +2307,10 @@ data class DomainSuggestionsResponseSchema(
 
              
 /*
-    Model: SuccessMessageResponseSchema
+    Model: SuccessMessageResponse
 */
 @Parcelize
-data class SuccessMessageResponseSchema(
+data class SuccessMessageResponse(
     
     
     
@@ -2171,10 +2334,10 @@ data class SuccessMessageResponseSchema(
 
              
 /*
-    Model: GetIntegrationsOptInsResponseSchema
+    Model: GetIntegrationsOptInsResponse
 */
 @Parcelize
-data class GetIntegrationsOptInsResponseSchema(
+data class GetIntegrationsOptInsResponse(
     
     
     
@@ -2524,6 +2687,135 @@ data class IntegrationMeta(
 
              
 /*
+    Model: Integration
+*/
+@Parcelize
+data class Integration(
+    
+    
+    
+    @SerializedName("validators")
+    var validators: Validators?=null,
+    
+    @SerializedName("description")
+    var description: String?=null,
+    
+    @SerializedName("description_html")
+    var descriptionHtml: String?=null,
+    
+    @SerializedName("constants")
+    var constants: @RawValue HashMap<String,Any>?=null,
+    
+    @SerializedName("companies")
+    var companies: ArrayList<String>?=null,
+    
+    @SerializedName("support")
+    var support: ArrayList<String>?=null,
+    
+    @SerializedName("_id")
+    var id: String?=null,
+    
+    @SerializedName("name")
+    var name: String?=null,
+    
+    @SerializedName("slug")
+    var slug: String?=null,
+    
+    @SerializedName("meta")
+    var meta: ArrayList<IntegrationMeta>?=null,
+    
+    @SerializedName("icon")
+    var icon: String?=null,
+    
+    @SerializedName("hidden")
+    var hidden: Boolean?=null,
+    
+    @SerializedName("owner")
+    var owner: String?=null,
+    
+    @SerializedName("created_at")
+    var createdAt: String?=null,
+    
+    @SerializedName("modified_at")
+    var modifiedAt: String?=null,
+    
+    @SerializedName("token")
+    var token: String?=null,
+    
+    @SerializedName("secret")
+    var secret: String?=null,
+    
+    @SerializedName("__v")
+    var v: Int?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: IntegrationConfigResponse
+*/
+@Parcelize
+data class IntegrationConfigResponse(
+    
+    
+    
+    @SerializedName("items")
+    var items: ArrayList<IntegrationLevel>?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
     Model: IntegrationLevel
 */
 @Parcelize
@@ -2621,10 +2913,10 @@ data class IntegrationLevel(
 
              
 /*
-    Model: UpdateIntegrationLevelRequestSchema
+    Model: UpdateIntegrationLevelRequest
 */
 @Parcelize
-data class UpdateIntegrationLevelRequestSchema(
+data class UpdateIntegrationLevelRequest(
     
     
     
@@ -2959,10 +3251,10 @@ data class AppDomain(
 
              
 /*
-    Model: CompaniesResponseSchema
+    Model: CompaniesResponse
 */
 @Parcelize
-data class CompaniesResponseSchema(
+data class CompaniesResponse(
     
     
     
@@ -3018,10 +3310,10 @@ data class AppInventoryCompanies(
 
              
 /*
-    Model: StoresResponseSchema
+    Model: StoresResponse
 */
 @Parcelize
-data class StoresResponseSchema(
+data class StoresResponse(
     
     
     
@@ -3045,15 +3337,37 @@ data class StoresResponseSchema(
 
              
 /*
-    Model: ListStoreResponseSchemaSchema
+    Model: ListStoreResponse
 */
 @Parcelize
-data class ListStoreResponseSchemaSchema(
+data class ListStoreResponse(
     
     
     
     @SerializedName("stores")
     var stores: ArrayList<AppInventoryStores>?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: ArrayStoreResponse
+*/
+@Parcelize
+data class ArrayStoreResponse(
+    
+    
+    
+    @SerializedName("data")
+    var data: ArrayList<AppInventoryStores>?=null
     
 ): Parcelable {
     
@@ -3134,10 +3448,10 @@ data class AppInventoryStores(
 
              
 /*
-    Model: FilterOrderingStoreRequestSchemaSchema
+    Model: FilterOrderingStoreRequest
 */
 @Parcelize
-data class FilterOrderingStoreRequestSchemaSchema(
+data class FilterOrderingStoreRequest(
     
     
     
@@ -3240,10 +3554,10 @@ data class OrderingStoreConfig(
 
              
 /*
-    Model: OrderingStoreSelectRequestSchema
+    Model: OrderingStoreSelectRequest
 */
 @Parcelize
-data class OrderingStoreSelectRequestSchema(
+data class OrderingStoreSelectRequest(
     
     
     
@@ -3385,10 +3699,10 @@ data class OtherSellerApplications(
 
              
 /*
-    Model: OptedApplicationResponseSchema
+    Model: OptedApplicationResponse
 */
 @Parcelize
-data class OptedApplicationResponseSchema(
+data class OptedApplicationResponse(
     
     
     
@@ -3612,10 +3926,10 @@ data class OptOutInventory(
 
              
 /*
-    Model: TokenResponseSchema
+    Model: TokenResponse
 */
 @Parcelize
-data class TokenResponseSchema(
+data class TokenResponse(
     
     
     
@@ -5186,10 +5500,10 @@ data class BuyboxFeature(
 
              
 /*
-    Model: AppFeatureRequestSchema
+    Model: AppFeatureRequest
 */
 @Parcelize
-data class AppFeatureRequestSchema(
+data class AppFeatureRequest(
     
     
     
@@ -5208,10 +5522,10 @@ data class AppFeatureRequestSchema(
 
              
 /*
-    Model: AppFeatureResponseSchema
+    Model: AppFeatureResponse
 */
 @Parcelize
-data class AppFeatureResponseSchema(
+data class AppFeatureResponse(
     
     
     
@@ -5264,15 +5578,10 @@ data class Currency(
     @SerializedName("country_name")
     var countryName: String?=null,
     
-    @SerializedName("subunit")
-    var subunit: String?=null,
-    
     @SerializedName("country_code")
     var countryCode: String?=null
     
 ): Parcelable {
-    
-    
     
     
     
@@ -5653,10 +5962,10 @@ data class TokenSchema(
 
              
 /*
-    Model: InvalidPayloadRequestSchema
+    Model: InvalidPayloadRequest
 */
 @Parcelize
-data class InvalidPayloadRequestSchema(
+data class InvalidPayloadRequest(
     
     
     
@@ -6703,10 +7012,10 @@ data class ApplicationDetail(
 
              
 /*
-    Model: CurrenciesResponseSchema
+    Model: CurrenciesResponse
 */
 @Parcelize
-data class CurrenciesResponseSchema(
+data class CurrenciesResponse(
     
     
     
@@ -6725,10 +7034,10 @@ data class CurrenciesResponseSchema(
 
              
 /*
-    Model: AppCurrencyResponseSchema
+    Model: AppCurrencyResponse
 */
 @Parcelize
-data class AppCurrencyResponseSchema(
+data class AppCurrencyResponse(
     
     
     
@@ -7022,10 +7331,10 @@ data class UpdateDiealog(
 
              
 /*
-    Model: PlatformVersionRequestSchema
+    Model: PlatformVersionRequest
 */
 @Parcelize
-data class PlatformVersionRequestSchema(
+data class PlatformVersionRequest(
     
     
     
@@ -7136,10 +7445,10 @@ data class PlatformVersion(
 
              
 /*
-    Model: OrderingStoresResponseSchema
+    Model: OrderingStoresResponse
 */
 @Parcelize
-data class OrderingStoresResponseSchema(
+data class OrderingStoresResponse(
     
     
     
@@ -7346,10 +7655,10 @@ data class Locations(
 
              
 /*
-    Model: UrlRedirectionResponseSchema
+    Model: UrlRedirectionResponse
 */
 @Parcelize
-data class UrlRedirectionResponseSchema(
+data class UrlRedirectionResponse(
     
     
     
@@ -7368,10 +7677,10 @@ data class UrlRedirectionResponseSchema(
 
              
 /*
-    Model: UrlRedirectionRequestSchema
+    Model: UrlRedirectionRequest
 */
 @Parcelize
-data class UrlRedirectionRequestSchema(
+data class UrlRedirectionRequest(
     
     
     
@@ -7427,10 +7736,10 @@ data class UrlRedirection(
 
              
 /*
-    Model: StoreForConfigurationRequestSchema
+    Model: StoreForConfigurationRequest
 */
 @Parcelize
-data class StoreForConfigurationRequestSchema(
+data class StoreForConfigurationRequest(
     
     
     
@@ -7449,10 +7758,10 @@ data class StoreForConfigurationRequestSchema(
 
              
 /*
-    Model: DomainOptionsResponseSchema
+    Model: DomainOptionsResponse
 */
 @Parcelize
-data class DomainOptionsResponseSchema(
+data class DomainOptionsResponse(
     
     
     
@@ -7540,10 +7849,10 @@ data class DomainValue(
 
              
 /*
-    Model: StoreRequestSchema
+    Model: StoreRequest
 */
 @Parcelize
-data class StoreRequestSchema(
+data class StoreRequest(
     
     
     
@@ -7562,10 +7871,10 @@ data class StoreRequestSchema(
 
              
 /*
-    Model: StoreResponseSchema
+    Model: StoreResponse
 */
 @Parcelize
-data class StoreResponseSchema(
+data class StoreResponse(
     
     
     
@@ -7573,33 +7882,6 @@ data class StoreResponseSchema(
     var data: ArrayList<Int>?=null
     
 ): Parcelable {
-    
-    
-    
-    
-    
-}
-
-
-
-             
-/*
-    Model: ValidationError
-*/
-@Parcelize
-data class ValidationError(
-    
-    
-    
-    @SerializedName("message")
-    var message: String?=null,
-    
-    @SerializedName("field")
-    var field: String?=null
-    
-): Parcelable {
-    
-    
     
     
     

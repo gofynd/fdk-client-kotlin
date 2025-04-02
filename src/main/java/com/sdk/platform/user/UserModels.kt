@@ -14,10 +14,10 @@ import com.google.gson.annotations.SerializedName
 
              
 /*
-    Model: SuccessMessage
+    Model: SuccessMessageResponse
 */
 @Parcelize
-data class SuccessMessage(
+data class SuccessMessageResponse(
     
     
     
@@ -133,10 +133,10 @@ data class UserAttributeDefinition(
 
              
 /*
-    Model: UserAttributeDefinitionResp
+    Model: UserAttributeDefinitionResponse
 */
 @Parcelize
-data class UserAttributeDefinitionResp(
+data class UserAttributeDefinitionResponse(
     
     
     
@@ -262,10 +262,10 @@ data class UserAttributeDefinitionValidation(
 
              
 /*
-    Model: UserAttribute
+    Model: UserAttributeResponse
 */
 @Parcelize
-data class UserAttribute(
+data class UserAttributeResponse(
     
     
     
@@ -319,10 +319,10 @@ data class UserAttribute(
 
              
 /*
-    Model: CreateUserAttributePayload
+    Model: CreateUserAttributeRequest
 */
 @Parcelize
-data class CreateUserAttributePayload(
+data class CreateUserAttributeRequest(
     
     
     
@@ -943,9 +943,6 @@ data class UserGroupResponseSchema(
     @SerializedName("application_id")
     var applicationId: String?=null,
     
-    @SerializedName("tags")
-    var tags: ArrayList<String>?=null,
-    
     @SerializedName("created_at")
     var createdAt: String?=null,
     
@@ -956,8 +953,6 @@ data class UserGroupResponseSchema(
     var v: Int?=null
     
 ): Parcelable {
-    
-    
     
     
     
@@ -2534,15 +2529,6 @@ data class UserSearchSchema(
     
     
     
-    @SerializedName("__v")
-    var v: Double?=null,
-    
-    @SerializedName("has_old_password_hash")
-    var hasOldPasswordHash: Boolean?=null,
-    
-    @SerializedName("debug")
-    var debug: DebugInfo?=null,
-    
     @SerializedName("application_id")
     var applicationId: String?=null,
     
@@ -2640,39 +2626,6 @@ data class UserSearchSchema(
     
     
     
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-}
-
-
-
-             
-/*
-    Model: DebugInfo
-*/
-@Parcelize
-data class DebugInfo(
-    
-    
-    
-    @SerializedName("source")
-    var source: String?=null,
-    
-    @SerializedName("platform")
-    var platform: String?=null
-    
-): Parcelable {
     
     
     

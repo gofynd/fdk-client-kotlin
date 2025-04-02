@@ -13,7 +13,7 @@ interface ConfigurationApiList {
     
     @GET
     suspend fun searchApplication(@Url url1: String?    ,  @Header("authorization") authorization: String?,  @Query("query") query: String?, @HeaderMap headers: Map<String, String>? = null)
-    : Response<ApplicationResponseSchema>
+    : Response<ApplicationResponse>
     
     
     @GET
@@ -22,7 +22,7 @@ interface ConfigurationApiList {
     
     
     @POST
-    suspend fun checkVersionIsUpToDate(@Url url1: String?   ,@Body body: VersionRequestSchema, @HeaderMap headers: Map<String, String>? = null)
-    : Response<VersionResponseSchema>
+    suspend fun checkVersionIsUpToDate(@Url url1: String?   ,@Body body: VersionRequest, @HeaderMap headers: Map<String, String>? = null)
+    : Response<VersionResponse>
     
 }

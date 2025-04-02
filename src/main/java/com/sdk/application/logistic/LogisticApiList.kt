@@ -13,17 +13,17 @@ interface LogisticApiList {
     
     @GET
     suspend fun getPincodeCity(@Url url1: String?    , @HeaderMap headers: Map<String, String>? = null)
-    : Response<PincodeApiResponseSchema>
+    : Response<PincodeApiResponse>
     
     
     @GET
     suspend fun getAllCountries(@Url url1: String?   , @HeaderMap headers: Map<String, String>? = null)
-    : Response<CountryListResponseSchema>
+    : Response<CountryListResponse>
     
     
     @GET
-    suspend fun getZones(@Url url1: String?      ,              @Query("stage") stage: String?, @Query("type") type: String?, @Query("page_size") pageSize: Int?, @Query("page_no") pageNo: Int?, @Query("is_active") isActive: Boolean?, @Query("q") q: String?, @Query("country_iso_code") countryIsoCode: String?, @Query("pincode") pincode: String?, @Query("state") state: String?, @Query("city") city: String?, @Query("sector") sector: String?, @Query("store_uid") storeUid: Int?, @Query("region_uid") regionUid: String?, @HeaderMap headers: Map<String, String>? = null)
-    : Response<ListViewResponseSchemaV2>
+    suspend fun getZones(@Url url1: String?      ,            @Query("stage") stage: String?, @Query("type") type: String?, @Query("page_size") pageSize: Int?, @Query("page_no") pageNo: Int?, @Query("is_active") isActive: Boolean?, @Query("q") q: String?, @Query("country_iso_code") countryIsoCode: String?, @Query("pincode") pincode: String?, @Query("state") state: String?, @Query("city") city: String?, @Query("sector") sector: String?, @HeaderMap headers: Map<String, String>? = null)
+    : Response<ListViewResponseV2>
     
     
     @GET
@@ -42,7 +42,7 @@ interface LogisticApiList {
     
     
     @GET
-    suspend fun getLocalitiesByPrefix(@Url url1: String?    ,    @Query("page_no") pageNo: Int?, @Query("page_size") pageSize: Int?, @Query("q") q: String?, @HeaderMap headers: Map<String, String>? = null)
+    suspend fun getLocalitiesByPrefix(@Url url1: String?     ,    @Query("page_no") pageNo: Int?, @Query("page_size") pageSize: Int?, @Query("q") q: String?, @HeaderMap headers: Map<String, String>? = null)
     : Response<GetLocalities>
     
     
@@ -57,17 +57,22 @@ interface LogisticApiList {
     
     
     @POST
-    suspend fun validateAddress(@Url url1: String?     ,@Body body: ValidateAddressRequestSchema, @HeaderMap headers: Map<String, String>? = null)
-    : Response<ValidateAddressRequestSchema>
+    suspend fun validateAddress(@Url url1: String?     ,@Body body: ValidateAddressRequest, @HeaderMap headers: Map<String, String>? = null)
+    : Response<ValidateAddressRequest>
     
     
     @POST
-    suspend fun createShipments(@Url url1: String?     ,@Body body: GenerateShipmentsRequestSchema, @HeaderMap headers: Map<String, String>? = null)
-    : Response<GenerateShipmentsAndCourierPartnerResponseSchema>
+    suspend fun createShipments(@Url url1: String?     ,@Body body: GenerateShipmentsRequest, @HeaderMap headers: Map<String, String>? = null)
+    : Response<GenerateShipmentsAndCourierPartnerResponse>
     
     
     @GET
     suspend fun getDeliveryPromise(@Url url1: String?    ,   @Query("page_no") pageNo: Int?, @Query("page_size") pageSize: Int?, @HeaderMap headers: Map<String, String>? = null)
     : Response<GetPromiseDetails>
+    
+    
+    @GET
+    suspend fun getQCPromise(@Url url1: String?   , @HeaderMap headers: Map<String, String>? = null)
+    : Response<GetQCPromiseDetails>
     
 }
