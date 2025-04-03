@@ -81,10 +81,6 @@ interface UserApiList {
     suspend fun updateUserGroupPartially(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Path("group_id") groupId: String,@Body body: PartialUserGroupUpdateSchema, @HeaderMap headers: Map<String, String>? = null)
     : Response<UserGroupResponseSchema>
     
-    @GET ("/service/platform/user/v1.0/company/{company_id}/application/{application_id}/user_group/{group_id}/users")
-    suspend fun getUsersByByGroupId(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Path("group_id") groupId: String, @HeaderMap headers: Map<String, String>? = null)
-    : Response<CustomerListResponseSchema>
-    
     @POST ("/service/platform/user/v1.0/company/{company_id}/application/{application_id}/user_attribute/definition")
     suspend fun createUserAttributeDefinition(@Path("company_id") companyId: String, @Path("application_id") applicationId: String,@Body body: CreateUserAttributeDefinition, @HeaderMap headers: Map<String, String>? = null)
     : Response<UserAttributeDefinitionResponse>

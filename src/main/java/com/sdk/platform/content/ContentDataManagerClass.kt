@@ -118,8 +118,9 @@ class ContentDataManagerClass(val config: PlatformConfig, val unauthorizedAction
     
     
     
+    
     suspend fun getCustomFieldTypes( headers: Map<String, String> = emptyMap())
-    : Response<MetafieldTypesSchema>? {
+    : Response<CustomObjectByIdSchema>? {
 
         return if (config.oauthClient.isAccessTokenValid()) {
             contentApiList?.getCustomFieldTypes(
@@ -142,12 +143,12 @@ class ContentDataManagerClass(val config: PlatformConfig, val unauthorizedAction
     }
     
     
-    suspend fun getCustomFieldDefinitions(pageNo: String,pageSize: String,resources: String?=null,types: String?=null,search: String?=null,slugs: String?=null, headers: Map<String, String> = emptyMap())
+    suspend fun getCustomFieldDefinitions(pageNo: String,pageSize: String,resource: String?=null,type: String?=null,search: String?=null, headers: Map<String, String> = emptyMap())
     : Response<CustomFieldDefinitionsSchema>? {
 
         return if (config.oauthClient.isAccessTokenValid()) {
             contentApiList?.getCustomFieldDefinitions(
-        companyId = config.companyId,pageNo = pageNo,pageSize = pageSize,resources = resources,types = types,search = search,slugs = slugs, headers = headers)
+        companyId = config.companyId,pageNo = pageNo,pageSize = pageSize,resource = resource,type = type,search = search, headers = headers)
         } else {
             null
         }
@@ -166,36 +167,36 @@ class ContentDataManagerClass(val config: PlatformConfig, val unauthorizedAction
     }
     
     
-    suspend fun getCustomFieldDefinition(id: String, headers: Map<String, String> = emptyMap())
+    suspend fun getCustomFieldDefinition(definitionId: String, headers: Map<String, String> = emptyMap())
     : Response<CustomFieldDefinitionDetailResSchema>? {
 
         return if (config.oauthClient.isAccessTokenValid()) {
             contentApiList?.getCustomFieldDefinition(
-        companyId = config.companyId,id = id, headers = headers)
+        companyId = config.companyId,definitionId = definitionId, headers = headers)
         } else {
             null
         }
     }
     
     
-    suspend fun updateCustomFieldDefinition(id: String,body: CustomFieldDefinitionRequestSchema, headers: Map<String, String> = emptyMap())
+    suspend fun updateCustomFieldDefinition(definitionId: String,body: CustomFieldDefinitionRequestSchema, headers: Map<String, String> = emptyMap())
     : Response<CustomFieldDefinitionDetailResSchema>? {
 
         return if (config.oauthClient.isAccessTokenValid()) {
             contentApiList?.updateCustomFieldDefinition(
-        companyId = config.companyId,id = id, body = body,headers = headers)
+        companyId = config.companyId,definitionId = definitionId, body = body,headers = headers)
         } else {
             null
         }
     }
     
     
-    suspend fun deleteCustomFieldDefinition(id: String, headers: Map<String, String> = emptyMap())
+    suspend fun deleteCustomFieldDefinition(definitionId: String, headers: Map<String, String> = emptyMap())
     : Response<CustomDataDeleteSchema>? {
 
         return if (config.oauthClient.isAccessTokenValid()) {
             contentApiList?.deleteCustomFieldDefinition(
-        companyId = config.companyId,id = id, headers = headers)
+        companyId = config.companyId,definitionId = definitionId, headers = headers)
         } else {
             null
         }
@@ -238,42 +239,6 @@ class ContentDataManagerClass(val config: PlatformConfig, val unauthorizedAction
     }
     
     
-    suspend fun updateCustomFieldByResourceId(resource: String,resourceId: String,body: CustomFieldRequestSchema, headers: Map<String, String> = emptyMap())
-    : Response<CustomFieldsResponseByResourceIdSchema>? {
-
-        return if (config.oauthClient.isAccessTokenValid()) {
-            contentApiList?.updateCustomFieldByResourceId(
-        companyId = config.companyId,resource = resource,resourceId = resourceId, body = body,headers = headers)
-        } else {
-            null
-        }
-    }
-    
-    
-    suspend fun deleteCustomFieldsByResourceId(resource: String,resourceId: String,ids: String, headers: Map<String, String> = emptyMap())
-    : Response<CustomFieldsDeleteSchema>? {
-
-        return if (config.oauthClient.isAccessTokenValid()) {
-            contentApiList?.deleteCustomFieldsByResourceId(
-        companyId = config.companyId,resource = resource,resourceId = resourceId,ids = ids, headers = headers)
-        } else {
-            null
-        }
-    }
-    
-    
-    suspend fun getCustomFieldJobs(page: String,pageSize: String,actionType: String, headers: Map<String, String> = emptyMap())
-    : Response<CustomFieldBulkEntry>? {
-
-        return if (config.oauthClient.isAccessTokenValid()) {
-            contentApiList?.getCustomFieldJobs(
-        companyId = config.companyId,page = page,pageSize = pageSize,actionType = actionType, headers = headers)
-        } else {
-            null
-        }
-    }
-    
-    
     suspend fun createCustomObjectDefinition(body: CustomObjectDefinitionRequestSchema, headers: Map<String, String> = emptyMap())
     : Response<CustomObjectDefinitionSchema>? {
 
@@ -298,36 +263,36 @@ class ContentDataManagerClass(val config: PlatformConfig, val unauthorizedAction
     }
     
     
-    suspend fun getCustomObjectDefinition(id: String, headers: Map<String, String> = emptyMap())
+    suspend fun getCustomObjectDefinition(definitionId: String, headers: Map<String, String> = emptyMap())
     : Response<CustomObjectDefinitionSchema>? {
 
         return if (config.oauthClient.isAccessTokenValid()) {
             contentApiList?.getCustomObjectDefinition(
-        companyId = config.companyId,id = id, headers = headers)
+        companyId = config.companyId,definitionId = definitionId, headers = headers)
         } else {
             null
         }
     }
     
     
-    suspend fun updateCustomObjectDefinition(id: String,body: CustomObjectDefinitionUpdateRequestSchema, headers: Map<String, String> = emptyMap())
+    suspend fun updateCustomObjectDefinition(definitionId: String,body: CustomObjectDefinitionUpdateRequestSchema, headers: Map<String, String> = emptyMap())
     : Response<CustomObjectDefinitionSchema>? {
 
         return if (config.oauthClient.isAccessTokenValid()) {
             contentApiList?.updateCustomObjectDefinition(
-        companyId = config.companyId,id = id, body = body,headers = headers)
+        companyId = config.companyId,definitionId = definitionId, body = body,headers = headers)
         } else {
             null
         }
     }
     
     
-    suspend fun deleteCustomObjectDefinition(id: String, headers: Map<String, String> = emptyMap())
+    suspend fun deleteCustomObjectDefinition(definitionId: String, headers: Map<String, String> = emptyMap())
     : Response<CustomObjectDefinitionDeleteResponseSchema>? {
 
         return if (config.oauthClient.isAccessTokenValid()) {
             contentApiList?.deleteCustomObjectDefinition(
-        companyId = config.companyId,id = id, headers = headers)
+        companyId = config.companyId,definitionId = definitionId, headers = headers)
         } else {
             null
         }
@@ -358,36 +323,36 @@ class ContentDataManagerClass(val config: PlatformConfig, val unauthorizedAction
     }
     
     
-    suspend fun getCustomObject(id: String, headers: Map<String, String> = emptyMap())
+    suspend fun getCustomObject(metaobjectId: String, headers: Map<String, String> = emptyMap())
     : Response<CustomObjectByIdSchema>? {
 
         return if (config.oauthClient.isAccessTokenValid()) {
             contentApiList?.getCustomObject(
-        companyId = config.companyId,id = id, headers = headers)
+        companyId = config.companyId,metaobjectId = metaobjectId, headers = headers)
         } else {
             null
         }
     }
     
     
-    suspend fun updateCustomObject(id: String,body: CustomObjectRequestSchema, headers: Map<String, String> = emptyMap())
-    : Response<CustomObjectSchema>? {
-
-        return if (config.oauthClient.isAccessTokenValid()) {
-            contentApiList?.updateCustomObject(
-        companyId = config.companyId,id = id, body = body,headers = headers)
-        } else {
-            null
-        }
-    }
-    
-    
-    suspend fun deleteCustomObject(id: String, headers: Map<String, String> = emptyMap())
+    suspend fun deleteCustomObject(metaobjectId: String, headers: Map<String, String> = emptyMap())
     : Response<CustomDataDeleteSchema>? {
 
         return if (config.oauthClient.isAccessTokenValid()) {
             contentApiList?.deleteCustomObject(
-        companyId = config.companyId,id = id, headers = headers)
+        companyId = config.companyId,metaobjectId = metaobjectId, headers = headers)
+        } else {
+            null
+        }
+    }
+    
+    
+    suspend fun updateCustomObject(metaobjectId: String,body: CustomObjectRequestSchema, headers: Map<String, String> = emptyMap())
+    : Response<CustomObjectByIdSchema>? {
+
+        return if (config.oauthClient.isAccessTokenValid()) {
+            contentApiList?.updateCustomObject(
+        companyId = config.companyId,metaobjectId = metaobjectId, body = body,headers = headers)
         } else {
             null
         }
@@ -431,7 +396,7 @@ class ContentDataManagerClass(val config: PlatformConfig, val unauthorizedAction
     
     
     suspend fun sampleCustomObjectBulkEntry(definitionId: String, headers: Map<String, String> = emptyMap())
-    : Response<ResponseBody>? {
+    : Response<String>? {
 
         return if (config.oauthClient.isAccessTokenValid()) {
             contentApiList?.sampleCustomObjectBulkEntry(
@@ -440,9 +405,6 @@ class ContentDataManagerClass(val config: PlatformConfig, val unauthorizedAction
             null
         }
     }
-    
-    
-    
     
     
     
@@ -573,16 +535,6 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     }
     
     
-    suspend fun getComponentById(slug: String, headers: Map<String, String> = emptyMap())
-    : Response<BlogSchema>? {
-        return if (config.oauthClient.isAccessTokenValid()) {
-                contentApiList?.getComponentById(companyId = config.companyId ,applicationId = applicationId ,slug = slug, headers = headers)
-        } else {
-            null
-        }
-    }
-    
-    
     suspend fun addDataLoader(body: DataLoaderSchema, headers: Map<String, String> = emptyMap())
     : Response<DataLoaderResponseSchema>? {
         return if (config.oauthClient.isAccessTokenValid()) {
@@ -597,16 +549,6 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     : Response<DataLoadersSchema>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 contentApiList?.getDataLoaders(companyId = config.companyId ,applicationId = applicationId , headers = headers)
-        } else {
-            null
-        }
-    }
-    
-    
-    suspend fun getDataLoaderApiSpecs(dataLoader: String, headers: Map<String, String> = emptyMap())
-    : Response<DataLoadersApiSpecSchema>? {
-        return if (config.oauthClient.isAccessTokenValid()) {
-                contentApiList?.getDataLoaderApiSpecs(companyId = config.companyId ,applicationId = applicationId ,dataLoader = dataLoader, headers = headers)
         } else {
             null
         }
@@ -634,7 +576,7 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     
     
     suspend fun getDataLoadersByService(serviceName: String, headers: Map<String, String> = emptyMap())
-    : Response<DataLoaderItemsResponseSchema>? {
+    : Response<DataLoaderResponseSchema>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 contentApiList?.getDataLoadersByService(companyId = config.companyId ,applicationId = applicationId ,serviceName = serviceName, headers = headers)
         } else {
@@ -704,7 +646,7 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     
     
     suspend fun deleteFaqCategory(id: String, headers: Map<String, String> = emptyMap())
-    : Response<CreateFaqCategorySchema>? {
+    : Response<FaqSchema>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 contentApiList?.deleteFaqCategory(companyId = config.companyId ,applicationId = applicationId ,id = id, headers = headers)
         } else {
@@ -863,7 +805,7 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     }
     
     
-    suspend fun getNavigationBySlug(slug: String,devicePlatform: String?=null, headers: Map<String, String> = emptyMap())
+    suspend fun getNavigationBySlug(slug: String,devicePlatform: String, headers: Map<String, String> = emptyMap())
     : Response<NavigationSchema>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 contentApiList?.getNavigationBySlug(companyId = config.companyId ,applicationId = applicationId ,slug = slug,devicePlatform = devicePlatform, headers = headers)
@@ -944,7 +886,7 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     
     
     suspend fun addPathRedirectionRules(body: PathMappingSchema, headers: Map<String, String> = emptyMap())
-    : Response<CreatePathMappingSchema>? {
+    : Response<PathMappingSchema>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 contentApiList?.addPathRedirectionRules(companyId = config.companyId ,applicationId = applicationId , body = body,headers = headers)
         } else {
@@ -954,7 +896,7 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     
     
     suspend fun getPathRedirectionRules(pageSize: Int?=null,pageNo: Int?=null, headers: Map<String, String> = emptyMap())
-    : Response<GetAllPathMappingSchema>? {
+    : Response<PathMappingSchema>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 contentApiList?.getPathRedirectionRules(companyId = config.companyId ,applicationId = applicationId ,pageSize = pageSize,pageNo = pageNo, headers = headers)
         } else {
@@ -964,7 +906,7 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     
     
     suspend fun getPathRedirectionRule(pathId: String, headers: Map<String, String> = emptyMap())
-    : Response<DeletPathMappingSchema>? {
+    : Response<PathMappingSchema>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 contentApiList?.getPathRedirectionRule(companyId = config.companyId ,applicationId = applicationId ,pathId = pathId, headers = headers)
         } else {
@@ -974,7 +916,7 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     
     
     suspend fun updatePathRedirectionRules(pathId: String,body: PathMappingSchema, headers: Map<String, String> = emptyMap())
-    : Response<CreatePathMappingSchema>? {
+    : Response<PathMappingSchema>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 contentApiList?.updatePathRedirectionRules(companyId = config.companyId ,applicationId = applicationId ,pathId = pathId, body = body,headers = headers)
         } else {
@@ -984,7 +926,7 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     
     
     suspend fun deletePathRedirectionRules(pathId: String, headers: Map<String, String> = emptyMap())
-    : Response<DeletPathMappingSchema>? {
+    : Response<HashMap<String,Any>>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 contentApiList?.deletePathRedirectionRules(companyId = config.companyId ,applicationId = applicationId ,pathId = pathId, headers = headers)
         } else {
@@ -1043,40 +985,144 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     }
     
     
-    suspend fun getSEOMarkupSchema(schemaId: String, headers: Map<String, String> = emptyMap())
+    suspend fun getSEOMarkupSchema(id: String, headers: Map<String, String> = emptyMap())
     : Response<SEOSchemaMarkupTemplate>? {
         return if (config.oauthClient.isAccessTokenValid()) {
-                contentApiList?.getSEOMarkupSchema(companyId = config.companyId ,applicationId = applicationId ,schemaId = schemaId, headers = headers)
+                contentApiList?.getSEOMarkupSchema(companyId = config.companyId ,applicationId = applicationId ,id = id, headers = headers)
         } else {
             null
         }
     }
     
     
-    suspend fun editSEOMarkupSchema(schemaId: String,body: SEOSchemaMarkupTemplateRequestBody, headers: Map<String, String> = emptyMap())
+    suspend fun editSEOMarkupSchema(id: String,body: SEOSchemaMarkupTemplateRequestBody, headers: Map<String, String> = emptyMap())
     : Response<SEOSchemaMarkupTemplate>? {
         return if (config.oauthClient.isAccessTokenValid()) {
-                contentApiList?.editSEOMarkupSchema(companyId = config.companyId ,applicationId = applicationId ,schemaId = schemaId, body = body,headers = headers)
+                contentApiList?.editSEOMarkupSchema(companyId = config.companyId ,applicationId = applicationId ,id = id, body = body,headers = headers)
         } else {
             null
         }
     }
     
     
-    suspend fun deleteSEOMarkupSchema(schemaId: String, headers: Map<String, String> = emptyMap())
+    suspend fun deleteSEOMarkupSchema(id: String, headers: Map<String, String> = emptyMap())
     : Response<SEOSchemaMarkupTemplate>? {
         return if (config.oauthClient.isAccessTokenValid()) {
-                contentApiList?.deleteSEOMarkupSchema(companyId = config.companyId ,applicationId = applicationId ,schemaId = schemaId, headers = headers)
+                contentApiList?.deleteSEOMarkupSchema(companyId = config.companyId ,applicationId = applicationId ,id = id, headers = headers)
         } else {
             null
         }
     }
     
     
-    suspend fun addInjectableTag(body: CreateTagRequestSchema, headers: Map<String, String> = emptyMap())
-    : Response<TagsSchema>? {
+    suspend fun getSlideshows(devicePlatform: String,pageNo: Int?=null,pageSize: Int?=null, headers: Map<String, String> = emptyMap())
+    : Response<SlideshowGetResponse>? {
         return if (config.oauthClient.isAccessTokenValid()) {
-                contentApiList?.addInjectableTag(companyId = config.companyId ,applicationId = applicationId , body = body,headers = headers)
+                contentApiList?.getSlideshows(companyId = config.companyId ,applicationId = applicationId ,devicePlatform = devicePlatform,pageNo = pageNo,pageSize = pageSize, headers = headers)
+        } else {
+            null
+        }
+    }
+    
+    
+    
+        
+            
+                
+            
+            
+        
+            
+                
+            
+            
+        
+            
+                
+            
+            
+        
+            
+            
+        
+            
+                
+            
+            
+        
+    /**
+    *
+    * Summary: Paginator for getSlideshows
+    **/
+    fun getSlideshowsPaginator(
+    devicePlatform: String, pageSize: Int?=null
+    
+    ) : Paginator<SlideshowGetResponse>{
+        val paginator = Paginator<SlideshowGetResponse>()
+        paginator.setCallBack(object : PaginatorCallback<SlideshowGetResponse> {
+
+            override suspend fun onNext(
+                onResponse: (Event<SlideshowGetResponse>?,FdkError?) -> Unit){
+
+                if (config.oauthClient.isAccessTokenValid()) {
+                    val pageId = paginator.nextId
+                    val pageNo = paginator.pageNo
+                    val pageType = "number"
+                    contentApiList?.getSlideshows(companyId = config.companyId , applicationId = applicationId , devicePlatform = devicePlatform, pageNo = pageNo, pageSize = pageSize)?.safeAwait{ response, error ->
+                        response?.let {
+                            val page = response.peekContent()?.page
+                            paginator.setPaginator(hasNext=page?.hasNext?:false,pageNo=if (page?.hasNext == true) ((pageNo ?: 0) + 1) else pageNo)
+                            onResponse.invoke(response,null)
+                        }
+
+                        error?.let {
+                            onResponse.invoke(null,error)
+                        }
+                    }
+
+                } else {
+                    null
+                }
+            }
+
+    })
+    return paginator
+    }
+    
+    suspend fun createSlideshow(body: SlideshowRequest, headers: Map<String, String> = emptyMap())
+    : Response<SlideshowSchema>? {
+        return if (config.oauthClient.isAccessTokenValid()) {
+                contentApiList?.createSlideshow(companyId = config.companyId ,applicationId = applicationId , body = body,headers = headers)
+        } else {
+            null
+        }
+    }
+    
+    
+    suspend fun getSlideshowBySlug(slug: String,devicePlatform: String, headers: Map<String, String> = emptyMap())
+    : Response<SlideshowSchema>? {
+        return if (config.oauthClient.isAccessTokenValid()) {
+                contentApiList?.getSlideshowBySlug(companyId = config.companyId ,applicationId = applicationId ,slug = slug,devicePlatform = devicePlatform, headers = headers)
+        } else {
+            null
+        }
+    }
+    
+    
+    suspend fun updateSlideshow(id: String,body: SlideshowRequest, headers: Map<String, String> = emptyMap())
+    : Response<SlideshowSchema>? {
+        return if (config.oauthClient.isAccessTokenValid()) {
+                contentApiList?.updateSlideshow(companyId = config.companyId ,applicationId = applicationId ,id = id, body = body,headers = headers)
+        } else {
+            null
+        }
+    }
+    
+    
+    suspend fun deleteSlideshow(id: String, headers: Map<String, String> = emptyMap())
+    : Response<SlideshowSchema>? {
+        return if (config.oauthClient.isAccessTokenValid()) {
+                contentApiList?.deleteSlideshow(companyId = config.companyId ,applicationId = applicationId ,id = id, headers = headers)
         } else {
             null
         }
@@ -1103,6 +1149,36 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     }
     
     
+    suspend fun updateInjectableTag(body: CreateTagRequestSchema, headers: Map<String, String> = emptyMap())
+    : Response<TagsSchema>? {
+        return if (config.oauthClient.isAccessTokenValid()) {
+                contentApiList?.updateInjectableTag(companyId = config.companyId ,applicationId = applicationId , body = body,headers = headers)
+        } else {
+            null
+        }
+    }
+    
+    
+    suspend fun getInjectableTags(all: Boolean?=null, headers: Map<String, String> = emptyMap())
+    : Response<TagsSchema>? {
+        return if (config.oauthClient.isAccessTokenValid()) {
+                contentApiList?.getInjectableTags(companyId = config.companyId ,applicationId = applicationId ,all = all, headers = headers)
+        } else {
+            null
+        }
+    }
+    
+    
+    suspend fun addInjectableTag(body: CreateTagRequestSchema, headers: Map<String, String> = emptyMap())
+    : Response<TagsSchema>? {
+        return if (config.oauthClient.isAccessTokenValid()) {
+                contentApiList?.addInjectableTag(companyId = config.companyId ,applicationId = applicationId , body = body,headers = headers)
+        } else {
+            null
+        }
+    }
+    
+    
     suspend fun removeInjectableTag(body: RemoveHandpickedSchema, headers: Map<String, String> = emptyMap())
     : Response<TagDeleteSuccessResponse>? {
         return if (config.oauthClient.isAccessTokenValid()) {
@@ -1117,46 +1193,6 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     : Response<TagsSchema>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 contentApiList?.editInjectableTag(companyId = config.companyId ,applicationId = applicationId ,tagId = tagId, body = body,headers = headers)
-        } else {
-            null
-        }
-    }
-    
-    
-    suspend fun createInjectableTag(body: CreateTagRequestSchema, headers: Map<String, String> = emptyMap())
-    : Response<TagsSchema>? {
-        return if (config.oauthClient.isAccessTokenValid()) {
-                contentApiList?.createInjectableTag(companyId = config.companyId ,applicationId = applicationId , body = body,headers = headers)
-        } else {
-            null
-        }
-    }
-    
-    
-    suspend fun updateInjectableTag(body: CreateTagRequestSchema, headers: Map<String, String> = emptyMap())
-    : Response<TagsSchema>? {
-        return if (config.oauthClient.isAccessTokenValid()) {
-                contentApiList?.updateInjectableTag(companyId = config.companyId ,applicationId = applicationId , body = body,headers = headers)
-        } else {
-            null
-        }
-    }
-    
-    
-    suspend fun deleteAllInjectableTags( headers: Map<String, String> = emptyMap())
-    : Response<TagsSchema>? {
-        return if (config.oauthClient.isAccessTokenValid()) {
-                contentApiList?.deleteAllInjectableTags(companyId = config.companyId ,applicationId = applicationId , headers = headers)
-        } else {
-            null
-        }
-    }
-    
-    
-    suspend fun getInjectableTags( headers: Map<String, String> = emptyMap())
-    : Response<TagsSchema>? {
-        return if (config.oauthClient.isAccessTokenValid()) {
-                contentApiList?.getInjectableTags(companyId = config.companyId ,applicationId = applicationId , headers = headers)
         } else {
             null
         }
@@ -1192,65 +1228,6 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
         }
     }
     
-    
-    
-        
-            
-                
-            
-            
-        
-            
-                
-            
-            
-        
-            
-            
-        
-            
-                
-            
-            
-        
-    /**
-    *
-    * Summary: Paginator for getPages
-    **/
-    fun getPagesPaginator(
-    pageSize: Int?=null
-    
-    ) : Paginator<PageGetResponse>{
-        val paginator = Paginator<PageGetResponse>()
-        paginator.setCallBack(object : PaginatorCallback<PageGetResponse> {
-
-            override suspend fun onNext(
-                onResponse: (Event<PageGetResponse>?,FdkError?) -> Unit){
-
-                if (config.oauthClient.isAccessTokenValid()) {
-                    val pageId = paginator.nextId
-                    val pageNo = paginator.pageNo
-                    val pageType = "number"
-                    contentApiList?.getPages(companyId = config.companyId , applicationId = applicationId , pageNo = pageNo, pageSize = pageSize)?.safeAwait{ response, error ->
-                        response?.let {
-                            val page = response.peekContent()?.page
-                            paginator.setPaginator(hasNext=page?.hasNext?:false,pageNo=if (page?.hasNext == true) ((pageNo ?: 0) + 1) else pageNo)
-                            onResponse.invoke(response,null)
-                        }
-
-                        error?.let {
-                            onResponse.invoke(null,error)
-                        }
-                    }
-
-                } else {
-                    null
-                }
-            }
-
-    })
-    return paginator
-    }
     
     suspend fun updatePage(id: String,body: PageSchema, headers: Map<String, String> = emptyMap())
     : Response<PageSchema>? {
@@ -1296,11 +1273,8 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     
     
     
-    
-    
-    
     suspend fun getAppCustomFieldTypes( headers: Map<String, String> = emptyMap())
-    : Response<MetafieldTypesSchema>? {
+    : Response<CustomObjectByIdSchema>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 contentApiList?.getAppCustomFieldTypes(companyId = config.companyId ,applicationId = applicationId , headers = headers)
         } else {
@@ -1319,10 +1293,10 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     }
     
     
-    suspend fun getAppCustomFieldDefinitions(pageNo: String,pageSize: String,resources: String?=null,types: String?=null,search: String?=null,slugs: String?=null, headers: Map<String, String> = emptyMap())
-    : Response<ApplicationCustomFieldDefinitionsSchema>? {
+    suspend fun getAppCustomFieldDefinitions(pageNo: String,pageSize: String,resource: String?=null,type: String?=null,search: String?=null, headers: Map<String, String> = emptyMap())
+    : Response<CustomFieldDefinitionsSchema>? {
         return if (config.oauthClient.isAccessTokenValid()) {
-                contentApiList?.getAppCustomFieldDefinitions(companyId = config.companyId ,applicationId = applicationId ,pageNo = pageNo,pageSize = pageSize,resources = resources,types = types,search = search,slugs = slugs, headers = headers)
+                contentApiList?.getAppCustomFieldDefinitions(companyId = config.companyId ,applicationId = applicationId ,pageNo = pageNo,pageSize = pageSize,resource = resource,type = type,search = search, headers = headers)
         } else {
             null
         }
@@ -1339,30 +1313,30 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     }
     
     
-    suspend fun getAppCustomFieldDefinition(id: String, headers: Map<String, String> = emptyMap())
+    suspend fun getAppCustomFieldDefinition(definitionId: String, headers: Map<String, String> = emptyMap())
     : Response<CustomFieldDefinitionDetailResSchema>? {
         return if (config.oauthClient.isAccessTokenValid()) {
-                contentApiList?.getAppCustomFieldDefinition(companyId = config.companyId ,applicationId = applicationId ,id = id, headers = headers)
+                contentApiList?.getAppCustomFieldDefinition(companyId = config.companyId ,applicationId = applicationId ,definitionId = definitionId, headers = headers)
         } else {
             null
         }
     }
     
     
-    suspend fun updateAppCustomFieldDefinition(id: String,body: CustomFieldDefinitionRequestSchema, headers: Map<String, String> = emptyMap())
+    suspend fun updateAppCustomFieldDefinition(definitionId: String,body: CustomFieldDefinitionRequestSchema, headers: Map<String, String> = emptyMap())
     : Response<CustomFieldDefinitionDetailResSchema>? {
         return if (config.oauthClient.isAccessTokenValid()) {
-                contentApiList?.updateAppCustomFieldDefinition(companyId = config.companyId ,applicationId = applicationId ,id = id, body = body,headers = headers)
+                contentApiList?.updateAppCustomFieldDefinition(companyId = config.companyId ,applicationId = applicationId ,definitionId = definitionId, body = body,headers = headers)
         } else {
             null
         }
     }
     
     
-    suspend fun deleteAppCustomFieldDefinition(id: String, headers: Map<String, String> = emptyMap())
+    suspend fun deleteAppCustomFieldDefinition(definitionId: String, headers: Map<String, String> = emptyMap())
     : Response<CustomDataDeleteSchema>? {
         return if (config.oauthClient.isAccessTokenValid()) {
-                contentApiList?.deleteAppCustomFieldDefinition(companyId = config.companyId ,applicationId = applicationId ,id = id, headers = headers)
+                contentApiList?.deleteAppCustomFieldDefinition(companyId = config.companyId ,applicationId = applicationId ,definitionId = definitionId, headers = headers)
         } else {
             null
         }
@@ -1399,36 +1373,6 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     }
     
     
-    suspend fun updateAppCustomFieldByResourceId(resource: String,resourceId: String,body: CustomFieldRequestSchema, headers: Map<String, String> = emptyMap())
-    : Response<CustomFieldsResponseByResourceIdSchema>? {
-        return if (config.oauthClient.isAccessTokenValid()) {
-                contentApiList?.updateAppCustomFieldByResourceId(companyId = config.companyId ,applicationId = applicationId ,resource = resource,resourceId = resourceId, body = body,headers = headers)
-        } else {
-            null
-        }
-    }
-    
-    
-    suspend fun deleteAppCustomFieldsByResourceId(resource: String,resourceId: String,ids: String, headers: Map<String, String> = emptyMap())
-    : Response<CustomFieldsDeleteSchema>? {
-        return if (config.oauthClient.isAccessTokenValid()) {
-                contentApiList?.deleteAppCustomFieldsByResourceId(companyId = config.companyId ,applicationId = applicationId ,resource = resource,resourceId = resourceId,ids = ids, headers = headers)
-        } else {
-            null
-        }
-    }
-    
-    
-    suspend fun getAppCustomFieldJobs(page: String,pageSize: String,actionType: String, headers: Map<String, String> = emptyMap())
-    : Response<CustomFieldBulkEntry>? {
-        return if (config.oauthClient.isAccessTokenValid()) {
-                contentApiList?.getAppCustomFieldJobs(companyId = config.companyId ,applicationId = applicationId ,page = page,pageSize = pageSize,actionType = actionType, headers = headers)
-        } else {
-            null
-        }
-    }
-    
-    
     suspend fun createAppCustomObjectDefinition(body: CustomObjectDefinitionRequestSchema, headers: Map<String, String> = emptyMap())
     : Response<CustomObjectDefinitionSchema>? {
         return if (config.oauthClient.isAccessTokenValid()) {
@@ -1449,30 +1393,30 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     }
     
     
-    suspend fun getAppCustomObjectDefinition(id: String, headers: Map<String, String> = emptyMap())
+    suspend fun getAppCustomObjectDefinition(definitionId: String, headers: Map<String, String> = emptyMap())
     : Response<CustomObjectDefinitionSchema>? {
         return if (config.oauthClient.isAccessTokenValid()) {
-                contentApiList?.getAppCustomObjectDefinition(companyId = config.companyId ,applicationId = applicationId ,id = id, headers = headers)
+                contentApiList?.getAppCustomObjectDefinition(companyId = config.companyId ,applicationId = applicationId ,definitionId = definitionId, headers = headers)
         } else {
             null
         }
     }
     
     
-    suspend fun updateAppCustomObjectDefinition(id: String,body: CustomObjectDefinitionUpdateRequestSchema, headers: Map<String, String> = emptyMap())
+    suspend fun updateAppCustomObjectDefinition(definitionId: String,body: CustomObjectDefinitionUpdateRequestSchema, headers: Map<String, String> = emptyMap())
     : Response<CustomObjectDefinitionSchema>? {
         return if (config.oauthClient.isAccessTokenValid()) {
-                contentApiList?.updateAppCustomObjectDefinition(companyId = config.companyId ,applicationId = applicationId ,id = id, body = body,headers = headers)
+                contentApiList?.updateAppCustomObjectDefinition(companyId = config.companyId ,applicationId = applicationId ,definitionId = definitionId, body = body,headers = headers)
         } else {
             null
         }
     }
     
     
-    suspend fun deleteAppCustomObjectDefinition(id: String, headers: Map<String, String> = emptyMap())
+    suspend fun deleteAppCustomObjectDefinition(definitionId: String, headers: Map<String, String> = emptyMap())
     : Response<CustomObjectDefinitionDeleteResponseSchema>? {
         return if (config.oauthClient.isAccessTokenValid()) {
-                contentApiList?.deleteAppCustomObjectDefinition(companyId = config.companyId ,applicationId = applicationId ,id = id, headers = headers)
+                contentApiList?.deleteAppCustomObjectDefinition(companyId = config.companyId ,applicationId = applicationId ,definitionId = definitionId, headers = headers)
         } else {
             null
         }
@@ -1490,7 +1434,7 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     
     
     suspend fun createAppCustomObject(body: CustomObjectRequestSchema, headers: Map<String, String> = emptyMap())
-    : Response<CustomObjectApplicationSchema>? {
+    : Response<CustomObjectSchema>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 contentApiList?.createAppCustomObject(companyId = config.companyId ,applicationId = applicationId , body = body,headers = headers)
         } else {
@@ -1499,30 +1443,30 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     }
     
     
-    suspend fun getAppCustomObject(id: String, headers: Map<String, String> = emptyMap())
+    suspend fun getAppCustomObject(metaobjectId: String, headers: Map<String, String> = emptyMap())
     : Response<CustomObjectByIdSchema>? {
         return if (config.oauthClient.isAccessTokenValid()) {
-                contentApiList?.getAppCustomObject(companyId = config.companyId ,applicationId = applicationId ,id = id, headers = headers)
+                contentApiList?.getAppCustomObject(companyId = config.companyId ,applicationId = applicationId ,metaobjectId = metaobjectId, headers = headers)
         } else {
             null
         }
     }
     
     
-    suspend fun updateAppCustomObject(id: String,body: CustomObjectRequestSchema, headers: Map<String, String> = emptyMap())
-    : Response<CustomObjectApplicationSchema>? {
-        return if (config.oauthClient.isAccessTokenValid()) {
-                contentApiList?.updateAppCustomObject(companyId = config.companyId ,applicationId = applicationId ,id = id, body = body,headers = headers)
-        } else {
-            null
-        }
-    }
-    
-    
-    suspend fun deleteAppCustomObject(id: String, headers: Map<String, String> = emptyMap())
+    suspend fun deleteAppCustomObject(metaobjectId: String, headers: Map<String, String> = emptyMap())
     : Response<CustomDataDeleteSchema>? {
         return if (config.oauthClient.isAccessTokenValid()) {
-                contentApiList?.deleteAppCustomObject(companyId = config.companyId ,applicationId = applicationId ,id = id, headers = headers)
+                contentApiList?.deleteAppCustomObject(companyId = config.companyId ,applicationId = applicationId ,metaobjectId = metaobjectId, headers = headers)
+        } else {
+            null
+        }
+    }
+    
+    
+    suspend fun updateAppCustomObject(metaobjectId: String,body: CustomObjectRequestSchema, headers: Map<String, String> = emptyMap())
+    : Response<CustomObjectByIdSchema>? {
+        return if (config.oauthClient.isAccessTokenValid()) {
+                contentApiList?.updateAppCustomObject(companyId = config.companyId ,applicationId = applicationId ,metaobjectId = metaobjectId, body = body,headers = headers)
         } else {
             null
         }
@@ -1560,7 +1504,7 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     
     
     suspend fun sampleAppCustomObjectBulkEntry(definitionId: String, headers: Map<String, String> = emptyMap())
-    : Response<ResponseBody>? {
+    : Response<String>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 contentApiList?.sampleAppCustomObjectBulkEntry(companyId = config.companyId ,applicationId = applicationId ,definitionId = definitionId, headers = headers)
         } else {

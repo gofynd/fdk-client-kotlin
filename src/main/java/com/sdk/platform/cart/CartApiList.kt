@@ -9,21 +9,13 @@ import com.sdk.platform.*
 
 interface CartApiList {
     
-    @POST ("/service/platform/cart/v1.0/company/{company_id}/application/{application_id}/coupon")
-    suspend fun createCoupon(@Path("company_id") companyId: String, @Path("application_id") applicationId: String,@Body body: CouponAdd, @HeaderMap headers: Map<String, String>? = null)
-    : Response<CouponDetailResponse>
-    
     @GET ("/service/platform/cart/v1.0/company/{company_id}/application/{application_id}/coupon")
     suspend fun getCoupons(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Query("page_no") pageNo: Int?, @Query("page_size") pageSize: Int?, @Query("is_archived") isArchived: Boolean?, @Query("title") title: String?, @Query("is_public") isPublic: Boolean?, @Query("is_display") isDisplay: Boolean?, @Query("type_slug") typeSlug: String?, @Query("code") code: String?, @HeaderMap headers: Map<String, String>? = null)
     : Response<CouponsResponse>
     
-    @GET ("/service/platform/cart/v1.0/company/{company_id}/application/{application_id}/coupon-tags")
-    suspend fun getCouponTags(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @HeaderMap headers: Map<String, String>? = null)
-    : Response<TagsViewResponse>
-    
-    @GET ("/service/platform/cart/v1.0/company/{company_id}/application/{application_id}/promo-tags")
-    suspend fun getPromotionTags(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @HeaderMap headers: Map<String, String>? = null)
-    : Response<TagsViewResponse>
+    @POST ("/service/platform/cart/v1.0/company/{company_id}/application/{application_id}/coupon")
+    suspend fun createCoupon(@Path("company_id") companyId: String, @Path("application_id") applicationId: String,@Body body: CouponAdd, @HeaderMap headers: Map<String, String>? = null)
+    : Response<SuccessMessage>
     
     @GET ("/service/platform/cart/v1.0/company/{company_id}/application/{application_id}/coupon/{id}")
     suspend fun getCouponById(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Path("id") id: String, @HeaderMap headers: Map<String, String>? = null)
@@ -31,7 +23,7 @@ interface CartApiList {
     
     @PUT ("/service/platform/cart/v1.0/company/{company_id}/application/{application_id}/coupon/{id}")
     suspend fun updateCoupon(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Path("id") id: String,@Body body: CouponUpdate, @HeaderMap headers: Map<String, String>? = null)
-    : Response<CouponDetailResponse>
+    : Response<SuccessMessage>
     
     @PATCH ("/service/platform/cart/v1.0/company/{company_id}/application/{application_id}/coupon/{id}")
     suspend fun updateCouponPartially(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Path("id") id: String,@Body body: CouponPartialUpdate, @HeaderMap headers: Map<String, String>? = null)
@@ -43,15 +35,15 @@ interface CartApiList {
     
     @POST ("/service/platform/cart/v1.0/company/{company_id}/application/{application_id}/promotion")
     suspend fun createPromotion(@Path("company_id") companyId: String, @Path("application_id") applicationId: String,@Body body: PromotionAdd, @HeaderMap headers: Map<String, String>? = null)
-    : Response<PromotionAddResult>
+    : Response<PromotionAdd>
     
     @GET ("/service/platform/cart/v1.0/company/{company_id}/application/{application_id}/promotion/{id}")
     suspend fun getPromotionById(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Path("id") id: String, @HeaderMap headers: Map<String, String>? = null)
-    : Response<PromotionUpdateResult>
+    : Response<PromotionUpdate>
     
     @PUT ("/service/platform/cart/v1.0/company/{company_id}/application/{application_id}/promotion/{id}")
     suspend fun updatePromotion(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Path("id") id: String,@Body body: PromotionUpdate, @HeaderMap headers: Map<String, String>? = null)
-    : Response<PromotionUpdateResult>
+    : Response<PromotionUpdate>
     
     @PATCH ("/service/platform/cart/v1.0/company/{company_id}/application/{application_id}/promotion/{id}")
     suspend fun updatePromotionPartially(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Path("id") id: String,@Body body: PromotionPartialUpdate, @HeaderMap headers: Map<String, String>? = null)
@@ -61,41 +53,41 @@ interface CartApiList {
     suspend fun getPromosCouponConfig(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Query("entity_type") entityType: String?, @Query("is_hidden") isHidden: Boolean?, @HeaderMap headers: Map<String, String>? = null)
     : Response<ActivePromosResponse>
     
-    @GET ("/service/platform/cart/v1.0/company/{company_id}/application/{application_id}/cart_configuration/{cart_meta_id}")
-    suspend fun getCartMetaConfig(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Path("cart_meta_id") cartMetaId: String, @HeaderMap headers: Map<String, String>? = null)
-    : Response<CartMetaConfigDetailResponse>
+    @GET ("/service/platform/cart/v1.0/company/{company_id}/application/{application_id}/available-promotions")
+    suspend fun getPromotionOffers(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Query("slug") slug: String?, @Query("page_size") pageSize: Int?, @Query("promotion_group") promotionGroup: String?, @Query("store_id") storeId: Int?, @Query("cart_type") cartType: String?, @HeaderMap headers: Map<String, String>? = null)
+    : Response<PromotionOffersResponse>
+    
+    @GET ("/service/platform/cart/v1.0/company/{company_id}/application/{application_id}/available-payment-offers")
+    suspend fun getPromotionPaymentOffers(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Query("id") id: String?, @Query("uid") uid: Int?, @HeaderMap headers: Map<String, String>? = null)
+    : Response<PromotionPaymentOffersResponse>
     
     @PUT ("/service/platform/cart/v1.0/company/{company_id}/application/{application_id}/cart_configuration/{cart_meta_id}")
     suspend fun updateCartMetaConfig(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Path("cart_meta_id") cartMetaId: String,@Body body: CartMetaConfigUpdate, @HeaderMap headers: Map<String, String>? = null)
     : Response<CartMetaConfigUpdate>
     
-    @DELETE ("/service/platform/cart/v1.0/company/{company_id}/application/{application_id}/cart_configuration/{cart_meta_id}")
-    suspend fun deleteCartMetaConfig(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Path("cart_meta_id") cartMetaId: String, @HeaderMap headers: Map<String, String>? = null)
-    : Response<SuccessMessage>
-    
     @GET ("/service/platform/cart/v1.0/company/{company_id}/application/{application_id}/cart_configuration")
-    suspend fun getCartMetaConfigs(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @HeaderMap headers: Map<String, String>? = null)
-    : Response<CartMetaConfigListResponse>
+    suspend fun fetchCartMetaConfig(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @HeaderMap headers: Map<String, String>? = null)
+    : Response<CartMetaConfigAdd>
     
     @POST ("/service/platform/cart/v1.0/company/{company_id}/application/{application_id}/cart_configuration")
     suspend fun createCartMetaConfig(@Path("company_id") companyId: String, @Path("application_id") applicationId: String,@Body body: CartMetaConfigAdd, @HeaderMap headers: Map<String, String>? = null)
-    : Response<CartMetaConfigAddResponse>
-    
-    @POST ("/service/platform/cart/v1.0/company/{company_id}/application/{application_id}/price-adjustment")
-    suspend fun addPriceAdjustment(@Path("company_id") companyId: String, @Path("application_id") applicationId: String,@Body body: PriceAdjustmentAdd, @HeaderMap headers: Map<String, String>? = null)
-    : Response<AddPriceAdjustmentResponse>
-    
-    @GET ("/service/platform/cart/v1.0/company/{company_id}/application/{application_id}/price-adjustment")
-    suspend fun getPriceAdjustments(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Query("cart_id") cartId: String, @HeaderMap headers: Map<String, String>? = null)
-    : Response<PriceAdjustmentResponse>
+    : Response<CartMetaConfigAdd>
     
     @PUT ("/service/platform/cart/v1.0/company/{company_id}/application/{application_id}/price-adjustment/{id}")
     suspend fun updatePriceAdjustment(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Path("id") id: String,@Body body: PriceAdjustmentUpdate, @HeaderMap headers: Map<String, String>? = null)
-    : Response<UpdatePriceAdjustmentResponse>
+    : Response<PriceAdjustmentResponse>
     
     @DELETE ("/service/platform/cart/v1.0/company/{company_id}/application/{application_id}/price-adjustment/{id}")
     suspend fun removePriceAdjustment(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Path("id") id: String, @HeaderMap headers: Map<String, String>? = null)
     : Response<SuccessMessage>
+    
+    @POST ("/service/platform/cart/v1.0/company/{company_id}/application/{application_id}/price-adjustment")
+    suspend fun addPriceAdjustment(@Path("company_id") companyId: String, @Path("application_id") applicationId: String,@Body body: PriceAdjustmentAdd, @HeaderMap headers: Map<String, String>? = null)
+    : Response<PriceAdjustmentResponse>
+    
+    @GET ("/service/platform/cart/v1.0/company/{company_id}/application/{application_id}/price-adjustment")
+    suspend fun getPriceAdjustments(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Query("cart_id") cartId: String, @HeaderMap headers: Map<String, String>? = null)
+    : Response<GetPriceAdjustmentResponse>
     
     @POST ("/service/platform/cart/v1.0/company/{company_id}/application/{application_id}/cart/validate")
     suspend fun fetchAndvalidateCartItems(@Path("company_id") companyId: String, @Path("application_id") applicationId: String,@Body body: OpenapiCartDetailsRequest, @HeaderMap headers: Map<String, String>? = null)
@@ -127,7 +119,7 @@ interface CartApiList {
     
     @GET ("/service/platform/cart/v1.0/company/{company_id}/application/{application_id}/coupon_options")
     suspend fun getCouponOptionValues(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @HeaderMap headers: Map<String, String>? = null)
-    : Response<CouponOptions>
+    : Response<HashMap<String,Any>>
     
     @GET ("/service/platform/cart/v1.0/company/{company_id}/application/{application_id}/coupon_code_exists")
     suspend fun getCouponCodeExists(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Query("code") code: String?, @HeaderMap headers: Map<String, String>? = null)
@@ -161,25 +153,25 @@ interface CartApiList {
     suspend fun updateCartUser(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Query("id") id: String?,@Body body: UpdateUserCartMapping, @HeaderMap headers: Map<String, String>? = null)
     : Response<UserCartMappingResponse>
     
-    @GET ("/service/platform/cart/v1.0/company/{company_id}/application/{application_id}/basic")
-    suspend fun getItemCount(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Query("id") id: String?, @Query("buy_now") buyNow: Boolean?, @Query("cart_type") cartType: String?, @HeaderMap headers: Map<String, String>? = null)
-    : Response<CartItemCountResponse>
-    
-    @POST ("/service/platform/cart/v1.0/company/{company_id}/application/{application_id}/detail")
-    suspend fun platformAddItems(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Query("i") i: Boolean?, @Query("b") b: Boolean?, @Query("buy_now") buyNow: Boolean?, @Query("id") id: String?, @Query("cart_type") cartType: String?,@Body body: PlatformAddCartRequest, @HeaderMap headers: Map<String, String>? = null)
-    : Response<AddCartDetailResponse>
-    
     @GET ("/service/platform/cart/v1.0/company/{company_id}/application/{application_id}/detail")
-    suspend fun getCart(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Query("id") id: String?, @Query("user_id") userId: String?, @Query("i") i: Boolean?, @Query("b") b: Boolean?, @Query("assign_card_id") assignCardId: Double?, @Query("buy_now") buyNow: Boolean?, @Query("cart_type") cartType: String?, @HeaderMap headers: Map<String, String>? = null)
+    suspend fun getCart(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Query("id") id: String?, @Query("user_id") userId: String?, @Query("order_type") orderType: String?, @Query("i") i: Boolean?, @Query("b") b: Boolean?, @Query("assign_card_id") assignCardId: Int?, @Query("buy_now") buyNow: Boolean?, @HeaderMap headers: Map<String, String>? = null)
     : Response<CartDetailResponse>
     
+    @POST ("/service/platform/cart/v1.0/company/{company_id}/application/{application_id}/detail")
+    suspend fun platformAddItems(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Query("i") i: Boolean?, @Query("b") b: Boolean?, @Query("buy_now") buyNow: Boolean?, @Query("order_type") orderType: String?, @Query("id") id: String?,@Body body: PlatformAddCartRequest, @HeaderMap headers: Map<String, String>? = null)
+    : Response<AddCartDetailResponse>
+    
     @PUT ("/service/platform/cart/v1.0/company/{company_id}/application/{application_id}/detail")
-    suspend fun platformUpdateCart(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Query("id") id: String?, @Query("i") i: Boolean?, @Query("order_type") orderType: String?, @Query("b") b: Boolean?, @Query("buy_now") buyNow: Boolean?, @Query("cart_type") cartType: String?,@Body body: PlatformUpdateCartRequest, @HeaderMap headers: Map<String, String>? = null)
+    suspend fun platformUpdateCart(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Query("id") id: String?, @Query("i") i: Boolean?, @Query("order_type") orderType: String?, @Query("b") b: Boolean?, @Query("buy_now") buyNow: Boolean?,@Body body: PlatformUpdateCartRequest, @HeaderMap headers: Map<String, String>? = null)
     : Response<UpdateCartDetailResponse>
     
     @PUT ("/service/platform/cart/v1.0/company/{company_id}/application/{application_id}/cart_archive")
-    suspend fun deleteCart(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Query("id") id: String?, @Query("cart_type") cartType: String?,@Body body: DeleteCartRequest, @HeaderMap headers: Map<String, String>? = null)
+    suspend fun deleteCart(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Query("id") id: String?,@Body body: DeleteCartRequest, @HeaderMap headers: Map<String, String>? = null)
     : Response<DeleteCartDetailResponse>
+    
+    @GET ("/service/platform/cart/v1.0/company/{company_id}/application/{application_id}/basic")
+    suspend fun getItemCount(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Query("id") id: String?, @Query("buy_now") buyNow: Boolean?, @HeaderMap headers: Map<String, String>? = null)
+    : Response<CartItemCountResponse>
     
     @GET ("/service/platform/cart/v1.0/company/{company_id}/application/{application_id}/platform-pos-coupon")
     suspend fun getAppCoupons(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Query("id") id: String?, @Query("buy_now") buyNow: Boolean?, @Query("slug") slug: String?, @Query("store_id") storeId: String?, @HeaderMap headers: Map<String, String>? = null)
@@ -190,16 +182,16 @@ interface CartApiList {
     : Response<CartDetailResponse>
     
     @DELETE ("/service/platform/cart/v1.0/company/{company_id}/application/{application_id}/platform-pos-coupon")
-    suspend fun removeCoupon(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Query("uid") uid: String?, @Query("buy_now") buyNow: Boolean?, @Query("cart_type") cartType: String?, @HeaderMap headers: Map<String, String>? = null)
+    suspend fun removeCoupon(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Query("uid") uid: String?, @Query("buy_now") buyNow: Boolean?, @HeaderMap headers: Map<String, String>? = null)
     : Response<CartDetailResponse>
-    
-    @POST ("/service/platform/cart/v1.0/company/{company_id}/application/{application_id}/address")
-    suspend fun addAddress(@Path("company_id") companyId: String, @Path("application_id") applicationId: String,@Body body: PlatformAddress, @HeaderMap headers: Map<String, String>? = null)
-    : Response<SaveAddressResponse>
     
     @GET ("/service/platform/cart/v1.0/company/{company_id}/application/{application_id}/address")
     suspend fun getAddresses(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Query("cart_id") cartId: String?, @Query("buy_now") buyNow: Boolean?, @Query("mobile_no") mobileNo: String?, @Query("checkout_mode") checkoutMode: String?, @Query("tags") tags: String?, @Query("is_default") isDefault: Boolean?, @Query("user_id") userId: String?, @HeaderMap headers: Map<String, String>? = null)
     : Response<PlatformGetAddressesResponse>
+    
+    @POST ("/service/platform/cart/v1.0/company/{company_id}/application/{application_id}/address")
+    suspend fun addAddress(@Path("company_id") companyId: String, @Path("application_id") applicationId: String,@Body body: PlatformAddress, @HeaderMap headers: Map<String, String>? = null)
+    : Response<SaveAddressResponse>
     
     @GET ("/service/platform/cart/v1.0/company/{company_id}/application/{application_id}/address/{id}")
     suspend fun getAddressById(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Path("id") id: String, @Query("cart_id") cartId: String?, @Query("buy_now") buyNow: Boolean?, @Query("mobile_no") mobileNo: String?, @Query("checkout_mode") checkoutMode: String?, @Query("tags") tags: String?, @Query("is_default") isDefault: Boolean?, @Query("user_id") userId: String?, @HeaderMap headers: Map<String, String>? = null)
@@ -226,12 +218,8 @@ interface CartApiList {
     : Response<PlatformCartShipmentsResponse>
     
     @PUT ("/service/platform/cart/v1.0/company/{company_id}/application/{application_id}/meta")
-    suspend fun updateCartMeta(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Query("id") id: String?, @Query("buy_now") buyNow: Boolean?, @Query("user_id") userId: String?,@Body body: PlatformCartMetaRequest, @HeaderMap headers: Map<String, String>? = null)
+    suspend fun updateCartMeta(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Query("id") id: String?, @Query("buy_now") buyNow: Boolean?,@Body body: PlatformCartMetaRequest, @HeaderMap headers: Map<String, String>? = null)
     : Response<CartMetaResponse>
-    
-    @POST ("/service/platform/cart/v1.0/company/{company_id}/application/{application_id}/checkout")
-    suspend fun platformCheckoutCart(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Query("id") id: String?, @Query("cart_type") cartType: String?,@Body body: PlatformCartCheckoutDetailRequest, @HeaderMap headers: Map<String, String>? = null)
-    : Response<CartCheckoutResponse>
     
     @GET ("/service/platform/cart/v1.0/company/{company_id}/application/{application_id}/available-delivery-mode")
     suspend fun getAvailableDeliveryModes(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Query("area_code") areaCode: String, @Query("id") id: String?, @HeaderMap headers: Map<String, String>? = null)
@@ -246,15 +234,27 @@ interface CartApiList {
     : Response<CartDetailResponse>
     
     @GET ("/service/platform/cart/v1.0/company/{company_id}/application/{application_id}/payment/validate/")
-    suspend fun validateCouponForPayment(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Query("id") id: String?, @Query("buy_now") buyNow: Boolean?, @Query("address_id") addressId: String?, @Query("payment_mode") paymentMode: String?, @Query("payment_identifier") paymentIdentifier: String?, @Query("aggregator_name") aggregatorName: String?, @Query("merchant_code") merchantCode: String?, @Query("iin") iin: String?, @Query("network") network: String?, @Query("type") type: String?, @Query("card_id") cardId: String?, @Query("cart_type") cartType: String?, @HeaderMap headers: Map<String, String>? = null)
+    suspend fun validateCouponForPayment(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Query("id") id: String?, @Query("buy_now") buyNow: Boolean?, @Query("address_id") addressId: String?, @Query("payment_mode") paymentMode: String?, @Query("payment_identifier") paymentIdentifier: String?, @Query("aggregator_name") aggregatorName: String?, @Query("merchant_code") merchantCode: String?, @HeaderMap headers: Map<String, String>? = null)
     : Response<PaymentCouponValidate>
     
     @POST ("/service/platform/cart/v2.0/company/{company_id}/application/{application_id}/checkout")
-    suspend fun platformCheckoutCartV2(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Query("id") id: String?, @Query("cart_type") cartType: String?,@Body body: PlatformCartCheckoutDetailV2Request, @HeaderMap headers: Map<String, String>? = null)
+    suspend fun platformCheckoutCartV2(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Query("id") id: String?,@Body body: PlatformCartCheckoutDetailV2Request, @HeaderMap headers: Map<String, String>? = null)
     : Response<CartCheckoutResponse>
     
     @PUT ("/service/platform/cart/v2.0/company/{company_id}/application/{application_id}/payment")
     suspend fun selectPaymentModeV2(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Query("id") id: String?, @Query("buy_now") buyNow: Boolean?, @Query("order_type") orderType: String?,@Body body: UpdateCartPaymentRequestV2, @HeaderMap headers: Map<String, String>? = null)
     : Response<CartDetailResponse>
+    
+    @POST ("/service/platform/cart/v1.0/company/{company_id}/application/{application_id}/bulk-price-adjustment")
+    suspend fun addBulkPriceAdjustment(@Path("company_id") companyId: String, @Path("application_id") applicationId: String,@Body body: BulkPriceAdjustmentAddRequest, @HeaderMap headers: Map<String, String>? = null)
+    : Response<BulkPriceAdjustmentResponse>
+    
+    @PUT ("/service/platform/cart/v1.0/company/{company_id}/application/{application_id}/bulk-price-adjustment")
+    suspend fun updateBulkPriceAdjustment(@Path("company_id") companyId: String, @Path("application_id") applicationId: String,@Body body: BulkPriceAdjustmentUpdateRequest, @HeaderMap headers: Map<String, String>? = null)
+    : Response<BulkPriceAdjustmentResponse>
+    
+    @DELETE ("/service/platform/cart/v1.0/company/{company_id}/application/{application_id}/bulk-price-adjustment")
+    suspend fun removeBulkPriceAdjustment(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Query("price_adjustment_ids") priceAdjustmentIds: String, @HeaderMap headers: Map<String, String>? = null)
+    : Response<SuccessMessage>
     
 }

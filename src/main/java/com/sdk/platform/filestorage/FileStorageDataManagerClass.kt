@@ -109,18 +109,6 @@ class FileStorageDataManagerClass(val config: PlatformConfig, val unauthorizedAc
     
     
     
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
     suspend fun proxy(url: String, headers: Map<String, String> = emptyMap())
     : Response<ProxyResponse>? {
 
@@ -131,6 +119,13 @@ class FileStorageDataManagerClass(val config: PlatformConfig, val unauthorizedAc
             null
         }
     }
+    
+    
+    
+    
+    
+    
+    
     
 
 inner class ApplicationClient(val applicationId:String,val config: PlatformConfig){
@@ -192,20 +187,11 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     }
     
     
-    suspend fun getPdfTypes(countryCode: String?=null,storeOs: Boolean, headers: Map<String, String> = emptyMap())
+    
+    suspend fun getPdfTypes(countryCode: String?=null, headers: Map<String, String> = emptyMap())
     : Response<InvoiceTypesResponse>? {
         return if (config.oauthClient.isAccessTokenValid()) {
-                fileStorageApiList?.getPdfTypes(companyId = config.companyId ,applicationId = applicationId ,countryCode = countryCode,storeOs = storeOs, headers = headers)
-        } else {
-            null
-        }
-    }
-    
-    
-    suspend fun fetchPdfTypeById(id: String, headers: Map<String, String> = emptyMap())
-    : Response<PdfTypeIdResponse>? {
-        return if (config.oauthClient.isAccessTokenValid()) {
-                fileStorageApiList?.fetchPdfTypeById(companyId = config.companyId ,applicationId = applicationId ,id = id, headers = headers)
+                fileStorageApiList?.getPdfTypes(companyId = config.companyId ,applicationId = applicationId ,countryCode = countryCode, headers = headers)
         } else {
             null
         }
@@ -222,36 +208,6 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     }
     
     
-    suspend fun getPdfPayloadById(id: String, headers: Map<String, String> = emptyMap())
-    : Response<DummyPayloadById>? {
-        return if (config.oauthClient.isAccessTokenValid()) {
-                fileStorageApiList?.getPdfPayloadById(companyId = config.companyId ,applicationId = applicationId ,id = id, headers = headers)
-        } else {
-            null
-        }
-    }
-    
-    
-    suspend fun getConfigHtmlTemplateById(id: String, headers: Map<String, String> = emptyMap())
-    : Response<HashMap<String,Any>>? {
-        return if (config.oauthClient.isAccessTokenValid()) {
-                fileStorageApiList?.getConfigHtmlTemplateById(companyId = config.companyId ,applicationId = applicationId ,id = id, headers = headers)
-        } else {
-            null
-        }
-    }
-    
-    
-    suspend fun deletePdfGeneratorConfig(id: String, headers: Map<String, String> = emptyMap())
-    : Response<HashMap<String,Any>>? {
-        return if (config.oauthClient.isAccessTokenValid()) {
-                fileStorageApiList?.deletePdfGeneratorConfig(companyId = config.companyId ,applicationId = applicationId ,id = id, headers = headers)
-        } else {
-            null
-        }
-    }
-    
-    
     suspend fun updateHtmlTemplate(id: String,body: PdfConfig, headers: Map<String, String> = emptyMap())
     : Response<PdfConfigSaveSuccess>? {
         return if (config.oauthClient.isAccessTokenValid()) {
@@ -262,10 +218,10 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     }
     
     
-    suspend fun getHtmlTemplateConfig(pdfTypeId: Int,format: String,countryCode: String?=null, headers: Map<String, String> = emptyMap())
+    suspend fun getDefaultHtmlTemplate(pdfTypeId: Int,format: String,countryCode: String?=null, headers: Map<String, String> = emptyMap())
     : Response<PdfConfigSuccess>? {
         return if (config.oauthClient.isAccessTokenValid()) {
-                fileStorageApiList?.getHtmlTemplateConfig(companyId = config.companyId ,applicationId = applicationId ,pdfTypeId = pdfTypeId,format = format,countryCode = countryCode, headers = headers)
+                fileStorageApiList?.getDefaultHtmlTemplate(companyId = config.companyId ,applicationId = applicationId ,pdfTypeId = pdfTypeId,format = format,countryCode = countryCode, headers = headers)
         } else {
             null
         }
@@ -300,17 +256,6 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
             null
         }
     }
-    
-    
-    suspend fun fetchPdfDefaultTemplateById(id: String, headers: Map<String, String> = emptyMap())
-    : Response<PdfDefaultTemplateResponse>? {
-        return if (config.oauthClient.isAccessTokenValid()) {
-                fileStorageApiList?.fetchPdfDefaultTemplateById(companyId = config.companyId ,applicationId = applicationId ,id = id, headers = headers)
-        } else {
-            null
-        }
-    }
-    
     
 }
 }

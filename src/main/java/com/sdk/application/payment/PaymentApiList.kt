@@ -26,19 +26,9 @@ interface PaymentApiList {
     : Response<ActiveCardPaymentGatewayResponse>
     
     
-    @POST
-    suspend fun updateUserCard(@Url url1: String?   ,@Body body: UpdateAggregatorCardRequest, @HeaderMap headers: Map<String, String>? = null)
-    : Response<UpdateAggregatorCardResponse>
-    
-    
     @GET
     suspend fun getActiveUserCards(@Url url1: String?    ,  @Query("force_refresh") forceRefresh: Boolean?, @HeaderMap headers: Map<String, String>? = null)
     : Response<ListCardsResponse>
-    
-    
-    @POST
-    suspend fun updateActiveCards(@Url url1: String?   ,@Body body: UpdateAggregatorCardRequest, @HeaderMap headers: Map<String, String>? = null)
-    : Response<UpdateCardResponse>
     
     
     @POST
@@ -147,28 +137,18 @@ interface PaymentApiList {
     
     
     @POST
-    suspend fun addBeneficiaryDetails(@Url url1: String?   ,@Body body: AddBeneficiaryDetailsRequest, @HeaderMap headers: Map<String, String>? = null)
-    : Response<RefundAccountResponse>
-    
-    
-    @PATCH
-    suspend fun deleteBeneficiaryDetails(@Url url1: String?   ,@Body body: DeleteBeneficiaryRequest, @HeaderMap headers: Map<String, String>? = null)
-    : Response<DeleteRefundAccountResponse>
-    
-    
-    @POST
     suspend fun verifyOtpAndAddBeneficiaryForBank(@Url url1: String?   ,@Body body: AddBeneficiaryViaOtpVerificationRequest, @HeaderMap headers: Map<String, String>? = null)
     : Response<AddBeneficiaryViaOtpVerificationResponse>
     
     
     @POST
+    suspend fun addBeneficiaryDetails(@Url url1: String?   ,@Body body: AddBeneficiaryDetailsRequest, @HeaderMap headers: Map<String, String>? = null)
+    : Response<RefundAccountResponse>
+    
+    
+    @POST
     suspend fun addRefundBankAccountUsingOTP(@Url url1: String?   ,@Body body: AddBeneficiaryDetailsOTPRequest, @HeaderMap headers: Map<String, String>? = null)
-    : Response<PostAddBeneficiaryDetailsOTPResponse>
-    
-    
-    @GET
-    suspend fun getotpOrderBeneficiariesDetail(@Url url1: String?    ,   @Query("order_id") orderId: String, @Query("request_hash") requestHash: String, @HeaderMap headers: Map<String, String>? = null)
-    : Response<AddBeneficiaryDetailsOTPResponse>
+    : Response<RefundAccountResponse>
     
     
     @POST
@@ -181,11 +161,6 @@ interface PaymentApiList {
     : Response<SetDefaultBeneficiaryResponse>
     
     
-    @POST
-    suspend fun getBenficiaryOrder(@Url url1: String?   ,@Body body: RefundOrderBenRequest, @HeaderMap headers: Map<String, String>? = null)
-    : Response<RefundOrderBenResponse>
-    
-    
     @GET
     suspend fun getPaymentLink(@Url url1: String?    ,  @Query("payment_link_id") paymentLinkId: String?, @HeaderMap headers: Map<String, String>? = null)
     : Response<GetPaymentLinkResponse>
@@ -196,14 +171,14 @@ interface PaymentApiList {
     : Response<CreatePaymentLinkResponse>
     
     
-    @GET
-    suspend fun getPaymentLinkId(@Url url1: String?     ,  @Query("payment_link_id") paymentLinkId: String, @HeaderMap headers: Map<String, String>? = null)
-    : Response<GetPaymentLinkResponse>
-    
-    
     @POST
     suspend fun resendPaymentLink(@Url url1: String?   ,@Body body: CancelOrResendPaymentLinkRequest, @HeaderMap headers: Map<String, String>? = null)
     : Response<ResendPaymentLinkResponse>
+    
+    
+    @POST
+    suspend fun cancelPaymentLink(@Url url1: String?   ,@Body body: CancelOrResendPaymentLinkRequest, @HeaderMap headers: Map<String, String>? = null)
+    : Response<CancelPaymentLinkResponse>
     
     
     @GET
@@ -212,7 +187,7 @@ interface PaymentApiList {
     
     
     @GET
-    suspend fun pollingPaymentLink(@Url url1: String?    ,  @Query("payment_link_id") paymentLinkId: String, @HeaderMap headers: Map<String, String>? = null)
+    suspend fun pollingPaymentLink(@Url url1: String?    ,  @Query("payment_link_id") paymentLinkId: String?, @HeaderMap headers: Map<String, String>? = null)
     : Response<PollingPaymentLinkResponse>
     
     
@@ -256,11 +231,6 @@ interface PaymentApiList {
     : Response<OutstandingOrderDetailsResponse>
     
     
-    @POST
-    suspend fun cancelPaymentLink(@Url url1: String?   ,@Body body: CancelOrResendPaymentLinkRequest, @HeaderMap headers: Map<String, String>? = null)
-    : Response<CancelPaymentLinkResponse>
-    
-    
     @GET
     suspend fun paidOrderDetails(@Url url1: String?    ,  @Query("aggregator") aggregator: String?, @HeaderMap headers: Map<String, String>? = null)
     : Response<PaidOrderDetailsResponse>
@@ -269,30 +239,5 @@ interface PaymentApiList {
     @POST
     suspend fun createPaymentOrder(@Url url1: String?   ,@Body body: PaymentOrderRequest, @HeaderMap headers: Map<String, String>? = null)
     : Response<PaymentOrderResponse>
-    
-    
-    @POST
-    suspend fun setRefundOptionforShipment(@Url url1: String?   ,@Body body: ShipmentRefundRequest, @HeaderMap headers: Map<String, String>? = null)
-    : Response<ShipmentRefundResponse>
-    
-    
-    @GET
-    suspend fun getSelectedRefundOption(@Url url1: String?    ,   @Query("shipment_id") shipmentId: String, @Query("order_id") orderId: String, @HeaderMap headers: Map<String, String>? = null)
-    : Response<SelectedRefundOptionResponse>
-    
-    
-    @GET
-    suspend fun getUserBeneficiariesDetailV2(@Url url1: String?    ,    @Query("order_id") orderId: String?, @Query("shipment_id") shipmentId: String?, @Query("mop") mop: String?, @HeaderMap headers: Map<String, String>? = null)
-    : Response<OrderBeneficiaryResponseSchemaV2>
-    
-    
-    @POST
-    suspend fun validateBeneficiaryAddress(@Url url1: String?   ,@Body body: ValidateValidateAddressRequest, @HeaderMap headers: Map<String, String>? = null)
-    : Response<ValidateValidateAddressResponse>
-    
-    
-    @POST
-    suspend fun confirmPayment(@Url url1: String?   ,@Body body: PaymentConfirmationRequest, @HeaderMap headers: Map<String, String>? = null)
-    : Response<PaymentConfirmationResponse>
     
 }
