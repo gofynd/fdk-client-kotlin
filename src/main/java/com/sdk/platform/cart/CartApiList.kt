@@ -221,6 +221,10 @@ interface CartApiList {
     suspend fun updateCartMeta(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Query("id") id: String?, @Query("buy_now") buyNow: Boolean?,@Body body: PlatformCartMetaRequest, @HeaderMap headers: Map<String, String>? = null)
     : Response<CartMetaResponse>
     
+    @POST ("/service/platform/cart/v1.0/company/{company_id}/application/{application_id}/checkout")
+    suspend fun platformCheckoutCart(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Query("id") id: String?,@Body body: PlatformCartCheckoutDetailRequest, @HeaderMap headers: Map<String, String>? = null)
+    : Response<CartCheckoutResponse>
+    
     @GET ("/service/platform/cart/v1.0/company/{company_id}/application/{application_id}/available-delivery-mode")
     suspend fun getAvailableDeliveryModes(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Query("area_code") areaCode: String, @Query("id") id: String?, @HeaderMap headers: Map<String, String>? = null)
     : Response<CartDeliveryModesResponse>

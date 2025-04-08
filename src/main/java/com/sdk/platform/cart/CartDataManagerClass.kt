@@ -105,6 +105,7 @@ class CartDataManagerClass(val config: PlatformConfig, val unauthorizedAction: (
     
     
     
+    
 
 inner class ApplicationClient(val applicationId:String,val config: PlatformConfig){
 
@@ -634,6 +635,16 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     : Response<CartMetaResponse>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 cartApiList?.updateCartMeta(companyId = config.companyId ,applicationId = applicationId ,id = id,buyNow = buyNow, body = body,headers = headers)
+        } else {
+            null
+        }
+    }
+    
+    
+    suspend fun platformCheckoutCart(id: String?=null,body: PlatformCartCheckoutDetailRequest, headers: Map<String, String> = emptyMap())
+    : Response<CartCheckoutResponse>? {
+        return if (config.oauthClient.isAccessTokenValid()) {
+                cartApiList?.platformCheckoutCart(companyId = config.companyId ,applicationId = applicationId ,id = id, body = body,headers = headers)
         } else {
             null
         }
