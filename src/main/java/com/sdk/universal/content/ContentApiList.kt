@@ -67,12 +67,17 @@ interface ContentApiList {
     
     
     @GET
-    suspend fun getSDKDocumentation(@Url url1: String?   , @HeaderMap headers: Map<String, String>? = null)
-    : Response<SDKLinksResponseSchema>
+    suspend fun getAllLanguages(@Url url1: String?   , @HeaderMap headers: Map<String, String>? = null)
+    : Response<HashMap<String,Any>>
     
     
     @GET
-    suspend fun getSDKDocumentationByType(@Url url1: String?    , @HeaderMap headers: Map<String, String>? = null)
-    : Response<SDKbyTypeResponseSchema>
+    suspend fun getLanguageByLocale(@Url url1: String?    , @HeaderMap headers: Map<String, String>? = null)
+    : Response<Language>
+    
+    
+    @GET
+    suspend fun getAllTranslatableResources(@Url url1: String?   , @HeaderMap headers: Map<String, String>? = null)
+    : Response<HashMap<String,Any>>
     
 }

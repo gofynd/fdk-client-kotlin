@@ -206,15 +206,10 @@ data class CreatedBy(
     
     
     
-    @SerializedName("user_id")
-    var userId: String?=null,
-    
     @SerializedName("username")
     var username: String?=null
     
 ): Parcelable {
-    
-    
     
     
     

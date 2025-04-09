@@ -1,4 +1,4 @@
-package com.sdk.universal.configuration
+package com.sdk.universal.catalog
 
 import com.sdk.common.*
 import com.sdk.universal.*
@@ -9,19 +9,17 @@ import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Response
 
 
-class ConfigurationDataManagerClass(val config: PublicConfig, val unauthorizedAction: ((url: String, responseCode: Int) -> Unit)? = null) : BaseRepository() {
+class CatalogDataManagerClass(val config: PublicConfig, val unauthorizedAction: ((url: String, responseCode: Int) -> Unit)? = null) : BaseRepository() {
 
-    private val configurationApiList by lazy {
-        generateconfigurationApiList()
+    private val catalogApiList by lazy {
+        generatecatalogApiList()
     }
 
     private var _relativeUrls : HashMap<String,String> = HashMap<String,String>()
 
     init{
             
-                    _relativeUrls["searchApplication"] = "/service/common/configuration/v1.0/application/search-application".substring(1)
-            
-                    _relativeUrls["getLocations"] = "/service/common/configuration/v1.0/location".substring(1)
+                    _relativeUrls["getTaxonomyByLevel"] = "/service/public/catalog/v1.0/taxonomy/level/{level}".substring(1)
             
     }
 
@@ -32,7 +30,7 @@ class ConfigurationDataManagerClass(val config: PublicConfig, val unauthorizedAc
     }
 
 
-    private fun generateconfigurationApiList(): ConfigurationApiList? {
+    private fun generatecatalogApiList(): CatalogApiList? {
         val interceptorMap = HashMap<String, List<Interceptor>>()
         val headerInterceptor = PublicHeaderInterceptor(config)
         val requestSignerInterceptor = RequestSignerInterceptor()
@@ -51,23 +49,18 @@ class ConfigurationDataManagerClass(val config: PublicConfig, val unauthorizedAc
         val retrofitHttpClient = HttpClient.initialize(
             baseUrl = config.domain,
             interceptorList = interceptorMap,
-            namespace = "PublicConfiguration",
+            namespace = "PublicCatalog",
             persistentCookieStore = config.persistentCookieStore
         )
-        return retrofitHttpClient?.initializeRestClient(ConfigurationApiList::class.java) as? ConfigurationApiList
+        return retrofitHttpClient?.initializeRestClient(CatalogApiList::class.java) as? CatalogApiList
     }
     
-    suspend fun searchApplication(authorization: String?=null,query: String?=null, headers: Map<String, String> = emptyMap()): Response<ApplicationResponseSchema>? {
-        var fullUrl : String? = _relativeUrls["searchApplication"]
+    suspend fun getTaxonomyByLevel(level: Int,l0Slug: String?=null,l1Slug: String?=null,l2Slug: String?=null,l3Slug: String?=null,limit: Double?=null, headers: Map<String, String> = emptyMap()): Response<TaxonomyResponseSchema>? {
+        var fullUrl : String? = _relativeUrls["getTaxonomyByLevel"]
         
-        return configurationApiList?.searchApplication(fullUrl,   authorization = authorization,  query = query,headers = headers)}
-
-    
-    
-    suspend fun getLocations(locationType: String?=null,id: String?=null, headers: Map<String, String> = emptyMap()): Response<Locations>? {
-        var fullUrl : String? = _relativeUrls["getLocations"]
+        fullUrl = fullUrl?.replace("{" + "level" +"}",level.toString())
         
-        return configurationApiList?.getLocations(fullUrl,   locationType = locationType,  id = id,headers = headers)}
+        return catalogApiList?.getTaxonomyByLevel(fullUrl,    l0Slug = l0Slug,  l1Slug = l1Slug,  l2Slug = l2Slug,  l3Slug = l3Slug,  limit = limit,headers = headers)}
 
     
     
