@@ -5198,9 +5198,14 @@ data class ProductSizePriceServiceabilityResponse(
     var deliveryPromise: PromiseSchema?=null,
     
     @SerializedName("is_serviceable")
-    var isServiceable: String?=null
+    var isServiceable: String?=null,
+    
+    @SerializedName("tags")
+    var tags: ArrayList<String>?=null
     
 ): Parcelable {
+    
+    
     
     
     
