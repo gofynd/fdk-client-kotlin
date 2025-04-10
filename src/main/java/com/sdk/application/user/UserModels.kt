@@ -232,9 +232,14 @@ data class EditProfileRequestSchema(
     var sender: String?=null,
     
     @SerializedName("register_token")
-    var registerToken: String?=null
+    var registerToken: String?=null,
+    
+    @SerializedName("consent")
+    var consent: Boolean?=null
     
 ): Parcelable {
+    
+    
     
     
     
@@ -634,9 +639,14 @@ data class FormRegisterRequestSchema(
     var phone: FormRegisterRequestSchemaPhone?=null,
     
     @SerializedName("register_token")
-    var registerToken: String?=null
+    var registerToken: String?=null,
+    
+    @SerializedName("consent")
+    var consent: Boolean?=null
     
 ): Parcelable {
+    
+    
     
     
     
@@ -2576,9 +2586,14 @@ data class UserSchema(
     var externalId: String?=null,
     
     @SerializedName("rr_id")
-    var rrId: String?=null
+    var rrId: String?=null,
+    
+    @SerializedName("consent")
+    var consent: UserConsentSchema?=null
     
 ): Parcelable {
+    
+    
     
     
     
@@ -2690,6 +2705,55 @@ data class Email(
     
     
     
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: UserConsentSchema
+*/
+@Parcelize
+data class UserConsentSchema(
+    
+    
+    
+    @SerializedName("privacy_policy")
+    var privacyPolicy: PrivacyPolicyConsentSchema?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: PrivacyPolicyConsentSchema
+*/
+@Parcelize
+data class PrivacyPolicyConsentSchema(
+    
+    
+    
+    @SerializedName("value")
+    var value: Boolean?=null,
+    
+    @SerializedName("updated_at")
+    var updatedAt: String?=null
+    
+): Parcelable {
     
     
     

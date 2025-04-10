@@ -2550,9 +2550,14 @@ data class UserSchema(
     var externalId: String?=null,
     
     @SerializedName("rr_id")
-    var rrId: String?=null
+    var rrId: String?=null,
+    
+    @SerializedName("consent")
+    var consent: UserConsent?=null
     
 ): Parcelable {
+    
+    
     
     
     
@@ -2666,9 +2671,14 @@ data class UserSearchSchema(
     var status: String?=null,
     
     @SerializedName("deleted_on")
-    var deletedOn: String?=null
+    var deletedOn: String?=null,
+    
+    @SerializedName("consent")
+    var consent: UserConsent?=null
     
 ): Parcelable {
+    
+    
     
     
     
@@ -2786,6 +2796,55 @@ data class Email(
     
     
     
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: UserConsent
+*/
+@Parcelize
+data class UserConsent(
+    
+    
+    
+    @SerializedName("privacy_policy")
+    var privacyPolicy: PrivacyPolicyConsentSchema?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: PrivacyPolicyConsentSchema
+*/
+@Parcelize
+data class PrivacyPolicyConsentSchema(
+    
+    
+    
+    @SerializedName("value")
+    var value: Boolean?=null,
+    
+    @SerializedName("updated_at")
+    var updatedAt: String?=null
+    
+): Parcelable {
     
     
     
