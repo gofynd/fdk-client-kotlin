@@ -12854,9 +12854,14 @@ data class ProductListingDetail(
     var type: String?=null,
     
     @SerializedName("uid")
-    var uid: Int?=null
+    var uid: Int?=null,
+    
+    @SerializedName("seo")
+    var seo: ApplicationItemSEO?=null
     
 ): Parcelable {
+    
+    
     
     
     
