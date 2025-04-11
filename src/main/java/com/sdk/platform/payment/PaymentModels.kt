@@ -11619,6 +11619,184 @@ data class ShipmentBeneficiaryDetailsRes(
 
              
 /*
+    Model: TransactionData
+*/
+@Parcelize
+data class TransactionData(
+    
+    
+    
+    @SerializedName("transaction_id")
+    var transactionId: String?=null,
+    
+    @SerializedName("created_on")
+    var createdOn: String?=null,
+    
+    @SerializedName("modified_on")
+    var modifiedOn: String?=null,
+    
+    @SerializedName("status")
+    var status: String?=null,
+    
+    @SerializedName("aggregator_name")
+    var aggregatorName: String?=null,
+    
+    @SerializedName("transaction_type")
+    var transactionType: TransactionTypeSchema?=null,
+    
+    @SerializedName("payment_mode")
+    var paymentMode: String?=null,
+    
+    @SerializedName("amount")
+    var amount: Double?=null,
+    
+    @SerializedName("message")
+    var message: String?=null,
+    
+    @SerializedName("return_shipment_id")
+    var returnShipmentId: String?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: OrderData
+*/
+@Parcelize
+data class OrderData(
+    
+    
+    
+    @SerializedName("created_on")
+    var createdOn: String?=null,
+    
+    @SerializedName("modified_on")
+    var modifiedOn: String?=null,
+    
+    @SerializedName("status")
+    var status: StatusSchema?=null,
+    
+    @SerializedName("amount")
+    var amount: Double?=null,
+    
+    @SerializedName("paid_amount")
+    var paidAmount: Double?=null,
+    
+    @SerializedName("device")
+    var device: DeviceTypeSchema?=null,
+    
+    @SerializedName("transactions")
+    var transactions: ArrayList<TransactionData>?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: PageData
+*/
+@Parcelize
+data class PageData(
+    
+    
+    
+    @SerializedName("page_size")
+    var pageSize: Int?=null,
+    
+    @SerializedName("current_page")
+    var currentPage: Int?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: TransactionsResponseSchema
+*/
+@Parcelize
+data class TransactionsResponseSchema(
+    
+    
+    
+    @SerializedName("success")
+    var success: Boolean?=null,
+    
+    @SerializedName("orders")
+    var orders: HashMap<String,OrderData>?=null,
+    
+    @SerializedName("page")
+    var page: PageData?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
     Model: HttpErrorCodeAndMessage
 */
 @Parcelize
@@ -11687,4 +11865,118 @@ data class ErrorCodeDescription(
 
 
 
+
+
+
+    /*
+        Enum: StatusSchema
+        Used By: Payment
+    */
+    enum class StatusSchema(val value:String){
+        
+        @SerializedName("started")
+        started("started"), 
+        
+        @SerializedName("completed")
+        completed("completed"), 
+        
+        @SerializedName("partial_paid")
+        partialPaid("partial_paid"), 
+        
+        @SerializedName("failed")
+        failed("failed"), 
+        
+        @SerializedName("pending")
+        pending("pending"), 
+        
+        @SerializedName("refund_done")
+        refundDone("refund_done"), 
+        
+        @SerializedName("refund_initiated")
+        refundInitiated("refund_initiated"), 
+        
+        @SerializedName("partial_refund")
+        partialRefund("partial_refund"), 
+        
+        @SerializedName("refund_failed")
+        refundFailed("refund_failed"), 
+        
+        @SerializedName("refund_pending")
+        refundPending("refund_pending"), 
+        
+        @SerializedName("refund_acknowledge")
+        refundAcknowledge("refund_acknowledge");
+        
+
+        companion object {
+            fun valueOfStatusSchema(value : String): StatusSchema? {
+                return StatusSchema.values().find {
+                    it.value == value
+                }
+            }
+        }
+    }
+
+
+
+    /*
+        Enum: DeviceTypeSchema
+        Used By: Payment
+    */
+    enum class DeviceTypeSchema(val value:String){
+        
+        @SerializedName("android")
+        android("android"), 
+        
+        @SerializedName("ios")
+        ios("ios"), 
+        
+        @SerializedName("desktop")
+        desktop("desktop"), 
+        
+        @SerializedName("ios-pos")
+        iosPos("ios-pos"), 
+        
+        @SerializedName("android-pos")
+        androidPos("android-pos"), 
+        
+        @SerializedName("desktop-payment_link")
+        desktopPaymentLink("desktop-payment_link");
+        
+
+        companion object {
+            fun valueOfDeviceTypeSchema(value : String): DeviceTypeSchema? {
+                return DeviceTypeSchema.values().find {
+                    it.value == value
+                }
+            }
+        }
+    }
+
+
+
+    /*
+        Enum: TransactionTypeSchema
+        Used By: Payment
+    */
+    enum class TransactionTypeSchema(val value:String){
+        
+        @SerializedName("FORWARD")
+        forward("FORWARD"), 
+        
+        @SerializedName("REFUND")
+        refund("REFUND"), 
+        
+        @SerializedName("AUTO_REFUND")
+        autoRefund("AUTO_REFUND");
+        
+
+        companion object {
+            fun valueOfTransactionTypeSchema(value : String): TransactionTypeSchema? {
+                return TransactionTypeSchema.values().find {
+                    it.value == value
+                }
+            }
+        }
+    }
 

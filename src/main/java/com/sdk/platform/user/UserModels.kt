@@ -2763,5 +2763,251 @@ data class Email(
 
 
 
+             
+/*
+    Model: BulkUpdateUserAttributesBody
+*/
+@Parcelize
+data class BulkUpdateUserAttributesBody(
+    
+    
+    
+    @SerializedName("users")
+    var users: ArrayList<String>?=null,
+    
+    @SerializedName("user_file_url")
+    var userFileUrl: String?=null,
+    
+    @SerializedName("attribute")
+    var attribute: ArrayList<BulkUpdateUserSameAttributes>?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: BulkUpdateUserSameAttributes
+*/
+@Parcelize
+data class BulkUpdateUserSameAttributes(
+    
+    
+    
+    @SerializedName("key")
+    var key: String?=null,
+    
+    @SerializedName("value")
+    var value: @RawValue Any?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: BulkUpdatePerUserAttributesBody
+*/
+@Parcelize
+data class BulkUpdatePerUserAttributesBody(
+    
+    
+    
+    @SerializedName("user_detail_attributes")
+    var userDetailAttributes: ArrayList<UserDetailAttributes>?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: UserDetailAttributes
+*/
+@Parcelize
+data class UserDetailAttributes(
+    
+    
+    
+    @SerializedName("user_id")
+    var userId: String?=null,
+    
+    @SerializedName("attributes")
+    var attributes: ArrayList<BulkUpdatePerUserAttributes>?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: BulkUpdatePerUserAttributes
+*/
+@Parcelize
+data class BulkUpdatePerUserAttributes(
+    
+    
+    
+    @SerializedName("key")
+    var key: String?=null,
+    
+    @SerializedName("value")
+    var value: @RawValue Any?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: BulkOperation
+*/
+@Parcelize
+data class BulkOperation(
+    
+    
+    
+    @SerializedName("success")
+    var success: Boolean?=null,
+    
+    @SerializedName("total")
+    var total: Int?=null,
+    
+    @SerializedName("processed")
+    var processed: Int?=null,
+    
+    @SerializedName("errors_count")
+    var errorsCount: Int?=null,
+    
+    @SerializedName("errors")
+    var errors: ArrayList<BulkOperationError>?=null,
+    
+    @SerializedName("processing_type")
+    var processingType: String?=null,
+    
+    @SerializedName("error_summary")
+    var errorSummary: @RawValue HashMap<String,Any>?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: BulkOperationError
+*/
+@Parcelize
+data class BulkOperationError(
+    
+    
+    
+    @SerializedName("user_id")
+    var userId: String?=null,
+    
+    @SerializedName("error")
+    var error: String?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: BulkOperationAsync
+*/
+@Parcelize
+data class BulkOperationAsync(
+    
+    
+    
+    @SerializedName("success")
+    var success: Boolean?=null,
+    
+    @SerializedName("request_id")
+    var requestId: String?=null,
+    
+    @SerializedName("processing_type")
+    var processingType: String?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
 
 

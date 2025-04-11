@@ -475,7 +475,7 @@ data class AvailablePagePredicate(
     var route: AvailablePageRoutePredicate?=null,
     
     @SerializedName("schedule")
-    var schedule: AvailablePageSchedulePredicate?=null,
+    var schedule: ArrayList<AvailablePageSchedulePredicate>?=null,
     
     @SerializedName("platform")
     var platform: AvailablePagePlatformPredicate?=null,
@@ -548,9 +548,29 @@ data class AvailablePageUserPredicate(
     var authenticated: Boolean?=null,
     
     @SerializedName("anonymous")
-    var anonymous: Boolean?=null
+    var anonymous: Boolean?=null,
+    
+    @SerializedName("user_type")
+    var userType: String?=null,
+    
+    @SerializedName("user_groups")
+    var userGroups: ArrayList<String>?=null,
+    
+    @SerializedName("start")
+    var start: String?=null,
+    
+    @SerializedName("end")
+    var end: String?=null
     
 ): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+    
     
     
     

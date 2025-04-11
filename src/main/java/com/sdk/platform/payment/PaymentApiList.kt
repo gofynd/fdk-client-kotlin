@@ -333,4 +333,8 @@ interface PaymentApiList {
     suspend fun getShipmentBeneficiary(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Path("shipment_id") shipmentId: String, @HeaderMap headers: Map<String, String>? = null)
     : Response<ShipmentBeneficiaryDetailsRes>
     
+    @GET ("/service/platform/payment/v1.0/company/{company_id}/application/{application_id}/transactions")
+    suspend fun getTransactions(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Query("user_id") userId: String?, @Query("page_size") pageSize: Int?, @Query("page_number") pageNumber: Int?, @Query("order_id") orderId: String?, @Query("shipment_id") shipmentId: String?, @Query("transaction_id") transactionId: String?, @HeaderMap headers: Map<String, String>? = null)
+    : Response<TransactionsResponseSchema>
+    
 }

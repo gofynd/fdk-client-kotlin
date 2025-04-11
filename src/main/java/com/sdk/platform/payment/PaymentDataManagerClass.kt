@@ -256,6 +256,7 @@ class PaymentDataManagerClass(val config: PlatformConfig, val unauthorizedAction
     
     
     
+    
 
 inner class ApplicationClient(val applicationId:String,val config: PlatformConfig){
 
@@ -957,6 +958,16 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     : Response<ShipmentBeneficiaryDetailsRes>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 paymentApiList?.getShipmentBeneficiary(companyId = config.companyId ,applicationId = applicationId ,shipmentId = shipmentId, headers = headers)
+        } else {
+            null
+        }
+    }
+    
+    
+    suspend fun getTransactions(userId: String?=null,pageSize: Int?=null,pageNumber: Int?=null,orderId: String?=null,shipmentId: String?=null,transactionId: String?=null, headers: Map<String, String> = emptyMap())
+    : Response<TransactionsResponseSchema>? {
+        return if (config.oauthClient.isAccessTokenValid()) {
+                paymentApiList?.getTransactions(companyId = config.companyId ,applicationId = applicationId ,userId = userId,pageSize = pageSize,pageNumber = pageNumber,orderId = orderId,shipmentId = shipmentId,transactionId = transactionId, headers = headers)
         } else {
             null
         }
