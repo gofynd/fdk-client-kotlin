@@ -92,7 +92,7 @@ class CompanyProfileDataManagerClass(val config: PlatformConfig, val unauthorize
     }
     
     
-    suspend fun editBrand(brandId: String,body: UpdateBrandRequestSchema, headers: Map<String, String> = emptyMap())
+    suspend fun editBrand(brandId: String,body: CreateUpdateBrandRequestSchema, headers: Map<String, String> = emptyMap())
     : Response<ProfileSuccessResponseSchema>? {
 
         return if (config.oauthClient.isAccessTokenValid()) {
@@ -104,7 +104,7 @@ class CompanyProfileDataManagerClass(val config: PlatformConfig, val unauthorize
     }
     
     
-    suspend fun createBrand(body: CreateBrandRequestSchema, headers: Map<String, String> = emptyMap())
+    suspend fun createBrand(body: CreateUpdateBrandRequestSchema, headers: Map<String, String> = emptyMap())
     : Response<ProfileSuccessResponseSchema>? {
 
         return if (config.oauthClient.isAccessTokenValid()) {
@@ -199,17 +199,106 @@ class CompanyProfileDataManagerClass(val config: PlatformConfig, val unauthorize
     }
     
     
-    suspend fun getLocations(storeType: String?=null,q: String?=null,stage: String?=null,pageNo: Int?=null,pageSize: Int?=null,locationIds: ArrayList<Int>?=null,types: ArrayList<String>?=null,tags: ArrayList<String>?=null, headers: Map<String, String> = emptyMap())
+    suspend fun getLocations(storeType: String?=null,storeCodes: ArrayList<String>?=null,q: String?=null,stage: String?=null,pageNo: Int?=null,pageSize: Int?=null,locationIds: ArrayList<Int>?=null,types: ArrayList<String>?=null,tags: ArrayList<String>?=null, headers: Map<String, String> = emptyMap())
     : Response<LocationListSchema>? {
 
         return if (config.oauthClient.isAccessTokenValid()) {
             companyProfileApiList?.getLocations(
-        companyId = config.companyId,storeType = storeType,q = q,stage = stage,pageNo = pageNo,pageSize = pageSize,locationIds = locationIds,types = types,tags = tags, headers = headers)
+        companyId = config.companyId,storeType = storeType,storeCodes = storeCodes,q = q,stage = stage,pageNo = pageNo,pageSize = pageSize,locationIds = locationIds,types = types,tags = tags, headers = headers)
         } else {
             null
         }
     }
     
+    
+    
+        
+            
+                
+            
+            
+        
+            
+                
+            
+            
+        
+            
+                
+            
+            
+        
+            
+                
+            
+            
+        
+            
+                
+            
+            
+        
+            
+            
+        
+            
+                
+            
+            
+        
+            
+                
+            
+            
+        
+            
+                
+            
+            
+        
+            
+                
+            
+            
+        
+    /**
+    *
+    * Summary: Paginator for getLocations
+    **/
+    fun getLocationsPaginator(companyId: String, storeType: String?=null, storeCodes: ArrayList<String>?=null, q: String?=null, stage: String?=null, pageSize: Int?=null, locationIds: ArrayList<Int>?=null, types: ArrayList<String>?=null, tags: ArrayList<String>?=null) : Paginator<LocationListSchema>{
+        val paginator = Paginator<LocationListSchema>()
+        paginator.setCallBack(object : PaginatorCallback<LocationListSchema> {
+
+            override suspend fun onNext(
+                onResponse: (Event<LocationListSchema>?,FdkError?) -> Unit){
+
+                if (config.oauthClient.isAccessTokenValid()) {
+                    val pageId = paginator.nextId
+                    val pageNo = paginator.pageNo
+                    val pageType = "number"
+                    companyProfileApiList?.getLocations(
+                    companyId = config.companyId, storeType = storeType, storeCodes = storeCodes, q = q, stage = stage, pageNo = pageNo, pageSize = pageSize, locationIds = locationIds, types = types, tags = tags
+                    )?.safeAwait{ response, error ->
+                        response?.let {
+                            val page = response.peekContent()?.page
+                            paginator.setPaginator(hasNext=page?.hasNext?:false,pageNo=if (page?.hasNext == true) ((pageNo ?: 0) + 1) else pageNo)
+                            onResponse.invoke(response,null)
+                        }
+
+                        error?.let {
+                            onResponse.invoke(null,error)
+                        }
+                    }
+
+                } else {
+                    null
+                }
+            }
+
+
+    })
+        return paginator
+    }
     
     suspend fun createLocation(body: LocationSchema, headers: Map<String, String> = emptyMap())
     : Response<ProfileSuccessResponseSchema>? {

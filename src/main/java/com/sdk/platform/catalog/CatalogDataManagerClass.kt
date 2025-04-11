@@ -99,96 +99,24 @@ class CatalogDataManagerClass(val config: PlatformConfig, val unauthorizedAction
     
     
     
-    suspend fun listCategories(level: String?=null,department: Int?=null,q: String?=null,pageNo: Int?=null,pageSize: Int?=null,uids: ArrayList<Int>?=null,slug: String?=null, headers: Map<String, String> = emptyMap())
+    
+    
+    
+    
+    
+    
+    
+    suspend fun listCategories(level: String?=null,department: Int?=null,q: String?=null,pageNo: Int?=null,pageSize: Int?=null,uids: ArrayList<Int>?=null, headers: Map<String, String> = emptyMap())
     : Response<CategoryResponseSchema>? {
 
         return if (config.oauthClient.isAccessTokenValid()) {
             catalogApiList?.listCategories(
-        companyId = config.companyId,level = level,department = department,q = q,pageNo = pageNo,pageSize = pageSize,uids = uids,slug = slug, headers = headers)
+        companyId = config.companyId,level = level,department = department,q = q,pageNo = pageNo,pageSize = pageSize,uids = uids, headers = headers)
         } else {
             null
         }
     }
     
-    
-    
-        
-            
-                
-            
-            
-        
-            
-                
-            
-            
-        
-            
-                
-            
-            
-        
-            
-                
-            
-            
-        
-            
-            
-        
-            
-                
-            
-            
-        
-            
-                
-            
-            
-        
-            
-                
-            
-            
-        
-    /**
-    *
-    * Summary: Paginator for listCategories
-    **/
-    fun listCategoriesPaginator(companyId: String, level: String?=null, department: Int?=null, q: String?=null, pageSize: Int?=null, uids: ArrayList<Int>?=null, slug: String?=null) : Paginator<CategoryResponseSchema>{
-        val paginator = Paginator<CategoryResponseSchema>()
-        paginator.setCallBack(object : PaginatorCallback<CategoryResponseSchema> {
-
-            override suspend fun onNext(
-                onResponse: (Event<CategoryResponseSchema>?,FdkError?) -> Unit){
-
-                if (config.oauthClient.isAccessTokenValid()) {
-                    val pageId = paginator.nextId
-                    val pageNo = paginator.pageNo
-                    val pageType = "number"
-                    catalogApiList?.listCategories(
-                    companyId = config.companyId, level = level, department = department, q = q, pageNo = pageNo, pageSize = pageSize, uids = uids, slug = slug
-                    )?.safeAwait{ response, error ->
-                        response?.let {
-                            val page = response.peekContent()?.page
-                            paginator.setPaginator(hasNext=page?.hasNext?:false,pageNo=if (page?.hasNext == true) ((pageNo ?: 0) + 1) else pageNo)
-                            onResponse.invoke(response,null)
-                        }
-
-                        error?.let {
-                            onResponse.invoke(null,error)
-                        }
-                    }
-
-                } else {
-                    null
-                }
-            }
-
-
-    })
-        return paginator
-    }
     
     suspend fun getCategoryData(uid: String, headers: Map<String, String> = emptyMap())
     : Response<SingleCategoryResponseSchema>? {
@@ -214,96 +142,17 @@ class CatalogDataManagerClass(val config: PlatformConfig, val unauthorizedAction
     }
     
     
-    suspend fun listDepartmentsData(pageNo: Int?=null,itemType: String?=null,pageSize: Int?=null,name: String?=null,search: String?=null,isActive: Boolean?=null,slug: String?=null, headers: Map<String, String> = emptyMap())
+    suspend fun listDepartmentsData(pageNo: Int?=null,itemType: String?=null,pageSize: Int?=null,name: String?=null,search: String?=null,isActive: Boolean?=null,uids: ArrayList<Int>?=null, headers: Map<String, String> = emptyMap())
     : Response<DepartmentsResponseSchema>? {
 
         return if (config.oauthClient.isAccessTokenValid()) {
             catalogApiList?.listDepartmentsData(
-        companyId = config.companyId,pageNo = pageNo,itemType = itemType,pageSize = pageSize,name = name,search = search,isActive = isActive,slug = slug, headers = headers)
+        companyId = config.companyId,pageNo = pageNo,itemType = itemType,pageSize = pageSize,name = name,search = search,isActive = isActive,uids = uids, headers = headers)
         } else {
             null
         }
     }
     
-    
-    
-        
-            
-                
-            
-            
-        
-            
-            
-        
-            
-                
-            
-            
-        
-            
-                
-            
-            
-        
-            
-                
-            
-            
-        
-            
-                
-            
-            
-        
-            
-                
-            
-            
-        
-            
-                
-            
-            
-        
-    /**
-    *
-    * Summary: Paginator for listDepartmentsData
-    **/
-    fun listDepartmentsDataPaginator(companyId: String, itemType: String?=null, pageSize: Int?=null, name: String?=null, search: String?=null, isActive: Boolean?=null, slug: String?=null) : Paginator<DepartmentsResponseSchema>{
-        val paginator = Paginator<DepartmentsResponseSchema>()
-        paginator.setCallBack(object : PaginatorCallback<DepartmentsResponseSchema> {
-
-            override suspend fun onNext(
-                onResponse: (Event<DepartmentsResponseSchema>?,FdkError?) -> Unit){
-
-                if (config.oauthClient.isAccessTokenValid()) {
-                    val pageId = paginator.nextId
-                    val pageNo = paginator.pageNo
-                    val pageType = "number"
-                    catalogApiList?.listDepartmentsData(
-                    companyId = config.companyId, pageNo = pageNo, itemType = itemType, pageSize = pageSize, name = name, search = search, isActive = isActive, slug = slug
-                    )?.safeAwait{ response, error ->
-                        response?.let {
-                            val page = response.peekContent()?.page
-                            paginator.setPaginator(hasNext=page?.hasNext?:false,pageNo=if (page?.hasNext == true) ((pageNo ?: 0) + 1) else pageNo)
-                            onResponse.invoke(response,null)
-                        }
-
-                        error?.let {
-                            onResponse.invoke(null,error)
-                        }
-                    }
-
-                } else {
-                    null
-                }
-            }
-
-
-    })
-        return paginator
-    }
     
     suspend fun getDepartmentData(uid: String, headers: Map<String, String> = emptyMap())
     : Response<DepartmentsResponseSchema>? {
@@ -329,254 +178,32 @@ class CatalogDataManagerClass(val config: PlatformConfig, val unauthorizedAction
     }
     
     
-    suspend fun bulkHsnCode(body: BulkHsnUpsert, headers: Map<String, String> = emptyMap())
-    : Response<BulkHsnResponseSchema>? {
-
-        return if (config.oauthClient.isAccessTokenValid()) {
-            catalogApiList?.bulkHsnCode(
-        companyId = config.companyId, body = body,headers = headers)
-        } else {
-            null
-        }
-    }
-    
-    
-    suspend fun getHsnCode(id: String, headers: Map<String, String> = emptyMap())
-    : Response<HsnCode>? {
-
-        return if (config.oauthClient.isAccessTokenValid()) {
-            catalogApiList?.getHsnCode(
-        companyId = config.companyId,id = id, headers = headers)
-        } else {
-            null
-        }
-    }
-    
-    
-    suspend fun updateHsnCode(id: String,body: HsnUpsert, headers: Map<String, String> = emptyMap())
-    : Response<HsnCode>? {
-
-        return if (config.oauthClient.isAccessTokenValid()) {
-            catalogApiList?.updateHsnCode(
-        companyId = config.companyId,id = id, body = body,headers = headers)
-        } else {
-            null
-        }
-    }
-    
-    
-    suspend fun getInventories(itemId: String?=null,size: String?=null,pageNo: Int?=null,pageSize: Int?=null,pageId: String?=null,pageType: String?=null,q: String?=null,sellable: Boolean?=null,storeIds: ArrayList<Int>?=null,brandIds: ArrayList<Int>?=null,sellerIdentifiers: ArrayList<String>?=null,qtyGt: Int?=null,qtyLt: Int?=null,qtyType: String?=null,fromDate: String?=null,toDate: String?=null,sizeIdentifier: String?=null, headers: Map<String, String> = emptyMap())
+    suspend fun getInventories(itemId: Int?=null,size: String?=null,pageNo: Int?=null,pageSize: Int?=null,pageId: String?=null,pageType: String?=null,q: String?=null,sellable: Boolean?=null,storeIds: ArrayList<Int>?=null,brandIds: ArrayList<Int>?=null,sellerIdentifiers: ArrayList<String>?=null,minSellable: Int?=null,maxSellable: Int?=null,fromDate: String?=null,toDate: String?=null,sizeIdentifier: String?=null, headers: Map<String, String> = emptyMap())
     : Response<GetInventoriesResponseSchema>? {
 
         return if (config.oauthClient.isAccessTokenValid()) {
             catalogApiList?.getInventories(
-        companyId = config.companyId,itemId = itemId,size = size,pageNo = pageNo,pageSize = pageSize,pageId = pageId,pageType = pageType,q = q,sellable = sellable,storeIds = storeIds,brandIds = brandIds,sellerIdentifiers = sellerIdentifiers,qtyGt = qtyGt,qtyLt = qtyLt,qtyType = qtyType,fromDate = fromDate,toDate = toDate,sizeIdentifier = sizeIdentifier, headers = headers)
+        companyId = config.companyId,itemId = itemId,size = size,pageNo = pageNo,pageSize = pageSize,pageId = pageId,pageType = pageType,q = q,sellable = sellable,storeIds = storeIds,brandIds = brandIds,sellerIdentifiers = sellerIdentifiers,minSellable = minSellable,maxSellable = maxSellable,fromDate = fromDate,toDate = toDate,sizeIdentifier = sizeIdentifier, headers = headers)
         } else {
             null
         }
     }
     
     
-    
-        
-            
-                
-            
-            
-        
-            
-                
-            
-            
-        
-            
-                
-            
-            
-        
-            
-            
-        
-            
-                
-            
-            
-        
-            
-            
-                
-            
-        
-            
-            
-        
-            
-                
-            
-            
-        
-            
-                
-            
-            
-        
-            
-                
-            
-            
-        
-            
-                
-            
-            
-        
-            
-                
-            
-            
-        
-            
-                
-            
-            
-        
-            
-                
-            
-            
-        
-            
-                
-            
-            
-        
-            
-                
-            
-            
-        
-            
-                
-            
-            
-        
-            
-                
-            
-            
-        
-    /**
-    *
-    * Summary: Paginator for getInventories
-    **/
-    fun getInventoriesPaginator(companyId: String, itemId: String?=null, size: String?=null, pageSize: Int?=null, q: String?=null, sellable: Boolean?=null, storeIds: ArrayList<Int>?=null, brandIds: ArrayList<Int>?=null, sellerIdentifiers: ArrayList<String>?=null, qtyGt: Int?=null, qtyLt: Int?=null, qtyType: String?=null, fromDate: String?=null, toDate: String?=null, sizeIdentifier: String?=null) : Paginator<GetInventoriesResponseSchema>{
-        val paginator = Paginator<GetInventoriesResponseSchema>()
-        paginator.setCallBack(object : PaginatorCallback<GetInventoriesResponseSchema> {
-
-            override suspend fun onNext(
-                onResponse: (Event<GetInventoriesResponseSchema>?,FdkError?) -> Unit){
-
-                if (config.oauthClient.isAccessTokenValid()) {
-                    val pageId = paginator.nextId
-                    val pageNo = paginator.pageNo
-                    val pageType = "cursor"
-                    catalogApiList?.getInventories(
-                    companyId = config.companyId, itemId = itemId, size = size, pageNo = pageNo, pageSize = pageSize, pageId = pageId, pageType = pageType, q = q, sellable = sellable, storeIds = storeIds, brandIds = brandIds, sellerIdentifiers = sellerIdentifiers, qtyGt = qtyGt, qtyLt = qtyLt, qtyType = qtyType, fromDate = fromDate, toDate = toDate, sizeIdentifier = sizeIdentifier
-                    )?.safeAwait{ response, error ->
-                        response?.let {
-                            val page = response.peekContent()?.page
-                            paginator.setPaginator(hasNext=page?.hasNext?:false,nextId=page?.nextId)
-                            onResponse.invoke(response,null)
-                        }
-
-                        error?.let {
-                            onResponse.invoke(null,error)
-                        }
-                    }
-
-                } else {
-                    null
-                }
-            }
-
-
-    })
-        return paginator
-    }
-    
-    suspend fun getInventoryBulkUploadHistory(pageNo: Int?=null,pageSize: Int?=null,search: String?=null, headers: Map<String, String> = emptyMap())
+    suspend fun getInventoryBulkUploadHistory(pageNo: Int?=null,pageSize: Int?=null, headers: Map<String, String> = emptyMap())
     : Response<BulkInventoryGet>? {
 
         return if (config.oauthClient.isAccessTokenValid()) {
             catalogApiList?.getInventoryBulkUploadHistory(
-        companyId = config.companyId,pageNo = pageNo,pageSize = pageSize,search = search, headers = headers)
+        companyId = config.companyId,pageNo = pageNo,pageSize = pageSize, headers = headers)
         } else {
             null
         }
     }
     
     
-    
-        
-            
-                
-            
-            
-        
-            
-            
-        
-            
-                
-            
-            
-        
-            
-                
-            
-            
-        
-    /**
-    *
-    * Summary: Paginator for getInventoryBulkUploadHistory
-    **/
-    fun getInventoryBulkUploadHistoryPaginator(companyId: String, pageSize: Int?=null, search: String?=null) : Paginator<BulkInventoryGet>{
-        val paginator = Paginator<BulkInventoryGet>()
-        paginator.setCallBack(object : PaginatorCallback<BulkInventoryGet> {
-
-            override suspend fun onNext(
-                onResponse: (Event<BulkInventoryGet>?,FdkError?) -> Unit){
-
-                if (config.oauthClient.isAccessTokenValid()) {
-                    val pageId = paginator.nextId
-                    val pageNo = paginator.pageNo
-                    val pageType = "number"
-                    catalogApiList?.getInventoryBulkUploadHistory(
-                    companyId = config.companyId, pageNo = pageNo, pageSize = pageSize, search = search
-                    )?.safeAwait{ response, error ->
-                        response?.let {
-                            val page = response.peekContent()?.page
-                            paginator.setPaginator(hasNext=page?.hasNext?:false,pageNo=if (page?.hasNext == true) ((pageNo ?: 0) + 1) else pageNo)
-                            onResponse.invoke(response,null)
-                        }
-
-                        error?.let {
-                            onResponse.invoke(null,error)
-                        }
-                    }
-
-                } else {
-                    null
-                }
-            }
-
-
-    })
-        return paginator
-    }
-    
-    suspend fun createBulkInventoryJob(body: BulkJob, headers: Map<String, String> = emptyMap())
-    : Response<BulkResponseSchema>? {
+    suspend fun createBulkInventoryJob(body: InventoryBulkJob, headers: Map<String, String> = emptyMap())
+    : Response<InventoryBulkResponseSchema>? {
 
         return if (config.oauthClient.isAccessTokenValid()) {
             catalogApiList?.createBulkInventoryJob(
@@ -611,18 +238,6 @@ class CatalogDataManagerClass(val config: PlatformConfig, val unauthorizedAction
     }
     
     
-    suspend fun getInventoryExport( headers: Map<String, String> = emptyMap())
-    : Response<InventoryExportJob>? {
-
-        return if (config.oauthClient.isAccessTokenValid()) {
-            catalogApiList?.getInventoryExport(
-        companyId = config.companyId, headers = headers)
-        } else {
-            null
-        }
-    }
-    
-    
     suspend fun createInventoryExportJob(body: InventoryExportRequestSchema, headers: Map<String, String> = emptyMap())
     : Response<InventoryExportResponseSchema>? {
 
@@ -635,60 +250,96 @@ class CatalogDataManagerClass(val config: PlatformConfig, val unauthorizedAction
     }
     
     
-    suspend fun exportInventoryConfig(filterType: String?=null, headers: Map<String, String> = emptyMap())
+    suspend fun getInventoryExport( headers: Map<String, String> = emptyMap())
+    : Response<InventoryExportJobResponseSchema>? {
+
+        return if (config.oauthClient.isAccessTokenValid()) {
+            catalogApiList?.getInventoryExport(
+        companyId = config.companyId, headers = headers)
+        } else {
+            null
+        }
+    }
+    
+    
+    suspend fun patchProductExportDetail(jobId: String,body: ExportPatchRequestSchema, headers: Map<String, String> = emptyMap())
+    : Response<PatchProductDownloadsResponseSchema>? {
+
+        return if (config.oauthClient.isAccessTokenValid()) {
+            catalogApiList?.patchProductExportDetail(
+        companyId = config.companyId,jobId = jobId, body = body,headers = headers)
+        } else {
+            null
+        }
+    }
+    
+    
+    suspend fun getProductExportDetail(jobId: String, headers: Map<String, String> = emptyMap())
+    : Response<GetProductDownloadsResponseSchema>? {
+
+        return if (config.oauthClient.isAccessTokenValid()) {
+            catalogApiList?.getProductExportDetail(
+        companyId = config.companyId,jobId = jobId, headers = headers)
+        } else {
+            null
+        }
+    }
+    
+    
+    suspend fun patchInventoryExportDetail(jobId: String,body: ExportPatchRequestSchema, headers: Map<String, String> = emptyMap())
+    : Response<EditInventoryDownloadsResponseSchema>? {
+
+        return if (config.oauthClient.isAccessTokenValid()) {
+            catalogApiList?.patchInventoryExportDetail(
+        companyId = config.companyId,jobId = jobId, body = body,headers = headers)
+        } else {
+            null
+        }
+    }
+    
+    
+    suspend fun getInventoryExportDetail(jobId: String, headers: Map<String, String> = emptyMap())
+    : Response<EditInventoryDownloadsResponseSchema>? {
+
+        return if (config.oauthClient.isAccessTokenValid()) {
+            catalogApiList?.getInventoryExportDetail(
+        companyId = config.companyId,jobId = jobId, headers = headers)
+        } else {
+            null
+        }
+    }
+    
+    
+    suspend fun exportInventoryConfig(filter: String, headers: Map<String, String> = emptyMap())
     : Response<InventoryConfig>? {
 
         return if (config.oauthClient.isAccessTokenValid()) {
             catalogApiList?.exportInventoryConfig(
-        companyId = config.companyId,filterType = filterType, headers = headers)
+        companyId = config.companyId,filter = filter, headers = headers)
         } else {
             null
         }
     }
     
     
-    suspend fun downloadInventoryTemplateView(itemType: String, headers: Map<String, String> = emptyMap())
+    suspend fun downloadInventoryTemplateView(type: String, headers: Map<String, String> = emptyMap())
     : Response<ResponseBody>? {
 
         return if (config.oauthClient.isAccessTokenValid()) {
             catalogApiList?.downloadInventoryTemplateView(
-        companyId = config.companyId,itemType = itemType, headers = headers)
+        companyId = config.companyId,type = type, headers = headers)
         } else {
             null
         }
     }
     
     
-    suspend fun validateProductTemplateSchema(itemType: String, headers: Map<String, String> = emptyMap())
+    suspend fun validateProductTemplateSchema(itemType: String,bulk: Boolean, headers: Map<String, String> = emptyMap())
     : Response<InventoryValidationResponseSchema>? {
 
         return if (config.oauthClient.isAccessTokenValid()) {
             catalogApiList?.validateProductTemplateSchema(
-        companyId = config.companyId,itemType = itemType, headers = headers)
-        } else {
-            null
-        }
-    }
-    
-    
-    suspend fun getOptimalLocations(body: AssignStore, headers: Map<String, String> = emptyMap())
-    : Response<StoreAssignResponseSchema>? {
-
-        return if (config.oauthClient.isAccessTokenValid()) {
-            catalogApiList?.getOptimalLocations(
-        companyId = config.companyId, body = body,headers = headers)
-        } else {
-            null
-        }
-    }
-    
-    
-    suspend fun getMarketplaceOptinDetail( headers: Map<String, String> = emptyMap())
-    : Response<GetOptInPlatform>? {
-
-        return if (config.oauthClient.isAccessTokenValid()) {
-            catalogApiList?.getMarketplaceOptinDetail(
-        companyId = config.companyId, headers = headers)
+        companyId = config.companyId,itemType = itemType,bulk = bulk, headers = headers)
         } else {
             null
         }
@@ -743,65 +394,6 @@ class CatalogDataManagerClass(val config: PlatformConfig, val unauthorizedAction
     }
     
     
-    
-        
-            
-                
-            
-            
-        
-            
-                
-            
-            
-        
-            
-            
-        
-            
-                
-            
-            
-        
-    /**
-    *
-    * Summary: Paginator for getStoreDetail
-    **/
-    fun getStoreDetailPaginator(companyId: String, q: String?=null, pageSize: Int?=null) : Paginator<OptinStoreDetails>{
-        val paginator = Paginator<OptinStoreDetails>()
-        paginator.setCallBack(object : PaginatorCallback<OptinStoreDetails> {
-
-            override suspend fun onNext(
-                onResponse: (Event<OptinStoreDetails>?,FdkError?) -> Unit){
-
-                if (config.oauthClient.isAccessTokenValid()) {
-                    val pageId = paginator.nextId
-                    val pageNo = paginator.pageNo
-                    val pageType = "number"
-                    catalogApiList?.getStoreDetail(
-                    companyId = config.companyId, q = q, pageNo = pageNo, pageSize = pageSize
-                    )?.safeAwait{ response, error ->
-                        response?.let {
-                            val page = response.peekContent()?.page
-                            paginator.setPaginator(hasNext=page?.hasNext?:false,pageNo=if (page?.hasNext == true) ((pageNo ?: 0) + 1) else pageNo)
-                            onResponse.invoke(response,null)
-                        }
-
-                        error?.let {
-                            onResponse.invoke(null,error)
-                        }
-                    }
-
-                } else {
-                    null
-                }
-            }
-
-
-    })
-        return paginator
-    }
-    
     suspend fun getProductAttributes(category: String,filter: Boolean?=null, headers: Map<String, String> = emptyMap())
     : Response<ProductAttributesResponseSchema>? {
 
@@ -826,24 +418,24 @@ class CatalogDataManagerClass(val config: PlatformConfig, val unauthorizedAction
     }
     
     
-    suspend fun getProductBundle(q: String?=null,slug: ArrayList<String>?=null,pageNo: Int?=null,pageSize: Int?=null, headers: Map<String, String> = emptyMap())
-    : Response<GetProductBundleListingResponseSchema>? {
-
-        return if (config.oauthClient.isAccessTokenValid()) {
-            catalogApiList?.getProductBundle(
-        companyId = config.companyId,q = q,slug = slug,pageNo = pageNo,pageSize = pageSize, headers = headers)
-        } else {
-            null
-        }
-    }
-    
-    
     suspend fun createProductBundle(body: ProductBundleRequestSchema, headers: Map<String, String> = emptyMap())
     : Response<GetProductBundleCreateResponseSchema>? {
 
         return if (config.oauthClient.isAccessTokenValid()) {
             catalogApiList?.createProductBundle(
         companyId = config.companyId, body = body,headers = headers)
+        } else {
+            null
+        }
+    }
+    
+    
+    suspend fun getProductBundle(q: String?=null,slug: ArrayList<String>?=null,pageNo: Int?=null,pageSize: Int?=null, headers: Map<String, String> = emptyMap())
+    : Response<GetProductBundleListingResponseSchema>? {
+
+        return if (config.oauthClient.isAccessTokenValid()) {
+            catalogApiList?.getProductBundle(
+        companyId = config.companyId,q = q,slug = slug,pageNo = pageNo,pageSize = pageSize, headers = headers)
         } else {
             null
         }
@@ -886,60 +478,6 @@ class CatalogDataManagerClass(val config: PlatformConfig, val unauthorizedAction
     }
     
     
-    
-        
-            
-                
-            
-            
-        
-            
-            
-        
-            
-                
-            
-            
-        
-    /**
-    *
-    * Summary: Paginator for getProductAssetsInBulk
-    **/
-    fun getProductAssetsInBulkPaginator(companyId: String, pageSize: Int?=null) : Paginator<BulkAssetResponseSchema>{
-        val paginator = Paginator<BulkAssetResponseSchema>()
-        paginator.setCallBack(object : PaginatorCallback<BulkAssetResponseSchema> {
-
-            override suspend fun onNext(
-                onResponse: (Event<BulkAssetResponseSchema>?,FdkError?) -> Unit){
-
-                if (config.oauthClient.isAccessTokenValid()) {
-                    val pageId = paginator.nextId
-                    val pageNo = paginator.pageNo
-                    val pageType = "number"
-                    catalogApiList?.getProductAssetsInBulk(
-                    companyId = config.companyId, pageNo = pageNo, pageSize = pageSize
-                    )?.safeAwait{ response, error ->
-                        response?.let {
-                            val page = response.peekContent()?.page
-                            paginator.setPaginator(hasNext=page?.hasNext?:false,pageNo=if (page?.hasNext == true) ((pageNo ?: 0) + 1) else pageNo)
-                            onResponse.invoke(response,null)
-                        }
-
-                        error?.let {
-                            onResponse.invoke(null,error)
-                        }
-                    }
-
-                } else {
-                    null
-                }
-            }
-
-
-    })
-        return paginator
-    }
-    
     suspend fun createProductAssetsInBulk(body: ProductBulkAssets, headers: Map<String, String> = emptyMap())
     : Response<SuccessResponseSchema>? {
 
@@ -953,7 +491,7 @@ class CatalogDataManagerClass(val config: PlatformConfig, val unauthorizedAction
     
     
     suspend fun getProductBulkUploadHistory(search: String?=null,pageNo: Int?=null,pageSize: Int?=null, headers: Map<String, String> = emptyMap())
-    : Response<ProductBulkRequestList>? {
+    : Response<ProductBulkRequestSchemaList>? {
 
         return if (config.oauthClient.isAccessTokenValid()) {
             catalogApiList?.getProductBulkUploadHistory(
@@ -964,67 +502,8 @@ class CatalogDataManagerClass(val config: PlatformConfig, val unauthorizedAction
     }
     
     
-    
-        
-            
-                
-            
-            
-        
-            
-                
-            
-            
-        
-            
-            
-        
-            
-                
-            
-            
-        
-    /**
-    *
-    * Summary: Paginator for getProductBulkUploadHistory
-    **/
-    fun getProductBulkUploadHistoryPaginator(companyId: String, search: String?=null, pageSize: Int?=null) : Paginator<ProductBulkRequestList>{
-        val paginator = Paginator<ProductBulkRequestList>()
-        paginator.setCallBack(object : PaginatorCallback<ProductBulkRequestList> {
-
-            override suspend fun onNext(
-                onResponse: (Event<ProductBulkRequestList>?,FdkError?) -> Unit){
-
-                if (config.oauthClient.isAccessTokenValid()) {
-                    val pageId = paginator.nextId
-                    val pageNo = paginator.pageNo
-                    val pageType = "number"
-                    catalogApiList?.getProductBulkUploadHistory(
-                    companyId = config.companyId, search = search, pageNo = pageNo, pageSize = pageSize
-                    )?.safeAwait{ response, error ->
-                        response?.let {
-                            val page = response.peekContent()?.page
-                            paginator.setPaginator(hasNext=page?.hasNext?:false,pageNo=if (page?.hasNext == true) ((pageNo ?: 0) + 1) else pageNo)
-                            onResponse.invoke(response,null)
-                        }
-
-                        error?.let {
-                            onResponse.invoke(null,error)
-                        }
-                    }
-
-                } else {
-                    null
-                }
-            }
-
-
-    })
-        return paginator
-    }
-    
-    suspend fun createBulkProductUploadJob(body: BulkJob, headers: Map<String, String> = emptyMap())
-    : Response<BulkResponseSchema>? {
+    suspend fun createBulkProductUploadJob(body: BulkProductUploadJob, headers: Map<String, String> = emptyMap())
+    : Response<ProductBulkResponseSchema>? {
 
         return if (config.oauthClient.isAccessTokenValid()) {
             catalogApiList?.createBulkProductUploadJob(
@@ -1053,18 +532,6 @@ class CatalogDataManagerClass(val config: PlatformConfig, val unauthorizedAction
         return if (config.oauthClient.isAccessTokenValid()) {
             catalogApiList?.createProductsInBulk(
         companyId = config.companyId,batchId = batchId, body = body,headers = headers)
-        } else {
-            null
-        }
-    }
-    
-    
-    suspend fun listProductTemplateExportDetails( headers: Map<String, String> = emptyMap())
-    : Response<ProductDownloadsResponseSchema>? {
-
-        return if (config.oauthClient.isAccessTokenValid()) {
-            catalogApiList?.listProductTemplateExportDetails(
-        companyId = config.companyId, headers = headers)
         } else {
             null
         }
@@ -1107,12 +574,12 @@ class CatalogDataManagerClass(val config: PlatformConfig, val unauthorizedAction
     }
     
     
-    suspend fun listProductTemplateCategories(departments: String,itemType: String, headers: Map<String, String> = emptyMap())
+    suspend fun listProductTemplateCategories(departments: String,itemType: String,pageSize: Double?=null,pageNo: Double?=null,q: Double?=null, headers: Map<String, String> = emptyMap())
     : Response<ProdcutTemplateCategoriesResponseSchema>? {
 
         return if (config.oauthClient.isAccessTokenValid()) {
             catalogApiList?.listProductTemplateCategories(
-        companyId = config.companyId,departments = departments,itemType = itemType, headers = headers)
+        companyId = config.companyId,departments = departments,itemType = itemType,pageSize = pageSize,pageNo = pageNo,q = q, headers = headers)
         } else {
             null
         }
@@ -1155,12 +622,12 @@ class CatalogDataManagerClass(val config: PlatformConfig, val unauthorizedAction
     }
     
     
-    suspend fun getProductValidation( headers: Map<String, String> = emptyMap())
+    suspend fun getProductValidation(type: String,slug: String, headers: Map<String, String> = emptyMap())
     : Response<ValidateProduct>? {
 
         return if (config.oauthClient.isAccessTokenValid()) {
             catalogApiList?.getProductValidation(
-        companyId = config.companyId, headers = headers)
+        companyId = config.companyId,type = type,slug = slug, headers = headers)
         } else {
             null
         }
@@ -1168,7 +635,7 @@ class CatalogDataManagerClass(val config: PlatformConfig, val unauthorizedAction
     
     
     suspend fun getInventoryBySizeIdentifier(itemId: String,sizeIdentifier: String,pageNo: Int?=null,pageSize: Int?=null,q: String?=null,locationIds: ArrayList<Int>?=null, headers: Map<String, String> = emptyMap())
-    : Response<InventorySellerIdentifierResponsePaginated>? {
+    : Response<ApplicationInventorySellerIdentifierResponsePaginated>? {
 
         return if (config.oauthClient.isAccessTokenValid()) {
             catalogApiList?.getInventoryBySizeIdentifier(
@@ -1179,82 +646,8 @@ class CatalogDataManagerClass(val config: PlatformConfig, val unauthorizedAction
     }
     
     
-    
-        
-            
-                
-            
-            
-        
-            
-                
-            
-            
-        
-            
-                
-            
-            
-        
-            
-            
-        
-            
-                
-            
-            
-        
-            
-                
-            
-            
-        
-            
-                
-            
-            
-        
-    /**
-    *
-    * Summary: Paginator for getInventoryBySizeIdentifier
-    **/
-    fun getInventoryBySizeIdentifierPaginator(companyId: String, itemId: String, sizeIdentifier: String, pageSize: Int?=null, q: String?=null, locationIds: ArrayList<Int>?=null) : Paginator<InventorySellerIdentifierResponsePaginated>{
-        val paginator = Paginator<InventorySellerIdentifierResponsePaginated>()
-        paginator.setCallBack(object : PaginatorCallback<InventorySellerIdentifierResponsePaginated> {
-
-            override suspend fun onNext(
-                onResponse: (Event<InventorySellerIdentifierResponsePaginated>?,FdkError?) -> Unit){
-
-                if (config.oauthClient.isAccessTokenValid()) {
-                    val pageId = paginator.nextId
-                    val pageNo = paginator.pageNo
-                    val pageType = "number"
-                    catalogApiList?.getInventoryBySizeIdentifier(
-                    companyId = config.companyId, itemId = itemId, sizeIdentifier = sizeIdentifier, pageNo = pageNo, pageSize = pageSize, q = q, locationIds = locationIds
-                    )?.safeAwait{ response, error ->
-                        response?.let {
-                            val page = response.peekContent()?.page
-                            paginator.setPaginator(hasNext=page?.hasNext?:false,pageNo=if (page?.hasNext == true) ((pageNo ?: 0) + 1) else pageNo)
-                            onResponse.invoke(response,null)
-                        }
-
-                        error?.let {
-                            onResponse.invoke(null,error)
-                        }
-                    }
-
-                } else {
-                    null
-                }
-            }
-
-
-    })
-        return paginator
-    }
-    
     suspend fun getProductSize(itemCode: String?=null,itemId: String,brandUid: Int?=null,uid: Int?=null, headers: Map<String, String> = emptyMap())
-    : Response<ProductListingResponseSchema>? {
+    : Response<Product>? {
 
         return if (config.oauthClient.isAccessTokenValid()) {
             catalogApiList?.getProductSize(
@@ -1289,92 +682,6 @@ class CatalogDataManagerClass(val config: PlatformConfig, val unauthorizedAction
     }
     
     
-    
-        
-            
-                
-            
-            
-        
-            
-                
-            
-            
-        
-            
-                
-            
-            
-        
-            
-            
-        
-            
-                
-            
-            
-        
-            
-                
-            
-            
-        
-            
-                
-            
-            
-        
-    /**
-    *
-    * Summary: Paginator for getInventoryBySize
-    **/
-    fun getInventoryBySizePaginator(companyId: String, itemId: String, size: String, pageSize: Int?=null, q: String?=null, sellable: Boolean?=null) : Paginator<InventoryResponsePaginated>{
-        val paginator = Paginator<InventoryResponsePaginated>()
-        paginator.setCallBack(object : PaginatorCallback<InventoryResponsePaginated> {
-
-            override suspend fun onNext(
-                onResponse: (Event<InventoryResponsePaginated>?,FdkError?) -> Unit){
-
-                if (config.oauthClient.isAccessTokenValid()) {
-                    val pageId = paginator.nextId
-                    val pageNo = paginator.pageNo
-                    val pageType = "number"
-                    catalogApiList?.getInventoryBySize(
-                    companyId = config.companyId, itemId = itemId, size = size, pageNo = pageNo, pageSize = pageSize, q = q, sellable = sellable
-                    )?.safeAwait{ response, error ->
-                        response?.let {
-                            val page = response.peekContent()?.page
-                            paginator.setPaginator(hasNext=page?.hasNext?:false,pageNo=if (page?.hasNext == true) ((pageNo ?: 0) + 1) else pageNo)
-                            onResponse.invoke(response,null)
-                        }
-
-                        error?.let {
-                            onResponse.invoke(null,error)
-                        }
-                    }
-
-                } else {
-                    null
-                }
-            }
-
-
-    })
-        return paginator
-    }
-    
-    suspend fun addInventory(itemId: String,size: String,body: InventoryRequestSchema, headers: Map<String, String> = emptyMap())
-    : Response<SuccessResponseSchema>? {
-
-        return if (config.oauthClient.isAccessTokenValid()) {
-            catalogApiList?.addInventory(
-        companyId = config.companyId,itemId = itemId,size = size, body = body,headers = headers)
-        } else {
-            null
-        }
-    }
-    
-    
     suspend fun getVariantsOfProducts(itemId: String,variantType: String,pageNo: Int?=null,pageSize: Int?=null, headers: Map<String, String> = emptyMap())
     : Response<ProductVariantsResponseSchema>? {
 
@@ -1387,76 +694,36 @@ class CatalogDataManagerClass(val config: PlatformConfig, val unauthorizedAction
     }
     
     
-    
-        
-            
-                
-            
-            
-        
-            
-                
-            
-            
-        
-            
-                
-            
-            
-        
-            
-            
-        
-            
-                
-            
-            
-        
-    /**
-    *
-    * Summary: Paginator for getVariantsOfProducts
-    **/
-    fun getVariantsOfProductsPaginator(companyId: String, itemId: String, variantType: String, pageSize: Int?=null) : Paginator<ProductVariantsResponseSchema>{
-        val paginator = Paginator<ProductVariantsResponseSchema>()
-        paginator.setCallBack(object : PaginatorCallback<ProductVariantsResponseSchema> {
-
-            override suspend fun onNext(
-                onResponse: (Event<ProductVariantsResponseSchema>?,FdkError?) -> Unit){
-
-                if (config.oauthClient.isAccessTokenValid()) {
-                    val pageId = paginator.nextId
-                    val pageNo = paginator.pageNo
-                    val pageType = "number"
-                    catalogApiList?.getVariantsOfProducts(
-                    companyId = config.companyId, itemId = itemId, variantType = variantType, pageNo = pageNo, pageSize = pageSize
-                    )?.safeAwait{ response, error ->
-                        response?.let {
-                            val page = response.peekContent()?.page
-                            paginator.setPaginator(hasNext=page?.hasNext?:false,pageNo=if (page?.hasNext == true) ((pageNo ?: 0) + 1) else pageNo)
-                            onResponse.invoke(response,null)
-                        }
-
-                        error?.let {
-                            onResponse.invoke(null,error)
-                        }
-                    }
-
-                } else {
-                    null
-                }
-            }
-
-
-    })
-        return paginator
-    }
-    
-    suspend fun getSizeGuides(active: Boolean?=null,q: String?=null,tag: String?=null,pageNo: Int?=null,pageSize: Int?=null,brandId: Int?=null, headers: Map<String, String> = emptyMap())
-    : Response<ListSizeGuide>? {
+    suspend fun getCompanyVerification(q: String?=null,pageNo: Int?=null,pageSize: Int?=null, headers: Map<String, String> = emptyMap())
+    : Response<CompanyVerificationResponseSchema>? {
 
         return if (config.oauthClient.isAccessTokenValid()) {
-            catalogApiList?.getSizeGuides(
-        companyId = config.companyId,active = active,q = q,tag = tag,pageNo = pageNo,pageSize = pageSize,brandId = brandId, headers = headers)
+            catalogApiList?.getCompanyVerification(
+        companyId = config.companyId,q = q,pageNo = pageNo,pageSize = pageSize, headers = headers)
+        } else {
+            null
+        }
+    }
+    
+    
+    suspend fun getProductVerificationDetails(itemId: String, headers: Map<String, String> = emptyMap())
+    : Response<ProductVerificationModel>? {
+
+        return if (config.oauthClient.isAccessTokenValid()) {
+            catalogApiList?.getProductVerificationDetails(
+        companyId = config.companyId,itemId = itemId, headers = headers)
+        } else {
+            null
+        }
+    }
+    
+    
+    suspend fun getVariantTypes(templateTag: String, headers: Map<String, String> = emptyMap())
+    : Response<VariantTypesResponseSchema>? {
+
+        return if (config.oauthClient.isAccessTokenValid()) {
+            catalogApiList?.getVariantTypes(
+        companyId = config.companyId,templateTag = templateTag, headers = headers)
         } else {
             null
         }
@@ -1475,12 +742,24 @@ class CatalogDataManagerClass(val config: PlatformConfig, val unauthorizedAction
     }
     
     
+    suspend fun getSizeGuides(active: Boolean?=null,q: String?=null,brandId: Int?=null,tag: String?=null,pageNo: Int?=null,pageSize: Int?=null, headers: Map<String, String> = emptyMap())
+    : Response<ListSizeGuide>? {
+
+        return if (config.oauthClient.isAccessTokenValid()) {
+            catalogApiList?.getSizeGuides(
+        companyId = config.companyId,active = active,q = q,brandId = brandId,tag = tag,pageNo = pageNo,pageSize = pageSize, headers = headers)
+        } else {
+            null
+        }
+    }
+    
+    
     suspend fun getSizeGuide(id: String, headers: Map<String, String> = emptyMap())
     : Response<SizeGuideResponseSchema>? {
 
         return if (config.oauthClient.isAccessTokenValid()) {
             catalogApiList?.getSizeGuide(
-        companyId = config.companyId,id = id, headers = headers)
+        id = id,companyId = config.companyId, headers = headers)
         } else {
             null
         }
@@ -1534,7 +813,7 @@ class CatalogDataManagerClass(val config: PlatformConfig, val unauthorizedAction
     }
     
     
-    suspend fun updateInventories(body: InventoryRequestSchemaV2, headers: Map<String, String> = emptyMap())
+    suspend fun updateInventories(body: InventoryV2RequestSchema, headers: Map<String, String> = emptyMap())
     : Response<InventoryUpdateResponseSchema>? {
 
         return if (config.oauthClient.isAccessTokenValid()) {
@@ -1570,137 +849,20 @@ class CatalogDataManagerClass(val config: PlatformConfig, val unauthorizedAction
     }
     
     
-    suspend fun getProducts(brandIds: ArrayList<Int>?=null,categoryIds: ArrayList<Int>?=null,itemIds: ArrayList<Int>?=null,departmentIds: ArrayList<Int>?=null,itemCode: ArrayList<String>?=null,name: String?=null,slug: String?=null,allIdentifiers: ArrayList<String>?=null,q: String?=null,tags: ArrayList<String>?=null,pageNo: Int?=null,pageSize: Int?=null,pageType: String?=null,sortOn: String?=null,pageId: String?=null, headers: Map<String, String> = emptyMap())
-    : Response<ProductListingResponseV2>? {
+    suspend fun getProducts(brandIds: ArrayList<Int>?=null,multiSize: Boolean?=null,categoryIds: ArrayList<Int>?=null,itemIds: ArrayList<Int>?=null,departmentIds: ArrayList<Int>?=null,itemCode: ArrayList<String>?=null,name: String?=null,slug: String?=null,allIdentifiers: ArrayList<String>?=null,q: String?=null,tags: ArrayList<String>?=null,pageNo: Int?=null,pageSize: Int?=null,pageType: String?=null,sortOn: String?=null,pageId: String?=null, headers: Map<String, String> = emptyMap())
+    : Response<ProductListingResponseV2Schema>? {
 
         return if (config.oauthClient.isAccessTokenValid()) {
             catalogApiList?.getProducts(
-        companyId = config.companyId,brandIds = brandIds,categoryIds = categoryIds,itemIds = itemIds,departmentIds = departmentIds,itemCode = itemCode,name = name,slug = slug,allIdentifiers = allIdentifiers,q = q,tags = tags,pageNo = pageNo,pageSize = pageSize,pageType = pageType,sortOn = sortOn,pageId = pageId, headers = headers)
+        companyId = config.companyId,brandIds = brandIds,multiSize = multiSize,categoryIds = categoryIds,itemIds = itemIds,departmentIds = departmentIds,itemCode = itemCode,name = name,slug = slug,allIdentifiers = allIdentifiers,q = q,tags = tags,pageNo = pageNo,pageSize = pageSize,pageType = pageType,sortOn = sortOn,pageId = pageId, headers = headers)
         } else {
             null
         }
     }
     
     
-    
-        
-            
-                
-            
-            
-        
-            
-                
-            
-            
-        
-            
-                
-            
-            
-        
-            
-                
-            
-            
-        
-            
-                
-            
-            
-        
-            
-                
-            
-            
-        
-            
-                
-            
-            
-        
-            
-                
-            
-            
-        
-            
-                
-            
-            
-        
-            
-                
-            
-            
-        
-            
-                
-            
-            
-        
-            
-            
-        
-            
-                
-            
-            
-        
-            
-            
-        
-            
-                
-            
-            
-        
-            
-            
-                
-            
-        
-    /**
-    *
-    * Summary: Paginator for getProducts
-    **/
-    fun getProductsPaginator(companyId: String, brandIds: ArrayList<Int>?=null, categoryIds: ArrayList<Int>?=null, itemIds: ArrayList<Int>?=null, departmentIds: ArrayList<Int>?=null, itemCode: ArrayList<String>?=null, name: String?=null, slug: String?=null, allIdentifiers: ArrayList<String>?=null, q: String?=null, tags: ArrayList<String>?=null, pageSize: Int?=null, sortOn: String?=null) : Paginator<ProductListingResponseV2>{
-        val paginator = Paginator<ProductListingResponseV2>()
-        paginator.setCallBack(object : PaginatorCallback<ProductListingResponseV2> {
-
-            override suspend fun onNext(
-                onResponse: (Event<ProductListingResponseV2>?,FdkError?) -> Unit){
-
-                if (config.oauthClient.isAccessTokenValid()) {
-                    val pageId = paginator.nextId
-                    val pageNo = paginator.pageNo
-                    val pageType = "cursor"
-                    catalogApiList?.getProducts(
-                    companyId = config.companyId, brandIds = brandIds, categoryIds = categoryIds, itemIds = itemIds, departmentIds = departmentIds, itemCode = itemCode, name = name, slug = slug, allIdentifiers = allIdentifiers, q = q, tags = tags, pageNo = pageNo, pageSize = pageSize, pageType = pageType, sortOn = sortOn, pageId = pageId
-                    )?.safeAwait{ response, error ->
-                        response?.let {
-                            val page = response.peekContent()?.page
-                            paginator.setPaginator(hasNext=page?.hasNext?:false,nextId=page?.nextId)
-                            onResponse.invoke(response,null)
-                        }
-
-                        error?.let {
-                            onResponse.invoke(null,error)
-                        }
-                    }
-
-                } else {
-                    null
-                }
-            }
-
-
-    })
-        return paginator
-    }
-    
-    suspend fun createProduct(body: ProductCreateSchemaV2, headers: Map<String, String> = emptyMap())
-    : Response<SuccessResponseObject>? {
+    suspend fun createProduct(body: ProductCreateUpdateSchemaV2, headers: Map<String, String> = emptyMap())
+    : Response<SuccessResponse1Schema>? {
 
         return if (config.oauthClient.isAccessTokenValid()) {
             catalogApiList?.createProduct(
@@ -1712,7 +874,7 @@ class CatalogDataManagerClass(val config: PlatformConfig, val unauthorizedAction
     
     
     suspend fun uploadBulkProducts(department: String,productType: String,body: BulkProductJob, headers: Map<String, String> = emptyMap())
-    : Response<BulkResponseSchema>? {
+    : Response<ProductBulkResponseSchema>? {
 
         return if (config.oauthClient.isAccessTokenValid()) {
             catalogApiList?.uploadBulkProducts(
@@ -1736,23 +898,11 @@ class CatalogDataManagerClass(val config: PlatformConfig, val unauthorizedAction
     
     
     suspend fun createProductExportJob(body: ProductTemplateDownloadsExport, headers: Map<String, String> = emptyMap())
-    : Response<ProductDownloadsResponseSchema>? {
+    : Response<CreateProductDownloadsResponseSchema>? {
 
         return if (config.oauthClient.isAccessTokenValid()) {
             catalogApiList?.createProductExportJob(
         companyId = config.companyId, body = body,headers = headers)
-        } else {
-            null
-        }
-    }
-    
-    
-    suspend fun deleteProduct(itemId: String, headers: Map<String, String> = emptyMap())
-    : Response<SuccessResponseSchema>? {
-
-        return if (config.oauthClient.isAccessTokenValid()) {
-            catalogApiList?.deleteProduct(
-        companyId = config.companyId,itemId = itemId, headers = headers)
         } else {
             null
         }
@@ -1771,12 +921,24 @@ class CatalogDataManagerClass(val config: PlatformConfig, val unauthorizedAction
     }
     
     
-    suspend fun editProduct(itemId: String,body: ProductUpdateSchemaV2, headers: Map<String, String> = emptyMap())
+    suspend fun editProduct(itemId: String,body: ProductCreateUpdateSchemaV2, headers: Map<String, String> = emptyMap())
     : Response<SuccessResponseSchema>? {
 
         return if (config.oauthClient.isAccessTokenValid()) {
             catalogApiList?.editProduct(
         companyId = config.companyId,itemId = itemId, body = body,headers = headers)
+        } else {
+            null
+        }
+    }
+    
+    
+    suspend fun deleteProduct(itemId: String, headers: Map<String, String> = emptyMap())
+    : Response<SuccessResponseSchema>? {
+
+        return if (config.oauthClient.isAccessTokenValid()) {
+            catalogApiList?.deleteProduct(
+        companyId = config.companyId,itemId = itemId, headers = headers)
         } else {
             null
         }
@@ -1795,7 +957,7 @@ class CatalogDataManagerClass(val config: PlatformConfig, val unauthorizedAction
     }
     
     
-    suspend fun deleteRealtimeInventory(itemId: String,sellerIdentifier: String,body: InventoryRequestSchemaV2, headers: Map<String, String> = emptyMap())
+    suspend fun deleteRealtimeInventory(itemId: String,sellerIdentifier: String,body: InventoryV2RequestSchema, headers: Map<String, String> = emptyMap())
     : Response<InventoryUpdateResponseSchema>? {
 
         return if (config.oauthClient.isAccessTokenValid()) {
@@ -1807,7 +969,7 @@ class CatalogDataManagerClass(val config: PlatformConfig, val unauthorizedAction
     }
     
     
-    suspend fun updateRealtimeInventory(itemId: String,sellerIdentifier: String,body: InventoryRequestSchemaV2, headers: Map<String, String> = emptyMap())
+    suspend fun updateRealtimeInventory(itemId: String,sellerIdentifier: String,body: InventoryV2RequestSchema, headers: Map<String, String> = emptyMap())
     : Response<InventoryUpdateResponseSchema>? {
 
         return if (config.oauthClient.isAccessTokenValid()) {
@@ -1819,24 +981,12 @@ class CatalogDataManagerClass(val config: PlatformConfig, val unauthorizedAction
     }
     
     
-    suspend fun updateLocationPrice(storeId: String,sellerIdentifier: String,body: LocationPriceRequestSchema, headers: Map<String, String> = emptyMap())
-    : Response<LocationPriceQuantitySuccessResponseSchema>? {
+    suspend fun getProductTemplateBySlug(slug: String, headers: Map<String, String> = emptyMap())
+    : Response<GetProductTemplateSlugResponseSchema>? {
 
         return if (config.oauthClient.isAccessTokenValid()) {
-            catalogApiList?.updateLocationPrice(
-        companyId = config.companyId,storeId = storeId,sellerIdentifier = sellerIdentifier, body = body,headers = headers)
-        } else {
-            null
-        }
-    }
-    
-    
-    suspend fun updateLocationQuantity(storeId: String,sellerIdentifier: String,body: LocationQuantityRequestSchema, headers: Map<String, String> = emptyMap())
-    : Response<LocationPriceQuantitySuccessResponseSchema>? {
-
-        return if (config.oauthClient.isAccessTokenValid()) {
-            catalogApiList?.updateLocationQuantity(
-        companyId = config.companyId,storeId = storeId,sellerIdentifier = sellerIdentifier, body = body,headers = headers)
+            catalogApiList?.getProductTemplateBySlug(
+        companyId = config.companyId,slug = slug, headers = headers)
         } else {
             null
         }
@@ -1855,28 +1005,100 @@ class CatalogDataManagerClass(val config: PlatformConfig, val unauthorizedAction
     }
     
     
-    suspend fun updateMarketplaceOptin(marketplaceSlug: String,body: UpdateMarketplaceOptinRequestSchema, headers: Map<String, String> = emptyMap())
+    suspend fun updateMarketplaceOptin(marketplace: String,body: UpdateMarketplaceOptinRequestSchema, headers: Map<String, String> = emptyMap())
     : Response<UpdateMarketplaceOptinResponseSchema>? {
 
         return if (config.oauthClient.isAccessTokenValid()) {
             catalogApiList?.updateMarketplaceOptin(
-        companyId = config.companyId,marketplaceSlug = marketplaceSlug, body = body,headers = headers)
+        companyId = config.companyId,marketplace = marketplace, body = body,headers = headers)
         } else {
             null
         }
     }
     
     
-    suspend fun createMarketplaceOptin(marketplaceSlug: String,body: OptInPostRequestSchema, headers: Map<String, String> = emptyMap())
+    suspend fun createMarketplaceOptin(marketplace: String,body: CreateMarketplaceOptinRequestSchema, headers: Map<String, String> = emptyMap())
     : Response<CreateMarketplaceOptinResponseSchema>? {
 
         return if (config.oauthClient.isAccessTokenValid()) {
             catalogApiList?.createMarketplaceOptin(
-        companyId = config.companyId,marketplaceSlug = marketplaceSlug, body = body,headers = headers)
+        companyId = config.companyId,marketplace = marketplace, body = body,headers = headers)
         } else {
             null
         }
     }
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    suspend fun getCompanyBrandsDRI(pageNo: Int?=null,pageSize: Int?=null, headers: Map<String, String> = emptyMap())
+    : Response<CompanyDRIListResponseSchema>? {
+
+        return if (config.oauthClient.isAccessTokenValid()) {
+            catalogApiList?.getCompanyBrandsDRI(
+        companyId = config.companyId,pageNo = pageNo,pageSize = pageSize, headers = headers)
+        } else {
+            null
+        }
+    }
+    
+    
+    suspend fun getLocationTags( headers: Map<String, String> = emptyMap())
+    : Response<StoreTagsResponseSchema>? {
+
+        return if (config.oauthClient.isAccessTokenValid()) {
+            catalogApiList?.getLocationTags(
+        companyId = config.companyId, headers = headers)
+        } else {
+            null
+        }
+    }
+    
     
 
 inner class ApplicationClient(val applicationId:String,val config: PlatformConfig){
@@ -1968,7 +1190,7 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     }
     
     suspend fun updateAppBrand(brandUid: String,body: ApplicationBrandJson, headers: Map<String, String> = emptyMap())
-    : Response<SuccessResponseObject>? {
+    : Response<SuccessResponse1Schema>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 catalogApiList?.updateAppBrand(companyId = config.companyId ,applicationId = applicationId ,brandUid = brandUid, body = body,headers = headers)
         } else {
@@ -2151,7 +1373,7 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     }
     
     suspend fun updateAppCategory(categoryUid: String,body: ApplicationCategoryJson, headers: Map<String, String> = emptyMap())
-    : Response<SuccessResponseObject>? {
+    : Response<SuccessResponse1Schema>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 catalogApiList?.updateAppCategory(companyId = config.companyId ,applicationId = applicationId ,categoryUid = categoryUid, body = body,headers = headers)
         } else {
@@ -2160,104 +1382,20 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     }
     
     
-    suspend fun getAllCollections(q: String?=null,scheduleStatus: String?=null,type: String?=null,tags: ArrayList<String>?=null,isActive: Boolean?=null,pageNo: Int?=null,pageSize: Int?=null, headers: Map<String, String> = emptyMap())
-    : Response<GetCollectionListingResponseSchema>? {
+    suspend fun createCollection(body: CreateCollection, headers: Map<String, String> = emptyMap())
+    : Response<CollectionCreateResponseSchema>? {
         return if (config.oauthClient.isAccessTokenValid()) {
-                catalogApiList?.getAllCollections(companyId = config.companyId ,applicationId = applicationId ,q = q,scheduleStatus = scheduleStatus,type = type,tags = tags,isActive = isActive,pageNo = pageNo,pageSize = pageSize, headers = headers)
+                catalogApiList?.createCollection(companyId = config.companyId ,applicationId = applicationId , body = body,headers = headers)
         } else {
             null
         }
     }
     
     
-    
-        
-            
-                
-            
-            
-        
-            
-                
-            
-            
-        
-            
-                
-            
-            
-        
-            
-                
-            
-            
-        
-            
-                
-            
-            
-        
-            
-                
-            
-            
-        
-            
-                
-            
-            
-        
-            
-            
-        
-            
-                
-            
-            
-        
-    /**
-    *
-    * Summary: Paginator for getAllCollections
-    **/
-    fun getAllCollectionsPaginator(
-    q: String?=null, scheduleStatus: String?=null, type: String?=null, tags: ArrayList<String>?=null, isActive: Boolean?=null, pageSize: Int?=null
-    
-    ) : Paginator<GetCollectionListingResponseSchema>{
-        val paginator = Paginator<GetCollectionListingResponseSchema>()
-        paginator.setCallBack(object : PaginatorCallback<GetCollectionListingResponseSchema> {
-
-            override suspend fun onNext(
-                onResponse: (Event<GetCollectionListingResponseSchema>?,FdkError?) -> Unit){
-
-                if (config.oauthClient.isAccessTokenValid()) {
-                    val pageId = paginator.nextId
-                    val pageNo = paginator.pageNo
-                    val pageType = "number"
-                    catalogApiList?.getAllCollections(companyId = config.companyId , applicationId = applicationId , q = q, scheduleStatus = scheduleStatus, type = type, tags = tags, isActive = isActive, pageNo = pageNo, pageSize = pageSize)?.safeAwait{ response, error ->
-                        response?.let {
-                            val page = response.peekContent()?.page
-                            paginator.setPaginator(hasNext=page?.hasNext?:false,pageNo=if (page?.hasNext == true) ((pageNo ?: 0) + 1) else pageNo)
-                            onResponse.invoke(response,null)
-                        }
-
-                        error?.let {
-                            onResponse.invoke(null,error)
-                        }
-                    }
-
-                } else {
-                    null
-                }
-            }
-
-    })
-    return paginator
-    }
-    
-    suspend fun createCollection(q: String?=null,scheduleStatus: String?=null,type: String?=null,tags: ArrayList<String>?=null,isActive: Boolean?=null,pageNo: Int?=null,pageSize: Int?=null,body: CreateCollection, headers: Map<String, String> = emptyMap())
-    : Response<CollectionCreateResponseSchema>? {
+    suspend fun getAllCollections(q: String?=null,scheduleStatus: String?=null,type: String?=null,tag: ArrayList<String>?=null,isActive: Boolean?=null,pageNo: Int?=null,pageSize: Int?=null, headers: Map<String, String> = emptyMap())
+    : Response<GetCollectionListingResponseSchema>? {
         return if (config.oauthClient.isAccessTokenValid()) {
-                catalogApiList?.createCollection(companyId = config.companyId ,applicationId = applicationId ,q = q,scheduleStatus = scheduleStatus,type = type,tags = tags,isActive = isActive,pageNo = pageNo,pageSize = pageSize, body = body,headers = headers)
+                catalogApiList?.getAllCollections(companyId = config.companyId ,applicationId = applicationId ,q = q,scheduleStatus = scheduleStatus,type = type,tag = tag,isActive = isActive,pageNo = pageNo,pageSize = pageSize, headers = headers)
         } else {
             null
         }
@@ -2294,30 +1432,20 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     }
     
     
-    suspend fun deleteCollection(id: String, headers: Map<String, String> = emptyMap())
-    : Response<CommonResponseSchemaCollection>? {
-        return if (config.oauthClient.isAccessTokenValid()) {
-                catalogApiList?.deleteCollection(companyId = config.companyId ,applicationId = applicationId ,id = id, headers = headers)
-        } else {
-            null
-        }
-    }
-    
-    
-    suspend fun updateCollection(id: String,body: UpdateCollection, headers: Map<String, String> = emptyMap())
-    : Response<UpdateCollection>? {
-        return if (config.oauthClient.isAccessTokenValid()) {
-                catalogApiList?.updateCollection(companyId = config.companyId ,applicationId = applicationId ,id = id, body = body,headers = headers)
-        } else {
-            null
-        }
-    }
-    
-    
-    suspend fun getCollectionItems(id: String,sortOn: String?=null,pageId: String?=null,pageSize: Int?=null,pageNo: Int?=null, headers: Map<String, String> = emptyMap())
+    suspend fun getCollectionItems(id: String,sortOn: String?=null,pageSize: Int?=null,pageNo: Int?=null,isPinned: Boolean?=null,q: String?=null,isExcluded: Boolean?=null, headers: Map<String, String> = emptyMap())
     : Response<GetCollectionItemsResponseSchema>? {
         return if (config.oauthClient.isAccessTokenValid()) {
-                catalogApiList?.getCollectionItems(companyId = config.companyId ,applicationId = applicationId ,id = id,sortOn = sortOn,pageId = pageId,pageSize = pageSize,pageNo = pageNo, headers = headers)
+                catalogApiList?.getCollectionItems(companyId = config.companyId ,applicationId = applicationId ,id = id,sortOn = sortOn,pageSize = pageSize,pageNo = pageNo,isPinned = isPinned,q = q,isExcluded = isExcluded, headers = headers)
+        } else {
+            null
+        }
+    }
+    
+    
+    suspend fun clearCollectionItemsPriority(id: String, headers: Map<String, String> = emptyMap())
+    : Response<CommonResponseSchemaCollection>? {
+        return if (config.oauthClient.isAccessTokenValid()) {
+                catalogApiList?.clearCollectionItemsPriority(companyId = config.companyId ,applicationId = applicationId ,id = id, headers = headers)
         } else {
             null
         }
@@ -2338,6 +1466,26 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     : Response<GetCollectionDetailResponseSchema>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 catalogApiList?.getCollectionDetail(companyId = config.companyId ,applicationId = applicationId ,slug = slug, headers = headers)
+        } else {
+            null
+        }
+    }
+    
+    
+    suspend fun updateCollection(id: String,body: UpdateCollection, headers: Map<String, String> = emptyMap())
+    : Response<UpdateCollection>? {
+        return if (config.oauthClient.isAccessTokenValid()) {
+                catalogApiList?.updateCollection(companyId = config.companyId ,applicationId = applicationId ,id = id, body = body,headers = headers)
+        } else {
+            null
+        }
+    }
+    
+    
+    suspend fun deleteCollection(id: String, headers: Map<String, String> = emptyMap())
+    : Response<CommonResponseSchemaCollection>? {
+        return if (config.oauthClient.isAccessTokenValid()) {
+                catalogApiList?.deleteCollection(companyId = config.companyId ,applicationId = applicationId ,id = id, headers = headers)
         } else {
             null
         }
@@ -2419,9 +1567,19 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     }
     
     suspend fun updateAppDepartment(departmentUid: String,body: ApplicationDepartmentJson, headers: Map<String, String> = emptyMap())
-    : Response<SuccessResponseObject>? {
+    : Response<SuccessResponse1Schema>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 catalogApiList?.updateAppDepartment(companyId = config.companyId ,applicationId = applicationId ,departmentUid = departmentUid, body = body,headers = headers)
+        } else {
+            null
+        }
+    }
+    
+    
+    suspend fun getConfigurationsFilterMetadata(filter: String, headers: Map<String, String> = emptyMap())
+    : Response<FilterResponseSchema>? {
+        return if (config.oauthClient.isAccessTokenValid()) {
+                catalogApiList?.getConfigurationsFilterMetadata(companyId = config.companyId ,applicationId = applicationId ,filter = filter, headers = headers)
         } else {
             null
         }
@@ -2448,10 +1606,10 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     }
     
     
-    suspend fun getAppLocations(storeType: String?=null,uid: ArrayList<Int>?=null,q: String?=null,stage: String?=null,pageNo: Int?=null,pageSize: Int?=null,tags: ArrayList<String>?=null,storeTypes: ArrayList<String>?=null, headers: Map<String, String> = emptyMap())
+    suspend fun getAppLocations(storeType: String?=null,uid: ArrayList<Int>?=null,q: String?=null,stage: String?=null,pageNo: Int?=null,pageSize: Int?=null,tags: ArrayList<String>?=null,storeTypes: ArrayList<String>?=null,companyUids: ArrayList<Int>?=null, headers: Map<String, String> = emptyMap())
     : Response<LocationListSchema>? {
         return if (config.oauthClient.isAccessTokenValid()) {
-                catalogApiList?.getAppLocations(companyId = config.companyId ,applicationId = applicationId ,storeType = storeType,uid = uid,q = q,stage = stage,pageNo = pageNo,pageSize = pageSize,tags = tags,storeTypes = storeTypes, headers = headers)
+                catalogApiList?.getAppLocations(companyId = config.companyId ,applicationId = applicationId ,storeType = storeType,uid = uid,q = q,stage = stage,pageNo = pageNo,pageSize = pageSize,tags = tags,storeTypes = storeTypes,companyUids = companyUids, headers = headers)
         } else {
             null
         }
@@ -2508,12 +1666,17 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
             
             
         
+            
+                
+            
+            
+        
     /**
     *
     * Summary: Paginator for getAppLocations
     **/
     fun getAppLocationsPaginator(
-    storeType: String?=null, uid: ArrayList<Int>?=null, q: String?=null, stage: String?=null, pageSize: Int?=null, tags: ArrayList<String>?=null, storeTypes: ArrayList<String>?=null
+    storeType: String?=null, uid: ArrayList<Int>?=null, q: String?=null, stage: String?=null, pageSize: Int?=null, tags: ArrayList<String>?=null, storeTypes: ArrayList<String>?=null, companyUids: ArrayList<Int>?=null
     
     ) : Paginator<LocationListSchema>{
         val paginator = Paginator<LocationListSchema>()
@@ -2526,7 +1689,7 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
                     val pageId = paginator.nextId
                     val pageNo = paginator.pageNo
                     val pageType = "number"
-                    catalogApiList?.getAppLocations(companyId = config.companyId , applicationId = applicationId , storeType = storeType, uid = uid, q = q, stage = stage, pageNo = pageNo, pageSize = pageSize, tags = tags, storeTypes = storeTypes)?.safeAwait{ response, error ->
+                    catalogApiList?.getAppLocations(companyId = config.companyId , applicationId = applicationId , storeType = storeType, uid = uid, q = q, stage = stage, pageNo = pageNo, pageSize = pageSize, tags = tags, storeTypes = storeTypes, companyUids = companyUids)?.safeAwait{ response, error ->
                         response?.let {
                             val page = response.peekContent()?.page
                             paginator.setPaginator(hasNext=page?.hasNext?:false,pageNo=if (page?.hasNext == true) ((pageNo ?: 0) + 1) else pageNo)
@@ -2608,7 +1771,7 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     
     
     suspend fun updateAppProduct(itemId: String,body: ApplicationItemMeta, headers: Map<String, String> = emptyMap())
-    : Response<SuccessResponseObject>? {
+    : Response<SuccessResponse1Schema>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 catalogApiList?.updateAppProduct(companyId = config.companyId ,applicationId = applicationId ,itemId = itemId, body = body,headers = headers)
         } else {
@@ -2739,80 +1902,6 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     }
     
     
-    
-        
-            
-                
-            
-            
-        
-            
-                
-            
-            
-        
-            
-                
-            
-            
-        
-            
-                
-            
-            
-        
-            
-            
-        
-            
-                
-            
-            
-        
-            
-                
-            
-            
-        
-    /**
-    *
-    * Summary: Paginator for getDiscountedInventoryBySizeIdentifier
-    **/
-    fun getDiscountedInventoryBySizeIdentifierPaginator(
-    itemId: String, sizeIdentifier: String, pageSize: Int?=null, locationIds: ArrayList<Int>?=null
-    
-    ) : Paginator<ApplicationInventorySellerIdentifierResponsePaginated>{
-        val paginator = Paginator<ApplicationInventorySellerIdentifierResponsePaginated>()
-        paginator.setCallBack(object : PaginatorCallback<ApplicationInventorySellerIdentifierResponsePaginated> {
-
-            override suspend fun onNext(
-                onResponse: (Event<ApplicationInventorySellerIdentifierResponsePaginated>?,FdkError?) -> Unit){
-
-                if (config.oauthClient.isAccessTokenValid()) {
-                    val pageId = paginator.nextId
-                    val pageNo = paginator.pageNo
-                    val pageType = "number"
-                    catalogApiList?.getDiscountedInventoryBySizeIdentifier(companyId = config.companyId , applicationId = applicationId , itemId = itemId, sizeIdentifier = sizeIdentifier, pageNo = pageNo, pageSize = pageSize, locationIds = locationIds)?.safeAwait{ response, error ->
-                        response?.let {
-                            val page = response.peekContent()?.page
-                            paginator.setPaginator(hasNext=page?.hasNext?:false,pageNo=if (page?.hasNext == true) ((pageNo ?: 0) + 1) else pageNo)
-                            onResponse.invoke(response,null)
-                        }
-
-                        error?.let {
-                            onResponse.invoke(null,error)
-                        }
-                    }
-
-                } else {
-                    null
-                }
-            }
-
-    })
-    return paginator
-    }
-    
     suspend fun getProductDetailBySlug(slug: String, headers: Map<String, String> = emptyMap())
     : Response<ProductDetail>? {
         return if (config.oauthClient.isAccessTokenValid()) {
@@ -2833,95 +1922,6 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     }
     
     
-    
-        
-            
-                
-            
-            
-        
-            
-                
-            
-            
-        
-            
-                
-            
-            
-        
-            
-                
-            
-            
-        
-            
-                
-            
-            
-        
-            
-                
-            
-            
-        
-            
-                
-            
-            
-        
-            
-            
-        
-            
-                
-            
-            
-        
-            
-                
-            
-            
-        
-    /**
-    *
-    * Summary: Paginator for getAppProducts
-    **/
-    fun getAppProductsPaginator(
-    brandIds: ArrayList<Int>?=null, categoryIds: ArrayList<Int>?=null, departmentIds: ArrayList<Int>?=null, tags: ArrayList<String>?=null, itemIds: ArrayList<Int>?=null, pageSize: Int?=null, q: String?=null
-    
-    ) : Paginator<RawProductListingResponseSchema>{
-        val paginator = Paginator<RawProductListingResponseSchema>()
-        paginator.setCallBack(object : PaginatorCallback<RawProductListingResponseSchema> {
-
-            override suspend fun onNext(
-                onResponse: (Event<RawProductListingResponseSchema>?,FdkError?) -> Unit){
-
-                if (config.oauthClient.isAccessTokenValid()) {
-                    val pageId = paginator.nextId
-                    val pageNo = paginator.pageNo
-                    val pageType = "number"
-                    catalogApiList?.getAppProducts(companyId = config.companyId , applicationId = applicationId , brandIds = brandIds, categoryIds = categoryIds, departmentIds = departmentIds, tags = tags, itemIds = itemIds, pageNo = pageNo, pageSize = pageSize, q = q)?.safeAwait{ response, error ->
-                        response?.let {
-                            val page = response.peekContent()?.page
-                            paginator.setPaginator(hasNext=page?.hasNext?:false,pageNo=if (page?.hasNext == true) ((pageNo ?: 0) + 1) else pageNo)
-                            onResponse.invoke(response,null)
-                        }
-
-                        error?.let {
-                            onResponse.invoke(null,error)
-                        }
-                    }
-
-                } else {
-                    null
-                }
-            }
-
-    })
-    return paginator
-    }
-    
     suspend fun getAppReturnConfiguration( headers: Map<String, String> = emptyMap())
     : Response<AppReturnConfigResponseSchema>? {
         return if (config.oauthClient.isAccessTokenValid()) {
@@ -2933,7 +1933,7 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     
     
     suspend fun createAppReturnConfiguration(body: CreateUpdateAppReturnConfig, headers: Map<String, String> = emptyMap())
-    : Response<SuccessResponseObject>? {
+    : Response<SuccessResponse1Schema>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 catalogApiList?.createAppReturnConfiguration(companyId = config.companyId ,applicationId = applicationId , body = body,headers = headers)
         } else {
@@ -2943,7 +1943,7 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     
     
     suspend fun updateAppReturnConfiguration(body: CreateUpdateAppReturnConfig, headers: Map<String, String> = emptyMap())
-    : Response<SuccessResponseObject>? {
+    : Response<SuccessResponse1Schema>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 catalogApiList?.updateAppReturnConfiguration(companyId = config.companyId ,applicationId = applicationId , body = body,headers = headers)
         } else {
@@ -2973,7 +1973,7 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     
     
     suspend fun createAppCategoryReturnConfiguration(body: BaseAppCategoryReturnConfig, headers: Map<String, String> = emptyMap())
-    : Response<SuccessResponseObject>? {
+    : Response<SuccessResponse1Schema>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 catalogApiList?.createAppCategoryReturnConfiguration(companyId = config.companyId ,applicationId = applicationId , body = body,headers = headers)
         } else {
@@ -2992,20 +1992,40 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     }
     
     
-    suspend fun getAutocompleteConfig( headers: Map<String, String> = emptyMap())
-    : Response<GetAutocompleteWordsResponseSchema>? {
+    suspend fun createCustomAutocompleteRule(body: CreateAutocompleteKeyword, headers: Map<String, String> = emptyMap())
+    : Response<CreateAutocompleteWordsResponseSchema>? {
         return if (config.oauthClient.isAccessTokenValid()) {
-                catalogApiList?.getAutocompleteConfig(companyId = config.companyId ,applicationId = applicationId , headers = headers)
+                catalogApiList?.createCustomAutocompleteRule(companyId = config.companyId ,applicationId = applicationId , body = body,headers = headers)
         } else {
             null
         }
     }
     
     
-    suspend fun createCustomAutocompleteRule(body: CreateAutocompleteKeyword, headers: Map<String, String> = emptyMap())
-    : Response<CreateAutocompleteWordsResponseSchema>? {
+    suspend fun getAutocompleteConfig(pageNo: Int?=null,pageSize: Int?=null,q: String?=null,isActive: Boolean?=null, headers: Map<String, String> = emptyMap())
+    : Response<GetAutocompleteWordsResponseSchema>? {
         return if (config.oauthClient.isAccessTokenValid()) {
-                catalogApiList?.createCustomAutocompleteRule(companyId = config.companyId ,applicationId = applicationId , body = body,headers = headers)
+                catalogApiList?.getAutocompleteConfig(companyId = config.companyId ,applicationId = applicationId ,pageNo = pageNo,pageSize = pageSize,q = q,isActive = isActive, headers = headers)
+        } else {
+            null
+        }
+    }
+    
+    
+    suspend fun getAutocompleteKeywordDetail(id: String, headers: Map<String, String> = emptyMap())
+    : Response<GetAutocompleteWordsData>? {
+        return if (config.oauthClient.isAccessTokenValid()) {
+                catalogApiList?.getAutocompleteKeywordDetail(companyId = config.companyId ,applicationId = applicationId ,id = id, headers = headers)
+        } else {
+            null
+        }
+    }
+    
+    
+    suspend fun updateAutocompleteKeyword(id: String,body: CreateAutocompleteKeyword, headers: Map<String, String> = emptyMap())
+    : Response<GetAutocompleteWordsData>? {
+        return if (config.oauthClient.isAccessTokenValid()) {
+                catalogApiList?.updateAutocompleteKeyword(companyId = config.companyId ,applicationId = applicationId ,id = id, body = body,headers = headers)
         } else {
             null
         }
@@ -3022,40 +2042,50 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     }
     
     
-    suspend fun getAutocompleteKeywordDetail(id: String, headers: Map<String, String> = emptyMap())
-    : Response<GetAutocompleteWordsResponseSchema>? {
+    suspend fun createSearchRerank(body: CreateSearchRerankRequestSchema, headers: Map<String, String> = emptyMap())
+    : Response<CreateSearchRerankResponseSchema>? {
         return if (config.oauthClient.isAccessTokenValid()) {
-                catalogApiList?.getAutocompleteKeywordDetail(companyId = config.companyId ,applicationId = applicationId ,id = id, headers = headers)
+                catalogApiList?.createSearchRerank(companyId = config.companyId ,applicationId = applicationId , body = body,headers = headers)
         } else {
             null
         }
     }
     
     
-    suspend fun updateAutocompleteKeyword(id: String,body: CreateAutocompleteKeyword, headers: Map<String, String> = emptyMap())
-    : Response<GetAutocompleteWordsResponseSchema>? {
+    suspend fun getSearchRerank( headers: Map<String, String> = emptyMap())
+    : Response<GetSearchRerankResponseSchema>? {
         return if (config.oauthClient.isAccessTokenValid()) {
-                catalogApiList?.updateAutocompleteKeyword(companyId = config.companyId ,applicationId = applicationId ,id = id, body = body,headers = headers)
+                catalogApiList?.getSearchRerank(companyId = config.companyId ,applicationId = applicationId , headers = headers)
         } else {
             null
         }
     }
     
     
-    suspend fun deleteSearchConfiguration( headers: Map<String, String> = emptyMap())
-    : Response<DeleteSearchConfigurationResponseSchema>? {
+    suspend fun getSearchRerankDetail(id: String, headers: Map<String, String> = emptyMap())
+    : Response<GetSearchRerankDetailResponseSchema>? {
         return if (config.oauthClient.isAccessTokenValid()) {
-                catalogApiList?.deleteSearchConfiguration(companyId = config.companyId ,applicationId = applicationId , headers = headers)
+                catalogApiList?.getSearchRerankDetail(companyId = config.companyId ,applicationId = applicationId ,id = id, headers = headers)
         } else {
             null
         }
     }
     
     
-    suspend fun getSearchConfiguration( headers: Map<String, String> = emptyMap())
-    : Response<GetSearchConfigurationResponseSchema>? {
+    suspend fun updateSearchRerankConfiguration(id: String,body: UpdateSearchRerankRequestSchema, headers: Map<String, String> = emptyMap())
+    : Response<UpdateSearchRerankResponseSchema>? {
         return if (config.oauthClient.isAccessTokenValid()) {
-                catalogApiList?.getSearchConfiguration(companyId = config.companyId ,applicationId = applicationId , headers = headers)
+                catalogApiList?.updateSearchRerankConfiguration(companyId = config.companyId ,applicationId = applicationId ,id = id, body = body,headers = headers)
+        } else {
+            null
+        }
+    }
+    
+    
+    suspend fun deleteSearchRerankConfiguration(id: String, headers: Map<String, String> = emptyMap())
+    : Response<DeleteSearchRerankConfigurationResponseSchema>? {
+        return if (config.oauthClient.isAccessTokenValid()) {
+                catalogApiList?.deleteSearchRerankConfiguration(companyId = config.companyId ,applicationId = applicationId ,id = id, headers = headers)
         } else {
             null
         }
@@ -3072,6 +2102,16 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     }
     
     
+    suspend fun getSearchConfiguration( headers: Map<String, String> = emptyMap())
+    : Response<GetSearchConfigurationResponseSchema>? {
+        return if (config.oauthClient.isAccessTokenValid()) {
+                catalogApiList?.getSearchConfiguration(companyId = config.companyId ,applicationId = applicationId , headers = headers)
+        } else {
+            null
+        }
+    }
+    
+    
     suspend fun updateSearchConfiguration(body: UpdateSearchConfigurationRequestSchema, headers: Map<String, String> = emptyMap())
     : Response<UpdateSearchConfigurationResponseSchema>? {
         return if (config.oauthClient.isAccessTokenValid()) {
@@ -3082,10 +2122,10 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     }
     
     
-    suspend fun getAllSearchKeyword( headers: Map<String, String> = emptyMap())
-    : Response<GetSearchWordsResponseSchema>? {
+    suspend fun deleteSearchConfiguration( headers: Map<String, String> = emptyMap())
+    : Response<DeleteSearchConfigurationResponseSchema>? {
         return if (config.oauthClient.isAccessTokenValid()) {
-                catalogApiList?.getAllSearchKeyword(companyId = config.companyId ,applicationId = applicationId , headers = headers)
+                catalogApiList?.deleteSearchConfiguration(companyId = config.companyId ,applicationId = applicationId , headers = headers)
         } else {
             null
         }
@@ -3102,10 +2142,10 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     }
     
     
-    suspend fun deleteSearchKeywords(id: String, headers: Map<String, String> = emptyMap())
-    : Response<DeleteResponseSchema>? {
+    suspend fun getAllSearchKeyword(pageNo: Int?=null,pageSize: Int?=null,q: String?=null,isActive: Boolean?=null, headers: Map<String, String> = emptyMap())
+    : Response<GetSearchWordsResponseSchema>? {
         return if (config.oauthClient.isAccessTokenValid()) {
-                catalogApiList?.deleteSearchKeywords(companyId = config.companyId ,applicationId = applicationId ,id = id, headers = headers)
+                catalogApiList?.getAllSearchKeyword(companyId = config.companyId ,applicationId = applicationId ,pageNo = pageNo,pageSize = pageSize,q = q,isActive = isActive, headers = headers)
         } else {
             null
         }
@@ -3113,7 +2153,7 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     
     
     suspend fun getSearchKeywords(id: String, headers: Map<String, String> = emptyMap())
-    : Response<GetSearchWordsDetailResponseSchema>? {
+    : Response<GetSearchWordsData>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 catalogApiList?.getSearchKeywords(companyId = config.companyId ,applicationId = applicationId ,id = id, headers = headers)
         } else {
@@ -3132,8 +2172,18 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     }
     
     
+    suspend fun deleteSearchKeywords(id: String, headers: Map<String, String> = emptyMap())
+    : Response<DeleteResponseSchema>? {
+        return if (config.oauthClient.isAccessTokenValid()) {
+                catalogApiList?.deleteSearchKeywords(companyId = config.companyId ,applicationId = applicationId ,id = id, headers = headers)
+        } else {
+            null
+        }
+    }
+    
+    
     suspend fun updateAppLocation(storeUid: String,body: ApplicationStoreJson, headers: Map<String, String> = emptyMap())
-    : Response<SuccessResponseObject>? {
+    : Response<SuccessResponse1Schema>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 catalogApiList?.updateAppLocation(companyId = config.companyId ,applicationId = applicationId ,storeUid = storeUid, body = body,headers = headers)
         } else {
@@ -3218,20 +2268,30 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     }
     
     
-    suspend fun getListingConfigurations(configType: String,pageNo: Int?=null,pageSize: Int?=null,search: String?=null, headers: Map<String, String> = emptyMap())
-    : Response<GetConfigResponseSchema>? {
+    suspend fun createListingConfiguration(configType: String,body: AppConfigurationsFilter, headers: Map<String, String> = emptyMap())
+    : Response<AppConfigurationsFilterResponseSchema>? {
         return if (config.oauthClient.isAccessTokenValid()) {
-                catalogApiList?.getListingConfigurations(companyId = config.companyId ,applicationId = applicationId ,configType = configType,pageNo = pageNo,pageSize = pageSize,search = search, headers = headers)
+                catalogApiList?.createListingConfiguration(companyId = config.companyId ,applicationId = applicationId ,configType = configType, body = body,headers = headers)
         } else {
             null
         }
     }
     
     
-    suspend fun createListingConfiguration(configType: String,body: AppConfigurationsSort, headers: Map<String, String> = emptyMap())
-    : Response<AppConfigurationsSort>? {
+    suspend fun getListingConfigurations(configType: String,pageNo: Int?=null,pageSize: Int?=null,search: String?=null,uids: ArrayList<Int>?=null, headers: Map<String, String> = emptyMap())
+    : Response<GetListingConfigResponseSchema>? {
         return if (config.oauthClient.isAccessTokenValid()) {
-                catalogApiList?.createListingConfiguration(companyId = config.companyId ,applicationId = applicationId ,configType = configType, body = body,headers = headers)
+                catalogApiList?.getListingConfigurations(companyId = config.companyId ,applicationId = applicationId ,configType = configType,pageNo = pageNo,pageSize = pageSize,search = search,uids = uids, headers = headers)
+        } else {
+            null
+        }
+    }
+    
+    
+    suspend fun createGroupConfiguration(configType: String,body: AppConfigurationCreateDetail, headers: Map<String, String> = emptyMap())
+    : Response<AppConfigurationDetail>? {
+        return if (config.oauthClient.isAccessTokenValid()) {
+                catalogApiList?.createGroupConfiguration(companyId = config.companyId ,applicationId = applicationId ,configType = configType, body = body,headers = headers)
         } else {
             null
         }
@@ -3248,10 +2308,10 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     }
     
     
-    suspend fun createGroupConfiguration(configType: String,body: AppConfigurationDetail, headers: Map<String, String> = emptyMap())
+    suspend fun updateGroupConfiguration(configType: String,groupSlug: String,body: AppConfigurationDetail, headers: Map<String, String> = emptyMap())
     : Response<AppConfigurationDetail>? {
         return if (config.oauthClient.isAccessTokenValid()) {
-                catalogApiList?.createGroupConfiguration(companyId = config.companyId ,applicationId = applicationId ,configType = configType, body = body,headers = headers)
+                catalogApiList?.updateGroupConfiguration(companyId = config.companyId ,applicationId = applicationId ,configType = configType,groupSlug = groupSlug, body = body,headers = headers)
         } else {
             null
         }
@@ -3259,7 +2319,7 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     
     
     suspend fun deleteGroupConfiguration(configType: String,groupSlug: String, headers: Map<String, String> = emptyMap())
-    : Response<ConfigSuccessResponseSchema>? {
+    : Response<Any>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 catalogApiList?.deleteGroupConfiguration(companyId = config.companyId ,applicationId = applicationId ,configType = configType,groupSlug = groupSlug, headers = headers)
         } else {
@@ -3268,10 +2328,10 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     }
     
     
-    suspend fun updateGroupConfiguration(configType: String,groupSlug: String,body: AppConfigurationDetail, headers: Map<String, String> = emptyMap())
-    : Response<AppConfigurationDetail>? {
+    suspend fun updateListingConfiguration(configType: String,configId: String,body: AppConfigurationsFilterResponseSchema, headers: Map<String, String> = emptyMap())
+    : Response<AppConfigurationsFilterResponseSchema>? {
         return if (config.oauthClient.isAccessTokenValid()) {
-                catalogApiList?.updateGroupConfiguration(companyId = config.companyId ,applicationId = applicationId ,configType = configType,groupSlug = groupSlug, body = body,headers = headers)
+                catalogApiList?.updateListingConfiguration(companyId = config.companyId ,applicationId = applicationId ,configType = configType,configId = configId, body = body,headers = headers)
         } else {
             null
         }
@@ -3288,20 +2348,10 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     }
     
     
-    suspend fun updateListingConfiguration(configType: String,configId: String,body: AppConfigurationsSort, headers: Map<String, String> = emptyMap())
-    : Response<AppConfigurationsSort>? {
-        return if (config.oauthClient.isAccessTokenValid()) {
-                catalogApiList?.updateListingConfiguration(companyId = config.companyId ,applicationId = applicationId ,configType = configType,configId = configId, body = body,headers = headers)
-        } else {
-            null
-        }
-    }
-    
-    
-    suspend fun getConfigurationMetadata(configType: String,templateSlug: String?=null,pageNo: Int?=null,pageSize: Int?=null,q: String?=null, headers: Map<String, String> = emptyMap())
+    suspend fun getConfigurationMetadata(configType: String,templateSlug: String?=null, headers: Map<String, String> = emptyMap())
     : Response<GetConfigMetadataResponseSchema>? {
         return if (config.oauthClient.isAccessTokenValid()) {
-                catalogApiList?.getConfigurationMetadata(companyId = config.companyId ,applicationId = applicationId ,configType = configType,templateSlug = templateSlug,pageNo = pageNo,pageSize = pageSize,q = q, headers = headers)
+                catalogApiList?.getConfigurationMetadata(companyId = config.companyId ,applicationId = applicationId ,configType = configType,templateSlug = templateSlug, headers = headers)
         } else {
             null
         }
@@ -3327,6 +2377,487 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     
     
     
+    
+    suspend fun createAutocompleteSettings(body: AutocompleteRequestSchema, headers: Map<String, String> = emptyMap())
+    : Response<AutocompleteUpsertResponseSchema>? {
+        return if (config.oauthClient.isAccessTokenValid()) {
+                catalogApiList?.createAutocompleteSettings(applicationId = applicationId ,companyId = config.companyId , body = body,headers = headers)
+        } else {
+            null
+        }
+    }
+    
+    
+    suspend fun getAutocompleteSettings( headers: Map<String, String> = emptyMap())
+    : Response<AutocompleteResponseSchema>? {
+        return if (config.oauthClient.isAccessTokenValid()) {
+                catalogApiList?.getAutocompleteSettings(applicationId = applicationId ,companyId = config.companyId , headers = headers)
+        } else {
+            null
+        }
+    }
+    
+    
+    suspend fun updateAutocompleteSettings(id: String,body: AutocompleteRequestSchema, headers: Map<String, String> = emptyMap())
+    : Response<AutocompleteUpsertResponseSchema>? {
+        return if (config.oauthClient.isAccessTokenValid()) {
+                catalogApiList?.updateAutocompleteSettings(applicationId = applicationId ,companyId = config.companyId ,id = id, body = body,headers = headers)
+        } else {
+            null
+        }
+    }
+    
+    
+    suspend fun getAutocompletePreview(q: String?=null,categorySuggestion: Int?=null,brandSuggestion: Int?=null,collectionSuggestion: Int?=null,productSuggestion: Int?=null,querySuggestion: Int?=null, headers: Map<String, String> = emptyMap())
+    : Response<AutocompletePreviewResponseSchema>? {
+        return if (config.oauthClient.isAccessTokenValid()) {
+                catalogApiList?.getAutocompletePreview(applicationId = applicationId ,companyId = config.companyId ,q = q,categorySuggestion = categorySuggestion,brandSuggestion = brandSuggestion,collectionSuggestion = collectionSuggestion,productSuggestion = productSuggestion,querySuggestion = querySuggestion, headers = headers)
+        } else {
+            null
+        }
+    }
+    
+    
+    suspend fun createMerchandisingRulePinAction(merchandisingRuleId: String,body: PinRequestSchema, headers: Map<String, String> = emptyMap())
+    : Response<SuccessResponseMerchandising>? {
+        return if (config.oauthClient.isAccessTokenValid()) {
+                catalogApiList?.createMerchandisingRulePinAction(companyId = config.companyId ,applicationId = applicationId ,merchandisingRuleId = merchandisingRuleId, body = body,headers = headers)
+        } else {
+            null
+        }
+    }
+    
+    
+    suspend fun updateMerchandisingRulePinAction(merchandisingRuleId: String,body: PinRequestSchema, headers: Map<String, String> = emptyMap())
+    : Response<SuccessResponseMerchandising>? {
+        return if (config.oauthClient.isAccessTokenValid()) {
+                catalogApiList?.updateMerchandisingRulePinAction(companyId = config.companyId ,applicationId = applicationId ,merchandisingRuleId = merchandisingRuleId, body = body,headers = headers)
+        } else {
+            null
+        }
+    }
+    
+    
+    suspend fun getMerchandisingRulePinAction(merchandisingRuleId: String, headers: Map<String, String> = emptyMap())
+    : Response<PinResponseSchema>? {
+        return if (config.oauthClient.isAccessTokenValid()) {
+                catalogApiList?.getMerchandisingRulePinAction(companyId = config.companyId ,applicationId = applicationId ,merchandisingRuleId = merchandisingRuleId, headers = headers)
+        } else {
+            null
+        }
+    }
+    
+    
+    suspend fun createMerchandisingRuleHideAction(merchandisingRuleId: String,body: HideRequestSchema, headers: Map<String, String> = emptyMap())
+    : Response<SuccessResponseMerchandising>? {
+        return if (config.oauthClient.isAccessTokenValid()) {
+                catalogApiList?.createMerchandisingRuleHideAction(companyId = config.companyId ,applicationId = applicationId ,merchandisingRuleId = merchandisingRuleId, body = body,headers = headers)
+        } else {
+            null
+        }
+    }
+    
+    
+    suspend fun updateMerchandisingRuleHideAction(merchandisingRuleId: String,body: HideRequestSchema, headers: Map<String, String> = emptyMap())
+    : Response<SuccessResponseMerchandising>? {
+        return if (config.oauthClient.isAccessTokenValid()) {
+                catalogApiList?.updateMerchandisingRuleHideAction(companyId = config.companyId ,applicationId = applicationId ,merchandisingRuleId = merchandisingRuleId, body = body,headers = headers)
+        } else {
+            null
+        }
+    }
+    
+    
+    suspend fun getMerchandisingRuleHideAction(merchandisingRuleId: String, headers: Map<String, String> = emptyMap())
+    : Response<HideResponseSchema>? {
+        return if (config.oauthClient.isAccessTokenValid()) {
+                catalogApiList?.getMerchandisingRuleHideAction(companyId = config.companyId ,applicationId = applicationId ,merchandisingRuleId = merchandisingRuleId, headers = headers)
+        } else {
+            null
+        }
+    }
+    
+    
+    suspend fun createMerchandisingRuleBoostAction(merchandisingRuleId: String,body: PostMerchandisingRuleBoostAction, headers: Map<String, String> = emptyMap())
+    : Response<SuccessResponseMerchandising>? {
+        return if (config.oauthClient.isAccessTokenValid()) {
+                catalogApiList?.createMerchandisingRuleBoostAction(companyId = config.companyId ,applicationId = applicationId ,merchandisingRuleId = merchandisingRuleId, body = body,headers = headers)
+        } else {
+            null
+        }
+    }
+    
+    
+    suspend fun updateMerchandisingRuleBoostAction(merchandisingRuleId: String,body: PostMerchandisingRuleBoostAction, headers: Map<String, String> = emptyMap())
+    : Response<SuccessResponseMerchandising>? {
+        return if (config.oauthClient.isAccessTokenValid()) {
+                catalogApiList?.updateMerchandisingRuleBoostAction(companyId = config.companyId ,applicationId = applicationId ,merchandisingRuleId = merchandisingRuleId, body = body,headers = headers)
+        } else {
+            null
+        }
+    }
+    
+    
+    suspend fun getMerchandisingRuleBoostAction(merchandisingRuleId: String, headers: Map<String, String> = emptyMap())
+    : Response<GetMerchandisingRuleBoostAction>? {
+        return if (config.oauthClient.isAccessTokenValid()) {
+                catalogApiList?.getMerchandisingRuleBoostAction(companyId = config.companyId ,applicationId = applicationId ,merchandisingRuleId = merchandisingRuleId, headers = headers)
+        } else {
+            null
+        }
+    }
+    
+    
+    suspend fun createMerchandisingRuleBuryAction(merchandisingRuleId: String,body: PostMerchandisingRuleBoostAction, headers: Map<String, String> = emptyMap())
+    : Response<SuccessResponseMerchandising>? {
+        return if (config.oauthClient.isAccessTokenValid()) {
+                catalogApiList?.createMerchandisingRuleBuryAction(companyId = config.companyId ,applicationId = applicationId ,merchandisingRuleId = merchandisingRuleId, body = body,headers = headers)
+        } else {
+            null
+        }
+    }
+    
+    
+    suspend fun updateMerchandisingRuleBuryAction(merchandisingRuleId: String,body: PostMerchandisingRuleBoostAction, headers: Map<String, String> = emptyMap())
+    : Response<SuccessResponseMerchandising>? {
+        return if (config.oauthClient.isAccessTokenValid()) {
+                catalogApiList?.updateMerchandisingRuleBuryAction(companyId = config.companyId ,applicationId = applicationId ,merchandisingRuleId = merchandisingRuleId, body = body,headers = headers)
+        } else {
+            null
+        }
+    }
+    
+    
+    suspend fun getMerchandisingRuleBuryAction(merchandisingRuleId: String, headers: Map<String, String> = emptyMap())
+    : Response<GetMerchandisingRuleBuryAction>? {
+        return if (config.oauthClient.isAccessTokenValid()) {
+                catalogApiList?.getMerchandisingRuleBuryAction(companyId = config.companyId ,applicationId = applicationId ,merchandisingRuleId = merchandisingRuleId, headers = headers)
+        } else {
+            null
+        }
+    }
+    
+    
+    suspend fun createMerchandisingRuleQuery(body: MerchandisingRuleQueryPost, headers: Map<String, String> = emptyMap())
+    : Response<MerchandiseQueryResponseSchema>? {
+        return if (config.oauthClient.isAccessTokenValid()) {
+                catalogApiList?.createMerchandisingRuleQuery(companyId = config.companyId ,applicationId = applicationId , body = body,headers = headers)
+        } else {
+            null
+        }
+    }
+    
+    
+    suspend fun getMerchandisingQuery(merchandisingRuleId: String, headers: Map<String, String> = emptyMap())
+    : Response<SearchResponseSchema>? {
+        return if (config.oauthClient.isAccessTokenValid()) {
+                catalogApiList?.getMerchandisingQuery(companyId = config.companyId ,applicationId = applicationId ,merchandisingRuleId = merchandisingRuleId, headers = headers)
+        } else {
+            null
+        }
+    }
+    
+    
+    suspend fun updateMerchandisingRuleQuery(merchandisingRuleId: String,body: MerchandisingRuleQueryPost, headers: Map<String, String> = emptyMap())
+    : Response<SuccessResponseMerchandising>? {
+        return if (config.oauthClient.isAccessTokenValid()) {
+                catalogApiList?.updateMerchandisingRuleQuery(companyId = config.companyId ,applicationId = applicationId ,merchandisingRuleId = merchandisingRuleId, body = body,headers = headers)
+        } else {
+            null
+        }
+    }
+    
+    
+    suspend fun saveMerchandisingRules(merchandisingRuleId: String,body: MerchandisingRuleSave, headers: Map<String, String> = emptyMap())
+    : Response<SuccessResponseMerchandising>? {
+        return if (config.oauthClient.isAccessTokenValid()) {
+                catalogApiList?.saveMerchandisingRules(companyId = config.companyId ,applicationId = applicationId ,merchandisingRuleId = merchandisingRuleId, body = body,headers = headers)
+        } else {
+            null
+        }
+    }
+    
+    
+    suspend fun deleteMerchandisingRule(merchandisingRuleId: String, headers: Map<String, String> = emptyMap())
+    : Response<SuccessResponseMerchandising>? {
+        return if (config.oauthClient.isAccessTokenValid()) {
+                catalogApiList?.deleteMerchandisingRule(companyId = config.companyId ,applicationId = applicationId ,merchandisingRuleId = merchandisingRuleId, headers = headers)
+        } else {
+            null
+        }
+    }
+    
+    
+    suspend fun getMerchandisingRules(pageId: String?=null,pageSize: Int?=null, headers: Map<String, String> = emptyMap())
+    : Response<MerchandisingRulesList>? {
+        return if (config.oauthClient.isAccessTokenValid()) {
+                catalogApiList?.getMerchandisingRules(companyId = config.companyId ,applicationId = applicationId ,pageId = pageId,pageSize = pageSize, headers = headers)
+        } else {
+            null
+        }
+    }
+    
+    
+    suspend fun deleteMerchandisingRulesPreview(merchandisingRuleId: String, headers: Map<String, String> = emptyMap())
+    : Response<SuccessResponseMerchandising>? {
+        return if (config.oauthClient.isAccessTokenValid()) {
+                catalogApiList?.deleteMerchandisingRulesPreview(companyId = config.companyId ,applicationId = applicationId ,merchandisingRuleId = merchandisingRuleId, headers = headers)
+        } else {
+            null
+        }
+    }
+    
+    
+    suspend fun getLivePreview(merchandisingRuleId: String,searchKeyword: String?=null, headers: Map<String, String> = emptyMap())
+    : Response<ProductListingResponseSchema>? {
+        return if (config.oauthClient.isAccessTokenValid()) {
+                catalogApiList?.getLivePreview(companyId = config.companyId ,applicationId = applicationId ,merchandisingRuleId = merchandisingRuleId,searchKeyword = searchKeyword, headers = headers)
+        } else {
+            null
+        }
+    }
+    
+    
+    suspend fun createAppPriceFactory(body: CreateAppPriceFactoryRequestSchema, headers: Map<String, String> = emptyMap())
+    : Response<CreateAppPriceFactoryResponseSchema>? {
+        return if (config.oauthClient.isAccessTokenValid()) {
+                catalogApiList?.createAppPriceFactory(companyId = config.companyId ,applicationId = applicationId , body = body,headers = headers)
+        } else {
+            null
+        }
+    }
+    
+    
+    suspend fun getAppPriceFactories(isActive: Boolean?=null,factoryTypeId: String?=null,code: String?=null,pageNo: Int?=null,pageSize: Int?=null, headers: Map<String, String> = emptyMap())
+    : Response<GetAppPriceFactoryResponseSchema>? {
+        return if (config.oauthClient.isAccessTokenValid()) {
+                catalogApiList?.getAppPriceFactories(companyId = config.companyId ,applicationId = applicationId ,isActive = isActive,factoryTypeId = factoryTypeId,code = code,pageNo = pageNo,pageSize = pageSize, headers = headers)
+        } else {
+            null
+        }
+    }
+    
+    
+    suspend fun getAppPriceFactory(id: String, headers: Map<String, String> = emptyMap())
+    : Response<AppPriceFactory>? {
+        return if (config.oauthClient.isAccessTokenValid()) {
+                catalogApiList?.getAppPriceFactory(companyId = config.companyId ,applicationId = applicationId ,id = id, headers = headers)
+        } else {
+            null
+        }
+    }
+    
+    
+    suspend fun editAppPriceFactory(id: String,body: EditAppPriceFactoryRequestSchema, headers: Map<String, String> = emptyMap())
+    : Response<AppPriceFactory>? {
+        return if (config.oauthClient.isAccessTokenValid()) {
+                catalogApiList?.editAppPriceFactory(companyId = config.companyId ,applicationId = applicationId ,id = id, body = body,headers = headers)
+        } else {
+            null
+        }
+    }
+    
+    
+    suspend fun addProductsInPriceFactoryByZoneId(id: String,body: CreatePriceFactoryProductRequestSchema, headers: Map<String, String> = emptyMap())
+    : Response<CreatePriceFactoryProductResponseSchema>? {
+        return if (config.oauthClient.isAccessTokenValid()) {
+                catalogApiList?.addProductsInPriceFactoryByZoneId(companyId = config.companyId ,applicationId = applicationId ,id = id, body = body,headers = headers)
+        } else {
+            null
+        }
+    }
+    
+    
+    suspend fun getProductsInPriceFactoryByZoneId(id: String,zoneId: String,itemId: Double?=null,q: String?=null,pageNo: Int?=null,pageSize: Int?=null, headers: Map<String, String> = emptyMap())
+    : Response<CreateAppPriceFactoryProductsResponseSchema>? {
+        return if (config.oauthClient.isAccessTokenValid()) {
+                catalogApiList?.getProductsInPriceFactoryByZoneId(companyId = config.companyId ,applicationId = applicationId ,id = id,zoneId = zoneId,itemId = itemId,q = q,pageNo = pageNo,pageSize = pageSize, headers = headers)
+        } else {
+            null
+        }
+    }
+    
+    
+    suspend fun createProductPriceFactoryBulkJob(id: String,body: CreateAppPriceFactoryProductBulkJobRequestSchema, headers: Map<String, String> = emptyMap())
+    : Response<CreateAppPriceFactoryProductBulkJobResponseSchema>? {
+        return if (config.oauthClient.isAccessTokenValid()) {
+                catalogApiList?.createProductPriceFactoryBulkJob(companyId = config.companyId ,applicationId = applicationId ,id = id, body = body,headers = headers)
+        } else {
+            null
+        }
+    }
+    
+    
+    suspend fun pollProductPriceFactoryBulkJob(id: String,jobId: String, headers: Map<String, String> = emptyMap())
+    : Response<CreateAppPriceFactoryProductBulkJobPollResponseSchema>? {
+        return if (config.oauthClient.isAccessTokenValid()) {
+                catalogApiList?.pollProductPriceFactoryBulkJob(companyId = config.companyId ,applicationId = applicationId ,id = id,jobId = jobId, headers = headers)
+        } else {
+            null
+        }
+    }
+    
+    
+    suspend fun validateProductPriceFactoryBulkJob(id: String,jobId: String,body: CreateAppPriceFactoryProductBulkJobRequestSchema, headers: Map<String, String> = emptyMap())
+    : Response<CreateAppPriceFactoryProductBulkJobValidateResponseSchema>? {
+        return if (config.oauthClient.isAccessTokenValid()) {
+                catalogApiList?.validateProductPriceFactoryBulkJob(companyId = config.companyId ,applicationId = applicationId ,id = id,jobId = jobId, body = body,headers = headers)
+        } else {
+            null
+        }
+    }
+    
+    
+    suspend fun processProductPriceFactoryBulkJob(id: String,jobId: String,body: CreateAppPriceFactoryProductBulkJobRequestSchema, headers: Map<String, String> = emptyMap())
+    : Response<CreateAppPriceFactoryProductBulkJobResponseSchema>? {
+        return if (config.oauthClient.isAccessTokenValid()) {
+                catalogApiList?.processProductPriceFactoryBulkJob(companyId = config.companyId ,applicationId = applicationId ,id = id,jobId = jobId, body = body,headers = headers)
+        } else {
+            null
+        }
+    }
+    
+    
+    suspend fun exportProductsInPriceFactory(id: String,body: CreateAppPriceFactoryProductExportJobRequestSchema, headers: Map<String, String> = emptyMap())
+    : Response<CreateAppPriceFactoryProductExportJobResponseSchema>? {
+        return if (config.oauthClient.isAccessTokenValid()) {
+                catalogApiList?.exportProductsInPriceFactory(companyId = config.companyId ,applicationId = applicationId ,id = id, body = body,headers = headers)
+        } else {
+            null
+        }
+    }
+    
+    
+    suspend fun pollPriceFactoryJobs(id: String,startDate: String?=null,endDate: String?=null,stage: ArrayList<String>?=null,isActive: Boolean?=null,q: String?=null,type: ArrayList<String>?=null, headers: Map<String, String> = emptyMap())
+    : Response<CreateAppPriceFactoryProductExportJobPollResponseSchema>? {
+        return if (config.oauthClient.isAccessTokenValid()) {
+                catalogApiList?.pollPriceFactoryJobs(companyId = config.companyId ,applicationId = applicationId ,id = id,startDate = startDate,endDate = endDate,stage = stage,isActive = isActive,q = q,type = type, headers = headers)
+        } else {
+            null
+        }
+    }
+    
+    
+    suspend fun getAppProductPrices(itemIds: ArrayList<Int>?=null,factoryTypeIds: ArrayList<String>?=null,pageNo: Int?=null,pageSize: Int?=null, headers: Map<String, String> = emptyMap())
+    : Response<ProductPrices>? {
+        return if (config.oauthClient.isAccessTokenValid()) {
+                catalogApiList?.getAppProductPrices(companyId = config.companyId ,applicationId = applicationId ,itemIds = itemIds,factoryTypeIds = factoryTypeIds,pageNo = pageNo,pageSize = pageSize, headers = headers)
+        } else {
+            null
+        }
+    }
+    
+    
+    suspend fun getSynonyms(id: String?=null,name: String?=null,type: String?=null, headers: Map<String, String> = emptyMap())
+    : Response<SynonymListResponseSchema>? {
+        return if (config.oauthClient.isAccessTokenValid()) {
+                catalogApiList?.getSynonyms(companyId = config.companyId ,applicationId = applicationId ,id = id,name = name,type = type, headers = headers)
+        } else {
+            null
+        }
+    }
+    
+    
+    suspend fun createSynonyms(body: SynonymCreateRequestSchema, headers: Map<String, String> = emptyMap())
+    : Response<SynonymCreateResponseSchema>? {
+        return if (config.oauthClient.isAccessTokenValid()) {
+                catalogApiList?.createSynonyms(applicationId = applicationId ,companyId = config.companyId , body = body,headers = headers)
+        } else {
+            null
+        }
+    }
+    
+    
+    suspend fun updateSynonyms(id: String,body: SynonymCreateRequestSchema, headers: Map<String, String> = emptyMap())
+    : Response<SynonymUpdateResponseSchema>? {
+        return if (config.oauthClient.isAccessTokenValid()) {
+                catalogApiList?.updateSynonyms(companyId = config.companyId ,applicationId = applicationId ,id = id, body = body,headers = headers)
+        } else {
+            null
+        }
+    }
+    
+    
+    suspend fun deleteSynonym(id: String, headers: Map<String, String> = emptyMap())
+    : Response<SynonymDeleteResponseSchemaSchema>? {
+        return if (config.oauthClient.isAccessTokenValid()) {
+                catalogApiList?.deleteSynonym(companyId = config.companyId ,applicationId = applicationId ,id = id, headers = headers)
+        } else {
+            null
+        }
+    }
+    
+    
+    suspend fun exportSynonyms( headers: Map<String, String> = emptyMap())
+    : Response<SynonymExportResponseSchema>? {
+        return if (config.oauthClient.isAccessTokenValid()) {
+                catalogApiList?.exportSynonyms(applicationId = applicationId ,companyId = config.companyId , headers = headers)
+        } else {
+            null
+        }
+    }
+    
+    
+    suspend fun sampleBulkSynonymsFile(type: String, headers: Map<String, String> = emptyMap())
+    : Response<ResponseBody>? {
+        return if (config.oauthClient.isAccessTokenValid()) {
+                catalogApiList?.sampleBulkSynonymsFile(type = type,applicationId = applicationId ,companyId = config.companyId , headers = headers)
+        } else {
+            null
+        }
+    }
+    
+    
+    suspend fun uploadSynonyms(body: SynonymUploadRequestSchema, headers: Map<String, String> = emptyMap())
+    : Response<SynonymUploadResponseSchema>? {
+        return if (config.oauthClient.isAccessTokenValid()) {
+                catalogApiList?.uploadSynonyms(applicationId = applicationId ,companyId = config.companyId , body = body,headers = headers)
+        } else {
+            null
+        }
+    }
+    
+    
+    suspend fun validateBulkSynonyms(body: SynonymBulkValidateRequestSchema, headers: Map<String, String> = emptyMap())
+    : Response<SynonymBulkValidateResponseSchema>? {
+        return if (config.oauthClient.isAccessTokenValid()) {
+                catalogApiList?.validateBulkSynonyms(applicationId = applicationId ,companyId = config.companyId , body = body,headers = headers)
+        } else {
+            null
+        }
+    }
+    
+    
+    suspend fun processBulkSynonyms(body: SynonymBulkProcessRequestSchema, headers: Map<String, String> = emptyMap())
+    : Response<SynonymBulkProcessResponseSchema>? {
+        return if (config.oauthClient.isAccessTokenValid()) {
+                catalogApiList?.processBulkSynonyms(applicationId = applicationId ,companyId = config.companyId , body = body,headers = headers)
+        } else {
+            null
+        }
+    }
+    
+    
+    suspend fun pollBulkSynonyms(id: String, headers: Map<String, String> = emptyMap())
+    : Response<SynonymBulkPollResponseSchema>? {
+        return if (config.oauthClient.isAccessTokenValid()) {
+                catalogApiList?.pollBulkSynonyms(applicationId = applicationId ,companyId = config.companyId ,id = id, headers = headers)
+        } else {
+            null
+        }
+    }
+    
+    
+    
+    
+    suspend fun getAppPriceById(itemId: String,storeIds: ArrayList<Int>?=null,factoryTypeIds: ArrayList<String>?=null,sellerId: Int?=null, headers: Map<String, String> = emptyMap())
+    : Response<AppPriceByIdResponseSchema>? {
+        return if (config.oauthClient.isAccessTokenValid()) {
+                catalogApiList?.getAppPriceById(applicationId = applicationId ,companyId = config.companyId ,itemId = itemId,storeIds = storeIds,factoryTypeIds = factoryTypeIds,sellerId = sellerId, headers = headers)
+        } else {
+            null
+        }
+    }
     
 }
 }

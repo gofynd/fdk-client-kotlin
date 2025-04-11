@@ -19,65 +19,65 @@ class CatalogDataManagerClass(val config: ApplicationConfig, val unauthorizedAct
 
     init{
             
-                    _relativeUrls["getProductDetailBySlug"] = "/service/application/catalog/v1.0/products/{slug}/".substring(1)
+                    _relativeUrls["getProductDetailBySlug"] = "/service/application/catalog/v1.0/products/{slug}".substring(1)
             
-                    _relativeUrls["getProductSizesBySlug"] = "/service/application/catalog/v1.0/products/{slug}/sizes/".substring(1)
+                    _relativeUrls["getProductSizesBySlug"] = "/service/application/catalog/v1.0/products/{slug}/sizes".substring(1)
             
-                    _relativeUrls["getProductComparisonBySlugs"] = "/service/application/catalog/v1.0/products/compare/".substring(1)
+                    _relativeUrls["getProductComparisonBySlugs"] = "/service/application/catalog/v1.0/products/compare".substring(1)
             
-                    _relativeUrls["getSimilarComparisonProductBySlug"] = "/service/application/catalog/v1.0/products/{slug}/similar/compare/".substring(1)
+                    _relativeUrls["getSimilarComparisonProductBySlug"] = "/service/application/catalog/v1.0/products/{slug}/similar/compare".substring(1)
             
-                    _relativeUrls["getComparedFrequentlyProductBySlug"] = "/service/application/catalog/v1.0/products/{slug}/similar/compared-frequently/".substring(1)
+                    _relativeUrls["getComparedFrequentlyProductBySlug"] = "/service/application/catalog/v1.0/products/{slug}/similar/compared-frequently".substring(1)
             
-                    _relativeUrls["getProductVariantsBySlug"] = "/service/application/catalog/v1.0/products/{slug}/variants/".substring(1)
+                    _relativeUrls["getProductVariantsBySlug"] = "/service/application/catalog/v1.0/products/{slug}/variants".substring(1)
             
-                    _relativeUrls["getProductStockByIds"] = "/service/application/catalog/v1.0/products/stock-status/".substring(1)
+                    _relativeUrls["getProductStockByIds"] = "/service/application/catalog/v1.0/products/stock-status".substring(1)
             
-                    _relativeUrls["getProductStockForTimeByIds"] = "/service/application/catalog/v1.0/products/stock-status/poll/".substring(1)
+                    _relativeUrls["getProductStockForTimeByIds"] = "/service/application/catalog/v1.0/products/stock-status/poll".substring(1)
             
-                    _relativeUrls["getProducts"] = "/service/application/catalog/v1.0/products/".substring(1)
+                    _relativeUrls["getProducts"] = "/service/application/catalog/v1.0/products".substring(1)
             
-                    _relativeUrls["getBrands"] = "/service/application/catalog/v1.0/brands/".substring(1)
+                    _relativeUrls["getBrands"] = "/service/application/catalog/v1.0/brands".substring(1)
             
-                    _relativeUrls["getBrandDetailBySlug"] = "/service/application/catalog/v1.0/brands/{slug}/".substring(1)
+                    _relativeUrls["getBrandDetailBySlug"] = "/service/application/catalog/v1.0/brands/{slug}".substring(1)
             
-                    _relativeUrls["getCategories"] = "/service/application/catalog/v1.0/categories/".substring(1)
+                    _relativeUrls["getCategories"] = "/service/application/catalog/v1.0/categories".substring(1)
             
-                    _relativeUrls["getCategoryDetailBySlug"] = "/service/application/catalog/v1.0/categories/{slug}/".substring(1)
+                    _relativeUrls["getCategoryDetailBySlug"] = "/service/application/catalog/v1.0/categories/{slug}".substring(1)
             
-                    _relativeUrls["getHomeProducts"] = "/service/application/catalog/v1.0/home/listing/".substring(1)
+                    _relativeUrls["getHomeProducts"] = "/service/application/catalog/v1.0/home/listing".substring(1)
             
-                    _relativeUrls["getDepartments"] = "/service/application/catalog/v1.0/departments/".substring(1)
+                    _relativeUrls["getDepartments"] = "/service/application/catalog/v1.0/departments".substring(1)
             
-                    _relativeUrls["getSearchResults"] = "/service/application/catalog/v1.0/auto-complete/".substring(1)
+                    _relativeUrls["getSearchResults"] = "/service/application/catalog/v1.0/auto-complete".substring(1)
             
-                    _relativeUrls["getCollections"] = "/service/application/catalog/v1.0/collections/".substring(1)
+                    _relativeUrls["getCollections"] = "/service/application/catalog/v1.0/collections".substring(1)
             
-                    _relativeUrls["getCollectionItemsBySlug"] = "/service/application/catalog/v1.0/collections/{slug}/items/".substring(1)
+                    _relativeUrls["getCollectionItemsBySlug"] = "/service/application/catalog/v1.0/collections/{slug}/items".substring(1)
             
-                    _relativeUrls["getCollectionDetailBySlug"] = "/service/application/catalog/v1.0/collections/{slug}/".substring(1)
+                    _relativeUrls["getCollectionDetailBySlug"] = "/service/application/catalog/v1.0/collections/{slug}".substring(1)
             
-                    _relativeUrls["getFollowedListing"] = "/service/application/catalog/v1.0/follow/{collection_type}/".substring(1)
+                    _relativeUrls["getFollowedListing"] = "/service/application/catalog/v1.0/follow/{collection_type}".substring(1)
             
-                    _relativeUrls["unfollowById"] = "/service/application/catalog/v1.0/follow/{collection_type}/{collection_id}/".substring(1)
+                    _relativeUrls["unfollowById"] = "/service/application/catalog/v1.0/follow/{collection_type}/{collection_id}".substring(1)
             
-                    _relativeUrls["followById"] = "/service/application/catalog/v1.0/follow/{collection_type}/{collection_id}/".substring(1)
+                    _relativeUrls["followById"] = "/service/application/catalog/v1.0/follow/{collection_type}/{collection_id}".substring(1)
             
-                    _relativeUrls["getFollowerCountById"] = "/service/application/catalog/v1.0/follow/{collection_type}/{collection_id}/count/".substring(1)
+                    _relativeUrls["getFollowerCountById"] = "/service/application/catalog/v1.0/follow/{collection_type}/{collection_id}/count".substring(1)
             
-                    _relativeUrls["getFollowIds"] = "/service/application/catalog/v1.0/follow/ids/".substring(1)
+                    _relativeUrls["getFollowIds"] = "/service/application/catalog/v1.0/follow/ids".substring(1)
             
-                    _relativeUrls["getStores"] = "/service/application/catalog/v2.0/locations/".substring(1)
+                    _relativeUrls["getStores"] = "/service/application/catalog/v2.0/locations".substring(1)
             
-                    _relativeUrls["getInStockLocations"] = "/service/application/catalog/v2.0/in-stock/locations/".substring(1)
+                    _relativeUrls["getInStockLocations"] = "/service/application/catalog/v2.0/in-stock/locations".substring(1)
             
-                    _relativeUrls["getLocationDetailsById"] = "/service/application/catalog/v2.0/locations/{location_id}/".substring(1)
+                    _relativeUrls["getLocationDetailsById"] = "/service/application/catalog/v2.0/locations/{location_id}".substring(1)
             
-                    _relativeUrls["getProductBundlesBySlug"] = "/service/application/catalog/v1.0/product-grouping/".substring(1)
+                    _relativeUrls["getProductBundlesBySlug"] = "/service/application/catalog/v2.0/product-grouping".substring(1)
             
-                    _relativeUrls["getProductPriceBySlug"] = "/service/application/catalog/v4.0/products/{slug}/sizes/{size}/price/".substring(1)
+                    _relativeUrls["getProductPriceBySlug"] = "/service/application/catalog/v1.0/products/sizes/price".substring(1)
             
-                    _relativeUrls["getProductSellersBySlug"] = "/service/application/catalog/v4.0/products/{slug}/sizes/{size}/sellers/".substring(1)
+                    _relativeUrls["getProductSellersBySlug"] = "/service/application/catalog/v4.0/products/{slug}/sizes/{size}/sellers".substring(1)
             
     }
 
@@ -898,36 +898,37 @@ class CatalogDataManagerClass(val config: ApplicationConfig, val unauthorizedAct
 
     
     
-    suspend fun getProductBundlesBySlug(slug: String?=null,id: Int?=null, headers: Map<String, String> = emptyMap()): Response<ProductBundle>? {
+    suspend fun getProductBundlesBySlug(slug: String?=null,id: Int?=null,size: String?=null,sellerId: Int?=null, headers: Map<String, String> = emptyMap()): Response<ProductBundle>? {
         var fullUrl : String? = _relativeUrls["getProductBundlesBySlug"]
         
-        return catalogApiList?.getProductBundlesBySlug(fullUrl,   slug = slug,  id = id,headers = headers)}
+        return catalogApiList?.getProductBundlesBySlug(fullUrl,   slug = slug,  id = id,  size = size,  sellerId = sellerId,headers = headers)}
 
     
     
-    suspend fun getProductPriceBySlug(slug: String,size: String,storeId: Int?=null,moq: Int?=null, headers: Map<String, String> = emptyMap()): Response<ProductSizePriceResponseV4>? {
+    suspend fun getProductPriceBySlug(body: ProductSizePriceV1RequestSchema, headers: Map<String, String> = emptyMap()): Response<ProductSizePriceResponseV1>? {
         var fullUrl : String? = _relativeUrls["getProductPriceBySlug"]
         
-        fullUrl = fullUrl?.replace("{" + "slug" +"}",slug.toString())
-        
-        fullUrl = fullUrl?.replace("{" + "size" +"}",size.toString())
-        
-        return catalogApiList?.getProductPriceBySlug(fullUrl,     storeId = storeId,  moq = moq,headers = headers)}
+        return catalogApiList?.getProductPriceBySlug(fullUrl, body = body,headers = headers)}
 
     
     
-    suspend fun getProductSellersBySlug(slug: String,size: String,strategy: String?=null,pageNo: Int?=null,pageSize: Int?=null, headers: Map<String, String> = emptyMap()): Response<ProductSizeSellersResponseV4>? {
+    suspend fun getProductSellersBySlug(slug: String,size: String,pincode: String?=null,strategy: String?=null,pageNo: Int?=null,pageSize: Int?=null, headers: Map<String, String> = emptyMap()): Response<ProductSizeSellersResponseV4>? {
         var fullUrl : String? = _relativeUrls["getProductSellersBySlug"]
         
         fullUrl = fullUrl?.replace("{" + "slug" +"}",slug.toString())
         
         fullUrl = fullUrl?.replace("{" + "size" +"}",size.toString())
         
-        return catalogApiList?.getProductSellersBySlug(fullUrl,     strategy = strategy,  pageNo = pageNo,  pageSize = pageSize,headers = headers)}
+        return catalogApiList?.getProductSellersBySlug(fullUrl,     pincode = pincode,  strategy = strategy,  pageNo = pageNo,  pageSize = pageSize,headers = headers)}
 
     
     
     
+        
+            
+                
+            
+            
         
             
                 
@@ -956,7 +957,7 @@ class CatalogDataManagerClass(val config: ApplicationConfig, val unauthorizedAct
     *
     * Summary: Paginator for getProductSellersBySlug
     **/
-    fun getProductSellersBySlugPaginator(slug: String, size: String, strategy: String?=null, pageSize: Int?=null) : Paginator<ProductSizeSellersResponseV4>{
+    fun getProductSellersBySlugPaginator(slug: String, size: String, pincode: String?=null, strategy: String?=null, pageSize: Int?=null) : Paginator<ProductSizeSellersResponseV4>{
 
     val paginator = Paginator<ProductSizeSellersResponseV4>()
 
@@ -973,7 +974,7 @@ class CatalogDataManagerClass(val config: ApplicationConfig, val unauthorizedAct
                 
                 fullUrl = fullUrl?.replace("{" + "size" +"}",size.toString())
                 
-                catalogApiList?.getProductSellersBySlug(fullUrl , strategy = strategy, pageNo = pageNo, pageSize = pageSize)?.safeAwait{ response, error ->
+                catalogApiList?.getProductSellersBySlug(fullUrl , pincode = pincode, strategy = strategy, pageNo = pageNo, pageSize = pageSize)?.safeAwait{ response, error ->
                     response?.let {
                         val page = response.peekContent()?.page
                         paginator.setPaginator(hasNext=page?.hasNext?:false,pageNo=if (page?.hasNext == true) ((pageNo ?: 0) + 1) else pageNo)

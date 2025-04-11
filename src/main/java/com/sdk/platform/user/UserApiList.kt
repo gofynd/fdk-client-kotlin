@@ -29,10 +29,6 @@ interface UserApiList {
     suspend fun unDeleteUser(@Path("company_id") companyId: String, @Path("application_id") applicationId: String,@Body body: UnDeleteUserRequestSchema, @HeaderMap headers: Map<String, String>? = null)
     : Response<UnDeleteUserSuccess>
     
-    @GET ("/service/platform/user/v1.0/company/{company_id}/application/{application_id}/customers/{user_id}/timeline")
-    suspend fun getUserTimeline(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Path("user_id") userId: String, @HeaderMap headers: Map<String, String>? = null)
-    : Response<GetUserTimeline>
-    
     @PUT ("/service/platform/user/v1.0/company/{company_id}/application/{application_id}/customers/{user_id}")
     suspend fun updateUser(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Path("user_id") userId: String,@Body body: UpdateUserRequestSchema, @HeaderMap headers: Map<String, String>? = null)
     : Response<CreateUserResponseSchema>
@@ -85,9 +81,13 @@ interface UserApiList {
     suspend fun updateUserGroupPartially(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Path("group_id") groupId: String,@Body body: PartialUserGroupUpdateSchema, @HeaderMap headers: Map<String, String>? = null)
     : Response<UserGroupResponseSchema>
     
+    @GET ("/service/platform/user/v1.0/company/{company_id}/application/{application_id}/user_group/{group_id}/users")
+    suspend fun getUsersByByGroupId(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Path("group_id") groupId: String, @HeaderMap headers: Map<String, String>? = null)
+    : Response<CustomerListResponseSchema>
+    
     @POST ("/service/platform/user/v1.0/company/{company_id}/application/{application_id}/user_attribute/definition")
     suspend fun createUserAttributeDefinition(@Path("company_id") companyId: String, @Path("application_id") applicationId: String,@Body body: CreateUserAttributeDefinition, @HeaderMap headers: Map<String, String>? = null)
-    : Response<UserAttributeDefinitionDetails>
+    : Response<UserAttributeDefinitionResp>
     
     @GET ("/service/platform/user/v1.0/company/{company_id}/application/{application_id}/user_attribute/definition")
     suspend fun getUserAttributeDefinitions(@Query("excluding_ids") excludingIds: String?, @Query("slug") slug: String?, @Query("type") type: String?, @Query("customer_editable") customerEditable: Boolean?, @Query("encrypted") encrypted: Boolean?, @Query("pinned") pinned: Boolean?, @Query("pin_order") pinOrder: Int?, @Query("is_locked") isLocked: Boolean?, @Query("name") name: String?, @Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Query("page_size") pageSize: Int?, @Query("page_no") pageNo: Int?, @HeaderMap headers: Map<String, String>? = null)
@@ -106,7 +106,7 @@ interface UserApiList {
     : Response<UserAttributeDefinition>
     
     @PUT ("/service/platform/user/v1.0/company/{company_id}/application/{application_id}/user_attribute/definition/{attribute_def_id}/user/{user_id}")
-    suspend fun updateUserAttribute(@Path("attribute_def_id") attributeDefId: String, @Path("user_id") userId: String, @Path("application_id") applicationId: String, @Path("company_id") companyId: String,@Body body: CreateUserAttribute, @HeaderMap headers: Map<String, String>? = null)
+    suspend fun updateUserAttribute(@Path("attribute_def_id") attributeDefId: String, @Path("user_id") userId: String, @Path("application_id") applicationId: String, @Path("company_id") companyId: String,@Body body: CreateUserAttributePayload, @HeaderMap headers: Map<String, String>? = null)
     : Response<UserAttribute>
     
     @GET ("/service/platform/user/v1.0/company/{company_id}/application/{application_id}/user_attribute/definition/{attribute_def_id}/user/{user_id}")
@@ -124,25 +124,5 @@ interface UserApiList {
     @GET ("/service/platform/user/v1.0/company/{company_id}/application/{application_id}/user_attribute/attribute/{attribute_id}")
     suspend fun getUserAttributeById(@Path("attribute_id") attributeId: String, @Path("application_id") applicationId: String, @Path("company_id") companyId: String, @HeaderMap headers: Map<String, String>? = null)
     : Response<UserAttribute>
-    
-    @POST ("/service/platform/user/v1.0/company/{company_id}/application/{application_id}/users/jobs/import")
-    suspend fun bulkImportStoreFrontUsers(@Path("application_id") applicationId: String, @Path("company_id") companyId: String,@Body body: CreateStoreFrontUsersPayload, @HeaderMap headers: Map<String, String>? = null)
-    : Response<BulkActionModel>
-    
-    @GET ("/service/platform/user/v1.0/company/{company_id}/application/{application_id}/users/jobs/import")
-    suspend fun getBulkImportUsersList(@Path("application_id") applicationId: String, @Path("company_id") companyId: String, @Query("page_no") pageNo: String?, @Query("page_size") pageSize: String?, @Query("search") search: String?, @Query("start_date") startDate: String?, @Query("end_date") endDate: String?, @Query("status") status: String?, @Query("file_format") fileFormat: String?, @HeaderMap headers: Map<String, String>? = null)
-    : Response<BulkActionPaginationSchema>
-    
-    @POST ("/service/platform/user/v1.0/company/{company_id}/application/{application_id}/users/jobs/export")
-    suspend fun createBulkExportUsers(@Path("application_id") applicationId: String, @Path("company_id") companyId: String,@Body body: BulkUserExportSchema, @HeaderMap headers: Map<String, String>? = null)
-    : Response<BulkActionModel>
-    
-    @GET ("/service/platform/user/v1.0/company/{company_id}/application/{application_id}/users/jobs/export")
-    suspend fun getBulkExportUsersList(@Path("application_id") applicationId: String, @Path("company_id") companyId: String, @Query("page_no") pageNo: String?, @Query("page_size") pageSize: String?, @Query("file_format") fileFormat: String?, @Query("search") search: String?, @Query("start_date") startDate: String?, @Query("end_date") endDate: String?, @Query("status") status: String?, @HeaderMap headers: Map<String, String>? = null)
-    : Response<BulkActionPaginationSchema>
-    
-    @GET ("/service/platform/user/v1.0/company/{company_id}/application/{application_id}/users/jobs/{job_id}")
-    suspend fun getUsersJobByJobId(@Path("application_id") applicationId: String, @Path("company_id") companyId: String, @Path("job_id") jobId: String, @HeaderMap headers: Map<String, String>? = null)
-    : Response<BulkActionModel>
     
 }
