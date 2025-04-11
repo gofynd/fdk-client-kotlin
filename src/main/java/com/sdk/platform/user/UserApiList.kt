@@ -125,4 +125,12 @@ interface UserApiList {
     suspend fun getUserAttributeById(@Path("attribute_id") attributeId: String, @Path("application_id") applicationId: String, @Path("company_id") companyId: String, @HeaderMap headers: Map<String, String>? = null)
     : Response<UserAttribute>
     
+    @PUT ("/service/platform/user/v1.0/company/{company_id}/application/{application_id}/user_attribute/bulk_update")
+    suspend fun bulkUpdateUserAttributes(@Path("company_id") companyId: String, @Path("application_id") applicationId: String,@Body body: BulkUpdateUserAttributesBody, @HeaderMap headers: Map<String, String>? = null)
+    : Response<BulkOperation>
+    
+    @PUT ("/service/platform/user/v1.0/company/{company_id}/application/{application_id}/user_attribute/bulk_update/per_user")
+    suspend fun bulkUpdatePerUserAttributes(@Path("company_id") companyId: String, @Path("application_id") applicationId: String,@Body body: BulkUpdatePerUserAttributesBody, @HeaderMap headers: Map<String, String>? = null)
+    : Response<BulkOperation>
+    
 }

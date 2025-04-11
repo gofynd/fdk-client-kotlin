@@ -72,6 +72,8 @@ class UserDataManagerClass(val config: PlatformConfig, val unauthorizedAction: (
     
     
     
+    
+    
 
 inner class ApplicationClient(val applicationId:String,val config: PlatformConfig){
 
@@ -361,6 +363,26 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     : Response<UserAttribute>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 userApiList?.getUserAttributeById(attributeId = attributeId,applicationId = applicationId ,companyId = config.companyId , headers = headers)
+        } else {
+            null
+        }
+    }
+    
+    
+    suspend fun bulkUpdateUserAttributes(body: BulkUpdateUserAttributesBody, headers: Map<String, String> = emptyMap())
+    : Response<BulkOperation>? {
+        return if (config.oauthClient.isAccessTokenValid()) {
+                userApiList?.bulkUpdateUserAttributes(companyId = config.companyId ,applicationId = applicationId , body = body,headers = headers)
+        } else {
+            null
+        }
+    }
+    
+    
+    suspend fun bulkUpdatePerUserAttributes(body: BulkUpdatePerUserAttributesBody, headers: Map<String, String> = emptyMap())
+    : Response<BulkOperation>? {
+        return if (config.oauthClient.isAccessTokenValid()) {
+                userApiList?.bulkUpdatePerUserAttributes(companyId = config.companyId ,applicationId = applicationId , body = body,headers = headers)
         } else {
             null
         }
