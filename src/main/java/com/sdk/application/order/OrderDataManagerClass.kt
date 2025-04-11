@@ -19,9 +19,15 @@ class OrderDataManagerClass(val config: ApplicationConfig, val unauthorizedActio
 
     init{
             
+                    _relativeUrls["getShipmentRefundSummary"] = "/service/application/order-manage/v1.0/shipment/{shipment_id}/refund-summary".substring(1)
+            
+                    _relativeUrls["getRefundOptions"] = "/service/application/order-manage/v1.0/shipment/{shipment_id}/refund-options".substring(1)
+            
                     _relativeUrls["getOrders"] = "/service/application/order/v1.0/orders".substring(1)
             
                     _relativeUrls["getOrderById"] = "/service/application/order/v1.0/orders/{order_id}".substring(1)
+            
+                    _relativeUrls["getPosOrderById"] = "/service/application/order/v1.0/orders/pos-order/{order_id}".substring(1)
             
                     _relativeUrls["getShipmentById"] = "/service/application/order/v1.0/orders/shipments/{shipment_id}".substring(1)
             
@@ -76,10 +82,28 @@ class OrderDataManagerClass(val config: ApplicationConfig, val unauthorizedActio
         return retrofitHttpClient?.initializeRestClient(OrderApiList::class.java) as? OrderApiList
     }
     
-    suspend fun getOrders(status: Int?=null,pageNo: Int?=null,pageSize: Int?=null,fromDate: String?=null,toDate: String?=null,startDate: String?=null,endDate: String?=null,customMeta: String?=null,allowInactive: Boolean?=null, headers: Map<String, String> = emptyMap()): Response<OrderList>? {
+    suspend fun getShipmentRefundSummary(shipmentId: String, headers: Map<String, String> = emptyMap()): Response<ShipmentRefundSummaryResponseSchema>? {
+        var fullUrl : String? = _relativeUrls["getShipmentRefundSummary"]
+        
+        fullUrl = fullUrl?.replace("{" + "shipment_id" +"}",shipmentId.toString())
+        
+        return orderApiList?.getShipmentRefundSummary(fullUrl,  headers = headers)}
+
+    
+    
+    suspend fun getRefundOptions(shipmentId: String,bagIds: String?=null,state: String?=null,optinAppId: String?=null,optinCompanyId: Int?=null,status: String?=null, headers: Map<String, String> = emptyMap()): Response<RefundOptionsSchemaResponseSchema>? {
+        var fullUrl : String? = _relativeUrls["getRefundOptions"]
+        
+        fullUrl = fullUrl?.replace("{" + "shipment_id" +"}",shipmentId.toString())
+        
+        return orderApiList?.getRefundOptions(fullUrl,    bagIds = bagIds,  state = state,  optinAppId = optinAppId,  optinCompanyId = optinCompanyId,  status = status,headers = headers)}
+
+    
+    
+    suspend fun getOrders(status: Int?=null,pageNo: Int?=null,pageSize: Int?=null,fromDate: String?=null,toDate: String?=null,startDate: String?=null,endDate: String?=null,customMeta: String?=null, headers: Map<String, String> = emptyMap()): Response<OrderList>? {
         var fullUrl : String? = _relativeUrls["getOrders"]
         
-        return orderApiList?.getOrders(fullUrl,   status = status,  pageNo = pageNo,  pageSize = pageSize,  fromDate = fromDate,  toDate = toDate,  startDate = startDate,  endDate = endDate,  customMeta = customMeta,  allowInactive = allowInactive,headers = headers)}
+        return orderApiList?.getOrders(fullUrl,   status = status,  pageNo = pageNo,  pageSize = pageSize,  fromDate = fromDate,  toDate = toDate,  startDate = startDate,  endDate = endDate,  customMeta = customMeta,headers = headers)}
 
     
     
@@ -89,6 +113,15 @@ class OrderDataManagerClass(val config: ApplicationConfig, val unauthorizedActio
         fullUrl = fullUrl?.replace("{" + "order_id" +"}",orderId.toString())
         
         return orderApiList?.getOrderById(fullUrl,    allowInactive = allowInactive,headers = headers)}
+
+    
+    
+    suspend fun getPosOrderById(orderId: String, headers: Map<String, String> = emptyMap()): Response<OrderById>? {
+        var fullUrl : String? = _relativeUrls["getPosOrderById"]
+        
+        fullUrl = fullUrl?.replace("{" + "order_id" +"}",orderId.toString())
+        
+        return orderApiList?.getPosOrderById(fullUrl,  headers = headers)}
 
     
     
@@ -119,7 +152,7 @@ class OrderDataManagerClass(val config: ApplicationConfig, val unauthorizedActio
 
     
     
-    suspend fun getCustomerDetailsByShipmentId(orderId: String,shipmentId: String, headers: Map<String, String> = emptyMap()): Response<CustomerDetailsResponse>? {
+    suspend fun getCustomerDetailsByShipmentId(orderId: String,shipmentId: String, headers: Map<String, String> = emptyMap()): Response<CustomerDetailsResponseSchema>? {
         var fullUrl : String? = _relativeUrls["getCustomerDetailsByShipmentId"]
         
         fullUrl = fullUrl?.replace("{" + "order_id" +"}",orderId.toString())
@@ -130,7 +163,7 @@ class OrderDataManagerClass(val config: ApplicationConfig, val unauthorizedActio
 
     
     
-    suspend fun sendOtpToShipmentCustomer(orderId: String,shipmentId: String, headers: Map<String, String> = emptyMap()): Response<SendOtpToCustomerResponse>? {
+    suspend fun sendOtpToShipmentCustomer(orderId: String,shipmentId: String, headers: Map<String, String> = emptyMap()): Response<SendOtpToCustomerResponseSchema>? {
         var fullUrl : String? = _relativeUrls["sendOtpToShipmentCustomer"]
         
         fullUrl = fullUrl?.replace("{" + "order_id" +"}",orderId.toString())
@@ -141,7 +174,7 @@ class OrderDataManagerClass(val config: ApplicationConfig, val unauthorizedActio
 
     
     
-    suspend fun verifyOtpShipmentCustomer(orderId: String,shipmentId: String,body: VerifyOtp, headers: Map<String, String> = emptyMap()): Response<VerifyOtpResponse>? {
+    suspend fun verifyOtpShipmentCustomer(orderId: String,shipmentId: String,body: VerifyOtp, headers: Map<String, String> = emptyMap()): Response<VerifyOtpResponseSchema>? {
         var fullUrl : String? = _relativeUrls["verifyOtpShipmentCustomer"]
         
         fullUrl = fullUrl?.replace("{" + "order_id" +"}",orderId.toString())
@@ -172,7 +205,7 @@ class OrderDataManagerClass(val config: ApplicationConfig, val unauthorizedActio
 
     
     
-    suspend fun updateShipmentStatus(shipmentId: String,body: UpdateShipmentStatusRequest, headers: Map<String, String> = emptyMap()): Response<ShipmentApplicationStatusResponse>? {
+    suspend fun updateShipmentStatus(shipmentId: String,body: UpdateShipmentStatusRequestSchema, headers: Map<String, String> = emptyMap()): Response<ShipmentApplicationStatusResponseSchema>? {
         var fullUrl : String? = _relativeUrls["updateShipmentStatus"]
         
         fullUrl = fullUrl?.replace("{" + "shipment_id" +"}",shipmentId.toString())

@@ -12,17 +12,17 @@ interface FileStorageApiList {
     
     
     @POST
-    suspend fun startUpload(@Url url1: String?    ,@Body body: StartRequest, @HeaderMap headers: Map<String, String>? = null)
-    : Response<StartResponse>
+    suspend fun startUpload(@Url url1: String?    ,@Body body: FileUploadStart, @HeaderMap headers: Map<String, String>? = null)
+    : Response<FileUpload>
     
     
     @POST
-    suspend fun completeUpload(@Url url1: String?    ,@Body body: StartResponse, @HeaderMap headers: Map<String, String>? = null)
-    : Response<CompleteResponse>
+    suspend fun completeUpload(@Url url1: String?    ,@Body body: FileUpload, @HeaderMap headers: Map<String, String>? = null)
+    : Response<FileUploadComplete>
     
     
     @POST
-    suspend fun signUrls(@Url url1: String?   ,@Body body: SignUrlRequest, @HeaderMap headers: Map<String, String>? = null)
-    : Response<SignUrlResponse>
+    suspend fun signUrls(@Url url1: String?   ,@Body body: SignUrl, @HeaderMap headers: Map<String, String>? = null)
+    : Response<SignUrlResult>
     
 }

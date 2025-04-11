@@ -45,7 +45,7 @@ class CompanyProfileDataManagerClass(val config: PlatformConfig, val unauthorize
     
     
     suspend fun cbsOnboardGet( headers: Map<String, String> = emptyMap())
-    : Response<GetCompanyProfileSerializerResponse>? {
+    : Response<GetCompanyProfileSerializerResponseSchema>? {
 
         return if (config.oauthClient.isAccessTokenValid()) {
             companyProfileApiList?.cbsOnboardGet(
@@ -57,7 +57,7 @@ class CompanyProfileDataManagerClass(val config: PlatformConfig, val unauthorize
     
     
     suspend fun updateCompany(body: UpdateCompany, headers: Map<String, String> = emptyMap())
-    : Response<ProfileSuccessResponse>? {
+    : Response<ProfileSuccessResponseSchema>? {
 
         return if (config.oauthClient.isAccessTokenValid()) {
             companyProfileApiList?.updateCompany(
@@ -69,7 +69,7 @@ class CompanyProfileDataManagerClass(val config: PlatformConfig, val unauthorize
     
     
     suspend fun getCompanyMetrics( headers: Map<String, String> = emptyMap())
-    : Response<MetricsSerializer>? {
+    : Response<MetricsSchema>? {
 
         return if (config.oauthClient.isAccessTokenValid()) {
             companyProfileApiList?.getCompanyMetrics(
@@ -81,7 +81,7 @@ class CompanyProfileDataManagerClass(val config: PlatformConfig, val unauthorize
     
     
     suspend fun getBrand(brandId: String, headers: Map<String, String> = emptyMap())
-    : Response<GetBrandResponseSerializer>? {
+    : Response<GetBrandResponseSchema>? {
 
         return if (config.oauthClient.isAccessTokenValid()) {
             companyProfileApiList?.getBrand(
@@ -92,8 +92,8 @@ class CompanyProfileDataManagerClass(val config: PlatformConfig, val unauthorize
     }
     
     
-    suspend fun editBrand(brandId: String,body: UpdateBrandRequestSerializer, headers: Map<String, String> = emptyMap())
-    : Response<ProfileSuccessResponse>? {
+    suspend fun editBrand(brandId: String,body: CreateUpdateBrandRequestSchema, headers: Map<String, String> = emptyMap())
+    : Response<ProfileSuccessResponseSchema>? {
 
         return if (config.oauthClient.isAccessTokenValid()) {
             companyProfileApiList?.editBrand(
@@ -104,8 +104,8 @@ class CompanyProfileDataManagerClass(val config: PlatformConfig, val unauthorize
     }
     
     
-    suspend fun createBrand(body: CreateBrandRequestSerializer, headers: Map<String, String> = emptyMap())
-    : Response<ProfileSuccessResponse>? {
+    suspend fun createBrand(body: CreateUpdateBrandRequestSchema, headers: Map<String, String> = emptyMap())
+    : Response<ProfileSuccessResponseSchema>? {
 
         return if (config.oauthClient.isAccessTokenValid()) {
             companyProfileApiList?.createBrand(
@@ -117,7 +117,7 @@ class CompanyProfileDataManagerClass(val config: PlatformConfig, val unauthorize
     
     
     suspend fun getBrands(pageNo: Int?=null,pageSize: Int?=null,q: String?=null, headers: Map<String, String> = emptyMap())
-    : Response<CompanyBrandListSerializer>? {
+    : Response<CompanyBrandListSchema>? {
 
         return if (config.oauthClient.isAccessTokenValid()) {
             companyProfileApiList?.getBrands(
@@ -152,12 +152,12 @@ class CompanyProfileDataManagerClass(val config: PlatformConfig, val unauthorize
     *
     * Summary: Paginator for getBrands
     **/
-    fun getBrandsPaginator(companyId: String, pageSize: Int?=null, q: String?=null) : Paginator<CompanyBrandListSerializer>{
-        val paginator = Paginator<CompanyBrandListSerializer>()
-        paginator.setCallBack(object : PaginatorCallback<CompanyBrandListSerializer> {
+    fun getBrandsPaginator(companyId: String, pageSize: Int?=null, q: String?=null) : Paginator<CompanyBrandListSchema>{
+        val paginator = Paginator<CompanyBrandListSchema>()
+        paginator.setCallBack(object : PaginatorCallback<CompanyBrandListSchema> {
 
             override suspend fun onNext(
-                onResponse: (Event<CompanyBrandListSerializer>?,FdkError?) -> Unit){
+                onResponse: (Event<CompanyBrandListSchema>?,FdkError?) -> Unit){
 
                 if (config.oauthClient.isAccessTokenValid()) {
                     val pageId = paginator.nextId
@@ -187,8 +187,8 @@ class CompanyProfileDataManagerClass(val config: PlatformConfig, val unauthorize
         return paginator
     }
     
-    suspend fun createCompanyBrandMapping(body: CompanyBrandPostRequestSerializer, headers: Map<String, String> = emptyMap())
-    : Response<ProfileSuccessResponse>? {
+    suspend fun createCompanyBrandMapping(body: CompanyBrandPostRequestSchema, headers: Map<String, String> = emptyMap())
+    : Response<ProfileSuccessResponseSchema>? {
 
         return if (config.oauthClient.isAccessTokenValid()) {
             companyProfileApiList?.createCompanyBrandMapping(
@@ -199,12 +199,12 @@ class CompanyProfileDataManagerClass(val config: PlatformConfig, val unauthorize
     }
     
     
-    suspend fun getLocations(storeType: String?=null,q: String?=null,stage: String?=null,pageNo: Int?=null,pageSize: Int?=null,locationIds: ArrayList<Int>?=null,types: ArrayList<String>?=null,tags: ArrayList<String>?=null, headers: Map<String, String> = emptyMap())
-    : Response<LocationListSerializer>? {
+    suspend fun getLocations(storeType: String?=null,storeCodes: ArrayList<String>?=null,q: String?=null,stage: String?=null,pageNo: Int?=null,pageSize: Int?=null,locationIds: ArrayList<Int>?=null,types: ArrayList<String>?=null,tags: ArrayList<String>?=null, headers: Map<String, String> = emptyMap())
+    : Response<LocationListSchema>? {
 
         return if (config.oauthClient.isAccessTokenValid()) {
             companyProfileApiList?.getLocations(
-        companyId = config.companyId,storeType = storeType,q = q,stage = stage,pageNo = pageNo,pageSize = pageSize,locationIds = locationIds,types = types,tags = tags, headers = headers)
+        companyId = config.companyId,storeType = storeType,storeCodes = storeCodes,q = q,stage = stage,pageNo = pageNo,pageSize = pageSize,locationIds = locationIds,types = types,tags = tags, headers = headers)
         } else {
             null
         }
@@ -212,6 +212,11 @@ class CompanyProfileDataManagerClass(val config: PlatformConfig, val unauthorize
     
     
     
+        
+            
+                
+            
+            
         
             
                 
@@ -260,19 +265,19 @@ class CompanyProfileDataManagerClass(val config: PlatformConfig, val unauthorize
     *
     * Summary: Paginator for getLocations
     **/
-    fun getLocationsPaginator(companyId: String, storeType: String?=null, q: String?=null, stage: String?=null, pageSize: Int?=null, locationIds: ArrayList<Int>?=null, types: ArrayList<String>?=null, tags: ArrayList<String>?=null) : Paginator<LocationListSerializer>{
-        val paginator = Paginator<LocationListSerializer>()
-        paginator.setCallBack(object : PaginatorCallback<LocationListSerializer> {
+    fun getLocationsPaginator(companyId: String, storeType: String?=null, storeCodes: ArrayList<String>?=null, q: String?=null, stage: String?=null, pageSize: Int?=null, locationIds: ArrayList<Int>?=null, types: ArrayList<String>?=null, tags: ArrayList<String>?=null) : Paginator<LocationListSchema>{
+        val paginator = Paginator<LocationListSchema>()
+        paginator.setCallBack(object : PaginatorCallback<LocationListSchema> {
 
             override suspend fun onNext(
-                onResponse: (Event<LocationListSerializer>?,FdkError?) -> Unit){
+                onResponse: (Event<LocationListSchema>?,FdkError?) -> Unit){
 
                 if (config.oauthClient.isAccessTokenValid()) {
                     val pageId = paginator.nextId
                     val pageNo = paginator.pageNo
                     val pageType = "number"
                     companyProfileApiList?.getLocations(
-                    companyId = config.companyId, storeType = storeType, q = q, stage = stage, pageNo = pageNo, pageSize = pageSize, locationIds = locationIds, types = types, tags = tags
+                    companyId = config.companyId, storeType = storeType, storeCodes = storeCodes, q = q, stage = stage, pageNo = pageNo, pageSize = pageSize, locationIds = locationIds, types = types, tags = tags
                     )?.safeAwait{ response, error ->
                         response?.let {
                             val page = response.peekContent()?.page
@@ -295,8 +300,8 @@ class CompanyProfileDataManagerClass(val config: PlatformConfig, val unauthorize
         return paginator
     }
     
-    suspend fun createLocation(body: LocationSerializer, headers: Map<String, String> = emptyMap())
-    : Response<ProfileSuccessResponse>? {
+    suspend fun createLocation(body: LocationSchema, headers: Map<String, String> = emptyMap())
+    : Response<ProfileSuccessResponseSchema>? {
 
         return if (config.oauthClient.isAccessTokenValid()) {
             companyProfileApiList?.createLocation(
@@ -308,7 +313,7 @@ class CompanyProfileDataManagerClass(val config: PlatformConfig, val unauthorize
     
     
     suspend fun getLocationDetail(locationId: String, headers: Map<String, String> = emptyMap())
-    : Response<GetLocationSerializer>? {
+    : Response<GetLocationSchema>? {
 
         return if (config.oauthClient.isAccessTokenValid()) {
             companyProfileApiList?.getLocationDetail(
@@ -319,8 +324,8 @@ class CompanyProfileDataManagerClass(val config: PlatformConfig, val unauthorize
     }
     
     
-    suspend fun updateLocation(locationId: String,body: LocationSerializer, headers: Map<String, String> = emptyMap())
-    : Response<ProfileSuccessResponse>? {
+    suspend fun updateLocation(locationId: String,body: LocationSchema, headers: Map<String, String> = emptyMap())
+    : Response<ProfileSuccessResponseSchema>? {
 
         return if (config.oauthClient.isAccessTokenValid()) {
             companyProfileApiList?.updateLocation(
@@ -331,8 +336,8 @@ class CompanyProfileDataManagerClass(val config: PlatformConfig, val unauthorize
     }
     
     
-    suspend fun createLocationBulk(body: BulkLocationSerializer, headers: Map<String, String> = emptyMap())
-    : Response<ProfileSuccessResponse>? {
+    suspend fun createLocationBulk(body: BulkLocationSchema, headers: Map<String, String> = emptyMap())
+    : Response<ProfileSuccessResponseSchema>? {
 
         return if (config.oauthClient.isAccessTokenValid()) {
             companyProfileApiList?.createLocationBulk(

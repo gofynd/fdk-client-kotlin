@@ -19,9 +19,11 @@ class ConfigurationDataManagerClass(val config: PublicConfig, val unauthorizedAc
 
     init{
             
-                    _relativeUrls["searchApplication"] = "/service/common/configuration/v1.0/application/search-application".substring(1)
+                    _relativeUrls["searchApplication"] = "/service/public/configuration/v1.0/application/search-application".substring(1)
             
-                    _relativeUrls["getLocations"] = "/service/common/configuration/v1.0/location".substring(1)
+                    _relativeUrls["getLocations"] = "/service/public/configuration/v1.0/location".substring(1)
+            
+                    _relativeUrls["checkVersionIsUpToDate"] = "/service/public/configuration/v1.0/version".substring(1)
             
     }
 
@@ -57,7 +59,7 @@ class ConfigurationDataManagerClass(val config: PublicConfig, val unauthorizedAc
         return retrofitHttpClient?.initializeRestClient(ConfigurationApiList::class.java) as? ConfigurationApiList
     }
     
-    suspend fun searchApplication(authorization: String?=null,query: String?=null, headers: Map<String, String> = emptyMap()): Response<ApplicationResponse>? {
+    suspend fun searchApplication(authorization: String?=null,query: String?=null, headers: Map<String, String> = emptyMap()): Response<ApplicationResponseSchema>? {
         var fullUrl : String? = _relativeUrls["searchApplication"]
         
         return configurationApiList?.searchApplication(fullUrl,   authorization = authorization,  query = query,headers = headers)}
@@ -68,6 +70,13 @@ class ConfigurationDataManagerClass(val config: PublicConfig, val unauthorizedAc
         var fullUrl : String? = _relativeUrls["getLocations"]
         
         return configurationApiList?.getLocations(fullUrl,   locationType = locationType,  id = id,headers = headers)}
+
+    
+    
+    suspend fun checkVersionIsUpToDate(body: VersionRequestSchema, headers: Map<String, String> = emptyMap()): Response<VersionResponseSchema>? {
+        var fullUrl : String? = _relativeUrls["checkVersionIsUpToDate"]
+        
+        return configurationApiList?.checkVersionIsUpToDate(fullUrl, body = body,headers = headers)}
 
     
     
