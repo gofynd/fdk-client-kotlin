@@ -33,6 +33,6 @@ interface LeadApiList {
     
     @POST
     suspend fun submitCustomForm(@Url url1: String?    ,@Body body: CustomFormSubmissionPayload, @HeaderMap headers: Map<String, String>? = null)
-    : Response<SubmitCustomFormResponseSchema>
+    : Response<SubmitCustomFormResponse>
     
 }

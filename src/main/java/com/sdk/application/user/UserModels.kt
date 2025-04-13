@@ -945,10 +945,10 @@ data class AuthSuccess(
 
              
 /*
-    Model: UserExists
+    Model: UserExistsResponse
 */
 @Parcelize
-data class UserExists(
+data class UserExistsResponse(
     
     
     
@@ -967,10 +967,10 @@ data class UserExists(
 
              
 /*
-    Model: SendOtp
+    Model: SendOtpResponse
 */
 @Parcelize
-data class SendOtp(
+data class SendOtpResponse(
     
     
     
@@ -1234,9 +1234,6 @@ data class VerifyOtpSuccess(
     
     
     
-    @SerializedName("verify_mobile_link")
-    var verifyMobileLink: Boolean?=null,
-    
     @SerializedName("user")
     var user: UserSchema?=null,
     
@@ -1247,8 +1244,6 @@ data class VerifyOtpSuccess(
     var registerToken: String?=null
     
 ): Parcelable {
-    
-    
     
     
     
@@ -1661,14 +1656,9 @@ data class SendMobileVerifyLinkSuccess(
     
     
     @SerializedName("verify_mobile_link")
-    var verifyMobileLink: Boolean?=null,
-    
-    @SerializedName("user")
-    var user: UserSchema?=null
+    var verifyMobileLink: Boolean?=null
     
 ): Parcelable {
-    
-    
     
     
     
@@ -2776,12 +2766,6 @@ data class UserSchema(
     
     
     
-    @SerializedName("debug")
-    var debug: DebugInfo?=null,
-    
-    @SerializedName("has_old_password_hash")
-    var hasOldPasswordHash: Boolean?=null,
-    
     @SerializedName("application_id")
     var applicationId: String?=null,
     
@@ -2869,37 +2853,6 @@ data class UserSchema(
     
     
     
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-}
-
-
-
-             
-/*
-    Model: DebugInfo
-*/
-@Parcelize
-data class DebugInfo(
-    
-    
-    
-    @SerializedName("source")
-    var source: String?=null,
-    
-    @SerializedName("platform")
-    var platform: String?=null
-    
-): Parcelable {
     
     
     

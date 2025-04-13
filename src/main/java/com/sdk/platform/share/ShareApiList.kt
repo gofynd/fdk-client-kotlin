@@ -25,8 +25,4 @@ interface ShareApiList {
     suspend fun updateShortLinkById(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Path("id") id: String,@Body body: ShortLinkReq, @HeaderMap headers: Map<String, String>? = null)
     : Response<ShortLinkRes>
     
-    @GET ("/service/platform/share/v1.0/company/{company_id}/application/{application_id}/links/short-link/click-stats")
-    suspend fun getShortLinkClickStats(@Query("surl_id") surlId: String, @Path("company_id") companyId: String, @Path("application_id") applicationId: String, @HeaderMap headers: Map<String, String>? = null)
-    : Response<ClickStatsResult>
-    
 }

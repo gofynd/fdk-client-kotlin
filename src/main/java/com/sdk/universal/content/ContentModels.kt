@@ -1125,6 +1125,28 @@ data class PricingBannerSchema(
 
              
 /*
+    Model: SdkReadmeSchema
+*/
+@Parcelize
+data class SdkReadmeSchema(
+    
+    
+    
+    @SerializedName("data")
+    var data: String?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
     Model: TagsSchema
 */
 @Parcelize

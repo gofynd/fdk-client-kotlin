@@ -86,19 +86,19 @@ class ThemeDataManagerClass(val config: ApplicationConfig, val unauthorizedActio
 
     
     
-    suspend fun getAppliedTheme(filters: Boolean?=null, headers: Map<String, String> = emptyMap()): Response<ThemesSchema>? {
+    suspend fun getAppliedTheme( headers: Map<String, String> = emptyMap()): Response<ThemesSchema>? {
         var fullUrl : String? = _relativeUrls["getAppliedTheme"]
         
-        return themeApiList?.getAppliedTheme(fullUrl,   filters = filters,headers = headers)}
+        return themeApiList?.getAppliedTheme(fullUrl, headers = headers)}
 
     
     
-    suspend fun getThemeForPreview(themeId: String,filters: Boolean?=null, headers: Map<String, String> = emptyMap()): Response<ThemesSchema>? {
+    suspend fun getThemeForPreview(themeId: String, headers: Map<String, String> = emptyMap()): Response<ThemesSchema>? {
         var fullUrl : String? = _relativeUrls["getThemeForPreview"]
         
         fullUrl = fullUrl?.replace("{" + "theme_id" +"}",themeId.toString())
         
-        return themeApiList?.getThemeForPreview(fullUrl,    filters = filters,headers = headers)}
+        return themeApiList?.getThemeForPreview(fullUrl,  headers = headers)}
 
     
     

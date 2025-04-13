@@ -63,10 +63,10 @@ data class AppProvidersGlobalProviderRequestObj(
 
              
 /*
-    Model: AppProvidersGlobalProviderReq
+    Model: AppProvidersGlobalProviderRequest
 */
 @Parcelize
-data class AppProvidersGlobalProviderReq(
+data class AppProvidersGlobalProviderRequest(
     
     
     
@@ -90,10 +90,10 @@ data class AppProvidersGlobalProviderReq(
 
              
 /*
-    Model: UpdateAppProvidersGlobalProviderResEmailSmsObj
+    Model: UpdateAppProvidersGlobalProviderResponseEmailSmsObj
 */
 @Parcelize
-data class UpdateAppProvidersGlobalProviderResEmailSmsObj(
+data class UpdateAppProvidersGlobalProviderResponseEmailSmsObj(
     
     
     
@@ -117,18 +117,18 @@ data class UpdateAppProvidersGlobalProviderResEmailSmsObj(
 
              
 /*
-    Model: UpdateAppProvidersGlobalProviderRes
+    Model: UpdateAppProvidersGlobalProviderResponse
 */
 @Parcelize
-data class UpdateAppProvidersGlobalProviderRes(
+data class UpdateAppProvidersGlobalProviderResponse(
     
     
     
     @SerializedName("email")
-    var email: UpdateAppProvidersGlobalProviderResEmailSmsObj?=null,
+    var email: UpdateAppProvidersGlobalProviderResponseEmailSmsObj?=null,
     
     @SerializedName("sms")
-    var sms: UpdateAppProvidersGlobalProviderResEmailSmsObj?=null,
+    var sms: UpdateAppProvidersGlobalProviderResponseEmailSmsObj?=null,
     
     @SerializedName("_id")
     var id: String?=null,
@@ -337,10 +337,10 @@ data class PushtokenRes(
 
              
 /*
-    Model: SendInstantRes
+    Model: SendInstantResponse
 */
 @Parcelize
-data class SendInstantRes(
+data class SendInstantResponse(
     
     
     
@@ -590,10 +590,10 @@ data class SendSyncData(
 
              
 /*
-    Model: SendSyncReq
+    Model: SendSyncRequest
 */
 @Parcelize
-data class SendSyncReq(
+data class SendSyncRequest(
     
     
     
@@ -622,15 +622,15 @@ data class SendSyncReq(
 
              
 /*
-    Model: EngineReq
+    Model: EngineRequest
 */
 @Parcelize
-data class EngineReq(
+data class EngineRequest(
     
     
     
     @SerializedName("payload")
-    var payload: SendSyncReq?=null,
+    var payload: SendSyncRequest?=null,
     
     @SerializedName("meta")
     var meta: MetaStructure?=null
@@ -649,10 +649,10 @@ data class EngineReq(
 
              
 /*
-    Model: EngineRes
+    Model: EngineResponse
 */
 @Parcelize
-data class EngineRes(
+data class EngineResponse(
     
     
     
@@ -671,10 +671,10 @@ data class EngineRes(
 
              
 /*
-    Model: EventSubscriptionsBulkUpdateReq
+    Model: EventSubscriptionsBulkUpdateRequest
 */
 @Parcelize
-data class EventSubscriptionsBulkUpdateReq(
+data class EventSubscriptionsBulkUpdateRequest(
     
     
     
@@ -693,10 +693,10 @@ data class EventSubscriptionsBulkUpdateReq(
 
              
 /*
-    Model: EventSubscriptionsBulkUpdateRes
+    Model: EventSubscriptionsBulkUpdateResponse
 */
 @Parcelize
-data class EventSubscriptionsBulkUpdateRes(
+data class EventSubscriptionsBulkUpdateResponse(
     
     
     
@@ -755,10 +755,10 @@ data class EventSubscriptionsBulkUpdateRes(
 
              
 /*
-    Model: SubscriptionsObjectReq
+    Model: SubscriptionsObjectRequest
 */
 @Parcelize
-data class SubscriptionsObjectReq(
+data class SubscriptionsObjectRequest(
     
     
     
@@ -3049,10 +3049,10 @@ data class EventSubscriptions(
 
              
 /*
-    Model: TriggerJobRes
+    Model: TriggerJobResponse
 */
 @Parcelize
-data class TriggerJobRes(
+data class TriggerJobResponse(
     
     
     
@@ -3071,10 +3071,10 @@ data class TriggerJobRes(
 
              
 /*
-    Model: TriggerJobReq
+    Model: TriggerJobRequest
 */
 @Parcelize
-data class TriggerJobReq(
+data class TriggerJobRequest(
     
     
     
@@ -3093,10 +3093,10 @@ data class TriggerJobReq(
 
              
 /*
-    Model: GlobalVariablesGetRes
+    Model: GlobalVariablesGetResponse
 */
 @Parcelize
-data class GlobalVariablesGetRes(
+data class GlobalVariablesGetResponse(
     
     
     
@@ -3120,10 +3120,10 @@ data class GlobalVariablesGetRes(
 
              
 /*
-    Model: GlobalVariablesPostRes
+    Model: GlobalVariablesPostResponse
 */
 @Parcelize
-data class GlobalVariablesPostRes(
+data class GlobalVariablesPostResponse(
     
     
     

@@ -187,7 +187,7 @@ class UserDataManagerClass(val config: ApplicationConfig, val unauthorizedAction
 
     
     
-    suspend fun loginWithOTP(platform: String?=null,body: SendOtpRequestSchema, headers: Map<String, String> = emptyMap()): Response<SendOtp>? {
+    suspend fun loginWithOTP(platform: String?=null,body: SendOtpRequestSchema, headers: Map<String, String> = emptyMap()): Response<SendOtpResponse>? {
         var fullUrl : String? = _relativeUrls["loginWithOTP"]
         
         return userApiList?.loginWithOTP(fullUrl,   platform = platform,body = body,headers = headers)}
@@ -411,7 +411,7 @@ class UserDataManagerClass(val config: ApplicationConfig, val unauthorizedAction
 
     
     
-    suspend fun userExists(q: String, headers: Map<String, String> = emptyMap()): Response<UserExists>? {
+    suspend fun userExists(q: String, headers: Map<String, String> = emptyMap()): Response<UserExistsResponse>? {
         var fullUrl : String? = _relativeUrls["userExists"]
         
         return userApiList?.userExists(fullUrl,   q = q,headers = headers)}
