@@ -14,33 +14,6 @@ import com.google.gson.annotations.SerializedName
 
              
 /*
-    Model: ValidationError
-*/
-@Parcelize
-data class ValidationError(
-    
-    
-    
-    @SerializedName("message")
-    var message: String?=null,
-    
-    @SerializedName("field")
-    var field: String?=null
-    
-): Parcelable {
-    
-    
-    
-    
-    
-    
-    
-}
-
-
-
-             
-/*
     Model: GenerateSEOContent
 */
 @Parcelize
@@ -311,6 +284,12 @@ data class SeoSchema(
     @SerializedName("robots_txt")
     var robotsTxt: String?=null,
     
+    @SerializedName("sitemap_enabled")
+    var sitemapEnabled: Boolean?=null,
+    
+    @SerializedName("additional_sitemap")
+    var additionalSitemap: String?=null,
+    
     @SerializedName("cannonical_enabled")
     var cannonicalEnabled: Boolean?=null,
     
@@ -327,6 +306,10 @@ data class SeoSchema(
     var updatedAt: String?=null
     
 ): Parcelable {
+    
+    
+    
+    
     
     
     
@@ -853,10 +836,10 @@ data class NextSchedule(
 
              
 /*
-    Model: BlogGetDetails
+    Model: BlogGetResponse
 */
 @Parcelize
-data class BlogGetDetails(
+data class BlogGetResponse(
     
     
     
@@ -1304,232 +1287,10 @@ data class DateMeta(
 
              
 /*
-    Model: DefaultSitemapIndividualConfig
+    Model: BlogRequest
 */
 @Parcelize
-data class DefaultSitemapIndividualConfig(
-    
-    
-    
-    @SerializedName("enabled")
-    var enabled: Boolean?=null
-    
-): Parcelable {
-    
-    
-    
-    
-    
-}
-
-
-
-             
-/*
-    Model: DefaultSitemapConfig
-*/
-@Parcelize
-data class DefaultSitemapConfig(
-    
-    
-    
-    @SerializedName("root")
-    var root: DefaultSitemapIndividualConfig?=null,
-    
-    @SerializedName("brand")
-    var brand: DefaultSitemapIndividualConfig?=null,
-    
-    @SerializedName("collections")
-    var collections: DefaultSitemapIndividualConfig?=null,
-    
-    @SerializedName("category_l1")
-    var categoryL1: DefaultSitemapIndividualConfig?=null,
-    
-    @SerializedName("category_l2")
-    var categoryL2: DefaultSitemapIndividualConfig?=null,
-    
-    @SerializedName("category_l3")
-    var categoryL3: DefaultSitemapIndividualConfig?=null,
-    
-    @SerializedName("pages")
-    var pages: DefaultSitemapIndividualConfig?=null,
-    
-    @SerializedName("blog")
-    var blog: DefaultSitemapIndividualConfig?=null,
-    
-    @SerializedName("section")
-    var section: DefaultSitemapIndividualConfig?=null,
-    
-    @SerializedName("faq")
-    var faq: DefaultSitemapIndividualConfig?=null,
-    
-    @SerializedName("sitemap")
-    var sitemap: DefaultSitemapIndividualConfig?=null
-    
-): Parcelable {
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-}
-
-
-
-             
-/*
-    Model: SitemapConfigCreate
-*/
-@Parcelize
-data class SitemapConfigCreate(
-    
-    
-    
-    @SerializedName("name")
-    var name: String?=null,
-    
-    @SerializedName("is_active")
-    var isActive: Boolean?=null,
-    
-    @SerializedName("sitemap")
-    var sitemap: String?=null
-    
-): Parcelable {
-    
-    
-    
-    
-    
-    
-    
-    
-    
-}
-
-
-
-             
-/*
-    Model: SitemapConfig
-*/
-@Parcelize
-data class SitemapConfig(
-    
-    
-    
-    @SerializedName("name")
-    var name: String?=null,
-    
-    @SerializedName("is_active")
-    var isActive: Boolean?=null,
-    
-    @SerializedName("sitemap")
-    var sitemap: String?=null,
-    
-    @SerializedName("created_at")
-    var createdAt: String?=null,
-    
-    @SerializedName("updated_at")
-    var updatedAt: String?=null
-    
-): Parcelable {
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-}
-
-
-
-             
-/*
-    Model: SitemapConfigurationList
-*/
-@Parcelize
-data class SitemapConfigurationList(
-    
-    
-    
-    @SerializedName("items")
-    var items: ArrayList<SitemapConfig>?=null,
-    
-    @SerializedName("page")
-    var page: Page?=null
-    
-): Parcelable {
-    
-    
-    
-    
-    
-    
-    
-}
-
-
-
-             
-/*
-    Model: SitemapConfigUpdate
-*/
-@Parcelize
-data class SitemapConfigUpdate(
-    
-    
-    
-    @SerializedName("is_active")
-    var isActive: Boolean?=null,
-    
-    @SerializedName("sitemap")
-    var sitemap: String?=null
-    
-): Parcelable {
-    
-    
-    
-    
-    
-    
-    
-}
-
-
-
-             
-/*
-    Model: BlogPayload
-*/
-@Parcelize
-data class BlogPayload(
+data class BlogRequest(
     
     
     
@@ -2311,10 +2072,10 @@ data class DataLoadersSchema(
 
              
 /*
-    Model: TagDeleteSuccessDetails
+    Model: TagDeleteSuccessResponse
 */
 @Parcelize
-data class TagDeleteSuccessDetails(
+data class TagDeleteSuccessResponse(
     
     
     
@@ -2912,10 +2673,10 @@ data class Page(
 
              
 /*
-    Model: LandingPageGetDetails
+    Model: LandingPageGetResponse
 */
 @Parcelize
-data class LandingPageGetDetails(
+data class LandingPageGetResponse(
     
     
     
@@ -3001,10 +2762,10 @@ data class LandingPageSchema(
 
              
 /*
-    Model: DefaultNavigationDetails
+    Model: DefaultNavigationResponse
 */
 @Parcelize
-data class DefaultNavigationDetails(
+data class DefaultNavigationResponse(
     
     
     
@@ -3023,10 +2784,10 @@ data class DefaultNavigationDetails(
 
              
 /*
-    Model: NavigationGetDetails
+    Model: NavigationGetResponse
 */
 @Parcelize
-data class NavigationGetDetails(
+data class NavigationGetResponse(
     
     
     
@@ -3149,10 +2910,10 @@ data class NavigationSchema(
 
              
 /*
-    Model: NavigationPayload
+    Model: NavigationRequest
 */
 @Parcelize
-data class NavigationPayload(
+data class NavigationRequest(
     
     
     
@@ -3191,10 +2952,10 @@ data class NavigationPayload(
 
              
 /*
-    Model: PageGetDetails
+    Model: PageGetResponse
 */
 @Parcelize
-data class PageGetDetails(
+data class PageGetResponse(
     
     
     
@@ -3453,10 +3214,10 @@ data class CreatedBySchema(
 
              
 /*
-    Model: PagePayload
+    Model: PageRequest
 */
 @Parcelize
-data class PagePayload(
+data class PageRequest(
     
     
     
@@ -3572,10 +3333,10 @@ data class CronSchedule(
 
              
 /*
-    Model: PagePublishPayload
+    Model: PagePublishRequest
 */
 @Parcelize
-data class PagePublishPayload(
+data class PagePublishRequest(
     
     
     
@@ -3626,10 +3387,10 @@ data class PageMetaSchema(
 
              
 /*
-    Model: SlideshowGetDetails
+    Model: SlideshowGetResponse
 */
 @Parcelize
-data class SlideshowGetDetails(
+data class SlideshowGetResponse(
     
     
     
@@ -3720,10 +3481,10 @@ data class SlideshowSchema(
 
              
 /*
-    Model: SlideshowPayload
+    Model: SlideshowRequest
 */
 @Parcelize
-data class SlideshowPayload(
+data class SlideshowRequest(
     
     
     
@@ -4173,8 +3934,11 @@ data class FieldDefinitionSchema(
     
     
     
-    @SerializedName("id")
+    @SerializedName("_id")
     var id: String?=null,
+    
+    @SerializedName("creator")
+    var creator: String?=null,
     
     @SerializedName("resource")
     var resource: String?=null,
@@ -4185,8 +3949,8 @@ data class FieldDefinitionSchema(
     @SerializedName("namespace")
     var namespace: String?=null,
     
-    @SerializedName("slug")
-    var slug: String?=null,
+    @SerializedName("key")
+    var key: String?=null,
     
     @SerializedName("description")
     var description: String?=null,
@@ -4203,11 +3967,23 @@ data class FieldDefinitionSchema(
     @SerializedName("company_id")
     var companyId: String?=null,
     
+    @SerializedName("created_by")
+    var createdBy: String?=null,
+    
+    @SerializedName("updated_by")
+    var updatedBy: String?=null,
+    
     @SerializedName("required")
     var required: Boolean?=null,
     
     @SerializedName("is_deleted")
     var isDeleted: Boolean?=null,
+    
+    @SerializedName("created_at")
+    var createdAt: String?=null,
+    
+    @SerializedName("updated_at")
+    var updatedAt: String?=null,
     
     @SerializedName("type_name")
     var typeName: String?=null,
@@ -4216,6 +3992,16 @@ data class FieldDefinitionSchema(
     var invalidFieldsCount: Int?=null
     
 ): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     
     
     
@@ -4287,11 +4073,14 @@ data class CustomFieldDefinitionRequestSchema(
     
     
     
+    @SerializedName("resource")
+    var resource: String?=null,
+    
     @SerializedName("type")
     var type: String?=null,
     
-    @SerializedName("slug")
-    var slug: String?=null,
+    @SerializedName("key")
+    var key: String?=null,
     
     @SerializedName("namespace")
     var namespace: String?=null,
@@ -4309,6 +4098,8 @@ data class CustomFieldDefinitionRequestSchema(
     var validations: ArrayList<FieldValidations>?=null
     
 ): Parcelable {
+    
+    
     
     
     
@@ -4357,8 +4148,8 @@ data class CustomObjectCustomFieldDefinitions(
     @SerializedName("required")
     var required: Boolean?=null,
     
-    @SerializedName("slug")
-    var slug: String?=null,
+    @SerializedName("key")
+    var key: String?=null,
     
     @SerializedName("validations")
     var validations: ArrayList<FieldValidations>?=null,
@@ -4401,6 +4192,9 @@ data class CustomObjectDefinitionUpdateRequestSchema(
     
     
     
+    @SerializedName("type")
+    var type: String?=null,
+    
     @SerializedName("description")
     var description: String?=null,
     
@@ -4425,6 +4219,8 @@ data class CustomObjectDefinitionUpdateRequestSchema(
     
     
     
+    
+    
 }
 
 
@@ -4438,6 +4234,9 @@ data class CustomFieldDefinitionDetailResSchema(
     
     
     
+    @SerializedName("creator")
+    var creator: String?=null,
+    
     @SerializedName("resource")
     var resource: String?=null,
     
@@ -4447,8 +4246,8 @@ data class CustomFieldDefinitionDetailResSchema(
     @SerializedName("namespace")
     var namespace: String?=null,
     
-    @SerializedName("slug")
-    var slug: String?=null,
+    @SerializedName("key")
+    var key: String?=null,
     
     @SerializedName("description")
     var description: String?=null,
@@ -4465,13 +4264,19 @@ data class CustomFieldDefinitionDetailResSchema(
     @SerializedName("application_id")
     var applicationId: String?=null,
     
+    @SerializedName("created_by")
+    var createdBy: String?=null,
+    
+    @SerializedName("updated_by")
+    var updatedBy: String?=null,
+    
     @SerializedName("required")
     var required: Boolean?=null,
     
     @SerializedName("is_deleted")
     var isDeleted: Boolean?=null,
     
-    @SerializedName("id")
+    @SerializedName("_id")
     var id: String?=null,
     
     @SerializedName("validations")
@@ -4490,92 +4295,6 @@ data class CustomFieldDefinitionDetailResSchema(
     
     
     
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-}
-
-
-
-             
-/*
-    Model: MetaFieldDefinitionDetailResSchema
-*/
-@Parcelize
-data class MetaFieldDefinitionDetailResSchema(
-    
-    
-    
-    @SerializedName("resource")
-    var resource: String?=null,
-    
-    @SerializedName("name")
-    var name: String?=null,
-    
-    @SerializedName("namespace")
-    var namespace: String?=null,
-    
-    @SerializedName("slug")
-    var slug: String?=null,
-    
-    @SerializedName("description")
-    var description: String?=null,
-    
-    @SerializedName("type")
-    var type: String?=null,
-    
-    @SerializedName("multi_value")
-    var multiValue: Boolean?=null,
-    
-    @SerializedName("company_id")
-    var companyId: String?=null,
-    
-    @SerializedName("application_id")
-    var applicationId: String?=null,
-    
-    @SerializedName("required")
-    var required: Boolean?=null,
-    
-    @SerializedName("is_deleted")
-    var isDeleted: Boolean?=null,
-    
-    @SerializedName("id")
-    var id: String?=null,
-    
-    @SerializedName("validations")
-    var validations: @RawValue ArrayList<Any>?=null,
-    
-    @SerializedName("created_at")
-    var createdAt: String?=null,
-    
-    @SerializedName("updated_at")
-    var updatedAt: String?=null
-    
-): Parcelable {
     
     
     
@@ -4671,23 +4390,26 @@ data class CustomFieldSchema(
     
     
     
-    @SerializedName("id")
+    @SerializedName("_id")
     var id: String?=null,
     
     @SerializedName("namespace")
     var namespace: String?=null,
     
-    @SerializedName("slug")
-    var slug: String?=null,
+    @SerializedName("key")
+    var key: String?=null,
     
     @SerializedName("resource")
     var resource: String?=null,
     
+    @SerializedName("creator")
+    var creator: String?=null,
+    
     @SerializedName("value")
     var value: ArrayList<CustomFieldValue>?=null,
     
-    @SerializedName("resource_slug")
-    var resourceSlug: String?=null,
+    @SerializedName("resource_id")
+    var resourceId: String?=null,
     
     @SerializedName("type")
     var type: String?=null,
@@ -4698,11 +4420,17 @@ data class CustomFieldSchema(
     @SerializedName("company_id")
     var companyId: String?=null,
     
+    @SerializedName("definition_id")
+    var definitionId: String?=null,
+    
     @SerializedName("has_invalid_values")
     var hasInvalidValues: Boolean?=null,
     
     @SerializedName("invalid_value_errors")
     var invalidValueErrors: @RawValue ArrayList<Any>?=null,
+    
+    @SerializedName("created_by")
+    var createdBy: String?=null,
     
     @SerializedName("is_deleted")
     var isDeleted: Boolean?=null,
@@ -4714,6 +4442,12 @@ data class CustomFieldSchema(
     var updatedAt: String?=null
     
 ): Parcelable {
+    
+    
+    
+    
+    
+    
     
     
     
@@ -4778,33 +4512,6 @@ data class CustomFieldsResponseSchema(
 
              
 /*
-    Model: CustomFieldsDeleteSchema
-*/
-@Parcelize
-data class CustomFieldsDeleteSchema(
-    
-    
-    
-    @SerializedName("success")
-    var success: Boolean?=null,
-    
-    @SerializedName("message")
-    var message: String?=null
-    
-): Parcelable {
-    
-    
-    
-    
-    
-    
-    
-}
-
-
-
-             
-/*
     Model: CustomFieldsResponseByResourceIdSchema
 */
 @Parcelize
@@ -4837,15 +4544,10 @@ data class CustomField(
     @SerializedName("value")
     var value: @RawValue ArrayList<Any>?=null,
     
-    @SerializedName("namespace")
-    var namespace: String?=null,
-    
-    @SerializedName("slug")
-    var slug: String?=null
+    @SerializedName("definition_id")
+    var definitionId: String?=null
     
 ): Parcelable {
-    
-    
     
     
     
@@ -4888,8 +4590,11 @@ data class CustomObjectSchema(
     
     
     
-    @SerializedName("id")
+    @SerializedName("_id")
     var id: String?=null,
+    
+    @SerializedName("creator")
+    var creator: String?=null,
     
     @SerializedName("company_id")
     var companyId: String?=null,
@@ -4897,22 +4602,34 @@ data class CustomObjectSchema(
     @SerializedName("application_id")
     var applicationId: String?=null,
     
+    @SerializedName("created_by")
+    var createdBy: String?=null,
+    
+    @SerializedName("updated_by")
+    var updatedBy: String?=null,
+    
     @SerializedName("status")
     var status: String?=null,
     
     @SerializedName("type")
     var type: String?=null,
     
-    @SerializedName("definition_slug")
-    var definitionSlug: String?=null,
-    
     @SerializedName("display_name")
     var displayName: String?=null,
+    
+    @SerializedName("definition_id")
+    var definitionId: String?=null,
     
     @SerializedName("fields")
     var fields: ArrayList<CustomFieldSchema>?=null
     
 ): Parcelable {
+    
+    
+    
+    
+    
+    
     
     
     
@@ -4948,9 +4665,6 @@ data class CustomObjectDefinitionRequestSchema(
     @SerializedName("type")
     var type: String?=null,
     
-    @SerializedName("definition_slug")
-    var definitionSlug: String?=null,
-    
     @SerializedName("description")
     var description: String?=null,
     
@@ -4977,6 +4691,106 @@ data class CustomObjectDefinitionRequestSchema(
     
     
     
+}
+
+
+
+             
+/*
+    Model: CustomObjectCustomFieldDefinitionResSchema
+*/
+@Parcelize
+data class CustomObjectCustomFieldDefinitionResSchema(
+    
+    
+    
+    @SerializedName("creator")
+    var creator: String?=null,
+    
+    @SerializedName("resource")
+    var resource: String?=null,
+    
+    @SerializedName("name")
+    var name: String?=null,
+    
+    @SerializedName("namespace")
+    var namespace: String?=null,
+    
+    @SerializedName("key")
+    var key: String?=null,
+    
+    @SerializedName("description")
+    var description: String?=null,
+    
+    @SerializedName("type")
+    var type: String?=null,
+    
+    @SerializedName("multi_value")
+    var multiValue: Boolean?=null,
+    
+    @SerializedName("validations")
+    var validations: ArrayList<FieldValidations>?=null,
+    
+    @SerializedName("company_id")
+    var companyId: String?=null,
+    
+    @SerializedName("created_by")
+    var createdBy: String?=null,
+    
+    @SerializedName("metaobject_definition_id")
+    var metaobjectDefinitionId: String?=null,
+    
+    @SerializedName("required")
+    var required: Boolean?=null,
+    
+    @SerializedName("is_deleted")
+    var isDeleted: Boolean?=null,
+    
+    @SerializedName("_id")
+    var id: String?=null,
+    
+    @SerializedName("created_at")
+    var createdAt: String?=null,
+    
+    @SerializedName("updated_at")
+    var updatedAt: String?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     
     
 }
@@ -4985,14 +4799,14 @@ data class CustomObjectDefinitionRequestSchema(
 
              
 /*
-    Model: CustomObjectDefinitionSlugSchema
+    Model: CustomObjectDefinitionSchema
 */
 @Parcelize
-data class CustomObjectDefinitionSlugSchema(
+data class CustomObjectDefinitionSchema(
     
     
     
-    @SerializedName("id")
+    @SerializedName("_id")
     var id: String?=null,
     
     @SerializedName("name")
@@ -5001,19 +4815,29 @@ data class CustomObjectDefinitionSlugSchema(
     @SerializedName("type")
     var type: String?=null,
     
-    @SerializedName("definition_slug")
-    var definitionSlug: String?=null,
-    
     @SerializedName("display_name_key")
     var displayNameKey: String?=null,
     
     @SerializedName("description")
     var description: String?=null,
     
+    @SerializedName("creator")
+    var creator: String?=null,
+    
+    @SerializedName("created_by")
+    var createdBy: String?=null,
+    
+    @SerializedName("updated_by")
+    var updatedBy: String?=null,
+    
     @SerializedName("field_definitions")
-    var fieldDefinitions: ArrayList<CustomFieldDefinitionDetailResSchema>?=null
+    var fieldDefinitions: ArrayList<CustomObjectCustomFieldDefinitionResSchema>?=null
     
 ): Parcelable {
+    
+    
+    
+    
     
     
     
@@ -5064,10 +4888,10 @@ data class CustomObjectDefinitionDeleteResponseSchema(
 
              
 /*
-    Model: CustomObjectEntryBulkUploadDetails
+    Model: CustomObjectEntryBulkUploadResponse
 */
 @Parcelize
-data class CustomObjectEntryBulkUploadDetails(
+data class CustomObjectEntryBulkUploadResponse(
     
     
     
@@ -5091,14 +4915,14 @@ data class CustomObjectEntryBulkUploadDetails(
 
              
 /*
-    Model: CustomObjectListItemDefinitionModel
+    Model: CustomObjectListItemDefinationSchema
 */
 @Parcelize
-data class CustomObjectListItemDefinitionModel(
+data class CustomObjectListItemDefinationSchema(
     
     
     
-    @SerializedName("id")
+    @SerializedName("_id")
     var id: String?=null,
     
     @SerializedName("name")
@@ -5130,14 +4954,14 @@ data class CustomObjectListItemSchema(
     
     
     
-    @SerializedName("id")
+    @SerializedName("_id")
     var id: String?=null,
+    
+    @SerializedName("definition_id")
+    var definitionId: String?=null,
     
     @SerializedName("status")
     var status: String?=null,
-    
-    @SerializedName("created_at")
-    var createdAt: String?=null,
     
     @SerializedName("updated_at")
     var updatedAt: String?=null,
@@ -5146,7 +4970,7 @@ data class CustomObjectListItemSchema(
     var displayName: String?=null,
     
     @SerializedName("definition")
-    var definition: CustomObjectListItemDefinitionModel?=null,
+    var definition: CustomObjectListItemDefinationSchema?=null,
     
     @SerializedName("references")
     var references: Int?=null
@@ -5202,27 +5026,27 @@ data class CustomObjectsSchema(
 
              
 /*
-    Model: CustomObjectFieldDefinition
+    Model: CustomObjectFieldSchema
 */
 @Parcelize
-data class CustomObjectFieldDefinition(
+data class CustomObjectFieldSchema(
     
     
     
-    @SerializedName("id")
+    @SerializedName("_id")
     var id: String?=null,
     
-    @SerializedName("slug")
-    var slug: String?=null,
-    
-    @SerializedName("namespace")
-    var namespace: String?=null,
+    @SerializedName("key")
+    var key: String?=null,
     
     @SerializedName("value")
     var value: @RawValue ArrayList<Any>?=null,
     
     @SerializedName("type")
-    var type: String?=null
+    var type: String?=null,
+    
+    @SerializedName("definition_id")
+    var definitionId: String?=null
     
 ): Parcelable {
     
@@ -5244,14 +5068,14 @@ data class CustomObjectFieldDefinition(
 
              
 /*
-    Model: CustomObjectBySlugSchema
+    Model: CustomObjectByIdSchema
 */
 @Parcelize
-data class CustomObjectBySlugSchema(
+data class CustomObjectByIdSchema(
     
     
     
-    @SerializedName("id")
+    @SerializedName("_id")
     var id: String?=null,
     
     @SerializedName("status")
@@ -5261,25 +5085,15 @@ data class CustomObjectBySlugSchema(
     var displayName: String?=null,
     
     @SerializedName("definition")
-    var definition: CustomObjectListItemDefinitionModel?=null,
+    var definition: CustomObjectListItemDefinationSchema?=null,
     
     @SerializedName("references")
     var references: @RawValue ArrayList<Any>?=null,
     
-    @SerializedName("slug")
-    var slug: String?=null,
-    
-    @SerializedName("definition_slug")
-    var definitionSlug: String?=null,
-    
     @SerializedName("fields")
-    var fields: ArrayList<CustomObjectFieldDefinition>?=null
+    var fields: ArrayList<CustomObjectFieldSchema>?=null
     
 ): Parcelable {
-    
-    
-    
-    
     
     
     
@@ -5365,14 +5179,14 @@ data class CustomObjectMetaSchema(
 
              
 /*
-    Model: JobSchema
+    Model: CustomObjectJobSchema
 */
 @Parcelize
-data class JobSchema(
+data class CustomObjectJobSchema(
     
     
     
-    @SerializedName("id")
+    @SerializedName("_id")
     var id: String?=null,
     
     @SerializedName("jobs")
@@ -5389,6 +5203,12 @@ data class JobSchema(
     
     @SerializedName("company_id")
     var companyId: String?=null,
+    
+    @SerializedName("creator")
+    var creator: String?=null,
+    
+    @SerializedName("url")
+    var url: String?=null,
     
     @SerializedName("status")
     var status: String?=null,
@@ -5424,10 +5244,7 @@ data class JobSchema(
     var createdAt: String?=null,
     
     @SerializedName("updated_at")
-    var updatedAt: String?=null,
-    
-    @SerializedName("application_id")
-    var applicationId: String?=null
+    var updatedAt: String?=null
     
 ): Parcelable {
     
@@ -5466,31 +5283,6 @@ data class JobSchema(
     
     
     
-    
-    
-    
-    
-    
-}
-
-
-
-             
-/*
-    Model: CustomFieldBulkEntry
-*/
-@Parcelize
-data class CustomFieldBulkEntry(
-    
-    
-    
-    @SerializedName("items")
-    var items: ArrayList<JobSchema>?=null,
-    
-    @SerializedName("page")
-    var page: Page?=null
-    
-): Parcelable {
     
     
     
@@ -5512,7 +5304,7 @@ data class CustomObjectBulkEntry(
     
     
     @SerializedName("items")
-    var items: ArrayList<JobSchema>?=null,
+    var items: ArrayList<CustomObjectJobSchema>?=null,
     
     @SerializedName("page")
     var page: Page?=null
@@ -5520,28 +5312,6 @@ data class CustomObjectBulkEntry(
 ): Parcelable {
     
     
-    
-    
-    
-    
-    
-}
-
-
-
-             
-/*
-    Model: MetafieldTypesSchema
-*/
-@Parcelize
-data class MetafieldTypesSchema(
-    
-    
-    
-    @SerializedName("metafield_types")
-    var metafieldTypes: CustomFieldTypeSchema?=null
-    
-): Parcelable {
     
     
     
@@ -5597,19 +5367,9 @@ data class CustomFieldTypeSchema(
     var metaobject: Metaobject?=null,
     
     @SerializedName("product")
-    var product: Product?=null,
-    
-    @SerializedName("html")
-    var html: HTML?=null,
-    
-    @SerializedName("duration")
-    var duration: Duration?=null
+    var product: Product?=null
     
 ): Parcelable {
-    
-    
-    
-    
     
     
     
@@ -5719,85 +5479,6 @@ data class SupportedValidationsSchema(
 ): Parcelable {
     
     
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-}
-
-
-
-             
-/*
-    Model: Duration
-*/
-@Parcelize
-data class Duration(
-    
-    
-    
-    @SerializedName("name")
-    var name: String?=null,
-    
-    @SerializedName("list_enabled")
-    var listEnabled: Boolean?=null,
-    
-    @SerializedName("type")
-    var type: String?=null,
-    
-    @SerializedName("category")
-    var category: String?=null,
-    
-    @SerializedName("supported_validations")
-    var supportedValidations: ArrayList<SupportedValidationsSchema>?=null
-    
-): Parcelable {
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-}
-
-
-
-             
-/*
-    Model: HTML
-*/
-@Parcelize
-data class HTML(
-    
-    
-    
-    @SerializedName("name")
-    var name: String?=null,
-    
-    @SerializedName("list_enabled")
-    var listEnabled: Boolean?=null,
-    
-    @SerializedName("type")
-    var type: String?=null,
-    
-    @SerializedName("supported_validations")
-    var supportedValidations: ArrayList<SupportedValidationsSchema>?=null
-    
-): Parcelable {
     
     
     
@@ -6363,7 +6044,7 @@ data class CustomObjectEntry(
     
     
     
-    @SerializedName("id")
+    @SerializedName("_id")
     var id: String?=null,
     
     @SerializedName("name")
@@ -6437,38 +6118,11 @@ data class CustomObjectEntryFieldSchema(
     
     
     
-    @SerializedName("namespace")
-    var namespace: String?=null,
-    
-    @SerializedName("slug")
-    var slug: String?=null
-    
-): Parcelable {
-    
-    
-    
-    
-    
-    
-    
-}
-
-
-
-             
-/*
-    Model: CustomObjectEntryFieldSchemaWithoutID
-*/
-@Parcelize
-data class CustomObjectEntryFieldSchemaWithoutID(
-    
-    
-    
-    @SerializedName("slug")
-    var slug: String?=null,
+    @SerializedName("definition_id")
+    var definitionId: String?=null,
     
     @SerializedName("value")
-    var value: @RawValue Any?=null
+    var value: @RawValue ArrayList<Any>?=null
     
 ): Parcelable {
     
@@ -6494,8 +6148,8 @@ data class CustomObjectRequestSchema(
     @SerializedName("status")
     var status: String?=null,
     
-    @SerializedName("slug")
-    var slug: String?=null,
+    @SerializedName("definition_id")
+    var definitionId: String?=null,
     
     @SerializedName("fields")
     var fields: ArrayList<CustomObjectEntryFieldSchema>?=null
@@ -6503,33 +6157,6 @@ data class CustomObjectRequestSchema(
 ): Parcelable {
     
     
-    
-    
-    
-    
-    
-    
-    
-}
-
-
-
-             
-/*
-    Model: CustomObjectRequestSchemaWithoutId
-*/
-@Parcelize
-data class CustomObjectRequestSchemaWithoutId(
-    
-    
-    
-    @SerializedName("status")
-    var status: String?=null,
-    
-    @SerializedName("fields")
-    var fields: ArrayList<CustomObjectEntryFieldSchemaWithoutID>?=null
-    
-): Parcelable {
     
     
     

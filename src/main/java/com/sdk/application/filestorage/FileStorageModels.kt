@@ -73,10 +73,10 @@ data class Upload(
 
              
 /*
-    Model: FileUpload
+    Model: StartResponse
 */
 @Parcelize
-data class FileUpload(
+data class StartResponse(
     
     
     
@@ -104,10 +104,15 @@ data class FileUpload(
     @SerializedName("upload")
     var upload: Upload?=null,
     
+    @SerializedName("cdn")
+    var cdn: CDN?=null,
+    
     @SerializedName("tags")
     var tags: ArrayList<String>?=null
     
 ): Parcelable {
+    
+    
     
     
     
@@ -157,10 +162,10 @@ data class Params(
 
              
 /*
-    Model: FileUploadStart
+    Model: StartRequest
 */
 @Parcelize
-data class FileUploadStart(
+data class StartRequest(
     
     
     
@@ -221,10 +226,10 @@ data class CreatedBy(
 
              
 /*
-    Model: FileUploadComplete
+    Model: CompleteResponse
 */
 @Parcelize
-data class FileUploadComplete(
+data class CompleteResponse(
     
     
     
@@ -340,10 +345,10 @@ data class Urls(
 
              
 /*
-    Model: SignUrlResult
+    Model: SignUrlResponse
 */
 @Parcelize
-data class SignUrlResult(
+data class SignUrlResponse(
     
     
     
@@ -362,10 +367,10 @@ data class SignUrlResult(
 
              
 /*
-    Model: SignUrl
+    Model: SignUrlRequest
 */
 @Parcelize
-data class SignUrl(
+data class SignUrlRequest(
     
     
     

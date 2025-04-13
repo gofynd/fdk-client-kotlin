@@ -20,7 +20,7 @@ class AccessTokenInterceptor(
             }
 
             if (!original.headers.names().contains("x-fp-sdk-version")) {
-                header("x-fp-sdk-version", "1.9.5-1")
+                header("x-fp-sdk-version", "1.9.4-1")
             }
 
             if (!original.headers.names().contains("x-currency-code")) {

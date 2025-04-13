@@ -23,27 +23,27 @@ interface CatalogApiList {
     
     @GET
     suspend fun getProductComparisonBySlugs(@Url url1: String?    ,  @Query("slug") slug: ArrayList<String>, @HeaderMap headers: Map<String, String>? = null)
-    : Response<ProductsComparisonResponseSchema>
+    : Response<ProductsComparisonResponse>
     
     
     @GET
     suspend fun getSimilarComparisonProductBySlug(@Url url1: String?    , @HeaderMap headers: Map<String, String>? = null)
-    : Response<ProductCompareResponseSchema>
+    : Response<ProductCompareResponse>
     
     
     @GET
     suspend fun getComparedFrequentlyProductBySlug(@Url url1: String?    , @HeaderMap headers: Map<String, String>? = null)
-    : Response<ProductFrequentlyComparedSimilarResponseSchema>
+    : Response<ProductFrequentlyComparedSimilarResponse>
     
     
     @GET
     suspend fun getProductVariantsBySlug(@Url url1: String?    , @HeaderMap headers: Map<String, String>? = null)
-    : Response<ProductVariantsResponseSchema>
+    : Response<ProductVariantsResponse>
     
     
     @GET
-    suspend fun getProductStockByIds(@Url url1: String?    ,      @Query("item_id") itemId: Int?, @Query("alu") alu: String?, @Query("sku_code") skuCode: String?, @Query("ean") ean: String?, @Query("upc") upc: String?, @HeaderMap headers: Map<String, String>? = null)
-    : Response<ProductStockStatusResponseSchema>
+    suspend fun getProductStockByIds(@Url url1: String?    ,      @Query("item_id") itemId: String?, @Query("alu") alu: String?, @Query("sku_code") skuCode: String?, @Query("ean") ean: String?, @Query("upc") upc: String?, @HeaderMap headers: Map<String, String>? = null)
+    : Response<ProductStockStatusResponse>
     
     
     @GET
@@ -53,87 +53,87 @@ interface CatalogApiList {
     
     @GET
     suspend fun getProducts(@Url url1: String?    ,         @Query("q") q: String?, @Query("f") f: String?, @Query("filters") filters: Boolean?, @Query("sort_on") sortOn: String?, @Query("page_id") pageId: String?, @Query("page_size") pageSize: Int?, @Query("page_no") pageNo: Int?, @Query("page_type") pageType: String?, @HeaderMap headers: Map<String, String>? = null)
-    : Response<ProductListingResponseSchema>
+    : Response<ProductListingResponse>
     
     
     @GET
     suspend fun getBrands(@Url url1: String?    ,    @Query("department") department: String?, @Query("page_no") pageNo: Int?, @Query("page_size") pageSize: Int?, @HeaderMap headers: Map<String, String>? = null)
-    : Response<BrandListingResponseSchema>
+    : Response<BrandListingResponse>
     
     
     @GET
     suspend fun getBrandDetailBySlug(@Url url1: String?    , @HeaderMap headers: Map<String, String>? = null)
-    : Response<BrandDetailResponseSchema>
+    : Response<BrandDetailResponse>
     
     
     @GET
     suspend fun getCategories(@Url url1: String?    ,  @Query("department") department: String?, @HeaderMap headers: Map<String, String>? = null)
-    : Response<CategoryListingResponseSchema>
+    : Response<CategoryListingResponse>
     
     
     @GET
     suspend fun getCategoryDetailBySlug(@Url url1: String?    , @HeaderMap headers: Map<String, String>? = null)
-    : Response<CategoryMetaResponseSchema>
+    : Response<CategoryMetaResponse>
     
     
     @GET
     suspend fun getHomeProducts(@Url url1: String?    ,    @Query("sort_on") sortOn: String?, @Query("page_id") pageId: String?, @Query("page_size") pageSize: Int?, @HeaderMap headers: Map<String, String>? = null)
-    : Response<HomeListingResponseSchema>
+    : Response<HomeListingResponse>
     
     
     @GET
     suspend fun getDepartments(@Url url1: String?   , @HeaderMap headers: Map<String, String>? = null)
-    : Response<DepartmentResponseSchema>
+    : Response<DepartmentResponse>
     
     
     @GET
     suspend fun getSearchResults(@Url url1: String?    ,  @Query("q") q: String, @HeaderMap headers: Map<String, String>? = null)
-    : Response<AutoCompleteResponseSchema>
+    : Response<AutoCompleteResponse>
     
     
     @GET
     suspend fun getCollections(@Url url1: String?    ,     @Query("page_no") pageNo: Int?, @Query("page_size") pageSize: Int?, @Query("tag") tag: ArrayList<String>?, @Query("q") q: String?, @HeaderMap headers: Map<String, String>? = null)
-    : Response<GetCollectionListingResponseSchema>
+    : Response<GetCollectionListingResponse>
     
     
     @GET
     suspend fun getCollectionItemsBySlug(@Url url1: String?     ,         @Query("f") f: String?, @Query("q") q: String?, @Query("filters") filters: Boolean?, @Query("sort_on") sortOn: String?, @Query("page_id") pageId: String?, @Query("page_size") pageSize: Int?, @Query("page_no") pageNo: Int?, @Query("page_type") pageType: String?, @HeaderMap headers: Map<String, String>? = null)
-    : Response<ProductListingResponseSchema>
+    : Response<ProductListingResponse>
     
     
     @GET
     suspend fun getCollectionDetailBySlug(@Url url1: String?    , @HeaderMap headers: Map<String, String>? = null)
-    : Response<CollectionDetailResponseSchema>
+    : Response<CollectionDetailResponse>
     
     
     @GET
     suspend fun getFollowedListing(@Url url1: String?     ,   @Query("page_id") pageId: String?, @Query("page_size") pageSize: Int?, @HeaderMap headers: Map<String, String>? = null)
-    : Response<GetFollowListingResponseSchema>
+    : Response<GetFollowListingResponse>
     
     
     @DELETE
     suspend fun unfollowById(@Url url1: String?     , @HeaderMap headers: Map<String, String>? = null)
-    : Response<FollowPostResponseSchema>
+    : Response<FollowPostResponse>
     
     
     @POST
     suspend fun followById(@Url url1: String?     , @HeaderMap headers: Map<String, String>? = null)
-    : Response<FollowPostResponseSchema>
+    : Response<FollowPostResponse>
     
     
     @GET
     suspend fun getFollowerCountById(@Url url1: String?     , @HeaderMap headers: Map<String, String>? = null)
-    : Response<FollowerCountResponseSchema>
+    : Response<FollowerCountResponse>
     
     
     @GET
     suspend fun getFollowIds(@Url url1: String?    ,  @Query("collection_type") collectionType: String?, @HeaderMap headers: Map<String, String>? = null)
-    : Response<FollowIdsResponseSchema>
+    : Response<FollowIdsResponse>
     
     
     @GET
     suspend fun getStores(@Url url1: String?    ,         @Query("page_no") pageNo: Int?, @Query("page_size") pageSize: Int?, @Query("q") q: String?, @Query("city") city: String?, @Query("range") range: Int?, @Query("latitude") latitude: Double?, @Query("longitude") longitude: Double?, @Query("tags") tags: String?, @HeaderMap headers: Map<String, String>? = null)
-    : Response<StoreListingResponseSchema>
+    : Response<StoreListingResponse>
     
     
     @GET
@@ -147,13 +147,18 @@ interface CatalogApiList {
     
     
     @GET
-    suspend fun getProductBundlesBySlug(@Url url1: String?    ,   @Query("slug") slug: String?, @Query("id") id: Int?, @HeaderMap headers: Map<String, String>? = null)
+    suspend fun getProductBundlesBySlug(@Url url1: String?    ,   @Query("slug") slug: String?, @Query("id") id: String?, @HeaderMap headers: Map<String, String>? = null)
     : Response<ProductBundle>
     
     
     @GET
     suspend fun getProductPriceBySlug(@Url url1: String?      ,   @Query("store_id") storeId: Int?, @Query("moq") moq: Int?, @HeaderMap headers: Map<String, String>? = null)
     : Response<ProductSizePriceResponseV3>
+    
+    
+    @POST
+    suspend fun getProductsServiceability(@Url url1: String?   ,@Body body: ProductSizePriceServiceabilityRequest, @HeaderMap headers: Map<String, String>? = null)
+    : Response<ProductSizePriceServiceabilityResponse>
     
     
     @GET
