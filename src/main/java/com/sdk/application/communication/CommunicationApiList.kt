@@ -31,8 +31,18 @@ interface CommunicationApiList {
     : Response<CommunicationConsentRes>
     
     
+    @POST
+    suspend fun upsertAppPushtoken(@Url url1: String?   ,@Body body: PushtokenReq, @HeaderMap headers: Map<String, String>? = null)
+    : Response<PushtokenRes>
+    
+    
     @GET
     suspend fun getOtpConfiguration(@Url url1: String?   , @HeaderMap headers: Map<String, String>? = null)
     : Response<OtpConfiguration>
+    
+    
+    @POST
+    suspend fun createAppPushtoken(@Url url1: String?   ,@Body body: PushtokenReq, @HeaderMap headers: Map<String, String>? = null)
+    : Response<PushtokenRes>
     
 }

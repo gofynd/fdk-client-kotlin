@@ -13,12 +13,12 @@ interface OrderApiList {
     
     @GET
     suspend fun getShipmentRefundSummary(@Url url1: String?    , @HeaderMap headers: Map<String, String>? = null)
-    : Response<ShipmentRefundSummaryResponseSchema>
+    : Response<ShipmentRefundSummaryResponse>
     
     
     @GET
     suspend fun getRefundOptions(@Url url1: String?     ,      @Query("bag_ids") bagIds: String?, @Query("state") state: String?, @Query("optin_app_id") optinAppId: String?, @Query("optin_company_id") optinCompanyId: Int?, @Query("status") status: String?, @HeaderMap headers: Map<String, String>? = null)
-    : Response<RefundOptionsSchemaResponseSchema>
+    : Response<RefundOptionsSchemaResponse>
     
     
     @GET
@@ -53,17 +53,17 @@ interface OrderApiList {
     
     @GET
     suspend fun getCustomerDetailsByShipmentId(@Url url1: String?     , @HeaderMap headers: Map<String, String>? = null)
-    : Response<CustomerDetailsResponseSchema>
+    : Response<CustomerDetailsResponse>
     
     
     @POST
     suspend fun sendOtpToShipmentCustomer(@Url url1: String?     , @HeaderMap headers: Map<String, String>? = null)
-    : Response<SendOtpToCustomerResponseSchema>
+    : Response<SendOtpToCustomerResponse>
     
     
     @POST
     suspend fun verifyOtpShipmentCustomer(@Url url1: String?     ,@Body body: VerifyOtp, @HeaderMap headers: Map<String, String>? = null)
-    : Response<VerifyOtpResponseSchema>
+    : Response<VerifyOtpResponse>
     
     
     @GET
@@ -77,7 +77,7 @@ interface OrderApiList {
     
     
     @PUT
-    suspend fun updateShipmentStatus(@Url url1: String?    ,@Body body: UpdateShipmentStatusRequestSchema, @HeaderMap headers: Map<String, String>? = null)
-    : Response<ShipmentApplicationStatusResponseSchema>
+    suspend fun updateShipmentStatus(@Url url1: String?    ,@Body body: UpdateShipmentStatusRequest, @HeaderMap headers: Map<String, String>? = null)
+    : Response<ShipmentApplicationStatusResponse>
     
 }

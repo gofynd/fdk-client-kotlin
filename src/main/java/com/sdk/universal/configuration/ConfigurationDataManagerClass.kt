@@ -59,7 +59,7 @@ class ConfigurationDataManagerClass(val config: PublicConfig, val unauthorizedAc
         return retrofitHttpClient?.initializeRestClient(ConfigurationApiList::class.java) as? ConfigurationApiList
     }
     
-    suspend fun searchApplication(authorization: String?=null,query: String?=null, headers: Map<String, String> = emptyMap()): Response<ApplicationResponseSchema>? {
+    suspend fun searchApplication(authorization: String?=null,query: String?=null, headers: Map<String, String> = emptyMap()): Response<ApplicationResponse>? {
         var fullUrl : String? = _relativeUrls["searchApplication"]
         
         return configurationApiList?.searchApplication(fullUrl,   authorization = authorization,  query = query,headers = headers)}
@@ -73,7 +73,7 @@ class ConfigurationDataManagerClass(val config: PublicConfig, val unauthorizedAc
 
     
     
-    suspend fun checkVersionIsUpToDate(body: VersionRequestSchema, headers: Map<String, String> = emptyMap()): Response<VersionResponseSchema>? {
+    suspend fun checkVersionIsUpToDate(body: VersionRequest, headers: Map<String, String> = emptyMap()): Response<VersionResponse>? {
         var fullUrl : String? = _relativeUrls["checkVersionIsUpToDate"]
         
         return configurationApiList?.checkVersionIsUpToDate(fullUrl, body = body,headers = headers)}

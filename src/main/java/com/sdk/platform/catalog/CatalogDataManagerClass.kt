@@ -107,7 +107,7 @@ class CatalogDataManagerClass(val config: PlatformConfig, val unauthorizedAction
     
     
     suspend fun listCategories(level: String?=null,department: Int?=null,q: String?=null,pageNo: Int?=null,pageSize: Int?=null,uids: ArrayList<Int>?=null, headers: Map<String, String> = emptyMap())
-    : Response<CategoryResponseSchema>? {
+    : Response<CategoryResponse>? {
 
         return if (config.oauthClient.isAccessTokenValid()) {
             catalogApiList?.listCategories(
@@ -119,7 +119,7 @@ class CatalogDataManagerClass(val config: PlatformConfig, val unauthorizedAction
     
     
     suspend fun getCategoryData(uid: String, headers: Map<String, String> = emptyMap())
-    : Response<SingleCategoryResponseSchema>? {
+    : Response<SingleCategoryResponse>? {
 
         return if (config.oauthClient.isAccessTokenValid()) {
             catalogApiList?.getCategoryData(
@@ -131,7 +131,7 @@ class CatalogDataManagerClass(val config: PlatformConfig, val unauthorizedAction
     
     
     suspend fun getSellerInsights(sellerAppId: String, headers: Map<String, String> = emptyMap())
-    : Response<CrossSellingResponseSchema>? {
+    : Response<CrossSellingResponse>? {
 
         return if (config.oauthClient.isAccessTokenValid()) {
             catalogApiList?.getSellerInsights(
@@ -143,7 +143,7 @@ class CatalogDataManagerClass(val config: PlatformConfig, val unauthorizedAction
     
     
     suspend fun listDepartmentsData(pageNo: Int?=null,itemType: String?=null,pageSize: Int?=null,name: String?=null,search: String?=null,isActive: Boolean?=null,uids: ArrayList<Int>?=null, headers: Map<String, String> = emptyMap())
-    : Response<DepartmentsResponseSchema>? {
+    : Response<DepartmentsResponse>? {
 
         return if (config.oauthClient.isAccessTokenValid()) {
             catalogApiList?.listDepartmentsData(
@@ -155,7 +155,7 @@ class CatalogDataManagerClass(val config: PlatformConfig, val unauthorizedAction
     
     
     suspend fun getDepartmentData(uid: String, headers: Map<String, String> = emptyMap())
-    : Response<DepartmentsResponseSchema>? {
+    : Response<DepartmentsResponse>? {
 
         return if (config.oauthClient.isAccessTokenValid()) {
             catalogApiList?.getDepartmentData(
@@ -178,8 +178,20 @@ class CatalogDataManagerClass(val config: PlatformConfig, val unauthorizedAction
     }
     
     
+    suspend fun getHsnCode(id: String, headers: Map<String, String> = emptyMap())
+    : Response<HsnCode>? {
+
+        return if (config.oauthClient.isAccessTokenValid()) {
+            catalogApiList?.getHsnCode(
+        companyId = config.companyId,id = id, headers = headers)
+        } else {
+            null
+        }
+    }
+    
+    
     suspend fun getInventories(itemId: Int?=null,size: String?=null,pageNo: Int?=null,pageSize: Int?=null,pageId: String?=null,pageType: String?=null,q: String?=null,sellable: Boolean?=null,storeIds: ArrayList<Int>?=null,brandIds: ArrayList<Int>?=null,sellerIdentifiers: ArrayList<String>?=null,minSellable: Int?=null,maxSellable: Int?=null,fromDate: String?=null,toDate: String?=null,sizeIdentifier: String?=null, headers: Map<String, String> = emptyMap())
-    : Response<GetInventoriesResponseSchema>? {
+    : Response<GetInventoriesResponse>? {
 
         return if (config.oauthClient.isAccessTokenValid()) {
             catalogApiList?.getInventories(
@@ -203,7 +215,7 @@ class CatalogDataManagerClass(val config: PlatformConfig, val unauthorizedAction
     
     
     suspend fun createBulkInventoryJob(body: InventoryBulkJob, headers: Map<String, String> = emptyMap())
-    : Response<InventoryBulkResponseSchema>? {
+    : Response<InventoryBulkResponse>? {
 
         return if (config.oauthClient.isAccessTokenValid()) {
             catalogApiList?.createBulkInventoryJob(
@@ -215,7 +227,7 @@ class CatalogDataManagerClass(val config: PlatformConfig, val unauthorizedAction
     
     
     suspend fun deleteBulkInventoryJob(batchId: String, headers: Map<String, String> = emptyMap())
-    : Response<SuccessResponseSchema>? {
+    : Response<SuccessResponse>? {
 
         return if (config.oauthClient.isAccessTokenValid()) {
             catalogApiList?.deleteBulkInventoryJob(
@@ -226,8 +238,8 @@ class CatalogDataManagerClass(val config: PlatformConfig, val unauthorizedAction
     }
     
     
-    suspend fun createBulkInventory(batchId: String,body: InventoryBulkRequestSchema, headers: Map<String, String> = emptyMap())
-    : Response<SuccessResponseSchema>? {
+    suspend fun createBulkInventory(batchId: String,body: InventoryBulkRequest, headers: Map<String, String> = emptyMap())
+    : Response<SuccessResponse>? {
 
         return if (config.oauthClient.isAccessTokenValid()) {
             catalogApiList?.createBulkInventory(
@@ -238,8 +250,8 @@ class CatalogDataManagerClass(val config: PlatformConfig, val unauthorizedAction
     }
     
     
-    suspend fun createInventoryExportJob(body: InventoryExportRequestSchema, headers: Map<String, String> = emptyMap())
-    : Response<InventoryExportResponseSchema>? {
+    suspend fun createInventoryExportJob(body: InventoryExportRequest, headers: Map<String, String> = emptyMap())
+    : Response<InventoryExportResponse>? {
 
         return if (config.oauthClient.isAccessTokenValid()) {
             catalogApiList?.createInventoryExportJob(
@@ -251,7 +263,7 @@ class CatalogDataManagerClass(val config: PlatformConfig, val unauthorizedAction
     
     
     suspend fun getInventoryExport( headers: Map<String, String> = emptyMap())
-    : Response<InventoryExportJobResponseSchema>? {
+    : Response<InventoryExportJobResponse>? {
 
         return if (config.oauthClient.isAccessTokenValid()) {
             catalogApiList?.getInventoryExport(
@@ -262,8 +274,8 @@ class CatalogDataManagerClass(val config: PlatformConfig, val unauthorizedAction
     }
     
     
-    suspend fun patchProductExportDetail(jobId: String,body: ExportPatchRequestSchema, headers: Map<String, String> = emptyMap())
-    : Response<PatchProductDownloadsResponseSchema>? {
+    suspend fun patchProductExportDetail(jobId: String,body: ExportPatchRequest, headers: Map<String, String> = emptyMap())
+    : Response<PatchProductDownloadsResponse>? {
 
         return if (config.oauthClient.isAccessTokenValid()) {
             catalogApiList?.patchProductExportDetail(
@@ -275,7 +287,7 @@ class CatalogDataManagerClass(val config: PlatformConfig, val unauthorizedAction
     
     
     suspend fun getProductExportDetail(jobId: String, headers: Map<String, String> = emptyMap())
-    : Response<GetProductDownloadsResponseSchema>? {
+    : Response<GetProductDownloadsResponse>? {
 
         return if (config.oauthClient.isAccessTokenValid()) {
             catalogApiList?.getProductExportDetail(
@@ -286,8 +298,8 @@ class CatalogDataManagerClass(val config: PlatformConfig, val unauthorizedAction
     }
     
     
-    suspend fun patchInventoryExportDetail(jobId: String,body: ExportPatchRequestSchema, headers: Map<String, String> = emptyMap())
-    : Response<EditInventoryDownloadsResponseSchema>? {
+    suspend fun patchInventoryExportDetail(jobId: String,body: ExportPatchRequest, headers: Map<String, String> = emptyMap())
+    : Response<EditInventoryDownloadsResponse>? {
 
         return if (config.oauthClient.isAccessTokenValid()) {
             catalogApiList?.patchInventoryExportDetail(
@@ -299,7 +311,7 @@ class CatalogDataManagerClass(val config: PlatformConfig, val unauthorizedAction
     
     
     suspend fun getInventoryExportDetail(jobId: String, headers: Map<String, String> = emptyMap())
-    : Response<EditInventoryDownloadsResponseSchema>? {
+    : Response<EditInventoryDownloadsResponse>? {
 
         return if (config.oauthClient.isAccessTokenValid()) {
             catalogApiList?.getInventoryExportDetail(
@@ -335,7 +347,7 @@ class CatalogDataManagerClass(val config: PlatformConfig, val unauthorizedAction
     
     
     suspend fun validateProductTemplateSchema(itemType: String,bulk: Boolean, headers: Map<String, String> = emptyMap())
-    : Response<InventoryValidationResponseSchema>? {
+    : Response<InventoryValidationResponse>? {
 
         return if (config.oauthClient.isAccessTokenValid()) {
             catalogApiList?.validateProductTemplateSchema(
@@ -395,7 +407,7 @@ class CatalogDataManagerClass(val config: PlatformConfig, val unauthorizedAction
     
     
     suspend fun getProductAttributes(category: String,filter: Boolean?=null, headers: Map<String, String> = emptyMap())
-    : Response<ProductAttributesResponseSchema>? {
+    : Response<ProductAttributesResponse>? {
 
         return if (config.oauthClient.isAccessTokenValid()) {
             catalogApiList?.getProductAttributes(
@@ -418,8 +430,8 @@ class CatalogDataManagerClass(val config: PlatformConfig, val unauthorizedAction
     }
     
     
-    suspend fun createProductBundle(body: ProductBundleRequestSchema, headers: Map<String, String> = emptyMap())
-    : Response<GetProductBundleCreateResponseSchema>? {
+    suspend fun createProductBundle(body: ProductBundleRequest, headers: Map<String, String> = emptyMap())
+    : Response<GetProductBundleCreateResponse>? {
 
         return if (config.oauthClient.isAccessTokenValid()) {
             catalogApiList?.createProductBundle(
@@ -431,7 +443,7 @@ class CatalogDataManagerClass(val config: PlatformConfig, val unauthorizedAction
     
     
     suspend fun getProductBundle(q: String?=null,slug: ArrayList<String>?=null,pageNo: Int?=null,pageSize: Int?=null, headers: Map<String, String> = emptyMap())
-    : Response<GetProductBundleListingResponseSchema>? {
+    : Response<GetProductBundleListingResponse>? {
 
         return if (config.oauthClient.isAccessTokenValid()) {
             catalogApiList?.getProductBundle(
@@ -443,7 +455,7 @@ class CatalogDataManagerClass(val config: PlatformConfig, val unauthorizedAction
     
     
     suspend fun getProductBundleDetail(id: String, headers: Map<String, String> = emptyMap())
-    : Response<GetProductBundleResponseSchema>? {
+    : Response<GetProductBundleResponse>? {
 
         return if (config.oauthClient.isAccessTokenValid()) {
             catalogApiList?.getProductBundleDetail(
@@ -454,8 +466,8 @@ class CatalogDataManagerClass(val config: PlatformConfig, val unauthorizedAction
     }
     
     
-    suspend fun updateProductBundle(id: String,body: ProductBundleUpdateRequestSchema, headers: Map<String, String> = emptyMap())
-    : Response<GetProductBundleCreateResponseSchema>? {
+    suspend fun updateProductBundle(id: String,body: ProductBundleUpdateRequest, headers: Map<String, String> = emptyMap())
+    : Response<GetProductBundleCreateResponse>? {
 
         return if (config.oauthClient.isAccessTokenValid()) {
             catalogApiList?.updateProductBundle(
@@ -467,7 +479,7 @@ class CatalogDataManagerClass(val config: PlatformConfig, val unauthorizedAction
     
     
     suspend fun getProductAssetsInBulk(pageNo: Int?=null,pageSize: Int?=null, headers: Map<String, String> = emptyMap())
-    : Response<BulkAssetResponseSchema>? {
+    : Response<BulkAssetResponse>? {
 
         return if (config.oauthClient.isAccessTokenValid()) {
             catalogApiList?.getProductAssetsInBulk(
@@ -479,7 +491,7 @@ class CatalogDataManagerClass(val config: PlatformConfig, val unauthorizedAction
     
     
     suspend fun createProductAssetsInBulk(body: ProductBulkAssets, headers: Map<String, String> = emptyMap())
-    : Response<SuccessResponseSchema>? {
+    : Response<SuccessResponse>? {
 
         return if (config.oauthClient.isAccessTokenValid()) {
             catalogApiList?.createProductAssetsInBulk(
@@ -491,7 +503,7 @@ class CatalogDataManagerClass(val config: PlatformConfig, val unauthorizedAction
     
     
     suspend fun getProductBulkUploadHistory(search: String?=null,pageNo: Int?=null,pageSize: Int?=null, headers: Map<String, String> = emptyMap())
-    : Response<ProductBulkRequestSchemaList>? {
+    : Response<ProductBulkRequestList>? {
 
         return if (config.oauthClient.isAccessTokenValid()) {
             catalogApiList?.getProductBulkUploadHistory(
@@ -503,7 +515,7 @@ class CatalogDataManagerClass(val config: PlatformConfig, val unauthorizedAction
     
     
     suspend fun createBulkProductUploadJob(body: BulkProductUploadJob, headers: Map<String, String> = emptyMap())
-    : Response<ProductBulkResponseSchema>? {
+    : Response<ProductBulkResponse>? {
 
         return if (config.oauthClient.isAccessTokenValid()) {
             catalogApiList?.createBulkProductUploadJob(
@@ -515,7 +527,7 @@ class CatalogDataManagerClass(val config: PlatformConfig, val unauthorizedAction
     
     
     suspend fun deleteProductBulkJob(batchId: String, headers: Map<String, String> = emptyMap())
-    : Response<SuccessResponseSchema>? {
+    : Response<SuccessResponse>? {
 
         return if (config.oauthClient.isAccessTokenValid()) {
             catalogApiList?.deleteProductBulkJob(
@@ -526,8 +538,8 @@ class CatalogDataManagerClass(val config: PlatformConfig, val unauthorizedAction
     }
     
     
-    suspend fun createProductsInBulk(batchId: String,body: BulkProductRequestSchema, headers: Map<String, String> = emptyMap())
-    : Response<SuccessResponseSchema>? {
+    suspend fun createProductsInBulk(batchId: String,body: BulkProductRequest, headers: Map<String, String> = emptyMap())
+    : Response<SuccessResponse>? {
 
         return if (config.oauthClient.isAccessTokenValid()) {
             catalogApiList?.createProductsInBulk(
@@ -539,7 +551,7 @@ class CatalogDataManagerClass(val config: PlatformConfig, val unauthorizedAction
     
     
     suspend fun listHSNCodes( headers: Map<String, String> = emptyMap())
-    : Response<HSNCodesResponseSchema>? {
+    : Response<HSNCodesResponse>? {
 
         return if (config.oauthClient.isAccessTokenValid()) {
             catalogApiList?.listHSNCodes(
@@ -551,7 +563,7 @@ class CatalogDataManagerClass(val config: PlatformConfig, val unauthorizedAction
     
     
     suspend fun getProductTags( headers: Map<String, String> = emptyMap())
-    : Response<ProductTagsViewResponseSchema>? {
+    : Response<ProductTagsViewResponse>? {
 
         return if (config.oauthClient.isAccessTokenValid()) {
             catalogApiList?.getProductTags(
@@ -563,7 +575,7 @@ class CatalogDataManagerClass(val config: PlatformConfig, val unauthorizedAction
     
     
     suspend fun listProductTemplate(department: String, headers: Map<String, String> = emptyMap())
-    : Response<TemplatesResponseSchema>? {
+    : Response<TemplatesResponse>? {
 
         return if (config.oauthClient.isAccessTokenValid()) {
             catalogApiList?.listProductTemplate(
@@ -575,7 +587,7 @@ class CatalogDataManagerClass(val config: PlatformConfig, val unauthorizedAction
     
     
     suspend fun listProductTemplateCategories(departments: String,itemType: String,pageSize: Double?=null,pageNo: Double?=null,q: Double?=null, headers: Map<String, String> = emptyMap())
-    : Response<ProdcutTemplateCategoriesResponseSchema>? {
+    : Response<ProdcutTemplateCategoriesResponse>? {
 
         return if (config.oauthClient.isAccessTokenValid()) {
             catalogApiList?.listProductTemplateCategories(
@@ -599,23 +611,11 @@ class CatalogDataManagerClass(val config: PlatformConfig, val unauthorizedAction
     
     
     suspend fun validateProductTemplate(slug: String,itemType: String?=null,bulk: Boolean?=null, headers: Map<String, String> = emptyMap())
-    : Response<TemplatesValidationResponseSchema>? {
+    : Response<TemplatesValidationResponse>? {
 
         return if (config.oauthClient.isAccessTokenValid()) {
             catalogApiList?.validateProductTemplate(
         companyId = config.companyId,slug = slug,itemType = itemType,bulk = bulk, headers = headers)
-        } else {
-            null
-        }
-    }
-    
-    
-    suspend fun validateProductGlobalTemplate(itemType: String?=null,bulk: Boolean?=null, headers: Map<String, String> = emptyMap())
-    : Response<TemplatesGlobalValidationResponseSchema>? {
-
-        return if (config.oauthClient.isAccessTokenValid()) {
-            catalogApiList?.validateProductGlobalTemplate(
-        companyId = config.companyId,itemType = itemType,bulk = bulk, headers = headers)
         } else {
             null
         }
@@ -635,7 +635,7 @@ class CatalogDataManagerClass(val config: PlatformConfig, val unauthorizedAction
     
     
     suspend fun getInventoryBySizeIdentifier(itemId: String,sizeIdentifier: String,pageNo: Int?=null,pageSize: Int?=null,q: String?=null,locationIds: ArrayList<Int>?=null, headers: Map<String, String> = emptyMap())
-    : Response<ApplicationInventorySellerIdentifierResponsePaginated>? {
+    : Response<InventorySellerIdentifierResponsePaginated>? {
 
         return if (config.oauthClient.isAccessTokenValid()) {
             catalogApiList?.getInventoryBySizeIdentifier(
@@ -646,12 +646,12 @@ class CatalogDataManagerClass(val config: PlatformConfig, val unauthorizedAction
     }
     
     
-    suspend fun getProductSize(itemCode: String?=null,itemId: String,brandUid: Int?=null,uid: Int?=null, headers: Map<String, String> = emptyMap())
+    suspend fun getProductSize(itemId: String, headers: Map<String, String> = emptyMap())
     : Response<Product>? {
 
         return if (config.oauthClient.isAccessTokenValid()) {
             catalogApiList?.getProductSize(
-        itemCode = itemCode,companyId = config.companyId,itemId = itemId,brandUid = brandUid,uid = uid, headers = headers)
+        companyId = config.companyId,itemId = itemId, headers = headers)
         } else {
             null
         }
@@ -659,7 +659,7 @@ class CatalogDataManagerClass(val config: PlatformConfig, val unauthorizedAction
     
     
     suspend fun deleteSize(itemId: String,size: String, headers: Map<String, String> = emptyMap())
-    : Response<ProductSizeDeleteResponseSchema>? {
+    : Response<ProductSizeDeleteResponse>? {
 
         return if (config.oauthClient.isAccessTokenValid()) {
             catalogApiList?.deleteSize(
@@ -683,7 +683,7 @@ class CatalogDataManagerClass(val config: PlatformConfig, val unauthorizedAction
     
     
     suspend fun getVariantsOfProducts(itemId: String,variantType: String,pageNo: Int?=null,pageSize: Int?=null, headers: Map<String, String> = emptyMap())
-    : Response<ProductVariantsResponseSchema>? {
+    : Response<ProductVariantsResponse>? {
 
         return if (config.oauthClient.isAccessTokenValid()) {
             catalogApiList?.getVariantsOfProducts(
@@ -695,7 +695,7 @@ class CatalogDataManagerClass(val config: PlatformConfig, val unauthorizedAction
     
     
     suspend fun getCompanyVerification(q: String?=null,pageNo: Int?=null,pageSize: Int?=null, headers: Map<String, String> = emptyMap())
-    : Response<CompanyVerificationResponseSchema>? {
+    : Response<CompanyVerificationResponse>? {
 
         return if (config.oauthClient.isAccessTokenValid()) {
             catalogApiList?.getCompanyVerification(
@@ -719,7 +719,7 @@ class CatalogDataManagerClass(val config: PlatformConfig, val unauthorizedAction
     
     
     suspend fun getVariantTypes(templateTag: String, headers: Map<String, String> = emptyMap())
-    : Response<VariantTypesResponseSchema>? {
+    : Response<VariantTypesResponse>? {
 
         return if (config.oauthClient.isAccessTokenValid()) {
             catalogApiList?.getVariantTypes(
@@ -731,7 +731,7 @@ class CatalogDataManagerClass(val config: PlatformConfig, val unauthorizedAction
     
     
     suspend fun createSizeGuide(body: ValidateSizeGuide, headers: Map<String, String> = emptyMap())
-    : Response<SuccessResponseSchema>? {
+    : Response<SuccessResponse>? {
 
         return if (config.oauthClient.isAccessTokenValid()) {
             catalogApiList?.createSizeGuide(
@@ -755,7 +755,7 @@ class CatalogDataManagerClass(val config: PlatformConfig, val unauthorizedAction
     
     
     suspend fun getSizeGuide(id: String, headers: Map<String, String> = emptyMap())
-    : Response<SizeGuideResponseSchema>? {
+    : Response<SizeGuideResponse>? {
 
         return if (config.oauthClient.isAccessTokenValid()) {
             catalogApiList?.getSizeGuide(
@@ -767,7 +767,7 @@ class CatalogDataManagerClass(val config: PlatformConfig, val unauthorizedAction
     
     
     suspend fun updateSizeGuide(id: String,body: ValidateSizeGuide, headers: Map<String, String> = emptyMap())
-    : Response<SuccessResponseSchema>? {
+    : Response<SuccessResponse>? {
 
         return if (config.oauthClient.isAccessTokenValid()) {
             catalogApiList?.updateSizeGuide(
@@ -813,8 +813,8 @@ class CatalogDataManagerClass(val config: PlatformConfig, val unauthorizedAction
     }
     
     
-    suspend fun updateInventories(body: InventoryV2RequestSchema, headers: Map<String, String> = emptyMap())
-    : Response<InventoryUpdateResponseSchema>? {
+    suspend fun updateInventories(body: InventoryRequestSchemaV2, headers: Map<String, String> = emptyMap())
+    : Response<InventoryUpdateResponse>? {
 
         return if (config.oauthClient.isAccessTokenValid()) {
             catalogApiList?.updateInventories(
@@ -826,7 +826,7 @@ class CatalogDataManagerClass(val config: PlatformConfig, val unauthorizedAction
     
     
     suspend fun listInventoryExport(status: String?=null,fromDate: String?=null,toDate: String?=null,q: String?=null,pageNo: Int?=null,pageSize: Int?=null, headers: Map<String, String> = emptyMap())
-    : Response<InventoryExportJobListResponseSchema>? {
+    : Response<InventoryExportJobListResponse>? {
 
         return if (config.oauthClient.isAccessTokenValid()) {
             catalogApiList?.listInventoryExport(
@@ -837,8 +837,8 @@ class CatalogDataManagerClass(val config: PlatformConfig, val unauthorizedAction
     }
     
     
-    suspend fun createInventoryExport(body: InventoryCreateRequestSchema, headers: Map<String, String> = emptyMap())
-    : Response<InventoryExportResponseSchema>? {
+    suspend fun createInventoryExport(body: InventoryCreateRequest, headers: Map<String, String> = emptyMap())
+    : Response<InventoryExportResponse>? {
 
         return if (config.oauthClient.isAccessTokenValid()) {
             catalogApiList?.createInventoryExport(
@@ -850,7 +850,7 @@ class CatalogDataManagerClass(val config: PlatformConfig, val unauthorizedAction
     
     
     suspend fun getProducts(brandIds: ArrayList<Int>?=null,multiSize: Boolean?=null,categoryIds: ArrayList<Int>?=null,itemIds: ArrayList<Int>?=null,departmentIds: ArrayList<Int>?=null,itemCode: ArrayList<String>?=null,name: String?=null,slug: String?=null,allIdentifiers: ArrayList<String>?=null,q: String?=null,tags: ArrayList<String>?=null,pageNo: Int?=null,pageSize: Int?=null,pageType: String?=null,sortOn: String?=null,pageId: String?=null, headers: Map<String, String> = emptyMap())
-    : Response<ProductListingResponseV2Schema>? {
+    : Response<ProductListingResponseV2>? {
 
         return if (config.oauthClient.isAccessTokenValid()) {
             catalogApiList?.getProducts(
@@ -862,7 +862,7 @@ class CatalogDataManagerClass(val config: PlatformConfig, val unauthorizedAction
     
     
     suspend fun createProduct(body: ProductCreateUpdateSchemaV2, headers: Map<String, String> = emptyMap())
-    : Response<SuccessResponse1Schema>? {
+    : Response<SuccessResponseSchema>? {
 
         return if (config.oauthClient.isAccessTokenValid()) {
             catalogApiList?.createProduct(
@@ -874,7 +874,7 @@ class CatalogDataManagerClass(val config: PlatformConfig, val unauthorizedAction
     
     
     suspend fun uploadBulkProducts(department: String,productType: String,body: BulkProductJob, headers: Map<String, String> = emptyMap())
-    : Response<ProductBulkResponseSchema>? {
+    : Response<ProductBulkResponse>? {
 
         return if (config.oauthClient.isAccessTokenValid()) {
             catalogApiList?.uploadBulkProducts(
@@ -886,7 +886,7 @@ class CatalogDataManagerClass(val config: PlatformConfig, val unauthorizedAction
     
     
     suspend fun getProductExportJobs(status: String?=null,fromDate: String?=null,toDate: String?=null,q: String?=null,pageNo: Int?=null,pageSize: Int?=null, headers: Map<String, String> = emptyMap())
-    : Response<ProductDownloadsResponseSchema>? {
+    : Response<ProductDownloadsResponse>? {
 
         return if (config.oauthClient.isAccessTokenValid()) {
             catalogApiList?.getProductExportJobs(
@@ -898,7 +898,7 @@ class CatalogDataManagerClass(val config: PlatformConfig, val unauthorizedAction
     
     
     suspend fun createProductExportJob(body: ProductTemplateDownloadsExport, headers: Map<String, String> = emptyMap())
-    : Response<CreateProductDownloadsResponseSchema>? {
+    : Response<CreateProductDownloadsResponse>? {
 
         return if (config.oauthClient.isAccessTokenValid()) {
             catalogApiList?.createProductExportJob(
@@ -910,7 +910,7 @@ class CatalogDataManagerClass(val config: PlatformConfig, val unauthorizedAction
     
     
     suspend fun getProduct(itemId: String,brandUid: Int?=null,itemCode: String?=null, headers: Map<String, String> = emptyMap())
-    : Response<SingleProductResponseSchema>? {
+    : Response<SingleProductResponse>? {
 
         return if (config.oauthClient.isAccessTokenValid()) {
             catalogApiList?.getProduct(
@@ -922,7 +922,7 @@ class CatalogDataManagerClass(val config: PlatformConfig, val unauthorizedAction
     
     
     suspend fun editProduct(itemId: String,body: ProductCreateUpdateSchemaV2, headers: Map<String, String> = emptyMap())
-    : Response<SuccessResponseSchema>? {
+    : Response<SuccessResponse>? {
 
         return if (config.oauthClient.isAccessTokenValid()) {
             catalogApiList?.editProduct(
@@ -934,7 +934,7 @@ class CatalogDataManagerClass(val config: PlatformConfig, val unauthorizedAction
     
     
     suspend fun deleteProduct(itemId: String, headers: Map<String, String> = emptyMap())
-    : Response<SuccessResponseSchema>? {
+    : Response<SuccessResponse>? {
 
         return if (config.oauthClient.isAccessTokenValid()) {
             catalogApiList?.deleteProduct(
@@ -957,8 +957,8 @@ class CatalogDataManagerClass(val config: PlatformConfig, val unauthorizedAction
     }
     
     
-    suspend fun deleteRealtimeInventory(itemId: String,sellerIdentifier: String,body: InventoryV2RequestSchema, headers: Map<String, String> = emptyMap())
-    : Response<InventoryUpdateResponseSchema>? {
+    suspend fun deleteRealtimeInventory(itemId: String,sellerIdentifier: String,body: InventoryRequestSchemaV2, headers: Map<String, String> = emptyMap())
+    : Response<InventoryUpdateResponse>? {
 
         return if (config.oauthClient.isAccessTokenValid()) {
             catalogApiList?.deleteRealtimeInventory(
@@ -969,8 +969,8 @@ class CatalogDataManagerClass(val config: PlatformConfig, val unauthorizedAction
     }
     
     
-    suspend fun updateRealtimeInventory(itemId: String,sellerIdentifier: String,body: InventoryV2RequestSchema, headers: Map<String, String> = emptyMap())
-    : Response<InventoryUpdateResponseSchema>? {
+    suspend fun updateRealtimeInventory(itemId: String,sellerIdentifier: String,body: InventoryRequestSchemaV2, headers: Map<String, String> = emptyMap())
+    : Response<InventoryUpdateResponse>? {
 
         return if (config.oauthClient.isAccessTokenValid()) {
             catalogApiList?.updateRealtimeInventory(
@@ -982,7 +982,7 @@ class CatalogDataManagerClass(val config: PlatformConfig, val unauthorizedAction
     
     
     suspend fun getProductTemplateBySlug(slug: String, headers: Map<String, String> = emptyMap())
-    : Response<GetProductTemplateSlugResponseSchema>? {
+    : Response<GetProductTemplateSlugResponse>? {
 
         return if (config.oauthClient.isAccessTokenValid()) {
             catalogApiList?.getProductTemplateBySlug(
@@ -1005,8 +1005,8 @@ class CatalogDataManagerClass(val config: PlatformConfig, val unauthorizedAction
     }
     
     
-    suspend fun updateMarketplaceOptin(marketplace: String,body: UpdateMarketplaceOptinRequestSchema, headers: Map<String, String> = emptyMap())
-    : Response<UpdateMarketplaceOptinResponseSchema>? {
+    suspend fun updateMarketplaceOptin(marketplace: String,body: UpdateMarketplaceOptinRequest, headers: Map<String, String> = emptyMap())
+    : Response<UpdateMarketplaceOptinResponse>? {
 
         return if (config.oauthClient.isAccessTokenValid()) {
             catalogApiList?.updateMarketplaceOptin(
@@ -1017,8 +1017,8 @@ class CatalogDataManagerClass(val config: PlatformConfig, val unauthorizedAction
     }
     
     
-    suspend fun createMarketplaceOptin(marketplace: String,body: CreateMarketplaceOptinRequestSchema, headers: Map<String, String> = emptyMap())
-    : Response<CreateMarketplaceOptinResponseSchema>? {
+    suspend fun createMarketplaceOptin(marketplace: String,body: CreateMarketplaceOptinRequest, headers: Map<String, String> = emptyMap())
+    : Response<CreateMarketplaceOptinResponse>? {
 
         return if (config.oauthClient.isAccessTokenValid()) {
             catalogApiList?.createMarketplaceOptin(
@@ -1106,7 +1106,7 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     
     
     suspend fun getCatalogInsights(brand: String?=null, headers: Map<String, String> = emptyMap())
-    : Response<CatalogInsightResponseSchema>? {
+    : Response<CatalogInsightResponse>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 catalogApiList?.getCatalogInsights(companyId = config.companyId ,applicationId = applicationId ,brand = brand, headers = headers)
         } else {
@@ -1190,7 +1190,7 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     }
     
     suspend fun updateAppBrand(brandUid: String,body: ApplicationBrandJson, headers: Map<String, String> = emptyMap())
-    : Response<SuccessResponse1Schema>? {
+    : Response<SuccessResponseSchema>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 catalogApiList?.updateAppBrand(companyId = config.companyId ,applicationId = applicationId ,brandUid = brandUid, body = body,headers = headers)
         } else {
@@ -1200,7 +1200,7 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     
     
     suspend fun getApplicationBrands(department: String?=null,pageNo: Int?=null,pageSize: Int?=null,q: String?=null,brandId: ArrayList<Int>?=null, headers: Map<String, String> = emptyMap())
-    : Response<BrandListingResponseSchema>? {
+    : Response<BrandListingResponse>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 catalogApiList?.getApplicationBrands(companyId = config.companyId ,applicationId = applicationId ,department = department,pageNo = pageNo,pageSize = pageSize,q = q,brandId = brandId, headers = headers)
         } else {
@@ -1251,12 +1251,12 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     fun getApplicationBrandsPaginator(
     department: String?=null, pageSize: Int?=null, q: String?=null, brandId: ArrayList<Int>?=null
     
-    ) : Paginator<BrandListingResponseSchema>{
-        val paginator = Paginator<BrandListingResponseSchema>()
-        paginator.setCallBack(object : PaginatorCallback<BrandListingResponseSchema> {
+    ) : Paginator<BrandListingResponse>{
+        val paginator = Paginator<BrandListingResponse>()
+        paginator.setCallBack(object : PaginatorCallback<BrandListingResponse> {
 
             override suspend fun onNext(
-                onResponse: (Event<BrandListingResponseSchema>?,FdkError?) -> Unit){
+                onResponse: (Event<BrandListingResponse>?,FdkError?) -> Unit){
 
                 if (config.oauthClient.isAccessTokenValid()) {
                     val pageId = paginator.nextId
@@ -1284,7 +1284,7 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     }
     
     suspend fun getCategories(department: String?=null, headers: Map<String, String> = emptyMap())
-    : Response<CategoryListingResponseSchema>? {
+    : Response<CategoryListingResponse>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 catalogApiList?.getCategories(companyId = config.companyId ,applicationId = applicationId ,department = department, headers = headers)
         } else {
@@ -1373,7 +1373,7 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     }
     
     suspend fun updateAppCategory(categoryUid: String,body: ApplicationCategoryJson, headers: Map<String, String> = emptyMap())
-    : Response<SuccessResponse1Schema>? {
+    : Response<SuccessResponseSchema>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 catalogApiList?.updateAppCategory(companyId = config.companyId ,applicationId = applicationId ,categoryUid = categoryUid, body = body,headers = headers)
         } else {
@@ -1383,7 +1383,7 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     
     
     suspend fun createCollection(body: CreateCollection, headers: Map<String, String> = emptyMap())
-    : Response<CollectionCreateResponseSchema>? {
+    : Response<CollectionCreateResponse>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 catalogApiList?.createCollection(companyId = config.companyId ,applicationId = applicationId , body = body,headers = headers)
         } else {
@@ -1393,7 +1393,7 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     
     
     suspend fun getAllCollections(q: String?=null,scheduleStatus: String?=null,type: String?=null,tag: ArrayList<String>?=null,isActive: Boolean?=null,pageNo: Int?=null,pageSize: Int?=null, headers: Map<String, String> = emptyMap())
-    : Response<GetCollectionListingResponseSchema>? {
+    : Response<GetCollectionListingResponse>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 catalogApiList?.getAllCollections(companyId = config.companyId ,applicationId = applicationId ,q = q,scheduleStatus = scheduleStatus,type = type,tag = tag,isActive = isActive,pageNo = pageNo,pageSize = pageSize, headers = headers)
         } else {
@@ -1403,7 +1403,7 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     
     
     suspend fun getApplicationFilterValues(filterKey: String,c: String?=null,collectionId: String?=null,pageNo: Int?=null,pageSize: Int?=null,q: String?=null, headers: Map<String, String> = emptyMap())
-    : Response<GetQueryFiltersValuesResponseSchema>? {
+    : Response<GetQueryFiltersValuesResponse>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 catalogApiList?.getApplicationFilterValues(companyId = config.companyId ,applicationId = applicationId ,filterKey = filterKey,c = c,collectionId = collectionId,pageNo = pageNo,pageSize = pageSize,q = q, headers = headers)
         } else {
@@ -1413,7 +1413,7 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     
     
     suspend fun getApplicationFilterKeys(c: String?=null, headers: Map<String, String> = emptyMap())
-    : Response<GetQueryFiltersKeysResponseSchema>? {
+    : Response<GetQueryFiltersKeysResponse>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 catalogApiList?.getApplicationFilterKeys(companyId = config.companyId ,applicationId = applicationId ,c = c, headers = headers)
         } else {
@@ -1423,7 +1423,7 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     
     
     suspend fun getQueryFilters( headers: Map<String, String> = emptyMap())
-    : Response<GetQueryFiltersResponseSchema>? {
+    : Response<GetQueryFiltersResponse>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 catalogApiList?.getQueryFilters(companyId = config.companyId ,applicationId = applicationId , headers = headers)
         } else {
@@ -1463,7 +1463,7 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     
     
     suspend fun getCollectionDetail(slug: String, headers: Map<String, String> = emptyMap())
-    : Response<GetCollectionDetailResponseSchema>? {
+    : Response<GetCollectionDetailResponse>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 catalogApiList?.getCollectionDetail(companyId = config.companyId ,applicationId = applicationId ,slug = slug, headers = headers)
         } else {
@@ -1493,7 +1493,7 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     
     
     suspend fun getApplicationDepartmentListing(pageNo: Int?=null,pageSize: Int?=null,q: String?=null, headers: Map<String, String> = emptyMap())
-    : Response<ApplicationDepartmentListingResponseSchema>? {
+    : Response<ApplicationDepartmentListingResponse>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 catalogApiList?.getApplicationDepartmentListing(companyId = config.companyId ,applicationId = applicationId ,pageNo = pageNo,pageSize = pageSize,q = q, headers = headers)
         } else {
@@ -1534,12 +1534,12 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     fun getApplicationDepartmentListingPaginator(
     pageSize: Int?=null, q: String?=null
     
-    ) : Paginator<ApplicationDepartmentListingResponseSchema>{
-        val paginator = Paginator<ApplicationDepartmentListingResponseSchema>()
-        paginator.setCallBack(object : PaginatorCallback<ApplicationDepartmentListingResponseSchema> {
+    ) : Paginator<ApplicationDepartmentListingResponse>{
+        val paginator = Paginator<ApplicationDepartmentListingResponse>()
+        paginator.setCallBack(object : PaginatorCallback<ApplicationDepartmentListingResponse> {
 
             override suspend fun onNext(
-                onResponse: (Event<ApplicationDepartmentListingResponseSchema>?,FdkError?) -> Unit){
+                onResponse: (Event<ApplicationDepartmentListingResponse>?,FdkError?) -> Unit){
 
                 if (config.oauthClient.isAccessTokenValid()) {
                     val pageId = paginator.nextId
@@ -1567,7 +1567,7 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     }
     
     suspend fun updateAppDepartment(departmentUid: String,body: ApplicationDepartmentJson, headers: Map<String, String> = emptyMap())
-    : Response<SuccessResponse1Schema>? {
+    : Response<SuccessResponseSchema>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 catalogApiList?.updateAppDepartment(companyId = config.companyId ,applicationId = applicationId ,departmentUid = departmentUid, body = body,headers = headers)
         } else {
@@ -1577,7 +1577,7 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     
     
     suspend fun getConfigurationsFilterMetadata(filter: String, headers: Map<String, String> = emptyMap())
-    : Response<FilterResponseSchema>? {
+    : Response<FilterResponse>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 catalogApiList?.getConfigurationsFilterMetadata(companyId = config.companyId ,applicationId = applicationId ,filter = filter, headers = headers)
         } else {
@@ -1587,7 +1587,7 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     
     
     suspend fun getDepartments( headers: Map<String, String> = emptyMap())
-    : Response<DepartmentResponseSchema>? {
+    : Response<DepartmentResponse>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 catalogApiList?.getDepartments(companyId = config.companyId ,applicationId = applicationId , headers = headers)
         } else {
@@ -1597,7 +1597,7 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     
     
     suspend fun getAppInventory(itemIds: ArrayList<Int>?=null,storeIds: ArrayList<Int>?=null,brandIds: ArrayList<Int>?=null,sellerIdentifiers: ArrayList<String>?=null,timestamp: String?=null,pageSize: Int?=null,pageId: String?=null,qtyGt: Int?=null,qtyLt: Int?=null,qtyType: String?=null,fromDate: String?=null,toDate: String?=null, headers: Map<String, String> = emptyMap())
-    : Response<InventoryStockResponseSchema>? {
+    : Response<InventoryStockResponse>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 catalogApiList?.getAppInventory(companyId = config.companyId ,applicationId = applicationId ,itemIds = itemIds,storeIds = storeIds,brandIds = brandIds,sellerIdentifiers = sellerIdentifiers,timestamp = timestamp,pageSize = pageSize,pageId = pageId,qtyGt = qtyGt,qtyLt = qtyLt,qtyType = qtyType,fromDate = fromDate,toDate = toDate, headers = headers)
         } else {
@@ -1607,7 +1607,7 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     
     
     suspend fun getAppLocations(storeType: String?=null,uid: ArrayList<Int>?=null,q: String?=null,stage: String?=null,pageNo: Int?=null,pageSize: Int?=null,tags: ArrayList<String>?=null,storeTypes: ArrayList<String>?=null,companyUids: ArrayList<Int>?=null, headers: Map<String, String> = emptyMap())
-    : Response<LocationListSchema>? {
+    : Response<LocationListSerializer>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 catalogApiList?.getAppLocations(companyId = config.companyId ,applicationId = applicationId ,storeType = storeType,uid = uid,q = q,stage = stage,pageNo = pageNo,pageSize = pageSize,tags = tags,storeTypes = storeTypes,companyUids = companyUids, headers = headers)
         } else {
@@ -1678,12 +1678,12 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     fun getAppLocationsPaginator(
     storeType: String?=null, uid: ArrayList<Int>?=null, q: String?=null, stage: String?=null, pageSize: Int?=null, tags: ArrayList<String>?=null, storeTypes: ArrayList<String>?=null, companyUids: ArrayList<Int>?=null
     
-    ) : Paginator<LocationListSchema>{
-        val paginator = Paginator<LocationListSchema>()
-        paginator.setCallBack(object : PaginatorCallback<LocationListSchema> {
+    ) : Paginator<LocationListSerializer>{
+        val paginator = Paginator<LocationListSerializer>()
+        paginator.setCallBack(object : PaginatorCallback<LocationListSerializer> {
 
             override suspend fun onNext(
-                onResponse: (Event<LocationListSchema>?,FdkError?) -> Unit){
+                onResponse: (Event<LocationListSerializer>?,FdkError?) -> Unit){
 
                 if (config.oauthClient.isAccessTokenValid()) {
                     val pageId = paginator.nextId
@@ -1761,7 +1761,7 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     
     
     suspend fun getAppProduct(itemId: String, headers: Map<String, String> = emptyMap())
-    : Response<OwnerAppItemResponseSchema>? {
+    : Response<OwnerAppItemResponse>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 catalogApiList?.getAppProduct(companyId = config.companyId ,applicationId = applicationId ,itemId = itemId, headers = headers)
         } else {
@@ -1771,7 +1771,7 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     
     
     suspend fun updateAppProduct(itemId: String,body: ApplicationItemMeta, headers: Map<String, String> = emptyMap())
-    : Response<SuccessResponse1Schema>? {
+    : Response<SuccessResponseSchema>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 catalogApiList?.updateAppProduct(companyId = config.companyId ,applicationId = applicationId ,itemId = itemId, body = body,headers = headers)
         } else {
@@ -1781,7 +1781,7 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     
     
     suspend fun getApplicationProducts(q: String?=null,f: String?=null,c: String?=null,filters: Boolean?=null,isDependent: Boolean?=null,sortOn: String?=null,pageId: String?=null,pageSize: Int?=null,pageNo: Int?=null,pageType: String?=null,itemIds: ArrayList<String>?=null, headers: Map<String, String> = emptyMap())
-    : Response<ApplicationProductListingResponseSchema>? {
+    : Response<ApplicationProductListingResponse>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 catalogApiList?.getApplicationProducts(companyId = config.companyId ,applicationId = applicationId ,q = q,f = f,c = c,filters = filters,isDependent = isDependent,sortOn = sortOn,pageId = pageId,pageSize = pageSize,pageNo = pageNo,pageType = pageType,itemIds = itemIds, headers = headers)
         } else {
@@ -1860,12 +1860,12 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     fun getApplicationProductsPaginator(
     q: String?=null, f: String?=null, c: String?=null, filters: Boolean?=null, isDependent: Boolean?=null, sortOn: String?=null, pageSize: Int?=null, itemIds: ArrayList<String>?=null
     
-    ) : Paginator<ApplicationProductListingResponseSchema>{
-        val paginator = Paginator<ApplicationProductListingResponseSchema>()
-        paginator.setCallBack(object : PaginatorCallback<ApplicationProductListingResponseSchema> {
+    ) : Paginator<ApplicationProductListingResponse>{
+        val paginator = Paginator<ApplicationProductListingResponse>()
+        paginator.setCallBack(object : PaginatorCallback<ApplicationProductListingResponse> {
 
             override suspend fun onNext(
-                onResponse: (Event<ApplicationProductListingResponseSchema>?,FdkError?) -> Unit){
+                onResponse: (Event<ApplicationProductListingResponse>?,FdkError?) -> Unit){
 
                 if (config.oauthClient.isAccessTokenValid()) {
                     val pageId = paginator.nextId
@@ -1893,7 +1893,7 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     }
     
     suspend fun getDiscountedInventoryBySizeIdentifier(itemId: String,sizeIdentifier: String,pageNo: Int?=null,pageSize: Int?=null,locationIds: ArrayList<Int>?=null, headers: Map<String, String> = emptyMap())
-    : Response<ApplicationInventorySellerIdentifierResponsePaginated>? {
+    : Response<InventorySellerIdentifierResponsePaginated>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 catalogApiList?.getDiscountedInventoryBySizeIdentifier(companyId = config.companyId ,applicationId = applicationId ,itemId = itemId,sizeIdentifier = sizeIdentifier,pageNo = pageNo,pageSize = pageSize,locationIds = locationIds, headers = headers)
         } else {
@@ -1913,7 +1913,7 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     
     
     suspend fun getAppProducts(brandIds: ArrayList<Int>?=null,categoryIds: ArrayList<Int>?=null,departmentIds: ArrayList<Int>?=null,tags: ArrayList<String>?=null,itemIds: ArrayList<Int>?=null,pageNo: Int?=null,pageSize: Int?=null,q: String?=null, headers: Map<String, String> = emptyMap())
-    : Response<RawProductListingResponseSchema>? {
+    : Response<RawProductListingResponse>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 catalogApiList?.getAppProducts(companyId = config.companyId ,applicationId = applicationId ,brandIds = brandIds,categoryIds = categoryIds,departmentIds = departmentIds,tags = tags,itemIds = itemIds,pageNo = pageNo,pageSize = pageSize,q = q, headers = headers)
         } else {
@@ -1923,7 +1923,7 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     
     
     suspend fun getAppReturnConfiguration( headers: Map<String, String> = emptyMap())
-    : Response<AppReturnConfigResponseSchema>? {
+    : Response<AppReturnConfigResponse>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 catalogApiList?.getAppReturnConfiguration(companyId = config.companyId ,applicationId = applicationId , headers = headers)
         } else {
@@ -1933,7 +1933,7 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     
     
     suspend fun createAppReturnConfiguration(body: CreateUpdateAppReturnConfig, headers: Map<String, String> = emptyMap())
-    : Response<SuccessResponse1Schema>? {
+    : Response<SuccessResponseSchema>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 catalogApiList?.createAppReturnConfiguration(companyId = config.companyId ,applicationId = applicationId , body = body,headers = headers)
         } else {
@@ -1943,7 +1943,7 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     
     
     suspend fun updateAppReturnConfiguration(body: CreateUpdateAppReturnConfig, headers: Map<String, String> = emptyMap())
-    : Response<SuccessResponse1Schema>? {
+    : Response<SuccessResponseSchema>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 catalogApiList?.updateAppReturnConfiguration(companyId = config.companyId ,applicationId = applicationId , body = body,headers = headers)
         } else {
@@ -1953,7 +1953,7 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     
     
     suspend fun deleteAppCategoryReturnConfiguration(body: DeleteAppCategoryReturnConfig, headers: Map<String, String> = emptyMap())
-    : Response<SuccessResponseSchema>? {
+    : Response<SuccessResponse>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 catalogApiList?.deleteAppCategoryReturnConfiguration(companyId = config.companyId ,applicationId = applicationId , body = body,headers = headers)
         } else {
@@ -1963,7 +1963,7 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     
     
     suspend fun getAppCategoryReturnConfig(q: String?=null,pageNo: Int?=null,pageSize: Int?=null, headers: Map<String, String> = emptyMap())
-    : Response<BaseAppCategoryReturnConfigResponseSchema>? {
+    : Response<BaseAppCategoryReturnConfigResponse>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 catalogApiList?.getAppCategoryReturnConfig(companyId = config.companyId ,applicationId = applicationId ,q = q,pageNo = pageNo,pageSize = pageSize, headers = headers)
         } else {
@@ -1973,7 +1973,7 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     
     
     suspend fun createAppCategoryReturnConfiguration(body: BaseAppCategoryReturnConfig, headers: Map<String, String> = emptyMap())
-    : Response<SuccessResponse1Schema>? {
+    : Response<SuccessResponseSchema>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 catalogApiList?.createAppCategoryReturnConfiguration(companyId = config.companyId ,applicationId = applicationId , body = body,headers = headers)
         } else {
@@ -1983,7 +1983,7 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     
     
     suspend fun updateAppCategoryReturnConfiguration(body: BaseAppCategoryReturnConfig, headers: Map<String, String> = emptyMap())
-    : Response<SuccessResponseSchema>? {
+    : Response<SuccessResponse>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 catalogApiList?.updateAppCategoryReturnConfiguration(companyId = config.companyId ,applicationId = applicationId , body = body,headers = headers)
         } else {
@@ -1993,7 +1993,7 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     
     
     suspend fun createCustomAutocompleteRule(body: CreateAutocompleteKeyword, headers: Map<String, String> = emptyMap())
-    : Response<CreateAutocompleteWordsResponseSchema>? {
+    : Response<CreateAutocompleteWordsResponse>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 catalogApiList?.createCustomAutocompleteRule(companyId = config.companyId ,applicationId = applicationId , body = body,headers = headers)
         } else {
@@ -2003,7 +2003,7 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     
     
     suspend fun getAutocompleteConfig(pageNo: Int?=null,pageSize: Int?=null,q: String?=null,isActive: Boolean?=null, headers: Map<String, String> = emptyMap())
-    : Response<GetAutocompleteWordsResponseSchema>? {
+    : Response<GetAutocompleteWordsResponse>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 catalogApiList?.getAutocompleteConfig(companyId = config.companyId ,applicationId = applicationId ,pageNo = pageNo,pageSize = pageSize,q = q,isActive = isActive, headers = headers)
         } else {
@@ -2033,7 +2033,7 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     
     
     suspend fun deleteAutocompleteKeyword(id: String, headers: Map<String, String> = emptyMap())
-    : Response<DeleteResponseSchema>? {
+    : Response<DeleteResponse>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 catalogApiList?.deleteAutocompleteKeyword(companyId = config.companyId ,applicationId = applicationId ,id = id, headers = headers)
         } else {
@@ -2042,8 +2042,8 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     }
     
     
-    suspend fun createSearchRerank(body: CreateSearchRerankRequestSchema, headers: Map<String, String> = emptyMap())
-    : Response<CreateSearchRerankResponseSchema>? {
+    suspend fun createSearchRerank(body: CreateSearchRerankRequest, headers: Map<String, String> = emptyMap())
+    : Response<CreateSearchRerankResponse>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 catalogApiList?.createSearchRerank(companyId = config.companyId ,applicationId = applicationId , body = body,headers = headers)
         } else {
@@ -2053,7 +2053,7 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     
     
     suspend fun getSearchRerank( headers: Map<String, String> = emptyMap())
-    : Response<GetSearchRerankResponseSchema>? {
+    : Response<GetSearchRerankResponse>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 catalogApiList?.getSearchRerank(companyId = config.companyId ,applicationId = applicationId , headers = headers)
         } else {
@@ -2063,7 +2063,7 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     
     
     suspend fun getSearchRerankDetail(id: String, headers: Map<String, String> = emptyMap())
-    : Response<GetSearchRerankDetailResponseSchema>? {
+    : Response<GetSearchRerankDetailResponse>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 catalogApiList?.getSearchRerankDetail(companyId = config.companyId ,applicationId = applicationId ,id = id, headers = headers)
         } else {
@@ -2072,8 +2072,8 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     }
     
     
-    suspend fun updateSearchRerankConfiguration(id: String,body: UpdateSearchRerankRequestSchema, headers: Map<String, String> = emptyMap())
-    : Response<UpdateSearchRerankResponseSchema>? {
+    suspend fun updateSearchRerankConfiguration(id: String,body: UpdateSearchRerankRequest, headers: Map<String, String> = emptyMap())
+    : Response<UpdateSearchRerankResponse>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 catalogApiList?.updateSearchRerankConfiguration(companyId = config.companyId ,applicationId = applicationId ,id = id, body = body,headers = headers)
         } else {
@@ -2083,7 +2083,7 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     
     
     suspend fun deleteSearchRerankConfiguration(id: String, headers: Map<String, String> = emptyMap())
-    : Response<DeleteSearchRerankConfigurationResponseSchema>? {
+    : Response<DeleteSearchRerankConfigurationResponse>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 catalogApiList?.deleteSearchRerankConfiguration(companyId = config.companyId ,applicationId = applicationId ,id = id, headers = headers)
         } else {
@@ -2092,8 +2092,8 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     }
     
     
-    suspend fun createSearchConfiguration(body: CreateSearchConfigurationRequestSchema, headers: Map<String, String> = emptyMap())
-    : Response<CreateSearchConfigurationResponseSchema>? {
+    suspend fun createSearchConfiguration(body: CreateSearchConfigurationRequest, headers: Map<String, String> = emptyMap())
+    : Response<CreateSearchConfigurationResponse>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 catalogApiList?.createSearchConfiguration(companyId = config.companyId ,applicationId = applicationId , body = body,headers = headers)
         } else {
@@ -2103,7 +2103,7 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     
     
     suspend fun getSearchConfiguration( headers: Map<String, String> = emptyMap())
-    : Response<GetSearchConfigurationResponseSchema>? {
+    : Response<GetSearchConfigurationResponse>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 catalogApiList?.getSearchConfiguration(companyId = config.companyId ,applicationId = applicationId , headers = headers)
         } else {
@@ -2112,8 +2112,8 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     }
     
     
-    suspend fun updateSearchConfiguration(body: UpdateSearchConfigurationRequestSchema, headers: Map<String, String> = emptyMap())
-    : Response<UpdateSearchConfigurationResponseSchema>? {
+    suspend fun updateSearchConfiguration(body: UpdateSearchConfigurationRequest, headers: Map<String, String> = emptyMap())
+    : Response<UpdateSearchConfigurationResponse>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 catalogApiList?.updateSearchConfiguration(companyId = config.companyId ,applicationId = applicationId , body = body,headers = headers)
         } else {
@@ -2123,7 +2123,7 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     
     
     suspend fun deleteSearchConfiguration( headers: Map<String, String> = emptyMap())
-    : Response<DeleteSearchConfigurationResponseSchema>? {
+    : Response<DeleteSearchConfigurationResponse>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 catalogApiList?.deleteSearchConfiguration(companyId = config.companyId ,applicationId = applicationId , headers = headers)
         } else {
@@ -2143,7 +2143,7 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     
     
     suspend fun getAllSearchKeyword(pageNo: Int?=null,pageSize: Int?=null,q: String?=null,isActive: Boolean?=null, headers: Map<String, String> = emptyMap())
-    : Response<GetSearchWordsResponseSchema>? {
+    : Response<GetSearchWordsResponse>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 catalogApiList?.getAllSearchKeyword(companyId = config.companyId ,applicationId = applicationId ,pageNo = pageNo,pageSize = pageSize,q = q,isActive = isActive, headers = headers)
         } else {
@@ -2173,7 +2173,7 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     
     
     suspend fun deleteSearchKeywords(id: String, headers: Map<String, String> = emptyMap())
-    : Response<DeleteResponseSchema>? {
+    : Response<DeleteResponse>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 catalogApiList?.deleteSearchKeywords(companyId = config.companyId ,applicationId = applicationId ,id = id, headers = headers)
         } else {
@@ -2183,7 +2183,7 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     
     
     suspend fun updateAppLocation(storeUid: String,body: ApplicationStoreJson, headers: Map<String, String> = emptyMap())
-    : Response<SuccessResponse1Schema>? {
+    : Response<SuccessResponseSchema>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 catalogApiList?.updateAppLocation(companyId = config.companyId ,applicationId = applicationId ,storeUid = storeUid, body = body,headers = headers)
         } else {
@@ -2248,8 +2248,8 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     
     
     
-    suspend fun updateAllowSingle(body: AllowSingleRequestSchema, headers: Map<String, String> = emptyMap())
-    : Response<ConfigSuccessResponseSchema>? {
+    suspend fun updateAllowSingle(body: AllowSingleRequest, headers: Map<String, String> = emptyMap())
+    : Response<ConfigSuccessResponse>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 catalogApiList?.updateAllowSingle(companyId = config.companyId ,applicationId = applicationId , body = body,headers = headers)
         } else {
@@ -2258,8 +2258,8 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     }
     
     
-    suspend fun updateDefaultSort(body: DefaultKeyRequestSchema, headers: Map<String, String> = emptyMap())
-    : Response<ConfigSuccessResponseSchema>? {
+    suspend fun updateDefaultSort(body: DefaultKeyRequest, headers: Map<String, String> = emptyMap())
+    : Response<ConfigSuccessResponse>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 catalogApiList?.updateDefaultSort(companyId = config.companyId ,applicationId = applicationId , body = body,headers = headers)
         } else {
@@ -2269,7 +2269,7 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     
     
     suspend fun createListingConfiguration(configType: String,body: AppConfigurationsFilter, headers: Map<String, String> = emptyMap())
-    : Response<AppConfigurationsFilterResponseSchema>? {
+    : Response<AppConfigurationsFilterResponse>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 catalogApiList?.createListingConfiguration(companyId = config.companyId ,applicationId = applicationId ,configType = configType, body = body,headers = headers)
         } else {
@@ -2279,7 +2279,7 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     
     
     suspend fun getListingConfigurations(configType: String,pageNo: Int?=null,pageSize: Int?=null,search: String?=null,uids: ArrayList<Int>?=null, headers: Map<String, String> = emptyMap())
-    : Response<GetListingConfigResponseSchema>? {
+    : Response<GetListingConfigResponse>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 catalogApiList?.getListingConfigurations(companyId = config.companyId ,applicationId = applicationId ,configType = configType,pageNo = pageNo,pageSize = pageSize,search = search,uids = uids, headers = headers)
         } else {
@@ -2299,7 +2299,7 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     
     
     suspend fun getGroupConfigurations(configType: String,pageNo: Int?=null,pageSize: Int?=null,search: String?=null,templateSlug: String?=null, headers: Map<String, String> = emptyMap())
-    : Response<GetConfigResponseSchema>? {
+    : Response<GetConfigResponse>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 catalogApiList?.getGroupConfigurations(companyId = config.companyId ,applicationId = applicationId ,configType = configType,pageNo = pageNo,pageSize = pageSize,search = search,templateSlug = templateSlug, headers = headers)
         } else {
@@ -2328,8 +2328,8 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     }
     
     
-    suspend fun updateListingConfiguration(configType: String,configId: String,body: AppConfigurationsFilterResponseSchema, headers: Map<String, String> = emptyMap())
-    : Response<AppConfigurationsFilterResponseSchema>? {
+    suspend fun updateListingConfiguration(configType: String,configId: String,body: AppConfigurationsFilterResponse, headers: Map<String, String> = emptyMap())
+    : Response<AppConfigurationsFilterResponse>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 catalogApiList?.updateListingConfiguration(companyId = config.companyId ,applicationId = applicationId ,configType = configType,configId = configId, body = body,headers = headers)
         } else {
@@ -2339,7 +2339,7 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     
     
     suspend fun deleteListingConfiguration(configType: String,configId: String, headers: Map<String, String> = emptyMap())
-    : Response<ConfigSuccessResponseSchema>? {
+    : Response<ConfigSuccessResponse>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 catalogApiList?.deleteListingConfiguration(companyId = config.companyId ,applicationId = applicationId ,configType = configType,configId = configId, headers = headers)
         } else {
@@ -2349,7 +2349,7 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     
     
     suspend fun getConfigurationMetadata(configType: String,templateSlug: String?=null, headers: Map<String, String> = emptyMap())
-    : Response<GetConfigMetadataResponseSchema>? {
+    : Response<GetConfigMetadataResponse>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 catalogApiList?.getConfigurationMetadata(companyId = config.companyId ,applicationId = applicationId ,configType = configType,templateSlug = templateSlug, headers = headers)
         } else {
@@ -2418,7 +2418,7 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     }
     
     
-    suspend fun createMerchandisingRulePinAction(merchandisingRuleId: String,body: PinRequestSchema, headers: Map<String, String> = emptyMap())
+    suspend fun createMerchandisingRulePinAction(merchandisingRuleId: String,body: PinRequest, headers: Map<String, String> = emptyMap())
     : Response<SuccessResponseMerchandising>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 catalogApiList?.createMerchandisingRulePinAction(companyId = config.companyId ,applicationId = applicationId ,merchandisingRuleId = merchandisingRuleId, body = body,headers = headers)
@@ -2428,7 +2428,7 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     }
     
     
-    suspend fun updateMerchandisingRulePinAction(merchandisingRuleId: String,body: PinRequestSchema, headers: Map<String, String> = emptyMap())
+    suspend fun updateMerchandisingRulePinAction(merchandisingRuleId: String,body: PinRequest, headers: Map<String, String> = emptyMap())
     : Response<SuccessResponseMerchandising>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 catalogApiList?.updateMerchandisingRulePinAction(companyId = config.companyId ,applicationId = applicationId ,merchandisingRuleId = merchandisingRuleId, body = body,headers = headers)
@@ -2439,7 +2439,7 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     
     
     suspend fun getMerchandisingRulePinAction(merchandisingRuleId: String, headers: Map<String, String> = emptyMap())
-    : Response<PinResponseSchema>? {
+    : Response<PinResponse>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 catalogApiList?.getMerchandisingRulePinAction(companyId = config.companyId ,applicationId = applicationId ,merchandisingRuleId = merchandisingRuleId, headers = headers)
         } else {
@@ -2448,7 +2448,7 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     }
     
     
-    suspend fun createMerchandisingRuleHideAction(merchandisingRuleId: String,body: HideRequestSchema, headers: Map<String, String> = emptyMap())
+    suspend fun createMerchandisingRuleHideAction(merchandisingRuleId: String,body: HideRequest, headers: Map<String, String> = emptyMap())
     : Response<SuccessResponseMerchandising>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 catalogApiList?.createMerchandisingRuleHideAction(companyId = config.companyId ,applicationId = applicationId ,merchandisingRuleId = merchandisingRuleId, body = body,headers = headers)
@@ -2458,7 +2458,7 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     }
     
     
-    suspend fun updateMerchandisingRuleHideAction(merchandisingRuleId: String,body: HideRequestSchema, headers: Map<String, String> = emptyMap())
+    suspend fun updateMerchandisingRuleHideAction(merchandisingRuleId: String,body: HideRequest, headers: Map<String, String> = emptyMap())
     : Response<SuccessResponseMerchandising>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 catalogApiList?.updateMerchandisingRuleHideAction(companyId = config.companyId ,applicationId = applicationId ,merchandisingRuleId = merchandisingRuleId, body = body,headers = headers)
@@ -2469,7 +2469,7 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     
     
     suspend fun getMerchandisingRuleHideAction(merchandisingRuleId: String, headers: Map<String, String> = emptyMap())
-    : Response<HideResponseSchema>? {
+    : Response<HideResponse>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 catalogApiList?.getMerchandisingRuleHideAction(companyId = config.companyId ,applicationId = applicationId ,merchandisingRuleId = merchandisingRuleId, headers = headers)
         } else {
@@ -2539,7 +2539,7 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     
     
     suspend fun createMerchandisingRuleQuery(body: MerchandisingRuleQueryPost, headers: Map<String, String> = emptyMap())
-    : Response<MerchandiseQueryResponseSchema>? {
+    : Response<MerchandiseQueryResponse>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 catalogApiList?.createMerchandisingRuleQuery(companyId = config.companyId ,applicationId = applicationId , body = body,headers = headers)
         } else {
@@ -2609,7 +2609,7 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     
     
     suspend fun getLivePreview(merchandisingRuleId: String,searchKeyword: String?=null, headers: Map<String, String> = emptyMap())
-    : Response<ProductListingResponseSchema>? {
+    : Response<ProductListingResponse>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 catalogApiList?.getLivePreview(companyId = config.companyId ,applicationId = applicationId ,merchandisingRuleId = merchandisingRuleId,searchKeyword = searchKeyword, headers = headers)
         } else {
@@ -2619,7 +2619,7 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     
     
     suspend fun createAppPriceFactory(body: CreateAppPriceFactoryRequestSchema, headers: Map<String, String> = emptyMap())
-    : Response<CreateAppPriceFactoryResponseSchema>? {
+    : Response<CreateAppPriceFactoryResponse>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 catalogApiList?.createAppPriceFactory(companyId = config.companyId ,applicationId = applicationId , body = body,headers = headers)
         } else {
@@ -2629,7 +2629,7 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     
     
     suspend fun getAppPriceFactories(isActive: Boolean?=null,factoryTypeId: String?=null,code: String?=null,pageNo: Int?=null,pageSize: Int?=null, headers: Map<String, String> = emptyMap())
-    : Response<GetAppPriceFactoryResponseSchema>? {
+    : Response<GetAppPriceFactoryResponse>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 catalogApiList?.getAppPriceFactories(companyId = config.companyId ,applicationId = applicationId ,isActive = isActive,factoryTypeId = factoryTypeId,code = code,pageNo = pageNo,pageSize = pageSize, headers = headers)
         } else {
@@ -2658,8 +2658,8 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     }
     
     
-    suspend fun addProductsInPriceFactoryByZoneId(id: String,body: CreatePriceFactoryProductRequestSchema, headers: Map<String, String> = emptyMap())
-    : Response<CreatePriceFactoryProductResponseSchema>? {
+    suspend fun addProductsInPriceFactoryByZoneId(id: String,body: CreatePriceFactoryProductRequest, headers: Map<String, String> = emptyMap())
+    : Response<CreatePriceFactoryProductResponse>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 catalogApiList?.addProductsInPriceFactoryByZoneId(companyId = config.companyId ,applicationId = applicationId ,id = id, body = body,headers = headers)
         } else {
@@ -2669,7 +2669,7 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     
     
     suspend fun getProductsInPriceFactoryByZoneId(id: String,zoneId: String,itemId: Double?=null,q: String?=null,pageNo: Int?=null,pageSize: Int?=null, headers: Map<String, String> = emptyMap())
-    : Response<CreateAppPriceFactoryProductsResponseSchema>? {
+    : Response<CreateAppPriceFactoryProductsResponse>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 catalogApiList?.getProductsInPriceFactoryByZoneId(companyId = config.companyId ,applicationId = applicationId ,id = id,zoneId = zoneId,itemId = itemId,q = q,pageNo = pageNo,pageSize = pageSize, headers = headers)
         } else {
@@ -2678,8 +2678,8 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     }
     
     
-    suspend fun createProductPriceFactoryBulkJob(id: String,body: CreateAppPriceFactoryProductBulkJobRequestSchema, headers: Map<String, String> = emptyMap())
-    : Response<CreateAppPriceFactoryProductBulkJobResponseSchema>? {
+    suspend fun createProductPriceFactoryBulkJob(id: String,body: CreateAppPriceFactoryProductBulkJobRequest, headers: Map<String, String> = emptyMap())
+    : Response<CreateAppPriceFactoryProductBulkJobResponse>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 catalogApiList?.createProductPriceFactoryBulkJob(companyId = config.companyId ,applicationId = applicationId ,id = id, body = body,headers = headers)
         } else {
@@ -2689,7 +2689,7 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     
     
     suspend fun pollProductPriceFactoryBulkJob(id: String,jobId: String, headers: Map<String, String> = emptyMap())
-    : Response<CreateAppPriceFactoryProductBulkJobPollResponseSchema>? {
+    : Response<CreateAppPriceFactoryProductBulkJobPollResponse>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 catalogApiList?.pollProductPriceFactoryBulkJob(companyId = config.companyId ,applicationId = applicationId ,id = id,jobId = jobId, headers = headers)
         } else {
@@ -2698,8 +2698,8 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     }
     
     
-    suspend fun validateProductPriceFactoryBulkJob(id: String,jobId: String,body: CreateAppPriceFactoryProductBulkJobRequestSchema, headers: Map<String, String> = emptyMap())
-    : Response<CreateAppPriceFactoryProductBulkJobValidateResponseSchema>? {
+    suspend fun validateProductPriceFactoryBulkJob(id: String,jobId: String,body: CreateAppPriceFactoryProductBulkJobRequest, headers: Map<String, String> = emptyMap())
+    : Response<CreateAppPriceFactoryProductBulkJobValidateResponse>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 catalogApiList?.validateProductPriceFactoryBulkJob(companyId = config.companyId ,applicationId = applicationId ,id = id,jobId = jobId, body = body,headers = headers)
         } else {
@@ -2708,8 +2708,8 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     }
     
     
-    suspend fun processProductPriceFactoryBulkJob(id: String,jobId: String,body: CreateAppPriceFactoryProductBulkJobRequestSchema, headers: Map<String, String> = emptyMap())
-    : Response<CreateAppPriceFactoryProductBulkJobResponseSchema>? {
+    suspend fun processProductPriceFactoryBulkJob(id: String,jobId: String,body: CreateAppPriceFactoryProductBulkJobRequest, headers: Map<String, String> = emptyMap())
+    : Response<CreateAppPriceFactoryProductBulkJobResponse>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 catalogApiList?.processProductPriceFactoryBulkJob(companyId = config.companyId ,applicationId = applicationId ,id = id,jobId = jobId, body = body,headers = headers)
         } else {
@@ -2718,8 +2718,8 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     }
     
     
-    suspend fun exportProductsInPriceFactory(id: String,body: CreateAppPriceFactoryProductExportJobRequestSchema, headers: Map<String, String> = emptyMap())
-    : Response<CreateAppPriceFactoryProductExportJobResponseSchema>? {
+    suspend fun exportProductsInPriceFactory(id: String,body: CreateAppPriceFactoryProductExportJobRequest, headers: Map<String, String> = emptyMap())
+    : Response<CreateAppPriceFactoryProductExportJobResponse>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 catalogApiList?.exportProductsInPriceFactory(companyId = config.companyId ,applicationId = applicationId ,id = id, body = body,headers = headers)
         } else {
@@ -2729,7 +2729,7 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     
     
     suspend fun pollPriceFactoryJobs(id: String,startDate: String?=null,endDate: String?=null,stage: ArrayList<String>?=null,isActive: Boolean?=null,q: String?=null,type: ArrayList<String>?=null, headers: Map<String, String> = emptyMap())
-    : Response<CreateAppPriceFactoryProductExportJobPollResponseSchema>? {
+    : Response<CreateAppPriceFactoryProductExportJobPollResponse>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 catalogApiList?.pollPriceFactoryJobs(companyId = config.companyId ,applicationId = applicationId ,id = id,startDate = startDate,endDate = endDate,stage = stage,isActive = isActive,q = q,type = type, headers = headers)
         } else {
@@ -2779,7 +2779,7 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     
     
     suspend fun deleteSynonym(id: String, headers: Map<String, String> = emptyMap())
-    : Response<SynonymDeleteResponseSchemaSchema>? {
+    : Response<SynonymDeleteResponseSchema>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 catalogApiList?.deleteSynonym(companyId = config.companyId ,applicationId = applicationId ,id = id, headers = headers)
         } else {
@@ -2851,7 +2851,7 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     
     
     suspend fun getAppPriceById(itemId: String,storeIds: ArrayList<Int>?=null,factoryTypeIds: ArrayList<String>?=null,sellerId: Int?=null, headers: Map<String, String> = emptyMap())
-    : Response<AppPriceByIdResponseSchema>? {
+    : Response<AppPriceByIdResponse>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 catalogApiList?.getAppPriceById(applicationId = applicationId ,companyId = config.companyId ,itemId = itemId,storeIds = storeIds,factoryTypeIds = factoryTypeIds,sellerId = sellerId, headers = headers)
         } else {

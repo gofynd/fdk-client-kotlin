@@ -13,10 +13,10 @@ import com.google.gson.annotations.SerializedName
 
              
 /*
-    Model: ApplicationResponseSchema
+    Model: ApplicationResponse
 */
 @Parcelize
-data class ApplicationResponseSchema(
+data class ApplicationResponse(
     
     
     
@@ -682,10 +682,10 @@ data class VersionDevice(
 
              
 /*
-    Model: VersionRequestSchema
+    Model: VersionRequest
 */
 @Parcelize
-data class VersionRequestSchema(
+data class VersionRequest(
     
     
     
@@ -736,10 +736,10 @@ data class VersionUpdateDialogue(
 
              
 /*
-    Model: VersionResponseSchema
+    Model: VersionResponse
 */
 @Parcelize
-data class VersionResponseSchema(
+data class VersionResponse(
     
     
     

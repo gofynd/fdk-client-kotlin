@@ -14,10 +14,10 @@ import com.google.gson.annotations.SerializedName
 
              
 /*
-    Model: SuccessMessage
+    Model: SuccessMessageResponse
 */
 @Parcelize
-data class SuccessMessage(
+data class SuccessMessageResponse(
     
     
     
@@ -133,10 +133,10 @@ data class UserAttributeDefinition(
 
              
 /*
-    Model: UserAttributeDefinitionResp
+    Model: UserAttributeDefinitionResponse
 */
 @Parcelize
-data class UserAttributeDefinitionResp(
+data class UserAttributeDefinitionResponse(
     
     
     
@@ -262,10 +262,10 @@ data class UserAttributeDefinitionValidation(
 
              
 /*
-    Model: UserAttribute
+    Model: UserAttributeResponse
 */
 @Parcelize
-data class UserAttribute(
+data class UserAttributeResponse(
     
     
     
@@ -319,10 +319,10 @@ data class UserAttribute(
 
              
 /*
-    Model: CreateUserAttributePayload
+    Model: CreateUserAttributeRequest
 */
 @Parcelize
-data class CreateUserAttributePayload(
+data class CreateUserAttributeRequest(
     
     
     
@@ -943,9 +943,6 @@ data class UserGroupResponseSchema(
     @SerializedName("application_id")
     var applicationId: String?=null,
     
-    @SerializedName("tags")
-    var tags: ArrayList<String>?=null,
-    
     @SerializedName("created_at")
     var createdAt: String?=null,
     
@@ -956,8 +953,6 @@ data class UserGroupResponseSchema(
     var v: Int?=null
     
 ): Parcelable {
-    
-    
     
     
     
@@ -2534,15 +2529,6 @@ data class UserSearchSchema(
     
     
     
-    @SerializedName("__v")
-    var v: Double?=null,
-    
-    @SerializedName("has_old_password_hash")
-    var hasOldPasswordHash: Boolean?=null,
-    
-    @SerializedName("debug")
-    var debug: DebugInfo?=null,
-    
     @SerializedName("application_id")
     var applicationId: String?=null,
     
@@ -2647,39 +2633,6 @@ data class UserSearchSchema(
     
     
     
-    
-    
-    
-    
-    
-    
-}
-
-
-
-             
-/*
-    Model: DebugInfo
-*/
-@Parcelize
-data class DebugInfo(
-    
-    
-    
-    @SerializedName("source")
-    var source: String?=null,
-    
-    @SerializedName("platform")
-    var platform: String?=null
-    
-): Parcelable {
-    
-    
-    
-    
-    
-    
-    
 }
 
 
@@ -2750,252 +2703,6 @@ data class Email(
 ): Parcelable {
     
     
-    
-    
-    
-    
-    
-    
-    
-    
-    
-}
-
-
-
-             
-/*
-    Model: BulkUpdateUserAttributesBody
-*/
-@Parcelize
-data class BulkUpdateUserAttributesBody(
-    
-    
-    
-    @SerializedName("users")
-    var users: ArrayList<String>?=null,
-    
-    @SerializedName("user_file_url")
-    var userFileUrl: String?=null,
-    
-    @SerializedName("attribute")
-    var attribute: ArrayList<BulkUpdateUserSameAttributes>?=null
-    
-): Parcelable {
-    
-    
-    
-    
-    
-    
-    
-    
-    
-}
-
-
-
-             
-/*
-    Model: BulkUpdateUserSameAttributes
-*/
-@Parcelize
-data class BulkUpdateUserSameAttributes(
-    
-    
-    
-    @SerializedName("key")
-    var key: String?=null,
-    
-    @SerializedName("value")
-    var value: @RawValue Any?=null
-    
-): Parcelable {
-    
-    
-    
-    
-    
-    
-    
-}
-
-
-
-             
-/*
-    Model: BulkUpdatePerUserAttributesBody
-*/
-@Parcelize
-data class BulkUpdatePerUserAttributesBody(
-    
-    
-    
-    @SerializedName("user_detail_attributes")
-    var userDetailAttributes: ArrayList<UserDetailAttributes>?=null
-    
-): Parcelable {
-    
-    
-    
-    
-    
-}
-
-
-
-             
-/*
-    Model: UserDetailAttributes
-*/
-@Parcelize
-data class UserDetailAttributes(
-    
-    
-    
-    @SerializedName("user_id")
-    var userId: String?=null,
-    
-    @SerializedName("attributes")
-    var attributes: ArrayList<BulkUpdatePerUserAttributes>?=null
-    
-): Parcelable {
-    
-    
-    
-    
-    
-    
-    
-}
-
-
-
-             
-/*
-    Model: BulkUpdatePerUserAttributes
-*/
-@Parcelize
-data class BulkUpdatePerUserAttributes(
-    
-    
-    
-    @SerializedName("key")
-    var key: String?=null,
-    
-    @SerializedName("value")
-    var value: @RawValue Any?=null
-    
-): Parcelable {
-    
-    
-    
-    
-    
-    
-    
-}
-
-
-
-             
-/*
-    Model: BulkOperation
-*/
-@Parcelize
-data class BulkOperation(
-    
-    
-    
-    @SerializedName("success")
-    var success: Boolean?=null,
-    
-    @SerializedName("total")
-    var total: Int?=null,
-    
-    @SerializedName("processed")
-    var processed: Int?=null,
-    
-    @SerializedName("errors_count")
-    var errorsCount: Int?=null,
-    
-    @SerializedName("errors")
-    var errors: ArrayList<BulkOperationError>?=null,
-    
-    @SerializedName("processing_type")
-    var processingType: String?=null,
-    
-    @SerializedName("error_summary")
-    var errorSummary: @RawValue HashMap<String,Any>?=null
-    
-): Parcelable {
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-}
-
-
-
-             
-/*
-    Model: BulkOperationError
-*/
-@Parcelize
-data class BulkOperationError(
-    
-    
-    
-    @SerializedName("user_id")
-    var userId: String?=null,
-    
-    @SerializedName("error")
-    var error: String?=null
-    
-): Parcelable {
-    
-    
-    
-    
-    
-    
-    
-}
-
-
-
-             
-/*
-    Model: BulkOperationAsync
-*/
-@Parcelize
-data class BulkOperationAsync(
-    
-    
-    
-    @SerializedName("success")
-    var success: Boolean?=null,
-    
-    @SerializedName("request_id")
-    var requestId: String?=null,
-    
-    @SerializedName("processing_type")
-    var processingType: String?=null
-    
-): Parcelable {
     
     
     

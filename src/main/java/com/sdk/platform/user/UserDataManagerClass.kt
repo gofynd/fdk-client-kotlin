@@ -72,8 +72,6 @@ class UserDataManagerClass(val config: PlatformConfig, val unauthorizedAction: (
     
     
     
-    
-    
 
 inner class ApplicationClient(val applicationId:String,val config: PlatformConfig){
 
@@ -270,7 +268,7 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     
     
     suspend fun createUserAttributeDefinition(body: CreateUserAttributeDefinition, headers: Map<String, String> = emptyMap())
-    : Response<UserAttributeDefinitionResp>? {
+    : Response<UserAttributeDefinitionResponse>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 userApiList?.createUserAttributeDefinition(companyId = config.companyId ,applicationId = applicationId , body = body,headers = headers)
         } else {
@@ -300,7 +298,7 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     
     
     suspend fun deleteUserAttributeDefinitionById(attributeDefId: String, headers: Map<String, String> = emptyMap())
-    : Response<SuccessMessage>? {
+    : Response<SuccessMessageResponse>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 userApiList?.deleteUserAttributeDefinitionById(attributeDefId = attributeDefId,companyId = config.companyId ,applicationId = applicationId , headers = headers)
         } else {
@@ -319,8 +317,8 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     }
     
     
-    suspend fun updateUserAttribute(attributeDefId: String,userId: String,body: CreateUserAttributePayload, headers: Map<String, String> = emptyMap())
-    : Response<UserAttribute>? {
+    suspend fun updateUserAttribute(attributeDefId: String,userId: String,body: CreateUserAttributeRequest, headers: Map<String, String> = emptyMap())
+    : Response<UserAttributeResponse>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 userApiList?.updateUserAttribute(attributeDefId = attributeDefId,userId = userId,applicationId = applicationId ,companyId = config.companyId , body = body,headers = headers)
         } else {
@@ -330,7 +328,7 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     
     
     suspend fun getUserAttribute(attributeDefId: String,userId: String, headers: Map<String, String> = emptyMap())
-    : Response<UserAttribute>? {
+    : Response<UserAttributeResponse>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 userApiList?.getUserAttribute(attributeDefId = attributeDefId,userId = userId,applicationId = applicationId ,companyId = config.companyId , headers = headers)
         } else {
@@ -340,7 +338,7 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     
     
     suspend fun deleteUserAttribute(attributeDefId: String,userId: String, headers: Map<String, String> = emptyMap())
-    : Response<SuccessMessage>? {
+    : Response<SuccessMessageResponse>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 userApiList?.deleteUserAttribute(attributeDefId = attributeDefId,userId = userId,applicationId = applicationId ,companyId = config.companyId , headers = headers)
         } else {
@@ -360,29 +358,9 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     
     
     suspend fun getUserAttributeById(attributeId: String, headers: Map<String, String> = emptyMap())
-    : Response<UserAttribute>? {
+    : Response<UserAttributeResponse>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 userApiList?.getUserAttributeById(attributeId = attributeId,applicationId = applicationId ,companyId = config.companyId , headers = headers)
-        } else {
-            null
-        }
-    }
-    
-    
-    suspend fun bulkUpdateUserAttributes(body: BulkUpdateUserAttributesBody, headers: Map<String, String> = emptyMap())
-    : Response<BulkOperation>? {
-        return if (config.oauthClient.isAccessTokenValid()) {
-                userApiList?.bulkUpdateUserAttributes(companyId = config.companyId ,applicationId = applicationId , body = body,headers = headers)
-        } else {
-            null
-        }
-    }
-    
-    
-    suspend fun bulkUpdatePerUserAttributes(body: BulkUpdatePerUserAttributesBody, headers: Map<String, String> = emptyMap())
-    : Response<BulkOperation>? {
-        return if (config.oauthClient.isAccessTokenValid()) {
-                userApiList?.bulkUpdatePerUserAttributes(companyId = config.companyId ,applicationId = applicationId , body = body,headers = headers)
         } else {
             null
         }

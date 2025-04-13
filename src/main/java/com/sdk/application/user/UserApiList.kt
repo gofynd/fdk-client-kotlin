@@ -48,7 +48,7 @@ interface UserApiList {
     
     @POST
     suspend fun loginWithOTP(@Url url1: String?    ,  @Query("platform") platform: String?, @Body body: SendOtpRequestSchema, @HeaderMap headers: Map<String, String>? = null)
-    : Response<SendOtp>
+    : Response<SendOtpResponse>
     
     
     @POST
@@ -208,7 +208,7 @@ interface UserApiList {
     
     @GET
     suspend fun userExists(@Url url1: String?    ,  @Query("q") q: String, @HeaderMap headers: Map<String, String>? = null)
-    : Response<UserExists>
+    : Response<UserExistsResponse>
     
     
     @POST
