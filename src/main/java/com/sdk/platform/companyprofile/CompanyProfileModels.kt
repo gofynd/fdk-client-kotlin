@@ -1842,14 +1842,9 @@ data class GetLocationSerializer(
     var bulkShipment: Boolean?=null,
     
     @SerializedName("auto_assign_courier_partner")
-    var autoAssignCourierPartner: Boolean?=null,
-    
-    @SerializedName("is_hyperlocal_active")
-    var isHyperlocalActive: Boolean?=null
+    var autoAssignCourierPartner: Boolean?=null
     
 ): Parcelable {
-    
-    
     
     
     
@@ -2117,14 +2112,9 @@ data class LocationSerializer(
     var bulkShipment: Boolean?=null,
     
     @SerializedName("auto_assign_courier_partner")
-    var autoAssignCourierPartner: Boolean?=null,
-    
-    @SerializedName("is_hyperlocal_active")
-    var isHyperlocalActive: Boolean?=null
+    var autoAssignCourierPartner: Boolean?=null
     
 ): Parcelable {
-    
-    
     
     
     

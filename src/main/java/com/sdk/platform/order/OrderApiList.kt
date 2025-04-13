@@ -193,10 +193,6 @@ interface OrderApiList {
     suspend fun updateOrder(@Path("company_id") companyId: String, @Path("order_id") orderId: String,@Body body: OrderUpdatePayload, @HeaderMap headers: Map<String, String>? = null)
     : Response<OrderUpdateResponseDetail>
     
-    @POST ("/service/platform/order-manage/v1.0/company/{company_id}/shipments/consolidate")
-    suspend fun consolidateShipments(@Path("company_id") companyId: String,@Body body: ConsolidateShipmentPayload, @HeaderMap headers: Map<String, String>? = null)
-    : Response<ConsolidateShipmentResponse>
-    
     @GET ("/service/platform/order/v1.0/company/{company_id}/application/{application_id}/orders/shipments/{shipment_id}/line_number/{line_number}/reasons")
     suspend fun getShipmentBagReasons(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Path("shipment_id") shipmentId: String, @Path("line_number") lineNumber: String, @Query("bag_id") bagId: String, @HeaderMap headers: Map<String, String>? = null)
     : Response<ShipmentBagReasons>

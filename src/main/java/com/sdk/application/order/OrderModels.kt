@@ -679,10 +679,7 @@ data class FulfillingStore(
     var companyId: Int?=null,
     
     @SerializedName("tags")
-    var tags: ArrayList<String>?=null,
-    
-    @SerializedName("custom_json")
-    var customJson: @RawValue HashMap<String,Any>?=null
+    var tags: ArrayList<String>?=null
     
 ): Parcelable {
     
@@ -695,57 +692,6 @@ data class FulfillingStore(
     
     
     
-    
-    
-    
-    
-    
-    
-    
-}
-
-
-
-             
-/*
-    Model: RuleConditionsSchema
-*/
-@Parcelize
-data class RuleConditionsSchema(
-    
-    
-    
-    @SerializedName("article_tag")
-    var articleTag: String?=null,
-    
-    @SerializedName("department")
-    var department: ArrayList<String>?=null
-    
-): Parcelable {
-    
-    
-    
-    
-    
-    
-    
-}
-
-
-
-             
-/*
-    Model: RuleSchema
-*/
-@Parcelize
-data class RuleSchema(
-    
-    
-    
-    @SerializedName("conditions")
-    var conditions: RuleConditionsSchema?=null
-    
-): Parcelable {
     
     
     
@@ -768,14 +714,9 @@ data class ChargeDistributionSchema(
     var type: String?=null,
     
     @SerializedName("logic")
-    var logic: String?=null,
-    
-    @SerializedName("rule")
-    var rule: RuleSchema?=null
+    var logic: String?=null
     
 ): Parcelable {
-    
-    
     
     
     
@@ -890,24 +831,9 @@ data class PriceAdjustmentCharge(
     var amount: ChargeAmount?=null,
     
     @SerializedName("distribution_logic")
-    var distributionLogic: ChargeDistributionLogic?=null,
-    
-    @SerializedName("meta")
-    var meta: @RawValue HashMap<String,Any>?=null,
-    
-    @SerializedName("is_refundable")
-    var isRefundable: Boolean?=null,
-    
-    @SerializedName("is_refundable_on_state")
-    var isRefundableOnState: Boolean?=null
+    var distributionLogic: ChargeDistributionLogic?=null
     
 ): Parcelable {
-    
-    
-    
-    
-    
-    
     
     
     
@@ -2427,14 +2353,9 @@ data class ConversionRate(
     var base: String?=null,
     
     @SerializedName("rates")
-    var rates: @RawValue HashMap<String,Any>?=null,
-    
-    @SerializedName("timestamp")
-    var timestamp: Double?=null
+    var rates: @RawValue HashMap<String,Any>?=null
     
 ): Parcelable {
-    
-    
     
     
     
@@ -2561,14 +2482,9 @@ data class OrderSchema(
     var externalOrderId: String?=null,
     
     @SerializedName("payment_info")
-    var paymentInfo: ArrayList<PaymentInfo>?=null,
-    
-    @SerializedName("custom_json")
-    var customJson: @RawValue HashMap<String,Any>?=null
+    var paymentInfo: ArrayList<PaymentInfo>?=null
     
 ): Parcelable {
-    
-    
     
     
     

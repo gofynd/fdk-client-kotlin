@@ -6200,19 +6200,9 @@ data class CartProductInfo(
     var autoAddToCart: Boolean?=null,
     
     @SerializedName("discount_meta")
-    var discountMeta: DiscountMeta?=null,
-    
-    @SerializedName("journey_wise_promise")
-    var journeyWisePromise: ArrayList<JourneyPromiseObject>?=null,
-    
-    @SerializedName("distance")
-    var distance: Double?=null
+    var discountMeta: DiscountMeta?=null
     
 ): Parcelable {
-    
-    
-    
-    
     
     
     
@@ -10040,19 +10030,9 @@ data class PlatformShipmentResponse(
     var logisticsMeta: ShipmentLogisticsMeta?=null,
     
     @SerializedName("error")
-    var error: ShipmentError?=null,
-    
-    @SerializedName("journey_wise_promise")
-    var journeyWisePromise: ArrayList<JourneyPromiseObject>?=null,
-    
-    @SerializedName("distance")
-    var distance: Double?=null
+    var error: ShipmentError?=null
     
 ): Parcelable {
-    
-    
-    
-    
     
     
     
@@ -12656,65 +12636,6 @@ data class AllAddressForSelectAddress(
 ): Parcelable {
     
     
-    
-    
-    
-    
-    
-    
-    
-}
-
-
-
-             
-/*
-    Model: DeliveryPromiseObject
-*/
-@Parcelize
-data class DeliveryPromiseObject(
-    
-    
-    
-    @SerializedName("min")
-    var min: String?=null,
-    
-    @SerializedName("max")
-    var max: String?=null,
-    
-    @SerializedName("message")
-    var message: String?=null
-    
-): Parcelable {
-    
-    
-    
-    
-    
-    
-    
-    
-    
-}
-
-
-
-             
-/*
-    Model: JourneyPromiseObject
-*/
-@Parcelize
-data class JourneyPromiseObject(
-    
-    
-    
-    @SerializedName("journey")
-    var journey: String?=null,
-    
-    @SerializedName("delivery_promise")
-    var deliveryPromise: DeliveryPromiseObject?=null
-    
-): Parcelable {
     
     
     

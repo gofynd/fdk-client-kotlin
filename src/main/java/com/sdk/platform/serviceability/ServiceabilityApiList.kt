@@ -301,32 +301,4 @@ interface ServiceabilityApiList {
     suspend fun downloadZoneSampleFile(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Path("product_type") productType: String, @HeaderMap headers: Map<String, String>? = null)
     : Response<ResponseBody>
     
-    @POST ("/service/platform/logistics/v2.0/company/{company_id}/application/{application_id}/zones/bulk/validation")
-    suspend fun validateBulkZone(@Path("company_id") companyId: String, @Path("application_id") applicationId: String,@Body body: ZoneBulkValidationRequestSchema, @HeaderMap headers: Map<String, String>? = null)
-    : Response<ZoneBulkValidationResponse>
-    
-    @GET ("/service/platform/logistics/v2.0/company/{company_id}/application/{application_id}/zones/bulk/validation/{batch_id}")
-    suspend fun getBulkZoneValidation(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Path("batch_id") batchId: String, @HeaderMap headers: Map<String, String>? = null)
-    : Response<ZoneBulkValidationStatusResponse>
-    
-    @POST ("/service/platform/logistics/v2.0/company/{company_id}/application/{application_id}/zones/bulk/import/{batch_id}")
-    suspend fun importBulkZone(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Path("batch_id") batchId: String, @HeaderMap headers: Map<String, String>? = null)
-    : Response<ZoneBulkImportResponse>
-    
-    @PATCH ("/service/platform/logistics/v2.0/company/{company_id}/application/{application_id}/zones/{zone_id}/conflicts")
-    suspend fun overrideZoneById(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Path("zone_id") zoneId: String,@Body body: ZoneOverrideSchema, @HeaderMap headers: Map<String, String>? = null)
-    : Response<ZoneOverrideResponseSchema>
-    
-    @GET ("/service/platform/logistics/v2.0/company/{company_id}/application/{application_id}/zones/{zone_id}/conflicts")
-    suspend fun getZoneOverrideStatus(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Path("zone_id") zoneId: String, @HeaderMap headers: Map<String, String>? = null)
-    : Response<ZoneOverrideStatusResponseSchema>
-    
-    @PATCH ("/service/platform/logistics/v2.0/company/{company_id}/application/{application_id}/zones/bulk/conflicts/{batch_id}")
-    suspend fun overrideBulkZone(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Path("batch_id") batchId: String,@Body body: BulkZoneOverrideSchema, @HeaderMap headers: Map<String, String>? = null)
-    : Response<BulkZoneOverrideResponseSchema>
-    
-    @GET ("/service/platform/logistics/v2.0/company/{company_id}/application/{application_id}/zones/bulk/history/{batch_id}")
-    suspend fun getBulkZoneOverrideStatus(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Path("batch_id") batchId: String, @HeaderMap headers: Map<String, String>? = null)
-    : Response<BulkZoneOverrideStatusSchema>
-    
 }

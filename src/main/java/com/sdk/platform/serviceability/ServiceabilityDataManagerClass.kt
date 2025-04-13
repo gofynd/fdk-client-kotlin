@@ -534,13 +534,6 @@ class ServiceabilityDataManagerClass(val config: PlatformConfig, val unauthorize
     
     
     
-    
-    
-    
-    
-    
-    
-    
 
 inner class ApplicationClient(val applicationId:String,val config: PlatformConfig){
 
@@ -1045,76 +1038,6 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     : Response<ResponseBody>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 serviceabilityApiList?.downloadZoneSampleFile(companyId = config.companyId ,applicationId = applicationId ,productType = productType, headers = headers)
-        } else {
-            null
-        }
-    }
-    
-    
-    suspend fun validateBulkZone(body: ZoneBulkValidationRequestSchema, headers: Map<String, String> = emptyMap())
-    : Response<ZoneBulkValidationResponse>? {
-        return if (config.oauthClient.isAccessTokenValid()) {
-                serviceabilityApiList?.validateBulkZone(companyId = config.companyId ,applicationId = applicationId , body = body,headers = headers)
-        } else {
-            null
-        }
-    }
-    
-    
-    suspend fun getBulkZoneValidation(batchId: String, headers: Map<String, String> = emptyMap())
-    : Response<ZoneBulkValidationStatusResponse>? {
-        return if (config.oauthClient.isAccessTokenValid()) {
-                serviceabilityApiList?.getBulkZoneValidation(companyId = config.companyId ,applicationId = applicationId ,batchId = batchId, headers = headers)
-        } else {
-            null
-        }
-    }
-    
-    
-    suspend fun importBulkZone(batchId: String, headers: Map<String, String> = emptyMap())
-    : Response<ZoneBulkImportResponse>? {
-        return if (config.oauthClient.isAccessTokenValid()) {
-                serviceabilityApiList?.importBulkZone(companyId = config.companyId ,applicationId = applicationId ,batchId = batchId, headers = headers)
-        } else {
-            null
-        }
-    }
-    
-    
-    suspend fun overrideZoneById(zoneId: String,body: ZoneOverrideSchema, headers: Map<String, String> = emptyMap())
-    : Response<ZoneOverrideResponseSchema>? {
-        return if (config.oauthClient.isAccessTokenValid()) {
-                serviceabilityApiList?.overrideZoneById(companyId = config.companyId ,applicationId = applicationId ,zoneId = zoneId, body = body,headers = headers)
-        } else {
-            null
-        }
-    }
-    
-    
-    suspend fun getZoneOverrideStatus(zoneId: String, headers: Map<String, String> = emptyMap())
-    : Response<ZoneOverrideStatusResponseSchema>? {
-        return if (config.oauthClient.isAccessTokenValid()) {
-                serviceabilityApiList?.getZoneOverrideStatus(companyId = config.companyId ,applicationId = applicationId ,zoneId = zoneId, headers = headers)
-        } else {
-            null
-        }
-    }
-    
-    
-    suspend fun overrideBulkZone(batchId: String,body: BulkZoneOverrideSchema, headers: Map<String, String> = emptyMap())
-    : Response<BulkZoneOverrideResponseSchema>? {
-        return if (config.oauthClient.isAccessTokenValid()) {
-                serviceabilityApiList?.overrideBulkZone(companyId = config.companyId ,applicationId = applicationId ,batchId = batchId, body = body,headers = headers)
-        } else {
-            null
-        }
-    }
-    
-    
-    suspend fun getBulkZoneOverrideStatus(batchId: String, headers: Map<String, String> = emptyMap())
-    : Response<BulkZoneOverrideStatusSchema>? {
-        return if (config.oauthClient.isAccessTokenValid()) {
-                serviceabilityApiList?.getBulkZoneOverrideStatus(companyId = config.companyId ,applicationId = applicationId ,batchId = batchId, headers = headers)
         } else {
             null
         }

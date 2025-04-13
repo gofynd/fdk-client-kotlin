@@ -497,18 +497,6 @@ class OrderDataManagerClass(val config: PlatformConfig, val unauthorizedAction: 
     }
     
     
-    suspend fun consolidateShipments(body: ConsolidateShipmentPayload, headers: Map<String, String> = emptyMap())
-    : Response<ConsolidateShipmentResponse>? {
-
-        return if (config.oauthClient.isAccessTokenValid()) {
-            orderApiList?.consolidateShipments(
-        companyId = config.companyId, body = body,headers = headers)
-        } else {
-            null
-        }
-    }
-    
-    
     
     suspend fun getShipments(lane: String?=null,bagStatus: String?=null,statusOverrideLane: Boolean?=null,timeToDispatch: Int?=null,searchType: String?=null,searchValue: String?=null,fromDate: String?=null,toDate: String?=null,startDate: String?=null,endDate: String?=null,dpIds: String?=null,stores: String?=null,salesChannels: String?=null,pageNo: Int?=null,pageSize: Int?=null,fetchActiveShipment: Boolean?=null,allowInactive: Boolean?=null,excludeLockedShipments: Boolean?=null,paymentMethods: String?=null,channelShipmentId: String?=null,channelOrderId: String?=null,customMeta: String?=null,orderingChannel: String?=null,companyAffiliateTag: String?=null,myOrders: Boolean?=null,platformUserId: String?=null,sortType: String?=null,showCrossCompanyData: Boolean?=null,tags: String?=null,customerId: String?=null,orderType: String?=null,operationalStatus: String?=null,financialStatus: String?=null,logisticsStatus: String?=null,parentViewSlug: String?=null,childViewSlug: String?=null,lockStatus: String?=null,groupEntity: String?=null,enforceDateFilter: Boolean?=null, headers: Map<String, String> = emptyMap())
     : Response<ShipmentInternalPlatformViewResponse>? {
@@ -1317,7 +1305,6 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
             null
         }
     }
-    
     
     
     
