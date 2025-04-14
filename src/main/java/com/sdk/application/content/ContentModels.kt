@@ -125,6 +125,33 @@ data class SeoComponent(
 
              
 /*
+    Model: ValidationError
+*/
+@Parcelize
+data class ValidationError(
+    
+    
+    
+    @SerializedName("message")
+    var message: String?=null,
+    
+    @SerializedName("field")
+    var field: String?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
     Model: SeoSchema
 */
 @Parcelize
@@ -463,10 +490,10 @@ data class ScheduleStartSchema(
 
              
 /*
-    Model: BlogGetResponse
+    Model: BlogGetDetails
 */
 @Parcelize
-data class BlogGetResponse(
+data class BlogGetDetails(
     
     
     
@@ -1067,90 +1094,6 @@ data class NavigationReference(
 
              
 /*
-    Model: ConfigurationSchema
-*/
-@Parcelize
-data class ConfigurationSchema(
-    
-    
-    
-    @SerializedName("sleep_time")
-    var sleepTime: Int?=null,
-    
-    @SerializedName("start_on_launch")
-    var startOnLaunch: Boolean?=null,
-    
-    @SerializedName("duration")
-    var duration: Int?=null,
-    
-    @SerializedName("slide_direction")
-    var slideDirection: String?=null
-    
-): Parcelable {
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-}
-
-
-
-             
-/*
-    Model: SlideshowMedia
-*/
-@Parcelize
-data class SlideshowMedia(
-    
-    
-    
-    @SerializedName("type")
-    var type: String?=null,
-    
-    @SerializedName("url")
-    var url: String?=null,
-    
-    @SerializedName("bg_color")
-    var bgColor: String?=null,
-    
-    @SerializedName("duration")
-    var duration: Int?=null,
-    
-    @SerializedName("auto_decide_duration")
-    var autoDecideDuration: Boolean?=null,
-    
-    @SerializedName("action")
-    var action: Action?=null
-    
-): Parcelable {
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-}
-
-
-
-             
-/*
     Model: AnnouncementsResponseSchema
 */
 @Parcelize
@@ -1695,9 +1638,14 @@ data class Page(
     var type: String?=null,
     
     @SerializedName("size")
-    var size: Int?=null
+    var size: Int?=null,
+    
+    @SerializedName("page_size")
+    var pageSize: Int?=null
     
 ): Parcelable {
+    
+    
     
     
     
@@ -1783,10 +1731,10 @@ data class LandingPageSchema(
 
              
 /*
-    Model: NavigationGetResponse
+    Model: NavigationGetDetails
 */
 @Parcelize
-data class NavigationGetResponse(
+data class NavigationGetDetails(
     
     
     
@@ -1909,10 +1857,10 @@ data class NavigationSchema(
 
              
 /*
-    Model: PageGetResponse
+    Model: PageGetDetails
 */
 @Parcelize
-data class PageGetResponse(
+data class PageGetDetails(
     
     
     
@@ -2074,100 +2022,6 @@ data class CreatedBySchema(
     var id: String?=null
     
 ): Parcelable {
-    
-    
-    
-    
-    
-}
-
-
-
-             
-/*
-    Model: SlideshowGetResponse
-*/
-@Parcelize
-data class SlideshowGetResponse(
-    
-    
-    
-    @SerializedName("items")
-    var items: ArrayList<SlideshowSchema>?=null,
-    
-    @SerializedName("page")
-    var page: Page?=null
-    
-): Parcelable {
-    
-    
-    
-    
-    
-    
-    
-}
-
-
-
-             
-/*
-    Model: SlideshowSchema
-*/
-@Parcelize
-data class SlideshowSchema(
-    
-    
-    
-    @SerializedName("_id")
-    var id: String?=null,
-    
-    @SerializedName("slug")
-    var slug: String?=null,
-    
-    @SerializedName("date_meta")
-    var dateMeta: DateMeta?=null,
-    
-    @SerializedName("application")
-    var application: String?=null,
-    
-    @SerializedName("platform")
-    var platform: String?=null,
-    
-    @SerializedName("configuration")
-    var configuration: ConfigurationSchema?=null,
-    
-    @SerializedName("media")
-    var media: ArrayList<SlideshowMedia>?=null,
-    
-    @SerializedName("active")
-    var active: Boolean?=null,
-    
-    @SerializedName("archived")
-    var archived: Boolean?=null,
-    
-    @SerializedName("_custom_json")
-    var customJson: @RawValue HashMap<String,Any>?=null
-    
-): Parcelable {
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
     
     
     
@@ -2561,8 +2415,8 @@ data class CustomObjectFieldSchema(
     @SerializedName("_id")
     var id: String?=null,
     
-    @SerializedName("key")
-    var key: String?=null,
+    @SerializedName("slug")
+    var slug: String?=null,
     
     @SerializedName("value")
     var value: ArrayList<CustomObjectFieldValue>?=null,
@@ -2600,7 +2454,7 @@ data class CustomObjectByIdSchema(
     
     
     
-    @SerializedName("_id")
+    @SerializedName("id")
     var id: String?=null,
     
     @SerializedName("status")
@@ -2675,14 +2529,11 @@ data class CustomFieldSchema(
     @SerializedName("namespace")
     var namespace: String?=null,
     
-    @SerializedName("key")
-    var key: String?=null,
+    @SerializedName("slug")
+    var slug: String?=null,
     
     @SerializedName("resource")
     var resource: String?=null,
-    
-    @SerializedName("creator")
-    var creator: String?=null,
     
     @SerializedName("value")
     var value: ArrayList<CustomFieldValue>?=null,
@@ -2711,9 +2562,6 @@ data class CustomFieldSchema(
     @SerializedName("invalid_value_errors")
     var invalidValueErrors: @RawValue ArrayList<Any>?=null,
     
-    @SerializedName("created_by")
-    var createdBy: String?=null,
-    
     @SerializedName("is_deleted")
     var isDeleted: Boolean?=null,
     
@@ -2724,10 +2572,6 @@ data class CustomFieldSchema(
     var updatedAt: String?=null
     
 ): Parcelable {
-    
-    
-    
-    
     
     
     
@@ -2791,6 +2635,85 @@ data class CustomFieldsResponseByResourceIdSchema(
 
              
 /*
+    Model: CustomObjectListItemSchema
+*/
+@Parcelize
+data class CustomObjectListItemSchema(
+    
+    
+    
+    @SerializedName("_id")
+    var id: String?=null,
+    
+    @SerializedName("definition_id")
+    var definitionId: String?=null,
+    
+    @SerializedName("status")
+    var status: String?=null,
+    
+    @SerializedName("updated_at")
+    var updatedAt: String?=null,
+    
+    @SerializedName("display_name")
+    var displayName: String?=null,
+    
+    @SerializedName("definition")
+    var definition: CustomObjectListItemDefinationSchema?=null,
+    
+    @SerializedName("references")
+    var references: Int?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: CustomObjectsSchema
+*/
+@Parcelize
+data class CustomObjectsSchema(
+    
+    
+    
+    @SerializedName("items")
+    var items: ArrayList<CustomObjectListItemSchema>?=null,
+    
+    @SerializedName("page")
+    var page: Page?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
     Model: ActionPage
 */
 @Parcelize
@@ -2817,6 +2740,250 @@ data class ActionPage(
     
     
     
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: TranslateUiLabel
+*/
+@Parcelize
+data class TranslateUiLabel(
+    
+    
+    
+    @SerializedName("_id")
+    var id: String?=null,
+    
+    @SerializedName("company_id")
+    var companyId: String?=null,
+    
+    @SerializedName("application_id")
+    var applicationId: String?=null,
+    
+    @SerializedName("template_theme_id")
+    var templateThemeId: String?=null,
+    
+    @SerializedName("theme_id")
+    var themeId: String?=null,
+    
+    @SerializedName("locale")
+    var locale: String?=null,
+    
+    @SerializedName("resource")
+    var resource: @RawValue HashMap<String,Any>?=null,
+    
+    @SerializedName("type")
+    var type: String?=null,
+    
+    @SerializedName("template")
+    var template: Boolean?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: TranslateUiLabelsPage
+*/
+@Parcelize
+data class TranslateUiLabelsPage(
+    
+    
+    
+    @SerializedName("items")
+    var items: ArrayList<TranslateUiLabel>?=null,
+    
+    @SerializedName("page")
+    var page: Page?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: Error
+*/
+@Parcelize
+data class Error(
+    
+    
+    
+    @SerializedName("error")
+    var error: String?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: ResourceTranslations
+*/
+@Parcelize
+data class ResourceTranslations(
+    
+    
+    
+    @SerializedName("resource_id")
+    var resourceId: String?=null,
+    
+    @SerializedName("value")
+    var value: @RawValue HashMap<String,Any>?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: StandardError
+*/
+@Parcelize
+data class StandardError(
+    
+    
+    
+    @SerializedName("message")
+    var message: String?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: ApplicationLanguage
+*/
+@Parcelize
+data class ApplicationLanguage(
+    
+    
+    
+    @SerializedName("_id")
+    var id: String?=null,
+    
+    @SerializedName("company_id")
+    var companyId: String?=null,
+    
+    @SerializedName("application_id")
+    var applicationId: String?=null,
+    
+    @SerializedName("locale")
+    var locale: String?=null,
+    
+    @SerializedName("name")
+    var name: String?=null,
+    
+    @SerializedName("display_name")
+    var displayName: String?=null,
+    
+    @SerializedName("direction")
+    var direction: String?=null,
+    
+    @SerializedName("is_default")
+    var isDefault: Boolean?=null,
+    
+    @SerializedName("published")
+    var published: Boolean?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: ResourcePayload
+*/
+@Parcelize
+data class ResourcePayload(
+    
+    
+    
+    @SerializedName("payload")
+    var payload: @RawValue ArrayList<HashMap<String,Any>>?=null
+    
+): Parcelable {
     
     
     

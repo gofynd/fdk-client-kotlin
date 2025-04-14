@@ -705,8 +705,8 @@ data class AvailablePageSchemaSections(
     @SerializedName("predicate")
     var predicate: AvailablePagePredicate?=null,
     
-    @SerializedName("source")
-    var source: String?=null
+    @SerializedName("__source")
+    var source: SectionSource?=null
     
 ): Parcelable {
     
@@ -717,6 +717,38 @@ data class AvailablePageSchemaSections(
     
     
     
+    
+    
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: SectionSource
+*/
+@Parcelize
+data class SectionSource(
+    
+    
+    
+    @SerializedName("id")
+    var id: String?=null,
+    
+    @SerializedName("bundle_name")
+    var bundleName: String?=null,
+    
+    @SerializedName("type")
+    var type: String?=null
+    
+): Parcelable {
     
     
     
@@ -1255,10 +1287,10 @@ data class ThemesSchema(
 
              
 /*
-    Model: ThemeUpgradableResponse
+    Model: ThemeUpgradable
 */
 @Parcelize
-data class ThemeUpgradableResponse(
+data class ThemeUpgradable(
     
     
     
@@ -1981,9 +2013,56 @@ data class GlobalSchema(
     
     
     @SerializedName("props")
-    var props: @RawValue ArrayList<HashMap<String,Any>>?=null
+    var props: ArrayList<Prop>?=null
     
 ): Parcelable {
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: Prop
+*/
+@Parcelize
+data class Prop(
+    
+    
+    
+    @SerializedName("type")
+    var type: String?=null,
+    
+    @SerializedName("category")
+    var category: String?=null,
+    
+    @SerializedName("value")
+    var value: String?=null,
+    
+    @SerializedName("id")
+    var id: String?=null,
+    
+    @SerializedName("label")
+    var label: String?=null,
+    
+    @SerializedName("info")
+    var info: String?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     
     
     
@@ -2629,10 +2708,10 @@ data class ThemeVersions(
 
              
 /*
-    Model: DummyResponse
+    Model: DummyTheme
 */
 @Parcelize
-data class DummyResponse(
+data class DummyTheme(
     
     
     
