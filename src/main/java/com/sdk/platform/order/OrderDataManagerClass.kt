@@ -45,7 +45,7 @@ class OrderDataManagerClass(val config: PlatformConfig, val unauthorizedAction: 
     
     
     suspend fun invalidateShipmentCache(body: InvalidateShipmentCachePayload, headers: Map<String, String> = emptyMap())
-    : Response<InvalidateShipmentCacheResponseSchema>? {
+    : Response<InvalidateShipmentCacheResponse>? {
 
         return if (config.oauthClient.isAccessTokenValid()) {
             orderApiList?.invalidateShipmentCache(
@@ -57,7 +57,7 @@ class OrderDataManagerClass(val config: PlatformConfig, val unauthorizedAction: 
     
     
     suspend fun reassignLocation(body: StoreReassign, headers: Map<String, String> = emptyMap())
-    : Response<StoreReassignResponseSchema>? {
+    : Response<StoreReassignResponse>? {
 
         return if (config.oauthClient.isAccessTokenValid()) {
             orderApiList?.reassignLocation(
@@ -69,7 +69,7 @@ class OrderDataManagerClass(val config: PlatformConfig, val unauthorizedAction: 
     
     
     suspend fun updateShipmentLock(body: UpdateShipmentLockPayload, headers: Map<String, String> = emptyMap())
-    : Response<UpdateShipmentLockResponseSchema>? {
+    : Response<UpdateShipmentLockResponse>? {
 
         return if (config.oauthClient.isAccessTokenValid()) {
             orderApiList?.updateShipmentLock(
@@ -81,7 +81,7 @@ class OrderDataManagerClass(val config: PlatformConfig, val unauthorizedAction: 
     
     
     suspend fun getAnnouncements(date: String?=null, headers: Map<String, String> = emptyMap())
-    : Response<AnnouncementsResponseSchema>? {
+    : Response<AnnouncementsResponse>? {
 
         return if (config.oauthClient.isAccessTokenValid()) {
             orderApiList?.getAnnouncements(
@@ -92,12 +92,12 @@ class OrderDataManagerClass(val config: PlatformConfig, val unauthorizedAction: 
     }
     
     
-    suspend fun updateAddress(shipmentId: String,body: UpdateAddressRequestBody, headers: Map<String, String> = emptyMap())
-    : Response<BaseResponseSchema>? {
+    suspend fun updateAddress(shipmentId: String,name: String?=null,address: String?=null,addressType: String?=null,pincode: String?=null,phone: String?=null,email: String?=null,landmark: String?=null,addressCategory: String,city: String?=null,state: String?=null,country: String?=null, headers: Map<String, String> = emptyMap())
+    : Response<BaseResponse>? {
 
         return if (config.oauthClient.isAccessTokenValid()) {
             orderApiList?.updateAddress(
-        companyId = config.companyId,shipmentId = shipmentId, body = body,headers = headers)
+        shipmentId = shipmentId,name = name,address = address,addressType = addressType,pincode = pincode,phone = phone,email = email,landmark = landmark,addressCategory = addressCategory,city = city,state = state,country = country,companyId = config.companyId, headers = headers)
         } else {
             null
         }
@@ -117,7 +117,7 @@ class OrderDataManagerClass(val config: PlatformConfig, val unauthorizedAction: 
     
     
     suspend fun getRoleBasedActions( headers: Map<String, String> = emptyMap())
-    : Response<GetActionsResponseSchema>? {
+    : Response<GetActionsResponse>? {
 
         return if (config.oauthClient.isAccessTokenValid()) {
             orderApiList?.getRoleBasedActions(
@@ -129,7 +129,7 @@ class OrderDataManagerClass(val config: PlatformConfig, val unauthorizedAction: 
     
     
     suspend fun getShipmentHistory(shipmentId: String?=null,bagId: Int?=null, headers: Map<String, String> = emptyMap())
-    : Response<ShipmentHistoryResponseSchema>? {
+    : Response<ShipmentHistoryResponse>? {
 
         return if (config.oauthClient.isAccessTokenValid()) {
             orderApiList?.getShipmentHistory(
@@ -141,7 +141,7 @@ class OrderDataManagerClass(val config: PlatformConfig, val unauthorizedAction: 
     
     
     suspend fun postShipmentHistory(body: PostShipmentHistory, headers: Map<String, String> = emptyMap())
-    : Response<ShipmentHistoryResponseSchema>? {
+    : Response<ShipmentHistoryResponse>? {
 
         return if (config.oauthClient.isAccessTokenValid()) {
             orderApiList?.postShipmentHistory(
@@ -153,7 +153,7 @@ class OrderDataManagerClass(val config: PlatformConfig, val unauthorizedAction: 
     
     
     suspend fun sendSmsNinja(body: SendSmsPayload, headers: Map<String, String> = emptyMap())
-    : Response<BaseResponseSchema>? {
+    : Response<BaseResponse>? {
 
         return if (config.oauthClient.isAccessTokenValid()) {
             orderApiList?.sendSmsNinja(
@@ -165,7 +165,7 @@ class OrderDataManagerClass(val config: PlatformConfig, val unauthorizedAction: 
     
     
     suspend fun updatePackagingDimensions(body: UpdatePackagingDimensionsPayload, headers: Map<String, String> = emptyMap())
-    : Response<UpdatePackagingDimensionsResponseSchema>? {
+    : Response<UpdatePackagingDimensionsResponse>? {
 
         return if (config.oauthClient.isAccessTokenValid()) {
             orderApiList?.updatePackagingDimensions(
@@ -176,35 +176,11 @@ class OrderDataManagerClass(val config: PlatformConfig, val unauthorizedAction: 
     }
     
     
-    suspend fun createOrder(xOrderingSource: String?=null,body: CreateOrderAPI, headers: Map<String, String> = emptyMap())
-    : Response<CreateOrderResponseSchema>? {
+    suspend fun createOrder(body: CreateOrderAPI, headers: Map<String, String> = emptyMap())
+    : Response<CreateOrderResponse>? {
 
         return if (config.oauthClient.isAccessTokenValid()) {
             orderApiList?.createOrder(
-        xOrderingSource = xOrderingSource,companyId = config.companyId, body = body,headers = headers)
-        } else {
-            null
-        }
-    }
-    
-    
-    suspend fun getChannelConfig( headers: Map<String, String> = emptyMap())
-    : Response<CreateChannelConfigData>? {
-
-        return if (config.oauthClient.isAccessTokenValid()) {
-            orderApiList?.getChannelConfig(
-        companyId = config.companyId, headers = headers)
-        } else {
-            null
-        }
-    }
-    
-    
-    suspend fun createChannelConfig(body: CreateChannelConfigData, headers: Map<String, String> = emptyMap())
-    : Response<CreateChannelConfigResponseSchema>? {
-
-        return if (config.oauthClient.isAccessTokenValid()) {
-            orderApiList?.createChannelConfig(
         companyId = config.companyId, body = body,headers = headers)
         } else {
             null
@@ -248,12 +224,12 @@ class OrderDataManagerClass(val config: PlatformConfig, val unauthorizedAction: 
     }
     
     
-    suspend fun getAllowedStateTransition(orderingChannel: String?=null,orderingSource: String?=null,status: String, headers: Map<String, String> = emptyMap())
+    suspend fun getAllowedStateTransition(orderingChannel: String,status: String, headers: Map<String, String> = emptyMap())
     : Response<RoleBaseStateTransitionMapping>? {
 
         return if (config.oauthClient.isAccessTokenValid()) {
             orderApiList?.getAllowedStateTransition(
-        companyId = config.companyId,orderingChannel = orderingChannel,orderingSource = orderingSource,status = status, headers = headers)
+        companyId = config.companyId,orderingChannel = orderingChannel,status = status, headers = headers)
         } else {
             null
         }
@@ -273,7 +249,7 @@ class OrderDataManagerClass(val config: PlatformConfig, val unauthorizedAction: 
     
     
     suspend fun attachOrderUser(body: AttachOrderUser, headers: Map<String, String> = emptyMap())
-    : Response<AttachOrderUserResponseSchema>? {
+    : Response<AttachOrderUserResponse>? {
 
         return if (config.oauthClient.isAccessTokenValid()) {
             orderApiList?.attachOrderUser(
@@ -285,7 +261,7 @@ class OrderDataManagerClass(val config: PlatformConfig, val unauthorizedAction: 
     
     
     suspend fun sendUserMobileOTP(body: SendUserMobileOTP, headers: Map<String, String> = emptyMap())
-    : Response<SendUserMobileOtpResponseSchema>? {
+    : Response<SendUserMobileOtpResponse>? {
 
         return if (config.oauthClient.isAccessTokenValid()) {
             orderApiList?.sendUserMobileOTP(
@@ -297,7 +273,7 @@ class OrderDataManagerClass(val config: PlatformConfig, val unauthorizedAction: 
     
     
     suspend fun verifyMobileOTP(body: VerifyMobileOTP, headers: Map<String, String> = emptyMap())
-    : Response<VerifyOtpResponseSchema>? {
+    : Response<VerifyOtpResponse>? {
 
         return if (config.oauthClient.isAccessTokenValid()) {
             orderApiList?.verifyMobileOTP(
@@ -308,8 +284,8 @@ class OrderDataManagerClass(val config: PlatformConfig, val unauthorizedAction: 
     }
     
     
-    suspend fun downloadLanesReport(body: BulkReportsDownloadRequestSchema, headers: Map<String, String> = emptyMap())
-    : Response<BulkReportsDownloadResponseSchema>? {
+    suspend fun downloadLanesReport(body: BulkReportsDownloadRequest, headers: Map<String, String> = emptyMap())
+    : Response<BulkReportsDownloadResponse>? {
 
         return if (config.oauthClient.isAccessTokenValid()) {
             orderApiList?.downloadLanesReport(
@@ -321,7 +297,7 @@ class OrderDataManagerClass(val config: PlatformConfig, val unauthorizedAction: 
     
     
     suspend fun bulkStateTransistion(body: BulkStateTransistionRequestSchema, headers: Map<String, String> = emptyMap())
-    : Response<BulkStateTransistionResponseSchema>? {
+    : Response<BulkStateTransistionResponse>? {
 
         return if (config.oauthClient.isAccessTokenValid()) {
             orderApiList?.bulkStateTransistion(
@@ -333,7 +309,7 @@ class OrderDataManagerClass(val config: PlatformConfig, val unauthorizedAction: 
     
     
     suspend fun bulkListing(pageSize: Int,pageNo: Int,startDate: String,endDate: String,status: String?=null,bulkActionType: String?=null,searchKey: String?=null, headers: Map<String, String> = emptyMap())
-    : Response<BulkListingResponseSchema>? {
+    : Response<BulkListingResponse>? {
 
         return if (config.oauthClient.isAccessTokenValid()) {
             orderApiList?.bulkListing(
@@ -345,7 +321,7 @@ class OrderDataManagerClass(val config: PlatformConfig, val unauthorizedAction: 
     
     
     suspend fun jobDetails(batchId: String, headers: Map<String, String> = emptyMap())
-    : Response<JobDetailsResponseSchema>? {
+    : Response<JobDetailsResponse>? {
 
         return if (config.oauthClient.isAccessTokenValid()) {
             orderApiList?.jobDetails(
@@ -357,7 +333,7 @@ class OrderDataManagerClass(val config: PlatformConfig, val unauthorizedAction: 
     
     
     suspend fun getFileByStatus(batchId: String,status: String,fileType: String,reportType: String?=null, headers: Map<String, String> = emptyMap())
-    : Response<JobFailedResponseSchema>? {
+    : Response<JobFailedResponse>? {
 
         return if (config.oauthClient.isAccessTokenValid()) {
             orderApiList?.getFileByStatus(
@@ -392,8 +368,8 @@ class OrderDataManagerClass(val config: PlatformConfig, val unauthorizedAction: 
     }
     
     
-    suspend fun generateProcessManifest(body: ProcessManifestRequestSchema, headers: Map<String, String> = emptyMap())
-    : Response<ManifestResponseSchema>? {
+    suspend fun generateProcessManifest(body: ProcessManifestRequest, headers: Map<String, String> = emptyMap())
+    : Response<ManifestResponse>? {
 
         return if (config.oauthClient.isAccessTokenValid()) {
             orderApiList?.generateProcessManifest(
@@ -417,7 +393,7 @@ class OrderDataManagerClass(val config: PlatformConfig, val unauthorizedAction: 
     
     
     suspend fun dispatchManifests(body: DispatchManifest, headers: Map<String, String> = emptyMap())
-    : Response<SuccessResponseSchema>? {
+    : Response<SuccessResponse>? {
 
         return if (config.oauthClient.isAccessTokenValid()) {
             orderApiList?.dispatchManifests(
@@ -429,7 +405,7 @@ class OrderDataManagerClass(val config: PlatformConfig, val unauthorizedAction: 
     
     
     suspend fun uploadConsents(body: UploadManifestConsent, headers: Map<String, String> = emptyMap())
-    : Response<SuccessResponseSchema>? {
+    : Response<SuccessResponse>? {
 
         return if (config.oauthClient.isAccessTokenValid()) {
             orderApiList?.uploadConsents(
@@ -441,7 +417,7 @@ class OrderDataManagerClass(val config: PlatformConfig, val unauthorizedAction: 
     
     
     suspend fun getManifestfilters(view: String, headers: Map<String, String> = emptyMap())
-    : Response<ManifestFiltersResponseSchema>? {
+    : Response<ManifestFiltersResponse>? {
 
         return if (config.oauthClient.isAccessTokenValid()) {
             orderApiList?.getManifestfilters(
@@ -453,7 +429,7 @@ class OrderDataManagerClass(val config: PlatformConfig, val unauthorizedAction: 
     
     
     suspend fun eInvoiceRetry(body: EInvoiceRetry, headers: Map<String, String> = emptyMap())
-    : Response<EInvoiceRetryResponseSchema>? {
+    : Response<EInvoiceRetryResponse>? {
 
         return if (config.oauthClient.isAccessTokenValid()) {
             orderApiList?.eInvoiceRetry(
@@ -465,7 +441,7 @@ class OrderDataManagerClass(val config: PlatformConfig, val unauthorizedAction: 
     
     
     suspend fun trackShipment(shipmentId: String?=null,awb: String?=null,pageNo: Int?=null,pageSize: Int?=null, headers: Map<String, String> = emptyMap())
-    : Response<CourierPartnerTrackingResponseSchema>? {
+    : Response<CourierPartnerTrackingResponse>? {
 
         return if (config.oauthClient.isAccessTokenValid()) {
             orderApiList?.trackShipment(
@@ -501,7 +477,7 @@ class OrderDataManagerClass(val config: PlatformConfig, val unauthorizedAction: 
     
     
     suspend fun generateInvoiceID(invoiceType: String,body: GenerateInvoiceIDRequestSchema, headers: Map<String, String> = emptyMap())
-    : Response<GenerateInvoiceIDResponseSchema>? {
+    : Response<GenerateInvoiceIDResponse>? {
 
         return if (config.oauthClient.isAccessTokenValid()) {
             orderApiList?.generateInvoiceID(
@@ -525,7 +501,7 @@ class OrderDataManagerClass(val config: PlatformConfig, val unauthorizedAction: 
     
     
     suspend fun addStateManagerConfig(body: TransitionConfigPayload, headers: Map<String, String> = emptyMap())
-    : Response<ConfigUpdatedResponseSchema>? {
+    : Response<ConfigUpdatedResponse>? {
 
         return if (config.oauthClient.isAccessTokenValid()) {
             orderApiList?.addStateManagerConfig(
@@ -536,12 +512,12 @@ class OrderDataManagerClass(val config: PlatformConfig, val unauthorizedAction: 
     }
     
     
-    suspend fun getStateManagerConfig(appId: String?=null,orderingChannel: String?=null,orderingSource: String?=null,entity: String?=null, headers: Map<String, String> = emptyMap())
+    suspend fun getStateManagerConfig(appId: String?=null,orderingChannel: String?=null,entity: String?=null, headers: Map<String, String> = emptyMap())
     : Response<HashMap<String,Any>>? {
 
         return if (config.oauthClient.isAccessTokenValid()) {
             orderApiList?.getStateManagerConfig(
-        companyId = config.companyId,appId = appId,orderingChannel = orderingChannel,orderingSource = orderingSource,entity = entity, headers = headers)
+        companyId = config.companyId,appId = appId,orderingChannel = orderingChannel,entity = entity, headers = headers)
         } else {
             null
         }
@@ -549,262 +525,20 @@ class OrderDataManagerClass(val config: PlatformConfig, val unauthorizedAction: 
     
     
     
-    suspend fun updatePaymentInfo(body: UpdateShipmentPaymentMode, headers: Map<String, String> = emptyMap())
-    : Response<HashMap<String,Any>>? {
-
-        return if (config.oauthClient.isAccessTokenValid()) {
-            orderApiList?.updatePaymentInfo(
-        companyId = config.companyId, body = body,headers = headers)
-        } else {
-            null
-        }
-    }
-    
-    
-    
-    suspend fun getShipments(lane: String?=null,bagStatus: String?=null,statusAssigned: String?=null,statusOverrideLane: Boolean?=null,timeToDispatch: Int?=null,searchType: String?=null,searchValue: String?=null,fromDate: String?=null,toDate: String?=null,startDate: String?=null,endDate: String?=null,statusAssignedStartDate: String?=null,statusAssignedEndDate: String?=null,dpIds: String?=null,stores: String?=null,salesChannels: String?=null,pageNo: Int?=null,pageSize: Int?=null,fetchActiveShipment: Boolean?=null,allowInactive: Boolean?=null,excludeLockedShipments: Boolean?=null,paymentMethods: String?=null,channelShipmentId: String?=null,channelOrderId: String?=null,customMeta: String?=null,orderingChannel: String?=null,companyAffiliateTag: String?=null,myOrders: Boolean?=null,platformUserId: String?=null,sortType: String?=null,showCrossCompanyData: Boolean?=null,tags: String?=null,customerId: String?=null,orderType: String?=null,groupEntity: String?=null,enforceDateFilter: Boolean?=null,fulfillmentType: String?=null, headers: Map<String, String> = emptyMap())
-    : Response<ShipmentInternalPlatformViewResponseSchema>? {
+    suspend fun getShipments(lane: String?=null,bagStatus: String?=null,statusOverrideLane: Boolean?=null,timeToDispatch: Int?=null,searchType: String?=null,searchValue: String?=null,fromDate: String?=null,toDate: String?=null,startDate: String?=null,endDate: String?=null,dpIds: String?=null,stores: String?=null,salesChannels: String?=null,pageNo: Int?=null,pageSize: Int?=null,fetchActiveShipment: Boolean?=null,allowInactive: Boolean?=null,excludeLockedShipments: Boolean?=null,paymentMethods: String?=null,channelShipmentId: String?=null,channelOrderId: String?=null,customMeta: String?=null,orderingChannel: String?=null,companyAffiliateTag: String?=null,myOrders: Boolean?=null,platformUserId: String?=null,sortType: String?=null,showCrossCompanyData: Boolean?=null,tags: String?=null,customerId: String?=null,orderType: String?=null,enforceDateFilter: Boolean?=null, headers: Map<String, String> = emptyMap())
+    : Response<ShipmentInternalPlatformViewResponse>? {
 
         return if (config.oauthClient.isAccessTokenValid()) {
             orderApiList?.getShipments(
-        companyId = config.companyId,lane = lane,bagStatus = bagStatus,statusAssigned = statusAssigned,statusOverrideLane = statusOverrideLane,timeToDispatch = timeToDispatch,searchType = searchType,searchValue = searchValue,fromDate = fromDate,toDate = toDate,startDate = startDate,endDate = endDate,statusAssignedStartDate = statusAssignedStartDate,statusAssignedEndDate = statusAssignedEndDate,dpIds = dpIds,stores = stores,salesChannels = salesChannels,pageNo = pageNo,pageSize = pageSize,fetchActiveShipment = fetchActiveShipment,allowInactive = allowInactive,excludeLockedShipments = excludeLockedShipments,paymentMethods = paymentMethods,channelShipmentId = channelShipmentId,channelOrderId = channelOrderId,customMeta = customMeta,orderingChannel = orderingChannel,companyAffiliateTag = companyAffiliateTag,myOrders = myOrders,platformUserId = platformUserId,sortType = sortType,showCrossCompanyData = showCrossCompanyData,tags = tags,customerId = customerId,orderType = orderType,groupEntity = groupEntity,enforceDateFilter = enforceDateFilter,fulfillmentType = fulfillmentType, headers = headers)
+        companyId = config.companyId,lane = lane,bagStatus = bagStatus,statusOverrideLane = statusOverrideLane,timeToDispatch = timeToDispatch,searchType = searchType,searchValue = searchValue,fromDate = fromDate,toDate = toDate,startDate = startDate,endDate = endDate,dpIds = dpIds,stores = stores,salesChannels = salesChannels,pageNo = pageNo,pageSize = pageSize,fetchActiveShipment = fetchActiveShipment,allowInactive = allowInactive,excludeLockedShipments = excludeLockedShipments,paymentMethods = paymentMethods,channelShipmentId = channelShipmentId,channelOrderId = channelOrderId,customMeta = customMeta,orderingChannel = orderingChannel,companyAffiliateTag = companyAffiliateTag,myOrders = myOrders,platformUserId = platformUserId,sortType = sortType,showCrossCompanyData = showCrossCompanyData,tags = tags,customerId = customerId,orderType = orderType,enforceDateFilter = enforceDateFilter, headers = headers)
         } else {
             null
         }
     }
     
     
-    
-        
-            
-                
-            
-            
-        
-            
-                
-            
-            
-        
-            
-                
-            
-            
-        
-            
-                
-            
-            
-        
-            
-                
-            
-            
-        
-            
-                
-            
-            
-        
-            
-                
-            
-            
-        
-            
-                
-            
-            
-        
-            
-                
-            
-            
-        
-            
-                
-            
-            
-        
-            
-                
-            
-            
-        
-            
-                
-            
-            
-        
-            
-                
-            
-            
-        
-            
-                
-            
-            
-        
-            
-                
-            
-            
-        
-            
-                
-            
-            
-        
-            
-                
-            
-            
-        
-            
-            
-        
-            
-                
-            
-            
-        
-            
-                
-            
-            
-        
-            
-                
-            
-            
-        
-            
-                
-            
-            
-        
-            
-                
-            
-            
-        
-            
-                
-            
-            
-        
-            
-                
-            
-            
-        
-            
-                
-            
-            
-        
-            
-                
-            
-            
-        
-            
-                
-            
-            
-        
-            
-                
-            
-            
-        
-            
-                
-            
-            
-        
-            
-                
-            
-            
-        
-            
-                
-            
-            
-        
-            
-                
-            
-            
-        
-            
-                
-            
-            
-        
-            
-                
-            
-            
-        
-            
-                
-            
-            
-        
-            
-                
-            
-            
-        
-            
-                
-            
-            
-        
-    /**
-    *
-    * Summary: Paginator for getShipments
-    **/
-    fun getShipmentsPaginator(companyId: String, lane: String?=null, bagStatus: String?=null, statusAssigned: String?=null, statusOverrideLane: Boolean?=null, timeToDispatch: Int?=null, searchType: String?=null, searchValue: String?=null, fromDate: String?=null, toDate: String?=null, startDate: String?=null, endDate: String?=null, statusAssignedStartDate: String?=null, statusAssignedEndDate: String?=null, dpIds: String?=null, stores: String?=null, salesChannels: String?=null, pageSize: Int?=null, fetchActiveShipment: Boolean?=null, allowInactive: Boolean?=null, excludeLockedShipments: Boolean?=null, paymentMethods: String?=null, channelShipmentId: String?=null, channelOrderId: String?=null, customMeta: String?=null, orderingChannel: String?=null, companyAffiliateTag: String?=null, myOrders: Boolean?=null, platformUserId: String?=null, sortType: String?=null, showCrossCompanyData: Boolean?=null, tags: String?=null, customerId: String?=null, orderType: String?=null, groupEntity: String?=null, enforceDateFilter: Boolean?=null, fulfillmentType: String?=null) : Paginator<ShipmentInternalPlatformViewResponseSchema>{
-        val paginator = Paginator<ShipmentInternalPlatformViewResponseSchema>()
-        paginator.setCallBack(object : PaginatorCallback<ShipmentInternalPlatformViewResponseSchema> {
-
-            override suspend fun onNext(
-                onResponse: (Event<ShipmentInternalPlatformViewResponseSchema>?,FdkError?) -> Unit){
-
-                if (config.oauthClient.isAccessTokenValid()) {
-                    val pageId = paginator.nextId
-                    val pageNo = paginator.pageNo
-                    val pageType = "number"
-                    orderApiList?.getShipments(
-                    companyId = config.companyId, lane = lane, bagStatus = bagStatus, statusAssigned = statusAssigned, statusOverrideLane = statusOverrideLane, timeToDispatch = timeToDispatch, searchType = searchType, searchValue = searchValue, fromDate = fromDate, toDate = toDate, startDate = startDate, endDate = endDate, statusAssignedStartDate = statusAssignedStartDate, statusAssignedEndDate = statusAssignedEndDate, dpIds = dpIds, stores = stores, salesChannels = salesChannels, pageNo = pageNo, pageSize = pageSize, fetchActiveShipment = fetchActiveShipment, allowInactive = allowInactive, excludeLockedShipments = excludeLockedShipments, paymentMethods = paymentMethods, channelShipmentId = channelShipmentId, channelOrderId = channelOrderId, customMeta = customMeta, orderingChannel = orderingChannel, companyAffiliateTag = companyAffiliateTag, myOrders = myOrders, platformUserId = platformUserId, sortType = sortType, showCrossCompanyData = showCrossCompanyData, tags = tags, customerId = customerId, orderType = orderType, groupEntity = groupEntity, enforceDateFilter = enforceDateFilter, fulfillmentType = fulfillmentType
-                    )?.safeAwait{ response, error ->
-                        response?.let {
-                            val page = response.peekContent()?.page
-                            paginator.setPaginator(hasNext=page?.hasNext?:false,pageNo=if (page?.hasNext == true) ((pageNo ?: 0) + 1) else pageNo)
-                            onResponse.invoke(response,null)
-                        }
-
-                        error?.let {
-                            onResponse.invoke(null,error)
-                        }
-                    }
-
-                } else {
-                    null
-                }
-            }
-
-
-    })
-        return paginator
-    }
-    
     suspend fun getShipmentById(channelShipmentId: String?=null,shipmentId: String?=null,fetchActiveShipment: Boolean?=null,allowInactive: Boolean?=null, headers: Map<String, String> = emptyMap())
-    : Response<ShipmentInfoResponseSchema>? {
+    : Response<ShipmentInfoResponse>? {
 
         return if (config.oauthClient.isAccessTokenValid()) {
             orderApiList?.getShipmentById(
@@ -816,7 +550,7 @@ class OrderDataManagerClass(val config: PlatformConfig, val unauthorizedAction: 
     
     
     suspend fun getOrderById(orderId: String,myOrders: Boolean?=null,allowInactive: Boolean?=null, headers: Map<String, String> = emptyMap())
-    : Response<OrderDetailsResponseSchema>? {
+    : Response<OrderDetailsResponse>? {
 
         return if (config.oauthClient.isAccessTokenValid()) {
             orderApiList?.getOrderById(
@@ -828,7 +562,7 @@ class OrderDataManagerClass(val config: PlatformConfig, val unauthorizedAction: 
     
     
     suspend fun getLaneConfig(superLane: String?=null,groupEntity: String?=null,fromDate: String?=null,toDate: String?=null,startDate: String?=null,endDate: String?=null,dpIds: String?=null,stores: String?=null,salesChannels: String?=null,paymentMode: String?=null,bagStatus: String?=null,searchType: String?=null,searchValue: String?=null,tags: String?=null,timeToDispatch: Int?=null,paymentMethods: String?=null,myOrders: Boolean?=null,showCrossCompanyData: Boolean?=null,orderType: String?=null, headers: Map<String, String> = emptyMap())
-    : Response<LaneConfigResponseSchema>? {
+    : Response<LaneConfigResponse>? {
 
         return if (config.oauthClient.isAccessTokenValid()) {
             orderApiList?.getLaneConfig(
@@ -839,12 +573,12 @@ class OrderDataManagerClass(val config: PlatformConfig, val unauthorizedAction: 
     }
     
     
-    suspend fun getOrders(lane: String?=null,searchType: String?=null,bagStatus: String?=null,timeToDispatch: Int?=null,paymentMethods: String?=null,tags: String?=null,searchValue: String?=null,fromDate: String?=null,toDate: String?=null,startDate: String?=null,endDate: String?=null,dpIds: String?=null,stores: String?=null,salesChannels: String?=null,pageNo: Int?=null,pageSize: Int?=null,isPrioritySort: Boolean?=null,customMeta: String?=null,myOrders: Boolean?=null,showCrossCompanyData: Boolean?=null,customerId: String?=null,orderType: String?=null,allowInactive: Boolean?=null,groupEntity: String?=null,enforceDateFilter: Boolean?=null,fulfillmentType: String?=null, headers: Map<String, String> = emptyMap())
-    : Response<OrderListingResponseSchema>? {
+    suspend fun getOrders(lane: String?=null,searchType: String?=null,bagStatus: String?=null,timeToDispatch: Int?=null,paymentMethods: String?=null,tags: String?=null,searchValue: String?=null,fromDate: String?=null,toDate: String?=null,startDate: String?=null,endDate: String?=null,dpIds: String?=null,stores: String?=null,salesChannels: String?=null,pageNo: Int?=null,pageSize: Int?=null,isPrioritySort: Boolean?=null,customMeta: String?=null,myOrders: Boolean?=null,showCrossCompanyData: Boolean?=null,customerId: String?=null,orderType: String?=null,allowInactive: Boolean?=null,enforceDateFilter: Boolean?=null, headers: Map<String, String> = emptyMap())
+    : Response<OrderListingResponse>? {
 
         return if (config.oauthClient.isAccessTokenValid()) {
             orderApiList?.getOrders(
-        companyId = config.companyId,lane = lane,searchType = searchType,bagStatus = bagStatus,timeToDispatch = timeToDispatch,paymentMethods = paymentMethods,tags = tags,searchValue = searchValue,fromDate = fromDate,toDate = toDate,startDate = startDate,endDate = endDate,dpIds = dpIds,stores = stores,salesChannels = salesChannels,pageNo = pageNo,pageSize = pageSize,isPrioritySort = isPrioritySort,customMeta = customMeta,myOrders = myOrders,showCrossCompanyData = showCrossCompanyData,customerId = customerId,orderType = orderType,allowInactive = allowInactive,groupEntity = groupEntity,enforceDateFilter = enforceDateFilter,fulfillmentType = fulfillmentType, headers = headers)
+        companyId = config.companyId,lane = lane,searchType = searchType,bagStatus = bagStatus,timeToDispatch = timeToDispatch,paymentMethods = paymentMethods,tags = tags,searchValue = searchValue,fromDate = fromDate,toDate = toDate,startDate = startDate,endDate = endDate,dpIds = dpIds,stores = stores,salesChannels = salesChannels,pageNo = pageNo,pageSize = pageSize,isPrioritySort = isPrioritySort,customMeta = customMeta,myOrders = myOrders,showCrossCompanyData = showCrossCompanyData,customerId = customerId,orderType = orderType,allowInactive = allowInactive,enforceDateFilter = enforceDateFilter, headers = headers)
         } else {
             null
         }
@@ -852,183 +586,9 @@ class OrderDataManagerClass(val config: PlatformConfig, val unauthorizedAction: 
     
     
     
-        
-            
-                
-            
-            
-        
-            
-                
-            
-            
-        
-            
-                
-            
-            
-        
-            
-                
-            
-            
-        
-            
-                
-            
-            
-        
-            
-                
-            
-            
-        
-            
-                
-            
-            
-        
-            
-                
-            
-            
-        
-            
-                
-            
-            
-        
-            
-                
-            
-            
-        
-            
-                
-            
-            
-        
-            
-                
-            
-            
-        
-            
-                
-            
-            
-        
-            
-                
-            
-            
-        
-            
-                
-            
-            
-        
-            
-            
-        
-            
-                
-            
-            
-        
-            
-                
-            
-            
-        
-            
-                
-            
-            
-        
-            
-                
-            
-            
-        
-            
-                
-            
-            
-        
-            
-                
-            
-            
-        
-            
-                
-            
-            
-        
-            
-                
-            
-            
-        
-            
-                
-            
-            
-        
-            
-                
-            
-            
-        
-            
-                
-            
-            
-        
-    /**
-    *
-    * Summary: Paginator for getOrders
-    **/
-    fun getOrdersPaginator(companyId: String, lane: String?=null, searchType: String?=null, bagStatus: String?=null, timeToDispatch: Int?=null, paymentMethods: String?=null, tags: String?=null, searchValue: String?=null, fromDate: String?=null, toDate: String?=null, startDate: String?=null, endDate: String?=null, dpIds: String?=null, stores: String?=null, salesChannels: String?=null, pageSize: Int?=null, isPrioritySort: Boolean?=null, customMeta: String?=null, myOrders: Boolean?=null, showCrossCompanyData: Boolean?=null, customerId: String?=null, orderType: String?=null, allowInactive: Boolean?=null, groupEntity: String?=null, enforceDateFilter: Boolean?=null, fulfillmentType: String?=null) : Paginator<OrderListingResponseSchema>{
-        val paginator = Paginator<OrderListingResponseSchema>()
-        paginator.setCallBack(object : PaginatorCallback<OrderListingResponseSchema> {
-
-            override suspend fun onNext(
-                onResponse: (Event<OrderListingResponseSchema>?,FdkError?) -> Unit){
-
-                if (config.oauthClient.isAccessTokenValid()) {
-                    val pageId = paginator.nextId
-                    val pageNo = paginator.pageNo
-                    val pageType = "number"
-                    orderApiList?.getOrders(
-                    companyId = config.companyId, lane = lane, searchType = searchType, bagStatus = bagStatus, timeToDispatch = timeToDispatch, paymentMethods = paymentMethods, tags = tags, searchValue = searchValue, fromDate = fromDate, toDate = toDate, startDate = startDate, endDate = endDate, dpIds = dpIds, stores = stores, salesChannels = salesChannels, pageNo = pageNo, pageSize = pageSize, isPrioritySort = isPrioritySort, customMeta = customMeta, myOrders = myOrders, showCrossCompanyData = showCrossCompanyData, customerId = customerId, orderType = orderType, allowInactive = allowInactive, groupEntity = groupEntity, enforceDateFilter = enforceDateFilter, fulfillmentType = fulfillmentType
-                    )?.safeAwait{ response, error ->
-                        response?.let {
-                            val page = response.peekContent()?.page
-                            paginator.setPaginator(hasNext=page?.hasNext?:false,pageNo=if (page?.hasNext == true) ((pageNo ?: 0) + 1) else pageNo)
-                            onResponse.invoke(response,null)
-                        }
-
-                        error?.let {
-                            onResponse.invoke(null,error)
-                        }
-                    }
-
-                } else {
-                    null
-                }
-            }
-
-
-    })
-        return paginator
-    }
-    
-    
     
     suspend fun getfilters(view: String,groupEntity: String?=null, headers: Map<String, String> = emptyMap())
-    : Response<FiltersResponseSchema>? {
+    : Response<FiltersResponse>? {
 
         return if (config.oauthClient.isAccessTokenValid()) {
             orderApiList?.getfilters(
@@ -1040,7 +600,7 @@ class OrderDataManagerClass(val config: PlatformConfig, val unauthorizedAction: 
     
     
     suspend fun getBulkShipmentExcelFile(salesChannels: String?=null,dpIds: String?=null,startDate: String?=null,endDate: String?=null,stores: String?=null,tags: String?=null,bagStatus: String?=null,paymentMethods: String?=null,fileType: String?=null,timeToDispatch: Int?=null,pageNo: Int?=null,pageSize: Int?=null, headers: Map<String, String> = emptyMap())
-    : Response<FileResponseSchema>? {
+    : Response<FileResponse>? {
 
         return if (config.oauthClient.isAccessTokenValid()) {
             orderApiList?.getBulkShipmentExcelFile(
@@ -1052,7 +612,7 @@ class OrderDataManagerClass(val config: PlatformConfig, val unauthorizedAction: 
     
     
     suspend fun getBulkActionTemplate( headers: Map<String, String> = emptyMap())
-    : Response<BulkActionTemplateResponseSchema>? {
+    : Response<BulkActionTemplateResponse>? {
 
         return if (config.oauthClient.isAccessTokenValid()) {
             orderApiList?.getBulkActionTemplate(
@@ -1064,7 +624,7 @@ class OrderDataManagerClass(val config: PlatformConfig, val unauthorizedAction: 
     
     
     suspend fun downloadBulkActionTemplate(templateSlug: String?=null, headers: Map<String, String> = emptyMap())
-    : Response<FileResponseSchema>? {
+    : Response<FileResponse>? {
 
         return if (config.oauthClient.isAccessTokenValid()) {
             orderApiList?.downloadBulkActionTemplate(
@@ -1076,7 +636,7 @@ class OrderDataManagerClass(val config: PlatformConfig, val unauthorizedAction: 
     
     
     suspend fun getShipmentReasons(shipmentId: String,bagId: String,state: String, headers: Map<String, String> = emptyMap())
-    : Response<PlatformShipmentReasonsResponseSchema>? {
+    : Response<PlatformShipmentReasonsResponse>? {
 
         return if (config.oauthClient.isAccessTokenValid()) {
             orderApiList?.getShipmentReasons(
@@ -1089,7 +649,7 @@ class OrderDataManagerClass(val config: PlatformConfig, val unauthorizedAction: 
     
     
     suspend fun getBagById(bagId: String?=null,channelBagId: String?=null,channelId: String?=null, headers: Map<String, String> = emptyMap())
-    : Response<BagDetailsPlatformResponseSchema>? {
+    : Response<BagDetailsPlatformResponse>? {
 
         return if (config.oauthClient.isAccessTokenValid()) {
             orderApiList?.getBagById(
@@ -1101,7 +661,7 @@ class OrderDataManagerClass(val config: PlatformConfig, val unauthorizedAction: 
     
     
     suspend fun getBags(bagIds: String?=null,shipmentIds: String?=null,orderIds: String?=null,channelBagIds: String?=null,channelShipmentIds: String?=null,channelOrderIds: String?=null,channelId: String?=null,pageNo: Int?=null,pageSize: Int?=null, headers: Map<String, String> = emptyMap())
-    : Response<GetBagsPlatformResponseSchema>? {
+    : Response<GetBagsPlatformResponse>? {
 
         return if (config.oauthClient.isAccessTokenValid()) {
             orderApiList?.getBags(
@@ -1113,7 +673,7 @@ class OrderDataManagerClass(val config: PlatformConfig, val unauthorizedAction: 
     
     
     suspend fun generatePOSReceiptByOrderId(orderId: String,shipmentId: String?=null,documentType: String?=null, headers: Map<String, String> = emptyMap())
-    : Response<GeneratePosOrderReceiptResponseSchema>? {
+    : Response<GeneratePosOrderReceiptResponse>? {
 
         return if (config.oauthClient.isAccessTokenValid()) {
             orderApiList?.generatePOSReceiptByOrderId(
@@ -1125,7 +685,7 @@ class OrderDataManagerClass(val config: PlatformConfig, val unauthorizedAction: 
     
     
     suspend fun getAllowedTemplatesForBulk( headers: Map<String, String> = emptyMap())
-    : Response<AllowedTemplatesResponseSchema>? {
+    : Response<AllowedTemplatesResponse>? {
 
         return if (config.oauthClient.isAccessTokenValid()) {
             orderApiList?.getAllowedTemplatesForBulk(
@@ -1137,7 +697,7 @@ class OrderDataManagerClass(val config: PlatformConfig, val unauthorizedAction: 
     
     
     suspend fun getTemplate(templateName: String, headers: Map<String, String> = emptyMap())
-    : Response<TemplateDownloadResponseSchema>? {
+    : Response<TemplateDownloadResponse>? {
 
         return if (config.oauthClient.isAccessTokenValid()) {
             orderApiList?.getTemplate(
@@ -1192,19 +752,6 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     
     
     
-    
-    
-    suspend fun getRules(body: RuleListRequestSchema, headers: Map<String, String> = emptyMap())
-    : Response<RuleListResponseSchema>? {
-        return if (config.oauthClient.isAccessTokenValid()) {
-                orderApiList?.getRules(companyId = config.companyId ,applicationId = applicationId , body = body,headers = headers)
-        } else {
-            null
-        }
-    }
-    
-    
-    
     suspend fun getShipmentBagReasons(shipmentId: String,lineNumber: String, headers: Map<String, String> = emptyMap())
     : Response<ShipmentBagReasons>? {
         return if (config.oauthClient.isAccessTokenValid()) {
@@ -1221,7 +768,7 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     
     
     suspend fun getApplicationShipments(lane: String?=null,searchType: String?=null,searchId: String?=null,fromDate: String?=null,toDate: String?=null,dpIds: String?=null,orderingCompanyId: String?=null,stores: String?=null,salesChannel: String?=null,requestByExt: String?=null,pageNo: Int?=null,pageSize: Int?=null,customerId: String?=null,isPrioritySort: Boolean?=null,excludeLockedShipments: Boolean?=null, headers: Map<String, String> = emptyMap())
-    : Response<ShipmentInternalPlatformViewResponseSchema>? {
+    : Response<ShipmentInternalPlatformViewResponse>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 orderApiList?.getApplicationShipments(companyId = config.companyId ,applicationId = applicationId ,lane = lane,searchType = searchType,searchId = searchId,fromDate = fromDate,toDate = toDate,dpIds = dpIds,orderingCompanyId = orderingCompanyId,stores = stores,salesChannel = salesChannel,requestByExt = requestByExt,pageNo = pageNo,pageSize = pageSize,customerId = customerId,isPrioritySort = isPrioritySort,excludeLockedShipments = excludeLockedShipments, headers = headers)
         } else {
@@ -1246,7 +793,7 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     
     
     suspend fun getPlatformShipmentReasons(action: String, headers: Map<String, String> = emptyMap())
-    : Response<ShipmentReasonsResponseSchema>? {
+    : Response<ShipmentReasonsResponse>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 orderApiList?.getPlatformShipmentReasons(companyId = config.companyId ,applicationId = applicationId ,action = action, headers = headers)
         } else {

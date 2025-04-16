@@ -14,10 +14,10 @@ import com.google.gson.annotations.SerializedName
 
              
 /*
-    Model: SuccessMessage
+    Model: SuccessMessageResponse
 */
 @Parcelize
-data class SuccessMessage(
+data class SuccessMessageResponse(
     
     
     
@@ -133,10 +133,10 @@ data class UserAttributeDefinition(
 
              
 /*
-    Model: UserAttributeDefinitionDetails
+    Model: UserAttributeDefinitionResponse
 */
 @Parcelize
-data class UserAttributeDefinitionDetails(
+data class UserAttributeDefinitionResponse(
     
     
     
@@ -262,10 +262,10 @@ data class UserAttributeDefinitionValidation(
 
              
 /*
-    Model: UserAttribute
+    Model: UserAttributeResponse
 */
 @Parcelize
-data class UserAttribute(
+data class UserAttributeResponse(
     
     
     
@@ -284,8 +284,8 @@ data class UserAttribute(
     @SerializedName("type")
     var type: String?=null,
     
-    @SerializedName("customer_overridden")
-    var customerOverridden: Boolean?=null,
+    @SerializedName("customer_overriden")
+    var customerOverriden: Boolean?=null,
     
     @SerializedName("attribute")
     var attribute: @RawValue HashMap<String,Any>?=null,
@@ -319,15 +319,15 @@ data class UserAttribute(
 
              
 /*
-    Model: CreateUserAttribute
+    Model: CreateUserAttributeRequest
 */
 @Parcelize
-data class CreateUserAttribute(
+data class CreateUserAttributeRequest(
     
     
     
-    @SerializedName("customer_overridden")
-    var customerOverridden: Boolean?=null,
+    @SerializedName("customer_overriden")
+    var customerOverriden: Boolean?=null,
     
     @SerializedName("attribute")
     var attribute: @RawValue HashMap<String,Any>?=null
@@ -403,250 +403,6 @@ data class CreateUserAttributeDefinition(
     
     
     
-    
-    
-    
-    
-    
-    
-    
-    
-    
-}
-
-
-
-             
-/*
-    Model: CreateStoreFrontUsersPayload
-*/
-@Parcelize
-data class CreateStoreFrontUsersPayload(
-    
-    
-    
-    @SerializedName("absolute_url")
-    var absoluteUrl: String?=null,
-    
-    @SerializedName("file_format")
-    var fileFormat: String?=null,
-    
-    @SerializedName("relative_url")
-    var relativeUrl: String?=null
-    
-): Parcelable {
-    
-    
-    
-    
-    
-    
-    
-    
-    
-}
-
-
-
-             
-/*
-    Model: BulkUserExportSchema
-*/
-@Parcelize
-data class BulkUserExportSchema(
-    
-    
-    
-    @SerializedName("file_format")
-    var fileFormat: String?=null
-    
-): Parcelable {
-    
-    
-    
-    
-    
-}
-
-
-
-             
-/*
-    Model: BulkActionModel
-*/
-@Parcelize
-data class BulkActionModel(
-    
-    
-    
-    @SerializedName("_id")
-    var id: String?=null,
-    
-    @SerializedName("file_name")
-    var fileName: String?=null,
-    
-    @SerializedName("file_format")
-    var fileFormat: String?=null,
-    
-    @SerializedName("action_type")
-    var actionType: String?=null,
-    
-    @SerializedName("created_by")
-    var createdBy: CreatedBySchema?=null,
-    
-    @SerializedName("count")
-    var count: BulkActionCountSchema?=null,
-    
-    @SerializedName("status")
-    var status: String?=null,
-    
-    @SerializedName("links")
-    var links: BulkActionLinkSchema?=null,
-    
-    @SerializedName("application_id")
-    var applicationId: String?=null,
-    
-    @SerializedName("company_id")
-    var companyId: String?=null,
-    
-    @SerializedName("created_at")
-    var createdAt: String?=null,
-    
-    @SerializedName("updated_at")
-    var updatedAt: String?=null
-    
-): Parcelable {
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-}
-
-
-
-             
-/*
-    Model: CreatedBySchema
-*/
-@Parcelize
-data class CreatedBySchema(
-    
-    
-    
-    @SerializedName("name")
-    var name: String?=null,
-    
-    @SerializedName("user_id")
-    var userId: String?=null
-    
-): Parcelable {
-    
-    
-    
-    
-    
-    
-    
-}
-
-
-
-             
-/*
-    Model: BulkActionLinkSchema
-*/
-@Parcelize
-data class BulkActionLinkSchema(
-    
-    
-    
-    @SerializedName("file")
-    var file: FileLinks?=null,
-    
-    @SerializedName("error")
-    var error: FileLinks?=null
-    
-): Parcelable {
-    
-    
-    
-    
-    
-    
-    
-}
-
-
-
-             
-/*
-    Model: FileLinks
-*/
-@Parcelize
-data class FileLinks(
-    
-    
-    
-    @SerializedName("absolute_url")
-    var absoluteUrl: String?=null,
-    
-    @SerializedName("relative_url")
-    var relativeUrl: String?=null
-    
-): Parcelable {
-    
-    
-    
-    
-    
-    
-    
-}
-
-
-
-             
-/*
-    Model: BulkActionCountSchema
-*/
-@Parcelize
-data class BulkActionCountSchema(
-    
-    
-    
-    @SerializedName("total")
-    var total: Int?=null,
-    
-    @SerializedName("success")
-    var success: Int?=null,
-    
-    @SerializedName("error")
-    var error: Int?=null
-    
-): Parcelable {
     
     
     
@@ -845,33 +601,6 @@ data class CustomerListResponseSchema(
     
     @SerializedName("items")
     var items: ArrayList<UserSearchSchema>?=null,
-    
-    @SerializedName("page")
-    var page: PaginationSchema?=null
-    
-): Parcelable {
-    
-    
-    
-    
-    
-    
-    
-}
-
-
-
-             
-/*
-    Model: BulkActionPaginationSchema
-*/
-@Parcelize
-data class BulkActionPaginationSchema(
-    
-    
-    
-    @SerializedName("items")
-    var items: ArrayList<BulkActionModel>?=null,
     
     @SerializedName("page")
     var page: PaginationSchema?=null
@@ -2052,75 +1781,6 @@ data class DeleteAccountConsent(
 
              
 /*
-    Model: GetUserTimeline
-*/
-@Parcelize
-data class GetUserTimeline(
-    
-    
-    
-    @SerializedName("delete_on")
-    var deleteOn: String?=null,
-    
-    @SerializedName("timeline")
-    var timeline: ArrayList<UserTimeline>?=null
-    
-): Parcelable {
-    
-    
-    
-    
-    
-    
-    
-}
-
-
-
-             
-/*
-    Model: UserTimeline
-*/
-@Parcelize
-data class UserTimeline(
-    
-    
-    
-    @SerializedName("date")
-    var date: String?=null,
-    
-    @SerializedName("title")
-    var title: String?=null,
-    
-    @SerializedName("type")
-    var type: String?=null,
-    
-    @SerializedName("visible")
-    var visible: Boolean?=null,
-    
-    @SerializedName("sub_title")
-    var subTitle: String?=null
-    
-): Parcelable {
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-}
-
-
-
-             
-/*
     Model: Facebook
 */
 @Parcelize
@@ -2550,14 +2210,9 @@ data class UserSchema(
     var externalId: String?=null,
     
     @SerializedName("rr_id")
-    var rrId: String?=null,
-    
-    @SerializedName("consent")
-    var consent: UserConsent?=null
+    var rrId: String?=null
     
 ): Parcelable {
-    
-    
     
     
     
@@ -2668,19 +2323,9 @@ data class UserSearchSchema(
     var archive: Boolean?=null,
     
     @SerializedName("status")
-    var status: String?=null,
-    
-    @SerializedName("deleted_on")
-    var deletedOn: String?=null,
-    
-    @SerializedName("consent")
-    var consent: UserConsent?=null
+    var status: String?=null
     
 ): Parcelable {
-    
-    
-    
-    
     
     
     
@@ -2796,55 +2441,6 @@ data class Email(
     
     
     
-    
-    
-    
-    
-    
-    
-    
-}
-
-
-
-             
-/*
-    Model: UserConsent
-*/
-@Parcelize
-data class UserConsent(
-    
-    
-    
-    @SerializedName("privacy_policy")
-    var privacyPolicy: PrivacyPolicyConsentSchema?=null
-    
-): Parcelable {
-    
-    
-    
-    
-    
-}
-
-
-
-             
-/*
-    Model: PrivacyPolicyConsentSchema
-*/
-@Parcelize
-data class PrivacyPolicyConsentSchema(
-    
-    
-    
-    @SerializedName("value")
-    var value: Boolean?=null,
-    
-    @SerializedName("updated_at")
-    var updatedAt: String?=null
-    
-): Parcelable {
     
     
     

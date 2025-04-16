@@ -14,10 +14,10 @@ import com.google.gson.annotations.SerializedName
 
              
 /*
-    Model: UpdateUserAttributes
+    Model: UpdateUserAttributesRequest
 */
 @Parcelize
-data class UpdateUserAttributes(
+data class UpdateUserAttributesRequest(
     
     
     
@@ -232,14 +232,9 @@ data class EditProfileRequestSchema(
     var sender: String?=null,
     
     @SerializedName("register_token")
-    var registerToken: String?=null,
-    
-    @SerializedName("consent")
-    var consent: Boolean?=null
+    var registerToken: String?=null
     
 ): Parcelable {
-    
-    
     
     
     
@@ -639,14 +634,9 @@ data class FormRegisterRequestSchema(
     var phone: FormRegisterRequestSchemaPhone?=null,
     
     @SerializedName("register_token")
-    var registerToken: String?=null,
-    
-    @SerializedName("consent")
-    var consent: Boolean?=null
+    var registerToken: String?=null
     
 ): Parcelable {
-    
-    
     
     
     
@@ -972,10 +962,10 @@ data class AuthSuccess(
 
              
 /*
-    Model: UserExistsDetails
+    Model: UserExistsResponse
 */
 @Parcelize
-data class UserExistsDetails(
+data class UserExistsResponse(
     
     
     
@@ -994,10 +984,10 @@ data class UserExistsDetails(
 
              
 /*
-    Model: SendOtp
+    Model: SendOtpResponse
 */
 @Parcelize
-data class SendOtp(
+data class SendOtpResponse(
     
     
     
@@ -1123,7 +1113,7 @@ data class ProfileEditSuccess(
     var message: String?=null,
     
     @SerializedName("resend_timer")
-    var resendTimer: Long?=null,
+    var resendTimer: Int?=null,
     
     @SerializedName("resend_token")
     var resendToken: String?=null
@@ -1314,7 +1304,7 @@ data class RegisterFormSuccess(
     var email: String?=null,
     
     @SerializedName("resend_timer")
-    var resendTimer: Long?=null,
+    var resendTimer: Int?=null,
     
     @SerializedName("resend_token")
     var resendToken: String?=null,
@@ -1473,15 +1463,15 @@ data class DeleteUserSuccess(
 
              
 /*
-    Model: SendOtpSuccess
+    Model: OtpSuccess
 */
 @Parcelize
-data class SendOtpSuccess(
+data class OtpSuccess(
     
     
     
     @SerializedName("resend_timer")
-    var resendTimer: Long?=null,
+    var resendTimer: Int?=null,
     
     @SerializedName("resend_token")
     var resendToken: String?=null,
@@ -2586,14 +2576,9 @@ data class UserSchema(
     var externalId: String?=null,
     
     @SerializedName("rr_id")
-    var rrId: String?=null,
-    
-    @SerializedName("consent")
-    var consent: UserConsentSchema?=null
+    var rrId: String?=null
     
 ): Parcelable {
-    
-    
     
     
     
@@ -2705,55 +2690,6 @@ data class Email(
     
     
     
-    
-    
-    
-    
-    
-    
-    
-}
-
-
-
-             
-/*
-    Model: UserConsentSchema
-*/
-@Parcelize
-data class UserConsentSchema(
-    
-    
-    
-    @SerializedName("privacy_policy")
-    var privacyPolicy: PrivacyPolicyConsentSchema?=null
-    
-): Parcelable {
-    
-    
-    
-    
-    
-}
-
-
-
-             
-/*
-    Model: PrivacyPolicyConsentSchema
-*/
-@Parcelize
-data class PrivacyPolicyConsentSchema(
-    
-    
-    
-    @SerializedName("value")
-    var value: Boolean?=null,
-    
-    @SerializedName("updated_at")
-    var updatedAt: String?=null
-    
-): Parcelable {
     
     
     

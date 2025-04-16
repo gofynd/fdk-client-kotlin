@@ -175,7 +175,7 @@ class UserDataManagerClass(val config: ApplicationConfig, val unauthorizedAction
 
     
     
-    suspend fun loginWithOTP(platform: String?=null,body: SendOtpRequestSchema, headers: Map<String, String> = emptyMap()): Response<SendOtp>? {
+    suspend fun loginWithOTP(platform: String?=null,body: SendOtpRequestSchema, headers: Map<String, String> = emptyMap()): Response<SendOtpResponse>? {
         var fullUrl : String? = _relativeUrls["loginWithOTP"]
         
         return userApiList?.loginWithOTP(fullUrl,   platform = platform,body = body,headers = headers)}
@@ -266,14 +266,14 @@ class UserDataManagerClass(val config: ApplicationConfig, val unauthorizedAction
 
     
     
-    suspend fun sendOTPOnMobile(platform: String?=null,body: SendMobileOtpRequestSchema, headers: Map<String, String> = emptyMap()): Response<SendOtpSuccess>? {
+    suspend fun sendOTPOnMobile(platform: String?=null,body: SendMobileOtpRequestSchema, headers: Map<String, String> = emptyMap()): Response<OtpSuccess>? {
         var fullUrl : String? = _relativeUrls["sendOTPOnMobile"]
         
         return userApiList?.sendOTPOnMobile(fullUrl,   platform = platform,body = body,headers = headers)}
 
     
     
-    suspend fun sendForgotOTPOnMobile(platform: String?=null,body: SendMobileForgotOtpRequestSchema, headers: Map<String, String> = emptyMap()): Response<SendOtpSuccess>? {
+    suspend fun sendForgotOTPOnMobile(platform: String?=null,body: SendMobileForgotOtpRequestSchema, headers: Map<String, String> = emptyMap()): Response<OtpSuccess>? {
         var fullUrl : String? = _relativeUrls["sendForgotOTPOnMobile"]
         
         return userApiList?.sendForgotOTPOnMobile(fullUrl,   platform = platform,body = body,headers = headers)}
@@ -406,7 +406,7 @@ class UserDataManagerClass(val config: ApplicationConfig, val unauthorizedAction
 
     
     
-    suspend fun userExists(q: String, headers: Map<String, String> = emptyMap()): Response<UserExistsDetails>? {
+    suspend fun userExists(q: String, headers: Map<String, String> = emptyMap()): Response<UserExistsResponse>? {
         var fullUrl : String? = _relativeUrls["userExists"]
         
         return userApiList?.userExists(fullUrl,   q = q,headers = headers)}
@@ -434,7 +434,7 @@ class UserDataManagerClass(val config: ApplicationConfig, val unauthorizedAction
 
     
     
-    suspend fun updateUserAttributes(body: UpdateUserAttributes, headers: Map<String, String> = emptyMap()): Response<UserAttributes>? {
+    suspend fun updateUserAttributes(body: UpdateUserAttributesRequest, headers: Map<String, String> = emptyMap()): Response<UserAttributes>? {
         var fullUrl : String? = _relativeUrls["updateUserAttributes"]
         
         return userApiList?.updateUserAttributes(fullUrl, body = body,headers = headers)}

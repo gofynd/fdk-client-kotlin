@@ -22,11 +22,6 @@ interface OrderApiList {
     
     
     @GET
-    suspend fun getPosOrderById(@Url url1: String?    , @HeaderMap headers: Map<String, String>? = null)
-    : Response<OrderById>
-    
-    
-    @GET
     suspend fun getShipmentById(@Url url1: String?     ,  @Query("allow_inactive") allowInactive: Boolean?, @HeaderMap headers: Map<String, String>? = null)
     : Response<ShipmentById>
     
@@ -43,17 +38,17 @@ interface OrderApiList {
     
     @GET
     suspend fun getCustomerDetailsByShipmentId(@Url url1: String?     , @HeaderMap headers: Map<String, String>? = null)
-    : Response<CustomerDetailsResponseSchema>
+    : Response<CustomerDetailsResponse>
     
     
     @POST
     suspend fun sendOtpToShipmentCustomer(@Url url1: String?     , @HeaderMap headers: Map<String, String>? = null)
-    : Response<SendOtpToCustomerResponseSchema>
+    : Response<SendOtpToCustomerResponse>
     
     
     @POST
     suspend fun verifyOtpShipmentCustomer(@Url url1: String?     ,@Body body: VerifyOtp, @HeaderMap headers: Map<String, String>? = null)
-    : Response<VerifyOtpResponseSchema>
+    : Response<VerifyOtpResponse>
     
     
     @GET
@@ -67,7 +62,7 @@ interface OrderApiList {
     
     
     @PUT
-    suspend fun updateShipmentStatus(@Url url1: String?    ,@Body body: UpdateShipmentStatusRequestSchema, @HeaderMap headers: Map<String, String>? = null)
-    : Response<ShipmentApplicationStatusResponseSchema>
+    suspend fun updateShipmentStatus(@Url url1: String?    ,@Body body: UpdateShipmentStatusRequest, @HeaderMap headers: Map<String, String>? = null)
+    : Response<ShipmentApplicationStatusResponse>
     
 }

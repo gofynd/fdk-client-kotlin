@@ -77,42 +77,42 @@ class RewardsDataManagerClass(val config: ApplicationConfig, val unauthorizedAct
 
     
     
-    suspend fun catalogueOrder(body: CatalogueOrderCreation, headers: Map<String, String> = emptyMap()): Response<CatalogueOrderDetails>? {
+    suspend fun catalogueOrder(body: CatalogueOrderRequest, headers: Map<String, String> = emptyMap()): Response<CatalogueOrderResponse>? {
         var fullUrl : String? = _relativeUrls["catalogueOrder"]
         
         return rewardsApiList?.catalogueOrder(fullUrl, body = body,headers = headers)}
 
     
     
-    suspend fun getUserPointsHistory(pageId: String?=null,pageSize: Int?=null, headers: Map<String, String> = emptyMap()): Response<PointsHistoryDetails>? {
+    suspend fun getUserPointsHistory(pageId: String?=null,pageSize: Int?=null, headers: Map<String, String> = emptyMap()): Response<PointsHistoryResponse>? {
         var fullUrl : String? = _relativeUrls["getUserPointsHistory"]
         
         return rewardsApiList?.getUserPointsHistory(fullUrl,   pageId = pageId,  pageSize = pageSize,headers = headers)}
 
     
     
-    suspend fun getUserPoints( headers: Map<String, String> = emptyMap()): Response<PointsDetails>? {
+    suspend fun getUserPoints( headers: Map<String, String> = emptyMap()): Response<PointsResponse>? {
         var fullUrl : String? = _relativeUrls["getUserPoints"]
         
         return rewardsApiList?.getUserPoints(fullUrl, headers = headers)}
 
     
     
-    suspend fun getUserReferralDetails( headers: Map<String, String> = emptyMap()): Response<ReferralDetails>? {
+    suspend fun getUserReferralDetails( headers: Map<String, String> = emptyMap()): Response<ReferralDetailsResponse>? {
         var fullUrl : String? = _relativeUrls["getUserReferralDetails"]
         
         return rewardsApiList?.getUserReferralDetails(fullUrl, headers = headers)}
 
     
     
-    suspend fun getOrderDiscount(body: RetrieveOrderDiscount, headers: Map<String, String> = emptyMap()): Response<OrderDiscountDetails>? {
+    suspend fun getOrderDiscount(body: OrderDiscountRequest, headers: Map<String, String> = emptyMap()): Response<OrderDiscountResponse>? {
         var fullUrl : String? = _relativeUrls["getOrderDiscount"]
         
         return rewardsApiList?.getOrderDiscount(fullUrl, body = body,headers = headers)}
 
     
     
-    suspend fun redeemReferralCode(body: RedeemReferralCode, headers: Map<String, String> = emptyMap()): Response<RedeemReferralCodeDetails>? {
+    suspend fun redeemReferralCode(body: RedeemReferralCodeRequest, headers: Map<String, String> = emptyMap()): Response<RedeemReferralCodeResponse>? {
         var fullUrl : String? = _relativeUrls["redeemReferralCode"]
         
         return rewardsApiList?.redeemReferralCode(fullUrl, body = body,headers = headers)}

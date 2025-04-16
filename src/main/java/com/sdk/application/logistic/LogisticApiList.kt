@@ -13,21 +13,36 @@ interface LogisticApiList {
     
     @GET
     suspend fun getPincodeCity(@Url url1: String?    , @HeaderMap headers: Map<String, String>? = null)
-    : Response<PincodeDetailsResult>
+    : Response<PincodeApiResponse>
+    
+    
+    @POST
+    suspend fun getTatProduct(@Url url1: String?   ,@Body body: TATViewRequest, @HeaderMap headers: Map<String, String>? = null)
+    : Response<TATViewResponse>
     
     
     @GET
     suspend fun getAllCountries(@Url url1: String?   , @HeaderMap headers: Map<String, String>? = null)
-    : Response<CountryResult>
+    : Response<CountryListResponse>
     
     
     @POST
-    suspend fun getCourierPartners(@Url url1: String?     ,@Body body: ShipmentCourierPartnerDetails, @HeaderMap headers: Map<String, String>? = null)
-    : Response<ShipmentCourierPartnerResult>
+    suspend fun getPincodeZones(@Url url1: String?   ,@Body body: GetZoneFromPincodeViewRequest, @HeaderMap headers: Map<String, String>? = null)
+    : Response<GetZoneFromPincodeViewResponse>
+    
+    
+    @POST
+    suspend fun getOptimalLocations(@Url url1: String?   ,@Body body: ReAssignStoreRequest, @HeaderMap headers: Map<String, String>? = null)
+    : Response<ReAssignStoreResponse>
     
     
     @GET
-    suspend fun getCountries(@Url url1: String?    ,       @Query("onboarding") onboarding: Boolean?, @Query("page_no") pageNo: Int?, @Query("page_size") pageSize: Int?, @Query("q") q: String?, @Query("hierarchy") hierarchy: String?, @Query("phone_code") phoneCode: String?, @HeaderMap headers: Map<String, String>? = null)
+    suspend fun getLocations(@Url url1: String?    ,          @Query("x-application-id") xApplicationId: String, @Query("x-application-data") xApplicationData: String, @Query("country") country: String?, @Query("state") state: String?, @Query("city") city: String?, @Query("pincode") pincode: Int?, @Query("sector") sector: String?, @Query("page_no") pageNo: Int?, @Query("page_size") pageSize: Int?, @HeaderMap headers: Map<String, String>? = null)
+    : Response<GetStoreResponse>
+    
+    
+    @GET
+    suspend fun getCountries(@Url url1: String?    ,     @Query("onboarding") onboarding: Boolean?, @Query("page_no") pageNo: Int?, @Query("page_size") pageSize: Int?, @Query("q") q: String?, @HeaderMap headers: Map<String, String>? = null)
     : Response<GetCountries>
     
     
@@ -37,22 +52,17 @@ interface LogisticApiList {
     
     
     @GET
-    suspend fun getDeliveryPromise(@Url url1: String?    ,  @Header("x-location-detail") xLocationDetail: String,  @Header("x-application-data") xApplicationData: String,   @Query("page_no") pageNo: Int?, @Query("page_size") pageSize: Int?, @HeaderMap headers: Map<String, String>? = null)
-    : Response<GetPromiseDetails>
+    suspend fun getLocalities(@Url url1: String?     ,       @Query("country") country: String?, @Query("state") state: String?, @Query("city") city: String?, @Query("page_no") pageNo: Int?, @Query("page_size") pageSize: Int?, @Query("q") q: String?, @HeaderMap headers: Map<String, String>? = null)
+    : Response<GetLocalities>
     
     
     @GET
-    suspend fun getLocalities(@Url url1: String?     ,        @Query("country") country: String?, @Query("state") state: String?, @Query("city") city: String?, @Query("page_no") pageNo: Int?, @Query("page_size") pageSize: Int?, @Query("q") q: String?, @Query("sector") sector: String?, @HeaderMap headers: Map<String, String>? = null)
-    : Response<GetLocalitiesApp>
-    
-    
-    @GET
-    suspend fun getLocality(@Url url1: String?      ,     @Query("country") country: String?, @Query("state") state: String?, @Query("city") city: String?, @Query("sector") sector: String?, @HeaderMap headers: Map<String, String>? = null)
-    : Response<GetLocalityApp>
+    suspend fun getLocality(@Url url1: String?      ,    @Query("country") country: String?, @Query("state") state: String?, @Query("city") city: String?, @HeaderMap headers: Map<String, String>? = null)
+    : Response<GetLocality>
     
     
     @POST
-    suspend fun validateAddress(@Url url1: String?     ,@Body body: ValidateAddressDetails, @HeaderMap headers: Map<String, String>? = null)
-    : Response<ValidateAddressDetails>
+    suspend fun validateAddress(@Url url1: String?     ,@Body body: ValidateAddressRequest, @HeaderMap headers: Map<String, String>? = null)
+    : Response<ValidateAddressRequest>
     
 }
