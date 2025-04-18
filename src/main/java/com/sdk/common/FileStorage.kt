@@ -25,6 +25,7 @@ suspend fun FileStorageDataManagerClass.uploadMedia(
     file: File? = null,
     tags: ArrayList<String>?=null,
     params: Params?=null,
+    encKey: String? = null,
     onResponse: (Event<FileUploadComplete>?, FdkError?) -> Unit = { response, error -> }
 ) {
 
@@ -43,7 +44,8 @@ suspend fun FileStorageDataManagerClass.uploadMedia(
             contentType = contentType,
             size = size,
             tags = tags,
-            params = params
+            params = params,
+            encKey = encKey
         )
         startUpload(namespace, startRequest)?.safeAwait { response, error ->
             response?.let {

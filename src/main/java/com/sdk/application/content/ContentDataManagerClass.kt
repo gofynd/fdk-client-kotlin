@@ -51,21 +51,21 @@ class ContentDataManagerClass(val config: ApplicationConfig, val unauthorizedAct
             
                     _relativeUrls["getTags"] = "/service/application/content/v1.0/tags".substring(1)
             
-                    _relativeUrls["getPage"] = "/service/application/content/v2.0/pages/{slug}".substring(1)
-            
                     _relativeUrls["getPages"] = "/service/application/content/v2.0/pages".substring(1)
             
-                    _relativeUrls["getCustomObjectBySlug"] = "/service/application/content/v2.0/customobjects/definition/{definition_slug}/entries/{slug}".substring(1)
+                    _relativeUrls["getPage"] = "/service/application/content/v2.0/pages/{slug}".substring(1)
             
-                    _relativeUrls["getCustomFieldsByResourceId"] = "/service/application/content/v2.0/customfields/resource/{resource}/{resource_slug}".substring(1)
+                    _relativeUrls["getWellKnownUrl"] = "/service/application/content/v1.0/well-known/{slug}".substring(1)
             
-                    _relativeUrls["getTranslateUILabels"] = "/service/application/content/v1.0/translate-ui-labels".substring(1)
+                    _relativeUrls["getCustomObject"] = "/service/application/content/v1.0/metaobjects/{id}".substring(1)
             
-                    _relativeUrls["fetchResourceTranslations"] = "/service/application/content/v1.0/resource/translations/{type}/{locale}".substring(1)
+                    _relativeUrls["getCustomObjects"] = "/service/application/content/v1.0/metaobjects".substring(1)
             
-                    _relativeUrls["fetchResourceTranslationsWithPayload"] = "/service/application/content/v1.0/resource/translations/{type}/{locale}".substring(1)
+                    _relativeUrls["getCustomFieldDefinitions"] = "/service/application/content/v1.0/metafields/definitions".substring(1)
             
-                    _relativeUrls["getSupportedLanguages"] = "/service/application/content/v1.0/languages".substring(1)
+                    _relativeUrls["getCustomFieldDefinition"] = "/service/application/content/v1.0/metafields/definitions/{id}".substring(1)
+            
+                    _relativeUrls["getCustomFields"] = "/service/application/content/v1.0/metafields/{resource}".substring(1)
             
     }
 
@@ -109,16 +109,16 @@ class ContentDataManagerClass(val config: ApplicationConfig, val unauthorizedAct
 
     
     
-    suspend fun getBlog(slug: String,rootId: String?=null,preview: Boolean?=null, headers: Map<String, String> = emptyMap()): Response<BlogSchema>? {
+    suspend fun getBlog(slug: String,rootId: String?=null, headers: Map<String, String> = emptyMap()): Response<BlogSchema>? {
         var fullUrl : String? = _relativeUrls["getBlog"]
         
         fullUrl = fullUrl?.replace("{" + "slug" +"}",slug.toString())
         
-        return contentApiList?.getBlog(fullUrl,    rootId = rootId,  preview = preview,headers = headers)}
+        return contentApiList?.getBlog(fullUrl,    rootId = rootId,headers = headers)}
 
     
     
-    suspend fun getBlogs(pageNo: Int?=null,pageSize: Int?=null,tags: String?=null,search: String?=null, headers: Map<String, String> = emptyMap()): Response<BlogGetDetails>? {
+    suspend fun getBlogs(pageNo: Int?=null,pageSize: Int?=null,tags: String?=null,search: String?=null, headers: Map<String, String> = emptyMap()): Response<BlogGetResponse>? {
         var fullUrl : String? = _relativeUrls["getBlogs"]
         
         return contentApiList?.getBlogs(fullUrl,   pageNo = pageNo,  pageSize = pageSize,  tags = tags,  search = search,headers = headers)}
@@ -187,7 +187,7 @@ class ContentDataManagerClass(val config: ApplicationConfig, val unauthorizedAct
 
     
     
-    suspend fun getNavigations(pageNo: Int?=null,pageSize: Int?=null, headers: Map<String, String> = emptyMap()): Response<NavigationGetDetails>? {
+    suspend fun getNavigations(pageNo: Int?=null,pageSize: Int?=null, headers: Map<String, String> = emptyMap()): Response<NavigationGetResponse>? {
         var fullUrl : String? = _relativeUrls["getNavigations"]
         
         return contentApiList?.getNavigations(fullUrl,   pageNo = pageNo,  pageSize = pageSize,headers = headers)}
@@ -222,6 +222,13 @@ class ContentDataManagerClass(val config: ApplicationConfig, val unauthorizedAct
 
     
     
+    suspend fun getPages(pageNo: Int?=null,pageSize: Int?=null, headers: Map<String, String> = emptyMap()): Response<PageGetResponse>? {
+        var fullUrl : String? = _relativeUrls["getPages"]
+        
+        return contentApiList?.getPages(fullUrl,   pageNo = pageNo,  pageSize = pageSize,headers = headers)}
+
+    
+    
     suspend fun getPage(slug: String,rootId: String?=null, headers: Map<String, String> = emptyMap()): Response<PageSchema>? {
         var fullUrl : String? = _relativeUrls["getPage"]
         
@@ -231,68 +238,53 @@ class ContentDataManagerClass(val config: ApplicationConfig, val unauthorizedAct
 
     
     
-    suspend fun getPages(pageNo: Int?=null,pageSize: Int?=null, headers: Map<String, String> = emptyMap()): Response<PageGetDetails>? {
-        var fullUrl : String? = _relativeUrls["getPages"]
-        
-        return contentApiList?.getPages(fullUrl,   pageNo = pageNo,  pageSize = pageSize,headers = headers)}
-
-    
-    
-    suspend fun getCustomObjectBySlug(definitionSlug: String,slug: String, headers: Map<String, String> = emptyMap()): Response<CustomObjectByIdSchema>? {
-        var fullUrl : String? = _relativeUrls["getCustomObjectBySlug"]
-        
-        fullUrl = fullUrl?.replace("{" + "definition_slug" +"}",definitionSlug.toString())
+    suspend fun getWellKnownUrl(slug: String, headers: Map<String, String> = emptyMap()): Response<WellKnownResponse>? {
+        var fullUrl : String? = _relativeUrls["getWellKnownUrl"]
         
         fullUrl = fullUrl?.replace("{" + "slug" +"}",slug.toString())
         
-        return contentApiList?.getCustomObjectBySlug(fullUrl,   headers = headers)}
+        return contentApiList?.getWellKnownUrl(fullUrl,  headers = headers)}
 
     
     
-    suspend fun getCustomFieldsByResourceId(resource: String,resourceSlug: String, headers: Map<String, String> = emptyMap()): Response<CustomFieldsResponseByResourceIdSchema>? {
-        var fullUrl : String? = _relativeUrls["getCustomFieldsByResourceId"]
+    suspend fun getCustomObject(id: String, headers: Map<String, String> = emptyMap()): Response<CustomObjectByIdSchema>? {
+        var fullUrl : String? = _relativeUrls["getCustomObject"]
+        
+        fullUrl = fullUrl?.replace("{" + "id" +"}",id.toString())
+        
+        return contentApiList?.getCustomObject(fullUrl,  headers = headers)}
+
+    
+    
+    suspend fun getCustomObjects(definitionId: String?=null,pageNo: String,pageSize: String,type: String?=null,ids: String?=null,search: String?=null, headers: Map<String, String> = emptyMap()): Response<CustomObjectsSchema>? {
+        var fullUrl : String? = _relativeUrls["getCustomObjects"]
+        
+        return contentApiList?.getCustomObjects(fullUrl,   definitionId = definitionId,  pageNo = pageNo,  pageSize = pageSize,  type = type,  ids = ids,  search = search,headers = headers)}
+
+    
+    
+    suspend fun getCustomFieldDefinitions( headers: Map<String, String> = emptyMap()): Response<CustomFieldDefinitionsSchema>? {
+        var fullUrl : String? = _relativeUrls["getCustomFieldDefinitions"]
+        
+        return contentApiList?.getCustomFieldDefinitions(fullUrl, headers = headers)}
+
+    
+    
+    suspend fun getCustomFieldDefinition(id: String, headers: Map<String, String> = emptyMap()): Response<CustomFieldDefinitionDetailResSchema>? {
+        var fullUrl : String? = _relativeUrls["getCustomFieldDefinition"]
+        
+        fullUrl = fullUrl?.replace("{" + "id" +"}",id.toString())
+        
+        return contentApiList?.getCustomFieldDefinition(fullUrl,  headers = headers)}
+
+    
+    
+    suspend fun getCustomFields(resource: String,resourceIds: String, headers: Map<String, String> = emptyMap()): Response<CustomFieldsResponseByResourceIdSchema>? {
+        var fullUrl : String? = _relativeUrls["getCustomFields"]
         
         fullUrl = fullUrl?.replace("{" + "resource" +"}",resource.toString())
         
-        fullUrl = fullUrl?.replace("{" + "resource_slug" +"}",resourceSlug.toString())
-        
-        return contentApiList?.getCustomFieldsByResourceId(fullUrl,   headers = headers)}
-
-    
-    
-    suspend fun getTranslateUILabels(template: Boolean?=null,templateThemeId: String?=null,themeId: String?=null,locale: String?=null,type: String?=null, headers: Map<String, String> = emptyMap()): Response<TranslateUiLabelsPage>? {
-        var fullUrl : String? = _relativeUrls["getTranslateUILabels"]
-        
-        return contentApiList?.getTranslateUILabels(fullUrl,   template = template,  templateThemeId = templateThemeId,  themeId = themeId,  locale = locale,  type = type,headers = headers)}
-
-    
-    
-    suspend fun fetchResourceTranslations(type: String,locale: String,resourceId: String, headers: Map<String, String> = emptyMap()): Response<ResourceTranslations>? {
-        var fullUrl : String? = _relativeUrls["fetchResourceTranslations"]
-        
-        fullUrl = fullUrl?.replace("{" + "type" +"}",type.toString())
-        
-        fullUrl = fullUrl?.replace("{" + "locale" +"}",locale.toString())
-        
-        return contentApiList?.fetchResourceTranslations(fullUrl,     resourceId = resourceId,headers = headers)}
-
-    
-    
-    suspend fun fetchResourceTranslationsWithPayload(type: String,locale: String,resourceId: String,body: ResourcePayload, headers: Map<String, String> = emptyMap()): Response<ResourceTranslations>? {
-        var fullUrl : String? = _relativeUrls["fetchResourceTranslationsWithPayload"]
-        
-        fullUrl = fullUrl?.replace("{" + "type" +"}",type.toString())
-        
-        fullUrl = fullUrl?.replace("{" + "locale" +"}",locale.toString())
-        
-        return contentApiList?.fetchResourceTranslationsWithPayload(fullUrl,     resourceId = resourceId,body = body,headers = headers)}
-
-    
-    
-    suspend fun getSupportedLanguages( headers: Map<String, String> = emptyMap()): Response<HashMap<String,Any>>? {
-        var fullUrl : String? = _relativeUrls["getSupportedLanguages"]
-        
-        return contentApiList?.getSupportedLanguages(fullUrl, headers = headers)}
+        return contentApiList?.getCustomFields(fullUrl,    resourceIds = resourceIds,headers = headers)}
 
     
     

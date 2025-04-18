@@ -51,10 +51,10 @@ data class E(
 
              
 /*
-    Model: ListGiveaway
+    Model: GiveawayResponse
 */
 @Parcelize
-data class ListGiveaway(
+data class GiveawayResponse(
     
     
     
@@ -301,8 +301,8 @@ data class Page(
     @SerializedName("size")
     var size: Int?=null,
     
-    @SerializedName("page_size")
-    var pageSize: Int?=null
+    @SerializedName("total")
+    var total: Int?=null
     
 ): Parcelable {
     
@@ -837,10 +837,10 @@ data class SetConfigurationRes(
 
              
 /*
-    Model: SetConfiguration
+    Model: ConfigurationRequest
 */
 @Parcelize
-data class SetConfiguration(
+data class ConfigurationRequest(
     
     
     
