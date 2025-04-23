@@ -1,8 +1,8 @@
 package com.sdk.common
 
-import com.sdk.application.filestorage.FileUploadComplete
+import com.sdk.application.filestorage.CompleteResponse
 import com.sdk.application.filestorage.FileStorageDataManagerClass
-import com.sdk.application.filestorage.FileUploadStart
+import com.sdk.application.filestorage.StartRequest
 import com.sdk.application.filestorage.Params
 import kotlinx.coroutines.Deferred
 import kotlinx.parcelize.RawValue
@@ -26,7 +26,7 @@ suspend fun FileStorageDataManagerClass.uploadMedia(
     tags: ArrayList<String>?=null,
     params: Params?=null,
     encKey: String? = null,
-    onResponse: (Event<FileUploadComplete>?, FdkError?) -> Unit = { response, error -> }
+    onResponse: (Event<CompleteResponse>?, FdkError?) -> Unit = { response, error -> }
 ) {
 
     val apiList by lazy {
@@ -39,7 +39,7 @@ suspend fun FileStorageDataManagerClass.uploadMedia(
     }
 
     if (!fileName.isNullOrEmpty() && !contentType.isNullOrEmpty() && size != null && !namespace.isNullOrEmpty()) {
-        val startRequest = FileUploadStart(
+        val startRequest = StartRequest(
             fileName = fileName,
             contentType = contentType,
             size = size,

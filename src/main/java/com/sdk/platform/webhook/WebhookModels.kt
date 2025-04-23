@@ -250,14 +250,9 @@ data class Page(
     var type: String?=null,
     
     @SerializedName("size")
-    var size: Int?=null,
-    
-    @SerializedName("total")
-    var total: Int?=null
+    var size: Int?=null
     
 ): Parcelable {
-    
-    
     
     
     
@@ -1048,9 +1043,6 @@ data class SubscriberConfigPostRequestV2(
     @SerializedName("name")
     var name: String?=null,
     
-    @SerializedName("type")
-    var type: String?=null,
-    
     @SerializedName("webhook_url")
     var webhookUrl: String?=null,
     
@@ -1076,8 +1068,6 @@ data class SubscriberConfigPostRequestV2(
     var events: ArrayList<Events>?=null
     
 ): Parcelable {
-    
-    
     
     
     
@@ -1118,9 +1108,6 @@ data class SubscriberConfigUpdateRequestV2(
     @SerializedName("name")
     var name: String?=null,
     
-    @SerializedName("type")
-    var type: String?=null,
-    
     @SerializedName("webhook_url")
     var webhookUrl: String?=null,
     
@@ -1169,8 +1156,6 @@ data class SubscriberConfigUpdateRequestV2(
     
     
     
-    
-    
 }
 
 
@@ -1186,9 +1171,6 @@ data class SubscriberConfigPost(
     
     @SerializedName("name")
     var name: String?=null,
-    
-    @SerializedName("type")
-    var type: String?=null,
     
     @SerializedName("webhook_url")
     var webhookUrl: String?=null,
@@ -1212,8 +1194,6 @@ data class SubscriberConfigPost(
     var eventId: ArrayList<Int>?=null
     
 ): Parcelable {
-    
-    
     
     
     
@@ -1252,9 +1232,6 @@ data class SubscriberConfigUpdate(
     @SerializedName("name")
     var name: String?=null,
     
-    @SerializedName("type")
-    var type: String?=null,
-    
     @SerializedName("webhook_url")
     var webhookUrl: String?=null,
     
@@ -1277,8 +1254,6 @@ data class SubscriberConfigUpdate(
     var eventId: ArrayList<Int>?=null
     
 ): Parcelable {
-    
-    
     
     
     

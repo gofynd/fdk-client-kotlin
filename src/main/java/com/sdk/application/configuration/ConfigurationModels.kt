@@ -1515,9 +1515,6 @@ data class AppFeature(
     @SerializedName("order")
     var order: OrderFeature?=null,
     
-    @SerializedName("buybox")
-    var buybox: BuyboxFeature?=null,
-    
     @SerializedName("_id")
     var id: String?=null,
     
@@ -1531,16 +1528,9 @@ data class AppFeature(
     var modifiedAt: String?=null,
     
     @SerializedName("__v")
-    var v: Int?=null,
-    
-    @SerializedName("pricing_strategy")
-    var pricingStrategy: PricingStrategy?=null
+    var v: Int?=null
     
 ): Parcelable {
-    
-    
-    
-    
     
     
     
@@ -1992,38 +1982,6 @@ data class OrderFeature(
     var buyAgain: Boolean?=null
     
 ): Parcelable {
-    
-    
-    
-    
-    
-}
-
-
-
-             
-/*
-    Model: BuyboxFeature
-*/
-@Parcelize
-data class BuyboxFeature(
-    
-    
-    
-    @SerializedName("show_name")
-    var showName: Boolean?=null,
-    
-    @SerializedName("enable_selection")
-    var enableSelection: Boolean?=null,
-    
-    @SerializedName("is_seller_buybox_enabled")
-    var isSellerBuyboxEnabled: Boolean?=null
-    
-): Parcelable {
-    
-    
-    
-    
     
     
     
@@ -2613,7 +2571,7 @@ data class CompanyAboutAddress(
     
     
     @SerializedName("pincode")
-    var pincode: String?=null,
+    var pincode: Int?=null,
     
     @SerializedName("address1")
     var address1: String?=null,
@@ -2762,14 +2720,9 @@ data class Page(
     var type: String?=null,
     
     @SerializedName("size")
-    var size: Int?=null,
-    
-    @SerializedName("total")
-    var total: Int?=null
+    var size: Int?=null
     
 ): Parcelable {
-    
-    
     
     
     
@@ -3686,7 +3639,7 @@ data class OptedStoreAddress(
     var address2: String?=null,
     
     @SerializedName("pincode")
-    var pincode: String?=null,
+    var pincode: Int?=null,
     
     @SerializedName("country")
     var country: String?=null,
@@ -3747,7 +3700,7 @@ data class OrderingStore(
     var storeCode: String?=null,
     
     @SerializedName("pincode")
-    var pincode: String?=null,
+    var pincode: Int?=null,
     
     @SerializedName("code")
     var code: String?=null
@@ -3831,28 +3784,6 @@ data class OrderingStores(
     
     
     
-    
-    
-    
-    
-    
-}
-
-
-
-             
-/*
-    Model: PricingStrategy
-*/
-@Parcelize
-data class PricingStrategy(
-    
-    
-    
-    @SerializedName("value")
-    var value: String?=null
-    
-): Parcelable {
     
     
     

@@ -105,19 +105,10 @@ class CartDataManagerClass(val config: PlatformConfig, val unauthorizedAction: (
     
     
     
+    
 
 inner class ApplicationClient(val applicationId:String,val config: PlatformConfig){
 
-    
-    
-    suspend fun createCoupon(body: CouponAdd, headers: Map<String, String> = emptyMap())
-    : Response<CouponDetailResponse>? {
-        return if (config.oauthClient.isAccessTokenValid()) {
-                cartApiList?.createCoupon(companyId = config.companyId ,applicationId = applicationId , body = body,headers = headers)
-        } else {
-            null
-        }
-    }
     
     
     suspend fun getCoupons(pageNo: Int?=null,pageSize: Int?=null,isArchived: Boolean?=null,title: String?=null,isPublic: Boolean?=null,isDisplay: Boolean?=null,typeSlug: String?=null,code: String?=null, headers: Map<String, String> = emptyMap())
@@ -130,109 +121,10 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     }
     
     
-    
-        
-            
-                
-            
-            
-        
-            
-                
-            
-            
-        
-            
-            
-        
-            
-                
-            
-            
-        
-            
-                
-            
-            
-        
-            
-                
-            
-            
-        
-            
-                
-            
-            
-        
-            
-                
-            
-            
-        
-            
-                
-            
-            
-        
-            
-                
-            
-            
-        
-    /**
-    *
-    * Summary: Paginator for getCoupons
-    **/
-    fun getCouponsPaginator(
-    pageSize: Int?=null, isArchived: Boolean?=null, title: String?=null, isPublic: Boolean?=null, isDisplay: Boolean?=null, typeSlug: String?=null, code: String?=null
-    
-    ) : Paginator<CouponsResponse>{
-        val paginator = Paginator<CouponsResponse>()
-        paginator.setCallBack(object : PaginatorCallback<CouponsResponse> {
-
-            override suspend fun onNext(
-                onResponse: (Event<CouponsResponse>?,FdkError?) -> Unit){
-
-                if (config.oauthClient.isAccessTokenValid()) {
-                    val pageId = paginator.nextId
-                    val pageNo = paginator.pageNo
-                    val pageType = "number"
-                    cartApiList?.getCoupons(companyId = config.companyId , applicationId = applicationId , pageNo = pageNo, pageSize = pageSize, isArchived = isArchived, title = title, isPublic = isPublic, isDisplay = isDisplay, typeSlug = typeSlug, code = code)?.safeAwait{ response, error ->
-                        response?.let {
-                            val page = response.peekContent()?.page
-                            paginator.setPaginator(hasNext=page?.hasNext?:false,pageNo=if (page?.hasNext == true) ((pageNo ?: 0) + 1) else pageNo)
-                            onResponse.invoke(response,null)
-                        }
-
-                        error?.let {
-                            onResponse.invoke(null,error)
-                        }
-                    }
-
-                } else {
-                    null
-                }
-            }
-
-    })
-    return paginator
-    }
-    
-    suspend fun getCouponTags( headers: Map<String, String> = emptyMap())
-    : Response<TagsViewResponse>? {
+    suspend fun createCoupon(body: CouponAdd, headers: Map<String, String> = emptyMap())
+    : Response<SuccessMessage>? {
         return if (config.oauthClient.isAccessTokenValid()) {
-                cartApiList?.getCouponTags(companyId = config.companyId ,applicationId = applicationId , headers = headers)
-        } else {
-            null
-        }
-    }
-    
-    
-    suspend fun getPromotionTags( headers: Map<String, String> = emptyMap())
-    : Response<TagsViewResponse>? {
-        return if (config.oauthClient.isAccessTokenValid()) {
-                cartApiList?.getPromotionTags(companyId = config.companyId ,applicationId = applicationId , headers = headers)
+                cartApiList?.createCoupon(companyId = config.companyId ,applicationId = applicationId , body = body,headers = headers)
         } else {
             null
         }
@@ -250,7 +142,7 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     
     
     suspend fun updateCoupon(id: String,body: CouponUpdate, headers: Map<String, String> = emptyMap())
-    : Response<CouponDetailResponse>? {
+    : Response<SuccessMessage>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 cartApiList?.updateCoupon(companyId = config.companyId ,applicationId = applicationId ,id = id, body = body,headers = headers)
         } else {
@@ -279,97 +171,8 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     }
     
     
-    
-        
-            
-                
-            
-            
-        
-            
-                
-            
-            
-        
-            
-            
-        
-            
-                
-            
-            
-        
-            
-                
-            
-            
-        
-            
-                
-            
-            
-        
-            
-                
-            
-            
-        
-            
-                
-            
-            
-        
-            
-                
-            
-            
-        
-            
-                
-            
-            
-        
-    /**
-    *
-    * Summary: Paginator for getPromotions
-    **/
-    fun getPromotionsPaginator(
-    pageSize: Int?=null, q: String?=null, isActive: Boolean?=null, promoGroup: String?=null, promotionType: String?=null, fpPanel: String?=null, promotionId: String?=null
-    
-    ) : Paginator<PromotionsResponse>{
-        val paginator = Paginator<PromotionsResponse>()
-        paginator.setCallBack(object : PaginatorCallback<PromotionsResponse> {
-
-            override suspend fun onNext(
-                onResponse: (Event<PromotionsResponse>?,FdkError?) -> Unit){
-
-                if (config.oauthClient.isAccessTokenValid()) {
-                    val pageId = paginator.nextId
-                    val pageNo = paginator.pageNo
-                    val pageType = "number"
-                    cartApiList?.getPromotions(companyId = config.companyId , applicationId = applicationId , pageNo = pageNo, pageSize = pageSize, q = q, isActive = isActive, promoGroup = promoGroup, promotionType = promotionType, fpPanel = fpPanel, promotionId = promotionId)?.safeAwait{ response, error ->
-                        response?.let {
-                            val page = response.peekContent()?.page
-                            paginator.setPaginator(hasNext=page?.hasNext?:false,pageNo=if (page?.hasNext == true) ((pageNo ?: 0) + 1) else pageNo)
-                            onResponse.invoke(response,null)
-                        }
-
-                        error?.let {
-                            onResponse.invoke(null,error)
-                        }
-                    }
-
-                } else {
-                    null
-                }
-            }
-
-    })
-    return paginator
-    }
-    
     suspend fun createPromotion(body: PromotionAdd, headers: Map<String, String> = emptyMap())
-    : Response<PromotionAddResult>? {
+    : Response<PromotionAdd>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 cartApiList?.createPromotion(companyId = config.companyId ,applicationId = applicationId , body = body,headers = headers)
         } else {
@@ -379,7 +182,7 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     
     
     suspend fun getPromotionById(id: String, headers: Map<String, String> = emptyMap())
-    : Response<PromotionUpdateResult>? {
+    : Response<PromotionUpdate>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 cartApiList?.getPromotionById(companyId = config.companyId ,applicationId = applicationId ,id = id, headers = headers)
         } else {
@@ -389,7 +192,7 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     
     
     suspend fun updatePromotion(id: String,body: PromotionUpdate, headers: Map<String, String> = emptyMap())
-    : Response<PromotionUpdateResult>? {
+    : Response<PromotionUpdate>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 cartApiList?.updatePromotion(companyId = config.companyId ,applicationId = applicationId ,id = id, body = body,headers = headers)
         } else {
@@ -418,10 +221,20 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     }
     
     
-    suspend fun getCartMetaConfig(cartMetaId: String, headers: Map<String, String> = emptyMap())
-    : Response<CartMetaConfigDetailResponse>? {
+    suspend fun getPromotionOffers(slug: String?=null,pageSize: Int?=null,promotionGroup: String?=null,storeId: Int?=null,cartType: String?=null, headers: Map<String, String> = emptyMap())
+    : Response<PromotionOffersResponse>? {
         return if (config.oauthClient.isAccessTokenValid()) {
-                cartApiList?.getCartMetaConfig(companyId = config.companyId ,applicationId = applicationId ,cartMetaId = cartMetaId, headers = headers)
+                cartApiList?.getPromotionOffers(companyId = config.companyId ,applicationId = applicationId ,slug = slug,pageSize = pageSize,promotionGroup = promotionGroup,storeId = storeId,cartType = cartType, headers = headers)
+        } else {
+            null
+        }
+    }
+    
+    
+    suspend fun getPromotionPaymentOffers(id: String?=null,uid: Int?=null, headers: Map<String, String> = emptyMap())
+    : Response<PromotionPaymentOffersResponse>? {
+        return if (config.oauthClient.isAccessTokenValid()) {
+                cartApiList?.getPromotionPaymentOffers(companyId = config.companyId ,applicationId = applicationId ,id = id,uid = uid, headers = headers)
         } else {
             null
         }
@@ -438,20 +251,10 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     }
     
     
-    suspend fun deleteCartMetaConfig(cartMetaId: String, headers: Map<String, String> = emptyMap())
-    : Response<SuccessMessage>? {
+    suspend fun fetchCartMetaConfig( headers: Map<String, String> = emptyMap())
+    : Response<CartMetaConfigAdd>? {
         return if (config.oauthClient.isAccessTokenValid()) {
-                cartApiList?.deleteCartMetaConfig(companyId = config.companyId ,applicationId = applicationId ,cartMetaId = cartMetaId, headers = headers)
-        } else {
-            null
-        }
-    }
-    
-    
-    suspend fun getCartMetaConfigs( headers: Map<String, String> = emptyMap())
-    : Response<CartMetaConfigListResponse>? {
-        return if (config.oauthClient.isAccessTokenValid()) {
-                cartApiList?.getCartMetaConfigs(companyId = config.companyId ,applicationId = applicationId , headers = headers)
+                cartApiList?.fetchCartMetaConfig(companyId = config.companyId ,applicationId = applicationId , headers = headers)
         } else {
             null
         }
@@ -459,7 +262,7 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     
     
     suspend fun createCartMetaConfig(body: CartMetaConfigAdd, headers: Map<String, String> = emptyMap())
-    : Response<CartMetaConfigAddResponse>? {
+    : Response<CartMetaConfigAdd>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 cartApiList?.createCartMetaConfig(companyId = config.companyId ,applicationId = applicationId , body = body,headers = headers)
         } else {
@@ -468,28 +271,8 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     }
     
     
-    suspend fun addPriceAdjustment(body: PriceAdjustmentAdd, headers: Map<String, String> = emptyMap())
-    : Response<AddPriceAdjustmentResponse>? {
-        return if (config.oauthClient.isAccessTokenValid()) {
-                cartApiList?.addPriceAdjustment(companyId = config.companyId ,applicationId = applicationId , body = body,headers = headers)
-        } else {
-            null
-        }
-    }
-    
-    
-    suspend fun getPriceAdjustments(cartId: String, headers: Map<String, String> = emptyMap())
-    : Response<PriceAdjustmentResponse>? {
-        return if (config.oauthClient.isAccessTokenValid()) {
-                cartApiList?.getPriceAdjustments(companyId = config.companyId ,applicationId = applicationId ,cartId = cartId, headers = headers)
-        } else {
-            null
-        }
-    }
-    
-    
     suspend fun updatePriceAdjustment(id: String,body: PriceAdjustmentUpdate, headers: Map<String, String> = emptyMap())
-    : Response<UpdatePriceAdjustmentResponse>? {
+    : Response<PriceAdjustmentResponse>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 cartApiList?.updatePriceAdjustment(companyId = config.companyId ,applicationId = applicationId ,id = id, body = body,headers = headers)
         } else {
@@ -502,6 +285,26 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     : Response<SuccessMessage>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 cartApiList?.removePriceAdjustment(companyId = config.companyId ,applicationId = applicationId ,id = id, headers = headers)
+        } else {
+            null
+        }
+    }
+    
+    
+    suspend fun addPriceAdjustment(body: PriceAdjustmentAdd, headers: Map<String, String> = emptyMap())
+    : Response<PriceAdjustmentResponse>? {
+        return if (config.oauthClient.isAccessTokenValid()) {
+                cartApiList?.addPriceAdjustment(companyId = config.companyId ,applicationId = applicationId , body = body,headers = headers)
+        } else {
+            null
+        }
+    }
+    
+    
+    suspend fun getPriceAdjustments(cartId: String, headers: Map<String, String> = emptyMap())
+    : Response<GetPriceAdjustmentResponse>? {
+        return if (config.oauthClient.isAccessTokenValid()) {
+                cartApiList?.getPriceAdjustments(companyId = config.companyId ,applicationId = applicationId ,cartId = cartId, headers = headers)
         } else {
             null
         }
@@ -548,90 +351,6 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     }
     
     
-    
-        
-            
-                
-            
-            
-        
-            
-                
-            
-            
-        
-            
-            
-        
-            
-                
-            
-            
-        
-            
-                
-            
-            
-        
-            
-                
-            
-            
-        
-            
-                
-            
-            
-        
-            
-                
-            
-            
-        
-            
-                
-            
-            
-        
-    /**
-    *
-    * Summary: Paginator for getAbandonedCart
-    **/
-    fun getAbandonedCartPaginator(
-    pageSize: Int?=null, fromDate: String?=null, toDate: String?=null, anonymousCart: Boolean?=null, lastId: String?=null, sortOn: String?=null
-    
-    ) : Paginator<AbandonedCartResponse>{
-        val paginator = Paginator<AbandonedCartResponse>()
-        paginator.setCallBack(object : PaginatorCallback<AbandonedCartResponse> {
-
-            override suspend fun onNext(
-                onResponse: (Event<AbandonedCartResponse>?,FdkError?) -> Unit){
-
-                if (config.oauthClient.isAccessTokenValid()) {
-                    val pageId = paginator.nextId
-                    val pageNo = paginator.pageNo
-                    val pageType = "number"
-                    cartApiList?.getAbandonedCart(companyId = config.companyId , applicationId = applicationId , pageNo = pageNo, pageSize = pageSize, fromDate = fromDate, toDate = toDate, anonymousCart = anonymousCart, lastId = lastId, sortOn = sortOn)?.safeAwait{ response, error ->
-                        response?.let {
-                            val page = response.peekContent()?.page
-                            paginator.setPaginator(hasNext=page?.hasNext?:false,pageNo=if (page?.hasNext == true) ((pageNo ?: 0) + 1) else pageNo)
-                            onResponse.invoke(response,null)
-                        }
-
-                        error?.let {
-                            onResponse.invoke(null,error)
-                        }
-                    }
-
-                } else {
-                    null
-                }
-            }
-
-    })
-    return paginator
-    }
-    
     suspend fun getAbandonedCartDetails(id: String?=null,i: Boolean?=null,b: Boolean?=null,c: Boolean?=null, headers: Map<String, String> = emptyMap())
     : Response<CartDetailResponse>? {
         return if (config.oauthClient.isAccessTokenValid()) {
@@ -663,7 +382,7 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     
     
     suspend fun getCouponOptionValues( headers: Map<String, String> = emptyMap())
-    : Response<CouponOptions>? {
+    : Response<HashMap<String,Any>>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 cartApiList?.getCouponOptionValues(companyId = config.companyId ,applicationId = applicationId , headers = headers)
         } else {
@@ -752,50 +471,50 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     }
     
     
-    suspend fun getItemCount(id: String?=null,buyNow: Boolean?=null,cartType: String?=null, headers: Map<String, String> = emptyMap())
-    : Response<CartItemCountResponse>? {
-        return if (config.oauthClient.isAccessTokenValid()) {
-                cartApiList?.getItemCount(companyId = config.companyId ,applicationId = applicationId ,id = id,buyNow = buyNow,cartType = cartType, headers = headers)
-        } else {
-            null
-        }
-    }
-    
-    
-    suspend fun platformAddItems(i: Boolean?=null,b: Boolean?=null,buyNow: Boolean?=null,id: String?=null,cartType: String?=null,body: PlatformAddCartRequest, headers: Map<String, String> = emptyMap())
-    : Response<AddCartDetailResponse>? {
-        return if (config.oauthClient.isAccessTokenValid()) {
-                cartApiList?.platformAddItems(companyId = config.companyId ,applicationId = applicationId ,i = i,b = b,buyNow = buyNow,id = id,cartType = cartType, body = body,headers = headers)
-        } else {
-            null
-        }
-    }
-    
-    
-    suspend fun getCart(id: String?=null,userId: String?=null,i: Boolean?=null,b: Boolean?=null,assignCardId: Double?=null,buyNow: Boolean?=null,cartType: String?=null, headers: Map<String, String> = emptyMap())
+    suspend fun getCart(id: String?=null,userId: String?=null,orderType: String?=null,i: Boolean?=null,b: Boolean?=null,assignCardId: Int?=null,buyNow: Boolean?=null, headers: Map<String, String> = emptyMap())
     : Response<CartDetailResponse>? {
         return if (config.oauthClient.isAccessTokenValid()) {
-                cartApiList?.getCart(companyId = config.companyId ,applicationId = applicationId ,id = id,userId = userId,i = i,b = b,assignCardId = assignCardId,buyNow = buyNow,cartType = cartType, headers = headers)
+                cartApiList?.getCart(companyId = config.companyId ,applicationId = applicationId ,id = id,userId = userId,orderType = orderType,i = i,b = b,assignCardId = assignCardId,buyNow = buyNow, headers = headers)
         } else {
             null
         }
     }
     
     
-    suspend fun platformUpdateCart(id: String?=null,i: Boolean?=null,orderType: String?=null,b: Boolean?=null,buyNow: Boolean?=null,cartType: String?=null,body: PlatformUpdateCartRequest, headers: Map<String, String> = emptyMap())
+    suspend fun platformAddItems(i: Boolean?=null,b: Boolean?=null,buyNow: Boolean?=null,orderType: String?=null,id: String?=null,body: PlatformAddCartRequest, headers: Map<String, String> = emptyMap())
+    : Response<AddCartDetailResponse>? {
+        return if (config.oauthClient.isAccessTokenValid()) {
+                cartApiList?.platformAddItems(companyId = config.companyId ,applicationId = applicationId ,i = i,b = b,buyNow = buyNow,orderType = orderType,id = id, body = body,headers = headers)
+        } else {
+            null
+        }
+    }
+    
+    
+    suspend fun platformUpdateCart(id: String?=null,i: Boolean?=null,orderType: String?=null,b: Boolean?=null,buyNow: Boolean?=null,body: PlatformUpdateCartRequest, headers: Map<String, String> = emptyMap())
     : Response<UpdateCartDetailResponse>? {
         return if (config.oauthClient.isAccessTokenValid()) {
-                cartApiList?.platformUpdateCart(companyId = config.companyId ,applicationId = applicationId ,id = id,i = i,orderType = orderType,b = b,buyNow = buyNow,cartType = cartType, body = body,headers = headers)
+                cartApiList?.platformUpdateCart(companyId = config.companyId ,applicationId = applicationId ,id = id,i = i,orderType = orderType,b = b,buyNow = buyNow, body = body,headers = headers)
         } else {
             null
         }
     }
     
     
-    suspend fun deleteCart(id: String?=null,cartType: String?=null,body: DeleteCartRequest, headers: Map<String, String> = emptyMap())
+    suspend fun deleteCart(id: String?=null,body: DeleteCartRequest, headers: Map<String, String> = emptyMap())
     : Response<DeleteCartDetailResponse>? {
         return if (config.oauthClient.isAccessTokenValid()) {
-                cartApiList?.deleteCart(companyId = config.companyId ,applicationId = applicationId ,id = id,cartType = cartType, body = body,headers = headers)
+                cartApiList?.deleteCart(companyId = config.companyId ,applicationId = applicationId ,id = id, body = body,headers = headers)
+        } else {
+            null
+        }
+    }
+    
+    
+    suspend fun getItemCount(id: String?=null,buyNow: Boolean?=null, headers: Map<String, String> = emptyMap())
+    : Response<CartItemCountResponse>? {
+        return if (config.oauthClient.isAccessTokenValid()) {
+                cartApiList?.getItemCount(companyId = config.companyId ,applicationId = applicationId ,id = id,buyNow = buyNow, headers = headers)
         } else {
             null
         }
@@ -822,20 +541,10 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     }
     
     
-    suspend fun removeCoupon(uid: String?=null,buyNow: Boolean?=null,cartType: String?=null, headers: Map<String, String> = emptyMap())
+    suspend fun removeCoupon(uid: String?=null,buyNow: Boolean?=null, headers: Map<String, String> = emptyMap())
     : Response<CartDetailResponse>? {
         return if (config.oauthClient.isAccessTokenValid()) {
-                cartApiList?.removeCoupon(companyId = config.companyId ,applicationId = applicationId ,uid = uid,buyNow = buyNow,cartType = cartType, headers = headers)
-        } else {
-            null
-        }
-    }
-    
-    
-    suspend fun addAddress(body: PlatformAddress, headers: Map<String, String> = emptyMap())
-    : Response<SaveAddressResponse>? {
-        return if (config.oauthClient.isAccessTokenValid()) {
-                cartApiList?.addAddress(companyId = config.companyId ,applicationId = applicationId , body = body,headers = headers)
+                cartApiList?.removeCoupon(companyId = config.companyId ,applicationId = applicationId ,uid = uid,buyNow = buyNow, headers = headers)
         } else {
             null
         }
@@ -846,6 +555,16 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     : Response<PlatformGetAddressesResponse>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 cartApiList?.getAddresses(companyId = config.companyId ,applicationId = applicationId ,cartId = cartId,buyNow = buyNow,mobileNo = mobileNo,checkoutMode = checkoutMode,tags = tags,isDefault = isDefault,userId = userId, headers = headers)
+        } else {
+            null
+        }
+    }
+    
+    
+    suspend fun addAddress(body: PlatformAddress, headers: Map<String, String> = emptyMap())
+    : Response<SaveAddressResponse>? {
+        return if (config.oauthClient.isAccessTokenValid()) {
+                cartApiList?.addAddress(companyId = config.companyId ,applicationId = applicationId , body = body,headers = headers)
         } else {
             null
         }
@@ -912,20 +631,20 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     }
     
     
-    suspend fun updateCartMeta(id: String?=null,buyNow: Boolean?=null,userId: String?=null,body: PlatformCartMetaRequest, headers: Map<String, String> = emptyMap())
+    suspend fun updateCartMeta(id: String?=null,buyNow: Boolean?=null,body: PlatformCartMetaRequest, headers: Map<String, String> = emptyMap())
     : Response<CartMetaResponse>? {
         return if (config.oauthClient.isAccessTokenValid()) {
-                cartApiList?.updateCartMeta(companyId = config.companyId ,applicationId = applicationId ,id = id,buyNow = buyNow,userId = userId, body = body,headers = headers)
+                cartApiList?.updateCartMeta(companyId = config.companyId ,applicationId = applicationId ,id = id,buyNow = buyNow, body = body,headers = headers)
         } else {
             null
         }
     }
     
     
-    suspend fun platformCheckoutCart(id: String?=null,cartType: String?=null,body: PlatformCartCheckoutDetailRequest, headers: Map<String, String> = emptyMap())
+    suspend fun platformCheckoutCart(id: String?=null,body: PlatformCartCheckoutDetailRequest, headers: Map<String, String> = emptyMap())
     : Response<CartCheckoutResponse>? {
         return if (config.oauthClient.isAccessTokenValid()) {
-                cartApiList?.platformCheckoutCart(companyId = config.companyId ,applicationId = applicationId ,id = id,cartType = cartType, body = body,headers = headers)
+                cartApiList?.platformCheckoutCart(companyId = config.companyId ,applicationId = applicationId ,id = id, body = body,headers = headers)
         } else {
             null
         }
@@ -962,20 +681,20 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     }
     
     
-    suspend fun validateCouponForPayment(id: String?=null,buyNow: Boolean?=null,addressId: String?=null,paymentMode: String?=null,paymentIdentifier: String?=null,aggregatorName: String?=null,merchantCode: String?=null,iin: String?=null,network: String?=null,type: String?=null,cardId: String?=null,cartType: String?=null, headers: Map<String, String> = emptyMap())
+    suspend fun validateCouponForPayment(id: String?=null,buyNow: Boolean?=null,addressId: String?=null,paymentMode: String?=null,paymentIdentifier: String?=null,aggregatorName: String?=null,merchantCode: String?=null, headers: Map<String, String> = emptyMap())
     : Response<PaymentCouponValidate>? {
         return if (config.oauthClient.isAccessTokenValid()) {
-                cartApiList?.validateCouponForPayment(companyId = config.companyId ,applicationId = applicationId ,id = id,buyNow = buyNow,addressId = addressId,paymentMode = paymentMode,paymentIdentifier = paymentIdentifier,aggregatorName = aggregatorName,merchantCode = merchantCode,iin = iin,network = network,type = type,cardId = cardId,cartType = cartType, headers = headers)
+                cartApiList?.validateCouponForPayment(companyId = config.companyId ,applicationId = applicationId ,id = id,buyNow = buyNow,addressId = addressId,paymentMode = paymentMode,paymentIdentifier = paymentIdentifier,aggregatorName = aggregatorName,merchantCode = merchantCode, headers = headers)
         } else {
             null
         }
     }
     
     
-    suspend fun platformCheckoutCartV2(id: String?=null,cartType: String?=null,body: PlatformCartCheckoutDetailV2Request, headers: Map<String, String> = emptyMap())
+    suspend fun platformCheckoutCartV2(id: String?=null,body: PlatformCartCheckoutDetailV2Request, headers: Map<String, String> = emptyMap())
     : Response<CartCheckoutResponse>? {
         return if (config.oauthClient.isAccessTokenValid()) {
-                cartApiList?.platformCheckoutCartV2(companyId = config.companyId ,applicationId = applicationId ,id = id,cartType = cartType, body = body,headers = headers)
+                cartApiList?.platformCheckoutCartV2(companyId = config.companyId ,applicationId = applicationId ,id = id, body = body,headers = headers)
         } else {
             null
         }
@@ -986,6 +705,36 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     : Response<CartDetailResponse>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 cartApiList?.selectPaymentModeV2(companyId = config.companyId ,applicationId = applicationId ,id = id,buyNow = buyNow,orderType = orderType, body = body,headers = headers)
+        } else {
+            null
+        }
+    }
+    
+    
+    suspend fun addBulkPriceAdjustment(body: BulkPriceAdjustmentAddRequest, headers: Map<String, String> = emptyMap())
+    : Response<BulkPriceAdjustmentResponse>? {
+        return if (config.oauthClient.isAccessTokenValid()) {
+                cartApiList?.addBulkPriceAdjustment(companyId = config.companyId ,applicationId = applicationId , body = body,headers = headers)
+        } else {
+            null
+        }
+    }
+    
+    
+    suspend fun updateBulkPriceAdjustment(body: BulkPriceAdjustmentUpdateRequest, headers: Map<String, String> = emptyMap())
+    : Response<BulkPriceAdjustmentResponse>? {
+        return if (config.oauthClient.isAccessTokenValid()) {
+                cartApiList?.updateBulkPriceAdjustment(companyId = config.companyId ,applicationId = applicationId , body = body,headers = headers)
+        } else {
+            null
+        }
+    }
+    
+    
+    suspend fun removeBulkPriceAdjustment(priceAdjustmentIds: String, headers: Map<String, String> = emptyMap())
+    : Response<SuccessMessage>? {
+        return if (config.oauthClient.isAccessTokenValid()) {
+                cartApiList?.removeBulkPriceAdjustment(companyId = config.companyId ,applicationId = applicationId ,priceAdjustmentIds = priceAdjustmentIds, headers = headers)
         } else {
             null
         }

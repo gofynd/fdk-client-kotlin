@@ -11,16 +11,6 @@ import com.sdk.application.*
 interface UserApiList {
     
     
-    @GET
-    suspend fun getUserAttributes(@Url url1: String?    ,  @Query("slug") slug: String?, @HeaderMap headers: Map<String, String>? = null)
-    : Response<UserAttributes>
-    
-    
-    @PATCH
-    suspend fun updateUserAttributes(@Url url1: String?   ,@Body body: UpdateAttributesRequestPayload, @HeaderMap headers: Map<String, String>? = null)
-    : Response<UserAttributes>
-    
-    
     @POST
     suspend fun loginWithFacebook(@Url url1: String?    ,  @Query("platform") platform: String?, @Body body: OAuthRequestSchema, @HeaderMap headers: Map<String, String>? = null)
     : Response<AuthSuccess>
@@ -59,6 +49,11 @@ interface UserApiList {
     @POST
     suspend fun sendResetPasswordEmail(@Url url1: String?    ,  @Query("platform") platform: String?, @Body body: SendResetPasswordEmailRequestSchema, @HeaderMap headers: Map<String, String>? = null)
     : Response<ResetPasswordSuccess>
+    
+    
+    @POST
+    suspend fun sendResetPasswordMobile(@Url url1: String?    ,  @Query("platform") platform: String?, @Body body: SendResetPasswordMobileRequestSchema, @HeaderMap headers: Map<String, String>? = null)
+    : Response<Any>
     
     
     @POST
@@ -219,5 +214,15 @@ interface UserApiList {
     @GET
     suspend fun logout(@Url url1: String?   , @HeaderMap headers: Map<String, String>? = null)
     : Response<LogoutSuccess>
+    
+    
+    @GET
+    suspend fun getUserAttributes(@Url url1: String?    ,  @Query("slug") slug: String?, @HeaderMap headers: Map<String, String>? = null)
+    : Response<UserAttributes>
+    
+    
+    @PATCH
+    suspend fun updateUserAttributes(@Url url1: String?   ,@Body body: UpdateUserAttributesRequest, @HeaderMap headers: Map<String, String>? = null)
+    : Response<UserAttributes>
     
 }

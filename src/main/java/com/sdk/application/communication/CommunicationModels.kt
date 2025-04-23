@@ -233,6 +233,33 @@ data class CommunicationConsent(
 
              
 /*
+    Model: BadRequestSchema
+*/
+@Parcelize
+data class BadRequestSchema(
+    
+    
+    
+    @SerializedName("status")
+    var status: String?=null,
+    
+    @SerializedName("message")
+    var message: String?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
     Model: PushtokenReq
 */
 @Parcelize
@@ -330,124 +357,6 @@ data class PushtokenRes(
     
     
     
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-}
-
-
-
-             
-/*
-    Model: OtpConfigurationExpiryDuration
-*/
-@Parcelize
-data class OtpConfigurationExpiryDuration(
-    
-    
-    
-    @SerializedName("time")
-    var time: Double?=null,
-    
-    @SerializedName("denomination")
-    var denomination: String?=null
-    
-): Parcelable {
-    
-    
-    
-    
-    
-    
-    
-}
-
-
-
-             
-/*
-    Model: OtpConfigurationExpiry
-*/
-@Parcelize
-data class OtpConfigurationExpiry(
-    
-    
-    
-    @SerializedName("duration")
-    var duration: OtpConfigurationExpiryDuration?=null,
-    
-    @SerializedName("type")
-    var type: String?=null
-    
-): Parcelable {
-    
-    
-    
-    
-    
-    
-    
-}
-
-
-
-             
-/*
-    Model: OtpConfigurationRateLimit
-*/
-@Parcelize
-data class OtpConfigurationRateLimit(
-    
-    
-    
-    @SerializedName("duration")
-    var duration: Double?=null,
-    
-    @SerializedName("limit")
-    var limit: Int?=null
-    
-): Parcelable {
-    
-    
-    
-    
-    
-    
-    
-}
-
-
-
-             
-/*
-    Model: OtpConfiguration
-*/
-@Parcelize
-data class OtpConfiguration(
-    
-    
-    
-    @SerializedName("otp_length")
-    var otpLength: Int?=null,
-    
-    @SerializedName("type")
-    var type: String?=null,
-    
-    @SerializedName("expiry")
-    var expiry: OtpConfigurationExpiry?=null,
-    
-    @SerializedName("rate_limit")
-    var rateLimit: OtpConfigurationRateLimit?=null
-    
-): Parcelable {
     
     
     
