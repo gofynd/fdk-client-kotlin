@@ -12,7 +12,7 @@ interface WebhookApiList {
     
     
     @POST
-    suspend fun saveClickEvent(@Url url1: String?   ,@Body body: ClickEventRequest, @HeaderMap headers: Map<String, String>? = null)
-    : Response<ClickEventResponse>
+    suspend fun saveClickEvent(@Url url1: String?   ,@Body body: ClickEventPayload, @HeaderMap headers: Map<String, String>? = null)
+    : Response<ClickEventDetails>
     
 }

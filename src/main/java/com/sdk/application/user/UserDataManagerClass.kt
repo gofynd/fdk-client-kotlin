@@ -105,6 +105,14 @@ class UserDataManagerClass(val config: ApplicationConfig, val unauthorizedAction
             
                     _relativeUrls["updateUserAttributes"] = "/service/application/user/profile/v1.0/user-attributes".substring(1)
             
+                    _relativeUrls["sendOTPOnPrimary"] = "/service/application/user/profile/v2.0/{entity}/primary/otp/send".substring(1)
+            
+                    _relativeUrls["verifyOTPonPrimary"] = "/service/application/user/profile/v2.0/{entity}/primary/otp/verify".substring(1)
+            
+                    _relativeUrls["sendOTPForUpdate"] = "/service/application/user/profile/v2.0/{entity}/otp/send".substring(1)
+            
+                    _relativeUrls["verifyOTPForUpdate"] = "/service/application/user/profile/v2.0/{entity}/otp/verify".substring(1)
+            
     }
 
     public fun update(updatedUrlMap : HashMap<String,String>){
@@ -175,7 +183,7 @@ class UserDataManagerClass(val config: ApplicationConfig, val unauthorizedAction
 
     
     
-    suspend fun loginWithOTP(platform: String?=null,body: SendOtpRequestSchema, headers: Map<String, String> = emptyMap()): Response<SendOtpResponse>? {
+    suspend fun loginWithOTP(platform: String?=null,body: SendOtpRequestSchema, headers: Map<String, String> = emptyMap()): Response<SendOtp>? {
         var fullUrl : String? = _relativeUrls["loginWithOTP"]
         
         return userApiList?.loginWithOTP(fullUrl,   platform = platform,body = body,headers = headers)}
@@ -266,14 +274,14 @@ class UserDataManagerClass(val config: ApplicationConfig, val unauthorizedAction
 
     
     
-    suspend fun sendOTPOnMobile(platform: String?=null,body: SendMobileOtpRequestSchema, headers: Map<String, String> = emptyMap()): Response<OtpSuccess>? {
+    suspend fun sendOTPOnMobile(platform: String?=null,body: SendMobileOtpRequestSchema, headers: Map<String, String> = emptyMap()): Response<SendOtpSuccess>? {
         var fullUrl : String? = _relativeUrls["sendOTPOnMobile"]
         
         return userApiList?.sendOTPOnMobile(fullUrl,   platform = platform,body = body,headers = headers)}
 
     
     
-    suspend fun sendForgotOTPOnMobile(platform: String?=null,body: SendMobileForgotOtpRequestSchema, headers: Map<String, String> = emptyMap()): Response<OtpSuccess>? {
+    suspend fun sendForgotOTPOnMobile(platform: String?=null,body: SendMobileForgotOtpRequestSchema, headers: Map<String, String> = emptyMap()): Response<SendOtpSuccess>? {
         var fullUrl : String? = _relativeUrls["sendForgotOTPOnMobile"]
         
         return userApiList?.sendForgotOTPOnMobile(fullUrl,   platform = platform,body = body,headers = headers)}
@@ -406,7 +414,7 @@ class UserDataManagerClass(val config: ApplicationConfig, val unauthorizedAction
 
     
     
-    suspend fun userExists(q: String, headers: Map<String, String> = emptyMap()): Response<UserExistsResponse>? {
+    suspend fun userExists(q: String, headers: Map<String, String> = emptyMap()): Response<UserExistsDetails>? {
         var fullUrl : String? = _relativeUrls["userExists"]
         
         return userApiList?.userExists(fullUrl,   q = q,headers = headers)}
@@ -434,10 +442,46 @@ class UserDataManagerClass(val config: ApplicationConfig, val unauthorizedAction
 
     
     
-    suspend fun updateUserAttributes(body: UpdateUserAttributesRequest, headers: Map<String, String> = emptyMap()): Response<UserAttributes>? {
+    suspend fun updateUserAttributes(body: UpdateUserAttributes, headers: Map<String, String> = emptyMap()): Response<UserAttributes>? {
         var fullUrl : String? = _relativeUrls["updateUserAttributes"]
         
         return userApiList?.updateUserAttributes(fullUrl, body = body,headers = headers)}
+
+    
+    
+    suspend fun sendOTPOnPrimary(entity: String,body: SendPrimaryOTPRequestSchema, headers: Map<String, String> = emptyMap()): Response<SendOtpSuccess>? {
+        var fullUrl : String? = _relativeUrls["sendOTPOnPrimary"]
+        
+        fullUrl = fullUrl?.replace("{" + "entity" +"}",entity.toString())
+        
+        return userApiList?.sendOTPOnPrimary(fullUrl,  body = body,headers = headers)}
+
+    
+    
+    suspend fun verifyOTPonPrimary(entity: String,body: VerifyPrimaryOTPRequestSchema, headers: Map<String, String> = emptyMap()): Response<VerifyPrimaryOTPSuccess>? {
+        var fullUrl : String? = _relativeUrls["verifyOTPonPrimary"]
+        
+        fullUrl = fullUrl?.replace("{" + "entity" +"}",entity.toString())
+        
+        return userApiList?.verifyOTPonPrimary(fullUrl,  body = body,headers = headers)}
+
+    
+    
+    suspend fun sendOTPForUpdate(entity: String,body: SendOTPForUpdateRequestSchema, headers: Map<String, String> = emptyMap()): Response<SendOtpSuccess>? {
+        var fullUrl : String? = _relativeUrls["sendOTPForUpdate"]
+        
+        fullUrl = fullUrl?.replace("{" + "entity" +"}",entity.toString())
+        
+        return userApiList?.sendOTPForUpdate(fullUrl,  body = body,headers = headers)}
+
+    
+    
+    suspend fun verifyOTPForUpdate(entity: String,body: VerifyOTPForUpdateRequestSchema, headers: Map<String, String> = emptyMap()): Response<VerifyOtpSuccess>? {
+        var fullUrl : String? = _relativeUrls["verifyOTPForUpdate"]
+        
+        fullUrl = fullUrl?.replace("{" + "entity" +"}",entity.toString())
+        
+        return userApiList?.verifyOTPForUpdate(fullUrl,  body = body,headers = headers)}
 
     
     

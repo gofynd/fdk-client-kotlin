@@ -98,7 +98,7 @@ class LeadDataManagerClass(val config: ApplicationConfig, val unauthorizedAction
 
     
     
-    suspend fun submitCustomForm(slug: String,body: CustomFormSubmissionPayload, headers: Map<String, String> = emptyMap()): Response<SubmitCustomFormResponse>? {
+    suspend fun submitCustomForm(slug: String,body: CustomFormSubmissionPayload, headers: Map<String, String> = emptyMap()): Response<SubmitCustomFormDetails>? {
         var fullUrl : String? = _relativeUrls["submitCustomForm"]
         
         fullUrl = fullUrl?.replace("{" + "slug" +"}",slug.toString())

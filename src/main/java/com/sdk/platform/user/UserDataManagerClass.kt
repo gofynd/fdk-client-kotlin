@@ -71,6 +71,12 @@ class UserDataManagerClass(val config: PlatformConfig, val unauthorizedAction: (
     
     
     
+    
+    
+    
+    
+    
+    
 
 inner class ApplicationClient(val applicationId:String,val config: PlatformConfig){
 
@@ -120,6 +126,16 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     : Response<UnDeleteUserSuccess>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 userApiList?.unDeleteUser(companyId = config.companyId ,applicationId = applicationId , body = body,headers = headers)
+        } else {
+            null
+        }
+    }
+    
+    
+    suspend fun getUserTimeline(userId: String, headers: Map<String, String> = emptyMap())
+    : Response<GetUserTimeline>? {
+        return if (config.oauthClient.isAccessTokenValid()) {
+                userApiList?.getUserTimeline(companyId = config.companyId ,applicationId = applicationId ,userId = userId, headers = headers)
         } else {
             null
         }
@@ -257,7 +273,7 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     
     
     suspend fun createUserAttributeDefinition(body: CreateUserAttributeDefinition, headers: Map<String, String> = emptyMap())
-    : Response<UserAttributeDefinitionResponse>? {
+    : Response<UserAttributeDefinitionDetails>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 userApiList?.createUserAttributeDefinition(companyId = config.companyId ,applicationId = applicationId , body = body,headers = headers)
         } else {
@@ -287,7 +303,7 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     
     
     suspend fun deleteUserAttributeDefinitionById(attributeDefId: String, headers: Map<String, String> = emptyMap())
-    : Response<SuccessMessageResponse>? {
+    : Response<SuccessMessage>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 userApiList?.deleteUserAttributeDefinitionById(attributeDefId = attributeDefId,companyId = config.companyId ,applicationId = applicationId , headers = headers)
         } else {
@@ -306,8 +322,8 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     }
     
     
-    suspend fun updateUserAttribute(attributeDefId: String,userId: String,body: CreateUserAttributeRequest, headers: Map<String, String> = emptyMap())
-    : Response<UserAttributeResponse>? {
+    suspend fun updateUserAttribute(attributeDefId: String,userId: String,body: CreateUserAttribute, headers: Map<String, String> = emptyMap())
+    : Response<UserAttribute>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 userApiList?.updateUserAttribute(attributeDefId = attributeDefId,userId = userId,applicationId = applicationId ,companyId = config.companyId , body = body,headers = headers)
         } else {
@@ -317,7 +333,7 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     
     
     suspend fun getUserAttribute(attributeDefId: String,userId: String, headers: Map<String, String> = emptyMap())
-    : Response<UserAttributeResponse>? {
+    : Response<UserAttribute>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 userApiList?.getUserAttribute(attributeDefId = attributeDefId,userId = userId,applicationId = applicationId ,companyId = config.companyId , headers = headers)
         } else {
@@ -327,7 +343,7 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     
     
     suspend fun deleteUserAttribute(attributeDefId: String,userId: String, headers: Map<String, String> = emptyMap())
-    : Response<SuccessMessageResponse>? {
+    : Response<SuccessMessage>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 userApiList?.deleteUserAttribute(attributeDefId = attributeDefId,userId = userId,applicationId = applicationId ,companyId = config.companyId , headers = headers)
         } else {
@@ -347,9 +363,59 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     
     
     suspend fun getUserAttributeById(attributeId: String, headers: Map<String, String> = emptyMap())
-    : Response<UserAttributeResponse>? {
+    : Response<UserAttribute>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 userApiList?.getUserAttributeById(attributeId = attributeId,applicationId = applicationId ,companyId = config.companyId , headers = headers)
+        } else {
+            null
+        }
+    }
+    
+    
+    suspend fun bulkImportStoreFrontUsers(body: CreateStoreFrontUsersPayload, headers: Map<String, String> = emptyMap())
+    : Response<BulkActionModel>? {
+        return if (config.oauthClient.isAccessTokenValid()) {
+                userApiList?.bulkImportStoreFrontUsers(applicationId = applicationId ,companyId = config.companyId , body = body,headers = headers)
+        } else {
+            null
+        }
+    }
+    
+    
+    suspend fun getBulkImportUsersList(pageNo: String?=null,pageSize: String?=null,search: String?=null,startDate: String?=null,endDate: String?=null,status: String?=null,fileFormat: String?=null, headers: Map<String, String> = emptyMap())
+    : Response<BulkActionPaginationSchema>? {
+        return if (config.oauthClient.isAccessTokenValid()) {
+                userApiList?.getBulkImportUsersList(applicationId = applicationId ,companyId = config.companyId ,pageNo = pageNo,pageSize = pageSize,search = search,startDate = startDate,endDate = endDate,status = status,fileFormat = fileFormat, headers = headers)
+        } else {
+            null
+        }
+    }
+    
+    
+    suspend fun createBulkExportUsers(body: BulkUserExportSchema, headers: Map<String, String> = emptyMap())
+    : Response<BulkActionModel>? {
+        return if (config.oauthClient.isAccessTokenValid()) {
+                userApiList?.createBulkExportUsers(applicationId = applicationId ,companyId = config.companyId , body = body,headers = headers)
+        } else {
+            null
+        }
+    }
+    
+    
+    suspend fun getBulkExportUsersList(pageNo: String?=null,pageSize: String?=null,fileFormat: String?=null,search: String?=null,startDate: String?=null,endDate: String?=null,status: String?=null, headers: Map<String, String> = emptyMap())
+    : Response<BulkActionPaginationSchema>? {
+        return if (config.oauthClient.isAccessTokenValid()) {
+                userApiList?.getBulkExportUsersList(applicationId = applicationId ,companyId = config.companyId ,pageNo = pageNo,pageSize = pageSize,fileFormat = fileFormat,search = search,startDate = startDate,endDate = endDate,status = status, headers = headers)
+        } else {
+            null
+        }
+    }
+    
+    
+    suspend fun getUsersJobByJobId(jobId: String, headers: Map<String, String> = emptyMap())
+    : Response<BulkActionModel>? {
+        return if (config.oauthClient.isAccessTokenValid()) {
+                userApiList?.getUsersJobByJobId(applicationId = applicationId ,companyId = config.companyId ,jobId = jobId, headers = headers)
         } else {
             null
         }
