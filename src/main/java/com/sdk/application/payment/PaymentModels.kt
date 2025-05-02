@@ -81,10 +81,10 @@ data class AggregatorConfigDetail(
 
              
 /*
-    Model: AggregatorsConfigDetail
+    Model: AggregatorsConfigDetailResponse
 */
 @Parcelize
-data class AggregatorsConfigDetail(
+data class AggregatorsConfigDetailResponse(
     
     
     
@@ -175,37 +175,10 @@ data class ErrorCodeAndDescription(
 
              
 /*
-    Model: HttpErrorCodeAndResponseSchema
+    Model: HttpErrorCodeAndResponse
 */
 @Parcelize
-data class HttpErrorCodeAndResponseSchema(
-    
-    
-    
-    @SerializedName("success")
-    var success: Boolean?=null,
-    
-    @SerializedName("description")
-    var description: String?=null
-    
-): Parcelable {
-    
-    
-    
-    
-    
-    
-    
-}
-
-
-
-             
-/*
-    Model: HttpErrorCodeDetails
-*/
-@Parcelize
-data class HttpErrorCodeDetails(
+data class HttpErrorCodeAndResponse(
     
     
     
@@ -229,10 +202,10 @@ data class HttpErrorCodeDetails(
 
              
 /*
-    Model: AttachCard
+    Model: AttachCardRequest
 */
 @Parcelize
-data class AttachCard(
+data class AttachCardRequest(
     
     
     
@@ -266,10 +239,10 @@ data class AttachCard(
 
              
 /*
-    Model: AttachCardsDetails
+    Model: AttachCardsResponse
 */
 @Parcelize
-data class AttachCardsDetails(
+data class AttachCardsResponse(
     
     
     
@@ -330,10 +303,10 @@ data class CardPaymentGateway(
 
              
 /*
-    Model: ActiveCardPaymentGatewayDetails
+    Model: ActiveCardPaymentGatewayResponse
 */
 @Parcelize
-data class ActiveCardPaymentGatewayDetails(
+data class ActiveCardPaymentGatewayResponse(
     
     
     
@@ -464,10 +437,10 @@ data class Card(
 
              
 /*
-    Model: ListCardsDetails
+    Model: ListCardsResponse
 */
 @Parcelize
-data class ListCardsDetails(
+data class ListCardsResponse(
     
     
     
@@ -496,10 +469,10 @@ data class ListCardsDetails(
 
              
 /*
-    Model: DeleteCard
+    Model: DeletehCardRequest
 */
 @Parcelize
-data class DeleteCard(
+data class DeletehCardRequest(
     
     
     
@@ -518,10 +491,10 @@ data class DeleteCard(
 
              
 /*
-    Model: DeleteCardsDetails
+    Model: DeleteCardsResponse
 */
 @Parcelize
-data class DeleteCardsDetails(
+data class DeleteCardsResponse(
     
     
     
@@ -545,10 +518,10 @@ data class DeleteCardsDetails(
 
              
 /*
-    Model: ValidateCustomer
+    Model: ValidateCustomerRequest
 */
 @Parcelize
-data class ValidateCustomer(
+data class ValidateCustomerRequest(
     
     
     
@@ -602,10 +575,10 @@ data class ValidateCustomer(
 
              
 /*
-    Model: ValidateCustomerDetails
+    Model: ValidateCustomerResponse
 */
 @Parcelize
-data class ValidateCustomerDetails(
+data class ValidateCustomerResponse(
     
     
     
@@ -634,10 +607,10 @@ data class ValidateCustomerDetails(
 
              
 /*
-    Model: ChargeCustomer
+    Model: ChargeCustomerRequest
 */
 @Parcelize
-data class ChargeCustomer(
+data class ChargeCustomerRequest(
     
     
     
@@ -676,10 +649,10 @@ data class ChargeCustomer(
 
              
 /*
-    Model: ChargeCustomerDetails
+    Model: ChargeCustomerResponse
 */
 @Parcelize
-data class ChargeCustomerDetails(
+data class ChargeCustomerResponse(
     
     
     
@@ -728,10 +701,10 @@ data class ChargeCustomerDetails(
 
              
 /*
-    Model: PaymentInitialization
+    Model: PaymentInitializationRequest
 */
 @Parcelize
-data class PaymentInitialization(
+data class PaymentInitializationRequest(
     
     
     
@@ -810,10 +783,10 @@ data class PaymentInitialization(
 
              
 /*
-    Model: PaymentInitializationDetails
+    Model: PaymentInitializationResponse
 */
 @Parcelize
-data class PaymentInitializationDetails(
+data class PaymentInitializationResponse(
     
     
     
@@ -866,14 +839,9 @@ data class PaymentInitializationDetails(
     var amount: Int?=null,
     
     @SerializedName("bqr_image")
-    var bqrImage: String?=null,
-    
-    @SerializedName("status_code")
-    var statusCode: String?=null
+    var bqrImage: String?=null
     
 ): Parcelable {
-    
-    
     
     
     
@@ -917,10 +885,10 @@ data class PaymentInitializationDetails(
 
              
 /*
-    Model: PaymentStatusUpdate
+    Model: PaymentStatusUpdateRequest
 */
 @Parcelize
-data class PaymentStatusUpdate(
+data class PaymentStatusUpdateRequest(
     
     
     
@@ -948,9 +916,6 @@ data class PaymentStatusUpdate(
     @SerializedName("merchant_order_id")
     var merchantOrderId: String?=null,
     
-    @SerializedName("virtual_id")
-    var virtualId: String?=null,
-    
     @SerializedName("vpa")
     var vpa: String?=null,
     
@@ -964,21 +929,9 @@ data class PaymentStatusUpdate(
     var amount: Int?=null,
     
     @SerializedName("email")
-    var email: String?=null,
-    
-    @SerializedName("razorpay_payment_id")
-    var razorpayPaymentId: String?=null,
-    
-    @SerializedName("merchant_url")
-    var merchantUrl: String?=null
+    var email: String?=null
     
 ): Parcelable {
-    
-    
-    
-    
-    
-    
     
     
     
@@ -1014,10 +967,10 @@ data class PaymentStatusUpdate(
 
              
 /*
-    Model: PaymentStatusUpdateDetails
+    Model: PaymentStatusUpdateResponse
 */
 @Parcelize
-data class PaymentStatusUpdateDetails(
+data class PaymentStatusUpdateResponse(
     
     
     
@@ -1254,14 +1207,9 @@ data class PaymentModeList(
     var name: String?=null,
     
     @SerializedName("meta")
-    var meta: @RawValue HashMap<String,Any>?=null,
-    
-    @SerializedName("partial_payment_allowed")
-    var partialPaymentAllowed: Boolean?=null
+    var meta: @RawValue HashMap<String,Any>?=null
     
 ): Parcelable {
-    
-    
     
     
     
@@ -1371,19 +1319,7 @@ data class RootPaymentMode(
     var name: String?=null,
     
     @SerializedName("anonymous_enable")
-    var anonymousEnable: Boolean?=null,
-    
-    @SerializedName("supported_methods")
-    var supportedMethods: ArrayList<SupportedMethodDetails>?=null,
-    
-    @SerializedName("stored_payment_details")
-    var storedPaymentDetails: ArrayList<StoredPaymentDetails>?=null,
-    
-    @SerializedName("suggested_list")
-    var suggestedList: ArrayList<String>?=null,
-    
-    @SerializedName("flow")
-    var flow: String?=null
+    var anonymousEnable: Boolean?=null
     
 ): Parcelable {
     
@@ -1400,41 +1336,6 @@ data class RootPaymentMode(
     
     
     
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-}
-
-
-
-             
-/*
-    Model: SupportedMethodDetails
-*/
-@Parcelize
-data class SupportedMethodDetails(
-    
-    
-    
-    @SerializedName("name")
-    var name: String?=null,
-    
-    @SerializedName("logo")
-    var logo: String?=null
-    
-): Parcelable {
     
     
     
@@ -1792,10 +1693,10 @@ data class AdvancePaymentObject(
 
              
 /*
-    Model: PaymentModeRouteDetails
+    Model: PaymentModeRouteResponse
 */
 @Parcelize
-data class PaymentModeRouteDetails(
+data class PaymentModeRouteResponse(
     
     
     
@@ -1812,143 +1713,6 @@ data class PaymentModeRouteDetails(
     var advancePayment: ArrayList<AdvancePaymentObject>?=null
     
 ): Parcelable {
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-}
-
-
-
-             
-/*
-    Model: StoredPaymentDetails
-*/
-@Parcelize
-data class StoredPaymentDetails(
-    
-    
-    
-    @SerializedName("aggregator_name")
-    var aggregatorName: String?=null,
-    
-    @SerializedName("card_number")
-    var cardNumber: String?=null,
-    
-    @SerializedName("card_reference")
-    var cardReference: String?=null,
-    
-    @SerializedName("card_issuer")
-    var cardIssuer: String?=null,
-    
-    @SerializedName("compliant_with_tokenisation_guidelines")
-    var compliantWithTokenisationGuidelines: Boolean?=null,
-    
-    @SerializedName("card_fingerprint")
-    var cardFingerprint: String?=null,
-    
-    @SerializedName("expired")
-    var expired: Boolean?=null,
-    
-    @SerializedName("exp_year")
-    var expYear: Int?=null,
-    
-    @SerializedName("exp_month")
-    var expMonth: Int?=null,
-    
-    @SerializedName("card_id")
-    var cardId: String?=null,
-    
-    @SerializedName("card_brand")
-    var cardBrand: String?=null,
-    
-    @SerializedName("logo_url")
-    var logoUrl: PaymentModeLogo?=null,
-    
-    @SerializedName("nickname")
-    var nickname: String?=null,
-    
-    @SerializedName("card_name")
-    var cardName: String?=null,
-    
-    @SerializedName("card_type")
-    var cardType: String?=null,
-    
-    @SerializedName("card_brand_image")
-    var cardBrandImage: String?=null,
-    
-    @SerializedName("display_name")
-    var displayName: String?=null,
-    
-    @SerializedName("card_isin")
-    var cardIsin: String?=null,
-    
-    @SerializedName("cvv_length")
-    var cvvLength: Int?=null,
-    
-    @SerializedName("cvv_less")
-    var cvvLess: Boolean?=null,
-    
-    @SerializedName("card_token")
-    var cardToken: String?=null,
-    
-    @SerializedName("name")
-    var name: String?=null,
-    
-    @SerializedName("meta")
-    var meta: @RawValue HashMap<String,Any>?=null,
-    
-    @SerializedName("vpa")
-    var vpa: String?=null
-    
-): Parcelable {
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
     
     
     
@@ -2111,10 +1875,10 @@ data class RupifiBannerData(
 
              
 /*
-    Model: RupifiBannerDetails
+    Model: RupifiBannerResponse
 */
 @Parcelize
-data class RupifiBannerDetails(
+data class RupifiBannerResponse(
     
     
     
@@ -2170,10 +1934,10 @@ data class EpaylaterBannerData(
 
              
 /*
-    Model: EpaylaterBannerDetails
+    Model: EpaylaterBannerResponse
 */
 @Parcelize
-data class EpaylaterBannerDetails(
+data class EpaylaterBannerResponse(
     
     
     
@@ -2197,10 +1961,10 @@ data class EpaylaterBannerDetails(
 
              
 /*
-    Model: ResendOrCancelPayment
+    Model: ResendOrCancelPaymentRequest
 */
 @Parcelize
-data class ResendOrCancelPayment(
+data class ResendOrCancelPaymentRequest(
     
     
     
@@ -2261,10 +2025,10 @@ data class LinkStatus(
 
              
 /*
-    Model: ResendOrCancelPaymentDetails
+    Model: ResendOrCancelPaymentResponse
 */
 @Parcelize
-data class ResendOrCancelPaymentDetails(
+data class ResendOrCancelPaymentResponse(
     
     
     
@@ -2288,10 +2052,10 @@ data class ResendOrCancelPaymentDetails(
 
              
 /*
-    Model: RenderHTML
+    Model: renderHTMLRequest
 */
 @Parcelize
-data class RenderHTML(
+data class renderHTMLRequest(
     
     
     
@@ -2315,10 +2079,10 @@ data class RenderHTML(
 
              
 /*
-    Model: RenderHTMLDetails
+    Model: renderHTMLResponse
 */
 @Parcelize
-data class RenderHTMLDetails(
+data class renderHTMLResponse(
     
     
     
@@ -2337,10 +2101,10 @@ data class RenderHTMLDetails(
 
              
 /*
-    Model: ValidateVPA
+    Model: ValidateVPARequest
 */
 @Parcelize
-data class ValidateVPA(
+data class ValidateVPARequest(
     
     
     
@@ -2401,10 +2165,10 @@ data class ValidateUPI(
 
              
 /*
-    Model: ValidateVPADetails
+    Model: ValidateVPAResponse
 */
 @Parcelize
-data class ValidateVPADetails(
+data class ValidateVPAResponse(
     
     
     
@@ -2481,29 +2245,9 @@ data class CardDetails(
     var user: String?=null,
     
     @SerializedName("bank")
-    var bank: String?=null,
-    
-    @SerializedName("cvv_length")
-    var cvvLength: Int?=null,
-    
-    @SerializedName("logo")
-    var logo: String?=null,
-    
-    @SerializedName("is_enabled")
-    var isEnabled: Boolean?=null,
-    
-    @SerializedName("is_card_valid")
-    var isCardValid: Boolean?=null
+    var bank: String?=null
     
 ): Parcelable {
-    
-    
-    
-    
-    
-    
-    
-    
     
     
     
@@ -2545,10 +2289,10 @@ data class CardDetails(
 
              
 /*
-    Model: CardDetailsFetchedDetails
+    Model: CardDetailsResponse
 */
 @Parcelize
-data class CardDetailsFetchedDetails(
+data class CardDetailsResponse(
     
     
     
@@ -2641,10 +2385,10 @@ data class TransferModeDetails(
 
              
 /*
-    Model: TransferModeFetchDetails
+    Model: TransferModeResponse
 */
 @Parcelize
-data class TransferModeFetchDetails(
+data class TransferModeResponse(
     
     
     
@@ -2663,10 +2407,10 @@ data class TransferModeFetchDetails(
 
              
 /*
-    Model: UpdateRefundTransferMode
+    Model: UpdateRefundTransferModeRequest
 */
 @Parcelize
-data class UpdateRefundTransferMode(
+data class UpdateRefundTransferModeRequest(
     
     
     
@@ -2690,10 +2434,10 @@ data class UpdateRefundTransferMode(
 
              
 /*
-    Model: RefundTransferModeUpdateDetails
+    Model: UpdateRefundTransferModeResponse
 */
 @Parcelize
-data class RefundTransferModeUpdateDetails(
+data class UpdateRefundTransferModeResponse(
     
     
     
@@ -2824,10 +2568,10 @@ data class OrderBeneficiaryDetails(
 
              
 /*
-    Model: OrderBeneficiaryFetchDetails
+    Model: OrderBeneficiaryResponse
 */
 @Parcelize
-data class OrderBeneficiaryFetchDetails(
+data class OrderBeneficiaryResponse(
     
     
     
@@ -2883,10 +2627,10 @@ data class NotFoundResourceError(
 
              
 /*
-    Model: IfscCodeDetails
+    Model: IfscCodeResponse
 */
 @Parcelize
-data class IfscCodeDetails(
+data class IfscCodeResponse(
     
     
     
@@ -2947,10 +2691,10 @@ data class ErrorCodeDescription(
 
              
 /*
-    Model: AddBeneficiaryViaOtpVerification
+    Model: AddBeneficiaryViaOtpVerificationRequest
 */
 @Parcelize
-data class AddBeneficiaryViaOtpVerification(
+data class AddBeneficiaryViaOtpVerificationRequest(
     
     
     
@@ -2979,10 +2723,10 @@ data class AddBeneficiaryViaOtpVerification(
 
              
 /*
-    Model: AddBeneficiaryViaOtpVerificationDetails
+    Model: AddBeneficiaryViaOtpVerificationResponse
 */
 @Parcelize
-data class AddBeneficiaryViaOtpVerificationDetails(
+data class AddBeneficiaryViaOtpVerificationResponse(
     
     
     
@@ -3110,10 +2854,10 @@ data class BeneficiaryModeDetails(
 
              
 /*
-    Model: AddBeneficiaryDetails
+    Model: AddBeneficiaryDetailsRequest
 */
 @Parcelize
-data class AddBeneficiaryDetails(
+data class AddBeneficiaryDetailsRequest(
     
     
     
@@ -3162,10 +2906,10 @@ data class AddBeneficiaryDetails(
 
              
 /*
-    Model: RefundAccountDetails
+    Model: RefundAccountResponse
 */
 @Parcelize
-data class RefundAccountDetails(
+data class RefundAccountResponse(
     
     
     
@@ -3241,10 +2985,10 @@ data class BankDetailsForOTP(
 
              
 /*
-    Model: AddBeneficiaryDetailsOTP
+    Model: AddBeneficiaryDetailsOTPRequest
 */
 @Parcelize
-data class AddBeneficiaryDetailsOTP(
+data class AddBeneficiaryDetailsOTPRequest(
     
     
     
@@ -3268,10 +3012,10 @@ data class AddBeneficiaryDetailsOTP(
 
              
 /*
-    Model: WalletOtp
+    Model: WalletOtpRequest
 */
 @Parcelize
-data class WalletOtp(
+data class WalletOtpRequest(
     
     
     
@@ -3295,10 +3039,10 @@ data class WalletOtp(
 
              
 /*
-    Model: WalletOtpDetails
+    Model: WalletOtpResponse
 */
 @Parcelize
-data class WalletOtpDetails(
+data class WalletOtpResponse(
     
     
     
@@ -3327,10 +3071,10 @@ data class WalletOtpDetails(
 
              
 /*
-    Model: SetDefaultBeneficiary
+    Model: SetDefaultBeneficiaryRequest
 */
 @Parcelize
-data class SetDefaultBeneficiary(
+data class SetDefaultBeneficiaryRequest(
     
     
     
@@ -3338,14 +3082,9 @@ data class SetDefaultBeneficiary(
     var orderId: String?=null,
     
     @SerializedName("beneficiary_id")
-    var beneficiaryId: String?=null,
-    
-    @SerializedName("shipment_id")
-    var shipmentId: String?=null
+    var beneficiaryId: String?=null
     
 ): Parcelable {
-    
-    
     
     
     
@@ -3359,10 +3098,10 @@ data class SetDefaultBeneficiary(
 
              
 /*
-    Model: SetDefaultBeneficiaryDetails
+    Model: SetDefaultBeneficiaryResponse
 */
 @Parcelize
-data class SetDefaultBeneficiaryDetails(
+data class SetDefaultBeneficiaryResponse(
     
     
     
@@ -3386,10 +3125,10 @@ data class SetDefaultBeneficiaryDetails(
 
              
 /*
-    Model: GetPaymentLinkDetails
+    Model: GetPaymentLinkResponse
 */
 @Parcelize
-data class GetPaymentLinkDetails(
+data class GetPaymentLinkResponse(
     
     
     
@@ -3505,10 +3244,10 @@ data class ErrorDescription(
 
              
 /*
-    Model: ErrorDetails
+    Model: ErrorResponse
 */
 @Parcelize
-data class ErrorDetails(
+data class ErrorResponse(
     
     
     
@@ -3579,10 +3318,10 @@ data class CreatePaymentLinkMeta(
 
              
 /*
-    Model: CreatePaymentLink
+    Model: CreatePaymentLinkRequest
 */
 @Parcelize
-data class CreatePaymentLink(
+data class CreatePaymentLinkRequest(
     
     
     
@@ -3602,19 +3341,9 @@ data class CreatePaymentLink(
     var meta: CreatePaymentLinkMeta?=null,
     
     @SerializedName("email")
-    var email: String?=null,
-    
-    @SerializedName("success_redirection_url")
-    var successRedirectionUrl: String?=null,
-    
-    @SerializedName("failure_redirection_url")
-    var failureRedirectionUrl: String?=null
+    var email: String?=null
     
 ): Parcelable {
-    
-    
-    
-    
     
     
     
@@ -3636,10 +3365,10 @@ data class CreatePaymentLink(
 
              
 /*
-    Model: CreatePaymentLinkDetails
+    Model: CreatePaymentLinkResponse
 */
 @Parcelize
-data class CreatePaymentLinkDetails(
+data class CreatePaymentLinkResponse(
     
     
     
@@ -3683,10 +3412,10 @@ data class CreatePaymentLinkDetails(
 
              
 /*
-    Model: CancelOrResendPaymentLink
+    Model: CancelOrResendPaymentLinkRequest
 */
 @Parcelize
-data class CancelOrResendPaymentLink(
+data class CancelOrResendPaymentLinkRequest(
     
     
     
@@ -3705,10 +3434,10 @@ data class CancelOrResendPaymentLink(
 
              
 /*
-    Model: ResendPaymentLinkDetails
+    Model: ResendPaymentLinkResponse
 */
 @Parcelize
-data class ResendPaymentLinkDetails(
+data class ResendPaymentLinkResponse(
     
     
     
@@ -3742,10 +3471,10 @@ data class ResendPaymentLinkDetails(
 
              
 /*
-    Model: CancelPaymentLinkDetails
+    Model: CancelPaymentLinkResponse
 */
 @Parcelize
-data class CancelPaymentLinkDetails(
+data class CancelPaymentLinkResponse(
     
     
     
@@ -3774,10 +3503,10 @@ data class CancelPaymentLinkDetails(
 
              
 /*
-    Model: PollingPaymentLinkDetails
+    Model: PollingPaymentLinkResponse
 */
 @Parcelize
-data class PollingPaymentLinkDetails(
+data class PollingPaymentLinkResponse(
     
     
     
@@ -3905,12 +3634,15 @@ data class CreateOrderUserPaymentMethods(
 
              
 /*
-    Model: CreateOrderUser
+    Model: CreateOrderUserRequest
 */
 @Parcelize
-data class CreateOrderUser(
+data class CreateOrderUserRequest(
     
     
+    
+    @SerializedName("failure_callback_url")
+    var failureCallbackUrl: String?=null,
     
     @SerializedName("currency")
     var currency: String?=null,
@@ -3921,10 +3653,17 @@ data class CreateOrderUser(
     @SerializedName("payment_methods")
     var paymentMethods: CreateOrderUserPaymentMethods?=null,
     
+    @SerializedName("success_callback_url")
+    var successCallbackUrl: String?=null,
+    
     @SerializedName("meta")
     var meta: @RawValue HashMap<String,Any>?=null
     
 ): Parcelable {
+    
+    
+    
+    
     
     
     
@@ -4009,10 +3748,10 @@ data class CreateOrderUserData(
 
              
 /*
-    Model: CreateOrderUserDetails
+    Model: CreateOrderUserResponse
 */
 @Parcelize
-data class CreateOrderUserDetails(
+data class CreateOrderUserResponse(
     
     
     
@@ -4185,10 +3924,10 @@ data class CreditSummary(
 
              
 /*
-    Model: CustomerCreditSummaryDetails
+    Model: CustomerCreditSummaryResponse
 */
 @Parcelize
-data class CustomerCreditSummaryDetails(
+data class CustomerCreditSummaryResponse(
     
     
     
@@ -4222,15 +3961,10 @@ data class RedirectURL(
     @SerializedName("status")
     var status: Boolean?=null,
     
-    @SerializedName("redirect_url")
-    var redirectUrl: String?=null,
-    
-    @SerializedName("extra")
-    var extra: String?=null
+    @SerializedName("signup_url")
+    var signupUrl: String?=null
     
 ): Parcelable {
-    
-    
     
     
     
@@ -4244,10 +3978,10 @@ data class RedirectURL(
 
              
 /*
-    Model: RedirectToAggregatorDetails
+    Model: RedirectToAggregatorResponse
 */
 @Parcelize
-data class RedirectToAggregatorDetails(
+data class RedirectToAggregatorResponse(
     
     
     
@@ -4285,14 +4019,9 @@ data class CreditDetail(
     var isRegistered: Boolean?=null,
     
     @SerializedName("signup_url")
-    var signupUrl: String?=null,
-    
-    @SerializedName("available_credit")
-    var availableCredit: Double?=null
+    var signupUrl: String?=null
     
 ): Parcelable {
-    
-    
     
     
     
@@ -4308,10 +4037,10 @@ data class CreditDetail(
 
              
 /*
-    Model: CheckCreditDetails
+    Model: CheckCreditResponse
 */
 @Parcelize
-data class CheckCreditDetails(
+data class CheckCreditResponse(
     
     
     
@@ -4640,10 +4369,10 @@ data class DeviceDetails(
 
              
 /*
-    Model: CustomerOnboarding
+    Model: CustomerOnboardingRequest
 */
 @Parcelize
-data class CustomerOnboarding(
+data class CustomerOnboardingRequest(
     
     
     
@@ -4744,10 +4473,10 @@ data class OnboardSummary(
 
              
 /*
-    Model: CustomerOnboardingDetails
+    Model: CustomerOnboardingResponse
 */
 @Parcelize
-data class CustomerOnboardingDetails(
+data class CustomerOnboardingResponse(
     
     
     
@@ -4771,10 +4500,10 @@ data class CustomerOnboardingDetails(
 
              
 /*
-    Model: PaidOrderDetails
+    Model: OutstandingOrderDetailsResponse
 */
 @Parcelize
-data class PaidOrderDetails(
+data class OutstandingOrderDetailsResponse(
     
     
     
@@ -4808,10 +4537,47 @@ data class PaidOrderDetails(
 
              
 /*
-    Model: DeleteRefundAccountDetails
+    Model: PaidOrderDetailsResponse
 */
 @Parcelize
-data class DeleteRefundAccountDetails(
+data class PaidOrderDetailsResponse(
+    
+    
+    
+    @SerializedName("status_code")
+    var statusCode: Int?=null,
+    
+    @SerializedName("data")
+    var data: @RawValue ArrayList<HashMap<String,Any>>?=null,
+    
+    @SerializedName("success")
+    var success: Boolean?=null,
+    
+    @SerializedName("message")
+    var message: String?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: DeleteRefundAccountResponse
+*/
+@Parcelize
+data class DeleteRefundAccountResponse(
     
     
     
@@ -4921,10 +4687,10 @@ data class OfflineRefundOptions(
 
              
 /*
-    Model: RefundOptionDetails
+    Model: RefundOptionResponse
 */
 @Parcelize
-data class RefundOptionDetails(
+data class RefundOptionResponse(
     
     
     
@@ -4953,10 +4719,10 @@ data class RefundOptionDetails(
 
              
 /*
-    Model: SelectedRefundOptionDetails
+    Model: SelectedRefundOptionResponse
 */
 @Parcelize
-data class SelectedRefundOptionDetails(
+data class SelectedRefundOptionResponse(
     
     
     
@@ -5216,10 +4982,10 @@ data class BeneficiaryRefundOptions(
 
              
 /*
-    Model: OrderBeneficiaryDetailsSchemaV2
+    Model: OrderBeneficiaryResponseSchemaV2
 */
 @Parcelize
-data class OrderBeneficiaryDetailsSchemaV2(
+data class OrderBeneficiaryResponseSchemaV2(
     
     
     
@@ -5248,10 +5014,10 @@ data class OrderBeneficiaryDetailsSchemaV2(
 
              
 /*
-    Model: ValidateValidateAddress
+    Model: ValidateValidateAddressRequest
 */
 @Parcelize
-data class ValidateValidateAddress(
+data class ValidateValidateAddressRequest(
     
     
     
@@ -5317,10 +5083,10 @@ data class VPADetails(
 
              
 /*
-    Model: ValidateValidateAddressDetails
+    Model: ValidateValidateAddressResponse
 */
 @Parcelize
-data class ValidateValidateAddressDetails(
+data class ValidateValidateAddressResponse(
     
     
     
@@ -5423,10 +5189,10 @@ data class PaymentOrderMethods(
 
              
 /*
-    Model: PaymentOrder
+    Model: PaymentOrderRequest
 */
 @Parcelize
-data class PaymentOrder(
+data class PaymentOrderRequest(
     
     
     
@@ -5522,10 +5288,10 @@ data class PaymentOrderData(
 
              
 /*
-    Model: PaymentOrderDetails
+    Model: PaymentOrderResponse
 */
 @Parcelize
-data class PaymentOrderDetails(
+data class PaymentOrderResponse(
     
     
     
@@ -5574,10 +5340,10 @@ data class PaymentOrderDetails(
 
              
 /*
-    Model: ShipmentRefund
+    Model: ShipmentRefundRequest
 */
 @Parcelize
-data class ShipmentRefund(
+data class ShipmentRefundRequest(
     
     
     
@@ -5648,10 +5414,10 @@ data class ShipmentRefundDetail(
 
              
 /*
-    Model: ShipmentRefundDetails
+    Model: ShipmentRefundResponse
 */
 @Parcelize
-data class ShipmentRefundDetails(
+data class ShipmentRefundResponse(
     
     
     
@@ -5665,159 +5431,6 @@ data class ShipmentRefundDetails(
     var message: String?=null
     
 ): Parcelable {
-    
-    
-    
-    
-    
-    
-    
-    
-    
-}
-
-
-
-             
-/*
-    Model: CustomerValidationSchema
-*/
-@Parcelize
-data class CustomerValidationSchema(
-    
-    
-    
-    @SerializedName("aggregator")
-    var aggregator: String?=null,
-    
-    @SerializedName("transaction_amount")
-    var transactionAmount: Double?=null,
-    
-    @SerializedName("cart_id")
-    var cartId: String?=null
-    
-): Parcelable {
-    
-    
-    
-    
-    
-    
-    
-    
-    
-}
-
-
-
-             
-/*
-    Model: UserCreditSchema
-*/
-@Parcelize
-data class UserCreditSchema(
-    
-    
-    
-    @SerializedName("amount")
-    var amount: Double?=null,
-    
-    @SerializedName("currency")
-    var currency: String?=null,
-    
-    @SerializedName("unique_id")
-    var uniqueId: String?=null
-    
-): Parcelable {
-    
-    
-    
-    
-    
-    
-    
-    
-    
-}
-
-
-
-             
-/*
-    Model: CreditAccountSummary
-*/
-@Parcelize
-data class CreditAccountSummary(
-    
-    
-    
-    @SerializedName("account_id")
-    var accountId: String?=null,
-    
-    @SerializedName("status")
-    var status: String?=null,
-    
-    @SerializedName("redeemable_balance")
-    var redeemableBalance: UserCreditSchema?=null,
-    
-    @SerializedName("available_balance")
-    var availableBalance: UserCreditSchema?=null,
-    
-    @SerializedName("amount_on_hold")
-    var amountOnHold: ArrayList<UserCreditSchema>?=null
-    
-): Parcelable {
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-}
-
-
-
-             
-/*
-    Model: ValidateCustomerCreditSchema
-*/
-@Parcelize
-data class ValidateCustomerCreditSchema(
-    
-    
-    
-    @SerializedName("success")
-    var success: Boolean?=null,
-    
-    @SerializedName("is_eligible")
-    var isEligible: Boolean?=null,
-    
-    @SerializedName("is_applied")
-    var isApplied: Boolean?=null,
-    
-    @SerializedName("message")
-    var message: String?=null,
-    
-    @SerializedName("cart_id")
-    var cartId: String?=null,
-    
-    @SerializedName("account")
-    var account: CreditAccountSummary?=null
-    
-): Parcelable {
-    
-    
-    
-    
-    
-    
     
     
     

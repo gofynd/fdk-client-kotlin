@@ -38,7 +38,7 @@ interface UserApiList {
     
     @POST
     suspend fun loginWithOTP(@Url url1: String?    ,  @Query("platform") platform: String?, @Body body: SendOtpRequestSchema, @HeaderMap headers: Map<String, String>? = null)
-    : Response<SendOtp>
+    : Response<SendOtpResponse>
     
     
     @POST
@@ -103,12 +103,12 @@ interface UserApiList {
     
     @POST
     suspend fun sendOTPOnMobile(@Url url1: String?    ,  @Query("platform") platform: String?, @Body body: SendMobileOtpRequestSchema, @HeaderMap headers: Map<String, String>? = null)
-    : Response<SendOtpSuccess>
+    : Response<OtpSuccess>
     
     
     @POST
     suspend fun sendForgotOTPOnMobile(@Url url1: String?    ,  @Query("platform") platform: String?, @Body body: SendMobileForgotOtpRequestSchema, @HeaderMap headers: Map<String, String>? = null)
-    : Response<SendOtpSuccess>
+    : Response<OtpSuccess>
     
     
     @POST
@@ -203,7 +203,7 @@ interface UserApiList {
     
     @GET
     suspend fun userExists(@Url url1: String?    ,  @Query("q") q: String, @HeaderMap headers: Map<String, String>? = null)
-    : Response<UserExistsDetails>
+    : Response<UserExistsResponse>
     
     
     @POST
@@ -222,27 +222,7 @@ interface UserApiList {
     
     
     @PATCH
-    suspend fun updateUserAttributes(@Url url1: String?   ,@Body body: UpdateUserAttributes, @HeaderMap headers: Map<String, String>? = null)
+    suspend fun updateUserAttributes(@Url url1: String?   ,@Body body: UpdateUserAttributesRequest, @HeaderMap headers: Map<String, String>? = null)
     : Response<UserAttributes>
-    
-    
-    @POST
-    suspend fun sendOTPOnPrimary(@Url url1: String?    ,@Body body: SendPrimaryOTPRequestSchema, @HeaderMap headers: Map<String, String>? = null)
-    : Response<SendOtpSuccess>
-    
-    
-    @POST
-    suspend fun verifyOTPonPrimary(@Url url1: String?    ,@Body body: VerifyPrimaryOTPRequestSchema, @HeaderMap headers: Map<String, String>? = null)
-    : Response<VerifyPrimaryOTPSuccess>
-    
-    
-    @POST
-    suspend fun sendOTPForUpdate(@Url url1: String?    ,@Body body: SendOTPForUpdateRequestSchema, @HeaderMap headers: Map<String, String>? = null)
-    : Response<SendOtpSuccess>
-    
-    
-    @POST
-    suspend fun verifyOTPForUpdate(@Url url1: String?    ,@Body body: VerifyOTPForUpdateRequestSchema, @HeaderMap headers: Map<String, String>? = null)
-    : Response<VerifyOtpSuccess>
     
 }

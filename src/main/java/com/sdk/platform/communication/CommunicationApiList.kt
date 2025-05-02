@@ -183,7 +183,7 @@ interface CommunicationApiList {
     
     @GET ("/service/platform/communication/v1.0/company/{company_id}/application/{application_id}/sms/system-templates")
     suspend fun getSystemSmsTemplates(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @HeaderMap headers: Map<String, String>? = null)
-    : Response<SystemSmsTemplates>
+    : Response<ArrayList<SystemSmsTemplates>>
     
     @GET ("/service/platform/communication/v1.0/company/{company_id}/application/{application_id}/sms/templates/{id}")
     suspend fun getSmsTemplateById(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Path("id") id: String, @HeaderMap headers: Map<String, String>? = null)
@@ -202,12 +202,12 @@ interface CommunicationApiList {
     : Response<SmsTemplates>
     
     @POST ("/service/platform/communication/v1.0/company/{company_id}/application/{application_id}/engine/send-instant")
-    suspend fun sendCommunicationSynchronously(@Path("company_id") companyId: String, @Path("application_id") applicationId: String,@Body body: EnginePayload, @HeaderMap headers: Map<String, String>? = null)
-    : Response<EngineResult>
+    suspend fun sendCommunicationSynchronously(@Path("company_id") companyId: String, @Path("application_id") applicationId: String,@Body body: EngineRequest, @HeaderMap headers: Map<String, String>? = null)
+    : Response<EngineResponse>
     
     @POST ("/service/platform/communication/v1.0/company/{company_id}/application/{application_id}/engine/send-async")
-    suspend fun sendCommunicationAsynchronously(@Path("company_id") companyId: String, @Path("application_id") applicationId: String,@Body body: EnginePayload, @HeaderMap headers: Map<String, String>? = null)
-    : Response<EngineResult>
+    suspend fun sendCommunicationAsynchronously(@Path("company_id") companyId: String, @Path("application_id") applicationId: String,@Body body: EngineRequest, @HeaderMap headers: Map<String, String>? = null)
+    : Response<EngineResponse>
     
     @GET ("/service/platform/communication/v1.0/company/{company_id}/application/{application_id}/event/event-subscriptions")
     suspend fun getEventSubscriptions(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Query("page_no") pageNo: Int?, @Query("page_size") pageSize: Int?, @Query("populate") populate: String?, @HeaderMap headers: Map<String, String>? = null)
@@ -215,7 +215,7 @@ interface CommunicationApiList {
     
     @POST ("/service/platform/communication/v1.0/company/{company_id}/application/{application_id}/event/event-subscriptions")
     suspend fun createEventSubscriptions(@Path("company_id") companyId: String, @Path("application_id") applicationId: String,@Body body: SubscriptionsObject, @HeaderMap headers: Map<String, String>? = null)
-    : Response<EventSubscriptionsBulkUpdateResult>
+    : Response<EventSubscriptionsBulkUpdateResponse>
     
     @GET ("/service/platform/communication/v1.0/company/{company_id}/application/{application_id}/event/event-subscriptions/{id}")
     suspend fun getEventSubscriptionsById(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Path("id") id: String, @Query("populate") populate: String?, @HeaderMap headers: Map<String, String>? = null)
@@ -223,23 +223,23 @@ interface CommunicationApiList {
     
     @PUT ("/service/platform/communication/v1.0/company/{company_id}/application/{application_id}/event/event-subscriptions/{id}")
     suspend fun editEventSubscriptions(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Path("id") id: String,@Body body: SubscriptionsObject, @HeaderMap headers: Map<String, String>? = null)
-    : Response<EventSubscriptionsBulkUpdateResult>
+    : Response<EventSubscriptionsBulkUpdateResponse>
     
     @DELETE ("/service/platform/communication/v1.0/company/{company_id}/application/{application_id}/event/event-subscriptions/{id}")
     suspend fun deleteEventSubscriptionsById(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Path("id") id: String, @HeaderMap headers: Map<String, String>? = null)
     : Response<GenericDelete>
     
     @POST ("/service/platform/communication/v1.0/company/{company_id}/application/{application_id}/event/event-subscriptions/bulkUpdate")
-    suspend fun createEventSubscriptionsByBulk(@Path("company_id") companyId: String, @Path("application_id") applicationId: String,@Body body: EventSubscriptionsBulkUpdatePayload, @HeaderMap headers: Map<String, String>? = null)
-    : Response<ArrayList<EventSubscriptionsBulkUpdateResult>>
+    suspend fun createEventSubscriptionsByBulk(@Path("company_id") companyId: String, @Path("application_id") applicationId: String,@Body body: EventSubscriptionsBulkUpdateRequest, @HeaderMap headers: Map<String, String>? = null)
+    : Response<ArrayList<EventSubscriptionsBulkUpdateResponse>>
     
     @GET ("/service/platform/communication/v1.0/company/{company_id}/application/{application_id}/global-variables")
     suspend fun getGlobalVariables(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @HeaderMap headers: Map<String, String>? = null)
-    : Response<GetGlobalVariablesResult>
+    : Response<GlobalVariablesGetResponse>
     
     @POST ("/service/platform/communication/v1.0/company/{company_id}/application/{application_id}/global-variables")
     suspend fun postGlobalVariables(@Path("company_id") companyId: String, @Path("application_id") applicationId: String,@Body body: GlobalVariablesReq, @HeaderMap headers: Map<String, String>? = null)
-    : Response<CreateGlobalVariablesResult>
+    : Response<GlobalVariablesPostResponse>
     
     @GET ("/service/platform/communication/v1.0/company/{company_id}/application/{application_id}/jobs/jobs")
     suspend fun getJobs(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Query("page_no") pageNo: Int?, @Query("page_size") pageSize: Int?, @Query("sort") sort: HashMap<String,Any>?, @Query("query") query: HashMap<String,Any>?, @HeaderMap headers: Map<String, String>? = null)
@@ -250,8 +250,8 @@ interface CommunicationApiList {
     : Response<CreateJobsRes>
     
     @POST ("/service/platform/communication/v1.0/company/{company_id}/application/{application_id}/jobs/trigger-job")
-    suspend fun triggerCampaignJob(@Path("company_id") companyId: String, @Path("application_id") applicationId: String,@Body body: TriggerJobPayload, @HeaderMap headers: Map<String, String>? = null)
-    : Response<TriggerJobResult>
+    suspend fun triggerCampaignJob(@Path("company_id") companyId: String, @Path("application_id") applicationId: String,@Body body: TriggerJobRequest, @HeaderMap headers: Map<String, String>? = null)
+    : Response<TriggerJobResponse>
     
     @GET ("/service/platform/communication/v1.0/company/{company_id}/application/{application_id}/jobs/logs")
     suspend fun getJobLogs(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Query("page_no") pageNo: Int?, @Query("page_size") pageSize: Int?, @Query("sort") sort: HashMap<String,Any>?, @Query("query") query: HashMap<String,Any>?, @HeaderMap headers: Map<String, String>? = null)

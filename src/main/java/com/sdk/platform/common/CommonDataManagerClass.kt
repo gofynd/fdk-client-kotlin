@@ -45,7 +45,7 @@ class CommonDataManagerClass(val config: PlatformConfig, val unauthorizedAction:
     
     
     suspend fun searchApplication(authorization: String?=null,query: String?=null, headers: Map<String, String> = emptyMap())
-    : Response<ApplicationResponseSchema>? {
+    : Response<ApplicationResponse>? {
 
         return if (config.oauthClient.isAccessTokenValid()) {
             commonApiList?.searchApplication(
