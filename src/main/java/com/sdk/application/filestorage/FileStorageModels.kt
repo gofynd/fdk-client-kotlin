@@ -73,10 +73,10 @@ data class Upload(
 
              
 /*
-    Model: StartResponse
+    Model: FileUpload
 */
 @Parcelize
-data class StartResponse(
+data class FileUpload(
     
     
     
@@ -104,15 +104,10 @@ data class StartResponse(
     @SerializedName("upload")
     var upload: Upload?=null,
     
-    @SerializedName("cdn")
-    var cdn: CDN?=null,
-    
     @SerializedName("tags")
     var tags: ArrayList<String>?=null
     
 ): Parcelable {
-    
-    
     
     
     
@@ -162,10 +157,10 @@ data class Params(
 
              
 /*
-    Model: StartRequest
+    Model: FileUploadStart
 */
 @Parcelize
-data class StartRequest(
+data class FileUploadStart(
     
     
     
@@ -182,14 +177,9 @@ data class StartRequest(
     var tags: ArrayList<String>?=null,
     
     @SerializedName("params")
-    var params: Params?=null,
-    
-    @SerializedName("enc_key")
-    var encKey: String?=null
+    var params: Params?=null
     
 ): Parcelable {
-    
-    
     
     
     
@@ -231,10 +221,10 @@ data class CreatedBy(
 
              
 /*
-    Model: CompleteResponse
+    Model: FileUploadComplete
 */
 @Parcelize
-data class CompleteResponse(
+data class FileUploadComplete(
     
     
     
@@ -350,10 +340,10 @@ data class Urls(
 
              
 /*
-    Model: SignUrlResponse
+    Model: SignUrlResult
 */
 @Parcelize
-data class SignUrlResponse(
+data class SignUrlResult(
     
     
     
@@ -372,37 +362,10 @@ data class SignUrlResponse(
 
              
 /*
-    Model: EncryptionMapping
+    Model: SignUrl
 */
 @Parcelize
-data class EncryptionMapping(
-    
-    
-    
-    @SerializedName("enc_url")
-    var encUrl: String?=null,
-    
-    @SerializedName("value")
-    var value: String?=null
-    
-): Parcelable {
-    
-    
-    
-    
-    
-    
-    
-}
-
-
-
-             
-/*
-    Model: SignUrlRequest
-*/
-@Parcelize
-data class SignUrlRequest(
+data class SignUrl(
     
     
     
@@ -410,14 +373,9 @@ data class SignUrlRequest(
     var expiry: Int?=null,
     
     @SerializedName("urls")
-    var urls: ArrayList<String>?=null,
-    
-    @SerializedName("enc_url_mapping")
-    var encUrlMapping: ArrayList<EncryptionMapping>?=null
+    var urls: ArrayList<String>?=null
     
 ): Parcelable {
-    
-    
     
     
     

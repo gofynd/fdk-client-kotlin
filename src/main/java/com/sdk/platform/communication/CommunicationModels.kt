@@ -14,10 +14,10 @@ import com.google.gson.annotations.SerializedName
 
              
 /*
-    Model: EventSubscriptionsBulkUpdateRequest
+    Model: EventSubscriptionsBulkUpdatePayload
 */
 @Parcelize
-data class EventSubscriptionsBulkUpdateRequest(
+data class EventSubscriptionsBulkUpdatePayload(
     
     
     
@@ -36,10 +36,10 @@ data class EventSubscriptionsBulkUpdateRequest(
 
              
 /*
-    Model: EventSubscriptionsBulkUpdateResponse
+    Model: EventSubscriptionsBulkUpdateResult
 */
 @Parcelize
-data class EventSubscriptionsBulkUpdateResponse(
+data class EventSubscriptionsBulkUpdateResult(
     
     
     
@@ -2196,10 +2196,10 @@ data class MetaStructure(
 
              
 /*
-    Model: EngineRequest
+    Model: EnginePayload
 */
 @Parcelize
-data class EngineRequest(
+data class EnginePayload(
     
     
     
@@ -2223,10 +2223,10 @@ data class EngineRequest(
 
              
 /*
-    Model: EngineResponse
+    Model: EngineResult
 */
 @Parcelize
-data class EngineResponse(
+data class EngineResult(
     
     
     
@@ -2256,7 +2256,7 @@ data class EventSubscriptionTemplateSms(
     var subscribed: Boolean?=null,
     
     @SerializedName("template")
-    var template: String?=null
+    var template: SmsTemplate?=null
     
 ): Parcelable {
     
@@ -2283,7 +2283,7 @@ data class EventSubscriptionTemplateEmail(
     var subscribed: Boolean?=null,
     
     @SerializedName("template")
-    var template: String?=null
+    var template: EmailTemplate?=null
     
 ): Parcelable {
     
@@ -2346,7 +2346,7 @@ data class EventSubscription(
     var application: String?=null,
     
     @SerializedName("event")
-    var event: String?=null,
+    var event: EventSubscriptionEvents?=null,
     
     @SerializedName("slug")
     var slug: String?=null,
@@ -2388,6 +2388,107 @@ data class EventSubscription(
 
              
 /*
+    Model: EventSubscriptionEvents
+*/
+@Parcelize
+data class EventSubscriptionEvents(
+    
+    
+    
+    @SerializedName("category")
+    var category: String?=null,
+    
+    @SerializedName("event_name")
+    var eventName: String?=null,
+    
+    @SerializedName("group")
+    var group: String?=null,
+    
+    @SerializedName("slug")
+    var slug: String?=null,
+    
+    @SerializedName("template")
+    var template: EventTemplate?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: EventTemplate
+*/
+@Parcelize
+data class EventTemplate(
+    
+    
+    
+    @SerializedName("email")
+    var email: EventProviderTemplates?=null,
+    
+    @SerializedName("pushnotification")
+    var pushnotification: EventProviderTemplates?=null,
+    
+    @SerializedName("sms")
+    var sms: EventProviderTemplates?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: EventProviderTemplates
+*/
+@Parcelize
+data class EventProviderTemplates(
+    
+    
+    
+    @SerializedName("provider_type")
+    var providerType: String?=null,
+    
+    @SerializedName("template")
+    var template: String?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
     Model: EventSubscriptions
 */
 @Parcelize
@@ -2415,10 +2516,10 @@ data class EventSubscriptions(
 
              
 /*
-    Model: TriggerJobResponse
+    Model: TriggerJobResult
 */
 @Parcelize
-data class TriggerJobResponse(
+data class TriggerJobResult(
     
     
     
@@ -2437,10 +2538,10 @@ data class TriggerJobResponse(
 
              
 /*
-    Model: TriggerJobRequest
+    Model: TriggerJobPayload
 */
 @Parcelize
-data class TriggerJobRequest(
+data class TriggerJobPayload(
     
     
     
@@ -2459,10 +2560,10 @@ data class TriggerJobRequest(
 
              
 /*
-    Model: GlobalVariablesGetResponse
+    Model: GetGlobalVariablesResult
 */
 @Parcelize
-data class GlobalVariablesGetResponse(
+data class GetGlobalVariablesResult(
     
     
     
@@ -2486,10 +2587,10 @@ data class GlobalVariablesGetResponse(
 
              
 /*
-    Model: GlobalVariablesPostResponse
+    Model: CreateGlobalVariablesResult
 */
 @Parcelize
-data class GlobalVariablesPostResponse(
+data class CreateGlobalVariablesResult(
     
     
     
@@ -3515,9 +3616,19 @@ data class SmsProviderReq(
     var senderId: String?=null,
     
     @SerializedName("api_key")
-    var apiKey: String?=null
+    var apiKey: String?=null,
+    
+    @SerializedName("tenant_name_1")
+    var tenantName1: String?=null,
+    
+    @SerializedName("tenant_name_2")
+    var tenantName2: String?=null
     
 ): Parcelable {
+    
+    
+    
+    
     
     
     
@@ -3906,6 +4017,28 @@ data class SystemSmsTemplates(
     
     
     
+    @SerializedName("items")
+    var items: ArrayList<SystemSmsTemplate>?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: SystemSmsTemplate
+*/
+@Parcelize
+data class SystemSmsTemplate(
+    
+    
+    
     @SerializedName("url_shorten")
     var urlShorten: EnabledObj?=null,
     
@@ -4269,9 +4402,14 @@ data class Page(
     var type: String?=null,
     
     @SerializedName("size")
-    var size: Int?=null
+    var size: Int?=null,
+    
+    @SerializedName("page_size")
+    var pageSize: Int?=null
     
 ): Parcelable {
+    
+    
     
     
     
