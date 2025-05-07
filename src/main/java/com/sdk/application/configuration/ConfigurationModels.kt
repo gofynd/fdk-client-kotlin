@@ -1515,6 +1515,9 @@ data class AppFeature(
     @SerializedName("order")
     var order: OrderFeature?=null,
     
+    @SerializedName("buybox")
+    var buybox: BuyboxFeature?=null,
+    
     @SerializedName("_id")
     var id: String?=null,
     
@@ -1528,9 +1531,16 @@ data class AppFeature(
     var modifiedAt: String?=null,
     
     @SerializedName("__v")
-    var v: Int?=null
+    var v: Int?=null,
+    
+    @SerializedName("pricing_strategy")
+    var pricingStrategy: PricingStrategy?=null
     
 ): Parcelable {
+    
+    
+    
+    
     
     
     
@@ -1993,6 +2003,38 @@ data class OrderFeature(
 
              
 /*
+    Model: BuyboxFeature
+*/
+@Parcelize
+data class BuyboxFeature(
+    
+    
+    
+    @SerializedName("show_name")
+    var showName: Boolean?=null,
+    
+    @SerializedName("enable_selection")
+    var enableSelection: Boolean?=null,
+    
+    @SerializedName("is_seller_buybox_enabled")
+    var isSellerBuyboxEnabled: Boolean?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
     Model: AppFeatureResponseSchema
 */
 @Parcelize
@@ -2046,6 +2088,9 @@ data class Currency(
     @SerializedName("symbol")
     var symbol: String?=null,
     
+    @SerializedName("subunit")
+    var subunit: String?=null,
+    
     @SerializedName("country_name")
     var countryName: String?=null,
     
@@ -2053,6 +2098,8 @@ data class Currency(
     var countryCode: String?=null
     
 ): Parcelable {
+    
+    
     
     
     
@@ -2104,10 +2151,15 @@ data class Domain(
     @SerializedName("name")
     var name: String?=null,
     
+    @SerializedName("display_name")
+    var displayName: String?=null,
+    
     @SerializedName("is_predefined")
     var isPredefined: Boolean?=null
     
 ): Parcelable {
+    
+    
     
     
     
@@ -2214,9 +2266,14 @@ data class ApplicationRedirections(
     var redirectTo: String?=null,
     
     @SerializedName("type")
-    var type: String?=null
+    var type: String?=null,
+    
+    @SerializedName("_id")
+    var id: String?=null
     
 ): Parcelable {
+    
+    
     
     
     
@@ -2309,6 +2366,9 @@ data class Application(
     @SerializedName("is_internal")
     var isInternal: Boolean?=null,
     
+    @SerializedName("is_sis_enabled")
+    var isSisEnabled: Boolean?=null,
+    
     @SerializedName("is_active")
     var isActive: Boolean?=null,
     
@@ -2373,9 +2433,16 @@ data class Application(
     var status: String?=null,
     
     @SerializedName("tokens")
-    var tokens: ArrayList<TokenSchema>?=null
+    var tokens: ArrayList<TokenSchema>?=null,
+    
+    @SerializedName("company_created_on")
+    var companyCreatedOn: String?=null
     
 ): Parcelable {
+    
+    
+    
+    
     
     
     
@@ -2454,7 +2521,7 @@ data class TokenSchema(
     var token: String?=null,
     
     @SerializedName("created_by")
-    var createdBy: @RawValue HashMap<String,Any>?=null,
+    var createdBy: String?=null,
     
     @SerializedName("created_at")
     var createdAt: String?=null
@@ -2700,8 +2767,8 @@ data class Page(
     @SerializedName("size")
     var size: Int?=null,
     
-    @SerializedName("page_size")
-    var pageSize: Int?=null
+    @SerializedName("total")
+    var total: Int?=null
     
 ): Parcelable {
     
@@ -3767,6 +3834,28 @@ data class OrderingStores(
     
     
     
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: PricingStrategy
+*/
+@Parcelize
+data class PricingStrategy(
+    
+    
+    
+    @SerializedName("value")
+    var value: String?=null
+    
+): Parcelable {
     
     
     

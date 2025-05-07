@@ -17,13 +17,13 @@ interface ContentApiList {
     
     
     @GET
-    suspend fun getBlog(@Url url1: String?     ,   @Query("root_id") rootId: String?, @Query("preview") preview: Boolean?, @HeaderMap headers: Map<String, String>? = null)
+    suspend fun getBlog(@Url url1: String?     ,  @Query("root_id") rootId: String?, @HeaderMap headers: Map<String, String>? = null)
     : Response<BlogSchema>
     
     
     @GET
     suspend fun getBlogs(@Url url1: String?    ,     @Query("page_no") pageNo: Int?, @Query("page_size") pageSize: Int?, @Query("tags") tags: String?, @Query("search") search: String?, @HeaderMap headers: Map<String, String>? = null)
-    : Response<BlogGetDetails>
+    : Response<BlogGetResponseSchema>
     
     
     @GET
@@ -68,7 +68,7 @@ interface ContentApiList {
     
     @GET
     suspend fun getNavigations(@Url url1: String?    ,   @Query("page_no") pageNo: Int?, @Query("page_size") pageSize: Int?, @HeaderMap headers: Map<String, String>? = null)
-    : Response<NavigationGetDetails>
+    : Response<NavigationGetResponseSchema>
     
     
     @GET
@@ -82,6 +82,21 @@ interface ContentApiList {
     
     
     @GET
+    suspend fun getDefaultSitemapConfig(@Url url1: String?   , @HeaderMap headers: Map<String, String>? = null)
+    : Response<DefaultSitemapConfig>
+    
+    
+    @GET
+    suspend fun getSitemaps(@Url url1: String?    ,     @Query("page_no") pageNo: String, @Query("page_size") pageSize: String, @Query("is_active") isActive: Boolean?, @Query("name") name: String?, @HeaderMap headers: Map<String, String>? = null)
+    : Response<SitemapConfigurationList>
+    
+    
+    @GET
+    suspend fun getSitemap(@Url url1: String?    , @HeaderMap headers: Map<String, String>? = null)
+    : Response<SitemapConfig>
+    
+    
+    @GET
     suspend fun getSupportInformation(@Url url1: String?   , @HeaderMap headers: Map<String, String>? = null)
     : Response<Support>
     
@@ -92,13 +107,13 @@ interface ContentApiList {
     
     
     @GET
-    suspend fun getPage(@Url url1: String?     ,  @Query("root_id") rootId: String?, @HeaderMap headers: Map<String, String>? = null)
-    : Response<PageSchema>
+    suspend fun getPages(@Url url1: String?    ,   @Query("page_no") pageNo: Int?, @Query("page_size") pageSize: Int?, @HeaderMap headers: Map<String, String>? = null)
+    : Response<PageGetResponseSchema>
     
     
     @GET
-    suspend fun getPages(@Url url1: String?    ,   @Query("page_no") pageNo: Int?, @Query("page_size") pageSize: Int?, @HeaderMap headers: Map<String, String>? = null)
-    : Response<PageGetDetails>
+    suspend fun getPage(@Url url1: String?     ,  @Query("root_id") rootId: String?, @HeaderMap headers: Map<String, String>? = null)
+    : Response<PageSchema>
     
     
     @GET
@@ -112,22 +127,7 @@ interface ContentApiList {
     
     
     @GET
-    suspend fun getTranslateUILabels(@Url url1: String?    ,      @Query("template") template: Boolean?, @Query("template_theme_id") templateThemeId: String?, @Query("theme_id") themeId: String?, @Query("locale") locale: String?, @Query("type") type: String?, @HeaderMap headers: Map<String, String>? = null)
-    : Response<TranslateUiLabelsPage>
-    
-    
-    @GET
-    suspend fun fetchResourceTranslations(@Url url1: String?      ,  @Query("resource_id") resourceId: String, @HeaderMap headers: Map<String, String>? = null)
-    : Response<ResourceTranslations>
-    
-    
-    @POST
-    suspend fun fetchResourceTranslationsWithPayload(@Url url1: String?      ,  @Query("resource_id") resourceId: String, @Body body: ResourcePayload, @HeaderMap headers: Map<String, String>? = null)
-    : Response<ResourceTranslations>
-    
-    
-    @GET
-    suspend fun getSupportedLanguages(@Url url1: String?   , @HeaderMap headers: Map<String, String>? = null)
-    : Response<HashMap<String,Any>>
+    suspend fun getWellKnownUrl(@Url url1: String?    , @HeaderMap headers: Map<String, String>? = null)
+    : Response<WellKnownResponseSchema>
     
 }

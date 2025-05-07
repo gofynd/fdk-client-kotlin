@@ -51,8 +51,9 @@ class ThemeDataManagerClass(val config: PlatformConfig, val unauthorizedAction: 
     
     
     
+    
     suspend fun getCompanyLevelThemes(searchText: String?=null, headers: Map<String, String> = emptyMap())
-    : Response<ArrayList<CompanyThemeSchema>>? {
+    : Response<ArrayList<ThemesSchema>>? {
 
         return if (config.oauthClient.isAccessTokenValid()) {
             themeApiList?.getCompanyLevelThemes(
@@ -64,7 +65,7 @@ class ThemeDataManagerClass(val config: PlatformConfig, val unauthorizedAction: 
     
     
     suspend fun getCompanyLevelPrivateThemes(searchText: String?=null, headers: Map<String, String> = emptyMap())
-    : Response<ArrayList<CompanyPrivateTheme>>? {
+    : Response<ArrayList<ThemesSchema>>? {
 
         return if (config.oauthClient.isAccessTokenValid()) {
             themeApiList?.getCompanyLevelPrivateThemes(
@@ -75,8 +76,8 @@ class ThemeDataManagerClass(val config: PlatformConfig, val unauthorizedAction: 
     }
     
     
-    suspend fun addMarketplaceThemeToCompany(body: ThemeReq, headers: Map<String, String> = emptyMap())
-    : Response<CompanyThemeSchema>? {
+    suspend fun addMarketplaceThemeToCompany(body: CompanyThemeReqSchema, headers: Map<String, String> = emptyMap())
+    : Response<ThemesSchema>? {
 
         return if (config.oauthClient.isAccessTokenValid()) {
             themeApiList?.addMarketplaceThemeToCompany(
@@ -88,7 +89,7 @@ class ThemeDataManagerClass(val config: PlatformConfig, val unauthorizedAction: 
     
     
     suspend fun deleteCompanyTheme(themeId: String, headers: Map<String, String> = emptyMap())
-    : Response<CompanyThemeSchema>? {
+    : Response<ThemesSchema>? {
 
         return if (config.oauthClient.isAccessTokenValid()) {
             themeApiList?.deleteCompanyTheme(
@@ -112,6 +113,20 @@ class ThemeDataManagerClass(val config: PlatformConfig, val unauthorizedAction: 
     
     
     
+    
+    
+    
+    
+    suspend fun getDefaultMarketplaceTheme( headers: Map<String, String> = emptyMap())
+    : Response<MarketplaceTheme>? {
+
+        return if (config.oauthClient.isAccessTokenValid()) {
+            themeApiList?.getDefaultMarketplaceTheme(
+        companyId = config.companyId, headers = headers)
+        } else {
+            null
+        }
+    }
     
 
 inner class ApplicationClient(val applicationId:String,val config: PlatformConfig){
@@ -178,10 +193,20 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     }
     
     
-    suspend fun getFonts(capability: String?=null, headers: Map<String, String> = emptyMap())
+    suspend fun getFonts( headers: Map<String, String> = emptyMap())
     : Response<FontsSchema>? {
         return if (config.oauthClient.isAccessTokenValid()) {
-                themeApiList?.getFonts(companyId = config.companyId ,applicationId = applicationId ,capability = capability, headers = headers)
+                themeApiList?.getFonts(companyId = config.companyId ,applicationId = applicationId , headers = headers)
+        } else {
+            null
+        }
+    }
+    
+    
+    suspend fun getFontsV2( headers: Map<String, String> = emptyMap())
+    : Response<FontsSchema>? {
+        return if (config.oauthClient.isAccessTokenValid()) {
+                themeApiList?.getFontsV2(companyId = config.companyId ,applicationId = applicationId , headers = headers)
         } else {
             null
         }
@@ -222,7 +247,7 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     }
     
     
-    suspend fun updateTheme(themeId: String,body: UpdateThemeRequestBody, headers: Map<String, String> = emptyMap())
+    suspend fun updateTheme(themeId: String,body: ThemesSchema, headers: Map<String, String> = emptyMap())
     : Response<ThemesSchema>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 themeApiList?.updateTheme(companyId = config.companyId ,applicationId = applicationId ,themeId = themeId, body = body,headers = headers)
@@ -236,16 +261,6 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     : Response<ThemesSchema>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 themeApiList?.deleteTheme(companyId = config.companyId ,applicationId = applicationId ,themeId = themeId, headers = headers)
-        } else {
-            null
-        }
-    }
-    
-    
-    suspend fun addThemeToApplication(body: ThemeReq, headers: Map<String, String> = emptyMap())
-    : Response<ThemesSchema>? {
-        return if (config.oauthClient.isAccessTokenValid()) {
-                themeApiList?.addThemeToApplication(companyId = config.companyId ,applicationId = applicationId , body = body,headers = headers)
         } else {
             null
         }
@@ -282,6 +297,16 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     }
     
     
+    suspend fun createTheme(body: CompanyThemeReqSchema, headers: Map<String, String> = emptyMap())
+    : Response<ThemesSchema>? {
+        return if (config.oauthClient.isAccessTokenValid()) {
+                themeApiList?.createTheme(companyId = config.companyId ,applicationId = applicationId , body = body,headers = headers)
+        } else {
+            null
+        }
+    }
+    
+    
     suspend fun getAppliedTheme( headers: Map<String, String> = emptyMap())
     : Response<ThemesSchema>? {
         return if (config.oauthClient.isAccessTokenValid()) {
@@ -296,6 +321,16 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     : Response<ThemesSchema>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 themeApiList?.getThemeForPreview(companyId = config.companyId ,applicationId = applicationId ,themeId = themeId, headers = headers)
+        } else {
+            null
+        }
+    }
+    
+    
+    suspend fun createThemePreview(themeId: String,body: CreateThemePreviewBody, headers: Map<String, String> = emptyMap())
+    : Response<CreateThemePreviewResponseSchema>? {
+        return if (config.oauthClient.isAccessTokenValid()) {
+                themeApiList?.createThemePreview(companyId = config.companyId ,applicationId = applicationId ,themeId = themeId, body = body,headers = headers)
         } else {
             null
         }
@@ -332,6 +367,16 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     }
     
     
+    suspend fun getLatestVersionOfThemeBySlug(slugName: String, headers: Map<String, String> = emptyMap())
+    : Response<ArrayList<MarketplaceTheme>>? {
+        return if (config.oauthClient.isAccessTokenValid()) {
+                themeApiList?.getLatestVersionOfThemeBySlug(applicationId = applicationId ,companyId = config.companyId ,slugName = slugName, headers = headers)
+        } else {
+            null
+        }
+    }
+    
+    
     suspend fun getExtensionSections(type: String?=null,companyMode: String?=null, headers: Map<String, String> = emptyMap())
     : Response<ArrayList<GetExtensionSectionRes>>? {
         return if (config.oauthClient.isAccessTokenValid()) {
@@ -340,6 +385,7 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
             null
         }
     }
+    
     
 }
 }

@@ -19,19 +19,19 @@ class ShareDataManagerClass(val config: ApplicationConfig, val unauthorizedActio
 
     init{
             
-                    _relativeUrls["getApplicationQRCode"] = "/service/application/share/v1.0/qr/".substring(1)
+                    _relativeUrls["getApplicationQRCode"] = "/service/application/share/v1.0/qr".substring(1)
             
-                    _relativeUrls["getProductQRCodeBySlug"] = "/service/application/share/v1.0/qr/products/{slug}/".substring(1)
+                    _relativeUrls["getProductQRCodeBySlug"] = "/service/application/share/v1.0/qr/products/{slug}".substring(1)
             
-                    _relativeUrls["getCollectionQRCodeBySlug"] = "/service/application/share/v1.0/qr/collection/{slug}/".substring(1)
+                    _relativeUrls["getCollectionQRCodeBySlug"] = "/service/application/share/v1.0/qr/collection/{slug}".substring(1)
             
-                    _relativeUrls["getUrlQRCode"] = "/service/application/share/v1.0/qr/url/".substring(1)
+                    _relativeUrls["getUrlQRCode"] = "/service/application/share/v1.0/qr/url".substring(1)
             
-                    _relativeUrls["createShortLink"] = "/service/application/share/v1.0/links/short-link/".substring(1)
+                    _relativeUrls["createShortLink"] = "/service/application/share/v1.0/links/short-link".substring(1)
             
-                    _relativeUrls["getShortLinkByHash"] = "/service/application/share/v1.0/links/short-link/{hash}/".substring(1)
+                    _relativeUrls["getShortLinkByHash"] = "/service/application/share/v1.0/links/short-link/{hash}".substring(1)
             
-                    _relativeUrls["getOriginalShortLinkByHash"] = "/service/application/share/v1.0/links/short-link/{hash}/original/".substring(1)
+                    _relativeUrls["getOriginalShortLinkByHash"] = "/service/application/share/v1.0/links/short-link/{hash}/original".substring(1)
             
     }
 

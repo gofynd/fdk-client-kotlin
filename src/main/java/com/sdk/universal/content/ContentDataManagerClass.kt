@@ -41,11 +41,9 @@ class ContentDataManagerClass(val config: PublicConfig, val unauthorizedAction: 
             
                     _relativeUrls["getCredentialsByEntity"] = "/service/public/content/credentials/{entity_type}".substring(1)
             
-                    _relativeUrls["getAllLanguages"] = "/service/public/content/languages".substring(1)
+                    _relativeUrls["getSDKDocumentation"] = "/service/public/content/sdk-readme".substring(1)
             
-                    _relativeUrls["getLanguageByLocale"] = "/service/public/content/languages/{locale}".substring(1)
-            
-                    _relativeUrls["getAllTranslatableResources"] = "/service/public/content/translatable/resources".substring(1)
+                    _relativeUrls["getSDKDocumentationByType"] = "/service/public/content/sdk-readme/{type}".substring(1)
             
     }
 
@@ -164,26 +162,19 @@ class ContentDataManagerClass(val config: PublicConfig, val unauthorizedAction: 
 
     
     
-    suspend fun getAllLanguages( headers: Map<String, String> = emptyMap()): Response<HashMap<String,Any>>? {
-        var fullUrl : String? = _relativeUrls["getAllLanguages"]
+    suspend fun getSDKDocumentation( headers: Map<String, String> = emptyMap()): Response<SDKLinksResponseSchema>? {
+        var fullUrl : String? = _relativeUrls["getSDKDocumentation"]
         
-        return contentApiList?.getAllLanguages(fullUrl, headers = headers)}
+        return contentApiList?.getSDKDocumentation(fullUrl, headers = headers)}
 
     
     
-    suspend fun getLanguageByLocale(locale: String, headers: Map<String, String> = emptyMap()): Response<Language>? {
-        var fullUrl : String? = _relativeUrls["getLanguageByLocale"]
+    suspend fun getSDKDocumentationByType(type: String, headers: Map<String, String> = emptyMap()): Response<SDKbyTypeResponseSchema>? {
+        var fullUrl : String? = _relativeUrls["getSDKDocumentationByType"]
         
-        fullUrl = fullUrl?.replace("{" + "locale" +"}",locale.toString())
+        fullUrl = fullUrl?.replace("{" + "type" +"}",type.toString())
         
-        return contentApiList?.getLanguageByLocale(fullUrl,  headers = headers)}
-
-    
-    
-    suspend fun getAllTranslatableResources( headers: Map<String, String> = emptyMap()): Response<HashMap<String,Any>>? {
-        var fullUrl : String? = _relativeUrls["getAllTranslatableResources"]
-        
-        return contentApiList?.getAllTranslatableResources(fullUrl, headers = headers)}
+        return contentApiList?.getSDKDocumentationByType(fullUrl,  headers = headers)}
 
     
     

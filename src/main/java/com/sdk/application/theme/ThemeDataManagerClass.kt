@@ -27,6 +27,10 @@ class ThemeDataManagerClass(val config: ApplicationConfig, val unauthorizedActio
             
                     _relativeUrls["getThemeForPreview"] = "/service/application/theme/v2.0/{theme_id}/preview".substring(1)
             
+                    _relativeUrls["getAppliedThemeV1"] = "/service/application/theme/v1.0/applied-theme".substring(1)
+            
+                    _relativeUrls["getThemeForPreviewV1"] = "/service/application/theme/v1.0/{theme_id}/preview".substring(1)
+            
     }
 
     public fun update(updatedUrlMap : HashMap<String,String>){
@@ -71,14 +75,14 @@ class ThemeDataManagerClass(val config: ApplicationConfig, val unauthorizedActio
 
     
     
-    suspend fun getPage(themeId: String,pageValue: String,filters: String?=null,sectionPreviewHash: String?=null,company: Int?=null, headers: Map<String, String> = emptyMap()): Response<AvailablePageSchema>? {
+    suspend fun getPage(themeId: String,pageValue: String,filters: String?=null,sectionPreviewHash: String?=null,company: Int?=null,previewId: String?=null, headers: Map<String, String> = emptyMap()): Response<AvailablePageSchema>? {
         var fullUrl : String? = _relativeUrls["getPage"]
         
         fullUrl = fullUrl?.replace("{" + "theme_id" +"}",themeId.toString())
         
         fullUrl = fullUrl?.replace("{" + "page_value" +"}",pageValue.toString())
         
-        return themeApiList?.getPage(fullUrl,     filters = filters,  sectionPreviewHash = sectionPreviewHash,  company = company,headers = headers)}
+        return themeApiList?.getPage(fullUrl,     filters = filters,  sectionPreviewHash = sectionPreviewHash,  company = company,  previewId = previewId,headers = headers)}
 
     
     
@@ -95,6 +99,22 @@ class ThemeDataManagerClass(val config: ApplicationConfig, val unauthorizedActio
         fullUrl = fullUrl?.replace("{" + "theme_id" +"}",themeId.toString())
         
         return themeApiList?.getThemeForPreview(fullUrl,    filters = filters,headers = headers)}
+
+    
+    
+    suspend fun getAppliedThemeV1( headers: Map<String, String> = emptyMap()): Response<ThemesSchema>? {
+        var fullUrl : String? = _relativeUrls["getAppliedThemeV1"]
+        
+        return themeApiList?.getAppliedThemeV1(fullUrl, headers = headers)}
+
+    
+    
+    suspend fun getThemeForPreviewV1(themeId: String, headers: Map<String, String> = emptyMap()): Response<ThemesSchema>? {
+        var fullUrl : String? = _relativeUrls["getThemeForPreviewV1"]
+        
+        fullUrl = fullUrl?.replace("{" + "theme_id" +"}",themeId.toString())
+        
+        return themeApiList?.getThemeForPreviewV1(fullUrl,  headers = headers)}
 
     
     

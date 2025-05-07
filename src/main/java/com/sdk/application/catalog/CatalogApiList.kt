@@ -147,17 +147,17 @@ interface CatalogApiList {
     
     
     @GET
-    suspend fun getProductBundlesBySlug(@Url url1: String?    ,   @Query("slug") slug: String?, @Query("id") id: Int?, @HeaderMap headers: Map<String, String>? = null)
+    suspend fun getProductBundlesBySlug(@Url url1: String?    ,     @Query("slug") slug: String?, @Query("id") id: Int?, @Query("size") size: String?, @Query("seller_id") sellerId: Int?, @HeaderMap headers: Map<String, String>? = null)
     : Response<ProductBundle>
     
     
-    @GET
-    suspend fun getProductPriceBySlug(@Url url1: String?      ,   @Query("store_id") storeId: Int?, @Query("moq") moq: Int?, @HeaderMap headers: Map<String, String>? = null)
-    : Response<ProductSizePriceResponseV4>
+    @POST
+    suspend fun getProductPriceBySlug(@Url url1: String?   ,@Body body: ProductSizePriceV1RequestSchema, @HeaderMap headers: Map<String, String>? = null)
+    : Response<ProductSizePriceResponseV1>
     
     
     @GET
-    suspend fun getProductSellersBySlug(@Url url1: String?      ,    @Query("strategy") strategy: String?, @Query("page_no") pageNo: Int?, @Query("page_size") pageSize: Int?, @HeaderMap headers: Map<String, String>? = null)
+    suspend fun getProductSellersBySlug(@Url url1: String?      ,     @Query("pincode") pincode: String?, @Query("strategy") strategy: String?, @Query("page_no") pageNo: Int?, @Query("page_size") pageSize: Int?, @HeaderMap headers: Map<String, String>? = null)
     : Response<ProductSizeSellersResponseV4>
     
 }

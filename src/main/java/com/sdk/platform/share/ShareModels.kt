@@ -351,9 +351,6 @@ data class UrlInfo(
     
     
     
-    @SerializedName("original")
-    var original: String?=null,
-    
     @SerializedName("hash")
     var hash: String?=null,
     
@@ -364,8 +361,6 @@ data class UrlInfo(
     var alias: String?=null
     
 ): Parcelable {
-    
-    
     
     
     
@@ -526,10 +521,15 @@ data class Page(
     @SerializedName("size")
     var size: Int?=null,
     
-    @SerializedName("page_size")
-    var pageSize: Int?=null
+    @SerializedName("total")
+    var total: Int?=null,
+    
+    @SerializedName("page")
+    var page: Int?=null
     
 ): Parcelable {
+    
+    
     
     
     

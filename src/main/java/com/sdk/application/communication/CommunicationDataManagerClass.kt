@@ -23,7 +23,11 @@ class CommunicationDataManagerClass(val config: ApplicationConfig, val unauthori
             
                     _relativeUrls["upsertCommunicationConsent"] = "/service/application/communication/v1.0/consent".substring(1)
             
-                    _relativeUrls["upsertAppPushtoken"] = "/service/application/communication/v1.0/pn-token".substring(1)
+                    _relativeUrls["getCurrentCommunicationConsent"] = "/service/application/communication/v1.0/current/communication/consent".substring(1)
+            
+                    _relativeUrls["upsertCurrentCommunicationConsent"] = "/service/application/communication/v1.0/current/communication/consent".substring(1)
+            
+                    _relativeUrls["getOtpConfiguration"] = "/service/application/communication/v1.0/otp/otp-configuration".substring(1)
             
     }
 
@@ -74,10 +78,24 @@ class CommunicationDataManagerClass(val config: ApplicationConfig, val unauthori
 
     
     
-    suspend fun upsertAppPushtoken(body: PushtokenReq, headers: Map<String, String> = emptyMap()): Response<PushtokenRes>? {
-        var fullUrl : String? = _relativeUrls["upsertAppPushtoken"]
+    suspend fun getCurrentCommunicationConsent( headers: Map<String, String> = emptyMap()): Response<CommunicationConsent>? {
+        var fullUrl : String? = _relativeUrls["getCurrentCommunicationConsent"]
         
-        return communicationApiList?.upsertAppPushtoken(fullUrl, body = body,headers = headers)}
+        return communicationApiList?.getCurrentCommunicationConsent(fullUrl, headers = headers)}
+
+    
+    
+    suspend fun upsertCurrentCommunicationConsent(body: CommunicationConsentReq, headers: Map<String, String> = emptyMap()): Response<CommunicationConsentRes>? {
+        var fullUrl : String? = _relativeUrls["upsertCurrentCommunicationConsent"]
+        
+        return communicationApiList?.upsertCurrentCommunicationConsent(fullUrl, body = body,headers = headers)}
+
+    
+    
+    suspend fun getOtpConfiguration( headers: Map<String, String> = emptyMap()): Response<OtpConfiguration>? {
+        var fullUrl : String? = _relativeUrls["getOtpConfiguration"]
+        
+        return communicationApiList?.getOtpConfiguration(fullUrl, headers = headers)}
 
     
     
