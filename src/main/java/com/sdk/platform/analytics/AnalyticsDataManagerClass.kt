@@ -52,7 +52,7 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     
     
     suspend fun executeJobForProvidedParametersV2(body: JobExecute, headers: Map<String, String> = emptyMap())
-    : Response<JobExecutionResult>? {
+    : Response<HashMap<String,Any>>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 analyticsApiList?.executeJobForProvidedParametersV2(companyId = config.companyId ,applicationId = applicationId , body = body,headers = headers)
         } else {
@@ -72,7 +72,7 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     
     
     suspend fun checkJobStatusByNameV2(fileName: String, headers: Map<String, String> = emptyMap())
-    : Response<JobStatus>? {
+    : Response<HashMap<String,Any>>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 analyticsApiList?.checkJobStatusByNameV2(companyId = config.companyId ,applicationId = applicationId ,fileName = fileName, headers = headers)
         } else {

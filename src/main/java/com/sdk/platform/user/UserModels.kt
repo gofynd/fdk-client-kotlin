@@ -14,10 +14,10 @@ import com.google.gson.annotations.SerializedName
 
              
 /*
-    Model: SuccessMessage
+    Model: SuccessMessageResponse
 */
 @Parcelize
-data class SuccessMessage(
+data class SuccessMessageResponse(
     
     
     
@@ -133,10 +133,10 @@ data class UserAttributeDefinition(
 
              
 /*
-    Model: UserAttributeDefinitionDetails
+    Model: UserAttributeDefinitionResponse
 */
 @Parcelize
-data class UserAttributeDefinitionDetails(
+data class UserAttributeDefinitionResponse(
     
     
     
@@ -262,10 +262,10 @@ data class UserAttributeDefinitionValidation(
 
              
 /*
-    Model: UserAttribute
+    Model: UserAttributeResponse
 */
 @Parcelize
-data class UserAttribute(
+data class UserAttributeResponse(
     
     
     
@@ -284,8 +284,8 @@ data class UserAttribute(
     @SerializedName("type")
     var type: String?=null,
     
-    @SerializedName("customer_overridden")
-    var customerOverridden: Boolean?=null,
+    @SerializedName("customer_overriden")
+    var customerOverriden: Boolean?=null,
     
     @SerializedName("attribute")
     var attribute: @RawValue HashMap<String,Any>?=null,
@@ -319,15 +319,15 @@ data class UserAttribute(
 
              
 /*
-    Model: CreateUserAttribute
+    Model: CreateUserAttributeRequest
 */
 @Parcelize
-data class CreateUserAttribute(
+data class CreateUserAttributeRequest(
     
     
     
-    @SerializedName("customer_overridden")
-    var customerOverridden: Boolean?=null,
+    @SerializedName("customer_overriden")
+    var customerOverriden: Boolean?=null,
     
     @SerializedName("attribute")
     var attribute: @RawValue HashMap<String,Any>?=null

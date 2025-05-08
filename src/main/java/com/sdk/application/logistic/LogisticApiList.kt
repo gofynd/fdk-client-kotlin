@@ -13,52 +13,42 @@ interface LogisticApiList {
     
     @GET
     suspend fun getPincodeCity(@Url url1: String?    , @HeaderMap headers: Map<String, String>? = null)
-    : Response<PincodeDetails>
+    : Response<PincodeApiResponse>
     
     
     @POST
-    suspend fun getTatProduct(@Url url1: String?   ,@Body body: TATViewDetails, @HeaderMap headers: Map<String, String>? = null)
-    : Response<TATViewResult>
+    suspend fun getTatProduct(@Url url1: String?   ,@Body body: TATViewRequest, @HeaderMap headers: Map<String, String>? = null)
+    : Response<TATViewResponse>
     
     
     @GET
     suspend fun getAllCountries(@Url url1: String?   , @HeaderMap headers: Map<String, String>? = null)
-    : Response<CountryListResult>
+    : Response<CountryListResponse>
     
     
     @POST
-    suspend fun getPincodeZones(@Url url1: String?   ,@Body body: GetZoneFromPincodeViewDetails, @HeaderMap headers: Map<String, String>? = null)
-    : Response<GetZoneFromPincodeViewResult>
+    suspend fun getPincodeZones(@Url url1: String?   ,@Body body: GetZoneFromPincodeViewRequest, @HeaderMap headers: Map<String, String>? = null)
+    : Response<GetZoneFromPincodeViewResponse>
     
     
     @POST
-    suspend fun getOptimalLocations(@Url url1: String?   ,@Body body: ReAssignStoreDetails, @HeaderMap headers: Map<String, String>? = null)
-    : Response<ReAssignStoreResult>
-    
-    
-    @POST
-    suspend fun getCourierPartners(@Url url1: String?     ,@Body body: ShipmentCourierPartnerDetails, @HeaderMap headers: Map<String, String>? = null)
-    : Response<ShipmentCourierPartnerResult>
+    suspend fun getOptimalLocations(@Url url1: String?   ,@Body body: ReAssignStoreRequest, @HeaderMap headers: Map<String, String>? = null)
+    : Response<ReAssignStoreResponse>
     
     
     @GET
     suspend fun getLocations(@Url url1: String?    ,          @Query("x-application-id") xApplicationId: String, @Query("x-application-data") xApplicationData: String, @Query("country") country: String?, @Query("state") state: String?, @Query("city") city: String?, @Query("pincode") pincode: Int?, @Query("sector") sector: String?, @Query("page_no") pageNo: Int?, @Query("page_size") pageSize: Int?, @HeaderMap headers: Map<String, String>? = null)
-    : Response<GetStoreResult>
+    : Response<GetStoreResponse>
     
     
     @GET
-    suspend fun getCountries(@Url url1: String?    ,      @Query("onboarding") onboarding: Boolean?, @Query("page_no") pageNo: Int?, @Query("page_size") pageSize: Int?, @Query("q") q: String?, @Query("hierarchy") hierarchy: String?, @HeaderMap headers: Map<String, String>? = null)
+    suspend fun getCountries(@Url url1: String?    ,     @Query("onboarding") onboarding: Boolean?, @Query("page_no") pageNo: Int?, @Query("page_size") pageSize: Int?, @Query("q") q: String?, @HeaderMap headers: Map<String, String>? = null)
     : Response<GetCountries>
     
     
     @GET
     suspend fun getCountry(@Url url1: String?    , @HeaderMap headers: Map<String, String>? = null)
     : Response<GetCountry>
-    
-    
-    @GET
-    suspend fun getDeliveryPromise(@Url url1: String?    ,   @Query("page_no") pageNo: Int?, @Query("page_size") pageSize: Int?, @HeaderMap headers: Map<String, String>? = null)
-    : Response<GetPromiseDetails>
     
     
     @GET
@@ -72,7 +62,7 @@ interface LogisticApiList {
     
     
     @POST
-    suspend fun validateAddress(@Url url1: String?     ,@Body body: ValidateAddressDetails, @HeaderMap headers: Map<String, String>? = null)
-    : Response<ValidateAddressDetails>
+    suspend fun validateAddress(@Url url1: String?     ,@Body body: ValidateAddressRequest, @HeaderMap headers: Map<String, String>? = null)
+    : Response<ValidateAddressRequest>
     
 }
