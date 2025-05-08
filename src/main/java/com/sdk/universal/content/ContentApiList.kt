@@ -65,14 +65,4 @@ interface ContentApiList {
     suspend fun getCredentialsByEntity(@Url url1: String?    , @HeaderMap headers: Map<String, String>? = null)
     : Response<CredentialsSchema>
     
-    
-    @GET
-    suspend fun getSDKDocumentation(@Url url1: String?   , @HeaderMap headers: Map<String, String>? = null)
-    : Response<SDKLinksResponseSchema>
-    
-    
-    @GET
-    suspend fun getSDKDocumentationByType(@Url url1: String?    , @HeaderMap headers: Map<String, String>? = null)
-    : Response<SDKbyTypeResponseSchema>
-    
 }

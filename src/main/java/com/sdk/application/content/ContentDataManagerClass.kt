@@ -53,19 +53,21 @@ class ContentDataManagerClass(val config: ApplicationConfig, val unauthorizedAct
             
                     _relativeUrls["getSitemap"] = "/service/application/content/v1.0/seo/sitemaps/{name}".substring(1)
             
+                    _relativeUrls["getSlideshows"] = "/service/application/content/v1.0/slideshow".substring(1)
+            
+                    _relativeUrls["getSlideshow"] = "/service/application/content/v1.0/slideshow/{slug}".substring(1)
+            
                     _relativeUrls["getSupportInformation"] = "/service/application/content/v1.0/support".substring(1)
             
                     _relativeUrls["getTags"] = "/service/application/content/v1.0/tags".substring(1)
             
-                    _relativeUrls["getPages"] = "/service/application/content/v2.0/pages".substring(1)
-            
                     _relativeUrls["getPage"] = "/service/application/content/v2.0/pages/{slug}".substring(1)
+            
+                    _relativeUrls["getPages"] = "/service/application/content/v2.0/pages".substring(1)
             
                     _relativeUrls["getCustomObjectBySlug"] = "/service/application/content/v2.0/customobjects/definition/{definition_slug}/entries/{slug}".substring(1)
             
                     _relativeUrls["getCustomFieldsByResourceId"] = "/service/application/content/v2.0/customfields/resource/{resource}/{resource_slug}".substring(1)
-            
-                    _relativeUrls["getWellKnownUrl"] = "/service/application/content/v1.0/well-known/{slug}".substring(1)
             
     }
 
@@ -109,16 +111,16 @@ class ContentDataManagerClass(val config: ApplicationConfig, val unauthorizedAct
 
     
     
-    suspend fun getBlog(slug: String,rootId: String?=null, headers: Map<String, String> = emptyMap()): Response<BlogSchema>? {
+    suspend fun getBlog(slug: String,rootId: String?=null,preview: Boolean?=null, headers: Map<String, String> = emptyMap()): Response<BlogSchema>? {
         var fullUrl : String? = _relativeUrls["getBlog"]
         
         fullUrl = fullUrl?.replace("{" + "slug" +"}",slug.toString())
         
-        return contentApiList?.getBlog(fullUrl,    rootId = rootId,headers = headers)}
+        return contentApiList?.getBlog(fullUrl,    rootId = rootId,  preview = preview,headers = headers)}
 
     
     
-    suspend fun getBlogs(pageNo: Int?=null,pageSize: Int?=null,tags: String?=null,search: String?=null, headers: Map<String, String> = emptyMap()): Response<BlogGetResponseSchema>? {
+    suspend fun getBlogs(pageNo: Int?=null,pageSize: Int?=null,tags: String?=null,search: String?=null, headers: Map<String, String> = emptyMap()): Response<BlogGetDetails>? {
         var fullUrl : String? = _relativeUrls["getBlogs"]
         
         return contentApiList?.getBlogs(fullUrl,   pageNo = pageNo,  pageSize = pageSize,  tags = tags,  search = search,headers = headers)}
@@ -187,7 +189,7 @@ class ContentDataManagerClass(val config: ApplicationConfig, val unauthorizedAct
 
     
     
-    suspend fun getNavigations(pageNo: Int?=null,pageSize: Int?=null, headers: Map<String, String> = emptyMap()): Response<NavigationGetResponseSchema>? {
+    suspend fun getNavigations(pageNo: Int?=null,pageSize: Int?=null, headers: Map<String, String> = emptyMap()): Response<NavigationGetDetails>? {
         var fullUrl : String? = _relativeUrls["getNavigations"]
         
         return contentApiList?.getNavigations(fullUrl,   pageNo = pageNo,  pageSize = pageSize,headers = headers)}
@@ -215,10 +217,10 @@ class ContentDataManagerClass(val config: ApplicationConfig, val unauthorizedAct
 
     
     
-    suspend fun getSitemaps(pageNo: String,pageSize: String,isActive: Boolean?=null,name: String?=null, headers: Map<String, String> = emptyMap()): Response<SitemapConfigurationList>? {
+    suspend fun getSitemaps(pageNo: String,pageSize: String, headers: Map<String, String> = emptyMap()): Response<SitemapConfigurationList>? {
         var fullUrl : String? = _relativeUrls["getSitemaps"]
         
-        return contentApiList?.getSitemaps(fullUrl,   pageNo = pageNo,  pageSize = pageSize,  isActive = isActive,  name = name,headers = headers)}
+        return contentApiList?.getSitemaps(fullUrl,   pageNo = pageNo,  pageSize = pageSize,headers = headers)}
 
     
     
@@ -228,6 +230,22 @@ class ContentDataManagerClass(val config: ApplicationConfig, val unauthorizedAct
         fullUrl = fullUrl?.replace("{" + "name" +"}",name.toString())
         
         return contentApiList?.getSitemap(fullUrl,  headers = headers)}
+
+    
+    
+    suspend fun getSlideshows(pageNo: Int?=null,pageSize: Int?=null, headers: Map<String, String> = emptyMap()): Response<SlideshowGetDetails>? {
+        var fullUrl : String? = _relativeUrls["getSlideshows"]
+        
+        return contentApiList?.getSlideshows(fullUrl,   pageNo = pageNo,  pageSize = pageSize,headers = headers)}
+
+    
+    
+    suspend fun getSlideshow(slug: String, headers: Map<String, String> = emptyMap()): Response<SlideshowSchema>? {
+        var fullUrl : String? = _relativeUrls["getSlideshow"]
+        
+        fullUrl = fullUrl?.replace("{" + "slug" +"}",slug.toString())
+        
+        return contentApiList?.getSlideshow(fullUrl,  headers = headers)}
 
     
     
@@ -245,19 +263,19 @@ class ContentDataManagerClass(val config: ApplicationConfig, val unauthorizedAct
 
     
     
-    suspend fun getPages(pageNo: Int?=null,pageSize: Int?=null, headers: Map<String, String> = emptyMap()): Response<PageGetResponseSchema>? {
-        var fullUrl : String? = _relativeUrls["getPages"]
-        
-        return contentApiList?.getPages(fullUrl,   pageNo = pageNo,  pageSize = pageSize,headers = headers)}
-
-    
-    
     suspend fun getPage(slug: String,rootId: String?=null, headers: Map<String, String> = emptyMap()): Response<PageSchema>? {
         var fullUrl : String? = _relativeUrls["getPage"]
         
         fullUrl = fullUrl?.replace("{" + "slug" +"}",slug.toString())
         
         return contentApiList?.getPage(fullUrl,    rootId = rootId,headers = headers)}
+
+    
+    
+    suspend fun getPages(pageNo: Int?=null,pageSize: Int?=null, headers: Map<String, String> = emptyMap()): Response<PageGetDetails>? {
+        var fullUrl : String? = _relativeUrls["getPages"]
+        
+        return contentApiList?.getPages(fullUrl,   pageNo = pageNo,  pageSize = pageSize,headers = headers)}
 
     
     
@@ -280,15 +298,6 @@ class ContentDataManagerClass(val config: ApplicationConfig, val unauthorizedAct
         fullUrl = fullUrl?.replace("{" + "resource_slug" +"}",resourceSlug.toString())
         
         return contentApiList?.getCustomFieldsByResourceId(fullUrl,   headers = headers)}
-
-    
-    
-    suspend fun getWellKnownUrl(slug: String, headers: Map<String, String> = emptyMap()): Response<WellKnownResponseSchema>? {
-        var fullUrl : String? = _relativeUrls["getWellKnownUrl"]
-        
-        fullUrl = fullUrl?.replace("{" + "slug" +"}",slug.toString())
-        
-        return contentApiList?.getWellKnownUrl(fullUrl,  headers = headers)}
 
     
     

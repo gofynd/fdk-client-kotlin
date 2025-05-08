@@ -1125,6 +1125,28 @@ data class PricingBannerSchema(
 
              
 /*
+    Model: SdkReadmeSchema
+*/
+@Parcelize
+data class SdkReadmeSchema(
+    
+    
+    
+    @SerializedName("data")
+    var data: String?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
     Model: TagsSchema
 */
 @Parcelize
@@ -1386,97 +1408,6 @@ data class CredentialsSchema(
     
     @SerializedName("items")
     var items: ArrayList<CredentialSchema>?=null
-    
-): Parcelable {
-    
-    
-    
-    
-    
-}
-
-
-
-             
-/*
-    Model: SDKLinksResponseSchema
-*/
-@Parcelize
-data class SDKLinksResponseSchema(
-    
-    
-    
-    @SerializedName("readmes")
-    var readmes: ArrayList<SDKLinkObjectSchema>?=null
-    
-): Parcelable {
-    
-    
-    
-    
-    
-}
-
-
-
-             
-/*
-    Model: SDKLinkObjectSchema
-*/
-@Parcelize
-data class SDKLinkObjectSchema(
-    
-    
-    
-    @SerializedName("owner")
-    var owner: String?=null,
-    
-    @SerializedName("repo")
-    var repo: String?=null,
-    
-    @SerializedName("path")
-    var path: String?=null,
-    
-    @SerializedName("image")
-    var image: String?=null,
-    
-    @SerializedName("name")
-    var name: String?=null,
-    
-    @SerializedName("type")
-    var type: String?=null
-    
-): Parcelable {
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-}
-
-
-
-             
-/*
-    Model: SDKbyTypeResponseSchema
-*/
-@Parcelize
-data class SDKbyTypeResponseSchema(
-    
-    
-    
-    @SerializedName("readme_content")
-    var readmeContent: String?=null
     
 ): Parcelable {
     

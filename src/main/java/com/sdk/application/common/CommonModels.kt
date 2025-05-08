@@ -263,9 +263,6 @@ data class Application(
     @SerializedName("is_internal")
     var isInternal: Boolean?=null,
     
-    @SerializedName("is_sis_enabled")
-    var isSisEnabled: Boolean?=null,
-    
     @SerializedName("is_active")
     var isActive: Boolean?=null,
     
@@ -321,8 +318,6 @@ data class Application(
     var domain: Domain?=null
     
 ): Parcelable {
-    
-    
     
     
     

@@ -20,9 +20,4 @@ interface ConfigurationApiList {
     suspend fun getLocations(@Url url1: String?    ,   @Query("location_type") locationType: String?, @Query("id") id: String?, @HeaderMap headers: Map<String, String>? = null)
     : Response<Locations>
     
-    
-    @POST
-    suspend fun checkVersionIsUpToDate(@Url url1: String?   ,@Body body: VersionRequestSchema, @HeaderMap headers: Map<String, String>? = null)
-    : Response<VersionResponseSchema>
-    
 }

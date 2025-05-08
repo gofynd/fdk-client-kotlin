@@ -177,14 +177,9 @@ data class FileUploadStart(
     var tags: ArrayList<String>?=null,
     
     @SerializedName("params")
-    var params: Params?=null,
-    
-    @SerializedName("enc_key")
-    var encKey: String?=null
+    var params: Params?=null
     
 ): Parcelable {
-    
-    
     
     
     
@@ -372,33 +367,6 @@ data class SignUrlResult(
 
              
 /*
-    Model: EncryptionMapping
-*/
-@Parcelize
-data class EncryptionMapping(
-    
-    
-    
-    @SerializedName("enc_url")
-    var encUrl: String?=null,
-    
-    @SerializedName("value")
-    var value: String?=null
-    
-): Parcelable {
-    
-    
-    
-    
-    
-    
-    
-}
-
-
-
-             
-/*
     Model: SignUrl
 */
 @Parcelize
@@ -410,14 +378,9 @@ data class SignUrl(
     var expiry: Int?=null,
     
     @SerializedName("urls")
-    var urls: ArrayList<String>?=null,
-    
-    @SerializedName("enc_url_mapping")
-    var encUrlMapping: ArrayList<EncryptionMapping>?=null
+    var urls: ArrayList<String>?=null
     
 ): Parcelable {
-    
-    
     
     
     

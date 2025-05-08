@@ -69,10 +69,6 @@ interface UserApiList {
     suspend fun getUserGroups(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Query("page_no") pageNo: String?, @Query("page_size") pageSize: String?, @Query("name") name: String?, @Query("type") type: String?, @Query("status") status: String?, @Query("group_uid") groupUid: Int?, @HeaderMap headers: Map<String, String>? = null)
     : Response<UserGroupListResponseSchema>
     
-    @GET ("/service/platform/user/v1.0/company/{company_id}/application/{application_id}/user_group/categories")
-    suspend fun getUserGroupCategories(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @HeaderMap headers: Map<String, String>? = null)
-    : Response<UserGroupCategoriesResponseSchema>
-    
     @PUT ("/service/platform/user/v1.0/company/{company_id}/application/{application_id}/user_group/{group_id}")
     suspend fun updateUserGroup(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Path("group_id") groupId: String,@Body body: UpdateUserGroupSchema, @HeaderMap headers: Map<String, String>? = null)
     : Response<UserGroupResponseSchema>
@@ -85,13 +81,9 @@ interface UserApiList {
     suspend fun updateUserGroupPartially(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Path("group_id") groupId: String,@Body body: PartialUserGroupUpdateSchema, @HeaderMap headers: Map<String, String>? = null)
     : Response<UserGroupResponseSchema>
     
-    @GET ("/service/platform/user/v1.0/company/{company_id}/application/{application_id}/user_group/{group_id}/users")
-    suspend fun getUsersByByGroupId(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Path("group_id") groupId: String, @HeaderMap headers: Map<String, String>? = null)
-    : Response<CustomerListResponseSchema>
-    
     @POST ("/service/platform/user/v1.0/company/{company_id}/application/{application_id}/user_attribute/definition")
     suspend fun createUserAttributeDefinition(@Path("company_id") companyId: String, @Path("application_id") applicationId: String,@Body body: CreateUserAttributeDefinition, @HeaderMap headers: Map<String, String>? = null)
-    : Response<UserAttributeDefinitionResp>
+    : Response<UserAttributeDefinitionDetails>
     
     @GET ("/service/platform/user/v1.0/company/{company_id}/application/{application_id}/user_attribute/definition")
     suspend fun getUserAttributeDefinitions(@Query("excluding_ids") excludingIds: String?, @Query("slug") slug: String?, @Query("type") type: String?, @Query("customer_editable") customerEditable: Boolean?, @Query("encrypted") encrypted: Boolean?, @Query("pinned") pinned: Boolean?, @Query("pin_order") pinOrder: Int?, @Query("is_locked") isLocked: Boolean?, @Query("name") name: String?, @Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Query("page_size") pageSize: Int?, @Query("page_no") pageNo: Int?, @HeaderMap headers: Map<String, String>? = null)
@@ -110,7 +102,7 @@ interface UserApiList {
     : Response<UserAttributeDefinition>
     
     @PUT ("/service/platform/user/v1.0/company/{company_id}/application/{application_id}/user_attribute/definition/{attribute_def_id}/user/{user_id}")
-    suspend fun updateUserAttribute(@Path("attribute_def_id") attributeDefId: String, @Path("user_id") userId: String, @Path("application_id") applicationId: String, @Path("company_id") companyId: String,@Body body: CreateUserAttributePayload, @HeaderMap headers: Map<String, String>? = null)
+    suspend fun updateUserAttribute(@Path("attribute_def_id") attributeDefId: String, @Path("user_id") userId: String, @Path("application_id") applicationId: String, @Path("company_id") companyId: String,@Body body: CreateUserAttribute, @HeaderMap headers: Map<String, String>? = null)
     : Response<UserAttribute>
     
     @GET ("/service/platform/user/v1.0/company/{company_id}/application/{application_id}/user_attribute/definition/{attribute_def_id}/user/{user_id}")
@@ -128,13 +120,5 @@ interface UserApiList {
     @GET ("/service/platform/user/v1.0/company/{company_id}/application/{application_id}/user_attribute/attribute/{attribute_id}")
     suspend fun getUserAttributeById(@Path("attribute_id") attributeId: String, @Path("application_id") applicationId: String, @Path("company_id") companyId: String, @HeaderMap headers: Map<String, String>? = null)
     : Response<UserAttribute>
-    
-    @PUT ("/service/platform/user/v1.0/company/{company_id}/application/{application_id}/user_attribute/bulk_update")
-    suspend fun bulkUpdateUserAttributes(@Path("company_id") companyId: String, @Path("application_id") applicationId: String,@Body body: BulkUpdateUserAttributesBody, @HeaderMap headers: Map<String, String>? = null)
-    : Response<BulkOperation>
-    
-    @PUT ("/service/platform/user/v1.0/company/{company_id}/application/{application_id}/user_attribute/bulk_update/per_user")
-    suspend fun bulkUpdatePerUserAttributes(@Path("company_id") companyId: String, @Path("application_id") applicationId: String,@Body body: BulkUpdatePerUserAttributesBody, @HeaderMap headers: Map<String, String>? = null)
-    : Response<BulkOperation>
     
 }

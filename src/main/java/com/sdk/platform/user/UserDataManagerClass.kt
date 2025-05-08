@@ -71,10 +71,6 @@ class UserDataManagerClass(val config: PlatformConfig, val unauthorizedAction: (
     
     
     
-    
-    
-    
-    
 
 inner class ApplicationClient(val applicationId:String,val config: PlatformConfig){
 
@@ -230,16 +226,6 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     }
     
     
-    suspend fun getUserGroupCategories( headers: Map<String, String> = emptyMap())
-    : Response<UserGroupCategoriesResponseSchema>? {
-        return if (config.oauthClient.isAccessTokenValid()) {
-                userApiList?.getUserGroupCategories(companyId = config.companyId ,applicationId = applicationId , headers = headers)
-        } else {
-            null
-        }
-    }
-    
-    
     suspend fun updateUserGroup(groupId: String,body: UpdateUserGroupSchema, headers: Map<String, String> = emptyMap())
     : Response<UserGroupResponseSchema>? {
         return if (config.oauthClient.isAccessTokenValid()) {
@@ -270,18 +256,8 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     }
     
     
-    suspend fun getUsersByByGroupId(groupId: String, headers: Map<String, String> = emptyMap())
-    : Response<CustomerListResponseSchema>? {
-        return if (config.oauthClient.isAccessTokenValid()) {
-                userApiList?.getUsersByByGroupId(companyId = config.companyId ,applicationId = applicationId ,groupId = groupId, headers = headers)
-        } else {
-            null
-        }
-    }
-    
-    
     suspend fun createUserAttributeDefinition(body: CreateUserAttributeDefinition, headers: Map<String, String> = emptyMap())
-    : Response<UserAttributeDefinitionResp>? {
+    : Response<UserAttributeDefinitionDetails>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 userApiList?.createUserAttributeDefinition(companyId = config.companyId ,applicationId = applicationId , body = body,headers = headers)
         } else {
@@ -330,7 +306,7 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     }
     
     
-    suspend fun updateUserAttribute(attributeDefId: String,userId: String,body: CreateUserAttributePayload, headers: Map<String, String> = emptyMap())
+    suspend fun updateUserAttribute(attributeDefId: String,userId: String,body: CreateUserAttribute, headers: Map<String, String> = emptyMap())
     : Response<UserAttribute>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 userApiList?.updateUserAttribute(attributeDefId = attributeDefId,userId = userId,applicationId = applicationId ,companyId = config.companyId , body = body,headers = headers)
@@ -374,26 +350,6 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     : Response<UserAttribute>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 userApiList?.getUserAttributeById(attributeId = attributeId,applicationId = applicationId ,companyId = config.companyId , headers = headers)
-        } else {
-            null
-        }
-    }
-    
-    
-    suspend fun bulkUpdateUserAttributes(body: BulkUpdateUserAttributesBody, headers: Map<String, String> = emptyMap())
-    : Response<BulkOperation>? {
-        return if (config.oauthClient.isAccessTokenValid()) {
-                userApiList?.bulkUpdateUserAttributes(companyId = config.companyId ,applicationId = applicationId , body = body,headers = headers)
-        } else {
-            null
-        }
-    }
-    
-    
-    suspend fun bulkUpdatePerUserAttributes(body: BulkUpdatePerUserAttributesBody, headers: Map<String, String> = emptyMap())
-    : Response<BulkOperation>? {
-        return if (config.oauthClient.isAccessTokenValid()) {
-                userApiList?.bulkUpdatePerUserAttributes(companyId = config.companyId ,applicationId = applicationId , body = body,headers = headers)
         } else {
             null
         }

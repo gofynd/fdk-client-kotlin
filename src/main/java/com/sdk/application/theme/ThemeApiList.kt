@@ -17,7 +17,7 @@ interface ThemeApiList {
     
     
     @GET
-    suspend fun getPage(@Url url1: String?      ,     @Query("filters") filters: String?, @Query("section_preview_hash") sectionPreviewHash: String?, @Query("company") company: Int?, @Query("preview_id") previewId: String?, @HeaderMap headers: Map<String, String>? = null)
+    suspend fun getPage(@Url url1: String?      ,    @Query("filters") filters: String?, @Query("section_preview_hash") sectionPreviewHash: String?, @Query("company") company: Int?, @HeaderMap headers: Map<String, String>? = null)
     : Response<AvailablePageSchema>
     
     
@@ -28,16 +28,6 @@ interface ThemeApiList {
     
     @GET
     suspend fun getThemeForPreview(@Url url1: String?     ,  @Query("filters") filters: Boolean?, @HeaderMap headers: Map<String, String>? = null)
-    : Response<ThemesSchema>
-    
-    
-    @GET
-    suspend fun getAppliedThemeV1(@Url url1: String?   , @HeaderMap headers: Map<String, String>? = null)
-    : Response<ThemesSchema>
-    
-    
-    @GET
-    suspend fun getThemeForPreviewV1(@Url url1: String?    , @HeaderMap headers: Map<String, String>? = null)
     : Response<ThemesSchema>
     
 }
