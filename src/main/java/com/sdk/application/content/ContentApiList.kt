@@ -82,6 +82,31 @@ interface ContentApiList {
     
     
     @GET
+    suspend fun getDefaultSitemapConfig(@Url url1: String?   , @HeaderMap headers: Map<String, String>? = null)
+    : Response<DefaultSitemapConfig>
+    
+    
+    @GET
+    suspend fun getSitemaps(@Url url1: String?    ,   @Query("page_no") pageNo: String, @Query("page_size") pageSize: String, @HeaderMap headers: Map<String, String>? = null)
+    : Response<SitemapConfigurationList>
+    
+    
+    @GET
+    suspend fun getSitemap(@Url url1: String?    , @HeaderMap headers: Map<String, String>? = null)
+    : Response<SitemapConfig>
+    
+    
+    @GET
+    suspend fun getSlideshows(@Url url1: String?    ,   @Query("page_no") pageNo: Int?, @Query("page_size") pageSize: Int?, @HeaderMap headers: Map<String, String>? = null)
+    : Response<SlideshowGetDetails>
+    
+    
+    @GET
+    suspend fun getSlideshow(@Url url1: String?    , @HeaderMap headers: Map<String, String>? = null)
+    : Response<SlideshowSchema>
+    
+    
+    @GET
     suspend fun getSupportInformation(@Url url1: String?   , @HeaderMap headers: Map<String, String>? = null)
     : Response<Support>
     
@@ -109,25 +134,5 @@ interface ContentApiList {
     @GET
     suspend fun getCustomFieldsByResourceId(@Url url1: String?     , @HeaderMap headers: Map<String, String>? = null)
     : Response<CustomFieldsResponseByResourceIdSchema>
-    
-    
-    @GET
-    suspend fun getTranslateUILabels(@Url url1: String?    ,      @Query("template") template: Boolean?, @Query("template_theme_id") templateThemeId: String?, @Query("theme_id") themeId: String?, @Query("locale") locale: String?, @Query("type") type: String?, @HeaderMap headers: Map<String, String>? = null)
-    : Response<TranslateUiLabelsPage>
-    
-    
-    @GET
-    suspend fun fetchResourceTranslations(@Url url1: String?      ,  @Query("resource_id") resourceId: String, @HeaderMap headers: Map<String, String>? = null)
-    : Response<ResourceTranslations>
-    
-    
-    @POST
-    suspend fun fetchResourceTranslationsWithPayload(@Url url1: String?      ,  @Query("resource_id") resourceId: String, @Body body: ResourcePayload, @HeaderMap headers: Map<String, String>? = null)
-    : Response<ResourceTranslations>
-    
-    
-    @GET
-    suspend fun getSupportedLanguages(@Url url1: String?   , @HeaderMap headers: Map<String, String>? = null)
-    : Response<HashMap<String,Any>>
     
 }

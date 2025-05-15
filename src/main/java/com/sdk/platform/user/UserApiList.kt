@@ -29,10 +29,6 @@ interface UserApiList {
     suspend fun unDeleteUser(@Path("company_id") companyId: String, @Path("application_id") applicationId: String,@Body body: UnDeleteUserRequestSchema, @HeaderMap headers: Map<String, String>? = null)
     : Response<UnDeleteUserSuccess>
     
-    @GET ("/service/platform/user/v1.0/company/{company_id}/application/{application_id}/customers/{user_id}/timeline")
-    suspend fun getUserTimeline(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Path("user_id") userId: String, @HeaderMap headers: Map<String, String>? = null)
-    : Response<GetUserTimeline>
-    
     @PUT ("/service/platform/user/v1.0/company/{company_id}/application/{application_id}/customers/{user_id}")
     suspend fun updateUser(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Path("user_id") userId: String,@Body body: UpdateUserRequestSchema, @HeaderMap headers: Map<String, String>? = null)
     : Response<CreateUserResponseSchema>
@@ -124,25 +120,5 @@ interface UserApiList {
     @GET ("/service/platform/user/v1.0/company/{company_id}/application/{application_id}/user_attribute/attribute/{attribute_id}")
     suspend fun getUserAttributeById(@Path("attribute_id") attributeId: String, @Path("application_id") applicationId: String, @Path("company_id") companyId: String, @HeaderMap headers: Map<String, String>? = null)
     : Response<UserAttribute>
-    
-    @POST ("/service/platform/user/v1.0/company/{company_id}/application/{application_id}/users/jobs/import")
-    suspend fun bulkImportStoreFrontUsers(@Path("application_id") applicationId: String, @Path("company_id") companyId: String,@Body body: CreateStoreFrontUsersPayload, @HeaderMap headers: Map<String, String>? = null)
-    : Response<BulkActionModel>
-    
-    @GET ("/service/platform/user/v1.0/company/{company_id}/application/{application_id}/users/jobs/import")
-    suspend fun getBulkImportUsersList(@Path("application_id") applicationId: String, @Path("company_id") companyId: String, @Query("page_no") pageNo: String?, @Query("page_size") pageSize: String?, @Query("search") search: String?, @Query("start_date") startDate: String?, @Query("end_date") endDate: String?, @Query("status") status: String?, @Query("file_format") fileFormat: String?, @HeaderMap headers: Map<String, String>? = null)
-    : Response<BulkActionPaginationSchema>
-    
-    @POST ("/service/platform/user/v1.0/company/{company_id}/application/{application_id}/users/jobs/export")
-    suspend fun createBulkExportUsers(@Path("application_id") applicationId: String, @Path("company_id") companyId: String,@Body body: BulkUserExportSchema, @HeaderMap headers: Map<String, String>? = null)
-    : Response<BulkActionModel>
-    
-    @GET ("/service/platform/user/v1.0/company/{company_id}/application/{application_id}/users/jobs/export")
-    suspend fun getBulkExportUsersList(@Path("application_id") applicationId: String, @Path("company_id") companyId: String, @Query("page_no") pageNo: String?, @Query("page_size") pageSize: String?, @Query("file_format") fileFormat: String?, @Query("search") search: String?, @Query("start_date") startDate: String?, @Query("end_date") endDate: String?, @Query("status") status: String?, @HeaderMap headers: Map<String, String>? = null)
-    : Response<BulkActionPaginationSchema>
-    
-    @GET ("/service/platform/user/v1.0/company/{company_id}/application/{application_id}/users/jobs/{job_id}")
-    suspend fun getUsersJobByJobId(@Path("application_id") applicationId: String, @Path("company_id") companyId: String, @Path("job_id") jobId: String, @HeaderMap headers: Map<String, String>? = null)
-    : Response<BulkActionModel>
     
 }

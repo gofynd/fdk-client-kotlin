@@ -177,6 +177,10 @@ interface ContentApiList {
     suspend fun getPageSpec(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @HeaderMap headers: Map<String, String>? = null)
     : Response<PageSpec>
     
+    @POST ("/service/platform/content/v1.0/company/{company_id}/application/{application_id}/pages/preview/")
+    suspend fun createPagePreview(@Path("company_id") companyId: String, @Path("application_id") applicationId: String,@Body body: PagePayload, @HeaderMap headers: Map<String, String>? = null)
+    : Response<PageSchema>
+    
     @PUT ("/service/platform/content/v1.0/company/{company_id}/application/{application_id}/pages/publish/{slug}")
     suspend fun updatePagePreview(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Path("slug") slug: String,@Body body: PagePublishPayload, @HeaderMap headers: Map<String, String>? = null)
     : Response<PageSchema>
@@ -236,6 +240,54 @@ interface ContentApiList {
     @DELETE ("/service/platform/content/v1.0/company/{company_id}/application/{application_id}/seo/schema/{id}")
     suspend fun deleteSEOMarkupSchema(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Path("id") id: String, @HeaderMap headers: Map<String, String>? = null)
     : Response<SEOSchemaMarkupTemplate>
+    
+    @GET ("/service/platform/content/v1.0/company/{company_id}/application/{application_id}/seo/sitemap/default")
+    suspend fun getDefaultSitemapConfig(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @HeaderMap headers: Map<String, String>? = null)
+    : Response<DefaultSitemapConfig>
+    
+    @PUT ("/service/platform/content/v1.0/company/{company_id}/application/{application_id}/seo/sitemap/default")
+    suspend fun updateDefaultSitemapConfig(@Path("company_id") companyId: String, @Path("application_id") applicationId: String,@Body body: DefaultSitemapConfig, @HeaderMap headers: Map<String, String>? = null)
+    : Response<DefaultSitemapConfig>
+    
+    @GET ("/service/platform/content/v1.0/company/{company_id}/application/{application_id}/seo/sitemaps")
+    suspend fun getSitemaps(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Query("page_no") pageNo: String, @Query("page_size") pageSize: String, @Query("is_active") isActive: Boolean?, @Query("name") name: String?, @HeaderMap headers: Map<String, String>? = null)
+    : Response<SitemapConfigurationList>
+    
+    @POST ("/service/platform/content/v1.0/company/{company_id}/application/{application_id}/seo/sitemaps")
+    suspend fun createSitemap(@Path("company_id") companyId: String, @Path("application_id") applicationId: String,@Body body: SitemapConfigCreate, @HeaderMap headers: Map<String, String>? = null)
+    : Response<SitemapConfig>
+    
+    @GET ("/service/platform/content/v1.0/company/{company_id}/application/{application_id}/seo/sitemaps/{name}")
+    suspend fun getSitemap(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Path("name") name: String, @HeaderMap headers: Map<String, String>? = null)
+    : Response<SitemapConfig>
+    
+    @PUT ("/service/platform/content/v1.0/company/{company_id}/application/{application_id}/seo/sitemaps/{name}")
+    suspend fun updateSitemap(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Path("name") name: String,@Body body: SitemapConfigUpdate, @HeaderMap headers: Map<String, String>? = null)
+    : Response<SitemapConfig>
+    
+    @DELETE ("/service/platform/content/v1.0/company/{company_id}/application/{application_id}/seo/sitemaps/{name}")
+    suspend fun deleteSitemap(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Path("name") name: String, @HeaderMap headers: Map<String, String>? = null)
+    : Response<SitemapConfig>
+    
+    @GET ("/service/platform/content/v1.0/company/{company_id}/application/{application_id}/slideshows")
+    suspend fun getSlideshows(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Query("device_platform") devicePlatform: String, @Query("page_no") pageNo: Int?, @Query("page_size") pageSize: Int?, @HeaderMap headers: Map<String, String>? = null)
+    : Response<SlideshowGetDetails>
+    
+    @POST ("/service/platform/content/v1.0/company/{company_id}/application/{application_id}/slideshows")
+    suspend fun createSlideshow(@Path("company_id") companyId: String, @Path("application_id") applicationId: String,@Body body: SlideshowPayload, @HeaderMap headers: Map<String, String>? = null)
+    : Response<SlideshowSchema>
+    
+    @GET ("/service/platform/content/v1.0/company/{company_id}/application/{application_id}/slideshows/{slug}")
+    suspend fun getSlideshowBySlug(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Path("slug") slug: String, @Query("device_platform") devicePlatform: String, @HeaderMap headers: Map<String, String>? = null)
+    : Response<SlideshowSchema>
+    
+    @PUT ("/service/platform/content/v1.0/company/{company_id}/application/{application_id}/slideshows/{id}")
+    suspend fun updateSlideshow(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Path("id") id: String,@Body body: SlideshowPayload, @HeaderMap headers: Map<String, String>? = null)
+    : Response<SlideshowSchema>
+    
+    @DELETE ("/service/platform/content/v1.0/company/{company_id}/application/{application_id}/slideshows/{id}")
+    suspend fun deleteSlideshow(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Path("id") id: String, @HeaderMap headers: Map<String, String>? = null)
+    : Response<SlideshowSchema>
     
     @GET ("/service/platform/content/v1.0/company/{company_id}/application/{application_id}/support")
     suspend fun getSupportInformation(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @HeaderMap headers: Map<String, String>? = null)
@@ -480,121 +532,5 @@ interface ContentApiList {
     @GET ("/service/platform/content/v2.0/company/{company_id}/application/{application_id}/customobjects/definition/{slug}/bulk/sample")
     suspend fun sampleAppCustomObjectBulkEntryBySlug(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Path("slug") slug: String, @HeaderMap headers: Map<String, String>? = null)
     : Response<String>
-    
-    @GET ("/service/platform/content/v1.0/company/{company_id}/application/{application_id}/translate-ui-labels")
-    suspend fun getTranslateUILabels(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Query("template_theme_id") templateThemeId: String?, @Query("theme_id") themeId: String?, @Query("locale") locale: String?, @Query("type") type: String?, @HeaderMap headers: Map<String, String>? = null)
-    : Response<TranslateUiLabelsPage>
-    
-    @POST ("/service/platform/content/v1.0/company/{company_id}/application/{application_id}/translate-ui-labels")
-    suspend fun createTranslateUILabels(@Path("company_id") companyId: String, @Path("application_id") applicationId: String,@Body body: TranslateUiLabelsCreate, @HeaderMap headers: Map<String, String>? = null)
-    : Response<TranslateUiLabels>
-    
-    @GET ("/service/platform/content/v1.0/company/{company_id}/application/{application_id}/translate-ui-labels/{id}")
-    suspend fun getTranslateUILabelsById(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Path("id") id: String, @HeaderMap headers: Map<String, String>? = null)
-    : Response<TranslateUiLabels>
-    
-    @PUT ("/service/platform/content/v1.0/company/{company_id}/application/{application_id}/translate-ui-labels/{id}")
-    suspend fun updateTranslateUILabels(@Path("id") id: String, @Path("company_id") companyId: String, @Path("application_id") applicationId: String,@Body body: StaticResourceUpdate, @HeaderMap headers: Map<String, String>? = null)
-    : Response<TranslateUiLabels>
-    
-    @GET ("/service/platform/content/v1.0/company/{company_id}/languages")
-    suspend fun getCompanyLanguages(@Path("company_id") companyId: String, @HeaderMap headers: Map<String, String>? = null)
-    : Response<HashMap<String,Any>>
-    
-    @POST ("/service/platform/content/v1.0/company/{company_id}/languages")
-    suspend fun addCompanyLanguage(@Path("company_id") companyId: String,@Body body: CompanyLanguageCreate, @HeaderMap headers: Map<String, String>? = null)
-    : Response<HashMap<String,Any>>
-    
-    @PUT ("/service/platform/content/v1.0/company/{company_id}/languages/{locale}")
-    suspend fun updateCompanyLanguageDefault(@Path("company_id") companyId: String, @Path("locale") locale: String,@Body body: CompanyLanguageUpdate, @HeaderMap headers: Map<String, String>? = null)
-    : Response<CompanyLanguage>
-    
-    @DELETE ("/service/platform/content/v1.0/company/{company_id}/languages/{locale}")
-    suspend fun deleteCompanyLanguage(@Path("company_id") companyId: String, @Path("locale") locale: String, @HeaderMap headers: Map<String, String>? = null)
-    : Response<OperationResponseSchema>
-    
-    @GET ("/service/platform/content/v1.0/company/{company_id}/application/{application_id}/languages")
-    suspend fun getApplicationLanguages(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @HeaderMap headers: Map<String, String>? = null)
-    : Response<HashMap<String,Any>>
-    
-    @POST ("/service/platform/content/v1.0/company/{company_id}/application/{application_id}/languages")
-    suspend fun addApplicationLanguage(@Path("company_id") companyId: String, @Path("application_id") applicationId: String,@Body body: ApplicationLanguageCreate, @HeaderMap headers: Map<String, String>? = null)
-    : Response<HashMap<String,Any>>
-    
-    @PATCH ("/service/platform/content/v1.0/company/{company_id}/application/{application_id}/languages")
-    suspend fun bulkUnPublishApplicationLanguage(@Path("company_id") companyId: String, @Path("application_id") applicationId: String,@Body body: unPublishApplicationLanguage, @HeaderMap headers: Map<String, String>? = null)
-    : Response<HashMap<String,Any>>
-    
-    @PUT ("/service/platform/content/v1.0/company/{company_id}/application/{application_id}/languages/{locale}")
-    suspend fun updateApplicationLanguageStatus(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Path("locale") locale: String,@Body body: ApplicationLanguageUpdate, @HeaderMap headers: Map<String, String>? = null)
-    : Response<ApplicationLanguage>
-    
-    @DELETE ("/service/platform/content/v1.0/company/{company_id}/application/{application_id}/languages/{locale}")
-    suspend fun deleteApplicationLanguage(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Path("locale") locale: String, @HeaderMap headers: Map<String, String>? = null)
-    : Response<OperationResponseSchema>
-    
-    @GET ("/service/platform/content/v1.0/company/{company_id}/translatable/resources")
-    suspend fun getAllTranslatableResources(@Path("company_id") companyId: String, @HeaderMap headers: Map<String, String>? = null)
-    : Response<HashMap<String,Any>>
-    
-    @GET ("/service/platform/content/v1.0/company/{company_id}/translatable/resources/{id}")
-    suspend fun getTranslatableResourceById(@Path("company_id") companyId: String, @Path("id") id: String, @HeaderMap headers: Map<String, String>? = null)
-    : Response<TranslatableResource>
-    
-    @GET ("/service/platform/content/v1.0/company/{company_id}/translatable/resource/definitions")
-    suspend fun getAllResourceDefinitions(@Path("company_id") companyId: String, @Query("translatable_resource_id") translatableResourceId: String?, @HeaderMap headers: Map<String, String>? = null)
-    : Response<HashMap<String,Any>>
-    
-    @GET ("/service/platform/content/v1.0/company/{company_id}/translatable/resource/definitions/{id}")
-    suspend fun getResourceDefinitionById(@Path("company_id") companyId: String, @Path("id") id: String, @HeaderMap headers: Map<String, String>? = null)
-    : Response<ResourceDefinition>
-    
-    @GET ("/service/platform/content/v1.0/company/{company_id}/translatable/sections")
-    suspend fun getAllSections(@Path("company_id") companyId: String, @HeaderMap headers: Map<String, String>? = null)
-    : Response<HashMap<String,Any>>
-    
-    @GET ("/service/platform/content/v1.0/company/{company_id}/translatable/section/{id}")
-    suspend fun getSectionById(@Path("company_id") companyId: String, @Path("id") id: String, @HeaderMap headers: Map<String, String>? = null)
-    : Response<TranslatableSection>
-    
-    @GET ("/service/platform/content/v1.0/company/{company_id}/translatable/section/{id}/resources")
-    suspend fun getTranslatableResourcesBySectionId(@Path("company_id") companyId: String, @Path("id") id: String, @HeaderMap headers: Map<String, String>? = null)
-    : Response<HashMap<String,Any>>
-    
-    @GET ("/service/platform/content/v1.0/company/{company_id}/resource/translations")
-    suspend fun getCompanyResourceTranslation(@Path("company_id") companyId: String, @Query("locale") locale: String, @Query("type") type: String, @Query("resource_id") resourceId: String, @HeaderMap headers: Map<String, String>? = null)
-    : Response<ResourceTranslation>
-    
-    @POST ("/service/platform/content/v1.0/company/{company_id}/resource/translations")
-    suspend fun createCompanyResourceTranslation(@Path("company_id") companyId: String,@Body body: ResourceTranslationCreate, @HeaderMap headers: Map<String, String>? = null)
-    : Response<ResourceTranslation>
-    
-    @PUT ("/service/platform/content/v1.0/company/{company_id}/resource/translations/{id}")
-    suspend fun updateCompanyResourceTranslation(@Path("company_id") companyId: String, @Path("id") id: String,@Body body: ResourceTranslationUpdate, @HeaderMap headers: Map<String, String>? = null)
-    : Response<ResourceTranslation>
-    
-    @DELETE ("/service/platform/content/v1.0/company/{company_id}/resource/translations/{id}")
-    suspend fun deleteCompanyResourceTranslation(@Path("company_id") companyId: String, @Path("id") id: String, @HeaderMap headers: Map<String, String>? = null)
-    : Response<OperationResponseSchema>
-    
-    @GET ("/service/platform/content/v1.0/company/{company_id}/application/{application_id}/resource/translations")
-    suspend fun getApplicationResourceTranslations(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Query("locale") locale: String, @Query("type") type: String, @Query("resource_id") resourceId: String, @HeaderMap headers: Map<String, String>? = null)
-    : Response<HashMap<String,Any>>
-    
-    @POST ("/service/platform/content/v1.0/company/{company_id}/application/{application_id}/resource/translations")
-    suspend fun createApplicationResourceTranslation(@Path("company_id") companyId: String, @Path("application_id") applicationId: String,@Body body: ResourceTranslationCreate, @HeaderMap headers: Map<String, String>? = null)
-    : Response<ResourceTranslation>
-    
-    @PATCH ("/service/platform/content/v1.0/company/{company_id}/application/{application_id}/resource/translations/bulk")
-    suspend fun upsertApplicationResourceTranslationInBulk(@Path("company_id") companyId: String, @Path("application_id") applicationId: String,@Body body: ResourceTranslationList, @HeaderMap headers: Map<String, String>? = null)
-    : Response<ResourceTranslationBulkUpsert>
-    
-    @PUT ("/service/platform/content/v1.0/company/{company_id}/application/{application_id}/resource/translations/{id}")
-    suspend fun updateApplicationResourceTranslation(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Path("id") id: String,@Body body: ResourceTranslationUpdate, @HeaderMap headers: Map<String, String>? = null)
-    : Response<ResourceTranslation>
-    
-    @DELETE ("/service/platform/content/v1.0/company/{company_id}/application/{application_id}/resource/translations/{id}")
-    suspend fun deleteApplicationResourceTranslation(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Path("id") id: String, @HeaderMap headers: Map<String, String>? = null)
-    : Response<OperationResponseSchema>
     
 }

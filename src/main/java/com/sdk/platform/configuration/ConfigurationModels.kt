@@ -345,9 +345,6 @@ data class AppInventoryConfig(
     
     
     
-    @SerializedName("delivery_strategy")
-    var deliveryStrategy: DeliveryStrategy?=null,
-    
     @SerializedName("brand")
     var brand: InventoryBrand?=null,
     
@@ -382,9 +379,17 @@ data class AppInventoryConfig(
     var companyStore: @RawValue ArrayList<Any>?=null,
     
     @SerializedName("company_id")
-    var companyId: Int?=null
+    var companyId: Int?=null,
+    
+    @SerializedName("enable_zone_overlapping")
+    var enableZoneOverlapping: Boolean?=null,
+    
+    @SerializedName("sort_popular_first")
+    var sortPopularFirst: Boolean?=null
     
 ): Parcelable {
+    
+    
     
     
     
@@ -1107,71 +1112,7 @@ data class AppOrderConfig(
     var forceReassignment: Boolean?=null,
     
     @SerializedName("message")
-    var message: String?=null,
-    
-    @SerializedName("processing_schedule")
-    var processingSchedule: ProcessingSchedule?=null
-    
-): Parcelable {
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-}
-
-
-
-             
-/*
-    Model: ProcessingSchedule
-*/
-@Parcelize
-data class ProcessingSchedule(
-    
-    
-    
-    @SerializedName("is_scheduled")
-    var isScheduled: Boolean?=null,
-    
-    @SerializedName("start_after")
-    var startAfter: StartAfter?=null
-    
-): Parcelable {
-    
-    
-    
-    
-    
-    
-    
-}
-
-
-
-             
-/*
-    Model: StartAfter
-*/
-@Parcelize
-data class StartAfter(
-    
-    
-    
-    @SerializedName("days")
-    var days: Int?=null,
-    
-    @SerializedName("hours")
-    var hours: Int?=null,
-    
-    @SerializedName("minutes")
-    var minutes: Int?=null
+    var message: String?=null
     
 ): Parcelable {
     
@@ -4256,60 +4197,6 @@ data class RegistrationPageFeature(
 
              
 /*
-    Model: BuyboxFeature
-*/
-@Parcelize
-data class BuyboxFeature(
-    
-    
-    
-    @SerializedName("show_name")
-    var showName: Boolean?=null,
-    
-    @SerializedName("enable_selection")
-    var enableSelection: Boolean?=null,
-    
-    @SerializedName("is_seller_buybox_enabled")
-    var isSellerBuyboxEnabled: Boolean?=null
-    
-): Parcelable {
-    
-    
-    
-    
-    
-    
-    
-    
-    
-}
-
-
-
-             
-/*
-    Model: DeliveryStrategy
-*/
-@Parcelize
-data class DeliveryStrategy(
-    
-    
-    
-    @SerializedName("value")
-    var value: String?=null
-    
-): Parcelable {
-    
-    
-    
-    
-    
-}
-
-
-
-             
-/*
     Model: AppFeature
 */
 @Parcelize
@@ -4344,12 +4231,6 @@ data class AppFeature(
     @SerializedName("order")
     var order: OrderFeature?=null,
     
-    @SerializedName("buybox")
-    var buybox: BuyboxFeature?=null,
-    
-    @SerializedName("delivery_strategy")
-    var deliveryStrategy: DeliveryStrategy?=null,
-    
     @SerializedName("_id")
     var id: String?=null,
     
@@ -4366,10 +4247,6 @@ data class AppFeature(
     var v: Int?=null
     
 ): Parcelable {
-    
-    
-    
-    
     
     
     
@@ -5524,14 +5401,9 @@ data class Page(
     var type: String?=null,
     
     @SerializedName("size")
-    var size: Int?=null,
-    
-    @SerializedName("page_size")
-    var pageSize: Int?=null
+    var size: Int?=null
     
 ): Parcelable {
-    
-    
     
     
     
@@ -6421,7 +6293,7 @@ data class OptedStoreAddress(
     var address2: String?=null,
     
     @SerializedName("pincode")
-    var pincode: String?=null,
+    var pincode: Int?=null,
     
     @SerializedName("country")
     var country: String?=null,
@@ -6497,7 +6369,7 @@ data class OrderingStore(
     var storeCode: String?=null,
     
     @SerializedName("pincode")
-    var pincode: String?=null,
+    var pincode: Int?=null,
     
     @SerializedName("code")
     var code: String?=null

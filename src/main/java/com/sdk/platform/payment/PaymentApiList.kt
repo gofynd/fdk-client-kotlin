@@ -114,7 +114,7 @@ interface PaymentApiList {
     : Response<EdcDeviceListDetails>
     
     @GET ("/service/platform/payment/v1.0/company/{company_id}/application/{application_id}/payment/options/pos")
-    suspend fun getPosPaymentModeRoutes(@Header("x-ordering-source") xOrderingSource: String?, @Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Query("amount") amount: Int, @Query("cart_id") cartId: String?, @Query("pincode") pincode: String, @Query("checkout_mode") checkoutMode: String?, @Query("refresh") refresh: Boolean?, @Query("order_id") orderId: String?, @Query("card_reference") cardReference: String?, @Query("order_type") orderType: String, @Query("user_details") userDetails: String?, @Query("display_split") displaySplit: Boolean?, @Query("advance_payment") advancePayment: Boolean?, @Query("shipment_id") shipmentId: String?, @Query("customer_id") customerId: String?, @HeaderMap headers: Map<String, String>? = null)
+    suspend fun getPosPaymentModeRoutes(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Query("amount") amount: Int, @Query("cart_id") cartId: String?, @Query("pincode") pincode: String, @Query("checkout_mode") checkoutMode: String?, @Query("refresh") refresh: Boolean?, @Query("order_id") orderId: String?, @Query("card_reference") cardReference: String?, @Query("order_type") orderType: String, @Query("user_details") userDetails: String?, @Query("display_split") displaySplit: Boolean?, @Query("advance_payment") advancePayment: Boolean?, @Query("shipment_id") shipmentId: String?, @HeaderMap headers: Map<String, String>? = null)
     : Response<PaymentModeRouteDetails>
     
     @POST ("/service/platform/payment/v1.0/company/{company_id}/application/{application_id}/payment/request")
@@ -248,9 +248,5 @@ interface PaymentApiList {
     @PATCH ("/service/platform/payment/v1.0/company/{company_id}/application/{application_id}/payment/options/aggregators/{aggregator_id}/version")
     suspend fun patchMerchantPaymentOptionVersion(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Path("aggregator_id") aggregatorId: String,@Body body: PatchAggregatorControl, @HeaderMap headers: Map<String, String>? = null)
     : Response<PlatformPaymentModeDetails>
-    
-    @POST ("/service/platform/payment/v1.0/company/{company_id}/application/{application_id}/payment/validate/customer-credits")
-    suspend fun validateCustomerAndCreditSummary(@Path("company_id") companyId: String, @Path("application_id") applicationId: String,@Body body: CustomerValidationSchema, @HeaderMap headers: Map<String, String>? = null)
-    : Response<ValidateCustomerCreditSchema>
     
 }

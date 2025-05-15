@@ -105,11 +105,11 @@ class PaymentDataManagerClass(val config: ApplicationConfig, val unauthorizedAct
             
                     _relativeUrls["customerOnboard"] = "/service/application/payment/v1.0/credit-onboard/".substring(1)
             
+                    _relativeUrls["outstandingOrderDetails"] = "/service/application/payment/v1.0/payment/outstanding-orders/".substring(1)
+            
                     _relativeUrls["paidOrderDetails"] = "/service/application/payment/v1.0/payment/paid-orders/".substring(1)
             
                     _relativeUrls["createPaymentOrder"] = "/service/application/payment/v1.0/payment-orders/".substring(1)
-            
-                    _relativeUrls["validateCustomerAndCreditSummary"] = "/service/application/payment/v1.0/payment/validate/customer-credits-v2".substring(1)
             
     }
 
@@ -146,10 +146,10 @@ class PaymentDataManagerClass(val config: ApplicationConfig, val unauthorizedAct
         return retrofitHttpClient?.initializeRestClient(PaymentApiList::class.java) as? PaymentApiList
     }
     
-    suspend fun getAggregatorsConfig(refresh: Boolean?=null, headers: Map<String, String> = emptyMap()): Response<AggregatorsConfigDetail>? {
+    suspend fun getAggregatorsConfig(xApiToken: String?=null,refresh: Boolean?=null, headers: Map<String, String> = emptyMap()): Response<AggregatorsConfigDetail>? {
         var fullUrl : String? = _relativeUrls["getAggregatorsConfig"]
         
-        return paymentApiList?.getAggregatorsConfig(fullUrl,   refresh = refresh,headers = headers)}
+        return paymentApiList?.getAggregatorsConfig(fullUrl,   xApiToken = xApiToken,  refresh = refresh,headers = headers)}
 
     
     
@@ -435,10 +435,10 @@ class PaymentDataManagerClass(val config: ApplicationConfig, val unauthorizedAct
 
     
     
-    suspend fun checkCredit(aggregator: String?=null, headers: Map<String, String> = emptyMap()): Response<CheckCreditDetails>? {
+    suspend fun checkCredit(aggregator: String,wallet: String?=null, headers: Map<String, String> = emptyMap()): Response<CheckCreditDetails>? {
         var fullUrl : String? = _relativeUrls["checkCredit"]
         
-        return paymentApiList?.checkCredit(fullUrl,   aggregator = aggregator,headers = headers)}
+        return paymentApiList?.checkCredit(fullUrl,   aggregator = aggregator,  wallet = wallet,headers = headers)}
 
     
     
@@ -446,6 +446,13 @@ class PaymentDataManagerClass(val config: ApplicationConfig, val unauthorizedAct
         var fullUrl : String? = _relativeUrls["customerOnboard"]
         
         return paymentApiList?.customerOnboard(fullUrl, body = body,headers = headers)}
+
+    
+    
+    suspend fun outstandingOrderDetails(aggregator: String?=null, headers: Map<String, String> = emptyMap()): Response<OutstandingOrderDetails>? {
+        var fullUrl : String? = _relativeUrls["outstandingOrderDetails"]
+        
+        return paymentApiList?.outstandingOrderDetails(fullUrl,   aggregator = aggregator,headers = headers)}
 
     
     
@@ -460,13 +467,6 @@ class PaymentDataManagerClass(val config: ApplicationConfig, val unauthorizedAct
         var fullUrl : String? = _relativeUrls["createPaymentOrder"]
         
         return paymentApiList?.createPaymentOrder(fullUrl, body = body,headers = headers)}
-
-    
-    
-    suspend fun validateCustomerAndCreditSummary(body: CustomerValidationSchema, headers: Map<String, String> = emptyMap()): Response<ValidateCustomerCreditSchema>? {
-        var fullUrl : String? = _relativeUrls["validateCustomerAndCreditSummary"]
-        
-        return paymentApiList?.validateCustomerAndCreditSummary(fullUrl, body = body,headers = headers)}
 
     
     

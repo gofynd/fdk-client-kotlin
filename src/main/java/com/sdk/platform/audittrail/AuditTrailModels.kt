@@ -145,5 +145,27 @@ data class EntityObject(
 
 
 
+             
+/*
+    Model: BadRequestSchema
+*/
+@Parcelize
+data class BadRequestSchema(
+    
+    
+    
+    @SerializedName("message")
+    var message: String?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+}
+
+
+
 
 

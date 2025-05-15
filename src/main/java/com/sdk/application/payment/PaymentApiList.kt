@@ -12,7 +12,7 @@ interface PaymentApiList {
     
     
     @GET
-    suspend fun getAggregatorsConfig(@Url url1: String?    ,  @Query("refresh") refresh: Boolean?, @HeaderMap headers: Map<String, String>? = null)
+    suspend fun getAggregatorsConfig(@Url url1: String?    ,  @Header("x-api-token") xApiToken: String?,  @Query("refresh") refresh: Boolean?, @HeaderMap headers: Map<String, String>? = null)
     : Response<AggregatorsConfigDetail>
     
     
@@ -217,13 +217,18 @@ interface PaymentApiList {
     
     
     @GET
-    suspend fun checkCredit(@Url url1: String?    ,  @Query("aggregator") aggregator: String?, @HeaderMap headers: Map<String, String>? = null)
+    suspend fun checkCredit(@Url url1: String?    ,   @Query("aggregator") aggregator: String, @Query("wallet") wallet: String?, @HeaderMap headers: Map<String, String>? = null)
     : Response<CheckCreditDetails>
     
     
     @POST
     suspend fun customerOnboard(@Url url1: String?   ,@Body body: CustomerOnboarding, @HeaderMap headers: Map<String, String>? = null)
     : Response<CustomerOnboardingDetails>
+    
+    
+    @GET
+    suspend fun outstandingOrderDetails(@Url url1: String?    ,  @Query("aggregator") aggregator: String?, @HeaderMap headers: Map<String, String>? = null)
+    : Response<OutstandingOrderDetails>
     
     
     @GET
@@ -234,10 +239,5 @@ interface PaymentApiList {
     @POST
     suspend fun createPaymentOrder(@Url url1: String?   ,@Body body: PaymentOrder, @HeaderMap headers: Map<String, String>? = null)
     : Response<PaymentOrderDetails>
-    
-    
-    @POST
-    suspend fun validateCustomerAndCreditSummary(@Url url1: String?   ,@Body body: CustomerValidationSchema, @HeaderMap headers: Map<String, String>? = null)
-    : Response<ValidateCustomerCreditSchema>
     
 }

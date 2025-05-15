@@ -1571,12 +1571,57 @@ data class Address(
 
              
 /*
+    Model: CouponDetails
+*/
+@Parcelize
+data class CouponDetails(
+    
+    
+    
+    @SerializedName("display")
+    var display: String?=null,
+    
+    @SerializedName("code")
+    var code: String?=null,
+    
+    @SerializedName("currency_symbol")
+    var currencySymbol: String?=null,
+    
+    @SerializedName("currency_code")
+    var currencyCode: String?=null,
+    
+    @SerializedName("value")
+    var value: Double?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
     Model: Shipments
 */
 @Parcelize
 data class Shipments(
     
     
+    
+    @SerializedName("coupon_details")
+    var couponDetails: ArrayList<CouponDetails>?=null,
     
     @SerializedName("payment")
     var payment: ShipmentPayment?=null,
@@ -1792,6 +1837,8 @@ data class Shipments(
     
     
     
+    
+    
 }
 
 
@@ -1906,6 +1953,9 @@ data class OrderSchema(
     
     
     
+    @SerializedName("coupon_details")
+    var couponDetails: ArrayList<CouponDetails>?=null,
+    
     @SerializedName("total_shipments_in_order")
     var totalShipmentsInOrder: Int?=null,
     
@@ -1940,9 +1990,16 @@ data class OrderSchema(
     var meta: @RawValue HashMap<String,Any>?=null,
     
     @SerializedName("currency")
-    var currency: CurrencySchema?=null
+    var currency: CurrencySchema?=null,
+    
+    @SerializedName("custom_json")
+    var customJson: @RawValue HashMap<String,Any>?=null
     
 ): Parcelable {
+    
+    
+    
+    
     
     
     

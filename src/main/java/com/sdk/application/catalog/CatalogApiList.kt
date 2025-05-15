@@ -153,11 +153,11 @@ interface CatalogApiList {
     
     @GET
     suspend fun getProductPriceBySlug(@Url url1: String?      ,   @Query("store_id") storeId: Int?, @Query("moq") moq: Int?, @HeaderMap headers: Map<String, String>? = null)
-    : Response<ProductSizePriceResponseV4>
+    : Response<ProductSizePriceResponseV3>
     
     
     @GET
     suspend fun getProductSellersBySlug(@Url url1: String?      ,    @Query("strategy") strategy: String?, @Query("page_no") pageNo: Int?, @Query("page_size") pageSize: Int?, @HeaderMap headers: Map<String, String>? = null)
-    : Response<ProductSizeSellersResponseV4>
+    : Response<ProductSizeSellersResponseV3>
     
 }

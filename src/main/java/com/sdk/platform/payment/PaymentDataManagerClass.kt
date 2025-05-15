@@ -213,7 +213,6 @@ class PaymentDataManagerClass(val config: PlatformConfig, val unauthorizedAction
     
     
     
-    
 
 inner class ApplicationClient(val applicationId:String,val config: PlatformConfig){
 
@@ -389,10 +388,10 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     }
     
     
-    suspend fun getPosPaymentModeRoutes(xOrderingSource: String?=null,amount: Int,cartId: String?=null,pincode: String,checkoutMode: String?=null,refresh: Boolean?=null,orderId: String?=null,cardReference: String?=null,orderType: String,userDetails: String?=null,displaySplit: Boolean?=null,advancePayment: Boolean?=null,shipmentId: String?=null,customerId: String?=null, headers: Map<String, String> = emptyMap())
+    suspend fun getPosPaymentModeRoutes(amount: Int,cartId: String?=null,pincode: String,checkoutMode: String?=null,refresh: Boolean?=null,orderId: String?=null,cardReference: String?=null,orderType: String,userDetails: String?=null,displaySplit: Boolean?=null,advancePayment: Boolean?=null,shipmentId: String?=null, headers: Map<String, String> = emptyMap())
     : Response<PaymentModeRouteDetails>? {
         return if (config.oauthClient.isAccessTokenValid()) {
-                paymentApiList?.getPosPaymentModeRoutes(xOrderingSource = xOrderingSource,companyId = config.companyId ,applicationId = applicationId ,amount = amount,cartId = cartId,pincode = pincode,checkoutMode = checkoutMode,refresh = refresh,orderId = orderId,cardReference = cardReference,orderType = orderType,userDetails = userDetails,displaySplit = displaySplit,advancePayment = advancePayment,shipmentId = shipmentId,customerId = customerId, headers = headers)
+                paymentApiList?.getPosPaymentModeRoutes(companyId = config.companyId ,applicationId = applicationId ,amount = amount,cartId = cartId,pincode = pincode,checkoutMode = checkoutMode,refresh = refresh,orderId = orderId,cardReference = cardReference,orderType = orderType,userDetails = userDetails,displaySplit = displaySplit,advancePayment = advancePayment,shipmentId = shipmentId, headers = headers)
         } else {
             null
         }
@@ -723,16 +722,6 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     : Response<PlatformPaymentModeDetails>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 paymentApiList?.patchMerchantPaymentOptionVersion(companyId = config.companyId ,applicationId = applicationId ,aggregatorId = aggregatorId, body = body,headers = headers)
-        } else {
-            null
-        }
-    }
-    
-    
-    suspend fun validateCustomerAndCreditSummary(body: CustomerValidationSchema, headers: Map<String, String> = emptyMap())
-    : Response<ValidateCustomerCreditSchema>? {
-        return if (config.oauthClient.isAccessTokenValid()) {
-                paymentApiList?.validateCustomerAndCreditSummary(companyId = config.companyId ,applicationId = applicationId , body = body,headers = headers)
         } else {
             null
         }

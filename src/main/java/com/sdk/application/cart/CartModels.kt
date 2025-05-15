@@ -205,9 +205,6 @@ data class AppliedPromotion(
     @SerializedName("offer_text")
     var offerText: String?=null,
     
-    @SerializedName("offer_label")
-    var offerLabel: String?=null,
-    
     @SerializedName("promotion_group")
     var promotionGroup: String?=null,
     
@@ -245,8 +242,6 @@ data class AppliedPromotion(
     var code: String?=null
     
 ): Parcelable {
-    
-    
     
     
     
@@ -606,9 +601,6 @@ data class ProductArticle(
     @SerializedName("uid")
     var uid: String?=null,
     
-    @SerializedName("force_new_line_item")
-    var forceNewLineItem: Boolean?=null,
-    
     @SerializedName("gift_card")
     var giftCard: @RawValue HashMap<String,Any>?=null,
     
@@ -622,8 +614,6 @@ data class ProductArticle(
     var tags: ArrayList<String>?=null
     
 ): Parcelable {
-    
-    
     
     
     
@@ -850,38 +840,6 @@ data class ProductPriceInfo(
     var converted: ProductPrice?=null
     
 ): Parcelable {
-    
-    
-    
-    
-    
-    
-    
-}
-
-
-
-             
-/*
-    Model: ProductMaxQuantityInfo
-*/
-@Parcelize
-data class ProductMaxQuantityInfo(
-    
-    
-    
-    @SerializedName("item")
-    var item: Double?=null,
-    
-    @SerializedName("item_seller")
-    var itemSeller: Double?=null,
-    
-    @SerializedName("item_store")
-    var itemStore: Double?=null
-    
-): Parcelable {
-    
-    
     
     
     
@@ -1364,9 +1322,6 @@ data class CartProductInfo(
     @SerializedName("moq")
     var moq: @RawValue HashMap<String,Any>?=null,
     
-    @SerializedName("max_quantity")
-    var maxQuantity: ProductMaxQuantityInfo?=null,
-    
     @SerializedName("identifiers")
     var identifiers: CartProductIdentifer?=null,
     
@@ -1428,8 +1383,6 @@ data class CartProductInfo(
     var promotionsApplied: ArrayList<AppliedPromotion>?=null
     
 ): Parcelable {
-    
-    
     
     
     
@@ -2069,19 +2022,9 @@ data class CartDetailResult(
     var panConfig: @RawValue HashMap<String,Any>?=null,
     
     @SerializedName("custom_cart_meta")
-    var customCartMeta: @RawValue HashMap<String,Any>?=null,
-    
-    @SerializedName("free_gift_selection_available")
-    var freeGiftSelectionAvailable: Boolean?=null,
-    
-    @SerializedName("customer_id")
-    var customerId: String?=null
+    var customCartMeta: @RawValue HashMap<String,Any>?=null
     
 ): Parcelable {
-    
-    
-    
-    
     
     
     
@@ -2167,9 +2110,6 @@ data class AddProductCart(
     @SerializedName("_custom_json")
     var customJson: @RawValue HashMap<String,Any>?=null,
     
-    @SerializedName("force_new_line_item")
-    var forceNewLineItem: Boolean?=null,
-    
     @SerializedName("item_size")
     var itemSize: String?=null,
     
@@ -2198,7 +2138,10 @@ data class AddProductCart(
     var meta: @RawValue HashMap<String,Any>?=null,
     
     @SerializedName("seller_identifier")
-    var sellerIdentifier: String?=null
+    var sellerIdentifier: String?=null,
+    
+    @SerializedName("order_type")
+    var orderType: String?=null
     
 ): Parcelable {
     
@@ -2286,61 +2229,9 @@ data class AddCartDetailResult(
     var cart: CartDetailResult?=null,
     
     @SerializedName("success")
-    var success: Boolean?=null,
-    
-    @SerializedName("result")
-    var result: @RawValue HashMap<String,Any>?=null,
-    
-    @SerializedName("items")
-    var items: ArrayList<CartItemInfo>?=null
+    var success: Boolean?=null
     
 ): Parcelable {
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-}
-
-
-
-             
-/*
-    Model: CartItemInfo
-*/
-@Parcelize
-data class CartItemInfo(
-    
-    
-    
-    @SerializedName("item_id")
-    var itemId: Int?=null,
-    
-    @SerializedName("size")
-    var size: String?=null,
-    
-    @SerializedName("store_id")
-    var storeId: Int?=null,
-    
-    @SerializedName("success")
-    var success: Boolean?=null,
-    
-    @SerializedName("message")
-    var message: String?=null
-    
-): Parcelable {
-    
-    
     
     
     
@@ -2371,9 +2262,6 @@ data class UpdateProductCart(
     @SerializedName("_custom_json")
     var customJson: @RawValue HashMap<String,Any>?=null,
     
-    @SerializedName("force_new_line_item")
-    var forceNewLineItem: Boolean?=null,
-    
     @SerializedName("quantity")
     var quantity: Int?=null,
     
@@ -2399,8 +2287,6 @@ data class UpdateProductCart(
     var meta: @RawValue HashMap<String,Any>?=null
     
 ): Parcelable {
-    
-    
     
     
     
@@ -2476,40 +2362,13 @@ data class UpdateCartCreation(
     var freeGiftItems: ArrayList<FreeGiftItemCreation>?=null,
     
     @SerializedName("operation")
-    var operation: String?=null,
-    
-    @SerializedName("free_gift_items_operation")
-    var freeGiftItemsOperation: String?=null
+    var operation: String?=null
     
 ): Parcelable {
     
     
     
     
-    
-    
-    
-    
-    
-    
-    
-}
-
-
-
-             
-/*
-    Model: UpdateCartBreakup
-*/
-@Parcelize
-data class UpdateCartBreakup(
-    
-    
-    
-    @SerializedName("store_credit")
-    var storeCredit: Boolean?=null
-    
-): Parcelable {
     
     
     
@@ -2535,19 +2394,9 @@ data class UpdateCartDetailResult(
     var cart: CartDetailResult?=null,
     
     @SerializedName("success")
-    var success: Boolean?=null,
-    
-    @SerializedName("result")
-    var result: @RawValue HashMap<String,Any>?=null,
-    
-    @SerializedName("items")
-    var items: ArrayList<CartItemInfo>?=null
+    var success: Boolean?=null
     
 ): Parcelable {
-    
-    
-    
-    
     
     
     
@@ -3636,14 +3485,9 @@ data class CartShipmentsResult(
     var uid: String?=null,
     
     @SerializedName("custom_cart_meta")
-    var customCartMeta: @RawValue HashMap<String,Any>?=null,
-    
-    @SerializedName("customer_id")
-    var customerId: String?=null
+    var customCartMeta: @RawValue HashMap<String,Any>?=null
     
 ): Parcelable {
-    
-    
     
     
     
@@ -3794,33 +3638,6 @@ data class StaffCheckout(
 
              
 /*
-    Model: OrderTag
-*/
-@Parcelize
-data class OrderTag(
-    
-    
-    
-    @SerializedName("display_text")
-    var displayText: String?=null,
-    
-    @SerializedName("slug")
-    var slug: String?=null
-    
-): Parcelable {
-    
-    
-    
-    
-    
-    
-    
-}
-
-
-
-             
-/*
     Model: CartCheckoutDetailCreation
 */
 @Parcelize
@@ -3898,24 +3715,9 @@ data class CartCheckoutDetailCreation(
     var type: String?=null,
     
     @SerializedName("card_id")
-    var cardId: String?=null,
-    
-    @SerializedName("success_callback_url")
-    var successCallbackUrl: String?=null,
-    
-    @SerializedName("failure_callback_url")
-    var failureCallbackUrl: String?=null,
-    
-    @SerializedName("order_tags")
-    var orderTags: ArrayList<OrderTag>?=null
+    var cardId: String?=null
     
 ): Parcelable {
-    
-    
-    
-    
-    
-    
     
     
     
@@ -4770,9 +4572,91 @@ data class PromotionOffer(
     var freeGiftItems: ArrayList<FreeGiftItems>?=null,
     
     @SerializedName("description")
-    var description: String?=null
+    var description: String?=null,
+    
+    @SerializedName("is_bank_offer")
+    var isBankOffer: Boolean?=null
     
 ): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: PromotionOfferAll
+*/
+@Parcelize
+data class PromotionOfferAll(
+    
+    
+    
+    @SerializedName("id")
+    var id: String?=null,
+    
+    @SerializedName("buy_rules")
+    var buyRules: @RawValue HashMap<String,Any>?=null,
+    
+    @SerializedName("offer_text")
+    var offerText: String?=null,
+    
+    @SerializedName("promotion_type")
+    var promotionType: String?=null,
+    
+    @SerializedName("promotion_name")
+    var promotionName: String?=null,
+    
+    @SerializedName("promotion_group")
+    var promotionGroup: String?=null,
+    
+    @SerializedName("valid_till")
+    var validTill: String?=null,
+    
+    @SerializedName("discount_rules")
+    var discountRules: @RawValue ArrayList<HashMap<String,Any>>?=null,
+    
+    @SerializedName("free_gift_items")
+    var freeGiftItems: ArrayList<FreeGiftItems>?=null,
+    
+    @SerializedName("description")
+    var description: String?=null,
+    
+    @SerializedName("is_bank_offer")
+    var isBankOffer: Boolean?=null,
+    
+    @SerializedName("is_applicable")
+    var isApplicable: Boolean?=null
+    
+): Parcelable {
+    
+    
+    
+    
     
     
     
@@ -5314,24 +5198,9 @@ data class CartCheckoutDetailV2Creation(
     var type: String?=null,
     
     @SerializedName("card_id")
-    var cardId: String?=null,
-    
-    @SerializedName("success_callback_url")
-    var successCallbackUrl: String?=null,
-    
-    @SerializedName("failure_callback_url")
-    var failureCallbackUrl: String?=null,
-    
-    @SerializedName("order_tags")
-    var orderTags: ArrayList<OrderTag>?=null
+    var cardId: String?=null
     
 ): Parcelable {
-    
-    
-    
-    
-    
-    
     
     
     
@@ -5391,6 +5260,85 @@ data class CartCheckoutDetailV2Creation(
 
              
 /*
+    Model: Promotions
+*/
+@Parcelize
+data class Promotions(
+    
+    
+    
+    @SerializedName("items")
+    var items: ArrayList<PromotionOfferAll>?=null,
+    
+    @SerializedName("page")
+    var page: Page?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: Page
+*/
+@Parcelize
+data class Page(
+    
+    
+    
+    @SerializedName("item_total")
+    var itemTotal: Int?=null,
+    
+    @SerializedName("next_id")
+    var nextId: String?=null,
+    
+    @SerializedName("has_previous")
+    var hasPrevious: Boolean?=null,
+    
+    @SerializedName("has_next")
+    var hasNext: Boolean?=null,
+    
+    @SerializedName("current")
+    var current: Int?=null,
+    
+    @SerializedName("type")
+    var type: String?=null,
+    
+    @SerializedName("size")
+    var size: Int?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
     Model: ValidationError
 */
 @Parcelize
@@ -5417,46 +5365,4 @@ data class ValidationError(
 
 
 
-
-
-
-    /*
-        Enum: OrderingSource
-        Used By: Cart
-    */
-    enum class OrderingSource(val value:String){
-        
-        @SerializedName("storefront")
-        storefront("storefront"), 
-        
-        @SerializedName("store_os_pos")
-        storeOsPos("store_os_pos"), 
-        
-        @SerializedName("kiosk")
-        kiosk("kiosk"), 
-        
-        @SerializedName("scan_go")
-        scanGo("scan_go"), 
-        
-        @SerializedName("smart_trolley")
-        smartTrolley("smart_trolley"), 
-        
-        @SerializedName("marketplace")
-        marketplace("marketplace"), 
-        
-        @SerializedName("social_commerce")
-        socialCommerce("social_commerce"), 
-        
-        @SerializedName("ondc")
-        ondc("ondc");
-        
-
-        companion object {
-            fun valueOfOrderingSource(value : String): OrderingSource? {
-                return OrderingSource.values().find {
-                    it.value == value
-                }
-            }
-        }
-    }
 

@@ -41,12 +41,6 @@ class ContentDataManagerClass(val config: PublicConfig, val unauthorizedAction: 
             
                     _relativeUrls["getCredentialsByEntity"] = "/service/public/content/credentials/{entity_type}".substring(1)
             
-                    _relativeUrls["getAllLanguages"] = "/service/public/content/languages".substring(1)
-            
-                    _relativeUrls["getLanguageByLocale"] = "/service/public/content/languages/{locale}".substring(1)
-            
-                    _relativeUrls["getAllTranslatableResources"] = "/service/public/content/translatable/resources".substring(1)
-            
     }
 
     public fun update(updatedUrlMap : HashMap<String,String>){
@@ -161,29 +155,6 @@ class ContentDataManagerClass(val config: PublicConfig, val unauthorizedAction: 
         fullUrl = fullUrl?.replace("{" + "entity_type" +"}",entityType.toString())
         
         return contentApiList?.getCredentialsByEntity(fullUrl,  headers = headers)}
-
-    
-    
-    suspend fun getAllLanguages( headers: Map<String, String> = emptyMap()): Response<HashMap<String,Any>>? {
-        var fullUrl : String? = _relativeUrls["getAllLanguages"]
-        
-        return contentApiList?.getAllLanguages(fullUrl, headers = headers)}
-
-    
-    
-    suspend fun getLanguageByLocale(locale: String, headers: Map<String, String> = emptyMap()): Response<Language>? {
-        var fullUrl : String? = _relativeUrls["getLanguageByLocale"]
-        
-        fullUrl = fullUrl?.replace("{" + "locale" +"}",locale.toString())
-        
-        return contentApiList?.getLanguageByLocale(fullUrl,  headers = headers)}
-
-    
-    
-    suspend fun getAllTranslatableResources( headers: Map<String, String> = emptyMap()): Response<HashMap<String,Any>>? {
-        var fullUrl : String? = _relativeUrls["getAllTranslatableResources"]
-        
-        return contentApiList?.getAllTranslatableResources(fullUrl, headers = headers)}
 
     
     

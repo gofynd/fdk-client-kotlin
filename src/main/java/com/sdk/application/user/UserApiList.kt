@@ -225,24 +225,4 @@ interface UserApiList {
     suspend fun updateUserAttributes(@Url url1: String?   ,@Body body: UpdateUserAttributes, @HeaderMap headers: Map<String, String>? = null)
     : Response<UserAttributes>
     
-    
-    @POST
-    suspend fun sendOTPOnPrimary(@Url url1: String?    ,@Body body: SendPrimaryOTPRequestSchema, @HeaderMap headers: Map<String, String>? = null)
-    : Response<SendOtpSuccess>
-    
-    
-    @POST
-    suspend fun verifyOTPonPrimary(@Url url1: String?    ,@Body body: VerifyPrimaryOTPRequestSchema, @HeaderMap headers: Map<String, String>? = null)
-    : Response<VerifyPrimaryOTPSuccess>
-    
-    
-    @POST
-    suspend fun sendOTPForUpdate(@Url url1: String?    ,@Body body: SendOTPForUpdateRequestSchema, @HeaderMap headers: Map<String, String>? = null)
-    : Response<SendOtpSuccess>
-    
-    
-    @POST
-    suspend fun verifyOTPForUpdate(@Url url1: String?    ,@Body body: VerifyOTPForUpdateRequestSchema, @HeaderMap headers: Map<String, String>? = null)
-    : Response<VerifyOtpSuccess>
-    
 }

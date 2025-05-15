@@ -93,7 +93,7 @@ interface CatalogApiList {
     suspend fun getAppInventory(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Query("item_ids") itemIds: ArrayList<Int>?, @Query("store_ids") storeIds: ArrayList<Int>?, @Query("brand_ids") brandIds: ArrayList<Int>?, @Query("seller_identifiers") sellerIdentifiers: ArrayList<String>?, @Query("timestamp") timestamp: String?, @Query("page_size") pageSize: Int?, @Query("page_id") pageId: String?, @Query("qty_gt") qtyGt: Int?, @Query("qty_lt") qtyLt: Int?, @Query("qty_type") qtyType: String?, @Query("from_date") fromDate: String?, @Query("to_date") toDate: String?, @HeaderMap headers: Map<String, String>? = null)
     : Response<InventoryStockResponseSchema>
     
-    @GET ("/service/platform/catalog/v2.0/company/{company_id}/application/{application_id}/locations")
+    @GET ("/service/platform/catalog/v1.0/company/{company_id}/application/{application_id}/locations")
     suspend fun getAppLocations(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Query("store_type") storeType: String?, @Query("uid") uid: ArrayList<Int>?, @Query("q") q: String?, @Query("stage") stage: String?, @Query("page_no") pageNo: Int?, @Query("page_size") pageSize: Int?, @Query("tags") tags: ArrayList<String>?, @Query("store_types") storeTypes: ArrayList<String>?, @HeaderMap headers: Map<String, String>? = null)
     : Response<LocationListSchema>
     
@@ -270,7 +270,7 @@ interface CatalogApiList {
     : Response<GetInventoriesResponseSchema>
     
     @GET ("/service/platform/catalog/v1.0/company/{company_id}/inventory/bulk/")
-    suspend fun getInventoryBulkUploadHistory(@Path("company_id") companyId: String, @Query("page_no") pageNo: Int?, @Query("page_size") pageSize: Int?, @Query("search") search: String?, @Query("start_date") startDate: String?, @Query("end_date") endDate: String?, @Query("stage") stage: String?, @HeaderMap headers: Map<String, String>? = null)
+    suspend fun getInventoryBulkUploadHistory(@Path("company_id") companyId: String, @Query("page_no") pageNo: Int?, @Query("page_size") pageSize: Int?, @Query("search") search: String?, @HeaderMap headers: Map<String, String>? = null)
     : Response<BulkInventoryGet>
     
     @POST ("/service/platform/catalog/v1.0/company/{company_id}/inventory/bulk/")
@@ -298,11 +298,11 @@ interface CatalogApiList {
     : Response<InventoryConfig>
     
     @GET ("/service/platform/catalog/v1.0/company/{company_id}/inventory/templates/download/")
-    suspend fun downloadInventoryTemplateView(@Path("company_id") companyId: String, @Query("schema_type") schemaType: String, @Query("type") type: String, @HeaderMap headers: Map<String, String>? = null)
+    suspend fun downloadInventoryTemplateView(@Path("company_id") companyId: String, @Query("item_type") itemType: String, @HeaderMap headers: Map<String, String>? = null)
     : Response<ResponseBody>
     
     @GET ("/service/platform/catalog/v1.0/company/{company_id}/inventory/templates/validation/schema/")
-    suspend fun validateProductTemplateSchema(@Path("company_id") companyId: String, @Query("item_type") itemType: String, @Query("schema_type") schemaType: String?, @HeaderMap headers: Map<String, String>? = null)
+    suspend fun validateProductTemplateSchema(@Path("company_id") companyId: String, @Query("item_type") itemType: String, @HeaderMap headers: Map<String, String>? = null)
     : Response<InventoryValidationResponseSchema>
     
     @POST ("/service/platform/catalog/v1.0/company/{company_id}/location/reassign/")
@@ -317,7 +317,7 @@ interface CatalogApiList {
     suspend fun getCompanyBrandDetail(@Path("company_id") companyId: String, @Query("is_active") isActive: Boolean?, @Query("q") q: String?, @Query("page_no") pageNo: Int?, @Query("page_size") pageSize: Int?, @Query("marketplace") marketplace: String?, @HeaderMap headers: Map<String, String>? = null)
     : Response<OptinCompanyBrandDetailsView>
     
-    @GET ("/service/platform/catalog/v2.0/company/{company_id}/marketplaces/company-details/")
+    @GET ("/service/platform/catalog/v1.0/company/{company_id}/marketplaces/company-details/")
     suspend fun getCompanyDetail(@Path("company_id") companyId: String, @HeaderMap headers: Map<String, String>? = null)
     : Response<OptinCompanyDetail>
     
@@ -325,7 +325,7 @@ interface CatalogApiList {
     suspend fun getCompanyMetrics(@Path("company_id") companyId: String, @HeaderMap headers: Map<String, String>? = null)
     : Response<OptinCompanyMetrics>
     
-    @GET ("/service/platform/catalog/v2.0/company/{company_id}/marketplaces/location-details/")
+    @GET ("/service/platform/catalog/v1.0/company/{company_id}/marketplaces/location-details/")
     suspend fun getStoreDetail(@Path("company_id") companyId: String, @Query("q") q: String?, @Query("page_no") pageNo: Int?, @Query("page_size") pageSize: Int?, @HeaderMap headers: Map<String, String>? = null)
     : Response<OptinStoreDetails>
     
@@ -390,7 +390,7 @@ interface CatalogApiList {
     : Response<ProductTagsViewResponseSchema>
     
     @GET ("/service/platform/catalog/v1.0/company/{company_id}/products/templates/")
-    suspend fun listProductTemplate(@Path("company_id") companyId: String, @Query("department") department: String, @Query("page_no") pageNo: Int?, @Query("page_size") pageSize: Int?, @HeaderMap headers: Map<String, String>? = null)
+    suspend fun listProductTemplate(@Path("company_id") companyId: String, @Query("department") department: String, @HeaderMap headers: Map<String, String>? = null)
     : Response<TemplatesResponseSchema>
     
     @GET ("/service/platform/catalog/v1.0/company/{company_id}/products/templates/categories/")
@@ -425,11 +425,11 @@ interface CatalogApiList {
     suspend fun deleteSize(@Path("company_id") companyId: String, @Path("item_id") itemId: String, @Path("size") size: String, @HeaderMap headers: Map<String, String>? = null)
     : Response<ProductSizeDeleteResponseSchema>
     
-    @GET ("/service/platform/catalog/v2.0/company/{company_id}/products/{item_id}/sizes/{size}")
+    @GET ("/service/platform/catalog/v1.0/company/{company_id}/products/{item_id}/sizes/{size}")
     suspend fun getInventoryBySize(@Path("company_id") companyId: String, @Path("item_id") itemId: String, @Path("size") size: String, @Query("page_no") pageNo: Int?, @Query("page_size") pageSize: Int?, @Query("q") q: String?, @Query("sellable") sellable: Boolean?, @HeaderMap headers: Map<String, String>? = null)
     : Response<InventoryResponsePaginated>
     
-    @POST ("/service/platform/catalog/v2.0/company/{company_id}/products/{item_id}/sizes/{size}")
+    @POST ("/service/platform/catalog/v1.0/company/{company_id}/products/{item_id}/sizes/{size}")
     suspend fun addInventory(@Path("company_id") companyId: String, @Path("item_id") itemId: String, @Path("size") size: String,@Body body: InventoryRequestSchema, @HeaderMap headers: Map<String, String>? = null)
     : Response<SuccessResponseSchema>
     
@@ -522,7 +522,7 @@ interface CatalogApiList {
     : Response<ProductListingResponseV2>
     
     @POST ("/service/platform/catalog/v2.0/company/{company_id}/products/")
-    suspend fun createProduct(@Path("company_id") companyId: String,@Body body: ProductCreateSchemaV2, @HeaderMap headers: Map<String, String>? = null)
+    suspend fun createProduct(@Path("company_id") companyId: String,@Body body: ProductCreateUpdateSchemaV2, @HeaderMap headers: Map<String, String>? = null)
     : Response<SuccessResponseObject>
     
     @POST ("/service/platform/catalog/v2.0/company/{company_id}/products/bulk")
@@ -538,7 +538,7 @@ interface CatalogApiList {
     : Response<ProductDownloadsResponseSchema>
     
     @DELETE ("/service/platform/catalog/v2.0/company/{company_id}/products/{item_id}/")
-    suspend fun deleteProduct(@Path("company_id") companyId: String, @Path("item_id") itemId: String, @HeaderMap headers: Map<String, String>? = null)
+    suspend fun deleteProduct(@Path("company_id") companyId: String, @Path("item_id") itemId: String,@Body body: DeleteProductRequestBody, @HeaderMap headers: Map<String, String>? = null)
     : Response<SuccessResponseSchema>
     
     @GET ("/service/platform/catalog/v2.0/company/{company_id}/products/{item_id}/")
@@ -546,7 +546,7 @@ interface CatalogApiList {
     : Response<SingleProductResponseSchema>
     
     @PUT ("/service/platform/catalog/v2.0/company/{company_id}/products/{item_id}/")
-    suspend fun editProduct(@Path("company_id") companyId: String, @Path("item_id") itemId: String,@Body body: ProductUpdateSchemaV2, @HeaderMap headers: Map<String, String>? = null)
+    suspend fun editProduct(@Path("company_id") companyId: String, @Path("item_id") itemId: String,@Body body: ProductCreateUpdateSchemaV2, @HeaderMap headers: Map<String, String>? = null)
     : Response<SuccessResponseSchema>
     
     @GET ("/service/platform/catalog/v2.0/company/{company_id}/products/{item_id}/all_sizes")
@@ -560,14 +560,6 @@ interface CatalogApiList {
     @POST ("/service/platform/catalog/v2.0/company/{company_id}/products/{item_id}/inventory/{seller_identifier}")
     suspend fun updateRealtimeInventory(@Path("company_id") companyId: String, @Path("item_id") itemId: String, @Path("seller_identifier") sellerIdentifier: String,@Body body: InventoryRequestSchemaV2, @HeaderMap headers: Map<String, String>? = null)
     : Response<InventoryUpdateResponseSchema>
-    
-    @POST ("/service/platform/catalog/v1.0/company/{company_id}/store/{store_id}/identifier/{seller_identifier}/price")
-    suspend fun updateLocationPrice(@Path("company_id") companyId: String, @Path("store_id") storeId: String, @Path("seller_identifier") sellerIdentifier: String,@Body body: LocationPriceRequestSchema, @HeaderMap headers: Map<String, String>? = null)
-    : Response<LocationPriceQuantitySuccessResponseSchema>
-    
-    @POST ("/service/platform/catalog/v1.0/company/{company_id}/store/{store_id}/identifier/{seller_identifier}/quantity")
-    suspend fun updateLocationQuantity(@Path("company_id") companyId: String, @Path("store_id") storeId: String, @Path("seller_identifier") sellerIdentifier: String,@Body body: LocationQuantityRequestSchema, @HeaderMap headers: Map<String, String>? = null)
-    : Response<LocationPriceQuantitySuccessResponseSchema>
     
     @GET ("/service/platform/catalog/v1.0/company/{company_id}/channel")
     suspend fun getMarketplaces(@Path("company_id") companyId: String, @HeaderMap headers: Map<String, String>? = null)

@@ -334,6 +334,141 @@ data class CustomMetaFields(
 
              
 /*
+    Model: Sitemap
+*/
+@Parcelize
+data class Sitemap(
+    
+    
+    
+    @SerializedName("priority")
+    var priority: Double?=null,
+    
+    @SerializedName("frequency")
+    var frequency: String?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: ApplicationItemSeoAction
+*/
+@Parcelize
+data class ApplicationItemSeoAction(
+    
+    
+    
+    @SerializedName("page")
+    var page: @RawValue HashMap<String,Any>?=null,
+    
+    @SerializedName("type")
+    var type: String?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: ApplicationItemSeoBreadcrumbs
+*/
+@Parcelize
+data class ApplicationItemSeoBreadcrumbs(
+    
+    
+    
+    @SerializedName("url")
+    var url: String?=null,
+    
+    @SerializedName("action")
+    var action: ApplicationItemSeoAction?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: ApplicationItemSeoMetaTagItem
+*/
+@Parcelize
+data class ApplicationItemSeoMetaTagItem(
+    
+    
+    
+    @SerializedName("key")
+    var key: String?=null,
+    
+    @SerializedName("value")
+    var value: String?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: Metatags
+*/
+@Parcelize
+data class Metatags(
+    
+    
+    
+    @SerializedName("title")
+    var title: String?=null,
+    
+    @SerializedName("items")
+    var items: ArrayList<ApplicationItemSeoMetaTagItem>?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
     Model: ApplicationItemSEO
 */
 @Parcelize
@@ -341,13 +476,33 @@ data class ApplicationItemSEO(
     
     
     
-    @SerializedName("title")
-    var title: @RawValue Any?=null,
-    
     @SerializedName("description")
-    var description: @RawValue Any?=null
+    var description: String?=null,
+    
+    @SerializedName("title")
+    var title: String?=null,
+    
+    @SerializedName("sitemap")
+    var sitemap: Sitemap?=null,
+    
+    @SerializedName("breadcrumbs")
+    var breadcrumbs: ArrayList<ApplicationItemSeoBreadcrumbs>?=null,
+    
+    @SerializedName("meta_tags")
+    var metaTags: ArrayList<Metatags>?=null,
+    
+    @SerializedName("canonical_url")
+    var canonicalUrl: String?=null
     
 ): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+    
     
     
     
@@ -875,9 +1030,14 @@ data class ProductDetail(
     var noOfBoxes: Int?=null,
     
     @SerializedName("country_of_origin")
-    var countryOfOrigin: String?=null
+    var countryOfOrigin: String?=null,
+    
+    @SerializedName("modified_on")
+    var modifiedOn: String?=null
     
 ): Parcelable {
+    
+    
     
     
     
@@ -1165,18 +1325,6 @@ data class SizeChartValues(
     @SerializedName("col_6")
     var col6: String?=null,
     
-    @SerializedName("col_7")
-    var col7: String?=null,
-    
-    @SerializedName("col_8")
-    var col8: String?=null,
-    
-    @SerializedName("col_9")
-    var col9: String?=null,
-    
-    @SerializedName("col_10")
-    var col10: String?=null,
-    
     @SerializedName("col_2")
     var col2: String?=null,
     
@@ -1190,14 +1338,6 @@ data class SizeChartValues(
     var col5: String?=null
     
 ): Parcelable {
-    
-    
-    
-    
-    
-    
-    
-    
     
     
     
@@ -1269,29 +1409,9 @@ data class ColumnHeaders(
     var col1: ColumnHeader?=null,
     
     @SerializedName("col_5")
-    var col5: ColumnHeader?=null,
-    
-    @SerializedName("col_7")
-    var col7: ColumnHeader?=null,
-    
-    @SerializedName("col_8")
-    var col8: ColumnHeader?=null,
-    
-    @SerializedName("col_9")
-    var col9: ColumnHeader?=null,
-    
-    @SerializedName("col_10")
-    var col10: ColumnHeader?=null
+    var col5: ColumnHeader?=null
     
 ): Parcelable {
-    
-    
-    
-    
-    
-    
-    
-    
     
     
     
@@ -1339,14 +1459,9 @@ data class SizeChart(
     var title: String?=null,
     
     @SerializedName("headers")
-    var headers: ColumnHeaders?=null,
-    
-    @SerializedName("id")
-    var id: String?=null
+    var headers: ColumnHeaders?=null
     
 ): Parcelable {
-    
-    
     
     
     
@@ -2139,14 +2254,9 @@ data class Page(
     var type: String?=null,
     
     @SerializedName("size")
-    var size: Int?=null,
-    
-    @SerializedName("page_size")
-    var pageSize: Int?=null
+    var size: Int?=null
     
 ): Parcelable {
-    
-    
     
     
     
@@ -2279,9 +2389,6 @@ data class ProductListingDetail(
     @SerializedName("image_nature")
     var imageNature: String?=null,
     
-    @SerializedName("pinned")
-    var pinned: Boolean?=null,
-    
     @SerializedName("has_variant")
     var hasVariant: Boolean?=null,
     
@@ -2376,7 +2483,10 @@ data class ProductListingDetail(
     var isTryout: Boolean?=null,
     
     @SerializedName("channel")
-    var channel: String?=null
+    var channel: String?=null,
+    
+    @SerializedName("modified_on")
+    var modifiedOn: String?=null
     
 ): Parcelable {
     
@@ -2741,6 +2851,9 @@ data class BrandItem(
     @SerializedName("logo")
     var logo: Media?=null,
     
+    @SerializedName("seo")
+    var seo: ApplicationItemSEO?=null,
+    
     @SerializedName("description")
     var description: String?=null,
     
@@ -2763,6 +2876,8 @@ data class BrandItem(
     var action: ProductListingAction?=null
     
 ): Parcelable {
+    
+    
     
     
     
@@ -2846,9 +2961,14 @@ data class BrandDetailResponseSchema(
     var slug: String?=null,
     
     @SerializedName("_app")
-    var app: @RawValue HashMap<String,Any>?=null
+    var app: @RawValue HashMap<String,Any>?=null,
+    
+    @SerializedName("seo")
+    var seo: ApplicationItemSEO?=null
     
 ): Parcelable {
+    
+    
     
     
     
@@ -3614,9 +3734,14 @@ data class GetCollectionDetailNest(
     var seo: @RawValue HashMap<String,Any>?=null,
     
     @SerializedName("is_visible")
-    var isVisible: Boolean?=null
+    var isVisible: Boolean?=null,
+    
+    @SerializedName("modified_on")
+    var modifiedOn: String?=null
     
 ): Parcelable {
+    
+    
     
     
     
@@ -3828,6 +3953,9 @@ data class CollectionDetailResponseSchema(
     @SerializedName("_schedule")
     var schedule: @RawValue HashMap<String,Any>?=null,
     
+    @SerializedName("modified_on")
+    var modifiedOn: String?=null,
+    
     @SerializedName("query")
     var query: ArrayList<CollectionQuery>?=null,
     
@@ -3895,6 +4023,8 @@ data class CollectionDetailResponseSchema(
     var isVisible: Boolean?=null
     
 ): Parcelable {
+    
+    
     
     
     
@@ -4191,7 +4321,7 @@ data class Store(
     var country: String?=null,
     
     @SerializedName("pincode")
-    var pincode: String?=null,
+    var pincode: Int?=null,
     
     @SerializedName("city")
     var city: String?=null,
@@ -4515,7 +4645,7 @@ data class StoreAddressSchema(
     var address1: String?=null,
     
     @SerializedName("pincode")
-    var pincode: String?=null,
+    var pincode: Int?=null,
     
     @SerializedName("city")
     var city: String?=null,
@@ -5647,7 +5777,7 @@ data class StrategyWiseListingSchemaV3(
     var distance: Int?=null,
     
     @SerializedName("pincode")
-    var pincode: String?=null,
+    var pincode: Int?=null,
     
     @SerializedName("tat")
     var tat: Int?=null,
@@ -6005,10 +6135,10 @@ data class PromiseSchema(
 
              
 /*
-    Model: ProductSizePriceResponseV4
+    Model: ProductSizePriceResponseV3
 */
 @Parcelize
-data class ProductSizePriceResponseV4(
+data class ProductSizePriceResponseV3(
     
     
     
@@ -6070,7 +6200,7 @@ data class ProductSizePriceResponseV4(
     var pricePerUnit: ProductStockUnitPriceV3?=null,
     
     @SerializedName("pincode")
-    var pincode: String?=null,
+    var pincode: Int?=null,
     
     @SerializedName("marketplace_attributes")
     var marketplaceAttributes: ArrayList<MarketPlaceSttributesSchemaV3>?=null,
@@ -6094,14 +6224,9 @@ data class ProductSizePriceResponseV4(
     var inventoryUpdatedOn: String?=null,
     
     @SerializedName("is_serviceable")
-    var isServiceable: Boolean?=null,
-    
-    @SerializedName("total_available_quantity")
-    var totalAvailableQuantity: Int?=null
+    var isServiceable: Boolean?=null
     
 ): Parcelable {
-    
-    
     
     
     
@@ -6232,7 +6357,7 @@ data class ProductSellersPriceResponseV3(
     var pricePerUnit: ProductStockUnitPriceV3?=null,
     
     @SerializedName("pincode")
-    var pincode: String?=null,
+    var pincode: Int?=null,
     
     @SerializedName("marketplace_attributes")
     var marketplaceAttributes: ArrayList<MarketPlaceSttributesSchemaV3>?=null,
@@ -6358,10 +6483,10 @@ data class ProductSizeSellerFilterSchemaV3(
 
              
 /*
-    Model: ProductSizeSellersResponseV4
+    Model: ProductSizeSellersResponseV3
 */
 @Parcelize
-data class ProductSizeSellersResponseV4(
+data class ProductSizeSellersResponseV3(
     
     
     

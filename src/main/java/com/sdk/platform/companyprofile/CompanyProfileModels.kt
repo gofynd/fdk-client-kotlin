@@ -301,7 +301,7 @@ data class GetAddressSchema(
     var countryCode: String?=null,
     
     @SerializedName("pincode")
-    var pincode: String?=null,
+    var pincode: Int?=null,
     
     @SerializedName("address_type")
     var addressType: String?=null,
@@ -511,10 +511,20 @@ data class ErrorResponseSchema(
     @SerializedName("message")
     var message: String?=null,
     
-    @SerializedName("error")
-    var error: @RawValue HashMap<String,Any>?=null
+    @SerializedName("code")
+    var code: String?=null,
+    
+    @SerializedName("status")
+    var status: Int?=null,
+    
+    @SerializedName("meta")
+    var meta: @RawValue HashMap<String,Any>?=null
     
 ): Parcelable {
+    
+    
+    
+    
     
     
     
@@ -528,10 +538,10 @@ data class ErrorResponseSchema(
 
              
 /*
-    Model: CompanyRequestTaxesSchema
+    Model: CompanyTaxesSerializer1
 */
 @Parcelize
-data class CompanyRequestTaxesSchema(
+data class CompanyTaxesSerializer1(
     
     
     
@@ -574,7 +584,7 @@ data class CreateUpdateAddressSchema(
     var countryCode: String?=null,
     
     @SerializedName("pincode")
-    var pincode: String?=null,
+    var pincode: Int?=null,
     
     @SerializedName("address_type")
     var addressType: String?=null,
@@ -655,7 +665,7 @@ data class UpdateCompany(
     var customJson: @RawValue HashMap<String,Any>?=null,
     
     @SerializedName("taxes")
-    var taxes: ArrayList<CompanyRequestTaxesSchema>?=null,
+    var taxes: ArrayList<CompanyTaxesSerializer1>?=null,
     
     @SerializedName("business_details")
     var businessDetails: BusinessDetails?=null,
@@ -1372,14 +1382,9 @@ data class Page(
     var type: String?=null,
     
     @SerializedName("size")
-    var size: Int?=null,
-    
-    @SerializedName("page_size")
-    var pageSize: Int?=null
+    var size: Int?=null
     
 ): Parcelable {
-    
-    
     
     
     
@@ -2008,7 +2013,7 @@ data class AddressSchema(
     var countryCode: String?=null,
     
     @SerializedName("pincode")
-    var pincode: String?=null,
+    var pincode: Int?=null,
     
     @SerializedName("address_type")
     var addressType: String?=null,

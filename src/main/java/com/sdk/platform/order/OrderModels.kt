@@ -1049,33 +1049,6 @@ data class DataUpdates(
 
              
 /*
-    Model: TransitionComments
-*/
-@Parcelize
-data class TransitionComments(
-    
-    
-    
-    @SerializedName("title")
-    var title: String?=null,
-    
-    @SerializedName("message")
-    var message: String?=null
-    
-): Parcelable {
-    
-    
-    
-    
-    
-    
-    
-}
-
-
-
-             
-/*
     Model: ShipmentsRequestSchema
 */
 @Parcelize
@@ -1093,14 +1066,9 @@ data class ShipmentsRequestSchema(
     var products: ArrayList<Products>?=null,
     
     @SerializedName("data_updates")
-    var dataUpdates: DataUpdates?=null,
-    
-    @SerializedName("transition_comments")
-    var transitionComments: ArrayList<TransitionComments>?=null
+    var dataUpdates: DataUpdates?=null
     
 ): Parcelable {
-    
-    
     
     
     
@@ -2682,8 +2650,8 @@ data class HistoryReason(
     @SerializedName("state")
     var state: String?=null,
     
-    @SerializedName("display_name")
-    var displayName: String?=null,
+    @SerializedName("dislay_name")
+    var dislayName: String?=null,
     
     @SerializedName("code")
     var code: Int?=null,
@@ -3275,9 +3243,6 @@ data class OrderDetails(
     @SerializedName("ordering_channel")
     var orderingChannel: String?=null,
     
-    @SerializedName("ordering_source")
-    var orderingSource: String?=null,
-    
     @SerializedName("meta")
     var meta: @RawValue HashMap<String,Any>?=null,
     
@@ -3330,8 +3295,6 @@ data class OrderDetails(
     var charges: ArrayList<PriceAdjustmentCharge>?=null
     
 ): Parcelable {
-    
-    
     
     
     
@@ -4728,9 +4691,14 @@ data class CreateOrderAPI(
     var applicationId: String?=null,
     
     @SerializedName("external_shipment_id")
-    var externalShipmentId: String?=null
+    var externalShipmentId: String?=null,
+    
+    @SerializedName("custom_json")
+    var customJson: @RawValue HashMap<String,Any>?=null
     
 ): Parcelable {
+    
+    
     
     
     
@@ -5871,68 +5839,6 @@ data class VerifyOtpResponseSchema(
 
              
 /*
-    Model: BulkReportsFiltersSchema
-*/
-@Parcelize
-data class BulkReportsFiltersSchema(
-    
-    
-    
-    @SerializedName("bag_status")
-    var bagStatus: String?=null,
-    
-    @SerializedName("operational_status")
-    var operationalStatus: String?=null,
-    
-    @SerializedName("stores")
-    var stores: String?=null,
-    
-    @SerializedName("time_to_dispatch")
-    var timeToDispatch: String?=null,
-    
-    @SerializedName("payment_methods")
-    var paymentMethods: String?=null,
-    
-    @SerializedName("dp_ids")
-    var dpIds: String?=null,
-    
-    @SerializedName("sales_channels")
-    var salesChannels: String?=null,
-    
-    @SerializedName("tags")
-    var tags: String?=null,
-    
-    @SerializedName("lock_status")
-    var lockStatus: String?=null
-    
-): Parcelable {
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-}
-
-
-
-             
-/*
     Model: BulkReportsDownloadRequestSchema
 */
 @Parcelize
@@ -5968,14 +5874,9 @@ data class BulkReportsDownloadRequestSchema(
     var isCrossCompanyEnabled: Boolean?=null,
     
     @SerializedName("custom_filters_for_lane")
-    var customFiltersForLane: @RawValue HashMap<String,Any>?=null,
-    
-    @SerializedName("filters")
-    var filters: BulkReportsFiltersSchema?=null
+    var customFiltersForLane: @RawValue HashMap<String,Any>?=null
     
 ): Parcelable {
-    
-    
     
     
     
@@ -8762,15 +8663,10 @@ data class TransitionConfigCondition(
     @SerializedName("ordering_channel")
     var orderingChannel: String?=null,
     
-    @SerializedName("ordering_source")
-    var orderingSource: String?=null,
-    
     @SerializedName("entity")
     var entity: String?=null
     
 ): Parcelable {
-    
-    
     
     
     
@@ -9554,14 +9450,9 @@ data class Page(
     var type: String?=null,
     
     @SerializedName("size")
-    var size: Int?=null,
-    
-    @SerializedName("page_size")
-    var pageSize: Int?=null
+    var size: Int?=null
     
 ): Parcelable {
-    
-    
     
     
     
@@ -9822,7 +9713,7 @@ data class UserDataInfo(
     var email: String?=null,
     
     @SerializedName("meta")
-    var meta: @RawValue HashMap<String,Any>?=null,
+    var meta: String?=null,
     
     @SerializedName("is_anonymous_user")
     var isAnonymousUser: Boolean?=null,
@@ -9970,14 +9861,9 @@ data class Address(
     var uid: String?=null,
     
     @SerializedName("user_id")
-    var userId: String?=null,
-    
-    @SerializedName("code")
-    var code: String?=null
+    var userId: String?=null
     
 ): Parcelable {
-    
-    
     
     
     
@@ -12030,9 +11916,6 @@ data class ShipmentItem(
     @SerializedName("ordering_channnel")
     var orderingChannnel: String?=null,
     
-    @SerializedName("ordering_source")
-    var orderingSource: String?=null,
-    
     @SerializedName("shipment_id")
     var shipmentId: String?=null,
     
@@ -12064,8 +11947,6 @@ data class ShipmentItem(
     var logisticsMeta: @RawValue HashMap<String,Any>?=null
     
 ): Parcelable {
-    
-    
     
     
     
@@ -12339,15 +12220,10 @@ data class OrderDetailsData(
     @SerializedName("ordering_channel")
     var orderingChannel: String?=null,
     
-    @SerializedName("ordering_source")
-    var orderingSource: String?=null,
-    
     @SerializedName("meta")
     var meta: @RawValue HashMap<String,Any>?=null
     
 ): Parcelable {
-    
-    
     
     
     
@@ -12623,19 +12499,9 @@ data class OrderingStoreDetails(
     var state: String?=null,
     
     @SerializedName("city")
-    var city: String?=null,
-    
-    @SerializedName("name")
-    var name: String?=null,
-    
-    @SerializedName("store_email")
-    var storeEmail: String?=null
+    var city: String?=null
     
 ): Parcelable {
-    
-    
-    
-    
     
     
     
@@ -13415,14 +13281,9 @@ data class OrderBagArticle(
     var size: String?=null,
     
     @SerializedName("tags")
-    var tags: ArrayList<String>?=null,
-    
-    @SerializedName("_custom_json")
-    var customJson: @RawValue HashMap<String,Any>?=null
+    var tags: ArrayList<String>?=null
     
 ): Parcelable {
-    
-    
     
     
     
@@ -14125,14 +13986,9 @@ data class FulfillingStore(
     var state: String?=null,
     
     @SerializedName("city")
-    var city: String?=null,
-    
-    @SerializedName("store_email")
-    var storeEmail: String?=null
+    var city: String?=null
     
 ): Parcelable {
-    
-    
     
     
     
@@ -14816,9 +14672,6 @@ data class OrderData(
     @SerializedName("ordering_channel")
     var orderingChannel: String?=null,
     
-    @SerializedName("ordering_source")
-    var orderingSource: String?=null,
-    
     @SerializedName("order_date")
     var orderDate: String?=null,
     
@@ -14862,8 +14715,6 @@ data class OrderData(
     var currency: CurrencySchema?=null
     
 ): Parcelable {
-    
-    
     
     
     

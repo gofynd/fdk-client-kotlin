@@ -100,65 +100,6 @@ class ConfigurationDataManagerClass(val config: PlatformConfig, val unauthorized
     
     
     
-        
-            
-                
-            
-            
-        
-            
-            
-        
-            
-                
-            
-            
-        
-            
-                
-            
-            
-        
-    /**
-    *
-    * Summary: Paginator for getApplications
-    **/
-    fun getApplicationsPaginator(companyId: String, pageSize: Int?=null, q: String?=null) : Paginator<ApplicationsResponseSchema>{
-        val paginator = Paginator<ApplicationsResponseSchema>()
-        paginator.setCallBack(object : PaginatorCallback<ApplicationsResponseSchema> {
-
-            override suspend fun onNext(
-                onResponse: (Event<ApplicationsResponseSchema>?,FdkError?) -> Unit){
-
-                if (config.oauthClient.isAccessTokenValid()) {
-                    val pageId = paginator.nextId
-                    val pageNo = paginator.pageNo
-                    val pageType = "number"
-                    configurationApiList?.getApplications(
-                    companyId = config.companyId, pageNo = pageNo, pageSize = pageSize, q = q
-                    )?.safeAwait{ response, error ->
-                        response?.let {
-                            val page = response.peekContent()?.page
-                            paginator.setPaginator(hasNext=page?.hasNext?:false,pageNo=if (page?.hasNext == true) ((pageNo ?: 0) + 1) else pageNo)
-                            onResponse.invoke(response,null)
-                        }
-
-                        error?.let {
-                            onResponse.invoke(null,error)
-                        }
-                    }
-
-                } else {
-                    null
-                }
-            }
-
-
-    })
-        return paginator
-    }
-    
-    
     suspend fun getCurrencies( headers: Map<String, String> = emptyMap())
     : Response<CurrenciesResponseSchema>? {
 

@@ -183,7 +183,7 @@ interface CommunicationApiList {
     
     @GET ("/service/platform/communication/v1.0/company/{company_id}/application/{application_id}/sms/system-templates")
     suspend fun getSystemSmsTemplates(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @HeaderMap headers: Map<String, String>? = null)
-    : Response<SystemSmsTemplates>
+    : Response<ArrayList<SystemSmsTemplates>>
     
     @GET ("/service/platform/communication/v1.0/company/{company_id}/application/{application_id}/sms/templates/{id}")
     suspend fun getSmsTemplateById(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Path("id") id: String, @HeaderMap headers: Map<String, String>? = null)

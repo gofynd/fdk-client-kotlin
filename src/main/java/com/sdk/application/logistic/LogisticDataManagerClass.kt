@@ -21,9 +21,17 @@ class LogisticDataManagerClass(val config: ApplicationConfig, val unauthorizedAc
             
                     _relativeUrls["getPincodeCity"] = "/service/application/logistics/v1.0/pincode/{pincode}".substring(1)
             
+                    _relativeUrls["getTatProduct"] = "/service/application/logistics/v1.0/".substring(1)
+            
                     _relativeUrls["getAllCountries"] = "/service/application/logistics/v1.0/country-list".substring(1)
             
+                    _relativeUrls["getPincodeZones"] = "/service/application/logistics/v1.0/pincode/zones".substring(1)
+            
+                    _relativeUrls["getOptimalLocations"] = "/service/application/logistics/v1.0/reassign_stores".substring(1)
+            
                     _relativeUrls["getCourierPartners"] = "/service/application/logistics/v1.0/company/{company_id}/application/{application_id}/shipment/courier-partners".substring(1)
+            
+                    _relativeUrls["getLocations"] = "/service/application/logistics/v1.0/locations".substring(1)
             
                     _relativeUrls["getCountries"] = "/service/application/logistics/v2.0/countries".substring(1)
             
@@ -72,7 +80,7 @@ class LogisticDataManagerClass(val config: ApplicationConfig, val unauthorizedAc
         return retrofitHttpClient?.initializeRestClient(LogisticApiList::class.java) as? LogisticApiList
     }
     
-    suspend fun getPincodeCity(pincode: String, headers: Map<String, String> = emptyMap()): Response<PincodeDetailsResult>? {
+    suspend fun getPincodeCity(pincode: String, headers: Map<String, String> = emptyMap()): Response<PincodeDetails>? {
         var fullUrl : String? = _relativeUrls["getPincodeCity"]
         
         fullUrl = fullUrl?.replace("{" + "pincode" +"}",pincode.toString())
@@ -81,10 +89,31 @@ class LogisticDataManagerClass(val config: ApplicationConfig, val unauthorizedAc
 
     
     
-    suspend fun getAllCountries( headers: Map<String, String> = emptyMap()): Response<CountryResult>? {
+    suspend fun getTatProduct(body: TATViewDetails, headers: Map<String, String> = emptyMap()): Response<TATViewResult>? {
+        var fullUrl : String? = _relativeUrls["getTatProduct"]
+        
+        return logisticApiList?.getTatProduct(fullUrl, body = body,headers = headers)}
+
+    
+    
+    suspend fun getAllCountries( headers: Map<String, String> = emptyMap()): Response<CountryListResult>? {
         var fullUrl : String? = _relativeUrls["getAllCountries"]
         
         return logisticApiList?.getAllCountries(fullUrl, headers = headers)}
+
+    
+    
+    suspend fun getPincodeZones(body: GetZoneFromPincodeViewDetails, headers: Map<String, String> = emptyMap()): Response<GetZoneFromPincodeViewResult>? {
+        var fullUrl : String? = _relativeUrls["getPincodeZones"]
+        
+        return logisticApiList?.getPincodeZones(fullUrl, body = body,headers = headers)}
+
+    
+    
+    suspend fun getOptimalLocations(body: ReAssignStoreDetails, headers: Map<String, String> = emptyMap()): Response<ReAssignStoreResult>? {
+        var fullUrl : String? = _relativeUrls["getOptimalLocations"]
+        
+        return logisticApiList?.getOptimalLocations(fullUrl, body = body,headers = headers)}
 
     
     
@@ -99,10 +128,17 @@ class LogisticDataManagerClass(val config: ApplicationConfig, val unauthorizedAc
 
     
     
-    suspend fun getCountries(onboarding: Boolean?=null,pageNo: Int?=null,pageSize: Int?=null,q: String?=null,hierarchy: String?=null,phoneCode: String?=null, headers: Map<String, String> = emptyMap()): Response<GetCountries>? {
+    suspend fun getLocations(xApplicationId: String,xApplicationData: String,country: String?=null,state: String?=null,city: String?=null,pincode: Int?=null,sector: String?=null,pageNo: Int?=null,pageSize: Int?=null, headers: Map<String, String> = emptyMap()): Response<GetStoreResult>? {
+        var fullUrl : String? = _relativeUrls["getLocations"]
+        
+        return logisticApiList?.getLocations(fullUrl,   xApplicationId = xApplicationId,  xApplicationData = xApplicationData,  country = country,  state = state,  city = city,  pincode = pincode,  sector = sector,  pageNo = pageNo,  pageSize = pageSize,headers = headers)}
+
+    
+    
+    suspend fun getCountries(onboarding: Boolean?=null,pageNo: Int?=null,pageSize: Int?=null,q: String?=null,hierarchy: String?=null, headers: Map<String, String> = emptyMap()): Response<GetCountries>? {
         var fullUrl : String? = _relativeUrls["getCountries"]
         
-        return logisticApiList?.getCountries(fullUrl,   onboarding = onboarding,  pageNo = pageNo,  pageSize = pageSize,  q = q,  hierarchy = hierarchy,  phoneCode = phoneCode,headers = headers)}
+        return logisticApiList?.getCountries(fullUrl,   onboarding = onboarding,  pageNo = pageNo,  pageSize = pageSize,  q = q,  hierarchy = hierarchy,headers = headers)}
 
     
     
@@ -115,30 +151,30 @@ class LogisticDataManagerClass(val config: ApplicationConfig, val unauthorizedAc
 
     
     
-    suspend fun getDeliveryPromise(xLocationDetail: String,xApplicationData: String,pageNo: Int?=null,pageSize: Int?=null, headers: Map<String, String> = emptyMap()): Response<GetPromiseDetails>? {
+    suspend fun getDeliveryPromise(pageNo: Int?=null,pageSize: Int?=null, headers: Map<String, String> = emptyMap()): Response<GetPromiseDetails>? {
         var fullUrl : String? = _relativeUrls["getDeliveryPromise"]
         
-        return logisticApiList?.getDeliveryPromise(fullUrl,   xLocationDetail = xLocationDetail,  xApplicationData = xApplicationData,  pageNo = pageNo,  pageSize = pageSize,headers = headers)}
+        return logisticApiList?.getDeliveryPromise(fullUrl,   pageNo = pageNo,  pageSize = pageSize,headers = headers)}
 
     
     
-    suspend fun getLocalities(localityType: String,country: String?=null,state: String?=null,city: String?=null,pageNo: Int?=null,pageSize: Int?=null,q: String?=null,sector: String?=null, headers: Map<String, String> = emptyMap()): Response<GetLocalitiesApp>? {
+    suspend fun getLocalities(localityType: String,country: String?=null,state: String?=null,city: String?=null,pageNo: Int?=null,pageSize: Int?=null,q: String?=null, headers: Map<String, String> = emptyMap()): Response<GetLocalities>? {
         var fullUrl : String? = _relativeUrls["getLocalities"]
         
         fullUrl = fullUrl?.replace("{" + "locality_type" +"}",localityType.toString())
         
-        return logisticApiList?.getLocalities(fullUrl,    country = country,  state = state,  city = city,  pageNo = pageNo,  pageSize = pageSize,  q = q,  sector = sector,headers = headers)}
+        return logisticApiList?.getLocalities(fullUrl,    country = country,  state = state,  city = city,  pageNo = pageNo,  pageSize = pageSize,  q = q,headers = headers)}
 
     
     
-    suspend fun getLocality(localityType: String,localityValue: String,country: String?=null,state: String?=null,city: String?=null,sector: String?=null, headers: Map<String, String> = emptyMap()): Response<GetLocalityApp>? {
+    suspend fun getLocality(localityType: String,localityValue: String,country: String?=null,state: String?=null,city: String?=null, headers: Map<String, String> = emptyMap()): Response<GetLocality>? {
         var fullUrl : String? = _relativeUrls["getLocality"]
         
         fullUrl = fullUrl?.replace("{" + "locality_type" +"}",localityType.toString())
         
         fullUrl = fullUrl?.replace("{" + "locality_value" +"}",localityValue.toString())
         
-        return logisticApiList?.getLocality(fullUrl,     country = country,  state = state,  city = city,  sector = sector,headers = headers)}
+        return logisticApiList?.getLocality(fullUrl,     country = country,  state = state,  city = city,headers = headers)}
 
     
     

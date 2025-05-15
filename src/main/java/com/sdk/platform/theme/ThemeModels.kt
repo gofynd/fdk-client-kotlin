@@ -479,41 +479,9 @@ data class AvailablePageSectionMetaAttributes(
     
     
     @SerializedName("attributes")
-    var attributes: @RawValue HashMap<String,Any>?=null,
-    
-    @SerializedName("canvas")
-    var canvas: CanvasItem?=null
+    var attributes: @RawValue HashMap<String,Any>?=null
     
 ): Parcelable {
-    
-    
-    
-    
-    
-    
-    
-}
-
-
-
-             
-/*
-    Model: CanvasItem
-*/
-@Parcelize
-data class CanvasItem(
-    
-    
-    
-    @SerializedName("value")
-    var value: String?=null,
-    
-    @SerializedName("label")
-    var label: String?=null
-    
-): Parcelable {
-    
-    
     
     
     
@@ -725,14 +693,8 @@ data class AvailablePageSchemaSections(
     @SerializedName("label")
     var label: String?=null,
     
-    @SerializedName("canvas")
-    var canvas: String?=null,
-    
     @SerializedName("props")
     var props: @RawValue HashMap<String,Any>?=null,
-    
-    @SerializedName("custom_css")
-    var customCss: String?=null,
     
     @SerializedName("blocks")
     var blocks: @RawValue ArrayList<HashMap<String,Any>>?=null,
@@ -747,10 +709,6 @@ data class AvailablePageSchemaSections(
     var source: SectionSource?=null
     
 ): Parcelable {
-    
-    
-    
-    
     
     
     
@@ -2055,56 +2013,9 @@ data class GlobalSchema(
     
     
     @SerializedName("props")
-    var props: ArrayList<Prop>?=null
+    var props: @RawValue ArrayList<HashMap<String,Any>>?=null
     
 ): Parcelable {
-    
-    
-    
-    
-    
-}
-
-
-
-             
-/*
-    Model: Prop
-*/
-@Parcelize
-data class Prop(
-    
-    
-    
-    @SerializedName("type")
-    var type: String?=null,
-    
-    @SerializedName("category")
-    var category: String?=null,
-    
-    @SerializedName("value")
-    var value: String?=null,
-    
-    @SerializedName("id")
-    var id: String?=null,
-    
-    @SerializedName("label")
-    var label: String?=null,
-    
-    @SerializedName("info")
-    var info: String?=null
-    
-): Parcelable {
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
     
     
     

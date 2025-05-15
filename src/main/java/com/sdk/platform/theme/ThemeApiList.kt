@@ -34,7 +34,7 @@ interface ThemeApiList {
     : Response<AvailablePageSchema>
     
     @GET ("/service/platform/theme/v1.0/company/{company_id}/application/{application_id}/fonts")
-    suspend fun getFonts(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Query("capability") capability: String?, @HeaderMap headers: Map<String, String>? = null)
+    suspend fun getFonts(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @HeaderMap headers: Map<String, String>? = null)
     : Response<FontsSchema>
     
     @GET ("/service/platform/theme/v2.0/company/{company_id}/themes")
