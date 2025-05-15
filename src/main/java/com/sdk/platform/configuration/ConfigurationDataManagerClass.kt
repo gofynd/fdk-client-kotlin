@@ -75,8 +75,8 @@ class ConfigurationDataManagerClass(val config: PlatformConfig, val unauthorized
     
     
     
-    suspend fun createApplication(body: CreateApplicationRequest, headers: Map<String, String> = emptyMap())
-    : Response<CreateAppResponse>? {
+    suspend fun createApplication(body: CreateApplicationRequestSchema, headers: Map<String, String> = emptyMap())
+    : Response<CreateAppResponseSchema>? {
 
         return if (config.oauthClient.isAccessTokenValid()) {
             configurationApiList?.createApplication(
@@ -88,7 +88,7 @@ class ConfigurationDataManagerClass(val config: PlatformConfig, val unauthorized
     
     
     suspend fun getApplications(pageNo: Int?=null,pageSize: Int?=null,q: String?=null, headers: Map<String, String> = emptyMap())
-    : Response<ApplicationsResponse>? {
+    : Response<ApplicationsResponseSchema>? {
 
         return if (config.oauthClient.isAccessTokenValid()) {
             configurationApiList?.getApplications(
@@ -100,8 +100,67 @@ class ConfigurationDataManagerClass(val config: PlatformConfig, val unauthorized
     
     
     
+        
+            
+                
+            
+            
+        
+            
+            
+        
+            
+                
+            
+            
+        
+            
+                
+            
+            
+        
+    /**
+    *
+    * Summary: Paginator for getApplications
+    **/
+    fun getApplicationsPaginator(companyId: String, pageSize: Int?=null, q: String?=null) : Paginator<ApplicationsResponseSchema>{
+        val paginator = Paginator<ApplicationsResponseSchema>()
+        paginator.setCallBack(object : PaginatorCallback<ApplicationsResponseSchema> {
+
+            override suspend fun onNext(
+                onResponse: (Event<ApplicationsResponseSchema>?,FdkError?) -> Unit){
+
+                if (config.oauthClient.isAccessTokenValid()) {
+                    val pageId = paginator.nextId
+                    val pageNo = paginator.pageNo
+                    val pageType = "number"
+                    configurationApiList?.getApplications(
+                    companyId = config.companyId, pageNo = pageNo, pageSize = pageSize, q = q
+                    )?.safeAwait{ response, error ->
+                        response?.let {
+                            val page = response.peekContent()?.page
+                            paginator.setPaginator(hasNext=page?.hasNext?:false,pageNo=if (page?.hasNext == true) ((pageNo ?: 0) + 1) else pageNo)
+                            onResponse.invoke(response,null)
+                        }
+
+                        error?.let {
+                            onResponse.invoke(null,error)
+                        }
+                    }
+
+                } else {
+                    null
+                }
+            }
+
+
+    })
+        return paginator
+    }
+    
+    
     suspend fun getCurrencies( headers: Map<String, String> = emptyMap())
-    : Response<CurrenciesResponse>? {
+    : Response<CurrenciesResponseSchema>? {
 
         return if (config.oauthClient.isAccessTokenValid()) {
             configurationApiList?.getCurrencies(
@@ -112,8 +171,8 @@ class ConfigurationDataManagerClass(val config: PlatformConfig, val unauthorized
     }
     
     
-    suspend fun getDomainAvailibility(body: DomainSuggestionsRequest, headers: Map<String, String> = emptyMap())
-    : Response<DomainSuggestionsResponse>? {
+    suspend fun getDomainAvailibility(body: DomainSuggestionsRequestSchema, headers: Map<String, String> = emptyMap())
+    : Response<DomainSuggestionsResponseSchema>? {
 
         return if (config.oauthClient.isAccessTokenValid()) {
             configurationApiList?.getDomainAvailibility(
@@ -125,7 +184,7 @@ class ConfigurationDataManagerClass(val config: PlatformConfig, val unauthorized
     
     
     suspend fun getBrandsByCompany(q: String?=null, headers: Map<String, String> = emptyMap())
-    : Response<BrandsByCompanyResponse>? {
+    : Response<BrandsByCompanyResponseSchema>? {
 
         return if (config.oauthClient.isAccessTokenValid()) {
             configurationApiList?.getBrandsByCompany(
@@ -136,8 +195,8 @@ class ConfigurationDataManagerClass(val config: PlatformConfig, val unauthorized
     }
     
     
-    suspend fun getCompanyByBrands(pageNo: Int?=null,pageSize: Int?=null,body: CompanyByBrandsRequest, headers: Map<String, String> = emptyMap())
-    : Response<CompanyByBrandsResponse>? {
+    suspend fun getCompanyByBrands(pageNo: Int?=null,pageSize: Int?=null,body: CompanyByBrandsRequestSchema, headers: Map<String, String> = emptyMap())
+    : Response<CompanyByBrandsResponseSchema>? {
 
         return if (config.oauthClient.isAccessTokenValid()) {
             configurationApiList?.getCompanyByBrands(
@@ -148,8 +207,8 @@ class ConfigurationDataManagerClass(val config: PlatformConfig, val unauthorized
     }
     
     
-    suspend fun getStoreByBrands(pageNo: Int?=null,pageSize: Int?=null,body: StoreByBrandsRequest, headers: Map<String, String> = emptyMap())
-    : Response<StoreByBrandsResponse>? {
+    suspend fun getStoreByBrands(pageNo: Int?=null,pageSize: Int?=null,body: StoreByBrandsRequestSchema, headers: Map<String, String> = emptyMap())
+    : Response<StoreByBrandsResponseSchema>? {
 
         return if (config.oauthClient.isAccessTokenValid()) {
             configurationApiList?.getStoreByBrands(
@@ -173,7 +232,7 @@ class ConfigurationDataManagerClass(val config: PlatformConfig, val unauthorized
     
     
     suspend fun getOtherSellerApplicationById(id: String, headers: Map<String, String> = emptyMap())
-    : Response<OptedApplicationResponse>? {
+    : Response<OptedApplicationResponseSchema>? {
 
         return if (config.oauthClient.isAccessTokenValid()) {
             configurationApiList?.getOtherSellerApplicationById(
@@ -185,11 +244,23 @@ class ConfigurationDataManagerClass(val config: PlatformConfig, val unauthorized
     
     
     suspend fun optOutFromApplication(id: String,body: OptOutInventory, headers: Map<String, String> = emptyMap())
-    : Response<SuccessMessageResponse>? {
+    : Response<SuccessMessageResponseSchema>? {
 
         return if (config.oauthClient.isAccessTokenValid()) {
             configurationApiList?.optOutFromApplication(
         companyId = config.companyId,id = id, body = body,headers = headers)
+        } else {
+            null
+        }
+    }
+    
+    
+    suspend fun getCurrencyExchangeRates(currencyCode: String?=null,exchangeCurrencyCode: String?=null,exchangeCountryCode: String?=null, headers: Map<String, String> = emptyMap())
+    : Response<CurrencyExchangeResponseV2>? {
+
+        return if (config.oauthClient.isAccessTokenValid()) {
+            configurationApiList?.getCurrencyExchangeRates(
+        currencyCode = currencyCode,exchangeCurrencyCode = exchangeCurrencyCode,exchangeCountryCode = exchangeCountryCode,companyId = config.companyId, headers = headers)
         } else {
             null
         }
@@ -210,7 +281,7 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     }
     
     
-    suspend fun updateBuildConfig(platformType: String,body: MobileAppConfigRequest, headers: Map<String, String> = emptyMap())
+    suspend fun updateBuildConfig(platformType: String,body: MobileAppConfigRequestSchema, headers: Map<String, String> = emptyMap())
     : Response<MobileAppConfiguration>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 configurationApiList?.updateBuildConfig(companyId = config.companyId ,applicationId = applicationId ,platformType = platformType, body = body,headers = headers)
@@ -231,7 +302,7 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     
     
     suspend fun getAppFeatures( headers: Map<String, String> = emptyMap())
-    : Response<AppFeatureResponse>? {
+    : Response<AppFeatureResponseSchema>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 configurationApiList?.getAppFeatures(companyId = config.companyId ,applicationId = applicationId , headers = headers)
         } else {
@@ -240,7 +311,7 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     }
     
     
-    suspend fun updateAppFeatures(body: AppFeatureRequest, headers: Map<String, String> = emptyMap())
+    suspend fun updateAppFeatures(body: AppFeatureRequestSchema, headers: Map<String, String> = emptyMap())
     : Response<AppFeature>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 configurationApiList?.updateAppFeatures(companyId = config.companyId ,applicationId = applicationId , body = body,headers = headers)
@@ -250,7 +321,7 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     }
     
     
-    suspend fun modifyAppFeatures(body: AppFeatureRequest, headers: Map<String, String> = emptyMap())
+    suspend fun modifyAppFeatures(body: AppFeatureRequestSchema, headers: Map<String, String> = emptyMap())
     : Response<AppFeature>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 configurationApiList?.modifyAppFeatures(companyId = config.companyId ,applicationId = applicationId , body = body,headers = headers)
@@ -301,7 +372,7 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     
     
     suspend fun getAppApiTokens( headers: Map<String, String> = emptyMap())
-    : Response<TokenResponse>? {
+    : Response<TokenResponseSchema>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 configurationApiList?.getAppApiTokens(companyId = config.companyId ,applicationId = applicationId , headers = headers)
         } else {
@@ -310,8 +381,8 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     }
     
     
-    suspend fun updateAppApiTokens(body: TokenResponse, headers: Map<String, String> = emptyMap())
-    : Response<TokenResponse>? {
+    suspend fun updateAppApiTokens(body: TokenResponseSchema, headers: Map<String, String> = emptyMap())
+    : Response<TokenResponseSchema>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 configurationApiList?.updateAppApiTokens(companyId = config.companyId ,applicationId = applicationId , body = body,headers = headers)
         } else {
@@ -321,7 +392,7 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     
     
     suspend fun getAppCompanies(uid: Int?=null,pageNo: Int?=null,pageSize: Int?=null, headers: Map<String, String> = emptyMap())
-    : Response<CompaniesResponse>? {
+    : Response<CompaniesResponseSchema>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 configurationApiList?.getAppCompanies(companyId = config.companyId ,applicationId = applicationId ,uid = uid,pageNo = pageNo,pageSize = pageSize, headers = headers)
         } else {
@@ -331,7 +402,7 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     
     
     suspend fun getAppStores(pageNo: Int?=null,pageSize: Int?=null, headers: Map<String, String> = emptyMap())
-    : Response<StoresResponse>? {
+    : Response<StoresResponseSchema>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 configurationApiList?.getAppStores(companyId = config.companyId ,applicationId = applicationId ,pageNo = pageNo,pageSize = pageSize, headers = headers)
         } else {
@@ -391,7 +462,7 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     
     
     suspend fun getAppSupportedCurrency( headers: Map<String, String> = emptyMap())
-    : Response<AppCurrencyResponse>? {
+    : Response<AppCurrencyResponseSchema>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 configurationApiList?.getAppSupportedCurrency(companyId = config.companyId ,applicationId = applicationId , headers = headers)
         } else {
@@ -400,7 +471,7 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     }
     
     
-    suspend fun getOrderingStoresByFilter(pageNo: Int?=null,pageSize: Int?=null,body: FilterOrderingStoreRequest, headers: Map<String, String> = emptyMap())
+    suspend fun getOrderingStoresByFilter(pageNo: Int?=null,pageSize: Int?=null,body: FilterOrderingStoreRequestSchema, headers: Map<String, String> = emptyMap())
     : Response<OrderingStores>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 configurationApiList?.getOrderingStoresByFilter(companyId = config.companyId ,applicationId = applicationId ,pageNo = pageNo,pageSize = pageSize, body = body,headers = headers)
@@ -431,7 +502,7 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     
     
     suspend fun getStaffOrderingStores(pageNo: Int?=null,pageSize: Int?=null,q: String?=null, headers: Map<String, String> = emptyMap())
-    : Response<OrderingStoresResponse>? {
+    : Response<OrderingStoresResponseSchema>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 configurationApiList?.getStaffOrderingStores(companyId = config.companyId ,applicationId = applicationId ,pageNo = pageNo,pageSize = pageSize,q = q, headers = headers)
         } else {
@@ -440,8 +511,8 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     }
     
     
-    suspend fun getOrderingStoreCookie(body: OrderingStoreSelectRequest, headers: Map<String, String> = emptyMap())
-    : Response<SuccessMessageResponse>? {
+    suspend fun getOrderingStoreCookie(body: OrderingStoreSelectRequestSchema, headers: Map<String, String> = emptyMap())
+    : Response<SuccessMessageResponseSchema>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 configurationApiList?.getOrderingStoreCookie(companyId = config.companyId ,applicationId = applicationId , body = body,headers = headers)
         } else {
@@ -451,7 +522,7 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     
     
     suspend fun removeOrderingStoreCookie( headers: Map<String, String> = emptyMap())
-    : Response<SuccessMessageResponse>? {
+    : Response<SuccessMessageResponseSchema>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 configurationApiList?.removeOrderingStoreCookie(companyId = config.companyId ,applicationId = applicationId , headers = headers)
         } else {
@@ -461,7 +532,7 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     
     
     suspend fun getDomains( headers: Map<String, String> = emptyMap())
-    : Response<DomainsResponse>? {
+    : Response<DomainsResponseSchema>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 configurationApiList?.getDomains(companyId = config.companyId ,applicationId = applicationId , headers = headers)
         } else {
@@ -470,7 +541,7 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     }
     
     
-    suspend fun addDomain(body: DomainAddRequest, headers: Map<String, String> = emptyMap())
+    suspend fun addDomain(body: DomainAddRequestSchema, headers: Map<String, String> = emptyMap())
     : Response<Domain>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 configurationApiList?.addDomain(companyId = config.companyId ,applicationId = applicationId , body = body,headers = headers)
@@ -481,7 +552,7 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     
     
     suspend fun removeDomainById(id: String, headers: Map<String, String> = emptyMap())
-    : Response<SuccessMessageResponse>? {
+    : Response<SuccessMessageResponseSchema>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 configurationApiList?.removeDomainById(companyId = config.companyId ,applicationId = applicationId ,id = id, headers = headers)
         } else {
@@ -490,8 +561,8 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     }
     
     
-    suspend fun changeDomainType(body: UpdateDomainTypeRequest, headers: Map<String, String> = emptyMap())
-    : Response<DomainsResponse>? {
+    suspend fun changeDomainType(body: UpdateDomainTypeRequestSchema, headers: Map<String, String> = emptyMap())
+    : Response<DomainsResponseSchema>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 configurationApiList?.changeDomainType(companyId = config.companyId ,applicationId = applicationId , body = body,headers = headers)
         } else {
@@ -500,8 +571,8 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     }
     
     
-    suspend fun getDomainStatus(body: DomainStatusRequest, headers: Map<String, String> = emptyMap())
-    : Response<DomainStatusResponse>? {
+    suspend fun getDomainStatus(body: DomainStatusRequestSchema, headers: Map<String, String> = emptyMap())
+    : Response<DomainStatusResponseSchema>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 configurationApiList?.getDomainStatus(companyId = config.companyId ,applicationId = applicationId , body = body,headers = headers)
         } else {
@@ -520,6 +591,7 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
             null
         }
     }
+    
     
     
     

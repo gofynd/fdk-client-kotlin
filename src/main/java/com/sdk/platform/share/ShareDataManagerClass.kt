@@ -94,7 +94,7 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     
     
     suspend fun getShortLinkClickStats(surlId: String, headers: Map<String, String> = emptyMap())
-    : Response<ClickStatsResponse>? {
+    : Response<ClickStatsResult>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 shareApiList?.getShortLinkClickStats(surlId = surlId,companyId = config.companyId ,applicationId = applicationId , headers = headers)
         } else {
