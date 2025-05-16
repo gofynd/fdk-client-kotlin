@@ -14,10 +14,10 @@ import com.google.gson.annotations.SerializedName
 
              
 /*
-    Model: ApplicationResponseSchema
+    Model: ApplicationResponse
 */
 @Parcelize
-data class ApplicationResponseSchema(
+data class ApplicationResponse(
     
     
     
@@ -439,10 +439,10 @@ data class NotFound(
 
              
 /*
-    Model: BadRequestSchema
+    Model: BadRequest
 */
 @Parcelize
-data class BadRequestSchema(
+data class BadRequest(
     
     
     

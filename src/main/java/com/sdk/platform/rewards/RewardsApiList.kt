@@ -11,7 +11,7 @@ interface RewardsApiList {
     
     @GET ("/service/platform/rewards/v1.0/company/{company_id}/application/{application_id}/giveaways")
     suspend fun showGiveaways(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Query("page_id") pageId: String, @Query("page_size") pageSize: Int, @HeaderMap headers: Map<String, String>? = null)
-    : Response<ListGiveaway>
+    : Response<GiveawayResponse>
     
     @POST ("/service/platform/rewards/v1.0/company/{company_id}/application/{application_id}/giveaways")
     suspend fun saveGiveAway(@Path("company_id") companyId: String, @Path("application_id") applicationId: String,@Body body: Giveaway, @HeaderMap headers: Map<String, String>? = null)
@@ -54,7 +54,7 @@ interface RewardsApiList {
     : Response<ConfigurationRes>
     
     @POST ("/service/platform/rewards/v1.0/company/{company_id}/application/{application_id}/configuration/")
-    suspend fun setRewardsConfiguration(@Path("company_id") companyId: String, @Path("application_id") applicationId: String,@Body body: SetConfiguration, @HeaderMap headers: Map<String, String>? = null)
+    suspend fun setRewardsConfiguration(@Path("company_id") companyId: String, @Path("application_id") applicationId: String,@Body body: ConfigurationRequest, @HeaderMap headers: Map<String, String>? = null)
     : Response<SetConfigurationRes>
     
 }

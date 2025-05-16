@@ -9,17 +9,21 @@ import com.sdk.platform.*
 
 interface ServiceabilityApiList {
     
+    @GET ("/service/platform/logistics/v1.0/company/{company_id}/localities/{locality_type}")
+    suspend fun getLocalities(@Path("company_id") companyId: String, @Path("locality_type") localityType: String, @Query("country") country: ArrayList<String>?, @Query("state") state: ArrayList<String>?, @Query("city") city: ArrayList<String>?, @Query("page_no") pageNo: Int?, @Query("page_size") pageSize: Int?, @Query("q") q: String?, @HeaderMap headers: Map<String, String>? = null)
+    : Response<GetLocalities>
+    
     @GET ("/service/platform/logistics/v2.0/company/{company_id}/zones")
     suspend fun getZones(@Path("company_id") companyId: String, @Query("page_no") pageNo: Int?, @Query("page_size") pageSize: Int?, @Query("is_active") isActive: Boolean?, @Query("application_ids") applicationIds: String?, @Query("q") q: String?, @Query("country_iso_code") countryIsoCode: String?, @Query("state") state: String?, @Query("city") city: String?, @Query("pincode") pincode: String?, @Query("sector") sector: String?, @HeaderMap headers: Map<String, String>? = null)
-    : Response<ListViewResult>
+    : Response<ListViewResponse>
     
     @POST ("/service/platform/logistics/v2.0/company/{company_id}/zones")
     suspend fun createZone(@Path("company_id") companyId: String,@Body body: CreateZoneData, @HeaderMap headers: Map<String, String>? = null)
-    : Response<ZoneResult>
+    : Response<ZoneResponse>
     
     @PUT ("/service/platform/logistics/v2.0/company/{company_id}/zones/{zone_id}")
     suspend fun updateZoneById(@Path("company_id") companyId: String, @Path("zone_id") zoneId: String,@Body body: UpdateZoneData, @HeaderMap headers: Map<String, String>? = null)
-    : Response<ZoneSuccessResult>
+    : Response<ZoneSuccessResponse>
     
     @GET ("/service/platform/logistics/v2.0/company/{company_id}/zones/{zone_id}")
     suspend fun getZoneById(@Path("company_id") companyId: String, @Path("zone_id") zoneId: String, @HeaderMap headers: Map<String, String>? = null)
@@ -27,59 +31,55 @@ interface ServiceabilityApiList {
     
     @GET ("/service/platform/logistics/v1.0/company/{company_id}/logistics/stores")
     suspend fun getAllStores(@Path("company_id") companyId: String, @HeaderMap headers: Map<String, String>? = null)
-    : Response<GetStoresViewResult>
+    : Response<GetStoresViewResponse>
     
     @POST ("/service/platform/logistics/v1.0/company/{company_id}/application/{application_id}/pincode-mop-update")
     suspend fun updatePincodeMopView(@Path("company_id") companyId: String, @Path("application_id") applicationId: String,@Body body: PincodeMopData, @HeaderMap headers: Map<String, String>? = null)
-    : Response<PincodeMOPResult>
+    : Response<PincodeMOPresponse>
     
     @POST ("/service/platform/logistics/v1.0/company/{company_id}/application/{application_id}/pincode-mop-bulk-update")
     suspend fun updatePincodeBulkView(@Path("company_id") companyId: String, @Path("application_id") applicationId: String,@Body body: PincodeMopBulkData, @HeaderMap headers: Map<String, String>? = null)
-    : Response<PincodeBulkViewResult>
+    : Response<PincodeBulkViewResponse>
     
     @POST ("/service/platform/logistics/v1.0/company/{company_id}/application/{application_id}/pincode-mop-data")
-    suspend fun updatePincodeCoDListing(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Query("page_number") pageNumber: Int?, @Query("page_size") pageSize: Int?,@Body body: PincodeCodStatusListingDetails, @HeaderMap headers: Map<String, String>? = null)
-    : Response<PincodeCodStatusListingResult>
+    suspend fun updatePincodeCoDListing(@Path("company_id") companyId: String, @Path("application_id") applicationId: String,@Body body: PincodeCodStatusListingRequest, @HeaderMap headers: Map<String, String>? = null)
+    : Response<PincodeCodStatusListingResponse>
     
     @POST ("/service/platform/logistics/v1.0/company/{company_id}/application/{application_id}/history")
-    suspend fun updatePincodeAuditHistory(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Query("page_number") pageNumber: Int?, @Query("page_size") pageSize: Int?,@Body body: PincodeMopUpdateAuditHistoryDetails, @HeaderMap headers: Map<String, String>? = null)
-    : Response<PincodeMopUpdateAuditHistoryResultData>
+    suspend fun updatePincodeAuditHistory(@Path("company_id") companyId: String, @Path("application_id") applicationId: String,@Body body: PincodeMopUpdateAuditHistoryRequest, @HeaderMap headers: Map<String, String>? = null)
+    : Response<PincodeMopUpdateAuditHistoryResponseData>
     
     @POST ("/service/platform/logistics/v1.0/company/{company_id}/courier-partner/account")
-    suspend fun createCourierPartnerAccount(@Path("company_id") companyId: String,@Body body: CourierAccountDetailsBody, @HeaderMap headers: Map<String, String>? = null)
+    suspend fun createCourierPartnerAccount(@Path("company_id") companyId: String,@Body body: CourierAccountRequestBody, @HeaderMap headers: Map<String, String>? = null)
     : Response<CourierAccount>
     
     @GET ("/service/platform/logistics/v1.0/company/{company_id}/courier-partner/account")
     suspend fun getCourierPartnerAccounts(@Path("company_id") companyId: String, @Query("page_no") pageNo: Int?, @Query("page_size") pageSize: Int?, @Query("stage") stage: String?, @Query("payment_mode") paymentMode: String?, @Query("transport_type") transportType: String?, @HeaderMap headers: Map<String, String>? = null)
-    : Response<CompanyCourierPartnerAccountListResult>
+    : Response<CompanyCourierPartnerAccountListResponse>
     
     @PUT ("/service/platform/logistics/v1.0/company/{company_id}/courier-partner/account/{account_id}")
-    suspend fun updateCourierPartnerAccount(@Path("company_id") companyId: String, @Path("account_id") accountId: String,@Body body: CourierAccountUpdateDetails, @HeaderMap headers: Map<String, String>? = null)
-    : Response<CourierAccountResult>
+    suspend fun updateCourierPartnerAccount(@Path("company_id") companyId: String, @Path("account_id") accountId: String,@Body body: CourierAccount, @HeaderMap headers: Map<String, String>? = null)
+    : Response<CourierAccountResponse>
     
     @GET ("/service/platform/logistics/v1.0/company/{company_id}/courier-partner/account/{account_id}")
     suspend fun getCourierPartnerAccount(@Path("company_id") companyId: String, @Path("account_id") accountId: String, @HeaderMap headers: Map<String, String>? = null)
-    : Response<CourierAccountResult>
+    : Response<CourierAccountResponse>
     
     @PUT ("/service/platform/logistics/v1.0/company/{company_id}/application/{application_id}/courier-partner/rules/{rule_id}")
     suspend fun updateCourierRule(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Path("rule_id") ruleId: String,@Body body: CourierPartnerRule, @HeaderMap headers: Map<String, String>? = null)
-    : Response<CourierPartnerRuleResult>
+    : Response<CourierPartnerRuleResponse>
     
     @GET ("/service/platform/logistics/v1.0/company/{company_id}/application/{application_id}/courier-partner/rules/{rule_id}")
     suspend fun getCourierPartnerRule(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Path("rule_id") ruleId: String, @HeaderMap headers: Map<String, String>? = null)
-    : Response<CourierPartnerRuleResult>
+    : Response<CourierPartnerRuleResponse>
     
     @POST ("/service/platform/logistics/v1.0/company/{company_id}/application/{application_id}/courier-partner/rules")
     suspend fun createCourierPartnerRule(@Path("company_id") companyId: String, @Path("application_id") applicationId: String,@Body body: CourierPartnerRule, @HeaderMap headers: Map<String, String>? = null)
-    : Response<CourierPartnerRuleResult>
+    : Response<CourierPartnerRuleResponse>
     
     @GET ("/service/platform/logistics/v1.0/company/{company_id}/application/{application_id}/courier-partner/rules")
     suspend fun getCourierPartnerRules(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Query("page_no") pageNo: Int?, @Query("page_size") pageSize: Int?, @Query("status") status: String?, @HeaderMap headers: Map<String, String>? = null)
-    : Response<CourierPartnerRulesListResult>
-    
-    @POST ("/service/platform/logistics/v1.0/company/{company_id}/application/{application_id}/shipment/courier-partners")
-    suspend fun getCourierPartners(@Path("company_id") companyId: String, @Path("application_id") applicationId: String,@Body body: ShipmentCourierPartnerDetails, @HeaderMap headers: Map<String, String>? = null)
-    : Response<ShipmentCourierPartnerResult>
+    : Response<CourierPartnerRulesListResponse>
     
     @PUT ("/service/platform/logistics/v1.0/company/{company_id}/configuration")
     suspend fun updateCompanyConfiguration(@Path("company_id") companyId: String,@Body body: CompanyConfig, @HeaderMap headers: Map<String, String>? = null)
@@ -98,20 +98,20 @@ interface ServiceabilityApiList {
     : Response<ApplicationConfig>
     
     @POST ("/service/platform/logistics/v1.0/company/{company_id}/courier-partner/{extension_id}/scheme/{scheme_id}/tat")
-    suspend fun bulkTat(@Path("company_id") companyId: String, @Path("extension_id") extensionId: String, @Path("scheme_id") schemeId: String,@Body body: BulkRegionJobDetails, @HeaderMap headers: Map<String, String>? = null)
-    : Response<BulkRegionResultItemData>
+    suspend fun bulkTat(@Path("company_id") companyId: String, @Path("extension_id") extensionId: String, @Path("scheme_id") schemeId: String,@Body body: BulkRegionJobSerializer, @HeaderMap headers: Map<String, String>? = null)
+    : Response<BulkRegionResponseItemData>
     
     @GET ("/service/platform/logistics/v1.0/company/{company_id}/courier-partner/{extension_id}/scheme/{scheme_id}/tat")
     suspend fun getBulkTat(@Path("company_id") companyId: String, @Path("extension_id") extensionId: String, @Path("scheme_id") schemeId: String, @Query("page_no") pageNo: Int?, @Query("page_size") pageSize: Int?, @Query("batch_id") batchId: String?, @Query("action") action: String?, @Query("status") status: String?, @Query("country") country: String?, @Query("region") region: String?, @Query("start_date") startDate: String?, @Query("end_date") endDate: String?, @HeaderMap headers: Map<String, String>? = null)
-    : Response<BulkRegionResult>
+    : Response<BulkRegionResponse>
     
     @PATCH ("/service/platform/logistics/v1.0/company/{company_id}/application/{application_id}/selfship")
-    suspend fun patchApplicationServiceabilitySelfShipment(@Path("company_id") companyId: String, @Path("application_id") applicationId: String,@Body body: SelfShipResult, @HeaderMap headers: Map<String, String>? = null)
-    : Response<ApplicationSelfShipConfigResult>
+    suspend fun patchApplicationServiceabilitySelfShipment(@Path("company_id") companyId: String, @Path("application_id") applicationId: String,@Body body: SelfShipResponse, @HeaderMap headers: Map<String, String>? = null)
+    : Response<ApplicationSelfShipConfigResponse>
     
     @GET ("/service/platform/logistics/v1.0/company/{company_id}/application/{application_id}/selfship")
     suspend fun getApplicationServiceabilitySelfShipment(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @HeaderMap headers: Map<String, String>? = null)
-    : Response<ApplicationSelfShipConfigResult>
+    : Response<ApplicationSelfShipConfigResponse>
     
     @GET ("/service/platform/logistics/v1.0/company/{company_id}/application/{application_id}/store/configuration")
     suspend fun getApplicationConfig(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @HeaderMap headers: Map<String, String>? = null)
@@ -127,27 +127,27 @@ interface ServiceabilityApiList {
     
     @GET ("/service/platform/logistics/v1.0/company/{company_id}/application/{application_id}/store/rules")
     suspend fun getStoreRules(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Query("page_no") pageNo: Int?, @Query("page_size") pageSize: Int?, @Query("status") status: String?, @HeaderMap headers: Map<String, String>? = null)
-    : Response<GetStoreRulesApiResult>
+    : Response<GetStoreRulesApiResponse>
     
     @POST ("/service/platform/logistics/v1.0/company/{company_id}/application/{application_id}/store/rules")
-    suspend fun createStoreRules(@Path("company_id") companyId: String, @Path("application_id") applicationId: String,@Body body: CreateStoreRuleDetailsSchema, @HeaderMap headers: Map<String, String>? = null)
-    : Response<StoreRuleResultSchema>
+    suspend fun createStoreRules(@Path("company_id") companyId: String, @Path("application_id") applicationId: String,@Body body: CreateStoreRuleRequestSchema, @HeaderMap headers: Map<String, String>? = null)
+    : Response<StoreRuleResponseSchema>
     
     @GET ("/service/platform/logistics/v1.0/company/{company_id}/application/{application_id}/store/rules/{rule_uid}")
     suspend fun getStoreRule(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Path("rule_uid") ruleUid: String, @HeaderMap headers: Map<String, String>? = null)
     : Response<StoreRuleDataSchema>
     
     @PUT ("/service/platform/logistics/v1.0/company/{company_id}/application/{application_id}/store/rules/{rule_uid}")
-    suspend fun updateStoreRules(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Path("rule_uid") ruleUid: String,@Body body: CreateStoreRuleDetailsSchema, @HeaderMap headers: Map<String, String>? = null)
-    : Response<StoreRuleUpdateResultSchema>
+    suspend fun updateStoreRules(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Path("rule_uid") ruleUid: String,@Body body: CreateStoreRuleRequestSchema, @HeaderMap headers: Map<String, String>? = null)
+    : Response<StoreRuleUpdateResponseSchema>
     
     @POST ("/service/platform/logistics/v1.0/company/{company_id}/courier-partner/{extension_id}/scheme/{scheme_id}/serviceability/bulk")
-    suspend fun bulkServiceability(@Path("company_id") companyId: String, @Path("extension_id") extensionId: String, @Path("scheme_id") schemeId: String,@Body body: BulkRegionJobDetails, @HeaderMap headers: Map<String, String>? = null)
-    : Response<BulkRegionResultItemData>
+    suspend fun bulkServiceability(@Path("company_id") companyId: String, @Path("extension_id") extensionId: String, @Path("scheme_id") schemeId: String,@Body body: BulkRegionJobSerializer, @HeaderMap headers: Map<String, String>? = null)
+    : Response<BulkRegionResponseItemData>
     
     @GET ("/service/platform/logistics/v1.0/company/{company_id}/courier-partner/{extension_id}/scheme/{scheme_id}/serviceability/bulk")
     suspend fun getBulkServiceability(@Path("company_id") companyId: String, @Path("extension_id") extensionId: String, @Path("scheme_id") schemeId: String, @Query("page_no") pageNo: Int?, @Query("page_size") pageSize: Int?, @Query("batch_id") batchId: String?, @Query("action") action: String?, @Query("status") status: String?, @Query("country") country: String?, @Query("region") region: String?, @Query("start_date") startDate: String?, @Query("end_date") endDate: String?, @HeaderMap headers: Map<String, String>? = null)
-    : Response<BulkRegionResult>
+    : Response<BulkRegionResponse>
     
     @GET ("/service/platform/logistics/v1.0/company/{company_id}/courier-partner/{extension_id}/scheme/{scheme_id}/serviceability/region/{region_id}")
     suspend fun getServiceability(@Path("company_id") companyId: String, @Path("extension_id") extensionId: String, @Path("scheme_id") schemeId: String, @Path("region_id") regionId: String, @HeaderMap headers: Map<String, String>? = null)
@@ -159,7 +159,7 @@ interface ServiceabilityApiList {
     
     @POST ("/service/platform/logistics/v1.0/company/{company_id}/packaging-materials")
     suspend fun createPackageMaterial(@Path("company_id") companyId: String,@Body body: PackageMaterial, @HeaderMap headers: Map<String, String>? = null)
-    : Response<PackageMaterialResult>
+    : Response<PackageMaterialResponse>
     
     @GET ("/service/platform/logistics/v1.0/company/{company_id}/packaging-materials")
     suspend fun getPackageMaterialList(@Path("company_id") companyId: String, @Query("page_no") pageNo: Int?, @Query("page_size") pageSize: Int?, @Query("q") q: String?, @Query("size") size: String?, @Query("package_type") packageType: String?, @HeaderMap headers: Map<String, String>? = null)
@@ -167,7 +167,7 @@ interface ServiceabilityApiList {
     
     @POST ("/service/platform/logistics/v1.0/company/{company_id}/packaging-material/rules")
     suspend fun createPackageMaterialRule(@Path("company_id") companyId: String,@Body body: PackageRule, @HeaderMap headers: Map<String, String>? = null)
-    : Response<PackageRuleResult>
+    : Response<PackageRuleResponse>
     
     @GET ("/service/platform/logistics/v1.0/company/{company_id}/packaging-material/rules")
     suspend fun getPackageMaterialRules(@Path("company_id") companyId: String, @Query("page_no") pageNo: Int?, @Query("page_size") pageSize: Int?, @Query("is_active") isActive: String?, @HeaderMap headers: Map<String, String>? = null)
@@ -175,26 +175,26 @@ interface ServiceabilityApiList {
     
     @PATCH ("/service/platform/logistics/v1.0/company/{company_id}/packaging-material/rules/{rule_id}")
     suspend fun updatePackageMaterialRule(@Path("company_id") companyId: String, @Path("rule_id") ruleId: String,@Body body: PackageRule, @HeaderMap headers: Map<String, String>? = null)
-    : Response<PackageRuleResult>
+    : Response<PackageRuleResponse>
     
     @GET ("/service/platform/logistics/v1.0/company/{company_id}/packaging-material/rules/{rule_id}")
     suspend fun getPackageMaterialRule(@Path("company_id") companyId: String, @Path("rule_id") ruleId: String, @HeaderMap headers: Map<String, String>? = null)
-    : Response<PackageRuleResult>
+    : Response<PackageRuleResponse>
     
     @PATCH ("/service/platform/logistics/v1.0/company/{company_id}/packaging-material/{package_material_id}")
     suspend fun updatePackageMaterials(@Path("company_id") companyId: String, @Path("package_material_id") packageMaterialId: String,@Body body: PackageMaterial, @HeaderMap headers: Map<String, String>? = null)
-    : Response<PackageMaterialResult>
+    : Response<PackageMaterialResponse>
     
     @GET ("/service/platform/logistics/v1.0/company/{company_id}/packaging-material/{package_material_id}")
     suspend fun getPackageMaterials(@Path("company_id") companyId: String, @Path("package_material_id") packageMaterialId: String, @HeaderMap headers: Map<String, String>? = null)
-    : Response<PackageMaterialResult>
+    : Response<PackageMaterialResponse>
     
     @PUT ("/service/platform/logistics/v1.0/company/{company_id}/application/{application_id}/courier-partner/rules/priority")
-    suspend fun updateCourierPartnerRulePriority(@Path("company_id") companyId: String, @Path("application_id") applicationId: String,@Body body: RulePriorityDetails, @HeaderMap headers: Map<String, String>? = null)
-    : Response<RulePriorityResult>
+    suspend fun updateCourierPartnerRulePriority(@Path("company_id") companyId: String, @Path("application_id") applicationId: String,@Body body: RulePriorityRequest, @HeaderMap headers: Map<String, String>? = null)
+    : Response<RulePriorityResponse>
     
     @POST ("/service/platform/logistics/v1.0/company/{company_id}/optimal-locations")
-    suspend fun getOptimalLocations(@Path("company_id") companyId: String,@Body body: OptimlLocationsDetailsSchema, @HeaderMap headers: Map<String, String>? = null)
-    : Response<OptimalLocationsResult>
+    suspend fun getOptimalLocations(@Path("company_id") companyId: String,@Body body: OptimlLocationsRequestSchema, @HeaderMap headers: Map<String, String>? = null)
+    : Response<OptimalLocationsResponse>
     
 }
