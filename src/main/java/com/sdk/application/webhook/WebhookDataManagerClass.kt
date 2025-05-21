@@ -56,7 +56,7 @@ class WebhookDataManagerClass(val config: ApplicationConfig, val unauthorizedAct
         return retrofitHttpClient?.initializeRestClient(WebhookApiList::class.java) as? WebhookApiList
     }
     
-    suspend fun saveClickEvent(body: ClickEventRequest, headers: Map<String, String> = emptyMap()): Response<ClickEventResponse>? {
+    suspend fun saveClickEvent(body: ClickEventPayload, headers: Map<String, String> = emptyMap()): Response<ClickEventDetails>? {
         var fullUrl : String? = _relativeUrls["saveClickEvent"]
         
         return webhookApiList?.saveClickEvent(fullUrl, body = body,headers = headers)}
