@@ -14,10 +14,10 @@ import com.google.gson.annotations.SerializedName
 
              
 /*
-    Model: ApplicationAboutResponseSchema
+    Model: ApplicationAboutResponse
 */
 @Parcelize
-data class ApplicationAboutResponseSchema(
+data class ApplicationAboutResponse(
     
     
     
@@ -284,10 +284,10 @@ data class SupportedLanguage(
 
              
 /*
-    Model: LanguageResponseSchema
+    Model: LanguageResponse
 */
 @Parcelize
-data class LanguageResponseSchema(
+data class LanguageResponse(
     
     
     
@@ -306,10 +306,10 @@ data class LanguageResponseSchema(
 
              
 /*
-    Model: AppStaffResponseSchema
+    Model: AppStaffResponse
 */
 @Parcelize
-data class AppStaffResponseSchema(
+data class AppStaffResponse(
     
     
     
@@ -328,10 +328,10 @@ data class AppStaffResponseSchema(
 
              
 /*
-    Model: AppStaffListResponseSchema
+    Model: AppStaffListResponse
 */
 @Parcelize
-data class AppStaffListResponseSchema(
+data class AppStaffListResponse(
     
     
     
@@ -355,10 +355,10 @@ data class AppStaffListResponseSchema(
 
              
 /*
-    Model: OrderingStoreSelectRequestSchema
+    Model: OrderingStoreSelectRequest
 */
 @Parcelize
-data class OrderingStoreSelectRequestSchema(
+data class OrderingStoreSelectRequest(
     
     
     
@@ -466,10 +466,10 @@ data class AppStaff(
 
              
 /*
-    Model: AppTokenResponseSchema
+    Model: AppTokenResponse
 */
 @Parcelize
-data class AppTokenResponseSchema(
+data class AppTokenResponse(
     
     
     
@@ -1515,9 +1515,6 @@ data class AppFeature(
     @SerializedName("order")
     var order: OrderFeature?=null,
     
-    @SerializedName("delivery_strategy")
-    var deliveryStrategy: DeliveryStrategy?=null,
-    
     @SerializedName("_id")
     var id: String?=null,
     
@@ -1534,8 +1531,6 @@ data class AppFeature(
     var v: Int?=null
     
 ): Parcelable {
-    
-    
     
     
     
@@ -1998,32 +1993,10 @@ data class OrderFeature(
 
              
 /*
-    Model: DeliveryStrategy
+    Model: AppFeatureResponse
 */
 @Parcelize
-data class DeliveryStrategy(
-    
-    
-    
-    @SerializedName("value")
-    var value: String?=null
-    
-): Parcelable {
-    
-    
-    
-    
-    
-}
-
-
-
-             
-/*
-    Model: AppFeatureResponseSchema
-*/
-@Parcelize
-data class AppFeatureResponseSchema(
+data class AppFeatureResponse(
     
     
     
@@ -2524,10 +2497,10 @@ data class NotFound(
 
              
 /*
-    Model: InvalidPayloadRequestSchema
+    Model: InvalidPayloadRequest
 */
 @Parcelize
-data class InvalidPayloadRequestSchema(
+data class InvalidPayloadRequest(
     
     
     
@@ -2546,10 +2519,32 @@ data class InvalidPayloadRequestSchema(
 
              
 /*
-    Model: SuccessMessageResponseSchema
+    Model: UnhandledError
 */
 @Parcelize
-data class SuccessMessageResponseSchema(
+data class UnhandledError(
+    
+    
+    
+    @SerializedName("message")
+    var message: String?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: SuccessMessageResponse
+*/
+@Parcelize
+data class SuccessMessageResponse(
     
     
     
@@ -2576,7 +2571,7 @@ data class CompanyAboutAddress(
     
     
     @SerializedName("pincode")
-    var pincode: String?=null,
+    var pincode: Int?=null,
     
     @SerializedName("address1")
     var address1: String?=null,
@@ -2725,14 +2720,9 @@ data class Page(
     var type: String?=null,
     
     @SerializedName("size")
-    var size: Int?=null,
-    
-    @SerializedName("page_size")
-    var pageSize: Int?=null
+    var size: Int?=null
     
 ): Parcelable {
-    
-    
     
     
     
@@ -3506,10 +3496,10 @@ data class ApplicationDetail(
 
              
 /*
-    Model: CurrenciesResponseSchema
+    Model: CurrenciesResponse
 */
 @Parcelize
-data class CurrenciesResponseSchema(
+data class CurrenciesResponse(
     
     
     
@@ -3555,10 +3545,10 @@ data class DefaultCurrency(
 
              
 /*
-    Model: AppCurrencyResponseSchema
+    Model: AppCurrencyResponse
 */
 @Parcelize
-data class AppCurrencyResponseSchema(
+data class AppCurrencyResponse(
     
     
     
@@ -3649,7 +3639,7 @@ data class OptedStoreAddress(
     var address2: String?=null,
     
     @SerializedName("pincode")
-    var pincode: String?=null,
+    var pincode: Int?=null,
     
     @SerializedName("country")
     var country: String?=null,
@@ -3710,7 +3700,7 @@ data class OrderingStore(
     var storeCode: String?=null,
     
     @SerializedName("pincode")
-    var pincode: String?=null,
+    var pincode: Int?=null,
     
     @SerializedName("code")
     var code: String?=null

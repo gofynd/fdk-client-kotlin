@@ -479,41 +479,9 @@ data class AvailablePageSectionMetaAttributes(
     
     
     @SerializedName("attributes")
-    var attributes: @RawValue HashMap<String,Any>?=null,
-    
-    @SerializedName("canvas")
-    var canvas: CanvasItem?=null
+    var attributes: @RawValue HashMap<String,Any>?=null
     
 ): Parcelable {
-    
-    
-    
-    
-    
-    
-    
-}
-
-
-
-             
-/*
-    Model: CanvasItem
-*/
-@Parcelize
-data class CanvasItem(
-    
-    
-    
-    @SerializedName("value")
-    var value: String?=null,
-    
-    @SerializedName("label")
-    var label: String?=null
-    
-): Parcelable {
-    
-    
     
     
     
@@ -725,14 +693,8 @@ data class AvailablePageSchemaSections(
     @SerializedName("label")
     var label: String?=null,
     
-    @SerializedName("canvas")
-    var canvas: String?=null,
-    
     @SerializedName("props")
     var props: @RawValue HashMap<String,Any>?=null,
-    
-    @SerializedName("custom_css")
-    var customCss: String?=null,
     
     @SerializedName("blocks")
     var blocks: @RawValue ArrayList<HashMap<String,Any>>?=null,
@@ -743,8 +705,8 @@ data class AvailablePageSchemaSections(
     @SerializedName("predicate")
     var predicate: AvailablePagePredicate?=null,
     
-    @SerializedName("__source")
-    var source: SectionSource?=null
+    @SerializedName("source")
+    var source: String?=null
     
 ): Parcelable {
     
@@ -755,42 +717,6 @@ data class AvailablePageSchemaSections(
     
     
     
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-}
-
-
-
-             
-/*
-    Model: SectionSource
-*/
-@Parcelize
-data class SectionSource(
-    
-    
-    
-    @SerializedName("id")
-    var id: String?=null,
-    
-    @SerializedName("bundle_name")
-    var bundleName: String?=null,
-    
-    @SerializedName("type")
-    var type: String?=null
-    
-): Parcelable {
     
     
     
@@ -1329,10 +1255,10 @@ data class ThemesSchema(
 
              
 /*
-    Model: ThemeUpgradable
+    Model: ThemeUpgradableResponse
 */
 @Parcelize
-data class ThemeUpgradable(
+data class ThemeUpgradableResponse(
     
     
     
@@ -2055,56 +1981,9 @@ data class GlobalSchema(
     
     
     @SerializedName("props")
-    var props: ArrayList<Prop>?=null
+    var props: @RawValue ArrayList<HashMap<String,Any>>?=null
     
 ): Parcelable {
-    
-    
-    
-    
-    
-}
-
-
-
-             
-/*
-    Model: Prop
-*/
-@Parcelize
-data class Prop(
-    
-    
-    
-    @SerializedName("type")
-    var type: String?=null,
-    
-    @SerializedName("category")
-    var category: String?=null,
-    
-    @SerializedName("value")
-    var value: String?=null,
-    
-    @SerializedName("id")
-    var id: String?=null,
-    
-    @SerializedName("label")
-    var label: String?=null,
-    
-    @SerializedName("info")
-    var info: String?=null
-    
-): Parcelable {
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
     
     
     
@@ -2750,10 +2629,10 @@ data class ThemeVersions(
 
              
 /*
-    Model: DummyTheme
+    Model: DummyResponse
 */
 @Parcelize
-data class DummyTheme(
+data class DummyResponse(
     
     
     

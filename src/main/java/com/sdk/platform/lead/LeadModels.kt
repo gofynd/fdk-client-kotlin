@@ -14,10 +14,10 @@ import com.google.gson.annotations.SerializedName
 
              
 /*
-    Model: GeneralConfigDetails
+    Model: GeneralConfigResponse
 */
 @Parcelize
-data class GeneralConfigDetails(
+data class GeneralConfigResponse(
     
     
     
@@ -245,14 +245,9 @@ data class Page(
     var type: String?=null,
     
     @SerializedName("size")
-    var size: Int?=null,
-    
-    @SerializedName("page_size")
-    var pageSize: Int?=null
+    var size: Int?=null
     
 ): Parcelable {
-    
-    
     
     
     
