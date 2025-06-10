@@ -14,10 +14,10 @@ import com.google.gson.annotations.SerializedName
 
              
 /*
-    Model: ApplicationAboutResponse
+    Model: ApplicationAboutResponseSchema
 */
 @Parcelize
-data class ApplicationAboutResponse(
+data class ApplicationAboutResponseSchema(
     
     
     
@@ -284,10 +284,10 @@ data class SupportedLanguage(
 
              
 /*
-    Model: LanguageResponse
+    Model: LanguageResponseSchema
 */
 @Parcelize
-data class LanguageResponse(
+data class LanguageResponseSchema(
     
     
     
@@ -306,10 +306,10 @@ data class LanguageResponse(
 
              
 /*
-    Model: AppStaffResponse
+    Model: AppStaffResponseSchema
 */
 @Parcelize
-data class AppStaffResponse(
+data class AppStaffResponseSchema(
     
     
     
@@ -328,10 +328,10 @@ data class AppStaffResponse(
 
              
 /*
-    Model: AppStaffListResponse
+    Model: AppStaffListResponseSchema
 */
 @Parcelize
-data class AppStaffListResponse(
+data class AppStaffListResponseSchema(
     
     
     
@@ -355,10 +355,10 @@ data class AppStaffListResponse(
 
              
 /*
-    Model: OrderingStoreSelectRequest
+    Model: OrderingStoreSelectRequestSchema
 */
 @Parcelize
-data class OrderingStoreSelectRequest(
+data class OrderingStoreSelectRequestSchema(
     
     
     
@@ -466,10 +466,10 @@ data class AppStaff(
 
              
 /*
-    Model: AppTokenResponse
+    Model: AppTokenResponseSchema
 */
 @Parcelize
-data class AppTokenResponse(
+data class AppTokenResponseSchema(
     
     
     
@@ -1481,6 +1481,28 @@ data class RegistrationPageFeature(
 
              
 /*
+    Model: FulfillmentOption
+*/
+@Parcelize
+data class FulfillmentOption(
+    
+    
+    
+    @SerializedName("count")
+    var count: Int?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
     Model: AppFeature
 */
 @Parcelize
@@ -1515,6 +1537,12 @@ data class AppFeature(
     @SerializedName("order")
     var order: OrderFeature?=null,
     
+    @SerializedName("fulfillment_option")
+    var fulfillmentOption: FulfillmentOption?=null,
+    
+    @SerializedName("delivery_strategy")
+    var deliveryStrategy: DeliveryStrategy?=null,
+    
     @SerializedName("_id")
     var id: String?=null,
     
@@ -1531,6 +1559,10 @@ data class AppFeature(
     var v: Int?=null
     
 ): Parcelable {
+    
+    
+    
+    
     
     
     
@@ -1993,10 +2025,32 @@ data class OrderFeature(
 
              
 /*
-    Model: AppFeatureResponse
+    Model: DeliveryStrategy
 */
 @Parcelize
-data class AppFeatureResponse(
+data class DeliveryStrategy(
+    
+    
+    
+    @SerializedName("value")
+    var value: String?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: AppFeatureResponseSchema
+*/
+@Parcelize
+data class AppFeatureResponseSchema(
     
     
     
@@ -2497,10 +2551,10 @@ data class NotFound(
 
              
 /*
-    Model: InvalidPayloadRequest
+    Model: InvalidPayloadRequestSchema
 */
 @Parcelize
-data class InvalidPayloadRequest(
+data class InvalidPayloadRequestSchema(
     
     
     
@@ -2519,32 +2573,10 @@ data class InvalidPayloadRequest(
 
              
 /*
-    Model: UnhandledError
+    Model: SuccessMessageResponseSchema
 */
 @Parcelize
-data class UnhandledError(
-    
-    
-    
-    @SerializedName("message")
-    var message: String?=null
-    
-): Parcelable {
-    
-    
-    
-    
-    
-}
-
-
-
-             
-/*
-    Model: SuccessMessageResponse
-*/
-@Parcelize
-data class SuccessMessageResponse(
+data class SuccessMessageResponseSchema(
     
     
     
@@ -2571,7 +2603,7 @@ data class CompanyAboutAddress(
     
     
     @SerializedName("pincode")
-    var pincode: Int?=null,
+    var pincode: String?=null,
     
     @SerializedName("address1")
     var address1: String?=null,
@@ -2720,9 +2752,14 @@ data class Page(
     var type: String?=null,
     
     @SerializedName("size")
-    var size: Int?=null
+    var size: Int?=null,
+    
+    @SerializedName("page_size")
+    var pageSize: Int?=null
     
 ): Parcelable {
+    
+    
     
     
     
@@ -3496,10 +3533,10 @@ data class ApplicationDetail(
 
              
 /*
-    Model: CurrenciesResponse
+    Model: CurrenciesResponseSchema
 */
 @Parcelize
-data class CurrenciesResponse(
+data class CurrenciesResponseSchema(
     
     
     
@@ -3545,10 +3582,10 @@ data class DefaultCurrency(
 
              
 /*
-    Model: AppCurrencyResponse
+    Model: AppCurrencyResponseSchema
 */
 @Parcelize
-data class AppCurrencyResponse(
+data class AppCurrencyResponseSchema(
     
     
     
@@ -3639,7 +3676,7 @@ data class OptedStoreAddress(
     var address2: String?=null,
     
     @SerializedName("pincode")
-    var pincode: Int?=null,
+    var pincode: String?=null,
     
     @SerializedName("country")
     var country: String?=null,
@@ -3700,7 +3737,7 @@ data class OrderingStore(
     var storeCode: String?=null,
     
     @SerializedName("pincode")
-    var pincode: Int?=null,
+    var pincode: String?=null,
     
     @SerializedName("code")
     var code: String?=null

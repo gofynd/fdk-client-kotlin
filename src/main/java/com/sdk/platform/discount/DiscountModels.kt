@@ -500,10 +500,10 @@ data class BulkDiscount(
 
              
 /*
-    Model: FileJobResponse
+    Model: FileJobResponseSchema
 */
 @Parcelize
-data class FileJobResponse(
+data class FileJobResponseSchema(
     
     
     
@@ -592,10 +592,10 @@ data class FileJobResponse(
 
              
 /*
-    Model: FileJobRequest
+    Model: FileJobRequestSchema
 */
 @Parcelize
-data class FileJobRequest(
+data class FileJobRequestSchema(
     
     
     
@@ -696,10 +696,10 @@ data class DownloadFileJob(
 
              
 /*
-    Model: CancelJobResponse
+    Model: CancelJobResponseSchema
 */
 @Parcelize
-data class CancelJobResponse(
+data class CancelJobResponseSchema(
     
     
     
@@ -744,9 +744,14 @@ data class Page(
     var type: String?=null,
     
     @SerializedName("size")
-    var size: Int?=null
+    var size: Int?=null,
+    
+    @SerializedName("page_size")
+    var pageSize: Int?=null
     
 ): Parcelable {
+    
+    
     
     
     
