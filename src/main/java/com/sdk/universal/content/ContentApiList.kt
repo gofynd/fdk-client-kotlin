@@ -27,11 +27,6 @@ interface ContentApiList {
     
     
     @GET
-    suspend fun getAnalyticsTags(@Url url1: String?   , @HeaderMap headers: Map<String, String>? = null)
-    : Response<AnalyticsTagsSchema>
-    
-    
-    @GET
     suspend fun getCustomPage(@Url url1: String?    , @HeaderMap headers: Map<String, String>? = null)
     : Response<CustomPageBySlugSchema>
     
@@ -67,17 +62,12 @@ interface ContentApiList {
     
     
     @GET
-    suspend fun getAllLanguages(@Url url1: String?   , @HeaderMap headers: Map<String, String>? = null)
-    : Response<HashMap<String,Any>>
+    suspend fun getSDKDocumentation(@Url url1: String?   , @HeaderMap headers: Map<String, String>? = null)
+    : Response<SDKLinksResponseSchema>
     
     
     @GET
-    suspend fun getLanguageByLocale(@Url url1: String?    , @HeaderMap headers: Map<String, String>? = null)
-    : Response<Language>
-    
-    
-    @GET
-    suspend fun getAllTranslatableResources(@Url url1: String?   , @HeaderMap headers: Map<String, String>? = null)
-    : Response<HashMap<String,Any>>
+    suspend fun getSDKDocumentationByType(@Url url1: String?    , @HeaderMap headers: Map<String, String>? = null)
+    : Response<SDKbyTypeResponseSchema>
     
 }

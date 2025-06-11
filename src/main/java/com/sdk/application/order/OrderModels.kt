@@ -14,28 +14,346 @@ import com.google.gson.annotations.SerializedName
 
              
 /*
-    Model: FulfillmentOption
+    Model: ApefaceApiError
 */
 @Parcelize
-data class FulfillmentOption(
+data class ApefaceApiError(
     
     
     
-    @SerializedName("slug")
-    var slug: String?=null,
+    @SerializedName("message")
+    var message: String?=null,
     
-    @SerializedName("is_default")
-    var isDefault: Boolean?=null,
-    
-    @SerializedName("type")
-    var type: String?=null,
-    
-    @SerializedName("name")
-    var name: String?=null
+    @SerializedName("success")
+    var success: Boolean?=null
     
 ): Parcelable {
     
     
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: OrderingCurrency
+*/
+@Parcelize
+data class OrderingCurrency(
+    
+    
+    
+    @SerializedName("currency_code")
+    var currencyCode: String?=null,
+    
+    @SerializedName("currency_name")
+    var currencyName: String?=null,
+    
+    @SerializedName("currency_symbol")
+    var currencySymbol: String?=null,
+    
+    @SerializedName("currency_sub_unit")
+    var currencySubUnit: String?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: ShipmentRefundSummaryMeta
+*/
+@Parcelize
+data class ShipmentRefundSummaryMeta(
+    
+    
+    
+    @SerializedName("utr")
+    var utr: String?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: ShipmentRefundSummary
+*/
+@Parcelize
+data class ShipmentRefundSummary(
+    
+    
+    
+    @SerializedName("amount")
+    var amount: Double?=null,
+    
+    @SerializedName("mode")
+    var mode: String?=null,
+    
+    @SerializedName("mode_display_name")
+    var modeDisplayName: String?=null,
+    
+    @SerializedName("refund_status")
+    var refundStatus: String?=null,
+    
+    @SerializedName("refund_initiated_at")
+    var refundInitiatedAt: String?=null,
+    
+    @SerializedName("refund_updated_at")
+    var refundUpdatedAt: String?=null,
+    
+    @SerializedName("meta")
+    var meta: ShipmentRefundSummaryMeta?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: ShipmentRefundSummaryResponse
+*/
+@Parcelize
+data class ShipmentRefundSummaryResponse(
+    
+    
+    
+    @SerializedName("refund_summary")
+    var refundSummary: ArrayList<ShipmentRefundSummary>?=null,
+    
+    @SerializedName("currency")
+    var currency: OrderingCurrency?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: RefundSubOption
+*/
+@Parcelize
+data class RefundSubOption(
+    
+    
+    
+    @SerializedName("id")
+    var id: Int?=null,
+    
+    @SerializedName("name")
+    var name: String?=null,
+    
+    @SerializedName("display_name")
+    var displayName: String?=null,
+    
+    @SerializedName("is_active")
+    var isActive: Boolean?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: RefundBreakup
+*/
+@Parcelize
+data class RefundBreakup(
+    
+    
+    
+    @SerializedName("mode")
+    var mode: String?=null,
+    
+    @SerializedName("amount")
+    var amount: Double?=null,
+    
+    @SerializedName("display_name")
+    var displayName: String?=null,
+    
+    @SerializedName("offline")
+    var offline: Boolean?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: RefundOptionShipmentResponse
+*/
+@Parcelize
+data class RefundOptionShipmentResponse(
+    
+    
+    
+    @SerializedName("id")
+    var id: Int?=null,
+    
+    @SerializedName("name")
+    var name: String?=null,
+    
+    @SerializedName("display_name")
+    var displayName: String?=null,
+    
+    @SerializedName("is_active")
+    var isActive: Boolean?=null,
+    
+    @SerializedName("breakups")
+    var breakups: ArrayList<RefundBreakup>?=null,
+    
+    @SerializedName("option")
+    var option: ArrayList<RefundSubOption>?=null,
+    
+    @SerializedName("offline")
+    var offline: Boolean?=null,
+    
+    @SerializedName("amount")
+    var amount: Double?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: CurrencySchema
+*/
+@Parcelize
+data class CurrencySchema(
+    
+    
+    
+    @SerializedName("currency_code")
+    var currencyCode: String?=null,
+    
+    @SerializedName("currency_symbol")
+    var currencySymbol: String?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: RefundOptionsSchemaResponse
+*/
+@Parcelize
+data class RefundOptionsSchemaResponse(
+    
+    
+    
+    @SerializedName("success")
+    var success: Boolean?=null,
+    
+    @SerializedName("currency")
+    var currency: CurrencySchema?=null,
+    
+    @SerializedName("refund_options")
+    var refundOptions: ArrayList<RefundOptionShipmentResponse>?=null
+    
+): Parcelable {
     
     
     
@@ -116,9 +434,14 @@ data class UserInfo(
     var mobile: String?=null,
     
     @SerializedName("email")
-    var email: String?=null
+    var email: String?=null,
+    
+    @SerializedName("user_id")
+    var userId: String?=null
     
 ): Parcelable {
+    
+    
     
     
     
@@ -229,10 +552,10 @@ data class ShipmentPayment(
 
              
 /*
-    Model: ShipmentPaymentInfo
+    Model: PaymentInfo
 */
 @Parcelize
-data class ShipmentPaymentInfo(
+data class PaymentInfo(
     
     
     
@@ -304,9 +627,14 @@ data class ShipmentUserInfo(
     var mobile: String?=null,
     
     @SerializedName("email")
-    var email: String?=null
+    var email: String?=null,
+    
+    @SerializedName("user_id")
+    var userId: String?=null
     
 ): Parcelable {
+    
+    
     
     
     
@@ -348,7 +676,13 @@ data class FulfillingStore(
     var companyName: String?=null,
     
     @SerializedName("company_id")
-    var companyId: Int?=null
+    var companyId: Int?=null,
+    
+    @SerializedName("tags")
+    var tags: ArrayList<String>?=null,
+    
+    @SerializedName("custom_json")
+    var customJson: @RawValue HashMap<String,Any>?=null
     
 ): Parcelable {
     
@@ -359,6 +693,59 @@ data class FulfillingStore(
     
     
     
+    
+    
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: RuleConditionsSchema
+*/
+@Parcelize
+data class RuleConditionsSchema(
+    
+    
+    
+    @SerializedName("article_tag")
+    var articleTag: String?=null,
+    
+    @SerializedName("department")
+    var department: ArrayList<String>?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: RuleSchema
+*/
+@Parcelize
+data class RuleSchema(
+    
+    
+    
+    @SerializedName("conditions")
+    var conditions: RuleConditionsSchema?=null
+    
+): Parcelable {
     
     
     
@@ -381,9 +768,14 @@ data class ChargeDistributionSchema(
     var type: String?=null,
     
     @SerializedName("logic")
-    var logic: String?=null
+    var logic: String?=null,
+    
+    @SerializedName("rule")
+    var rule: RuleSchema?=null
     
 ): Parcelable {
+    
+    
     
     
     
@@ -498,9 +890,24 @@ data class PriceAdjustmentCharge(
     var amount: ChargeAmount?=null,
     
     @SerializedName("distribution_logic")
-    var distributionLogic: ChargeDistributionLogic?=null
+    var distributionLogic: ChargeDistributionLogic?=null,
+    
+    @SerializedName("meta")
+    var meta: @RawValue HashMap<String,Any>?=null,
+    
+    @SerializedName("is_refundable")
+    var isRefundable: Boolean?=null,
+    
+    @SerializedName("is_refundable_on_state")
+    var isRefundableOnState: Boolean?=null
     
 ): Parcelable {
+    
+    
+    
+    
+    
+    
     
     
     
@@ -562,6 +969,9 @@ data class Invoice(
     @SerializedName("invoice_url")
     var invoiceUrl: String?=null,
     
+    @SerializedName("store_invoice_id")
+    var storeInvoiceId: String?=null,
+    
     @SerializedName("updated_date")
     var updatedDate: String?=null,
     
@@ -569,6 +979,8 @@ data class Invoice(
     var labelUrl: String?=null
     
 ): Parcelable {
+    
+    
     
     
     
@@ -684,9 +1096,14 @@ data class TimeStampData(
     var min: String?=null,
     
     @SerializedName("max")
-    var max: String?=null
+    var max: String?=null,
+    
+    @SerializedName("dp_promise")
+    var dpPromise: String?=null
     
 ): Parcelable {
+    
+    
     
     
     
@@ -766,6 +1183,15 @@ data class Prices(
     
     
     
+    @SerializedName("applied_emi_discount")
+    var appliedEmiDiscount: Int?=null,
+    
+    @SerializedName("applied_instant_discount")
+    var appliedInstantDiscount: Int?=null,
+    
+    @SerializedName("gift_price")
+    var giftPrice: Int?=null,
+    
     @SerializedName("delivery_charge")
     var deliveryCharge: Double?=null,
     
@@ -836,6 +1262,12 @@ data class Prices(
     var amountToBeCollected: Double?=null
     
 ): Parcelable {
+    
+    
+    
+    
+    
+    
     
     
     
@@ -965,9 +1397,14 @@ data class Item(
     var size: String?=null,
     
     @SerializedName("attributes")
-    var attributes: @RawValue HashMap<String,Any>?=null
+    var attributes: @RawValue HashMap<String,Any>?=null,
+    
+    @SerializedName("variants")
+    var variants: @RawValue HashMap<String,Any>?=null
     
 ): Parcelable {
+    
+    
     
     
     
@@ -1338,7 +1775,7 @@ data class Bags(
     var appliedPromos: ArrayList<AppliedPromos>?=null,
     
     @SerializedName("quantity")
-    var quantity: Int?=null,
+    var quantity: Double?=null,
     
     @SerializedName("prices")
     var prices: Prices?=null,
@@ -1462,9 +1899,14 @@ data class Article(
     
     
     @SerializedName("tags")
-    var tags: ArrayList<String>?=null
+    var tags: ArrayList<String>?=null,
+    
+    @SerializedName("variants")
+    var variants: @RawValue HashMap<String,Any>?=null
     
 ): Parcelable {
+    
+    
     
     
     
@@ -1615,11 +2057,35 @@ data class Shipments(
     
     
     
+    @SerializedName("advance_payment_config")
+    var advancePaymentConfig: @RawValue HashMap<String,Any>?=null,
+    
+    @SerializedName("multi_mop_payments")
+    var multiMopPayments: @RawValue HashMap<String,Any>?=null,
+    
+    @SerializedName("multi_mop_payments_list")
+    var multiMopPaymentsList: @RawValue ArrayList<HashMap<String,Any>>?=null,
+    
+    @SerializedName("is_validated")
+    var isValidated: Boolean?=null,
+    
+    @SerializedName("is_active")
+    var isActive: Boolean?=null,
+    
+    @SerializedName("refund_information")
+    var refundInformation: @RawValue ArrayList<HashMap<String,Any>>?=null,
+    
+    @SerializedName("currency")
+    var currency: Currency?=null,
+    
+    @SerializedName("currency_info")
+    var currencyInfo: CurrencyInfo?=null,
+    
     @SerializedName("payment")
     var payment: ShipmentPayment?=null,
     
     @SerializedName("payment_info")
-    var paymentInfo: ArrayList<ShipmentPaymentInfo>?=null,
+    var paymentInfo: ArrayList<PaymentInfo>?=null,
     
     @SerializedName("order_type")
     var orderType: String?=null,
@@ -1736,15 +2202,51 @@ data class Shipments(
     var deliveryDate: String?=null,
     
     @SerializedName("order")
-    var order: OrderRequestSchema?=null,
+    var order: OrderRequest?=null,
+    
+    @SerializedName("meta")
+    var meta: @RawValue HashMap<String,Any>?=null,
+    
+    @SerializedName("can_pay_remaining_amount")
+    var canPayRemainingAmount: Boolean?=null,
     
     @SerializedName("charges")
     var charges: ArrayList<PriceAdjustmentCharge>?=null,
     
-    @SerializedName("fulfillment_option")
-    var fulfillmentOption: FulfillmentOption?=null
+    @SerializedName("external_shipment_id")
+    var externalShipmentId: String?=null,
+    
+    @SerializedName("previous_shipment_id")
+    var previousShipmentId: String?=null,
+    
+    @SerializedName("is_refund_initiated")
+    var isRefundInitiated: Boolean?=null
     
 ): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     
     
     
@@ -1914,10 +2416,69 @@ data class BagsForReorder(
 
              
 /*
-    Model: CurrencySchema
+    Model: ConversionRate
 */
 @Parcelize
-data class CurrencySchema(
+data class ConversionRate(
+    
+    
+    
+    @SerializedName("base")
+    var base: String?=null,
+    
+    @SerializedName("rates")
+    var rates: @RawValue HashMap<String,Any>?=null,
+    
+    @SerializedName("timestamp")
+    var timestamp: Double?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: CurrencyInfo
+*/
+@Parcelize
+data class CurrencyInfo(
+    
+    
+    
+    @SerializedName("ordering_currency")
+    var orderingCurrency: OrderingCurrency?=null,
+    
+    @SerializedName("conversion_rate")
+    var conversionRate: ConversionRate?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: Currency
+*/
+@Parcelize
+data class Currency(
     
     
     
@@ -1951,6 +2512,9 @@ data class OrderSchema(
     @SerializedName("total_shipments_in_order")
     var totalShipmentsInOrder: Int?=null,
     
+    @SerializedName("custom_cart_meta")
+    var customCartMeta: @RawValue HashMap<String,Any>?=null,
+    
     @SerializedName("gstin_code")
     var gstinCode: String?=null,
     
@@ -1975,16 +2539,48 @@ data class OrderSchema(
     @SerializedName("bags_for_reorder")
     var bagsForReorder: ArrayList<BagsForReorder>?=null,
     
+    @SerializedName("custom_meta")
+    var customMeta: @RawValue ArrayList<HashMap<String,Any>>?=null,
+    
+    @SerializedName("currency")
+    var currency: Currency?=null,
+    
+    @SerializedName("currency_info")
+    var currencyInfo: CurrencyInfo?=null,
+    
+    @SerializedName("is_validated")
+    var isValidated: Boolean?=null,
+    
     @SerializedName("charges")
     var charges: ArrayList<PriceAdjustmentCharge>?=null,
     
     @SerializedName("meta")
     var meta: @RawValue HashMap<String,Any>?=null,
     
-    @SerializedName("currency")
-    var currency: CurrencySchema?=null
+    @SerializedName("external_order_id")
+    var externalOrderId: String?=null,
+    
+    @SerializedName("payment_info")
+    var paymentInfo: ArrayList<PaymentInfo>?=null,
+    
+    @SerializedName("custom_json")
+    var customJson: @RawValue HashMap<String,Any>?=null
     
 ): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     
     
     
@@ -2050,70 +2646,6 @@ data class OrderStatuses(
 
              
 /*
-    Model: OrderGlobalFilterOption
-*/
-@Parcelize
-data class OrderGlobalFilterOption(
-    
-    
-    
-    @SerializedName("display_text")
-    var displayText: String?=null,
-    
-    @SerializedName("value")
-    var value: String?=null,
-    
-    @SerializedName("is_selected")
-    var isSelected: Boolean?=null
-    
-): Parcelable {
-    
-    
-    
-    
-    
-    
-    
-    
-    
-}
-
-
-
-             
-/*
-    Model: OrderGlobalFilter
-*/
-@Parcelize
-data class OrderGlobalFilter(
-    
-    
-    
-    @SerializedName("display_test")
-    var displayTest: String?=null,
-    
-    @SerializedName("value")
-    var value: String?=null,
-    
-    @SerializedName("options")
-    var options: ArrayList<OrderGlobalFilterOption>?=null
-    
-): Parcelable {
-    
-    
-    
-    
-    
-    
-    
-    
-    
-}
-
-
-
-             
-/*
     Model: OrderFilters
 */
 @Parcelize
@@ -2155,33 +2687,6 @@ data class OrderList(
 ): Parcelable {
     
     
-    
-    
-    
-    
-    
-    
-    
-}
-
-
-
-             
-/*
-    Model: ApefaceApiError
-*/
-@Parcelize
-data class ApefaceApiError(
-    
-    
-    
-    @SerializedName("message")
-    var message: String?=null,
-    
-    @SerializedName("success")
-    var success: Boolean?=null
-    
-): Parcelable {
     
     
     
@@ -2256,9 +2761,24 @@ data class ResponseGetInvoiceShipment(
     var shipmentId: String?=null,
     
     @SerializedName("presigned_url")
-    var presignedUrl: String?=null
+    var presignedUrl: String?=null,
+    
+    @SerializedName("entity_id")
+    var entityId: String?=null,
+    
+    @SerializedName("expires_in")
+    var expiresIn: Int?=null,
+    
+    @SerializedName("url")
+    var url: String?=null
     
 ): Parcelable {
+    
+    
+    
+    
+    
+    
     
     
     
@@ -2307,10 +2827,15 @@ data class Track(
     @SerializedName("awb")
     var awb: String?=null,
     
+    @SerializedName("raw_status")
+    var rawStatus: String?=null,
+    
     @SerializedName("meta")
-    var meta: @RawValue HashMap<String,Any>?=null
+    var meta: String?=null
     
 ): Parcelable {
+    
+    
     
     
     
@@ -2345,10 +2870,20 @@ data class ShipmentTrack(
     
     
     
+    @SerializedName("success")
+    var success: Boolean?=null,
+    
+    @SerializedName("meta")
+    var meta: @RawValue HashMap<String,Any>?=null,
+    
     @SerializedName("results")
     var results: ArrayList<Track>?=null
     
 ): Parcelable {
+    
+    
+    
+    
     
     
     
@@ -2360,10 +2895,10 @@ data class ShipmentTrack(
 
              
 /*
-    Model: CustomerDetailsResponseSchema
+    Model: CustomerDetailsResponse
 */
 @Parcelize
-data class CustomerDetailsResponseSchema(
+data class CustomerDetailsResponse(
     
     
     
@@ -2402,10 +2937,10 @@ data class CustomerDetailsResponseSchema(
 
              
 /*
-    Model: SendOtpToCustomerResponseSchema
+    Model: SendOtpToCustomerResponse
 */
 @Parcelize
-data class SendOtpToCustomerResponseSchema(
+data class SendOtpToCustomerResponse(
     
     
     
@@ -2466,22 +3001,17 @@ data class VerifyOtp(
 
              
 /*
-    Model: VerifyOtpResponseSchema
+    Model: VerifyOtpResponse
 */
 @Parcelize
-data class VerifyOtpResponseSchema(
+data class VerifyOtpResponse(
     
     
     
     @SerializedName("success")
-    var success: Boolean?=null,
-    
-    @SerializedName("message")
-    var message: String?=null
+    var success: Boolean?=null
     
 ): Parcelable {
-    
-    
     
     
     
@@ -2501,14 +3031,9 @@ data class BagReasonMeta(
     
     
     @SerializedName("show_text_area")
-    var showTextArea: Boolean?=null,
-    
-    @SerializedName("remark_required")
-    var remarkRequired: Boolean?=null
+    var showTextArea: Boolean?=null
     
 ): Parcelable {
-    
-    
     
     
     
@@ -2605,14 +3130,9 @@ data class ShipmentBagReasons(
     var reasons: ArrayList<BagReasons>?=null,
     
     @SerializedName("success")
-    var success: Boolean?=null,
-    
-    @SerializedName("rule_id")
-    var ruleId: Int?=null
+    var success: Boolean?=null
     
 ): Parcelable {
-    
-    
     
     
     
@@ -3007,10 +3527,10 @@ data class DataUpdates(
 
              
 /*
-    Model: ShipmentsRequestSchema
+    Model: ShipmentsRequest
 */
 @Parcelize
-data class ShipmentsRequestSchema(
+data class ShipmentsRequest(
     
     
     
@@ -3044,15 +3564,15 @@ data class ShipmentsRequestSchema(
 
              
 /*
-    Model: StatuesRequestSchema
+    Model: StatuesRequest
 */
 @Parcelize
-data class StatuesRequestSchema(
+data class StatuesRequest(
     
     
     
     @SerializedName("shipments")
-    var shipments: ArrayList<ShipmentsRequestSchema>?=null,
+    var shipments: ArrayList<ShipmentsRequest>?=null,
     
     @SerializedName("exclude_bags_next_state")
     var excludeBagsNextState: String?=null,
@@ -3076,17 +3596,22 @@ data class StatuesRequestSchema(
 
              
 /*
-    Model: OrderRequestSchema
+    Model: OrderRequest
 */
 @Parcelize
-data class OrderRequestSchema(
+data class OrderRequest(
     
     
     
     @SerializedName("meta")
-    var meta: @RawValue HashMap<String,Any>?=null
+    var meta: @RawValue HashMap<String,Any>?=null,
+    
+    @SerializedName("external_order_id")
+    var externalOrderId: String?=null
     
 ): Parcelable {
+    
+    
     
     
     
@@ -3098,15 +3623,15 @@ data class OrderRequestSchema(
 
              
 /*
-    Model: UpdateShipmentStatusRequestSchema
+    Model: UpdateShipmentStatusRequest
 */
 @Parcelize
-data class UpdateShipmentStatusRequestSchema(
+data class UpdateShipmentStatusRequest(
     
     
     
     @SerializedName("statuses")
-    var statuses: ArrayList<StatuesRequestSchema>?=null,
+    var statuses: ArrayList<StatuesRequest>?=null,
     
     @SerializedName("task")
     var task: Boolean?=null,
@@ -3140,10 +3665,10 @@ data class UpdateShipmentStatusRequestSchema(
 
              
 /*
-    Model: StatusesBodyResponseSchema
+    Model: StatusesBodyResponse
 */
 @Parcelize
-data class StatusesBodyResponseSchema(
+data class StatusesBodyResponse(
     
     
     
@@ -3162,15 +3687,15 @@ data class StatusesBodyResponseSchema(
 
              
 /*
-    Model: ShipmentApplicationStatusResponseSchema
+    Model: ShipmentApplicationStatusResponse
 */
 @Parcelize
-data class ShipmentApplicationStatusResponseSchema(
+data class ShipmentApplicationStatusResponse(
     
     
     
     @SerializedName("statuses")
-    var statuses: ArrayList<StatusesBodyResponseSchema>?=null
+    var statuses: ArrayList<StatusesBodyResponse>?=null
     
 ): Parcelable {
     
@@ -3184,10 +3709,10 @@ data class ShipmentApplicationStatusResponseSchema(
 
              
 /*
-    Model: ErrorResponseSchema
+    Model: ErrorResponse
 */
 @Parcelize
-data class ErrorResponseSchema(
+data class ErrorResponse(
     
     
     

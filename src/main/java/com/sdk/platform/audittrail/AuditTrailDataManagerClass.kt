@@ -44,8 +44,20 @@ class AuditTrailDataManagerClass(val config: PlatformConfig, val unauthorizedAct
     }
     
     
+    suspend fun getAuditLogs(qs: String,limit: Int?=null,sort: HashMap<String,Any>?=null, headers: Map<String, String> = emptyMap())
+    : Response<LogSchemaResponse>? {
+
+        return if (config.oauthClient.isAccessTokenValid()) {
+            auditTrailApiList?.getAuditLogs(
+        companyId = config.companyId,qs = qs,limit = limit,sort = sort, headers = headers)
+        } else {
+            null
+        }
+    }
+    
+    
     suspend fun createAuditLog(body: RequestBodyAuditLog, headers: Map<String, String> = emptyMap())
-    : Response<CreateLogResp>? {
+    : Response<CreateLogResponse>? {
 
         return if (config.oauthClient.isAccessTokenValid()) {
             auditTrailApiList?.createAuditLog(
@@ -55,9 +67,36 @@ class AuditTrailDataManagerClass(val config: PlatformConfig, val unauthorizedAct
         }
     }
     
+    
+    suspend fun getAuditLog(id: String, headers: Map<String, String> = emptyMap())
+    : Response<LogSchemaResponse>? {
+
+        return if (config.oauthClient.isAccessTokenValid()) {
+            auditTrailApiList?.getAuditLog(
+        companyId = config.companyId,id = id, headers = headers)
+        } else {
+            null
+        }
+    }
+    
+    
+    suspend fun getEntityTypes( headers: Map<String, String> = emptyMap())
+    : Response<EntityTypesResponse>? {
+
+        return if (config.oauthClient.isAccessTokenValid()) {
+            auditTrailApiList?.getEntityTypes(
+        companyId = config.companyId, headers = headers)
+        } else {
+            null
+        }
+    }
+    
 
 inner class ApplicationClient(val applicationId:String,val config: PlatformConfig){
 
+    
+    
+    
     
     
 }

@@ -586,53 +586,6 @@ data class FooterContentSchema(
 
              
 /*
-    Model: AnalyticsTagsSchema
-*/
-@Parcelize
-data class AnalyticsTagsSchema(
-    
-    
-    
-    @SerializedName("_id")
-    var id: String?=null,
-    
-    @SerializedName("__v")
-    var v: Double?=null,
-    
-    @SerializedName("body_code")
-    var bodyCode: String?=null,
-    
-    @SerializedName("enabled")
-    var enabled: Boolean?=null,
-    
-    @SerializedName("header_code")
-    var headerCode: String?=null,
-    
-    @SerializedName("name")
-    var name: String?=null
-    
-): Parcelable {
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-}
-
-
-
-             
-/*
     Model: CustomPageBySlugSchema
 */
 @Parcelize
@@ -1421,6 +1374,97 @@ data class CredentialsSchema(
 
              
 /*
+    Model: SDKLinksResponseSchema
+*/
+@Parcelize
+data class SDKLinksResponseSchema(
+    
+    
+    
+    @SerializedName("readmes")
+    var readmes: ArrayList<SDKLinkObjectSchema>?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: SDKLinkObjectSchema
+*/
+@Parcelize
+data class SDKLinkObjectSchema(
+    
+    
+    
+    @SerializedName("owner")
+    var owner: String?=null,
+    
+    @SerializedName("repo")
+    var repo: String?=null,
+    
+    @SerializedName("path")
+    var path: String?=null,
+    
+    @SerializedName("image")
+    var image: String?=null,
+    
+    @SerializedName("name")
+    var name: String?=null,
+    
+    @SerializedName("type")
+    var type: String?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: SDKbyTypeResponseSchema
+*/
+@Parcelize
+data class SDKbyTypeResponseSchema(
+    
+    
+    
+    @SerializedName("readme_content")
+    var readmeContent: String?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
     Model: ContentAPIError
 */
 @Parcelize
@@ -1463,181 +1507,6 @@ data class ContentAPIError(
     
     
     
-    
-    
-    
-    
-    
-    
-    
-    
-    
-}
-
-
-
-             
-/*
-    Model: Language
-*/
-@Parcelize
-data class Language(
-    
-    
-    
-    @SerializedName("_id")
-    var id: String?=null,
-    
-    @SerializedName("locale")
-    var locale: String?=null,
-    
-    @SerializedName("direction")
-    var direction: String?=null,
-    
-    @SerializedName("name")
-    var name: String?=null,
-    
-    @SerializedName("display_name")
-    var displayName: String?=null
-    
-): Parcelable {
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-}
-
-
-
-             
-/*
-    Model: Error
-*/
-@Parcelize
-data class Error(
-    
-    
-    
-    @SerializedName("error")
-    var error: String?=null
-    
-): Parcelable {
-    
-    
-    
-    
-    
-}
-
-
-
-             
-/*
-    Model: TranslatableResource
-*/
-@Parcelize
-data class TranslatableResource(
-    
-    
-    
-    @SerializedName("_id")
-    var id: String?=null,
-    
-    @SerializedName("type")
-    var type: String?=null,
-    
-    @SerializedName("name")
-    var name: String?=null,
-    
-    @SerializedName("description")
-    var description: String?=null,
-    
-    @SerializedName("meta")
-    var meta: Meta?=null
-    
-): Parcelable {
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-}
-
-
-
-             
-/*
-    Model: Meta
-*/
-@Parcelize
-data class Meta(
-    
-    
-    
-    @SerializedName("created_by")
-    var createdBy: String?=null,
-    
-    @SerializedName("updated_by")
-    var updatedBy: String?=null,
-    
-    @SerializedName("created_at")
-    var createdAt: String?=null,
-    
-    @SerializedName("updated_at")
-    var updatedAt: String?=null
-    
-): Parcelable {
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-}
-
-
-
-             
-/*
-    Model: ResourceTranslation
-*/
-@Parcelize
-data class ResourceTranslation(
-    
-    
-    
-    @SerializedName("_id")
-    var id: String?=null,
-    
-    @SerializedName("locale")
-    var locale: String?=null,
-    
-    @SerializedName("value")
-    var value: @RawValue HashMap<String,Any>?=null
-    
-): Parcelable {
     
     
     

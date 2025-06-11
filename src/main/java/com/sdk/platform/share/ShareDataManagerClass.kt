@@ -47,7 +47,6 @@ class ShareDataManagerClass(val config: PlatformConfig, val unauthorizedAction: 
     
     
     
-    
 
 inner class ApplicationClient(val applicationId:String,val config: PlatformConfig){
 
@@ -87,16 +86,6 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     : Response<ShortLinkRes>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 shareApiList?.updateShortLinkById(companyId = config.companyId ,applicationId = applicationId ,id = id, body = body,headers = headers)
-        } else {
-            null
-        }
-    }
-    
-    
-    suspend fun getShortLinkClickStats(surlId: String, headers: Map<String, String> = emptyMap())
-    : Response<ClickStatsResult>? {
-        return if (config.oauthClient.isAccessTokenValid()) {
-                shareApiList?.getShortLinkClickStats(surlId = surlId,companyId = config.companyId ,applicationId = applicationId , headers = headers)
         } else {
             null
         }

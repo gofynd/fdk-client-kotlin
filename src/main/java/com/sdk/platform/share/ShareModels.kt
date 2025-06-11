@@ -14,28 +14,6 @@ import com.google.gson.annotations.SerializedName
 
              
 /*
-    Model: ClickStatsResult
-*/
-@Parcelize
-data class ClickStatsResult(
-    
-    
-    
-    @SerializedName("click_stats")
-    var clickStats: ArrayList<ClickStatsItem>?=null
-    
-): Parcelable {
-    
-    
-    
-    
-    
-}
-
-
-
-             
-/*
     Model: ClickStatsItem
 */
 @Parcelize
@@ -276,10 +254,7 @@ data class ShortLinkReq(
     var socialMediaTags: SocialMediaTags?=null,
     
     @SerializedName("count")
-    var count: Int?=null,
-    
-    @SerializedName("meta")
-    var meta: shortLinkReqMeta?=null
+    var count: Int?=null
     
 ): Parcelable {
     
@@ -302,35 +277,6 @@ data class ShortLinkReq(
     
     
     
-    
-    
-    
-    
-    
-    
-    
-    
-    
-}
-
-
-
-             
-/*
-    Model: shortLinkReqMeta
-*/
-@Parcelize
-data class shortLinkReqMeta(
-    
-    
-    
-    @SerializedName("for_sms")
-    var forSms: Boolean?=null,
-    
-    @SerializedName("sms_header")
-    var smsHeader: String?=null
-    
-): Parcelable {
     
     
     
@@ -351,25 +297,10 @@ data class UrlInfo(
     
     
     
-    @SerializedName("original")
-    var original: String?=null,
-    
     @SerializedName("hash")
-    var hash: String?=null,
-    
-    @SerializedName("short_url")
-    var shortUrl: String?=null,
-    
-    @SerializedName("alias")
-    var alias: String?=null
+    var hash: String?=null
     
 ): Parcelable {
-    
-    
-    
-    
-    
-    
     
     
     
@@ -526,10 +457,15 @@ data class Page(
     @SerializedName("size")
     var size: Int?=null,
     
-    @SerializedName("page_size")
-    var pageSize: Int?=null
+    @SerializedName("total")
+    var total: Int?=null,
+    
+    @SerializedName("page")
+    var page: Int?=null
     
 ): Parcelable {
+    
+    
     
     
     

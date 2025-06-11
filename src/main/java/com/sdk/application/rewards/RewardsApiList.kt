@@ -17,32 +17,32 @@ interface RewardsApiList {
     
     
     @POST
-    suspend fun catalogueOrder(@Url url1: String?   ,@Body body: CatalogueOrderCreation, @HeaderMap headers: Map<String, String>? = null)
-    : Response<CatalogueOrderDetails>
+    suspend fun catalogueOrder(@Url url1: String?   ,@Body body: CatalogueOrderRequest, @HeaderMap headers: Map<String, String>? = null)
+    : Response<CatalogueOrderResponse>
     
     
     @GET
     suspend fun getUserPointsHistory(@Url url1: String?    ,   @Query("page_id") pageId: String?, @Query("page_size") pageSize: Int?, @HeaderMap headers: Map<String, String>? = null)
-    : Response<PointsHistoryDetails>
+    : Response<PointsHistoryResponse>
     
     
     @GET
     suspend fun getUserPoints(@Url url1: String?   , @HeaderMap headers: Map<String, String>? = null)
-    : Response<PointsDetails>
+    : Response<PointsResponse>
     
     
     @GET
     suspend fun getUserReferralDetails(@Url url1: String?   , @HeaderMap headers: Map<String, String>? = null)
-    : Response<ReferralDetails>
+    : Response<ReferralDetailsResponse>
     
     
     @POST
-    suspend fun getOrderDiscount(@Url url1: String?   ,@Body body: RetrieveOrderDiscount, @HeaderMap headers: Map<String, String>? = null)
-    : Response<OrderDiscountDetails>
+    suspend fun getOrderDiscount(@Url url1: String?   ,@Body body: OrderDiscountRequest, @HeaderMap headers: Map<String, String>? = null)
+    : Response<OrderDiscountResponse>
     
     
     @POST
-    suspend fun redeemReferralCode(@Url url1: String?   ,@Body body: RedeemReferralCode, @HeaderMap headers: Map<String, String>? = null)
-    : Response<RedeemReferralCodeDetails>
+    suspend fun redeemReferralCode(@Url url1: String?   ,@Body body: RedeemReferralCodeRequest, @HeaderMap headers: Map<String, String>? = null)
+    : Response<RedeemReferralCodeResponse>
     
 }
