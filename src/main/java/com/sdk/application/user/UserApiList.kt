@@ -11,16 +11,6 @@ import com.sdk.application.*
 interface UserApiList {
     
     
-    @GET
-    suspend fun getUserAttributes(@Url url1: String?    ,  @Query("slug") slug: String?, @HeaderMap headers: Map<String, String>? = null)
-    : Response<UserAttributes>
-    
-    
-    @PATCH
-    suspend fun updateUserAttributes(@Url url1: String?   ,@Body body: UpdateAttributesRequestPayload, @HeaderMap headers: Map<String, String>? = null)
-    : Response<UserAttributes>
-    
-    
     @POST
     suspend fun loginWithFacebook(@Url url1: String?    ,  @Query("platform") platform: String?, @Body body: OAuthRequestSchema, @HeaderMap headers: Map<String, String>? = null)
     : Response<AuthSuccess>
@@ -48,7 +38,7 @@ interface UserApiList {
     
     @POST
     suspend fun loginWithOTP(@Url url1: String?    ,  @Query("platform") platform: String?, @Body body: SendOtpRequestSchema, @HeaderMap headers: Map<String, String>? = null)
-    : Response<SendOtpResponse>
+    : Response<SendOtp>
     
     
     @POST
@@ -59,6 +49,11 @@ interface UserApiList {
     @POST
     suspend fun sendResetPasswordEmail(@Url url1: String?    ,  @Query("platform") platform: String?, @Body body: SendResetPasswordEmailRequestSchema, @HeaderMap headers: Map<String, String>? = null)
     : Response<ResetPasswordSuccess>
+    
+    
+    @POST
+    suspend fun sendResetPasswordMobile(@Url url1: String?    ,  @Query("platform") platform: String?, @Body body: SendResetPasswordMobileRequestSchema, @HeaderMap headers: Map<String, String>? = null)
+    : Response<Any>
     
     
     @POST
@@ -108,12 +103,12 @@ interface UserApiList {
     
     @POST
     suspend fun sendOTPOnMobile(@Url url1: String?    ,  @Query("platform") platform: String?, @Body body: SendMobileOtpRequestSchema, @HeaderMap headers: Map<String, String>? = null)
-    : Response<OtpSuccess>
+    : Response<SendOtpSuccess>
     
     
     @POST
     suspend fun sendForgotOTPOnMobile(@Url url1: String?    ,  @Query("platform") platform: String?, @Body body: SendMobileForgotOtpRequestSchema, @HeaderMap headers: Map<String, String>? = null)
-    : Response<OtpSuccess>
+    : Response<SendOtpSuccess>
     
     
     @POST
@@ -208,7 +203,7 @@ interface UserApiList {
     
     @GET
     suspend fun userExists(@Url url1: String?    ,  @Query("q") q: String, @HeaderMap headers: Map<String, String>? = null)
-    : Response<UserExistsResponse>
+    : Response<UserExistsDetails>
     
     
     @POST
@@ -219,5 +214,35 @@ interface UserApiList {
     @GET
     suspend fun logout(@Url url1: String?   , @HeaderMap headers: Map<String, String>? = null)
     : Response<LogoutSuccess>
+    
+    
+    @GET
+    suspend fun getUserAttributes(@Url url1: String?    ,  @Query("slug") slug: String?, @HeaderMap headers: Map<String, String>? = null)
+    : Response<UserAttributes>
+    
+    
+    @PATCH
+    suspend fun updateUserAttributes(@Url url1: String?   ,@Body body: UpdateUserAttributes, @HeaderMap headers: Map<String, String>? = null)
+    : Response<UserAttributes>
+    
+    
+    @POST
+    suspend fun sendOTPOnPrimary(@Url url1: String?    ,@Body body: SendPrimaryOTPRequestSchema, @HeaderMap headers: Map<String, String>? = null)
+    : Response<SendOtpSuccess>
+    
+    
+    @POST
+    suspend fun verifyOTPonPrimary(@Url url1: String?    ,@Body body: VerifyPrimaryOTPRequestSchema, @HeaderMap headers: Map<String, String>? = null)
+    : Response<VerifyPrimaryOTPSuccess>
+    
+    
+    @POST
+    suspend fun sendOTPForUpdate(@Url url1: String?    ,@Body body: SendOTPForUpdateRequestSchema, @HeaderMap headers: Map<String, String>? = null)
+    : Response<SendOtpSuccess>
+    
+    
+    @POST
+    suspend fun verifyOTPForUpdate(@Url url1: String?    ,@Body body: VerifyOTPForUpdateRequestSchema, @HeaderMap headers: Map<String, String>? = null)
+    : Response<VerifyOtpSuccess>
     
 }

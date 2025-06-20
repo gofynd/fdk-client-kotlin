@@ -60,9 +60,14 @@ data class CommunicationConsentRes(
     var userId: String?=null,
     
     @SerializedName("channels")
-    var channels: CommunicationConsentChannels?=null
+    var channels: CommunicationConsentChannels?=null,
+    
+    @SerializedName("encrypted")
+    var encrypted: Boolean?=null
     
 ): Parcelable {
+    
+    
     
     
     
@@ -89,9 +94,14 @@ data class CommunicationConsentChannelsEmail(
     var response: String?=null,
     
     @SerializedName("display_name")
-    var displayName: String?=null
+    var displayName: String?=null,
+    
+    @SerializedName("value")
+    var value: String?=null
     
 ): Parcelable {
+    
+    
     
     
     
@@ -116,9 +126,14 @@ data class CommunicationConsentChannelsSms(
     var response: String?=null,
     
     @SerializedName("display_name")
-    var displayName: String?=null
+    var displayName: String?=null,
+    
+    @SerializedName("value")
+    var value: String?=null
     
 ): Parcelable {
+    
+    
     
     
     
@@ -149,9 +164,14 @@ data class CommunicationConsentChannelsWhatsapp(
     var countryCode: String?=null,
     
     @SerializedName("phone_number")
-    var phoneNumber: String?=null
+    var phoneNumber: String?=null,
+    
+    @SerializedName("value")
+    var value: String?=null
     
 ): Parcelable {
+    
+    
     
     
     
@@ -220,6 +240,33 @@ data class CommunicationConsent(
 ): Parcelable {
     
     
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: BadRequestSchema
+*/
+@Parcelize
+data class BadRequestSchema(
+    
+    
+    
+    @SerializedName("status")
+    var status: String?=null,
+    
+    @SerializedName("message")
+    var message: String?=null
+    
+): Parcelable {
     
     
     
@@ -330,124 +377,6 @@ data class PushtokenRes(
     
     
     
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-}
-
-
-
-             
-/*
-    Model: OtpConfigurationExpiryDuration
-*/
-@Parcelize
-data class OtpConfigurationExpiryDuration(
-    
-    
-    
-    @SerializedName("time")
-    var time: Double?=null,
-    
-    @SerializedName("denomination")
-    var denomination: String?=null
-    
-): Parcelable {
-    
-    
-    
-    
-    
-    
-    
-}
-
-
-
-             
-/*
-    Model: OtpConfigurationExpiry
-*/
-@Parcelize
-data class OtpConfigurationExpiry(
-    
-    
-    
-    @SerializedName("duration")
-    var duration: OtpConfigurationExpiryDuration?=null,
-    
-    @SerializedName("type")
-    var type: String?=null
-    
-): Parcelable {
-    
-    
-    
-    
-    
-    
-    
-}
-
-
-
-             
-/*
-    Model: OtpConfigurationRateLimit
-*/
-@Parcelize
-data class OtpConfigurationRateLimit(
-    
-    
-    
-    @SerializedName("duration")
-    var duration: Double?=null,
-    
-    @SerializedName("limit")
-    var limit: Int?=null
-    
-): Parcelable {
-    
-    
-    
-    
-    
-    
-    
-}
-
-
-
-             
-/*
-    Model: OtpConfiguration
-*/
-@Parcelize
-data class OtpConfiguration(
-    
-    
-    
-    @SerializedName("otp_length")
-    var otpLength: Int?=null,
-    
-    @SerializedName("type")
-    var type: String?=null,
-    
-    @SerializedName("expiry")
-    var expiry: OtpConfigurationExpiry?=null,
-    
-    @SerializedName("rate_limit")
-    var rateLimit: OtpConfigurationRateLimit?=null
-    
-): Parcelable {
     
     
     

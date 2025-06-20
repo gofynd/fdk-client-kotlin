@@ -44,76 +44,6 @@ class ServiceabilityDataManagerClass(val config: PlatformConfig, val unauthorize
     }
     
     
-    suspend fun bulkServiceability(extensionId: String,schemeId: String,body: BulkRegionJobSerializer, headers: Map<String, String> = emptyMap())
-    : Response<BulkRegionResponseItemData>? {
-
-        return if (config.oauthClient.isAccessTokenValid()) {
-            serviceabilityApiList?.bulkServiceability(
-        companyId = config.companyId,extensionId = extensionId,schemeId = schemeId, body = body,headers = headers)
-        } else {
-            null
-        }
-    }
-    
-    
-    suspend fun getBulkServiceability(extensionId: String,schemeId: String,pageNo: Int?=null,pageSize: Int?=null,batchId: String?=null,action: String?=null,status: String?=null,country: String?=null,region: String?=null,startDate: String?=null,endDate: String?=null, headers: Map<String, String> = emptyMap())
-    : Response<BulkRegionResponse>? {
-
-        return if (config.oauthClient.isAccessTokenValid()) {
-            serviceabilityApiList?.getBulkServiceability(
-        companyId = config.companyId,extensionId = extensionId,schemeId = schemeId,pageNo = pageNo,pageSize = pageSize,batchId = batchId,action = action,status = status,country = country,region = region,startDate = startDate,endDate = endDate, headers = headers)
-        } else {
-            null
-        }
-    }
-    
-    
-    suspend fun sampleFileServiceability(body: BulkRegionServiceabilityTatRequest, headers: Map<String, String> = emptyMap())
-    : Response<BulkRegionServiceabilityTatResponseItemData>? {
-
-        return if (config.oauthClient.isAccessTokenValid()) {
-            serviceabilityApiList?.sampleFileServiceability(
-        companyId = config.companyId, body = body,headers = headers)
-        } else {
-            null
-        }
-    }
-    
-    
-    suspend fun getSampleFileServiceabilityStatus(pageNo: Int?=null,pageSize: Int?=null,batchId: String?=null, headers: Map<String, String> = emptyMap())
-    : Response<BulkRegionServiceabilityTatResponse>? {
-
-        return if (config.oauthClient.isAccessTokenValid()) {
-            serviceabilityApiList?.getSampleFileServiceabilityStatus(
-        companyId = config.companyId,pageNo = pageNo,pageSize = pageSize,batchId = batchId, headers = headers)
-        } else {
-            null
-        }
-    }
-    
-    
-    suspend fun bulkTat(extensionId: String,schemeId: String,body: BulkRegionJobSerializer, headers: Map<String, String> = emptyMap())
-    : Response<BulkRegionResponseItemData>? {
-
-        return if (config.oauthClient.isAccessTokenValid()) {
-            serviceabilityApiList?.bulkTat(
-        companyId = config.companyId,extensionId = extensionId,schemeId = schemeId, body = body,headers = headers)
-        } else {
-            null
-        }
-    }
-    
-    
-    suspend fun getBulkTat(extensionId: String,schemeId: String,pageNo: Int?=null,pageSize: Int?=null,batchId: String?=null,action: String?=null,status: String?=null,country: String?=null,region: String?=null,startDate: String?=null,endDate: String?=null, headers: Map<String, String> = emptyMap())
-    : Response<BulkRegionResponse>? {
-
-        return if (config.oauthClient.isAccessTokenValid()) {
-            serviceabilityApiList?.getBulkTat(
-        companyId = config.companyId,extensionId = extensionId,schemeId = schemeId,pageNo = pageNo,pageSize = pageSize,batchId = batchId,action = action,status = status,country = country,region = region,startDate = startDate,endDate = endDate, headers = headers)
-        } else {
-            null
-        }
-    }
     
     
     
@@ -134,72 +64,8 @@ class ServiceabilityDataManagerClass(val config: PlatformConfig, val unauthorize
     
     
     
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    suspend fun updateCompanySelfShip(body: CompanySelfShip, headers: Map<String, String> = emptyMap())
-    : Response<CompanySelfShip>? {
-
-        return if (config.oauthClient.isAccessTokenValid()) {
-            serviceabilityApiList?.updateCompanySelfShip(
-        companyId = config.companyId, body = body,headers = headers)
-        } else {
-            null
-        }
-    }
-    
-    
-    suspend fun getCompanySelfShip( headers: Map<String, String> = emptyMap())
-    : Response<CompanySelfShip>? {
-
-        return if (config.oauthClient.isAccessTokenValid()) {
-            serviceabilityApiList?.getCompanySelfShip(
-        companyId = config.companyId, headers = headers)
-        } else {
-            null
-        }
-    }
-    
-    
-    suspend fun createCourierPartnerScheme(body: CourierPartnerSchemeModel, headers: Map<String, String> = emptyMap())
-    : Response<CourierPartnerSchemeModel>? {
-
-        return if (config.oauthClient.isAccessTokenValid()) {
-            serviceabilityApiList?.createCourierPartnerScheme(
-        companyId = config.companyId, body = body,headers = headers)
-        } else {
-            null
-        }
-    }
-    
-    
-    suspend fun updateCourierPartnerScheme(schemeId: String,body: CourierPartnerSchemeUpdateRequest, headers: Map<String, String> = emptyMap())
-    : Response<CourierPartnerSchemeUpdateRequest>? {
-
-        return if (config.oauthClient.isAccessTokenValid()) {
-            serviceabilityApiList?.updateCourierPartnerScheme(
-        companyId = config.companyId,schemeId = schemeId, body = body,headers = headers)
-        } else {
-            null
-        }
-    }
-    
-    
-    suspend fun createCourierPartnerAccount(body: CourierAccount, headers: Map<String, String> = emptyMap())
-    : Response<CourierAccount>? {
+    suspend fun createCourierPartnerAccount(body: CourierAccountDetailsBody, headers: Map<String, String> = emptyMap())
+    : Response<CourierAccountDetailsBody>? {
 
         return if (config.oauthClient.isAccessTokenValid()) {
             serviceabilityApiList?.createCourierPartnerAccount(
@@ -211,7 +77,7 @@ class ServiceabilityDataManagerClass(val config: PlatformConfig, val unauthorize
     
     
     suspend fun getCourierPartnerAccounts(pageNo: Int?=null,pageSize: Int?=null,stage: String?=null,paymentMode: String?=null,transportType: String?=null,accountIds: ArrayList<String>?=null,selfShip: Boolean?=null,ownAccount: Boolean?=null,q: String?=null, headers: Map<String, String> = emptyMap())
-    : Response<CompanyCourierPartnerAccountListResponse>? {
+    : Response<CompanyCourierPartnerAccountListResult>? {
 
         return if (config.oauthClient.isAccessTokenValid()) {
             serviceabilityApiList?.getCourierPartnerAccounts(
@@ -222,8 +88,8 @@ class ServiceabilityDataManagerClass(val config: PlatformConfig, val unauthorize
     }
     
     
-    suspend fun updateCourierPartnerAccount(accountId: String,body: CourierAccount, headers: Map<String, String> = emptyMap())
-    : Response<CourierAccount>? {
+    suspend fun updateCourierPartnerAccount(accountId: String,body: CourierAccountDetailsBody, headers: Map<String, String> = emptyMap())
+    : Response<CourierAccountDetailsBody>? {
 
         return if (config.oauthClient.isAccessTokenValid()) {
             serviceabilityApiList?.updateCourierPartnerAccount(
@@ -235,7 +101,7 @@ class ServiceabilityDataManagerClass(val config: PlatformConfig, val unauthorize
     
     
     suspend fun getCourierPartnerAccount(accountId: String, headers: Map<String, String> = emptyMap())
-    : Response<CourierAccountResponse>? {
+    : Response<CourierAccountResult>? {
 
         return if (config.oauthClient.isAccessTokenValid()) {
             serviceabilityApiList?.getCourierPartnerAccount(
@@ -250,12 +116,13 @@ class ServiceabilityDataManagerClass(val config: PlatformConfig, val unauthorize
     
     
     
-    suspend fun updateCompanyConfiguration(body: CompanyConfigurationShema, headers: Map<String, String> = emptyMap())
+    
+    suspend fun updateCompanyConfiguration(fulfillmentOptionSlug: String,body: CompanyConfigurationSchema, headers: Map<String, String> = emptyMap())
     : Response<CompanyConfig>? {
 
         return if (config.oauthClient.isAccessTokenValid()) {
             serviceabilityApiList?.updateCompanyConfiguration(
-        companyId = config.companyId, body = body,headers = headers)
+        companyId = config.companyId,fulfillmentOptionSlug = fulfillmentOptionSlug, body = body,headers = headers)
         } else {
             null
         }
@@ -277,16 +144,63 @@ class ServiceabilityDataManagerClass(val config: PlatformConfig, val unauthorize
     
     
     
+    suspend fun bulkTat(extensionId: String,schemeId: String,body: BulkRegionJobDetails, headers: Map<String, String> = emptyMap())
+    : Response<BulkRegionResultItemData>? {
+
+        return if (config.oauthClient.isAccessTokenValid()) {
+            serviceabilityApiList?.bulkTat(
+        companyId = config.companyId,extensionId = extensionId,schemeId = schemeId, body = body,headers = headers)
+        } else {
+            null
+        }
+    }
+    
+    
+    suspend fun getBulkTat(extensionId: String,schemeId: String,pageNo: Int?=null,pageSize: Int?=null,batchId: String?=null,action: String?=null,status: String?=null,country: String?=null,region: String?=null,startDate: String?=null,endDate: String?=null, headers: Map<String, String> = emptyMap())
+    : Response<BulkRegionResult>? {
+
+        return if (config.oauthClient.isAccessTokenValid()) {
+            serviceabilityApiList?.getBulkTat(
+        companyId = config.companyId,extensionId = extensionId,schemeId = schemeId,pageNo = pageNo,pageSize = pageSize,batchId = batchId,action = action,status = status,country = country,region = region,startDate = startDate,endDate = endDate, headers = headers)
+        } else {
+            null
+        }
+    }
     
     
     
     
     
     
+    
+    
+    
+    suspend fun bulkServiceability(extensionId: String,schemeId: String,body: BulkRegionJobDetails, headers: Map<String, String> = emptyMap())
+    : Response<BulkRegionResultItemData>? {
+
+        return if (config.oauthClient.isAccessTokenValid()) {
+            serviceabilityApiList?.bulkServiceability(
+        companyId = config.companyId,extensionId = extensionId,schemeId = schemeId, body = body,headers = headers)
+        } else {
+            null
+        }
+    }
+    
+    
+    suspend fun getBulkServiceability(extensionId: String,schemeId: String,pageNo: Int?=null,pageSize: Int?=null,batchId: String?=null,action: String?=null,status: String?=null,country: String?=null,region: String?=null,startDate: String?=null,endDate: String?=null, headers: Map<String, String> = emptyMap())
+    : Response<BulkRegionResult>? {
+
+        return if (config.oauthClient.isAccessTokenValid()) {
+            serviceabilityApiList?.getBulkServiceability(
+        companyId = config.companyId,extensionId = extensionId,schemeId = schemeId,pageNo = pageNo,pageSize = pageSize,batchId = batchId,action = action,status = status,country = country,region = region,startDate = startDate,endDate = endDate, headers = headers)
+        } else {
+            null
+        }
+    }
     
     
     suspend fun createPackageMaterial(pageNo: Int?=null,body: PackageMaterial, headers: Map<String, String> = emptyMap())
-    : Response<PackageMaterialResponse>? {
+    : Response<PackageMaterialResult>? {
 
         return if (config.oauthClient.isAccessTokenValid()) {
             serviceabilityApiList?.createPackageMaterial(
@@ -298,7 +212,7 @@ class ServiceabilityDataManagerClass(val config: PlatformConfig, val unauthorize
     
     
     suspend fun getPackageMaterialList(pageNo: Int?=null,pageSize: Int?=null,q: String?=null,size: String?=null,packageType: String?=null, headers: Map<String, String> = emptyMap())
-    : Response<PackageMaterialList>? {
+    : Response<PackagesListResult>? {
 
         return if (config.oauthClient.isAccessTokenValid()) {
             serviceabilityApiList?.getPackageMaterialList(
@@ -309,36 +223,12 @@ class ServiceabilityDataManagerClass(val config: PlatformConfig, val unauthorize
     }
     
     
-    suspend fun createPackageMaterialRule(body: PackageRuleRequest, headers: Map<String, String> = emptyMap())
+    suspend fun createPackageMaterialRule(body: PackageRule, headers: Map<String, String> = emptyMap())
     : Response<PackageRuleResult>? {
 
         return if (config.oauthClient.isAccessTokenValid()) {
             serviceabilityApiList?.createPackageMaterialRule(
         companyId = config.companyId, body = body,headers = headers)
-        } else {
-            null
-        }
-    }
-    
-    
-    suspend fun getPackageMaterialRuleDetails(ruleId: String,pageNo: Int?=null,pageSize: Int?=null,isActive: String?=null, headers: Map<String, String> = emptyMap())
-    : Response<PackageRuleResult>? {
-
-        return if (config.oauthClient.isAccessTokenValid()) {
-            serviceabilityApiList?.getPackageMaterialRuleDetails(
-        companyId = config.companyId,ruleId = ruleId,pageNo = pageNo,pageSize = pageSize,isActive = isActive, headers = headers)
-        } else {
-            null
-        }
-    }
-    
-    
-    suspend fun getListPackageMaterialRuleDetails(pageNo: Int?=null,pageSize: Int?=null,isActive: String?=null, headers: Map<String, String> = emptyMap())
-    : Response<PackageMaterialRuleList>? {
-
-        return if (config.oauthClient.isAccessTokenValid()) {
-            serviceabilityApiList?.getListPackageMaterialRuleDetails(
-        companyId = config.companyId,pageNo = pageNo,pageSize = pageSize,isActive = isActive, headers = headers)
         } else {
             null
         }
@@ -357,7 +247,7 @@ class ServiceabilityDataManagerClass(val config: PlatformConfig, val unauthorize
     }
     
     
-    suspend fun updatePackageMaterialRule(ruleId: String,body: PackageRuleRequest, headers: Map<String, String> = emptyMap())
+    suspend fun updatePackageMaterialRule(ruleId: String,body: PackageRule, headers: Map<String, String> = emptyMap())
     : Response<PackageRuleResult>? {
 
         return if (config.oauthClient.isAccessTokenValid()) {
@@ -370,7 +260,7 @@ class ServiceabilityDataManagerClass(val config: PlatformConfig, val unauthorize
     
     
     suspend fun updatePackageMaterials(packageMaterialId: String,body: PackageMaterial, headers: Map<String, String> = emptyMap())
-    : Response<PackageMaterialResponse>? {
+    : Response<PackageMaterialResult>? {
 
         return if (config.oauthClient.isAccessTokenValid()) {
             serviceabilityApiList?.updatePackageMaterials(
@@ -382,7 +272,7 @@ class ServiceabilityDataManagerClass(val config: PlatformConfig, val unauthorize
     
     
     suspend fun getPackageMaterials(packageMaterialId: String, headers: Map<String, String> = emptyMap())
-    : Response<PackageMaterialResponse>? {
+    : Response<PackageItem>? {
 
         return if (config.oauthClient.isAccessTokenValid()) {
             serviceabilityApiList?.getPackageMaterials(
@@ -394,203 +284,85 @@ class ServiceabilityDataManagerClass(val config: PlatformConfig, val unauthorize
     
     
     
-    suspend fun getInstalledCourierPartnerExtensions(pageNo: Int?=null,pageSize: Int?=null,isInstalled: String?=null, headers: Map<String, String> = emptyMap())
-    : Response<InstallCourierPartnerResponseSchema>? {
+    
+    suspend fun getOptimalLocations(body: OptimlLocationsRequestSchema, headers: Map<String, String> = emptyMap())
+    : Response<OptimalLocationsResult>? {
 
         return if (config.oauthClient.isAccessTokenValid()) {
-            serviceabilityApiList?.getInstalledCourierPartnerExtensions(
-        companyId = config.companyId,pageNo = pageNo,pageSize = pageSize,isInstalled = isInstalled, headers = headers)
+            serviceabilityApiList?.getOptimalLocations(
+        companyId = config.companyId, body = body,headers = headers)
         } else {
             null
         }
     }
     
     
-    suspend fun getLocalitiesByPrefix(pageNo: Int?=null,pageSize: Int?=null,q: String?=null, headers: Map<String, String> = emptyMap())
-    : Response<GetLocalities>? {
+    suspend fun createCourierPartnerScheme(body: CourierPartnerSchemeDetailsModel, headers: Map<String, String> = emptyMap())
+    : Response<CourierPartnerSchemeModelSchema>? {
 
         return if (config.oauthClient.isAccessTokenValid()) {
-            serviceabilityApiList?.getLocalitiesByPrefix(
-        companyId = config.companyId,pageNo = pageNo,pageSize = pageSize,q = q, headers = headers)
+            serviceabilityApiList?.createCourierPartnerScheme(
+        companyId = config.companyId, body = body,headers = headers)
         } else {
             null
         }
     }
     
     
-    
-        
-            
-                
-            
-            
-        
-            
-            
-        
-            
-                
-            
-            
-        
-            
-                
-            
-            
-        
-    /**
-    *
-    * Summary: Paginator for getLocalitiesByPrefix
-    **/
-    fun getLocalitiesByPrefixPaginator(companyId: String, pageSize: Int?=null, q: String?=null) : Paginator<GetLocalities>{
-        val paginator = Paginator<GetLocalities>()
-        paginator.setCallBack(object : PaginatorCallback<GetLocalities> {
-
-            override suspend fun onNext(
-                onResponse: (Event<GetLocalities>?,FdkError?) -> Unit){
-
-                if (config.oauthClient.isAccessTokenValid()) {
-                    val pageId = paginator.nextId
-                    val pageNo = paginator.pageNo
-                    val pageType = "number"
-                    serviceabilityApiList?.getLocalitiesByPrefix(
-                    companyId = config.companyId, pageNo = pageNo, pageSize = pageSize, q = q
-                    )?.safeAwait{ response, error ->
-                        response?.let {
-                            val page = response.peekContent()?.page
-                            paginator.setPaginator(hasNext=page?.hasNext?:false,pageNo=if (page?.hasNext == true) ((pageNo ?: 0) + 1) else pageNo)
-                            onResponse.invoke(response,null)
-                        }
-
-                        error?.let {
-                            onResponse.invoke(null,error)
-                        }
-                    }
-
-                } else {
-                    null
-                }
-            }
-
-
-    })
-        return paginator
-    }
-    
-    suspend fun getLocality(localityType: String,localityValue: String,country: String?=null,state: String?=null,city: String?=null, headers: Map<String, String> = emptyMap())
-    : Response<GetLocality>? {
+    suspend fun getCourierPartnerSchemes(schemeType: String?=null,paymentMode: String?=null,capabilities: ArrayList<String>?=null,schemeIds: ArrayList<String>?=null,q: String?=null, headers: Map<String, String> = emptyMap())
+    : Response<CourierPartnerSchemeList>? {
 
         return if (config.oauthClient.isAccessTokenValid()) {
-            serviceabilityApiList?.getLocality(
-        companyId = config.companyId,localityType = localityType,localityValue = localityValue,country = country,state = state,city = city, headers = headers)
+            serviceabilityApiList?.getCourierPartnerSchemes(
+        companyId = config.companyId,schemeType = schemeType,paymentMode = paymentMode,capabilities = capabilities,schemeIds = schemeIds,q = q, headers = headers)
         } else {
             null
         }
     }
     
     
-    suspend fun getLocalities(localityType: String,country: String?=null,state: String?=null,city: String?=null,pageNo: Int?=null,pageSize: Int?=null,q: String?=null,name: String?=null, headers: Map<String, String> = emptyMap())
-    : Response<GetLocalities>? {
+    suspend fun updateCourierPartnerScheme(schemeId: String,body: CourierPartnerSchemeUpdateDetailsSchema, headers: Map<String, String> = emptyMap())
+    : Response<CourierPartnerSchemeModelSchema>? {
 
         return if (config.oauthClient.isAccessTokenValid()) {
-            serviceabilityApiList?.getLocalities(
-        companyId = config.companyId,localityType = localityType,country = country,state = state,city = city,pageNo = pageNo,pageSize = pageSize,q = q,name = name, headers = headers)
+            serviceabilityApiList?.updateCourierPartnerScheme(
+        schemeId = schemeId,companyId = config.companyId, body = body,headers = headers)
         } else {
             null
         }
     }
     
     
-    
-        
-            
-                
-            
-            
-        
-            
-                
-            
-            
-        
-            
-                
-            
-            
-        
-            
-                
-            
-            
-        
-            
-                
-            
-            
-        
-            
-            
-        
-            
-                
-            
-            
-        
-            
-                
-            
-            
-        
-            
-                
-            
-            
-        
-    /**
-    *
-    * Summary: Paginator for getLocalities
-    **/
-    fun getLocalitiesPaginator(companyId: String, localityType: String, country: String?=null, state: String?=null, city: String?=null, pageSize: Int?=null, q: String?=null, name: String?=null) : Paginator<GetLocalities>{
-        val paginator = Paginator<GetLocalities>()
-        paginator.setCallBack(object : PaginatorCallback<GetLocalities> {
-
-            override suspend fun onNext(
-                onResponse: (Event<GetLocalities>?,FdkError?) -> Unit){
-
-                if (config.oauthClient.isAccessTokenValid()) {
-                    val pageId = paginator.nextId
-                    val pageNo = paginator.pageNo
-                    val pageType = "number"
-                    serviceabilityApiList?.getLocalities(
-                    companyId = config.companyId, localityType = localityType, country = country, state = state, city = city, pageNo = pageNo, pageSize = pageSize, q = q, name = name
-                    )?.safeAwait{ response, error ->
-                        response?.let {
-                            val page = response.peekContent()?.page
-                            paginator.setPaginator(hasNext=page?.hasNext?:false,pageNo=if (page?.hasNext == true) ((pageNo ?: 0) + 1) else pageNo)
-                            onResponse.invoke(response,null)
-                        }
-
-                        error?.let {
-                            onResponse.invoke(null,error)
-                        }
-                    }
-
-                } else {
-                    null
-                }
-            }
-
-
-    })
-        return paginator
-    }
-    
-    suspend fun getCountry(countryIsoCode: String, headers: Map<String, String> = emptyMap())
-    : Response<GetCountry>? {
+    suspend fun getCourierPartnerScheme(schemeId: String, headers: Map<String, String> = emptyMap())
+    : Response<CourierPartnerSchemeModelSchema>? {
 
         return if (config.oauthClient.isAccessTokenValid()) {
-            serviceabilityApiList?.getCountry(
-        companyId = config.companyId,countryIsoCode = countryIsoCode, headers = headers)
+            serviceabilityApiList?.getCourierPartnerScheme(
+        schemeId = schemeId,companyId = config.companyId, headers = headers)
+        } else {
+            null
+        }
+    }
+    
+    
+    suspend fun sampleFileServiceability(body: BulkRegionServiceabilityTatDetails, headers: Map<String, String> = emptyMap())
+    : Response<BulkRegionServiceabilityTatResultItemData>? {
+
+        return if (config.oauthClient.isAccessTokenValid()) {
+            serviceabilityApiList?.sampleFileServiceability(
+        companyId = config.companyId, body = body,headers = headers)
+        } else {
+            null
+        }
+    }
+    
+    
+    suspend fun getSampleFileServiceabilityStatus(pageNo: Int?=null,pageSize: Int?=null,batchId: String?=null, headers: Map<String, String> = emptyMap())
+    : Response<BulkRegionServiceabilityTatResult>? {
+
+        return if (config.oauthClient.isAccessTokenValid()) {
+            serviceabilityApiList?.getSampleFileServiceabilityStatus(
+        pageNo = pageNo,pageSize = pageSize,batchId = batchId,companyId = config.companyId, headers = headers)
         } else {
             null
         }
@@ -609,23 +381,35 @@ class ServiceabilityDataManagerClass(val config: PlatformConfig, val unauthorize
     }
     
     
-    suspend fun validateAddress(countryIsoCode: String,templateName: String,body: ValidateAddressRequest, headers: Map<String, String> = emptyMap())
-    : Response<ValidateAddressRequest>? {
+    suspend fun getInstalledCourierPartnerExtensions(pageNo: Int?=null,pageSize: Int?=null,isInstalled: String?=null, headers: Map<String, String> = emptyMap())
+    : Response<InstallCourierPartnerResponseSchema>? {
 
         return if (config.oauthClient.isAccessTokenValid()) {
-            serviceabilityApiList?.validateAddress(
-        companyId = config.companyId,countryIsoCode = countryIsoCode,templateName = templateName, body = body,headers = headers)
+            serviceabilityApiList?.getInstalledCourierPartnerExtensions(
+        companyId = config.companyId,pageNo = pageNo,pageSize = pageSize,isInstalled = isInstalled, headers = headers)
         } else {
             null
         }
     }
     
     
-    suspend fun getOptimalLocations(body: OptimlLocationsRequestSchema, headers: Map<String, String> = emptyMap())
-    : Response<OptimalLocationsResponse>? {
+    suspend fun getSelfShipDetails( headers: Map<String, String> = emptyMap())
+    : Response<SelfshipSchema>? {
 
         return if (config.oauthClient.isAccessTokenValid()) {
-            serviceabilityApiList?.getOptimalLocations(
+            serviceabilityApiList?.getSelfShipDetails(
+        companyId = config.companyId, headers = headers)
+        } else {
+            null
+        }
+    }
+    
+    
+    suspend fun updateSelfShipDetails(body: SelfshipSchema, headers: Map<String, String> = emptyMap())
+    : Response<SelfshipSchema>? {
+
+        return if (config.oauthClient.isAccessTokenValid()) {
+            serviceabilityApiList?.updateSelfShipDetails(
         companyId = config.companyId, body = body,headers = headers)
         } else {
             null
@@ -642,20 +426,13 @@ class ServiceabilityDataManagerClass(val config: PlatformConfig, val unauthorize
     
     
     
-    
 
 inner class ApplicationClient(val applicationId:String,val config: PlatformConfig){
 
     
     
-    
-    
-    
-    
-    
-    
-    suspend fun createZone(body: CreateZoneV2Data, headers: Map<String, String> = emptyMap())
-    : Response<ZoneResponseV2>? {
+    suspend fun createZone(body: CreateZoneDataSchema, headers: Map<String, String> = emptyMap())
+    : Response<ZoneSchema>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 serviceabilityApiList?.createZone(companyId = config.companyId ,applicationId = applicationId , body = body,headers = headers)
         } else {
@@ -664,10 +441,10 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     }
     
     
-    suspend fun getZones(stage: String?=null,type: String?=null,accessLevel: String?=null,status: String?=null,pageSize: Int?=null,pageNo: Int?=null,isActive: Boolean?=null,q: String?=null,countryIsoCode: String?=null,pincode: String?=null,state: String?=null,city: String?=null,sector: String?=null, headers: Map<String, String> = emptyMap())
-    : Response<ListViewResponseV2>? {
+    suspend fun getZones(stage: String?=null,pageSize: Int?=null,pageNo: Int?=null,fulfillmentOptionSlug: String?=null,isActive: Boolean?=null,q: String?=null,countryIsoCode: String?=null,pincode: String?=null,state: String?=null,city: String?=null,sector: String?=null, headers: Map<String, String> = emptyMap())
+    : Response<ListViewSchema>? {
         return if (config.oauthClient.isAccessTokenValid()) {
-                serviceabilityApiList?.getZones(companyId = config.companyId ,applicationId = applicationId ,stage = stage,type = type,accessLevel = accessLevel,status = status,pageSize = pageSize,pageNo = pageNo,isActive = isActive,q = q,countryIsoCode = countryIsoCode,pincode = pincode,state = state,city = city,sector = sector, headers = headers)
+                serviceabilityApiList?.getZones(companyId = config.companyId ,applicationId = applicationId ,stage = stage,pageSize = pageSize,pageNo = pageNo,fulfillmentOptionSlug = fulfillmentOptionSlug,isActive = isActive,q = q,countryIsoCode = countryIsoCode,pincode = pincode,state = state,city = city,sector = sector, headers = headers)
         } else {
             null
         }
@@ -684,8 +461,8 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     }
     
     
-    suspend fun updateZone(zoneId: String,body: UpdateZoneDataV2, headers: Map<String, String> = emptyMap())
-    : Response<ZoneUpdateSuccessResponse>? {
+    suspend fun updateZone(zoneId: String,body: UpdateZoneData, headers: Map<String, String> = emptyMap())
+    : Response<ZoneUpdateSuccessResult>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 serviceabilityApiList?.updateZone(companyId = config.companyId ,zoneId = zoneId,applicationId = applicationId , body = body,headers = headers)
         } else {
@@ -695,39 +472,9 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     
     
     suspend fun deleteZone(zoneId: String, headers: Map<String, String> = emptyMap())
-    : Response<ZoneDeleteSuccessResponse>? {
+    : Response<ZoneDeleteSuccessResult>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 serviceabilityApiList?.deleteZone(companyId = config.companyId ,zoneId = zoneId,applicationId = applicationId , headers = headers)
-        } else {
-            null
-        }
-    }
-    
-    
-    suspend fun getZoneDetails(zoneId: String, headers: Map<String, String> = emptyMap())
-    : Response<GetZoneByIdDetailsSchema>? {
-        return if (config.oauthClient.isAccessTokenValid()) {
-                serviceabilityApiList?.getZoneDetails(companyId = config.companyId ,zoneId = zoneId,applicationId = applicationId , headers = headers)
-        } else {
-            null
-        }
-    }
-    
-    
-    suspend fun createBulkZone(body: CreateBulkZoneData, headers: Map<String, String> = emptyMap())
-    : Response<CreateBulkZoneResponse>? {
-        return if (config.oauthClient.isAccessTokenValid()) {
-                serviceabilityApiList?.createBulkZone(companyId = config.companyId ,applicationId = applicationId , body = body,headers = headers)
-        } else {
-            null
-        }
-    }
-    
-    
-    suspend fun getBulkZone( headers: Map<String, String> = emptyMap())
-    : Response<GetBulkZoneHistory>? {
-        return if (config.oauthClient.isAccessTokenValid()) {
-                serviceabilityApiList?.getBulkZone(companyId = config.companyId ,applicationId = applicationId , headers = headers)
         } else {
             null
         }
@@ -748,46 +495,6 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     : Response<GetZoneBulkExport>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 serviceabilityApiList?.getBulkExport(companyId = config.companyId ,applicationId = applicationId ,batchId = batchId, headers = headers)
-        } else {
-            null
-        }
-    }
-    
-    
-    suspend fun updatePincodeMopView(body: PincodeMopData, headers: Map<String, String> = emptyMap())
-    : Response<PincodeMOPresponse>? {
-        return if (config.oauthClient.isAccessTokenValid()) {
-                serviceabilityApiList?.updatePincodeMopView(companyId = config.companyId ,applicationId = applicationId , body = body,headers = headers)
-        } else {
-            null
-        }
-    }
-    
-    
-    suspend fun updatePincodeBulkView(body: PincodeMopBulkData, headers: Map<String, String> = emptyMap())
-    : Response<PincodeBulkViewResponse>? {
-        return if (config.oauthClient.isAccessTokenValid()) {
-                serviceabilityApiList?.updatePincodeBulkView(companyId = config.companyId ,applicationId = applicationId , body = body,headers = headers)
-        } else {
-            null
-        }
-    }
-    
-    
-    suspend fun updatePincodeCoDListing(body: PincodeCodStatusListingRequest, headers: Map<String, String> = emptyMap())
-    : Response<PincodeCodStatusListingResponse>? {
-        return if (config.oauthClient.isAccessTokenValid()) {
-                serviceabilityApiList?.updatePincodeCoDListing(companyId = config.companyId ,applicationId = applicationId , body = body,headers = headers)
-        } else {
-            null
-        }
-    }
-    
-    
-    suspend fun updatePincodeAuditHistory(body: PincodeMopUpdateAuditHistoryRequest, headers: Map<String, String> = emptyMap())
-    : Response<PincodeMopUpdateAuditHistoryResponseData>? {
-        return if (config.oauthClient.isAccessTokenValid()) {
-                serviceabilityApiList?.updatePincodeAuditHistory(companyId = config.companyId ,applicationId = applicationId , body = body,headers = headers)
         } else {
             null
         }
@@ -815,7 +522,7 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     
     
     suspend fun getGeoArea(geoareaId: String, headers: Map<String, String> = emptyMap())
-    : Response<GeoAreaResponse>? {
+    : Response<GeoAreaDetails>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 serviceabilityApiList?.getGeoArea(companyId = config.companyId ,geoareaId = geoareaId,applicationId = applicationId , headers = headers)
         } else {
@@ -845,7 +552,7 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     
     
     suspend fun getBulkGeoArea(geoareaId: String, headers: Map<String, String> = emptyMap())
-    : Response<BulkGeoAreaGetResponse>? {
+    : Response<BulkGeoAreaGetResult>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 serviceabilityApiList?.getBulkGeoArea(companyId = config.companyId ,applicationId = applicationId ,geoareaId = geoareaId, headers = headers)
         } else {
@@ -884,110 +591,40 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     }
     
     
-    suspend fun createBulkGeoAreaExport(body: PriceBulkGeoAreaExportRequestPayload, headers: Map<String, String> = emptyMap())
-    : Response<PriceGeoAreaExportResult>? {
+    suspend fun updatePincodeMopView(body: PincodeMopData, headers: Map<String, String> = emptyMap())
+    : Response<PincodeMOPResult>? {
         return if (config.oauthClient.isAccessTokenValid()) {
-                serviceabilityApiList?.createBulkGeoAreaExport(companyId = config.companyId ,applicationId = applicationId , body = body,headers = headers)
+                serviceabilityApiList?.updatePincodeMopView(companyId = config.companyId ,applicationId = applicationId , body = body,headers = headers)
         } else {
             null
         }
     }
     
     
-    suspend fun createBulkGeoAreas(body: PriceBulkGeoAreaPayload, headers: Map<String, String> = emptyMap())
-    : Response<BulkGeoAreaResult>? {
+    suspend fun updatePincodeBulkView(body: PincodeMopBulkData, headers: Map<String, String> = emptyMap())
+    : Response<PincodeBulkViewResult>? {
         return if (config.oauthClient.isAccessTokenValid()) {
-                serviceabilityApiList?.createBulkGeoAreas(companyId = config.companyId ,applicationId = applicationId , body = body,headers = headers)
+                serviceabilityApiList?.updatePincodeBulkView(companyId = config.companyId ,applicationId = applicationId , body = body,headers = headers)
         } else {
             null
         }
     }
     
     
-    suspend fun validateBulkGeoarea(body: ZoneBulkValidationRequestSchema, headers: Map<String, String> = emptyMap())
-    : Response<ZoneBulkValidationResponse>? {
+    suspend fun updatePincodeCoDListing(pageNumber: Int?=null,pageSize: Int?=null,body: PincodeCodStatusListingDetails, headers: Map<String, String> = emptyMap())
+    : Response<PincodeCodStatusListingResult>? {
         return if (config.oauthClient.isAccessTokenValid()) {
-                serviceabilityApiList?.validateBulkGeoarea(companyId = config.companyId ,applicationId = applicationId , body = body,headers = headers)
+                serviceabilityApiList?.updatePincodeCoDListing(companyId = config.companyId ,applicationId = applicationId ,pageNumber = pageNumber,pageSize = pageSize, body = body,headers = headers)
         } else {
             null
         }
     }
     
     
-    suspend fun getBulkGeoareaValidation(batchId: String, headers: Map<String, String> = emptyMap())
-    : Response<ZoneBulkValidationStatusResponse>? {
+    suspend fun updatePincodeAuditHistory(pageNumber: Int?=null,pageSize: Int?=null,body: PincodeMopUpdateAuditHistoryDetails, headers: Map<String, String> = emptyMap())
+    : Response<PincodeMopUpdateAuditHistoryResultData>? {
         return if (config.oauthClient.isAccessTokenValid()) {
-                serviceabilityApiList?.getBulkGeoareaValidation(companyId = config.companyId ,applicationId = applicationId ,batchId = batchId, headers = headers)
-        } else {
-            null
-        }
-    }
-    
-    
-    suspend fun importBulkGeoarea(batchId: String, headers: Map<String, String> = emptyMap())
-    : Response<ZoneBulkValidationStatusResponse>? {
-        return if (config.oauthClient.isAccessTokenValid()) {
-                serviceabilityApiList?.importBulkGeoarea(companyId = config.companyId ,applicationId = applicationId ,batchId = batchId, headers = headers)
-        } else {
-            null
-        }
-    }
-    
-    
-    suspend fun importBulkGeoareaStatus(batchId: String, headers: Map<String, String> = emptyMap())
-    : Response<ZoneBulkImportResponse>? {
-        return if (config.oauthClient.isAccessTokenValid()) {
-                serviceabilityApiList?.importBulkGeoareaStatus(companyId = config.companyId ,applicationId = applicationId ,batchId = batchId, headers = headers)
-        } else {
-            null
-        }
-    }
-    
-    
-    suspend fun overrideBulkGeoarea(batchId: String,body: BulkZoneOverrideSchema, headers: Map<String, String> = emptyMap())
-    : Response<BulkZoneOverrideResponseSchema>? {
-        return if (config.oauthClient.isAccessTokenValid()) {
-                serviceabilityApiList?.overrideBulkGeoarea(companyId = config.companyId ,applicationId = applicationId ,batchId = batchId, body = body,headers = headers)
-        } else {
-            null
-        }
-    }
-    
-    
-    suspend fun getGeoareaOverrideStatus(batchId: String, headers: Map<String, String> = emptyMap())
-    : Response<ZoneOverrideStatusResponseSchema>? {
-        return if (config.oauthClient.isAccessTokenValid()) {
-                serviceabilityApiList?.getGeoareaOverrideStatus(companyId = config.companyId ,applicationId = applicationId ,batchId = batchId, headers = headers)
-        } else {
-            null
-        }
-    }
-    
-    
-    suspend fun getBulkGeoAreasHistory( headers: Map<String, String> = emptyMap())
-    : Response<GetBulkPriceZoneHistory>? {
-        return if (config.oauthClient.isAccessTokenValid()) {
-                serviceabilityApiList?.getBulkGeoAreasHistory(companyId = config.companyId ,applicationId = applicationId , headers = headers)
-        } else {
-            null
-        }
-    }
-    
-    
-    suspend fun getBulkGeoAreasSample( headers: Map<String, String> = emptyMap())
-    : Response<ResponseBody>? {
-        return if (config.oauthClient.isAccessTokenValid()) {
-                serviceabilityApiList?.getBulkGeoAreasSample(companyId = config.companyId ,applicationId = applicationId , headers = headers)
-        } else {
-            null
-        }
-    }
-    
-    
-    suspend fun getGeoAreasExportStatus(batchId: String, headers: Map<String, String> = emptyMap())
-    : Response<GetExportPriceZoneHistory>? {
-        return if (config.oauthClient.isAccessTokenValid()) {
-                serviceabilityApiList?.getGeoAreasExportStatus(companyId = config.companyId ,applicationId = applicationId ,batchId = batchId, headers = headers)
+                serviceabilityApiList?.updatePincodeAuditHistory(companyId = config.companyId ,applicationId = applicationId ,pageNumber = pageNumber,pageSize = pageSize, body = body,headers = headers)
         } else {
             null
         }
@@ -996,34 +633,10 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     
     
     
-    
-    
-    
-    
-    
-    
-    suspend fun createCourierPartnerRule(body: CourierPartnerRule, headers: Map<String, String> = emptyMap())
-    : Response<CourierPartnerRuleResponseSchema>? {
-        return if (config.oauthClient.isAccessTokenValid()) {
-                serviceabilityApiList?.createCourierPartnerRule(companyId = config.companyId ,applicationId = applicationId , body = body,headers = headers)
-        } else {
-            null
-        }
-    }
-    
-    
-    suspend fun getCourierPartnerRules(pageNo: Int?=null,pageSize: Int?=null,status: String?=null, headers: Map<String, String> = emptyMap())
-    : Response<CourierPartnerRulesListResponse>? {
-        return if (config.oauthClient.isAccessTokenValid()) {
-                serviceabilityApiList?.getCourierPartnerRules(companyId = config.companyId ,applicationId = applicationId ,pageNo = pageNo,pageSize = pageSize,status = status, headers = headers)
-        } else {
-            null
-        }
-    }
     
     
     suspend fun updateCourierRule(ruleUid: String,body: CourierPartnerRule, headers: Map<String, String> = emptyMap())
-    : Response<CourierPartnerRuleResponseSchema>? {
+    : Response<CourierPartnerRuleResult>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 serviceabilityApiList?.updateCourierRule(companyId = config.companyId ,applicationId = applicationId ,ruleUid = ruleUid, body = body,headers = headers)
         } else {
@@ -1033,7 +646,7 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     
     
     suspend fun getCourierPartnerRule(ruleUid: String, headers: Map<String, String> = emptyMap())
-    : Response<CourierPartnerRuleResponseSchema>? {
+    : Response<CourierPartnerRuleResult>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 serviceabilityApiList?.getCourierPartnerRule(companyId = config.companyId ,applicationId = applicationId ,ruleUid = ruleUid, headers = headers)
         } else {
@@ -1042,10 +655,40 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     }
     
     
+    suspend fun createCourierPartnerRule(body: CourierPartnerRule, headers: Map<String, String> = emptyMap())
+    : Response<CourierPartnerRuleResult>? {
+        return if (config.oauthClient.isAccessTokenValid()) {
+                serviceabilityApiList?.createCourierPartnerRule(companyId = config.companyId ,applicationId = applicationId , body = body,headers = headers)
+        } else {
+            null
+        }
+    }
     
     
-    suspend fun updateApplicationConfiguration(body: ApplicationConfigPutRequest, headers: Map<String, String> = emptyMap())
-    : Response<ApplicationConfigPutResponse>? {
+    suspend fun getCourierPartnerRules(pageNo: Int?=null,pageSize: Int?=null,status: String?=null, headers: Map<String, String> = emptyMap())
+    : Response<CourierPartnerRulesListResult>? {
+        return if (config.oauthClient.isAccessTokenValid()) {
+                serviceabilityApiList?.getCourierPartnerRules(companyId = config.companyId ,applicationId = applicationId ,pageNo = pageNo,pageSize = pageSize,status = status, headers = headers)
+        } else {
+            null
+        }
+    }
+    
+    
+    suspend fun getCourierPartners(body: ShipmentCourierPartnerDetails, headers: Map<String, String> = emptyMap())
+    : Response<ShipmentCourierPartnerResult>? {
+        return if (config.oauthClient.isAccessTokenValid()) {
+                serviceabilityApiList?.getCourierPartners(companyId = config.companyId ,applicationId = applicationId , body = body,headers = headers)
+        } else {
+            null
+        }
+    }
+    
+    
+    
+    
+    suspend fun updateApplicationConfiguration(body: ApplicationConfigPutDetail, headers: Map<String, String> = emptyMap())
+    : Response<ApplicationConfigPut>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 serviceabilityApiList?.updateApplicationConfiguration(companyId = config.companyId ,applicationId = applicationId , body = body,headers = headers)
         } else {
@@ -1055,7 +698,7 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     
     
     suspend fun getApplicationConfiguration( headers: Map<String, String> = emptyMap())
-    : Response<ApplicationConfigGetResponse>? {
+    : Response<ApplicationConfigGetResult>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 serviceabilityApiList?.getApplicationConfiguration(companyId = config.companyId ,applicationId = applicationId , headers = headers)
         } else {
@@ -1064,14 +707,16 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     }
     
     
-    suspend fun patchApplicationConfiguration(body: ApplicationConfigPatchRequest, headers: Map<String, String> = emptyMap())
-    : Response<ApplicationConfigPatchResponse>? {
+    suspend fun patchApplicationConfiguration(body: ApplicationConfigPatch, headers: Map<String, String> = emptyMap())
+    : Response<ApplicationConfigPatchResult>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 serviceabilityApiList?.patchApplicationConfiguration(companyId = config.companyId ,applicationId = applicationId , body = body,headers = headers)
         } else {
             null
         }
     }
+    
+    
     
     
     suspend fun getApplicationConfig( headers: Map<String, String> = emptyMap())
@@ -1105,7 +750,7 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     
     
     suspend fun getStoreRules(pageNo: Int?=null,pageSize: Int?=null,status: String?=null, headers: Map<String, String> = emptyMap())
-    : Response<GetStoreRulesApiResponse>? {
+    : Response<GetStoreRulesApiResult>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 serviceabilityApiList?.getStoreRules(companyId = config.companyId ,applicationId = applicationId ,pageNo = pageNo,pageSize = pageSize,status = status, headers = headers)
         } else {
@@ -1114,20 +759,10 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     }
     
     
-    suspend fun createStoreRules(body: CreateStoreRuleRequestSchema, headers: Map<String, String> = emptyMap())
-    : Response<StoreRuleResponseSchema>? {
+    suspend fun createStoreRules(body: CreateStoreRuleDetailsSchema, headers: Map<String, String> = emptyMap())
+    : Response<StoreRuleResultSchema>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 serviceabilityApiList?.createStoreRules(companyId = config.companyId ,applicationId = applicationId , body = body,headers = headers)
-        } else {
-            null
-        }
-    }
-    
-    
-    suspend fun updateStoreRulePriority(body: RulePriorityRequest, headers: Map<String, String> = emptyMap())
-    : Response<RulePriorityResponse>? {
-        return if (config.oauthClient.isAccessTokenValid()) {
-                serviceabilityApiList?.updateStoreRulePriority(companyId = config.companyId ,applicationId = applicationId , body = body,headers = headers)
         } else {
             null
         }
@@ -1144,8 +779,8 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     }
     
     
-    suspend fun updateStoreRules(ruleUid: String,body: CreateStoreRuleRequestSchema, headers: Map<String, String> = emptyMap())
-    : Response<StoreRuleUpdateResponseSchema>? {
+    suspend fun updateStoreRules(ruleUid: String,body: CreateStoreRuleDetailsSchema, headers: Map<String, String> = emptyMap())
+    : Response<StoreRuleUpdateResultSchema>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 serviceabilityApiList?.updateStoreRules(companyId = config.companyId ,applicationId = applicationId ,ruleUid = ruleUid, body = body,headers = headers)
         } else {
@@ -1163,8 +798,8 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     
     
     
-    suspend fun updateCourierPartnerRulePriority(body: RulePriorityRequest, headers: Map<String, String> = emptyMap())
-    : Response<RulePriorityResponse>? {
+    suspend fun updateCourierPartnerRulePriority(body: RulePriorityDetails, headers: Map<String, String> = emptyMap())
+    : Response<RulePriorityResult>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 serviceabilityApiList?.updateCourierPartnerRulePriority(companyId = config.companyId ,applicationId = applicationId , body = body,headers = headers)
         } else {
@@ -1173,32 +808,25 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     }
     
     
-    
-    
-    
-    
-    
-    
-    
-    
-    suspend fun getCourierPartnerRuleDetails(ruleUid: String, headers: Map<String, String> = emptyMap())
-    : Response<CourierPartnerRuleResponseDetailSchema>? {
+    suspend fun updateStoreRulePriority(body: RulePriorityDetails, headers: Map<String, String> = emptyMap())
+    : Response<RulePriorityResult>? {
         return if (config.oauthClient.isAccessTokenValid()) {
-                serviceabilityApiList?.getCourierPartnerRuleDetails(companyId = config.companyId ,applicationId = applicationId ,ruleUid = ruleUid, headers = headers)
+                serviceabilityApiList?.updateStoreRulePriority(companyId = config.companyId ,applicationId = applicationId , body = body,headers = headers)
         } else {
             null
         }
     }
     
     
-    suspend fun getStoreRuleDetails(ruleUid: String, headers: Map<String, String> = emptyMap())
-    : Response<StoreRuleDataDetailsSchema>? {
-        return if (config.oauthClient.isAccessTokenValid()) {
-                serviceabilityApiList?.getStoreRuleDetails(companyId = config.companyId ,applicationId = applicationId ,ruleUid = ruleUid, headers = headers)
-        } else {
-            null
-        }
-    }
+    
+    
+    
+    
+    
+    
+    
+    
+    
     
     
     suspend fun downloadGeoareaSampleFile( headers: Map<String, String> = emptyMap())
@@ -1211,80 +839,90 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     }
     
     
-    suspend fun downloadZoneSampleFile(productType: String, headers: Map<String, String> = emptyMap())
-    : Response<ResponseBody>? {
+    suspend fun createFulfillmentOption(body: FulfillmentOption, headers: Map<String, String> = emptyMap())
+    : Response<FulfillmentOption>? {
         return if (config.oauthClient.isAccessTokenValid()) {
-                serviceabilityApiList?.downloadZoneSampleFile(companyId = config.companyId ,applicationId = applicationId ,productType = productType, headers = headers)
+                serviceabilityApiList?.createFulfillmentOption(companyId = config.companyId ,applicationId = applicationId , body = body,headers = headers)
         } else {
             null
         }
     }
     
     
-    suspend fun validateBulkZone(body: ZoneBulkValidationRequestSchema, headers: Map<String, String> = emptyMap())
-    : Response<ZoneBulkValidationResponse>? {
+    suspend fun getFulfillmentOptions(slug: String,productId: Int?=null,storeId: Int?=null, headers: Map<String, String> = emptyMap())
+    : Response<FulfillmentOption>? {
         return if (config.oauthClient.isAccessTokenValid()) {
-                serviceabilityApiList?.validateBulkZone(companyId = config.companyId ,applicationId = applicationId , body = body,headers = headers)
+                serviceabilityApiList?.getFulfillmentOptions(companyId = config.companyId ,applicationId = applicationId ,slug = slug,productId = productId,storeId = storeId, headers = headers)
         } else {
             null
         }
     }
     
     
-    suspend fun getBulkZoneValidation(batchId: String, headers: Map<String, String> = emptyMap())
-    : Response<ZoneBulkValidationStatusResponse>? {
+    suspend fun deleteFulfillmentOptions(slug: String, headers: Map<String, String> = emptyMap())
+    : Response<OperationResponseSchema>? {
         return if (config.oauthClient.isAccessTokenValid()) {
-                serviceabilityApiList?.getBulkZoneValidation(companyId = config.companyId ,applicationId = applicationId ,batchId = batchId, headers = headers)
+                serviceabilityApiList?.deleteFulfillmentOptions(companyId = config.companyId ,applicationId = applicationId ,slug = slug, headers = headers)
         } else {
             null
         }
     }
     
     
-    suspend fun importBulkZone(batchId: String, headers: Map<String, String> = emptyMap())
-    : Response<ZoneBulkImportResponse>? {
+    suspend fun putFulfillmentOption(slug: String,body: FulfillmentOption, headers: Map<String, String> = emptyMap())
+    : Response<FulfillmentOption>? {
         return if (config.oauthClient.isAccessTokenValid()) {
-                serviceabilityApiList?.importBulkZone(companyId = config.companyId ,applicationId = applicationId ,batchId = batchId, headers = headers)
+                serviceabilityApiList?.putFulfillmentOption(companyId = config.companyId ,applicationId = applicationId ,slug = slug, body = body,headers = headers)
         } else {
             null
         }
     }
     
     
-    suspend fun overrideZoneById(zoneId: String,body: ZoneOverrideSchema, headers: Map<String, String> = emptyMap())
-    : Response<ZoneOverrideResponseSchema>? {
+    suspend fun getFulfillmentOptionProducts(slug: String,q: String?=null,storeId: Int, headers: Map<String, String> = emptyMap())
+    : Response<FulfillmentOptionProducts>? {
         return if (config.oauthClient.isAccessTokenValid()) {
-                serviceabilityApiList?.overrideZoneById(companyId = config.companyId ,applicationId = applicationId ,zoneId = zoneId, body = body,headers = headers)
+                serviceabilityApiList?.getFulfillmentOptionProducts(companyId = config.companyId ,applicationId = applicationId ,slug = slug,q = q,storeId = storeId, headers = headers)
         } else {
             null
         }
     }
     
     
-    suspend fun getZoneOverrideStatus(zoneId: String, headers: Map<String, String> = emptyMap())
-    : Response<ZoneOverrideStatusResponseSchema>? {
+    suspend fun getFulfillmentOptionStores(slug: String,q: String?=null, headers: Map<String, String> = emptyMap())
+    : Response<FulfillmentOptionStores>? {
         return if (config.oauthClient.isAccessTokenValid()) {
-                serviceabilityApiList?.getZoneOverrideStatus(companyId = config.companyId ,applicationId = applicationId ,zoneId = zoneId, headers = headers)
+                serviceabilityApiList?.getFulfillmentOptionStores(companyId = config.companyId ,applicationId = applicationId ,slug = slug,q = q, headers = headers)
         } else {
             null
         }
     }
     
     
-    suspend fun overrideBulkZone(batchId: String,body: BulkZoneOverrideSchema, headers: Map<String, String> = emptyMap())
-    : Response<BulkZoneOverrideResponseSchema>? {
+    suspend fun uploadBulkFulfillmentOptions(body: FulfillmentOptionBulk, headers: Map<String, String> = emptyMap())
+    : Response<FulfillmentOptionBulkData>? {
         return if (config.oauthClient.isAccessTokenValid()) {
-                serviceabilityApiList?.overrideBulkZone(companyId = config.companyId ,applicationId = applicationId ,batchId = batchId, body = body,headers = headers)
+                serviceabilityApiList?.uploadBulkFulfillmentOptions(companyId = config.companyId ,applicationId = applicationId , body = body,headers = headers)
         } else {
             null
         }
     }
     
     
-    suspend fun getBulkZoneOverrideStatus(batchId: String, headers: Map<String, String> = emptyMap())
-    : Response<BulkZoneOverrideStatusSchema>? {
+    suspend fun validateBulkFulfillmentOptions(type: String,body: FulfillmentOptionBulkValidate, headers: Map<String, String> = emptyMap())
+    : Response<FulfillmentOptionBulkValidateData>? {
         return if (config.oauthClient.isAccessTokenValid()) {
-                serviceabilityApiList?.getBulkZoneOverrideStatus(companyId = config.companyId ,applicationId = applicationId ,batchId = batchId, headers = headers)
+                serviceabilityApiList?.validateBulkFulfillmentOptions(companyId = config.companyId ,applicationId = applicationId ,type = type, body = body,headers = headers)
+        } else {
+            null
+        }
+    }
+    
+    
+    suspend fun getBulkFulfillmentValidationStatus(bulkId: String, headers: Map<String, String> = emptyMap())
+    : Response<FulfillmentOptionBulkValidate>? {
+        return if (config.oauthClient.isAccessTokenValid()) {
+                serviceabilityApiList?.getBulkFulfillmentValidationStatus(companyId = config.companyId ,applicationId = applicationId ,bulkId = bulkId, headers = headers)
         } else {
             null
         }
