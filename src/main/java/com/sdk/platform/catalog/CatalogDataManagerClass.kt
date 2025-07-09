@@ -1898,6 +1898,9 @@ class CatalogDataManagerClass(val config: PlatformConfig, val unauthorizedAction
         }
     }
     
+    
+    
+    
 
 inner class ApplicationClient(val applicationId:String,val config: PlatformConfig){
 
@@ -3347,6 +3350,36 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     
     
     
+    
+    
+    suspend fun getFollowedProducts(userId: String,pageId: String?=null,pageSize: Int?=null, headers: Map<String, String> = emptyMap())
+    : Response<FollowedProducts>? {
+        return if (config.oauthClient.isAccessTokenValid()) {
+                catalogApiList?.getFollowedProducts(companyId = config.companyId ,applicationId = applicationId ,userId = userId,pageId = pageId,pageSize = pageSize, headers = headers)
+        } else {
+            null
+        }
+    }
+    
+    
+    suspend fun followProductById(userId: String,itemId: String, headers: Map<String, String> = emptyMap())
+    : Response<FollowProduct>? {
+        return if (config.oauthClient.isAccessTokenValid()) {
+                catalogApiList?.followProductById(companyId = config.companyId ,applicationId = applicationId ,userId = userId,itemId = itemId, headers = headers)
+        } else {
+            null
+        }
+    }
+    
+    
+    suspend fun unfollowProductById(userId: String,itemId: String, headers: Map<String, String> = emptyMap())
+    : Response<FollowProduct>? {
+        return if (config.oauthClient.isAccessTokenValid()) {
+                catalogApiList?.unfollowProductById(companyId = config.companyId ,applicationId = applicationId ,userId = userId,itemId = itemId, headers = headers)
+        } else {
+            null
+        }
+    }
     
 }
 }

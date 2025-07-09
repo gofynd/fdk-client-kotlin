@@ -581,4 +581,16 @@ interface CatalogApiList {
     suspend fun createMarketplaceOptin(@Path("company_id") companyId: String, @Path("marketplace_slug") marketplaceSlug: String,@Body body: OptInPostRequestSchema, @HeaderMap headers: Map<String, String>? = null)
     : Response<CreateMarketplaceOptinResponseSchema>
     
+    @GET ("/service/platform/catalog/v1.0/company/{company_id}/application/{application_id}/user/{user_id}/products/follow")
+    suspend fun getFollowedProducts(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Path("user_id") userId: String, @Query("page_id") pageId: String?, @Query("page_size") pageSize: Int?, @HeaderMap headers: Map<String, String>? = null)
+    : Response<FollowedProducts>
+    
+    @PUT ("/service/platform/catalog/v1.0/company/{company_id}/application/{application_id}/user/{user_id}/products/{item_id}/follow")
+    suspend fun followProductById(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Path("user_id") userId: String, @Path("item_id") itemId: String, @HeaderMap headers: Map<String, String>? = null)
+    : Response<FollowProduct>
+    
+    @DELETE ("/service/platform/catalog/v1.0/company/{company_id}/application/{application_id}/user/{user_id}/products/{item_id}/follow")
+    suspend fun unfollowProductById(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Path("user_id") userId: String, @Path("item_id") itemId: String, @HeaderMap headers: Map<String, String>? = null)
+    : Response<FollowProduct>
+    
 }

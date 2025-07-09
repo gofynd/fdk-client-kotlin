@@ -19291,6 +19291,55 @@ data class Filters(
 
              
 /*
+    Model: FollowedProducts
+*/
+@Parcelize
+data class FollowedProducts(
+    
+    
+    
+    @SerializedName("item_ids")
+    var itemIds: ArrayList<Int>?=null,
+    
+    @SerializedName("page")
+    var page: Page?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: FollowProduct
+*/
+@Parcelize
+data class FollowProduct(
+    
+    
+    
+    @SerializedName("message")
+    var message: String?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
     Model: ActionPage
 */
 @Parcelize
