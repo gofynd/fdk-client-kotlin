@@ -2770,14 +2770,9 @@ data class BulkJob(
     var total: Int?=null,
     
     @SerializedName("tracking_url")
-    var trackingUrl: String?=null,
-    
-    @SerializedName("tags")
-    var tags: ArrayList<String>?=null
+    var trackingUrl: String?=null
     
 ): Parcelable {
-    
-    
     
     
     
@@ -19015,10 +19010,15 @@ data class BulkInventoryJob(
     @SerializedName("file_path")
     var filePath: String?=null,
     
+    @SerializedName("tags")
+    var tags: ArrayList<String>?=null,
+    
     @SerializedName("meta")
     var meta: BulkMeta?=null
     
 ): Parcelable {
+    
+    
     
     
     

@@ -208,12 +208,6 @@ class PaymentDataManagerClass(val config: PlatformConfig, val unauthorizedAction
     
     
     
-    
-    
-    
-    
-    
-    
 
 inner class ApplicationClient(val applicationId:String,val config: PlatformConfig){
 
@@ -323,66 +317,6 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     : Response<SetCODOptionDetails>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 paymentApiList?.setUserCODlimitRoutes(companyId = config.companyId ,applicationId = applicationId , body = body,headers = headers)
-        } else {
-            null
-        }
-    }
-    
-    
-    suspend fun edcAggregatorsAndModelList( headers: Map<String, String> = emptyMap())
-    : Response<EdcAggregatorAndModelListDetails>? {
-        return if (config.oauthClient.isAccessTokenValid()) {
-                paymentApiList?.edcAggregatorsAndModelList(companyId = config.companyId ,applicationId = applicationId , headers = headers)
-        } else {
-            null
-        }
-    }
-    
-    
-    suspend fun edcDeviceStats( headers: Map<String, String> = emptyMap())
-    : Response<EdcDeviceStatsDetails>? {
-        return if (config.oauthClient.isAccessTokenValid()) {
-                paymentApiList?.edcDeviceStats(companyId = config.companyId ,applicationId = applicationId , headers = headers)
-        } else {
-            null
-        }
-    }
-    
-    
-    suspend fun updateEdcDevice(body: EdcAddCreation, headers: Map<String, String> = emptyMap())
-    : Response<EdcDeviceAddDetails>? {
-        return if (config.oauthClient.isAccessTokenValid()) {
-                paymentApiList?.updateEdcDevice(companyId = config.companyId ,applicationId = applicationId , body = body,headers = headers)
-        } else {
-            null
-        }
-    }
-    
-    
-    suspend fun getEdcDevice(terminalUniqueIdentifier: String, headers: Map<String, String> = emptyMap())
-    : Response<EdcDeviceDetails>? {
-        return if (config.oauthClient.isAccessTokenValid()) {
-                paymentApiList?.getEdcDevice(companyId = config.companyId ,applicationId = applicationId ,terminalUniqueIdentifier = terminalUniqueIdentifier, headers = headers)
-        } else {
-            null
-        }
-    }
-    
-    
-    suspend fun addEdcDevice(terminalUniqueIdentifier: String,body: EdcUpdate, headers: Map<String, String> = emptyMap())
-    : Response<EdcDeviceUpdateDetails>? {
-        return if (config.oauthClient.isAccessTokenValid()) {
-                paymentApiList?.addEdcDevice(companyId = config.companyId ,applicationId = applicationId ,terminalUniqueIdentifier = terminalUniqueIdentifier, body = body,headers = headers)
-        } else {
-            null
-        }
-    }
-    
-    
-    suspend fun edcDeviceList(pageNo: Int?=null,pageSize: Int?=null,isActive: Boolean?=null,storeId: Int?=null,deviceTag: String?=null, headers: Map<String, String> = emptyMap())
-    : Response<EdcDeviceListDetails>? {
-        return if (config.oauthClient.isAccessTokenValid()) {
-                paymentApiList?.edcDeviceList(pageNo = pageNo,pageSize = pageSize,isActive = isActive,storeId = storeId,deviceTag = deviceTag,companyId = config.companyId ,applicationId = applicationId , headers = headers)
         } else {
             null
         }

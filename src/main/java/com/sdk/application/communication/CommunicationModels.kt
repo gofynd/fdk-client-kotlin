@@ -164,14 +164,9 @@ data class CommunicationConsentChannelsWhatsapp(
     var countryCode: String?=null,
     
     @SerializedName("phone_number")
-    var phoneNumber: String?=null,
-    
-    @SerializedName("value")
-    var value: String?=null
+    var phoneNumber: String?=null
     
 ): Parcelable {
-    
-    
     
     
     
