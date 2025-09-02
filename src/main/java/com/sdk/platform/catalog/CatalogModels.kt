@@ -11923,9 +11923,14 @@ data class LocationQuantityRequestSchema(
     var damagedQuantity: Int?=null,
     
     @SerializedName("not_available_quantity")
-    var notAvailableQuantity: Int?=null
+    var notAvailableQuantity: Int?=null,
+    
+    @SerializedName("mode")
+    var mode: String?=null
     
 ): Parcelable {
+    
+    
     
     
     

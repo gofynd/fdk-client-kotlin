@@ -608,6 +608,9 @@ data class CampaignReq(
     @SerializedName("type")
     var type: String?=null,
     
+    @SerializedName("datasource_type")
+    var datasourceType: String?=null,
+    
     @SerializedName("records_count")
     var recordsCount: Int?=null,
     
@@ -615,6 +618,8 @@ data class CampaignReq(
     var application: String?=null
     
 ): Parcelable {
+    
+    
     
     
     
@@ -781,6 +786,9 @@ data class Campaign(
     @SerializedName("type")
     var type: String?=null,
     
+    @SerializedName("datasource_type")
+    var datasourceType: String?=null,
+    
     @SerializedName("name")
     var name: String?=null,
     
@@ -800,6 +808,8 @@ data class Campaign(
     var v: Int?=null
     
 ): Parcelable {
+    
+    
     
     
     
