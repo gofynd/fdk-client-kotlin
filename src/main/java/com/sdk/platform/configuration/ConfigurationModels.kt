@@ -284,6 +284,28 @@ data class FstIdentification(
 
              
 /*
+    Model: SkgIdentification
+*/
+@Parcelize
+data class SkgIdentification(
+    
+    
+    
+    @SerializedName("enabled")
+    var enabled: Boolean?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
     Model: QuerySuggestions
 */
 @Parcelize
@@ -322,9 +344,14 @@ data class SearchConfig(
     var fstIdentification: FstIdentification?=null,
     
     @SerializedName("query_suggestions")
-    var querySuggestions: QuerySuggestions?=null
+    var querySuggestions: QuerySuggestions?=null,
+    
+    @SerializedName("skg_identification")
+    var skgIdentification: SkgIdentification?=null
     
 ): Parcelable {
+    
+    
     
     
     

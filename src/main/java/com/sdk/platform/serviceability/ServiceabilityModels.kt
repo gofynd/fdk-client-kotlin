@@ -96,6 +96,28 @@ data class FulfillmentOption(
 
              
 /*
+    Model: FulfillmentOptionsList
+*/
+@Parcelize
+data class FulfillmentOptionsList(
+    
+    
+    
+    @SerializedName("items")
+    var items: ArrayList<FulfillmentOptionItem>?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
     Model: FulfillmentOptionProducts
 */
 @Parcelize
@@ -5132,6 +5154,53 @@ data class CourierPartnerScheme(
     var cpExtId: String?=null
     
 ): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: FulfillmentOptionItem
+*/
+@Parcelize
+data class FulfillmentOptionItem(
+    
+    
+    
+    @SerializedName("slug")
+    var slug: String?=null,
+    
+    @SerializedName("description")
+    var description: String?=null,
+    
+    @SerializedName("is_default")
+    var isDefault: Boolean?=null,
+    
+    @SerializedName("id")
+    var id: String?=null,
+    
+    @SerializedName("type")
+    var type: String?=null,
+    
+    @SerializedName("name")
+    var name: String?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+    
     
     
     

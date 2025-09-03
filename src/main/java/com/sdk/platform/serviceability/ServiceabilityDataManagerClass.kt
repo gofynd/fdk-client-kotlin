@@ -426,6 +426,7 @@ class ServiceabilityDataManagerClass(val config: PlatformConfig, val unauthorize
     
     
     
+    
 
 inner class ApplicationClient(val applicationId:String,val config: PlatformConfig){
 
@@ -843,6 +844,16 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     : Response<FulfillmentOption>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 serviceabilityApiList?.createFulfillmentOption(companyId = config.companyId ,applicationId = applicationId , body = body,headers = headers)
+        } else {
+            null
+        }
+    }
+    
+    
+    suspend fun getFulfillmentOptionsList(productSlug: String?=null,storeId: Int?=null,status: String?=null, headers: Map<String, String> = emptyMap())
+    : Response<FulfillmentOptionsList>? {
+        return if (config.oauthClient.isAccessTokenValid()) {
+                serviceabilityApiList?.getFulfillmentOptionsList(companyId = config.companyId ,applicationId = applicationId ,productSlug = productSlug,storeId = storeId,status = status, headers = headers)
         } else {
             null
         }

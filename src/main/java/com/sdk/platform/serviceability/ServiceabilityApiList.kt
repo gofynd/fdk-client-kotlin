@@ -277,6 +277,10 @@ interface ServiceabilityApiList {
     suspend fun createFulfillmentOption(@Path("company_id") companyId: String, @Path("application_id") applicationId: String,@Body body: FulfillmentOption, @HeaderMap headers: Map<String, String>? = null)
     : Response<FulfillmentOption>
     
+    @GET ("/service/platform/logistics/v1.0/company/{company_id}/application/{application_id}/fulfillment-options")
+    suspend fun getFulfillmentOptionsList(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Query("product_slug") productSlug: String?, @Query("store_id") storeId: Int?, @Query("status") status: String?, @HeaderMap headers: Map<String, String>? = null)
+    : Response<FulfillmentOptionsList>
+    
     @GET ("/service/platform/logistics/v1.0/company/{company_id}/application/{application_id}/fulfillment-options/{slug}")
     suspend fun getFulfillmentOptions(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Path("slug") slug: String, @Query("product_id") productId: Int?, @Query("store_id") storeId: Int?, @HeaderMap headers: Map<String, String>? = null)
     : Response<FulfillmentOption>
