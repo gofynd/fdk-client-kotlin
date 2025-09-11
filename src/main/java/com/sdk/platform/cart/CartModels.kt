@@ -3232,9 +3232,14 @@ data class Article(
     var meta: @RawValue HashMap<String,Any>?=null,
     
     @SerializedName("allowed_refund")
-    var allowedRefund: Boolean?=null
+    var allowedRefund: Boolean?=null,
+    
+    @SerializedName("min_price_threshold")
+    var minPriceThreshold: Double?=null
     
 ): Parcelable {
+    
+    
     
     
     

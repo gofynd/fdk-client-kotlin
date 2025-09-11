@@ -111,6 +111,16 @@ class PaymentDataManagerClass(val config: ApplicationConfig, val unauthorizedAct
             
                     _relativeUrls["validateCustomerAndCreditSummary"] = "/service/application/payment/v1.0/payment/validate/customer-credits-v2".substring(1)
             
+                    _relativeUrls["getRefundBeneficiaries"] = "/service/application/payment/v2.0/refund/user/beneficiary".substring(1)
+            
+                    _relativeUrls["addBeneficiary"] = "/service/application/payment/v2.0/refund/user/beneficiary".substring(1)
+            
+                    _relativeUrls["deleteBeneficiary"] = "/service/application/payment/v1.0/refund/account/{id}".substring(1)
+            
+                    _relativeUrls["getRefundBeneficiariesUsingOTPSession"] = "/service/application/payment/v2.0/refund/user/beneficiary-otp".substring(1)
+            
+                    _relativeUrls["addRefundBeneficiaryUsingOTPSession"] = "/service/application/payment/v2.0/refund/user/beneficiary-otp".substring(1)
+            
     }
 
     public fun update(updatedUrlMap : HashMap<String,String>){
@@ -467,6 +477,43 @@ class PaymentDataManagerClass(val config: ApplicationConfig, val unauthorizedAct
         var fullUrl : String? = _relativeUrls["validateCustomerAndCreditSummary"]
         
         return paymentApiList?.validateCustomerAndCreditSummary(fullUrl, body = body,headers = headers)}
+
+    
+    
+    suspend fun getRefundBeneficiaries(orderId: String?=null,shipmentId: String?=null,filterBy: String?=null, headers: Map<String, String> = emptyMap()): Response<RefundBeneficiaries>? {
+        var fullUrl : String? = _relativeUrls["getRefundBeneficiaries"]
+        
+        return paymentApiList?.getRefundBeneficiaries(fullUrl,   orderId = orderId,  shipmentId = shipmentId,  filterBy = filterBy,headers = headers)}
+
+    
+    
+    suspend fun addBeneficiary(body: AddBeneficiaryRequestDetails, headers: Map<String, String> = emptyMap()): Response<AddBeneficiaryResponseDetails>? {
+        var fullUrl : String? = _relativeUrls["addBeneficiary"]
+        
+        return paymentApiList?.addBeneficiary(fullUrl, body = body,headers = headers)}
+
+    
+    
+    suspend fun deleteBeneficiary(id: String, headers: Map<String, String> = emptyMap()): Response<DeleteBeneficiaryDetails>? {
+        var fullUrl : String? = _relativeUrls["deleteBeneficiary"]
+        
+        fullUrl = fullUrl?.replace("{" + "id" +"}",id.toString())
+        
+        return paymentApiList?.deleteBeneficiary(fullUrl,  headers = headers)}
+
+    
+    
+    suspend fun getRefundBeneficiariesUsingOTPSession(orderId: String?=null,shipmentId: String?=null,filterBy: String?=null, headers: Map<String, String> = emptyMap()): Response<RefundBeneficiaries>? {
+        var fullUrl : String? = _relativeUrls["getRefundBeneficiariesUsingOTPSession"]
+        
+        return paymentApiList?.getRefundBeneficiariesUsingOTPSession(fullUrl,   orderId = orderId,  shipmentId = shipmentId,  filterBy = filterBy,headers = headers)}
+
+    
+    
+    suspend fun addRefundBeneficiaryUsingOTPSession(body: AddBeneficiaryRequestDetails, headers: Map<String, String> = emptyMap()): Response<AddBeneficiaryResponseDetails>? {
+        var fullUrl : String? = _relativeUrls["addRefundBeneficiaryUsingOTPSession"]
+        
+        return paymentApiList?.addRefundBeneficiaryUsingOTPSession(fullUrl, body = body,headers = headers)}
 
     
     

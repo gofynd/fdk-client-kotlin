@@ -1758,9 +1758,14 @@ data class RawBreakup(
     var youSaved: Double?=null,
     
     @SerializedName("cod_charge")
-    var codCharge: Double?=null
+    var codCharge: Double?=null,
+    
+    @SerializedName("taxes")
+    var taxes: Double?=null
     
 ): Parcelable {
+    
+    
     
     
     
