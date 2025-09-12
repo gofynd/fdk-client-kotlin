@@ -10650,43 +10650,6 @@ data class Identifier(
 
              
 /*
-    Model: TaxComponent
-*/
-@Parcelize
-data class TaxComponent(
-    
-    
-    
-    @SerializedName("name")
-    var name: String?=null,
-    
-    @SerializedName("rate")
-    var rate: Double?=null,
-    
-    @SerializedName("tax_amount")
-    var taxAmount: Double?=null,
-    
-    @SerializedName("taxable_amount")
-    var taxableAmount: Double?=null
-    
-): Parcelable {
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-}
-
-
-
-             
-/*
     Model: FinancialBreakup
 */
 @Parcelize
@@ -10776,14 +10739,9 @@ data class FinancialBreakup(
     var totalUnits: Int?=null,
     
     @SerializedName("added_to_fynd_cash")
-    var addedToFyndCash: Boolean?=null,
-    
-    @SerializedName("taxes")
-    var taxes: ArrayList<TaxComponent>?=null
+    var addedToFyndCash: Boolean?=null
     
 ): Parcelable {
-    
-    
     
     
     
@@ -11238,9 +11196,6 @@ data class Article(
     
     
     
-    @SerializedName("child_details")
-    var childDetails: @RawValue HashMap<String,Any>?=null,
-    
     @SerializedName("seller_identifier")
     var sellerIdentifier: String?=null,
     
@@ -11284,7 +11239,10 @@ data class Article(
     var isSet: Boolean?=null,
     
     @SerializedName("tags")
-    var tags: ArrayList<String>?=null
+    var tags: ArrayList<String>?=null,
+    
+    @SerializedName("_custom_json")
+    var customJson: @RawValue HashMap<String,Any>?=null
     
 ): Parcelable {
     

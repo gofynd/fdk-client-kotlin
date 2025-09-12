@@ -320,10 +320,15 @@ data class ProxyFileAccess(
     
     
     
-    @SerializedName("success")
-    var success: Boolean?=null
+    @SerializedName("data")
+    var data: @RawValue HashMap<String,Any>?=null,
+    
+    @SerializedName("support")
+    var support: @RawValue HashMap<String,Any>?=null
     
 ): Parcelable {
+    
+    
     
     
     

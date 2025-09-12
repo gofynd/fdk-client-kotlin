@@ -1719,7 +1719,7 @@ class CatalogDataManagerClass(val config: PlatformConfig, val unauthorizedAction
         return paginator
     }
     
-    suspend fun createProduct(body: ProductCreateSchemaV3, headers: Map<String, String> = emptyMap())
+    suspend fun createProduct(body: ProductCreateSchemaV2, headers: Map<String, String> = emptyMap())
     : Response<SuccessResponseObject>? {
 
         return if (config.oauthClient.isAccessTokenValid()) {
@@ -1743,18 +1743,6 @@ class CatalogDataManagerClass(val config: PlatformConfig, val unauthorizedAction
     }
     
     
-    suspend fun createProductExportJob(body: ProductTemplateDownloadsExport, headers: Map<String, String> = emptyMap())
-    : Response<ProductDownloadsResponseSchema>? {
-
-        return if (config.oauthClient.isAccessTokenValid()) {
-            catalogApiList?.createProductExportJob(
-        companyId = config.companyId, body = body,headers = headers)
-        } else {
-            null
-        }
-    }
-    
-    
     suspend fun getProductExportJobs(status: String?=null,fromDate: String?=null,toDate: String?=null,q: String?=null,pageNo: Int?=null,pageSize: Int?=null, headers: Map<String, String> = emptyMap())
     : Response<ProductDownloadsResponseSchema>? {
 
@@ -1767,12 +1755,12 @@ class CatalogDataManagerClass(val config: PlatformConfig, val unauthorizedAction
     }
     
     
-    suspend fun editProduct(itemId: String,body: ProductUpdateSchemaV3, headers: Map<String, String> = emptyMap())
-    : Response<SuccessResponseSchema>? {
+    suspend fun createProductExportJob(body: ProductTemplateDownloadsExport, headers: Map<String, String> = emptyMap())
+    : Response<ProductDownloadsResponseSchema>? {
 
         return if (config.oauthClient.isAccessTokenValid()) {
-            catalogApiList?.editProduct(
-        companyId = config.companyId,itemId = itemId, body = body,headers = headers)
+            catalogApiList?.createProductExportJob(
+        companyId = config.companyId, body = body,headers = headers)
         } else {
             null
         }
@@ -1797,6 +1785,18 @@ class CatalogDataManagerClass(val config: PlatformConfig, val unauthorizedAction
         return if (config.oauthClient.isAccessTokenValid()) {
             catalogApiList?.getProduct(
         companyId = config.companyId,itemId = itemId,brandUid = brandUid,itemCode = itemCode, headers = headers)
+        } else {
+            null
+        }
+    }
+    
+    
+    suspend fun editProduct(itemId: String,body: ProductUpdateSchemaV2, headers: Map<String, String> = emptyMap())
+    : Response<SuccessResponseSchema>? {
+
+        return if (config.oauthClient.isAccessTokenValid()) {
+            catalogApiList?.editProduct(
+        companyId = config.companyId,itemId = itemId, body = body,headers = headers)
         } else {
             null
         }
@@ -1898,150 +1898,6 @@ class CatalogDataManagerClass(val config: PlatformConfig, val unauthorizedAction
         }
     }
     
-    
-    suspend fun createTax(body: CreateTaxRequestBody, headers: Map<String, String> = emptyMap())
-    : Response<CreateTax>? {
-
-        return if (config.oauthClient.isAccessTokenValid()) {
-            catalogApiList?.createTax(
-        companyId = config.companyId, body = body,headers = headers)
-        } else {
-            null
-        }
-    }
-    
-    
-    suspend fun getAllTaxRules(q: String?=null,statuses: String?=null,page: Int?=null,limit: Int?=null,versionStatus: String?=null, headers: Map<String, String> = emptyMap())
-    : Response<TaxRules>? {
-
-        return if (config.oauthClient.isAccessTokenValid()) {
-            catalogApiList?.getAllTaxRules(
-        companyId = config.companyId,q = q,statuses = statuses,page = page,limit = limit,versionStatus = versionStatus, headers = headers)
-        } else {
-            null
-        }
-    }
-    
-    
-    suspend fun updateTaxRule(ruleId: String,body: UpdateTaxRequestBody, headers: Map<String, String> = emptyMap())
-    : Response<TaxRule>? {
-
-        return if (config.oauthClient.isAccessTokenValid()) {
-            catalogApiList?.updateTaxRule(
-        companyId = config.companyId,ruleId = ruleId, body = body,headers = headers)
-        } else {
-            null
-        }
-    }
-    
-    
-    suspend fun deleteTaxRule(ruleId: String, headers: Map<String, String> = emptyMap())
-    : Response<HashMap<String,Any>>? {
-
-        return if (config.oauthClient.isAccessTokenValid()) {
-            catalogApiList?.deleteTaxRule(
-        ruleId = ruleId,companyId = config.companyId, headers = headers)
-        } else {
-            null
-        }
-    }
-    
-    
-    suspend fun getTaxVersionDetails(ruleId: String,versionStatus: String?=null,limit: String?=null,page: String?=null, headers: Map<String, String> = emptyMap())
-    : Response<TaxRuleVersion>? {
-
-        return if (config.oauthClient.isAccessTokenValid()) {
-            catalogApiList?.getTaxVersionDetails(
-        companyId = config.companyId,ruleId = ruleId,versionStatus = versionStatus,limit = limit,page = page, headers = headers)
-        } else {
-            null
-        }
-    }
-    
-    
-    suspend fun createTaxVersion(ruleId: String,body: CreateTaxVersionRequestBody, headers: Map<String, String> = emptyMap())
-    : Response<TaxVersion>? {
-
-        return if (config.oauthClient.isAccessTokenValid()) {
-            catalogApiList?.createTaxVersion(
-        companyId = config.companyId,ruleId = ruleId, body = body,headers = headers)
-        } else {
-            null
-        }
-    }
-    
-    
-    suspend fun deleteTaxVersion(ruleId: String,versionId: String, headers: Map<String, String> = emptyMap())
-    : Response<HashMap<String,Any>>? {
-
-        return if (config.oauthClient.isAccessTokenValid()) {
-            catalogApiList?.deleteTaxVersion(
-        ruleId = ruleId,versionId = versionId,companyId = config.companyId, headers = headers)
-        } else {
-            null
-        }
-    }
-    
-    
-    suspend fun updateTaxVersion(ruleId: String,versionId: String,body: UpdateTaxVersionRequestBody, headers: Map<String, String> = emptyMap())
-    : Response<TaxVersion>? {
-
-        return if (config.oauthClient.isAccessTokenValid()) {
-            catalogApiList?.updateTaxVersion(
-        ruleId = ruleId,versionId = versionId,companyId = config.companyId, body = body,headers = headers)
-        } else {
-            null
-        }
-    }
-    
-    
-    suspend fun getHsCodes(page: Int?=null,limit: Int?=null,type: HsTypeEnum?=null,q: String?=null, headers: Map<String, String> = emptyMap())
-    : Response<HSCodes>? {
-
-        return if (config.oauthClient.isAccessTokenValid()) {
-            catalogApiList?.getHsCodes(
-        companyId = config.companyId,page = page,limit = limit,type = type,q = q, headers = headers)
-        } else {
-            null
-        }
-    }
-    
-    
-    suspend fun createHsCode(body: HSCodeItem, headers: Map<String, String> = emptyMap())
-    : Response<HSCodeItem>? {
-
-        return if (config.oauthClient.isAccessTokenValid()) {
-            catalogApiList?.createHsCode(
-        companyId = config.companyId, body = body,headers = headers)
-        } else {
-            null
-        }
-    }
-    
-    
-    
-    suspend fun createTaxComponentName(body: CreateTaxComponentName, headers: Map<String, String> = emptyMap())
-    : Response<TaxComponentRes>? {
-
-        return if (config.oauthClient.isAccessTokenValid()) {
-            catalogApiList?.createTaxComponentName(
-        companyId = config.companyId, body = body,headers = headers)
-        } else {
-            null
-        }
-    }
-    
-    
-    suspend fun getTaxComponentNames( headers: Map<String, String> = emptyMap())
-    : Response<GetTaxComponents>? {
-
-        return if (config.oauthClient.isAccessTokenValid()) {
-            catalogApiList?.getTaxComponentNames(
-        companyId = config.companyId, headers = headers)
-        } else {
-            null
-        }
-    }
     
     
     
@@ -3496,26 +3352,14 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     
     
     
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    suspend fun getFollowedProducts(userId: String,pageId: String?=null, headers: Map<String, String> = emptyMap())
+    suspend fun getFollowedProducts(userId: String,pageId: String?=null,pageSize: Int?=null, headers: Map<String, String> = emptyMap())
     : Response<FollowedProducts>? {
         return if (config.oauthClient.isAccessTokenValid()) {
-                catalogApiList?.getFollowedProducts(companyId = config.companyId ,applicationId = applicationId ,userId = userId,pageId = pageId, headers = headers)
+                catalogApiList?.getFollowedProducts(companyId = config.companyId ,applicationId = applicationId ,userId = userId,pageId = pageId,pageSize = pageSize, headers = headers)
         } else {
             null
         }
     }
-    
-    
     
     
     suspend fun followProductById(userId: String,itemId: String, headers: Map<String, String> = emptyMap())

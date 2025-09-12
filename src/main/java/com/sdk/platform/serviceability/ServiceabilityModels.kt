@@ -3281,6 +3281,9 @@ data class PackageMaterialResult(
     @SerializedName("id")
     var id: String?=null,
     
+    @SerializedName("item_id")
+    var itemId: Int?=null,
+    
     @SerializedName("width")
     var width: Double?=null,
     
@@ -3333,6 +3336,8 @@ data class PackageMaterialResult(
     var autoCalculate: Boolean?=null
     
 ): Parcelable {
+    
+    
     
     
     
@@ -3584,6 +3589,9 @@ data class PackageItem(
     @SerializedName("company_id")
     var companyId: Int?=null,
     
+    @SerializedName("item_id")
+    var itemId: Int?=null,
+    
     @SerializedName("max_weight")
     var maxWeight: Double?=null,
     
@@ -3603,6 +3611,8 @@ data class PackageItem(
     var id: String?=null
     
 ): Parcelable {
+    
+    
     
     
     

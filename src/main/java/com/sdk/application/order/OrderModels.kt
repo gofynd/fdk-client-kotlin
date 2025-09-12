@@ -1121,43 +1121,6 @@ data class Identifiers(
 
              
 /*
-    Model: TaxComponent
-*/
-@Parcelize
-data class TaxComponent(
-    
-    
-    
-    @SerializedName("name")
-    var name: String?=null,
-    
-    @SerializedName("rate")
-    var rate: Double?=null,
-    
-    @SerializedName("tax_amount")
-    var taxAmount: Double?=null,
-    
-    @SerializedName("taxable_amount")
-    var taxableAmount: Double?=null
-    
-): Parcelable {
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-}
-
-
-
-             
-/*
     Model: FinancialBreakup
 */
 @Parcelize
@@ -1247,14 +1210,9 @@ data class FinancialBreakup(
     var fyndCredits: Double?=null,
     
     @SerializedName("amount_to_be_collected")
-    var amountToBeCollected: Double?=null,
-    
-    @SerializedName("taxes")
-    var taxes: ArrayList<TaxComponent>?=null
+    var amountToBeCollected: Double?=null
     
 ): Parcelable {
-    
-    
     
     
     

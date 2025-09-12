@@ -240,29 +240,4 @@ interface PaymentApiList {
     suspend fun validateCustomerAndCreditSummary(@Url url1: String?   ,@Body body: CustomerValidationSchema, @HeaderMap headers: Map<String, String>? = null)
     : Response<ValidateCustomerCreditSchema>
     
-    
-    @GET
-    suspend fun getRefundBeneficiaries(@Url url1: String?    ,    @Query("order_id") orderId: String?, @Query("shipment_id") shipmentId: String?, @Query("filter_by") filterBy: String?, @HeaderMap headers: Map<String, String>? = null)
-    : Response<RefundBeneficiaries>
-    
-    
-    @POST
-    suspend fun addBeneficiary(@Url url1: String?   ,@Body body: AddBeneficiaryRequestDetails, @HeaderMap headers: Map<String, String>? = null)
-    : Response<AddBeneficiaryResponseDetails>
-    
-    
-    @DELETE
-    suspend fun deleteBeneficiary(@Url url1: String?    , @HeaderMap headers: Map<String, String>? = null)
-    : Response<DeleteBeneficiaryDetails>
-    
-    
-    @GET
-    suspend fun getRefundBeneficiariesUsingOTPSession(@Url url1: String?    ,    @Query("order_id") orderId: String?, @Query("shipment_id") shipmentId: String?, @Query("filter_by") filterBy: String?, @HeaderMap headers: Map<String, String>? = null)
-    : Response<RefundBeneficiaries>
-    
-    
-    @POST
-    suspend fun addRefundBeneficiaryUsingOTPSession(@Url url1: String?   ,@Body body: AddBeneficiaryRequestDetails, @HeaderMap headers: Map<String, String>? = null)
-    : Response<AddBeneficiaryResponseDetails>
-    
 }
