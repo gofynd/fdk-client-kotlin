@@ -521,21 +521,21 @@ interface CatalogApiList {
     suspend fun getProducts(@Path("company_id") companyId: String, @Query("brand_ids") brandIds: ArrayList<Int>?, @Query("category_ids") categoryIds: ArrayList<Int>?, @Query("item_ids") itemIds: ArrayList<Int>?, @Query("department_ids") departmentIds: ArrayList<Int>?, @Query("item_code") itemCode: ArrayList<String>?, @Query("name") name: String?, @Query("slug") slug: String?, @Query("all_identifiers") allIdentifiers: ArrayList<String>?, @Query("q") q: String?, @Query("tags") tags: ArrayList<String>?, @Query("page_no") pageNo: Int?, @Query("page_size") pageSize: Int?, @Query("page_type") pageType: String?, @Query("sort_on") sortOn: String?, @Query("page_id") pageId: String?, @HeaderMap headers: Map<String, String>? = null)
     : Response<ProductListingResponseV2>
     
-    @POST ("/service/platform/catalog/v2.0/company/{company_id}/products/")
-    suspend fun createProduct(@Path("company_id") companyId: String,@Body body: ProductCreateSchemaV2, @HeaderMap headers: Map<String, String>? = null)
+    @POST ("/service/platform/catalog/v3.0/company/{company_id}/products/")
+    suspend fun createProduct(@Path("company_id") companyId: String,@Body body: ProductCreateSchemaV3, @HeaderMap headers: Map<String, String>? = null)
     : Response<SuccessResponseObject>
     
-    @POST ("/service/platform/catalog/v2.0/company/{company_id}/products/bulk")
-    suspend fun uploadBulkProducts(@Path("company_id") companyId: String, @Query("department") department: String, @Query("product_type") productType: String,@Body body: BulkProductJob, @HeaderMap headers: Map<String, String>? = null)
-    : Response<BulkResponseSchema>
+    @POST ("/service/platform/catalog/v3.0/company/{company_id}/products/downloads/")
+    suspend fun createProductExportJob(@Path("company_id") companyId: String,@Body body: ProductTemplateDownloadsExport, @HeaderMap headers: Map<String, String>? = null)
+    : Response<ProductDownloadsResponseSchema>
     
     @GET ("/service/platform/catalog/v2.0/company/{company_id}/products/downloads/")
     suspend fun getProductExportJobs(@Path("company_id") companyId: String, @Query("status") status: String?, @Query("from_date") fromDate: String?, @Query("to_date") toDate: String?, @Query("q") q: String?, @Query("page_no") pageNo: Int?, @Query("page_size") pageSize: Int?, @HeaderMap headers: Map<String, String>? = null)
     : Response<ProductDownloadsResponseSchema>
     
-    @POST ("/service/platform/catalog/v2.0/company/{company_id}/products/downloads/")
-    suspend fun createProductExportJob(@Path("company_id") companyId: String,@Body body: ProductTemplateDownloadsExport, @HeaderMap headers: Map<String, String>? = null)
-    : Response<ProductDownloadsResponseSchema>
+    @PUT ("/service/platform/catalog/v3.0/company/{company_id}/products/{item_id}/")
+    suspend fun editProduct(@Path("company_id") companyId: String, @Path("item_id") itemId: String,@Body body: ProductUpdateSchemaV3, @HeaderMap headers: Map<String, String>? = null)
+    : Response<SuccessResponseSchema>
     
     @DELETE ("/service/platform/catalog/v2.0/company/{company_id}/products/{item_id}/")
     suspend fun deleteProduct(@Path("company_id") companyId: String, @Path("item_id") itemId: String, @HeaderMap headers: Map<String, String>? = null)
@@ -544,10 +544,6 @@ interface CatalogApiList {
     @GET ("/service/platform/catalog/v2.0/company/{company_id}/products/{item_id}/")
     suspend fun getProduct(@Path("company_id") companyId: String, @Path("item_id") itemId: String, @Query("brand_uid") brandUid: Int?, @Query("item_code") itemCode: String?, @HeaderMap headers: Map<String, String>? = null)
     : Response<SingleProductResponseSchema>
-    
-    @PUT ("/service/platform/catalog/v2.0/company/{company_id}/products/{item_id}/")
-    suspend fun editProduct(@Path("company_id") companyId: String, @Path("item_id") itemId: String,@Body body: ProductUpdateSchemaV2, @HeaderMap headers: Map<String, String>? = null)
-    : Response<SuccessResponseSchema>
     
     @GET ("/service/platform/catalog/v2.0/company/{company_id}/products/{item_id}/all_sizes")
     suspend fun allSizes(@Path("company_id") companyId: String, @Path("item_id") itemId: String, @HeaderMap headers: Map<String, String>? = null)
@@ -581,9 +577,57 @@ interface CatalogApiList {
     suspend fun createMarketplaceOptin(@Path("company_id") companyId: String, @Path("marketplace_slug") marketplaceSlug: String,@Body body: OptInPostRequestSchema, @HeaderMap headers: Map<String, String>? = null)
     : Response<CreateMarketplaceOptinResponseSchema>
     
+    @POST ("/service/platform/catalog/v1.0/company/{company_id}/taxes/rules/versions")
+    suspend fun createTax(@Path("company_id") companyId: String,@Body body: CreateTaxRequestBody, @HeaderMap headers: Map<String, String>? = null)
+    : Response<CreateTax>
+    
+    @GET ("/service/platform/catalog/v1.0/company/{company_id}/taxes/rules")
+    suspend fun getAllTaxRules(@Path("company_id") companyId: String, @Query("q") q: String?, @Query("statuses") statuses: String?, @Query("page") page: Int?, @Query("limit") limit: Int?, @Query("version_status") versionStatus: String?, @HeaderMap headers: Map<String, String>? = null)
+    : Response<TaxRules>
+    
+    @PUT ("/service/platform/catalog/v1.0/company/{company_id}/taxes/rules/{rule_id}")
+    suspend fun updateTaxRule(@Path("company_id") companyId: String, @Path("rule_id") ruleId: String,@Body body: UpdateTaxRequestBody, @HeaderMap headers: Map<String, String>? = null)
+    : Response<TaxRule>
+    
+    @DELETE ("/service/platform/catalog/v1.0/company/{company_id}/taxes/rules/{rule_id}")
+    suspend fun deleteTaxRule(@Path("rule_id") ruleId: String, @Path("company_id") companyId: String, @HeaderMap headers: Map<String, String>? = null)
+    : Response<HashMap<String,Any>>
+    
+    @GET ("/service/platform/catalog/v1.0/company/{company_id}/taxes/rules/{rule_id}/versions")
+    suspend fun getTaxVersionDetails(@Path("company_id") companyId: String, @Path("rule_id") ruleId: String, @Query("version_status") versionStatus: String?, @Query("limit") limit: String?, @Query("page") page: String?, @HeaderMap headers: Map<String, String>? = null)
+    : Response<TaxRuleVersion>
+    
+    @POST ("/service/platform/catalog/v1.0/company/{company_id}/taxes/rules/{rule_id}/versions")
+    suspend fun createTaxVersion(@Path("company_id") companyId: String, @Path("rule_id") ruleId: String,@Body body: CreateTaxVersionRequestBody, @HeaderMap headers: Map<String, String>? = null)
+    : Response<TaxVersion>
+    
+    @DELETE ("/service/platform/catalog/v1.0/company/{company_id}/taxes/rules/{rule_id}/versions/{version_id}")
+    suspend fun deleteTaxVersion(@Path("rule_id") ruleId: String, @Path("version_id") versionId: String, @Path("company_id") companyId: String, @HeaderMap headers: Map<String, String>? = null)
+    : Response<HashMap<String,Any>>
+    
+    @PUT ("/service/platform/catalog/v1.0/company/{company_id}/taxes/rules/{rule_id}/versions/{version_id}")
+    suspend fun updateTaxVersion(@Path("rule_id") ruleId: String, @Path("version_id") versionId: String, @Path("company_id") companyId: String,@Body body: UpdateTaxVersionRequestBody, @HeaderMap headers: Map<String, String>? = null)
+    : Response<TaxVersion>
+    
+    @GET ("/service/platform/catalog/v1.0/company/{company_id}/taxes/hscodes")
+    suspend fun getHsCodes(@Path("company_id") companyId: String, @Query("page") page: Int?, @Query("limit") limit: Int?, @Query("type") type: HsTypeEnum?, @Query("q") q: String?, @HeaderMap headers: Map<String, String>? = null)
+    : Response<HSCodes>
+    
+    @POST ("/service/platform/catalog/v1.0/company/{company_id}/taxes/hscodes")
+    suspend fun createHsCode(@Path("company_id") companyId: String,@Body body: HSCodeItem, @HeaderMap headers: Map<String, String>? = null)
+    : Response<HSCodeItem>
+    
     @GET ("/service/platform/catalog/v1.0/company/{company_id}/application/{application_id}/user/{user_id}/products/follow")
     suspend fun getFollowedProducts(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Path("user_id") userId: String, @Query("page_id") pageId: String?, @Query("page_size") pageSize: Int?, @HeaderMap headers: Map<String, String>? = null)
     : Response<FollowedProducts>
+    
+    @POST ("/service/platform/catalog/v1.0/company/{company_id}/taxes/component-names")
+    suspend fun createTaxComponentName(@Path("company_id") companyId: String,@Body body: CreateTaxComponentNameRequestSchema, @HeaderMap headers: Map<String, String>? = null)
+    : Response<TaxComponentName>
+    
+    @GET ("/service/platform/catalog/v1.0/company/{company_id}/taxes/component-names")
+    suspend fun getTaxComponentNames(@Path("company_id") companyId: String, @HeaderMap headers: Map<String, String>? = null)
+    : Response<GetTaxComponents>
     
     @PUT ("/service/platform/catalog/v1.0/company/{company_id}/application/{application_id}/user/{user_id}/products/{item_id}/follow")
     suspend fun followProductById(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Path("user_id") userId: String, @Path("item_id") itemId: String, @HeaderMap headers: Map<String, String>? = null)

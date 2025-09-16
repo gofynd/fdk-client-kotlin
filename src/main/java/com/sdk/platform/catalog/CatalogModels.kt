@@ -5744,6 +5744,9 @@ data class RawProduct(
     @SerializedName("highlights")
     var highlights: ArrayList<String>?=null,
     
+    @SerializedName("hs_code")
+    var hsCode: String?=null,
+    
     @SerializedName("hsn_code")
     var hsnCode: String?=null,
     
@@ -5877,6 +5880,8 @@ data class RawProduct(
     var action: String?=null
     
 ): Parcelable {
+    
+    
     
     
     
@@ -8823,6 +8828,9 @@ data class HSNDataInsertV2(
     @SerializedName("hsn_code")
     var hsnCode: String?=null,
     
+    @SerializedName("tax_rule_id")
+    var taxRuleId: String?=null,
+    
     @SerializedName("hsn_code_id")
     var hsnCodeId: String?=null,
     
@@ -8842,6 +8850,8 @@ data class HSNDataInsertV2(
     var type: String?=null
     
 ): Parcelable {
+    
+    
     
     
     
@@ -12709,6 +12719,9 @@ data class Product(
     @SerializedName("highlights")
     var highlights: ArrayList<String>?=null,
     
+    @SerializedName("hs_code")
+    var hsCode: String?=null,
+    
     @SerializedName("hsn_code")
     var hsnCode: String?=null,
     
@@ -12833,6 +12846,8 @@ data class Product(
     var verifiedOn: String?=null
     
 ): Parcelable {
+    
+    
     
     
     
@@ -13524,6 +13539,9 @@ data class ProductUpdateSchemaV2(
     @SerializedName("tax_identifier")
     var taxIdentifier: TaxIdentifier?=null,
     
+    @SerializedName("hs_code")
+    var hsCode: String?=null,
+    
     @SerializedName("teaser_tag")
     var teaserTag: TeaserTag?=null,
     
@@ -13546,6 +13564,8 @@ data class ProductUpdateSchemaV2(
     var variants: @RawValue HashMap<String,Any>?=null
     
 ): Parcelable {
+    
+    
     
     
     
@@ -13770,6 +13790,465 @@ data class ProductCreateSchemaV2(
     var variants: @RawValue HashMap<String,Any>?=null
     
 ): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: ProductCreateSchemaV3
+*/
+@Parcelize
+data class ProductCreateSchemaV3(
+    
+    
+    
+    @SerializedName("_custom_json")
+    var customJson: @RawValue HashMap<String,Any>?=null,
+    
+    @SerializedName("action")
+    var action: String?=null,
+    
+    @SerializedName("attributes")
+    var attributes: @RawValue HashMap<String,Any>?=null,
+    
+    @SerializedName("brand_uid")
+    var brandUid: Int?=null,
+    
+    @SerializedName("bulk_job_id")
+    var bulkJobId: String?=null,
+    
+    @SerializedName("category_slug")
+    var categorySlug: String?=null,
+    
+    @SerializedName("change_request_id")
+    var changeRequestId: String?=null,
+    
+    @SerializedName("company_id")
+    var companyId: Int?=null,
+    
+    @SerializedName("country_of_origin")
+    var countryOfOrigin: String?=null,
+    
+    @SerializedName("currency")
+    var currency: String?=null,
+    
+    @SerializedName("custom_order")
+    var customOrder: CustomOrder?=null,
+    
+    @SerializedName("departments")
+    var departments: ArrayList<Int>?=null,
+    
+    @SerializedName("description")
+    var description: String?=null,
+    
+    @SerializedName("highlights")
+    var highlights: ArrayList<String>?=null,
+    
+    @SerializedName("is_active")
+    var isActive: Boolean?=null,
+    
+    @SerializedName("is_dependent")
+    var isDependent: Boolean?=null,
+    
+    @SerializedName("is_image_less_product")
+    var isImageLessProduct: Boolean?=null,
+    
+    @SerializedName("is_set")
+    var isSet: Boolean?=null,
+    
+    @SerializedName("item_code")
+    var itemCode: String?=null,
+    
+    @SerializedName("item_type")
+    var itemType: String?=null,
+    
+    @SerializedName("media")
+    var media: ArrayList<Media>?=null,
+    
+    @SerializedName("multi_size")
+    var multiSize: Boolean?=null,
+    
+    @SerializedName("name")
+    var name: String?=null,
+    
+    @SerializedName("net_quantity")
+    var netQuantity: NetQuantity?=null,
+    
+    @SerializedName("no_of_boxes")
+    var noOfBoxes: Int?=null,
+    
+    @SerializedName("product_group_tag")
+    var productGroupTag: ArrayList<String>?=null,
+    
+    @SerializedName("product_publish")
+    var productPublish: ProductPublish?=null,
+    
+    @SerializedName("requester")
+    var requester: String?=null,
+    
+    @SerializedName("return_config")
+    var returnConfig: ReturnConfig?=null,
+    
+    @SerializedName("short_description")
+    var shortDescription: String?=null,
+    
+    @SerializedName("size_guide")
+    var sizeGuide: String?=null,
+    
+    @SerializedName("sizes")
+    var sizes: @RawValue ArrayList<HashMap<String,Any>>?=null,
+    
+    @SerializedName("slug")
+    var slug: String?=null,
+    
+    @SerializedName("tags")
+    var tags: ArrayList<String>?=null,
+    
+    @SerializedName("tax_identifier")
+    var taxIdentifier: TaxIdentifierV3?=null,
+    
+    @SerializedName("teaser_tag")
+    var teaserTag: TeaserTag?=null,
+    
+    @SerializedName("template_tag")
+    var templateTag: String?=null,
+    
+    @SerializedName("trader")
+    var trader: ArrayList<Trader>?=null,
+    
+    @SerializedName("variant_group")
+    var variantGroup: @RawValue HashMap<String,Any>?=null,
+    
+    @SerializedName("variant_media")
+    var variantMedia: @RawValue HashMap<String,Any>?=null,
+    
+    @SerializedName("variants")
+    var variants: @RawValue HashMap<String,Any>?=null,
+    
+    @SerializedName("hs_code")
+    var hsCode: String?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: ProductUpdateSchemaV3
+*/
+@Parcelize
+data class ProductUpdateSchemaV3(
+    
+    
+    
+    @SerializedName("_custom_json")
+    var customJson: @RawValue HashMap<String,Any>?=null,
+    
+    @SerializedName("action")
+    var action: String?=null,
+    
+    @SerializedName("attributes")
+    var attributes: @RawValue HashMap<String,Any>?=null,
+    
+    @SerializedName("brand_uid")
+    var brandUid: Int?=null,
+    
+    @SerializedName("bulk_job_id")
+    var bulkJobId: String?=null,
+    
+    @SerializedName("category_slug")
+    var categorySlug: String?=null,
+    
+    @SerializedName("change_request_id")
+    var changeRequestId: String?=null,
+    
+    @SerializedName("company_id")
+    var companyId: Int?=null,
+    
+    @SerializedName("country_of_origin")
+    var countryOfOrigin: String?=null,
+    
+    @SerializedName("currency")
+    var currency: String?=null,
+    
+    @SerializedName("custom_order")
+    var customOrder: CustomOrder?=null,
+    
+    @SerializedName("departments")
+    var departments: ArrayList<Int>?=null,
+    
+    @SerializedName("description")
+    var description: String?=null,
+    
+    @SerializedName("highlights")
+    var highlights: ArrayList<String>?=null,
+    
+    @SerializedName("is_active")
+    var isActive: Boolean?=null,
+    
+    @SerializedName("is_dependent")
+    var isDependent: Boolean?=null,
+    
+    @SerializedName("is_image_less_product")
+    var isImageLessProduct: Boolean?=null,
+    
+    @SerializedName("is_set")
+    var isSet: Boolean?=null,
+    
+    @SerializedName("item_code")
+    var itemCode: String?=null,
+    
+    @SerializedName("item_type")
+    var itemType: String?=null,
+    
+    @SerializedName("media")
+    var media: ArrayList<Media>?=null,
+    
+    @SerializedName("multi_size")
+    var multiSize: Boolean?=null,
+    
+    @SerializedName("name")
+    var name: String?=null,
+    
+    @SerializedName("net_quantity")
+    var netQuantity: NetQuantity?=null,
+    
+    @SerializedName("no_of_boxes")
+    var noOfBoxes: Int?=null,
+    
+    @SerializedName("product_group_tag")
+    var productGroupTag: ArrayList<String>?=null,
+    
+    @SerializedName("product_publish")
+    var productPublish: ProductPublish?=null,
+    
+    @SerializedName("requester")
+    var requester: String?=null,
+    
+    @SerializedName("return_config")
+    var returnConfig: ReturnConfig?=null,
+    
+    @SerializedName("short_description")
+    var shortDescription: String?=null,
+    
+    @SerializedName("size_guide")
+    var sizeGuide: String?=null,
+    
+    @SerializedName("sizes")
+    var sizes: @RawValue ArrayList<HashMap<String,Any>>?=null,
+    
+    @SerializedName("slug")
+    var slug: String?=null,
+    
+    @SerializedName("tags")
+    var tags: ArrayList<String>?=null,
+    
+    @SerializedName("tax_identifier")
+    var taxIdentifier: TaxIdentifierV3?=null,
+    
+    @SerializedName("hs_code")
+    var hsCode: String?=null,
+    
+    @SerializedName("teaser_tag")
+    var teaserTag: TeaserTag?=null,
+    
+    @SerializedName("template_tag")
+    var templateTag: String?=null,
+    
+    @SerializedName("trader")
+    var trader: ArrayList<Trader>?=null,
+    
+    @SerializedName("uid")
+    var uid: Int?=null,
+    
+    @SerializedName("variant_group")
+    var variantGroup: @RawValue HashMap<String,Any>?=null,
+    
+    @SerializedName("variant_media")
+    var variantMedia: @RawValue HashMap<String,Any>?=null,
+    
+    @SerializedName("variants")
+    var variants: @RawValue HashMap<String,Any>?=null
+    
+): Parcelable {
+    
+    
+    
+    
     
     
     
@@ -15631,6 +16110,9 @@ data class ProductSchemaV2(
     @SerializedName("highlights")
     var highlights: ArrayList<String>?=null,
     
+    @SerializedName("hs_code")
+    var hsCode: String?=null,
+    
     @SerializedName("hsn_code")
     var hsnCode: String?=null,
     
@@ -15758,6 +16240,8 @@ data class ProductSchemaV2(
     var verifiedOn: String?=null
     
 ): Parcelable {
+    
+    
     
     
     
@@ -16259,6 +16743,9 @@ data class ProductTemplateExportFilterRequestSchema(
     @SerializedName("brands")
     var brands: ArrayList<String>?=null,
     
+    @SerializedName("tax_rule_ids")
+    var taxRuleIds: ArrayList<String>?=null,
+    
     @SerializedName("catalogue_types")
     var catalogueTypes: ArrayList<String>?=null,
     
@@ -16272,6 +16759,8 @@ data class ProductTemplateExportFilterRequestSchema(
     var toDate: String?=null
     
 ): Parcelable {
+    
+    
     
     
     
@@ -16463,6 +16952,9 @@ data class Properties(
     @SerializedName("highlights")
     var highlights: @RawValue HashMap<String,Any>?=null,
     
+    @SerializedName("hs_code")
+    var hsCode: @RawValue HashMap<String,Any>?=null,
+    
     @SerializedName("hsn_code")
     var hsnCode: @RawValue HashMap<String,Any>?=null,
     
@@ -16527,6 +17019,8 @@ data class Properties(
     var variants: @RawValue HashMap<String,Any>?=null
     
 ): Parcelable {
+    
+    
     
     
     
@@ -17910,6 +18404,9 @@ data class TaxIdentifier(
     
     
     
+    @SerializedName("tax_rule_id")
+    var taxRuleId: String?=null,
+    
     @SerializedName("hsn_code")
     var hsnCode: String?=null,
     
@@ -17924,6 +18421,30 @@ data class TaxIdentifier(
     
     
     
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: TaxIdentifierV3
+*/
+@Parcelize
+data class TaxIdentifierV3(
+    
+    
+    
+    @SerializedName("tax_rule_id")
+    var taxRuleId: String?=null
+    
+): Parcelable {
     
     
     
@@ -19422,6 +19943,787 @@ data class FollowProduct(
 
              
 /*
+    Model: TaxReqBodyRule
+*/
+@Parcelize
+data class TaxReqBodyRule(
+    
+    
+    
+    @SerializedName("name")
+    var name: String?=null,
+    
+    @SerializedName("description")
+    var description: String?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: TaxThreshold
+*/
+@Parcelize
+data class TaxThreshold(
+    
+    
+    
+    @SerializedName("value")
+    var value: Double?=null,
+    
+    @SerializedName("rate")
+    var rate: Double?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: TaxComponent
+*/
+@Parcelize
+data class TaxComponent(
+    
+    
+    
+    @SerializedName("name")
+    var name: String?=null,
+    
+    @SerializedName("slabs")
+    var slabs: ArrayList<TaxThreshold>?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: TaxComponentResponseSchema
+*/
+@Parcelize
+data class TaxComponentResponseSchema(
+    
+    
+    
+    @SerializedName("name")
+    var name: String?=null,
+    
+    @SerializedName("description")
+    var description: String?=null,
+    
+    @SerializedName("slabs")
+    var slabs: ArrayList<TaxThreshold>?=null,
+    
+    @SerializedName("_id")
+    var id: String?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: TaxComponentName
+*/
+@Parcelize
+data class TaxComponentName(
+    
+    
+    
+    @SerializedName("_id")
+    var id: String?=null,
+    
+    @SerializedName("company_id")
+    var companyId: Int?=null,
+    
+    @SerializedName("name")
+    var name: String?=null,
+    
+    @SerializedName("description")
+    var description: String?=null,
+    
+    @SerializedName("created_on")
+    var createdOn: String?=null,
+    
+    @SerializedName("modified_on")
+    var modifiedOn: String?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: CreateTaxComponentNameRequestSchema
+*/
+@Parcelize
+data class CreateTaxComponentNameRequestSchema(
+    
+    
+    
+    @SerializedName("name")
+    var name: String?=null,
+    
+    @SerializedName("description")
+    var description: String?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: TaxReqBodyVersion
+*/
+@Parcelize
+data class TaxReqBodyVersion(
+    
+    
+    
+    @SerializedName("components")
+    var components: ArrayList<TaxComponent>?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: CreateTaxRequestBody
+*/
+@Parcelize
+data class CreateTaxRequestBody(
+    
+    
+    
+    @SerializedName("rule")
+    var rule: TaxReqBodyRule?=null,
+    
+    @SerializedName("versions")
+    var versions: ArrayList<TaxReqBodyVersion>?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: TaxVersion
+*/
+@Parcelize
+data class TaxVersion(
+    
+    
+    
+    @SerializedName("_id")
+    var id: String?=null,
+    
+    @SerializedName("rule_id")
+    var ruleId: String?=null,
+    
+    @SerializedName("applicable_date")
+    var applicableDate: String?=null,
+    
+    @SerializedName("created_on")
+    var createdOn: String?=null,
+    
+    @SerializedName("modified_on")
+    var modifiedOn: String?=null,
+    
+    @SerializedName("company_id")
+    var companyId: Int?=null,
+    
+    @SerializedName("status")
+    var status: TaxStatusEnum?=null,
+    
+    @SerializedName("components")
+    var components: ArrayList<TaxComponentResponseSchema>?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: UpdateTaxVersionRequestBody
+*/
+@Parcelize
+data class UpdateTaxVersionRequestBody(
+    
+    
+    
+    @SerializedName("components")
+    var components: ArrayList<TaxComponentResponseSchema>?=null,
+    
+    @SerializedName("applicable_date")
+    var applicableDate: String?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: CreateTaxVersionRequestBody
+*/
+@Parcelize
+data class CreateTaxVersionRequestBody(
+    
+    
+    
+    @SerializedName("components")
+    var components: ArrayList<TaxComponent>?=null,
+    
+    @SerializedName("applicable_date")
+    var applicableDate: String?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: TaxRule
+*/
+@Parcelize
+data class TaxRule(
+    
+    
+    
+    @SerializedName("_id")
+    var id: String?=null,
+    
+    @SerializedName("name")
+    var name: String?=null,
+    
+    @SerializedName("description")
+    var description: String?=null,
+    
+    @SerializedName("is_default")
+    var isDefault: Boolean?=null,
+    
+    @SerializedName("company_id")
+    var companyId: Int?=null,
+    
+    @SerializedName("status")
+    var status: TaxStatusEnum?=null,
+    
+    @SerializedName("created_on")
+    var createdOn: String?=null,
+    
+    @SerializedName("modified_on")
+    var modifiedOn: String?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: TaxVersionDetail
+*/
+@Parcelize
+data class TaxVersionDetail(
+    
+    
+    
+    @SerializedName("_id")
+    var id: String?=null,
+    
+    @SerializedName("rule_id")
+    var ruleId: String?=null,
+    
+    @SerializedName("applicable_date")
+    var applicableDate: String?=null,
+    
+    @SerializedName("created_on")
+    var createdOn: String?=null,
+    
+    @SerializedName("modified_on")
+    var modifiedOn: String?=null,
+    
+    @SerializedName("company_id")
+    var companyId: Int?=null,
+    
+    @SerializedName("status")
+    var status: TaxStatusEnum?=null,
+    
+    @SerializedName("components")
+    var components: ArrayList<TaxComponent>?=null,
+    
+    @SerializedName("version_status")
+    var versionStatus: String?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: CreateTax
+*/
+@Parcelize
+data class CreateTax(
+    
+    
+    
+    @SerializedName("rule")
+    var rule: TaxRule?=null,
+    
+    @SerializedName("versions")
+    var versions: TaxVersion?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: UpdateTaxVersion
+*/
+@Parcelize
+data class UpdateTaxVersion(
+    
+    
+    
+    @SerializedName("components")
+    var components: ArrayList<TaxComponent>?=null,
+    
+    @SerializedName("applicable_date")
+    var applicableDate: String?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: UpdateTaxRequestBody
+*/
+@Parcelize
+data class UpdateTaxRequestBody(
+    
+    
+    
+    @SerializedName("status")
+    var status: TaxStatusEnum?=null,
+    
+    @SerializedName("is_default")
+    var isDefault: Boolean?=null,
+    
+    @SerializedName("name")
+    var name: String?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: TaxRuleItem
+*/
+@Parcelize
+data class TaxRuleItem(
+    
+    
+    
+    @SerializedName("versions")
+    var versions: ArrayList<TaxVersionDetail>?=null,
+    
+    @SerializedName("rule")
+    var rule: TaxRule?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: TaxRules
+*/
+@Parcelize
+data class TaxRules(
+    
+    
+    
+    @SerializedName("items")
+    var items: ArrayList<TaxRuleItem>?=null,
+    
+    @SerializedName("page")
+    var page: Page?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: TaxVersionPastData
+*/
+@Parcelize
+data class TaxVersionPastData(
+    
+    
+    
+    @SerializedName("data")
+    var data: ArrayList<TaxVersion>?=null,
+    
+    @SerializedName("pagination")
+    var pagination: Page?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: TaxRuleVersion
+*/
+@Parcelize
+data class TaxRuleVersion(
+    
+    
+    
+    @SerializedName("items")
+    var items: ArrayList<TaxVersionDetail>?=null,
+    
+    @SerializedName("rule")
+    var rule: TaxRule?=null,
+    
+    @SerializedName("page")
+    var page: Page?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: HSCodeItem
+*/
+@Parcelize
+data class HSCodeItem(
+    
+    
+    
+    @SerializedName("created_on")
+    var createdOn: String?=null,
+    
+    @SerializedName("modified_on")
+    var modifiedOn: String?=null,
+    
+    @SerializedName("type")
+    var type: HsTypeEnum?=null,
+    
+    @SerializedName("company_id")
+    var companyId: Int?=null,
+    
+    @SerializedName("description")
+    var description: String?=null,
+    
+    @SerializedName("hs_code")
+    var hsCode: String?=null,
+    
+    @SerializedName("_id")
+    var id: String?=null,
+    
+    @SerializedName("country_iso")
+    var countryIso: String?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: HSCodes
+*/
+@Parcelize
+data class HSCodes(
+    
+    
+    
+    @SerializedName("items")
+    var items: ArrayList<HSCodeItem>?=null,
+    
+    @SerializedName("page")
+    var page: Page?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: GetTaxComponents
+*/
+@Parcelize
+data class GetTaxComponents(
+    
+    
+    
+    @SerializedName("items")
+    var items: ArrayList<TaxComponentResponseSchema>?=null,
+    
+    @SerializedName("page")
+    var page: Page?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
     Model: ActionPage
 */
 @Parcelize
@@ -19618,6 +20920,57 @@ data class CustomMeta(
 
 
 
+
+
+
+    /*
+        Enum: TaxStatusEnum
+        Used By: Catalog
+    */
+    enum class TaxStatusEnum(val value:String){
+        
+        @SerializedName("ACTIVE")
+        active("ACTIVE"), 
+        
+        @SerializedName("INACTIVE")
+        inactive("INACTIVE"), 
+        
+        @SerializedName("DELETED")
+        deleted("DELETED");
+        
+
+        companion object {
+            fun valueOfTaxStatusEnum(value : String): TaxStatusEnum? {
+                return TaxStatusEnum.values().find {
+                    it.value == value
+                }
+            }
+        }
+    }
+
+
+
+    /*
+        Enum: HsTypeEnum
+        Used By: Catalog
+    */
+    enum class HsTypeEnum(val value:String){
+        
+        @SerializedName("HS")
+        hs("HS"), 
+        
+        @SerializedName("SAC")
+        sac("SAC");
+        
+
+        companion object {
+            fun valueOfHsTypeEnum(value : String): HsTypeEnum? {
+                return HsTypeEnum.values().find {
+                    it.value == value
+                }
+            }
+        }
+    }
 
 
 
