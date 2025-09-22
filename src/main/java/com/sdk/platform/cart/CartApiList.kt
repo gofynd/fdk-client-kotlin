@@ -257,4 +257,8 @@ interface CartApiList {
     suspend fun selectPaymentModeV2(@Header("x-ordering-source") xOrderingSource: OrderingSource?, @Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Query("id") id: String?, @Query("buy_now") buyNow: Boolean?, @Query("order_type") orderType: String?,@Body body: UpdateCartPaymentRequestV2, @HeaderMap headers: Map<String, String>? = null)
     : Response<CartDetailResult>
     
+    @POST ("/service/platform/cart/v2.0/company/{company_id}/application/{application_id}/redeem")
+    suspend fun applyLoyaltyPoints(@Header("x-ordering-source") xOrderingSource: OrderingSource?, @Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Query("id") id: String?, @Query("i") i: Boolean?, @Query("b") b: Boolean?, @Query("buy_now") buyNow: Boolean?,@Body body: RedeemLoyaltyPoints, @HeaderMap headers: Map<String, String>? = null)
+    : Response<CartDetailResult>
+    
 }

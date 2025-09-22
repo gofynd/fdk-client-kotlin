@@ -14,6 +14,28 @@ import com.google.gson.annotations.SerializedName
 
              
 /*
+    Model: RedeemLoyaltyPoints
+*/
+@Parcelize
+data class RedeemLoyaltyPoints(
+    
+    
+    
+    @SerializedName("redeem_points")
+    var redeemPoints: Boolean?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
     Model: CouponDateMeta
 */
 @Parcelize
@@ -3234,10 +3256,15 @@ data class Article(
     @SerializedName("allowed_refund")
     var allowedRefund: Boolean?=null,
     
+    @SerializedName("article_index")
+    var articleIndex: Int?=null,
+    
     @SerializedName("min_price_threshold")
     var minPriceThreshold: Double?=null
     
 ): Parcelable {
+    
+    
     
     
     
@@ -3913,9 +3940,49 @@ data class LoyaltyPoints(
     var applicable: Double?=null,
     
     @SerializedName("description")
-    var description: String?=null
+    var description: String?=null,
+    
+    @SerializedName("total_points")
+    var totalPoints: Double?=null,
+    
+    @SerializedName("points")
+    var points: Double?=null,
+    
+    @SerializedName("amount")
+    var amount: Double?=null,
+    
+    @SerializedName("mop_amount")
+    var mopAmount: Double?=null,
+    
+    @SerializedName("earn_points")
+    var earnPoints: Double?=null,
+    
+    @SerializedName("earn_points_amount")
+    var earnPointsAmount: Double?=null,
+    
+    @SerializedName("earn_title")
+    var earnTitle: String?=null,
+    
+    @SerializedName("title")
+    var title: String?=null
     
 ): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     
     
     
@@ -3949,6 +4016,12 @@ data class RawBreakup(
     @SerializedName("mrp_total")
     var mrpTotal: Double?=null,
     
+    @SerializedName("engage_amount")
+    var engageAmount: Double?=null,
+    
+    @SerializedName("engage_mop_amount")
+    var engageMopAmount: Double?=null,
+    
     @SerializedName("fynd_cash")
     var fyndCash: Double?=null,
     
@@ -3980,6 +4053,10 @@ data class RawBreakup(
     var convenienceFee: Double?=null
     
 ): Parcelable {
+    
+    
+    
+    
     
     
     
@@ -7295,7 +7372,7 @@ data class OverrideCheckoutReq(
     var paymentMode: String?=null,
     
     @SerializedName("billing_address")
-    var billingAddress: @RawValue HashMap<String,Any>?=null,
+    var billingAddress: ShippingAddress?=null,
     
     @SerializedName("merchant_code")
     var merchantCode: String?=null,
@@ -7321,14 +7398,86 @@ data class OverrideCheckoutReq(
     @SerializedName("ordering_store")
     var orderingStore: Int?=null,
     
+    @SerializedName("device_id")
+    var deviceId: String?=null,
+    
     @SerializedName("shipping_address")
-    var shippingAddress: @RawValue HashMap<String,Any>?=null
+    var shippingAddress: ShippingAddress?=null
     
 ): Parcelable {
     
     
     
     
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: OverrideCheckoutData
+*/
+@Parcelize
+data class OverrideCheckoutData(
+    
+    
+    
+    @SerializedName("amount")
+    var amount: Int?=null,
+    
+    @SerializedName("order_id")
+    var orderId: String?=null,
+    
+    @SerializedName("email")
+    var email: String?=null,
+    
+    @SerializedName("contact")
+    var contact: String?=null,
+    
+    @SerializedName("currency")
+    var currency: String?=null,
+    
+    @SerializedName("customer_id")
+    var customerId: String?=null,
+    
+    @SerializedName("callback_url")
+    var callbackUrl: String?=null,
+    
+    @SerializedName("bank")
+    var bank: String?=null,
+    
+    @SerializedName("method")
+    var method: String?=null,
+    
+    @SerializedName("vpa")
+    var vpa: String?=null
+    
+): Parcelable {
     
     
     
@@ -7366,10 +7515,10 @@ data class OverrideCheckoutResult(
     
     
     @SerializedName("data")
-    var data: @RawValue HashMap<String,Any>?=null,
+    var data: OverrideCheckoutData?=null,
     
     @SerializedName("cart")
-    var cart: @RawValue HashMap<String,Any>?=null,
+    var cart: CheckCart?=null,
     
     @SerializedName("success")
     var success: String?=null,

@@ -164,10 +164,10 @@ class ContentDataManagerClass(val config: PublicConfig, val unauthorizedAction: 
 
     
     
-    suspend fun getAllLanguages( headers: Map<String, String> = emptyMap()): Response<HashMap<String,Any>>? {
+    suspend fun getAllLanguages(isEnabled: Boolean?=null, headers: Map<String, String> = emptyMap()): Response<HashMap<String,Any>>? {
         var fullUrl : String? = _relativeUrls["getAllLanguages"]
         
-        return contentApiList?.getAllLanguages(fullUrl, headers = headers)}
+        return contentApiList?.getAllLanguages(fullUrl,   isEnabled = isEnabled,headers = headers)}
 
     
     

@@ -67,7 +67,7 @@ interface CartApiList {
     
     
     @POST
-    suspend fun applyRewardPoints(@Url url1: String?    ,  @Header("x-ordering-source") xOrderingSource: OrderingSource?,     @Query("id") id: String?, @Query("i") i: Boolean?, @Query("b") b: Boolean?, @Query("buy_now") buyNow: Boolean?, @Body body: RewardPointCreation, @HeaderMap headers: Map<String, String>? = null)
+    suspend fun applyLoyaltyPoints(@Url url1: String?    ,  @Header("x-ordering-source") xOrderingSource: OrderingSource?,     @Query("id") id: String?, @Query("i") i: Boolean?, @Query("b") b: Boolean?, @Query("buy_now") buyNow: Boolean?, @Body body: RedeemLoyaltyPoints, @HeaderMap headers: Map<String, String>? = null)
     : Response<CartDetailResult>
     
     

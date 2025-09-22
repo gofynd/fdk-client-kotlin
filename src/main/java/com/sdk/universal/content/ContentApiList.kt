@@ -67,7 +67,7 @@ interface ContentApiList {
     
     
     @GET
-    suspend fun getAllLanguages(@Url url1: String?   , @HeaderMap headers: Map<String, String>? = null)
+    suspend fun getAllLanguages(@Url url1: String?    ,  @Query("is_enabled") isEnabled: Boolean?, @HeaderMap headers: Map<String, String>? = null)
     : Response<HashMap<String,Any>>
     
     

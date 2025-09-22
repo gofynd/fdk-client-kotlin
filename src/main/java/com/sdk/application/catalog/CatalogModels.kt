@@ -403,10 +403,15 @@ data class ProductDetailGroupedAttribute(
     @SerializedName("title")
     var title: String?=null,
     
+    @SerializedName("id")
+    var id: String?=null,
+    
     @SerializedName("details")
     var details: ArrayList<ProductDetailAttribute>?=null
     
 ): Parcelable {
+    
+    
     
     
     

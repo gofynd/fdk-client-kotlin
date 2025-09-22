@@ -105,6 +105,7 @@ class CartDataManagerClass(val config: PlatformConfig, val unauthorizedAction: (
     
     
     
+    
 
 inner class ApplicationClient(val applicationId:String,val config: PlatformConfig){
 
@@ -724,6 +725,16 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     : Response<CartDetailResult>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 cartApiList?.selectPaymentModeV2(xOrderingSource = xOrderingSource,companyId = config.companyId ,applicationId = applicationId ,id = id,buyNow = buyNow,orderType = orderType, body = body,headers = headers)
+        } else {
+            null
+        }
+    }
+    
+    
+    suspend fun applyLoyaltyPoints(xOrderingSource: OrderingSource?=null,id: String?=null,i: Boolean?=null,b: Boolean?=null,buyNow: Boolean?=null,body: RedeemLoyaltyPoints, headers: Map<String, String> = emptyMap())
+    : Response<CartDetailResult>? {
+        return if (config.oauthClient.isAccessTokenValid()) {
+                cartApiList?.applyLoyaltyPoints(xOrderingSource = xOrderingSource,companyId = config.companyId ,applicationId = applicationId ,id = id,i = i,b = b,buyNow = buyNow, body = body,headers = headers)
         } else {
             null
         }

@@ -1721,6 +1721,12 @@ data class RawBreakup(
     @SerializedName("subtotal")
     var subtotal: Double?=null,
     
+    @SerializedName("engage_amount")
+    var engageAmount: Double?=null,
+    
+    @SerializedName("engage_mop_amount")
+    var engageMopAmount: Double?=null,
+    
     @SerializedName("fynd_cash")
     var fyndCash: Double?=null,
     
@@ -1761,6 +1767,10 @@ data class RawBreakup(
     var codCharge: Double?=null
     
 ): Parcelable {
+    
+    
+    
+    
     
     
     
@@ -1899,9 +1909,49 @@ data class LoyaltyPoints(
     var applicable: Double?=null,
     
     @SerializedName("is_applied")
-    var isApplied: Boolean?=null
+    var isApplied: Boolean?=null,
+    
+    @SerializedName("total_points")
+    var totalPoints: Double?=null,
+    
+    @SerializedName("points")
+    var points: Double?=null,
+    
+    @SerializedName("amount")
+    var amount: Double?=null,
+    
+    @SerializedName("mop_amount")
+    var mopAmount: Double?=null,
+    
+    @SerializedName("earn_points")
+    var earnPoints: Double?=null,
+    
+    @SerializedName("earn_points_amount")
+    var earnPointsAmount: Double?=null,
+    
+    @SerializedName("earn_title")
+    var earnTitle: String?=null,
+    
+    @SerializedName("title")
+    var title: String?=null
     
 ): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     
     
     
@@ -3247,15 +3297,15 @@ data class BulkPriceResult(
 
              
 /*
-    Model: RewardPointCreation
+    Model: RedeemLoyaltyPoints
 */
 @Parcelize
-data class RewardPointCreation(
+data class RedeemLoyaltyPoints(
     
     
     
-    @SerializedName("points")
-    var points: Boolean?=null
+    @SerializedName("redeem_points")
+    var redeemPoints: Boolean?=null
     
 ): Parcelable {
     

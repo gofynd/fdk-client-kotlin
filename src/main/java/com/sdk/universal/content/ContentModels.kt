@@ -1498,9 +1498,14 @@ data class Language(
     var name: String?=null,
     
     @SerializedName("display_name")
-    var displayName: String?=null
+    var displayName: String?=null,
+    
+    @SerializedName("is_enabled")
+    var isEnabled: Boolean?=null
     
 ): Parcelable {
+    
+    
     
     
     

@@ -41,7 +41,7 @@ class CartDataManagerClass(val config: ApplicationConfig, val unauthorizedAction
             
                     _relativeUrls["getBulkDiscountOffers"] = "/service/application/cart/v1.0/bulk-price".substring(1)
             
-                    _relativeUrls["applyRewardPoints"] = "/service/application/cart/v1.0/redeem/points/".substring(1)
+                    _relativeUrls["applyLoyaltyPoints"] = "/service/application/cart/v1.0/redeem".substring(1)
             
                     _relativeUrls["getAddresses"] = "/service/application/cart/v1.0/address".substring(1)
             
@@ -191,10 +191,10 @@ class CartDataManagerClass(val config: ApplicationConfig, val unauthorizedAction
 
     
     
-    suspend fun applyRewardPoints(xOrderingSource: OrderingSource?=null,id: String?=null,i: Boolean?=null,b: Boolean?=null,buyNow: Boolean?=null,body: RewardPointCreation, headers: Map<String, String> = emptyMap()): Response<CartDetailResult>? {
-        var fullUrl : String? = _relativeUrls["applyRewardPoints"]
+    suspend fun applyLoyaltyPoints(xOrderingSource: OrderingSource?=null,id: String?=null,i: Boolean?=null,b: Boolean?=null,buyNow: Boolean?=null,body: RedeemLoyaltyPoints, headers: Map<String, String> = emptyMap()): Response<CartDetailResult>? {
+        var fullUrl : String? = _relativeUrls["applyLoyaltyPoints"]
         
-        return cartApiList?.applyRewardPoints(fullUrl,   xOrderingSource = xOrderingSource,  id = id,  i = i,  b = b,  buyNow = buyNow,body = body,headers = headers)}
+        return cartApiList?.applyLoyaltyPoints(fullUrl,   xOrderingSource = xOrderingSource,  id = id,  i = i,  b = b,  buyNow = buyNow,body = body,headers = headers)}
 
     
     
