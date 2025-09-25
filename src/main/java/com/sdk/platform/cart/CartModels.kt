@@ -3256,15 +3256,10 @@ data class Article(
     @SerializedName("allowed_refund")
     var allowedRefund: Boolean?=null,
     
-    @SerializedName("article_index")
-    var articleIndex: Int?=null,
-    
     @SerializedName("min_price_threshold")
     var minPriceThreshold: Double?=null
     
 ): Parcelable {
-    
-    
     
     
     

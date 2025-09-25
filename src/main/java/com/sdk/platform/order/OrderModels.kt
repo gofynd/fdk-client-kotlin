@@ -3445,9 +3445,14 @@ data class OrderDetails(
     var prices: Prices?=null,
     
     @SerializedName("charges")
-    var charges: ArrayList<PriceAdjustmentCharge>?=null
+    var charges: ArrayList<PriceAdjustmentCharge>?=null,
+    
+    @SerializedName("loyalty_discount_details")
+    var loyaltyDiscountDetails: LoyaltyDiscountDetails?=null
     
 ): Parcelable {
+    
+    
     
     
     
@@ -10275,9 +10280,14 @@ data class Prices(
     var giftPrice: Double?=null,
     
     @SerializedName("amount_to_be_collected")
-    var amountToBeCollected: Double?=null
+    var amountToBeCollected: Double?=null,
+    
+    @SerializedName("loyalty_discount")
+    var loyaltyDiscount: Double?=null
     
 ): Parcelable {
+    
+    
     
     
     
@@ -10552,9 +10562,14 @@ data class OrderingCurrencyPrices(
     var giftPrice: Double?=null,
     
     @SerializedName("amount_to_be_collected")
-    var amountToBeCollected: Double?=null
+    var amountToBeCollected: Double?=null,
+    
+    @SerializedName("loyalty_discount")
+    var loyaltyDiscount: Double?=null
     
 ): Parcelable {
+    
+    
     
     
     
@@ -10779,9 +10794,14 @@ data class FinancialBreakup(
     var addedToFyndCash: Boolean?=null,
     
     @SerializedName("taxes")
-    var taxes: ArrayList<TaxComponent>?=null
+    var taxes: ArrayList<TaxComponent>?=null,
+    
+    @SerializedName("loyalty_discount")
+    var loyaltyDiscount: Double?=null
     
 ): Parcelable {
+    
+    
     
     
     
@@ -12469,6 +12489,38 @@ data class InvoiceInfo(
 
              
 /*
+    Model: LoyaltyDiscountDetails
+*/
+@Parcelize
+data class LoyaltyDiscountDetails(
+    
+    
+    
+    @SerializedName("discount")
+    var discount: Double?=null,
+    
+    @SerializedName("ownership")
+    var ownership: String?=null,
+    
+    @SerializedName("is_applied")
+    var isApplied: Boolean?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
     Model: OrderDetailsData
 */
 @Parcelize
@@ -12512,10 +12564,15 @@ data class OrderDetailsData(
     @SerializedName("ordering_source")
     var orderingSource: String?=null,
     
+    @SerializedName("loyalty_discount_details")
+    var loyaltyDiscountDetails: LoyaltyDiscountDetails?=null,
+    
     @SerializedName("meta")
     var meta: @RawValue HashMap<String,Any>?=null
     
 ): Parcelable {
+    
+    
     
     
     
@@ -15071,9 +15128,14 @@ data class OrderData(
     var source: String?=null,
     
     @SerializedName("currency")
-    var currency: CurrencySchema?=null
+    var currency: CurrencySchema?=null,
+    
+    @SerializedName("loyalty_discount_details")
+    var loyaltyDiscountDetails: LoyaltyDiscountDetails?=null
     
 ): Parcelable {
+    
+    
     
     
     
@@ -15357,9 +15419,14 @@ data class PlatformOrderItems(
     var prices: Prices?=null,
     
     @SerializedName("ordering_currency_prices")
-    var orderingCurrencyPrices: OrderingCurrencyPrices?=null
+    var orderingCurrencyPrices: OrderingCurrencyPrices?=null,
+    
+    @SerializedName("loyalty_discount_details")
+    var loyaltyDiscountDetails: LoyaltyDiscountDetails?=null
     
 ): Parcelable {
+    
+    
     
     
     

@@ -833,9 +833,14 @@ data class Prices(
     var fyndCredits: Double?=null,
     
     @SerializedName("amount_to_be_collected")
-    var amountToBeCollected: Double?=null
+    var amountToBeCollected: Double?=null,
+    
+    @SerializedName("loyalty_discount")
+    var loyaltyDiscount: Double?=null
     
 ): Parcelable {
+    
+    
     
     
     
@@ -1250,9 +1255,14 @@ data class FinancialBreakup(
     var amountToBeCollected: Double?=null,
     
     @SerializedName("taxes")
-    var taxes: ArrayList<TaxComponent>?=null
+    var taxes: ArrayList<TaxComponent>?=null,
+    
+    @SerializedName("loyalty_discount")
+    var loyaltyDiscount: Double?=null
     
 ): Parcelable {
+    
+    
     
     
     
