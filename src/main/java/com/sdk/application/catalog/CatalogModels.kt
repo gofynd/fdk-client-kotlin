@@ -1560,6 +1560,9 @@ data class AttributeMetadata(
     
     
     
+    @SerializedName("id")
+    var id: String?=null,
+    
     @SerializedName("title")
     var title: String?=null,
     
@@ -1567,6 +1570,8 @@ data class AttributeMetadata(
     var details: ArrayList<AttributeDetail>?=null
     
 ): Parcelable {
+    
+    
     
     
     

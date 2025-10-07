@@ -1686,6 +1686,113 @@ data class BuyRuleItemCriteria(
 
              
 /*
+    Model: DiscountItemCriteria
+*/
+@Parcelize
+data class DiscountItemCriteria(
+    
+    
+    
+    @SerializedName("item_store")
+    var itemStore: ArrayList<Int>?=null,
+    
+    @SerializedName("item_company")
+    var itemCompany: ArrayList<Int>?=null,
+    
+    @SerializedName("item_brand")
+    var itemBrand: ArrayList<Int>?=null,
+    
+    @SerializedName("item_exclude_brand")
+    var itemExcludeBrand: ArrayList<Int>?=null,
+    
+    @SerializedName("item_category")
+    var itemCategory: ArrayList<Int>?=null,
+    
+    @SerializedName("item_exclude_category")
+    var itemExcludeCategory: ArrayList<Int>?=null,
+    
+    @SerializedName("item_l1_category")
+    var itemL1Category: ArrayList<Int>?=null,
+    
+    @SerializedName("item_exclude_l1_category")
+    var itemExcludeL1Category: ArrayList<Int>?=null,
+    
+    @SerializedName("item_l2_category")
+    var itemL2Category: ArrayList<Int>?=null,
+    
+    @SerializedName("item_exclude_l2_category")
+    var itemExcludeL2Category: ArrayList<Int>?=null,
+    
+    @SerializedName("item_department")
+    var itemDepartment: ArrayList<Int>?=null,
+    
+    @SerializedName("item_exclude_department")
+    var itemExcludeDepartment: ArrayList<Int>?=null,
+    
+    @SerializedName("item_id")
+    var itemId: ArrayList<Int>?=null,
+    
+    @SerializedName("item_exclude_id")
+    var itemExcludeId: ArrayList<Int>?=null,
+    
+    @SerializedName("buy_rules")
+    var buyRules: ArrayList<String>?=null,
+    
+    @SerializedName("available_zones")
+    var availableZones: ArrayList<String>?=null,
+    
+    @SerializedName("product_tags")
+    var productTags: ArrayList<String>?=null,
+    
+    @SerializedName("all_items")
+    var allItems: Boolean?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
     Model: DiscountOffer
 */
 @Parcelize
@@ -1721,9 +1828,14 @@ data class DiscountOffer(
     var discountPercentage: Double?=null,
     
     @SerializedName("max_offer_quantity")
-    var maxOfferQuantity: Int?=null
+    var maxOfferQuantity: Int?=null,
+    
+    @SerializedName("item_sequence_number")
+    var itemSequenceNumber: Int?=null
     
 ): Parcelable {
+    
+    
     
     
     
@@ -10602,6 +10714,58 @@ data class FreeGiftItems(
 
              
 /*
+    Model: DiscountOfferRule
+*/
+@Parcelize
+data class DiscountOfferRule(
+    
+    
+    
+    @SerializedName("discount_type")
+    var discountType: String?=null,
+    
+    @SerializedName("offer")
+    var offer: DiscountOffer?=null,
+    
+    @SerializedName("item_criteria")
+    var itemCriteria: DiscountItemCriteria?=null,
+    
+    @SerializedName("buy_condition")
+    var buyCondition: String?=null,
+    
+    @SerializedName("discounted_price")
+    var discountedPrice: Double?=null,
+    
+    @SerializedName("matched_buy_rules")
+    var matchedBuyRules: ArrayList<String>?=null,
+    
+    @SerializedName("meta")
+    var meta: ItemSizeMapping?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
     Model: PromotionOffer
 */
 @Parcelize
@@ -10613,7 +10777,7 @@ data class PromotionOffer(
     var id: String?=null,
     
     @SerializedName("buy_rules")
-    var buyRules: @RawValue HashMap<String,Any>?=null,
+    var buyRules: BuyRuleItemCriteria?=null,
     
     @SerializedName("offer_text")
     var offerText: String?=null,
@@ -10631,7 +10795,7 @@ data class PromotionOffer(
     var validTill: String?=null,
     
     @SerializedName("discount_rules")
-    var discountRules: @RawValue ArrayList<HashMap<String,Any>>?=null,
+    var discountRules: ArrayList<DiscountOfferRule>?=null,
     
     @SerializedName("free_gift_items")
     var freeGiftItems: ArrayList<FreeGiftItems>?=null,

@@ -152,7 +152,10 @@ import android.net.Uri
         orderStatus("order-status"), 
         
         @SerializedName("locate-us")
-        locateUs("locate-us");
+        locateUs("locate-us"), 
+        
+        @SerializedName("single-page-checkout")
+        singlePageCheckout("single-page-checkout");
         
 
         companion object {

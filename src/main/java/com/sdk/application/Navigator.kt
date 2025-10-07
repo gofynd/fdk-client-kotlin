@@ -346,6 +346,12 @@ enum class Navigator(
         pageType = PageType.locateUs,
         navName = "Locate us",
         link = "/locate-us"
+    ),
+   
+    SINGLE_PAGE_CHECKOUT(
+        pageType = PageType.singlePageCheckout,
+        navName = "Single Page Checkout",
+        link = "/cart/checkout"
     )
    
 }
