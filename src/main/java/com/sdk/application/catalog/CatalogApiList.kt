@@ -17,6 +17,16 @@ interface CatalogApiList {
     
     
     @GET
+    suspend fun getProductBundleItems(@Url url1: String?     ,   @Query("page_no") pageNo: Int?, @Query("page_size") pageSize: Int?, @HeaderMap headers: Map<String, String>? = null)
+    : Response<ProductBundleItems>
+    
+    
+    @GET
+    suspend fun getProductBundlesByChildSku(@Url url1: String?      ,   @Query("page_no") pageNo: Int?, @Query("page_size") pageSize: Int?, @HeaderMap headers: Map<String, String>? = null)
+    : Response<ProductBundleItemsWithSlug>
+    
+    
+    @GET
     suspend fun getProductSizesBySlug(@Url url1: String?     ,  @Query("store_id") storeId: Int?, @HeaderMap headers: Map<String, String>? = null)
     : Response<ProductSizes>
     
@@ -144,11 +154,6 @@ interface CatalogApiList {
     @GET
     suspend fun getLocationDetailsById(@Url url1: String?    , @HeaderMap headers: Map<String, String>? = null)
     : Response<StoreDetails>
-    
-    
-    @GET
-    suspend fun getProductBundlesBySlug(@Url url1: String?    ,   @Query("slug") slug: String?, @Query("id") id: Int?, @HeaderMap headers: Map<String, String>? = null)
-    : Response<ProductBundle>
     
     
     @GET

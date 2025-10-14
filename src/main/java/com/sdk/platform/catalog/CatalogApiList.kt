@@ -337,22 +337,6 @@ interface CatalogApiList {
     suspend fun getAttribute(@Path("company_id") companyId: String, @Path("attribute_slug") attributeSlug: String, @HeaderMap headers: Map<String, String>? = null)
     : Response<AttributeDetail>
     
-    @GET ("/service/platform/catalog/v1.0/company/{company_id}/product-bundle/")
-    suspend fun getProductBundle(@Path("company_id") companyId: String, @Query("q") q: String?, @Query("slug") slug: ArrayList<String>?, @Query("page_no") pageNo: Int?, @Query("page_size") pageSize: Int?, @HeaderMap headers: Map<String, String>? = null)
-    : Response<GetProductBundleListingResponseSchema>
-    
-    @POST ("/service/platform/catalog/v1.0/company/{company_id}/product-bundle/")
-    suspend fun createProductBundle(@Path("company_id") companyId: String,@Body body: ProductBundleRequestSchema, @HeaderMap headers: Map<String, String>? = null)
-    : Response<GetProductBundleCreateResponseSchema>
-    
-    @GET ("/service/platform/catalog/v1.0/company/{company_id}/product-bundle/{id}/")
-    suspend fun getProductBundleDetail(@Path("company_id") companyId: String, @Path("id") id: String, @HeaderMap headers: Map<String, String>? = null)
-    : Response<GetProductBundleResponseSchema>
-    
-    @PUT ("/service/platform/catalog/v1.0/company/{company_id}/product-bundle/{id}/")
-    suspend fun updateProductBundle(@Path("company_id") companyId: String, @Path("id") id: String,@Body body: ProductBundleUpdateRequestSchema, @HeaderMap headers: Map<String, String>? = null)
-    : Response<GetProductBundleCreateResponseSchema>
-    
     @GET ("/service/platform/catalog/v1.0/company/{company_id}/products/assets/bulk/")
     suspend fun getProductAssetsInBulk(@Path("company_id") companyId: String, @Query("page_no") pageNo: Int?, @Query("page_size") pageSize: Int?, @HeaderMap headers: Map<String, String>? = null)
     : Response<BulkAssetResponseSchema>
@@ -535,6 +519,10 @@ interface CatalogApiList {
     
     @PUT ("/service/platform/catalog/v3.0/company/{company_id}/products/{item_id}/")
     suspend fun editProduct(@Path("company_id") companyId: String, @Path("item_id") itemId: String,@Body body: ProductUpdateSchemaV3, @HeaderMap headers: Map<String, String>? = null)
+    : Response<SuccessResponseSchema>
+    
+    @PATCH ("/service/platform/catalog/v3.0/company/{company_id}/products/{item_id}/")
+    suspend fun partialUpdateProduct(@Path("company_id") companyId: String, @Path("item_id") itemId: String,@Body body: ProductPatchSchemaV3, @HeaderMap headers: Map<String, String>? = null)
     : Response<SuccessResponseSchema>
     
     @DELETE ("/service/platform/catalog/v2.0/company/{company_id}/products/{item_id}/")

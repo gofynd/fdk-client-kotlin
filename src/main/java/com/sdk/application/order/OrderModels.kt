@@ -1429,9 +1429,19 @@ data class Bags(
     var article: Article?=null,
     
     @SerializedName("charges")
-    var charges: ArrayList<PriceAdjustmentCharge>?=null
+    var charges: ArrayList<PriceAdjustmentCharge>?=null,
+    
+    @SerializedName("is_bundle_item")
+    var isBundleItem: Boolean?=null,
+    
+    @SerializedName("bundle_details")
+    var bundleDetails: BundleDetails?=null
     
 ): Parcelable {
+    
+    
+    
+    
     
     
     
@@ -1851,6 +1861,140 @@ data class Shipments(
     
     
     
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: BundleReturnConfig
+*/
+@Parcelize
+data class BundleReturnConfig(
+    
+    
+    
+    @SerializedName("allow_partial_return")
+    var allowPartialReturn: Boolean?=null,
+    
+    @SerializedName("returnable")
+    var returnable: Boolean?=null,
+    
+    @SerializedName("unit")
+    var unit: Boolean?=null,
+    
+    @SerializedName("time")
+    var time: Boolean?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: BundleDetails
+*/
+@Parcelize
+data class BundleDetails(
+    
+    
+    
+    @SerializedName("bundle_group_id")
+    var bundleGroupId: String?=null,
+    
+    @SerializedName("name")
+    var name: String?=null,
+    
+    @SerializedName("slug")
+    var slug: String?=null,
+    
+    @SerializedName("bundle_count")
+    var bundleCount: Int?=null,
+    
+    @SerializedName("article_bundle_id")
+    var articleBundleId: String?=null,
+    
+    @SerializedName("bundle_article_quantity")
+    var bundleArticleQuantity: Int?=null,
+    
+    @SerializedName("is_base")
+    var isBase: Boolean?=null,
+    
+    @SerializedName("price_marked")
+    var priceMarked: Double?=null,
+    
+    @SerializedName("price_effective")
+    var priceEffective: Double?=null,
+    
+    @SerializedName("item_id")
+    var itemId: Int?=null,
+    
+    @SerializedName("item_type")
+    var itemType: String?=null,
+    
+    @SerializedName("return_config")
+    var returnConfig: BundleReturnConfig?=null,
+    
+    @SerializedName("seller_identifier")
+    var sellerIdentifier: String?=null,
+    
+    @SerializedName("images")
+    var images: ArrayList<String>?=null,
+    
+    @SerializedName("brand_name")
+    var brandName: String?=null,
+    
+    @SerializedName("size")
+    var size: String?=null
+    
+): Parcelable {
     
     
     

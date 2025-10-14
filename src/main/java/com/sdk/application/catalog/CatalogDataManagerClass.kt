@@ -21,6 +21,10 @@ class CatalogDataManagerClass(val config: ApplicationConfig, val unauthorizedAct
             
                     _relativeUrls["getProductDetailBySlug"] = "/service/application/catalog/v1.0/products/{slug}/".substring(1)
             
+                    _relativeUrls["getProductBundleItems"] = "/service/application/catalog/v1.0/products/{slug}/bundle/items".substring(1)
+            
+                    _relativeUrls["getProductBundlesByChildSku"] = "/service/application/catalog/v1.0/products/{slug}/size/{size}/bundle".substring(1)
+            
                     _relativeUrls["getProductSizesBySlug"] = "/service/application/catalog/v1.0/products/{slug}/sizes/".substring(1)
             
                     _relativeUrls["getProductComparisonBySlugs"] = "/service/application/catalog/v1.0/products/compare/".substring(1)
@@ -73,8 +77,6 @@ class CatalogDataManagerClass(val config: ApplicationConfig, val unauthorizedAct
             
                     _relativeUrls["getLocationDetailsById"] = "/service/application/catalog/v2.0/locations/{location_id}/".substring(1)
             
-                    _relativeUrls["getProductBundlesBySlug"] = "/service/application/catalog/v1.0/product-grouping/".substring(1)
-            
                     _relativeUrls["getProductPriceBySlug"] = "/service/application/catalog/v4.0/products/{slug}/sizes/{size}/price/".substring(1)
             
                     _relativeUrls["getProductSellersBySlug"] = "/service/application/catalog/v4.0/products/{slug}/sizes/{size}/sellers/".substring(1)
@@ -120,6 +122,26 @@ class CatalogDataManagerClass(val config: ApplicationConfig, val unauthorizedAct
         fullUrl = fullUrl?.replace("{" + "slug" +"}",slug.toString())
         
         return catalogApiList?.getProductDetailBySlug(fullUrl,  headers = headers)}
+
+    
+    
+    suspend fun getProductBundleItems(slug: String,pageNo: Int?=null,pageSize: Int?=null, headers: Map<String, String> = emptyMap()): Response<ProductBundleItems>? {
+        var fullUrl : String? = _relativeUrls["getProductBundleItems"]
+        
+        fullUrl = fullUrl?.replace("{" + "slug" +"}",slug.toString())
+        
+        return catalogApiList?.getProductBundleItems(fullUrl,    pageNo = pageNo,  pageSize = pageSize,headers = headers)}
+
+    
+    
+    suspend fun getProductBundlesByChildSku(slug: String,size: String,pageNo: Int?=null,pageSize: Int?=null, headers: Map<String, String> = emptyMap()): Response<ProductBundleItemsWithSlug>? {
+        var fullUrl : String? = _relativeUrls["getProductBundlesByChildSku"]
+        
+        fullUrl = fullUrl?.replace("{" + "slug" +"}",slug.toString())
+        
+        fullUrl = fullUrl?.replace("{" + "size" +"}",size.toString())
+        
+        return catalogApiList?.getProductBundlesByChildSku(fullUrl,     pageNo = pageNo,  pageSize = pageSize,headers = headers)}
 
     
     
@@ -895,13 +917,6 @@ class CatalogDataManagerClass(val config: ApplicationConfig, val unauthorizedAct
         fullUrl = fullUrl?.replace("{" + "location_id" +"}",locationId.toString())
         
         return catalogApiList?.getLocationDetailsById(fullUrl,  headers = headers)}
-
-    
-    
-    suspend fun getProductBundlesBySlug(slug: String?=null,id: Int?=null, headers: Map<String, String> = emptyMap()): Response<ProductBundle>? {
-        var fullUrl : String? = _relativeUrls["getProductBundlesBySlug"]
-        
-        return catalogApiList?.getProductBundlesBySlug(fullUrl,   slug = slug,  id = id,headers = headers)}
 
     
     

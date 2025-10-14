@@ -5595,9 +5595,14 @@ data class CartProductInfo(
     var promoMeta: PromoMeta?=null,
     
     @SerializedName("custom_order")
-    var customOrder: @RawValue HashMap<String,Any>?=null
+    var customOrder: @RawValue HashMap<String,Any>?=null,
+    
+    @SerializedName("item_type")
+    var itemType: String?=null
     
 ): Parcelable {
+    
+    
     
     
     
@@ -10975,46 +10980,4 @@ data class ValidationError(
 
 
 
-
-
-
-    /*
-        Enum: OrderingSource
-        Used By: Cart
-    */
-    enum class OrderingSource(val value:String){
-        
-        @SerializedName("storefront")
-        storefront("storefront"), 
-        
-        @SerializedName("store_os_pos")
-        storeOsPos("store_os_pos"), 
-        
-        @SerializedName("kiosk")
-        kiosk("kiosk"), 
-        
-        @SerializedName("scan_go")
-        scanGo("scan_go"), 
-        
-        @SerializedName("smart_trolley")
-        smartTrolley("smart_trolley"), 
-        
-        @SerializedName("marketplace")
-        marketplace("marketplace"), 
-        
-        @SerializedName("social_commerce")
-        socialCommerce("social_commerce"), 
-        
-        @SerializedName("ondc")
-        ondc("ondc");
-        
-
-        companion object {
-            fun valueOfOrderingSource(value : String): OrderingSource? {
-                return OrderingSource.values().find {
-                    it.value == value
-                }
-            }
-        }
-    }
 

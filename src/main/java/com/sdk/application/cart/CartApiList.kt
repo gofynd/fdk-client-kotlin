@@ -12,7 +12,7 @@ interface CartApiList {
     
     
     @GET
-    suspend fun getCart(@Url url1: String?    ,  @Header("x-ordering-source") xOrderingSource: OrderingSource?,         @Query("id") id: String?, @Query("i") i: Boolean?, @Query("b") b: Boolean?, @Query("c") c: Boolean?, @Query("assign_card_id") assignCardId: Int?, @Query("area_code") areaCode: String?, @Query("buy_now") buyNow: Boolean?, @Query("order_type") orderType: String?, @HeaderMap headers: Map<String, String>? = null)
+    suspend fun getCart(@Url url1: String?    ,  @Header("x-ordering-source") xOrderingSource: String?,         @Query("id") id: String?, @Query("i") i: Boolean?, @Query("b") b: Boolean?, @Query("c") c: Boolean?, @Query("assign_card_id") assignCardId: Int?, @Query("area_code") areaCode: String?, @Query("buy_now") buyNow: Boolean?, @Query("order_type") orderType: String?, @HeaderMap headers: Map<String, String>? = null)
     : Response<CartDetailResult>
     
     
@@ -22,17 +22,17 @@ interface CartApiList {
     
     
     @POST
-    suspend fun addItems(@Url url1: String?    ,  @Header("x-ordering-source") xOrderingSource: OrderingSource?,       @Query("i") i: Boolean?, @Query("b") b: Boolean?, @Query("area_code") areaCode: String?, @Query("buy_now") buyNow: Boolean?, @Query("id") id: String?, @Query("order_type") orderType: String?, @Body body: AddCartCreation, @HeaderMap headers: Map<String, String>? = null)
+    suspend fun addItems(@Url url1: String?    ,  @Header("x-ordering-source") xOrderingSource: String?,       @Query("i") i: Boolean?, @Query("b") b: Boolean?, @Query("area_code") areaCode: String?, @Query("buy_now") buyNow: Boolean?, @Query("id") id: String?, @Query("order_type") orderType: String?, @Body body: AddCartCreation, @HeaderMap headers: Map<String, String>? = null)
     : Response<AddCartDetailResult>
     
     
     @PUT
-    suspend fun updateCart(@Url url1: String?    ,  @Header("x-ordering-source") xOrderingSource: OrderingSource?,        @Query("id") id: String?, @Query("i") i: Boolean?, @Query("b") b: Boolean?, @Query("area_code") areaCode: String?, @Query("buy_now") buyNow: Boolean?, @Query("cart_type") cartType: String?, @Query("order_type") orderType: String?, @Body body: UpdateCartCreation, @HeaderMap headers: Map<String, String>? = null)
+    suspend fun updateCart(@Url url1: String?    ,  @Header("x-ordering-source") xOrderingSource: String?,        @Query("id") id: String?, @Query("i") i: Boolean?, @Query("b") b: Boolean?, @Query("area_code") areaCode: String?, @Query("buy_now") buyNow: Boolean?, @Query("cart_type") cartType: String?, @Query("order_type") orderType: String?, @Body body: UpdateCartCreation, @HeaderMap headers: Map<String, String>? = null)
     : Response<UpdateCartDetailResult>
     
     
     @PATCH
-    suspend fun updateCartBreakup(@Url url1: String?    ,  @Header("x-ordering-source") xOrderingSource: OrderingSource?,      @Query("id") id: String?, @Query("i") i: Boolean?, @Query("b") b: Boolean?, @Query("buy_now") buyNow: Boolean?, @Query("cart_type") cartType: String?, @Body body: UpdateCartBreakup, @HeaderMap headers: Map<String, String>? = null)
+    suspend fun updateCartBreakup(@Url url1: String?    ,  @Header("x-ordering-source") xOrderingSource: String?,      @Query("id") id: String?, @Query("i") i: Boolean?, @Query("b") b: Boolean?, @Query("buy_now") buyNow: Boolean?, @Query("cart_type") cartType: String?, @Body body: UpdateCartBreakup, @HeaderMap headers: Map<String, String>? = null)
     : Response<UpdateCartDetailResult>
     
     
@@ -52,12 +52,12 @@ interface CartApiList {
     
     
     @POST
-    suspend fun applyCoupon(@Url url1: String?    ,  @Header("x-ordering-source") xOrderingSource: OrderingSource?,       @Query("i") i: Boolean?, @Query("b") b: Boolean?, @Query("p") p: Boolean?, @Query("id") id: String?, @Query("buy_now") buyNow: Boolean?, @Query("cart_type") cartType: String?, @Body body: ApplyCoupon, @HeaderMap headers: Map<String, String>? = null)
+    suspend fun applyCoupon(@Url url1: String?    ,  @Header("x-ordering-source") xOrderingSource: String?,       @Query("i") i: Boolean?, @Query("b") b: Boolean?, @Query("p") p: Boolean?, @Query("id") id: String?, @Query("buy_now") buyNow: Boolean?, @Query("cart_type") cartType: String?, @Body body: ApplyCoupon, @HeaderMap headers: Map<String, String>? = null)
     : Response<CartDetailResult>
     
     
     @DELETE
-    suspend fun removeCoupon(@Url url1: String?    ,  @Header("x-ordering-source") xOrderingSource: OrderingSource?,   @Query("id") id: String?, @Query("buy_now") buyNow: Boolean?, @HeaderMap headers: Map<String, String>? = null)
+    suspend fun removeCoupon(@Url url1: String?    ,  @Header("x-ordering-source") xOrderingSource: String?,   @Query("id") id: String?, @Query("buy_now") buyNow: Boolean?, @HeaderMap headers: Map<String, String>? = null)
     : Response<CartDetailResult>
     
     
@@ -67,7 +67,7 @@ interface CartApiList {
     
     
     @POST
-    suspend fun applyLoyaltyPoints(@Url url1: String?    ,  @Header("x-ordering-source") xOrderingSource: OrderingSource?,     @Query("id") id: String?, @Query("i") i: Boolean?, @Query("b") b: Boolean?, @Query("buy_now") buyNow: Boolean?, @Body body: RedeemLoyaltyPoints, @HeaderMap headers: Map<String, String>? = null)
+    suspend fun applyLoyaltyPoints(@Url url1: String?    ,  @Header("x-ordering-source") xOrderingSource: String?,     @Query("id") id: String?, @Query("i") i: Boolean?, @Query("b") b: Boolean?, @Query("buy_now") buyNow: Boolean?, @Body body: RedeemLoyaltyPoints, @HeaderMap headers: Map<String, String>? = null)
     : Response<CartDetailResult>
     
     
@@ -97,17 +97,17 @@ interface CartApiList {
     
     
     @POST
-    suspend fun selectAddress(@Url url1: String?    ,  @Header("x-ordering-source") xOrderingSource: OrderingSource?,     @Query("cart_id") cartId: String?, @Query("buy_now") buyNow: Boolean?, @Query("i") i: Boolean?, @Query("b") b: Boolean?, @Body body: SelectCartAddressCreation, @HeaderMap headers: Map<String, String>? = null)
+    suspend fun selectAddress(@Url url1: String?    ,  @Header("x-ordering-source") xOrderingSource: String?,     @Query("cart_id") cartId: String?, @Query("buy_now") buyNow: Boolean?, @Query("i") i: Boolean?, @Query("b") b: Boolean?, @Body body: SelectCartAddressCreation, @HeaderMap headers: Map<String, String>? = null)
     : Response<CartDetailResult>
     
     
     @PUT
-    suspend fun selectPaymentMode(@Url url1: String?    ,  @Header("x-ordering-source") xOrderingSource: OrderingSource?,   @Query("id") id: String?, @Query("buy_now") buyNow: Boolean?, @Body body: UpdateCartPaymentCreation, @HeaderMap headers: Map<String, String>? = null)
+    suspend fun selectPaymentMode(@Url url1: String?    ,  @Header("x-ordering-source") xOrderingSource: String?,   @Query("id") id: String?, @Query("buy_now") buyNow: Boolean?, @Body body: UpdateCartPaymentCreation, @HeaderMap headers: Map<String, String>? = null)
     : Response<CartDetailResult>
     
     
     @GET
-    suspend fun validateCouponForPayment(@Url url1: String?    ,  @Header("x-ordering-source") xOrderingSource: OrderingSource?,             @Query("id") id: String?, @Query("buy_now") buyNow: Boolean?, @Query("address_id") addressId: String?, @Query("payment_mode") paymentMode: String?, @Query("payment_identifier") paymentIdentifier: String?, @Query("aggregator_name") aggregatorName: String?, @Query("merchant_code") merchantCode: String?, @Query("iin") iin: String?, @Query("network") network: String?, @Query("type") type: String?, @Query("card_id") cardId: String?, @Query("cart_type") cartType: String?, @HeaderMap headers: Map<String, String>? = null)
+    suspend fun validateCouponForPayment(@Url url1: String?    ,  @Header("x-ordering-source") xOrderingSource: String?,             @Query("id") id: String?, @Query("buy_now") buyNow: Boolean?, @Query("address_id") addressId: String?, @Query("payment_mode") paymentMode: String?, @Query("payment_identifier") paymentIdentifier: String?, @Query("aggregator_name") aggregatorName: String?, @Query("merchant_code") merchantCode: String?, @Query("iin") iin: String?, @Query("network") network: String?, @Query("type") type: String?, @Query("card_id") cardId: String?, @Query("cart_type") cartType: String?, @HeaderMap headers: Map<String, String>? = null)
     : Response<PaymentCouponValidate>
     
     
@@ -117,7 +117,7 @@ interface CartApiList {
     
     
     @POST
-    suspend fun checkoutCart(@Url url1: String?    ,  @Header("x-ordering-source") xOrderingSource: OrderingSource?,   @Query("buy_now") buyNow: Boolean?, @Query("cart_type") cartType: String?, @Body body: CartCheckoutDetailCreation, @HeaderMap headers: Map<String, String>? = null)
+    suspend fun checkoutCart(@Url url1: String?    ,  @Header("x-ordering-source") xOrderingSource: String?,   @Query("buy_now") buyNow: Boolean?, @Query("cart_type") cartType: String?, @Body body: CartCheckoutDetailCreation, @HeaderMap headers: Map<String, String>? = null)
     : Response<CartCheckoutResult>
     
     
@@ -157,7 +157,7 @@ interface CartApiList {
     
     
     @POST
-    suspend fun checkoutCartV2(@Url url1: String?    ,  @Header("x-ordering-source") xOrderingSource: OrderingSource?,   @Query("buy_now") buyNow: Boolean?, @Query("cart_type") cartType: String?, @Body body: CartCheckoutDetailV2Creation, @HeaderMap headers: Map<String, String>? = null)
+    suspend fun checkoutCartV2(@Url url1: String?    ,  @Header("x-ordering-source") xOrderingSource: String?,   @Query("buy_now") buyNow: Boolean?, @Query("cart_type") cartType: String?, @Body body: CartCheckoutDetailV2Creation, @HeaderMap headers: Map<String, String>? = null)
     : Response<CartCheckoutResult>
     
 }

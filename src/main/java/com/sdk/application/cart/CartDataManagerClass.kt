@@ -114,7 +114,7 @@ class CartDataManagerClass(val config: ApplicationConfig, val unauthorizedAction
         return retrofitHttpClient?.initializeRestClient(CartApiList::class.java) as? CartApiList
     }
     
-    suspend fun getCart(xOrderingSource: OrderingSource?=null,id: String?=null,i: Boolean?=null,b: Boolean?=null,c: Boolean?=null,assignCardId: Int?=null,areaCode: String?=null,buyNow: Boolean?=null,orderType: String?=null, headers: Map<String, String> = emptyMap()): Response<CartDetailResult>? {
+    suspend fun getCart(xOrderingSource: String?=null,id: String?=null,i: Boolean?=null,b: Boolean?=null,c: Boolean?=null,assignCardId: Int?=null,areaCode: String?=null,buyNow: Boolean?=null,orderType: String?=null, headers: Map<String, String> = emptyMap()): Response<CartDetailResult>? {
         var fullUrl : String? = _relativeUrls["getCart"]
         
         return cartApiList?.getCart(fullUrl,   xOrderingSource = xOrderingSource,  id = id,  i = i,  b = b,  c = c,  assignCardId = assignCardId,  areaCode = areaCode,  buyNow = buyNow,  orderType = orderType,headers = headers)}
@@ -128,21 +128,21 @@ class CartDataManagerClass(val config: ApplicationConfig, val unauthorizedAction
 
     
     
-    suspend fun addItems(xOrderingSource: OrderingSource?=null,i: Boolean?=null,b: Boolean?=null,areaCode: String?=null,buyNow: Boolean?=null,id: String?=null,orderType: String?=null,body: AddCartCreation, headers: Map<String, String> = emptyMap()): Response<AddCartDetailResult>? {
+    suspend fun addItems(xOrderingSource: String?=null,i: Boolean?=null,b: Boolean?=null,areaCode: String?=null,buyNow: Boolean?=null,id: String?=null,orderType: String?=null,body: AddCartCreation, headers: Map<String, String> = emptyMap()): Response<AddCartDetailResult>? {
         var fullUrl : String? = _relativeUrls["addItems"]
         
         return cartApiList?.addItems(fullUrl,   xOrderingSource = xOrderingSource,  i = i,  b = b,  areaCode = areaCode,  buyNow = buyNow,  id = id,  orderType = orderType,body = body,headers = headers)}
 
     
     
-    suspend fun updateCart(xOrderingSource: OrderingSource?=null,id: String?=null,i: Boolean?=null,b: Boolean?=null,areaCode: String?=null,buyNow: Boolean?=null,cartType: String?=null,orderType: String?=null,body: UpdateCartCreation, headers: Map<String, String> = emptyMap()): Response<UpdateCartDetailResult>? {
+    suspend fun updateCart(xOrderingSource: String?=null,id: String?=null,i: Boolean?=null,b: Boolean?=null,areaCode: String?=null,buyNow: Boolean?=null,cartType: String?=null,orderType: String?=null,body: UpdateCartCreation, headers: Map<String, String> = emptyMap()): Response<UpdateCartDetailResult>? {
         var fullUrl : String? = _relativeUrls["updateCart"]
         
         return cartApiList?.updateCart(fullUrl,   xOrderingSource = xOrderingSource,  id = id,  i = i,  b = b,  areaCode = areaCode,  buyNow = buyNow,  cartType = cartType,  orderType = orderType,body = body,headers = headers)}
 
     
     
-    suspend fun updateCartBreakup(xOrderingSource: OrderingSource?=null,id: String?=null,i: Boolean?=null,b: Boolean?=null,buyNow: Boolean?=null,cartType: String?=null,body: UpdateCartBreakup, headers: Map<String, String> = emptyMap()): Response<UpdateCartDetailResult>? {
+    suspend fun updateCartBreakup(xOrderingSource: String?=null,id: String?=null,i: Boolean?=null,b: Boolean?=null,buyNow: Boolean?=null,cartType: String?=null,body: UpdateCartBreakup, headers: Map<String, String> = emptyMap()): Response<UpdateCartDetailResult>? {
         var fullUrl : String? = _relativeUrls["updateCartBreakup"]
         
         return cartApiList?.updateCartBreakup(fullUrl,   xOrderingSource = xOrderingSource,  id = id,  i = i,  b = b,  buyNow = buyNow,  cartType = cartType,body = body,headers = headers)}
@@ -170,14 +170,14 @@ class CartDataManagerClass(val config: ApplicationConfig, val unauthorizedAction
 
     
     
-    suspend fun applyCoupon(xOrderingSource: OrderingSource?=null,i: Boolean?=null,b: Boolean?=null,p: Boolean?=null,id: String?=null,buyNow: Boolean?=null,cartType: String?=null,body: ApplyCoupon, headers: Map<String, String> = emptyMap()): Response<CartDetailResult>? {
+    suspend fun applyCoupon(xOrderingSource: String?=null,i: Boolean?=null,b: Boolean?=null,p: Boolean?=null,id: String?=null,buyNow: Boolean?=null,cartType: String?=null,body: ApplyCoupon, headers: Map<String, String> = emptyMap()): Response<CartDetailResult>? {
         var fullUrl : String? = _relativeUrls["applyCoupon"]
         
         return cartApiList?.applyCoupon(fullUrl,   xOrderingSource = xOrderingSource,  i = i,  b = b,  p = p,  id = id,  buyNow = buyNow,  cartType = cartType,body = body,headers = headers)}
 
     
     
-    suspend fun removeCoupon(xOrderingSource: OrderingSource?=null,id: String?=null,buyNow: Boolean?=null, headers: Map<String, String> = emptyMap()): Response<CartDetailResult>? {
+    suspend fun removeCoupon(xOrderingSource: String?=null,id: String?=null,buyNow: Boolean?=null, headers: Map<String, String> = emptyMap()): Response<CartDetailResult>? {
         var fullUrl : String? = _relativeUrls["removeCoupon"]
         
         return cartApiList?.removeCoupon(fullUrl,   xOrderingSource = xOrderingSource,  id = id,  buyNow = buyNow,headers = headers)}
@@ -191,7 +191,7 @@ class CartDataManagerClass(val config: ApplicationConfig, val unauthorizedAction
 
     
     
-    suspend fun applyLoyaltyPoints(xOrderingSource: OrderingSource?=null,id: String?=null,i: Boolean?=null,b: Boolean?=null,buyNow: Boolean?=null,body: RedeemLoyaltyPoints, headers: Map<String, String> = emptyMap()): Response<CartDetailResult>? {
+    suspend fun applyLoyaltyPoints(xOrderingSource: String?=null,id: String?=null,i: Boolean?=null,b: Boolean?=null,buyNow: Boolean?=null,body: RedeemLoyaltyPoints, headers: Map<String, String> = emptyMap()): Response<CartDetailResult>? {
         var fullUrl : String? = _relativeUrls["applyLoyaltyPoints"]
         
         return cartApiList?.applyLoyaltyPoints(fullUrl,   xOrderingSource = xOrderingSource,  id = id,  i = i,  b = b,  buyNow = buyNow,body = body,headers = headers)}
@@ -239,21 +239,21 @@ class CartDataManagerClass(val config: ApplicationConfig, val unauthorizedAction
 
     
     
-    suspend fun selectAddress(xOrderingSource: OrderingSource?=null,cartId: String?=null,buyNow: Boolean?=null,i: Boolean?=null,b: Boolean?=null,body: SelectCartAddressCreation, headers: Map<String, String> = emptyMap()): Response<CartDetailResult>? {
+    suspend fun selectAddress(xOrderingSource: String?=null,cartId: String?=null,buyNow: Boolean?=null,i: Boolean?=null,b: Boolean?=null,body: SelectCartAddressCreation, headers: Map<String, String> = emptyMap()): Response<CartDetailResult>? {
         var fullUrl : String? = _relativeUrls["selectAddress"]
         
         return cartApiList?.selectAddress(fullUrl,   xOrderingSource = xOrderingSource,  cartId = cartId,  buyNow = buyNow,  i = i,  b = b,body = body,headers = headers)}
 
     
     
-    suspend fun selectPaymentMode(xOrderingSource: OrderingSource?=null,id: String?=null,buyNow: Boolean?=null,body: UpdateCartPaymentCreation, headers: Map<String, String> = emptyMap()): Response<CartDetailResult>? {
+    suspend fun selectPaymentMode(xOrderingSource: String?=null,id: String?=null,buyNow: Boolean?=null,body: UpdateCartPaymentCreation, headers: Map<String, String> = emptyMap()): Response<CartDetailResult>? {
         var fullUrl : String? = _relativeUrls["selectPaymentMode"]
         
         return cartApiList?.selectPaymentMode(fullUrl,   xOrderingSource = xOrderingSource,  id = id,  buyNow = buyNow,body = body,headers = headers)}
 
     
     
-    suspend fun validateCouponForPayment(xOrderingSource: OrderingSource?=null,id: String?=null,buyNow: Boolean?=null,addressId: String?=null,paymentMode: String?=null,paymentIdentifier: String?=null,aggregatorName: String?=null,merchantCode: String?=null,iin: String?=null,network: String?=null,type: String?=null,cardId: String?=null,cartType: String?=null, headers: Map<String, String> = emptyMap()): Response<PaymentCouponValidate>? {
+    suspend fun validateCouponForPayment(xOrderingSource: String?=null,id: String?=null,buyNow: Boolean?=null,addressId: String?=null,paymentMode: String?=null,paymentIdentifier: String?=null,aggregatorName: String?=null,merchantCode: String?=null,iin: String?=null,network: String?=null,type: String?=null,cardId: String?=null,cartType: String?=null, headers: Map<String, String> = emptyMap()): Response<PaymentCouponValidate>? {
         var fullUrl : String? = _relativeUrls["validateCouponForPayment"]
         
         return cartApiList?.validateCouponForPayment(fullUrl,   xOrderingSource = xOrderingSource,  id = id,  buyNow = buyNow,  addressId = addressId,  paymentMode = paymentMode,  paymentIdentifier = paymentIdentifier,  aggregatorName = aggregatorName,  merchantCode = merchantCode,  iin = iin,  network = network,  type = type,  cardId = cardId,  cartType = cartType,headers = headers)}
@@ -267,7 +267,7 @@ class CartDataManagerClass(val config: ApplicationConfig, val unauthorizedAction
 
     
     
-    suspend fun checkoutCart(xOrderingSource: OrderingSource?=null,buyNow: Boolean?=null,cartType: String?=null,body: CartCheckoutDetailCreation, headers: Map<String, String> = emptyMap()): Response<CartCheckoutResult>? {
+    suspend fun checkoutCart(xOrderingSource: String?=null,buyNow: Boolean?=null,cartType: String?=null,body: CartCheckoutDetailCreation, headers: Map<String, String> = emptyMap()): Response<CartCheckoutResult>? {
         var fullUrl : String? = _relativeUrls["checkoutCart"]
         
         return cartApiList?.checkoutCart(fullUrl,   xOrderingSource = xOrderingSource,  buyNow = buyNow,  cartType = cartType,body = body,headers = headers)}
@@ -329,7 +329,7 @@ class CartDataManagerClass(val config: ApplicationConfig, val unauthorizedAction
 
     
     
-    suspend fun checkoutCartV2(xOrderingSource: OrderingSource?=null,buyNow: Boolean?=null,cartType: String?=null,body: CartCheckoutDetailV2Creation, headers: Map<String, String> = emptyMap()): Response<CartCheckoutResult>? {
+    suspend fun checkoutCartV2(xOrderingSource: String?=null,buyNow: Boolean?=null,cartType: String?=null,body: CartCheckoutDetailV2Creation, headers: Map<String, String> = emptyMap()): Response<CartCheckoutResult>? {
         var fullUrl : String? = _relativeUrls["checkoutCartV2"]
         
         return cartApiList?.checkoutCartV2(fullUrl,   xOrderingSource = xOrderingSource,  buyNow = buyNow,  cartType = cartType,body = body,headers = headers)}

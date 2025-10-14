@@ -846,54 +846,6 @@ class CatalogDataManagerClass(val config: PlatformConfig, val unauthorizedAction
     }
     
     
-    suspend fun getProductBundle(q: String?=null,slug: ArrayList<String>?=null,pageNo: Int?=null,pageSize: Int?=null, headers: Map<String, String> = emptyMap())
-    : Response<GetProductBundleListingResponseSchema>? {
-
-        return if (config.oauthClient.isAccessTokenValid()) {
-            catalogApiList?.getProductBundle(
-        companyId = config.companyId,q = q,slug = slug,pageNo = pageNo,pageSize = pageSize, headers = headers)
-        } else {
-            null
-        }
-    }
-    
-    
-    suspend fun createProductBundle(body: ProductBundleRequestSchema, headers: Map<String, String> = emptyMap())
-    : Response<GetProductBundleCreateResponseSchema>? {
-
-        return if (config.oauthClient.isAccessTokenValid()) {
-            catalogApiList?.createProductBundle(
-        companyId = config.companyId, body = body,headers = headers)
-        } else {
-            null
-        }
-    }
-    
-    
-    suspend fun getProductBundleDetail(id: String, headers: Map<String, String> = emptyMap())
-    : Response<GetProductBundleResponseSchema>? {
-
-        return if (config.oauthClient.isAccessTokenValid()) {
-            catalogApiList?.getProductBundleDetail(
-        companyId = config.companyId,id = id, headers = headers)
-        } else {
-            null
-        }
-    }
-    
-    
-    suspend fun updateProductBundle(id: String,body: ProductBundleUpdateRequestSchema, headers: Map<String, String> = emptyMap())
-    : Response<GetProductBundleCreateResponseSchema>? {
-
-        return if (config.oauthClient.isAccessTokenValid()) {
-            catalogApiList?.updateProductBundle(
-        companyId = config.companyId,id = id, body = body,headers = headers)
-        } else {
-            null
-        }
-    }
-    
-    
     suspend fun getProductAssetsInBulk(pageNo: Int?=null,pageSize: Int?=null, headers: Map<String, String> = emptyMap())
     : Response<BulkAssetResponseSchema>? {
 
@@ -1760,6 +1712,18 @@ class CatalogDataManagerClass(val config: PlatformConfig, val unauthorizedAction
 
         return if (config.oauthClient.isAccessTokenValid()) {
             catalogApiList?.editProduct(
+        companyId = config.companyId,itemId = itemId, body = body,headers = headers)
+        } else {
+            null
+        }
+    }
+    
+    
+    suspend fun partialUpdateProduct(itemId: String,body: ProductPatchSchemaV3, headers: Map<String, String> = emptyMap())
+    : Response<SuccessResponseSchema>? {
+
+        return if (config.oauthClient.isAccessTokenValid()) {
+            catalogApiList?.partialUpdateProduct(
         companyId = config.companyId,itemId = itemId, body = body,headers = headers)
         } else {
             null
@@ -3349,10 +3313,6 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     
     
     
-    
-    
-    
-    
     suspend fun updateAllowSingle(body: AllowSingleRequestSchema, headers: Map<String, String> = emptyMap())
     : Response<ConfigSuccessResponseSchema>? {
         return if (config.oauthClient.isAccessTokenValid()) {
@@ -3461,6 +3421,7 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
             null
         }
     }
+    
     
     
     
