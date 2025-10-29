@@ -247,6 +247,9 @@ data class TransformEventData(
     
     
     
+    @SerializedName("region")
+    var region: String?=null,
+    
     @SerializedName("event")
     var event: InternalTransformEvent?=null,
     
@@ -260,6 +263,8 @@ data class TransformEventData(
     var payload: @RawValue HashMap<String,Any>?=null
     
 ): Parcelable {
+    
+    
     
     
     

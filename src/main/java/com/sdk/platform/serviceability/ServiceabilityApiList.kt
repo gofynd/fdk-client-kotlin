@@ -313,4 +313,8 @@ interface ServiceabilityApiList {
     suspend fun getBulkFulfillmentValidationStatus(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Path("bulk_id") bulkId: String, @HeaderMap headers: Map<String, String>? = null)
     : Response<FulfillmentOptionBulkValidate>
     
+    @POST ("/service/platform/logistics/v1.0/company/{company_id}/application/{application_id}/shipments")
+    suspend fun createShipments(@Header("x-ordering-source") xOrderingSource: String?, @Path("application_id") applicationId: String, @Path("company_id") companyId: String,@Body body: PlatformShipmentsRequestSchema, @HeaderMap headers: Map<String, String>? = null)
+    : Response<PlatformShipmentsResponseSchema>
+    
 }

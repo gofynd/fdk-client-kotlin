@@ -9963,14 +9963,14 @@ data class DimensionSchema(
     @SerializedName("length")
     var length: Int?=null,
     
+    @SerializedName("width")
+    var width: Int?=null,
+    
     @SerializedName("is_default")
     var isDefault: Boolean?=null,
     
     @SerializedName("unit")
-    var unit: String?=null,
-    
-    @SerializedName("width")
-    var width: Int?=null
+    var unit: String?=null
     
 ): Parcelable {
     

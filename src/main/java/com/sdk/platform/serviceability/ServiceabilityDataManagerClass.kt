@@ -427,6 +427,7 @@ class ServiceabilityDataManagerClass(val config: PlatformConfig, val unauthorize
     
     
     
+    
 
 inner class ApplicationClient(val applicationId:String,val config: PlatformConfig){
 
@@ -934,6 +935,16 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     : Response<FulfillmentOptionBulkValidate>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 serviceabilityApiList?.getBulkFulfillmentValidationStatus(companyId = config.companyId ,applicationId = applicationId ,bulkId = bulkId, headers = headers)
+        } else {
+            null
+        }
+    }
+    
+    
+    suspend fun createShipments(xOrderingSource: String?=null,body: PlatformShipmentsRequestSchema, headers: Map<String, String> = emptyMap())
+    : Response<PlatformShipmentsResponseSchema>? {
+        return if (config.oauthClient.isAccessTokenValid()) {
+                serviceabilityApiList?.createShipments(xOrderingSource = xOrderingSource,applicationId = applicationId ,companyId = config.companyId , body = body,headers = headers)
         } else {
             null
         }
