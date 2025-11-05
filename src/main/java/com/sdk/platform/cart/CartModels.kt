@@ -8199,10 +8199,15 @@ data class PlatformAddCartDetails(
     @SerializedName("new_cart")
     var newCart: Boolean?=null,
     
+    @SerializedName("default_cart")
+    var defaultCart: Boolean?=null,
+    
     @SerializedName("items")
     var items: ArrayList<AddProductCart>?=null
     
 ): Parcelable {
+    
+    
     
     
     

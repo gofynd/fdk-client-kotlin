@@ -11172,9 +11172,14 @@ data class CreateOrderRequestSchema(
     var channelCompanyId: String?=null,
     
     @SerializedName("is_draft")
-    var isDraft: Boolean?=null
+    var isDraft: Boolean?=null,
+    
+    @SerializedName("meta")
+    var meta: @RawValue HashMap<String,Any>?=null
     
 ): Parcelable {
+    
+    
     
     
     
