@@ -94,11 +94,11 @@ import android.net.Uri
         @SerializedName("profile-company")
         profileCompany("profile-company"), 
         
-        @SerializedName("profile-emails")
-        profileEmails("profile-emails"), 
+        @SerializedName("profile-email")
+        profileEmail("profile-email"), 
         
-        @SerializedName("profile-phones")
-        profilePhones("profile-phones"), 
+        @SerializedName("profile-phone")
+        profilePhone("profile-phone"), 
         
         @SerializedName("rate-us")
         rateUs("rate-us"), 
@@ -155,7 +155,10 @@ import android.net.Uri
         locateUs("locate-us"), 
         
         @SerializedName("single-page-checkout")
-        singlePageCheckout("single-page-checkout");
+        singlePageCheckout("single-page-checkout"), 
+        
+        @SerializedName("request-reattempt")
+        requestReattempt("request-reattempt");
         
 
         companion object {

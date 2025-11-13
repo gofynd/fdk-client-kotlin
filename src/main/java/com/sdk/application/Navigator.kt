@@ -216,15 +216,15 @@ enum class Navigator(
         link = "/profile/company"
     ),
    
-    PROFILE_EMAILS(
-        pageType = PageType.profileEmails,
-        navName = "Profile Emails",
+    PROFILE_EMAIL(
+        pageType = PageType.profileEmail,
+        navName = "Profile Email",
         link = "/profile/email"
     ),
    
-    PROFILE_PHONES(
-        pageType = PageType.profilePhones,
-        navName = "Profile Phones",
+    PROFILE_PHONE(
+        pageType = PageType.profilePhone,
+        navName = "Profile Phone",
         link = "/profile/phone"
     ),
    
@@ -352,6 +352,15 @@ enum class Navigator(
         pageType = PageType.singlePageCheckout,
         navName = "Single Page Checkout",
         link = "/cart/checkout"
+    ),
+   
+    REQUEST_REATTEMPT(
+        pageType = PageType.requestReattempt,
+        navName = "Request Reattempt",
+        link = "/reattempt/shipment/:shipmentId",
+        params = arrayListOf(
+            NavParam(key = "shipmentId", required = true)
+        )
     )
    
 }

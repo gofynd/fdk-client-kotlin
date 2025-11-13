@@ -286,9 +286,9 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     
     
     suspend fun getUserAttributeDefinitions(excludingIds: String?=null,slug: String?=null,type: String?=null,customerEditable: Boolean?=null,encrypted: Boolean?=null,pinned: Boolean?=null,pinOrder: Int?=null,isLocked: Boolean?=null,name: String?=null,pageSize: Int?=null,pageNo: Int?=null, headers: Map<String, String> = emptyMap())
-    : Response<HashMap<String,Any>>? {
+    : Response<UserAttributeDefinitionList>? {
         return if (config.oauthClient.isAccessTokenValid()) {
-                userApiList?.getUserAttributeDefinitions(excludingIds = excludingIds,slug = slug,type = type,customerEditable = customerEditable,encrypted = encrypted,pinned = pinned,pinOrder = pinOrder,isLocked = isLocked,name = name,companyId = config.companyId ,applicationId = applicationId ,pageSize = pageSize,pageNo = pageNo, headers = headers)
+                userApiList?.getUserAttributeDefinitions(companyId = config.companyId ,applicationId = applicationId ,excludingIds = excludingIds,slug = slug,type = type,customerEditable = customerEditable,encrypted = encrypted,pinned = pinned,pinOrder = pinOrder,isLocked = isLocked,name = name,pageSize = pageSize,pageNo = pageNo, headers = headers)
         } else {
             null
         }

@@ -36,6 +36,33 @@ data class SuccessMessage(
 
              
 /*
+    Model: UserAttributeDefinitionList
+*/
+@Parcelize
+data class UserAttributeDefinitionList(
+    
+    
+    
+    @SerializedName("items")
+    var items: ArrayList<UserAttributeDefinition>?=null,
+    
+    @SerializedName("page")
+    var page: PaginationSchema?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
     Model: UserAttributeDefinition
 */
 @Parcelize

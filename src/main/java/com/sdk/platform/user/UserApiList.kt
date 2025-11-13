@@ -90,8 +90,8 @@ interface UserApiList {
     : Response<UserAttributeDefinitionDetails>
     
     @GET ("/service/platform/user/v1.0/company/{company_id}/application/{application_id}/user_attribute/definition")
-    suspend fun getUserAttributeDefinitions(@Query("excluding_ids") excludingIds: String?, @Query("slug") slug: String?, @Query("type") type: String?, @Query("customer_editable") customerEditable: Boolean?, @Query("encrypted") encrypted: Boolean?, @Query("pinned") pinned: Boolean?, @Query("pin_order") pinOrder: Int?, @Query("is_locked") isLocked: Boolean?, @Query("name") name: String?, @Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Query("page_size") pageSize: Int?, @Query("page_no") pageNo: Int?, @HeaderMap headers: Map<String, String>? = null)
-    : Response<HashMap<String,Any>>
+    suspend fun getUserAttributeDefinitions(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Query("excluding_ids") excludingIds: String?, @Query("slug") slug: String?, @Query("type") type: String?, @Query("customer_editable") customerEditable: Boolean?, @Query("encrypted") encrypted: Boolean?, @Query("pinned") pinned: Boolean?, @Query("pin_order") pinOrder: Int?, @Query("is_locked") isLocked: Boolean?, @Query("name") name: String?, @Query("page_size") pageSize: Int?, @Query("page_no") pageNo: Int?, @HeaderMap headers: Map<String, String>? = null)
+    : Response<UserAttributeDefinitionList>
     
     @PUT ("/service/platform/user/v1.0/company/{company_id}/application/{application_id}/user_attribute/definition/{attribute_def_id}")
     suspend fun updateUserAttributeDefinition(@Path("attribute_def_id") attributeDefId: String, @Path("application_id") applicationId: String, @Path("company_id") companyId: String,@Body body: CreateUserAttributeDefinition, @HeaderMap headers: Map<String, String>? = null)
