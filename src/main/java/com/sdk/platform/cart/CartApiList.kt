@@ -173,6 +173,10 @@ interface CartApiList {
     suspend fun platformUpdateCart(@Header("x-ordering-source") xOrderingSource: String?, @Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Query("id") id: String?, @Query("i") i: Boolean?, @Query("order_type") orderType: String?, @Query("b") b: Boolean?, @Query("buy_now") buyNow: Boolean?,@Body body: PlatformUpdateCartDetails, @HeaderMap headers: Map<String, String>? = null)
     : Response<UpdateCartDetailResult>
     
+    @PATCH ("/service/platform/cart/v1.0/company/{company_id}/application/{application_id}/detail")
+    suspend fun updateCartBreakup(@Header("x-ordering-source") xOrderingSource: String?, @Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Query("id") id: String?, @Query("i") i: Boolean?, @Query("b") b: Boolean?, @Query("buy_now") buyNow: Boolean?,@Body body: UpdateCartBreakup, @HeaderMap headers: Map<String, String>? = null)
+    : Response<UpdateCartDetailResult>
+    
     @PUT ("/service/platform/cart/v1.0/company/{company_id}/application/{application_id}/cart_archive")
     suspend fun deleteCart(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Query("id") id: String?,@Body body: DeleteCartDetails, @HeaderMap headers: Map<String, String>? = null)
     : Response<DeleteCartDetailResult>

@@ -81,16 +81,6 @@ interface PaymentApiList {
     : Response<WalletResponseSchema>
     
     
-    @GET
-    suspend fun getRupifiBannerDetails(@Url url1: String?   , @HeaderMap headers: Map<String, String>? = null)
-    : Response<RupifiBannerDetails>
-    
-    
-    @GET
-    suspend fun getEpaylaterBannerDetails(@Url url1: String?   , @HeaderMap headers: Map<String, String>? = null)
-    : Response<EpaylaterBannerDetails>
-    
-    
     @POST
     suspend fun resendOrCancelPayment(@Url url1: String?   ,@Body body: ResendOrCancelPayment, @HeaderMap headers: Map<String, String>? = null)
     : Response<ResendOrCancelPaymentDetails>

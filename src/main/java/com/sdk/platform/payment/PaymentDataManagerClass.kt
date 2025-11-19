@@ -206,8 +206,6 @@ class PaymentDataManagerClass(val config: PlatformConfig, val unauthorizedAction
     
     
     
-    
-    
 
 inner class ApplicationClient(val applicationId:String,val config: PlatformConfig){
 
@@ -387,26 +385,6 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     : Response<RevokeOAuthToken>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 paymentApiList?.revokeOauthToken(companyId = config.companyId ,applicationId = applicationId ,aggregator = aggregator, headers = headers)
-        } else {
-            null
-        }
-    }
-    
-    
-    suspend fun repaymentDetails(body: RepaymentDetailsSerialiserPayAll, headers: Map<String, String> = emptyMap())
-    : Response<RepaymentDetails>? {
-        return if (config.oauthClient.isAccessTokenValid()) {
-                paymentApiList?.repaymentDetails(companyId = config.companyId ,applicationId = applicationId , body = body,headers = headers)
-        } else {
-            null
-        }
-    }
-    
-    
-    suspend fun merchantOnBoarding(body: MerchantOnBoardingCreation, headers: Map<String, String> = emptyMap())
-    : Response<MerchantOnBoardingDetails>? {
-        return if (config.oauthClient.isAccessTokenValid()) {
-                paymentApiList?.merchantOnBoarding(companyId = config.companyId ,applicationId = applicationId , body = body,headers = headers)
         } else {
             null
         }

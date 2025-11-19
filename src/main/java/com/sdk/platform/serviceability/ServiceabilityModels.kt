@@ -1265,7 +1265,7 @@ data class PincodeMopBulkError(
     var statusCode: Int?=null,
     
     @SerializedName("error")
-    var error: @RawValue Any?=null,
+    var error: ArrayList<Error>?=null,
     
     @SerializedName("success")
     var success: Boolean?=null
@@ -1299,7 +1299,7 @@ data class CommonError(
     var statusCode: Int?=null,
     
     @SerializedName("error")
-    var error: @RawValue Any?=null,
+    var error: ArrayList<Error>?=null,
     
     @SerializedName("success")
     var success: Boolean?=null
@@ -5329,9 +5329,19 @@ data class PlatformShipmentsSchema(
     var fulfillmentLocationId: Int?=null,
     
     @SerializedName("courier_partners")
-    var courierPartners: ArrayList<ShipmentsCourierPartner>?=null
+    var courierPartners: ArrayList<ShipmentsCourierPartner>?=null,
+    
+    @SerializedName("count")
+    var count: Int?=null,
+    
+    @SerializedName("is_cod_available")
+    var isCodAvailable: Boolean?=null
     
 ): Parcelable {
+    
+    
+    
+    
     
     
     
@@ -7841,7 +7851,7 @@ data class CourierPartnerRuleConditions(
     var brandIds: IntComparisonOperations?=null,
     
     @SerializedName("order_place_date")
-    var orderPlaceDate: ArithmeticOperations?=null,
+    var orderPlaceDate: DateOperations?=null,
     
     @SerializedName("store_ids")
     var storeIds: IntComparisonOperations?=null,
@@ -8020,6 +8030,33 @@ data class IntComparisonOperations(
     var includes: ArrayList<Int>?=null
     
 ): Parcelable {
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: DateOperations
+*/
+@Parcelize
+data class DateOperations(
+    
+    
+    
+    @SerializedName("lte")
+    var lte: String?=null,
+    
+    @SerializedName("gte")
+    var gte: String?=null
+    
+): Parcelable {
+    
+    
     
     
     
@@ -9185,43 +9222,6 @@ data class CustomerRadiusSchema(
 ): Parcelable {
     
     
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-}
-
-
-
-             
-/*
-    Model: DateOperations
-*/
-@Parcelize
-data class DateOperations(
-    
-    
-    
-    @SerializedName("lt")
-    var lt: String?=null,
-    
-    @SerializedName("gt")
-    var gt: String?=null,
-    
-    @SerializedName("lte")
-    var lte: String?=null,
-    
-    @SerializedName("gte")
-    var gte: String?=null
-    
-): Parcelable {
     
     
     

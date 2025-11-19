@@ -99,7 +99,7 @@ class CatalogDataManagerClass(val config: PlatformConfig, val unauthorizedAction
     
     
     
-    suspend fun listCategories(level: String?=null,department: Int?=null,q: String?=null,pageNo: Int?=null,pageSize: Int?=null,uids: ArrayList<Int>?=null,slug: String?=null, headers: Map<String, String> = emptyMap())
+    suspend fun listCategories(level: ArrayList<Int>?=null,department: Int?=null,q: String?=null,pageNo: Int?=null,pageSize: Int?=null,uids: ArrayList<Int>?=null,slug: String?=null, headers: Map<String, String> = emptyMap())
     : Response<CategoryResponseSchema>? {
 
         return if (config.oauthClient.isAccessTokenValid()) {
@@ -155,7 +155,7 @@ class CatalogDataManagerClass(val config: PlatformConfig, val unauthorizedAction
     *
     * Summary: Paginator for listCategories
     **/
-    fun listCategoriesPaginator(companyId: String, level: String?=null, department: Int?=null, q: String?=null, pageSize: Int?=null, uids: ArrayList<Int>?=null, slug: String?=null) : Paginator<CategoryResponseSchema>{
+    fun listCategoriesPaginator(companyId: String, level: ArrayList<Int>?=null, department: Int?=null, q: String?=null, pageSize: Int?=null, uids: ArrayList<Int>?=null, slug: String?=null) : Paginator<CategoryResponseSchema>{
         val paginator = Paginator<CategoryResponseSchema>()
         paginator.setCallBack(object : PaginatorCallback<CategoryResponseSchema> {
 
@@ -2433,20 +2433,20 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     }
     
     
-    suspend fun getCollectionItems(id: String,sortOn: String?=null,pageId: String?=null,pageSize: Int?=null,pageNo: Int?=null, headers: Map<String, String> = emptyMap())
-    : Response<GetCollectionItemsResponseSchema>? {
+    suspend fun addCollectionItems(id: String,body: CollectionItemUpdateSchema, headers: Map<String, String> = emptyMap())
+    : Response<CommonResponseSchemaCollection>? {
         return if (config.oauthClient.isAccessTokenValid()) {
-                catalogApiList?.getCollectionItems(companyId = config.companyId ,applicationId = applicationId ,id = id,sortOn = sortOn,pageId = pageId,pageSize = pageSize,pageNo = pageNo, headers = headers)
+                catalogApiList?.addCollectionItems(companyId = config.companyId ,applicationId = applicationId ,id = id, body = body,headers = headers)
         } else {
             null
         }
     }
     
     
-    suspend fun addCollectionItems(id: String,body: CollectionItemUpdateSchema, headers: Map<String, String> = emptyMap())
-    : Response<CommonResponseSchemaCollection>? {
+    suspend fun getCollectionItems(collectionId: String,pageNo: Int?=null,pageSize: Int?=null,q: String?=null, headers: Map<String, String> = emptyMap())
+    : Response<GetCollectionItemsResponseSchemaV2>? {
         return if (config.oauthClient.isAccessTokenValid()) {
-                catalogApiList?.addCollectionItems(companyId = config.companyId ,applicationId = applicationId ,id = id, body = body,headers = headers)
+                catalogApiList?.getCollectionItems(companyId = config.companyId ,applicationId = applicationId ,collectionId = collectionId,pageNo = pageNo,pageSize = pageSize,q = q, headers = headers)
         } else {
             null
         }

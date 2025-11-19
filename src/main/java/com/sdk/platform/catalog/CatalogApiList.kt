@@ -65,13 +65,13 @@ interface CatalogApiList {
     suspend fun updateCollection(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Path("id") id: String,@Body body: UpdateCollection, @HeaderMap headers: Map<String, String>? = null)
     : Response<UpdateCollection>
     
-    @GET ("/service/platform/catalog/v1.0/company/{company_id}/application/{application_id}/collections/{id}/items/")
-    suspend fun getCollectionItems(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Path("id") id: String, @Query("sort_on") sortOn: String?, @Query("page_id") pageId: String?, @Query("page_size") pageSize: Int?, @Query("page_no") pageNo: Int?, @HeaderMap headers: Map<String, String>? = null)
-    : Response<GetCollectionItemsResponseSchema>
-    
     @POST ("/service/platform/catalog/v1.0/company/{company_id}/application/{application_id}/collections/{id}/items/")
     suspend fun addCollectionItems(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Path("id") id: String,@Body body: CollectionItemUpdateSchema, @HeaderMap headers: Map<String, String>? = null)
     : Response<CommonResponseSchemaCollection>
+    
+    @GET ("/service/platform/catalog/v2.0/company/{company_id}/application/{application_id}/collections/{collection_id}/items/")
+    suspend fun getCollectionItems(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Path("collection_id") collectionId: String, @Query("page_no") pageNo: Int?, @Query("page_size") pageSize: Int?, @Query("q") q: String?, @HeaderMap headers: Map<String, String>? = null)
+    : Response<GetCollectionItemsResponseSchemaV2>
     
     @GET ("/service/platform/catalog/v1.0/company/{company_id}/application/{application_id}/collections/{slug}/")
     suspend fun getCollectionDetail(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Path("slug") slug: String, @HeaderMap headers: Map<String, String>? = null)
@@ -230,7 +230,7 @@ interface CatalogApiList {
     : Response<SuccessResponseObject>
     
     @GET ("/service/platform/catalog/v1.0/company/{company_id}/category/")
-    suspend fun listCategories(@Path("company_id") companyId: String, @Query("level") level: String?, @Query("department") department: Int?, @Query("q") q: String?, @Query("page_no") pageNo: Int?, @Query("page_size") pageSize: Int?, @Query("uids") uids: ArrayList<Int>?, @Query("slug") slug: String?, @HeaderMap headers: Map<String, String>? = null)
+    suspend fun listCategories(@Path("company_id") companyId: String, @Query("level") level: ArrayList<Int>?, @Query("department") department: Int?, @Query("q") q: String?, @Query("page_no") pageNo: Int?, @Query("page_size") pageSize: Int?, @Query("uids") uids: ArrayList<Int>?, @Query("slug") slug: String?, @HeaderMap headers: Map<String, String>? = null)
     : Response<CategoryResponseSchema>
     
     @GET ("/service/platform/catalog/v1.0/company/{company_id}/category/{uid}/")

@@ -2011,9 +2011,19 @@ data class OrderFeature(
     
     
     @SerializedName("buy_again")
-    var buyAgain: Boolean?=null
+    var buyAgain: Boolean?=null,
+    
+    @SerializedName("enabled")
+    var enabled: Boolean?=null,
+    
+    @SerializedName("message")
+    var message: String?=null
     
 ): Parcelable {
+    
+    
+    
+    
     
     
     

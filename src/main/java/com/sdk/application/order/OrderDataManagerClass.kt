@@ -43,6 +43,8 @@ class OrderDataManagerClass(val config: ApplicationConfig, val unauthorizedActio
             
                     _relativeUrls["updateShipmentStatus"] = "/service/application/order/v1.0/orders/shipments/{shipment_id}/status".substring(1)
             
+                    _relativeUrls["submitDeliveryReattemptRequest"] = "/service/application/order/v1.0/shipments/{shipment_id}/delivery-reattempt".substring(1)
+            
     }
 
     public fun update(updatedUrlMap : HashMap<String,String>){
@@ -141,14 +143,14 @@ class OrderDataManagerClass(val config: ApplicationConfig, val unauthorizedActio
 
     
     
-    suspend fun sendOtpToShipmentCustomer(orderId: String,shipmentId: String, headers: Map<String, String> = emptyMap()): Response<SendOtpToCustomerResponseSchema>? {
+    suspend fun sendOtpToShipmentCustomer(orderId: String,shipmentId: String,eventType: String?=null, headers: Map<String, String> = emptyMap()): Response<SendOtpToCustomerResponseSchema>? {
         var fullUrl : String? = _relativeUrls["sendOtpToShipmentCustomer"]
         
         fullUrl = fullUrl?.replace("{" + "order_id" +"}",orderId.toString())
         
         fullUrl = fullUrl?.replace("{" + "shipment_id" +"}",shipmentId.toString())
         
-        return orderApiList?.sendOtpToShipmentCustomer(fullUrl,   headers = headers)}
+        return orderApiList?.sendOtpToShipmentCustomer(fullUrl,     eventType = eventType,headers = headers)}
 
     
     
@@ -189,6 +191,15 @@ class OrderDataManagerClass(val config: ApplicationConfig, val unauthorizedActio
         fullUrl = fullUrl?.replace("{" + "shipment_id" +"}",shipmentId.toString())
         
         return orderApiList?.updateShipmentStatus(fullUrl,  body = body,headers = headers)}
+
+    
+    
+    suspend fun submitDeliveryReattemptRequest(shipmentId: String,body: DeliveryReattemptRequestSchema, headers: Map<String, String> = emptyMap()): Response<DeliveryReattemptSuccessResponseSchema>? {
+        var fullUrl : String? = _relativeUrls["submitDeliveryReattemptRequest"]
+        
+        fullUrl = fullUrl?.replace("{" + "shipment_id" +"}",shipmentId.toString())
+        
+        return orderApiList?.submitDeliveryReattemptRequest(fullUrl,  body = body,headers = headers)}
 
     
     

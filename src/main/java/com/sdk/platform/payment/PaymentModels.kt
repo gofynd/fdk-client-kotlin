@@ -793,52 +793,22 @@ data class PaymentFlow(
     @SerializedName("fynd")
     var fynd: AggregatorRoute?=null,
     
-    @SerializedName("epaylater")
-    var epaylater: AggregatorRoute?=null,
-    
     @SerializedName("razorpay")
     var razorpay: AggregatorRoute?=null,
     
     @SerializedName("juspay")
     var juspay: AggregatorRoute?=null,
     
-    @SerializedName("ajiodhan")
-    var ajiodhan: AggregatorRoute?=null,
-    
     @SerializedName("simpl")
     var simpl: AggregatorRoute?=null,
-    
-    @SerializedName("rupifi")
-    var rupifi: AggregatorRoute?=null,
-    
-    @SerializedName("mswipe")
-    var mswipe: AggregatorRoute?=null,
-    
-    @SerializedName("stripe")
-    var stripe: AggregatorRoute?=null,
     
     @SerializedName("ccavenue")
     var ccavenue: AggregatorRoute?=null,
     
     @SerializedName("payubiz")
-    var payubiz: AggregatorRoute?=null,
-    
-    @SerializedName("jiopay")
-    var jiopay: AggregatorRoute?=null
+    var payubiz: AggregatorRoute?=null
     
 ): Parcelable {
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
     
     
     
@@ -3060,211 +3030,6 @@ data class RevokeOAuthToken(
     
     @SerializedName("message")
     var message: String?=null,
-    
-    @SerializedName("success")
-    var success: Boolean?=null
-    
-): Parcelable {
-    
-    
-    
-    
-    
-    
-    
-}
-
-
-
-             
-/*
-    Model: RepaymentRequestDetails
-*/
-@Parcelize
-data class RepaymentRequestDetails(
-    
-    
-    
-    @SerializedName("fwd_shipment_id")
-    var fwdShipmentId: String?=null,
-    
-    @SerializedName("aggregator")
-    var aggregator: String?=null,
-    
-    @SerializedName("current_status")
-    var currentStatus: String?=null,
-    
-    @SerializedName("merchant_order_id")
-    var merchantOrderId: String?=null,
-    
-    @SerializedName("amount")
-    var amount: Double?=null,
-    
-    @SerializedName("payment_mode")
-    var paymentMode: String?=null,
-    
-    @SerializedName("outstanding_details_id")
-    var outstandingDetailsId: Int?=null,
-    
-    @SerializedName("aggregator_transaction_id")
-    var aggregatorTransactionId: String?=null,
-    
-    @SerializedName("aggregator_order_id")
-    var aggregatorOrderId: String?=null,
-    
-    @SerializedName("payment_mode_identifier")
-    var paymentModeIdentifier: String?=null
-    
-): Parcelable {
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-}
-
-
-
-             
-/*
-    Model: RepaymentDetailsSerialiserPayAll
-*/
-@Parcelize
-data class RepaymentDetailsSerialiserPayAll(
-    
-    
-    
-    @SerializedName("total_amount")
-    var totalAmount: Double?=null,
-    
-    @SerializedName("extension_order_id")
-    var extensionOrderId: String?=null,
-    
-    @SerializedName("aggregator_transaction_id")
-    var aggregatorTransactionId: String?=null,
-    
-    @SerializedName("aggregator_order_id")
-    var aggregatorOrderId: String?=null,
-    
-    @SerializedName("shipment_details")
-    var shipmentDetails: ArrayList<RepaymentRequestDetails>?=null
-    
-): Parcelable {
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-}
-
-
-
-             
-/*
-    Model: RepaymentDetails
-*/
-@Parcelize
-data class RepaymentDetails(
-    
-    
-    
-    @SerializedName("data")
-    var data: @RawValue HashMap<String,Any>?=null,
-    
-    @SerializedName("success")
-    var success: Boolean?=null
-    
-): Parcelable {
-    
-    
-    
-    
-    
-    
-    
-}
-
-
-
-             
-/*
-    Model: MerchantOnBoardingCreation
-*/
-@Parcelize
-data class MerchantOnBoardingCreation(
-    
-    
-    
-    @SerializedName("credit_line_id")
-    var creditLineId: String?=null,
-    
-    @SerializedName("aggregator")
-    var aggregator: String?=null,
-    
-    @SerializedName("app_id")
-    var appId: String?=null,
-    
-    @SerializedName("user_id")
-    var userId: String?=null,
-    
-    @SerializedName("status")
-    var status: String?=null
-    
-): Parcelable {
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-}
-
-
-
-             
-/*
-    Model: MerchantOnBoardingDetails
-*/
-@Parcelize
-data class MerchantOnBoardingDetails(
-    
-    
-    
-    @SerializedName("data")
-    var data: @RawValue HashMap<String,Any>?=null,
     
     @SerializedName("success")
     var success: Boolean?=null

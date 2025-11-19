@@ -47,7 +47,7 @@ interface OrderApiList {
     
     
     @POST
-    suspend fun sendOtpToShipmentCustomer(@Url url1: String?     , @HeaderMap headers: Map<String, String>? = null)
+    suspend fun sendOtpToShipmentCustomer(@Url url1: String?      ,  @Query("event_type") eventType: String?, @HeaderMap headers: Map<String, String>? = null)
     : Response<SendOtpToCustomerResponseSchema>
     
     
@@ -69,5 +69,10 @@ interface OrderApiList {
     @PUT
     suspend fun updateShipmentStatus(@Url url1: String?    ,@Body body: UpdateShipmentStatusRequestSchema, @HeaderMap headers: Map<String, String>? = null)
     : Response<ShipmentApplicationStatusResponseSchema>
+    
+    
+    @PUT
+    suspend fun submitDeliveryReattemptRequest(@Url url1: String?    ,@Body body: DeliveryReattemptRequestSchema, @HeaderMap headers: Map<String, String>? = null)
+    : Response<DeliveryReattemptSuccessResponseSchema>
     
 }

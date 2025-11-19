@@ -47,10 +47,6 @@ class PaymentDataManagerClass(val config: ApplicationConfig, val unauthorizedAct
             
                     _relativeUrls["delinkWallet"] = "/service/application/payment/v1.0/payment/options/wallet/delink".substring(1)
             
-                    _relativeUrls["getRupifiBannerDetails"] = "/service/application/payment/v1.0/rupifi/banner".substring(1)
-            
-                    _relativeUrls["getEpaylaterBannerDetails"] = "/service/application/payment/v1.0/epaylater/banner".substring(1)
-            
                     _relativeUrls["resendOrCancelPayment"] = "/service/application/payment/v1.0/payment/resend_or_cancel".substring(1)
             
                     _relativeUrls["renderHTML"] = "/service/application/payment/v1.0/payment/html/render/".substring(1)
@@ -251,20 +247,6 @@ class PaymentDataManagerClass(val config: ApplicationConfig, val unauthorizedAct
         var fullUrl : String? = _relativeUrls["delinkWallet"]
         
         return paymentApiList?.delinkWallet(fullUrl, body = body,headers = headers)}
-
-    
-    
-    suspend fun getRupifiBannerDetails( headers: Map<String, String> = emptyMap()): Response<RupifiBannerDetails>? {
-        var fullUrl : String? = _relativeUrls["getRupifiBannerDetails"]
-        
-        return paymentApiList?.getRupifiBannerDetails(fullUrl, headers = headers)}
-
-    
-    
-    suspend fun getEpaylaterBannerDetails( headers: Map<String, String> = emptyMap()): Response<EpaylaterBannerDetails>? {
-        var fullUrl : String? = _relativeUrls["getEpaylaterBannerDetails"]
-        
-        return paymentApiList?.getEpaylaterBannerDetails(fullUrl, headers = headers)}
 
     
     

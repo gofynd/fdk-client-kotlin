@@ -103,15 +103,6 @@ data class AggregatorsConfigDetail(
     @SerializedName("payumoney")
     var payumoney: AggregatorConfigDetail?=null,
     
-    @SerializedName("rupifi")
-    var rupifi: AggregatorConfigDetail?=null,
-    
-    @SerializedName("mswipe")
-    var mswipe: AggregatorConfigDetail?=null,
-    
-    @SerializedName("stripe")
-    var stripe: AggregatorConfigDetail?=null,
-    
     @SerializedName("ccavenue")
     var ccavenue: AggregatorConfigDetail?=null,
     
@@ -119,12 +110,6 @@ data class AggregatorsConfigDetail(
     var env: String?=null
     
 ): Parcelable {
-    
-    
-    
-    
-    
-    
     
     
     
@@ -1530,29 +1515,14 @@ data class PaymentFlow(
     @SerializedName("fynd")
     var fynd: AggregatorRoute?=null,
     
-    @SerializedName("epaylater")
-    var epaylater: AggregatorRoute?=null,
-    
     @SerializedName("razorpay")
     var razorpay: AggregatorRoute?=null,
     
     @SerializedName("juspay")
     var juspay: AggregatorRoute?=null,
     
-    @SerializedName("ajiodhan")
-    var ajiodhan: AggregatorRoute?=null,
-    
     @SerializedName("simpl")
     var simpl: AggregatorRoute?=null,
-    
-    @SerializedName("rupifi")
-    var rupifi: AggregatorRoute?=null,
-    
-    @SerializedName("mswipe")
-    var mswipe: AggregatorRoute?=null,
-    
-    @SerializedName("stripe")
-    var stripe: AggregatorRoute?=null,
     
     @SerializedName("ccavenue")
     var ccavenue: AggregatorRoute?=null,
@@ -1560,25 +1530,10 @@ data class PaymentFlow(
     @SerializedName("payubiz")
     var payubiz: AggregatorRoute?=null,
     
-    @SerializedName("jiopay")
-    var jiopay: AggregatorRoute?=null,
-    
     @SerializedName("upi_razorpay")
     var upiRazorpay: AggregatorRoute?=null
     
 ): Parcelable {
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
     
     
     
@@ -2066,119 +2021,6 @@ data class WalletResponseSchema(
     
     @SerializedName("data")
     var data: @RawValue HashMap<String,Any>?=null,
-    
-    @SerializedName("success")
-    var success: Boolean?=null
-    
-): Parcelable {
-    
-    
-    
-    
-    
-    
-    
-}
-
-
-
-             
-/*
-    Model: RupifiBannerData
-*/
-@Parcelize
-data class RupifiBannerData(
-    
-    
-    
-    @SerializedName("status")
-    var status: String?=null,
-    
-    @SerializedName("kyc_url")
-    var kycUrl: String?=null
-    
-): Parcelable {
-    
-    
-    
-    
-    
-    
-    
-}
-
-
-
-             
-/*
-    Model: RupifiBannerDetails
-*/
-@Parcelize
-data class RupifiBannerDetails(
-    
-    
-    
-    @SerializedName("data")
-    var data: RupifiBannerData?=null,
-    
-    @SerializedName("success")
-    var success: Boolean?=null
-    
-): Parcelable {
-    
-    
-    
-    
-    
-    
-    
-}
-
-
-
-             
-/*
-    Model: EpaylaterBannerData
-*/
-@Parcelize
-data class EpaylaterBannerData(
-    
-    
-    
-    @SerializedName("status")
-    var status: String?=null,
-    
-    @SerializedName("message")
-    var message: String?=null,
-    
-    @SerializedName("display")
-    var display: Boolean?=null
-    
-): Parcelable {
-    
-    
-    
-    
-    
-    
-    
-    
-    
-}
-
-
-
-             
-/*
-    Model: EpaylaterBannerDetails
-*/
-@Parcelize
-data class EpaylaterBannerDetails(
-    
-    
-    
-    @SerializedName("data")
-    var data: EpaylaterBannerData?=null,
     
     @SerializedName("success")
     var success: Boolean?=null

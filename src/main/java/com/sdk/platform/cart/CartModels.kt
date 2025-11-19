@@ -8265,6 +8265,28 @@ data class PlatformUpdateCartDetails(
 
              
 /*
+    Model: UpdateCartBreakup
+*/
+@Parcelize
+data class UpdateCartBreakup(
+    
+    
+    
+    @SerializedName("store_credit")
+    var storeCredit: Boolean?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
     Model: DeleteCartDetails
 */
 @Parcelize

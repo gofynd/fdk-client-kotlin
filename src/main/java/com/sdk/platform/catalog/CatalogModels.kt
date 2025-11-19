@@ -6702,43 +6702,6 @@ data class GetCollectionDetailNest(
 
              
 /*
-    Model: GetCollectionItemsResponseSchema
-*/
-@Parcelize
-data class GetCollectionItemsResponseSchema(
-    
-    
-    
-    @SerializedName("filters")
-    var filters: ArrayList<ProductFilters>?=null,
-    
-    @SerializedName("items")
-    var items: ArrayList<ApplicationProductsSchema>?=null,
-    
-    @SerializedName("page")
-    var page: Page?=null,
-    
-    @SerializedName("sort_on")
-    var sortOn: ArrayList<ProductSortOn>?=null
-    
-): Parcelable {
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-}
-
-
-
-             
-/*
     Model: GetCollectionListingResponseSchema
 */
 @Parcelize
@@ -7855,9 +7818,14 @@ data class GetCollectionDetailResponseSchema(
     var id: String?=null,
     
     @SerializedName("visible_facets_keys")
-    var visibleFacetsKeys: ArrayList<String>?=null
+    var visibleFacetsKeys: ArrayList<String>?=null,
+    
+    @SerializedName("handpicked_collection_item_ids")
+    var handpickedCollectionItemIds: ArrayList<String>?=null
     
 ): Parcelable {
+    
+    
     
     
     
@@ -8013,12 +7981,64 @@ data class GetCollectionItemsResponseSchemaV2(
     
     
     @SerializedName("items")
-    var items: ArrayList<ProductDetailV2>?=null,
+    var items: ArrayList<CollectionItemV2>?=null,
     
     @SerializedName("page")
-    var page: Page1?=null
+    var page: Page?=null
     
 ): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: CollectionItemV2
+*/
+@Parcelize
+data class CollectionItemV2(
+    
+    
+    
+    @SerializedName("name")
+    var name: String?=null,
+    
+    @SerializedName("short_description")
+    var shortDescription: String?=null,
+    
+    @SerializedName("medias")
+    var medias: ArrayList<Media>?=null,
+    
+    @SerializedName("slug")
+    var slug: String?=null,
+    
+    @SerializedName("uid")
+    var uid: Int?=null,
+    
+    @SerializedName("item_code")
+    var itemCode: String?=null,
+    
+    @SerializedName("item_type")
+    var itemType: String?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     
     
     
