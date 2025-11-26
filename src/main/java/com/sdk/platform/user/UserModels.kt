@@ -1617,6 +1617,12 @@ data class UserAttributeFilterQuery(
     @SerializedName("email")
     var email: String?=null,
     
+    @SerializedName("has_email")
+    var hasEmail: Boolean?=null,
+    
+    @SerializedName("has_phone")
+    var hasPhone: Boolean?=null,
+    
     @SerializedName("phone")
     var phone: String?=null,
     
@@ -1627,6 +1633,10 @@ data class UserAttributeFilterQuery(
     var conditions: ArrayList<UserAttributeFilterRequestConditions>?=null
     
 ): Parcelable {
+    
+    
+    
+    
     
     
     

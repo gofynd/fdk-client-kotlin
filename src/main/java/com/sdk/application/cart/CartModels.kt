@@ -985,9 +985,19 @@ data class ProductPrice(
     var effective: Double?=null,
     
     @SerializedName("marked")
-    var marked: Double?=null
+    var marked: Double?=null,
+    
+    @SerializedName("final_price")
+    var finalPrice: Double?=null,
+    
+    @SerializedName("discount")
+    var discount: Double?=null
     
 ): Parcelable {
+    
+    
+    
+    
     
     
     

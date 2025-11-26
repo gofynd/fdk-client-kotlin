@@ -1780,9 +1780,14 @@ data class HandpickedTagSchema(
     var subType: String?=null,
     
     @SerializedName("content")
-    var content: String?=null
+    var content: String?=null,
+    
+    @SerializedName("template")
+    var template: TemplateSchema?=null
     
 ): Parcelable {
+    
+    
     
     
     
@@ -1865,7 +1870,10 @@ data class CreateTagSchema(
     var pages: @RawValue ArrayList<HashMap<String,Any>>?=null,
     
     @SerializedName("content")
-    var content: String?=null
+    var content: String?=null,
+    
+    @SerializedName("template")
+    var template: TemplateSchema?=null
     
 ): Parcelable {
     
@@ -1884,6 +1892,67 @@ data class CreateTagSchema(
     
     
     
+    
+    
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: TemplateSchema
+*/
+@Parcelize
+data class TemplateSchema(
+    
+    
+    
+    @SerializedName("template_id")
+    var templateId: String?=null,
+    
+    @SerializedName("template_version")
+    var templateVersion: String?=null,
+    
+    @SerializedName("template_fields")
+    var templateFields: ArrayList<TemplateField>?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: TemplateField
+*/
+@Parcelize
+data class TemplateField(
+    
+    
+    
+    @SerializedName("key")
+    var key: String?=null,
+    
+    @SerializedName("value")
+    var value: String?=null
+    
+): Parcelable {
     
     
     
@@ -1963,6 +2032,261 @@ data class DataLoaderSchema(
     
     
     
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: TagsTemplateSchema
+*/
+@Parcelize
+data class TagsTemplateSchema(
+    
+    
+    
+    @SerializedName("items")
+    var items: ArrayList<TagTemplateItem>?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: TagTemplateItem
+*/
+@Parcelize
+data class TagTemplateItem(
+    
+    
+    
+    @SerializedName("template_name")
+    var templateName: String?=null,
+    
+    @SerializedName("type")
+    var type: String?=null,
+    
+    @SerializedName("sub_type")
+    var subType: String?=null,
+    
+    @SerializedName("position")
+    var position: String?=null,
+    
+    @SerializedName("pages")
+    var pages: ArrayList<String>?=null,
+    
+    @SerializedName("attributes")
+    var attributes: @RawValue HashMap<String,Any>?=null,
+    
+    @SerializedName("compatible_engines")
+    var compatibleEngines: ArrayList<String>?=null,
+    
+    @SerializedName("field_mappings")
+    var fieldMappings: @RawValue HashMap<String,Any>?=null,
+    
+    @SerializedName("layout")
+    var layout: TemplateLayout?=null,
+    
+    @SerializedName("name")
+    var name: String?=null,
+    
+    @SerializedName("path")
+    var path: String?=null,
+    
+    @SerializedName("description")
+    var description: String?=null,
+    
+    @SerializedName("image")
+    var image: String?=null,
+    
+    @SerializedName("note")
+    var note: String?=null,
+    
+    @SerializedName("template_id")
+    var templateId: String?=null,
+    
+    @SerializedName("template_version")
+    var templateVersion: String?=null,
+    
+    @SerializedName("category")
+    var category: String?=null,
+    
+    @SerializedName("fields")
+    var fields: ArrayList<FieldDefinition>?=null,
+    
+    @SerializedName("script")
+    var script: String?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: TemplateLayout
+*/
+@Parcelize
+data class TemplateLayout(
+    
+    
+    
+    @SerializedName("columns")
+    var columns: Int?=null,
+    
+    @SerializedName("gap")
+    var gap: String?=null,
+    
+    @SerializedName("responsive")
+    var responsive: Boolean?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: FieldDefinition
+*/
+@Parcelize
+data class FieldDefinition(
+    
+    
+    
+    @SerializedName("name")
+    var name: String?=null,
+    
+    @SerializedName("type")
+    var type: String?=null,
+    
+    @SerializedName("label")
+    var label: String?=null,
+    
+    @SerializedName("placeholder")
+    var placeholder: String?=null,
+    
+    @SerializedName("required")
+    var required: Boolean?=null,
+    
+    @SerializedName("size")
+    var size: String?=null,
+    
+    @SerializedName("description")
+    var description: String?=null,
+    
+    @SerializedName("validation")
+    var validation: FieldValidation?=null,
+    
+    @SerializedName("events")
+    var events: @RawValue HashMap<String,Any>?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: FieldValidation
+*/
+@Parcelize
+data class FieldValidation(
+    
+    
+    
+    @SerializedName("pattern")
+    var pattern: String?=null,
+    
+    @SerializedName("message")
+    var message: String?=null
+    
+): Parcelable {
     
     
     
@@ -3550,10 +3874,20 @@ data class TagsSchema(
     @SerializedName("_id")
     var id: String?=null,
     
+    @SerializedName("company")
+    var company: String?=null,
+    
     @SerializedName("tags")
-    var tags: ArrayList<TagSchema>?=null
+    var tags: ArrayList<TagSchema>?=null,
+    
+    @SerializedName("page")
+    var page: Page?=null
     
 ): Parcelable {
+    
+    
+    
+    
     
     
     
@@ -3607,9 +3941,14 @@ data class TagSchema(
     var pages: @RawValue ArrayList<HashMap<String,Any>>?=null,
     
     @SerializedName("__source")
-    var source: TagSourceSchema?=null
+    var source: TagSourceSchema?=null,
+    
+    @SerializedName("template")
+    var template: TemplateSchema?=null
     
 ): Parcelable {
+    
+    
     
     
     

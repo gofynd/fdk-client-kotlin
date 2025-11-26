@@ -113,6 +113,7 @@ class ContentDataManagerClass(val config: PlatformConfig, val unauthorizedAction
     
     
     
+    
     suspend fun getCustomFieldTypes( headers: Map<String, String> = emptyMap())
     : Response<MetafieldTypesSchema>? {
 
@@ -1235,10 +1236,10 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     }
     
     
-    suspend fun getInjectableTags(all: Boolean?=null, headers: Map<String, String> = emptyMap())
+    suspend fun getInjectableTags(all: Boolean?=null,pageNo: Int?=null,pageSize: Int?=null,search: String?=null, headers: Map<String, String> = emptyMap())
     : Response<TagsSchema>? {
         return if (config.oauthClient.isAccessTokenValid()) {
-                contentApiList?.getInjectableTags(companyId = config.companyId ,applicationId = applicationId ,all = all, headers = headers)
+                contentApiList?.getInjectableTags(companyId = config.companyId ,applicationId = applicationId ,all = all,pageNo = pageNo,pageSize = pageSize,search = search, headers = headers)
         } else {
             null
         }
@@ -1269,6 +1270,16 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     : Response<TagsSchema>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 contentApiList?.editInjectableTag(companyId = config.companyId ,applicationId = applicationId ,tagId = tagId, body = body,headers = headers)
+        } else {
+            null
+        }
+    }
+    
+    
+    suspend fun getTagsTemplate( headers: Map<String, String> = emptyMap())
+    : Response<TagsTemplateSchema>? {
+        return if (config.oauthClient.isAccessTokenValid()) {
+                contentApiList?.getTagsTemplate(companyId = config.companyId ,applicationId = applicationId , headers = headers)
         } else {
             null
         }
