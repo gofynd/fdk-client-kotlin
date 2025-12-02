@@ -3369,9 +3369,14 @@ data class Article(
     var allowedRefund: Boolean?=null,
     
     @SerializedName("min_price_threshold")
-    var minPriceThreshold: Double?=null
+    var minPriceThreshold: Double?=null,
+    
+    @SerializedName("article_index")
+    var articleIndex: Int?=null
     
 ): Parcelable {
+    
+    
     
     
     

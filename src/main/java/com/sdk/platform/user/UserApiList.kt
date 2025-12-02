@@ -18,7 +18,7 @@ interface UserApiList {
     : Response<UserSearchResponseSchema>
     
     @POST ("/service/platform/user/v1.0/company/{company_id}/application/{application_id}/customers")
-    suspend fun createUser(@Path("company_id") companyId: String, @Path("application_id") applicationId: String,@Body body: CreateUserRequestSchema, @HeaderMap headers: Map<String, String>? = null)
+    suspend fun createUser(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Query("verified") verified: Boolean?,@Body body: CreateUserRequestSchema, @HeaderMap headers: Map<String, String>? = null)
     : Response<CreateUserResponseSchema>
     
     @PUT ("/service/platform/user/v1.0/company/{company_id}/application/{application_id}/customers/activation")

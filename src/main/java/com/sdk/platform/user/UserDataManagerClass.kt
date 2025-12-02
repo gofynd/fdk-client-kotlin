@@ -105,10 +105,10 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     }
     
     
-    suspend fun createUser(body: CreateUserRequestSchema, headers: Map<String, String> = emptyMap())
+    suspend fun createUser(verified: Boolean?=null,body: CreateUserRequestSchema, headers: Map<String, String> = emptyMap())
     : Response<CreateUserResponseSchema>? {
         return if (config.oauthClient.isAccessTokenValid()) {
-                userApiList?.createUser(companyId = config.companyId ,applicationId = applicationId , body = body,headers = headers)
+                userApiList?.createUser(companyId = config.companyId ,applicationId = applicationId ,verified = verified, body = body,headers = headers)
         } else {
             null
         }
