@@ -1536,9 +1536,14 @@ data class ConditionsSchema(
     var type: String?=null,
     
     @SerializedName("value")
-    var value: String?=null
+    var value: String?=null,
+    
+    @SerializedName("ignore_year")
+    var ignoreYear: Boolean?=null
     
 ): Parcelable {
+    
+    
     
     
     
@@ -3334,6 +3339,33 @@ data class UserConsent(
     var privacyPolicy: PrivacyPolicyConsentSchema?=null
     
 ): Parcelable {
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: DeleteUserGroupSuccess
+*/
+@Parcelize
+data class DeleteUserGroupSuccess(
+    
+    
+    
+    @SerializedName("id")
+    var id: String?=null,
+    
+    @SerializedName("success")
+    var success: Boolean?=null
+    
+): Parcelable {
+    
+    
     
     
     

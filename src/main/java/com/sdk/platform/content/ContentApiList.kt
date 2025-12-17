@@ -250,7 +250,7 @@ interface ContentApiList {
     : Response<TagsSchema>
     
     @GET ("/service/platform/content/v1.0/company/{company_id}/application/{application_id}/tags")
-    suspend fun getInjectableTags(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Query("all") all: Boolean?, @Query("page_no") pageNo: Int?, @Query("page_size") pageSize: Int?, @Query("search") search: String?, @HeaderMap headers: Map<String, String>? = null)
+    suspend fun getInjectableTags(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Query("all") all: Boolean?, @Query("search") search: String?, @HeaderMap headers: Map<String, String>? = null)
     : Response<TagsSchema>
     
     @PUT ("/service/platform/content/v1.0/company/{company_id}/application/{application_id}/tags/add")

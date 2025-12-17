@@ -3878,14 +3878,9 @@ data class TagsSchema(
     var company: String?=null,
     
     @SerializedName("tags")
-    var tags: ArrayList<TagSchema>?=null,
-    
-    @SerializedName("page")
-    var page: Page?=null
+    var tags: ArrayList<TagSchema>?=null
     
 ): Parcelable {
-    
-    
     
     
     

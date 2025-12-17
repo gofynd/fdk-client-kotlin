@@ -1236,10 +1236,10 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     }
     
     
-    suspend fun getInjectableTags(all: Boolean?=null,pageNo: Int?=null,pageSize: Int?=null,search: String?=null, headers: Map<String, String> = emptyMap())
+    suspend fun getInjectableTags(all: Boolean?=null,search: String?=null, headers: Map<String, String> = emptyMap())
     : Response<TagsSchema>? {
         return if (config.oauthClient.isAccessTokenValid()) {
-                contentApiList?.getInjectableTags(companyId = config.companyId ,applicationId = applicationId ,all = all,pageNo = pageNo,pageSize = pageSize,search = search, headers = headers)
+                contentApiList?.getInjectableTags(companyId = config.companyId ,applicationId = applicationId ,all = all,search = search, headers = headers)
         } else {
             null
         }

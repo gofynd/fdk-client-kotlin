@@ -14,6 +14,87 @@ import com.google.gson.annotations.SerializedName
 
              
 /*
+    Model: GroupMapping
+*/
+@Parcelize
+data class GroupMapping(
+    
+    
+    
+    @SerializedName("items")
+    var items: ArrayList<EventGroup>?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: EventGroup
+*/
+@Parcelize
+data class EventGroup(
+    
+    
+    
+    @SerializedName("name")
+    var name: String?=null,
+    
+    @SerializedName("display")
+    var display: String?=null,
+    
+    @SerializedName("subgroups")
+    var subgroups: ArrayList<EventSubgroup>?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: EventSubgroup
+*/
+@Parcelize
+data class EventSubgroup(
+    
+    
+    
+    @SerializedName("name")
+    var name: String?=null,
+    
+    @SerializedName("display")
+    var display: String?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
     Model: EventSubscriptionsBulkUpdatePayload
 */
 @Parcelize

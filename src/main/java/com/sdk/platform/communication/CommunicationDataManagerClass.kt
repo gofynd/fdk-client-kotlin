@@ -627,10 +627,10 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     }
     
     
-    suspend fun getEventSubscriptions(pageNo: Int?=null,pageSize: Int?=null,populate: String?=null, headers: Map<String, String> = emptyMap())
+    suspend fun getEventSubscriptions(pageNo: Int?=null,pageSize: Int?=null,populate: String?=null,group: String?=null,subGroup: String?=null,fulfillmentOptionTypes: String?=null, headers: Map<String, String> = emptyMap())
     : Response<EventSubscriptions>? {
         return if (config.oauthClient.isAccessTokenValid()) {
-                communicationApiList?.getEventSubscriptions(companyId = config.companyId ,applicationId = applicationId ,pageNo = pageNo,pageSize = pageSize,populate = populate, headers = headers)
+                communicationApiList?.getEventSubscriptions(companyId = config.companyId ,applicationId = applicationId ,pageNo = pageNo,pageSize = pageSize,populate = populate,group = group,subGroup = subGroup,fulfillmentOptionTypes = fulfillmentOptionTypes, headers = headers)
         } else {
             null
         }

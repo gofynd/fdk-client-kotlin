@@ -105,6 +105,8 @@ class UserDataManagerClass(val config: ApplicationConfig, val unauthorizedAction
             
                     _relativeUrls["updateUserAttributes"] = "/service/application/user/profile/v1.0/user-attributes".substring(1)
             
+                    _relativeUrls["getAttributesDefinition"] = "/service/application/user/profile/v1.0/attributes/definition".substring(1)
+            
                     _relativeUrls["sendOTPOnPrimary"] = "/service/application/user/profile/v2.0/{entity}/primary/otp/send".substring(1)
             
                     _relativeUrls["verifyOTPonPrimary"] = "/service/application/user/profile/v2.0/{entity}/primary/otp/verify".substring(1)
@@ -446,6 +448,13 @@ class UserDataManagerClass(val config: ApplicationConfig, val unauthorizedAction
         var fullUrl : String? = _relativeUrls["updateUserAttributes"]
         
         return userApiList?.updateUserAttributes(fullUrl, body = body,headers = headers)}
+
+    
+    
+    suspend fun getAttributesDefinition(excludingIds: String?=null,slug: String?=null,type: String?=null,customerEditable: Boolean?=null,encrypted: Boolean?=null,pinned: Boolean?=null,pinOrder: Int?=null,isLocked: Boolean?=null,name: String?=null,registrationEnabled: Boolean?=null,registrationType: Any?=null,pageSize: Int?=null,pageNo: Int?=null, headers: Map<String, String> = emptyMap()): Response<HashMap<String,Any>>? {
+        var fullUrl : String? = _relativeUrls["getAttributesDefinition"]
+        
+        return userApiList?.getAttributesDefinition(fullUrl,   excludingIds = excludingIds,  slug = slug,  type = type,  customerEditable = customerEditable,  encrypted = encrypted,  pinned = pinned,  pinOrder = pinOrder,  isLocked = isLocked,  name = name,  registrationEnabled = registrationEnabled,  registrationType = registrationType,  pageSize = pageSize,  pageNo = pageNo,headers = headers)}
 
     
     

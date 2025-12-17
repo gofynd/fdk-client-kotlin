@@ -14,6 +14,199 @@ import com.google.gson.annotations.SerializedName
 
              
 /*
+    Model: UserAttributesDefinition
+*/
+@Parcelize
+data class UserAttributesDefinition(
+    
+    
+    
+    @SerializedName("id")
+    var id: String?=null,
+    
+    @SerializedName("name")
+    var name: String?=null,
+    
+    @SerializedName("slug")
+    var slug: String?=null,
+    
+    @SerializedName("description")
+    var description: String?=null,
+    
+    @SerializedName("application_id")
+    var applicationId: String?=null,
+    
+    @SerializedName("type")
+    var type: String?=null,
+    
+    @SerializedName("icon")
+    var icon: String?=null,
+    
+    @SerializedName("ordering_channels")
+    var orderingChannels: ArrayList<String>?=null,
+    
+    @SerializedName("masking")
+    var masking: AttributeMaskingProperties?=null,
+    
+    @SerializedName("registration")
+    var registration: AttributeRegistrationProperties?=null,
+    
+    @SerializedName("is_multi_value")
+    var isMultiValue: Boolean?=null,
+    
+    @SerializedName("customer_editable")
+    var customerEditable: Boolean?=null,
+    
+    @SerializedName("encrypted")
+    var encrypted: Boolean?=null,
+    
+    @SerializedName("pinned")
+    var pinned: Boolean?=null,
+    
+    @SerializedName("pin_order")
+    var pinOrder: Int?=null,
+    
+    @SerializedName("validations")
+    var validations: @RawValue ArrayList<HashMap<String,Any>>?=null,
+    
+    @SerializedName("is_locked")
+    var isLocked: Boolean?=null,
+    
+    @SerializedName("created_at")
+    var createdAt: String?=null,
+    
+    @SerializedName("modified_at")
+    var modifiedAt: String?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: AttributeMaskingProperties
+*/
+@Parcelize
+data class AttributeMaskingProperties(
+    
+    
+    
+    @SerializedName("enabled")
+    var enabled: Boolean?=null,
+    
+    @SerializedName("type")
+    var type: String?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: AttributeRegistrationProperties
+*/
+@Parcelize
+data class AttributeRegistrationProperties(
+    
+    
+    
+    @SerializedName("enabled")
+    var enabled: Boolean?=null,
+    
+    @SerializedName("type")
+    var type: String?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: UserAttributeDefinitionValidation
+*/
+@Parcelize
+data class UserAttributeDefinitionValidation(
+    
+    
+    
+    @SerializedName("type")
+    var type: String?=null,
+    
+    @SerializedName("value")
+    var value: @RawValue Any?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
     Model: VerifyOTPForUpdateRequestSchema
 */
 @Parcelize

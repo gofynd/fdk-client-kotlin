@@ -210,7 +210,7 @@ interface CommunicationApiList {
     : Response<EngineResult>
     
     @GET ("/service/platform/communication/v1.0/company/{company_id}/application/{application_id}/event/event-subscriptions")
-    suspend fun getEventSubscriptions(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Query("page_no") pageNo: Int?, @Query("page_size") pageSize: Int?, @Query("populate") populate: String?, @HeaderMap headers: Map<String, String>? = null)
+    suspend fun getEventSubscriptions(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Query("page_no") pageNo: Int?, @Query("page_size") pageSize: Int?, @Query("populate") populate: String?, @Query("group") group: String?, @Query("sub_group") subGroup: String?, @Query("fulfillment_option_types") fulfillmentOptionTypes: String?, @HeaderMap headers: Map<String, String>? = null)
     : Response<EventSubscriptions>
     
     @POST ("/service/platform/communication/v1.0/company/{company_id}/application/{application_id}/event/event-subscriptions")

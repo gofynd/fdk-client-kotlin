@@ -226,6 +226,11 @@ interface UserApiList {
     : Response<UserAttributes>
     
     
+    @GET
+    suspend fun getAttributesDefinition(@Url url1: String?    ,              @Query("excluding_ids") excludingIds: String?, @Query("slug") slug: String?, @Query("type") type: String?, @Query("customer_editable") customerEditable: Boolean?, @Query("encrypted") encrypted: Boolean?, @Query("pinned") pinned: Boolean?, @Query("pin_order") pinOrder: Int?, @Query("is_locked") isLocked: Boolean?, @Query("name") name: String?, @Query("registration_enabled") registrationEnabled: Boolean?, @Query("registration_type") registrationType: Any?, @Query("page_size") pageSize: Int?, @Query("page_no") pageNo: Int?, @HeaderMap headers: Map<String, String>? = null)
+    : Response<HashMap<String,Any>>
+    
+    
     @POST
     suspend fun sendOTPOnPrimary(@Url url1: String?    ,@Body body: SendPrimaryOTPRequestSchema, @HeaderMap headers: Map<String, String>? = null)
     : Response<SendOtpSuccess>
