@@ -14,6 +14,179 @@ import com.google.gson.annotations.SerializedName
 
              
 /*
+    Model: PriceBreakupValues
+*/
+@Parcelize
+data class PriceBreakupValues(
+    
+    
+    
+    @SerializedName("value")
+    var value: Double?=null,
+    
+    @SerializedName("currency_symbol")
+    var currencySymbol: String?=null,
+    
+    @SerializedName("name")
+    var name: String?=null,
+    
+    @SerializedName("display")
+    var display: String?=null,
+    
+    @SerializedName("currency_code")
+    var currencyCode: String?=null,
+    
+    @SerializedName("sub_values")
+    var subValues: ArrayList<PriceBreakupValues>?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: RefundMode
+*/
+@Parcelize
+data class RefundMode(
+    
+    
+    
+    @SerializedName("refund_mode")
+    var refundMode: String?=null,
+    
+    @SerializedName("display_name")
+    var displayName: String?=null,
+    
+    @SerializedName("payment_identifiers")
+    var paymentIdentifiers: ArrayList<String>?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: RefundOption
+*/
+@Parcelize
+data class RefundOption(
+    
+    
+    
+    @SerializedName("slug")
+    var slug: String?=null,
+    
+    @SerializedName("display_name")
+    var displayName: String?=null,
+    
+    @SerializedName("amount")
+    var amount: Double?=null,
+    
+    @SerializedName("currency_symbol")
+    var currencySymbol: String?=null,
+    
+    @SerializedName("message")
+    var message: String?=null,
+    
+    @SerializedName("logo")
+    var logo: String?=null,
+    
+    @SerializedName("beneficiary_type")
+    var beneficiaryType: String?=null,
+    
+    @SerializedName("suggested_list")
+    var suggestedList: ArrayList<String>?=null,
+    
+    @SerializedName("refund_modes")
+    var refundModes: ArrayList<RefundMode>?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: RefundOptions
+*/
+@Parcelize
+data class RefundOptions(
+    
+    
+    
+    @SerializedName("refund_options")
+    var refundOptions: ArrayList<RefundOption>?=null,
+    
+    @SerializedName("refund_price_breakup")
+    var refundPriceBreakup: ArrayList<PriceBreakupValues>?=null,
+    
+    @SerializedName("is_refund_config_enabled")
+    var isRefundConfigEnabled: Boolean?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
     Model: ValidationErrors
 */
 @Parcelize
@@ -204,9 +377,14 @@ data class BreakupValues(
     var display: String?=null,
     
     @SerializedName("currency_code")
-    var currencyCode: String?=null
+    var currencyCode: String?=null,
+    
+    @SerializedName("sub_values")
+    var subValues: ArrayList<BreakupValues>?=null
     
 ): Parcelable {
+    
+    
     
     
     
@@ -1848,6 +2026,187 @@ data class Address(
 
              
 /*
+    Model: RefundStatus
+*/
+@Parcelize
+data class RefundStatus(
+    
+    
+    
+    @SerializedName("id")
+    var id: String?=null,
+    
+    @SerializedName("status")
+    var status: String?=null,
+    
+    @SerializedName("created_ts")
+    var createdTs: String?=null,
+    
+    @SerializedName("updated_ts")
+    var updatedTs: String?=null,
+    
+    @SerializedName("updated_by")
+    var updatedBy: String?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: BeneficiaryDetails
+*/
+@Parcelize
+data class BeneficiaryDetails(
+    
+    
+    
+    @SerializedName("account_holder")
+    var accountHolder: String?=null,
+    
+    @SerializedName("account_no")
+    var accountNo: String?=null,
+    
+    @SerializedName("bank_name")
+    var bankName: String?=null,
+    
+    @SerializedName("beneficiary_id")
+    var beneficiaryId: String?=null,
+    
+    @SerializedName("branch_name")
+    var branchName: String?=null,
+    
+    @SerializedName("is_verified")
+    var isVerified: Boolean?=null,
+    
+    @SerializedName("vpa_address")
+    var vpaAddress: String?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: RefundModeData
+*/
+@Parcelize
+data class RefundModeData(
+    
+    
+    
+    @SerializedName("identifier")
+    var identifier: String?=null,
+    
+    @SerializedName("amount_paid")
+    var amountPaid: Double?=null,
+    
+    @SerializedName("refund_amount")
+    var refundAmount: Double?=null,
+    
+    @SerializedName("refund_status")
+    var refundStatus: RefundStatus?=null,
+    
+    @SerializedName("remarks")
+    var remarks: String?=null,
+    
+    @SerializedName("beneficiary_details")
+    var beneficiaryDetails: BeneficiaryDetails?=null,
+    
+    @SerializedName("meta")
+    var meta: @RawValue HashMap<String,Any>?=null,
+    
+    @SerializedName("refund_mode")
+    var refundMode: String?=null,
+    
+    @SerializedName("logo")
+    var logo: String?=null,
+    
+    @SerializedName("display_name")
+    var displayName: String?=null,
+    
+    @SerializedName("payment_identifiers")
+    var paymentIdentifiers: ArrayList<String>?=null,
+    
+    @SerializedName("operational_status")
+    var operationalStatus: String?=null,
+    
+    @SerializedName("transaction_data")
+    var transactionData: @RawValue HashMap<String,Any>?=null,
+    
+    @SerializedName("default_refund_mode")
+    var defaultRefundMode: Boolean?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
     Model: Shipments
 */
 @Parcelize
@@ -1985,9 +2344,24 @@ data class Shipments(
     var fulfillmentOption: FulfillmentOption?=null,
     
     @SerializedName("ndr_details")
-    var ndrDetails: NdrDetailsSchema?=null
+    var ndrDetails: NdrDetailsSchema?=null,
+    
+    @SerializedName("refund_modes")
+    var refundModes: ArrayList<RefundModeData>?=null,
+    
+    @SerializedName("refund_breakup_values")
+    var refundBreakupValues: ArrayList<BreakupValues>?=null,
+    
+    @SerializedName("is_refund_config_enabled")
+    var isRefundConfigEnabled: Boolean?=null
     
 ): Parcelable {
+    
+    
+    
+    
+    
+    
     
     
     
@@ -3566,6 +3940,65 @@ data class DataUpdates(
 
              
 /*
+    Model: RefundModeTransitionBeneficiaryData
+*/
+@Parcelize
+data class RefundModeTransitionBeneficiaryData(
+    
+    
+    
+    @SerializedName("beneficiary_id")
+    var beneficiaryId: String?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: RefundModeTransitionData
+*/
+@Parcelize
+data class RefundModeTransitionData(
+    
+    
+    
+    @SerializedName("refund_mode")
+    var refundMode: String?=null,
+    
+    @SerializedName("display_name")
+    var displayName: String?=null,
+    
+    @SerializedName("beneficiary_details")
+    var beneficiaryDetails: RefundModeTransitionBeneficiaryData?=null,
+    
+    @SerializedName("payment_identifiers")
+    var paymentIdentifiers: ArrayList<String>?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
     Model: TransitionComments
 */
 @Parcelize
@@ -3613,9 +4046,14 @@ data class ShipmentsRequestSchema(
     var transitionComments: ArrayList<TransitionComments>?=null,
     
     @SerializedName("identifier")
-    var identifier: String?=null
+    var identifier: String?=null,
+    
+    @SerializedName("refund_modes")
+    var refundModes: ArrayList<RefundModeTransitionData>?=null
     
 ): Parcelable {
+    
+    
     
     
     

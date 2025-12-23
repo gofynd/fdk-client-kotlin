@@ -1790,9 +1790,14 @@ data class BankDetailsForOTP(
     var bankName: String?=null,
     
     @SerializedName("account_holder")
-    var accountHolder: String?=null
+    var accountHolder: String?=null,
+    
+    @SerializedName("upi")
+    var upi: String?=null
     
 ): Parcelable {
+    
+    
     
     
     
@@ -1822,10 +1827,15 @@ data class AddBeneficiaryDetailsOTPCreation(
     @SerializedName("order_id")
     var orderId: String?=null,
     
+    @SerializedName("shipment_id")
+    var shipmentId: String?=null,
+    
     @SerializedName("details")
     var details: BankDetailsForOTP?=null
     
 ): Parcelable {
+    
+    
     
     
     

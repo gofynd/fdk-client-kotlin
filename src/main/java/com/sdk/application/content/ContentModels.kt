@@ -2635,6 +2635,152 @@ data class CustomFieldsResponseByResourceIdSchema(
 
              
 /*
+    Model: BulkCustomFieldsResponseByResourceSchema
+*/
+@Parcelize
+data class BulkCustomFieldsResponseByResourceSchema(
+    
+    
+    
+    @SerializedName("items")
+    var items: ArrayList<ResourceCustomFieldsSchema>?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: ResourceCustomFieldsSchema
+*/
+@Parcelize
+data class ResourceCustomFieldsSchema(
+    
+    
+    
+    @SerializedName("resource_id")
+    var resourceId: String?=null,
+    
+    @SerializedName("resource_slug")
+    var resourceSlug: String?=null,
+    
+    @SerializedName("items")
+    var items: ArrayList<CustomFieldItemSchema>?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: CustomFieldItemSchema
+*/
+@Parcelize
+data class CustomFieldItemSchema(
+    
+    
+    
+    @SerializedName("id")
+    var id: String?=null,
+    
+    @SerializedName("namespace")
+    var namespace: String?=null,
+    
+    @SerializedName("resource")
+    var resource: String?=null,
+    
+    @SerializedName("value")
+    var value: ArrayList<String>?=null,
+    
+    @SerializedName("type")
+    var type: String?=null,
+    
+    @SerializedName("multi_value")
+    var multiValue: Boolean?=null,
+    
+    @SerializedName("company_id")
+    var companyId: String?=null,
+    
+    @SerializedName("application_id")
+    var applicationId: String?=null,
+    
+    @SerializedName("has_invalid_values")
+    var hasInvalidValues: Boolean?=null,
+    
+    @SerializedName("invalid_value_errors")
+    var invalidValueErrors: @RawValue ArrayList<Any>?=null,
+    
+    @SerializedName("is_deleted")
+    var isDeleted: Boolean?=null,
+    
+    @SerializedName("created_at")
+    var createdAt: String?=null,
+    
+    @SerializedName("updated_at")
+    var updatedAt: String?=null,
+    
+    @SerializedName("slug")
+    var slug: String?=null,
+    
+    @SerializedName("resource_slug")
+    var resourceSlug: String?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
     Model: CustomObjectListItemSchema
 */
 @Parcelize

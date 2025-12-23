@@ -112,6 +112,11 @@ interface ContentApiList {
     
     
     @GET
+    suspend fun getBulkCustomFieldsByResource(@Url url1: String?     ,    @Query("resource_ids") resourceIds: String, @Query("keys") keys: String?, @Query("namespaces") namespaces: String?, @HeaderMap headers: Map<String, String>? = null)
+    : Response<BulkCustomFieldsResponseByResourceSchema>
+    
+    
+    @GET
     suspend fun getTranslateUILabels(@Url url1: String?    ,      @Query("template") template: Boolean?, @Query("template_theme_id") templateThemeId: String?, @Query("theme_id") themeId: String?, @Query("locale") locale: String?, @Query("type") type: String?, @HeaderMap headers: Map<String, String>? = null)
     : Response<TranslateUiLabelsPage>
     

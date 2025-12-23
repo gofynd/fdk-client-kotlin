@@ -21,7 +21,6 @@ import com.sdk.platform.serviceability.*
 import com.sdk.platform.order.* 
 import com.sdk.platform.partner.* 
 import com.sdk.platform.payment.* 
-import com.sdk.platform.rewards.* 
 import com.sdk.platform.share.* 
 import com.sdk.platform.theme.* 
 import com.sdk.platform.user.* 
@@ -77,8 +76,6 @@ class PlatformClient(val config:PlatformConfig, val unauthorizedAction: ((url: S
     
     val payment by lazy { PaymentDataManagerClass(config, unauthorizedAction)}
     
-    val rewards by lazy { RewardsDataManagerClass(config, unauthorizedAction)}
-    
     val share by lazy { ShareDataManagerClass(config, unauthorizedAction)}
     
     val theme by lazy { ThemeDataManagerClass(config, unauthorizedAction)}
@@ -126,8 +123,6 @@ class PlatformClient(val config:PlatformConfig, val unauthorizedAction: ((url: S
     val partner by lazy { this@PlatformClient.partner.ApplicationClient(applicationId,config)}
     
     val payment by lazy { this@PlatformClient.payment.ApplicationClient(applicationId,config)}
-    
-    val rewards by lazy { this@PlatformClient.rewards.ApplicationClient(applicationId,config)}
     
     val share by lazy { this@PlatformClient.share.ApplicationClient(applicationId,config)}
     

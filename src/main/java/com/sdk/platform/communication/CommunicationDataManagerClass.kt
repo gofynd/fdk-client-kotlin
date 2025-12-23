@@ -101,12 +101,6 @@ class CommunicationDataManagerClass(val config: PlatformConfig, val unauthorized
     
     
     
-    
-    
-    
-    
-    
-    
     suspend fun getSystemNotifications(pageNo: Int?=null,pageSize: Int?=null, headers: Map<String, String> = emptyMap())
     : Response<SystemNotifications>? {
 
@@ -311,66 +305,6 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     : Response<GetStats>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 communicationApiList?.getStatsOfCampaignById(companyId = config.companyId ,applicationId = applicationId ,id = id, headers = headers)
-        } else {
-            null
-        }
-    }
-    
-    
-    suspend fun getBigQueryRowCountById(id: String, headers: Map<String, String> = emptyMap())
-    : Response<HashMap<String,Any>>? {
-        return if (config.oauthClient.isAccessTokenValid()) {
-                communicationApiList?.getBigQueryRowCountById(companyId = config.companyId ,applicationId = applicationId ,id = id, headers = headers)
-        } else {
-            null
-        }
-    }
-    
-    
-    suspend fun createBigQueryRowCount( headers: Map<String, String> = emptyMap())
-    : Response<HashMap<String,Any>>? {
-        return if (config.oauthClient.isAccessTokenValid()) {
-                communicationApiList?.createBigQueryRowCount(companyId = config.companyId ,applicationId = applicationId , headers = headers)
-        } else {
-            null
-        }
-    }
-    
-    
-    suspend fun getBigQueryHeadersById(id: String, headers: Map<String, String> = emptyMap())
-    : Response<HashMap<String,Any>>? {
-        return if (config.oauthClient.isAccessTokenValid()) {
-                communicationApiList?.getBigQueryHeadersById(companyId = config.companyId ,applicationId = applicationId ,id = id, headers = headers)
-        } else {
-            null
-        }
-    }
-    
-    
-    suspend fun createBigQueryNCount( headers: Map<String, String> = emptyMap())
-    : Response<HashMap<String,Any>>? {
-        return if (config.oauthClient.isAccessTokenValid()) {
-                communicationApiList?.createBigQueryNCount(companyId = config.companyId ,applicationId = applicationId , headers = headers)
-        } else {
-            null
-        }
-    }
-    
-    
-    suspend fun createBigQueryHeaders( headers: Map<String, String> = emptyMap())
-    : Response<HashMap<String,Any>>? {
-        return if (config.oauthClient.isAccessTokenValid()) {
-                communicationApiList?.createBigQueryHeaders(companyId = config.companyId ,applicationId = applicationId , headers = headers)
-        } else {
-            null
-        }
-    }
-    
-    
-    suspend fun getSystemAudiences( headers: Map<String, String> = emptyMap())
-    : Response<HashMap<String,Any>>? {
-        return if (config.oauthClient.isAccessTokenValid()) {
-                communicationApiList?.getSystemAudiences(companyId = config.companyId ,applicationId = applicationId , headers = headers)
         } else {
             null
         }
@@ -627,10 +561,10 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     }
     
     
-    suspend fun getEventSubscriptions(pageNo: Int?=null,pageSize: Int?=null,populate: String?=null,group: String?=null,subGroup: String?=null,fulfillmentOptionTypes: String?=null, headers: Map<String, String> = emptyMap())
+    suspend fun getEventSubscriptions(pageNo: Int?=null,pageSize: Int?=null,populate: String?=null,group: String?=null,subGroup: String?=null,fulfillmentOptionSlug: String?=null, headers: Map<String, String> = emptyMap())
     : Response<EventSubscriptions>? {
         return if (config.oauthClient.isAccessTokenValid()) {
-                communicationApiList?.getEventSubscriptions(companyId = config.companyId ,applicationId = applicationId ,pageNo = pageNo,pageSize = pageSize,populate = populate,group = group,subGroup = subGroup,fulfillmentOptionTypes = fulfillmentOptionTypes, headers = headers)
+                communicationApiList?.getEventSubscriptions(companyId = config.companyId ,applicationId = applicationId ,pageNo = pageNo,pageSize = pageSize,populate = populate,group = group,subGroup = subGroup,fulfillmentOptionSlug = fulfillmentOptionSlug, headers = headers)
         } else {
             null
         }

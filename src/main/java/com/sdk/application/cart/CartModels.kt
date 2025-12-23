@@ -3021,6 +3021,9 @@ data class Coupon(
     @SerializedName("coupon_code")
     var couponCode: String?=null,
     
+    @SerializedName("coupon_id")
+    var couponId: String?=null,
+    
     @SerializedName("is_applicable")
     var isApplicable: Boolean?=null,
     
@@ -3046,6 +3049,8 @@ data class Coupon(
     var isBankOffer: Boolean?=null
     
 ): Parcelable {
+    
+    
     
     
     

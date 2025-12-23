@@ -523,7 +523,7 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     
     
     suspend fun updateCartBreakup(xOrderingSource: String?=null,id: String?=null,i: Boolean?=null,b: Boolean?=null,buyNow: Boolean?=null,body: UpdateCartBreakup, headers: Map<String, String> = emptyMap())
-    : Response<UpdateCartDetailResult>? {
+    : Response<CartDetailResult>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 cartApiList?.updateCartBreakup(xOrderingSource = xOrderingSource,companyId = config.companyId ,applicationId = applicationId ,id = id,i = i,b = b,buyNow = buyNow, body = body,headers = headers)
         } else {

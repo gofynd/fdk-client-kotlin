@@ -691,18 +691,6 @@ class CatalogDataManagerClass(val config: PlatformConfig, val unauthorizedAction
     }
     
     
-    suspend fun getOptimalLocations(body: AssignStore, headers: Map<String, String> = emptyMap())
-    : Response<StoreAssignResponseSchema>? {
-
-        return if (config.oauthClient.isAccessTokenValid()) {
-            catalogApiList?.getOptimalLocations(
-        companyId = config.companyId, body = body,headers = headers)
-        } else {
-            null
-        }
-    }
-    
-    
     suspend fun getMarketplaceOptinDetail( headers: Map<String, String> = emptyMap())
     : Response<GetOptInPlatform>? {
 
@@ -3259,7 +3247,6 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
             null
         }
     }
-    
     
     
     

@@ -14,7 +14,6 @@ import com.sdk.application.lead.*
 import com.sdk.application.logistic.* 
 import com.sdk.application.order.* 
 import com.sdk.application.payment.* 
-import com.sdk.application.rewards.* 
 import com.sdk.application.share.* 
 import com.sdk.application.theme.* 
 import com.sdk.application.user.* 
@@ -55,8 +54,6 @@ class ApplicationClient(val config:ApplicationConfig, val unauthorizedAction: ((
     val order by lazy { OrderDataManagerClass(config, unauthorizedAction)}
     
     val payment by lazy { PaymentDataManagerClass(config, unauthorizedAction)}
-    
-    val rewards by lazy { RewardsDataManagerClass(config, unauthorizedAction)}
     
     val share by lazy { ShareDataManagerClass(config, unauthorizedAction)}
     

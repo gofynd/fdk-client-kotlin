@@ -85,30 +85,6 @@ interface CommunicationApiList {
     suspend fun getStatsOfCampaignById(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Path("id") id: String, @HeaderMap headers: Map<String, String>? = null)
     : Response<GetStats>
     
-    @GET ("/service/platform/communication/v1.0/company/{company_id}/application/{application_id}/sources/bigquery-row-count/{id}")
-    suspend fun getBigQueryRowCountById(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Path("id") id: String, @HeaderMap headers: Map<String, String>? = null)
-    : Response<HashMap<String,Any>>
-    
-    @POST ("/service/platform/communication/v1.0/company/{company_id}/application/{application_id}/sources/bigquery-row-count")
-    suspend fun createBigQueryRowCount(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @HeaderMap headers: Map<String, String>? = null)
-    : Response<HashMap<String,Any>>
-    
-    @GET ("/service/platform/communication/v1.0/company/{company_id}/application/{application_id}/sources/bigquery-headers/{id}")
-    suspend fun getBigQueryHeadersById(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Path("id") id: String, @HeaderMap headers: Map<String, String>? = null)
-    : Response<HashMap<String,Any>>
-    
-    @POST ("/service/platform/communication/v1.0/company/{company_id}/application/{application_id}/sources/bigquery-n-records")
-    suspend fun createBigQueryNCount(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @HeaderMap headers: Map<String, String>? = null)
-    : Response<HashMap<String,Any>>
-    
-    @POST ("/service/platform/communication/v1.0/company/{company_id}/application/{application_id}/sources/bigquery-headers")
-    suspend fun createBigQueryHeaders(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @HeaderMap headers: Map<String, String>? = null)
-    : Response<HashMap<String,Any>>
-    
-    @GET ("/service/platform/communication/v1.0/company/{company_id}/application/{application_id}/sources/system-datasources")
-    suspend fun getSystemAudiences(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @HeaderMap headers: Map<String, String>? = null)
-    : Response<HashMap<String,Any>>
-    
     @GET ("/service/platform/communication/v1.0/company/{company_id}/application/{application_id}/sources/datasources")
     suspend fun getAudiences(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Query("page_no") pageNo: Int?, @Query("page_size") pageSize: Int?, @Query("sort") sort: HashMap<String,Any>?, @Query("query") query: HashMap<String,Any>?, @HeaderMap headers: Map<String, String>? = null)
     : Response<Audiences>
@@ -210,7 +186,7 @@ interface CommunicationApiList {
     : Response<EngineResult>
     
     @GET ("/service/platform/communication/v1.0/company/{company_id}/application/{application_id}/event/event-subscriptions")
-    suspend fun getEventSubscriptions(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Query("page_no") pageNo: Int?, @Query("page_size") pageSize: Int?, @Query("populate") populate: String?, @Query("group") group: String?, @Query("sub_group") subGroup: String?, @Query("fulfillment_option_types") fulfillmentOptionTypes: String?, @HeaderMap headers: Map<String, String>? = null)
+    suspend fun getEventSubscriptions(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Query("page_no") pageNo: Int?, @Query("page_size") pageSize: Int?, @Query("populate") populate: String?, @Query("group") group: String?, @Query("sub_group") subGroup: String?, @Query("fulfillment_option_slug") fulfillmentOptionSlug: String?, @HeaderMap headers: Map<String, String>? = null)
     : Response<EventSubscriptions>
     
     @POST ("/service/platform/communication/v1.0/company/{company_id}/application/{application_id}/event/event-subscriptions")

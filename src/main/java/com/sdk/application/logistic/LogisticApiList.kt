@@ -12,18 +12,8 @@ interface LogisticApiList {
     
     
     @GET
-    suspend fun getPincodeCity(@Url url1: String?    , @HeaderMap headers: Map<String, String>? = null)
-    : Response<PincodeDetailsResult>
-    
-    
-    @GET
     suspend fun getAllCountries(@Url url1: String?   , @HeaderMap headers: Map<String, String>? = null)
     : Response<CountryResult>
-    
-    
-    @POST
-    suspend fun getCourierPartners(@Url url1: String?     ,@Body body: ShipmentCourierPartnerDetails, @HeaderMap headers: Map<String, String>? = null)
-    : Response<ShipmentCourierPartnerResult>
     
     
     @GET
@@ -37,7 +27,7 @@ interface LogisticApiList {
     
     
     @GET
-    suspend fun getDeliveryPromise(@Url url1: String?    ,  @Header("x-location-detail") xLocationDetail: String,  @Header("x-application-data") xApplicationData: String,   @Query("page_no") pageNo: Int?, @Query("page_size") pageSize: Int?, @HeaderMap headers: Map<String, String>? = null)
+    suspend fun getDeliveryPromise(@Url url1: String?    ,  @Header("x-location-detail") xLocationDetail: String,   @Query("page_no") pageNo: Int?, @Query("page_size") pageSize: Int?, @HeaderMap headers: Map<String, String>? = null)
     : Response<GetPromiseDetails>
     
     
@@ -59,5 +49,10 @@ interface LogisticApiList {
     @GET
     suspend fun getFulfillmentOptions(@Url url1: String?    ,  @Header("x-application-data") xApplicationData: String,   @Query("product_slug") productSlug: String?, @Query("store_id") storeId: Int?, @HeaderMap headers: Map<String, String>? = null)
     : Response<FulfillmentOptionsList>
+    
+    
+    @GET
+    suspend fun getFulfillmentOptionStores(@Url url1: String?     ,   @Query("page_no") pageNo: Int?, @Query("page_size") pageSize: Int?, @HeaderMap headers: Map<String, String>? = null)
+    : Response<FulfillmentOptionStores>
     
 }

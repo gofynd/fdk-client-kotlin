@@ -14,21 +14,57 @@ import com.google.gson.annotations.SerializedName
 
              
 /*
-    Model: InvalidateShipmentCachePayload
+    Model: PackageSchema
 */
 @Parcelize
-data class InvalidateShipmentCachePayload(
+data class PackageSchema(
     
     
     
-    @SerializedName("shipment_ids")
-    var shipmentIds: ArrayList<String>?=null,
+    @SerializedName("id")
+    var id: String?=null,
     
-    @SerializedName("affiliate_bag_ids")
-    var affiliateBagIds: ArrayList<String>?=null,
+    @SerializedName("packaging_id")
+    var packagingId: String?=null,
     
-    @SerializedName("bag_ids")
-    var bagIds: ArrayList<String>?=null
+    @SerializedName("name")
+    var name: String?=null,
+    
+    @SerializedName("size")
+    var size: String?=null,
+    
+    @SerializedName("package_type")
+    var packageType: String?=null,
+    
+    @SerializedName("length")
+    var length: Double?=null,
+    
+    @SerializedName("width")
+    var width: Double?=null,
+    
+    @SerializedName("height")
+    var height: Double?=null,
+    
+    @SerializedName("weight")
+    var weight: Double?=null,
+    
+    @SerializedName("error_rate")
+    var errorRate: Double?=null,
+    
+    @SerializedName("package_vol_weight")
+    var packageVolWeight: Double?=null,
+    
+    @SerializedName("max_weight")
+    var maxWeight: Double?=null,
+    
+    @SerializedName("awb")
+    var awb: String?=null,
+    
+    @SerializedName("pdf_links")
+    var pdfLinks: HashMap<String,String>?=null,
+    
+    @SerializedName("products")
+    var products: ArrayList<PackageProduct>?=null
     
 ): Parcelable {
     
@@ -40,32 +76,6 @@ data class InvalidateShipmentCachePayload(
     
     
     
-}
-
-
-
-             
-/*
-    Model: InvalidateShipmentCacheNestedResponseSchema
-*/
-@Parcelize
-data class InvalidateShipmentCacheNestedResponseSchema(
-    
-    
-    
-    @SerializedName("shipment_id")
-    var shipmentId: String?=null,
-    
-    @SerializedName("status")
-    var status: Int?=null,
-    
-    @SerializedName("message")
-    var message: String?=null,
-    
-    @SerializedName("error")
-    var error: String?=null
-    
-): Parcelable {
     
     
     
@@ -77,23 +87,14 @@ data class InvalidateShipmentCacheNestedResponseSchema(
     
     
     
-}
-
-
-
-             
-/*
-    Model: InvalidateShipmentCacheResponseSchema
-*/
-@Parcelize
-data class InvalidateShipmentCacheResponseSchema(
     
     
     
-    @SerializedName("response")
-    var response: ArrayList<InvalidateShipmentCacheNestedResponseSchema>?=null
     
-): Parcelable {
+    
+    
+    
+    
     
     
     
@@ -1194,6 +1195,38 @@ data class TransitionComments(
 
              
 /*
+    Model: RefundModeTransitionData
+*/
+@Parcelize
+data class RefundModeTransitionData(
+    
+    
+    
+    @SerializedName("refund_mode")
+    var refundMode: String?=null,
+    
+    @SerializedName("display_name")
+    var displayName: String?=null,
+    
+    @SerializedName("payment_identifiers")
+    var paymentIdentifiers: ArrayList<String>?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
     Model: ShipmentsRequestSchema
 */
 @Parcelize
@@ -1214,9 +1247,14 @@ data class ShipmentsRequestSchema(
     var dataUpdates: DataUpdates?=null,
     
     @SerializedName("transition_comments")
-    var transitionComments: ArrayList<TransitionComments>?=null
+    var transitionComments: ArrayList<TransitionComments>?=null,
+    
+    @SerializedName("refund_modes")
+    var refundModes: ArrayList<RefundModeTransitionData>?=null
     
 ): Parcelable {
+    
+    
     
     
     
@@ -8714,9 +8752,14 @@ data class Filter(
     var isTestOrder: Boolean?=null,
     
     @SerializedName("task_trigger_condition")
-    var taskTriggerCondition: ArrayList<String>?=null
+    var taskTriggerCondition: ArrayList<String>?=null,
+    
+    @SerializedName("fulfillment_option_slug")
+    var fulfillmentOptionSlug: String?=null
     
 ): Parcelable {
+    
+    
     
     
     
@@ -9798,6 +9841,87 @@ data class LineItemPaymentMethodSchema(
     
     
     
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: PackagesSchema
+*/
+@Parcelize
+data class PackagesSchema(
+    
+    
+    
+    @SerializedName("packages")
+    var packages: ArrayList<PackageSchema>?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: PackagesResponseSchema
+*/
+@Parcelize
+data class PackagesResponseSchema(
+    
+    
+    
+    @SerializedName("success")
+    var success: Boolean?=null,
+    
+    @SerializedName("data")
+    var data: PackagesSchema?=null,
+    
+    @SerializedName("message")
+    var message: String?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: PackagesErrorResponseSchema
+*/
+@Parcelize
+data class PackagesErrorResponseSchema(
+    
+    
+    
+    @SerializedName("success")
+    var success: Boolean?=null,
+    
+    @SerializedName("error")
+    var error: String?=null
+    
+): Parcelable {
     
     
     
@@ -11486,6 +11610,38 @@ data class AccountsList(
 
              
 /*
+    Model: PackageProduct
+*/
+@Parcelize
+data class PackageProduct(
+    
+    
+    
+    @SerializedName("line_number")
+    var lineNumber: Int?=null,
+    
+    @SerializedName("quantity")
+    var quantity: Double?=null,
+    
+    @SerializedName("identifier")
+    var identifier: String?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
     Model: ValidationError
 */
 @Parcelize
@@ -11699,6 +11855,48 @@ data class ShipmentStatus(
     
     
     
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: OrderingSourceDetails
+*/
+@Parcelize
+data class OrderingSourceDetails(
+    
+    
+    
+    @SerializedName("type")
+    var type: String?=null,
+    
+    @SerializedName("slug")
+    var slug: String?=null,
+    
+    @SerializedName("display_name")
+    var displayName: String?=null,
+    
+    @SerializedName("is_active")
+    var isActive: Boolean?=null,
+    
+    @SerializedName("logo")
+    var logo: String?=null
+    
+): Parcelable {
     
     
     
@@ -12221,10 +12419,15 @@ data class Prices(
     @SerializedName("amount_to_be_collected")
     var amountToBeCollected: Double?=null,
     
+    @SerializedName("cost_price")
+    var costPrice: Double?=null,
+    
     @SerializedName("loyalty_discount")
     var loyaltyDiscount: Double?=null
     
 ): Parcelable {
+    
+    
     
     
     
@@ -12503,10 +12706,15 @@ data class OrderingCurrencyPrices(
     @SerializedName("amount_to_be_collected")
     var amountToBeCollected: Double?=null,
     
+    @SerializedName("cost_price")
+    var costPrice: Double?=null,
+    
     @SerializedName("loyalty_discount")
     var loyaltyDiscount: Double?=null
     
 ): Parcelable {
+    
+    
     
     
     
@@ -12626,6 +12834,38 @@ data class TaxComponent(
 ): Parcelable {
     
     
+    
+    
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: SellerQcDetails
+*/
+@Parcelize
+data class SellerQcDetails(
+    
+    
+    
+    @SerializedName("line_number")
+    var lineNumber: Int?=null,
+    
+    @SerializedName("bad_quantity")
+    var badQuantity: Int?=null,
+    
+    @SerializedName("good_quantity")
+    var goodQuantity: Int?=null
+    
+): Parcelable {
     
     
     
@@ -14073,6 +14313,9 @@ data class ShipmentItem(
     @SerializedName("order_created_ts")
     var orderCreatedTs: String?=null,
     
+    @SerializedName("ordering_source_details")
+    var orderingSourceDetails: OrderingSourceDetails?=null,
+    
     @SerializedName("shipment_status")
     var shipmentStatus: ShipmentStatus?=null,
     
@@ -14191,6 +14434,8 @@ data class ShipmentItem(
     var fulfillmentOption: FulfillmentOption?=null
     
 ): Parcelable {
+    
+    
     
     
     
@@ -16108,6 +16353,9 @@ data class OrderBags(
     @SerializedName("parent_promo_bags")
     var parentPromoBags: @RawValue HashMap<String,Any>?=null,
     
+    @SerializedName("seller_qc_details")
+    var sellerQcDetails: SellerQcDetails?=null,
+    
     @SerializedName("financial_breakup")
     var financialBreakup: FinancialBreakup?=null,
     
@@ -16187,6 +16435,8 @@ data class OrderBags(
     var isParent: Boolean?=null
     
 ): Parcelable {
+    
+    
     
     
     
@@ -16726,9 +16976,14 @@ data class PlatformShipment(
     var forwardEndShipmentId: String?=null,
     
     @SerializedName("logistics_meta")
-    var logisticsMeta: @RawValue HashMap<String,Any>?=null
+    var logisticsMeta: @RawValue HashMap<String,Any>?=null,
+    
+    @SerializedName("packages")
+    var packages: ArrayList<PackageSchema>?=null
     
 ): Parcelable {
+    
+    
     
     
     
@@ -17010,6 +17265,9 @@ data class OrderData(
     @SerializedName("ordering_source")
     var orderingSource: String?=null,
     
+    @SerializedName("ordering_source_details")
+    var orderingSourceDetails: OrderingSourceDetails?=null,
+    
     @SerializedName("order_date")
     var orderDate: String?=null,
     
@@ -17056,6 +17314,8 @@ data class OrderData(
     var loyaltyDiscountDetails: LoyaltyDiscountDetails?=null
     
 ): Parcelable {
+    
+    
     
     
     
@@ -17313,6 +17573,12 @@ data class PlatformOrderItems(
     @SerializedName("order_created_ts")
     var orderCreatedTs: String?=null,
     
+    @SerializedName("ordering_source")
+    var orderingSource: String?=null,
+    
+    @SerializedName("ordering_source_details")
+    var orderingSourceDetails: OrderingSourceDetails?=null,
+    
     @SerializedName("payment_mode")
     var paymentMode: String?=null,
     
@@ -17347,6 +17613,10 @@ data class PlatformOrderItems(
     var loyaltyDiscountDetails: LoyaltyDiscountDetails?=null
     
 ): Parcelable {
+    
+    
+    
+    
     
     
     

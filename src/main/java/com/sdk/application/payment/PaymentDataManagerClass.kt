@@ -462,10 +462,10 @@ class PaymentDataManagerClass(val config: ApplicationConfig, val unauthorizedAct
 
     
     
-    suspend fun getRefundBeneficiaries(orderId: String?=null,shipmentId: String?=null,filterBy: String?=null, headers: Map<String, String> = emptyMap()): Response<RefundBeneficiaries>? {
+    suspend fun getRefundBeneficiaries(orderId: String?=null,shipmentId: String?=null, headers: Map<String, String> = emptyMap()): Response<GetRefundBeneficiary>? {
         var fullUrl : String? = _relativeUrls["getRefundBeneficiaries"]
         
-        return paymentApiList?.getRefundBeneficiaries(fullUrl,   orderId = orderId,  shipmentId = shipmentId,  filterBy = filterBy,headers = headers)}
+        return paymentApiList?.getRefundBeneficiaries(fullUrl,   orderId = orderId,  shipmentId = shipmentId,headers = headers)}
 
     
     
@@ -485,7 +485,7 @@ class PaymentDataManagerClass(val config: ApplicationConfig, val unauthorizedAct
 
     
     
-    suspend fun getRefundBeneficiariesUsingOTPSession(orderId: String?=null,shipmentId: String?=null,filterBy: String?=null, headers: Map<String, String> = emptyMap()): Response<RefundBeneficiaries>? {
+    suspend fun getRefundBeneficiariesUsingOTPSession(orderId: String?=null,shipmentId: String?=null,filterBy: String?=null, headers: Map<String, String> = emptyMap()): Response<GetRefundBeneficiary>? {
         var fullUrl : String? = _relativeUrls["getRefundBeneficiariesUsingOTPSession"]
         
         return paymentApiList?.getRefundBeneficiariesUsingOTPSession(fullUrl,   orderId = orderId,  shipmentId = shipmentId,  filterBy = filterBy,headers = headers)}

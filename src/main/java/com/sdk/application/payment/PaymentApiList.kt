@@ -232,8 +232,8 @@ interface PaymentApiList {
     
     
     @GET
-    suspend fun getRefundBeneficiaries(@Url url1: String?    ,    @Query("order_id") orderId: String?, @Query("shipment_id") shipmentId: String?, @Query("filter_by") filterBy: String?, @HeaderMap headers: Map<String, String>? = null)
-    : Response<RefundBeneficiaries>
+    suspend fun getRefundBeneficiaries(@Url url1: String?    ,   @Query("order_id") orderId: String?, @Query("shipment_id") shipmentId: String?, @HeaderMap headers: Map<String, String>? = null)
+    : Response<GetRefundBeneficiary>
     
     
     @POST
@@ -248,7 +248,7 @@ interface PaymentApiList {
     
     @GET
     suspend fun getRefundBeneficiariesUsingOTPSession(@Url url1: String?    ,    @Query("order_id") orderId: String?, @Query("shipment_id") shipmentId: String?, @Query("filter_by") filterBy: String?, @HeaderMap headers: Map<String, String>? = null)
-    : Response<RefundBeneficiaries>
+    : Response<GetRefundBeneficiary>
     
     
     @POST

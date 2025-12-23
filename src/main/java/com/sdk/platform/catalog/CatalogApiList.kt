@@ -305,10 +305,6 @@ interface CatalogApiList {
     suspend fun validateProductTemplateSchema(@Path("company_id") companyId: String, @Query("item_type") itemType: String, @Query("schema_type") schemaType: String?, @HeaderMap headers: Map<String, String>? = null)
     : Response<InventoryValidationResponseSchema>
     
-    @POST ("/service/platform/catalog/v1.0/company/{company_id}/location/reassign/")
-    suspend fun getOptimalLocations(@Path("company_id") companyId: String,@Body body: AssignStore, @HeaderMap headers: Map<String, String>? = null)
-    : Response<StoreAssignResponseSchema>
-    
     @GET ("/service/platform/catalog/v1.0/company/{company_id}/marketplaces/")
     suspend fun getMarketplaceOptinDetail(@Path("company_id") companyId: String, @HeaderMap headers: Map<String, String>? = null)
     : Response<GetOptInPlatform>

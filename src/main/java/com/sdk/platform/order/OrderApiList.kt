@@ -9,10 +9,6 @@ import com.sdk.platform.*
 
 interface OrderApiList {
     
-    @PUT ("/service/platform/order-manage/v1.0/company/{company_id}/update-cache")
-    suspend fun invalidateShipmentCache(@Path("company_id") companyId: String,@Body body: InvalidateShipmentCachePayload, @HeaderMap headers: Map<String, String>? = null)
-    : Response<InvalidateShipmentCacheResponseSchema>
-    
     @POST ("/service/platform/order-manage/v1.0/company/{company_id}/store/reassign-internal")
     suspend fun reassignLocation(@Path("company_id") companyId: String,@Body body: StoreReassign, @HeaderMap headers: Map<String, String>? = null)
     : Response<StoreReassignResponseSchema>
@@ -52,10 +48,6 @@ interface OrderApiList {
     @POST ("/service/platform/order-manage/v1.0/company/{company_id}/update-packaging-dimension")
     suspend fun updatePackagingDimensions(@Path("company_id") companyId: String,@Body body: UpdatePackagingDimensionsPayload, @HeaderMap headers: Map<String, String>? = null)
     : Response<UpdatePackagingDimensionsResponseSchema>
-    
-    @POST ("/service/platform/order-manage/v1.0/company/{company_id}/create-order")
-    suspend fun createOrderDeprecated(@Header("x-ordering-source") xOrderingSource: String, @Header("x-application-id") xApplicationId: String?, @Header("x-extension-id") xExtensionId: String?, @Path("company_id") companyId: String,@Body body: CreateOrderAPI, @HeaderMap headers: Map<String, String>? = null)
-    : Response<CreateOrderResponseSchema>
     
     @GET ("/service/platform/order-manage/v1.0/company/{company_id}/order-config")
     suspend fun getChannelConfig(@Path("company_id") companyId: String, @HeaderMap headers: Map<String, String>? = null)
@@ -216,6 +208,18 @@ interface OrderApiList {
     @PUT ("/service/platform/order-manage/v1.0/company/{company_id}/account/{channel_account_id}")
     suspend fun updateAccount(@Path("company_id") companyId: String, @Path("channel_account_id") channelAccountId: String,@Body body: CreateAccount, @HeaderMap headers: Map<String, String>? = null)
     : Response<Account>
+    
+    @GET ("/service/platform/order-manage/v1.0/company/{company_id}/shipment/{shipment_id}/packages")
+    suspend fun getShipmentPackages(@Path("company_id") companyId: String, @Path("shipment_id") shipmentId: String, @HeaderMap headers: Map<String, String>? = null)
+    : Response<PackagesResponseSchema>
+    
+    @POST ("/service/platform/order-manage/v1.0/company/{company_id}/shipment/{shipment_id}/packages")
+    suspend fun createShipmentPackages(@Path("company_id") companyId: String, @Path("shipment_id") shipmentId: String,@Body body: PackagesSchema, @HeaderMap headers: Map<String, String>? = null)
+    : Response<BaseResponseSchema>
+    
+    @PUT ("/service/platform/order-manage/v1.0/company/{company_id}/shipment/{shipment_id}/packages")
+    suspend fun updateShipmentPackages(@Path("company_id") companyId: String, @Path("shipment_id") shipmentId: String,@Body body: PackagesSchema, @HeaderMap headers: Map<String, String>? = null)
+    : Response<BaseResponseSchema>
     
     @GET ("/service/platform/order/v1.0/company/{company_id}/application/{application_id}/orders/shipments/{shipment_id}/line_number/{line_number}/reasons")
     suspend fun getShipmentBagReasons(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Path("shipment_id") shipmentId: String, @Path("line_number") lineNumber: String, @HeaderMap headers: Map<String, String>? = null)

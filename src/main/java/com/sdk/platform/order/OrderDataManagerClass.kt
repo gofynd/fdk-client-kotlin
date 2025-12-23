@@ -44,18 +44,6 @@ class OrderDataManagerClass(val config: PlatformConfig, val unauthorizedAction: 
     }
     
     
-    suspend fun invalidateShipmentCache(body: InvalidateShipmentCachePayload, headers: Map<String, String> = emptyMap())
-    : Response<InvalidateShipmentCacheResponseSchema>? {
-
-        return if (config.oauthClient.isAccessTokenValid()) {
-            orderApiList?.invalidateShipmentCache(
-        companyId = config.companyId, body = body,headers = headers)
-        } else {
-            null
-        }
-    }
-    
-    
     suspend fun reassignLocation(body: StoreReassign, headers: Map<String, String> = emptyMap())
     : Response<StoreReassignResponseSchema>? {
 
@@ -170,18 +158,6 @@ class OrderDataManagerClass(val config: PlatformConfig, val unauthorizedAction: 
         return if (config.oauthClient.isAccessTokenValid()) {
             orderApiList?.updatePackagingDimensions(
         companyId = config.companyId, body = body,headers = headers)
-        } else {
-            null
-        }
-    }
-    
-    
-    suspend fun createOrderDeprecated(xOrderingSource: String,xApplicationId: String?=null,xExtensionId: String?=null,body: CreateOrderAPI, headers: Map<String, String> = emptyMap())
-    : Response<CreateOrderResponseSchema>? {
-
-        return if (config.oauthClient.isAccessTokenValid()) {
-            orderApiList?.createOrderDeprecated(
-        xOrderingSource = xOrderingSource,xApplicationId = xApplicationId,xExtensionId = xExtensionId,companyId = config.companyId, body = body,headers = headers)
         } else {
             null
         }
@@ -618,6 +594,42 @@ class OrderDataManagerClass(val config: PlatformConfig, val unauthorizedAction: 
         return if (config.oauthClient.isAccessTokenValid()) {
             orderApiList?.updateAccount(
         companyId = config.companyId,channelAccountId = channelAccountId, body = body,headers = headers)
+        } else {
+            null
+        }
+    }
+    
+    
+    suspend fun getShipmentPackages(shipmentId: String, headers: Map<String, String> = emptyMap())
+    : Response<PackagesResponseSchema>? {
+
+        return if (config.oauthClient.isAccessTokenValid()) {
+            orderApiList?.getShipmentPackages(
+        companyId = config.companyId,shipmentId = shipmentId, headers = headers)
+        } else {
+            null
+        }
+    }
+    
+    
+    suspend fun createShipmentPackages(shipmentId: String,body: PackagesSchema, headers: Map<String, String> = emptyMap())
+    : Response<BaseResponseSchema>? {
+
+        return if (config.oauthClient.isAccessTokenValid()) {
+            orderApiList?.createShipmentPackages(
+        companyId = config.companyId,shipmentId = shipmentId, body = body,headers = headers)
+        } else {
+            null
+        }
+    }
+    
+    
+    suspend fun updateShipmentPackages(shipmentId: String,body: PackagesSchema, headers: Map<String, String> = emptyMap())
+    : Response<BaseResponseSchema>? {
+
+        return if (config.oauthClient.isAccessTokenValid()) {
+            orderApiList?.updateShipmentPackages(
+        companyId = config.companyId,shipmentId = shipmentId, body = body,headers = headers)
         } else {
             null
         }
@@ -1275,8 +1287,6 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     
     
     
-    
-    
     suspend fun getRules(body: RuleListRequestSchema, headers: Map<String, String> = emptyMap())
     : Response<RuleListResponseSchema>? {
         return if (config.oauthClient.isAccessTokenValid()) {
@@ -1317,6 +1327,9 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
             null
         }
     }
+    
+    
+    
     
     
     

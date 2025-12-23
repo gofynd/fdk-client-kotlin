@@ -12,6 +12,11 @@ interface OrderApiList {
     
     
     @GET
+    suspend fun getRefundModes(@Url url1: String?     ,  @Query("line_numbers") lineNumbers: ArrayList<Int>?, @HeaderMap headers: Map<String, String>? = null)
+    : Response<RefundOptions>
+    
+    
+    @GET
     suspend fun getOrders(@Url url1: String?    ,          @Query("status") status: Int?, @Query("page_no") pageNo: Int?, @Query("page_size") pageSize: Int?, @Query("from_date") fromDate: String?, @Query("to_date") toDate: String?, @Query("start_date") startDate: String?, @Query("end_date") endDate: String?, @Query("custom_meta") customMeta: String?, @Query("allow_inactive") allowInactive: Boolean?, @HeaderMap headers: Map<String, String>? = null)
     : Response<OrderList>
     

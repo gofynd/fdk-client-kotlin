@@ -19,11 +19,7 @@ class LogisticDataManagerClass(val config: ApplicationConfig, val unauthorizedAc
 
     init{
             
-                    _relativeUrls["getPincodeCity"] = "/service/application/logistics/v1.0/pincode/{pincode}".substring(1)
-            
                     _relativeUrls["getAllCountries"] = "/service/application/logistics/v1.0/country-list".substring(1)
-            
-                    _relativeUrls["getCourierPartners"] = "/service/application/logistics/v1.0/company/{company_id}/application/{application_id}/shipment/courier-partners".substring(1)
             
                     _relativeUrls["getCountries"] = "/service/application/logistics/v2.0/countries".substring(1)
             
@@ -38,6 +34,8 @@ class LogisticDataManagerClass(val config: ApplicationConfig, val unauthorizedAc
                     _relativeUrls["validateAddress"] = "/service/application/logistics/v1.0/country/{country_iso_code}/address/templates/{template_name}/validate".substring(1)
             
                     _relativeUrls["getFulfillmentOptions"] = "/service/application/logistics/v1.0/fulfillment-options".substring(1)
+            
+                    _relativeUrls["getFulfillmentOptionStores"] = "/service/application/logistics/v1.0/fulfillment-options/{slug}/stores".substring(1)
             
     }
 
@@ -74,30 +72,10 @@ class LogisticDataManagerClass(val config: ApplicationConfig, val unauthorizedAc
         return retrofitHttpClient?.initializeRestClient(LogisticApiList::class.java) as? LogisticApiList
     }
     
-    suspend fun getPincodeCity(pincode: String, headers: Map<String, String> = emptyMap()): Response<PincodeDetailsResult>? {
-        var fullUrl : String? = _relativeUrls["getPincodeCity"]
-        
-        fullUrl = fullUrl?.replace("{" + "pincode" +"}",pincode.toString())
-        
-        return logisticApiList?.getPincodeCity(fullUrl,  headers = headers)}
-
-    
-    
     suspend fun getAllCountries( headers: Map<String, String> = emptyMap()): Response<CountryResult>? {
         var fullUrl : String? = _relativeUrls["getAllCountries"]
         
         return logisticApiList?.getAllCountries(fullUrl, headers = headers)}
-
-    
-    
-    suspend fun getCourierPartners(companyId: Int,applicationId: String,body: ShipmentCourierPartnerDetails, headers: Map<String, String> = emptyMap()): Response<ShipmentCourierPartnerResult>? {
-        var fullUrl : String? = _relativeUrls["getCourierPartners"]
-        
-        fullUrl = fullUrl?.replace("{" + "company_id" +"}",companyId.toString())
-        
-        fullUrl = fullUrl?.replace("{" + "application_id" +"}",applicationId.toString())
-        
-        return logisticApiList?.getCourierPartners(fullUrl,   body = body,headers = headers)}
 
     
     
@@ -117,10 +95,10 @@ class LogisticDataManagerClass(val config: ApplicationConfig, val unauthorizedAc
 
     
     
-    suspend fun getDeliveryPromise(xLocationDetail: String,xApplicationData: String,pageNo: Int?=null,pageSize: Int?=null, headers: Map<String, String> = emptyMap()): Response<GetPromiseDetails>? {
+    suspend fun getDeliveryPromise(xLocationDetail: String,pageNo: Int?=null,pageSize: Int?=null, headers: Map<String, String> = emptyMap()): Response<GetPromiseDetails>? {
         var fullUrl : String? = _relativeUrls["getDeliveryPromise"]
         
-        return logisticApiList?.getDeliveryPromise(fullUrl,   xLocationDetail = xLocationDetail,  xApplicationData = xApplicationData,  pageNo = pageNo,  pageSize = pageSize,headers = headers)}
+        return logisticApiList?.getDeliveryPromise(fullUrl,   xLocationDetail = xLocationDetail,  pageNo = pageNo,  pageSize = pageSize,headers = headers)}
 
     
     
@@ -159,6 +137,15 @@ class LogisticDataManagerClass(val config: ApplicationConfig, val unauthorizedAc
         var fullUrl : String? = _relativeUrls["getFulfillmentOptions"]
         
         return logisticApiList?.getFulfillmentOptions(fullUrl,   xApplicationData = xApplicationData,  productSlug = productSlug,  storeId = storeId,headers = headers)}
+
+    
+    
+    suspend fun getFulfillmentOptionStores(slug: String,pageNo: Int?=null,pageSize: Int?=null, headers: Map<String, String> = emptyMap()): Response<FulfillmentOptionStores>? {
+        var fullUrl : String? = _relativeUrls["getFulfillmentOptionStores"]
+        
+        fullUrl = fullUrl?.replace("{" + "slug" +"}",slug.toString())
+        
+        return logisticApiList?.getFulfillmentOptionStores(fullUrl,    pageNo = pageNo,  pageSize = pageSize,headers = headers)}
 
     
     

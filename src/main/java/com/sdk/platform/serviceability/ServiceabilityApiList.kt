@@ -133,10 +133,6 @@ interface ServiceabilityApiList {
     suspend fun getCompanyConfiguration(@Path("company_id") companyId: String, @HeaderMap headers: Map<String, String>? = null)
     : Response<CompanyConfig>
     
-    @PUT ("/service/platform/logistics/v1.0/company/{company_id}/application/{application_id}/configuration")
-    suspend fun updateApplicationConfiguration(@Path("company_id") companyId: String, @Path("application_id") applicationId: String,@Body body: ApplicationConfigPutDetail, @HeaderMap headers: Map<String, String>? = null)
-    : Response<ApplicationConfigPut>
-    
     @GET ("/service/platform/logistics/v1.0/company/{company_id}/application/{application_id}/configuration")
     suspend fun getApplicationConfiguration(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @HeaderMap headers: Map<String, String>? = null)
     : Response<ApplicationConfigGetResult>

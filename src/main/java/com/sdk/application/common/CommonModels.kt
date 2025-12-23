@@ -213,6 +213,33 @@ data class ApplicationMeta(
 
              
 /*
+    Model: RegionDetails
+*/
+@Parcelize
+data class RegionDetails(
+    
+    
+    
+    @SerializedName("slug")
+    var slug: String?=null,
+    
+    @SerializedName("zone")
+    var zone: String?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
     Model: SecureUrl
 */
 @Parcelize

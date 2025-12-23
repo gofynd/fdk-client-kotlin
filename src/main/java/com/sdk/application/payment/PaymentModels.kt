@@ -3011,9 +3011,6 @@ data class RefundAccountDetails(
     
     
     
-    @SerializedName("is_verified_flag")
-    var isVerifiedFlag: Boolean?=null,
-    
     @SerializedName("data")
     var data: @RawValue HashMap<String,Any>?=null,
     
@@ -3024,8 +3021,6 @@ data class RefundAccountDetails(
     var message: String?=null
     
 ): Parcelable {
-    
-    
     
     
     
@@ -3061,9 +3056,14 @@ data class BankDetailsForOTP(
     var branchName: String?=null,
     
     @SerializedName("account_holder")
-    var accountHolder: String?=null
+    var accountHolder: String?=null,
+    
+    @SerializedName("upi")
+    var upi: String?=null
     
 ): Parcelable {
+    
+    
     
     
     
@@ -3093,10 +3093,15 @@ data class AddBeneficiaryDetailsOTP(
     @SerializedName("order_id")
     var orderId: String?=null,
     
+    @SerializedName("shipment_id")
+    var shipmentId: String?=null,
+    
     @SerializedName("details")
     var details: BankDetailsForOTP?=null
     
 ): Parcelable {
+    
+    
     
     
     
@@ -5680,10 +5685,32 @@ data class ValidateCustomerCreditSchema(
 
              
 /*
-    Model: RefundBeneficiaries
+    Model: GetRefundBeneficiary
 */
 @Parcelize
-data class RefundBeneficiaries(
+data class GetRefundBeneficiary(
+    
+    
+    
+    @SerializedName("data")
+    var data: BeneficiaryData?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: BeneficiaryData
+*/
+@Parcelize
+data class BeneficiaryData(
     
     
     

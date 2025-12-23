@@ -185,6 +185,33 @@ data class ApplicationRedirections(
 
              
 /*
+    Model: RegionDetails
+*/
+@Parcelize
+data class RegionDetails(
+    
+    
+    
+    @SerializedName("slug")
+    var slug: String?=null,
+    
+    @SerializedName("zone")
+    var zone: String?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
     Model: ApplicationMeta
 */
 @Parcelize
@@ -317,9 +344,19 @@ data class Application(
     var domain: Domain?=null,
     
     @SerializedName("slug")
-    var slug: String?=null
+    var slug: String?=null,
+    
+    @SerializedName("region")
+    var region: String?=null,
+    
+    @SerializedName("region_details")
+    var regionDetails: RegionDetails?=null
     
 ): Parcelable {
+    
+    
+    
+    
     
     
     

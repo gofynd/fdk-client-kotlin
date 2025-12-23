@@ -1888,6 +1888,9 @@ data class GetLocationSchema(
     @SerializedName("bulk_shipment")
     var bulkShipment: Boolean?=null,
     
+    @SerializedName("multi_piece_shipment")
+    var multiPieceShipment: Boolean?=null,
+    
     @SerializedName("auto_assign_courier_partner")
     var autoAssignCourierPartner: Boolean?=null,
     
@@ -1895,6 +1898,8 @@ data class GetLocationSchema(
     var qcBasedReturnInventorySync: Boolean?=null
     
 ): Parcelable {
+    
+    
     
     
     
@@ -2163,10 +2168,15 @@ data class LocationSchema(
     @SerializedName("bulk_shipment")
     var bulkShipment: Boolean?=null,
     
+    @SerializedName("multi_piece_shipment")
+    var multiPieceShipment: Boolean?=null,
+    
     @SerializedName("auto_assign_courier_partner")
     var autoAssignCourierPartner: Boolean?=null
     
 ): Parcelable {
+    
+    
     
     
     

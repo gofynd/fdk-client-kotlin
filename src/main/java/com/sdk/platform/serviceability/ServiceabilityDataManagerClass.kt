@@ -143,7 +143,6 @@ class ServiceabilityDataManagerClass(val config: PlatformConfig, val unauthorize
     
     
     
-    
     suspend fun bulkTat(extensionId: String,schemeId: String,body: BulkRegionJobDetails, headers: Map<String, String> = emptyMap())
     : Response<BulkRegionResultItemData>? {
 
@@ -687,16 +686,6 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     }
     
     
-    
-    
-    suspend fun updateApplicationConfiguration(body: ApplicationConfigPutDetail, headers: Map<String, String> = emptyMap())
-    : Response<ApplicationConfigPut>? {
-        return if (config.oauthClient.isAccessTokenValid()) {
-                serviceabilityApiList?.updateApplicationConfiguration(companyId = config.companyId ,applicationId = applicationId , body = body,headers = headers)
-        } else {
-            null
-        }
-    }
     
     
     suspend fun getApplicationConfiguration( headers: Map<String, String> = emptyMap())

@@ -515,7 +515,7 @@ data class BulkUserAttributeRequestBody(
     var definitionId: String?=null,
     
     @SerializedName("value")
-    var value: @RawValue Any?=null
+    var value: @RawValue HashMap<String,Any>?=null
     
 ): Parcelable {
     
@@ -1536,7 +1536,7 @@ data class ConditionsSchema(
     var type: String?=null,
     
     @SerializedName("value")
-    var value: String?=null,
+    var value: @RawValue HashMap<String,Any>?=null,
     
     @SerializedName("ignore_year")
     var ignoreYear: Boolean?=null
@@ -1679,7 +1679,7 @@ data class UserAttributeFilterRequestConditions(
     var type: String?=null,
     
     @SerializedName("value")
-    var value: @RawValue Any?=null
+    var value: @RawValue HashMap<String,Any>?=null
     
 ): Parcelable {
     

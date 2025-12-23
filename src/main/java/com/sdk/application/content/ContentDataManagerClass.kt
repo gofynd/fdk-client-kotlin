@@ -59,6 +59,8 @@ class ContentDataManagerClass(val config: ApplicationConfig, val unauthorizedAct
             
                     _relativeUrls["getCustomFieldsByResourceId"] = "/service/application/content/v2.0/customfields/resource/{resource}/{resource_slug}".substring(1)
             
+                    _relativeUrls["getBulkCustomFieldsByResource"] = "/service/application/content/v2.0/customfields/resource/{resource}".substring(1)
+            
                     _relativeUrls["getTranslateUILabels"] = "/service/application/content/v1.0/translate-ui-labels".substring(1)
             
                     _relativeUrls["fetchResourceTranslations"] = "/service/application/content/v1.0/resource/translations/{type}/{locale}".substring(1)
@@ -257,6 +259,15 @@ class ContentDataManagerClass(val config: ApplicationConfig, val unauthorizedAct
         fullUrl = fullUrl?.replace("{" + "resource_slug" +"}",resourceSlug.toString())
         
         return contentApiList?.getCustomFieldsByResourceId(fullUrl,   headers = headers)}
+
+    
+    
+    suspend fun getBulkCustomFieldsByResource(resource: String,resourceIds: String,keys: String?=null,namespaces: String?=null, headers: Map<String, String> = emptyMap()): Response<BulkCustomFieldsResponseByResourceSchema>? {
+        var fullUrl : String? = _relativeUrls["getBulkCustomFieldsByResource"]
+        
+        fullUrl = fullUrl?.replace("{" + "resource" +"}",resource.toString())
+        
+        return contentApiList?.getBulkCustomFieldsByResource(fullUrl,    resourceIds = resourceIds,  keys = keys,  namespaces = namespaces,headers = headers)}
 
     
     

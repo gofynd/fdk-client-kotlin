@@ -2477,6 +2477,9 @@ data class CompanyConfig(
     @SerializedName("company_id")
     var companyId: Int?=null,
     
+    @SerializedName("is_rate_card_enabled")
+    var isRateCardEnabled: Boolean?=null,
+    
     @SerializedName("sort")
     var sort: ArrayList<String>?=null,
     
@@ -2484,6 +2487,8 @@ data class CompanyConfig(
     var logisticsAsActual: String?=null
     
 ): Parcelable {
+    
+    
     
     
     
@@ -5103,10 +5108,15 @@ data class CompanyConfigurationSchema(
     
     
     
+    @SerializedName("is_rate_card_enabled")
+    var isRateCardEnabled: Boolean?=null,
+    
     @SerializedName("sort")
     var sort: ArrayList<String>?=null
     
 ): Parcelable {
+    
+    
     
     
     
@@ -6797,14 +6807,14 @@ data class FulfillmentOptionStore(
     @SerializedName("uid")
     var uid: Int?=null,
     
+    @SerializedName("store_code")
+    var storeCode: String?=null,
+    
     @SerializedName("address")
     var address: Address?=null,
     
     @SerializedName("company_id")
     var companyId: Int?=null,
-    
-    @SerializedName("display_name")
-    var displayName: String?=null,
     
     @SerializedName("name")
     var name: String?=null,
@@ -6813,9 +6823,49 @@ data class FulfillmentOptionStore(
     var storeType: String?=null,
     
     @SerializedName("tags")
-    var tags: ArrayList<String>?=null
+    var tags: ArrayList<String>?=null,
+    
+    @SerializedName("avg_order_processing_time")
+    var avgOrderProcessingTime: Int?=null,
+    
+    @SerializedName("timezone")
+    var timezone: String?=null,
+    
+    @SerializedName("holiday_list")
+    var holidayList: ArrayList<ArrayList<String>>?=null,
+    
+    @SerializedName("customfields")
+    var customfields: @RawValue HashMap<String,Any>?=null,
+    
+    @SerializedName("is_open")
+    var isOpen: Boolean?=null,
+    
+    @SerializedName("promise_customfields")
+    var promiseCustomfields: @RawValue HashMap<String,Any>?=null,
+    
+    @SerializedName("distance")
+    var distance: StoreDistance?=null,
+    
+    @SerializedName("timing")
+    var timing: StoreTimingDetails?=null
     
 ): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     
     
     
@@ -6849,11 +6899,17 @@ data class Address(
     @SerializedName("address1")
     var address1: String?=null,
     
+    @SerializedName("address2")
+    var address2: String?=null,
+    
     @SerializedName("country")
     var country: String?=null,
     
     @SerializedName("pincode")
     var pincode: String?=null,
+    
+    @SerializedName("postal_code")
+    var postalCode: String?=null,
     
     @SerializedName("city")
     var city: String?=null,
@@ -6868,7 +6924,10 @@ data class Address(
     var longitude: Double?=null,
     
     @SerializedName("country_code")
-    var countryCode: String?=null
+    var countryCode: String?=null,
+    
+    @SerializedName("lat_long")
+    var latLong: LatLong?=null
     
 ): Parcelable {
     
@@ -6883,6 +6942,162 @@ data class Address(
     
     
     
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: LatLong
+*/
+@Parcelize
+data class LatLong(
+    
+    
+    
+    @SerializedName("type")
+    var type: String?=null,
+    
+    @SerializedName("coordinates")
+    var coordinates: ArrayList<Double>?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: StoreDistance
+*/
+@Parcelize
+data class StoreDistance(
+    
+    
+    
+    @SerializedName("value")
+    var value: Double?=null,
+    
+    @SerializedName("unit")
+    var unit: String?=null,
+    
+    @SerializedName("reason")
+    var reason: String?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: StoreTimingDetails
+*/
+@Parcelize
+data class StoreTimingDetails(
+    
+    
+    
+    @SerializedName("operational_timing")
+    var operationalTiming: ArrayList<StoreTiming>?=null,
+    
+    @SerializedName("order_acceptance_timing")
+    var orderAcceptanceTiming: ArrayList<StoreTiming>?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: StoreTiming
+*/
+@Parcelize
+data class StoreTiming(
+    
+    
+    
+    @SerializedName("weekday")
+    var weekday: String?=null,
+    
+    @SerializedName("open")
+    var open: Boolean?=null,
+    
+    @SerializedName("opening")
+    var opening: Time?=null,
+    
+    @SerializedName("closing")
+    var closing: Time?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: Time
+*/
+@Parcelize
+data class Time(
+    
+    
+    
+    @SerializedName("hour")
+    var hour: Int?=null,
+    
+    @SerializedName("minute")
+    var minute: Int?=null
+    
+): Parcelable {
     
     
     
@@ -8222,6 +8437,9 @@ data class CourierPartnerSchemeFeatures(
     @SerializedName("mps")
     var mps: Boolean?=null,
     
+    @SerializedName("b2b")
+    var b2B: Boolean?=null,
+    
     @SerializedName("ndr")
     var ndr: Boolean?=null,
     
@@ -8274,6 +8492,8 @@ data class CourierPartnerSchemeFeatures(
     var nonQcShipmentItemQuantity: Int?=null
     
 ): Parcelable {
+    
+    
     
     
     
