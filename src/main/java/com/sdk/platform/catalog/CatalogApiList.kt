@@ -141,6 +141,10 @@ interface CatalogApiList {
     suspend fun getAppProducts(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Query("brand_ids") brandIds: ArrayList<Int>?, @Query("category_ids") categoryIds: ArrayList<Int>?, @Query("department_ids") departmentIds: ArrayList<Int>?, @Query("tags") tags: ArrayList<String>?, @Query("item_ids") itemIds: ArrayList<Int>?, @Query("page_no") pageNo: Int?, @Query("page_size") pageSize: Int?, @Query("q") q: String?, @HeaderMap headers: Map<String, String>? = null)
     : Response<RawProductListingResponseSchema>
     
+    @GET ("/service/platform/catalog/v1.0/company/{company_id}/application/{application_id}/raw-products/price")
+    suspend fun getAppProductPrices(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Query("item_ids") itemIds: ArrayList<Int>, @HeaderMap headers: Map<String, String>? = null)
+    : Response<AppProductPricesSchema>
+    
     @GET ("/service/platform/catalog/v1.0/company/{company_id}/application/{application_id}/return-config")
     suspend fun getAppReturnConfiguration(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @HeaderMap headers: Map<String, String>? = null)
     : Response<AppReturnConfigResponseSchema>
@@ -578,7 +582,7 @@ interface CatalogApiList {
     : Response<HashMap<String,Any>>
     
     @GET ("/service/platform/catalog/v1.0/company/{company_id}/taxes/rules/{rule_id}/versions")
-    suspend fun getTaxVersionDetails(@Path("company_id") companyId: String, @Path("rule_id") ruleId: String, @Query("version_status") versionStatus: String?, @Query("limit") limit: String?, @Query("page") page: String?, @HeaderMap headers: Map<String, String>? = null)
+    suspend fun getTaxVersionDetails(@Path("company_id") companyId: String, @Path("rule_id") ruleId: String, @Query("version_status") versionStatus: String?, @Query("q") q: String?, @Query("limit") limit: String?, @Query("page") page: String?, @HeaderMap headers: Map<String, String>? = null)
     : Response<TaxRuleVersion>
     
     @POST ("/service/platform/catalog/v1.0/company/{company_id}/taxes/rules/{rule_id}/versions")
@@ -620,5 +624,37 @@ interface CatalogApiList {
     @DELETE ("/service/platform/catalog/v1.0/company/{company_id}/application/{application_id}/user/{user_id}/products/{item_id}/follow")
     suspend fun unfollowProductById(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Path("user_id") userId: String, @Path("item_id") itemId: String, @HeaderMap headers: Map<String, String>? = null)
     : Response<FollowProduct>
+    
+    @GET ("/service/platform/catalog/v1.0/company/{company_id}/application/{application_id}/price/list")
+    suspend fun getPriceFactories(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Query("q") q: String?, @HeaderMap headers: Map<String, String>? = null)
+    : Response<PriceFactoryListResponseSchema>
+    
+    @POST ("/service/platform/catalog/v1.0/company/{company_id}/application/{application_id}/price")
+    suspend fun createPriceFactory(@Path("company_id") companyId: String, @Path("application_id") applicationId: String,@Body body: CreatePriceFactoryConfigSchema, @HeaderMap headers: Map<String, String>? = null)
+    : Response<SuccessResponseSchema>
+    
+    @GET ("/service/platform/catalog/v1.0/company/{company_id}/application/{application_id}/price/{price_factory_id}")
+    suspend fun getPriceFactory(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Path("price_factory_id") priceFactoryId: String, @HeaderMap headers: Map<String, String>? = null)
+    : Response<PriceFactoryConfigSchema>
+    
+    @PATCH ("/service/platform/catalog/v1.0/company/{company_id}/application/{application_id}/price/{price_factory_id}")
+    suspend fun updatePriceFactory(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Path("price_factory_id") priceFactoryId: String,@Body body: UpdatePriceFactoryConfigSchema, @HeaderMap headers: Map<String, String>? = null)
+    : Response<SuccessResponseSchema>
+    
+    @DELETE ("/service/platform/catalog/v1.0/company/{company_id}/application/{application_id}/price/{price_factory_id}")
+    suspend fun deletePriceFactory(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Path("price_factory_id") priceFactoryId: String, @HeaderMap headers: Map<String, String>? = null)
+    : Response<SuccessResponseSchema>
+    
+    @GET ("/service/platform/catalog/v1.0/company/{company_id}/application/{application_id}/price/{price_factory_id}/products")
+    suspend fun getPriceFactoryProducts(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Path("price_factory_id") priceFactoryId: String, @Query("brand_ids") brandIds: ArrayList<Int>?, @Query("category_ids") categoryIds: ArrayList<Int>?, @Query("seller_identifier") sellerIdentifier: String?, @Query("item_code") itemCode: String?, @Query("slug") slug: String?, @Query("name") name: String?, @Query("active") active: Boolean?, @Query("page_no") pageNo: Int?, @Query("page_size") pageSize: Int?, @HeaderMap headers: Map<String, String>? = null)
+    : Response<PriceFactoryProductListResponseSchema>
+    
+    @GET ("/service/platform/catalog/v1.0/company/{company_id}/application/{application_id}/price/{price_factory_id}/products/{item_id}")
+    suspend fun getPriceFactoryProduct(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Path("price_factory_id") priceFactoryId: String, @Path("item_id") itemId: String, @HeaderMap headers: Map<String, String>? = null)
+    : Response<PriceFactoryProductResponseSchema>
+    
+    @PATCH ("/service/platform/catalog/v1.0/company/{company_id}/application/{application_id}/price/{price_factory_id}/products/{item_id}")
+    suspend fun updatePriceFactoryProduct(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Path("price_factory_id") priceFactoryId: String, @Path("item_id") itemId: String,@Body body: UpsertPriceFactoryProductSchema, @HeaderMap headers: Map<String, String>? = null)
+    : Response<SuccessResponseSchema>
     
 }

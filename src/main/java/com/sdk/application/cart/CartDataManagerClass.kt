@@ -79,6 +79,14 @@ class CartDataManagerClass(val config: ApplicationConfig, val unauthorizedAction
             
                     _relativeUrls["checkoutCartV2"] = "/service/application/cart/v2.0/checkout".substring(1)
             
+                    _relativeUrls["getOffers"] = "/service/application/cart/v1.0/offer".substring(1)
+            
+                    _relativeUrls["applyOffer"] = "/service/application/cart/v1.0/offer".substring(1)
+            
+                    _relativeUrls["removeOffer"] = "/service/application/cart/v1.0/offer".substring(1)
+            
+                    _relativeUrls["getProductsByOfferId"] = "/service/application/cart/v1.0/eligible-offer-products".substring(1)
+            
     }
 
     public fun update(updatedUrlMap : HashMap<String,String>){
@@ -333,6 +341,34 @@ class CartDataManagerClass(val config: ApplicationConfig, val unauthorizedAction
         var fullUrl : String? = _relativeUrls["checkoutCartV2"]
         
         return cartApiList?.checkoutCartV2(fullUrl,   xOrderingSource = xOrderingSource,  buyNow = buyNow,  cartType = cartType,body = body,headers = headers)}
+
+    
+    
+    suspend fun getOffers(mode: String?=null,id: String?=null,buyNow: Boolean?=null,productSlug: String?=null,storeId: String?=null,type: Boolean?=null,productSize: String?=null, headers: Map<String, String> = emptyMap()): Response<GetOfferResult>? {
+        var fullUrl : String? = _relativeUrls["getOffers"]
+        
+        return cartApiList?.getOffers(fullUrl,   mode = mode,  id = id,  buyNow = buyNow,  productSlug = productSlug,  storeId = storeId,  type = type,  productSize = productSize,headers = headers)}
+
+    
+    
+    suspend fun applyOffer(id: String,buyNow: Boolean?=null,body: ApplyOfferSchema, headers: Map<String, String> = emptyMap()): Response<OfferListItem>? {
+        var fullUrl : String? = _relativeUrls["applyOffer"]
+        
+        return cartApiList?.applyOffer(fullUrl,   id = id,  buyNow = buyNow,body = body,headers = headers)}
+
+    
+    
+    suspend fun removeOffer(id: String,buyNow: Boolean?=null, headers: Map<String, String> = emptyMap()): Response<OfferListItem>? {
+        var fullUrl : String? = _relativeUrls["removeOffer"]
+        
+        return cartApiList?.removeOffer(fullUrl,   id = id,  buyNow = buyNow,headers = headers)}
+
+    
+    
+    suspend fun getProductsByOfferId(offerId: String,page: Int?=null,pageSize: Int?=null, headers: Map<String, String> = emptyMap()): Response<EligibleProductsResult>? {
+        var fullUrl : String? = _relativeUrls["getProductsByOfferId"]
+        
+        return cartApiList?.getProductsByOfferId(fullUrl,   offerId = offerId,  page = page,  pageSize = pageSize,headers = headers)}
 
     
     

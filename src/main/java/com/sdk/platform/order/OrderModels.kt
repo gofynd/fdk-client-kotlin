@@ -10610,6 +10610,9 @@ data class CreateOrderShipmentSchema(
     @SerializedName("external_shipment_id")
     var externalShipmentId: String?=null,
     
+    @SerializedName("invoice_id")
+    var invoiceId: String?=null,
+    
     @SerializedName("line_items")
     var lineItems: ArrayList<LineItemSchema>?=null,
     
@@ -10641,6 +10644,8 @@ data class CreateOrderShipmentSchema(
     var meta: @RawValue HashMap<String,Any>?=null
     
 ): Parcelable {
+    
+    
     
     
     
@@ -11298,10 +11303,15 @@ data class CreateOrderRequestSchema(
     @SerializedName("is_draft")
     var isDraft: Boolean?=null,
     
+    @SerializedName("is_offline_order")
+    var isOfflineOrder: Boolean?=null,
+    
     @SerializedName("meta")
     var meta: @RawValue HashMap<String,Any>?=null
     
 ): Parcelable {
+    
+    
     
     
     

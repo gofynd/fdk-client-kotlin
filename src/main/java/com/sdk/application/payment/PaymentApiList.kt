@@ -57,7 +57,7 @@ interface PaymentApiList {
     
     
     @GET
-    suspend fun getPaymentModeRoutes(@Url url1: String?    ,           @Query("amount") amount: Int, @Query("cart_id") cartId: String, @Query("checkout_mode") checkoutMode: String?, @Query("refresh") refresh: Boolean?, @Query("order_id") orderId: String?, @Query("card_reference") cardReference: String?, @Query("user_details") userDetails: String?, @Query("display_split") displaySplit: Boolean?, @Query("advance_payment") advancePayment: Boolean?, @Query("shipment_id") shipmentId: String?, @HeaderMap headers: Map<String, String>? = null)
+    suspend fun getPaymentModeRoutes(@Url url1: String?    ,            @Query("amount") amount: Int, @Query("cart_id") cartId: String, @Query("checkout_mode") checkoutMode: String?, @Query("refresh") refresh: Boolean?, @Query("order_id") orderId: String?, @Query("card_reference") cardReference: String?, @Query("user_details") userDetails: String?, @Query("display_split") displaySplit: Boolean?, @Query("advance_payment") advancePayment: Boolean?, @Query("shipment_id") shipmentId: String?, @Query("fulfillment_option") fulfillmentOption: ArrayList<String>?, @HeaderMap headers: Map<String, String>? = null)
     : Response<PaymentModeRouteDetails>
     
     

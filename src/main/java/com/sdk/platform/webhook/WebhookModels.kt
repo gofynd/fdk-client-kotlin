@@ -238,6 +238,15 @@ data class EventConfig(
     @SerializedName("event_schema")
     var eventSchema: @RawValue HashMap<String,Any>?=null,
     
+    @SerializedName("sunset_date")
+    var sunsetDate: String?=null,
+    
+    @SerializedName("announcement_date")
+    var announcementDate: String?=null,
+    
+    @SerializedName("support_end_date")
+    var supportEndDate: String?=null,
+    
     @SerializedName("group")
     var group: String?=null,
     
@@ -257,6 +266,12 @@ data class EventConfig(
     var updatedOn: String?=null
     
 ): Parcelable {
+    
+    
+    
+    
+    
+    
     
     
     

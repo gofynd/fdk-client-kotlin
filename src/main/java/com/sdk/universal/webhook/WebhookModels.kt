@@ -51,9 +51,24 @@ data class EventConfig(
     var updatedOn: String?=null,
     
     @SerializedName("group")
-    var group: String?=null
+    var group: String?=null,
+    
+    @SerializedName("sunset_date")
+    var sunsetDate: String?=null,
+    
+    @SerializedName("announcement_date")
+    var announcementDate: String?=null,
+    
+    @SerializedName("support_end_date")
+    var supportEndDate: String?=null
     
 ): Parcelable {
+    
+    
+    
+    
+    
+    
     
     
     

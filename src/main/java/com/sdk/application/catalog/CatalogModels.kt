@@ -6489,5 +6489,111 @@ data class ProductBundleItemsWithSlug(
 
 
 
+             
+/*
+    Model: CurrenciesSchema
+*/
+@Parcelize
+data class CurrenciesSchema(
+    
+    
+    
+    @SerializedName("code")
+    var code: String?=null,
+    
+    @SerializedName("name")
+    var name: String?=null,
+    
+    @SerializedName("symbol")
+    var symbol: String?=null,
+    
+    @SerializedName("is_default")
+    var isDefault: Boolean?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: CountryCurrencyMapping
+*/
+@Parcelize
+data class CountryCurrencyMapping(
+    
+    
+    
+    @SerializedName("name")
+    var name: String?=null,
+    
+    @SerializedName("iso2")
+    var iso2: String?=null,
+    
+    @SerializedName("iso3")
+    var iso3: String?=null,
+    
+    @SerializedName("uid")
+    var uid: String?=null,
+    
+    @SerializedName("is_default")
+    var isDefault: Boolean?=null,
+    
+    @SerializedName("currencies")
+    var currencies: ArrayList<CurrenciesSchema>?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: AvailableCountrySchema
+*/
+@Parcelize
+data class AvailableCountrySchema(
+    
+    
+    
+    @SerializedName("items")
+    var items: ArrayList<CountryCurrencyMapping>?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+}
+
+
+
 
 

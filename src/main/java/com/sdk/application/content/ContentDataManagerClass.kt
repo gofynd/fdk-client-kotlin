@@ -69,6 +69,8 @@ class ContentDataManagerClass(val config: ApplicationConfig, val unauthorizedAct
             
                     _relativeUrls["getSupportedLanguages"] = "/service/application/content/v1.0/languages".substring(1)
             
+                    _relativeUrls["getOrderTranslation"] = "/service/application/content/v1.0/resource/translations/orders".substring(1)
+            
     }
 
     public fun update(updatedUrlMap : HashMap<String,String>){
@@ -289,14 +291,14 @@ class ContentDataManagerClass(val config: ApplicationConfig, val unauthorizedAct
 
     
     
-    suspend fun fetchResourceTranslationsWithPayload(type: String,locale: String,resourceId: String,body: ResourcePayload, headers: Map<String, String> = emptyMap()): Response<ResourceTranslations>? {
+    suspend fun fetchResourceTranslationsWithPayload(type: String,locale: String,body: ResourcePayload, headers: Map<String, String> = emptyMap()): Response<ResourceTranslations>? {
         var fullUrl : String? = _relativeUrls["fetchResourceTranslationsWithPayload"]
         
         fullUrl = fullUrl?.replace("{" + "type" +"}",type.toString())
         
         fullUrl = fullUrl?.replace("{" + "locale" +"}",locale.toString())
         
-        return contentApiList?.fetchResourceTranslationsWithPayload(fullUrl,     resourceId = resourceId,body = body,headers = headers)}
+        return contentApiList?.fetchResourceTranslationsWithPayload(fullUrl,   body = body,headers = headers)}
 
     
     
@@ -304,6 +306,13 @@ class ContentDataManagerClass(val config: ApplicationConfig, val unauthorizedAct
         var fullUrl : String? = _relativeUrls["getSupportedLanguages"]
         
         return contentApiList?.getSupportedLanguages(fullUrl, headers = headers)}
+
+    
+    
+    suspend fun getOrderTranslation(body: OrderTranslationRequestSchema, headers: Map<String, String> = emptyMap()): Response<TranslationResult>? {
+        var fullUrl : String? = _relativeUrls["getOrderTranslation"]
+        
+        return contentApiList?.getOrderTranslation(fullUrl, body = body,headers = headers)}
 
     
     

@@ -14,6 +14,53 @@ import com.google.gson.annotations.SerializedName
 
              
 /*
+    Model: AggregatorToken
+*/
+@Parcelize
+data class AggregatorToken(
+    
+    
+    
+    @SerializedName("payment_mode_id")
+    var paymentModeId: Int?=null,
+    
+    @SerializedName("sub_payment_mode_code")
+    var subPaymentModeCode: String?=null,
+    
+    @SerializedName("token")
+    var token: String?=null,
+    
+    @SerializedName("status")
+    var status: String?=null,
+    
+    @SerializedName("is_active")
+    var isActive: Boolean?=null,
+    
+    @SerializedName("domain")
+    var domain: String?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
     Model: PaymentGatewayConfigDetails
 */
 @Parcelize
@@ -3762,6 +3809,342 @@ data class PlatformPaymentModeDetails(
 
              
 /*
+    Model: PaymentModeConfig
+*/
+@Parcelize
+data class PaymentModeConfig(
+    
+    
+    
+    @SerializedName("business_unit")
+    var businessUnit: String?=null,
+    
+    @SerializedName("device")
+    var device: String?=null,
+    
+    @SerializedName("is_active")
+    var isActive: Boolean?=null,
+    
+    @SerializedName("items")
+    var items: ArrayList<PaymentModeItems>?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: PaymentModeItems
+*/
+@Parcelize
+data class PaymentModeItems(
+    
+    
+    
+    @SerializedName("id")
+    var id: Int?=null,
+    
+    @SerializedName("name")
+    var name: String?=null,
+    
+    @SerializedName("short_code")
+    var shortCode: String?=null,
+    
+    @SerializedName("logos")
+    var logos: LogoSet?=null,
+    
+    @SerializedName("is_active")
+    var isActive: Boolean?=null,
+    
+    @SerializedName("sub_payment_mode")
+    var subPaymentMode: ArrayList<SubPaymentMode>?=null,
+    
+    @SerializedName("is_active_at_pg")
+    var isActiveAtPg: Boolean?=null,
+    
+    @SerializedName("fulfillment_options")
+    var fulfillmentOptions: @RawValue HashMap<String,Any>?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: SubPaymentMode
+*/
+@Parcelize
+data class SubPaymentMode(
+    
+    
+    
+    @SerializedName("code")
+    var code: String?=null,
+    
+    @SerializedName("is_active")
+    var isActive: Boolean?=null,
+    
+    @SerializedName("priority")
+    var priority: Int?=null,
+    
+    @SerializedName("logos")
+    var logos: LogoSet?=null,
+    
+    @SerializedName("name")
+    var name: String?=null,
+    
+    @SerializedName("is_active_at_pg")
+    var isActiveAtPg: Boolean?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: LogoSet
+*/
+@Parcelize
+data class LogoSet(
+    
+    
+    
+    @SerializedName("large")
+    var large: String?=null,
+    
+    @SerializedName("small")
+    var small: String?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: PlatformLogoSet
+*/
+@Parcelize
+data class PlatformLogoSet(
+    
+    
+    
+    @SerializedName("large")
+    var large: String?=null,
+    
+    @SerializedName("small")
+    var small: String?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: PlatformConfigPaymentModeDetails
+*/
+@Parcelize
+data class PlatformConfigPaymentModeDetails(
+    
+    
+    
+    @SerializedName("business_unit")
+    var businessUnit: String?=null,
+    
+    @SerializedName("device")
+    var device: String?=null,
+    
+    @SerializedName("fulfillment_options")
+    var fulfillmentOptions: @RawValue HashMap<String,Any>?=null,
+    
+    @SerializedName("is_active")
+    var isActive: Boolean?=null,
+    
+    @SerializedName("items")
+    var items: ArrayList<PlatformPaymentModeItem>?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: PlatformPaymentModeItem
+*/
+@Parcelize
+data class PlatformPaymentModeItem(
+    
+    
+    
+    @SerializedName("id")
+    var id: Int?=null,
+    
+    @SerializedName("name")
+    var name: String?=null,
+    
+    @SerializedName("short_code")
+    var shortCode: String?=null,
+    
+    @SerializedName("logos")
+    var logos: PlatformLogoSet?=null,
+    
+    @SerializedName("is_active")
+    var isActive: Boolean?=null,
+    
+    @SerializedName("is_active_at_pg")
+    var isActiveAtPg: Boolean?=null,
+    
+    @SerializedName("sub_payment_mode")
+    var subPaymentMode: ArrayList<PlatformSubPaymentMode>?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: PlatformSubPaymentMode
+*/
+@Parcelize
+data class PlatformSubPaymentMode(
+    
+    
+    
+    @SerializedName("code")
+    var code: String?=null,
+    
+    @SerializedName("name")
+    var name: String?=null,
+    
+    @SerializedName("is_active")
+    var isActive: Boolean?=null,
+    
+    @SerializedName("is_active_at_pg")
+    var isActiveAtPg: Boolean?=null,
+    
+    @SerializedName("priority")
+    var priority: Int?=null,
+    
+    @SerializedName("logos")
+    var logos: PlatformLogoSet?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
     Model: MerchnatPaymentModeCreation
 */
 @Parcelize
@@ -5712,6 +6095,33 @@ data class ValidateCustomerCreditSchema(
     
     
     
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: OperationResponseSchema
+*/
+@Parcelize
+data class OperationResponseSchema(
+    
+    
+    
+    @SerializedName("success")
+    var success: Boolean?=null,
+    
+    @SerializedName("message")
+    var message: String?=null
+    
+): Parcelable {
     
     
     

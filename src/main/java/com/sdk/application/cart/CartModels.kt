@@ -888,6 +888,33 @@ data class PromoMeta(
 
              
 /*
+    Model: CurrencyValue
+*/
+@Parcelize
+data class CurrencyValue(
+    
+    
+    
+    @SerializedName("currency")
+    var currency: String?=null,
+    
+    @SerializedName("value")
+    var value: Double?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
     Model: ChargesAmount
 */
 @Parcelize
@@ -899,9 +926,19 @@ data class ChargesAmount(
     var value: Double?=null,
     
     @SerializedName("currency")
-    var currency: String?=null
+    var currency: String?=null,
+    
+    @SerializedName("base_currency")
+    var baseCurrency: CurrencyValue?=null,
+    
+    @SerializedName("ordering_currency")
+    var orderingCurrency: CurrencyValue?=null
     
 ): Parcelable {
+    
+    
+    
+    
     
     
     
@@ -2942,6 +2979,107 @@ data class PageCoupon(
 ): Parcelable {
     
     
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: EligibleProductItem
+*/
+@Parcelize
+data class EligibleProductItem(
+    
+    
+    
+    @SerializedName("product_slug")
+    var productSlug: String?=null,
+    
+    @SerializedName("uid")
+    var uid: Int?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: PageInfo
+*/
+@Parcelize
+data class PageInfo(
+    
+    
+    
+    @SerializedName("current")
+    var current: Int?=null,
+    
+    @SerializedName("has_previous")
+    var hasPrevious: Boolean?=null,
+    
+    @SerializedName("has_next")
+    var hasNext: Boolean?=null,
+    
+    @SerializedName("size")
+    var size: Int?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: EligibleProductsResult
+*/
+@Parcelize
+data class EligibleProductsResult(
+    
+    
+    
+    @SerializedName("success")
+    var success: Boolean?=null,
+    
+    @SerializedName("message")
+    var message: String?=null,
+    
+    @SerializedName("items")
+    var items: ArrayList<EligibleProductItem>?=null,
+    
+    @SerializedName("page")
+    var page: PageInfo?=null
+    
+): Parcelable {
     
     
     
@@ -6182,6 +6320,147 @@ data class ValidationError(
     
     @SerializedName("field")
     var field: String?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: ApplyOfferSchema
+*/
+@Parcelize
+data class ApplyOfferSchema(
+    
+    
+    
+    @SerializedName("offer_code")
+    var offerCode: String?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: OfferListItem
+*/
+@Parcelize
+data class OfferListItem(
+    
+    
+    
+    @SerializedName("mode")
+    var mode: String?=null,
+    
+    @SerializedName("offer_text")
+    var offerText: String?=null,
+    
+    @SerializedName("description")
+    var description: String?=null,
+    
+    @SerializedName("id")
+    var id: String?=null,
+    
+    @SerializedName("code")
+    var code: String?=null,
+    
+    @SerializedName("name")
+    var name: String?=null,
+    
+    @SerializedName("type")
+    var type: String?=null,
+    
+    @SerializedName("offer_label")
+    var offerLabel: String?=null,
+    
+    @SerializedName("max_discount_value")
+    var maxDiscountValue: Double?=null,
+    
+    @SerializedName("applied_discount_amount")
+    var appliedDiscountAmount: Double?=null,
+    
+    @SerializedName("is_applicable")
+    var isApplicable: Boolean?=null,
+    
+    @SerializedName("is_applied")
+    var isApplied: Boolean?=null,
+    
+    @SerializedName("is_bank_offer")
+    var isBankOffer: Boolean?=null,
+    
+    @SerializedName("start_date")
+    var startDate: String?=null,
+    
+    @SerializedName("end_date")
+    var endDate: String?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: GetOfferResult
+*/
+@Parcelize
+data class GetOfferResult(
+    
+    
+    
+    @SerializedName("available_offers")
+    var availableOffers: ArrayList<OfferListItem>?=null,
+    
+    @SerializedName("page")
+    var page: PageCoupon?=null
     
 ): Parcelable {
     

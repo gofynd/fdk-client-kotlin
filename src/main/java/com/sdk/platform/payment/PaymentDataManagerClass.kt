@@ -206,6 +206,7 @@ class PaymentDataManagerClass(val config: PlatformConfig, val unauthorizedAction
     
     
     
+    
 
 inner class ApplicationClient(val applicationId:String,val config: PlatformConfig){
 
@@ -552,7 +553,7 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     
     
     suspend fun getMerchantAggregatorPaymentModeDetails(aggregatorId: String,businessUnit: String,device: String, headers: Map<String, String> = emptyMap())
-    : Response<PlatformPaymentModeDetails>? {
+    : Response<PaymentModeConfig>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 paymentApiList?.getMerchantAggregatorPaymentModeDetails(companyId = config.companyId ,applicationId = applicationId ,aggregatorId = aggregatorId,businessUnit = businessUnit,device = device, headers = headers)
         } else {
@@ -561,7 +562,7 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     }
     
     
-    suspend fun patchMerchantAggregatorPaymentModeDetails(aggregatorId: String,body: PlatformPaymentModeDetails, headers: Map<String, String> = emptyMap())
+    suspend fun patchMerchantAggregatorPaymentModeDetails(aggregatorId: String,body: PlatformConfigPaymentModeDetails, headers: Map<String, String> = emptyMap())
     : Response<PlatformPaymentModeDetails>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 paymentApiList?.patchMerchantAggregatorPaymentModeDetails(companyId = config.companyId ,applicationId = applicationId ,aggregatorId = aggregatorId, body = body,headers = headers)
@@ -645,6 +646,16 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     : Response<ValidateCustomerCreditSchema>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 paymentApiList?.validateCustomerAndCreditSummary(companyId = config.companyId ,applicationId = applicationId , body = body,headers = headers)
+        } else {
+            null
+        }
+    }
+    
+    
+    suspend fun saveTokenForAggregator(aggregatorId: String,body: AggregatorToken, headers: Map<String, String> = emptyMap())
+    : Response<OperationResponseSchema>? {
+        return if (config.oauthClient.isAccessTokenValid()) {
+                paymentApiList?.saveTokenForAggregator(companyId = config.companyId ,applicationId = applicationId ,aggregatorId = aggregatorId, body = body,headers = headers)
         } else {
             null
         }

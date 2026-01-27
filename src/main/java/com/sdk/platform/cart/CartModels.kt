@@ -5539,6 +5539,107 @@ data class PromoMeta(
 
              
 /*
+    Model: CurrencyValue
+*/
+@Parcelize
+data class CurrencyValue(
+    
+    
+    
+    @SerializedName("currency")
+    var currency: String?=null,
+    
+    @SerializedName("value")
+    var value: Double?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: ChargesAmount
+*/
+@Parcelize
+data class ChargesAmount(
+    
+    
+    
+    @SerializedName("base_currency")
+    var baseCurrency: CurrencyValue?=null,
+    
+    @SerializedName("ordering_currency")
+    var orderingCurrency: CurrencyValue?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: ArticleCharges
+*/
+@Parcelize
+data class ArticleCharges(
+    
+    
+    
+    @SerializedName("meta")
+    var meta: @RawValue HashMap<String,Any>?=null,
+    
+    @SerializedName("amount")
+    var amount: ChargesAmount?=null,
+    
+    @SerializedName("name")
+    var name: String?=null,
+    
+    @SerializedName("allow_refund")
+    var allowRefund: Boolean?=null,
+    
+    @SerializedName("code")
+    var code: String?=null,
+    
+    @SerializedName("type")
+    var type: String?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
     Model: CartProductInfo
 */
 @Parcelize
@@ -5613,9 +5714,14 @@ data class CartProductInfo(
     var customOrder: @RawValue HashMap<String,Any>?=null,
     
     @SerializedName("item_type")
-    var itemType: String?=null
+    var itemType: String?=null,
+    
+    @SerializedName("charges")
+    var charges: ArrayList<ArticleCharges>?=null
     
 ): Parcelable {
+    
+    
     
     
     
@@ -11008,6 +11114,994 @@ data class ValidationError(
     
     @SerializedName("field")
     var field: String?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: OfferUser
+*/
+@Parcelize
+data class OfferUser(
+    
+    
+    
+    @SerializedName("groups")
+    var groups: ArrayList<Int>?=null,
+    
+    @SerializedName("type")
+    var type: String?=null,
+    
+    @SerializedName("anonymous")
+    var anonymous: Boolean?=null,
+    
+    @SerializedName("id")
+    var id: ArrayList<String>?=null,
+    
+    @SerializedName("registered")
+    var registered: UserRegistered?=null,
+    
+    @SerializedName("email_domain")
+    var emailDomain: ArrayList<String>?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: OfferItemCriteria
+*/
+@Parcelize
+data class OfferItemCriteria(
+    
+    
+    
+    @SerializedName("category_id")
+    var categoryId: ArrayList<Int>?=null,
+    
+    @SerializedName("collection_id")
+    var collectionId: ArrayList<String>?=null,
+    
+    @SerializedName("all_items")
+    var allItems: Boolean?=null,
+    
+    @SerializedName("item_brand")
+    var itemBrand: ArrayList<Int>?=null,
+    
+    @SerializedName("article_ids")
+    var articleIds: ArrayList<String>?=null,
+    
+    @SerializedName("item_sku")
+    var itemSku: ArrayList<String>?=null,
+    
+    @SerializedName("item_id")
+    var itemId: ArrayList<Int>?=null,
+    
+    @SerializedName("item_l1_category")
+    var itemL1Category: ArrayList<Int>?=null,
+    
+    @SerializedName("item_l2_category")
+    var itemL2Category: ArrayList<Int>?=null,
+    
+    @SerializedName("item_category")
+    var itemCategory: ArrayList<Int>?=null,
+    
+    @SerializedName("item_department")
+    var itemDepartment: ArrayList<Int>?=null,
+    
+    @SerializedName("item_store")
+    var itemStore: ArrayList<Int>?=null,
+    
+    @SerializedName("item_size")
+    var itemSize: ArrayList<String>?=null,
+    
+    @SerializedName("item_company")
+    var itemCompany: ArrayList<Int>?=null,
+    
+    @SerializedName("item_tags")
+    var itemTags: ArrayList<String>?=null,
+    
+    @SerializedName("cart_quantity")
+    var cartQuantity: CompareObject?=null,
+    
+    @SerializedName("cart_total")
+    var cartTotal: CompareObject?=null,
+    
+    @SerializedName("item_exclude_l1_category")
+    var itemExcludeL1Category: ArrayList<Int>?=null,
+    
+    @SerializedName("item_exclude_l2_category")
+    var itemExcludeL2Category: ArrayList<Int>?=null,
+    
+    @SerializedName("item_exclude_category")
+    var itemExcludeCategory: ArrayList<Int>?=null,
+    
+    @SerializedName("cart_unique_item_quantity")
+    var cartUniqueItemQuantity: CompareObject?=null,
+    
+    @SerializedName("cart_unique_item_amount")
+    var cartUniqueItemAmount: CompareObject?=null,
+    
+    @SerializedName("item_exclude_department")
+    var itemExcludeDepartment: ArrayList<Int>?=null,
+    
+    @SerializedName("item_exclude_store")
+    var itemExcludeStore: ArrayList<Int>?=null,
+    
+    @SerializedName("item_exclude_brand")
+    var itemExcludeBrand: ArrayList<Int>?=null,
+    
+    @SerializedName("item_exclude_sku")
+    var itemExcludeSku: ArrayList<String>?=null,
+    
+    @SerializedName("item_exclude_company")
+    var itemExcludeCompany: ArrayList<Int>?=null,
+    
+    @SerializedName("available_zones")
+    var availableZones: ArrayList<String>?=null,
+    
+    @SerializedName("item_exclude_id")
+    var itemExcludeId: ArrayList<Int>?=null,
+    
+    @SerializedName("buy_rules")
+    var buyRules: ArrayList<String>?=null,
+    
+    @SerializedName("item_size_mapping")
+    var itemSizeMapping: ItemSizeMapping?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: DiscountRuleOffer
+*/
+@Parcelize
+data class DiscountRuleOffer(
+    
+    
+    
+    @SerializedName("max_discount_amount")
+    var maxDiscountAmount: Double?=null,
+    
+    @SerializedName("discount_price")
+    var discountPrice: Double?=null,
+    
+    @SerializedName("apportion_discount")
+    var apportionDiscount: Boolean?=null,
+    
+    @SerializedName("partial_can_ret")
+    var partialCanRet: Boolean?=null,
+    
+    @SerializedName("max_usage_per_transaction")
+    var maxUsagePerTransaction: Int?=null,
+    
+    @SerializedName("min_offer_quantity")
+    var minOfferQuantity: Int?=null,
+    
+    @SerializedName("discount_amount")
+    var discountAmount: Double?=null,
+    
+    @SerializedName("discount_percentage")
+    var discountPercentage: Double?=null,
+    
+    @SerializedName("max_offer_quantity")
+    var maxOfferQuantity: Int?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: OfferDiscountRule
+*/
+@Parcelize
+data class OfferDiscountRule(
+    
+    
+    
+    @SerializedName("discount_type")
+    var discountType: String?=null,
+    
+    @SerializedName("buy_condition")
+    var buyCondition: String?=null,
+    
+    @SerializedName("item_criteria")
+    var itemCriteria: OfferItemCriteria?=null,
+    
+    @SerializedName("offer")
+    var offer: DiscountRuleOffer?=null,
+    
+    @SerializedName("is_exact")
+    var isExact: Boolean?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: OfferUsesRemaining
+*/
+@Parcelize
+data class OfferUsesRemaining(
+    
+    
+    
+    @SerializedName("user")
+    var user: Int?=null,
+    
+    @SerializedName("total")
+    var total: Int?=null,
+    
+    @SerializedName("app")
+    var app: Int?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: OfferUsesRestriction
+*/
+@Parcelize
+data class OfferUsesRestriction(
+    
+    
+    
+    @SerializedName("maximum")
+    var maximum: OfferUsesRemaining?=null,
+    
+    @SerializedName("remaining")
+    var remaining: OfferUsesRemaining?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: OfferRestrictionFulfillmentOptions
+*/
+@Parcelize
+data class OfferRestrictionFulfillmentOptions(
+    
+    
+    
+    @SerializedName("fulfillment_slug")
+    var fulfillmentSlug: String?=null,
+    
+    @SerializedName("zones")
+    var zones: ArrayList<String>?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: OfferRestrictions
+*/
+@Parcelize
+data class OfferRestrictions(
+    
+    
+    
+    @SerializedName("uses")
+    var uses: OfferUsesRestriction?=null,
+    
+    @SerializedName("post_order")
+    var postOrder: PostOrder?=null,
+    
+    @SerializedName("platforms")
+    var platforms: ArrayList<String>?=null,
+    
+    @SerializedName("payments")
+    var payments: PaymentModes?=null,
+    
+    @SerializedName("ordering_stores")
+    var orderingStores: ArrayList<Int>?=null,
+    
+    @SerializedName("order_quantity")
+    var orderQuantity: Int?=null,
+    
+    @SerializedName("user")
+    var user: OfferUser?=null,
+    
+    @SerializedName("multi_store_allowed")
+    var multiStoreAllowed: Boolean?=null,
+    
+    @SerializedName("fulfillment_options")
+    var fulfillmentOptions: ArrayList<OfferRestrictionFulfillmentOptions>?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: OfferDisplayMeta
+*/
+@Parcelize
+data class OfferDisplayMeta(
+    
+    
+    
+    @SerializedName("description")
+    var description: String?=null,
+    
+    @SerializedName("is_display")
+    var isDisplay: Boolean?=null,
+    
+    @SerializedName("is_public")
+    var isPublic: Boolean?=null,
+    
+    @SerializedName("name")
+    var name: String?=null,
+    
+    @SerializedName("offer_text")
+    var offerText: String?=null,
+    
+    @SerializedName("offer_label")
+    var offerLabel: String?=null,
+    
+    @SerializedName("reason")
+    var reason: String?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: OfferCouponConfiguration
+*/
+@Parcelize
+data class OfferCouponConfiguration(
+    
+    
+    
+    @SerializedName("coupon_count")
+    var couponCount: Int?=null,
+    
+    @SerializedName("coupon_prefix")
+    var couponPrefix: String?=null,
+    
+    @SerializedName("coupon_type")
+    var couponType: String?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: OfferOwnership
+*/
+@Parcelize
+data class OfferOwnership(
+    
+    
+    
+    @SerializedName("payable_category")
+    var payableCategory: String?=null,
+    
+    @SerializedName("payable_by")
+    var payableBy: String?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: OfferSchema
+*/
+@Parcelize
+data class OfferSchema(
+    
+    
+    
+    @SerializedName("_id")
+    var id: String?=null,
+    
+    @SerializedName("mode")
+    var mode: String?=null,
+    
+    @SerializedName("auto_apply")
+    var autoApply: Boolean?=null,
+    
+    @SerializedName("application_id")
+    var applicationId: String?=null,
+    
+    @SerializedName("company_id")
+    var companyId: String?=null,
+    
+    @SerializedName("discount_rules")
+    var discountRules: ArrayList<OfferDiscountRule>?=null,
+    
+    @SerializedName("buy_rules")
+    var buyRules: HashMap<String,OfferItemCriteria>?=null,
+    
+    @SerializedName("restrictions")
+    var restrictions: OfferRestrictions?=null,
+    
+    @SerializedName("display_meta")
+    var displayMeta: OfferDisplayMeta?=null,
+    
+    @SerializedName("ownership")
+    var ownership: OfferOwnership?=null,
+    
+    @SerializedName("author")
+    var author: OfferAuthor?=null,
+    
+    @SerializedName("date_meta")
+    var dateMeta: OfferDateMeta?=null,
+    
+    @SerializedName("_schedule")
+    var schedule: OfferSchedule?=null,
+    
+    @SerializedName("_custom_json")
+    var customJson: @RawValue HashMap<String,Any>?=null,
+    
+    @SerializedName("stackable")
+    var stackable: Boolean?=null,
+    
+    @SerializedName("status")
+    var status: String?=null,
+    
+    @SerializedName("published")
+    var published: Boolean?=null,
+    
+    @SerializedName("type")
+    var type: String?=null,
+    
+    @SerializedName("priority")
+    var priority: Int?=null,
+    
+    @SerializedName("is_exclusive_coupon")
+    var isExclusiveCoupon: Boolean?=null,
+    
+    @SerializedName("apply_exclusive")
+    var applyExclusive: String?=null,
+    
+    @SerializedName("calculate_on")
+    var calculateOn: String?=null,
+    
+    @SerializedName("promo_group")
+    var promoGroup: String?=null,
+    
+    @SerializedName("currency")
+    var currency: String?=null,
+    
+    @SerializedName("code")
+    var code: String?=null,
+    
+    @SerializedName("coupon_config")
+    var couponConfig: OfferCouponConfiguration?=null,
+    
+    @SerializedName("is_processed")
+    var isProcessed: Boolean?=null,
+    
+    @SerializedName("is_bank_offer")
+    var isBankOffer: Boolean?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: OfferPartialUpdate
+*/
+@Parcelize
+data class OfferPartialUpdate(
+    
+    
+    
+    @SerializedName("schedule")
+    var schedule: PromotionSchedule?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: OfferAuthor
+*/
+@Parcelize
+data class OfferAuthor(
+    
+    
+    
+    @SerializedName("created_by")
+    var createdBy: String?=null,
+    
+    @SerializedName("modified_by")
+    var modifiedBy: String?=null,
+    
+    @SerializedName("approved_by")
+    var approvedBy: String?=null,
+    
+    @SerializedName("rejected_by")
+    var rejectedBy: String?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: OfferDateMeta
+*/
+@Parcelize
+data class OfferDateMeta(
+    
+    
+    
+    @SerializedName("modified_on")
+    var modifiedOn: String?=null,
+    
+    @SerializedName("created_on")
+    var createdOn: String?=null,
+    
+    @SerializedName("approved_on")
+    var approvedOn: String?=null,
+    
+    @SerializedName("rejected_on")
+    var rejectedOn: String?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: NextScheduleItems
+*/
+@Parcelize
+data class NextScheduleItems(
+    
+    
+    
+    @SerializedName("start")
+    var start: String?=null,
+    
+    @SerializedName("end")
+    var end: String?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: OfferSchedule
+*/
+@Parcelize
+data class OfferSchedule(
+    
+    
+    
+    @SerializedName("end")
+    var end: String?=null,
+    
+    @SerializedName("start")
+    var start: String?=null,
+    
+    @SerializedName("next_schedule")
+    var nextSchedule: ArrayList<NextScheduleItems>?=null,
+    
+    @SerializedName("cron")
+    var cron: String?=null,
+    
+    @SerializedName("duration")
+    var duration: Int?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: OfferListItem
+*/
+@Parcelize
+data class OfferListItem(
+    
+    
+    
+    @SerializedName("mode")
+    var mode: String?=null,
+    
+    @SerializedName("type")
+    var type: String?=null,
+    
+    @SerializedName("status")
+    var status: String?=null,
+    
+    @SerializedName("published")
+    var published: Boolean?=null,
+    
+    @SerializedName("display_meta")
+    var displayMeta: OfferDisplayMeta?=null,
+    
+    @SerializedName("author")
+    var author: OfferAuthor?=null,
+    
+    @SerializedName("date_meta")
+    var dateMeta: OfferDateMeta?=null,
+    
+    @SerializedName("schedule")
+    var schedule: OfferSchedule?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: OfferListResult
+*/
+@Parcelize
+data class OfferListResult(
+    
+    
+    
+    @SerializedName("items")
+    var items: ArrayList<OfferListItem>?=null,
+    
+    @SerializedName("page")
+    var page: Page?=null
     
 ): Parcelable {
     

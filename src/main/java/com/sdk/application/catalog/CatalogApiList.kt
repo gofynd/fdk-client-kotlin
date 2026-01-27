@@ -165,4 +165,9 @@ interface CatalogApiList {
     suspend fun getProductSellersBySlug(@Url url1: String?      ,     @Query("strategy") strategy: String?, @Query("fulfillment_option_slug") fulfillmentOptionSlug: String?, @Query("page_no") pageNo: Int?, @Query("page_size") pageSize: Int?, @HeaderMap headers: Map<String, String>? = null)
     : Response<ProductSizeSellersResponseV4>
     
+    
+    @GET
+    suspend fun listCountryCurrencyMappings(@Url url1: String?   , @HeaderMap headers: Map<String, String>? = null)
+    : Response<AvailableCountrySchema>
+    
 }

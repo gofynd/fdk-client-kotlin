@@ -81,6 +81,8 @@ class CatalogDataManagerClass(val config: ApplicationConfig, val unauthorizedAct
             
                     _relativeUrls["getProductSellersBySlug"] = "/service/application/catalog/v4.0/products/{slug}/sizes/{size}/sellers/".substring(1)
             
+                    _relativeUrls["listCountryCurrencyMappings"] = "/service/application/catalog/v1.0/available-countries/".substring(1)
+            
     }
 
     public fun update(updatedUrlMap : HashMap<String,String>){
@@ -1010,5 +1012,12 @@ class CatalogDataManagerClass(val config: ApplicationConfig, val unauthorizedAct
 
     return paginator
     }
+    
+    suspend fun listCountryCurrencyMappings( headers: Map<String, String> = emptyMap()): Response<AvailableCountrySchema>? {
+        var fullUrl : String? = _relativeUrls["listCountryCurrencyMappings"]
+        
+        return catalogApiList?.listCountryCurrencyMappings(fullUrl, headers = headers)}
+
+    
     
 }

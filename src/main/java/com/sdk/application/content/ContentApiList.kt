@@ -127,12 +127,17 @@ interface ContentApiList {
     
     
     @POST
-    suspend fun fetchResourceTranslationsWithPayload(@Url url1: String?      ,  @Query("resource_id") resourceId: String, @Body body: ResourcePayload, @HeaderMap headers: Map<String, String>? = null)
+    suspend fun fetchResourceTranslationsWithPayload(@Url url1: String?     ,@Body body: ResourcePayload, @HeaderMap headers: Map<String, String>? = null)
     : Response<ResourceTranslations>
     
     
     @GET
     suspend fun getSupportedLanguages(@Url url1: String?   , @HeaderMap headers: Map<String, String>? = null)
     : Response<HashMap<String,Any>>
+    
+    
+    @POST
+    suspend fun getOrderTranslation(@Url url1: String?   ,@Body body: OrderTranslationRequestSchema, @HeaderMap headers: Map<String, String>? = null)
+    : Response<TranslationResult>
     
 }

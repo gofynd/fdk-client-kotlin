@@ -68,6 +68,28 @@ data class ValidationErrors(
 
              
 /*
+    Model: StandardError
+*/
+@Parcelize
+data class StandardError(
+    
+    
+    
+    @SerializedName("message")
+    var message: String?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
     Model: AllSizes
 */
 @Parcelize
@@ -446,9 +468,562 @@ data class AppConfigurationsSort(
     var name: String?=null,
     
     @SerializedName("priority")
-    var priority: Int?=null
+    var priority: Int?=null,
+    
+    @SerializedName("weights")
+    var weights: SortWeights?=null,
+    
+    @SerializedName("cohorts")
+    var cohorts: CohortSortingConfiguration?=null
     
 ): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: SortWeights
+*/
+@Parcelize
+data class SortWeights(
+    
+    
+    
+    @SerializedName("popularity")
+    var popularity: Double?=null,
+    
+    @SerializedName("availability")
+    var availability: Double?=null,
+    
+    @SerializedName("conversion")
+    var conversion: Double?=null,
+    
+    @SerializedName("sold_quantity")
+    var soldQuantity: Double?=null,
+    
+    @SerializedName("depth")
+    var depth: Double?=null,
+    
+    @SerializedName("listing")
+    var listing: Double?=null,
+    
+    @SerializedName("discount")
+    var discount: Double?=null,
+    
+    @SerializedName("cancelled")
+    var cancelled: Double?=null,
+    
+    @SerializedName("returns")
+    var returns: Double?=null,
+    
+    @SerializedName("catalogue")
+    var catalogue: Double?=null,
+    
+    @SerializedName("revenue")
+    var revenue: Double?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: CohortWeights
+*/
+@Parcelize
+data class CohortWeights(
+    
+    
+    
+    @SerializedName("weights")
+    var weights: SortWeights?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: HighSpenderRepeatCustomerWeights
+*/
+@Parcelize
+data class HighSpenderRepeatCustomerWeights(
+    
+    
+    
+    @SerializedName("weights")
+    var weights: SortWeights?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: HyperactiveRepeatCustomerWeights
+*/
+@Parcelize
+data class HyperactiveRepeatCustomerWeights(
+    
+    
+    
+    @SerializedName("weights")
+    var weights: SortWeights?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: HighSpenderOccasionalCustomerWeights
+*/
+@Parcelize
+data class HighSpenderOccasionalCustomerWeights(
+    
+    
+    
+    @SerializedName("weights")
+    var weights: SortWeights?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: StandardOccasionalCustomerWeights
+*/
+@Parcelize
+data class StandardOccasionalCustomerWeights(
+    
+    
+    
+    @SerializedName("weights")
+    var weights: SortWeights?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: DormantPremiumCustomerWeights
+*/
+@Parcelize
+data class DormantPremiumCustomerWeights(
+    
+    
+    
+    @SerializedName("weights")
+    var weights: SortWeights?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: BudgetRegularCustomerWeights
+*/
+@Parcelize
+data class BudgetRegularCustomerWeights(
+    
+    
+    
+    @SerializedName("weights")
+    var weights: SortWeights?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: HighSpenderRegularCustomerWeights
+*/
+@Parcelize
+data class HighSpenderRegularCustomerWeights(
+    
+    
+    
+    @SerializedName("weights")
+    var weights: SortWeights?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: StandardCustomerAboutToChurnWeights
+*/
+@Parcelize
+data class StandardCustomerAboutToChurnWeights(
+    
+    
+    
+    @SerializedName("weights")
+    var weights: SortWeights?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: PremiumCustomerAboutToChurnWeights
+*/
+@Parcelize
+data class PremiumCustomerAboutToChurnWeights(
+    
+    
+    
+    @SerializedName("weights")
+    var weights: SortWeights?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: HighSpenderCustomerAboutToChurnWeights
+*/
+@Parcelize
+data class HighSpenderCustomerAboutToChurnWeights(
+    
+    
+    
+    @SerializedName("weights")
+    var weights: SortWeights?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: StandardDormantCustomerWeights
+*/
+@Parcelize
+data class StandardDormantCustomerWeights(
+    
+    
+    
+    @SerializedName("weights")
+    var weights: SortWeights?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: HighSpenderDormantCustomerWeights
+*/
+@Parcelize
+data class HighSpenderDormantCustomerWeights(
+    
+    
+    
+    @SerializedName("weights")
+    var weights: SortWeights?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: PotentialCustomerWeights
+*/
+@Parcelize
+data class PotentialCustomerWeights(
+    
+    
+    
+    @SerializedName("weights")
+    var weights: SortWeights?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: NewCustomerWeights
+*/
+@Parcelize
+data class NewCustomerWeights(
+    
+    
+    
+    @SerializedName("weights")
+    var weights: SortWeights?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: BudgetRepeatCustomerWeights
+*/
+@Parcelize
+data class BudgetRepeatCustomerWeights(
+    
+    
+    
+    @SerializedName("weights")
+    var weights: SortWeights?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: AverageSpenderRepeatCustomerWeights
+*/
+@Parcelize
+data class AverageSpenderRepeatCustomerWeights(
+    
+    
+    
+    @SerializedName("weights")
+    var weights: SortWeights?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: CohortSortingConfiguration
+*/
+@Parcelize
+data class CohortSortingConfiguration(
+    
+    
+    
+    @SerializedName("high_spender_repeat_customer")
+    var highSpenderRepeatCustomer: HighSpenderRepeatCustomerWeights?=null,
+    
+    @SerializedName("hyperactive_premium_repeat_customer")
+    var hyperactivePremiumRepeatCustomer: HyperactiveRepeatCustomerWeights?=null,
+    
+    @SerializedName("high_spender_occasional_customer")
+    var highSpenderOccasionalCustomer: HighSpenderOccasionalCustomerWeights?=null,
+    
+    @SerializedName("standard_occasional_customer")
+    var standardOccasionalCustomer: StandardOccasionalCustomerWeights?=null,
+    
+    @SerializedName("dormant_premium_customer")
+    var dormantPremiumCustomer: DormantPremiumCustomerWeights?=null,
+    
+    @SerializedName("budget_regular_customer")
+    var budgetRegularCustomer: BudgetRegularCustomerWeights?=null,
+    
+    @SerializedName("high_spender_regular_customer")
+    var highSpenderRegularCustomer: HighSpenderRegularCustomerWeights?=null,
+    
+    @SerializedName("standard_customer_about_to_churn")
+    var standardCustomerAboutToChurn: StandardCustomerAboutToChurnWeights?=null,
+    
+    @SerializedName("premium_customer_about_to_churn")
+    var premiumCustomerAboutToChurn: PremiumCustomerAboutToChurnWeights?=null,
+    
+    @SerializedName("high_spender_customer_about_to_churn")
+    var highSpenderCustomerAboutToChurn: HighSpenderCustomerAboutToChurnWeights?=null,
+    
+    @SerializedName("standard_dormant_customer")
+    var standardDormantCustomer: StandardDormantCustomerWeights?=null,
+    
+    @SerializedName("high_spender_dormant_customer")
+    var highSpenderDormantCustomer: HighSpenderDormantCustomerWeights?=null,
+    
+    @SerializedName("potential_customer")
+    var potentialCustomer: PotentialCustomerWeights?=null,
+    
+    @SerializedName("new_customer")
+    var newCustomer: NewCustomerWeights?=null,
+    
+    @SerializedName("budget_repeat_customer")
+    var budgetRepeatCustomer: BudgetRepeatCustomerWeights?=null,
+    
+    @SerializedName("average_spender_repeat_customer")
+    var averageSpenderRepeatCustomer: AverageSpenderRepeatCustomerWeights?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     
     
     
@@ -12338,6 +12913,95 @@ data class ProdcutTemplateCategoriesResponseSchema(
 
              
 /*
+    Model: PriceStrategySchema
+*/
+@Parcelize
+data class PriceStrategySchema(
+    
+    
+    
+    @SerializedName("currency")
+    var currency: String?=null,
+    
+    @SerializedName("adjustment_value")
+    var adjustmentValue: Double?=null,
+    
+    @SerializedName("adjustment_type")
+    var adjustmentType: String?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: PriceFactoryResponseSchema
+*/
+@Parcelize
+data class PriceFactoryResponseSchema(
+    
+    
+    
+    @SerializedName("price_zone_id")
+    var priceZoneId: String?=null,
+    
+    @SerializedName("price_factory_id")
+    var priceFactoryId: String?=null,
+    
+    @SerializedName("modified_by")
+    var modifiedBy: String?=null,
+    
+    @SerializedName("currencies")
+    var currencies: ArrayList<String>?=null,
+    
+    @SerializedName("name")
+    var name: String?=null,
+    
+    @SerializedName("price_strategy")
+    var priceStrategy: ArrayList<PriceStrategySchema>?=null,
+    
+    @SerializedName("active")
+    var active: Boolean?=null,
+    
+    @SerializedName("created_by")
+    var createdBy: String?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
     Model: Product
 */
 @Parcelize
@@ -19306,9 +19970,179 @@ data class TaxReqBodyVersion(
     
     
     @SerializedName("components")
-    var components: ArrayList<TaxComponent>?=null
+    var components: ArrayList<TaxComponent>?=null,
+    
+    @SerializedName("applicable_date")
+    var applicableDate: String?=null,
+    
+    @SerializedName("region_type")
+    var regionType: String?=null,
+    
+    @SerializedName("areas")
+    var areas: TaxGeoArea?=null,
+    
+    @SerializedName("store_ids")
+    var storeIds: ArrayList<Int>?=null
     
 ): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: TaxGeoArea
+*/
+@Parcelize
+data class TaxGeoArea(
+    
+    
+    
+    @SerializedName("regions")
+    var regions: ArrayList<String>?=null,
+    
+    @SerializedName("country")
+    var country: String?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: AreaDetails
+*/
+@Parcelize
+data class AreaDetails(
+    
+    
+    
+    @SerializedName("uid")
+    var uid: String?=null,
+    
+    @SerializedName("display_name")
+    var displayName: String?=null,
+    
+    @SerializedName("sub_type")
+    var subType: String?=null,
+    
+    @SerializedName("parent_id")
+    var parentId: ArrayList<String>?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: Country
+*/
+@Parcelize
+data class Country(
+    
+    
+    
+    @SerializedName("uid")
+    var uid: String?=null,
+    
+    @SerializedName("display_name")
+    var displayName: String?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: Area
+*/
+@Parcelize
+data class Area(
+    
+    
+    
+    @SerializedName("regions")
+    var regions: ArrayList<AreaDetails>?=null,
+    
+    @SerializedName("country")
+    var country: Country?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: RegionReference
+*/
+@Parcelize
+data class RegionReference(
+    
+    
+    
+    @SerializedName("name")
+    var name: String?=null,
+    
+    @SerializedName("slug")
+    var slug: String?=null,
+    
+    @SerializedName("areas")
+    var areas: ArrayList<Area>?=null
+    
+): Parcelable {
+    
+    
+    
+    
     
     
     
@@ -19375,10 +20209,30 @@ data class TaxVersion(
     @SerializedName("status")
     var status: TaxStatusEnum?=null,
     
+    @SerializedName("region_type")
+    var regionType: String?=null,
+    
+    @SerializedName("areas")
+    var areas: TaxGeoArea?=null,
+    
+    @SerializedName("store_ids")
+    var storeIds: ArrayList<Int>?=null,
+    
+    @SerializedName("scope")
+    var scope: TaxVersionScopeEnum?=null,
+    
     @SerializedName("components")
     var components: ArrayList<TaxComponentResponseSchema>?=null
     
 ): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+    
     
     
     
@@ -19415,9 +20269,24 @@ data class UpdateTaxVersionRequestBody(
     var components: ArrayList<TaxComponentResponseSchema>?=null,
     
     @SerializedName("applicable_date")
-    var applicableDate: String?=null
+    var applicableDate: String?=null,
+    
+    @SerializedName("region_type")
+    var regionType: String?=null,
+    
+    @SerializedName("areas")
+    var areas: TaxGeoArea?=null,
+    
+    @SerializedName("store_ids")
+    var storeIds: ArrayList<Int>?=null
     
 ): Parcelable {
+    
+    
+    
+    
+    
+    
     
     
     
@@ -19442,9 +20311,24 @@ data class CreateTaxVersionRequestBody(
     var components: ArrayList<TaxComponent>?=null,
     
     @SerializedName("applicable_date")
-    var applicableDate: String?=null
+    var applicableDate: String?=null,
+    
+    @SerializedName("region_type")
+    var regionType: String?=null,
+    
+    @SerializedName("areas")
+    var areas: TaxGeoArea?=null,
+    
+    @SerializedName("store_ids")
+    var storeIds: ArrayList<Int>?=null
     
 ): Parcelable {
+    
+    
+    
+    
+    
+    
     
     
     
@@ -19543,13 +20427,33 @@ data class TaxVersionDetail(
     @SerializedName("status")
     var status: TaxStatusEnum?=null,
     
+    @SerializedName("region_code")
+    var regionCode: String?=null,
+    
+    @SerializedName("store_ids")
+    var storeIds: ArrayList<Int>?=null,
+    
+    @SerializedName("region")
+    var region: RegionReference?=null,
+    
     @SerializedName("components")
     var components: ArrayList<TaxComponent>?=null,
+    
+    @SerializedName("scope")
+    var scope: TaxVersionScopeEnum?=null,
     
     @SerializedName("version_status")
     var versionStatus: String?=null
     
 ): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+    
     
     
     
@@ -19589,33 +20493,6 @@ data class CreateTax(
     
     @SerializedName("versions")
     var versions: TaxVersion?=null
-    
-): Parcelable {
-    
-    
-    
-    
-    
-    
-    
-}
-
-
-
-             
-/*
-    Model: UpdateTaxVersion
-*/
-@Parcelize
-data class UpdateTaxVersion(
-    
-    
-    
-    @SerializedName("components")
-    var components: ArrayList<TaxComponent>?=null,
-    
-    @SerializedName("applicable_date")
-    var applicableDate: String?=null
     
 ): Parcelable {
     
@@ -19887,6 +20764,618 @@ data class GetTaxComponents(
 
              
 /*
+    Model: PriceFactoryListItemsSchema
+*/
+@Parcelize
+data class PriceFactoryListItemsSchema(
+    
+    
+    
+    @SerializedName("price_factory_id")
+    var priceFactoryId: String?=null,
+    
+    @SerializedName("name")
+    var name: String?=null,
+    
+    @SerializedName("type")
+    var type: String?=null,
+    
+    @SerializedName("currencies")
+    var currencies: ArrayList<String>?=null,
+    
+    @SerializedName("price_strategy")
+    var priceStrategy: ArrayList<PriceStrategySchema>?=null,
+    
+    @SerializedName("price_zone_id")
+    var priceZoneId: String?=null,
+    
+    @SerializedName("active")
+    var active: Boolean?=null,
+    
+    @SerializedName("modified_by")
+    var modifiedBy: CreatedBy?=null,
+    
+    @SerializedName("created_by")
+    var createdBy: CreatedBy?=null,
+    
+    @SerializedName("modified_on")
+    var modifiedOn: String?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: PriceFactoryListResponseSchema
+*/
+@Parcelize
+data class PriceFactoryListResponseSchema(
+    
+    
+    
+    @SerializedName("page")
+    var page: Page?=null,
+    
+    @SerializedName("data")
+    var data: ArrayList<PriceFactoryListItemsSchema>?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: CreatePriceFactoryConfigSchema
+*/
+@Parcelize
+data class CreatePriceFactoryConfigSchema(
+    
+    
+    
+    @SerializedName("name")
+    var name: String?=null,
+    
+    @SerializedName("type")
+    var type: String?=null,
+    
+    @SerializedName("currencies")
+    var currencies: ArrayList<String>?=null,
+    
+    @SerializedName("price_strategy")
+    var priceStrategy: ArrayList<PriceStrategySchema>?=null,
+    
+    @SerializedName("price_zone_id")
+    var priceZoneId: String?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: UpdatePriceFactoryConfigSchema
+*/
+@Parcelize
+data class UpdatePriceFactoryConfigSchema(
+    
+    
+    
+    @SerializedName("name")
+    var name: String?=null,
+    
+    @SerializedName("currencies")
+    var currencies: ArrayList<String>?=null,
+    
+    @SerializedName("price_strategy")
+    var priceStrategy: ArrayList<PriceStrategySchema>?=null,
+    
+    @SerializedName("price_zone_id")
+    var priceZoneId: String?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: PriceFactoryConfigSchema
+*/
+@Parcelize
+data class PriceFactoryConfigSchema(
+    
+    
+    
+    @SerializedName("name")
+    var name: String?=null,
+    
+    @SerializedName("type")
+    var type: String?=null,
+    
+    @SerializedName("currencies")
+    var currencies: ArrayList<String>?=null,
+    
+    @SerializedName("price_strategy")
+    var priceStrategy: ArrayList<PriceStrategySchema>?=null,
+    
+    @SerializedName("price_zone_id")
+    var priceZoneId: String?=null,
+    
+    @SerializedName("created_by")
+    var createdBy: CreatedBy?=null,
+    
+    @SerializedName("modified_by")
+    var modifiedBy: CreatedBy?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: CurrencyPriceSchema
+*/
+@Parcelize
+data class CurrencyPriceSchema(
+    
+    
+    
+    @SerializedName("marked_price")
+    var markedPrice: Double?=null,
+    
+    @SerializedName("selling_price")
+    var sellingPrice: Double?=null,
+    
+    @SerializedName("currency")
+    var currency: String?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: UpsertPriceFactorySizesSchema
+*/
+@Parcelize
+data class UpsertPriceFactorySizesSchema(
+    
+    
+    
+    @SerializedName("size")
+    var size: String?=null,
+    
+    @SerializedName("currency_prices")
+    var currencyPrices: ArrayList<CurrencyPriceSchema>?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: UpsertPriceFactoryProductSchema
+*/
+@Parcelize
+data class UpsertPriceFactoryProductSchema(
+    
+    
+    
+    @SerializedName("sizes")
+    var sizes: ArrayList<UpsertPriceFactorySizesSchema>?=null,
+    
+    @SerializedName("active")
+    var active: Boolean?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: PriceFactoryCurrencyPriceSchema
+*/
+@Parcelize
+data class PriceFactoryCurrencyPriceSchema(
+    
+    
+    
+    @SerializedName("base_price")
+    var basePrice: Boolean?=null,
+    
+    @SerializedName("currency")
+    var currency: String?=null,
+    
+    @SerializedName("selling_price")
+    var sellingPrice: Double?=null,
+    
+    @SerializedName("marked_price")
+    var markedPrice: Double?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: PriceFactorySizesSchema
+*/
+@Parcelize
+data class PriceFactorySizesSchema(
+    
+    
+    
+    @SerializedName("price_factory_id")
+    var priceFactoryId: String?=null,
+    
+    @SerializedName("seller_identifier")
+    var sellerIdentifier: String?=null,
+    
+    @SerializedName("size")
+    var size: String?=null,
+    
+    @SerializedName("price_zone_id")
+    var priceZoneId: String?=null,
+    
+    @SerializedName("currency_prices")
+    var currencyPrices: ArrayList<PriceFactoryCurrencyPriceSchema>?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: PriceFactoryProductResponseSchema
+*/
+@Parcelize
+data class PriceFactoryProductResponseSchema(
+    
+    
+    
+    @SerializedName("item_id")
+    var itemId: Int?=null,
+    
+    @SerializedName("item_code")
+    var itemCode: String?=null,
+    
+    @SerializedName("name")
+    var name: String?=null,
+    
+    @SerializedName("active")
+    var active: Boolean?=null,
+    
+    @SerializedName("media")
+    var media: ArrayList<String>?=null,
+    
+    @SerializedName("sizes")
+    var sizes: ArrayList<PriceFactorySizesSchema>?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: PriceFactoryProductListResponseSchema
+*/
+@Parcelize
+data class PriceFactoryProductListResponseSchema(
+    
+    
+    
+    @SerializedName("items")
+    var items: ArrayList<PriceFactoryProductResponseSchema>?=null,
+    
+    @SerializedName("page")
+    var page: Page?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: PriceRange
+*/
+@Parcelize
+data class PriceRange(
+    
+    
+    
+    @SerializedName("min")
+    var min: Double?=null,
+    
+    @SerializedName("max")
+    var max: Double?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: CurrencyPrice
+*/
+@Parcelize
+data class CurrencyPrice(
+    
+    
+    
+    @SerializedName("discount")
+    var discount: Double?=null,
+    
+    @SerializedName("currency_code")
+    var currencyCode: String?=null,
+    
+    @SerializedName("currency_symbol")
+    var currencySymbol: String?=null,
+    
+    @SerializedName("marked")
+    var marked: PriceRange?=null,
+    
+    @SerializedName("effective")
+    var effective: PriceRange?=null,
+    
+    @SerializedName("selling")
+    var selling: PriceRange?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: ProductPrice
+*/
+@Parcelize
+data class ProductPrice(
+    
+    
+    
+    @SerializedName("zone_type")
+    var zoneType: String?=null,
+    
+    @SerializedName("zone_identifier")
+    var zoneIdentifier: String?=null,
+    
+    @SerializedName("currency_prices")
+    var currencyPrices: ArrayList<CurrencyPrice>?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: AppProductPricesSchema
+*/
+@Parcelize
+data class AppProductPricesSchema(
+    
+    
+    
+    @SerializedName("item_code")
+    var itemCode: String?=null,
+    
+    @SerializedName("brand_uid")
+    var brandUid: Int?=null,
+    
+    @SerializedName("item_id")
+    var itemId: Int?=null,
+    
+    @SerializedName("discount_meta")
+    var discountMeta: @RawValue HashMap<String,Any>?=null,
+    
+    @SerializedName("product_price")
+    var productPrice: ArrayList<ProductPrice>?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
     Model: ActionPage
 */
 @Parcelize
@@ -20105,6 +21594,33 @@ data class CustomMeta(
         companion object {
             fun valueOfTaxStatusEnum(value : String): TaxStatusEnum? {
                 return TaxStatusEnum.values().find {
+                    it.value == value
+                }
+            }
+        }
+    }
+
+
+
+    /*
+        Enum: TaxVersionScopeEnum
+        Used By: Catalog
+    */
+    enum class TaxVersionScopeEnum(val value:String){
+        
+        @SerializedName("COUNTRY")
+        country("COUNTRY"), 
+        
+        @SerializedName("REGION")
+        region("REGION"), 
+        
+        @SerializedName("STORE")
+        store("STORE");
+        
+
+        companion object {
+            fun valueOfTaxVersionScopeEnum(value : String): TaxVersionScopeEnum? {
+                return TaxVersionScopeEnum.values().find {
                     it.value == value
                 }
             }

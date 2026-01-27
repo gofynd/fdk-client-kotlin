@@ -160,4 +160,24 @@ interface CartApiList {
     suspend fun checkoutCartV2(@Url url1: String?    ,  @Header("x-ordering-source") xOrderingSource: String?,   @Query("buy_now") buyNow: Boolean?, @Query("cart_type") cartType: String?, @Body body: CartCheckoutDetailV2Creation, @HeaderMap headers: Map<String, String>? = null)
     : Response<CartCheckoutResult>
     
+    
+    @GET
+    suspend fun getOffers(@Url url1: String?    ,        @Query("mode") mode: String?, @Query("id") id: String?, @Query("buy_now") buyNow: Boolean?, @Query("product_slug") productSlug: String?, @Query("store_id") storeId: String?, @Query("type") type: Boolean?, @Query("product_size") productSize: String?, @HeaderMap headers: Map<String, String>? = null)
+    : Response<GetOfferResult>
+    
+    
+    @POST
+    suspend fun applyOffer(@Url url1: String?    ,   @Query("id") id: String, @Query("buy_now") buyNow: Boolean?, @Body body: ApplyOfferSchema, @HeaderMap headers: Map<String, String>? = null)
+    : Response<OfferListItem>
+    
+    
+    @DELETE
+    suspend fun removeOffer(@Url url1: String?    ,   @Query("id") id: String, @Query("buy_now") buyNow: Boolean?, @HeaderMap headers: Map<String, String>? = null)
+    : Response<OfferListItem>
+    
+    
+    @GET
+    suspend fun getProductsByOfferId(@Url url1: String?    ,    @Query("offer_id") offerId: String, @Query("page") page: Int?, @Query("page_size") pageSize: Int?, @HeaderMap headers: Map<String, String>? = null)
+    : Response<EligibleProductsResult>
+    
 }

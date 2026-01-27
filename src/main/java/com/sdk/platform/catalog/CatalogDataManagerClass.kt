@@ -99,6 +99,7 @@ class CatalogDataManagerClass(val config: PlatformConfig, val unauthorizedAction
     
     
     
+    
     suspend fun listCategories(level: ArrayList<Int>?=null,department: Int?=null,q: String?=null,pageNo: Int?=null,pageSize: Int?=null,uids: ArrayList<Int>?=null,slug: String?=null, headers: Map<String, String> = emptyMap())
     : Response<CategoryResponseSchema>? {
 
@@ -1887,12 +1888,12 @@ class CatalogDataManagerClass(val config: PlatformConfig, val unauthorizedAction
     }
     
     
-    suspend fun getTaxVersionDetails(ruleId: String,versionStatus: String?=null,limit: String?=null,page: String?=null, headers: Map<String, String> = emptyMap())
+    suspend fun getTaxVersionDetails(ruleId: String,versionStatus: String?=null,q: String?=null,limit: String?=null,page: String?=null, headers: Map<String, String> = emptyMap())
     : Response<TaxRuleVersion>? {
 
         return if (config.oauthClient.isAccessTokenValid()) {
             catalogApiList?.getTaxVersionDetails(
-        companyId = config.companyId,ruleId = ruleId,versionStatus = versionStatus,limit = limit,page = page, headers = headers)
+        companyId = config.companyId,ruleId = ruleId,versionStatus = versionStatus,q = q,limit = limit,page = page, headers = headers)
         } else {
             null
         }
@@ -1982,6 +1983,14 @@ class CatalogDataManagerClass(val config: PlatformConfig, val unauthorizedAction
             null
         }
     }
+    
+    
+    
+    
+    
+    
+    
+    
     
     
     
@@ -3029,6 +3038,16 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     return paginator
     }
     
+    suspend fun getAppProductPrices(itemIds: ArrayList<Int>, headers: Map<String, String> = emptyMap())
+    : Response<AppProductPricesSchema>? {
+        return if (config.oauthClient.isAccessTokenValid()) {
+                catalogApiList?.getAppProductPrices(companyId = config.companyId ,applicationId = applicationId ,itemIds = itemIds, headers = headers)
+        } else {
+            null
+        }
+    }
+    
+    
     suspend fun getAppReturnConfiguration( headers: Map<String, String> = emptyMap())
     : Response<AppReturnConfigResponseSchema>? {
         return if (config.oauthClient.isAccessTokenValid()) {
@@ -3467,6 +3486,86 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     : Response<FollowProduct>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 catalogApiList?.unfollowProductById(companyId = config.companyId ,applicationId = applicationId ,userId = userId,itemId = itemId, headers = headers)
+        } else {
+            null
+        }
+    }
+    
+    
+    suspend fun getPriceFactories(q: String?=null, headers: Map<String, String> = emptyMap())
+    : Response<PriceFactoryListResponseSchema>? {
+        return if (config.oauthClient.isAccessTokenValid()) {
+                catalogApiList?.getPriceFactories(companyId = config.companyId ,applicationId = applicationId ,q = q, headers = headers)
+        } else {
+            null
+        }
+    }
+    
+    
+    suspend fun createPriceFactory(body: CreatePriceFactoryConfigSchema, headers: Map<String, String> = emptyMap())
+    : Response<SuccessResponseSchema>? {
+        return if (config.oauthClient.isAccessTokenValid()) {
+                catalogApiList?.createPriceFactory(companyId = config.companyId ,applicationId = applicationId , body = body,headers = headers)
+        } else {
+            null
+        }
+    }
+    
+    
+    suspend fun getPriceFactory(priceFactoryId: String, headers: Map<String, String> = emptyMap())
+    : Response<PriceFactoryConfigSchema>? {
+        return if (config.oauthClient.isAccessTokenValid()) {
+                catalogApiList?.getPriceFactory(companyId = config.companyId ,applicationId = applicationId ,priceFactoryId = priceFactoryId, headers = headers)
+        } else {
+            null
+        }
+    }
+    
+    
+    suspend fun updatePriceFactory(priceFactoryId: String,body: UpdatePriceFactoryConfigSchema, headers: Map<String, String> = emptyMap())
+    : Response<SuccessResponseSchema>? {
+        return if (config.oauthClient.isAccessTokenValid()) {
+                catalogApiList?.updatePriceFactory(companyId = config.companyId ,applicationId = applicationId ,priceFactoryId = priceFactoryId, body = body,headers = headers)
+        } else {
+            null
+        }
+    }
+    
+    
+    suspend fun deletePriceFactory(priceFactoryId: String, headers: Map<String, String> = emptyMap())
+    : Response<SuccessResponseSchema>? {
+        return if (config.oauthClient.isAccessTokenValid()) {
+                catalogApiList?.deletePriceFactory(companyId = config.companyId ,applicationId = applicationId ,priceFactoryId = priceFactoryId, headers = headers)
+        } else {
+            null
+        }
+    }
+    
+    
+    suspend fun getPriceFactoryProducts(priceFactoryId: String,brandIds: ArrayList<Int>?=null,categoryIds: ArrayList<Int>?=null,sellerIdentifier: String?=null,itemCode: String?=null,slug: String?=null,name: String?=null,active: Boolean?=null,pageNo: Int?=null,pageSize: Int?=null, headers: Map<String, String> = emptyMap())
+    : Response<PriceFactoryProductListResponseSchema>? {
+        return if (config.oauthClient.isAccessTokenValid()) {
+                catalogApiList?.getPriceFactoryProducts(companyId = config.companyId ,applicationId = applicationId ,priceFactoryId = priceFactoryId,brandIds = brandIds,categoryIds = categoryIds,sellerIdentifier = sellerIdentifier,itemCode = itemCode,slug = slug,name = name,active = active,pageNo = pageNo,pageSize = pageSize, headers = headers)
+        } else {
+            null
+        }
+    }
+    
+    
+    suspend fun getPriceFactoryProduct(priceFactoryId: String,itemId: String, headers: Map<String, String> = emptyMap())
+    : Response<PriceFactoryProductResponseSchema>? {
+        return if (config.oauthClient.isAccessTokenValid()) {
+                catalogApiList?.getPriceFactoryProduct(companyId = config.companyId ,applicationId = applicationId ,priceFactoryId = priceFactoryId,itemId = itemId, headers = headers)
+        } else {
+            null
+        }
+    }
+    
+    
+    suspend fun updatePriceFactoryProduct(priceFactoryId: String,itemId: String,body: UpsertPriceFactoryProductSchema, headers: Map<String, String> = emptyMap())
+    : Response<SuccessResponseSchema>? {
+        return if (config.oauthClient.isAccessTokenValid()) {
+                catalogApiList?.updatePriceFactoryProduct(companyId = config.companyId ,applicationId = applicationId ,priceFactoryId = priceFactoryId,itemId = itemId, body = body,headers = headers)
         } else {
             null
         }

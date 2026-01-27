@@ -1537,11 +1537,20 @@ data class AppFeature(
     @SerializedName("order")
     var order: OrderFeature?=null,
     
+    @SerializedName("security")
+    var security: SecurityFeature?=null,
+    
     @SerializedName("fulfillment_option")
     var fulfillmentOption: FulfillmentOption?=null,
     
     @SerializedName("delivery_strategy")
     var deliveryStrategy: DeliveryStrategy?=null,
+    
+    @SerializedName("price_strategy")
+    var priceStrategy: String?=null,
+    
+    @SerializedName("international")
+    var international: Boolean?=null,
     
     @SerializedName("_id")
     var id: String?=null,
@@ -1559,6 +1568,12 @@ data class AppFeature(
     var v: Int?=null
     
 ): Parcelable {
+    
+    
+    
+    
+    
+    
     
     
     
@@ -2022,6 +2037,55 @@ data class OrderFeature(
 ): Parcelable {
     
     
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: SecurityFeature
+*/
+@Parcelize
+data class SecurityFeature(
+    
+    
+    
+    @SerializedName("domains")
+    var domains: ArrayList<AllowedDomain>?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: AllowedDomain
+*/
+@Parcelize
+data class AllowedDomain(
+    
+    
+    
+    @SerializedName("host")
+    var host: String?=null,
+    
+    @SerializedName("url_scheme")
+    var urlScheme: String?=null
+    
+): Parcelable {
     
     
     

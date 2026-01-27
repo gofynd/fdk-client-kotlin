@@ -2039,6 +2039,12 @@ data class RefundStatus(
     @SerializedName("status")
     var status: String?=null,
     
+    @SerializedName("operational_status")
+    var operationalStatus: String?=null,
+    
+    @SerializedName("transaction_info")
+    var transactionInfo: ArrayList<RefundTransactionInfo>?=null,
+    
     @SerializedName("created_ts")
     var createdTs: String?=null,
     
@@ -2049,6 +2055,10 @@ data class RefundStatus(
     var updatedBy: String?=null
     
 ): Parcelable {
+    
+    
+    
+    
     
     
     
@@ -2105,6 +2115,38 @@ data class BeneficiaryDetails(
     
     
     
+    
+    
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: RefundTransactionInfo
+*/
+@Parcelize
+data class RefundTransactionInfo(
+    
+    
+    
+    @SerializedName("rrn")
+    var rrn: String?=null,
+    
+    @SerializedName("utr")
+    var utr: String?=null,
+    
+    @SerializedName("mode")
+    var mode: String?=null
+    
+): Parcelable {
     
     
     

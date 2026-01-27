@@ -3126,8 +3126,62 @@ data class ResourcePayload(
     
     
     
+    @SerializedName("resource_id")
+    var resourceId: ArrayList<String>?=null,
+    
     @SerializedName("payload")
     var payload: @RawValue ArrayList<HashMap<String,Any>>?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: OrderTranslationRequestSchema
+*/
+@Parcelize
+data class OrderTranslationRequestSchema(
+    
+    
+    
+    @SerializedName("payload_type")
+    var payloadType: String?=null,
+    
+    @SerializedName("payload")
+    var payload: @RawValue ArrayList<HashMap<String,Any>>?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: TranslationResult
+*/
+@Parcelize
+data class TranslationResult(
+    
+    
+    
+    @SerializedName("items")
+    var items: @RawValue ArrayList<HashMap<String,Any>>?=null
     
 ): Parcelable {
     

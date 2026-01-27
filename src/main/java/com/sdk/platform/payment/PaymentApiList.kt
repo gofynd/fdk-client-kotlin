@@ -183,10 +183,10 @@ interface PaymentApiList {
     
     @GET ("/service/platform/payment/v1.0/company/{company_id}/application/{application_id}/payment/options/aggregators/{aggregator_id}")
     suspend fun getMerchantAggregatorPaymentModeDetails(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Path("aggregator_id") aggregatorId: String, @Query("business_unit") businessUnit: String, @Query("device") device: String, @HeaderMap headers: Map<String, String>? = null)
-    : Response<PlatformPaymentModeDetails>
+    : Response<PaymentModeConfig>
     
     @PATCH ("/service/platform/payment/v1.0/company/{company_id}/application/{application_id}/payment/options/aggregators/{aggregator_id}")
-    suspend fun patchMerchantAggregatorPaymentModeDetails(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Path("aggregator_id") aggregatorId: String,@Body body: PlatformPaymentModeDetails, @HeaderMap headers: Map<String, String>? = null)
+    suspend fun patchMerchantAggregatorPaymentModeDetails(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Path("aggregator_id") aggregatorId: String,@Body body: PlatformConfigPaymentModeDetails, @HeaderMap headers: Map<String, String>? = null)
     : Response<PlatformPaymentModeDetails>
     
     @GET ("/service/platform/payment/v1.0/company/{company_id}/application/{application_id}/payment/options/configuration/aggregator")
@@ -220,5 +220,9 @@ interface PaymentApiList {
     @POST ("/service/platform/payment/v1.0/company/{company_id}/application/{application_id}/payment/validate/customer-credits")
     suspend fun validateCustomerAndCreditSummary(@Path("company_id") companyId: String, @Path("application_id") applicationId: String,@Body body: CustomerValidationSchema, @HeaderMap headers: Map<String, String>? = null)
     : Response<ValidateCustomerCreditSchema>
+    
+    @POST ("/service/platform/payment/v1.0/company/{company_id}/application/{application_id}/aggregators/{aggregator_id}/token")
+    suspend fun saveTokenForAggregator(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Path("aggregator_id") aggregatorId: String,@Body body: AggregatorToken, @HeaderMap headers: Map<String, String>? = null)
+    : Response<OperationResponseSchema>
     
 }

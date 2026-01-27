@@ -87,6 +87,9 @@ data class CreateUpdateDiscount(
     @SerializedName("zone_ids")
     var zoneIds: ArrayList<String>?=null,
     
+    @SerializedName("price_factory_ids")
+    var priceFactoryIds: ArrayList<String>?=null,
+    
     @SerializedName("validity")
     var validity: ValidityObject?=null,
     
@@ -94,6 +97,8 @@ data class CreateUpdateDiscount(
     var discountMeta: DiscountMeta?=null
     
 ): Parcelable {
+    
+    
     
     
     
@@ -211,6 +216,9 @@ data class DiscountJob(
     @SerializedName("zone_ids")
     var zoneIds: ArrayList<String>?=null,
     
+    @SerializedName("price_factory_ids")
+    var priceFactoryIds: ArrayList<String>?=null,
+    
     @SerializedName("discount_meta")
     var discountMeta: DiscountMeta?=null,
     
@@ -233,6 +241,8 @@ data class DiscountJob(
     var meta: @RawValue HashMap<String,Any>?=null
     
 ): Parcelable {
+    
+    
     
     
     
@@ -629,6 +639,9 @@ data class FileJobRequestSchema(
     @SerializedName("store_ids")
     var storeIds: ArrayList<Int>?=null,
     
+    @SerializedName("price_factory_ids")
+    var priceFactoryIds: ArrayList<String>?=null,
+    
     @SerializedName("validity")
     var validity: ValidityObject?=null,
     
@@ -636,6 +649,8 @@ data class FileJobRequestSchema(
     var meta: @RawValue HashMap<String,Any>?=null
     
 ): Parcelable {
+    
+    
     
     
     
