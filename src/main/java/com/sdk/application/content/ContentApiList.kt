@@ -77,7 +77,7 @@ interface ContentApiList {
     
     
     @GET
-    suspend fun getSEOMarkupSchemas(@Url url1: String?    ,   @Query("page_type") pageType: String?, @Query("active") active: Boolean?, @HeaderMap headers: Map<String, String>? = null)
+    suspend fun getSEOMarkupSchemas(@Url url1: String?    ,   @Query("page_type") pageType: PageType?, @Query("active") active: Boolean?, @HeaderMap headers: Map<String, String>? = null)
     : Response<SeoSchemaComponent>
     
     

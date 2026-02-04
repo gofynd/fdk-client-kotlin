@@ -1146,7 +1146,7 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     }
     
     
-    suspend fun getDefaultSEOMarkupSchema(pageType: String?=null, headers: Map<String, String> = emptyMap())
+    suspend fun getDefaultSEOMarkupSchema(pageType: PageType?=null, headers: Map<String, String> = emptyMap())
     : Response<DefaultSchemaComponent>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 contentApiList?.getDefaultSEOMarkupSchema(companyId = config.companyId ,applicationId = applicationId ,pageType = pageType, headers = headers)

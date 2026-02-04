@@ -205,7 +205,7 @@ class ContentDataManagerClass(val config: ApplicationConfig, val unauthorizedAct
 
     
     
-    suspend fun getSEOMarkupSchemas(pageType: String?=null,active: Boolean?=null, headers: Map<String, String> = emptyMap()): Response<SeoSchemaComponent>? {
+    suspend fun getSEOMarkupSchemas(pageType: PageType?=null,active: Boolean?=null, headers: Map<String, String> = emptyMap()): Response<SeoSchemaComponent>? {
         var fullUrl : String? = _relativeUrls["getSEOMarkupSchemas"]
         
         return contentApiList?.getSEOMarkupSchemas(fullUrl,   pageType = pageType,  active = active,headers = headers)}

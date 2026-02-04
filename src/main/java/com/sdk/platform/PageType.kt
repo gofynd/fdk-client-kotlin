@@ -158,7 +158,10 @@ import android.net.Uri
         singlePageCheckout("single-page-checkout"), 
         
         @SerializedName("request-reattempt")
-        requestReattempt("request-reattempt");
+        requestReattempt("request-reattempt"), 
+        
+        @SerializedName("files")
+        files("files");
         
 
         companion object {

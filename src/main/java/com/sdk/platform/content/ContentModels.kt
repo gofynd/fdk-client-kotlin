@@ -467,7 +467,7 @@ data class SEOSchemaMarkupTemplate(
     var title: String?=null,
     
     @SerializedName("page_type")
-    var pageType: String?=null,
+    var pageType: PageType?=null,
     
     @SerializedName("schema")
     var schema: String?=null,
@@ -531,7 +531,7 @@ data class SEOSchemaMarkupTemplateRequestBody(
     var title: String?=null,
     
     @SerializedName("page_type")
-    var pageType: String?=null,
+    var pageType: PageType?=null,
     
     @SerializedName("schema")
     var schema: String?=null,
@@ -770,7 +770,7 @@ data class DefaultSEOSchemaMarkupTemplate(
     
     
     @SerializedName("page_type")
-    var pageType: String?=null,
+    var pageType: PageType?=null,
     
     @SerializedName("schema")
     var schema: String?=null,

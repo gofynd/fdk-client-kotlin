@@ -214,7 +214,7 @@ interface ContentApiList {
     : Response<SeoSchema>
     
     @GET ("/service/platform/content/v1.0/company/{company_id}/application/{application_id}/seo/schema/default")
-    suspend fun getDefaultSEOMarkupSchema(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Query("page_type") pageType: String?, @HeaderMap headers: Map<String, String>? = null)
+    suspend fun getDefaultSEOMarkupSchema(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Query("page_type") pageType: PageType?, @HeaderMap headers: Map<String, String>? = null)
     : Response<DefaultSchemaComponent>
     
     @GET ("/service/platform/content/v1.0/company/{company_id}/application/{application_id}/seo/schema")

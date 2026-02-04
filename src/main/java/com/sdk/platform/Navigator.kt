@@ -361,6 +361,15 @@ enum class Navigator(
         params = arrayListOf(
             NavParam(key = "shipmentId", required = true)
         )
+    ),
+   
+    FILES(
+        pageType = PageType.files,
+        navName = "Files",
+        link = "/files/:file_name",
+        params = arrayListOf(
+            NavParam(key = "file_name", required = true)
+        )
     )
    
 }

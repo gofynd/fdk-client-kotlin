@@ -3501,9 +3501,14 @@ data class SendOtpCommsReq(
     var sms: SendOtpCommsReqSms?=null,
     
     @SerializedName("email")
-    var email: SendOtpCommsReqEmail?=null
+    var email: SendOtpCommsReqEmail?=null,
+    
+    @SerializedName("additional_variables")
+    var additionalVariables: @RawValue HashMap<String,Any>?=null
     
 ): Parcelable {
+    
+    
     
     
     

@@ -319,7 +319,7 @@ data class SEOSchemaMarkupTemplate(
     var title: String?=null,
     
     @SerializedName("page_type")
-    var pageType: String?=null,
+    var pageType: PageType?=null,
     
     @SerializedName("description")
     var description: String?=null,
