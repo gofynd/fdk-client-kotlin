@@ -2395,9 +2395,14 @@ data class Shipments(
     var refundBreakupValues: ArrayList<BreakupValues>?=null,
     
     @SerializedName("is_refund_config_enabled")
-    var isRefundConfigEnabled: Boolean?=null
+    var isRefundConfigEnabled: Boolean?=null,
+    
+    @SerializedName("meta")
+    var meta: @RawValue HashMap<String,Any>?=null
     
 ): Parcelable {
+    
+    
     
     
     
@@ -3048,6 +3053,9 @@ data class OrderInfo(
     @SerializedName("bags_for_reorder")
     var bagsForReorder: ArrayList<BagsForReorder>?=null,
     
+    @SerializedName("meta")
+    var meta: @RawValue HashMap<String,Any>?=null,
+    
     @SerializedName("gstin_code")
     var gstinCode: String?=null,
     
@@ -3055,6 +3063,8 @@ data class OrderInfo(
     var userInfo: UserDetails?=null
     
 ): Parcelable {
+    
+    
     
     
     
