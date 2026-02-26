@@ -21,6 +21,8 @@ class OrderDataManagerClass(val config: ApplicationConfig, val unauthorizedActio
             
                     _relativeUrls["getRefundModes"] = "/service/application/order-manage/v1.0/shipment/{shipment_id}/refund/modes".substring(1)
             
+                    _relativeUrls["getRefundModesWithPriceBreakup"] = "/service/application/order-manage/v1.0/shipment/{shipment_id}/refund/modes".substring(1)
+            
                     _relativeUrls["getOrders"] = "/service/application/order/v1.0/orders".substring(1)
             
                     _relativeUrls["getOrderById"] = "/service/application/order/v1.0/orders/{order_id}".substring(1)
@@ -88,6 +90,15 @@ class OrderDataManagerClass(val config: ApplicationConfig, val unauthorizedActio
         fullUrl = fullUrl?.replace("{" + "shipment_id" +"}",shipmentId.toString())
         
         return orderApiList?.getRefundModes(fullUrl,    lineNumbers = lineNumbers,headers = headers)}
+
+    
+    
+    suspend fun getRefundModesWithPriceBreakup(shipmentId: String,body: RefundModeRequestData, headers: Map<String, String> = emptyMap()): Response<RefundOptions>? {
+        var fullUrl : String? = _relativeUrls["getRefundModesWithPriceBreakup"]
+        
+        fullUrl = fullUrl?.replace("{" + "shipment_id" +"}",shipmentId.toString())
+        
+        return orderApiList?.getRefundModesWithPriceBreakup(fullUrl,  body = body,headers = headers)}
 
     
     

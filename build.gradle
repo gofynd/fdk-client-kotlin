@@ -26,7 +26,7 @@ android {
         minSdkVersion 21
         targetSdkVersion 31
         versionCode 2
-        versionName "3.18.0"
+        versionName "3.19.0"
         multiDexEnabled true
 
         vectorDrawables.useSupportLibrary = true

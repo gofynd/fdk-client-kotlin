@@ -1910,9 +1910,14 @@ data class CreateUserRequestSchema(
     var externalId: String?=null,
     
     @SerializedName("rr_id")
-    var rrId: String?=null
+    var rrId: String?=null,
+    
+    @SerializedName("dob")
+    var dob: String?=null
     
 ): Parcelable {
+    
+    
     
     
     
@@ -2887,6 +2892,9 @@ data class UpdateUserRequestSchema(
     @SerializedName("last_name")
     var lastName: String?=null,
     
+    @SerializedName("dob")
+    var dob: String?=null,
+    
     @SerializedName("gender")
     var gender: String?=null,
     
@@ -2906,6 +2914,8 @@ data class UpdateUserRequestSchema(
     var emails: ArrayList<UserEmails>?=null
     
 ): Parcelable {
+    
+    
     
     
     

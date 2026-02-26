@@ -8822,8 +8822,8 @@ data class PostHook(
     @SerializedName("kwargs")
     var kwargs: @RawValue HashMap<String,Any>?=null,
     
-    @SerializedName("filters")
-    var filters: Filter?=null
+    @SerializedName("filter")
+    var filter: Filter?=null
     
 ): Parcelable {
     
@@ -8854,8 +8854,8 @@ data class PreHook(
     @SerializedName("kwargs")
     var kwargs: @RawValue HashMap<String,Any>?=null,
     
-    @SerializedName("filters")
-    var filters: Filter?=null
+    @SerializedName("filter")
+    var filter: Filter?=null
     
 ): Parcelable {
     

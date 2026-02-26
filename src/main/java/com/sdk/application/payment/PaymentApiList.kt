@@ -62,7 +62,7 @@ interface PaymentApiList {
     
     
     @GET
-    suspend fun getPosPaymentModeRoutes(@Url url1: String?    ,         @Query("amount") amount: Int, @Query("cart_id") cartId: String, @Query("pincode") pincode: String, @Query("checkout_mode") checkoutMode: String?, @Query("refresh") refresh: Boolean?, @Query("card_reference") cardReference: String?, @Query("order_type") orderType: String, @Query("user_details") userDetails: String?, @HeaderMap headers: Map<String, String>? = null)
+    suspend fun getPosPaymentModeRoutes(@Url url1: String?    ,          @Query("amount") amount: Int, @Query("cart_id") cartId: String, @Query("pincode") pincode: String, @Query("checkout_mode") checkoutMode: String?, @Query("refresh") refresh: Boolean?, @Query("card_reference") cardReference: String?, @Query("order_type") orderType: String, @Query("fulfillment_option") fulfillmentOption: ArrayList<String>?, @Query("user_details") userDetails: String?, @HeaderMap headers: Map<String, String>? = null)
     : Response<PaymentModeRouteDetails>
     
     

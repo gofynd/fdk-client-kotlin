@@ -14,6 +14,55 @@ import com.google.gson.annotations.SerializedName
 
              
 /*
+    Model: RefundModeLineNumber
+*/
+@Parcelize
+data class RefundModeLineNumber(
+    
+    
+    
+    @SerializedName("line_number")
+    var lineNumber: Double?=null,
+    
+    @SerializedName("quantity")
+    var quantity: Double?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: RefundModeRequestData
+*/
+@Parcelize
+data class RefundModeRequestData(
+    
+    
+    
+    @SerializedName("line_numbers")
+    var lineNumbers: ArrayList<RefundModeLineNumber>?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
     Model: PriceBreakupValues
 */
 @Parcelize
