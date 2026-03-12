@@ -4076,9 +4076,14 @@ data class LoyaltyPoints(
     var earnTitle: String?=null,
     
     @SerializedName("title")
-    var title: String?=null
+    var title: String?=null,
+    
+    @SerializedName("discount_amount")
+    var discountAmount: Double?=null
     
 ): Parcelable {
+    
+    
     
     
     
@@ -4162,9 +4167,14 @@ data class RawBreakup(
     var subtotal: Double?=null,
     
     @SerializedName("convenience_fee")
-    var convenienceFee: Double?=null
+    var convenienceFee: Double?=null,
+    
+    @SerializedName("store_credit")
+    var storeCredit: Double?=null
     
 ): Parcelable {
+    
+    
     
     
     
@@ -9995,6 +10005,28 @@ data class CheckCart(
 
              
 /*
+    Model: CartCheckoutDetailsData
+*/
+@Parcelize
+data class CartCheckoutDetailsData(
+    
+    
+    
+    @SerializedName("order_id")
+    var orderId: String?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
     Model: CartCheckoutDetails
 */
 @Parcelize
@@ -10006,7 +10038,7 @@ data class CartCheckoutDetails(
     var appInterceptUrl: String?=null,
     
     @SerializedName("data")
-    var data: @RawValue HashMap<String,Any>?=null,
+    var data: CartCheckoutDetailsData?=null,
     
     @SerializedName("cart")
     var cart: CheckCart?=null,

@@ -5378,9 +5378,14 @@ data class StoreV3(
     var name: String?=null,
     
     @SerializedName("count")
-    var count: Int?=null
+    var count: Int?=null,
+    
+    @SerializedName("code")
+    var code: String?=null
     
 ): Parcelable {
+    
+    
     
     
     
@@ -5941,7 +5946,7 @@ data class ProductSizePriceResponseV4(
     
     
     @SerializedName("store")
-    var store: StoreV3?=null,
+    var store: StoreV4?=null,
     
     @SerializedName("article_assignment")
     var articleAssignment: ArticleAssignmentV3?=null,

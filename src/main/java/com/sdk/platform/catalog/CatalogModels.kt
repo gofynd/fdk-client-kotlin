@@ -2985,6 +2985,68 @@ data class BulkInventoryGet(
 
              
 /*
+    Model: InventoryRecord
+*/
+@Parcelize
+data class InventoryRecord(
+    
+    
+    
+    @SerializedName("command")
+    var command: String?=null,
+    
+    @SerializedName("currency")
+    var currency: String?=null,
+    
+    @SerializedName("inventory_bucket")
+    var inventoryBucket: String?=null,
+    
+    @SerializedName("price_effective")
+    var priceEffective: Double?=null,
+    
+    @SerializedName("price_marked")
+    var priceMarked: Double?=null,
+    
+    @SerializedName("seller_identifier")
+    var sellerIdentifier: String?=null,
+    
+    @SerializedName("store_code")
+    var storeCode: String?=null,
+    
+    @SerializedName("total_quantity")
+    var totalQuantity: Int?=null,
+    
+    @SerializedName("trace_id")
+    var traceId: String?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
     Model: FailedRecord
 */
 @Parcelize
@@ -2996,9 +3058,14 @@ data class FailedRecord(
     var identifiers: String?=null,
     
     @SerializedName("message")
-    var message: String?=null
+    var message: String?=null,
+    
+    @SerializedName("data")
+    var data: ArrayList<InventoryRecord>?=null
     
 ): Parcelable {
+    
+    
     
     
     
@@ -3067,10 +3134,15 @@ data class BulkInventoryGetItems(
     @SerializedName("tags")
     var tags: ArrayList<String>?=null,
     
+    @SerializedName("error_file_url")
+    var errorFileUrl: String?=null,
+    
     @SerializedName("meta")
     var meta: BulkMeta?=null
     
 ): Parcelable {
+    
+    
     
     
     
@@ -3125,9 +3197,19 @@ data class BulkMeta(
     var comment: String?=null,
     
     @SerializedName("image_urls")
-    var imageUrls: ArrayList<String>?=null
+    var imageUrls: ArrayList<String>?=null,
+    
+    @SerializedName("total")
+    var total: Int?=null,
+    
+    @SerializedName("meta")
+    var meta: @RawValue HashMap<String,Any>?=null
     
 ): Parcelable {
+    
+    
+    
+    
     
     
     
@@ -3242,9 +3324,19 @@ data class BulkJob(
     var total: Int?=null,
     
     @SerializedName("tracking_url")
-    var trackingUrl: String?=null
+    var trackingUrl: String?=null,
+    
+    @SerializedName("tags")
+    var tags: ArrayList<String>?=null,
+    
+    @SerializedName("meta")
+    var meta: @RawValue HashMap<String,Any>?=null
     
 ): Parcelable {
+    
+    
+    
+    
     
     
     
@@ -9755,7 +9847,7 @@ data class InventoryExportJobListResponseSchema(
     
     
     @SerializedName("items")
-    var items: InventoryJobDetailResponseSchema?=null,
+    var items: ArrayList<InventoryJobDetailResponseSchema>?=null,
     
     @SerializedName("page")
     var page: Page?=null
@@ -10245,9 +10337,14 @@ data class InventoryPayload(
     var notAvailableQuantity: Int?=null,
     
     @SerializedName("trace_id")
-    var traceId: String?=null
+    var traceId: String?=null,
+    
+    @SerializedName("meta")
+    var meta: @RawValue HashMap<String,Any>?=null
     
 ): Parcelable {
+    
+    
     
     
     
@@ -15913,6 +16010,21 @@ data class SizeDetails(
     @SerializedName("size")
     var size: String?=null,
     
+    @SerializedName("item_width")
+    var itemWidth: Double?=null,
+    
+    @SerializedName("item_length")
+    var itemLength: Double?=null,
+    
+    @SerializedName("item_height")
+    var itemHeight: Double?=null,
+    
+    @SerializedName("price_effective")
+    var priceEffective: Double?=null,
+    
+    @SerializedName("item_weight")
+    var itemWeight: Double?=null,
+    
     @SerializedName("store_count")
     var storeCount: Int?=null,
     
@@ -15944,6 +16056,16 @@ data class SizeDetails(
     var bundleDetails: ArrayList<BundleDetails>?=null
     
 ): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     
     
     
@@ -19443,10 +19565,15 @@ data class BulkInventoryJob(
     @SerializedName("tags")
     var tags: ArrayList<String>?=null,
     
+    @SerializedName("created_on")
+    var createdOn: String?=null,
+    
     @SerializedName("meta")
     var meta: BulkMeta?=null
     
 ): Parcelable {
+    
+    
     
     
     
@@ -19943,14 +20070,9 @@ data class CreateTaxComponentNameRequestSchema(
     
     
     @SerializedName("name")
-    var name: String?=null,
-    
-    @SerializedName("description")
-    var description: String?=null
+    var name: String?=null
     
 ): Parcelable {
-    
-    
     
     
     
@@ -19969,6 +20091,9 @@ data class TaxReqBodyVersion(
     
     
     
+    @SerializedName("scope")
+    var scope: String?=null,
+    
     @SerializedName("components")
     var components: ArrayList<TaxComponent>?=null,
     
@@ -19985,6 +20110,8 @@ data class TaxReqBodyVersion(
     var storeIds: ArrayList<Int>?=null
     
 ): Parcelable {
+    
+    
     
     
     
@@ -20165,7 +20292,7 @@ data class CreateTaxRequestBody(
     var rule: TaxReqBodyRule?=null,
     
     @SerializedName("versions")
-    var versions: ArrayList<TaxReqBodyVersion>?=null
+    var versions: TaxReqBodyVersion?=null
     
 ): Parcelable {
     
@@ -20307,6 +20434,9 @@ data class CreateTaxVersionRequestBody(
     
     
     
+    @SerializedName("scope")
+    var scope: String?=null,
+    
     @SerializedName("components")
     var components: ArrayList<TaxComponent>?=null,
     
@@ -20323,6 +20453,8 @@ data class CreateTaxVersionRequestBody(
     var storeIds: ArrayList<Int>?=null
     
 ): Parcelable {
+    
+    
     
     
     
@@ -20667,7 +20799,7 @@ data class HSCodeItem(
     var modifiedOn: String?=null,
     
     @SerializedName("type")
-    var type: HsTypeEnum?=null,
+    var type: String?=null,
     
     @SerializedName("company_id")
     var companyId: Int?=null,

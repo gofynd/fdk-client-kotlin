@@ -123,7 +123,7 @@ interface UserApiList {
     
     @GET ("/service/platform/user/v1.0/company/{company_id}/application/{application_id}/user_attribute/user/{user_id}")
     suspend fun getUserAttributesForUser(@Path("user_id") userId: String, @Path("application_id") applicationId: String, @Path("company_id") companyId: String, @Query("page_size") pageSize: Int?, @Query("page_no") pageNo: Int?, @HeaderMap headers: Map<String, String>? = null)
-    : Response<HashMap<String,Any>>
+    : Response<UserAttributeDefinitionsResponseSchema>
     
     @POST ("/service/platform/user/v1.0/company/{company_id}/application/{application_id}/user_attribute/user/{user_id}")
     suspend fun updateUserAttributes(@Path("user_id") userId: String, @Path("application_id") applicationId: String, @Path("company_id") companyId: String,@Body body: CreateBulkUserAttribute, @HeaderMap headers: Map<String, String>? = null)

@@ -157,7 +157,7 @@ interface CartApiList {
     
     
     @POST
-    suspend fun checkoutCartV2(@Url url1: String?    ,  @Header("x-ordering-source") xOrderingSource: String?,   @Query("buy_now") buyNow: Boolean?, @Query("cart_type") cartType: String?, @Body body: CartCheckoutDetailV2Creation, @HeaderMap headers: Map<String, String>? = null)
+    suspend fun checkoutCartV2(@Url url1: String?    ,  @Header("x-ordering-source") xOrderingSource: String?,  @Header("x-location-detail") xLocationDetail: String?,  @Header("x-currency-code") xCurrencyCode: String?,   @Query("buy_now") buyNow: Boolean?, @Query("cart_type") cartType: String?, @Body body: CartCheckoutDetailV2Creation, @HeaderMap headers: Map<String, String>? = null)
     : Response<CartCheckoutResult>
     
     

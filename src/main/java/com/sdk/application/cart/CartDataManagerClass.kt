@@ -337,10 +337,10 @@ class CartDataManagerClass(val config: ApplicationConfig, val unauthorizedAction
 
     
     
-    suspend fun checkoutCartV2(xOrderingSource: String?=null,buyNow: Boolean?=null,cartType: String?=null,body: CartCheckoutDetailV2Creation, headers: Map<String, String> = emptyMap()): Response<CartCheckoutResult>? {
+    suspend fun checkoutCartV2(xOrderingSource: String?=null,xLocationDetail: String?=null,xCurrencyCode: String?=null,buyNow: Boolean?=null,cartType: String?=null,body: CartCheckoutDetailV2Creation, headers: Map<String, String> = emptyMap()): Response<CartCheckoutResult>? {
         var fullUrl : String? = _relativeUrls["checkoutCartV2"]
         
-        return cartApiList?.checkoutCartV2(fullUrl,   xOrderingSource = xOrderingSource,  buyNow = buyNow,  cartType = cartType,body = body,headers = headers)}
+        return cartApiList?.checkoutCartV2(fullUrl,   xOrderingSource = xOrderingSource,  xLocationDetail = xLocationDetail,  xCurrencyCode = xCurrencyCode,  buyNow = buyNow,  cartType = cartType,body = body,headers = headers)}
 
     
     

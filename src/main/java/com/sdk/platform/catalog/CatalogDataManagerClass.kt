@@ -1238,6 +1238,18 @@ class CatalogDataManagerClass(val config: PlatformConfig, val unauthorizedAction
     }
     
     
+    suspend fun addInventory(itemId: String,size: String,body: InventoryRequestSchema, headers: Map<String, String> = emptyMap())
+    : Response<SuccessResponseSchema>? {
+
+        return if (config.oauthClient.isAccessTokenValid()) {
+            catalogApiList?.addInventory(
+        companyId = config.companyId,itemId = itemId,size = size, body = body,headers = headers)
+        } else {
+            null
+        }
+    }
+    
+    
     suspend fun getInventoryBySize(itemId: String,size: String,pageNo: Int?=null,pageSize: Int?=null,q: String?=null,sellable: Boolean?=null, headers: Map<String, String> = emptyMap())
     : Response<InventoryResponsePaginated>? {
 
@@ -1323,18 +1335,6 @@ class CatalogDataManagerClass(val config: PlatformConfig, val unauthorizedAction
     })
         return paginator
     }
-    
-    suspend fun addInventory(itemId: String,size: String,body: InventoryRequestSchema, headers: Map<String, String> = emptyMap())
-    : Response<SuccessResponseSchema>? {
-
-        return if (config.oauthClient.isAccessTokenValid()) {
-            catalogApiList?.addInventory(
-        companyId = config.companyId,itemId = itemId,size = size, body = body,headers = headers)
-        } else {
-            null
-        }
-    }
-    
     
     suspend fun getVariantsOfProducts(itemId: String,variantType: String,pageNo: Int?=null,pageSize: Int?=null, headers: Map<String, String> = emptyMap())
     : Response<ProductVariantsResponseSchema>? {
@@ -1936,7 +1936,7 @@ class CatalogDataManagerClass(val config: PlatformConfig, val unauthorizedAction
     }
     
     
-    suspend fun getHsCodes(page: Int?=null,limit: Int?=null,type: HsTypeEnum?=null,q: String?=null, headers: Map<String, String> = emptyMap())
+    suspend fun getHsCodes(page: Int?=null,limit: Int?=null,type: String?=null,q: String?=null, headers: Map<String, String> = emptyMap())
     : Response<HSCodes>? {
 
         return if (config.oauthClient.isAccessTokenValid()) {

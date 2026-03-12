@@ -230,7 +230,7 @@ interface ServiceabilityApiList {
     : Response<CourierPartnerSchemeModelSchema>
     
     @GET ("/service/platform/logistics/v2.0/company/{company_id}/courier-partner/scheme")
-    suspend fun getCourierPartnerSchemes(@Path("company_id") companyId: String, @Query("scheme_type") schemeType: String?, @Query("payment_mode") paymentMode: String?, @Query("capabilities") capabilities: ArrayList<String>?, @Query("scheme_ids") schemeIds: ArrayList<String>?, @Query("q") q: String?, @HeaderMap headers: Map<String, String>? = null)
+    suspend fun getCourierPartnerSchemes(@Path("company_id") companyId: String, @Query("extension_id") extensionId: String?, @Query("scheme_type") schemeType: String?, @Query("payment_mode") paymentMode: String?, @Query("capabilities") capabilities: ArrayList<String>?, @Query("scheme_ids") schemeIds: ArrayList<String>?, @Query("q") q: String?, @HeaderMap headers: Map<String, String>? = null)
     : Response<CourierPartnerSchemeList>
     
     @PUT ("/service/platform/logistics/v2.0/company/{company_id}/courier-partner/scheme/{scheme_id}")

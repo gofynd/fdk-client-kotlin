@@ -308,12 +308,12 @@ class ServiceabilityDataManagerClass(val config: PlatformConfig, val unauthorize
     }
     
     
-    suspend fun getCourierPartnerSchemes(schemeType: String?=null,paymentMode: String?=null,capabilities: ArrayList<String>?=null,schemeIds: ArrayList<String>?=null,q: String?=null, headers: Map<String, String> = emptyMap())
+    suspend fun getCourierPartnerSchemes(extensionId: String?=null,schemeType: String?=null,paymentMode: String?=null,capabilities: ArrayList<String>?=null,schemeIds: ArrayList<String>?=null,q: String?=null, headers: Map<String, String> = emptyMap())
     : Response<CourierPartnerSchemeList>? {
 
         return if (config.oauthClient.isAccessTokenValid()) {
             serviceabilityApiList?.getCourierPartnerSchemes(
-        companyId = config.companyId,schemeType = schemeType,paymentMode = paymentMode,capabilities = capabilities,schemeIds = schemeIds,q = q, headers = headers)
+        companyId = config.companyId,extensionId = extensionId,schemeType = schemeType,paymentMode = paymentMode,capabilities = capabilities,schemeIds = schemeIds,q = q, headers = headers)
         } else {
             null
         }

@@ -367,7 +367,7 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     
     
     suspend fun getUserAttributesForUser(userId: String,pageSize: Int?=null,pageNo: Int?=null, headers: Map<String, String> = emptyMap())
-    : Response<HashMap<String,Any>>? {
+    : Response<UserAttributeDefinitionsResponseSchema>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 userApiList?.getUserAttributesForUser(userId = userId,applicationId = applicationId ,companyId = config.companyId ,pageSize = pageSize,pageNo = pageNo, headers = headers)
         } else {

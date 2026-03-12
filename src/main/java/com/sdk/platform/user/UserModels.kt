@@ -63,6 +63,33 @@ data class UserAttributeDefinitionList(
 
              
 /*
+    Model: UserAttributeDefinitionsResponseSchema
+*/
+@Parcelize
+data class UserAttributeDefinitionsResponseSchema(
+    
+    
+    
+    @SerializedName("items")
+    var items: ArrayList<UserAttribute>?=null,
+    
+    @SerializedName("page")
+    var page: PaginationSchema?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
     Model: UserAttributeDefinition
 */
 @Parcelize
@@ -128,9 +155,14 @@ data class UserAttributeDefinition(
     var modifiedAt: String?=null,
     
     @SerializedName("__v")
-    var v: Int?=null
+    var v: Int?=null,
+    
+    @SerializedName("options")
+    var options: ArrayList<String>?=null
     
 ): Parcelable {
+    
+    
     
     
     
@@ -515,7 +547,7 @@ data class BulkUserAttributeRequestBody(
     var definitionId: String?=null,
     
     @SerializedName("value")
-    var value: @RawValue HashMap<String,Any>?=null
+    var value: @RawValue Any?=null
     
 ): Parcelable {
     

@@ -98,7 +98,7 @@ interface CartApiList {
     : Response<GetPriceAdjustmentResult>
     
     @POST ("/service/platform/cart/v1.0/company/{company_id}/application/{application_id}/cart/validate")
-    suspend fun fetchAndvalidateCartItems(@Header("x-ordering-source") xOrderingSource: String?, @Path("company_id") companyId: String, @Path("application_id") applicationId: String,@Body body: OpenapiCartDetailsCreation, @HeaderMap headers: Map<String, String>? = null)
+    suspend fun fetchAndvalidateCartItems(@Header("x-ordering-source") xOrderingSource: String?, @Header("x-location-detail") xLocationDetail: String?, @Header("x-currency-code") xCurrencyCode: String?, @Path("company_id") companyId: String, @Path("application_id") applicationId: String,@Body body: OpenapiCartDetailsCreation, @HeaderMap headers: Map<String, String>? = null)
     : Response<OpenapiCartDetailsResult>
     
     @POST ("/service/platform/cart/v1.0/company/{company_id}/application/{application_id}/cart/serviceability")
@@ -106,7 +106,7 @@ interface CartApiList {
     : Response<OpenApiCartServiceabilityResult>
     
     @POST ("/service/platform/cart/v1.0/company/{company_id}/application/{application_id}/cart/checkout")
-    suspend fun checkoutCart(@Header("x-ordering-source") xOrderingSource: String?, @Header("x-anonymous-cart") xAnonymousCart: String?, @Path("company_id") companyId: String, @Path("application_id") applicationId: String,@Body body: OpenApiPlatformCheckoutReq, @HeaderMap headers: Map<String, String>? = null)
+    suspend fun checkoutCart(@Header("x-ordering-source") xOrderingSource: String?, @Header("x-anonymous-cart") xAnonymousCart: String?, @Header("x-location-detail") xLocationDetail: String?, @Header("x-currency-code") xCurrencyCode: String?, @Path("company_id") companyId: String, @Path("application_id") applicationId: String,@Body body: OpenApiPlatformCheckoutReq, @HeaderMap headers: Map<String, String>? = null)
     : Response<OpenApiCheckoutResult>
     
     @GET ("/service/platform/cart/v1.0/company/{company_id}/application/{application_id}/abandoned/carts")
@@ -138,7 +138,7 @@ interface CartApiList {
     : Response<HashMap<String,Any>>
     
     @POST ("/service/platform/cart/v1.0/company/{company_id}/application/{application_id}/checkout/over-ride")
-    suspend fun overrideCart(@Header("x-ordering-source") xOrderingSource: String?, @Path("company_id") companyId: String, @Path("application_id") applicationId: String,@Body body: OverrideCheckoutReq, @HeaderMap headers: Map<String, String>? = null)
+    suspend fun overrideCart(@Header("x-ordering-source") xOrderingSource: String?, @Header("x-location-detail") xLocationDetail: String?, @Header("x-currency-code") xCurrencyCode: String?, @Path("company_id") companyId: String, @Path("application_id") applicationId: String,@Body body: OverrideCheckoutReq, @HeaderMap headers: Map<String, String>? = null)
     : Response<OverrideCheckoutResult>
     
     @POST ("/service/platform/cart/v1.0/company/{company_id}/application/{application_id}/share-cart")
@@ -254,7 +254,7 @@ interface CartApiList {
     : Response<PaymentCouponValidate>
     
     @POST ("/service/platform/cart/v2.0/company/{company_id}/application/{application_id}/checkout")
-    suspend fun platformCheckoutCartV2(@Header("x-ordering-source") xOrderingSource: String?, @Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Query("id") id: String?,@Body body: PlatformCartCheckoutDetailV2Creation, @HeaderMap headers: Map<String, String>? = null)
+    suspend fun platformCheckoutCartV2(@Header("x-ordering-source") xOrderingSource: String?, @Header("x-anonymous-cart") xAnonymousCart: String?, @Header("x-location-detail") xLocationDetail: String?, @Header("x-currency-code") xCurrencyCode: String?, @Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Query("id") id: String?,@Body body: PlatformCartCheckoutDetailV2Creation, @HeaderMap headers: Map<String, String>? = null)
     : Response<CartCheckoutDetails>
     
     @PUT ("/service/platform/cart/v2.0/company/{company_id}/application/{application_id}/payment")

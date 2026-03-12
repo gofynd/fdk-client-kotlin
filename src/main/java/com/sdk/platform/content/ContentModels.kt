@@ -7170,7 +7170,7 @@ data class ResourceUISchema(
     var featureImage: FeatureImage?=null,
     
     @SerializedName("seo")
-    var seo: Seo?=null
+    var seo: SeoTranslate?=null
     
 ): Parcelable {
     
@@ -7261,10 +7261,10 @@ data class FeatureImage(
 
              
 /*
-    Model: Seo
+    Model: SeoTranslate
 */
 @Parcelize
-data class Seo(
+data class SeoTranslate(
     
     
     

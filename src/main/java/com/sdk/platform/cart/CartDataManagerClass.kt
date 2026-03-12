@@ -338,10 +338,10 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     }
     
     
-    suspend fun fetchAndvalidateCartItems(xOrderingSource: String?=null,body: OpenapiCartDetailsCreation, headers: Map<String, String> = emptyMap())
+    suspend fun fetchAndvalidateCartItems(xOrderingSource: String?=null,xLocationDetail: String?=null,xCurrencyCode: String?=null,body: OpenapiCartDetailsCreation, headers: Map<String, String> = emptyMap())
     : Response<OpenapiCartDetailsResult>? {
         return if (config.oauthClient.isAccessTokenValid()) {
-                cartApiList?.fetchAndvalidateCartItems(xOrderingSource = xOrderingSource,companyId = config.companyId ,applicationId = applicationId , body = body,headers = headers)
+                cartApiList?.fetchAndvalidateCartItems(xOrderingSource = xOrderingSource,xLocationDetail = xLocationDetail,xCurrencyCode = xCurrencyCode,companyId = config.companyId ,applicationId = applicationId , body = body,headers = headers)
         } else {
             null
         }
@@ -358,10 +358,10 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     }
     
     
-    suspend fun checkoutCart(xOrderingSource: String?=null,xAnonymousCart: String?=null,body: OpenApiPlatformCheckoutReq, headers: Map<String, String> = emptyMap())
+    suspend fun checkoutCart(xOrderingSource: String?=null,xAnonymousCart: String?=null,xLocationDetail: String?=null,xCurrencyCode: String?=null,body: OpenApiPlatformCheckoutReq, headers: Map<String, String> = emptyMap())
     : Response<OpenApiCheckoutResult>? {
         return if (config.oauthClient.isAccessTokenValid()) {
-                cartApiList?.checkoutCart(xOrderingSource = xOrderingSource,xAnonymousCart = xAnonymousCart,companyId = config.companyId ,applicationId = applicationId , body = body,headers = headers)
+                cartApiList?.checkoutCart(xOrderingSource = xOrderingSource,xAnonymousCart = xAnonymousCart,xLocationDetail = xLocationDetail,xCurrencyCode = xCurrencyCode,companyId = config.companyId ,applicationId = applicationId , body = body,headers = headers)
         } else {
             null
         }
@@ -438,10 +438,10 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     }
     
     
-    suspend fun overrideCart(xOrderingSource: String?=null,body: OverrideCheckoutReq, headers: Map<String, String> = emptyMap())
+    suspend fun overrideCart(xOrderingSource: String?=null,xLocationDetail: String?=null,xCurrencyCode: String?=null,body: OverrideCheckoutReq, headers: Map<String, String> = emptyMap())
     : Response<OverrideCheckoutResult>? {
         return if (config.oauthClient.isAccessTokenValid()) {
-                cartApiList?.overrideCart(xOrderingSource = xOrderingSource,companyId = config.companyId ,applicationId = applicationId , body = body,headers = headers)
+                cartApiList?.overrideCart(xOrderingSource = xOrderingSource,xLocationDetail = xLocationDetail,xCurrencyCode = xCurrencyCode,companyId = config.companyId ,applicationId = applicationId , body = body,headers = headers)
         } else {
             null
         }
@@ -728,10 +728,10 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     }
     
     
-    suspend fun platformCheckoutCartV2(xOrderingSource: String?=null,id: String?=null,body: PlatformCartCheckoutDetailV2Creation, headers: Map<String, String> = emptyMap())
+    suspend fun platformCheckoutCartV2(xOrderingSource: String?=null,xAnonymousCart: String?=null,xLocationDetail: String?=null,xCurrencyCode: String?=null,id: String?=null,body: PlatformCartCheckoutDetailV2Creation, headers: Map<String, String> = emptyMap())
     : Response<CartCheckoutDetails>? {
         return if (config.oauthClient.isAccessTokenValid()) {
-                cartApiList?.platformCheckoutCartV2(xOrderingSource = xOrderingSource,companyId = config.companyId ,applicationId = applicationId ,id = id, body = body,headers = headers)
+                cartApiList?.platformCheckoutCartV2(xOrderingSource = xOrderingSource,xAnonymousCart = xAnonymousCart,xLocationDetail = xLocationDetail,xCurrencyCode = xCurrencyCode,companyId = config.companyId ,applicationId = applicationId ,id = id, body = body,headers = headers)
         } else {
             null
         }

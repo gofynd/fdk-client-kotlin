@@ -409,13 +409,13 @@ interface CatalogApiList {
     suspend fun deleteSize(@Path("company_id") companyId: String, @Path("item_id") itemId: String, @Path("size") size: String, @HeaderMap headers: Map<String, String>? = null)
     : Response<ProductSizeDeleteResponseSchema>
     
+    @POST ("/service/platform/catalog/v1.0/company/{company_id}/products/{item_id}/sizes/{size}")
+    suspend fun addInventory(@Path("company_id") companyId: String, @Path("item_id") itemId: String, @Path("size") size: String,@Body body: InventoryRequestSchema, @HeaderMap headers: Map<String, String>? = null)
+    : Response<SuccessResponseSchema>
+    
     @GET ("/service/platform/catalog/v2.0/company/{company_id}/products/{item_id}/sizes/{size}")
     suspend fun getInventoryBySize(@Path("company_id") companyId: String, @Path("item_id") itemId: String, @Path("size") size: String, @Query("page_no") pageNo: Int?, @Query("page_size") pageSize: Int?, @Query("q") q: String?, @Query("sellable") sellable: Boolean?, @HeaderMap headers: Map<String, String>? = null)
     : Response<InventoryResponsePaginated>
-    
-    @POST ("/service/platform/catalog/v2.0/company/{company_id}/products/{item_id}/sizes/{size}")
-    suspend fun addInventory(@Path("company_id") companyId: String, @Path("item_id") itemId: String, @Path("size") size: String,@Body body: InventoryRequestSchema, @HeaderMap headers: Map<String, String>? = null)
-    : Response<SuccessResponseSchema>
     
     @GET ("/service/platform/catalog/v1.0/company/{company_id}/products/{item_id}/variants/{variant_type}")
     suspend fun getVariantsOfProducts(@Path("company_id") companyId: String, @Path("item_id") itemId: String, @Path("variant_type") variantType: String, @Query("page_no") pageNo: Int?, @Query("page_size") pageSize: Int?, @HeaderMap headers: Map<String, String>? = null)
@@ -598,7 +598,7 @@ interface CatalogApiList {
     : Response<TaxVersion>
     
     @GET ("/service/platform/catalog/v1.0/company/{company_id}/taxes/hscodes")
-    suspend fun getHsCodes(@Path("company_id") companyId: String, @Query("page") page: Int?, @Query("limit") limit: Int?, @Query("type") type: HsTypeEnum?, @Query("q") q: String?, @HeaderMap headers: Map<String, String>? = null)
+    suspend fun getHsCodes(@Path("company_id") companyId: String, @Query("page") page: Int?, @Query("limit") limit: Int?, @Query("type") type: String?, @Query("q") q: String?, @HeaderMap headers: Map<String, String>? = null)
     : Response<HSCodes>
     
     @POST ("/service/platform/catalog/v1.0/company/{company_id}/taxes/hscodes")
