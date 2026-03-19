@@ -2329,6 +2329,9 @@ data class Shipments(
     @SerializedName("shipment_id")
     var shipmentId: String?=null,
     
+    @SerializedName("affiliate_shipment_id")
+    var affiliateShipmentId: String?=null,
+    
     @SerializedName("fulfilling_store")
     var fulfillingStore: FulfillingStore?=null,
     
@@ -2450,6 +2453,8 @@ data class Shipments(
     var meta: @RawValue HashMap<String,Any>?=null
     
 ): Parcelable {
+    
+    
     
     
     
@@ -2879,6 +2884,9 @@ data class ShipmentInfo(
     @SerializedName("shipment_id")
     var shipmentId: String?=null,
     
+    @SerializedName("affiliate_shipment_id")
+    var affiliateShipmentId: String?=null,
+    
     @SerializedName("shipment_status")
     var shipmentStatus: ShipmentStatus?=null,
     
@@ -2982,6 +2990,8 @@ data class ShipmentInfo(
     var ndrDetails: NdrDetailsSchema?=null
     
 ): Parcelable {
+    
+    
     
     
     

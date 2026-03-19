@@ -3304,9 +3304,14 @@ data class SendOtpCommsReqData(
     var countryCode: String?=null,
     
     @SerializedName("to")
-    var to: String?=null
+    var to: String?=null,
+    
+    @SerializedName("additional_template_variables")
+    var additionalTemplateVariables: @RawValue HashMap<String,Any>?=null
     
 ): Parcelable {
+    
+    
     
     
     
