@@ -12433,9 +12433,19 @@ data class Prices(
     var costPrice: Double?=null,
     
     @SerializedName("loyalty_discount")
-    var loyaltyDiscount: Double?=null
+    var loyaltyDiscount: Double?=null,
+    
+    @SerializedName("marketplace_promotion_effective_discount")
+    var marketplacePromotionEffectiveDiscount: Double?=null,
+    
+    @SerializedName("seller_promotion_effective_discount")
+    var sellerPromotionEffectiveDiscount: Double?=null
     
 ): Parcelable {
+    
+    
+    
+    
     
     
     

@@ -22,12 +22,12 @@ interface CartApiList {
     
     
     @POST
-    suspend fun addItems(@Url url1: String?    ,  @Header("x-ordering-source") xOrderingSource: String?,       @Query("i") i: Boolean?, @Query("b") b: Boolean?, @Query("area_code") areaCode: String?, @Query("buy_now") buyNow: Boolean?, @Query("id") id: String?, @Query("order_type") orderType: String?, @Body body: AddCartCreation, @HeaderMap headers: Map<String, String>? = null)
+    suspend fun addItems(@Url url1: String?    ,  @Header("x-ordering-source") xOrderingSource: String?,        @Query("i") i: Boolean?, @Query("b") b: Boolean?, @Query("include_cart_calculation") includeCartCalculation: Boolean?, @Query("area_code") areaCode: String?, @Query("buy_now") buyNow: Boolean?, @Query("id") id: String?, @Query("order_type") orderType: String?, @Body body: AddCartCreation, @HeaderMap headers: Map<String, String>? = null)
     : Response<AddCartDetailResult>
     
     
     @PUT
-    suspend fun updateCart(@Url url1: String?    ,  @Header("x-ordering-source") xOrderingSource: String?,        @Query("id") id: String?, @Query("i") i: Boolean?, @Query("b") b: Boolean?, @Query("area_code") areaCode: String?, @Query("buy_now") buyNow: Boolean?, @Query("cart_type") cartType: String?, @Query("order_type") orderType: String?, @Body body: UpdateCartCreation, @HeaderMap headers: Map<String, String>? = null)
+    suspend fun updateCart(@Url url1: String?    ,  @Header("x-ordering-source") xOrderingSource: String?,         @Query("id") id: String?, @Query("i") i: Boolean?, @Query("b") b: Boolean?, @Query("include_cart_calculation") includeCartCalculation: Boolean?, @Query("area_code") areaCode: String?, @Query("buy_now") buyNow: Boolean?, @Query("cart_type") cartType: String?, @Query("order_type") orderType: String?, @Body body: UpdateCartCreation, @HeaderMap headers: Map<String, String>? = null)
     : Response<UpdateCartDetailResult>
     
     

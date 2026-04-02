@@ -136,17 +136,17 @@ class CartDataManagerClass(val config: ApplicationConfig, val unauthorizedAction
 
     
     
-    suspend fun addItems(xOrderingSource: String?=null,i: Boolean?=null,b: Boolean?=null,areaCode: String?=null,buyNow: Boolean?=null,id: String?=null,orderType: String?=null,body: AddCartCreation, headers: Map<String, String> = emptyMap()): Response<AddCartDetailResult>? {
+    suspend fun addItems(xOrderingSource: String?=null,i: Boolean?=null,b: Boolean?=null,includeCartCalculation: Boolean?=null,areaCode: String?=null,buyNow: Boolean?=null,id: String?=null,orderType: String?=null,body: AddCartCreation, headers: Map<String, String> = emptyMap()): Response<AddCartDetailResult>? {
         var fullUrl : String? = _relativeUrls["addItems"]
         
-        return cartApiList?.addItems(fullUrl,   xOrderingSource = xOrderingSource,  i = i,  b = b,  areaCode = areaCode,  buyNow = buyNow,  id = id,  orderType = orderType,body = body,headers = headers)}
+        return cartApiList?.addItems(fullUrl,   xOrderingSource = xOrderingSource,  i = i,  b = b,  includeCartCalculation = includeCartCalculation,  areaCode = areaCode,  buyNow = buyNow,  id = id,  orderType = orderType,body = body,headers = headers)}
 
     
     
-    suspend fun updateCart(xOrderingSource: String?=null,id: String?=null,i: Boolean?=null,b: Boolean?=null,areaCode: String?=null,buyNow: Boolean?=null,cartType: String?=null,orderType: String?=null,body: UpdateCartCreation, headers: Map<String, String> = emptyMap()): Response<UpdateCartDetailResult>? {
+    suspend fun updateCart(xOrderingSource: String?=null,id: String?=null,i: Boolean?=null,b: Boolean?=null,includeCartCalculation: Boolean?=null,areaCode: String?=null,buyNow: Boolean?=null,cartType: String?=null,orderType: String?=null,body: UpdateCartCreation, headers: Map<String, String> = emptyMap()): Response<UpdateCartDetailResult>? {
         var fullUrl : String? = _relativeUrls["updateCart"]
         
-        return cartApiList?.updateCart(fullUrl,   xOrderingSource = xOrderingSource,  id = id,  i = i,  b = b,  areaCode = areaCode,  buyNow = buyNow,  cartType = cartType,  orderType = orderType,body = body,headers = headers)}
+        return cartApiList?.updateCart(fullUrl,   xOrderingSource = xOrderingSource,  id = id,  i = i,  b = b,  includeCartCalculation = includeCartCalculation,  areaCode = areaCode,  buyNow = buyNow,  cartType = cartType,  orderType = orderType,body = body,headers = headers)}
 
     
     

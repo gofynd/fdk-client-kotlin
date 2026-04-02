@@ -508,30 +508,30 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     }
     
     
-    suspend fun platformAddItems(xOrderingSource: String?=null,xAnonymousCart: String?=null,i: Boolean?=null,b: Boolean?=null,buyNow: Boolean?=null,orderType: String?=null,id: String?=null,body: PlatformAddCartDetails, headers: Map<String, String> = emptyMap())
+    suspend fun platformAddItems(xOrderingSource: String?=null,xAnonymousCart: String?=null,i: Boolean?=null,b: Boolean?=null,includeCartCalculation: Boolean?=null,buyNow: Boolean?=null,orderType: String?=null,id: String?=null,body: PlatformAddCartDetails, headers: Map<String, String> = emptyMap())
     : Response<AddCartDetailResult>? {
         return if (config.oauthClient.isAccessTokenValid()) {
-                cartApiList?.platformAddItems(xOrderingSource = xOrderingSource,xAnonymousCart = xAnonymousCart,companyId = config.companyId ,applicationId = applicationId ,i = i,b = b,buyNow = buyNow,orderType = orderType,id = id, body = body,headers = headers)
+                cartApiList?.platformAddItems(xOrderingSource = xOrderingSource,xAnonymousCart = xAnonymousCart,companyId = config.companyId ,applicationId = applicationId ,i = i,b = b,includeCartCalculation = includeCartCalculation,buyNow = buyNow,orderType = orderType,id = id, body = body,headers = headers)
         } else {
             null
         }
     }
     
     
-    suspend fun platformUpdateCart(xOrderingSource: String?=null,xAnonymousCart: String?=null,id: String?=null,i: Boolean?=null,orderType: String?=null,b: Boolean?=null,buyNow: Boolean?=null,body: PlatformUpdateCartDetails, headers: Map<String, String> = emptyMap())
+    suspend fun platformUpdateCart(xOrderingSource: String?=null,xAnonymousCart: String?=null,id: String?=null,i: Boolean?=null,orderType: String?=null,b: Boolean?=null,includeCartCalculation: Boolean?=null,buyNow: Boolean?=null,body: PlatformUpdateCartDetails, headers: Map<String, String> = emptyMap())
     : Response<UpdateCartDetailResult>? {
         return if (config.oauthClient.isAccessTokenValid()) {
-                cartApiList?.platformUpdateCart(xOrderingSource = xOrderingSource,xAnonymousCart = xAnonymousCart,companyId = config.companyId ,applicationId = applicationId ,id = id,i = i,orderType = orderType,b = b,buyNow = buyNow, body = body,headers = headers)
+                cartApiList?.platformUpdateCart(xOrderingSource = xOrderingSource,xAnonymousCart = xAnonymousCart,companyId = config.companyId ,applicationId = applicationId ,id = id,i = i,orderType = orderType,b = b,includeCartCalculation = includeCartCalculation,buyNow = buyNow, body = body,headers = headers)
         } else {
             null
         }
     }
     
     
-    suspend fun updateCartBreakup(xOrderingSource: String?=null,xAnonymousCart: String?=null,id: String?=null,i: Boolean?=null,b: Boolean?=null,buyNow: Boolean?=null,body: UpdateCartBreakup, headers: Map<String, String> = emptyMap())
+    suspend fun updateCartBreakup(xOrderingSource: String?=null,xAnonymousCart: String?=null,id: String?=null,i: Boolean?=null,b: Boolean?=null,includeCartCalculation: Boolean?=null,buyNow: Boolean?=null,body: UpdateCartBreakup, headers: Map<String, String> = emptyMap())
     : Response<CartDetailResult>? {
         return if (config.oauthClient.isAccessTokenValid()) {
-                cartApiList?.updateCartBreakup(xOrderingSource = xOrderingSource,xAnonymousCart = xAnonymousCart,companyId = config.companyId ,applicationId = applicationId ,id = id,i = i,b = b,buyNow = buyNow, body = body,headers = headers)
+                cartApiList?.updateCartBreakup(xOrderingSource = xOrderingSource,xAnonymousCart = xAnonymousCart,companyId = config.companyId ,applicationId = applicationId ,id = id,i = i,b = b,includeCartCalculation = includeCartCalculation,buyNow = buyNow, body = body,headers = headers)
         } else {
             null
         }

@@ -3372,9 +3372,14 @@ data class Article(
     var minPriceThreshold: Double?=null,
     
     @SerializedName("article_index")
-    var articleIndex: Int?=null
+    var articleIndex: Int?=null,
+    
+    @SerializedName("identifier")
+    var identifier: String?=null
     
 ): Parcelable {
+    
+    
     
     
     

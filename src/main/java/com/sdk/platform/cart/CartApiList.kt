@@ -166,15 +166,15 @@ interface CartApiList {
     : Response<CartDetailResult>
     
     @POST ("/service/platform/cart/v1.0/company/{company_id}/application/{application_id}/detail")
-    suspend fun platformAddItems(@Header("x-ordering-source") xOrderingSource: String?, @Header("x-anonymous-cart") xAnonymousCart: String?, @Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Query("i") i: Boolean?, @Query("b") b: Boolean?, @Query("buy_now") buyNow: Boolean?, @Query("order_type") orderType: String?, @Query("id") id: String?,@Body body: PlatformAddCartDetails, @HeaderMap headers: Map<String, String>? = null)
+    suspend fun platformAddItems(@Header("x-ordering-source") xOrderingSource: String?, @Header("x-anonymous-cart") xAnonymousCart: String?, @Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Query("i") i: Boolean?, @Query("b") b: Boolean?, @Query("include_cart_calculation") includeCartCalculation: Boolean?, @Query("buy_now") buyNow: Boolean?, @Query("order_type") orderType: String?, @Query("id") id: String?,@Body body: PlatformAddCartDetails, @HeaderMap headers: Map<String, String>? = null)
     : Response<AddCartDetailResult>
     
     @PUT ("/service/platform/cart/v1.0/company/{company_id}/application/{application_id}/detail")
-    suspend fun platformUpdateCart(@Header("x-ordering-source") xOrderingSource: String?, @Header("x-anonymous-cart") xAnonymousCart: String?, @Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Query("id") id: String?, @Query("i") i: Boolean?, @Query("order_type") orderType: String?, @Query("b") b: Boolean?, @Query("buy_now") buyNow: Boolean?,@Body body: PlatformUpdateCartDetails, @HeaderMap headers: Map<String, String>? = null)
+    suspend fun platformUpdateCart(@Header("x-ordering-source") xOrderingSource: String?, @Header("x-anonymous-cart") xAnonymousCart: String?, @Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Query("id") id: String?, @Query("i") i: Boolean?, @Query("order_type") orderType: String?, @Query("b") b: Boolean?, @Query("include_cart_calculation") includeCartCalculation: Boolean?, @Query("buy_now") buyNow: Boolean?,@Body body: PlatformUpdateCartDetails, @HeaderMap headers: Map<String, String>? = null)
     : Response<UpdateCartDetailResult>
     
     @PATCH ("/service/platform/cart/v1.0/company/{company_id}/application/{application_id}/detail")
-    suspend fun updateCartBreakup(@Header("x-ordering-source") xOrderingSource: String?, @Header("x-anonymous-cart") xAnonymousCart: String?, @Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Query("id") id: String?, @Query("i") i: Boolean?, @Query("b") b: Boolean?, @Query("buy_now") buyNow: Boolean?,@Body body: UpdateCartBreakup, @HeaderMap headers: Map<String, String>? = null)
+    suspend fun updateCartBreakup(@Header("x-ordering-source") xOrderingSource: String?, @Header("x-anonymous-cart") xAnonymousCart: String?, @Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Query("id") id: String?, @Query("i") i: Boolean?, @Query("b") b: Boolean?, @Query("include_cart_calculation") includeCartCalculation: Boolean?, @Query("buy_now") buyNow: Boolean?,@Body body: UpdateCartBreakup, @HeaderMap headers: Map<String, String>? = null)
     : Response<CartDetailResult>
     
     @PUT ("/service/platform/cart/v1.0/company/{company_id}/application/{application_id}/cart_archive")
