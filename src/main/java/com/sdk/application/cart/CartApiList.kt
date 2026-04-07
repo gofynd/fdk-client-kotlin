@@ -177,7 +177,7 @@ interface CartApiList {
     
     
     @GET
-    suspend fun getProductsByOfferId(@Url url1: String?    ,    @Query("offer_id") offerId: String, @Query("page") page: Int?, @Query("page_size") pageSize: Int?, @HeaderMap headers: Map<String, String>? = null)
+    suspend fun getProductsByOfferId(@Url url1: String?    ,     @Query("offer_code") offerCode: String?, @Query("offer_id") offerId: String?, @Query("page") page: Int?, @Query("page_size") pageSize: Int?, @HeaderMap headers: Map<String, String>? = null)
     : Response<EligibleProductsResult>
     
 }

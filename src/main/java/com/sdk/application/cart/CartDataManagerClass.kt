@@ -365,10 +365,10 @@ class CartDataManagerClass(val config: ApplicationConfig, val unauthorizedAction
 
     
     
-    suspend fun getProductsByOfferId(offerId: String,page: Int?=null,pageSize: Int?=null, headers: Map<String, String> = emptyMap()): Response<EligibleProductsResult>? {
+    suspend fun getProductsByOfferId(offerCode: String?=null,offerId: String?=null,page: Int?=null,pageSize: Int?=null, headers: Map<String, String> = emptyMap()): Response<EligibleProductsResult>? {
         var fullUrl : String? = _relativeUrls["getProductsByOfferId"]
         
-        return cartApiList?.getProductsByOfferId(fullUrl,   offerId = offerId,  page = page,  pageSize = pageSize,headers = headers)}
+        return cartApiList?.getProductsByOfferId(fullUrl,   offerCode = offerCode,  offerId = offerId,  page = page,  pageSize = pageSize,headers = headers)}
 
     
     

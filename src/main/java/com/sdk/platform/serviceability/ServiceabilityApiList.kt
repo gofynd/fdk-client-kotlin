@@ -125,6 +125,14 @@ interface ServiceabilityApiList {
     suspend fun getCourierPartners(@Path("company_id") companyId: String, @Path("application_id") applicationId: String,@Body body: ShipmentCourierPartnerDetails, @HeaderMap headers: Map<String, String>? = null)
     : Response<ShipmentCourierPartnerResult>
     
+    @POST ("/service/platform/logistics/v2.0/company/{company_id}/courier-partners")
+    suspend fun getCompanyCourierPartnersList(@Path("company_id") companyId: String,@Body body: CourierPartnerDetails, @HeaderMap headers: Map<String, String>? = null)
+    : Response<GenerateShipmentsAndCourierPartnerResult>
+    
+    @POST ("/service/platform/logistics/v2.0/company/{company_id}/application/{application_id}/courier-partners")
+    suspend fun getApplicationCourierPartnersList(@Path("company_id") companyId: String, @Path("application_id") applicationId: String,@Body body: CourierPartnerDetails, @HeaderMap headers: Map<String, String>? = null)
+    : Response<GenerateShipmentsAndCourierPartnerResult>
+    
     @PUT ("/service/platform/logistics/v1.0/company/{company_id}/configuration")
     suspend fun updateCompanyConfiguration(@Path("company_id") companyId: String, @Query("fulfillment_option_slug") fulfillmentOptionSlug: String,@Body body: CompanyConfigurationSchema, @HeaderMap headers: Map<String, String>? = null)
     : Response<CompanyConfig>
@@ -312,5 +320,29 @@ interface ServiceabilityApiList {
     @POST ("/service/platform/logistics/v1.0/company/{company_id}/application/{application_id}/shipments")
     suspend fun createShipments(@Header("x-ordering-source") xOrderingSource: String?, @Path("application_id") applicationId: String, @Path("company_id") companyId: String,@Body body: PlatformShipmentsRequestSchema, @HeaderMap headers: Map<String, String>? = null)
     : Response<PlatformShipmentsResponseSchema>
+    
+    @POST ("/service/platform/logistics/v1.0/company/{company_id}/application/{application_id}/polygon")
+    suspend fun createPolygon(@Path("company_id") companyId: String, @Path("application_id") applicationId: String,@Body body: StorePolygonServiceabilityRequestBody, @HeaderMap headers: Map<String, String>? = null)
+    : Response<StorePolygonServiceabilityResult>
+    
+    @GET ("/service/platform/logistics/v1.0/company/{company_id}/application/{application_id}/polygon")
+    suspend fun getPolygon(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Query("page_number") pageNumber: Int?, @Query("page_size") pageSize: Int?, @HeaderMap headers: Map<String, String>? = null)
+    : Response<StorePolygonServiceabilityGetResult>
+    
+    @PATCH ("/service/platform/logistics/v1.0/company/{company_id}/application/{application_id}/polygon")
+    suspend fun updatePolygon(@Path("company_id") companyId: String, @Path("application_id") applicationId: String,@Body body: StorePolygonServiceabilityRequestBody, @HeaderMap headers: Map<String, String>? = null)
+    : Response<StorePolygonServiceabilityResult>
+    
+    @GET ("/service/platform/logistics/v2.0/company/{company_id}/application/{application_id}/zones/bulk/products/sample")
+    suspend fun downloadZoneProductsBulkSampleFile(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @HeaderMap headers: Map<String, String>? = null)
+    : Response<ResponseBody>
+    
+    @POST ("/service/platform/logistics/v2.0/company/{company_id}/application/{application_id}/zones/bulk/products")
+    suspend fun createZoneProductsBulkPatchJob(@Path("company_id") companyId: String, @Path("application_id") applicationId: String,@Body body: ZoneProductsBulkPatchDetails, @HeaderMap headers: Map<String, String>? = null)
+    : Response<ZoneBulkExport>
+    
+    @GET ("/service/platform/logistics/v2.0/company/{company_id}/application/{application_id}/zones/bulk/products/{batch_id}")
+    suspend fun getZoneProductsBulkPatchJobStatus(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Path("batch_id") batchId: String, @HeaderMap headers: Map<String, String>? = null)
+    : Response<GetZoneProductsBulkPatchResult>
     
 }

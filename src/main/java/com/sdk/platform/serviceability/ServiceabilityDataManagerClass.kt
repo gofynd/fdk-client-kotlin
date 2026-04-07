@@ -117,6 +117,19 @@ class ServiceabilityDataManagerClass(val config: PlatformConfig, val unauthorize
     
     
     
+    suspend fun getCompanyCourierPartnersList(body: CourierPartnerDetails, headers: Map<String, String> = emptyMap())
+    : Response<GenerateShipmentsAndCourierPartnerResult>? {
+
+        return if (config.oauthClient.isAccessTokenValid()) {
+            serviceabilityApiList?.getCompanyCourierPartnersList(
+        companyId = config.companyId, body = body,headers = headers)
+        } else {
+            null
+        }
+    }
+    
+    
+    
     suspend fun updateCompanyConfiguration(fulfillmentOptionSlug: String,body: CompanyConfigurationSchema, headers: Map<String, String> = emptyMap())
     : Response<CompanyConfig>? {
 
@@ -427,6 +440,12 @@ class ServiceabilityDataManagerClass(val config: PlatformConfig, val unauthorize
     
     
     
+    
+    
+    
+    
+    
+    
 
 inner class ApplicationClient(val applicationId:String,val config: PlatformConfig){
 
@@ -687,6 +706,17 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     
     
     
+    suspend fun getApplicationCourierPartnersList(body: CourierPartnerDetails, headers: Map<String, String> = emptyMap())
+    : Response<GenerateShipmentsAndCourierPartnerResult>? {
+        return if (config.oauthClient.isAccessTokenValid()) {
+                serviceabilityApiList?.getApplicationCourierPartnersList(companyId = config.companyId ,applicationId = applicationId , body = body,headers = headers)
+        } else {
+            null
+        }
+    }
+    
+    
+    
     
     suspend fun getApplicationConfiguration( headers: Map<String, String> = emptyMap())
     : Response<ApplicationConfigGetResult>? {
@@ -934,6 +964,66 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     : Response<PlatformShipmentsResponseSchema>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 serviceabilityApiList?.createShipments(xOrderingSource = xOrderingSource,applicationId = applicationId ,companyId = config.companyId , body = body,headers = headers)
+        } else {
+            null
+        }
+    }
+    
+    
+    suspend fun createPolygon(body: StorePolygonServiceabilityRequestBody, headers: Map<String, String> = emptyMap())
+    : Response<StorePolygonServiceabilityResult>? {
+        return if (config.oauthClient.isAccessTokenValid()) {
+                serviceabilityApiList?.createPolygon(companyId = config.companyId ,applicationId = applicationId , body = body,headers = headers)
+        } else {
+            null
+        }
+    }
+    
+    
+    suspend fun getPolygon(pageNumber: Int?=null,pageSize: Int?=null, headers: Map<String, String> = emptyMap())
+    : Response<StorePolygonServiceabilityGetResult>? {
+        return if (config.oauthClient.isAccessTokenValid()) {
+                serviceabilityApiList?.getPolygon(companyId = config.companyId ,applicationId = applicationId ,pageNumber = pageNumber,pageSize = pageSize, headers = headers)
+        } else {
+            null
+        }
+    }
+    
+    
+    suspend fun updatePolygon(body: StorePolygonServiceabilityRequestBody, headers: Map<String, String> = emptyMap())
+    : Response<StorePolygonServiceabilityResult>? {
+        return if (config.oauthClient.isAccessTokenValid()) {
+                serviceabilityApiList?.updatePolygon(companyId = config.companyId ,applicationId = applicationId , body = body,headers = headers)
+        } else {
+            null
+        }
+    }
+    
+    
+    suspend fun downloadZoneProductsBulkSampleFile( headers: Map<String, String> = emptyMap())
+    : Response<ResponseBody>? {
+        return if (config.oauthClient.isAccessTokenValid()) {
+                serviceabilityApiList?.downloadZoneProductsBulkSampleFile(companyId = config.companyId ,applicationId = applicationId , headers = headers)
+        } else {
+            null
+        }
+    }
+    
+    
+    suspend fun createZoneProductsBulkPatchJob(body: ZoneProductsBulkPatchDetails, headers: Map<String, String> = emptyMap())
+    : Response<ZoneBulkExport>? {
+        return if (config.oauthClient.isAccessTokenValid()) {
+                serviceabilityApiList?.createZoneProductsBulkPatchJob(companyId = config.companyId ,applicationId = applicationId , body = body,headers = headers)
+        } else {
+            null
+        }
+    }
+    
+    
+    suspend fun getZoneProductsBulkPatchJobStatus(batchId: String, headers: Map<String, String> = emptyMap())
+    : Response<GetZoneProductsBulkPatchResult>? {
+        return if (config.oauthClient.isAccessTokenValid()) {
+                serviceabilityApiList?.getZoneProductsBulkPatchJobStatus(companyId = config.companyId ,applicationId = applicationId ,batchId = batchId, headers = headers)
         } else {
             null
         }
