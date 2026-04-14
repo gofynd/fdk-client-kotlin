@@ -636,6 +636,30 @@ class OrderDataManagerClass(val config: PlatformConfig, val unauthorizedAction: 
     }
     
     
+    suspend fun requestCourierPartnerForShipment(shipmentId: String,body: ShipmentCourierPartnerRequestSchema, headers: Map<String, String> = emptyMap())
+    : Response<CourierPartnerResponseSchema>? {
+
+        return if (config.oauthClient.isAccessTokenValid()) {
+            orderApiList?.requestCourierPartnerForShipment(
+        companyId = config.companyId,shipmentId = shipmentId, body = body,headers = headers)
+        } else {
+            null
+        }
+    }
+    
+    
+    suspend fun saveCourierPartnerPreferenceForShipment(shipmentId: String,body: ShipmentCourierPartnerPreference, headers: Map<String, String> = emptyMap())
+    : Response<CourierPartnerResponseSchema>? {
+
+        return if (config.oauthClient.isAccessTokenValid()) {
+            orderApiList?.saveCourierPartnerPreferenceForShipment(
+        companyId = config.companyId,shipmentId = shipmentId, body = body,headers = headers)
+        } else {
+            null
+        }
+    }
+    
+    
     
     suspend fun getShipments(lane: String?=null,bagStatus: String?=null,statusAssigned: String?=null,statusOverrideLane: Boolean?=null,timeToDispatch: Int?=null,searchType: String?=null,searchValue: String?=null,fromDate: String?=null,toDate: String?=null,startDate: String?=null,endDate: String?=null,statusAssignedStartDate: String?=null,statusAssignedEndDate: String?=null,dpIds: String?=null,stores: String?=null,salesChannels: String?=null,pageNo: Int?=null,pageSize: Int?=null,fetchActiveShipment: Boolean?=null,allowInactive: Boolean?=null,excludeLockedShipments: Boolean?=null,paymentMethods: String?=null,channelShipmentId: String?=null,channelOrderId: String?=null,customMeta: String?=null,orderingChannel: String?=null,companyAffiliateTag: String?=null,myOrders: Boolean?=null,platformUserId: String?=null,sortType: String?=null,showCrossCompanyData: Boolean?=null,tags: String?=null,customerId: String?=null,orderType: String?=null,groupEntity: String?=null,enforceDateFilter: Boolean?=null,fulfillmentType: String?=null,orderingSource: String?=null,channelAccountId: String?=null, headers: Map<String, String> = emptyMap())
     : Response<ShipmentInternalPlatformViewResponseSchema>? {
@@ -1327,6 +1351,8 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
             null
         }
     }
+    
+    
     
     
     

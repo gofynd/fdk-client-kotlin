@@ -230,6 +230,9 @@ data class FulfillmentOption(
     @SerializedName("status")
     var status: String?=null,
     
+    @SerializedName("default_for")
+    var defaultFor: FulfillmentOptionDefaultFor?=null,
+    
     @SerializedName("business_unit")
     var businessUnit: ArrayList<BusinessUnit>?=null,
     
@@ -246,6 +249,8 @@ data class FulfillmentOption(
     var id: String?=null
     
 ): Parcelable {
+    
+    
     
     
     
@@ -7301,6 +7306,33 @@ data class ShipmentsCourierPartner(
     
     
     
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: FulfillmentOptionDefaultFor
+*/
+@Parcelize
+data class FulfillmentOptionDefaultFor(
+    
+    
+    
+    @SerializedName("storefront")
+    var storefront: Boolean?=null,
+    
+    @SerializedName("storeos")
+    var storeos: Boolean?=null
+    
+): Parcelable {
     
     
     

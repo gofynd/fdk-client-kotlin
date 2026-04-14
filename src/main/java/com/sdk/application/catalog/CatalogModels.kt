@@ -2391,9 +2391,14 @@ data class ProductListingDetail(
     var isTryout: Boolean?=null,
     
     @SerializedName("channel")
-    var channel: String?=null
+    var channel: String?=null,
+    
+    @SerializedName("delivery_promises")
+    var deliveryPromises: ArrayList<DeliveryPromiseItem>?=null
     
 ): Parcelable {
+    
+    
     
     
     
@@ -6481,6 +6486,33 @@ data class ProductBundleItemsWithSlug(
     
     @SerializedName("page")
     var page: Page?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: DeliveryPromiseItem
+*/
+@Parcelize
+data class DeliveryPromiseItem(
+    
+    
+    
+    @SerializedName("code")
+    var code: String?=null,
+    
+    @SerializedName("delivery_promise")
+    var deliveryPromise: String?=null
     
 ): Parcelable {
     

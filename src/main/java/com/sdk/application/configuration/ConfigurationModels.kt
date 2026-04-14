@@ -1503,6 +1503,33 @@ data class FulfillmentOption(
 
              
 /*
+    Model: OrderingSources
+*/
+@Parcelize
+data class OrderingSources(
+    
+    
+    
+    @SerializedName("key")
+    var key: String?=null,
+    
+    @SerializedName("name")
+    var name: String?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
     Model: AppFeature
 */
 @Parcelize
@@ -1546,6 +1573,9 @@ data class AppFeature(
     @SerializedName("delivery_strategy")
     var deliveryStrategy: DeliveryStrategy?=null,
     
+    @SerializedName("ordering_sources")
+    var orderingSources: ArrayList<OrderingSources>?=null,
+    
     @SerializedName("price_strategy")
     var priceStrategy: String?=null,
     
@@ -1568,6 +1598,8 @@ data class AppFeature(
     var v: Int?=null
     
 ): Parcelable {
+    
+    
     
     
     

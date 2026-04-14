@@ -113,7 +113,6 @@ class ContentDataManagerClass(val config: PlatformConfig, val unauthorizedAction
     
     
     
-    
     suspend fun getCustomFieldTypes( headers: Map<String, String> = emptyMap())
     : Response<MetafieldTypesSchema>? {
 
@@ -1220,16 +1219,6 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     : Response<Support>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 contentApiList?.updateSupportInformation(companyId = config.companyId ,applicationId = applicationId , body = body,headers = headers)
-        } else {
-            null
-        }
-    }
-    
-    
-    suspend fun updateInjectableTag(body: CreateTagRequestSchema, headers: Map<String, String> = emptyMap())
-    : Response<TagsSchema>? {
-        return if (config.oauthClient.isAccessTokenValid()) {
-                contentApiList?.updateInjectableTag(companyId = config.companyId ,applicationId = applicationId , body = body,headers = headers)
         } else {
             null
         }

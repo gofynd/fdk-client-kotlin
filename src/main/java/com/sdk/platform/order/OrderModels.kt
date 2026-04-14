@@ -11007,9 +11007,14 @@ data class CPConfigurationSchema(
     
     
     @SerializedName("shipping_by")
-    var shippingBy: String?=null
+    var shippingBy: String?=null,
+    
+    @SerializedName("logistics_by")
+    var logisticsBy: String?=null
     
 ): Parcelable {
+    
+    
     
     
     
@@ -11605,6 +11610,166 @@ data class AccountsList(
     
     @SerializedName("page")
     var page: Page?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: TATSchema
+*/
+@Parcelize
+data class TATSchema(
+    
+    
+    
+    @SerializedName("min")
+    var min: Int?=null,
+    
+    @SerializedName("max")
+    var max: Int?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: ShipmentCourierPartnerPreference
+*/
+@Parcelize
+data class ShipmentCourierPartnerPreference(
+    
+    
+    
+    @SerializedName("scheme_id")
+    var schemeId: String?=null,
+    
+    @SerializedName("courier_partner_name")
+    var courierPartnerName: String?=null,
+    
+    @SerializedName("extension_id")
+    var extensionId: String?=null,
+    
+    @SerializedName("remarks")
+    var remarks: String?=null,
+    
+    @SerializedName("tat")
+    var tat: TATSchema?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: ShipmentCourierPartnerRequestSchema
+*/
+@Parcelize
+data class ShipmentCourierPartnerRequestSchema(
+    
+    
+    
+    @SerializedName("scheme_id")
+    var schemeId: String?=null,
+    
+    @SerializedName("courier_partner_name")
+    var courierPartnerName: String?=null,
+    
+    @SerializedName("extension_id")
+    var extensionId: String?=null,
+    
+    @SerializedName("remarks")
+    var remarks: String?=null,
+    
+    @SerializedName("tat")
+    var tat: TATSchema?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: CourierPartnerResponseSchema
+*/
+@Parcelize
+data class CourierPartnerResponseSchema(
+    
+    
+    
+    @SerializedName("message")
+    var message: String?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: CourierPartnerErrorSchema
+*/
+@Parcelize
+data class CourierPartnerErrorSchema(
+    
+    
+    
+    @SerializedName("message")
+    var message: String?=null,
+    
+    @SerializedName("error")
+    var error: String?=null
     
 ): Parcelable {
     

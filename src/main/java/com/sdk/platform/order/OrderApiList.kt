@@ -221,6 +221,14 @@ interface OrderApiList {
     suspend fun updateShipmentPackages(@Path("company_id") companyId: String, @Path("shipment_id") shipmentId: String,@Body body: PackagesSchema, @HeaderMap headers: Map<String, String>? = null)
     : Response<BaseResponseSchema>
     
+    @POST ("/service/platform/order-manage/v1.0/company/{company_id}/shipment/{shipment_id}/courier-partner/request")
+    suspend fun requestCourierPartnerForShipment(@Path("company_id") companyId: String, @Path("shipment_id") shipmentId: String,@Body body: ShipmentCourierPartnerRequestSchema, @HeaderMap headers: Map<String, String>? = null)
+    : Response<CourierPartnerResponseSchema>
+    
+    @POST ("/service/platform/order-manage/v1.0/company/{company_id}/shipment/{shipment_id}/courier-partner/preference")
+    suspend fun saveCourierPartnerPreferenceForShipment(@Path("company_id") companyId: String, @Path("shipment_id") shipmentId: String,@Body body: ShipmentCourierPartnerPreference, @HeaderMap headers: Map<String, String>? = null)
+    : Response<CourierPartnerResponseSchema>
+    
     @GET ("/service/platform/order/v1.0/company/{company_id}/application/{application_id}/orders/shipments/{shipment_id}/line_number/{line_number}/reasons")
     suspend fun getShipmentBagReasons(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Path("shipment_id") shipmentId: String, @Path("line_number") lineNumber: String, @HeaderMap headers: Map<String, String>? = null)
     : Response<ShipmentBagReasons>

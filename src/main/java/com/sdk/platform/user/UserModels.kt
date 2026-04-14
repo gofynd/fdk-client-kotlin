@@ -2536,9 +2536,14 @@ data class SocialTokens(
     var accountKit: Accountkit?=null,
     
     @SerializedName("google")
-    var google: Google?=null
+    var google: Google?=null,
+    
+    @SerializedName("apple")
+    var apple: Apple?=null
     
 ): Parcelable {
+    
+    
     
     
     
@@ -2743,6 +2748,33 @@ data class Google(
     
     @SerializedName("app_secret")
     var appSecret: String?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: Apple
+*/
+@Parcelize
+data class Apple(
+    
+    
+    
+    @SerializedName("app_id")
+    var appId: String?=null,
+    
+    @SerializedName("redirect_uri")
+    var redirectUri: String?=null
     
 ): Parcelable {
     

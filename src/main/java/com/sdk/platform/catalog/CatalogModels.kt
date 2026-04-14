@@ -20292,7 +20292,7 @@ data class CreateTaxRequestBody(
     var rule: TaxReqBodyRule?=null,
     
     @SerializedName("versions")
-    var versions: TaxReqBodyVersion?=null
+    var versions: ArrayList<TaxReqBodyVersion>?=null
     
 ): Parcelable {
     

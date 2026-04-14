@@ -150,6 +150,9 @@ data class ApplicationInventory(
     @SerializedName("pii_masking")
     var piiMasking: PiiMasking?=null,
     
+    @SerializedName("channel_capabilities")
+    var channelCapabilities: ChannelCapabilities?=null,
+    
     @SerializedName("tags")
     var tags: ArrayList<String>?=null,
     
@@ -234,6 +237,8 @@ data class ApplicationInventory(
     
     
     
+    
+    
 }
 
 
@@ -251,6 +256,70 @@ data class PiiMasking(
     var enabled: Boolean?=null
     
 ): Parcelable {
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: ChannelCapabilities
+*/
+@Parcelize
+data class ChannelCapabilities(
+    
+    
+    
+    @SerializedName("commerce_model")
+    var commerceModel: ArrayList<String>?=null,
+    
+    @SerializedName("business_format")
+    var businessFormat: ArrayList<String>?=null,
+    
+    @SerializedName("ordering_sources")
+    var orderingSources: ArrayList<OrderingSources>?=null,
+    
+    @SerializedName("seller_model")
+    var sellerModel: String?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: OrderingSources
+*/
+@Parcelize
+data class OrderingSources(
+    
+    
+    
+    @SerializedName("key")
+    var key: String?=null,
+    
+    @SerializedName("name")
+    var name: String?=null
+    
+): Parcelable {
+    
+    
     
     
     
@@ -771,9 +840,19 @@ data class AppCartConfig(
     var revenueEngineCoupon: Boolean?=null,
     
     @SerializedName("pan_card")
-    var panCard: PanCardConfig?=null
+    var panCard: PanCardConfig?=null,
+    
+    @SerializedName("engage_enabled")
+    var engageEnabled: Boolean?=null,
+    
+    @SerializedName("offer_enabled")
+    var offerEnabled: Boolean?=null
     
 ): Parcelable {
+    
+    
+    
+    
     
     
     
@@ -4422,6 +4501,9 @@ data class AppFeature(
     @SerializedName("delivery_strategy")
     var deliveryStrategy: DeliveryStrategy?=null,
     
+    @SerializedName("ordering_sources")
+    var orderingSources: ArrayList<OrderingSources>?=null,
+    
     @SerializedName("price_strategy")
     var priceStrategy: String?=null,
     
@@ -4453,6 +4535,8 @@ data class AppFeature(
     var v: Int?=null
     
 ): Parcelable {
+    
+    
     
     
     
