@@ -5732,9 +5732,14 @@ data class CartProductInfo(
     var itemType: String?=null,
     
     @SerializedName("charges")
-    var charges: ArrayList<ArticleCharges>?=null
+    var charges: ArrayList<ArticleCharges>?=null,
+    
+    @SerializedName("added_on")
+    var addedOn: String?=null
     
 ): Parcelable {
+    
+    
     
     
     
@@ -8544,6 +8549,9 @@ data class Coupon(
     @SerializedName("expires_on")
     var expiresOn: String?=null,
     
+    @SerializedName("expires_at")
+    var expiresAt: String?=null,
+    
     @SerializedName("coupon_value")
     var couponValue: Double?=null,
     
@@ -8572,6 +8580,8 @@ data class Coupon(
     var couponApplicableMessage: String?=null
     
 ): Parcelable {
+    
+    
     
     
     
@@ -12001,33 +12011,6 @@ data class OfferDateMeta(
 
              
 /*
-    Model: NextScheduleItems
-*/
-@Parcelize
-data class NextScheduleItems(
-    
-    
-    
-    @SerializedName("start")
-    var start: String?=null,
-    
-    @SerializedName("end")
-    var end: String?=null
-    
-): Parcelable {
-    
-    
-    
-    
-    
-    
-    
-}
-
-
-
-             
-/*
     Model: OfferSchedule
 */
 @Parcelize
@@ -12041,9 +12024,6 @@ data class OfferSchedule(
     @SerializedName("start")
     var start: String?=null,
     
-    @SerializedName("next_schedule")
-    var nextSchedule: ArrayList<NextScheduleItems>?=null,
-    
     @SerializedName("cron")
     var cron: String?=null,
     
@@ -12051,8 +12031,6 @@ data class OfferSchedule(
     var duration: Int?=null
     
 ): Parcelable {
-    
-    
     
     
     

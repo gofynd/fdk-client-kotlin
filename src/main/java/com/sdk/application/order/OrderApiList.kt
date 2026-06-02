@@ -22,7 +22,7 @@ interface OrderApiList {
     
     
     @GET
-    suspend fun getOrders(@Url url1: String?    ,          @Query("status") status: Int?, @Query("page_no") pageNo: Int?, @Query("page_size") pageSize: Int?, @Query("from_date") fromDate: String?, @Query("to_date") toDate: String?, @Query("start_date") startDate: String?, @Query("end_date") endDate: String?, @Query("custom_meta") customMeta: String?, @Query("allow_inactive") allowInactive: Boolean?, @HeaderMap headers: Map<String, String>? = null)
+    suspend fun getOrders(@Url url1: String?    ,            @Query("status") status: Int?, @Query("page_no") pageNo: Int?, @Query("page_size") pageSize: Int?, @Query("from_date") fromDate: String?, @Query("to_date") toDate: String?, @Query("start_date") startDate: String?, @Query("end_date") endDate: String?, @Query("start_datetime") startDatetime: String?, @Query("end_datetime") endDatetime: String?, @Query("custom_meta") customMeta: String?, @Query("allow_inactive") allowInactive: Boolean?, @HeaderMap headers: Map<String, String>? = null)
     : Response<OrderList>
     
     

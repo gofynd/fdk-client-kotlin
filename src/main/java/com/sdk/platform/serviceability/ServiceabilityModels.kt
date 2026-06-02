@@ -840,9 +840,14 @@ data class ListViewSchema(
     var items: ArrayList<ListViewItems>?=null,
     
     @SerializedName("page")
-    var page: Page?=null
+    var page: Page?=null,
+    
+    @SerializedName("fo_details")
+    var foDetails: FoDetails?=null
     
 ): Parcelable {
+    
+    
     
     
     
@@ -5567,6 +5572,12 @@ data class CourierPartnerShipments(
     @SerializedName("is_mto")
     var isMto: Boolean?=null,
     
+    @SerializedName("is_mps")
+    var isMps: Boolean?=null,
+    
+    @SerializedName("is_b2b")
+    var isB2B: Boolean?=null,
+    
     @SerializedName("ignore_scheme_ids")
     var ignoreSchemeIds: ArrayList<String>?=null,
     
@@ -5574,6 +5585,10 @@ data class CourierPartnerShipments(
     var error: @RawValue HashMap<String,Any>?=null
     
 ): Parcelable {
+    
+    
+    
+    
     
     
     
@@ -8690,6 +8705,33 @@ data class RegionSchema(
     
     @SerializedName("count")
     var count: Int?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: FoDetails
+*/
+@Parcelize
+data class FoDetails(
+    
+    
+    
+    @SerializedName("serviceability_type")
+    var serviceabilityType: String?=null,
+    
+    @SerializedName("active_non_default_zone_count")
+    var activeNonDefaultZoneCount: Int?=null
     
 ): Parcelable {
     

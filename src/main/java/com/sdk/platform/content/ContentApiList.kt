@@ -33,6 +33,22 @@ interface ContentApiList {
     suspend fun deleteAnnouncement(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Path("announcement_id") announcementId: String, @HeaderMap headers: Map<String, String>? = null)
     : Response<CreateAnnouncementSchema>
     
+    @GET ("/service/platform/content/v1.0/company/{company_id}/application/{application_id}/app-association")
+    suspend fun getAppAssociation(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @HeaderMap headers: Map<String, String>? = null)
+    : Response<AppAssociationRecord>
+    
+    @POST ("/service/platform/content/v1.0/company/{company_id}/application/{application_id}/app-association")
+    suspend fun createAppAssociation(@Path("company_id") companyId: String, @Path("application_id") applicationId: String,@Body body: AppAssociationWriteBody, @HeaderMap headers: Map<String, String>? = null)
+    : Response<AppAssociationRecord>
+    
+    @PUT ("/service/platform/content/v1.0/company/{company_id}/application/{application_id}/app-association")
+    suspend fun updateAppAssociation(@Path("company_id") companyId: String, @Path("application_id") applicationId: String,@Body body: AppAssociationWriteBody, @HeaderMap headers: Map<String, String>? = null)
+    : Response<AppAssociationRecord>
+    
+    @DELETE ("/service/platform/content/v1.0/company/{company_id}/application/{application_id}/app-association")
+    suspend fun deleteAppAssociation(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @HeaderMap headers: Map<String, String>? = null)
+    : Response<AppAssociationDeleted>
+    
     @POST ("/service/platform/content/v1.0/company/{company_id}/application/{application_id}/blogs/")
     suspend fun createBlog(@Path("company_id") companyId: String, @Path("application_id") applicationId: String,@Body body: BlogPayload, @HeaderMap headers: Map<String, String>? = null)
     : Response<BlogSchema>

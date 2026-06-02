@@ -1127,6 +1127,9 @@ data class ProductSize(
     @SerializedName("seller_identifiers")
     var sellerIdentifiers: ArrayList<String>?=null,
     
+    @SerializedName("all_identifiers")
+    var allIdentifiers: ArrayList<String>?=null,
+    
     @SerializedName("value")
     var value: String?=null,
     
@@ -1137,6 +1140,8 @@ data class ProductSize(
     var isBundleItem: Boolean?=null
     
 ): Parcelable {
+    
+    
     
     
     

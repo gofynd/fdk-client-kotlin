@@ -855,6 +855,33 @@ data class Invoice(
 
              
 /*
+    Model: CreditNote
+*/
+@Parcelize
+data class CreditNote(
+    
+    
+    
+    @SerializedName("credit_note_id")
+    var creditNoteId: String?=null,
+    
+    @SerializedName("credit_note_url")
+    var creditNoteUrl: String?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
     Model: NestedTrackingDetails
 */
 @Parcelize
@@ -2347,6 +2374,9 @@ data class Shipments(
     @SerializedName("invoice")
     var invoice: Invoice?=null,
     
+    @SerializedName("credit_note")
+    var creditNote: CreditNote?=null,
+    
     @SerializedName("show_track_link")
     var showTrackLink: Boolean?=null,
     
@@ -2453,6 +2483,8 @@ data class Shipments(
     var meta: @RawValue HashMap<String,Any>?=null
     
 ): Parcelable {
+    
+    
     
     
     

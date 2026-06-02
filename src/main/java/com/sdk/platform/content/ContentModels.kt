@@ -14,6 +14,171 @@ import com.google.gson.annotations.SerializedName
 
              
 /*
+    Model: AppAssociationDeleted
+*/
+@Parcelize
+data class AppAssociationDeleted(
+    
+    
+    
+    @SerializedName("message")
+    var message: String?=null,
+    
+    @SerializedName("application_id")
+    var applicationId: String?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: AppAssociationIosPayload
+*/
+@Parcelize
+data class AppAssociationIosPayload(
+    
+    
+    
+    @SerializedName("applinks")
+    var applinks: @RawValue HashMap<String,Any>?=null,
+    
+    @SerializedName("appclips")
+    var appclips: @RawValue HashMap<String,Any>?=null,
+    
+    @SerializedName("webcredentials")
+    var webcredentials: @RawValue HashMap<String,Any>?=null,
+    
+    @SerializedName("activitycontinuation")
+    var activitycontinuation: @RawValue HashMap<String,Any>?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: AppAssociationAndroidStatement
+*/
+@Parcelize
+data class AppAssociationAndroidStatement(
+    
+    
+    
+    @SerializedName("relation")
+    var relation: ArrayList<String>?=null,
+    
+    @SerializedName("target")
+    var target: @RawValue HashMap<String,Any>?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: AppAssociationWriteBody
+*/
+@Parcelize
+data class AppAssociationWriteBody(
+    
+    
+    
+    @SerializedName("ios_payload")
+    var iosPayload: AppAssociationIosPayload?=null,
+    
+    @SerializedName("android_payload")
+    var androidPayload: ArrayList<AppAssociationAndroidStatement>?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: AppAssociationRecord
+*/
+@Parcelize
+data class AppAssociationRecord(
+    
+    
+    
+    @SerializedName("ios_payload")
+    var iosPayload: AppAssociationIosPayload?=null,
+    
+    @SerializedName("android_payload")
+    var androidPayload: ArrayList<AppAssociationAndroidStatement>?=null,
+    
+    @SerializedName("created_at")
+    var createdAt: String?=null,
+    
+    @SerializedName("updated_at")
+    var updatedAt: String?=null,
+    
+    @SerializedName("created_by")
+    var createdBy: String?=null,
+    
+    @SerializedName("modified_by")
+    var modifiedBy: String?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
     Model: ValidationError
 */
 @Parcelize

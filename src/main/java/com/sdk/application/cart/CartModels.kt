@@ -1648,9 +1648,14 @@ data class CartProductInfo(
     var promotionsApplied: ArrayList<AppliedPromotion>?=null,
     
     @SerializedName("item_type")
-    var itemType: String?=null
+    var itemType: String?=null,
+    
+    @SerializedName("added_on")
+    var addedOn: String?=null
     
 ): Parcelable {
+    
+    
     
     
     
@@ -3147,6 +3152,9 @@ data class Coupon(
     @SerializedName("expires_on")
     var expiresOn: String?=null,
     
+    @SerializedName("expires_at")
+    var expiresAt: String?=null,
+    
     @SerializedName("message")
     var message: String?=null,
     
@@ -3187,6 +3195,8 @@ data class Coupon(
     var isBankOffer: Boolean?=null
     
 ): Parcelable {
+    
+    
     
     
     
