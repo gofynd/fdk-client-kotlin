@@ -933,14 +933,14 @@ class CatalogDataManagerClass(val config: ApplicationConfig, val unauthorizedAct
 
     
     
-    suspend fun getProductSellersBySlug(slug: String,size: String,strategy: String?=null,fulfillmentOptionSlug: String?=null,pageNo: Int?=null,pageSize: Int?=null, headers: Map<String, String> = emptyMap()): Response<ProductSizeSellersResponseV4>? {
+    suspend fun getProductSellersBySlug(slug: String,size: String,strategy: String?=null,fulfillmentOptionSlug: String?=null,pageNo: Int?=null,pageSize: Int?=null,q: String?=null, headers: Map<String, String> = emptyMap()): Response<ProductSizeSellersResponseV4>? {
         var fullUrl : String? = _relativeUrls["getProductSellersBySlug"]
         
         fullUrl = fullUrl?.replace("{" + "slug" +"}",slug.toString())
         
         fullUrl = fullUrl?.replace("{" + "size" +"}",size.toString())
         
-        return catalogApiList?.getProductSellersBySlug(fullUrl,     strategy = strategy,  fulfillmentOptionSlug = fulfillmentOptionSlug,  pageNo = pageNo,  pageSize = pageSize,headers = headers)}
+        return catalogApiList?.getProductSellersBySlug(fullUrl,     strategy = strategy,  fulfillmentOptionSlug = fulfillmentOptionSlug,  pageNo = pageNo,  pageSize = pageSize,  q = q,headers = headers)}
 
     
     
@@ -974,11 +974,16 @@ class CatalogDataManagerClass(val config: ApplicationConfig, val unauthorizedAct
             
             
         
+            
+                
+            
+            
+        
     /**
     *
     * Summary: Paginator for getProductSellersBySlug
     **/
-    fun getProductSellersBySlugPaginator(slug: String, size: String, strategy: String?=null, fulfillmentOptionSlug: String?=null, pageSize: Int?=null) : Paginator<ProductSizeSellersResponseV4>{
+    fun getProductSellersBySlugPaginator(slug: String, size: String, strategy: String?=null, fulfillmentOptionSlug: String?=null, pageSize: Int?=null, q: String?=null) : Paginator<ProductSizeSellersResponseV4>{
 
     val paginator = Paginator<ProductSizeSellersResponseV4>()
 
@@ -995,7 +1000,7 @@ class CatalogDataManagerClass(val config: ApplicationConfig, val unauthorizedAct
                 
                 fullUrl = fullUrl?.replace("{" + "size" +"}",size.toString())
                 
-                catalogApiList?.getProductSellersBySlug(fullUrl , strategy = strategy, fulfillmentOptionSlug = fulfillmentOptionSlug, pageNo = pageNo, pageSize = pageSize)?.safeAwait{ response, error ->
+                catalogApiList?.getProductSellersBySlug(fullUrl , strategy = strategy, fulfillmentOptionSlug = fulfillmentOptionSlug, pageNo = pageNo, pageSize = pageSize, q = q)?.safeAwait{ response, error ->
                     response?.let {
                         val page = response.peekContent()?.page
                         paginator.setPaginator(hasNext=page?.hasNext?:false,pageNo=if (page?.hasNext == true) ((pageNo ?: 0) + 1) else pageNo)

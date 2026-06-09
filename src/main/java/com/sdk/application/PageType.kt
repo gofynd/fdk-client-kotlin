@@ -104,6 +104,9 @@ import android.net.Uri
         @SerializedName("profile-phone")
         profilePhone("profile-phone"), 
         
+        @SerializedName("profile-loyalty-rewards")
+        profileLoyaltyRewards("profile-loyalty-rewards"), 
+        
         @SerializedName("rate-us")
         rateUs("rate-us"), 
         

@@ -162,7 +162,7 @@ interface CatalogApiList {
     
     
     @GET
-    suspend fun getProductSellersBySlug(@Url url1: String?      ,     @Query("strategy") strategy: String?, @Query("fulfillment_option_slug") fulfillmentOptionSlug: String?, @Query("page_no") pageNo: Int?, @Query("page_size") pageSize: Int?, @HeaderMap headers: Map<String, String>? = null)
+    suspend fun getProductSellersBySlug(@Url url1: String?      ,      @Query("strategy") strategy: String?, @Query("fulfillment_option_slug") fulfillmentOptionSlug: String?, @Query("page_no") pageNo: Int?, @Query("page_size") pageSize: Int?, @Query("q") q: String?, @HeaderMap headers: Map<String, String>? = null)
     : Response<ProductSizeSellersResponseV4>
     
     
