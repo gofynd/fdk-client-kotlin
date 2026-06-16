@@ -728,6 +728,18 @@ class CatalogDataManagerClass(val config: PlatformConfig, val unauthorizedAction
     }
     
     
+    suspend fun cbsOnboardGet( headers: Map<String, String> = emptyMap())
+    : Response<GetCompanySchema>? {
+
+        return if (config.oauthClient.isAccessTokenValid()) {
+            catalogApiList?.cbsOnboardGet(
+        companyId = config.companyId, headers = headers)
+        } else {
+            null
+        }
+    }
+    
+    
     suspend fun getCompanyMetrics( headers: Map<String, String> = emptyMap())
     : Response<OptinCompanyMetrics>? {
 
@@ -3266,6 +3278,7 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
             null
         }
     }
+    
     
     
     

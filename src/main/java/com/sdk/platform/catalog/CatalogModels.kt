@@ -6796,6 +6796,33 @@ data class GetAddressSchema(
 
              
 /*
+    Model: RegionDetailsSchema
+*/
+@Parcelize
+data class RegionDetailsSchema(
+    
+    
+    
+    @SerializedName("slug")
+    var slug: String?=null,
+    
+    @SerializedName("zone")
+    var zone: String?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
     Model: GetAllSizes
 */
 @Parcelize
@@ -7284,6 +7311,12 @@ data class GetCompanySchema(
     @SerializedName("name")
     var name: String?=null,
     
+    @SerializedName("region")
+    var region: String?=null,
+    
+    @SerializedName("region_details")
+    var regionDetails: RegionDetailsSchema?=null,
+    
     @SerializedName("reject_reason")
     var rejectReason: String?=null,
     
@@ -7300,6 +7333,10 @@ data class GetCompanySchema(
     var verifiedOn: String?=null
     
 ): Parcelable {
+    
+    
+    
+    
     
     
     

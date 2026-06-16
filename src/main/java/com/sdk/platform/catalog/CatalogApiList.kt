@@ -321,6 +321,10 @@ interface CatalogApiList {
     suspend fun getCompanyDetail(@Path("company_id") companyId: String, @HeaderMap headers: Map<String, String>? = null)
     : Response<OptinCompanyDetail>
     
+    @GET ("/service/platform/catalog/v2.0/company/{company_id}/")
+    suspend fun cbsOnboardGet(@Path("company_id") companyId: String, @HeaderMap headers: Map<String, String>? = null)
+    : Response<GetCompanySchema>
+    
     @GET ("/service/platform/catalog/v1.0/company/{company_id}/marketplaces/company-metrics/")
     suspend fun getCompanyMetrics(@Path("company_id") companyId: String, @HeaderMap headers: Map<String, String>? = null)
     : Response<OptinCompanyMetrics>
