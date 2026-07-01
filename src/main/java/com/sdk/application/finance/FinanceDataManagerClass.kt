@@ -1,4 +1,4 @@
-package com.sdk.application.common
+package com.sdk.application.finance
 
 import com.sdk.common.*
 import com.sdk.application.*
@@ -9,19 +9,19 @@ import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Response
 
 
-class CommonDataManagerClass(val config: ApplicationConfig, val unauthorizedAction: ((url: String, responseCode: Int) -> Unit)? = null) : BaseRepository() {
+class FinanceDataManagerClass(val config: ApplicationConfig, val unauthorizedAction: ((url: String, responseCode: Int) -> Unit)? = null) : BaseRepository() {
 
-    private val commonApiList by lazy {
-        generatecommonApiList()
+    private val financeApiList by lazy {
+        generatefinanceApiList()
     }
 
     private var _relativeUrls : HashMap<String,String> = HashMap<String,String>()
 
     init{
             
-                    _relativeUrls["searchApplication"] = "/service/common/configuration/v1.0/application/search-application".substring(1)
+                    _relativeUrls["customerCreditBalance"] = "/service/application/finance/v1.0/customer-credit-balance".substring(1)
             
-                    _relativeUrls["getLocations"] = "/service/common/configuration/v1.0/location".substring(1)
+                    _relativeUrls["lockUnlockCreditNote"] = "/service/application/finance/v1.0/lock-unlock-credit-note".substring(1)
             
     }
 
@@ -32,7 +32,7 @@ class CommonDataManagerClass(val config: ApplicationConfig, val unauthorizedActi
     }
 
 
-    private fun generatecommonApiList(): CommonApiList? {
+    private fun generatefinanceApiList(): FinanceApiList? {
         val interceptorMap = HashMap<String, List<Interceptor>>()
         val headerInterceptor = ApplicationHeaderInterceptor(config)
         val requestSignerInterceptor = RequestSignerInterceptor()
@@ -51,24 +51,24 @@ class CommonDataManagerClass(val config: ApplicationConfig, val unauthorizedActi
         val retrofitHttpClient = HttpClient.initialize(
             baseUrl = config.domain,
             interceptorList = interceptorMap,
-            namespace = "ApplicationCommon",
+            namespace = "ApplicationFinance",
             persistentCookieStore = config.persistentCookieStore,
             certPublicKey = config.certPublicKey
         )
-        return retrofitHttpClient?.initializeRestClient(CommonApiList::class.java) as? CommonApiList
+        return retrofitHttpClient?.initializeRestClient(FinanceApiList::class.java) as? FinanceApiList
     }
     
-    suspend fun searchApplication(authorization: String?=null,query: String?=null, headers: Map<String, String> = emptyMap()): Response<ApplicationResponseSchema>? {
-        var fullUrl : String? = _relativeUrls["searchApplication"]
+    suspend fun customerCreditBalance(body: CustomerCreditBalanceRequestSchema, headers: Map<String, String> = emptyMap()): Response<CustomerCreditBalanceResponseSchema>? {
+        var fullUrl : String? = _relativeUrls["customerCreditBalance"]
         
-        return commonApiList?.searchApplication(fullUrl,   authorization = authorization,  query = query,headers = headers)}
+        return financeApiList?.customerCreditBalance(fullUrl, body = body,headers = headers)}
 
     
     
-    suspend fun getLocations(locationType: String?=null,id: String?=null, headers: Map<String, String> = emptyMap()): Response<Locations>? {
-        var fullUrl : String? = _relativeUrls["getLocations"]
+    suspend fun lockUnlockCreditNote(body: LockUnlockRequestSchema, headers: Map<String, String> = emptyMap()): Response<LockUnlockResponseSchema>? {
+        var fullUrl : String? = _relativeUrls["lockUnlockCreditNote"]
         
-        return commonApiList?.getLocations(fullUrl,   locationType = locationType,  id = id,headers = headers)}
+        return financeApiList?.lockUnlockCreditNote(fullUrl, body = body,headers = headers)}
 
     
     

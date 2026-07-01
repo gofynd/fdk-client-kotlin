@@ -51,9 +51,24 @@ data class EventConfig(
     var updatedOn: String?=null,
     
     @SerializedName("group")
-    var group: String?=null
+    var group: String?=null,
+    
+    @SerializedName("sunset_date")
+    var sunsetDate: String?=null,
+    
+    @SerializedName("announcement_date")
+    var announcementDate: String?=null,
+    
+    @SerializedName("support_end_date")
+    var supportEndDate: String?=null
     
 ): Parcelable {
+    
+    
+    
+    
+    
+    
     
     
     
@@ -85,10 +100,10 @@ data class EventConfig(
 
              
 /*
-    Model: EventConfigResponse
+    Model: EventDetails
 */
 @Parcelize
-data class EventConfigResponse(
+data class EventDetails(
     
     
     
@@ -247,6 +262,9 @@ data class TransformEventData(
     
     
     
+    @SerializedName("region")
+    var region: String?=null,
+    
     @SerializedName("event")
     var event: InternalTransformEvent?=null,
     
@@ -260,6 +278,8 @@ data class TransformEventData(
     var payload: @RawValue HashMap<String,Any>?=null
     
 ): Parcelable {
+    
+    
     
     
     
@@ -321,10 +341,10 @@ data class TransformEventAssociation(
 
              
 /*
-    Model: TransformEventRequest
+    Model: TransformEventPayload
 */
 @Parcelize
-data class TransformEventRequest(
+data class TransformEventPayload(
     
     
     
@@ -363,10 +383,10 @@ data class TransformEventRequest(
 
              
 /*
-    Model: ValidateSchemaRequest
+    Model: ValidateSchemaPayload
 */
 @Parcelize
-data class ValidateSchemaRequest(
+data class ValidateSchemaPayload(
     
     
     
@@ -410,10 +430,10 @@ data class ValidateSchemaRequest(
 
              
 /*
-    Model: ValidateSchemaResponse
+    Model: ValidateSchemaResult
 */
 @Parcelize
-data class ValidateSchemaResponse(
+data class ValidateSchemaResult(
     
     
     
@@ -437,10 +457,10 @@ data class ValidateSchemaResponse(
 
              
 /*
-    Model: TransformEventResponse
+    Model: TransformEventResult
 */
 @Parcelize
-data class TransformEventResponse(
+data class TransformEventResult(
     
     
     

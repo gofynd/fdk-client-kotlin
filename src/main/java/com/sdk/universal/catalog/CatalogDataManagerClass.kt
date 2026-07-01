@@ -1,7 +1,7 @@
-package com.sdk.application.webhook
+package com.sdk.universal.catalog
 
 import com.sdk.common.*
-import com.sdk.application.*
+import com.sdk.universal.*
 import kotlinx.coroutines.Deferred
 import okhttp3.ResponseBody
 import okhttp3.Interceptor
@@ -9,17 +9,17 @@ import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Response
 
 
-class WebhookDataManagerClass(val config: ApplicationConfig, val unauthorizedAction: ((url: String, responseCode: Int) -> Unit)? = null) : BaseRepository() {
+class CatalogDataManagerClass(val config: PublicConfig, val unauthorizedAction: ((url: String, responseCode: Int) -> Unit)? = null) : BaseRepository() {
 
-    private val webhookApiList by lazy {
-        generatewebhookApiList()
+    private val catalogApiList by lazy {
+        generatecatalogApiList()
     }
 
     private var _relativeUrls : HashMap<String,String> = HashMap<String,String>()
 
     init{
             
-                    _relativeUrls["saveClickEvent"] = "/service/application/webhook/v1.0/click-analytics/events".substring(1)
+                    _relativeUrls["getTaxonomyByLevel"] = "/service/public/catalog/v1.0/taxonomy/level/{level}".substring(1)
             
     }
 
@@ -30,9 +30,9 @@ class WebhookDataManagerClass(val config: ApplicationConfig, val unauthorizedAct
     }
 
 
-    private fun generatewebhookApiList(): WebhookApiList? {
+    private fun generatecatalogApiList(): CatalogApiList? {
         val interceptorMap = HashMap<String, List<Interceptor>>()
-        val headerInterceptor = ApplicationHeaderInterceptor(config)
+        val headerInterceptor = PublicHeaderInterceptor(config)
         val requestSignerInterceptor = RequestSignerInterceptor()
         val interceptorList = ArrayList<Interceptor>()
         interceptorList.add(headerInterceptor)
@@ -49,17 +49,18 @@ class WebhookDataManagerClass(val config: ApplicationConfig, val unauthorizedAct
         val retrofitHttpClient = HttpClient.initialize(
             baseUrl = config.domain,
             interceptorList = interceptorMap,
-            namespace = "ApplicationWebhook",
-            persistentCookieStore = config.persistentCookieStore,
-            certPublicKey = config.certPublicKey
+            namespace = "PublicCatalog",
+            persistentCookieStore = config.persistentCookieStore
         )
-        return retrofitHttpClient?.initializeRestClient(WebhookApiList::class.java) as? WebhookApiList
+        return retrofitHttpClient?.initializeRestClient(CatalogApiList::class.java) as? CatalogApiList
     }
     
-    suspend fun saveClickEvent(body: ClickEventRequest, headers: Map<String, String> = emptyMap()): Response<ClickEventResponse>? {
-        var fullUrl : String? = _relativeUrls["saveClickEvent"]
+    suspend fun getTaxonomyByLevel(level: Int,l0Slug: String?=null,l1Slug: String?=null,l2Slug: String?=null,l3Slug: String?=null,limit: Double?=null, headers: Map<String, String> = emptyMap()): Response<TaxonomyResponseSchema>? {
+        var fullUrl : String? = _relativeUrls["getTaxonomyByLevel"]
         
-        return webhookApiList?.saveClickEvent(fullUrl, body = body,headers = headers)}
+        fullUrl = fullUrl?.replace("{" + "level" +"}",level.toString())
+        
+        return catalogApiList?.getTaxonomyByLevel(fullUrl,    l0Slug = l0Slug,  l1Slug = l1Slug,  l2Slug = l2Slug,  l3Slug = l3Slug,  limit = limit,headers = headers)}
 
     
     

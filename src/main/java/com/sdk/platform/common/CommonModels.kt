@@ -14,10 +14,10 @@ import com.google.gson.annotations.SerializedName
 
              
 /*
-    Model: ApplicationResponse
+    Model: ApplicationResponseSchema
 */
 @Parcelize
-data class ApplicationResponse(
+data class ApplicationResponseSchema(
     
     
     
@@ -213,6 +213,33 @@ data class ApplicationRedirections(
 ): Parcelable {
     
     
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: RegionDetails
+*/
+@Parcelize
+data class RegionDetails(
+    
+    
+    
+    @SerializedName("slug")
+    var slug: String?=null,
+    
+    @SerializedName("zone")
+    var zone: String?=null
+    
+): Parcelable {
     
     
     
@@ -439,10 +466,10 @@ data class NotFound(
 
              
 /*
-    Model: BadRequest
+    Model: BadRequestSchema
 */
 @Parcelize
-data class BadRequest(
+data class BadRequestSchema(
     
     
     

@@ -81,7 +81,7 @@ class BillingDataManagerClass(val config: PlatformConfig, val unauthorizedAction
     
     
     suspend fun createOneTimeCharge(extensionId: String,body: CreateOneTimeCharge, headers: Map<String, String> = emptyMap())
-    : Response<CreateOneTimeChargeResponse>? {
+    : Response<CreateOneTimeChargeResponseSchemas>? {
 
         return if (config.oauthClient.isAccessTokenValid()) {
             billingApiList?.createOneTimeCharge(
@@ -93,7 +93,7 @@ class BillingDataManagerClass(val config: PlatformConfig, val unauthorizedAction
     
     
     suspend fun createSubscriptionCharge(extensionId: String,body: CreateSubscriptionCharge, headers: Map<String, String> = emptyMap())
-    : Response<CreateSubscriptionResponse>? {
+    : Response<CreateSubscription>? {
 
         return if (config.oauthClient.isAccessTokenValid()) {
             billingApiList?.createSubscriptionCharge(

@@ -23,10 +23,10 @@ interface BillingApiList {
     
     @POST ("/service/platform/billing/v1.0/company/{company_id}/extension/{extension_id}/one_time_charge")
     suspend fun createOneTimeCharge(@Path("company_id") companyId: String, @Path("extension_id") extensionId: String,@Body body: CreateOneTimeCharge, @HeaderMap headers: Map<String, String>? = null)
-    : Response<CreateOneTimeChargeResponse>
+    : Response<CreateOneTimeChargeResponseSchemas>
     
     @POST ("/service/platform/billing/v1.0/company/{company_id}/extension/{extension_id}/subscription")
     suspend fun createSubscriptionCharge(@Path("company_id") companyId: String, @Path("extension_id") extensionId: String,@Body body: CreateSubscriptionCharge, @HeaderMap headers: Map<String, String>? = null)
-    : Response<CreateSubscriptionResponse>
+    : Response<CreateSubscription>
     
 }

@@ -18,7 +18,7 @@ interface ConfigurationApiList {
     
     @GET
     suspend fun getOwnerInfo(@Url url1: String?   , @HeaderMap headers: Map<String, String>? = null)
-    : Response<ApplicationAboutResponse>
+    : Response<ApplicationAboutResponseSchema>
     
     
     @GET
@@ -28,7 +28,7 @@ interface ConfigurationApiList {
     
     @GET
     suspend fun getIntegrationTokens(@Url url1: String?   , @HeaderMap headers: Map<String, String>? = null)
-    : Response<AppTokenResponse>
+    : Response<AppTokenResponseSchema>
     
     
     @GET
@@ -43,7 +43,7 @@ interface ConfigurationApiList {
     
     @GET
     suspend fun getFeatures(@Url url1: String?   , @HeaderMap headers: Map<String, String>? = null)
-    : Response<AppFeatureResponse>
+    : Response<AppFeatureResponseSchema>
     
     
     @GET
@@ -53,7 +53,7 @@ interface ConfigurationApiList {
     
     @GET
     suspend fun getCurrencies(@Url url1: String?   , @HeaderMap headers: Map<String, String>? = null)
-    : Response<CurrenciesResponse>
+    : Response<CurrenciesResponseSchema>
     
     
     @GET
@@ -63,31 +63,31 @@ interface ConfigurationApiList {
     
     @GET
     suspend fun getAppCurrencies(@Url url1: String?   , @HeaderMap headers: Map<String, String>? = null)
-    : Response<AppCurrencyResponse>
+    : Response<AppCurrencyResponseSchema>
     
     
     @GET
     suspend fun getLanguages(@Url url1: String?   , @HeaderMap headers: Map<String, String>? = null)
-    : Response<LanguageResponse>
+    : Response<LanguageResponseSchema>
     
     
     @POST
-    suspend fun getOrderingStoreCookie(@Url url1: String?   ,@Body body: OrderingStoreSelectRequest, @HeaderMap headers: Map<String, String>? = null)
-    : Response<SuccessMessageResponse>
+    suspend fun getOrderingStoreCookie(@Url url1: String?   ,@Body body: OrderingStoreSelectRequestSchema, @HeaderMap headers: Map<String, String>? = null)
+    : Response<SuccessMessageResponseSchema>
     
     
     @DELETE
     suspend fun removeOrderingStoreCookie(@Url url1: String?   , @HeaderMap headers: Map<String, String>? = null)
-    : Response<SuccessMessageResponse>
+    : Response<SuccessMessageResponseSchema>
     
     
     @GET
     suspend fun getAppStaffList(@Url url1: String?    ,       @Query("page_no") pageNo: Int?, @Query("page_size") pageSize: Int?, @Query("order_incent") orderIncent: Boolean?, @Query("ordering_store") orderingStore: Int?, @Query("user") user: String?, @Query("user_name") userName: String?, @HeaderMap headers: Map<String, String>? = null)
-    : Response<AppStaffListResponse>
+    : Response<AppStaffListResponseSchema>
     
     
     @GET
     suspend fun getAppStaffs(@Url url1: String?    ,    @Query("order_incent") orderIncent: Boolean?, @Query("ordering_store") orderingStore: Int?, @Query("user") user: String?, @HeaderMap headers: Map<String, String>? = null)
-    : Response<AppStaffResponse>
+    : Response<AppStaffResponseSchema>
     
 }

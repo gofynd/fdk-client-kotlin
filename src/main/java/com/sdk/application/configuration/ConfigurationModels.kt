@@ -14,10 +14,10 @@ import com.google.gson.annotations.SerializedName
 
              
 /*
-    Model: ApplicationAboutResponse
+    Model: ApplicationAboutResponseSchema
 */
 @Parcelize
-data class ApplicationAboutResponse(
+data class ApplicationAboutResponseSchema(
     
     
     
@@ -284,10 +284,10 @@ data class SupportedLanguage(
 
              
 /*
-    Model: LanguageResponse
+    Model: LanguageResponseSchema
 */
 @Parcelize
-data class LanguageResponse(
+data class LanguageResponseSchema(
     
     
     
@@ -306,10 +306,10 @@ data class LanguageResponse(
 
              
 /*
-    Model: AppStaffResponse
+    Model: AppStaffResponseSchema
 */
 @Parcelize
-data class AppStaffResponse(
+data class AppStaffResponseSchema(
     
     
     
@@ -328,10 +328,10 @@ data class AppStaffResponse(
 
              
 /*
-    Model: AppStaffListResponse
+    Model: AppStaffListResponseSchema
 */
 @Parcelize
-data class AppStaffListResponse(
+data class AppStaffListResponseSchema(
     
     
     
@@ -355,10 +355,10 @@ data class AppStaffListResponse(
 
              
 /*
-    Model: OrderingStoreSelectRequest
+    Model: OrderingStoreSelectRequestSchema
 */
 @Parcelize
-data class OrderingStoreSelectRequest(
+data class OrderingStoreSelectRequestSchema(
     
     
     
@@ -466,10 +466,10 @@ data class AppStaff(
 
              
 /*
-    Model: AppTokenResponse
+    Model: AppTokenResponseSchema
 */
 @Parcelize
-data class AppTokenResponse(
+data class AppTokenResponseSchema(
     
     
     
@@ -1481,6 +1481,55 @@ data class RegistrationPageFeature(
 
              
 /*
+    Model: FulfillmentOption
+*/
+@Parcelize
+data class FulfillmentOption(
+    
+    
+    
+    @SerializedName("count")
+    var count: Int?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: OrderingSources
+*/
+@Parcelize
+data class OrderingSources(
+    
+    
+    
+    @SerializedName("key")
+    var key: String?=null,
+    
+    @SerializedName("name")
+    var name: String?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
     Model: AppFeature
 */
 @Parcelize
@@ -1515,8 +1564,23 @@ data class AppFeature(
     @SerializedName("order")
     var order: OrderFeature?=null,
     
-    @SerializedName("buybox")
-    var buybox: BuyboxFeature?=null,
+    @SerializedName("security")
+    var security: SecurityFeature?=null,
+    
+    @SerializedName("fulfillment_option")
+    var fulfillmentOption: FulfillmentOption?=null,
+    
+    @SerializedName("delivery_strategy")
+    var deliveryStrategy: DeliveryStrategy?=null,
+    
+    @SerializedName("ordering_sources")
+    var orderingSources: ArrayList<OrderingSources>?=null,
+    
+    @SerializedName("price_strategy")
+    var priceStrategy: String?=null,
+    
+    @SerializedName("international")
+    var international: Boolean?=null,
     
     @SerializedName("_id")
     var id: String?=null,
@@ -1531,12 +1595,17 @@ data class AppFeature(
     var modifiedAt: String?=null,
     
     @SerializedName("__v")
-    var v: Int?=null,
-    
-    @SerializedName("pricing_strategy")
-    var pricingStrategy: PricingStrategy?=null
+    var v: Int?=null
     
 ): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+    
     
     
     
@@ -1989,35 +2058,13 @@ data class OrderFeature(
     
     
     @SerializedName("buy_again")
-    var buyAgain: Boolean?=null
+    var buyAgain: Boolean?=null,
     
-): Parcelable {
+    @SerializedName("enabled")
+    var enabled: Boolean?=null,
     
-    
-    
-    
-    
-}
-
-
-
-             
-/*
-    Model: BuyboxFeature
-*/
-@Parcelize
-data class BuyboxFeature(
-    
-    
-    
-    @SerializedName("show_name")
-    var showName: Boolean?=null,
-    
-    @SerializedName("enable_selection")
-    var enableSelection: Boolean?=null,
-    
-    @SerializedName("is_seller_buybox_enabled")
-    var isSellerBuyboxEnabled: Boolean?=null
+    @SerializedName("message")
+    var message: String?=null
     
 ): Parcelable {
     
@@ -2035,10 +2082,81 @@ data class BuyboxFeature(
 
              
 /*
-    Model: AppFeatureResponse
+    Model: SecurityFeature
 */
 @Parcelize
-data class AppFeatureResponse(
+data class SecurityFeature(
+    
+    
+    
+    @SerializedName("domains")
+    var domains: ArrayList<AllowedDomain>?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: AllowedDomain
+*/
+@Parcelize
+data class AllowedDomain(
+    
+    
+    
+    @SerializedName("host")
+    var host: String?=null,
+    
+    @SerializedName("url_scheme")
+    var urlScheme: String?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: DeliveryStrategy
+*/
+@Parcelize
+data class DeliveryStrategy(
+    
+    
+    
+    @SerializedName("value")
+    var value: String?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: AppFeatureResponseSchema
+*/
+@Parcelize
+data class AppFeatureResponseSchema(
     
     
     
@@ -2301,6 +2419,33 @@ data class ApplicationMeta(
 
              
 /*
+    Model: RegionDetails
+*/
+@Parcelize
+data class RegionDetails(
+    
+    
+    
+    @SerializedName("slug")
+    var slug: String?=null,
+    
+    @SerializedName("zone")
+    var zone: String?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
     Model: SecureUrl
 */
 @Parcelize
@@ -2539,10 +2684,10 @@ data class NotFound(
 
              
 /*
-    Model: InvalidPayloadRequest
+    Model: InvalidPayloadRequestSchema
 */
 @Parcelize
-data class InvalidPayloadRequest(
+data class InvalidPayloadRequestSchema(
     
     
     
@@ -2561,32 +2706,10 @@ data class InvalidPayloadRequest(
 
              
 /*
-    Model: UnhandledError
+    Model: SuccessMessageResponseSchema
 */
 @Parcelize
-data class UnhandledError(
-    
-    
-    
-    @SerializedName("message")
-    var message: String?=null
-    
-): Parcelable {
-    
-    
-    
-    
-    
-}
-
-
-
-             
-/*
-    Model: SuccessMessageResponse
-*/
-@Parcelize
-data class SuccessMessageResponse(
+data class SuccessMessageResponseSchema(
     
     
     
@@ -2764,8 +2887,8 @@ data class Page(
     @SerializedName("size")
     var size: Int?=null,
     
-    @SerializedName("total")
-    var total: Int?=null
+    @SerializedName("page_size")
+    var pageSize: Int?=null
     
 ): Parcelable {
     
@@ -3543,10 +3666,10 @@ data class ApplicationDetail(
 
              
 /*
-    Model: CurrenciesResponse
+    Model: CurrenciesResponseSchema
 */
 @Parcelize
-data class CurrenciesResponse(
+data class CurrenciesResponseSchema(
     
     
     
@@ -3592,10 +3715,10 @@ data class DefaultCurrency(
 
              
 /*
-    Model: AppCurrencyResponse
+    Model: AppCurrencyResponseSchema
 */
 @Parcelize
-data class AppCurrencyResponse(
+data class AppCurrencyResponseSchema(
     
     
     
@@ -3831,28 +3954,6 @@ data class OrderingStores(
     
     
     
-    
-    
-    
-    
-    
-}
-
-
-
-             
-/*
-    Model: PricingStrategy
-*/
-@Parcelize
-data class PricingStrategy(
-    
-    
-    
-    @SerializedName("value")
-    var value: String?=null
-    
-): Parcelable {
     
     
     

@@ -16,13 +16,11 @@ import com.sdk.platform.configuration.*
 import com.sdk.platform.content.* 
 import com.sdk.platform.discount.* 
 import com.sdk.platform.filestorage.* 
-import com.sdk.platform.finance.* 
 import com.sdk.platform.lead.* 
 import com.sdk.platform.serviceability.* 
 import com.sdk.platform.order.* 
 import com.sdk.platform.partner.* 
 import com.sdk.platform.payment.* 
-import com.sdk.platform.rewards.* 
 import com.sdk.platform.share.* 
 import com.sdk.platform.theme.* 
 import com.sdk.platform.user.* 
@@ -68,8 +66,6 @@ class PlatformClient(val config:PlatformConfig, val unauthorizedAction: ((url: S
     
     val fileStorage by lazy { FileStorageDataManagerClass(config, unauthorizedAction)}
     
-    val finance by lazy { FinanceDataManagerClass(config, unauthorizedAction)}
-    
     val lead by lazy { LeadDataManagerClass(config, unauthorizedAction)}
     
     val serviceability by lazy { ServiceabilityDataManagerClass(config, unauthorizedAction)}
@@ -79,8 +75,6 @@ class PlatformClient(val config:PlatformConfig, val unauthorizedAction: ((url: S
     val partner by lazy { PartnerDataManagerClass(config, unauthorizedAction)}
     
     val payment by lazy { PaymentDataManagerClass(config, unauthorizedAction)}
-    
-    val rewards by lazy { RewardsDataManagerClass(config, unauthorizedAction)}
     
     val share by lazy { ShareDataManagerClass(config, unauthorizedAction)}
     
@@ -120,8 +114,6 @@ class PlatformClient(val config:PlatformConfig, val unauthorizedAction: ((url: S
     
     val fileStorage by lazy { this@PlatformClient.fileStorage.ApplicationClient(applicationId,config)}
     
-    val finance by lazy { this@PlatformClient.finance.ApplicationClient(applicationId,config)}
-    
     val lead by lazy { this@PlatformClient.lead.ApplicationClient(applicationId,config)}
     
     val serviceability by lazy { this@PlatformClient.serviceability.ApplicationClient(applicationId,config)}
@@ -131,8 +123,6 @@ class PlatformClient(val config:PlatformConfig, val unauthorizedAction: ((url: S
     val partner by lazy { this@PlatformClient.partner.ApplicationClient(applicationId,config)}
     
     val payment by lazy { this@PlatformClient.payment.ApplicationClient(applicationId,config)}
-    
-    val rewards by lazy { this@PlatformClient.rewards.ApplicationClient(applicationId,config)}
     
     val share by lazy { this@PlatformClient.share.ApplicationClient(applicationId,config)}
     

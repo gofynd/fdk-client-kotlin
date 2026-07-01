@@ -20,38 +20,13 @@ data class CategoryL1(
     
     
     
-    @SerializedName("description")
-    var description: String?=null,
-    
-    @SerializedName("display")
-    var display: String?=null,
-    
-    @SerializedName("level")
-    var level: Double?=null,
-    
-    @SerializedName("logo")
-    var logo: String?=null,
-    
     @SerializedName("slug")
     var slug: String?=null,
-    
-    @SerializedName("value")
-    var value: String?=null,
     
     @SerializedName("_id")
     var id: String?=null
     
 ): Parcelable {
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
     
     
     
@@ -75,28 +50,13 @@ data class CategoryL2(
     @SerializedName("parent")
     var parent: String?=null,
     
-    @SerializedName("display")
-    var display: String?=null,
-    
-    @SerializedName("level")
-    var level: Double?=null,
-    
     @SerializedName("slug")
     var slug: String?=null,
-    
-    @SerializedName("value")
-    var value: String?=null,
     
     @SerializedName("_id")
     var id: String?=null
     
 ): Parcelable {
-    
-    
-    
-    
-    
-    
     
     
     
@@ -119,11 +79,11 @@ data class CategoryCommon(
     
     
     
-    @SerializedName("category_l1")
-    var categoryL1: ArrayList<CategoryL1>?=null,
+    @SerializedName("categories_l1")
+    var categoriesL1: ArrayList<CategoryL1>?=null,
     
-    @SerializedName("category_l2")
-    var categoryL2: ArrayList<CategoryL2>?=null
+    @SerializedName("categories_l2")
+    var categoriesL2: ArrayList<CategoryL2>?=null
     
 ): Parcelable {
     
@@ -161,6 +121,33 @@ data class ContactInfo(
 
              
 /*
+    Model: CommingSoon
+*/
+@Parcelize
+data class CommingSoon(
+    
+    
+    
+    @SerializedName("is_coming_soon")
+    var isComingSoon: Boolean?=null,
+    
+    @SerializedName("upvote_count")
+    var upvoteCount: Double?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
     Model: ExtensionUsingSlug
 */
 @Parcelize
@@ -186,8 +173,8 @@ data class ExtensionUsingSlug(
     @SerializedName("extension_id")
     var extensionId: String?=null,
     
-    @SerializedName("is_coming_soon")
-    var isComingSoon: Boolean?=null,
+    @SerializedName("coming_soon")
+    var comingSoon: CommingSoon?=null,
     
     @SerializedName("listing_info")
     var listingInfo: ListingInfo?=null,
@@ -210,9 +197,6 @@ data class ExtensionUsingSlug(
     @SerializedName("plans_url")
     var plansUrl: String?=null,
     
-    @SerializedName("review_instructions")
-    var reviewInstructions: String?=null,
-    
     @SerializedName("scope")
     var scope: ArrayList<String>?=null,
     
@@ -223,8 +207,6 @@ data class ExtensionUsingSlug(
     var id: String?=null
     
 ): Parcelable {
-    
-    
     
     
     
@@ -458,9 +440,19 @@ data class Support(
     var privacyPolicyUrl: String?=null,
     
     @SerializedName("website_url")
-    var websiteUrl: String?=null
+    var websiteUrl: String?=null,
+    
+    @SerializedName("terms_of_service")
+    var termsOfService: String?=null,
+    
+    @SerializedName("country_code")
+    var countryCode: String?=null
     
 ): Parcelable {
+    
+    
+    
+    
     
     
     

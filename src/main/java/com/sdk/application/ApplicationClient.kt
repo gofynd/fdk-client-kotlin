@@ -9,15 +9,14 @@ import com.sdk.application.communication.*
 import com.sdk.application.configuration.* 
 import com.sdk.application.content.* 
 import com.sdk.application.filestorage.* 
+import com.sdk.application.finance.* 
 import com.sdk.application.lead.* 
 import com.sdk.application.logistic.* 
 import com.sdk.application.order.* 
 import com.sdk.application.payment.* 
-import com.sdk.application.rewards.* 
 import com.sdk.application.share.* 
 import com.sdk.application.theme.* 
-import com.sdk.application.user.* 
-import com.sdk.application.webhook.*
+import com.sdk.application.user.*
 import com.sdk.common.LocationHeader
 
 class ApplicationClient(val config:ApplicationConfig, val unauthorizedAction: ((url: String, responseCode: Int) -> Unit)? = null) {
@@ -45,6 +44,8 @@ class ApplicationClient(val config:ApplicationConfig, val unauthorizedAction: ((
     
     val fileStorage by lazy { FileStorageDataManagerClass(config, unauthorizedAction)}
     
+    val finance by lazy { FinanceDataManagerClass(config, unauthorizedAction)}
+    
     val lead by lazy { LeadDataManagerClass(config, unauthorizedAction)}
     
     val logistic by lazy { LogisticDataManagerClass(config, unauthorizedAction)}
@@ -53,14 +54,10 @@ class ApplicationClient(val config:ApplicationConfig, val unauthorizedAction: ((
     
     val payment by lazy { PaymentDataManagerClass(config, unauthorizedAction)}
     
-    val rewards by lazy { RewardsDataManagerClass(config, unauthorizedAction)}
-    
     val share by lazy { ShareDataManagerClass(config, unauthorizedAction)}
     
     val theme by lazy { ThemeDataManagerClass(config, unauthorizedAction)}
     
     val user by lazy { UserDataManagerClass(config, unauthorizedAction)}
-    
-    val webhook by lazy { WebhookDataManagerClass(config, unauthorizedAction)}
     
 }

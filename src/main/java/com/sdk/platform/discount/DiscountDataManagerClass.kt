@@ -193,8 +193,8 @@ class DiscountDataManagerClass(val config: PlatformConfig, val unauthorizedActio
     }
     
     
-    suspend fun validateDiscountFile(discount: String?=null,body: FileJobRequest, headers: Map<String, String> = emptyMap())
-    : Response<FileJobResponse>? {
+    suspend fun validateDiscountFile(discount: String?=null,body: FileJobRequestSchema, headers: Map<String, String> = emptyMap())
+    : Response<FileJobResponseSchema>? {
 
         return if (config.oauthClient.isAccessTokenValid()) {
             discountApiList?.validateDiscountFile(
@@ -206,7 +206,7 @@ class DiscountDataManagerClass(val config: PlatformConfig, val unauthorizedActio
     
     
     suspend fun downloadDiscountFile(type: String,body: DownloadFileJob, headers: Map<String, String> = emptyMap())
-    : Response<FileJobResponse>? {
+    : Response<FileJobResponseSchema>? {
 
         return if (config.oauthClient.isAccessTokenValid()) {
             discountApiList?.downloadDiscountFile(
@@ -218,7 +218,7 @@ class DiscountDataManagerClass(val config: PlatformConfig, val unauthorizedActio
     
     
     suspend fun getValidationJob(id: String, headers: Map<String, String> = emptyMap())
-    : Response<FileJobResponse>? {
+    : Response<FileJobResponseSchema>? {
 
         return if (config.oauthClient.isAccessTokenValid()) {
             discountApiList?.getValidationJob(
@@ -230,7 +230,7 @@ class DiscountDataManagerClass(val config: PlatformConfig, val unauthorizedActio
     
     
     suspend fun cancelValidationJob(id: String, headers: Map<String, String> = emptyMap())
-    : Response<CancelJobResponse>? {
+    : Response<CancelJobResponseSchema>? {
 
         return if (config.oauthClient.isAccessTokenValid()) {
             discountApiList?.cancelValidationJob(
@@ -242,7 +242,7 @@ class DiscountDataManagerClass(val config: PlatformConfig, val unauthorizedActio
     
     
     suspend fun getDownloadJob(id: String, headers: Map<String, String> = emptyMap())
-    : Response<FileJobResponse>? {
+    : Response<FileJobResponseSchema>? {
 
         return if (config.oauthClient.isAccessTokenValid()) {
             discountApiList?.getDownloadJob(
@@ -254,7 +254,7 @@ class DiscountDataManagerClass(val config: PlatformConfig, val unauthorizedActio
     
     
     suspend fun cancelDownloadJob(id: String, headers: Map<String, String> = emptyMap())
-    : Response<CancelJobResponse>? {
+    : Response<CancelJobResponseSchema>? {
 
         return if (config.oauthClient.isAccessTokenValid()) {
             discountApiList?.cancelDownloadJob(
