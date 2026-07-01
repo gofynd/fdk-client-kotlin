@@ -5447,6 +5447,139 @@ data class GetZoneProductsBulkPatchResult(
 
              
 /*
+    Model: ZoneProductsAtomicPatchItem
+*/
+@Parcelize
+data class ZoneProductsAtomicPatchItem(
+    
+    
+    
+    @SerializedName("zone_id")
+    var zoneId: String?=null,
+    
+    @SerializedName("product_type")
+    var productType: String?=null,
+    
+    @SerializedName("values")
+    var values: @RawValue ArrayList<Any>?=null,
+    
+    @SerializedName("action")
+    var action: String?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: ZoneProductsAtomicPatchDetails
+*/
+@Parcelize
+data class ZoneProductsAtomicPatchDetails(
+    
+    
+    
+    @SerializedName("items")
+    var items: ArrayList<ZoneProductsAtomicPatchItem>?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: ZoneProductsAtomicPatchResultItem
+*/
+@Parcelize
+data class ZoneProductsAtomicPatchResultItem(
+    
+    
+    
+    @SerializedName("zone_id")
+    var zoneId: String?=null,
+    
+    @SerializedName("product_type")
+    var productType: String?=null,
+    
+    @SerializedName("action")
+    var action: String?=null,
+    
+    @SerializedName("status")
+    var status: String?=null,
+    
+    @SerializedName("values_count")
+    var valuesCount: Int?=null,
+    
+    @SerializedName("error")
+    var error: ArrayList<ZoneProductsAtomicPatchItemError>?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: ZoneProductsAtomicPatchResult
+*/
+@Parcelize
+data class ZoneProductsAtomicPatchResult(
+    
+    
+    
+    @SerializedName("items")
+    var items: ArrayList<ZoneProductsAtomicPatchResultItem>?=null,
+    
+    @SerializedName("summary")
+    var summary: ZoneProductsAtomicPatchSummary?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
     Model: CourierPartnerToServiceability
 */
 @Parcelize
@@ -12781,6 +12914,70 @@ data class StorePolygonServiceabilityPagination(
 ): Parcelable {
     
     
+    
+    
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: ZoneProductsAtomicPatchItemError
+*/
+@Parcelize
+data class ZoneProductsAtomicPatchItemError(
+    
+    
+    
+    @SerializedName("type")
+    var type: String?=null,
+    
+    @SerializedName("value")
+    var value: String?=null,
+    
+    @SerializedName("message")
+    var message: String?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: ZoneProductsAtomicPatchSummary
+*/
+@Parcelize
+data class ZoneProductsAtomicPatchSummary(
+    
+    
+    
+    @SerializedName("total")
+    var total: Int?=null,
+    
+    @SerializedName("success")
+    var success: Int?=null,
+    
+    @SerializedName("failed")
+    var failed: Int?=null
+    
+): Parcelable {
     
     
     

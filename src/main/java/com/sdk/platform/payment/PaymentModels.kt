@@ -4308,6 +4308,77 @@ data class OrderDetail(
 
              
 /*
+    Model: OrderMetaUpdate
+*/
+@Parcelize
+data class OrderMetaUpdate(
+    
+    
+    
+    @SerializedName("pan_no")
+    var panNo: String?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: OrderMetaResult
+*/
+@Parcelize
+data class OrderMetaResult(
+    
+    
+    
+    @SerializedName("message")
+    var message: String?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: OrderMetaErrorResult
+*/
+@Parcelize
+data class OrderMetaErrorResult(
+    
+    
+    
+    @SerializedName("success")
+    var success: Boolean?=null,
+    
+    @SerializedName("message")
+    var message: String?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
     Model: AddressDetail
 */
 @Parcelize
@@ -6085,6 +6156,80 @@ data class ValidateCustomerCreditSchema(
     
     @SerializedName("account")
     var account: CreditAccountSummary?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: OrderTransactionList
+*/
+@Parcelize
+data class OrderTransactionList(
+    
+    
+    
+    @SerializedName("success")
+    var success: Boolean?=null,
+    
+    @SerializedName("items")
+    var items: ArrayList<OrderTransactionItem>?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: OrderTransactionItem
+*/
+@Parcelize
+data class OrderTransactionItem(
+    
+    
+    
+    @SerializedName("transaction_id")
+    var transactionId: String?=null,
+    
+    @SerializedName("payment_mode")
+    var paymentMode: String?=null,
+    
+    @SerializedName("logo")
+    var logo: String?=null,
+    
+    @SerializedName("amount")
+    var amount: Double?=null,
+    
+    @SerializedName("status")
+    var status: String?=null,
+    
+    @SerializedName("created_on")
+    var createdOn: String?=null
     
 ): Parcelable {
     

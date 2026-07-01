@@ -211,6 +211,90 @@ class CompanyProfileDataManagerClass(val config: PlatformConfig, val unauthorize
     }
     
     
+    
+        
+            
+                
+            
+            
+        
+            
+                
+            
+            
+        
+            
+                
+            
+            
+        
+            
+                
+            
+            
+        
+            
+            
+        
+            
+                
+            
+            
+        
+            
+                
+            
+            
+        
+            
+                
+            
+            
+        
+            
+                
+            
+            
+        
+    /**
+    *
+    * Summary: Paginator for getLocations
+    **/
+    fun getLocationsPaginator(companyId: String, storeType: String?=null, q: String?=null, stage: String?=null, pageSize: Int?=null, locationIds: ArrayList<Int>?=null, types: ArrayList<String>?=null, tags: ArrayList<String>?=null) : Paginator<LocationListSchema>{
+        val paginator = Paginator<LocationListSchema>()
+        paginator.setCallBack(object : PaginatorCallback<LocationListSchema> {
+
+            override suspend fun onNext(
+                onResponse: (Event<LocationListSchema>?,FdkError?) -> Unit){
+
+                if (config.oauthClient.isAccessTokenValid()) {
+                    val pageId = paginator.nextId
+                    val pageNo = paginator.pageNo
+                    val pageType = "number"
+                    companyProfileApiList?.getLocations(
+                    companyId = config.companyId, storeType = storeType, q = q, stage = stage, pageNo = pageNo, pageSize = pageSize, locationIds = locationIds, types = types, tags = tags
+                    )?.safeAwait{ response, error ->
+                        response?.let {
+                            val page = response.peekContent()?.page
+                            paginator.setPaginator(hasNext=page?.hasNext?:false,pageNo=if (page?.hasNext == true) ((pageNo ?: 0) + 1) else pageNo)
+                            onResponse.invoke(response,null)
+                        }
+
+                        error?.let {
+                            onResponse.invoke(null,error)
+                        }
+                    }
+
+                } else {
+                    null
+                }
+            }
+
+
+    })
+        return paginator
+    }
+    
     suspend fun createLocation(body: LocationSchema, headers: Map<String, String> = emptyMap())
     : Response<ProfileSuccessResponseSchema>? {
 

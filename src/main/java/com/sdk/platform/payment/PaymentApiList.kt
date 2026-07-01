@@ -209,6 +209,10 @@ interface PaymentApiList {
     suspend fun createPaymentOrder(@Path("company_id") companyId: String, @Path("application_id") applicationId: String,@Body body: PaymentOrderCreation, @HeaderMap headers: Map<String, String>? = null)
     : Response<PaymentOrderDetails>
     
+    @PUT ("/service/platform/payment/v1.0/company/{company_id}/application/{application_id}/payment/order/meta")
+    suspend fun updateOrderMeta(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Query("order_id") orderId: String,@Body body: OrderMetaUpdate, @HeaderMap headers: Map<String, String>? = null)
+    : Response<OrderMetaResult>
+    
     @GET ("/service/platform/payment/v1.0/company/{company_id}/application/{application_id}/payment/options/aggregators/{aggregator_id}/version")
     suspend fun getMerchantAggregatorAppVersion(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Path("aggregator_id") aggregatorId: String, @Query("business_unit") businessUnit: String, @Query("device") device: String, @Query("payment_mode_id") paymentModeId: Int?, @Query("sub_payment_mode") subPaymentMode: String?, @HeaderMap headers: Map<String, String>? = null)
     : Response<AggregatorVersionDetails>
@@ -224,5 +228,9 @@ interface PaymentApiList {
     @POST ("/service/platform/payment/v1.0/company/{company_id}/application/{application_id}/aggregators/{aggregator_id}/token")
     suspend fun saveTokenForAggregator(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Path("aggregator_id") aggregatorId: String,@Body body: AggregatorToken, @HeaderMap headers: Map<String, String>? = null)
     : Response<OperationResponseSchema>
+    
+    @GET ("/service/platform/payment/v1.0/company/{company_id}/application/{application_id}/orders/{order_id}/transactions")
+    suspend fun getOrderTransactions(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Path("order_id") orderId: String, @HeaderMap headers: Map<String, String>? = null)
+    : Response<OrderTransactionList>
     
 }

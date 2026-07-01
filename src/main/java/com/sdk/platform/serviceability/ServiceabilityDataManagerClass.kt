@@ -446,6 +446,7 @@ class ServiceabilityDataManagerClass(val config: PlatformConfig, val unauthorize
     
     
     
+    
 
 inner class ApplicationClient(val applicationId:String,val config: PlatformConfig){
 
@@ -1024,6 +1025,16 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     : Response<GetZoneProductsBulkPatchResult>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 serviceabilityApiList?.getZoneProductsBulkPatchJobStatus(companyId = config.companyId ,applicationId = applicationId ,batchId = batchId, headers = headers)
+        } else {
+            null
+        }
+    }
+    
+    
+    suspend fun patchZoneProductsAtomic(body: ZoneProductsAtomicPatchDetails, headers: Map<String, String> = emptyMap())
+    : Response<ZoneProductsAtomicPatchResult>? {
+        return if (config.oauthClient.isAccessTokenValid()) {
+                serviceabilityApiList?.patchZoneProductsAtomic(companyId = config.companyId ,applicationId = applicationId , body = body,headers = headers)
         } else {
             null
         }

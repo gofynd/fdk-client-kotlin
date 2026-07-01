@@ -511,6 +511,70 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     }
     
     
+    
+        
+            
+                
+            
+            
+        
+            
+                
+            
+            
+        
+            
+            
+        
+            
+                
+            
+            
+        
+            
+                
+            
+            
+        
+    /**
+    *
+    * Summary: Paginator for getStaffOrderingStores
+    **/
+    fun getStaffOrderingStoresPaginator(
+    pageSize: Int?=null, q: String?=null
+    
+    ) : Paginator<OrderingStoresResponseSchema>{
+        val paginator = Paginator<OrderingStoresResponseSchema>()
+        paginator.setCallBack(object : PaginatorCallback<OrderingStoresResponseSchema> {
+
+            override suspend fun onNext(
+                onResponse: (Event<OrderingStoresResponseSchema>?,FdkError?) -> Unit){
+
+                if (config.oauthClient.isAccessTokenValid()) {
+                    val pageId = paginator.nextId
+                    val pageNo = paginator.pageNo
+                    val pageType = "number"
+                    configurationApiList?.getStaffOrderingStores(companyId = config.companyId , applicationId = applicationId , pageNo = pageNo, pageSize = pageSize, q = q)?.safeAwait{ response, error ->
+                        response?.let {
+                            val page = response.peekContent()?.page
+                            paginator.setPaginator(hasNext=page?.hasNext?:false,pageNo=if (page?.hasNext == true) ((pageNo ?: 0) + 1) else pageNo)
+                            onResponse.invoke(response,null)
+                        }
+
+                        error?.let {
+                            onResponse.invoke(null,error)
+                        }
+                    }
+
+                } else {
+                    null
+                }
+            }
+
+    })
+    return paginator
+    }
+    
     suspend fun getOrderingStoreCookie(body: OrderingStoreSelectRequestSchema, headers: Map<String, String> = emptyMap())
     : Response<SuccessMessageResponseSchema>? {
         return if (config.oauthClient.isAccessTokenValid()) {

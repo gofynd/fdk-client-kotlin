@@ -1530,6 +1530,38 @@ data class OrderingSources(
 
              
 /*
+    Model: BuyBoxFeature
+*/
+@Parcelize
+data class BuyBoxFeature(
+    
+    
+    
+    @SerializedName("show_name")
+    var showName: Boolean?=null,
+    
+    @SerializedName("enable_selection")
+    var enableSelection: Boolean?=null,
+    
+    @SerializedName("is_seller_buybox_enabled")
+    var isSellerBuyboxEnabled: Boolean?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
     Model: AppFeature
 */
 @Parcelize
@@ -1595,9 +1627,14 @@ data class AppFeature(
     var modifiedAt: String?=null,
     
     @SerializedName("__v")
-    var v: Int?=null
+    var v: Int?=null,
+    
+    @SerializedName("buybox")
+    var buybox: BuyBoxFeature?=null
     
 ): Parcelable {
+    
+    
     
     
     

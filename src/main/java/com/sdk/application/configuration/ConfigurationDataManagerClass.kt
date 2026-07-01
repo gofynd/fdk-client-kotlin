@@ -188,15 +188,20 @@ class ConfigurationDataManagerClass(val config: ApplicationConfig, val unauthori
 
     
     
-    suspend fun getAppStaffList(pageNo: Int?=null,pageSize: Int?=null,orderIncent: Boolean?=null,orderingStore: Int?=null,user: String?=null,userName: String?=null, headers: Map<String, String> = emptyMap()): Response<AppStaffListResponseSchema>? {
+    suspend fun getAppStaffList(pageNo: Int?=null,pageSize: Int?=null,orderIncent: Boolean?=null,orderingStore: Int?=null,user: String?=null,userName: String?=null,appPermissions: String?=null, headers: Map<String, String> = emptyMap()): Response<AppStaffListResponseSchema>? {
         var fullUrl : String? = _relativeUrls["getAppStaffList"]
         
-        return configurationApiList?.getAppStaffList(fullUrl,   pageNo = pageNo,  pageSize = pageSize,  orderIncent = orderIncent,  orderingStore = orderingStore,  user = user,  userName = userName,headers = headers)}
+        return configurationApiList?.getAppStaffList(fullUrl,   pageNo = pageNo,  pageSize = pageSize,  orderIncent = orderIncent,  orderingStore = orderingStore,  user = user,  userName = userName,  appPermissions = appPermissions,headers = headers)}
 
     
     
     
         
+            
+            
+        
+            
+                
             
             
         
@@ -229,7 +234,7 @@ class ConfigurationDataManagerClass(val config: ApplicationConfig, val unauthori
     *
     * Summary: Paginator for getAppStaffList
     **/
-    fun getAppStaffListPaginator(pageSize: Int?=null, orderIncent: Boolean?=null, orderingStore: Int?=null, user: String?=null, userName: String?=null) : Paginator<AppStaffListResponseSchema>{
+    fun getAppStaffListPaginator(pageSize: Int?=null, orderIncent: Boolean?=null, orderingStore: Int?=null, user: String?=null, userName: String?=null, appPermissions: String?=null) : Paginator<AppStaffListResponseSchema>{
 
     val paginator = Paginator<AppStaffListResponseSchema>()
 
@@ -242,7 +247,7 @@ class ConfigurationDataManagerClass(val config: ApplicationConfig, val unauthori
                 val pageType = "number"
                 var fullUrl : String? = _relativeUrls["getAppStaffList"]
                 
-                configurationApiList?.getAppStaffList(fullUrl , pageNo = pageNo, pageSize = pageSize, orderIncent = orderIncent, orderingStore = orderingStore, user = user, userName = userName)?.safeAwait{ response, error ->
+                configurationApiList?.getAppStaffList(fullUrl , pageNo = pageNo, pageSize = pageSize, orderIncent = orderIncent, orderingStore = orderingStore, user = user, userName = userName, appPermissions = appPermissions)?.safeAwait{ response, error ->
                     response?.let {
                         val page = response.peekContent()?.page
                         paginator.setPaginator(hasNext=page?.hasNext?:false,pageNo=if (page?.hasNext == true) ((pageNo ?: 0) + 1) else pageNo)
