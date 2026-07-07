@@ -858,6 +858,9 @@ data class CouponAdd(
     @SerializedName("tags")
     var tags: ArrayList<String>?=null,
     
+    @SerializedName("filter_tags")
+    var filterTags: ArrayList<String>?=null,
+    
     @SerializedName("_schedule")
     var schedule: CouponSchedule?=null,
     
@@ -886,6 +889,8 @@ data class CouponAdd(
     var id: String?=null
     
 ): Parcelable {
+    
+    
     
     
     
@@ -1109,6 +1114,9 @@ data class CouponUpdate(
     @SerializedName("tags")
     var tags: ArrayList<String>?=null,
     
+    @SerializedName("filter_tags")
+    var filterTags: ArrayList<String>?=null,
+    
     @SerializedName("_schedule")
     var schedule: CouponSchedule?=null,
     
@@ -1146,6 +1154,8 @@ data class CouponUpdate(
     var ruleDefinition: RuleDefinition?=null
     
 ): Parcelable {
+    
+    
     
     
     
@@ -2413,10 +2423,15 @@ data class PromotionListItem(
     @SerializedName("tags")
     var tags: ArrayList<String>?=null,
     
+    @SerializedName("filter_tags")
+    var filterTags: ArrayList<String>?=null,
+    
     @SerializedName("auto_apply")
     var autoApply: Boolean?=null
     
 ): Parcelable {
+    
+    
     
     
     
@@ -2581,10 +2596,15 @@ data class PromotionAdd(
     @SerializedName("tags")
     var tags: ArrayList<String>?=null,
     
+    @SerializedName("filter_tags")
+    var filterTags: ArrayList<String>?=null,
+    
     @SerializedName("auto_apply")
     var autoApply: Boolean?=null
     
 ): Parcelable {
+    
+    
     
     
     
@@ -2721,10 +2741,15 @@ data class PromotionAddResult(
     @SerializedName("tags")
     var tags: ArrayList<String>?=null,
     
+    @SerializedName("filter_tags")
+    var filterTags: ArrayList<String>?=null,
+    
     @SerializedName("auto_apply")
     var autoApply: Boolean?=null
     
 ): Parcelable {
+    
+    
     
     
     
@@ -2863,10 +2888,15 @@ data class PromotionUpdate(
     @SerializedName("tags")
     var tags: ArrayList<String>?=null,
     
+    @SerializedName("filter_tags")
+    var filterTags: ArrayList<String>?=null,
+    
     @SerializedName("auto_apply")
     var autoApply: Boolean?=null
     
 ): Parcelable {
+    
+    
     
     
     
@@ -3008,10 +3038,15 @@ data class PromotionUpdateResult(
     @SerializedName("tags")
     var tags: ArrayList<String>?=null,
     
+    @SerializedName("filter_tags")
+    var filterTags: ArrayList<String>?=null,
+    
     @SerializedName("auto_apply")
     var autoApply: Boolean?=null
     
 ): Parcelable {
+    
+    
     
     
     
@@ -3135,9 +3170,14 @@ data class ActivePromosResult(
     var subtitle: String?=null,
     
     @SerializedName("description")
-    var description: String?=null
+    var description: String?=null,
+    
+    @SerializedName("discount_type")
+    var discountType: String?=null
     
 ): Parcelable {
+    
+    
     
     
     
@@ -11919,9 +11959,14 @@ data class OfferSchema(
     var isProcessed: Boolean?=null,
     
     @SerializedName("is_bank_offer")
-    var isBankOffer: Boolean?=null
+    var isBankOffer: Boolean?=null,
+    
+    @SerializedName("filter_tags")
+    var filterTags: ArrayList<String>?=null
     
 ): Parcelable {
+    
+    
     
     
     
@@ -12149,9 +12194,14 @@ data class OfferListItem(
     var dateMeta: OfferDateMeta?=null,
     
     @SerializedName("schedule")
-    var schedule: OfferSchedule?=null
+    var schedule: OfferSchedule?=null,
+    
+    @SerializedName("filter_tags")
+    var filterTags: ArrayList<String>?=null
     
 ): Parcelable {
+    
+    
     
     
     

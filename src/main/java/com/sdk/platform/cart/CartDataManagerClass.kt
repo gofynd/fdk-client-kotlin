@@ -118,10 +118,10 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
 
     
     
-    suspend fun getCoupons(pageNo: Int?=null,pageSize: Int?=null,isArchived: Boolean?=null,title: String?=null,isPublic: Boolean?=null,isDisplay: Boolean?=null,typeSlug: String?=null,code: String?=null,createdBy: String?=null,reviewedBy: String?=null,approvedStartTime: String?=null,approvedEndTime: String?=null,reviewStartTime: String?=null,reviewEndTime: String?=null,status: String?=null, headers: Map<String, String> = emptyMap())
+    suspend fun getCoupons(pageNo: Int?=null,pageSize: Int?=null,isArchived: Boolean?=null,title: String?=null,isPublic: Boolean?=null,isDisplay: Boolean?=null,typeSlug: String?=null,code: String?=null,createdBy: String?=null,reviewedBy: String?=null,approvedStartTime: String?=null,approvedEndTime: String?=null,reviewStartTime: String?=null,reviewEndTime: String?=null,status: String?=null,filterTags: String?=null, headers: Map<String, String> = emptyMap())
     : Response<CouponsResult>? {
         return if (config.oauthClient.isAccessTokenValid()) {
-                cartApiList?.getCoupons(companyId = config.companyId ,applicationId = applicationId ,pageNo = pageNo,pageSize = pageSize,isArchived = isArchived,title = title,isPublic = isPublic,isDisplay = isDisplay,typeSlug = typeSlug,code = code,createdBy = createdBy,reviewedBy = reviewedBy,approvedStartTime = approvedStartTime,approvedEndTime = approvedEndTime,reviewStartTime = reviewStartTime,reviewEndTime = reviewEndTime,status = status, headers = headers)
+                cartApiList?.getCoupons(companyId = config.companyId ,applicationId = applicationId ,pageNo = pageNo,pageSize = pageSize,isArchived = isArchived,title = title,isPublic = isPublic,isDisplay = isDisplay,typeSlug = typeSlug,code = code,createdBy = createdBy,reviewedBy = reviewedBy,approvedStartTime = approvedStartTime,approvedEndTime = approvedEndTime,reviewStartTime = reviewStartTime,reviewEndTime = reviewEndTime,status = status,filterTags = filterTags, headers = headers)
         } else {
             null
         }
@@ -178,10 +178,10 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     }
     
     
-    suspend fun getPromotions(pageNo: Int?=null,pageSize: Int?=null,q: String?=null,isActive: Boolean?=null,promoGroup: String?=null,promotionType: String?=null,fpPanel: String?=null,promotionId: String?=null,createdBy: String?=null,reviewedBy: String?=null,approvedStartTime: String?=null,approvedEndTime: String?=null,reviewStartTime: String?=null,reviewEndTime: String?=null,status: String?=null, headers: Map<String, String> = emptyMap())
+    suspend fun getPromotions(pageNo: Int?=null,pageSize: Int?=null,q: String?=null,isActive: Boolean?=null,promoGroup: String?=null,promotionType: String?=null,fpPanel: String?=null,promotionId: String?=null,createdBy: String?=null,reviewedBy: String?=null,approvedStartTime: String?=null,approvedEndTime: String?=null,reviewStartTime: String?=null,reviewEndTime: String?=null,status: String?=null,filterTags: String?=null, headers: Map<String, String> = emptyMap())
     : Response<PromotionsResult>? {
         return if (config.oauthClient.isAccessTokenValid()) {
-                cartApiList?.getPromotions(companyId = config.companyId ,applicationId = applicationId ,pageNo = pageNo,pageSize = pageSize,q = q,isActive = isActive,promoGroup = promoGroup,promotionType = promotionType,fpPanel = fpPanel,promotionId = promotionId,createdBy = createdBy,reviewedBy = reviewedBy,approvedStartTime = approvedStartTime,approvedEndTime = approvedEndTime,reviewStartTime = reviewStartTime,reviewEndTime = reviewEndTime,status = status, headers = headers)
+                cartApiList?.getPromotions(companyId = config.companyId ,applicationId = applicationId ,pageNo = pageNo,pageSize = pageSize,q = q,isActive = isActive,promoGroup = promoGroup,promotionType = promotionType,fpPanel = fpPanel,promotionId = promotionId,createdBy = createdBy,reviewedBy = reviewedBy,approvedStartTime = approvedStartTime,approvedEndTime = approvedEndTime,reviewStartTime = reviewStartTime,reviewEndTime = reviewEndTime,status = status,filterTags = filterTags, headers = headers)
         } else {
             null
         }
@@ -758,10 +758,10 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     }
     
     
-    suspend fun getOffers(pageNo: Int?=null,pageSize: Int?=null,search: String?=null,mode: String?=null,type: String?=null,promoGroup: String?=null,excludeContractOffers: Boolean?=null,offerId: String?=null,createdBy: String?=null,reviewedBy: String?=null,approvedStartTime: String?=null,approvedEndTime: String?=null,status: String?=null,code: String?=null,isPublic: Boolean?=null, headers: Map<String, String> = emptyMap())
+    suspend fun getOffers(pageNo: Int?=null,pageSize: Int?=null,search: String?=null,mode: String?=null,type: String?=null,promoGroup: String?=null,excludeContractOffers: Boolean?=null,offerId: String?=null,createdBy: String?=null,reviewedBy: String?=null,approvedStartTime: String?=null,approvedEndTime: String?=null,status: String?=null,code: String?=null,isPublic: Boolean?=null,filterTags: String?=null, headers: Map<String, String> = emptyMap())
     : Response<OfferListResult>? {
         return if (config.oauthClient.isAccessTokenValid()) {
-                cartApiList?.getOffers(companyId = config.companyId ,applicationId = applicationId ,pageNo = pageNo,pageSize = pageSize,search = search,mode = mode,type = type,promoGroup = promoGroup,excludeContractOffers = excludeContractOffers,offerId = offerId,createdBy = createdBy,reviewedBy = reviewedBy,approvedStartTime = approvedStartTime,approvedEndTime = approvedEndTime,status = status,code = code,isPublic = isPublic, headers = headers)
+                cartApiList?.getOffers(companyId = config.companyId ,applicationId = applicationId ,pageNo = pageNo,pageSize = pageSize,search = search,mode = mode,type = type,promoGroup = promoGroup,excludeContractOffers = excludeContractOffers,offerId = offerId,createdBy = createdBy,reviewedBy = reviewedBy,approvedStartTime = approvedStartTime,approvedEndTime = approvedEndTime,status = status,code = code,isPublic = isPublic,filterTags = filterTags, headers = headers)
         } else {
             null
         }
