@@ -411,6 +411,9 @@ data class Restrictions(
     @SerializedName("user_groups")
     var userGroups: ArrayList<Int>?=null,
     
+    @SerializedName("exclude_user_groups")
+    var excludeUserGroups: ArrayList<Int>?=null,
+    
     @SerializedName("coupon_allowed")
     var couponAllowed: Boolean?=null,
     
@@ -421,6 +424,8 @@ data class Restrictions(
     var orderingStores: ArrayList<Int>?=null
     
 ): Parcelable {
+    
+    
     
     
     
@@ -2106,6 +2111,9 @@ data class Restrictions1(
     @SerializedName("user_groups")
     var userGroups: ArrayList<Int>?=null,
     
+    @SerializedName("exclude_user_groups")
+    var excludeUserGroups: ArrayList<Int>?=null,
+    
     @SerializedName("order_quantity")
     var orderQuantity: Int?=null,
     
@@ -2122,6 +2130,8 @@ data class Restrictions1(
     var orderingStores: ArrayList<Int>?=null
     
 ): Parcelable {
+    
+    
     
     
     
@@ -3526,6 +3536,9 @@ data class PriceAdjustmentUpdate(
     @SerializedName("article_level_distribution")
     var articleLevelDistribution: Boolean?=null,
     
+    @SerializedName("included_in_eligibility_amount")
+    var includedInEligibilityAmount: Boolean?=null,
+    
     @SerializedName("collection")
     var collection: Collection?=null,
     
@@ -3554,6 +3567,8 @@ data class PriceAdjustmentUpdate(
     var distributionLogic: DistributionLogic?=null
     
 ): Parcelable {
+    
+    
     
     
     
@@ -3615,6 +3630,9 @@ data class PriceAdjustment(
     @SerializedName("article_level_distribution")
     var articleLevelDistribution: Boolean?=null,
     
+    @SerializedName("included_in_eligibility_amount")
+    var includedInEligibilityAmount: Boolean?=null,
+    
     @SerializedName("id")
     var id: String?=null,
     
@@ -3646,6 +3664,8 @@ data class PriceAdjustment(
     var distributionLogic: DistributionLogic?=null
     
 ): Parcelable {
+    
+    
     
     
     
@@ -3754,6 +3774,9 @@ data class PriceAdjustmentAdd(
     @SerializedName("article_level_distribution")
     var articleLevelDistribution: Boolean?=null,
     
+    @SerializedName("included_in_eligibility_amount")
+    var includedInEligibilityAmount: Boolean?=null,
+    
     @SerializedName("collection")
     var collection: Collection?=null,
     
@@ -3782,6 +3805,8 @@ data class PriceAdjustmentAdd(
     var distributionLogic: DistributionLogic?=null
     
 ): Parcelable {
+    
+    
     
     
     
@@ -11298,6 +11323,9 @@ data class OfferUser(
     @SerializedName("groups")
     var groups: ArrayList<Int>?=null,
     
+    @SerializedName("exclude_groups")
+    var excludeGroups: ArrayList<Int>?=null,
+    
     @SerializedName("type")
     var type: String?=null,
     
@@ -11314,6 +11342,8 @@ data class OfferUser(
     var emailDomain: ArrayList<String>?=null
     
 ): Parcelable {
+    
+    
     
     
     
