@@ -62,7 +62,7 @@ interface CatalogApiList {
     
     
     @GET
-    suspend fun getProducts(@Url url1: String?    ,         @Query("q") q: String?, @Query("f") f: String?, @Query("filters") filters: Boolean?, @Query("sort_on") sortOn: String?, @Query("page_id") pageId: String?, @Query("page_size") pageSize: Int?, @Query("page_no") pageNo: Int?, @Query("page_type") pageType: String?, @HeaderMap headers: Map<String, String>? = null)
+    suspend fun getProducts(@Url url1: String?    ,          @Query("q") q: String?, @Query("f") f: String?, @Query("filters") filters: Boolean?, @Query("sort_on") sortOn: String?, @Query("page_id") pageId: String?, @Query("page_size") pageSize: Int?, @Query("page_no") pageNo: Int?, @Query("page_type") pageType: String?, @Query("show_all_variants") showAllVariants: Boolean?, @HeaderMap headers: Map<String, String>? = null)
     : Response<ProductListingResponseSchema>
     
     
@@ -107,7 +107,7 @@ interface CatalogApiList {
     
     
     @GET
-    suspend fun getCollectionItemsBySlug(@Url url1: String?     ,         @Query("f") f: String?, @Query("q") q: String?, @Query("filters") filters: Boolean?, @Query("sort_on") sortOn: String?, @Query("page_id") pageId: String?, @Query("page_size") pageSize: Int?, @Query("page_no") pageNo: Int?, @Query("page_type") pageType: String?, @HeaderMap headers: Map<String, String>? = null)
+    suspend fun getCollectionItemsBySlug(@Url url1: String?     ,          @Query("f") f: String?, @Query("q") q: String?, @Query("filters") filters: Boolean?, @Query("sort_on") sortOn: String?, @Query("page_id") pageId: String?, @Query("page_size") pageSize: Int?, @Query("page_no") pageNo: Int?, @Query("page_type") pageType: String?, @Query("show_all_variants") showAllVariants: Boolean?, @HeaderMap headers: Map<String, String>? = null)
     : Response<ProductListingResponseSchema>
     
     
@@ -154,6 +154,11 @@ interface CatalogApiList {
     @GET
     suspend fun getLocationDetailsById(@Url url1: String?    , @HeaderMap headers: Map<String, String>? = null)
     : Response<StoreDetails>
+    
+    
+    @GET
+    suspend fun getProductSizesBySlugs(@Url url1: String?    ,   @Query("slug") slug: ArrayList<String>, @Query("store_id") storeId: Int?, @HeaderMap headers: Map<String, String>? = null)
+    : Response<ProductSizesBySlugsSchema>
     
     
     @GET

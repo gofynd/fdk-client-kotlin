@@ -1494,6 +1494,50 @@ data class ProductSizes(
 
              
 /*
+    Model: ProductSizesBySlug
+*/
+@Parcelize
+data class ProductSizesBySlug(
+    
+    
+    
+    @SerializedName("slug")
+    var slug: String?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: ProductSizesBySlugsSchema
+*/
+@Parcelize
+data class ProductSizesBySlugsSchema(
+    
+    
+    
+    @SerializedName("items")
+    var items: ArrayList<ProductSizesBySlug>?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
     Model: MOQ
 */
 @Parcelize
