@@ -6112,6 +6112,80 @@ data class OpenApiCartServiceabilityResult(
 
              
 /*
+    Model: PlatformCartCODServiceabilityCreation
+*/
+@Parcelize
+data class PlatformCartCODServiceabilityCreation(
+    
+    
+    
+    @SerializedName("cart_items")
+    var cartItems: ArrayList<CartItem>?=null,
+    
+    @SerializedName("shipping_address")
+    var shippingAddress: ShippingAddress?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: PlatformCartCODServiceabilityResult
+*/
+@Parcelize
+data class PlatformCartCODServiceabilityResult(
+    
+    
+    
+    @SerializedName("is_valid")
+    var isValid: Boolean?=null,
+    
+    @SerializedName("items")
+    var items: ArrayList<CartProductInfo>?=null,
+    
+    @SerializedName("delivery_promise")
+    var deliveryPromise: ShipmentPromise?=null,
+    
+    @SerializedName("message")
+    var message: String?=null,
+    
+    @SerializedName("breakup_values")
+    var breakupValues: CartBreakup?=null,
+    
+    @SerializedName("is_cod_available")
+    var isCodAvailable: Boolean?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
     Model: OpenApiFiles
 */
 @Parcelize

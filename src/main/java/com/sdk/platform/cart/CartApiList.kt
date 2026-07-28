@@ -105,6 +105,10 @@ interface CartApiList {
     suspend fun checkCartServiceability(@Header("x-ordering-source") xOrderingSource: String?, @Header("x-ordering-source-type") xOrderingSourceType: String?, @Path("company_id") companyId: String, @Path("application_id") applicationId: String,@Body body: OpenApiCartServiceabilityCreation, @HeaderMap headers: Map<String, String>? = null)
     : Response<OpenApiCartServiceabilityResult>
     
+    @POST ("/service/platform/cart/v1.0/company/{company_id}/application/{application_id}/serviceability/cod")
+    suspend fun checkCODServiceability(@Path("company_id") companyId: String, @Path("application_id") applicationId: String,@Body body: PlatformCartCODServiceabilityCreation, @HeaderMap headers: Map<String, String>? = null)
+    : Response<PlatformCartCODServiceabilityResult>
+    
     @POST ("/service/platform/cart/v1.0/company/{company_id}/application/{application_id}/cart/checkout")
     suspend fun checkoutCart(@Header("x-ordering-source") xOrderingSource: String?, @Header("x-ordering-source-type") xOrderingSourceType: String?, @Header("x-anonymous-cart") xAnonymousCart: String?, @Header("x-location-detail") xLocationDetail: String?, @Header("x-currency-code") xCurrencyCode: String?, @Path("company_id") companyId: String, @Path("application_id") applicationId: String,@Body body: OpenApiPlatformCheckoutReq, @HeaderMap headers: Map<String, String>? = null)
     : Response<OpenApiCheckoutResult>

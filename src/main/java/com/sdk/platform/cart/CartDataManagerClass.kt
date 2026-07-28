@@ -113,6 +113,7 @@ class CartDataManagerClass(val config: PlatformConfig, val unauthorizedAction: (
     
     
     
+    
 
 inner class ApplicationClient(val applicationId:String,val config: PlatformConfig){
 
@@ -352,6 +353,16 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     : Response<OpenApiCartServiceabilityResult>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 cartApiList?.checkCartServiceability(xOrderingSource = xOrderingSource,xOrderingSourceType = xOrderingSourceType,companyId = config.companyId ,applicationId = applicationId , body = body,headers = headers)
+        } else {
+            null
+        }
+    }
+    
+    
+    suspend fun checkCODServiceability(body: PlatformCartCODServiceabilityCreation, headers: Map<String, String> = emptyMap())
+    : Response<PlatformCartCODServiceabilityResult>? {
+        return if (config.oauthClient.isAccessTokenValid()) {
+                cartApiList?.checkCODServiceability(companyId = config.companyId ,applicationId = applicationId , body = body,headers = headers)
         } else {
             null
         }

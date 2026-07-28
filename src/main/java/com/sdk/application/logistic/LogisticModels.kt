@@ -626,6 +626,30 @@ data class FulfillmentOptionItem(
     
     
     
+    @SerializedName("application_id")
+    var applicationId: String?=null,
+    
+    @SerializedName("business_unit")
+    var businessUnit: ArrayList<BusinessUnit>?=null,
+    
+    @SerializedName("company_id")
+    var companyId: Int?=null,
+    
+    @SerializedName("default_for")
+    var defaultFor: FulfillmentOptionDefaultFor?=null,
+    
+    @SerializedName("modified_by")
+    var modifiedBy: ModifiedBy?=null,
+    
+    @SerializedName("modified_on")
+    var modifiedOn: String?=null,
+    
+    @SerializedName("serviceability_type")
+    var serviceabilityType: String?=null,
+    
+    @SerializedName("status")
+    var status: String?=null,
+    
     @SerializedName("slug")
     var slug: String?=null,
     
@@ -642,7 +666,10 @@ data class FulfillmentOptionItem(
     var type: String?=null,
     
     @SerializedName("name")
-    var name: String?=null
+    var name: String?=null,
+    
+    @SerializedName("max_promise_allowed")
+    var maxPromiseAllowed: MaxPromiseAllowed?=null
     
 ): Parcelable {
     
@@ -651,6 +678,132 @@ data class FulfillmentOptionItem(
     
     
     
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: BusinessUnit
+*/
+@Parcelize
+data class BusinessUnit(
+    
+    
+    
+    @SerializedName("name")
+    var name: String?=null,
+    
+    @SerializedName("is_active")
+    var isActive: Boolean?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: FulfillmentOptionDefaultFor
+*/
+@Parcelize
+data class FulfillmentOptionDefaultFor(
+    
+    
+    
+    @SerializedName("storefront")
+    var storefront: Boolean?=null,
+    
+    @SerializedName("storeos")
+    var storeos: Boolean?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: ModifiedBy
+*/
+@Parcelize
+data class ModifiedBy(
+    
+    
+    
+    @SerializedName("id")
+    var id: String?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: MaxPromiseAllowed
+*/
+@Parcelize
+data class MaxPromiseAllowed(
+    
+    
+    
+    @SerializedName("value")
+    var value: Double?=null,
+    
+    @SerializedName("is_active")
+    var isActive: Boolean?=null,
+    
+    @SerializedName("type")
+    var type: String?=null
+    
+): Parcelable {
     
     
     
