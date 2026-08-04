@@ -539,6 +539,9 @@ data class PaymentModeList(
     @SerializedName("cod_limit")
     var codLimit: Double?=null,
     
+    @SerializedName("is_split_cod_available")
+    var isSplitCodAvailable: Boolean?=null,
+    
     @SerializedName("intent_app")
     var intentApp: ArrayList<IntentApp>?=null,
     
@@ -561,6 +564,8 @@ data class PaymentModeList(
     var paymentConfirmationElements: ArrayList<PaymentConfirmationElement>?=null
     
 ): Parcelable {
+    
+    
     
     
     
@@ -2414,6 +2419,33 @@ data class SetCODForUserCreation(
     
     
     
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: DefaultOfferClassification
+*/
+@Parcelize
+data class DefaultOfferClassification(
+    
+    
+    
+    @SerializedName("aggregator")
+    var aggregator: String?=null,
+    
+    @SerializedName("default_offer_type")
+    var defaultOfferType: String?=null
+    
+): Parcelable {
     
     
     

@@ -1160,6 +1160,9 @@ data class PaymentModeList(
     @SerializedName("cod_limit")
     var codLimit: Double?=null,
     
+    @SerializedName("is_split_cod_available")
+    var isSplitCodAvailable: Boolean?=null,
+    
     @SerializedName("intent_flow")
     var intentFlow: Boolean?=null,
     
@@ -1245,6 +1248,8 @@ data class PaymentModeList(
     var partialPaymentAllowed: Boolean?=null
     
 ): Parcelable {
+    
+    
     
     
     

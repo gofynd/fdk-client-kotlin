@@ -209,6 +209,8 @@ class PaymentDataManagerClass(val config: PlatformConfig, val unauthorizedAction
     
     
     
+    
+    
 
 inner class ApplicationClient(val applicationId:String,val config: PlatformConfig){
 
@@ -318,6 +320,26 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     : Response<SetCODOptionDetails>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 paymentApiList?.setUserCODlimitRoutes(companyId = config.companyId ,applicationId = applicationId , body = body,headers = headers)
+        } else {
+            null
+        }
+    }
+    
+    
+    suspend fun getDefaultOfferClassification(aggregator: String, headers: Map<String, String> = emptyMap())
+    : Response<HashMap<String,Any>>? {
+        return if (config.oauthClient.isAccessTokenValid()) {
+                paymentApiList?.getDefaultOfferClassification(companyId = config.companyId ,applicationId = applicationId ,aggregator = aggregator, headers = headers)
+        } else {
+            null
+        }
+    }
+    
+    
+    suspend fun patchDefaultOfferClassification(body: DefaultOfferClassification, headers: Map<String, String> = emptyMap())
+    : Response<HashMap<String,Any>>? {
+        return if (config.oauthClient.isAccessTokenValid()) {
+                paymentApiList?.patchDefaultOfferClassification(companyId = config.companyId ,applicationId = applicationId , body = body,headers = headers)
         } else {
             null
         }

@@ -49,9 +49,14 @@ data class RefundModeRequestData(
     
     
     @SerializedName("line_numbers")
-    var lineNumbers: ArrayList<RefundModeLineNumber>?=null
+    var lineNumbers: ArrayList<RefundModeLineNumber>?=null,
+    
+    @SerializedName("next_state")
+    var nextState: String?=null
     
 ): Parcelable {
+    
+    
     
     
     
