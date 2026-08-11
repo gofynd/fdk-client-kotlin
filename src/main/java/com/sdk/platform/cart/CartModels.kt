@@ -3489,6 +3489,9 @@ data class PriceAdjustmentUpdate(
     @SerializedName("included_in_eligibility_amount")
     var includedInEligibilityAmount: Boolean?=null,
     
+    @SerializedName("eligibility_scope")
+    var eligibilityScope: String?=null,
+    
     @SerializedName("collection")
     var collection: Collection?=null,
     
@@ -3517,6 +3520,8 @@ data class PriceAdjustmentUpdate(
     var distributionLogic: DistributionLogic?=null
     
 ): Parcelable {
+    
+    
     
     
     
@@ -3583,6 +3588,9 @@ data class PriceAdjustment(
     @SerializedName("included_in_eligibility_amount")
     var includedInEligibilityAmount: Boolean?=null,
     
+    @SerializedName("eligibility_scope")
+    var eligibilityScope: String?=null,
+    
     @SerializedName("id")
     var id: String?=null,
     
@@ -3614,6 +3622,8 @@ data class PriceAdjustment(
     var distributionLogic: DistributionLogic?=null
     
 ): Parcelable {
+    
+    
     
     
     
@@ -3727,6 +3737,9 @@ data class PriceAdjustmentAdd(
     @SerializedName("included_in_eligibility_amount")
     var includedInEligibilityAmount: Boolean?=null,
     
+    @SerializedName("eligibility_scope")
+    var eligibilityScope: String?=null,
+    
     @SerializedName("collection")
     var collection: Collection?=null,
     
@@ -3755,6 +3768,8 @@ data class PriceAdjustmentAdd(
     var distributionLogic: DistributionLogic?=null
     
 ): Parcelable {
+    
+    
     
     
     
