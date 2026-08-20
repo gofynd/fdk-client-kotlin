@@ -10825,9 +10825,14 @@ data class CouponSchema(
     var isReturnAllowed: Boolean?=null,
     
     @SerializedName("is_cancellation_allowed")
-    var isCancellationAllowed: Boolean?=null
+    var isCancellationAllowed: Boolean?=null,
+    
+    @SerializedName("allow_zero_discount")
+    var allowZeroDiscount: Boolean?=null
     
 ): Parcelable {
+    
+    
     
     
     
@@ -11922,6 +11927,28 @@ data class ValidationError(
 ): Parcelable {
     
     
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: ListingCountResponseSchema
+*/
+@Parcelize
+data class ListingCountResponseSchema(
+    
+    
+    
+    @SerializedName("count")
+    var count: Int?=null
+    
+): Parcelable {
     
     
     
