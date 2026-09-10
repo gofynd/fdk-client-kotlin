@@ -1651,9 +1651,14 @@ data class CartProductInfo(
     var itemType: String?=null,
     
     @SerializedName("added_on")
-    var addedOn: String?=null
+    var addedOn: String?=null,
+    
+    @SerializedName("returnable")
+    var returnable: Boolean?=null
     
 ): Parcelable {
+    
+    
     
     
     
