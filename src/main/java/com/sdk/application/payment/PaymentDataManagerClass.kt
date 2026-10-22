@@ -117,6 +117,8 @@ class PaymentDataManagerClass(val config: ApplicationConfig, val unauthorizedAct
             
                     _relativeUrls["addRefundBeneficiaryUsingOTPSession"] = "/service/application/payment/v2.0/refund/user/beneficiary-otp".substring(1)
             
+                    _relativeUrls["getOrderTransactions"] = "/service/application/payment/v1.0/orders/{order_id}/transactions".substring(1)
+            
     }
 
     public fun update(updatedUrlMap : HashMap<String,String>){
@@ -222,10 +224,10 @@ class PaymentDataManagerClass(val config: ApplicationConfig, val unauthorizedAct
 
     
     
-    suspend fun getPosPaymentModeRoutes(amount: Int,cartId: String,pincode: String,checkoutMode: String?=null,refresh: Boolean?=null,cardReference: String?=null,orderType: String,fulfillmentOption: ArrayList<String>?=null,userDetails: String?=null, headers: Map<String, String> = emptyMap()): Response<PaymentModeRouteDetails>? {
+    suspend fun getPosPaymentModeRoutes(amount: Int,cartId: String,pincode: String,checkoutMode: String?=null,refresh: Boolean?=null,cardReference: String?=null,orderType: String,fulfillmentOption: ArrayList<String>?=null,userDetails: String?=null,displaySplit: Boolean?=null, headers: Map<String, String> = emptyMap()): Response<PaymentModeRouteDetails>? {
         var fullUrl : String? = _relativeUrls["getPosPaymentModeRoutes"]
         
-        return paymentApiList?.getPosPaymentModeRoutes(fullUrl,   amount = amount,  cartId = cartId,  pincode = pincode,  checkoutMode = checkoutMode,  refresh = refresh,  cardReference = cardReference,  orderType = orderType,  fulfillmentOption = fulfillmentOption,  userDetails = userDetails,headers = headers)}
+        return paymentApiList?.getPosPaymentModeRoutes(fullUrl,   amount = amount,  cartId = cartId,  pincode = pincode,  checkoutMode = checkoutMode,  refresh = refresh,  cardReference = cardReference,  orderType = orderType,  fulfillmentOption = fulfillmentOption,  userDetails = userDetails,  displaySplit = displaySplit,headers = headers)}
 
     
     
@@ -496,6 +498,15 @@ class PaymentDataManagerClass(val config: ApplicationConfig, val unauthorizedAct
         var fullUrl : String? = _relativeUrls["addRefundBeneficiaryUsingOTPSession"]
         
         return paymentApiList?.addRefundBeneficiaryUsingOTPSession(fullUrl, body = body,headers = headers)}
+
+    
+    
+    suspend fun getOrderTransactions(orderId: String, headers: Map<String, String> = emptyMap()): Response<OrderTransactionList>? {
+        var fullUrl : String? = _relativeUrls["getOrderTransactions"]
+        
+        fullUrl = fullUrl?.replace("{" + "order_id" +"}",orderId.toString())
+        
+        return paymentApiList?.getOrderTransactions(fullUrl,  headers = headers)}
 
     
     

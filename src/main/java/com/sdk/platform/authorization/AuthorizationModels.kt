@@ -1,4 +1,4 @@
-package com.sdk.platform.analytics
+package com.sdk.platform.authorization
 
 import com.sdk.platform.*
 
@@ -71,20 +71,99 @@ data class Page(
 
              
 /*
-    Model: FileDownloadRequestBody
+    Model: StandardError
 */
 @Parcelize
-data class FileDownloadRequestBody(
+data class StandardError(
     
     
     
-    @SerializedName("query")
-    var query: String?=null,
-    
-    @SerializedName("split_files")
-    var splitFiles: Boolean?=null
+    @SerializedName("message")
+    var message: String?=null
     
 ): Parcelable {
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: ValidationErrors
+*/
+@Parcelize
+data class ValidationErrors(
+    
+    
+    
+    @SerializedName("errors")
+    var errors: ArrayList<ValidationError>?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: ApplicationStaff
+*/
+@Parcelize
+data class ApplicationStaff(
+    
+    
+    
+    @SerializedName("application")
+    var application: String?=null,
+    
+    @SerializedName("user")
+    var user: String?=null,
+    
+    @SerializedName("title")
+    var title: String?=null,
+    
+    @SerializedName("order_incent")
+    var orderIncent: Boolean?=null,
+    
+    @SerializedName("stores")
+    var stores: ArrayList<Int>?=null,
+    
+    @SerializedName("employee_code")
+    var employeeCode: String?=null,
+    
+    @SerializedName("first_name")
+    var firstName: String?=null,
+    
+    @SerializedName("last_name")
+    var lastName: String?=null,
+    
+    @SerializedName("profile_pic_url")
+    var profilePicUrl: String?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     
     
     
@@ -98,15 +177,15 @@ data class FileDownloadRequestBody(
 
              
 /*
-    Model: JobExecute
+    Model: ApplicationStaffPage
 */
 @Parcelize
-data class JobExecute(
+data class ApplicationStaffPage(
     
     
     
-    @SerializedName("query")
-    var query: String?=null,
+    @SerializedName("items")
+    var items: ArrayList<ApplicationStaff>?=null,
     
     @SerializedName("page")
     var page: Page?=null
@@ -125,62 +204,20 @@ data class JobExecute(
 
              
 /*
-    Model: JobExecutionResult
+    Model: ValidationError
 */
 @Parcelize
-data class JobExecutionResult(
+data class ValidationError(
     
     
-    
-    @SerializedName("rows")
-    var rows: @RawValue ArrayList<HashMap<String,Any>>?=null,
-    
-    @SerializedName("page")
-    var page: Page?=null
-    
-): Parcelable {
-    
-    
-    
-    
-    
-    
-    
-}
-
-
-
-             
-/*
-    Model: JobStatus
-*/
-@Parcelize
-data class JobStatus(
-    
-    
-    
-    @SerializedName("start_date")
-    var startDate: String?=null,
-    
-    @SerializedName("end_date")
-    var endDate: String?=null,
-    
-    @SerializedName("status")
-    var status: String?=null,
     
     @SerializedName("message")
     var message: String?=null,
     
-    @SerializedName("file_metadata")
-    var fileMetadata: @RawValue ArrayList<HashMap<String,Any>>?=null
+    @SerializedName("field")
+    var field: String?=null
     
 ): Parcelable {
-    
-    
-    
-    
-    
-    
     
     
     

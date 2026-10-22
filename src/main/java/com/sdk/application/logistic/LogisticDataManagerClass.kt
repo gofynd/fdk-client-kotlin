@@ -111,6 +111,83 @@ class LogisticDataManagerClass(val config: ApplicationConfig, val unauthorizedAc
 
     
     
+    
+        
+            
+                
+            
+            
+        
+            
+                
+            
+            
+        
+            
+                
+            
+            
+        
+            
+                
+            
+            
+        
+            
+            
+        
+            
+                
+            
+            
+        
+            
+                
+            
+            
+        
+            
+                
+            
+            
+        
+    /**
+    *
+    * Summary: Paginator for getLocalities
+    **/
+    fun getLocalitiesPaginator(localityType: String, country: String?=null, state: String?=null, city: String?=null, pageSize: Int?=null, q: String?=null, sector: String?=null) : Paginator<GetLocalitiesApp>{
+
+    val paginator = Paginator<GetLocalitiesApp>()
+
+    paginator.setCallBack(object : PaginatorCallback<GetLocalitiesApp> {
+
+            override suspend fun onNext(
+                onResponse: (Event<GetLocalitiesApp>?,FdkError?) -> Unit) {
+                val pageId = paginator.nextId
+                val pageNo = paginator.pageNo
+                val pageType = "number"
+                var fullUrl : String? = _relativeUrls["getLocalities"]
+                
+                fullUrl = fullUrl?.replace("{" + "locality_type" +"}",localityType.toString())
+                
+                logisticApiList?.getLocalities(fullUrl , country = country, state = state, city = city, pageNo = pageNo, pageSize = pageSize, q = q, sector = sector)?.safeAwait{ response, error ->
+                    response?.let {
+                        val page = response.peekContent()?.page
+                        paginator.setPaginator(hasNext=page?.hasNext?:false,pageNo=if (page?.hasNext == true) ((pageNo ?: 0) + 1) else pageNo)
+                        onResponse.invoke(response, null)
+                    }
+
+                    error?.let {
+                        onResponse.invoke(null,error)
+                    }
+            }
+        }
+
+    })
+
+    return paginator
+    }
+    
     suspend fun getLocality(localityType: String,localityValue: String,country: String?=null,state: String?=null,city: String?=null,sector: String?=null, headers: Map<String, String> = emptyMap()): Response<GetLocalityApp>? {
         var fullUrl : String? = _relativeUrls["getLocality"]
         

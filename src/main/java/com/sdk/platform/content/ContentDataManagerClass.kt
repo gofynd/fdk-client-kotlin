@@ -113,6 +113,10 @@ class ContentDataManagerClass(val config: PlatformConfig, val unauthorizedAction
     
     
     
+    
+    
+    
+    
     suspend fun getCustomFieldTypes( headers: Map<String, String> = emptyMap())
     : Response<MetafieldTypesSchema>? {
 
@@ -689,6 +693,46 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     : Response<CreateAnnouncementSchema>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 contentApiList?.deleteAnnouncement(companyId = config.companyId ,applicationId = applicationId ,announcementId = announcementId, headers = headers)
+        } else {
+            null
+        }
+    }
+    
+    
+    suspend fun getAppAssociation( headers: Map<String, String> = emptyMap())
+    : Response<AppAssociationRecord>? {
+        return if (config.oauthClient.isAccessTokenValid()) {
+                contentApiList?.getAppAssociation(companyId = config.companyId ,applicationId = applicationId , headers = headers)
+        } else {
+            null
+        }
+    }
+    
+    
+    suspend fun createAppAssociation(body: AppAssociationWriteBody, headers: Map<String, String> = emptyMap())
+    : Response<AppAssociationRecord>? {
+        return if (config.oauthClient.isAccessTokenValid()) {
+                contentApiList?.createAppAssociation(companyId = config.companyId ,applicationId = applicationId , body = body,headers = headers)
+        } else {
+            null
+        }
+    }
+    
+    
+    suspend fun updateAppAssociation(body: AppAssociationWriteBody, headers: Map<String, String> = emptyMap())
+    : Response<AppAssociationRecord>? {
+        return if (config.oauthClient.isAccessTokenValid()) {
+                contentApiList?.updateAppAssociation(companyId = config.companyId ,applicationId = applicationId , body = body,headers = headers)
+        } else {
+            null
+        }
+    }
+    
+    
+    suspend fun deleteAppAssociation( headers: Map<String, String> = emptyMap())
+    : Response<AppAssociationDeleted>? {
+        return if (config.oauthClient.isAccessTokenValid()) {
+                contentApiList?.deleteAppAssociation(companyId = config.companyId ,applicationId = applicationId , headers = headers)
         } else {
             null
         }

@@ -10552,10 +10552,15 @@ data class LineItemSchema(
     @SerializedName("bundle_details")
     var bundleDetails: BundleDetailsSchema?=null,
     
+    @SerializedName("charges")
+    var charges: ArrayList<CreateOrderLineItemChargeSchema>?=null,
+    
     @SerializedName("meta")
     var meta: @RawValue HashMap<String,Any>?=null
     
 ): Parcelable {
+    
+    
     
     
     
@@ -10820,9 +10825,14 @@ data class CouponSchema(
     var isReturnAllowed: Boolean?=null,
     
     @SerializedName("is_cancellation_allowed")
-    var isCancellationAllowed: Boolean?=null
+    var isCancellationAllowed: Boolean?=null,
+    
+    @SerializedName("allow_zero_discount")
+    var allowZeroDiscount: Boolean?=null
     
 ): Parcelable {
+    
+    
     
     
     
@@ -11257,6 +11267,9 @@ data class CreateOrderRequestSchema(
     @SerializedName("shipments")
     var shipments: ArrayList<CreateOrderShipmentSchema>?=null,
     
+    @SerializedName("charges")
+    var charges: ArrayList<CreateOrderChargeSchema>?=null,
+    
     @SerializedName("tags")
     var tags: ArrayList<String>?=null,
     
@@ -11347,6 +11360,87 @@ data class CreateOrderRequestSchema(
     
     
     
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: CreateOrderChargeSchema
+*/
+@Parcelize
+data class CreateOrderChargeSchema(
+    
+    
+    
+    @SerializedName("name")
+    var name: String?=null,
+    
+    @SerializedName("amount")
+    var amount: Double?=null,
+    
+    @SerializedName("refundable")
+    var refundable: Boolean?=null,
+    
+    @SerializedName("distribution")
+    var distribution: String?=null,
+    
+    @SerializedName("tax_rule_id")
+    var taxRuleId: String?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: CreateOrderLineItemChargeSchema
+*/
+@Parcelize
+data class CreateOrderLineItemChargeSchema(
+    
+    
+    
+    @SerializedName("name")
+    var name: String?=null,
+    
+    @SerializedName("amount")
+    var amount: Double?=null,
+    
+    @SerializedName("refundable")
+    var refundable: Boolean?=null,
+    
+    @SerializedName("tax_rule_id")
+    var taxRuleId: String?=null
+    
+): Parcelable {
     
     
     
@@ -11833,6 +11927,28 @@ data class ValidationError(
 ): Parcelable {
     
     
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: ListingCountResponseSchema
+*/
+@Parcelize
+data class ListingCountResponseSchema(
+    
+    
+    
+    @SerializedName("count")
+    var count: Int?=null
+    
+): Parcelable {
     
     
     

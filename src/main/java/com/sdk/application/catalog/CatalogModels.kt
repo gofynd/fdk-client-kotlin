@@ -1127,6 +1127,9 @@ data class ProductSize(
     @SerializedName("seller_identifiers")
     var sellerIdentifiers: ArrayList<String>?=null,
     
+    @SerializedName("all_identifiers")
+    var allIdentifiers: ArrayList<String>?=null,
+    
     @SerializedName("value")
     var value: String?=null,
     
@@ -1137,6 +1140,8 @@ data class ProductSize(
     var isBundleItem: Boolean?=null
     
 ): Parcelable {
+    
+    
     
     
     
@@ -1478,6 +1483,50 @@ data class ProductSizes(
     
     
     
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: ProductSizesBySlug
+*/
+@Parcelize
+data class ProductSizesBySlug(
+    
+    
+    
+    @SerializedName("slug")
+    var slug: String?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: ProductSizesBySlugsSchema
+*/
+@Parcelize
+data class ProductSizesBySlugsSchema(
+    
+    
+    
+    @SerializedName("items")
+    var items: ArrayList<ProductSizesBySlug>?=null
+    
+): Parcelable {
     
     
     

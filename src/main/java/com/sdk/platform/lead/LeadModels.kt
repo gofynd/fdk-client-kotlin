@@ -723,6 +723,38 @@ data class TicketContent(
 
              
 /*
+    Model: AdditionalInfo
+*/
+@Parcelize
+data class AdditionalInfo(
+    
+    
+    
+    @SerializedName("display_name")
+    var displayName: String?=null,
+    
+    @SerializedName("display_value")
+    var displayValue: String?=null,
+    
+    @SerializedName("priority")
+    var priority: Int?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
     Model: AddTicketPayload
 */
 @Parcelize
@@ -746,9 +778,14 @@ data class AddTicketPayload(
     var content: TicketContent?=null,
     
     @SerializedName("_custom_json")
-    var customJson: @RawValue HashMap<String,Any>?=null
+    var customJson: @RawValue HashMap<String,Any>?=null,
+    
+    @SerializedName("additional_info")
+    var additionalInfo: ArrayList<AdditionalInfo>?=null
     
 ): Parcelable {
+    
+    
     
     
     

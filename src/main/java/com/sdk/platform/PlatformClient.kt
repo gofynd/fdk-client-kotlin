@@ -4,8 +4,8 @@ import com.sdk.platform.*
 import com.sdk.common.HttpClient
 import com.sdk.common.LocationHeader
  
-import com.sdk.platform.analytics.* 
 import com.sdk.platform.audittrail.* 
+import com.sdk.platform.authorization.* 
 import com.sdk.platform.billing.* 
 import com.sdk.platform.cart.* 
 import com.sdk.platform.catalog.* 
@@ -42,9 +42,9 @@ class PlatformClient(val config:PlatformConfig, val unauthorizedAction: ((url: S
     }
 
     
-    val analytics by lazy { AnalyticsDataManagerClass(config, unauthorizedAction)}
-    
     val auditTrail by lazy { AuditTrailDataManagerClass(config, unauthorizedAction)}
+    
+    val authorization by lazy { AuthorizationDataManagerClass(config, unauthorizedAction)}
     
     val billing by lazy { BillingDataManagerClass(config, unauthorizedAction)}
     
@@ -90,9 +90,9 @@ class PlatformClient(val config:PlatformConfig, val unauthorizedAction: ((url: S
 
     inner class ApplicationClient(val applicationId:String,val config: PlatformConfig) {     
     
-    val analytics by lazy { this@PlatformClient.analytics.ApplicationClient(applicationId,config)}
-    
     val auditTrail by lazy { this@PlatformClient.auditTrail.ApplicationClient(applicationId,config)}
+    
+    val authorization by lazy { this@PlatformClient.authorization.ApplicationClient(applicationId,config)}
     
     val billing by lazy { this@PlatformClient.billing.ApplicationClient(applicationId,config)}
     

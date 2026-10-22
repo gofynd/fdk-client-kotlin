@@ -345,4 +345,8 @@ interface ServiceabilityApiList {
     suspend fun getZoneProductsBulkPatchJobStatus(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Path("batch_id") batchId: String, @HeaderMap headers: Map<String, String>? = null)
     : Response<GetZoneProductsBulkPatchResult>
     
+    @POST ("/service/platform/logistics/v2.0/company/{company_id}/application/{application_id}/zones/bulk/products/patch")
+    suspend fun patchZoneProductsAtomic(@Path("company_id") companyId: String, @Path("application_id") applicationId: String,@Body body: ZoneProductsAtomicPatchDetails, @HeaderMap headers: Map<String, String>? = null)
+    : Response<ZoneProductsAtomicPatchResult>
+    
 }

@@ -840,9 +840,14 @@ data class ListViewSchema(
     var items: ArrayList<ListViewItems>?=null,
     
     @SerializedName("page")
-    var page: Page?=null
+    var page: Page?=null,
+    
+    @SerializedName("fo_details")
+    var foDetails: FoDetails?=null
     
 ): Parcelable {
+    
+    
     
     
     
@@ -5442,6 +5447,139 @@ data class GetZoneProductsBulkPatchResult(
 
              
 /*
+    Model: ZoneProductsAtomicPatchItem
+*/
+@Parcelize
+data class ZoneProductsAtomicPatchItem(
+    
+    
+    
+    @SerializedName("zone_id")
+    var zoneId: String?=null,
+    
+    @SerializedName("product_type")
+    var productType: String?=null,
+    
+    @SerializedName("values")
+    var values: @RawValue ArrayList<Any>?=null,
+    
+    @SerializedName("action")
+    var action: String?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: ZoneProductsAtomicPatchDetails
+*/
+@Parcelize
+data class ZoneProductsAtomicPatchDetails(
+    
+    
+    
+    @SerializedName("items")
+    var items: ArrayList<ZoneProductsAtomicPatchItem>?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: ZoneProductsAtomicPatchResultItem
+*/
+@Parcelize
+data class ZoneProductsAtomicPatchResultItem(
+    
+    
+    
+    @SerializedName("zone_id")
+    var zoneId: String?=null,
+    
+    @SerializedName("product_type")
+    var productType: String?=null,
+    
+    @SerializedName("action")
+    var action: String?=null,
+    
+    @SerializedName("status")
+    var status: String?=null,
+    
+    @SerializedName("values_count")
+    var valuesCount: Int?=null,
+    
+    @SerializedName("error")
+    var error: ArrayList<ZoneProductsAtomicPatchItemError>?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: ZoneProductsAtomicPatchResult
+*/
+@Parcelize
+data class ZoneProductsAtomicPatchResult(
+    
+    
+    
+    @SerializedName("items")
+    var items: ArrayList<ZoneProductsAtomicPatchResultItem>?=null,
+    
+    @SerializedName("summary")
+    var summary: ZoneProductsAtomicPatchSummary?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
     Model: CourierPartnerToServiceability
 */
 @Parcelize
@@ -5567,6 +5705,12 @@ data class CourierPartnerShipments(
     @SerializedName("is_mto")
     var isMto: Boolean?=null,
     
+    @SerializedName("is_mps")
+    var isMps: Boolean?=null,
+    
+    @SerializedName("is_b2b")
+    var isB2B: Boolean?=null,
+    
     @SerializedName("ignore_scheme_ids")
     var ignoreSchemeIds: ArrayList<String>?=null,
     
@@ -5574,6 +5718,10 @@ data class CourierPartnerShipments(
     var error: @RawValue HashMap<String,Any>?=null
     
 ): Parcelable {
+    
+    
+    
+    
     
     
     
@@ -6745,6 +6893,30 @@ data class FulfillmentOptionItem(
     
     
     
+    @SerializedName("application_id")
+    var applicationId: String?=null,
+    
+    @SerializedName("business_unit")
+    var businessUnit: ArrayList<BusinessUnit>?=null,
+    
+    @SerializedName("company_id")
+    var companyId: Int?=null,
+    
+    @SerializedName("default_for")
+    var defaultFor: FulfillmentOptionDefaultFor?=null,
+    
+    @SerializedName("modified_by")
+    var modifiedBy: ModifiedBy?=null,
+    
+    @SerializedName("modified_on")
+    var modifiedOn: String?=null,
+    
+    @SerializedName("serviceability_type")
+    var serviceabilityType: String?=null,
+    
+    @SerializedName("status")
+    var status: String?=null,
+    
     @SerializedName("slug")
     var slug: String?=null,
     
@@ -6761,7 +6933,10 @@ data class FulfillmentOptionItem(
     var type: String?=null,
     
     @SerializedName("name")
-    var name: String?=null
+    var name: String?=null,
+    
+    @SerializedName("max_promise_allowed")
+    var maxPromiseAllowed: MaxPromiseAllowed?=null
     
 ): Parcelable {
     
@@ -6770,6 +6945,132 @@ data class FulfillmentOptionItem(
     
     
     
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: BusinessUnit
+*/
+@Parcelize
+data class BusinessUnit(
+    
+    
+    
+    @SerializedName("name")
+    var name: String?=null,
+    
+    @SerializedName("is_active")
+    var isActive: Boolean?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: FulfillmentOptionDefaultFor
+*/
+@Parcelize
+data class FulfillmentOptionDefaultFor(
+    
+    
+    
+    @SerializedName("storefront")
+    var storefront: Boolean?=null,
+    
+    @SerializedName("storeos")
+    var storeos: Boolean?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: ModifiedBy
+*/
+@Parcelize
+data class ModifiedBy(
+    
+    
+    
+    @SerializedName("id")
+    var id: String?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: MaxPromiseAllowed
+*/
+@Parcelize
+data class MaxPromiseAllowed(
+    
+    
+    
+    @SerializedName("value")
+    var value: Double?=null,
+    
+    @SerializedName("is_active")
+    var isActive: Boolean?=null,
+    
+    @SerializedName("type")
+    var type: String?=null
+    
+): Parcelable {
     
     
     
@@ -7306,60 +7607,6 @@ data class ShipmentsCourierPartner(
     
     
     
-    
-    
-    
-    
-    
-    
-    
-}
-
-
-
-             
-/*
-    Model: FulfillmentOptionDefaultFor
-*/
-@Parcelize
-data class FulfillmentOptionDefaultFor(
-    
-    
-    
-    @SerializedName("storefront")
-    var storefront: Boolean?=null,
-    
-    @SerializedName("storeos")
-    var storeos: Boolean?=null
-    
-): Parcelable {
-    
-    
-    
-    
-    
-    
-    
-}
-
-
-
-             
-/*
-    Model: BusinessUnit
-*/
-@Parcelize
-data class BusinessUnit(
-    
-    
-    
-    @SerializedName("name")
-    var name: String?=null,
-    
-    @SerializedName("is_active")
-    var isActive: Boolean?=null
-    
-): Parcelable {
     
     
     
@@ -8473,28 +8720,6 @@ data class CreatedBy(
 
              
 /*
-    Model: ModifiedBy
-*/
-@Parcelize
-data class ModifiedBy(
-    
-    
-    
-    @SerializedName("id")
-    var id: String?=null
-    
-): Parcelable {
-    
-    
-    
-    
-    
-}
-
-
-
-             
-/*
     Model: ListViewItems
 */
 @Parcelize
@@ -8690,6 +8915,33 @@ data class RegionSchema(
     
     @SerializedName("count")
     var count: Int?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: FoDetails
+*/
+@Parcelize
+data class FoDetails(
+    
+    
+    
+    @SerializedName("serviceability_type")
+    var serviceabilityType: String?=null,
+    
+    @SerializedName("active_non_default_zone_count")
+    var activeNonDefaultZoneCount: Int?=null
     
 ): Parcelable {
     
@@ -12739,6 +12991,70 @@ data class StorePolygonServiceabilityPagination(
 ): Parcelable {
     
     
+    
+    
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: ZoneProductsAtomicPatchItemError
+*/
+@Parcelize
+data class ZoneProductsAtomicPatchItemError(
+    
+    
+    
+    @SerializedName("type")
+    var type: String?=null,
+    
+    @SerializedName("value")
+    var value: String?=null,
+    
+    @SerializedName("message")
+    var message: String?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: ZoneProductsAtomicPatchSummary
+*/
+@Parcelize
+data class ZoneProductsAtomicPatchSummary(
+    
+    
+    
+    @SerializedName("total")
+    var total: Int?=null,
+    
+    @SerializedName("success")
+    var success: Int?=null,
+    
+    @SerializedName("failed")
+    var failed: Int?=null
+    
+): Parcelable {
     
     
     

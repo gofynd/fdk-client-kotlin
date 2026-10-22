@@ -94,7 +94,7 @@ interface CatalogApiList {
     : Response<InventoryStockResponseSchema>
     
     @GET ("/service/platform/catalog/v2.0/company/{company_id}/application/{application_id}/locations")
-    suspend fun getAppLocations(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Query("store_type") storeType: String?, @Query("uid") uid: ArrayList<Int>?, @Query("q") q: String?, @Query("stage") stage: String?, @Query("page_no") pageNo: Int?, @Query("page_size") pageSize: Int?, @Query("tags") tags: ArrayList<String>?, @Query("store_types") storeTypes: ArrayList<String>?, @HeaderMap headers: Map<String, String>? = null)
+    suspend fun getAppLocations(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Query("store_type") storeType: String?, @Query("uid") uid: ArrayList<Int>?, @Query("q") q: String?, @Query("stage") stage: String?, @Query("page_no") pageNo: Int?, @Query("page_size") pageSize: Int?, @Query("tags") tags: ArrayList<String>?, @Query("store_types") storeTypes: ArrayList<String>?, @Query("opted") opted: Boolean?, @HeaderMap headers: Map<String, String>? = null)
     : Response<LocationListSchema>
     
     @GET ("/service/platform/catalog/v1.0/company/{company_id}/application/{application_id}/product-configuration/")
@@ -320,6 +320,10 @@ interface CatalogApiList {
     @GET ("/service/platform/catalog/v2.0/company/{company_id}/marketplaces/company-details/")
     suspend fun getCompanyDetail(@Path("company_id") companyId: String, @HeaderMap headers: Map<String, String>? = null)
     : Response<OptinCompanyDetail>
+    
+    @GET ("/service/platform/catalog/v2.0/company/{company_id}/")
+    suspend fun cbsOnboardGet(@Path("company_id") companyId: String, @HeaderMap headers: Map<String, String>? = null)
+    : Response<GetCompanySchema>
     
     @GET ("/service/platform/catalog/v1.0/company/{company_id}/marketplaces/company-metrics/")
     suspend fun getCompanyMetrics(@Path("company_id") companyId: String, @HeaderMap headers: Map<String, String>? = null)

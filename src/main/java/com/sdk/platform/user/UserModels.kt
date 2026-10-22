@@ -1663,6 +1663,9 @@ data class UserAttributeFilterQuery(
     @SerializedName("phone")
     var phone: String?=null,
     
+    @SerializedName("country_code")
+    var countryCode: String?=null,
+    
     @SerializedName("definition_ids")
     var definitionIds: ArrayList<String>?=null,
     
@@ -1670,6 +1673,8 @@ data class UserAttributeFilterQuery(
     var conditions: ArrayList<UserAttributeFilterRequestConditions>?=null
     
 ): Parcelable {
+    
+    
     
     
     
@@ -1711,9 +1716,14 @@ data class UserAttributeFilterRequestConditions(
     var type: String?=null,
     
     @SerializedName("value")
-    var value: @RawValue HashMap<String,Any>?=null
+    var value: @RawValue HashMap<String,Any>?=null,
+    
+    @SerializedName("ignore_year")
+    var ignoreYear: Boolean?=null
     
 ): Parcelable {
+    
+    
     
     
     

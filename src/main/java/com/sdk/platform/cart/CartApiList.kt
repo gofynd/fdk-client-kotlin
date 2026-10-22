@@ -10,7 +10,7 @@ import com.sdk.platform.*
 interface CartApiList {
     
     @GET ("/service/platform/cart/v1.0/company/{company_id}/application/{application_id}/coupon")
-    suspend fun getCoupons(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Query("page_no") pageNo: Int?, @Query("page_size") pageSize: Int?, @Query("is_archived") isArchived: Boolean?, @Query("title") title: String?, @Query("is_public") isPublic: Boolean?, @Query("is_display") isDisplay: Boolean?, @Query("type_slug") typeSlug: String?, @Query("code") code: String?, @Query("created_by") createdBy: String?, @Query("reviewed_by") reviewedBy: String?, @Query("approved_start_time") approvedStartTime: String?, @Query("approved_end_time") approvedEndTime: String?, @Query("review_start_time") reviewStartTime: String?, @Query("review_end_time") reviewEndTime: String?, @Query("status") status: String?, @HeaderMap headers: Map<String, String>? = null)
+    suspend fun getCoupons(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Query("page_no") pageNo: Int?, @Query("page_size") pageSize: Int?, @Query("is_archived") isArchived: Boolean?, @Query("title") title: String?, @Query("is_public") isPublic: Boolean?, @Query("is_display") isDisplay: Boolean?, @Query("type_slug") typeSlug: String?, @Query("code") code: String?, @Query("created_by") createdBy: String?, @Query("reviewed_by") reviewedBy: String?, @Query("approved_start_time") approvedStartTime: String?, @Query("approved_end_time") approvedEndTime: String?, @Query("review_start_time") reviewStartTime: String?, @Query("review_end_time") reviewEndTime: String?, @Query("status") status: String?, @Query("filter_tags") filterTags: String?, @HeaderMap headers: Map<String, String>? = null)
     : Response<CouponsResult>
     
     @POST ("/service/platform/cart/v1.0/company/{company_id}/application/{application_id}/coupon")
@@ -34,7 +34,7 @@ interface CartApiList {
     : Response<SuccessMessage>
     
     @GET ("/service/platform/cart/v1.0/company/{company_id}/application/{application_id}/promotion")
-    suspend fun getPromotions(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Query("page_no") pageNo: Int?, @Query("page_size") pageSize: Int?, @Query("q") q: String?, @Query("is_active") isActive: Boolean?, @Query("promo_group") promoGroup: String?, @Query("promotion_type") promotionType: String?, @Query("fp_panel") fpPanel: String?, @Query("promotion_id") promotionId: String?, @Query("created_by") createdBy: String?, @Query("reviewed_by") reviewedBy: String?, @Query("approved_start_time") approvedStartTime: String?, @Query("approved_end_time") approvedEndTime: String?, @Query("review_start_time") reviewStartTime: String?, @Query("review_end_time") reviewEndTime: String?, @Query("status") status: String?, @HeaderMap headers: Map<String, String>? = null)
+    suspend fun getPromotions(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Query("page_no") pageNo: Int?, @Query("page_size") pageSize: Int?, @Query("q") q: String?, @Query("is_active") isActive: Boolean?, @Query("promo_group") promoGroup: String?, @Query("promotion_type") promotionType: String?, @Query("fp_panel") fpPanel: String?, @Query("promotion_id") promotionId: String?, @Query("created_by") createdBy: String?, @Query("reviewed_by") reviewedBy: String?, @Query("approved_start_time") approvedStartTime: String?, @Query("approved_end_time") approvedEndTime: String?, @Query("review_start_time") reviewStartTime: String?, @Query("review_end_time") reviewEndTime: String?, @Query("status") status: String?, @Query("filter_tags") filterTags: String?, @HeaderMap headers: Map<String, String>? = null)
     : Response<PromotionsResult>
     
     @POST ("/service/platform/cart/v1.0/company/{company_id}/application/{application_id}/promotion")
@@ -104,6 +104,10 @@ interface CartApiList {
     @POST ("/service/platform/cart/v1.0/company/{company_id}/application/{application_id}/cart/serviceability")
     suspend fun checkCartServiceability(@Header("x-ordering-source") xOrderingSource: String?, @Header("x-ordering-source-type") xOrderingSourceType: String?, @Path("company_id") companyId: String, @Path("application_id") applicationId: String,@Body body: OpenApiCartServiceabilityCreation, @HeaderMap headers: Map<String, String>? = null)
     : Response<OpenApiCartServiceabilityResult>
+    
+    @POST ("/service/platform/cart/v1.0/company/{company_id}/application/{application_id}/serviceability/cod")
+    suspend fun checkCODServiceability(@Path("company_id") companyId: String, @Path("application_id") applicationId: String,@Body body: PlatformCartCODServiceabilityCreation, @HeaderMap headers: Map<String, String>? = null)
+    : Response<PlatformCartCODServiceabilityResult>
     
     @POST ("/service/platform/cart/v1.0/company/{company_id}/application/{application_id}/cart/checkout")
     suspend fun checkoutCart(@Header("x-ordering-source") xOrderingSource: String?, @Header("x-ordering-source-type") xOrderingSourceType: String?, @Header("x-anonymous-cart") xAnonymousCart: String?, @Header("x-location-detail") xLocationDetail: String?, @Header("x-currency-code") xCurrencyCode: String?, @Path("company_id") companyId: String, @Path("application_id") applicationId: String,@Body body: OpenApiPlatformCheckoutReq, @HeaderMap headers: Map<String, String>? = null)
@@ -266,7 +270,7 @@ interface CartApiList {
     : Response<CartDetailResult>
     
     @GET ("/service/platform/cart/v1.0/company/{company_id}/application/{application_id}/offers")
-    suspend fun getOffers(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Query("page_no") pageNo: Int?, @Query("page_size") pageSize: Int?, @Query("search") search: String?, @Query("mode") mode: String?, @Query("type") type: String?, @Query("promo_group") promoGroup: String?, @Query("exclude_contract_offers") excludeContractOffers: Boolean?, @Query("offer_id") offerId: String?, @Query("created_by") createdBy: String?, @Query("reviewed_by") reviewedBy: String?, @Query("approved_start_time") approvedStartTime: String?, @Query("approved_end_time") approvedEndTime: String?, @Query("status") status: String?, @Query("code") code: String?, @Query("is_public") isPublic: Boolean?, @HeaderMap headers: Map<String, String>? = null)
+    suspend fun getOffers(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Query("page_no") pageNo: Int?, @Query("page_size") pageSize: Int?, @Query("search") search: String?, @Query("mode") mode: String?, @Query("type") type: String?, @Query("promo_group") promoGroup: String?, @Query("exclude_contract_offers") excludeContractOffers: Boolean?, @Query("offer_id") offerId: String?, @Query("created_by") createdBy: String?, @Query("reviewed_by") reviewedBy: String?, @Query("approved_start_time") approvedStartTime: String?, @Query("approved_end_time") approvedEndTime: String?, @Query("status") status: String?, @Query("code") code: String?, @Query("is_public") isPublic: Boolean?, @Query("filter_tags") filterTags: String?, @HeaderMap headers: Map<String, String>? = null)
     : Response<OfferListResult>
     
     @POST ("/service/platform/cart/v1.0/company/{company_id}/application/{application_id}/offers")

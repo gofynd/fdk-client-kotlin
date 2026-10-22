@@ -1160,6 +1160,9 @@ data class PaymentModeList(
     @SerializedName("cod_limit")
     var codLimit: Double?=null,
     
+    @SerializedName("is_split_cod_available")
+    var isSplitCodAvailable: Boolean?=null,
+    
     @SerializedName("intent_flow")
     var intentFlow: Boolean?=null,
     
@@ -1245,6 +1248,8 @@ data class PaymentModeList(
     var partialPaymentAllowed: Boolean?=null
     
 ): Parcelable {
+    
+    
     
     
     
@@ -6012,6 +6017,80 @@ data class DeleteBeneficiaryDetails(
     var message: String?=null
     
 ): Parcelable {
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: OrderTransactionList
+*/
+@Parcelize
+data class OrderTransactionList(
+    
+    
+    
+    @SerializedName("success")
+    var success: Boolean?=null,
+    
+    @SerializedName("items")
+    var items: ArrayList<OrderTransactionItem>?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: OrderTransactionItem
+*/
+@Parcelize
+data class OrderTransactionItem(
+    
+    
+    
+    @SerializedName("transaction_id")
+    var transactionId: String?=null,
+    
+    @SerializedName("payment_mode")
+    var paymentMode: String?=null,
+    
+    @SerializedName("logo")
+    var logo: String?=null,
+    
+    @SerializedName("amount")
+    var amount: Double?=null,
+    
+    @SerializedName("status")
+    var status: String?=null,
+    
+    @SerializedName("created_on")
+    var createdOn: String?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     
     
     

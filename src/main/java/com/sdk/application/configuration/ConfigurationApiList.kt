@@ -82,7 +82,7 @@ interface ConfigurationApiList {
     
     
     @GET
-    suspend fun getAppStaffList(@Url url1: String?    ,       @Query("page_no") pageNo: Int?, @Query("page_size") pageSize: Int?, @Query("order_incent") orderIncent: Boolean?, @Query("ordering_store") orderingStore: Int?, @Query("user") user: String?, @Query("user_name") userName: String?, @HeaderMap headers: Map<String, String>? = null)
+    suspend fun getAppStaffList(@Url url1: String?    ,        @Query("page_no") pageNo: Int?, @Query("page_size") pageSize: Int?, @Query("order_incent") orderIncent: Boolean?, @Query("ordering_store") orderingStore: Int?, @Query("user") user: String?, @Query("user_name") userName: String?, @Query("app_permissions") appPermissions: String?, @HeaderMap headers: Map<String, String>? = null)
     : Response<AppStaffListResponseSchema>
     
     

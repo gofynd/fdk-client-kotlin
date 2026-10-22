@@ -207,6 +207,10 @@ class PaymentDataManagerClass(val config: PlatformConfig, val unauthorizedAction
     
     
     
+    
+    
+    
+    
 
 inner class ApplicationClient(val applicationId:String,val config: PlatformConfig){
 
@@ -316,6 +320,26 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     : Response<SetCODOptionDetails>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 paymentApiList?.setUserCODlimitRoutes(companyId = config.companyId ,applicationId = applicationId , body = body,headers = headers)
+        } else {
+            null
+        }
+    }
+    
+    
+    suspend fun getDefaultOfferClassification(aggregator: String, headers: Map<String, String> = emptyMap())
+    : Response<HashMap<String,Any>>? {
+        return if (config.oauthClient.isAccessTokenValid()) {
+                paymentApiList?.getDefaultOfferClassification(companyId = config.companyId ,applicationId = applicationId ,aggregator = aggregator, headers = headers)
+        } else {
+            null
+        }
+    }
+    
+    
+    suspend fun patchDefaultOfferClassification(body: DefaultOfferClassification, headers: Map<String, String> = emptyMap())
+    : Response<HashMap<String,Any>>? {
+        return if (config.oauthClient.isAccessTokenValid()) {
+                paymentApiList?.patchDefaultOfferClassification(companyId = config.companyId ,applicationId = applicationId , body = body,headers = headers)
         } else {
             null
         }
@@ -622,6 +646,16 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     }
     
     
+    suspend fun updateOrderMeta(orderId: String,body: OrderMetaUpdate, headers: Map<String, String> = emptyMap())
+    : Response<OrderMetaResult>? {
+        return if (config.oauthClient.isAccessTokenValid()) {
+                paymentApiList?.updateOrderMeta(companyId = config.companyId ,applicationId = applicationId ,orderId = orderId, body = body,headers = headers)
+        } else {
+            null
+        }
+    }
+    
+    
     suspend fun getMerchantAggregatorAppVersion(aggregatorId: String,businessUnit: String,device: String,paymentModeId: Int?=null,subPaymentMode: String?=null, headers: Map<String, String> = emptyMap())
     : Response<AggregatorVersionDetails>? {
         return if (config.oauthClient.isAccessTokenValid()) {
@@ -656,6 +690,16 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     : Response<OperationResponseSchema>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 paymentApiList?.saveTokenForAggregator(companyId = config.companyId ,applicationId = applicationId ,aggregatorId = aggregatorId, body = body,headers = headers)
+        } else {
+            null
+        }
+    }
+    
+    
+    suspend fun getOrderTransactions(orderId: String, headers: Map<String, String> = emptyMap())
+    : Response<OrderTransactionList>? {
+        return if (config.oauthClient.isAccessTokenValid()) {
+                paymentApiList?.getOrderTransactions(companyId = config.companyId ,applicationId = applicationId ,orderId = orderId, headers = headers)
         } else {
             null
         }

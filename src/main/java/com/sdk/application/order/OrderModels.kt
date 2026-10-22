@@ -49,9 +49,14 @@ data class RefundModeRequestData(
     
     
     @SerializedName("line_numbers")
-    var lineNumbers: ArrayList<RefundModeLineNumber>?=null
+    var lineNumbers: ArrayList<RefundModeLineNumber>?=null,
+    
+    @SerializedName("next_state")
+    var nextState: String?=null
     
 ): Parcelable {
+    
+    
     
     
     
@@ -842,6 +847,33 @@ data class Invoice(
 ): Parcelable {
     
     
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: CreditNote
+*/
+@Parcelize
+data class CreditNote(
+    
+    
+    
+    @SerializedName("credit_note_id")
+    var creditNoteId: String?=null,
+    
+    @SerializedName("credit_note_url")
+    var creditNoteUrl: String?=null
+    
+): Parcelable {
     
     
     
@@ -2347,6 +2379,9 @@ data class Shipments(
     @SerializedName("invoice")
     var invoice: Invoice?=null,
     
+    @SerializedName("credit_note")
+    var creditNote: CreditNote?=null,
+    
     @SerializedName("show_track_link")
     var showTrackLink: Boolean?=null,
     
@@ -2453,6 +2488,8 @@ data class Shipments(
     var meta: @RawValue HashMap<String,Any>?=null
     
 ): Parcelable {
+    
+    
     
     
     

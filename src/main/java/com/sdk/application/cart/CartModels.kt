@@ -447,10 +447,20 @@ data class BasePrice(
     @SerializedName("marked")
     var marked: Double?=null,
     
+    @SerializedName("pre_override_effective")
+    var preOverrideEffective: Double?=null,
+    
+    @SerializedName("pre_override_marked")
+    var preOverrideMarked: Double?=null,
+    
     @SerializedName("currency_code")
     var currencyCode: String?=null
     
 ): Parcelable {
+    
+    
+    
+    
     
     
     
@@ -1024,6 +1034,12 @@ data class ProductPrice(
     @SerializedName("marked")
     var marked: Double?=null,
     
+    @SerializedName("pre_override_effective")
+    var preOverrideEffective: Double?=null,
+    
+    @SerializedName("pre_override_marked")
+    var preOverrideMarked: Double?=null,
+    
     @SerializedName("final_price")
     var finalPrice: Double?=null,
     
@@ -1031,6 +1047,10 @@ data class ProductPrice(
     var discount: Double?=null
     
 ): Parcelable {
+    
+    
+    
+    
     
     
     
@@ -1648,9 +1668,19 @@ data class CartProductInfo(
     var promotionsApplied: ArrayList<AppliedPromotion>?=null,
     
     @SerializedName("item_type")
-    var itemType: String?=null
+    var itemType: String?=null,
+    
+    @SerializedName("added_on")
+    var addedOn: String?=null,
+    
+    @SerializedName("returnable")
+    var returnable: Boolean?=null
     
 ): Parcelable {
+    
+    
+    
+    
     
     
     
@@ -2369,6 +2399,9 @@ data class CartDetailResult(
     @SerializedName("gstin")
     var gstin: String?=null,
     
+    @SerializedName("ship_to_gst_details")
+    var shipToGstDetails: ShipToGstDetails?=null,
+    
     @SerializedName("restrict_checkout")
     var restrictCheckout: Boolean?=null,
     
@@ -2406,6 +2439,8 @@ data class CartDetailResult(
     var customerId: String?=null
     
 ): Parcelable {
+    
+    
     
     
     
@@ -3157,6 +3192,9 @@ data class Coupon(
     @SerializedName("expires_on")
     var expiresOn: String?=null,
     
+    @SerializedName("expires_at")
+    var expiresAt: String?=null,
+    
     @SerializedName("message")
     var message: String?=null,
     
@@ -3197,6 +3235,8 @@ data class Coupon(
     var isBankOffer: Boolean?=null
     
 ): Parcelable {
+    
+    
     
     
     
@@ -4085,6 +4125,9 @@ data class CartShipmentsResult(
     @SerializedName("gstin")
     var gstin: String?=null,
     
+    @SerializedName("ship_to_gst_details")
+    var shipToGstDetails: ShipToGstDetails?=null,
+    
     @SerializedName("restrict_checkout")
     var restrictCheckout: Boolean?=null,
     
@@ -4137,6 +4180,8 @@ data class CartShipmentsResult(
     var customerId: String?=null
     
 ): Parcelable {
+    
+    
     
     
     
@@ -4535,6 +4580,9 @@ data class CheckCart(
     @SerializedName("gstin")
     var gstin: String?=null,
     
+    @SerializedName("ship_to_gst_details")
+    var shipToGstDetails: ShipToGstDetails?=null,
+    
     @SerializedName("restrict_checkout")
     var restrictCheckout: Boolean?=null,
     
@@ -4566,6 +4614,8 @@ data class CheckCart(
     var customCartMeta: @RawValue HashMap<String,Any>?=null
     
 ): Parcelable {
+    
+    
     
     
     
@@ -4741,6 +4791,33 @@ data class ArticleGiftDetail(
 
              
 /*
+    Model: ShipToGstDetails
+*/
+@Parcelize
+data class ShipToGstDetails(
+    
+    
+    
+    @SerializedName("gstin")
+    var gstin: String?=null,
+    
+    @SerializedName("trade_name")
+    var tradeName: String?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
     Model: CartMetaCreation
 */
 @Parcelize
@@ -4769,10 +4846,15 @@ data class CartMetaCreation(
     @SerializedName("gstin")
     var gstin: String?=null,
     
+    @SerializedName("ship_to_gst_details")
+    var shipToGstDetails: ShipToGstDetails?=null,
+    
     @SerializedName("custom_cart_meta")
     var customCartMeta: @RawValue HashMap<String,Any>?=null
     
 ): Parcelable {
+    
+    
     
     
     
@@ -4986,6 +5068,9 @@ data class SharedCart(
     @SerializedName("gstin")
     var gstin: String?=null,
     
+    @SerializedName("ship_to_gst_details")
+    var shipToGstDetails: ShipToGstDetails?=null,
+    
     @SerializedName("shared_cart_details")
     var sharedCartDetails: SharedCartDetails?=null,
     
@@ -5011,6 +5096,8 @@ data class SharedCart(
     var customCartMeta: @RawValue HashMap<String,Any>?=null
     
 ): Parcelable {
+    
+    
     
     
     

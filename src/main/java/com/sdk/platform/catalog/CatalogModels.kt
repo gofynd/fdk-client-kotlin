@@ -14,6 +14,48 @@ import com.google.gson.annotations.SerializedName
 
              
 /*
+    Model: InventoryTransaction
+*/
+@Parcelize
+data class InventoryTransaction(
+    
+    
+    
+    @SerializedName("type")
+    var type: String?=null,
+    
+    @SerializedName("reference_id")
+    var referenceId: String?=null,
+    
+    @SerializedName("reason")
+    var reason: String?=null,
+    
+    @SerializedName("source")
+    var source: String?=null,
+    
+    @SerializedName("user_ref")
+    var userRef: String?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
     Model: Action
 */
 @Parcelize
@@ -6796,6 +6838,33 @@ data class GetAddressSchema(
 
              
 /*
+    Model: RegionDetailsSchema
+*/
+@Parcelize
+data class RegionDetailsSchema(
+    
+    
+    
+    @SerializedName("slug")
+    var slug: String?=null,
+    
+    @SerializedName("zone")
+    var zone: String?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
     Model: GetAllSizes
 */
 @Parcelize
@@ -7284,6 +7353,12 @@ data class GetCompanySchema(
     @SerializedName("name")
     var name: String?=null,
     
+    @SerializedName("region")
+    var region: String?=null,
+    
+    @SerializedName("region_details")
+    var regionDetails: RegionDetailsSchema?=null,
+    
     @SerializedName("reject_reason")
     var rejectReason: String?=null,
     
@@ -7300,6 +7375,10 @@ data class GetCompanySchema(
     var verifiedOn: String?=null
     
 ): Parcelable {
+    
+    
+    
+    
     
     
     
@@ -9614,9 +9693,19 @@ data class InventoryBulkRequestSchema(
     var sizes: ArrayList<InventoryJobPayload>?=null,
     
     @SerializedName("user")
-    var user: @RawValue HashMap<String,Any>?=null
+    var user: @RawValue HashMap<String,Any>?=null,
+    
+    @SerializedName("transaction_type")
+    var transactionType: String?=null,
+    
+    @SerializedName("transaction")
+    var transaction: InventoryTransaction?=null
     
 ): Parcelable {
+    
+    
+    
+    
     
     
     
@@ -10197,9 +10286,19 @@ data class InventoryJobPayload(
     var totalQuantity: Int?=null,
     
     @SerializedName("trace_id")
-    var traceId: String?=null
+    var traceId: String?=null,
+    
+    @SerializedName("transaction_type")
+    var transactionType: String?=null,
+    
+    @SerializedName("transaction")
+    var transaction: InventoryTransaction?=null
     
 ): Parcelable {
+    
+    
+    
+    
     
     
     
@@ -10315,6 +10414,9 @@ data class InventoryPayload(
     @SerializedName("price_marked")
     var priceMarked: Double?=null,
     
+    @SerializedName("price_cost")
+    var priceCost: Double?=null,
+    
     @SerializedName("seller_identifier")
     var sellerIdentifier: String?=null,
     
@@ -10340,9 +10442,21 @@ data class InventoryPayload(
     var traceId: String?=null,
     
     @SerializedName("meta")
-    var meta: @RawValue HashMap<String,Any>?=null
+    var meta: @RawValue HashMap<String,Any>?=null,
+    
+    @SerializedName("transaction_type")
+    var transactionType: String?=null,
+    
+    @SerializedName("transaction")
+    var transaction: InventoryTransaction?=null
     
 ): Parcelable {
+    
+    
+    
+    
+    
+    
     
     
     
@@ -10390,9 +10504,19 @@ data class InventoryRequestSchema(
     var item: ItemQuery?=null,
     
     @SerializedName("sizes")
-    var sizes: ArrayList<InvSize>?=null
+    var sizes: ArrayList<InvSize>?=null,
+    
+    @SerializedName("transaction_type")
+    var transactionType: String?=null,
+    
+    @SerializedName("transaction")
+    var transaction: InventoryTransaction?=null
     
 ): Parcelable {
+    
+    
+    
+    
     
     
     
@@ -10422,9 +10546,19 @@ data class InventoryRequestSchemaV2(
     var meta: @RawValue HashMap<String,Any>?=null,
     
     @SerializedName("payload")
-    var payload: ArrayList<InventoryPayload>?=null
+    var payload: ArrayList<InventoryPayload>?=null,
+    
+    @SerializedName("transaction_type")
+    var transactionType: String?=null,
+    
+    @SerializedName("transaction")
+    var transaction: InventoryTransaction?=null
     
 ): Parcelable {
+    
+    
+    
+    
     
     
     
@@ -12332,10 +12466,25 @@ data class LocationPriceRequestSchema(
     @SerializedName("price_marked")
     var priceMarked: Double?=null,
     
+    @SerializedName("price_cost")
+    var priceCost: Double?=null,
+    
     @SerializedName("tags")
-    var tags: ArrayList<String>?=null
+    var tags: ArrayList<String>?=null,
+    
+    @SerializedName("transaction_type")
+    var transactionType: String?=null,
+    
+    @SerializedName("transaction")
+    var transaction: InventoryTransaction?=null
     
 ): Parcelable {
+    
+    
+    
+    
+    
+    
     
     
     
@@ -12371,9 +12520,19 @@ data class LocationQuantityRequestSchema(
     var notAvailableQuantity: Int?=null,
     
     @SerializedName("mode")
-    var mode: String?=null
+    var mode: String?=null,
+    
+    @SerializedName("transaction_type")
+    var transactionType: String?=null,
+    
+    @SerializedName("transaction")
+    var transaction: InventoryTransaction?=null
     
 ): Parcelable {
+    
+    
+    
+    
     
     
     
