@@ -1543,12 +1543,12 @@ class CatalogDataManagerClass(val config: PlatformConfig, val unauthorizedAction
     }
     
     
-    suspend fun getProducts(brandIds: ArrayList<Int>?=null,categoryIds: ArrayList<Int>?=null,itemIds: ArrayList<Int>?=null,departmentIds: ArrayList<Int>?=null,itemCode: ArrayList<String>?=null,name: String?=null,slug: String?=null,allIdentifiers: ArrayList<String>?=null,q: String?=null,tags: ArrayList<String>?=null,pageNo: Int?=null,pageSize: Int?=null,pageType: String?=null,sortOn: String?=null,pageId: String?=null, headers: Map<String, String> = emptyMap())
+    suspend fun getProducts(brandIds: ArrayList<Int>?=null,categoryIds: ArrayList<Int>?=null,itemIds: ArrayList<Int>?=null,departmentIds: ArrayList<Int>?=null,itemCode: ArrayList<String>?=null,name: String?=null,slug: String?=null,allIdentifiers: ArrayList<String>?=null,q: String?=null,tags: ArrayList<String>?=null,pageNo: Int?=null,pageSize: Int?=null,pageType: String?=null,sortOn: String?=null,pageId: String?=null,modifiedOnGte: String?=null,modifiedOnLte: String?=null, headers: Map<String, String> = emptyMap())
     : Response<ProductListingResponseV2>? {
 
         return if (config.oauthClient.isAccessTokenValid()) {
             catalogApiList?.getProducts(
-        companyId = config.companyId,brandIds = brandIds,categoryIds = categoryIds,itemIds = itemIds,departmentIds = departmentIds,itemCode = itemCode,name = name,slug = slug,allIdentifiers = allIdentifiers,q = q,tags = tags,pageNo = pageNo,pageSize = pageSize,pageType = pageType,sortOn = sortOn,pageId = pageId, headers = headers)
+        companyId = config.companyId,brandIds = brandIds,categoryIds = categoryIds,itemIds = itemIds,departmentIds = departmentIds,itemCode = itemCode,name = name,slug = slug,allIdentifiers = allIdentifiers,q = q,tags = tags,pageNo = pageNo,pageSize = pageSize,pageType = pageType,sortOn = sortOn,pageId = pageId,modifiedOnGte = modifiedOnGte,modifiedOnLte = modifiedOnLte, headers = headers)
         } else {
             null
         }
@@ -1633,11 +1633,21 @@ class CatalogDataManagerClass(val config: PlatformConfig, val unauthorizedAction
                 
             
         
+            
+                
+            
+            
+        
+            
+                
+            
+            
+        
     /**
     *
     * Summary: Paginator for getProducts
     **/
-    fun getProductsPaginator(companyId: String, brandIds: ArrayList<Int>?=null, categoryIds: ArrayList<Int>?=null, itemIds: ArrayList<Int>?=null, departmentIds: ArrayList<Int>?=null, itemCode: ArrayList<String>?=null, name: String?=null, slug: String?=null, allIdentifiers: ArrayList<String>?=null, q: String?=null, tags: ArrayList<String>?=null, pageSize: Int?=null, sortOn: String?=null) : Paginator<ProductListingResponseV2>{
+    fun getProductsPaginator(companyId: String, brandIds: ArrayList<Int>?=null, categoryIds: ArrayList<Int>?=null, itemIds: ArrayList<Int>?=null, departmentIds: ArrayList<Int>?=null, itemCode: ArrayList<String>?=null, name: String?=null, slug: String?=null, allIdentifiers: ArrayList<String>?=null, q: String?=null, tags: ArrayList<String>?=null, pageSize: Int?=null, sortOn: String?=null, modifiedOnGte: String?=null, modifiedOnLte: String?=null) : Paginator<ProductListingResponseV2>{
         val paginator = Paginator<ProductListingResponseV2>()
         paginator.setCallBack(object : PaginatorCallback<ProductListingResponseV2> {
 
@@ -1649,7 +1659,7 @@ class CatalogDataManagerClass(val config: PlatformConfig, val unauthorizedAction
                     val pageNo = paginator.pageNo
                     val pageType = "cursor"
                     catalogApiList?.getProducts(
-                    companyId = config.companyId, brandIds = brandIds, categoryIds = categoryIds, itemIds = itemIds, departmentIds = departmentIds, itemCode = itemCode, name = name, slug = slug, allIdentifiers = allIdentifiers, q = q, tags = tags, pageNo = pageNo, pageSize = pageSize, pageType = pageType, sortOn = sortOn, pageId = pageId
+                    companyId = config.companyId, brandIds = brandIds, categoryIds = categoryIds, itemIds = itemIds, departmentIds = departmentIds, itemCode = itemCode, name = name, slug = slug, allIdentifiers = allIdentifiers, q = q, tags = tags, pageNo = pageNo, pageSize = pageSize, pageType = pageType, sortOn = sortOn, pageId = pageId, modifiedOnGte = modifiedOnGte, modifiedOnLte = modifiedOnLte
                     )?.safeAwait{ response, error ->
                         response?.let {
                             val page = response.peekContent()?.page
