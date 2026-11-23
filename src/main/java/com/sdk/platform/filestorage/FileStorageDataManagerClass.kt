@@ -107,18 +107,6 @@ class FileStorageDataManagerClass(val config: PlatformConfig, val unauthorizedAc
     
     
     
-    
-    suspend fun proxy(url: String, headers: Map<String, String> = emptyMap())
-    : Response<ProxyFileAccess>? {
-
-        return if (config.oauthClient.isAccessTokenValid()) {
-            fileStorageApiList?.proxy(
-        companyId = config.companyId,url = url, headers = headers)
-        } else {
-            null
-        }
-    }
-    
 
 inner class ApplicationClient(val applicationId:String,val config: PlatformConfig){
 
@@ -167,7 +155,6 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
             null
         }
     }
-    
     
 }
 }

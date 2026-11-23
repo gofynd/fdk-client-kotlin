@@ -45,8 +45,4 @@ interface FileStorageApiList {
     suspend fun browsefiles(@Path("namespace") namespace: String, @Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Query("page") page: Int?, @Query("limit") limit: Int?, @Query("search") search: String?,@Body body: ExtensionSlug, @HeaderMap headers: Map<String, String>? = null)
     : Response<HashMap<String,Any>>
     
-    @GET ("/service/platform/assets/v1.0/company/{company_id}/proxy")
-    suspend fun proxy(@Path("company_id") companyId: String, @Query("url") url: String, @HeaderMap headers: Map<String, String>? = null)
-    : Response<ProxyFileAccess>
-    
 }

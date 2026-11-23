@@ -11316,7 +11316,7 @@ data class CreateOrderRequestSchema(
     var b2BGstinNumber: String?=null,
     
     @SerializedName("channel_company_id")
-    var channelCompanyId: String?=null,
+    var channelCompanyId: Int?=null,
     
     @SerializedName("is_draft")
     var isDraft: Boolean?=null,
